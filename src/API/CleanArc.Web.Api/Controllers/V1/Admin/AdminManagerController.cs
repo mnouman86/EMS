@@ -1,0 +1,67 @@
+﻿using CleanArc.Application.Features.Admin.Commands.AddAdminCommand;
+using CleanArc.Application.Features.Admin.Queries.GetToken;
+using CleanArc.WebFramework.BaseController;
+using CleanArc.WebFramework.WebExtensions;
+using Mediator;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Drawing.Text;
+using System.Reflection.Metadata;
+using CleanArc.SharedKernel.Extensions;
+using Azure;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Asp.Versioning;
+
+namespace CleanArc.Web.Api.Controllers.V1.Admin
+{
+    [ApiVersion("1")]
+    [ApiController]
+    [Route("api/v{version:apiVersion}/AdminManager")]
+    public class AdminManagerController : BaseController
+    {
+        private readonly ISender _sender;
+        private readonly ILogger<AdminManagerController> _logger;
+        private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
+
+        private string controllerName = "AdminManagerController";
+        public AdminManagerController(ISender sender, ILogger<AdminManagerController> logger, IHttpContextAccessor httpContextAccessor)
+        {
+            _sender = sender;
+            _logger = logger;
+            _httpContextAccessor = httpContextAccessor;
+        }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> AdminLogin(AdminGetTokenQuery model)
+        {
+            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, model))
+            {
+                //string actionName = "AdminLogin";
+
+                //_logger.LogInformation("Executing {@actionName} action in {@controllerName} with request model {@model}", actionName, controllerName, model);
+                var commandResult = await _sender.Send(model);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(commandResult);
+                //_logger.LogInformation("Executed {@actionName} action in {@controllerName} with response {@query}", actionName, controllerName, query);
+
+                return base.OperationResult(commandResult);
+            }
+
+        }
+
+       // [Authorize(Roles = "admin")]
+        [HttpPost("NewAdmin")]
+        public async Task<IActionResult> AddNewAdmin(AddAdminCommand model)
+        {
+            //string actionName = "AddNewAdmin";
+            //_logger.LogInformation($"Executing {@actionName} action in {@controllerName} with request model {@model}", actionName, controllerName, model);
+            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, model))
+            {
+                var commandResult = await _sender.Send(model);
+                //_logger.LogInformation($"Executed {@actionName} action in {@controllerName} with response {@commandResult}", actionName, controllerName, commandResult);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(commandResult);
+
+                return base.OperationResult(commandResult);
+            }
+        }
+    }
+}

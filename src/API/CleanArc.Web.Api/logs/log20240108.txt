@@ -1,0 +1,163 @@
+2024-01-08 22:14:05.812 +05:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-01-08 22:14:05.950 +05:00 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-01-08 22:14:05.959 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-01-08 22:14:06.014 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-01-08 22:14:06.066 +05:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-01-08 22:14:06.101 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-01-08 22:14:06.125 +05:00 [INF] User profile is available. Using 'C:\Users\DEV 001\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-01-08 22:14:06.578 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-01-08 22:14:06.596 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-01-08 22:14:07.535 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-01-08 22:14:07.539 +05:00 [INF] Hosting environment: Development
+2024-01-08 22:14:07.542 +05:00 [INF] Content root path: D:\Projects\CentralConnect\src\API\CleanArc.Web.Api
+2024-01-08 22:14:07.608 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger - -
+2024-01-08 22:14:07.608 +05:00 [INF] Request starting HTTP/1.1 HEAD http://localhost:8746/ - -
+2024-01-08 22:14:08.412 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-01-08 22:14:08.419 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger - - - 301 - - 812.7873ms
+2024-01-08 22:14:08.600 +05:00 [INF] Request finished HTTP/1.1 HEAD http://localhost:8746/ - - - 404 - - 996.0079ms
+2024-01-08 22:14:08.679 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 267.0984ms
+2024-01-08 22:14:08.683 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/swagger-ui-bundle.js - -
+2024-01-08 22:14:08.694 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/swagger-ui.css - -
+2024-01-08 22:14:08.712 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-01-08 22:14:08.694 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/swagger-ui-standalone-preset.js - -
+2024-01-08 22:14:08.713 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-01-08 22:14:08.729 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 13768 application/javascript;+charset=utf-8 15.0659ms
+2024-01-08 22:14:08.744 +05:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2024-01-08 22:14:08.744 +05:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2024-01-08 22:14:08.760 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/swagger-ui.css - - - 200 144929 text/css 65.5281ms
+2024-01-08 22:14:08.776 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/swagger-ui-standalone-preset.js - - - 200 312163 text/javascript 81.4120ms
+2024-01-08 22:14:08.779 +05:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2024-01-08 22:14:08.805 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/swagger-ui-bundle.js - - - 200 1061536 text/javascript 122.3459ms
+2024-01-08 22:14:08.836 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 124.6442ms
+2024-01-08 22:14:08.929 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-01-08 22:14:09.165 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 235.2434ms
+2024-01-08 22:27:33.664 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 52
+2024-01-08 22:27:33.721 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-01-08 22:27:33.771 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-01-08 22:27:34.010 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-01-08 22:27:34.018 +05:00 [INF] Executing AdminLogin action in AdminManagerController with request model {"UserName":"admin2","Password":"123@a123","$type":"AdminGetTokenQuery"}
+2024-01-08 22:35:07.707 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-01-08 22:35:07.772 +05:00 [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-01-08 22:35:07.777 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-01-08 22:35:07.785 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-01-08 22:35:07.811 +05:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-01-08 22:35:07.825 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-01-08 22:35:07.833 +05:00 [INF] User profile is available. Using 'C:\Users\DEV 001\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-01-08 22:35:07.981 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-01-08 22:35:07.993 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-01-08 22:35:08.157 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-01-08 22:35:08.159 +05:00 [INF] Hosting environment: Development
+2024-01-08 22:35:08.161 +05:00 [INF] Content root path: D:\Projects\CentralConnect\src\API\CleanArc.Web.Api
+2024-01-08 22:35:08.177 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-01-08 22:35:08.425 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-01-08 22:35:08.425 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-01-08 22:35:08.430 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 253.3739ms
+2024-01-08 22:35:08.433 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 13768 application/javascript;+charset=utf-8 7.4265ms
+2024-01-08 22:35:08.999 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 574.0334ms
+2024-01-08 22:35:09.030 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-01-08 22:35:09.166 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 135.3243ms
+2024-01-08 22:35:12.600 +05:00 [INF] Request starting HTTP/1.1 HEAD http://localhost:8746/ - -
+2024-01-08 22:35:12.660 +05:00 [INF] Request finished HTTP/1.1 HEAD http://localhost:8746/ - - - 404 - - 60.1997ms
+2024-01-08 22:35:35.402 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 52
+2024-01-08 22:35:35.439 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-01-08 22:35:35.456 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-01-08 22:35:35.527 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-01-08 22:35:35.531 +05:00 [INF] Executing AdminLogin action in AdminManagerController with request model {"UserName":"admin2","Password":"123@a123","$type":"AdminGetTokenQuery"}
+2024-01-08 22:35:40.622 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"admin2","Password":"123@a123","$type":"AdminGetTokenQuery"}
+2024-01-08 22:35:42.534 +05:00 [INF] Executed DbCommand (37ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-01-08 22:35:42.586 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"3f8303a5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":3,"UserName":"admin2","NormalizedUserName":"ADMIN2","Email":"admin2@q.com","NormalizedEmail":"ADMIN2@Q.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEHnpap2iQ6HbJYbh13ZwBM13H5yPFl1s6z0w+Yx4+9TsYtG1D3Rcejn4Zf4Xuu75wA==","SecurityStamp":"AL4CX6Y7J7MF2EK7AWXUYYK2TYYCSY2M","ConcurrencyStamp":"3c381952-b0d5-422d-aafd-d35328f60aa2","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":0,"$type":"User"}
+2024-01-08 22:35:42.591 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-01-08 22:35:42.693 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-01-08 22:35:42.707 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-01-08 22:35:42.713 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-01-08 22:35:42.721 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-01-08 22:35:42.739 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-01-08 22:35:43.320 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-01-08 22:35:43.330 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-01-08 22:35:43.332 +05:00 [INF] Executed AdminLogin action in AdminManagerController with response {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.nPomaW0_y5brwqdZs4R1pUIS3R06Zlfs0bhFo8r0kJZkdEApkAuYvw.PfWpeLLXBx7wi58cgLbpVw.pRFfxT00sTplPkGB0vxhFHZRII_cxrSaeorH5Sh8AdGSo7ambxlNQpdgUf3vsCIUcMlaX46LpmJ0zbo6h6wm0mLYbb8-YyIsuiGCy7WZBbSs4duTFlIwVvwb9nwW1t7iChHyhx1AS8nudaYG4Or2VDIU7zWwrxxnlC1EOWHNIPX6M6Hu9kwH3CW94wutPUalR6gNVyr23CHASMh9Sp7tun9QRNDTgzhLuHqcbTZ2FWn0Efjb5pZYR9qbXZEmlcypXXQRAB_uGU9ElqHYmbi06L2kp3h2fOl851H8kz7OM1M8ztIF8yzPdsd5ggnzJS_MA5kGwkFokz9dF7_JNgABu2bHHNz1XUFHPfbPPmBnGY4GxTUh-bos8xOz7b-bThsiTZmH6X4KnsYDWk5lMk59FTyTFcQNknJyFJuAI83NNTf2LxRpGxJSJqvus2zbnsJFBaYL8xLGyUPWL59ZKwhZQ7YrGFLNII2T732a9r3k9h4iz-RpWMCUAFAaR3jfOkxPd5WaVtcIwiOlXwX2QTGsgo7gN7ns19wFm5EgxmOwM6Nyte46FcObdq7siNZs93CkfN1mYXaAOBrfjselx3bHHM5_WEViCkBIa97ZJfIwy92Hzp0lKHfVpsC15wRjI6vhTRTYsRKA_RHy9Sivp4FGyvh4QcepjOscnqrJZow7MpHLqWYzHqkGU0a1UEpSK41M.5qDDkCLYPOyZbbIFNuY08A","refresh_token":"104380d0-8ad5-4edc-29df-08dc10703d68","token_type":"Bearer","expires_in":599998,"$type":"AccessToken"},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false,"$type":"OperationResult`1"}
+2024-01-08 22:35:43.337 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 7806.7308ms.
+2024-01-08 22:35:43.344 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-01-08 22:35:43.356 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 7896.1846ms
+2024-01-08 22:35:43.358 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-01-08 22:35:43.361 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 52 - 200 - application/json;+charset=utf-8 7959.2270ms
+2024-01-08 22:37:09.976 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/api/v1/URL/GetAll - -
+2024-01-08 22:37:10.250 +05:00 [INF] Executed DbCommand (24ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-01-08 22:37:10.281 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Order.URLController.GetAll (CleanArc.Web.Api)'
+2024-01-08 22:37:10.289 +05:00 [INF] Route matched with {action = "GetAll", controller = "URL"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller CleanArc.Web.Api.Controllers.V1.Order.URLController (CleanArc.Web.Api).
+2024-01-08 22:37:10.395 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Order.URLController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-01-08 22:37:17.800 +05:00 [INF] Executing generic implementation of GetAll action in _BaseController with query {"$type":"GetAllURLsQuery"}
+2024-01-08 22:37:37.037 +05:00 [INF] Executed generic implementation of GetAll action in _BaseController
+2024-01-08 22:37:37.041 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Order.URLController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 26640.7476ms.
+2024-01-08 22:37:37.044 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-01-08 22:37:37.047 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Order.URLController.GetAll (CleanArc.Web.Api) in 26753.9658ms
+2024-01-08 22:37:37.048 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Order.URLController.GetAll (CleanArc.Web.Api)'
+2024-01-08 22:37:37.050 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/api/v1/URL/GetAll - - - 200 - application/json;+charset=utf-8 27074.3130ms

@@ -1,0 +1,91 @@
+2024-01-10 20:56:22.701 +05:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-01-10 20:56:22.860 +05:00 [INF] Executed DbCommand (57ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-01-10 20:56:22.904 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-01-10 20:56:22.915 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-01-10 20:56:22.964 +05:00 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-01-10 20:56:23.005 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-01-10 20:56:23.033 +05:00 [INF] User profile is available. Using 'C:\Users\DEV 001\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-01-10 20:56:23.645 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-01-10 20:56:23.677 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-01-10 20:56:24.492 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-01-10 20:56:24.496 +05:00 [INF] Hosting environment: Development
+2024-01-10 20:56:24.499 +05:00 [INF] Content root path: D:\Projects\CentralConnect\src\API\CleanArc.Web.Api
+2024-01-10 20:56:24.560 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-01-10 20:56:24.914 +05:00 [ERR] Unable to resolve service for type 'Castle.DynamicProxy.IProxyGenerator' while attempting to Invoke middleware 'CleanArc.WebFramework.Middlewares.LoggingMiddleware'.
+System.InvalidOperationException: Unable to resolve service for type 'Castle.DynamicProxy.IProxyGenerator' while attempting to Invoke middleware 'CleanArc.WebFramework.Middlewares.LoggingMiddleware'.
+   at lambda_method33(Closure, Object, HttpContext, IServiceProvider)
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\CentralConnect\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+2024-01-10 20:56:25.109 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 500 - - 552.0296ms
+2024-01-10 21:22:32.195 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-01-10 21:22:32.333 +05:00 [INF] Executed DbCommand (57ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-01-10 21:22:32.346 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-01-10 21:22:32.353 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-01-10 21:22:32.394 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-01-10 21:22:32.427 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-01-10 21:22:32.446 +05:00 [INF] User profile is available. Using 'C:\Users\DEV 001\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-01-10 21:22:32.865 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-01-10 21:22:32.887 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-01-10 21:22:33.284 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-01-10 21:22:33.286 +05:00 [INF] Hosting environment: Development
+2024-01-10 21:22:33.289 +05:00 [INF] Content root path: D:\Projects\CentralConnect\src\API\CleanArc.Web.Api
+2024-01-10 21:22:33.329 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-01-10 21:22:33.910 +05:00 [ERR] Could not load type 'Castle.Proxies.DefaultHttpContextProxy' from assembly 'DynamicProxyGenAssembly2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=a621a9e7e5c32e69' because the parent type is sealed.
+System.TypeLoadException: Could not load type 'Castle.Proxies.DefaultHttpContextProxy' from assembly 'DynamicProxyGenAssembly2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=a621a9e7e5c32e69' because the parent type is sealed.
+   at System.Reflection.Emit.TypeBuilder.CreateTypeNoLock()
+   at System.Reflection.Emit.TypeBuilder.CreateTypeInfoImpl()
+   at System.Reflection.Emit.TypeBuilder.CreateTypeInfo()
+   at Castle.DynamicProxy.Generators.Emitters.AbstractTypeEmitter.CreateType(TypeBuilder type)
+   at Castle.DynamicProxy.Generators.Emitters.AbstractTypeEmitter.BuildType()
+   at Castle.DynamicProxy.Generators.BaseClassProxyGenerator.GenerateType(String name, INamingScope namingScope)
+   at Castle.DynamicProxy.Generators.BaseProxyGenerator.<>c__DisplayClass13_0.<GetProxyType>b__0(CacheKey cacheKey)
+   at Castle.Core.Internal.SynchronizedDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Castle.DynamicProxy.Generators.BaseProxyGenerator.GetProxyType()
+   at Castle.DynamicProxy.DefaultProxyBuilder.CreateClassProxyType(Type classToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyType(Type classToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxy(Type classToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options, Object[] constructorArguments, IInterceptor[] interceptors)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxy(Type classToProxy, IInterceptor[] interceptors)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context, IProxyGenerator proxyGenerator) in D:\Projects\CentralConnect\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 38
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\CentralConnect\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+2024-01-10 21:22:34.007 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 500 - - 680.0473ms
