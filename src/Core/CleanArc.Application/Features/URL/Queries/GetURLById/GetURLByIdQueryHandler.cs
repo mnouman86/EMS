@@ -30,6 +30,8 @@ namespace CleanArc.Application.Features.URL.Queries.GetURLById
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _httpContextAccessor = httpContextAccessor;
+            _logger = logger;
+
         }
 
         public async ValueTask<OperationResult<GetURLByIdQueryResult>> Handle(GetURLByIdQuery request, CancellationToken cancellationToken)
