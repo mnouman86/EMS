@@ -12,6 +12,8 @@ public interface IUnitOfWork
     public IRoomDetailsRepository RoomDetailsRepository { get; }
     public ICategoryRepository CategoryRepository { get; }
     public ISearchHotelRepository SearchHotelRepository { get; }
+    public ISearchHotelImageRepository SearchHotelImageRepository { get; }
+    public ISearchHotelAmenitiesRepository SearchHotelAmenitiesRepository { get; }
     Task CommitAsync();
     ValueTask RollBackAsync();
 }

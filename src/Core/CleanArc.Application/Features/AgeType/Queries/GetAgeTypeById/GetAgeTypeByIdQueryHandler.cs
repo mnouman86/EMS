@@ -34,7 +34,7 @@ namespace CleanArc.Application.Features.AgeType.Queries.GetAgeTypeById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var url = await _unitOfWork.URLRepository.GetByIdAsync(request.Id);
+                var url = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.Id);
 
                 if (url == null)
                 {
