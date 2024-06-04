@@ -1,0 +1,615 @@
+2024-06-01 12:45:03.456 +05:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-01 12:45:03.543 +05:00 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-01 12:45:03.548 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-01 12:45:03.552 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-01 12:45:03.577 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-01 12:45:03.592 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-01 12:45:03.603 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-01 12:45:03.907 +05:00 [INF] Executed DbCommand (39ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-01 12:45:03.933 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-01 12:45:04.804 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-01 12:45:05.291 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-01 12:45:05.553 +05:00 [INF] Response StatusCode: 200
+2024-06-01 12:45:05.561 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-01 12:45:05.574 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 11.2510ms
+2024-06-01 12:45:05.574 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 771.1035ms
+2024-06-01 12:45:05.623 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-01 12:45:05.711 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 87.9921ms
+2024-06-01 12:45:07.067 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json -
+2024-06-01 12:45:07.073 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-01 12:45:07.129 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-01 12:45:07.134 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-01 12:45:07.898 +05:00 [INF] Response StatusCode: 200
+2024-06-01 12:45:07.911 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 781.8766ms
+2024-06-01 12:45:09.357 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-01 12:45:09.360 +05:00 [INF] Response StatusCode: 404
+2024-06-01 12:45:09.363 +05:00 [INF] Response StatusCode: 404
+2024-06-01 12:45:09.368 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 2301.4305ms
+2024-06-01 12:46:25.871 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54
+2024-06-01 12:46:25.879 +05:00 [INF] CORS policy execution successful.
+2024-06-01 12:46:25.884 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-01 12:46:25.890 +05:00 [INF] Request Body: {
+  "userName": "Waqasbutt",
+  "password": "123@123"
+}
+2024-06-01 12:46:25.903 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-01 12:46:25.906 +05:00 [INF] Request Body: {
+  "userName": "Waqasbutt",
+  "password": "123@123"
+}
+2024-06-01 12:46:25.910 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-01 12:46:25.944 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-06-01 12:46:26.125 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-01 12:46:26.610 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"Waqasbutt","Password":"123@123"}
+2024-06-01 12:46:26.726 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"Waqasbutt","Password":"123@123","$type":"AdminGetTokenQuery"}
+2024-06-01 12:46:26.838 +05:00 [INF] Executed DbCommand (24ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-06-01 12:46:27.016 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"2ebc166b-0eb2-4a40-9b6f-d916fabf86fa","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":0,"$type":"User"}
+2024-06-01 12:46:27.024 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-06-01 12:46:27.205 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-01 12:46:27.243 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-06-01 12:46:27.262 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-01 12:46:27.279 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-06-01 12:46:27.329 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-06-01 12:46:27.646 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-06-01 12:46:27.666 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-06-01 12:46:27.698 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.8-si1kmrP-7qzkLj4IEXdLQZbiMJ0FwjGyilYCuJlWuzFo01FXdYDw.fV9z5oqLdwF2Dp5z-RbqtQ.IEcVF91up2tgmu90ksSm_q_Svt6WAMj-bCoO6s3z_6tV-HHOndUHdfBi6xRdEK77AgFjzTUKoITi2w3uslwyrjPAJWH3Quh2m_a-ro-dan8bBser3MjSrAVk2UBuCV1EjvLymnwyzAtdRwg3oMk-55AlvxnJDAZ4la2_z5BcohTTvCoSE1w2eIc-m98Cc7U27pxtLIp5z2bW3LZVgv9PXkTqgsbLUkKMHlgD020pi5YfpSNE807jsmfVghuyeIQbr9hlXHkutknCDPY0QmsTeOzRLIPDKLOP87KjbWV0AGs-eEmi-wC7kPizuqSusG0s6jvVtWqBgbiZamge89CMW6fNeDfeeKIKU2r3kQsqOBtKTRK9u2qKU56iWyjqb4VqhgRVKAPcUiHz53BM_IrwitWKOJpEqOFiRQd-fkh9a60IfgQ9HtGX_ALpDsgP-9nK6eKmntEZ7lOnuQYuBtuQoO2PGdTRcuC2y7qea4a6IZTh6SA6yNgHIsxxO2KPBy7ZhQx_LRGdqv0IfdLE3n57gz5A2hNFNMi1phpj1syq4uUZQlPOwu6LsnSs7veh-MuTNox4Wm2Y6AE9XDpbeU5IZ4TFXHB7kFYBnvNBcZB56_S1yl_jRaGIkt0z54xeJ-PhZxLVeNVskUa2mPI0xQCGM6uNBjtSiwErfYwYs6z-l3C7oHXITiR_t-tGzKsdYFwE_Oaxc5qTtN2HozeqtRWVqA.mpseZdrU2EU2cp__nvLoZA","refresh_token":"1f8ba397-68ad-4a9d-161b-08dc820ef1a0","token_type":"Bearer","expires_in":599999},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-06-01 12:46:27.720 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1578.0176ms.
+2024-06-01 12:46:27.754 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-01 12:46:27.812 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 1845.9377ms
+2024-06-01 12:46:27.836 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-01 12:46:27.842 +05:00 [INF] Response StatusCode: 200
+2024-06-01 12:46:27.853 +05:00 [INF] Response StatusCode: 200
+2024-06-01 12:46:27.858 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54 - 200 - application/json;+charset=utf-8 1987.0054ms
+2024-06-01 12:47:11.400 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/api/v1/Url/GetById/1 - -
+2024-06-01 12:47:11.410 +05:00 [INF] Request Method: GET, Path: /api/v1/Url/GetById/1, Content-Type: null
+2024-06-01 12:47:11.467 +05:00 [INF] Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token.
+2024-06-01 12:47:11.477 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-06-01 12:47:11.494 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-06-01 12:47:11.496 +05:00 [INF] Response StatusCode: 401
+2024-06-01 12:47:11.499 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/api/v1/Url/GetById/1 - - - 401 - application/json;+charset=utf-8 98.1322ms
+2024-06-01 12:47:28.249 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-01 12:47:28.290 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-01 12:47:28.293 +05:00 [INF] Response StatusCode: 200
+2024-06-01 12:47:28.295 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 46.1172ms
+2024-06-01 12:47:28.321 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-01 12:47:28.321 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-01 12:47:28.329 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 8.0639ms
+2024-06-01 12:47:28.349 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 27.8668ms
+2024-06-01 12:47:28.875 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json -
+2024-06-01 12:47:28.878 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-01 12:47:28.882 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-01 12:47:28.885 +05:00 [INF] Response StatusCode: 404
+2024-06-01 12:47:28.887 +05:00 [INF] Response StatusCode: 404
+2024-06-01 12:47:28.891 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 15.9309ms
+2024-06-01 12:47:28.905 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-01 12:47:28.907 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-01 12:47:28.954 +05:00 [INF] Response StatusCode: 200
+2024-06-01 12:47:28.958 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 53.7345ms
+2024-06-01 12:48:54.453 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-01 12:48:54.518 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-01 12:48:54.527 +05:00 [INF] Response StatusCode: 200
+2024-06-01 12:48:54.530 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 77.8742ms
+2024-06-01 12:48:54.543 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-01 12:48:54.543 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-01 12:48:54.551 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 7.7595ms
+2024-06-01 12:48:54.572 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 28.4634ms
+2024-06-01 12:48:54.702 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-01 12:48:54.707 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-01 12:48:54.724 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json -
+2024-06-01 12:48:54.728 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-01 12:48:54.732 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-01 12:48:54.736 +05:00 [INF] Response StatusCode: 404
+2024-06-01 12:48:54.744 +05:00 [INF] Response StatusCode: 404
+2024-06-01 12:48:54.750 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 25.1318ms
+2024-06-01 12:48:54.768 +05:00 [INF] Response StatusCode: 200
+2024-06-01 12:48:54.772 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 69.4730ms
+2024-06-01 12:48:55.749 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-01 12:48:55.780 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-01 12:48:55.784 +05:00 [INF] Response StatusCode: 200
+2024-06-01 12:48:55.787 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 38.1733ms
+2024-06-01 12:48:55.796 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-01 12:48:55.796 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-01 12:48:55.806 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 9.6772ms
+2024-06-01 12:48:55.829 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 32.6867ms
+2024-06-01 12:48:55.910 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json -
+2024-06-01 12:48:55.919 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-01 12:48:55.924 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-01 12:48:55.928 +05:00 [INF] Response StatusCode: 404
+2024-06-01 12:48:55.932 +05:00 [INF] Response StatusCode: 404
+2024-06-01 12:48:55.938 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 27.4805ms
+2024-06-01 12:48:55.945 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-01 12:48:55.951 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-01 12:48:56.013 +05:00 [INF] Response StatusCode: 200
+2024-06-01 12:48:56.023 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 77.8232ms
+2024-06-01 12:49:06.200 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/api/v1/Url/GetById/1 - -
+2024-06-01 12:49:06.203 +05:00 [INF] Request Method: GET, Path: /api/v1/Url/GetById/1, Content-Type: null
+2024-06-01 12:49:06.213 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-06-01 12:49:06.223 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-06-01 12:49:06.228 +05:00 [INF] Response StatusCode: 401
+2024-06-01 12:49:06.238 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/api/v1/Url/GetById/1 - - - 401 - application/json;+charset=utf-8 37.9328ms
+2024-06-01 12:50:00.738 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54
+2024-06-01 12:50:00.741 +05:00 [INF] CORS policy execution successful.
+2024-06-01 12:50:00.745 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-01 12:50:00.748 +05:00 [INF] Request Body: {
+  "userName": "Waqasbutt",
+  "password": "123@123"
+}
+2024-06-01 12:50:00.753 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-01 12:50:00.756 +05:00 [INF] Request Body: {
+  "userName": "Waqasbutt",
+  "password": "123@123"
+}
+2024-06-01 12:50:00.758 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-01 12:50:00.763 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-06-01 12:50:00.816 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-01 12:50:00.820 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"Waqasbutt","Password":"123@123"}
+2024-06-01 12:50:00.896 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"Waqasbutt","Password":"123@123","$type":"AdminGetTokenQuery"}
+2024-06-01 12:50:00.923 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-06-01 12:50:00.930 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"2ebc166b-0eb2-4a40-9b6f-d916fabf86fa","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":0,"$type":"User"}
+2024-06-01 12:50:00.934 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-06-01 12:50:01.027 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-01 12:50:01.129 +05:00 [INF] Executed DbCommand (81ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-06-01 12:50:01.151 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-01 12:50:17.755 +05:00 [INF] Executed DbCommand (16,588ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-06-01 12:50:17.767 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-06-01 12:50:17.789 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-06-01 12:50:17.794 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-06-01 12:50:17.797 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.o5UP-JlTr6X76mZMtUTJVSDDj5ue3flf1USTFcwjSXP7Vn50__ylag.bXP62o866VDQFAgi6YB4fA.UON2PRUkFG8qS_sXBv1Uae03ETbKqpnE6xa4syQFrGeIuRqzIxykfI0d5YPQvNS1qK0_1JdippQzuJrt8DJtYsaFOLgHoaZIrGcaq9f1UjJuiibwVy_JDCaT6JOcyPiGc-ELrSElQiGYa9jX0W80YpLr5vrd3iv9pOSqYBf1y60CyZCz-Q-eiNlcgAJuoMVhFFmQIQm5xfJ7uowt-1S9T4JsFmxDIaqi3xWjIyF8h-Ht3k0rtwpszCDGKj2qFmC53a18ZbSvtzUhDJc5RlPr_fmhfssH9TvFjwcaymNP55eh2Ld2Ni-UfAceJm6yIwYwWdOQAvZ2zlzojgERvgQ-zF8uVhj4Sy6vN2X88f84BYlXvOftbZTnzscRMOKEzJe9RaovHaB4hEvpBmw3tRWvJ_ZpXjKOPBJ5hQgQs0nFZSOfRkNYtcxgGX19nq9HTTZh3rrwJfa5Cjf8lmocWRqzCwrZLqosEdfMMIooS8XE42VW2IKyUpZlxal9Cztu7CteDJKax36CAQIbRizosmozfkRM6WaT0haTenx8COPUGDzbhWmZSEWUbnyjfJc4cF_Bks25GaXsQZECLDBeauxbWbMspf8wOxBuwe1Jw4fD-5-Whk0w3HHPUhlI2h43zjIS3Dmixd8mZy4Sjqi7H57QD43cF0RVZwyY-PVwxX-FXKKZVfYJyDmI9voDooc8X_C-iCatuq-c-Nj_7X8OMx3bow.Zky0mcARxehvvDOvTAi4UQ","refresh_token":"eb1cbae7-474a-4992-161c-08dc820ef1a0","token_type":"Bearer","expires_in":599999},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-06-01 12:50:17.799 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 16979.3439ms.
+2024-06-01 12:50:17.803 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-01 12:50:17.818 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 17050.9037ms
+2024-06-01 12:50:17.830 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-01 12:50:17.838 +05:00 [INF] Response StatusCode: 200
+2024-06-01 12:50:17.842 +05:00 [INF] Response StatusCode: 200
+2024-06-01 12:50:17.846 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54 - 200 - application/json;+charset=utf-8 17107.6559ms
+2024-06-01 12:51:33.315 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/api/v1/Url/GetById/1 - -
+2024-06-01 12:51:33.334 +05:00 [INF] Request Method: GET, Path: /api/v1/Url/GetById/1, Content-Type: null
+2024-06-01 12:51:33.494 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-01 12:51:33.519 +05:00 [INF] Request Method: GET, Path: /api/v1/Url/GetById/1, Content-Type: null
+2024-06-01 12:51:33.522 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Order.UrlController.GetById (CleanArc.Web.Api)'
+2024-06-01 12:51:33.530 +05:00 [INF] Route matched with {action = "GetById", controller = "Url"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.Order.UrlController (CleanArc.Web.Api).
+2024-06-01 12:52:09.201 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Order.UrlController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-01 12:53:09.831 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Order.UrlController.GetById (CleanArc.Web.Api) in 96296.4133ms
+2024-06-01 12:53:09.838 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Order.UrlController.GetById (CleanArc.Web.Api)'
+2024-06-01 12:59:59.360 +05:00 [ERR] Value cannot be null. (Parameter 'logger')
+System.ArgumentNullException: Value cannot be null. (Parameter 'logger')
+   at System.ThrowHelper.Throw(String paramName)
+   at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, EventId eventId, Exception exception, String message, Object[] args)
+   at Microsoft.Extensions.Logging.LoggerExtensions.LogInformation(ILogger logger, String message, Object[] args)
+   at CleanArc.SharedKernel.Extensions.LoggingExtensions.LogMethodEntry[T](ILogger`1 logger, Object parameter, String _namespace, String methodName) in D:\Projects\LLP_Core\src\Shared\CleanArc.SharedKernel\Extensions\LoggingExtensions.cs:line 34
+   at CleanArc.SharedKernel.Extensions.LoggingExtensions.LogMethodEntryExit[T](ILogger`1 logger, HttpContext context, Object parameter, String memberName) in D:\Projects\LLP_Core\src\Shared\CleanArc.SharedKernel\Extensions\LoggingExtensions.cs:line 24
+   at CleanArc.Application.Features.URL.Queries.GetURLById.GetURLByIdQueryHandler.Handle(GetURLByIdQuery request, CancellationToken cancellationToken)
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CallSite.Target(Closure, CallSite, Object)
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetById(Int32 id) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 99
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+2024-06-01 12:59:59.492 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/api/v1/Url/GetById/1 - - - 500 - - 506179.8766ms
+2024-06-01 13:00:00.488 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-01 13:00:00.559 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-01 13:00:00.573 +05:00 [INF] Response StatusCode: 200
+2024-06-01 13:00:00.578 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 89.2191ms
+2024-06-01 13:00:00.598 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-01 13:00:00.600 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-01 13:00:00.610 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 12.3986ms
+2024-06-01 13:00:00.647 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 49.1582ms
+2024-06-01 13:00:01.439 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json -
+2024-06-01 13:00:01.445 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-01 13:00:01.450 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-01 13:00:01.474 +05:00 [INF] Response StatusCode: 404
+2024-06-01 13:00:01.498 +05:00 [INF] Response StatusCode: 404
+2024-06-01 13:00:01.510 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-01 13:00:01.529 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-01 13:00:01.531 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 90.2095ms
+2024-06-01 13:00:01.583 +05:00 [INF] Response StatusCode: 200
+2024-06-01 13:00:01.602 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 91.9276ms
+2024-06-01 13:03:38.606 +05:00 [INF] Executed DbCommand (51ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-01 13:03:38.890 +05:00 [INF] Executed DbCommand (143ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-01 13:03:38.908 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-01 13:03:38.923 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-01 13:03:38.981 +05:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-01 13:03:39.016 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-01 13:03:39.042 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-01 13:03:39.710 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-01 13:03:39.729 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-01 13:03:40.172 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-01 13:03:40.493 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-01 13:03:40.764 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-01 13:03:40.774 +05:00 [INF] Response StatusCode: 200
+2024-06-01 13:03:40.788 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 21.7098ms
+2024-06-01 13:03:40.788 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 617.8587ms
+2024-06-01 13:03:40.833 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-01 13:03:40.915 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 81.9225ms
+2024-06-01 13:03:44.030 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json -
+2024-06-01 13:03:44.037 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-01 13:03:44.055 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-01 13:03:44.060 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-01 13:03:44.358 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-01 13:03:44.364 +05:00 [INF] Response StatusCode: 404
+2024-06-01 13:03:44.370 +05:00 [INF] Response StatusCode: 404
+2024-06-01 13:03:44.378 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 347.9862ms
+2024-06-01 13:03:44.520 +05:00 [INF] Response StatusCode: 200
+2024-06-01 13:03:44.527 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 471.5885ms
+2024-06-01 13:04:41.075 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/api/v1/Url/GetById/1 - -
+2024-06-01 13:04:41.078 +05:00 [INF] Request Method: GET, Path: /api/v1/Url/GetById/1, Content-Type: null
+2024-06-01 13:04:41.123 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-06-01 13:04:41.175 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-06-01 13:04:41.179 +05:00 [INF] Response StatusCode: 401
+2024-06-01 13:04:41.184 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/api/v1/Url/GetById/1 - - - 401 - application/json;+charset=utf-8 109.9008ms
+2024-06-01 13:05:53.664 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/api/v1/Url/GetById/1 - -
+2024-06-01 13:05:53.667 +05:00 [INF] Request Method: GET, Path: /api/v1/Url/GetById/1, Content-Type: null
+2024-06-01 13:05:53.680 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-06-01 13:05:53.703 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-06-01 13:05:53.705 +05:00 [INF] Response StatusCode: 401
+2024-06-01 13:05:53.707 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/api/v1/Url/GetById/1 - - - 401 - application/json;+charset=utf-8 43.1114ms
+2024-06-01 13:06:43.173 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54
+2024-06-01 13:06:43.176 +05:00 [INF] CORS policy execution successful.
+2024-06-01 13:06:43.180 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-01 13:06:43.186 +05:00 [INF] Request Body: {
+  "userName": "Waqasbutt",
+  "password": "123@123"
+}
+2024-06-01 13:06:43.196 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-01 13:06:43.198 +05:00 [INF] Request Body: {
+  "userName": "Waqasbutt",
+  "password": "123@123"
+}
+2024-06-01 13:06:43.210 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-01 13:06:43.249 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-06-01 13:06:43.465 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-01 13:06:43.732 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"Waqasbutt","Password":"123@123"}
+2024-06-01 13:06:43.852 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"Waqasbutt","Password":"123@123","$type":"AdminGetTokenQuery"}
+2024-06-01 13:06:44.053 +05:00 [INF] Executed DbCommand (37ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-06-01 13:06:44.272 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"2ebc166b-0eb2-4a40-9b6f-d916fabf86fa","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":0,"$type":"User"}
+2024-06-01 13:06:44.288 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-06-01 13:06:44.586 +05:00 [INF] Executed DbCommand (14ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-01 13:06:44.648 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-06-01 13:06:44.676 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-01 13:06:44.701 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-06-01 13:06:44.749 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-06-01 13:06:45.449 +05:00 [INF] Executed DbCommand (27ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-06-01 13:06:45.510 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-06-01 13:06:45.535 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.FaAvGgFkgjTxlw1PKo22qbD0HgzmNaTBz9meHNYQBh1CdO88UHC_qw.C3A5TxdFluJW6aaepBgDZA.RwLHUb05QEZbHT5VnBNxzj0GXvfSZ4EszUR9dapjuT-OqbY0hh4yY8P_xPZOJ9YeJ0JB1r7daPo714Ig08gcuRmsnULTI0fCDs6A7fk53sg8cVeuuKXwRkR6TGgShyG151ZluUvOS34KY9s08gAvazt0BbdkSgofqQS6JYkw_dbdo9C7-DoBXthHgvgcOPl6Xj798LMPGw598eacTaT4ZkHaUviNKAe8EvHv6H5eD1KiLbzs8Aj0U_ZLdSBOLSl1EF6CWR3P2vARJ8KMM0qMQ9VYM1EotYM6BidIt2HFkz9y99avtwrF2lHHLVAM1If6kfLBtg2ueZ1gDfYaJ3IvzfuRUst28KzUenEN8ZgRPzoCaSwWzFplUl6vs7MYcr1TxfgJQlf2WklvdfEF-WzXDZ6Eevwni9cSITU20gaSkMkDCrxJkyMp1JPfT9LuiIe5Ps2RxFAQXDeoolKjcKRMJdC7ve9Ev02L9f2p4lw9yK5hdRm82UET2B33aS0Vb3zrfh_nwUkzlqU5rdQAtob15QBboOY5rkxE5Roi5FmDIzS4MRL8CibD_uoFwy8RYR8vL3UdgylcWSF93ZS-UhYpMNJTWBmaqZEMjLi9iU0rEIEfpT_AZZVa90yHJtlgpVmnnQeiHEH3S9La5LLMqFyv3mssjUD4UtWLBObd0kHD507dOGNG-TYt0i5vbPuiGDDHjQHR_Dcp3-QgZkr5IkUsIQ.k9MB8XmhxaU43KJ0eg5h9Q","refresh_token":"ea765f66-d2ce-4a69-4702-08dc8211c757","token_type":"Bearer","expires_in":599998},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-06-01 13:06:45.552 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2077.679ms.
+2024-06-01 13:06:45.572 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-01 13:06:45.600 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 2339.213ms
+2024-06-01 13:06:45.605 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-01 13:06:45.608 +05:00 [INF] Response StatusCode: 200
+2024-06-01 13:06:45.618 +05:00 [INF] Response StatusCode: 200
+2024-06-01 13:06:45.623 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54 - 200 - application/json;+charset=utf-8 2449.5108ms
+2024-06-01 13:07:32.264 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/api/v1/Url/GetById/1 - -
+2024-06-01 13:07:32.270 +05:00 [INF] Request Method: GET, Path: /api/v1/Url/GetById/1, Content-Type: null
+2024-06-01 13:07:32.624 +05:00 [INF] Executed DbCommand (20ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-01 13:07:32.660 +05:00 [INF] Request Method: GET, Path: /api/v1/Url/GetById/1, Content-Type: null
+2024-06-01 13:07:32.668 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Order.UrlController.GetById (CleanArc.Web.Api)'
+2024-06-01 13:07:32.684 +05:00 [INF] Route matched with {action = "GetById", controller = "Url"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.Order.UrlController (CleanArc.Web.Api).
+2024-06-01 13:08:05.871 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Order.UrlController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-01 13:08:08.918 +05:00 [INF] Entering CleanArc.Application.Features.URL.Queries.GetURLById, Handle with parameter: {"Id":1}
+2024-06-01 13:08:09.273 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 1
+2024-06-01 13:08:09.676 +05:00 [INF] Exiting null, GetByIdAsync with response: {"Id":1,"Title":"Login","Path":"/login","Description":"for login","CreatedBy":0,"UpdatedBy":0}
+2024-06-01 13:08:09.733 +05:00 [INF] Exiting null, Handle with response: {"Id":1,"Path":"/login","Title":"Login","Description":"for login"}
+2024-06-01 13:08:15.033 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Order.UrlController.GetById (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 9159.1972ms.
+2024-06-01 13:08:34.639 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-01 13:08:41.125 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Order.UrlController.GetById (CleanArc.Web.Api) in 68436.9188ms
+2024-06-01 13:08:41.128 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Order.UrlController.GetById (CleanArc.Web.Api)'
+2024-06-01 13:08:41.636 +05:00 [INF] Response StatusCode: 200
+2024-06-01 13:08:43.023 +05:00 [INF] Response StatusCode: 200
+2024-06-01 13:08:45.256 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/api/v1/Url/GetById/1 - - - 200 - application/json;+charset=utf-8 72992.3162ms
+2024-06-01 13:13:26.707 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-01 13:13:26.782 +05:00 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-01 13:13:26.789 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-01 13:13:26.798 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-01 13:13:26.821 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-01 13:13:26.836 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-01 13:13:26.847 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-01 13:13:27.015 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-01 13:13:27.029 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-01 13:13:27.231 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-01 13:13:27.359 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-01 13:13:27.454 +05:00 [INF] Response StatusCode: 200
+2024-06-01 13:13:27.457 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-01 13:13:27.466 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 7.3929ms
+2024-06-01 13:13:27.466 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 235.7154ms
+2024-06-01 13:13:27.485 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-01 13:13:27.524 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 38.4175ms
+2024-06-01 13:13:28.085 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json -
+2024-06-01 13:13:28.089 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-01 13:13:28.115 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-01 13:13:28.118 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-01 13:13:28.272 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-01 13:13:28.275 +05:00 [INF] Response StatusCode: 404
+2024-06-01 13:13:28.277 +05:00 [INF] Response StatusCode: 404
+2024-06-01 13:13:28.282 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 196.4588ms
+2024-06-01 13:13:28.371 +05:00 [INF] Response StatusCode: 200
+2024-06-01 13:13:28.374 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 259.6051ms
+2024-06-01 13:15:45.014 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54
+2024-06-01 13:15:45.018 +05:00 [INF] CORS policy execution successful.
+2024-06-01 13:15:45.022 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-01 13:15:45.027 +05:00 [INF] Request Body: {
+  "userName": "WaqasButt",
+  "password": "123@123"
+}
+2024-06-01 13:15:45.045 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-01 13:15:45.047 +05:00 [INF] Request Body: {
+  "userName": "WaqasButt",
+  "password": "123@123"
+}
+2024-06-01 13:15:45.050 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-01 13:15:45.071 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-06-01 13:15:45.166 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-01 13:15:45.247 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"WaqasButt","Password":"123@123"}
+2024-06-01 13:15:45.276 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"WaqasButt","Password":"123@123","$type":"AdminGetTokenQuery"}
+2024-06-01 13:15:45.334 +05:00 [INF] Executed DbCommand (15ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-06-01 13:15:45.395 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"2ebc166b-0eb2-4a40-9b6f-d916fabf86fa","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":0,"$type":"User"}
+2024-06-01 13:15:45.400 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-06-01 13:15:45.492 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-01 13:15:45.515 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-06-01 13:15:45.535 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-01 13:15:45.548 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-06-01 13:15:45.573 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-06-01 13:15:45.754 +05:00 [INF] Executed DbCommand (17ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-06-01 13:15:45.789 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-06-01 13:15:45.831 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.TXsGn2Emb_pBNVk0I2YuGkv6NN2iKAfiAlesmu2YLRYIzaoV6xITXA.kPem73jJbIYSY_sn-q5A9w._b8VBruRVYf90_fTygJWyChcvScsFa3Ut2goadRpoV2cuzYauAhqitjAEul4NkKw1nyQqBaFccRfLpf7q_Hn1W-xlelO1AoIa5DBjGsbNxn7triZBkqKSq6EGSnE9tKxUlQx-J0wOea4j5Qs09zbPdIJoZaKrOFs-nn_F79bwKgI5_96kO9rYWGQ3cXv3me5r8rVyd2K1Nij0ABZFExFez6yiuKxTPZUnQ0df-VdV2sQ9k3gTh05NWH_9vM8qrx4uyuQ_LTdyzB4j_-fWRFfLlkofOcPuAElFcuWsjUKBKf6OrLjhkeanyMZNs6lNT8KnXRw_Fxf222hxfVgiehS1uE3zsHmIVbWqDb8izxSyYVcx_AXjj7iGpXKxXf3ZxPpoKXWap64Xgt-vn_EfNowNZTuLt_5Z7mB6sJriDTEQo_FI_8ypQP1Set3X6Qwd17rB6rkVCFqbii5JlUBqcFGnNcBIbq29EWPQY2gDcjLjs5qkH6fbWqsCIqTlAEGK160oWn_qYBMT-TVpbt_2j5kxeTwAL_DbL73H8qNImJ50Nx_nlbFXkc6B7rGL0nYhJYSo-w_7-4QuF0VNklLe17p2jD87vP6A3R2WCCUiZpU8uZXCxVEYWHRzGeV95aPceeRqFKiisz9lrQIhxrG3WoZrpOKNqwk0XaZPcprVlJDGpgw53ufEHyouMxvb8jC690bxCetEKj0McCnulZmafzEMw.WWGVbFavM1hjP7hCzztNYg","refresh_token":"c06d64c3-fd85-491b-2b58-08dc82130994","token_type":"Bearer","expires_in":599999},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-06-01 13:15:45.837 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 666.7069ms.
+2024-06-01 13:15:45.861 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-01 13:15:45.882 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 805.6578ms
+2024-06-01 13:15:45.886 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-01 13:15:45.893 +05:00 [INF] Response StatusCode: 200
+2024-06-01 13:15:45.911 +05:00 [INF] Response StatusCode: 200
+2024-06-01 13:15:45.916 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54 - 200 - application/json;+charset=utf-8 901.9428ms
+2024-06-01 13:17:54.715 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/api/v1/AgeType/GetById/1 - -
+2024-06-01 13:17:54.719 +05:00 [INF] Request Method: GET, Path: /api/v1/AgeType/GetById/1, Content-Type: null
+2024-06-01 13:17:54.916 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-01 13:17:54.925 +05:00 [INF] Request Method: GET, Path: /api/v1/AgeType/GetById/1, Content-Type: null
+2024-06-01 13:17:54.928 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.GetById (CleanArc.Web.Api)'
+2024-06-01 13:17:54.935 +05:00 [INF] Route matched with {action = "GetById", controller = "AgeType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController (CleanArc.Web.Api).
+2024-06-01 13:18:00.125 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-01 13:18:00.189 +05:00 [INF] Entering CleanArc.Application.Features.AgeType.Queries.GetAgeTypeById, Handle with parameter: {"Id":1}
+2024-06-01 13:18:00.235 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 1
+2024-06-01 13:18:00.594 +05:00 [INF] Exiting null, GetByIdAsync with response: {"Id":1,"Title":"Login","Path":"/login","Description":"for login","CreatedBy":0,"UpdatedBy":0}
+2024-06-01 13:18:00.636 +05:00 [INF] Exiting null, Handle with response: {"Id":1,"Name":null,"Description":"for login","IsDeleted":false,"IsActive":false,"CreatedBy":0,"CreatedAt":"0001-01-01T00:00:00","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00"}
+2024-06-01 13:18:00.643 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.GetById (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 515.6648ms.
+2024-06-01 13:18:00.645 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-01 13:18:00.654 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.GetById (CleanArc.Web.Api) in 5716.6628ms
+2024-06-01 13:18:00.656 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.GetById (CleanArc.Web.Api)'
+2024-06-01 13:18:00.659 +05:00 [INF] Response StatusCode: 200
+2024-06-01 13:18:00.662 +05:00 [INF] Response StatusCode: 200
+2024-06-01 13:18:00.665 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/api/v1/AgeType/GetById/1 - - - 200 - application/json;+charset=utf-8 5950.1617ms
+2024-06-01 17:49:51.453 +05:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-01 17:49:51.580 +05:00 [INF] Executed DbCommand (44ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-01 17:49:51.591 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-01 17:49:51.604 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-01 17:49:51.632 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-01 17:49:51.672 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-01 17:49:51.716 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-01 17:49:51.979 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-01 17:49:51.994 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-01 17:49:52.779 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-01 17:49:53.194 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-01 17:49:53.450 +05:00 [INF] Response StatusCode: 200
+2024-06-01 17:49:53.461 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 681.4554ms
+2024-06-01 17:49:53.492 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-01 17:49:53.773 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-01 17:49:53.803 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 303.9125ms
+2024-06-01 17:49:53.875 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 110.4152ms
+2024-06-01 17:49:54.793 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json -
+2024-06-01 17:49:54.978 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-01 17:49:54.996 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-01 17:49:55.018 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-01 17:49:55.723 +05:00 [INF] Response StatusCode: 200
+2024-06-01 17:49:55.733 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 754.4765ms
+2024-06-01 17:49:57.804 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-01 17:49:57.808 +05:00 [INF] Response StatusCode: 404
+2024-06-01 17:49:57.810 +05:00 [INF] Response StatusCode: 404
+2024-06-01 17:49:57.817 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 3023.7203ms

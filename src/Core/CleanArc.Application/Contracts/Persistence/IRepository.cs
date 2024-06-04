@@ -19,6 +19,8 @@ public interface IRepository<T> where T : class
     /// </summary>
     /// <param name="id">The unique identifier of the entity.</param>
     /// <returns>A task representing the asynchronous operation, returning the entity.</returns>
+    /// 
+    //Task<IReadOnlyList<T>> GetAllSearchDetailAsync(String SearchText,DateTime DateFrom,DateTime DateTo,int Adult,int Children);
     Task<T> GetByIdAsync(long id);
 
     /// <summary>

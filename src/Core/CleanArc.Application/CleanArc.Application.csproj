@@ -22,5 +22,42 @@
     <PackageReference Include="Mediator.Abstractions" Version="2.1.1" />
     <PackageReference Include="System.Linq.Async" Version="6.0.1" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Features\City\Command\CreateCityCommand\" />
+    <Folder Include="Features\City\Command\DeleteCityCommand\" />
+    <Folder Include="Features\City\Command\UpdateCityCommand\" />
+    <Folder Include="Features\City\Queries\GetCityById\" />
+    <Folder Include="Features\City\Queries\GetAllCities\" />
+    <Folder Include="Features\Country\Command\CreateCountryCommand\" />
+    <Folder Include="Features\Country\Command\DeleteCountryCommand\" />
+    <Folder Include="Features\Country\Command\UpdateCountryCommand\" />
+    <Folder Include="Features\Country\Queries\GetCountryById\" />
+    <Folder Include="Features\Country\Queries\GetAllCountries\" />
+    <Folder Include="Features\Language\Command\CreateLanguageCommand\" />
+    <Folder Include="Features\Language\Command\DeleteLanguageCommand\" />
+    <Folder Include="Features\Language\Command\UpdateLanguageCommand\" />
+    <Folder Include="Features\Language\Queries\GetLanguageById\" />
+    <Folder Include="Features\Language\Queries\GetAllLanguages\" />
+    <Folder Include="Features\RoomSizeUnit\Command\CreateRoomSizeUnitCommand\" />
+    <Folder Include="Features\RoomSizeUnit\Command\DeleteeRoomSizeUnitCommand\" />
+    <Folder Include="Features\RoomSizeUnit\Command\UpdateRoomSizeUnitCommand\" />
+    <Folder Include="Features\RoomSizeUnit\Queries\GetRoomSizeUnitById\" />
+    <Folder Include="Features\RoomSizeUnit\Queries\GetAllRoomSizeUnits\" />
+    <Folder Include="Features\ServiceCategory\Command\DeleteServiceCategoryCommand\" />
+    <Folder Include="Features\ServiceCategory\Command\UpdateServiceCategoryCommand\" />
+    <Folder Include="Features\ServiceCategory\Command\CreateServiceCategoryCommand\" />
+    <Folder Include="Features\ServiceCategory\Queries\GetAllServiceCategories\" />
+    <Folder Include="Features\ServiceCategory\Queries\GetServiceCategoryById\" />
+    <Folder Include="Features\Service\Command\CreateServiceCommand\" />
+    <Folder Include="Features\Service\Command\DeleteServiceCommand\" />
+    <Folder Include="Features\Service\Command\UpdateServiceCommand\" />
+    <Folder Include="Features\Service\Queries\GetAllServices\" />
+    <Folder Include="Features\Service\Queries\GetServiceById\" />
+    <Folder Include="Features\State\Command\DeleteStateCommand\" />
+    <Folder Include="Features\State\Command\UpdateStateCommand\" />
+    <Folder Include="Features\State\Command\CreateStateCommand\" />
+    <Folder Include="Features\State\Queries\GetAllStates\" />
+    <Folder Include="Features\State\Queries\GetStateById\" />
+  </ItemGroup>
 
 </Project>
