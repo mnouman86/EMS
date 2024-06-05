@@ -19,3 +19,16 @@ public class GetAllAgeTypeQueryResult
     public DateTime UpdatedAt { get; set; }
 }
 
+//    public GetAllAgeTypeQueryResult(int iD, string name, string description, bool isDeleted, bool isActive, int createdBy, DateTime createdAt, int updatedBy, DateTime updatedAt)
+//    {
+//        ID = iD;
+//        Name = name;
+//        Description = description;
+//        IsDeleted = isDeleted;
+//        IsActive = isActive;
+//        CreatedBy = createdBy;
+//        CreatedAt = createdAt;
+//        UpdatedBy = updatedBy;
+//        UpdatedAt = updatedAt;
+//    }
+//}
