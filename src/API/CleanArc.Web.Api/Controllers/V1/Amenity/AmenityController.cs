@@ -14,7 +14,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Amenity
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/Amenity")]
-    [Authorize]
+    //[Authorize]
     public class AmenityController: _BaseController<CreateAmenityCommand, UpdateAmenityCommand, DeleteAmenityCommand, bool, GetAllAmenitiesQuery,
     List<GetAllAmenitiesQueryResult>, GetAmenityByIdQuery, GetAmenityByIdQueryResult>
     {    
