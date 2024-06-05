@@ -105,6 +105,8 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
     /// </summary>
     /// <param name="model">The model for creating the entity.</param>
     /// <returns>An action result representing the operation result.</returns>
+    /// 
+    [Authorize]
     [HttpPost("Create")]
     public async Task<IActionResult> Create([FromBody] TCreateCommand model)
     {
@@ -118,7 +120,7 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
     /// </summary>
     /// <param name="model">The model for updating the entity.</param>
     /// <returns>An action result representing the operation result.</returns>
-
+    [Authorize]
     [HttpPost("Update")]
     public async Task<IActionResult> Update([FromBody] TUpdateCommand model)
     {
@@ -132,6 +134,8 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
     /// </summary>
     /// <param name="model">The model for deleting the entity.</param>
     /// <returns>An action result representing the operation result.</returns>
+    /// 
+    [Authorize]
     [HttpPost("Delete")]
     public async Task<IActionResult> Delete([FromBody] TDeleteCommand model)
     {
