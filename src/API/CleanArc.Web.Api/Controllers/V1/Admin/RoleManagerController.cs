@@ -16,7 +16,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Admin
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/RoleManager")]
-    [Authorize(ConstantPolicies.DynamicPermission)]
+    //[Authorize(ConstantPolicies.DynamicPermission)]
     [Display(Description = "Managing Related Roles for the System")]
 
     public class RoleManagerController : BaseController
