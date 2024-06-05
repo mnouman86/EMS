@@ -32,7 +32,7 @@ namespace CleanArc.WebFramework.BaseController;
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/[controller]")]
-[Authorize]
+//[Authorize]
 public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TResult, TQuery, TQueryResult, TByIdQuery, TByIdQueryResult> : ControllerBase
     where TCreateCommand : IRequest<OperationResult<TResult>>
     where TUpdateCommand : IRequest<OperationResult<TResult>>

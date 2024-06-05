@@ -12,7 +12,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Order;
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/User")]
-[Authorize]
+//[Authorize]
 public class OrderController : BaseController
 {
     private readonly ISender _sender;
