@@ -14,17 +14,14 @@ namespace CleanArc.Web.Api.Controllers.V1.SearchHotelDetail;
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/SearchHotelDetail")]
-[Authorize]
+//[Authorize]
 public class SearchHotelDetailController : _BaseController<CreateSearchHotelCommand, UpdateSearchHotelCommand, DeleteSearchHotelCommand, bool, GetAllSearchHotelsQuery,
 List<GetAllSearchHotelsQueryResult>, GetSearchHotelByIdQuery, GetSearchHotelByIdQueryResult>
 {
-    
+
     public SearchHotelDetailController(ISender sender, ILogger<_BaseController<CreateSearchHotelCommand, UpdateSearchHotelCommand, DeleteSearchHotelCommand, bool, GetAllSearchHotelsQuery,
-List<GetAllSearchHotelsQueryResult>, GetSearchHotelByIdQuery, GetSearchHotelByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
+List<GetAllSearchHotelsQueryResult>, GetSearchHotelByIdQuery, GetSearchHotelByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : []base(sender, logger, httpContextAccessor)
     {
 
     }
-
 }
-
-
