@@ -18,7 +18,7 @@ namespace CleanArc.Web.Api.Controllers.V1.SearchHotelAmenity;
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/SearchHotelAmenity")]
-[Authorize]
+//[Authorize]
 public class SearchHotelAmenityController : _BaseController<CreateSearchHotelAmenitiesCommand, UpdateSearchHotelAmenitiesCommand, DeleteSearchHotelAmenitiesCommand, bool, GetAllSearchHotelAmenitiesQuery,
 List<GetAllSearchHotelAmenitiesQueryResult>, GetSearchHotelAmenitiesByIdQuery, GetSearchHotelAmenitiesByIdQueryResult>
 {
