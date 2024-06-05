@@ -6,5 +6,12 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.SearchHotelImage.Queries.GetAllSearchHotelImage;
 
-public record GetAllSearchHotelImageQueryResult(int HotelID,string HotelName, string ImageTitle, string ImagePath, bool IsMain);
+public class GetAllSearchHotelImageQueryResult
+{
+    public int HotelID { get; set; }
+    public string HotelName { get; set; }
+    public string ImageTitle { get; set; }
+    public string ImagePath { get; set; }
+    public bool IsMain { get; set; }
+}
 

@@ -18,7 +18,7 @@ namespace CleanArc.Web.Api.Controllers.V1.SearchHotelImage;
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/SearchHotelImage")]
-[Authorize]
+//[Authorize]
 public class SearchHotelImageController : _BaseController<CreateSearchHotelImageCommand, UpdateSearchHotelImageCommand, DeleteSearchHotelImageCommand, bool, GetAllSearchHotelImageQuery,
 List<GetAllSearchHotelImageQueryResult>, GetByIdSearchHotelImageQuery, GetByIdSearchHotelImageQueryResult>
 {
