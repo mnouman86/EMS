@@ -19,7 +19,7 @@ namespace CleanArc.Web.Api.Controllers.V1.SearchCountryCities;
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/SearchCountryCities")]
-[Authorize]
+//[Authorize]
 public class SearchCountryCitiesController : _BaseController<CreateSearchCountryCitiesCommand, UpdateSearchCountryCitiesCommand, DeleteSearchCountryCitiesCommand, bool, GetAllSearchCountryCitiesQueries,
 List<GetAllSearchCountryCitiesQueriesResult>, GetSearchCountryCitiesByIdQuery, GetSearchCountryCitiesByIdQueryResult>
 {

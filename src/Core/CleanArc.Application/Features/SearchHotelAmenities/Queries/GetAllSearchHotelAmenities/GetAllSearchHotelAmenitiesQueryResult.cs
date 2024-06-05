@@ -6,5 +6,10 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.SearchHotelAmenities.Queries.GetAllSearchHotelAmenities;
 
-public record GetAllSearchHotelAmenitiesQueryResult(string Description, string Amenity);
+public class GetAllSearchHotelAmenitiesQueryResult
+{
+   
+    public string Amenity { get; set; }
+    public string Description { get; set; }
+}
 
