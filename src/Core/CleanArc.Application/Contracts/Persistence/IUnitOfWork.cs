@@ -15,6 +15,7 @@ public interface IUnitOfWork
     public ISearchHotelImageRepository SearchHotelImageRepository { get; }
     public ISearchHotelAmenitiesRepository SearchHotelAmenitiesRepository { get; }
     public ISearchCountryCitiesRepository SearchCountryCitiesRepository { get; }
+    public ISearchHotelRoomDetailRepository SearchHotelRoomDetailRepository { get; }
     Task CommitAsync();
     ValueTask RollBackAsync();
 }
