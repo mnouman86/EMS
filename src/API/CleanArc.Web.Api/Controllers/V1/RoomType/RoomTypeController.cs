@@ -14,7 +14,7 @@ namespace CleanArc.Web.Api.Controllers.V1.RoomType
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/RoomType")]
-    [Authorize]
+    //[Authorize]
     public class RoomTypeController : _BaseController<CreateRoomTypeCommand, UpdateRoomTypeCommand, DeleteRoomTypeCommand, bool, GetAllRoomTypesQuery,
     List<GetAllRoomTypesQueryResult>, GetRoomTypeByIdQuery, GetRoomTypeByIdQueryResult>
     {

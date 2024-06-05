@@ -20,7 +20,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Hotel
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/Hotel")]
-    [Authorize]
+    //[Authorize]
 
     public class HotelController : _BaseController<CreateHotelCommand, UpdateHotelCommand, DeleteHotelCommand, bool, GetAllHotelsQuery,
     List<GetAllHotelsQueryResult>, GetHotelByIdQuery, GetHotelByIdQueryResult>
