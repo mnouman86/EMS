@@ -23,7 +23,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Order;
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/[controller]")]
-[Authorize]
+//[Authorize]
 public class UrlController : _BaseController<AddURLCommand, UpdateURLCommand, DeleteURLCommand, bool, GetAllURLsQuery,
     List<GetAllURLsQueryResult>, GetURLByIdQuery, GetURLByIdQueryResult>
 {

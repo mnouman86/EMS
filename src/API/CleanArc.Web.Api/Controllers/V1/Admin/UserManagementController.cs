@@ -14,7 +14,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Admin
     [ApiController]
     [Route("api/v{version:apiVersion}/UserManagement")]
     [Display(Description = "Managing API Users")]
-    [Authorize(ConstantPolicies.DynamicPermission)]
+    //[Authorize(ConstantPolicies.DynamicPermission)]
     public class UserManagementController : BaseController
     {
         private readonly ISender _sender;

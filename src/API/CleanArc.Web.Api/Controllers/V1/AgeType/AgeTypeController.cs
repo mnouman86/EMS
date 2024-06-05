@@ -22,7 +22,7 @@ namespace CleanArc.Web.Api.Controllers.V1.AgeType
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/AgeType")]
-    [Authorize]
+    //[Authorize]
     public class AgeTypeController : _BaseController<CreateAgeTypeCommand, UpdateAgeTypeCommand, DeleteAgeTypeCommand, bool, GetAllAgeTypeQuery,
     List<GetAllAgeTypeQueryResult>, GetAgeTypeByIdQuery, GetAgeTypeByIdQueryResult>
     {
