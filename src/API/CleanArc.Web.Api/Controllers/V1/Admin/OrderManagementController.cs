@@ -14,7 +14,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Admin
     [ApiController]
     [Route("api/v{version:apiVersion}/OrderManagement")]
     [Display(Description= "Managing Users related Orders")]
-    [Authorize(ConstantPolicies.DynamicPermission)]
+    //[Authorize(ConstantPolicies.DynamicPermission)]
     public class OrderManagementController : BaseController
     {
         private readonly ISender _sender;

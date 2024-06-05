@@ -8,6 +8,7 @@ namespace CleanArc.Domain.Entities.SearchHotelDetail
 {
     public class SearchHotelDetail
     {
+        //public int ID { get; set; }
         public int? HotelID { get; set; }
         public int? CityID { get; set; }
         public String? HotelName { get; set; }
@@ -17,7 +18,11 @@ namespace CleanArc.Domain.Entities.SearchHotelDetail
         public String? RoomTypeDescription { get; set; }
         public Decimal? RoomDetailPrice { get; set; }
 
-
+        public Decimal? DiscountPercentage { get; set; }
+        public Decimal? DiscountAmount { get; set; }
+        public Decimal? DiscountedPrice { get; set; }
+        public String? ImagePath { get; set; }
+        public String? ImageTitle { get; set; }
 
 
     }
