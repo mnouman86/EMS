@@ -341,3 +341,4 @@ healthchecksdb
 /nuget.exe
 /src/API/CleanArc.Web.Api/logs/log.json
 /src/API/CleanArc.Web.Api/logs/log20240604.txt
+/src/API/CleanArc.Web.Api/logs/log20240605.txt
