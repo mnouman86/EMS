@@ -23,6 +23,7 @@ public class UnitOfWork : IUnitOfWork
     public ISearchHotelImageRepository SearchHotelImageRepository { get; set; }
     public ISearchHotelAmenitiesRepository SearchHotelAmenitiesRepository { get; set; }
     public ISearchCountryCitiesRepository SearchCountryCitiesRepository { get; set; }
+    public ISearchHotelRoomDetailRepository SearchHotelRoomDetailRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -40,6 +41,7 @@ public class UnitOfWork : IUnitOfWork
         ILogger<SearchHotelImageRepository> _loggerSearchImage,
         ILogger<SearchHotelAmenitiesRepository> _loggerSearchHotelAmenities,
                 ILogger<SearchCountryCitiesRepository> _loggerSearchCountryCities,
+                                ILogger<SearchHotelRoomDetailRepository> _loggerSearchHotelRoomDetail,
 
 
 
