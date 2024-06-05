@@ -258,3 +258,201 @@ END
 2024-06-05 12:02:05.658 +05:00 [INF] Response StatusCode: 404
 2024-06-05 12:02:05.659 +05:00 [INF] Response StatusCode: 404
 2024-06-05 12:02:05.660 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 1610.5671ms
+2024-06-05 12:18:55.424 +05:00 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-05 12:18:55.632 +05:00 [INF] Executed DbCommand (113ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-05 12:18:55.643 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-05 12:18:55.649 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-05 12:18:55.688 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-05 12:18:55.722 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-05 12:18:55.747 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-05 12:18:56.154 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-05 12:18:56.176 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-05 12:18:56.654 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-05 12:18:57.506 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-05 12:18:57.759 +05:00 [INF] Response StatusCode: 200
+2024-06-05 12:18:57.799 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-05 12:18:57.813 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 1161.6546ms
+2024-06-05 12:18:57.825 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 24.8895ms
+2024-06-05 12:18:57.845 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-05 12:18:57.984 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 139.0725ms
+2024-06-05 12:18:59.118 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json -
+2024-06-05 12:18:59.124 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-05 12:18:59.183 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-05 12:18:59.191 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-05 12:18:59.502 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-05 12:18:59.509 +05:00 [INF] Response StatusCode: 404
+2024-06-05 12:18:59.516 +05:00 [INF] Response StatusCode: 404
+2024-06-05 12:18:59.528 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 410.6804ms
+2024-06-05 12:19:00.423 +05:00 [INF] Response StatusCode: 200
+2024-06-05 12:19:00.432 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1249.0377ms
+2024-06-05 12:19:23.315 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/SearchHotelDetail/GetAll application/json 138
+2024-06-05 12:19:23.326 +05:00 [INF] CORS policy execution successful.
+2024-06-05 12:19:23.459 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchHotelDetail/GetAll, Content-Type: application/json
+2024-06-05 12:19:23.473 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+    
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-06-05 12:19:23.508 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchHotelDetail/GetAll, Content-Type: application/json
+2024-06-05 12:19:23.517 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+    
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-06-05 12:19:23.555 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController.GetAll (CleanArc.Web.Api)'
+2024-06-05 12:19:23.883 +05:00 [INF] Route matched with {action = "GetAll", controller = "SearchHotelDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.SearchHotel.Queries.GetAllSearchHotels.GetAllSearchHotelsQuery) on controller CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController (CleanArc.Web.Api).
+2024-06-05 12:19:24.277 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-05 12:19:25.135 +05:00 [INF] Entering CleanArc.Application.Features.SearchHotel.Queries.GetAllSearchHotels, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}}
+2024-06-05 12:19:25.403 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}
+2024-06-05 12:19:25.757 +05:00 [INF] Exiting null, GetAllAsync with response: []
+2024-06-05 12:19:25.950 +05:00 [INF] Exiting null, Handle with response: []
+2024-06-05 12:19:26.046 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1754.8518ms.
+2024-06-05 12:19:26.077 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-05 12:19:26.202 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController.GetAll (CleanArc.Web.Api) in 2294.9219ms
+2024-06-05 12:19:26.214 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController.GetAll (CleanArc.Web.Api)'
+2024-06-05 12:19:26.225 +05:00 [INF] Response StatusCode: 200
+2024-06-05 12:19:26.234 +05:00 [INF] Response StatusCode: 200
+2024-06-05 12:19:26.241 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/SearchHotelDetail/GetAll application/json 138 - 200 - application/json;+charset=utf-8 2925.7191ms
+2024-06-05 12:20:14.295 +05:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-05 12:20:14.394 +05:00 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-05 12:20:14.400 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-05 12:20:14.402 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-05 12:20:14.427 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-05 12:20:14.451 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-05 12:20:14.466 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-05 12:20:14.720 +05:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-05 12:20:14.766 +05:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-05 12:20:15.009 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-05 12:20:15.088 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-05 12:20:15.240 +05:00 [INF] Response StatusCode: 200
+2024-06-05 12:20:15.241 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-05 12:20:15.251 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 8.6658ms
+2024-06-05 12:20:15.253 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 246.1898ms
+2024-06-05 12:20:15.415 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-05 12:20:15.467 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 51.5944ms
+2024-06-05 12:20:16.876 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json -
+2024-06-05 12:20:16.880 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-05 12:20:16.948 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-05 12:20:16.949 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-05 12:20:17.022 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-05 12:20:17.023 +05:00 [INF] Response StatusCode: 404
+2024-06-05 12:20:17.024 +05:00 [INF] Response StatusCode: 404
+2024-06-05 12:20:17.028 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 151.0016ms
+2024-06-05 12:20:17.695 +05:00 [INF] Response StatusCode: 200
+2024-06-05 12:20:17.697 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 749.7813ms
+2024-06-05 12:51:16.238 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-05 12:51:16.340 +05:00 [INF] Executed DbCommand (36ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-05 12:51:16.348 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-05 12:51:16.350 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-05 12:51:16.378 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-05 12:51:16.403 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-05 12:51:16.417 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-05 12:51:16.666 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-05 12:51:16.682 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-05 12:51:16.885 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-05 12:51:16.975 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-05 12:51:17.098 +05:00 [INF] Response StatusCode: 200
+2024-06-05 12:51:17.103 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 219.4041ms
+2024-06-05 12:51:18.658 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-05 12:51:18.658 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-05 12:51:18.666 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 8.1747ms
+2024-06-05 12:51:18.727 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 69.2463ms
+2024-06-05 12:51:19.777 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-05 12:51:19.779 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-05 12:51:20.234 +05:00 [INF] Response StatusCode: 200
+2024-06-05 12:51:20.237 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 460.2602ms
+2024-06-05 12:51:20.260 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json 0
+2024-06-05 12:51:20.262 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-05 12:51:20.413 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-05 12:51:20.414 +05:00 [INF] Response StatusCode: 404
+2024-06-05 12:51:20.414 +05:00 [INF] Response StatusCode: 404
+2024-06-05 12:51:20.417 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json 0 - 404 - - 156.7677ms
+2024-06-05 12:51:30.638 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-05 12:51:30.646 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-05 12:51:30.648 +05:00 [INF] Response StatusCode: 200
+2024-06-05 12:51:30.649 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 10.4930ms
+2024-06-05 12:51:31.046 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-05 12:51:31.068 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 21.8852ms
+2024-06-05 12:51:31.954 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-05 12:51:31.956 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 1.8618ms
+2024-06-05 12:51:32.378 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-05 12:51:32.379 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-05 12:51:32.506 +05:00 [INF] Response StatusCode: 200
+2024-06-05 12:51:32.507 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 129.2382ms
