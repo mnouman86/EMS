@@ -1,12 +1,19 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.Request;
+using CleanArc.Domain.Entities.SearchCountryCities;
 using CleanArc.Domain.Entities.SearchHotelAmenities;
+using CleanArc.Infrastructure.Persistence.Helpers;
+using CleanArc.Infrastructure.Sql.SqlQueries;
+using CleanArc.SharedKernel.Extensions;
+using Dapper;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,9 +66,29 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IReadOnlyList<SearchHotelAmenities>> GetAllAsync(SearchRequest request)
+        public async Task<IReadOnlyList<SearchHotelAmenities>> GetAllAsync(SearchRequest searchRequest)
         {
-            throw new NotImplementedException();
+            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
+            {
+                using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+                {
+                    connection.Open();
+                    var parameters = new
+                    {
+                        PageNumber = searchRequest.PageNumber,
+                        PageSize = searchRequest.PageSize,
+                        //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
+                        //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
+                        //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
+                        //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
+                        SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
+                        FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
+                    };
+                    var result = await connection.QueryAsync<SearchHotelAmenities>(SearchHotelAmenitiesQuery.usp_GetByHotelID_HotelAmenities, parameters, commandType: CommandType.StoredProcedure);
+                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                    return result.ToList();
+                }
+            }
         }
 
         public Task<SearchHotelAmenities> GetByIdAsync(long id)
