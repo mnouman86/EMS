@@ -23,7 +23,13 @@ namespace CleanArc.Domain.Entities.SearchHotelDetail
         public Decimal? DiscountedPrice { get; set; }
         public String? ImagePath { get; set; }
         public String? ImageTitle { get; set; }
+        public List<HotelImage> HotelImages { get; set; }
 
 
+}
+    public class HotelImage
+    {
+        public string ImageTitle { get; set; }
+        public string ImagePath { get; set; }
     }
 }
