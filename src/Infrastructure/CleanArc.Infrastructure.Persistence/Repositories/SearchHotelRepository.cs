@@ -1,6 +1,7 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.Request;
 using CleanArc.Domain.Entities.SearchHotelDetail;
+using CleanArc.Domain.Entities.SearchHotelImage;
 using CleanArc.Infrastructure.Persistence.Helpers;
 using CleanArc.Infrastructure.Sql.SqlQueries;
 using CleanArc.SharedKernel.Extensions;
@@ -85,6 +86,26 @@ public class SearchHotelRepository : ISearchHotelRepository
                     FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 };
                 var result = await connection.QueryAsync<SearchHotelDetail>(SearchHotelDetailQueries.GetAll_SearchDetail, parameters, commandType: CommandType.StoredProcedure);
+                foreach (var item in result) {
+                    List<FilterParameter> ImagesFilterArray = new List<FilterParameter>();
+                    List<SortingParameter> ImagesSortingArray = new List<SortingParameter>();
+
+                    ImagesFilterArray.Add(new FilterParameter { ParameterName = "HotelID", ParameterValue = item.HotelID.ToString() });
+    var parameter = new
+                    {
+                        PageNumber = searchRequest.PageNumber,
+                        PageSize = searchRequest.PageSize,
+                        //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
+                        //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
+                        //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
+                        //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
+                        SortingArray = DataTableHelper.ToDataTable(ImagesSortingArray), // Convert list to DataTable
+                        FilterArray = DataTableHelper.ToDataTable(ImagesFilterArray) // Convert list to DataTable
+                    };
+                    var imageList = await connection.QueryAsync<HotelImage>(SearchHotelImageQueries.usp_GetByHotelID_HotelImage, parameter, commandType: CommandType.StoredProcedure);
+                    item.HotelImages = new List<HotelImage>();
+                    item.HotelImages.AddRange(imageList);
+                }
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }

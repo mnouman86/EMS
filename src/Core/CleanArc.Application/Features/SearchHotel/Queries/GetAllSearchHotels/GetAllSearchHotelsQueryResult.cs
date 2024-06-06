@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CleanArc.Domain.Entities.SearchHotelDetail;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,5 +22,7 @@ public class GetAllSearchHotelsQueryResult {
     public decimal DiscountedPrice { get; set; }
     public string ImagePath { get; set; }
     public string ImageTitle{ get; set; }
+    public List<HotelImage> HotelImages { get; set; }
+
 }
 
