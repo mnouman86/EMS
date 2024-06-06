@@ -1,7 +1,9 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.Request;
+using CleanArc.Domain.Entities.RoomImages;
 using CleanArc.Domain.Entities.SearchHotelDetail;
 using CleanArc.Domain.Entities.SearchHotelRoomDetail;
+using CleanArc.Domain.Entities.SearchRoomAmenities;
 using CleanArc.Infrastructure.Persistence.Helpers;
 using CleanArc.Infrastructure.Sql.SqlQueries;
 using CleanArc.SharedKernel.Extensions;
@@ -86,7 +88,26 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                         FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                     };
                     var result = await connection.QueryAsync<SearchHotelRoomDetail>(SearchHotelRoomDetailQueries.usp_GetALLByHotelID_Rooms, parameters, commandType: CommandType.StoredProcedure);
-                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                    foreach (var item in result)
+                    {
+                        List<FilterParameter> FilterArray = new List<FilterParameter>();
+                        List<SortingParameter> SortingArray = new List<SortingParameter>();
+                        FilterArray.Add(new FilterParameter { ParameterName = "RoomID", ParameterValue = item.RoomID.ToString() });
+                        var parameter = new
+                        {
+                            PageNumber = searchRequest.PageNumber,
+                            PageSize = searchRequest.PageSize,
+                            SortingArray = DataTableHelper.ToDataTable(SortingArray), // Convert list to DataTable
+                            FilterArray = DataTableHelper.ToDataTable(FilterArray) // Convert list to DataTable
+                        };
+                        var imageList = await connection.QueryAsync<RoomImage>(RoomImagesQueries.usp_GetByHotelID_RoomImages, parameters, commandType: CommandType.StoredProcedure);
+                        var amenitiesList = await connection.QueryAsync<RoomAmenities>(SearchRoomAmenitiesQueries.usp_GetByHotelID_RoomAmenities, parameters, commandType: CommandType.StoredProcedure);
+                        item.RoomImages = new List<RoomImage>();
+                        item.RoomImages.AddRange(imageList);
+                        item.RoomAmenities = new List<RoomAmenities>();
+                        item.RoomAmenities.AddRange(amenitiesList);
+                    }
+                        (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result.ToList();
                 }
             }
