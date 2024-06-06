@@ -74,7 +74,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
                 {
                     connection.Open();
-                    var parameters = new
+                     var parameters = new
                     {
                         PageNumber = searchRequest.PageNumber,
                         PageSize = searchRequest.PageSize,
