@@ -28,6 +28,8 @@ namespace CleanArc.Web.Api.Controllers.V1.Hotel
 
         public HotelController(ISender sender, ILogger<_BaseController<CreateHotelCommand, UpdateHotelCommand, DeleteHotelCommand, bool, GetAllHotelsQuery,
    List<GetAllHotelsQueryResult>, GetHotelByIdQuery, GetHotelByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
+        
+        
         {
 
         }
