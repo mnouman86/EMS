@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CleanArc.Domain.Entities.SearchHotelRoomDetail;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,5 +19,7 @@ namespace CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSear
         public string HotelName { get; set; }
         public int CityID { get; set; }
         public int HotelID { get; set; }
+        public List<CleanArc.Domain.Entities.SearchHotelRoomDetail.RoomImage> RoomImages { get; set; }
+        public List<RoomAmenities> RoomAmenities { get; set; }
     }
 }
