@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.SearchHotelImage.Queries.GetByIdSearchHotelImage;
 
-public record GetByIdSearchHotelImageQueryResult
+public class GetByIdSearchHotelImageQueryResult
 {
 }
