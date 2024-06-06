@@ -23,6 +23,10 @@ namespace CleanArc.Domain.Entities.SearchHotelDetail
         public Decimal? DiscountedPrice { get; set; }
         public String? ImagePath { get; set; }
         public String? ImageTitle { get; set; }
+        public String? Description { get; set; }
+        public decimal? Longitude { get; set; }
+        public decimal? Latitude { get; set; }
+        public int? TotalDays { get; set; }
 
 
     }
