@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail;
 [ApiVersion("1")]
 [ApiController]
-[Route("api/v{version:apiVersion}/RoomDetail")]
+[Route("api/v{version:apiVersion}/SearchHotelRoomDetail")]
 public class SearchHotelRoomDetailController : _BaseController<CreateSearchHotelRoomDetailCommand, UpdateSearchHotelRoomDetailCommand, DeleteSearchHotelRoomDetailCommand, bool, GetAllSearchHotelRoomDetailQuery,
     List<GetAllSearchHotelRoomDetailQueryResult>, GetSearchHotelRoomDetailByIdQuery, GetSearchHotelRoomDetailByIdQueryResult>
 {
