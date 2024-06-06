@@ -24,7 +24,7 @@ public class UnitOfWork : IUnitOfWork
     public ISearchHotelAmenitiesRepository SearchHotelAmenitiesRepository { get; set; }
     public ISearchCountryCitiesRepository SearchCountryCitiesRepository { get; set; }
     public ISearchHotelRoomDetailRepository SearchHotelRoomDetailRepository { get; set; }
-
+    public ISearchRoomAmenitiesRepository SearchRoomAmenitiesRepository { get; set; }
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
 
@@ -40,8 +40,10 @@ public class UnitOfWork : IUnitOfWork
         ILogger<SearchHotelRepository> _loggerSearchHotel,
         ILogger<SearchHotelImageRepository> _loggerSearchImage,
         ILogger<SearchHotelAmenitiesRepository> _loggerSearchHotelAmenities,
-                ILogger<SearchCountryCitiesRepository> _loggerSearchCountryCities,
-                                ILogger<SearchHotelRoomDetailRepository> _loggerSearchHotelRoomDetail,
+        ILogger<SearchCountryCitiesRepository> _loggerSearchCountryCities,
+        ILogger<SearchHotelRoomDetailRepository> _loggerSearchHotelRoomDetail,
+        ILogger<SearchRoomAmenitiesRepository> _loggerSearchRoomAmenities,
+
 
 
 
@@ -65,7 +67,8 @@ public class UnitOfWork : IUnitOfWork
         SearchHotelImageRepository = new SearchHotelImageRepository(configuration, mapper, _loggerSearchImage, httpContextAccessor);
         SearchHotelAmenitiesRepository=new SearchHotelAmenitiesRepository(configuration, mapper, _loggerSearchHotelAmenities, httpContextAccessor);
         SearchCountryCitiesRepository=new SearchCountryCitiesRepository(configuration, mapper, _loggerSearchCountryCities, httpContextAccessor);
-        SearchHotelRoomDetailRepository = new SearchHotelRoomDetailRepository(configuration, mapper, _loggerSearchHotelRoomDetail, httpContextAccessor);
+        SearchHotelRoomDetailRepository=new SearchHotelRoomDetailRepository(configuration, mapper, _loggerSearchHotelRoomDetail, httpContextAccessor);
+        SearchRoomAmenitiesRepository=new SearchRoomAmenitiesRepository(configuration, mapper, _loggerSearchRoomAmenities, httpContextAccessor);
         this.configuration = configuration;
 
     }
