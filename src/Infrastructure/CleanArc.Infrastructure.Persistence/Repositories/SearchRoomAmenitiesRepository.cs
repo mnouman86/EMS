@@ -1,7 +1,7 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.Request;
-using CleanArc.Domain.Entities.SearchHotelDetail;
-using CleanArc.Domain.Entities.SearchHotelImage;
+using CleanArc.Domain.Entities.SearchHotelAmenities;
+using CleanArc.Domain.Entities.SearchRoomAmenities;
 using CleanArc.Infrastructure.Persistence.Helpers;
 using CleanArc.Infrastructure.Sql.SqlQueries;
 using CleanArc.SharedKernel.Extensions;
@@ -20,11 +20,8 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
-public class SearchHotelRepository : ISearchHotelRepository
+public class SearchRoomAmenitiesRepository : ISearchRoomAmenitiesRepository
 {
-    /// <summary>
-    /// The configuration for accessing application settings.
-    /// </summary>
     private readonly IConfiguration configuration;
 
     /// <summary>
@@ -35,7 +32,7 @@ public class SearchHotelRepository : ISearchHotelRepository
     /// <summary>
     /// The logger for logging repository-related information.
     /// </summary>
-    private readonly ILogger<SearchHotelRepository> _logger;
+    private readonly ILogger<SearchRoomAmenitiesRepository> _logger;
 
     /// <summary>
     /// The HTTP context accessor for accessing HTTP context information.
@@ -50,14 +47,15 @@ public class SearchHotelRepository : ISearchHotelRepository
     /// <param name="logger">The logger for logging repository-related information.</param>
     /// <param name="httpContextAccessor">The HTTP context accessor for accessing HTTP context information.</param>
     /// 
-    public SearchHotelRepository(IConfiguration configuration, IMapper mapper, ILogger<SearchHotelRepository> logger, IHttpContextAccessor httpContextAccessor)
+    public SearchRoomAmenitiesRepository(IConfiguration configuration, IMapper mapper, ILogger<SearchRoomAmenitiesRepository> logger, IHttpContextAccessor httpContextAccessor)
     {
         this.configuration = configuration;
         this._mapper = mapper;
         this._logger = logger;
         _httpContextAccessor = httpContextAccessor;
     }
-    public Task<string> AddAsync(SearchHotelDetail entity)
+
+    public Task<string> AddAsync(SearchRoomAmenities entity)
     {
         throw new NotImplementedException();
     }
@@ -67,7 +65,7 @@ public class SearchHotelRepository : ISearchHotelRepository
         throw new NotImplementedException();
     }
 
-    public async Task<IReadOnlyList<SearchHotelDetail>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<IReadOnlyList<SearchRoomAmenities>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -85,40 +83,22 @@ public class SearchHotelRepository : ISearchHotelRepository
                     SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
                     FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 };
-                var result = await connection.QueryAsync<SearchHotelDetail>(SearchHotelDetailQueries.GetAll_SearchDetail, parameters, commandType: CommandType.StoredProcedure);
-                foreach (var item in result) {
-                    List<FilterParameter> ImagesFilterArray = new List<FilterParameter>();
-                    List<SortingParameter> ImagesSortingArray = new List<SortingParameter>();
-
-                    ImagesFilterArray.Add(new FilterParameter { ParameterName = "HotelID", ParameterValue = item.HotelID.ToString() });
-    var parameter = new
-                    {
-                        PageNumber = searchRequest.PageNumber,
-                        PageSize = searchRequest.PageSize,
-                        //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-                        //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-                        //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-                        //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-                        SortingArray = DataTableHelper.ToDataTable(ImagesSortingArray), // Convert list to DataTable
-                        FilterArray = DataTableHelper.ToDataTable(ImagesFilterArray) // Convert list to DataTable
-                    };
-                    var imageList = await connection.QueryAsync<HotelImage>(SearchHotelImageQueries.usp_GetByHotelID_HotelImage, parameter, commandType: CommandType.StoredProcedure);
-                    item.HotelImages = new List<HotelImage>();
-                    item.HotelImages.AddRange(imageList);
-                }
+                var result = await connection.QueryAsync<SearchRoomAmenities>(SearchRoomAmenitiesQueries.usp_GetByHotelID_RoomAmenities, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }
         }
     }
 
-    public Task<SearchHotelDetail> GetByIdAsync(long id)
+
+    public Task<SearchRoomAmenities> GetByIdAsync(long id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<string> UpdateAsync(SearchHotelDetail entity)
+    public Task<string> UpdateAsync(SearchRoomAmenities entity)
     {
         throw new NotImplementedException();
     }
 }
+   
