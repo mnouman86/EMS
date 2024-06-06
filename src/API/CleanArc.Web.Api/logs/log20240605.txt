@@ -4081,3 +4081,503 @@ Error Number:10744,State:1,Class:15
 2024-06-05 18:17:14.442 +05:00 [INF] Response StatusCode: 200
 2024-06-05 18:17:14.448 +05:00 [INF] Response StatusCode: 200
 2024-06-05 18:17:14.453 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/RoomDetail/GetAll application/json 138 - 200 - application/json;+charset=utf-8 263914.6382ms
+2024-06-05 19:45:14.811 +05:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-05 19:45:14.971 +05:00 [INF] Executed DbCommand (89ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-05 19:45:14.979 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-05 19:45:14.988 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-05 19:45:15.014 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-05 19:45:15.036 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-05 19:45:15.047 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-05 19:45:15.215 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-05 19:45:15.229 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-05 19:45:15.518 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-05 19:45:15.678 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-05 19:45:15.825 +05:00 [INF] Response StatusCode: 200
+2024-06-05 19:45:15.844 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-05 19:45:15.852 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 333.1753ms
+2024-06-05 19:45:15.854 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 9.6101ms
+2024-06-05 19:45:15.878 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-05 19:45:15.928 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 50.5946ms
+2024-06-05 19:45:16.845 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json -
+2024-06-05 19:45:16.849 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-05 19:45:16.892 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-05 19:45:16.900 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-05 19:45:17.060 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-05 19:45:17.064 +05:00 [INF] Response StatusCode: 404
+2024-06-05 19:45:17.067 +05:00 [INF] Response StatusCode: 404
+2024-06-05 19:45:17.072 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 226.6252ms
+2024-06-05 19:45:17.273 +05:00 [ERR] Conflicting method/path combination "POST api/v{version}/RoomDetail/GetAll" for actions - CleanArc.Web.Api.Controllers.V1.RoomDetail.RoomDetailController.GetAll (CleanArc.Web.Api),CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "POST api/v{version}/RoomDetail/GetAll" for actions - CleanArc.Web.Api.Controllers.V1.RoomDetail.RoomDetailController.GetAll (CleanArc.Web.Api),CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+2024-06-05 19:45:17.397 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 500 - - 505.2747ms
+2024-06-05 19:52:03.600 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-05 19:52:03.628 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-05 19:52:03.634 +05:00 [INF] Response StatusCode: 200
+2024-06-05 19:52:03.636 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 35.8235ms
+2024-06-05 19:52:03.657 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-05 19:52:03.669 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-05 19:52:03.681 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 12.4838ms
+2024-06-05 19:52:03.690 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 33.3926ms
+2024-06-05 19:52:04.937 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json -
+2024-06-05 19:52:04.939 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-05 19:52:04.944 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-05 19:52:04.946 +05:00 [INF] Response StatusCode: 404
+2024-06-05 19:52:04.948 +05:00 [INF] Response StatusCode: 404
+2024-06-05 19:52:04.950 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 13.6673ms
+2024-06-05 19:52:04.983 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-05 19:52:04.987 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-05 19:52:05.073 +05:00 [INF] Response StatusCode: 200
+2024-06-05 19:52:05.080 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 97.8587ms
+2024-06-05 20:02:14.165 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/SearchHotelDetail/GetAll application/json 136
+2024-06-05 20:02:14.170 +05:00 [INF] CORS policy execution successful.
+2024-06-05 20:02:14.175 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchHotelDetail/GetAll, Content-Type: application/json
+2024-06-05 20:02:14.185 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+   
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-06-05 20:02:14.285 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchHotelDetail/GetAll, Content-Type: application/json
+2024-06-05 20:02:14.293 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+   
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-06-05 20:02:14.303 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController.GetAll (CleanArc.Web.Api)'
+2024-06-05 20:02:14.368 +05:00 [INF] Route matched with {action = "GetAll", controller = "SearchHotelDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.SearchHotel.Queries.GetAllSearchHotels.GetAllSearchHotelsQuery) on controller CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController (CleanArc.Web.Api).
+2024-06-05 20:02:26.311 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-05 20:02:26.529 +05:00 [INF] Entering CleanArc.Application.Features.SearchHotel.Queries.GetAllSearchHotels, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}}
+2024-06-05 20:02:26.638 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}
+2024-06-05 20:02:26.894 +05:00 [INF] Exiting null, GetAllAsync with response: [{"HotelID":1,"CityID":19,"HotelName":"Siddiqi Hotel","CityName":"Islamabad","CityDescription":"City of Islamabad in Islamabad Capital Territory","RoomTypeName":"Single ","RoomTypeDescription":"Single room type with basic amenities.","RoomDetailPrice":1000.00,"DiscountPercentage":10.0,"DiscountAmount":100.0000,"DiscountedPrice":900.0000,"ImagePath":"../../../assets/img/place/2.png","ImageTitle":"MainTitle "},{"HotelID":1,"CityID":19,"HotelName":"Siddiqi Hotel","CityName":"Islamabad","CityDescription":"City of Islamabad in Islamabad Capital Territory","RoomTypeName":"Standard","RoomTypeDescription":"Basic room with essential amenities","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/2.png","ImageTitle":"MainTitle "},{"HotelID":1,"CityID":19,"HotelName":"Siddiqi Hotel","CityName":"Islamabad","CityDescription":"City of Islamabad in Islamabad Capital Territory","RoomTypeName":"Deluxe","RoomTypeDescription":"Spacious room with upgraded amenities and services","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/2.png","ImageTitle":"MainTitle "},{"HotelID":1,"CityID":19,"HotelName":"Siddiqi Hotel","CityName":"Islamabad","CityDescription":"City of Islamabad in Islamabad Capital Territory","RoomTypeName":"Suite","RoomTypeDescription":"Luxurious suite with separate living and sleeping areas","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/2.png","ImageTitle":"MainTitle "},{"HotelID":1,"CityID":19,"HotelName":"Siddiqi Hotel","CityName":"Islamabad","CityDescription":"City of Islamabad in Islamabad Capital Territory","RoomTypeName":"Executive","RoomTypeDescription":"Premium room designed for business travelers","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/2.png","ImageTitle":"MainTitle "},{"HotelID":2,"CityID":19,"HotelName":"five star Hotel","CityName":"Islamabad","CityDescription":"City of Islamabad in Islamabad Capital Territory","RoomTypeName":"Deluxe","RoomTypeDescription":"Spacious room with upgraded amenities and services","RoomDetailPrice":1000.00,"DiscountPercentage":10.0,"DiscountAmount":100.0000,"DiscountedPrice":900.0000,"ImagePath":"../../../assets/img/place/1.png","ImageTitle":"MainTitle"},{"HotelID":2,"CityID":19,"HotelName":"five star Hotel","CityName":"Islamabad","CityDescription":"City of Islamabad in Islamabad Capital Territory","RoomTypeName":"Suite","RoomTypeDescription":"Luxurious suite with separate living and sleeping areas","RoomDetailPrice":1000.00,"DiscountPercentage":10.0,"DiscountAmount":100.0000,"DiscountedPrice":900.0000,"ImagePath":"../../../assets/img/place/1.png","ImageTitle":"MainTitle"},{"HotelID":2,"CityID":19,"HotelName":"five star Hotel","CityName":"Islamabad","CityDescription":"City of Islamabad in Islamabad Capital Territory","RoomTypeName":"Executive","RoomTypeDescription":"Premium room designed for business travelers","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/1.png","ImageTitle":"MainTitle"},{"HotelID":3,"CityID":7,"HotelName":"two star Hotel","CityName":"Lahore","CityDescription":"City of Lahore in Punjab","RoomTypeName":"Deluxe","RoomTypeDescription":"Spacious room with upgraded amenities and services","RoomDetailPrice":1000.00,"DiscountPercentage":10.0,"DiscountAmount":100.0000,"DiscountedPrice":900.0000,"ImagePath":"../../../assets/img/place/3.png","ImageTitle":"MainTitle"},{"HotelID":3,"CityID":7,"HotelName":"two star Hotel","CityName":"Lahore","CityDescription":"City of Lahore in Punjab","RoomTypeName":"Executive","RoomTypeDescription":"Premium room designed for business travelers","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/3.png","ImageTitle":"MainTitle"},{"HotelID":4,"CityID":7,"HotelName":"faisal Hotel","CityName":"Lahore","CityDescription":"City of Lahore in Punjab","RoomTypeName":"Suite","RoomTypeDescription":"Luxurious suite with separate living and sleeping areas","RoomDetailPrice":1000.00,"DiscountPercentage":10.0,"DiscountAmount":100.0000,"DiscountedPrice":900.0000,"ImagePath":"../../../assets/img/place/4.png","ImageTitle":"MainTitle"},{"HotelID":4,"CityID":7,"HotelName":"faisal Hotel","CityName":"Lahore","CityDescription":"City of Lahore in Punjab","RoomTypeName":"Executive","RoomTypeDescription":"Premium room designed for business travelers","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/4.png","ImageTitle":"MainTitle"},{"HotelID":5,"CityID":6,"HotelName":"waseem Hotel","CityName":"Islamabad","CityDescription":"islamabad","RoomTypeName":"Executive","RoomTypeDescription":"Premium room designed for business travelers","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/5.png","ImageTitle":"MainTitle"},{"HotelID":5,"CityID":6,"HotelName":"waseem Hotel","CityName":"Islamabad","CityDescription":"islamabad","RoomTypeName":"Single ","RoomTypeDescription":"Single room type with basic amenities.","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/5.png","ImageTitle":"MainTitle"},{"HotelID":5,"CityID":6,"HotelName":"waseem Hotel","CityName":"Islamabad","CityDescription":"islamabad","RoomTypeName":"Standard","RoomTypeDescription":"Basic room with essential amenities","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/5.png","ImageTitle":"MainTitle"},{"HotelID":5,"CityID":6,"HotelName":"waseem Hotel","CityName":"Islamabad","CityDescription":"islamabad","RoomTypeName":"Deluxe","RoomTypeDescription":"Spacious room with upgraded amenities and services","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/5.png","ImageTitle":"MainTitle"}]
+2024-06-05 20:02:27.041 +05:00 [INF] Exiting null, Handle with response: [{"HotelID":1,"CityID":19,"HotelName":"Siddiqi Hotel","CityName":"Islamabad","CityDescription":"City of Islamabad in Islamabad Capital Territory","RoomTypeName":"Single ","RoomTypeDescription":"Single room type with basic amenities.","RoomDetailPrice":1000.00,"DiscountPercentage":10.0,"DiscountAmount":100.0000,"DiscountedPrice":900.0000,"ImagePath":"../../../assets/img/place/2.png","ImageTitle":"MainTitle "},{"HotelID":1,"CityID":19,"HotelName":"Siddiqi Hotel","CityName":"Islamabad","CityDescription":"City of Islamabad in Islamabad Capital Territory","RoomTypeName":"Standard","RoomTypeDescription":"Basic room with essential amenities","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/2.png","ImageTitle":"MainTitle "},{"HotelID":1,"CityID":19,"HotelName":"Siddiqi Hotel","CityName":"Islamabad","CityDescription":"City of Islamabad in Islamabad Capital Territory","RoomTypeName":"Deluxe","RoomTypeDescription":"Spacious room with upgraded amenities and services","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/2.png","ImageTitle":"MainTitle "},{"HotelID":1,"CityID":19,"HotelName":"Siddiqi Hotel","CityName":"Islamabad","CityDescription":"City of Islamabad in Islamabad Capital Territory","RoomTypeName":"Suite","RoomTypeDescription":"Luxurious suite with separate living and sleeping areas","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/2.png","ImageTitle":"MainTitle "},{"HotelID":1,"CityID":19,"HotelName":"Siddiqi Hotel","CityName":"Islamabad","CityDescription":"City of Islamabad in Islamabad Capital Territory","RoomTypeName":"Executive","RoomTypeDescription":"Premium room designed for business travelers","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/2.png","ImageTitle":"MainTitle "},{"HotelID":2,"CityID":19,"HotelName":"five star Hotel","CityName":"Islamabad","CityDescription":"City of Islamabad in Islamabad Capital Territory","RoomTypeName":"Deluxe","RoomTypeDescription":"Spacious room with upgraded amenities and services","RoomDetailPrice":1000.00,"DiscountPercentage":10.0,"DiscountAmount":100.0000,"DiscountedPrice":900.0000,"ImagePath":"../../../assets/img/place/1.png","ImageTitle":"MainTitle"},{"HotelID":2,"CityID":19,"HotelName":"five star Hotel","CityName":"Islamabad","CityDescription":"City of Islamabad in Islamabad Capital Territory","RoomTypeName":"Suite","RoomTypeDescription":"Luxurious suite with separate living and sleeping areas","RoomDetailPrice":1000.00,"DiscountPercentage":10.0,"DiscountAmount":100.0000,"DiscountedPrice":900.0000,"ImagePath":"../../../assets/img/place/1.png","ImageTitle":"MainTitle"},{"HotelID":2,"CityID":19,"HotelName":"five star Hotel","CityName":"Islamabad","CityDescription":"City of Islamabad in Islamabad Capital Territory","RoomTypeName":"Executive","RoomTypeDescription":"Premium room designed for business travelers","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/1.png","ImageTitle":"MainTitle"},{"HotelID":3,"CityID":7,"HotelName":"two star Hotel","CityName":"Lahore","CityDescription":"City of Lahore in Punjab","RoomTypeName":"Deluxe","RoomTypeDescription":"Spacious room with upgraded amenities and services","RoomDetailPrice":1000.00,"DiscountPercentage":10.0,"DiscountAmount":100.0000,"DiscountedPrice":900.0000,"ImagePath":"../../../assets/img/place/3.png","ImageTitle":"MainTitle"},{"HotelID":3,"CityID":7,"HotelName":"two star Hotel","CityName":"Lahore","CityDescription":"City of Lahore in Punjab","RoomTypeName":"Executive","RoomTypeDescription":"Premium room designed for business travelers","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/3.png","ImageTitle":"MainTitle"},{"HotelID":4,"CityID":7,"HotelName":"faisal Hotel","CityName":"Lahore","CityDescription":"City of Lahore in Punjab","RoomTypeName":"Suite","RoomTypeDescription":"Luxurious suite with separate living and sleeping areas","RoomDetailPrice":1000.00,"DiscountPercentage":10.0,"DiscountAmount":100.0000,"DiscountedPrice":900.0000,"ImagePath":"../../../assets/img/place/4.png","ImageTitle":"MainTitle"},{"HotelID":4,"CityID":7,"HotelName":"faisal Hotel","CityName":"Lahore","CityDescription":"City of Lahore in Punjab","RoomTypeName":"Executive","RoomTypeDescription":"Premium room designed for business travelers","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/4.png","ImageTitle":"MainTitle"},{"HotelID":5,"CityID":6,"HotelName":"waseem Hotel","CityName":"Islamabad","CityDescription":"islamabad","RoomTypeName":"Executive","RoomTypeDescription":"Premium room designed for business travelers","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/5.png","ImageTitle":"MainTitle"},{"HotelID":5,"CityID":6,"HotelName":"waseem Hotel","CityName":"Islamabad","CityDescription":"islamabad","RoomTypeName":"Single ","RoomTypeDescription":"Single room type with basic amenities.","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/5.png","ImageTitle":"MainTitle"},{"HotelID":5,"CityID":6,"HotelName":"waseem Hotel","CityName":"Islamabad","CityDescription":"islamabad","RoomTypeName":"Standard","RoomTypeDescription":"Basic room with essential amenities","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/5.png","ImageTitle":"MainTitle"},{"HotelID":5,"CityID":6,"HotelName":"waseem Hotel","CityName":"Islamabad","CityDescription":"islamabad","RoomTypeName":"Deluxe","RoomTypeDescription":"Spacious room with upgraded amenities and services","RoomDetailPrice":2000.00,"DiscountPercentage":15.0,"DiscountAmount":300.0000,"DiscountedPrice":1700.0000,"ImagePath":"../../../assets/img/place/5.png","ImageTitle":"MainTitle"}]
+2024-06-05 20:02:27.058 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 737.2401ms.
+2024-06-05 20:02:40.954 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-05 20:02:57.474 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController.GetAll (CleanArc.Web.Api) in 43093.4665ms
+2024-06-05 20:02:57.476 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController.GetAll (CleanArc.Web.Api)'
+2024-06-05 20:02:57.479 +05:00 [INF] Response StatusCode: 200
+2024-06-05 20:02:57.483 +05:00 [INF] Response StatusCode: 200
+2024-06-05 20:02:57.485 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/SearchHotelDetail/GetAll application/json 136 - 200 - application/json;+charset=utf-8 43316.0139ms
+2024-06-05 20:03:38.506 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/SearchHotelRoomDetail/GetAll application/json 139
+2024-06-05 20:03:38.518 +05:00 [INF] CORS policy execution successful.
+2024-06-05 20:03:38.523 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchHotelRoomDetail/GetAll, Content-Type: application/json
+2024-06-05 20:03:38.527 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-06-05 20:03:38.545 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchHotelRoomDetail/GetAll, Content-Type: application/json
+2024-06-05 20:03:38.558 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-06-05 20:03:38.564 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api)'
+2024-06-05 20:03:38.571 +05:00 [INF] Route matched with {action = "GetAll", controller = "SearchHotelRoomDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail.GetAllSearchHotelRoomDetailQuery) on controller CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController (CleanArc.Web.Api).
+2024-06-05 20:03:46.742 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-05 20:03:46.783 +05:00 [INF] Entering CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}}
+2024-06-05 20:05:09.908 +05:00 [INF] Exiting null, Handle
+2024-06-05 20:05:12.118 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api) in 93535.6554ms
+2024-06-05 20:05:12.121 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api)'
+2024-06-05 20:05:14.764 +05:00 [ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail.GetAllSearchHotelRoomDetailQueryHandler.Handle(GetAllSearchHotelRoomDetailQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\SearchHotelRoomDetail\Queries\GetAllSearchHotelRoomDetail\GetAllSearchHotelRoomDetailQueryHandler.cs:line 38
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 82
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+2024-06-05 20:05:14.777 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/SearchHotelRoomDetail/GetAll application/json 139 - 500 - - 96262.4247ms
+2024-06-05 20:05:17.683 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/SearchHotelRoomDetail/GetAll application/json 139
+2024-06-05 20:05:17.688 +05:00 [INF] CORS policy execution successful.
+2024-06-05 20:05:17.690 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchHotelRoomDetail/GetAll, Content-Type: application/json
+2024-06-05 20:05:17.692 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-06-05 20:05:17.696 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchHotelRoomDetail/GetAll, Content-Type: application/json
+2024-06-05 20:05:17.698 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-06-05 20:05:17.700 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api)'
+2024-06-05 20:05:17.706 +05:00 [INF] Route matched with {action = "GetAll", controller = "SearchHotelRoomDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail.GetAllSearchHotelRoomDetailQuery) on controller CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController (CleanArc.Web.Api).
+2024-06-05 20:06:23.391 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-05 20:06:23.402 +05:00 [INF] Entering CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}}
+2024-06-05 20:11:04.807 +05:00 [INF] Exiting null, Handle
+2024-06-05 20:11:06.706 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api) in 348967.028ms
+2024-06-05 20:11:06.708 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api)'
+2024-06-05 20:11:08.056 +05:00 [ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail.GetAllSearchHotelRoomDetailQueryHandler.Handle(GetAllSearchHotelRoomDetailQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\SearchHotelRoomDetail\Queries\GetAllSearchHotelRoomDetail\GetAllSearchHotelRoomDetailQueryHandler.cs:line 38
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 82
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+2024-06-05 20:11:08.064 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/SearchHotelRoomDetail/GetAll application/json 139 - 500 - - 350350.9140ms
+2024-06-05 20:11:09.842 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/SearchHotelRoomDetail/GetAll application/json 139
+2024-06-05 20:11:09.846 +05:00 [INF] CORS policy execution successful.
+2024-06-05 20:11:09.849 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchHotelRoomDetail/GetAll, Content-Type: application/json
+2024-06-05 20:11:09.851 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-06-05 20:11:09.854 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchHotelRoomDetail/GetAll, Content-Type: application/json
+2024-06-05 20:11:09.857 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-06-05 20:11:09.859 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api)'
+2024-06-05 20:11:09.864 +05:00 [INF] Route matched with {action = "GetAll", controller = "SearchHotelRoomDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail.GetAllSearchHotelRoomDetailQuery) on controller CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController (CleanArc.Web.Api).
+2024-06-05 20:11:12.244 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-05 20:11:12.251 +05:00 [INF] Entering CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}}
+2024-06-05 20:11:13.006 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}
+2024-06-05 20:11:13.123 +05:00 [INF] Exiting null, GetAllAsync
+2024-06-05 20:11:13.141 +05:00 [INF] Exiting null, Handle
+2024-06-05 20:11:13.182 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api) in 3315.5997ms
+2024-06-05 20:11:13.184 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api)'
+2024-06-05 20:11:13.338 +05:00 [ERR] Invalid object name 'LLP_Core.dbo.Hotel'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'LLP_Core.dbo.Hotel'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.SearchHotelRoomDetailRepository.GetAllAsync(SearchRequest searchRequest)
+   at CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail.GetAllSearchHotelRoomDetailQueryHandler.Handle(GetAllSearchHotelRoomDetailQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\SearchHotelRoomDetail\Queries\GetAllSearchHotelRoomDetail\GetAllSearchHotelRoomDetailQueryHandler.cs:line 38
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 82
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:b13b82df-99bb-462b-9a41-7e93cc2f91b1
+Error Number:208,State:1,Class:16
+2024-06-05 20:11:13.361 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/SearchHotelRoomDetail/GetAll application/json 139 - 500 - - 3518.1418ms
+2024-06-05 20:11:53.000 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-05 20:11:53.058 +05:00 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-05 20:11:53.066 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-05 20:11:53.078 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-05 20:11:53.100 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-05 20:11:53.131 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-05 20:11:53.150 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-05 20:11:53.457 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-05 20:11:53.472 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-05 20:11:53.698 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-05 20:11:53.842 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-05 20:11:53.954 +05:00 [INF] Response StatusCode: 200
+2024-06-05 20:11:53.961 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-05 20:11:53.971 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 272.3333ms
+2024-06-05 20:11:53.976 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 14.6207ms
+2024-06-05 20:11:54.027 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-05 20:11:54.069 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 42.2835ms
+2024-06-05 20:11:55.991 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-05 20:11:55.991 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json -
+2024-06-05 20:11:56.009 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-05 20:11:56.009 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-05 20:11:56.128 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-05 20:11:56.132 +05:00 [INF] Response StatusCode: 404
+2024-06-05 20:11:56.135 +05:00 [INF] Response StatusCode: 404
+2024-06-05 20:11:56.140 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 149.0899ms
+2024-06-05 20:11:56.237 +05:00 [INF] Response StatusCode: 200
+2024-06-05 20:11:56.254 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 263.3471ms
+2024-06-05 20:12:27.833 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/SearchHotelRoomDetail/GetAll application/json 135
+2024-06-05 20:12:27.839 +05:00 [INF] CORS policy execution successful.
+2024-06-05 20:12:27.843 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchHotelRoomDetail/GetAll, Content-Type: application/json
+2024-06-05 20:12:27.851 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+    
+    ],
+    "sortingArray": [
+   
+    ]
+  }
+}
+2024-06-05 20:12:27.875 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchHotelRoomDetail/GetAll, Content-Type: application/json
+2024-06-05 20:12:27.882 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+    
+    ],
+    "sortingArray": [
+   
+    ]
+  }
+}
+2024-06-05 20:12:27.892 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api)'
+2024-06-05 20:12:27.937 +05:00 [INF] Route matched with {action = "GetAll", controller = "SearchHotelRoomDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail.GetAllSearchHotelRoomDetailQuery) on controller CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController (CleanArc.Web.Api).
+2024-06-05 20:12:39.805 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-05 20:12:39.899 +05:00 [INF] Entering CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}}
+2024-06-05 20:12:43.467 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}
+2024-06-05 20:12:48.103 +05:00 [INF] Exiting null, GetAllAsync
+2024-06-05 20:12:48.135 +05:00 [INF] Exiting null, Handle
+2024-06-05 20:12:48.178 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api) in 20234.6332ms
+2024-06-05 20:12:48.182 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api)'
+2024-06-05 20:12:48.337 +05:00 [ERR] Invalid object name 'LLP_Core.dbo.Hotel'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'LLP_Core.dbo.Hotel'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.SearchHotelRoomDetailRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\SearchHotelRoomDetailRepository.cs:line 88
+   at CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail.GetAllSearchHotelRoomDetailQueryHandler.Handle(GetAllSearchHotelRoomDetailQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\SearchHotelRoomDetail\Queries\GetAllSearchHotelRoomDetail\GetAllSearchHotelRoomDetailQueryHandler.cs:line 38
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 82
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:61dd8b83-eb57-4adf-a4b0-7ef97baa9dff
+Error Number:208,State:1,Class:16
+2024-06-05 20:12:48.388 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/SearchHotelRoomDetail/GetAll application/json 135 - 500 - - 20553.3055ms
+2024-06-05 20:14:59.411 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/SearchHotelRoomDetail/GetAll application/json 135
+2024-06-05 20:14:59.424 +05:00 [INF] CORS policy execution successful.
+2024-06-05 20:15:06.217 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchHotelRoomDetail/GetAll, Content-Type: application/json
+2024-06-05 20:15:06.220 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+    
+    ],
+    "sortingArray": [
+   
+    ]
+  }
+}
+2024-06-05 20:15:06.234 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchHotelRoomDetail/GetAll, Content-Type: application/json
+2024-06-05 20:15:06.235 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+    
+    ],
+    "sortingArray": [
+   
+    ]
+  }
+}
+2024-06-05 20:15:06.237 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api)'
+2024-06-05 20:15:06.239 +05:00 [INF] Route matched with {action = "GetAll", controller = "SearchHotelRoomDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail.GetAllSearchHotelRoomDetailQuery) on controller CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController (CleanArc.Web.Api).
+2024-06-05 20:15:21.277 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-05 20:15:21.330 +05:00 [INF] Entering CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}}
+2024-06-05 20:15:23.799 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}
+2024-06-05 20:16:30.898 +05:00 [INF] Exiting null, GetAllAsync
+2024-06-05 20:16:30.932 +05:00 [INF] Exiting null, Handle
+2024-06-05 20:16:30.984 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api) in 84737.6908ms
+2024-06-05 20:16:30.990 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.GetAll (CleanArc.Web.Api)'
+2024-06-05 20:16:31.176 +05:00 [ERR] Invalid object name 'LLP_Core.dbo.Hotel'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'LLP_Core.dbo.Hotel'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.SearchHotelRoomDetailRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\SearchHotelRoomDetailRepository.cs:line 88
+   at CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail.GetAllSearchHotelRoomDetailQueryHandler.Handle(GetAllSearchHotelRoomDetailQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\SearchHotelRoomDetail\Queries\GetAllSearchHotelRoomDetail\GetAllSearchHotelRoomDetailQueryHandler.cs:line 38
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 82
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:61dd8b83-eb57-4adf-a4b0-7ef97baa9dff
+Error Number:208,State:1,Class:16
+2024-06-05 20:16:31.187 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/SearchHotelRoomDetail/GetAll application/json 135 - 500 - - 91769.1913ms

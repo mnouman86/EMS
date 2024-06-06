@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.SearchHotelAmenities.Queries.GetSearchHotelAmenitiesById;
 
-public record GetSearchHotelAmenitiesByIdQueryResult
+public class GetSearchHotelAmenitiesByIdQueryResult
 {
 }
