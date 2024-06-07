@@ -34,15 +34,15 @@ namespace CleanArc.Application.Features.AgeType.Queries.GetAgeTypeById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var url = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.Id);
+                var ageType = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.Id);
 
-                if (url == null)
+                if (ageType == null)
                 {
-                    return OperationResult<GetAgeTypeByIdQueryResult>.NotFoundResult("URL not found");
+                    return OperationResult<GetAgeTypeByIdQueryResult>.NotFoundResult("ageType not found");
                 }
 
                 //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetAgeTypeByIdQueryResult>(url);
+                var result = _mapper.Map<GetAgeTypeByIdQueryResult>(ageType);
 
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 

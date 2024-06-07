@@ -1,0 +1,1610 @@
+2024-06-07 10:23:47.788 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-07 10:23:47.848 +05:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-07 10:23:47.853 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-07 10:23:47.855 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-07 10:23:47.874 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-07 10:23:47.883 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-07 10:23:47.891 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-07 10:23:47.999 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-07 10:23:48.006 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-07 10:23:48.368 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-07 10:23:48.453 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-07 10:23:48.584 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:23:48.588 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 222.8138ms
+2024-06-07 10:23:48.929 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-07 10:23:48.954 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 25.1201ms
+2024-06-07 10:23:49.777 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-07 10:23:49.781 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 4.0752ms
+2024-06-07 10:23:50.509 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-07 10:23:50.510 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-07 10:23:50.662 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:23:50.663 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 154.3587ms
+2024-06-07 10:23:51.703 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json 0
+2024-06-07 10:23:51.705 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-07 10:23:52.846 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-07 10:23:52.846 +05:00 [INF] Response StatusCode: 404
+2024-06-07 10:23:52.846 +05:00 [INF] Response StatusCode: 404
+2024-06-07 10:23:52.847 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json 0 - 404 - - 1143.7489ms
+2024-06-07 10:24:04.850 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-07 10:24:04.855 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-07 10:24:04.856 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:24:04.856 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 6.3227ms
+2024-06-07 10:24:05.273 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-07 10:24:05.275 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 1.3695ms
+2024-06-07 10:24:06.072 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-07 10:24:06.084 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 11.8258ms
+2024-06-07 10:24:07.612 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-07 10:24:07.612 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-07 10:24:07.717 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:24:07.717 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 105.2024ms
+2024-06-07 10:24:31.234 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/GetAll application/json 125
+2024-06-07 10:24:31.238 +05:00 [INF] CORS policy execution successful.
+2024-06-07 10:24:31.239 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/GetAll, Content-Type: application/json
+2024-06-07 10:24:31.240 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "filterArray": [
+    ],
+    "sortingArray": [
+    ]
+  }
+}
+2024-06-07 10:24:31.244 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/GetAll, Content-Type: application/json
+2024-06-07 10:24:31.244 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "filterArray": [
+    ],
+    "sortingArray": [
+    ]
+  }
+}
+2024-06-07 10:24:31.245 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 10:24:31.260 +05:00 [INF] Route matched with {action = "GetAll", controller = "RoomType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQuery) on controller CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController (CleanArc.Web.Api).
+2024-06-07 10:24:31.461 +05:00 [INF] Entering CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"FilterArray":[],"SortingArray":[]}}
+2024-06-07 10:24:31.529 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"FilterArray":[],"SortingArray":[]}
+2024-06-07 10:24:31.590 +05:00 [INF] Exiting null, GetAllAsync
+2024-06-07 10:24:31.591 +05:00 [INF] Exiting null, Handle
+2024-06-07 10:24:31.596 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api) in 333.8501ms
+2024-06-07 10:24:31.597 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 10:24:31.601 +05:00 [ERR] Could not find stored procedure 'usp_GetALL_RoomType'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'usp_GetALL_RoomType'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.RoomTypeRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\RoomTypeRepository.cs:line 113
+   at CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQueryHandler.Handle(GetAllRoomTypesQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\RoomType\Queries\GetAllRoomTypes\GetAllRoomTypesQueryHandler.cs:line 38
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 82
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:013426d9-413d-41b4-8613-30d9230c2b95
+Error Number:2812,State:1,Class:16
+2024-06-07 10:24:31.668 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/GetAll application/json 125 - 500 - - 433.8163ms
+2024-06-07 10:25:29.303 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/GetAll application/json 137
+2024-06-07 10:25:29.304 +05:00 [INF] CORS policy execution successful.
+2024-06-07 10:25:29.305 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/GetAll, Content-Type: application/json
+2024-06-07 10:25:29.305 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+    
+    ]
+  }
+}
+2024-06-07 10:25:29.312 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/GetAll, Content-Type: application/json
+2024-06-07 10:25:29.312 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+    
+    ]
+  }
+}
+2024-06-07 10:25:29.312 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 10:25:29.312 +05:00 [INF] Route matched with {action = "GetAll", controller = "RoomType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQuery) on controller CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController (CleanArc.Web.Api).
+2024-06-07 10:25:29.346 +05:00 [INF] Entering CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}}
+2024-06-07 10:25:29.346 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}
+2024-06-07 10:25:29.349 +05:00 [INF] Exiting null, GetAllAsync
+2024-06-07 10:25:29.349 +05:00 [INF] Exiting null, Handle
+2024-06-07 10:25:29.350 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api) in 37.3235ms
+2024-06-07 10:25:29.350 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 10:25:29.350 +05:00 [ERR] Could not find stored procedure 'usp_GetALL_RoomType'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'usp_GetALL_RoomType'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.RoomTypeRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\RoomTypeRepository.cs:line 113
+   at CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQueryHandler.Handle(GetAllRoomTypesQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\RoomType\Queries\GetAllRoomTypes\GetAllRoomTypesQueryHandler.cs:line 38
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 82
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:013426d9-413d-41b4-8613-30d9230c2b95
+Error Number:2812,State:1,Class:16
+2024-06-07 10:25:29.354 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/GetAll application/json 137 - 500 - - 50.6183ms
+2024-06-07 10:25:43.291 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/GetAll application/json 137
+2024-06-07 10:25:43.291 +05:00 [INF] CORS policy execution successful.
+2024-06-07 10:25:43.291 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/GetAll, Content-Type: application/json
+2024-06-07 10:25:43.291 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+    
+    ]
+  }
+}
+2024-06-07 10:25:43.291 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/GetAll, Content-Type: application/json
+2024-06-07 10:25:43.291 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+    
+    ]
+  }
+}
+2024-06-07 10:25:43.291 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 10:25:43.291 +05:00 [INF] Route matched with {action = "GetAll", controller = "RoomType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQuery) on controller CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController (CleanArc.Web.Api).
+2024-06-07 10:25:43.297 +05:00 [INF] Entering CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}}
+2024-06-07 10:25:43.297 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}
+2024-06-07 10:25:43.300 +05:00 [INF] Exiting null, GetAllAsync
+2024-06-07 10:25:43.300 +05:00 [INF] Exiting null, Handle
+2024-06-07 10:25:43.300 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api) in 8.6872ms
+2024-06-07 10:25:43.300 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 10:25:43.300 +05:00 [ERR] Could not find stored procedure 'usp_GetALL_RoomType'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'usp_GetALL_RoomType'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.RoomTypeRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\RoomTypeRepository.cs:line 113
+   at CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQueryHandler.Handle(GetAllRoomTypesQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\RoomType\Queries\GetAllRoomTypes\GetAllRoomTypesQueryHandler.cs:line 38
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 82
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:013426d9-413d-41b4-8613-30d9230c2b95
+Error Number:2812,State:1,Class:16
+2024-06-07 10:25:43.303 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/GetAll application/json 137 - 500 - - 12.2761ms
+2024-06-07 10:26:53.302 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/GetAll application/json 125
+2024-06-07 10:26:53.302 +05:00 [INF] CORS policy execution successful.
+2024-06-07 10:26:53.302 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/GetAll, Content-Type: application/json
+2024-06-07 10:26:53.303 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "filterArray": [
+    ],
+    "sortingArray": [
+    ]
+  }
+}
+2024-06-07 10:26:53.303 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/GetAll, Content-Type: application/json
+2024-06-07 10:26:53.303 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "filterArray": [
+    ],
+    "sortingArray": [
+    ]
+  }
+}
+2024-06-07 10:26:53.303 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 10:26:53.303 +05:00 [INF] Route matched with {action = "GetAll", controller = "RoomType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQuery) on controller CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController (CleanArc.Web.Api).
+2024-06-07 10:26:53.304 +05:00 [INF] Entering CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"FilterArray":[],"SortingArray":[]}}
+2024-06-07 10:26:53.305 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"FilterArray":[],"SortingArray":[]}
+2024-06-07 10:26:53.308 +05:00 [INF] Exiting null, GetAllAsync
+2024-06-07 10:26:53.308 +05:00 [INF] Exiting null, Handle
+2024-06-07 10:26:53.309 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api) in 5.7648ms
+2024-06-07 10:26:53.309 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 10:26:53.309 +05:00 [ERR] Could not find stored procedure 'usp_GetALL_RoomType'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'usp_GetALL_RoomType'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.RoomTypeRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\RoomTypeRepository.cs:line 113
+   at CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQueryHandler.Handle(GetAllRoomTypesQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\RoomType\Queries\GetAllRoomTypes\GetAllRoomTypesQueryHandler.cs:line 38
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 82
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:013426d9-413d-41b4-8613-30d9230c2b95
+Error Number:2812,State:1,Class:16
+2024-06-07 10:26:53.312 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/GetAll application/json 125 - 500 - - 9.7418ms
+2024-06-07 10:27:54.478 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-07 10:27:54.484 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-07 10:27:54.485 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:27:54.485 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 7.4567ms
+2024-06-07 10:27:54.854 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-07 10:27:54.859 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 5.0696ms
+2024-06-07 10:27:55.600 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-07 10:27:55.601 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 0.6825ms
+2024-06-07 10:27:56.017 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-07 10:27:56.017 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-07 10:27:56.094 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:27:56.095 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 77.9559ms
+2024-06-07 10:28:20.934 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/GetAll application/json 125
+2024-06-07 10:28:20.935 +05:00 [INF] CORS policy execution successful.
+2024-06-07 10:28:20.935 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/GetAll, Content-Type: application/json
+2024-06-07 10:28:20.935 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "filterArray": [
+    ],
+    "sortingArray": [
+    ]
+  }
+}
+2024-06-07 10:28:20.935 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/GetAll, Content-Type: application/json
+2024-06-07 10:28:20.935 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "filterArray": [
+    ],
+    "sortingArray": [
+    ]
+  }
+}
+2024-06-07 10:28:20.935 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 10:28:20.935 +05:00 [INF] Route matched with {action = "GetAll", controller = "RoomType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQuery) on controller CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController (CleanArc.Web.Api).
+2024-06-07 10:28:20.936 +05:00 [INF] Entering CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"FilterArray":[],"SortingArray":[]}}
+2024-06-07 10:28:20.936 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"FilterArray":[],"SortingArray":[]}
+2024-06-07 10:28:20.939 +05:00 [INF] Exiting null, GetAllAsync
+2024-06-07 10:28:20.939 +05:00 [INF] Exiting null, Handle
+2024-06-07 10:28:20.940 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api) in 4.3185ms
+2024-06-07 10:28:20.940 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 10:28:20.940 +05:00 [ERR] The ConnectionString property has not been initialized.
+System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at Microsoft.Data.SqlClient.SqlConnection.PermissionDemand()
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open(SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open()
+   at CleanArc.Infrastructure.Persistence.Repositories.RoomTypeRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\RoomTypeRepository.cs:line 101
+   at CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQueryHandler.Handle(GetAllRoomTypesQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\RoomType\Queries\GetAllRoomTypes\GetAllRoomTypesQueryHandler.cs:line 38
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 82
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+2024-06-07 10:28:20.943 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/GetAll application/json 125 - 500 - - 8.3567ms
+2024-06-07 10:29:38.693 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-07 10:29:38.741 +05:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-07 10:29:38.744 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-07 10:29:38.744 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-07 10:29:38.764 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-07 10:29:38.774 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-07 10:29:38.779 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-07 10:29:38.898 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-07 10:29:38.905 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-07 10:29:39.005 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-07 10:29:39.048 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-07 10:29:39.109 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:29:39.110 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 106.4015ms
+2024-06-07 10:29:39.623 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-07 10:29:39.625 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 2.2083ms
+2024-06-07 10:29:40.206 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-07 10:29:40.228 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 21.5171ms
+2024-06-07 10:29:40.786 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json 0
+2024-06-07 10:29:40.788 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-07 10:29:40.826 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-07 10:29:40.827 +05:00 [INF] Response StatusCode: 404
+2024-06-07 10:29:40.827 +05:00 [INF] Response StatusCode: 404
+2024-06-07 10:29:40.827 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json 0 - 404 - - 40.9311ms
+2024-06-07 10:29:40.986 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-07 10:29:40.987 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-07 10:29:41.150 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:29:41.151 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 164.4250ms
+2024-06-07 10:29:59.828 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/GetAll application/json 135
+2024-06-07 10:29:59.831 +05:00 [INF] CORS policy execution successful.
+2024-06-07 10:29:59.832 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/GetAll, Content-Type: application/json
+2024-06-07 10:29:59.835 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 0,
+    "pageSize": 0,
+    "filterArray": [
+    
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-06-07 10:29:59.841 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/GetAll, Content-Type: application/json
+2024-06-07 10:29:59.841 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 0,
+    "pageSize": 0,
+    "filterArray": [
+    
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-06-07 10:29:59.842 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 10:29:59.857 +05:00 [INF] Route matched with {action = "GetAll", controller = "RoomType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQuery) on controller CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController (CleanArc.Web.Api).
+2024-06-07 10:29:59.962 +05:00 [INF] Entering CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes, Handle with parameter: {"searchRequest":{"PageNumber":0,"PageSize":0,"FilterArray":[],"SortingArray":[]}}
+2024-06-07 10:29:59.965 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":0,"PageSize":0,"FilterArray":[],"SortingArray":[]}
+2024-06-07 10:30:00.073 +05:00 [INF] Exiting null, GetAllAsync
+2024-06-07 10:30:00.073 +05:00 [INF] Exiting null, Handle
+2024-06-07 10:30:00.082 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api) in 220.6964ms
+2024-06-07 10:30:00.084 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 10:30:00.102 +05:00 [ERR] The number of rows provided for a FETCH clause must be greater then zero.
+Microsoft.Data.SqlClient.SqlException (0x80131904): The number of rows provided for a FETCH clause must be greater then zero.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 452
+   at CleanArc.Infrastructure.Persistence.Repositories.RoomTypeRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\RoomTypeRepository.cs:line 113
+   at CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQueryHandler.Handle(GetAllRoomTypesQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\RoomType\Queries\GetAllRoomTypes\GetAllRoomTypesQueryHandler.cs:line 38
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 82
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:ee1b2f2f-e31e-43ff-aeac-8da204217c48
+Error Number:10744,State:1,Class:15
+2024-06-07 10:30:00.153 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/GetAll application/json 135 - 500 - - 325.4340ms
+2024-06-07 10:30:44.390 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-07 10:30:44.450 +05:00 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-07 10:30:44.456 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-07 10:30:44.458 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-07 10:30:44.475 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-07 10:30:44.486 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-07 10:30:44.492 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-07 10:30:44.616 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-07 10:30:44.623 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-07 10:30:44.730 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-07 10:30:44.779 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-07 10:30:44.842 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:30:44.844 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 114.8933ms
+2024-06-07 10:30:45.354 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-07 10:30:45.371 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 17.1006ms
+2024-06-07 10:30:45.928 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-07 10:30:45.930 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 1.4702ms
+2024-06-07 10:30:46.766 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json 0
+2024-06-07 10:30:46.767 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-07 10:30:46.802 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-07 10:30:46.802 +05:00 [INF] Response StatusCode: 404
+2024-06-07 10:30:46.802 +05:00 [INF] Response StatusCode: 404
+2024-06-07 10:30:46.803 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json 0 - 404 - - 37.0728ms
+2024-06-07 10:30:46.933 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-07 10:30:46.934 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-07 10:30:47.068 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:30:47.069 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 136.1410ms
+2024-06-07 10:31:12.654 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-07 10:31:12.725 +05:00 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-07 10:31:12.734 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-07 10:31:12.742 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-07 10:31:12.763 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-07 10:31:12.782 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-07 10:31:12.795 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-07 10:31:12.964 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-07 10:31:12.974 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-07 10:31:13.185 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-07 10:31:13.312 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-07 10:31:13.402 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:31:13.408 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 223.9686ms
+2024-06-07 10:31:13.965 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-07 10:31:13.977 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 11.1629ms
+2024-06-07 10:31:13.987 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-07 10:31:14.028 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 40.2184ms
+2024-06-07 10:31:15.162 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json 0
+2024-06-07 10:31:15.166 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-07 10:31:15.290 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-07 10:31:15.293 +05:00 [INF] Response StatusCode: 404
+2024-06-07 10:31:15.295 +05:00 [INF] Response StatusCode: 404
+2024-06-07 10:31:15.299 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json 0 - 404 - - 137.1533ms
+2024-06-07 10:31:15.328 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-07 10:31:15.332 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-07 10:31:15.490 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:31:15.501 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 172.4727ms
+2024-06-07 10:31:46.154 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/GetAll application/json 114
+2024-06-07 10:31:46.161 +05:00 [INF] CORS policy execution successful.
+2024-06-07 10:31:46.163 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/GetAll, Content-Type: application/json
+2024-06-07 10:31:46.166 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 0,
+    "pageSize": 0,
+    
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-06-07 10:31:46.180 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/GetAll, Content-Type: application/json
+2024-06-07 10:31:46.181 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 0,
+    "pageSize": 0,
+    
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-06-07 10:31:46.183 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 10:31:46.199 +05:00 [INF] Route matched with {action = "GetAll", controller = "RoomType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQuery) on controller CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController (CleanArc.Web.Api).
+2024-06-07 10:32:08.457 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-06-07 10:32:08.477 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api) in 22272.8508ms
+2024-06-07 10:32:08.479 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 10:32:08.480 +05:00 [INF] Response StatusCode: 400
+2024-06-07 10:32:08.482 +05:00 [INF] Response StatusCode: 400
+2024-06-07 10:32:08.483 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/GetAll application/json 114 - 400 - application/json;+charset=utf-8 22328.7979ms
+2024-06-07 10:32:25.587 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/GetAll application/json 116
+2024-06-07 10:32:25.590 +05:00 [INF] CORS policy execution successful.
+2024-06-07 10:32:25.592 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/GetAll, Content-Type: application/json
+2024-06-07 10:32:25.593 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-06-07 10:32:25.601 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/GetAll, Content-Type: application/json
+2024-06-07 10:32:25.603 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-06-07 10:32:25.605 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 10:32:25.608 +05:00 [INF] Route matched with {action = "GetAll", controller = "RoomType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQuery) on controller CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController (CleanArc.Web.Api).
+2024-06-07 10:32:29.489 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-06-07 10:32:29.493 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api) in 3883.0484ms
+2024-06-07 10:32:29.495 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 10:32:29.497 +05:00 [INF] Response StatusCode: 400
+2024-06-07 10:32:29.500 +05:00 [INF] Response StatusCode: 400
+2024-06-07 10:32:29.502 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/GetAll application/json 116 - 400 - application/json;+charset=utf-8 3915.3278ms
+2024-06-07 10:32:59.151 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/GetAll application/json 157
+2024-06-07 10:32:59.154 +05:00 [INF] CORS policy execution successful.
+2024-06-07 10:32:59.156 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/GetAll, Content-Type: application/json
+2024-06-07 10:32:59.158 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+      {
+       
+      }
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-06-07 10:32:59.160 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/GetAll, Content-Type: application/json
+2024-06-07 10:32:59.164 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+      {
+       
+      }
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-06-07 10:32:59.168 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 10:32:59.172 +05:00 [INF] Route matched with {action = "GetAll", controller = "RoomType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQuery) on controller CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController (CleanArc.Web.Api).
+2024-06-07 10:33:04.513 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-07 10:33:07.687 +05:00 [INF] Entering CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":100,"FilterArray":[{"ParameterName":null,"ParameterValue":null}],"SortingArray":[]}}
+2024-06-07 10:33:07.700 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":100,"FilterArray":[{"ParameterName":null,"ParameterValue":null}],"SortingArray":[]}
+2024-06-07 10:33:07.786 +05:00 [INF] Exiting null, GetAllAsync with response: []
+2024-06-07 10:33:07.839 +05:00 [INF] Exiting null, Handle with response: []
+2024-06-07 10:33:07.845 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3326.8829ms.
+2024-06-07 10:33:07.849 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-07 10:33:07.855 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api) in 8678.2286ms
+2024-06-07 10:33:07.856 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 10:33:07.858 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:33:07.860 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:33:07.863 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/GetAll application/json 157 - 200 - application/json;+charset=utf-8 8711.9292ms
+2024-06-07 10:35:28.884 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/api/v1/RoomType/GetById/1 - -
+2024-06-07 10:35:28.891 +05:00 [INF] Request Method: GET, Path: /api/v1/RoomType/GetById/1, Content-Type: null
+2024-06-07 10:35:28.896 +05:00 [INF] Request Method: GET, Path: /api/v1/RoomType/GetById/1, Content-Type: null
+2024-06-07 10:35:28.901 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetById (CleanArc.Web.Api)'
+2024-06-07 10:35:28.916 +05:00 [INF] Route matched with {action = "GetById", controller = "RoomType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController (CleanArc.Web.Api).
+2024-06-07 10:35:31.261 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-07 10:35:32.373 +05:00 [INF] Entering CleanArc.Application.Features.RoomType.Queries.GetRoomTypeById, Handle with parameter: {"Id":1}
+2024-06-07 10:35:32.377 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 1
+2024-06-07 10:35:32.444 +05:00 [INF] Exiting null, GetByIdAsync with response: {"ID":1,"Name":"Single ","Description":"Single room type with basic amenities.","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-29T12:43:51.9","UpdatedBy":null,"UpdatedAt":null}
+2024-06-07 10:35:32.463 +05:00 [INF] Exiting null, Handle with response: {"ID":1,"Name":"Single ","Description":"Single room type with basic amenities.","IsDeleted":false,"IsActive":true,"CreatedBy":1,"CreatedAt":"2024-05-29T12:43:51.9","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00"}
+2024-06-07 10:35:32.475 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetById (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1212.1633ms.
+2024-06-07 10:35:32.479 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-07 10:35:32.490 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetById (CleanArc.Web.Api) in 3568.1598ms
+2024-06-07 10:35:32.494 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetById (CleanArc.Web.Api)'
+2024-06-07 10:35:32.497 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:35:32.499 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:35:32.501 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/api/v1/RoomType/GetById/1 - - - 200 - application/json;+charset=utf-8 3616.4777ms
+2024-06-07 10:36:03.627 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/api/v1/RoomType/GetById/1 - -
+2024-06-07 10:36:03.630 +05:00 [INF] Request Method: GET, Path: /api/v1/RoomType/GetById/1, Content-Type: null
+2024-06-07 10:36:03.635 +05:00 [INF] Request Method: GET, Path: /api/v1/RoomType/GetById/1, Content-Type: null
+2024-06-07 10:36:03.637 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetById (CleanArc.Web.Api)'
+2024-06-07 10:36:03.639 +05:00 [INF] Route matched with {action = "GetById", controller = "RoomType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController (CleanArc.Web.Api).
+2024-06-07 10:36:12.676 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-07 10:36:13.002 +05:00 [INF] Entering CleanArc.Application.Features.RoomType.Queries.GetRoomTypeById, Handle with parameter: {"Id":1}
+2024-06-07 10:36:13.005 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 1
+2024-06-07 10:36:13.014 +05:00 [INF] Exiting null, GetByIdAsync with response: {"ID":1,"Name":"Single ","Description":"Single room type with basic amenities.","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-29T12:43:51.9","UpdatedBy":null,"UpdatedAt":null}
+2024-06-07 10:36:13.015 +05:00 [INF] Exiting null, Handle with response: {"ID":1,"Name":"Single ","Description":"Single room type with basic amenities.","IsDeleted":false,"IsActive":true,"CreatedBy":1,"CreatedAt":"2024-05-29T12:43:51.9","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00"}
+2024-06-07 10:36:13.017 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetById (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 338.3771ms.
+2024-06-07 10:36:13.019 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-07 10:36:13.026 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetById (CleanArc.Web.Api) in 9385.8413ms
+2024-06-07 10:36:13.030 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetById (CleanArc.Web.Api)'
+2024-06-07 10:36:13.032 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:36:13.033 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:36:13.035 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/api/v1/RoomType/GetById/1 - - - 200 - application/json;+charset=utf-8 9408.7879ms
+2024-06-07 10:36:30.599 +05:00 [INF] Executed DbCommand (40ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-07 10:36:30.675 +05:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-07 10:36:30.685 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-07 10:36:30.690 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-07 10:36:30.710 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-07 10:36:30.719 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-07 10:36:30.725 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-07 10:36:30.832 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-07 10:36:30.839 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-07 10:36:30.939 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-07 10:36:30.984 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-07 10:36:31.045 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:36:31.047 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 109.0689ms
+2024-06-07 10:36:31.544 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-07 10:36:31.546 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 2.0538ms
+2024-06-07 10:36:32.187 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-07 10:36:32.216 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 28.4057ms
+2024-06-07 10:36:33.040 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json 0
+2024-06-07 10:36:33.040 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-07 10:36:33.070 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-07 10:36:33.071 +05:00 [INF] Response StatusCode: 404
+2024-06-07 10:36:33.071 +05:00 [INF] Response StatusCode: 404
+2024-06-07 10:36:33.071 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json 0 - 404 - - 31.8807ms
+2024-06-07 10:36:33.108 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-07 10:36:33.108 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-07 10:36:33.313 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:36:33.314 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 206.6151ms
+2024-06-07 10:42:07.616 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-07 10:42:07.668 +05:00 [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-07 10:42:07.671 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-07 10:42:07.672 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-07 10:42:07.687 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-07 10:42:07.697 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-07 10:42:07.703 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-07 10:42:07.821 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-07 10:42:07.828 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-07 10:42:07.924 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-07 10:42:07.967 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-07 10:42:08.025 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:42:08.027 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 103.3084ms
+2024-06-07 10:42:09.108 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-07 10:42:09.110 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 2.1828ms
+2024-06-07 10:42:09.135 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-07 10:42:09.150 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 15.8321ms
+2024-06-07 10:42:10.194 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-07 10:42:10.195 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-07 10:42:10.362 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:42:10.362 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 167.9778ms
+2024-06-07 10:42:10.479 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json 0
+2024-06-07 10:42:10.480 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-07 10:42:10.508 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-07 10:42:10.508 +05:00 [INF] Response StatusCode: 404
+2024-06-07 10:42:10.508 +05:00 [INF] Response StatusCode: 404
+2024-06-07 10:42:10.508 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json 0 - 404 - - 29.7746ms
+2024-06-07 10:51:23.719 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/GetAll application/json 125
+2024-06-07 10:51:23.721 +05:00 [INF] CORS policy execution successful.
+2024-06-07 10:51:23.722 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/GetAll, Content-Type: application/json
+2024-06-07 10:51:23.723 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "filterArray": [
+    ],
+    "sortingArray": [
+    ]
+  }
+}
+2024-06-07 10:51:23.728 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/GetAll, Content-Type: application/json
+2024-06-07 10:51:23.728 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "filterArray": [
+    ],
+    "sortingArray": [
+    ]
+  }
+}
+2024-06-07 10:51:23.729 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 10:51:23.739 +05:00 [INF] Route matched with {action = "GetAll", controller = "RoomType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQuery) on controller CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController (CleanArc.Web.Api).
+2024-06-07 10:51:23.964 +05:00 [INF] Entering CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"FilterArray":[],"SortingArray":[]}}
+2024-06-07 10:51:24.029 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"FilterArray":[],"SortingArray":[]}
+2024-06-07 10:51:24.139 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":1,"Name":"Single ","Description":"Single room type with basic amenities.","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-29T12:43:51.9","UpdatedBy":null,"UpdatedAt":null},{"ID":2,"Name":"Standard","Description":"Basic room with essential amenities","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T11:17:27.843","UpdatedBy":1,"UpdatedAt":"2024-05-30T11:17:27.843"},{"ID":3,"Name":"Deluxe","Description":"Spacious room with upgraded amenities and services","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T11:17:27.843","UpdatedBy":1,"UpdatedAt":"2024-05-30T11:17:27.843"},{"ID":4,"Name":"Suite","Description":"Luxurious suite with separate living and sleeping areas","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T11:17:27.843","UpdatedBy":1,"UpdatedAt":"2024-05-30T11:17:27.843"},{"ID":5,"Name":"Executive","Description":"Premium room designed for business travelers","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T11:17:27.843","UpdatedBy":1,"UpdatedAt":"2024-05-30T11:17:27.843"},{"ID":6,"Name":"Family","Description":"Room suitable for families with additional bedding options","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T11:17:27.843","UpdatedBy":1,"UpdatedAt":"2024-05-30T11:17:27.843"},{"ID":7,"Name":"test","Description":"test1","IsActive":true,"IsDeleted":false,"CreatedBy":6,"CreatedAt":"2024-06-06T09:37:39.9","UpdatedBy":null,"UpdatedAt":null},{"ID":8,"Name":"test","Description":"test1","IsActive":true,"IsDeleted":false,"CreatedBy":6,"CreatedAt":"2024-06-06T09:38:21.793","UpdatedBy":null,"UpdatedAt":null}]
+2024-06-07 10:51:24.173 +05:00 [INF] Exiting null, Handle with response: [{"ID":1,"Name":"Single ","Description":"Single room type with basic amenities.","IsDeleted":false,"IsActive":true,"CreatedBy":1,"CreatedAt":"2024-05-29T12:43:51.9","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00"},{"ID":2,"Name":"Standard","Description":"Basic room with essential amenities","IsDeleted":false,"IsActive":true,"CreatedBy":1,"CreatedAt":"2024-05-30T11:17:27.843","UpdatedBy":1,"UpdatedAt":"2024-05-30T11:17:27.843"},{"ID":3,"Name":"Deluxe","Description":"Spacious room with upgraded amenities and services","IsDeleted":false,"IsActive":true,"CreatedBy":1,"CreatedAt":"2024-05-30T11:17:27.843","UpdatedBy":1,"UpdatedAt":"2024-05-30T11:17:27.843"},{"ID":4,"Name":"Suite","Description":"Luxurious suite with separate living and sleeping areas","IsDeleted":false,"IsActive":true,"CreatedBy":1,"CreatedAt":"2024-05-30T11:17:27.843","UpdatedBy":1,"UpdatedAt":"2024-05-30T11:17:27.843"},{"ID":5,"Name":"Executive","Description":"Premium room designed for business travelers","IsDeleted":false,"IsActive":true,"CreatedBy":1,"CreatedAt":"2024-05-30T11:17:27.843","UpdatedBy":1,"UpdatedAt":"2024-05-30T11:17:27.843"},{"ID":6,"Name":"Family","Description":"Room suitable for families with additional bedding options","IsDeleted":false,"IsActive":true,"CreatedBy":1,"CreatedAt":"2024-05-30T11:17:27.843","UpdatedBy":1,"UpdatedAt":"2024-05-30T11:17:27.843"},{"ID":7,"Name":"test","Description":"test1","IsDeleted":false,"IsActive":true,"CreatedBy":6,"CreatedAt":"2024-06-06T09:37:39.9","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00"},{"ID":8,"Name":"test","Description":"test1","IsDeleted":false,"IsActive":true,"CreatedBy":6,"CreatedAt":"2024-06-06T09:38:21.793","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00"}]
+2024-06-07 10:51:24.177 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-07 10:51:24.187 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api) in 446.6181ms
+2024-06-07 10:51:24.188 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 10:51:24.188 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:51:24.189 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:51:24.190 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/GetAll application/json 125 - 200 - application/json;+charset=utf-8 470.7495ms
+2024-06-07 10:52:05.525 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/Create application/json 76
+2024-06-07 10:52:05.525 +05:00 [INF] CORS policy execution successful.
+2024-06-07 10:52:05.525 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/Create, Content-Type: application/json
+2024-06-07 10:52:05.526 +05:00 [INF] Request Body: {
+  "name": "create",
+  "description": "about to create",
+  "createdBy": 1
+}
+2024-06-07 10:52:05.532 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-06-07 10:52:05.539 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-06-07 10:52:05.539 +05:00 [INF] Response StatusCode: 401
+2024-06-07 10:52:05.539 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/Create application/json 76 - 401 - application/json;+charset=utf-8 14.3958ms
+2024-06-07 10:53:01.321 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54
+2024-06-07 10:53:01.322 +05:00 [INF] CORS policy execution successful.
+2024-06-07 10:53:01.322 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-07 10:53:01.322 +05:00 [INF] Request Body: {
+  "userName": "WaqasButt",
+  "password": "123@123"
+}
+2024-06-07 10:53:01.323 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-07 10:53:01.323 +05:00 [INF] Request Body: {
+  "userName": "WaqasButt",
+  "password": "123@123"
+}
+2024-06-07 10:53:01.323 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-07 10:53:01.342 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-06-07 10:53:01.364 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"WaqasButt","Password":"123@123"}
+2024-06-07 10:53:01.410 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"WaqasButt","Password":"123@123","$type":"AdminGetTokenQuery"}
+2024-06-07 10:53:01.494 +05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-06-07 10:53:01.565 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1,"$type":"User"}
+2024-06-07 10:53:01.568 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-06-07 10:53:01.684 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-07 10:53:01.705 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-06-07 10:53:01.710 +05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-07 10:53:01.719 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-06-07 10:53:01.744 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-06-07 10:53:01.959 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-06-07 10:53:01.969 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-06-07 10:53:01.972 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.oJuPFiKfWly2kA79zAh2euYbMylqCQUV0pNRKT_sBH_y1PuhaSNAQw.dUkHq2w0rNgQux3TeopB1g.W3jzN9Q-jj2eNY6r8lr70fi2abm1oWjriM1ZZEyfDJbYFP2H9DuE1kfp5wEXihzZTKKxqNzPYFk0pG37XxHS1w4fzfhYCw2pFLKdNosxyysGHeWtKgt3b8jJdBOIR-yBVPqUl6VM3omyHtHOoXzvVEIFBySfQXjAWxWIpq6KTGZLCG7Dn_4HRKE8fUk7DOTGX6KYRQBIQbPaRmLbBKzAhiKjo5i-Jl1aa1aVlGPyNKMrpWCA95d8EPohHQnhu2m_ZFQKTLvg9tsvZF9olxeXZ0OdJDq9nUnrVu1PPeavrEhVP4Wzmw5CdwtzrDactq2GQye_7BPnTXGZndFdY1amyOld0oPsvcUVzvKGRorUZNWB2ICDhYLxOTris6Q8zRHOp7bMpe5O-DyWyVo0s7SiRXlcxxAWlK7gKAkUdz7mZw72MnDwUczo2RT8gtPJ11xFUZMk5evWnb86p16DCiMf9QVDc6JbatiiRc3X3ihQjnYcg9m_ex7-IFEef2uf8uf8ffZysjQH9P__179XnK7F_URkL2rOm3PtXbKYROI3F3uk6nkJLUIWFRxnjLKAVEqkBLUz2vrAA_zWNcs-2WcwwOfOi06uWXm8Fp1fKq5WQ5mxKTqYvH-Ir-KWGgLz8FVVp8w4vD_0Cc6GABDC6_sWugAAHq-WRSuiJQAbh4-MDyVm9ah-7kU9CINBAuO0Iwz7eM11YqRd2AqsxAtLGJsKcw.Jdj77FI6LZQNYboRMFwSCQ","refresh_token":"ff0d6266-4ca7-46e9-f2e6-08dc86b617a0","token_type":"Bearer","expires_in":599999},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-06-07 10:53:01.972 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-07 10:53:01.974 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 628.9447ms
+2024-06-07 10:53:01.974 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-07 10:53:01.974 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:53:01.974 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:53:01.974 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54 - 200 - application/json;+charset=utf-8 653.3848ms
+2024-06-07 10:53:28.106 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/Create application/json 76
+2024-06-07 10:53:28.107 +05:00 [INF] CORS policy execution successful.
+2024-06-07 10:53:28.108 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/Create, Content-Type: application/json
+2024-06-07 10:53:28.108 +05:00 [INF] Request Body: {
+  "name": "create",
+  "description": "about to create",
+  "createdBy": 1
+}
+2024-06-07 10:53:28.176 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-07 10:53:28.181 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/Create, Content-Type: application/json
+2024-06-07 10:53:28.182 +05:00 [INF] Request Body: {
+  "name": "create",
+  "description": "about to create",
+  "createdBy": 1
+}
+2024-06-07 10:53:28.182 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.Create (CleanArc.Web.Api)'
+2024-06-07 10:53:28.184 +05:00 [INF] Route matched with {action = "Create", controller = "RoomType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.RoomType.Command.CreateRoomTypeCommand.CreateRoomTypeCommand) on controller CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController (CleanArc.Web.Api).
+2024-06-07 10:53:28.229 +05:00 [INF] Entering CleanArc.Application.Features.RoomType.Command.CreateRoomTypeCommand, Handle with parameter: {"Name":"create","Description":"about to create","CreatedBy":1,"UserId":6}
+2024-06-07 10:53:28.230 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 6
+2024-06-07 10:53:28.237 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-06-07 10:53:28.238 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"Name":"create","Description":"about to create","IsActive":null,"IsDeleted":null,"CreatedBy":6,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null}
+2024-06-07 10:53:28.264 +05:00 [INF] Exiting null, AddAsync with response: -1
+2024-06-07 10:53:28.265 +05:00 [INF] Exiting null, Handle with response: true
+2024-06-07 10:53:28.266 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-06-07 10:53:28.267 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.Create (CleanArc.Web.Api) in 82.902ms
+2024-06-07 10:53:28.268 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.Create (CleanArc.Web.Api)'
+2024-06-07 10:53:28.268 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:53:28.268 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:53:28.268 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/Create application/json 76 - 200 - application/json;+charset=utf-8 161.4752ms
+2024-06-07 10:54:14.925 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/Update application/json 84
+2024-06-07 10:54:14.925 +05:00 [INF] CORS policy execution successful.
+2024-06-07 10:54:14.925 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/Update, Content-Type: application/json
+2024-06-07 10:54:14.926 +05:00 [INF] Request Body: {
+  "id": 6,
+  "name": "update",
+  "description": "I am updated",
+  "updatedBy": 1
+}
+2024-06-07 10:54:14.949 +05:00 [INF] Executed DbCommand (21ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-07 10:54:14.953 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/Update, Content-Type: application/json
+2024-06-07 10:54:14.953 +05:00 [INF] Request Body: {
+  "id": 6,
+  "name": "update",
+  "description": "I am updated",
+  "updatedBy": 1
+}
+2024-06-07 10:54:14.953 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.Update (CleanArc.Web.Api)'
+2024-06-07 10:54:14.955 +05:00 [INF] Route matched with {action = "Update", controller = "RoomType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.RoomType.Command.UpdateRoomTypeCommand.UpdateRoomTypeCommand) on controller CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController (CleanArc.Web.Api).
+2024-06-07 10:54:14.962 +05:00 [INF] Entering CleanArc.Application.Features.RoomType.Command.UpdateRoomTypeCommand, Handle with parameter: {"ID":6,"Name":"update","Description":"I am updated","UpdatedBy":1,"UserId":6}
+2024-06-07 10:54:14.962 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 6
+2024-06-07 10:54:14.962 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-06-07 10:54:14.963 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":6,"Name":"update","Description":"I am updated","IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":6,"UpdatedAt":null}
+2024-06-07 10:54:14.991 +05:00 [INF] Exiting null, UpdateAsync with response: -1
+2024-06-07 10:54:14.991 +05:00 [INF] Exiting null, Handle with response: true
+2024-06-07 10:54:14.991 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-06-07 10:54:14.992 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.Update (CleanArc.Web.Api) in 36.5977ms
+2024-06-07 10:54:14.992 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.Update (CleanArc.Web.Api)'
+2024-06-07 10:54:14.992 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:54:14.992 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:54:14.992 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/Update application/json 84 - 200 - application/json;+charset=utf-8 66.9800ms
+2024-06-07 10:54:52.144 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/Delete application/json 42
+2024-06-07 10:54:52.144 +05:00 [INF] CORS policy execution successful.
+2024-06-07 10:54:52.145 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/Delete, Content-Type: application/json
+2024-06-07 10:54:52.145 +05:00 [INF] Request Body: {
+  "selectedIds": "6",
+  "updatedBy": 1
+}
+2024-06-07 10:54:52.174 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-07 10:54:52.175 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomType/Delete, Content-Type: application/json
+2024-06-07 10:54:52.175 +05:00 [INF] Request Body: {
+  "selectedIds": "6",
+  "updatedBy": 1
+}
+2024-06-07 10:54:52.175 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.Delete (CleanArc.Web.Api)'
+2024-06-07 10:54:52.178 +05:00 [INF] Route matched with {action = "Delete", controller = "RoomType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(CleanArc.Application.Features.RoomType.Command.DeleteRoomTypeCommand.DeleteRoomTypeCommand) on controller CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController (CleanArc.Web.Api).
+2024-06-07 10:54:52.186 +05:00 [INF] Entering CleanArc.Application.Features.RoomType.Command.DeleteRoomTypeCommand, Handle with parameter: {"SelectedIds":"6","UpdatedBy":1,"UserId":6}
+2024-06-07 10:54:52.187 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 6
+2024-06-07 10:54:52.187 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-06-07 10:54:52.189 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, DeleteAsync with parameter: {"selectedIds":"6","updatedBy":6}
+2024-06-07 10:54:52.221 +05:00 [INF] Exiting null, DeleteAsync with response: -1
+2024-06-07 10:54:52.221 +05:00 [INF] Exiting null, Handle
+2024-06-07 10:54:52.221 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-06-07 10:54:52.222 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.Delete (CleanArc.Web.Api) in 43.776ms
+2024-06-07 10:54:52.222 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.Delete (CleanArc.Web.Api)'
+2024-06-07 10:54:52.222 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:54:52.222 +05:00 [INF] Response StatusCode: 200
+2024-06-07 10:54:52.222 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/RoomType/Delete application/json 42 - 200 - application/json;+charset=utf-8 78.2968ms
+2024-06-07 11:28:05.063 +05:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-07 11:28:05.169 +05:00 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-07 11:28:05.179 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-07 11:28:05.190 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-07 11:28:05.227 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-07 11:28:05.250 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-07 11:28:05.269 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-07 11:28:05.508 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-07 11:28:05.522 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-07 11:28:05.944 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-07 11:28:05.944 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-07 11:28:06.074 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-07 11:28:06.074 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-07 11:28:06.220 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:28:06.220 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:28:06.231 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 289.2680ms
+2024-06-07 11:28:06.231 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 289.2744ms
+2024-06-07 11:28:07.342 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-07 11:28:07.345 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-07 11:28:07.350 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 7.0494ms
+2024-06-07 11:28:07.374 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 28.8357ms
+2024-06-07 11:28:07.695 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-07 11:28:07.712 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 16.1649ms
+2024-06-07 11:28:08.430 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-07 11:28:08.434 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 3.6593ms
+2024-06-07 11:28:08.528 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-07 11:28:08.534 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-07 11:28:08.723 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:28:08.727 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 199.1125ms
+2024-06-07 11:28:08.813 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json 0
+2024-06-07 11:28:08.816 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-07 11:28:09.524 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-07 11:28:09.527 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-07 11:28:09.592 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:28:09.595 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 71.2159ms
+2024-06-07 11:28:09.617 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-07 11:28:09.619 +05:00 [INF] Response StatusCode: 404
+2024-06-07 11:28:09.622 +05:00 [INF] Response StatusCode: 404
+2024-06-07 11:28:09.625 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json 0 - 404 - - 811.7652ms
+2024-06-07 11:28:10.707 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json 0
+2024-06-07 11:28:10.711 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-07 11:28:10.715 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-07 11:28:10.716 +05:00 [INF] Response StatusCode: 404
+2024-06-07 11:28:10.718 +05:00 [INF] Response StatusCode: 404
+2024-06-07 11:28:10.721 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json 0 - 404 - - 14.1128ms
+2024-06-07 11:44:48.012 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-07 11:44:48.062 +05:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-07 11:44:48.066 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-07 11:44:48.066 +05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-07 11:44:48.083 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-07 11:44:48.093 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-07 11:44:48.100 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-07 11:44:48.225 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-07 11:44:48.232 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-07 11:44:48.349 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-07 11:44:48.398 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-07 11:44:48.469 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:44:48.470 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 123.1096ms
+2024-06-07 11:44:49.652 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-07 11:44:49.654 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 2.0684ms
+2024-06-07 11:44:49.803 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-07 11:44:49.829 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 26.5014ms
+2024-06-07 11:44:51.191 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-07 11:44:51.193 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-07 11:44:51.462 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:44:51.463 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 271.5497ms
+2024-06-07 11:44:51.489 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json 0
+2024-06-07 11:44:51.489 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-07 11:44:51.524 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-07 11:44:51.524 +05:00 [INF] Response StatusCode: 404
+2024-06-07 11:44:51.524 +05:00 [INF] Response StatusCode: 404
+2024-06-07 11:44:51.525 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json 0 - 404 - - 35.8918ms
+2024-06-07 11:53:17.524 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-07 11:53:17.539 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-07 11:53:17.546 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:53:17.547 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 23.7434ms
+2024-06-07 11:53:18.732 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-07 11:53:18.733 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 1.3090ms
+2024-06-07 11:53:18.763 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-07 11:53:18.772 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 8.8959ms
+2024-06-07 11:53:19.402 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-07 11:53:19.402 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-07 11:53:19.455 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:53:19.455 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 53.8150ms
+2024-06-07 11:54:24.049 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/AgeType/GetAll application/json 125
+2024-06-07 11:54:24.050 +05:00 [INF] CORS policy execution successful.
+2024-06-07 11:54:24.051 +05:00 [INF] Request Method: POST, Path: /api/v1/AgeType/GetAll, Content-Type: application/json
+2024-06-07 11:54:24.051 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "filterArray": [
+    ],
+    "sortingArray": [
+    ]
+  }
+}
+2024-06-07 11:54:24.055 +05:00 [INF] Request Method: POST, Path: /api/v1/AgeType/GetAll, Content-Type: application/json
+2024-06-07 11:54:24.055 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "filterArray": [
+    ],
+    "sortingArray": [
+    ]
+  }
+}
+2024-06-07 11:54:24.056 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 11:54:24.067 +05:00 [INF] Route matched with {action = "GetAll", controller = "AgeType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.AgeType.Queries.GetAllAgeType.GetAllAgeTypeQuery) on controller CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController (CleanArc.Web.Api).
+2024-06-07 11:54:24.134 +05:00 [INF] Entering CleanArc.Application.Features.AgeType.Queries.GetAllAgeType, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"FilterArray":[],"SortingArray":[]}}
+2024-06-07 11:54:24.404 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"FilterArray":[],"SortingArray":[]}
+2024-06-07 11:54:24.610 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":1,"Name":"Adult","Description":"Age above 18","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-29T10:32:49.84","UpdatedBy":null,"UpdatedAt":null},{"ID":2,"Name":"Children ","Description":"Not greater then 10","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-02T00:00:00","UpdatedBy":null,"UpdatedAt":null},{"ID":3,"Name":"test","Description":"test1","IsActive":true,"IsDeleted":false,"CreatedBy":6,"CreatedAt":"2024-06-06T09:56:43.62","UpdatedBy":null,"UpdatedAt":null}]
+2024-06-07 11:54:24.651 +05:00 [INF] Exiting null, Handle with response: [{"ID":1,"Name":"Adult","Description":"Age above 18","IsDeleted":false,"IsActive":true,"CreatedBy":1,"CreatedAt":"2024-05-29T10:32:49.84","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00"},{"ID":2,"Name":"Children ","Description":"Not greater then 10","IsDeleted":false,"IsActive":true,"CreatedBy":1,"CreatedAt":"2024-05-02T00:00:00","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00"},{"ID":3,"Name":"test","Description":"test1","IsDeleted":false,"IsActive":true,"CreatedBy":6,"CreatedAt":"2024-06-06T09:56:43.62","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00"}]
+2024-06-07 11:54:24.660 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-07 11:54:24.674 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.GetAll (CleanArc.Web.Api) in 605.4902ms
+2024-06-07 11:54:24.675 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.GetAll (CleanArc.Web.Api)'
+2024-06-07 11:54:24.675 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:54:24.676 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:54:24.676 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/AgeType/GetAll application/json 125 - 200 - application/json;+charset=utf-8 626.8758ms
+2024-06-07 11:54:38.580 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/api/v1/AgeType/GetById/1 - -
+2024-06-07 11:54:38.580 +05:00 [INF] Request Method: GET, Path: /api/v1/AgeType/GetById/1, Content-Type: null
+2024-06-07 11:54:38.585 +05:00 [INF] Request Method: GET, Path: /api/v1/AgeType/GetById/1, Content-Type: null
+2024-06-07 11:54:38.585 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.GetById (CleanArc.Web.Api)'
+2024-06-07 11:54:38.587 +05:00 [INF] Route matched with {action = "GetById", controller = "AgeType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController (CleanArc.Web.Api).
+2024-06-07 11:54:38.663 +05:00 [INF] Entering CleanArc.Application.Features.AgeType.Queries.GetAgeTypeById, Handle with parameter: {"Id":1}
+2024-06-07 11:54:38.665 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 1
+2024-06-07 11:54:38.674 +05:00 [INF] Exiting null, GetByIdAsync with response: {"ID":1,"Name":"Adult","Description":"Age above 18","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-29T10:32:49.84","UpdatedBy":null,"UpdatedAt":null}
+2024-06-07 11:54:38.682 +05:00 [INF] Exiting null, Handle with response: {"ID":1,"Name":"Adult","Description":"Age above 18","IsDeleted":false,"IsActive":true,"CreatedBy":1,"CreatedAt":"2024-05-29T10:32:49.84","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00"}
+2024-06-07 11:54:38.685 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-07 11:54:38.687 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.GetById (CleanArc.Web.Api) in 98.889ms
+2024-06-07 11:54:38.687 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.GetById (CleanArc.Web.Api)'
+2024-06-07 11:54:38.687 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:54:38.687 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:54:38.687 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/api/v1/AgeType/GetById/1 - - - 200 - application/json;+charset=utf-8 107.2557ms
+2024-06-07 11:55:20.370 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/AgeType/Create application/json 68
+2024-06-07 11:55:20.370 +05:00 [INF] CORS policy execution successful.
+2024-06-07 11:55:20.371 +05:00 [INF] Request Method: POST, Path: /api/v1/AgeType/Create, Content-Type: application/json
+2024-06-07 11:55:20.371 +05:00 [INF] Request Body: {
+  "name": "create",
+  "description": "created",
+  "createdBy": 1
+}
+2024-06-07 11:55:20.376 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-06-07 11:55:20.381 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-06-07 11:55:20.381 +05:00 [INF] Response StatusCode: 401
+2024-06-07 11:55:20.381 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/AgeType/Create application/json 68 - 401 - application/json;+charset=utf-8 11.0910ms
+2024-06-07 11:55:50.449 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54
+2024-06-07 11:55:50.450 +05:00 [INF] CORS policy execution successful.
+2024-06-07 11:55:50.450 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-07 11:55:50.450 +05:00 [INF] Request Body: {
+  "userName": "WaqasButt",
+  "password": "123@123"
+}
+2024-06-07 11:55:50.450 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-07 11:55:50.450 +05:00 [INF] Request Body: {
+  "userName": "WaqasButt",
+  "password": "123@123"
+}
+2024-06-07 11:55:50.450 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-07 11:55:50.455 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-06-07 11:55:50.464 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"WaqasButt","Password":"123@123"}
+2024-06-07 11:55:50.470 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"WaqasButt","Password":"123@123","$type":"AdminGetTokenQuery"}
+2024-06-07 11:55:50.521 +05:00 [INF] Executed DbCommand (17ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-06-07 11:55:50.566 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1,"$type":"User"}
+2024-06-07 11:55:50.568 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-06-07 11:55:50.639 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-07 11:55:50.653 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-06-07 11:55:50.657 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-07 11:55:50.665 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-06-07 11:55:50.683 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-06-07 11:55:50.793 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-06-07 11:55:50.800 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-06-07 11:55:50.802 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.LOcmJty92PGrxUTSfjHLNIy2Fw9CJISSG-FpCb7dK2gGecWy9iU-iA.h5tCuwU013xFHbI5SI05gg.LyuFALLH-CjLD16fXS0yD4Mf40DDTkX00tRztqYPFBeP8yujuTkpfoCG1COcJRsIm8A6PkCJJ3wycaXMUEQLJcOzfM_gRYVES70zJih70VeuJE52djFaP4lFC6xHClIHxmvm5f5ljVGs_36aoW1uFsoWec8hI967-78udpoMBmIGt2LrwfdKjJdNMDY2IRwpUlDTNr7o-YOnBGi1QAlAXSMBYTCzPHDLoM7nZabTPfWtbD3SsTq-3BNZX7PI3g8pazSHB0Fe5yncEnJChK0_mx-vITt026R3N308vZx3CVA_KTduDgflv4_gaVYbVhhjeW8bWlDp6vCm6d6PLqD_GcY2s26zflnSfBT9dPv3d90yAgs-1_WmozPgJ8MfJl71BTo5Tz7rzrvNB56UUA4FC9hAI7zjiVS0qVr3f0G1_ZM15SM8lEfsyuHonGvmv2YNEHkqV5dcJDWBsYqb0UdnX_EPW9kYt3VX1Jx8hrgd_8vwGQakfLXrx8i6v_JPeblyGcGb6eEzlvTTCZJtK-j2rh0mT5pQiKNPrH5bbAnuen7vZV94Om9Xc_ktb2kfnGZ8f5YYd21qtmCR69g4IVJrimuLiRMGBM1juGAV-koYZaFM2kiDZILnIBdNbsR7AgTkcgwTwqU_243oozMhXolwW1mVbQSQjXnvIak5PUW-lw3i5_BIIG6iZtrRXVzrdrIGKlZfSfcSHpT_1Tg9sfCe-g.ZDcilKJg4alJ3UxvXbMnGA","refresh_token":"946a6e11-268b-4184-51fa-08dc86bede0e","token_type":"Bearer","expires_in":599999},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-06-07 11:55:50.803 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-07 11:55:50.804 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 348.3606ms
+2024-06-07 11:55:50.804 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-07 11:55:50.804 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:55:50.804 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:55:50.804 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54 - 200 - application/json;+charset=utf-8 354.5927ms
+2024-06-07 11:56:11.649 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-07 11:56:11.694 +05:00 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-07 11:56:11.697 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-07 11:56:11.698 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-07 11:56:11.715 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-07 11:56:11.723 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-07 11:56:11.729 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-07 11:56:11.839 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-07 11:56:11.854 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-07 11:56:11.948 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-07 11:56:11.990 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-07 11:56:12.046 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:56:12.048 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 100.8025ms
+2024-06-07 11:56:12.551 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-07 11:56:12.553 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 2.0103ms
+2024-06-07 11:56:13.160 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-07 11:56:13.183 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 22.6093ms
+2024-06-07 11:56:13.879 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-07 11:56:13.880 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-07 11:56:13.949 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json 0
+2024-06-07 11:56:13.949 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-07 11:56:13.980 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-07 11:56:13.981 +05:00 [INF] Response StatusCode: 404
+2024-06-07 11:56:13.981 +05:00 [INF] Response StatusCode: 404
+2024-06-07 11:56:13.982 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json 0 - 404 - - 32.5950ms
+2024-06-07 11:56:14.040 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:56:14.040 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 161.7796ms
+2024-06-07 11:56:18.211 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/AgeType/Create application/json 68
+2024-06-07 11:56:18.213 +05:00 [INF] CORS policy execution successful.
+2024-06-07 11:56:18.214 +05:00 [INF] Request Method: POST, Path: /api/v1/AgeType/Create, Content-Type: application/json
+2024-06-07 11:56:18.215 +05:00 [INF] Request Body: {
+  "name": "create",
+  "description": "created",
+  "createdBy": 1
+}
+2024-06-07 11:56:18.529 +05:00 [INF] Executed DbCommand (238ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-07 11:56:18.591 +05:00 [INF] Request Method: POST, Path: /api/v1/AgeType/Create, Content-Type: application/json
+2024-06-07 11:56:18.591 +05:00 [INF] Request Body: {
+  "name": "create",
+  "description": "created",
+  "createdBy": 1
+}
+2024-06-07 11:56:18.591 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.Create (CleanArc.Web.Api)'
+2024-06-07 11:56:18.626 +05:00 [INF] Route matched with {action = "Create", controller = "AgeType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.AgeType.Commands.CreateAgeTypeCommand.CreateAgeTypeCommand) on controller CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController (CleanArc.Web.Api).
+2024-06-07 11:56:18.727 +05:00 [INF] Entering CleanArc.Application.Features.AgeType.Commands.CreateAgeTypeCommand, Handle with parameter: {"Name":"create","Description":"created","CreatedBy":1,"UserId":6}
+2024-06-07 11:56:18.728 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 6
+2024-06-07 11:56:18.735 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-06-07 11:56:18.739 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"Name":"create","Description":"created","IsActive":null,"IsDeleted":null,"CreatedBy":6,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null}
+2024-06-07 11:56:18.855 +05:00 [INF] Exiting null, AddAsync with response: -1
+2024-06-07 11:56:18.870 +05:00 [INF] Exiting null, Handle with response: true
+2024-06-07 11:56:18.874 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-06-07 11:56:18.880 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.Create (CleanArc.Web.Api) in 252.5299ms
+2024-06-07 11:56:18.881 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.Create (CleanArc.Web.Api)'
+2024-06-07 11:56:18.881 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:56:18.881 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:56:18.882 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/AgeType/Create application/json 68 - 200 - application/json;+charset=utf-8 671.0952ms
+2024-06-07 11:56:43.845 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/AgeType/Update application/json 79
+2024-06-07 11:56:43.845 +05:00 [INF] CORS policy execution successful.
+2024-06-07 11:56:43.846 +05:00 [INF] Request Method: POST, Path: /api/v1/AgeType/Update, Content-Type: application/json
+2024-06-07 11:56:43.846 +05:00 [INF] Request Body: {
+  "id": 3,
+  "name": "update",
+  "description": "updated",
+  "updatedBy": 1
+}
+2024-06-07 11:56:43.894 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-07 11:56:43.896 +05:00 [INF] Request Method: POST, Path: /api/v1/AgeType/Update, Content-Type: application/json
+2024-06-07 11:56:43.896 +05:00 [INF] Request Body: {
+  "id": 3,
+  "name": "update",
+  "description": "updated",
+  "updatedBy": 1
+}
+2024-06-07 11:56:43.896 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.Update (CleanArc.Web.Api)'
+2024-06-07 11:56:43.898 +05:00 [INF] Route matched with {action = "Update", controller = "AgeType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.AgeType.Commands.UpdateAgeTypeCommand.UpdateAgeTypeCommand) on controller CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController (CleanArc.Web.Api).
+2024-06-07 11:56:43.953 +05:00 [INF] Entering CleanArc.Application.Features.AgeType.Commands.UpdateAgeTypeCommand, Handle with parameter: {"ID":3,"Name":"update","Description":"updated","UpdatedBy":1,"UserId":6}
+2024-06-07 11:56:43.954 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 6
+2024-06-07 11:56:43.954 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-06-07 11:56:43.957 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":3,"Name":"update","Description":"updated","IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":6,"UpdatedAt":null}
+2024-06-07 11:56:43.986 +05:00 [INF] Exiting null, UpdateAsync with response: -1
+2024-06-07 11:56:43.988 +05:00 [INF] Exiting null, Handle with response: true
+2024-06-07 11:56:43.991 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-06-07 11:56:43.991 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.Update (CleanArc.Web.Api) in 92.7416ms
+2024-06-07 11:56:43.991 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.Update (CleanArc.Web.Api)'
+2024-06-07 11:56:43.991 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:56:43.991 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:56:43.991 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/AgeType/Update application/json 79 - 200 - application/json;+charset=utf-8 146.6836ms
+2024-06-07 11:57:06.740 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/AgeType/Delete application/json 42
+2024-06-07 11:57:06.741 +05:00 [INF] CORS policy execution successful.
+2024-06-07 11:57:06.741 +05:00 [INF] Request Method: POST, Path: /api/v1/AgeType/Delete, Content-Type: application/json
+2024-06-07 11:57:06.741 +05:00 [INF] Request Body: {
+  "selectedIds": "3",
+  "updatedBy": 1
+}
+2024-06-07 11:57:06.762 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-07 11:57:06.764 +05:00 [INF] Request Method: POST, Path: /api/v1/AgeType/Delete, Content-Type: application/json
+2024-06-07 11:57:06.764 +05:00 [INF] Request Body: {
+  "selectedIds": "3",
+  "updatedBy": 1
+}
+2024-06-07 11:57:06.764 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.Delete (CleanArc.Web.Api)'
+2024-06-07 11:57:06.766 +05:00 [INF] Route matched with {action = "Delete", controller = "AgeType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(CleanArc.Application.Features.AgeType.Commands.DeleteAgeTypeCommand.DeleteAgeTypeCommand) on controller CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController (CleanArc.Web.Api).
+2024-06-07 11:57:06.772 +05:00 [INF] Entering CleanArc.Application.Features.AgeType.Commands.DeleteAgeTypeCommand, Handle with parameter: {"SelectedIds":"3","UpdatedBy":1,"UserId":6}
+2024-06-07 11:57:06.772 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 6
+2024-06-07 11:57:06.772 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-06-07 11:57:06.773 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, DeleteAsync with parameter: {"selectedIds":"3","updatedBy":6}
+2024-06-07 11:57:06.794 +05:00 [INF] Exiting null, DeleteAsync with response: -1
+2024-06-07 11:57:06.794 +05:00 [INF] Exiting null, Handle
+2024-06-07 11:57:06.794 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-06-07 11:57:06.794 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.Delete (CleanArc.Web.Api) in 28.5334ms
+2024-06-07 11:57:06.794 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.Delete (CleanArc.Web.Api)'
+2024-06-07 11:57:06.794 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:57:06.795 +05:00 [INF] Response StatusCode: 200
+2024-06-07 11:57:06.795 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/AgeType/Delete application/json 42 - 200 - application/json;+charset=utf-8 54.5197ms
+2024-06-07 12:28:24.920 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/RoomSizeUnit/GetAll application/json 124
+2024-06-07 12:28:24.921 +05:00 [INF] CORS policy execution successful.
+2024-06-07 12:28:24.921 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomSizeUnit/GetAll, Content-Type: application/json
+2024-06-07 12:28:24.921 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "filterArray": [
+    ],
+    "sortingArray": [    ]
+  }
+}
+2024-06-07 12:28:24.921 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomSizeUnit/GetAll, Content-Type: application/json
+2024-06-07 12:28:24.921 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "filterArray": [
+    ],
+    "sortingArray": [    ]
+  }
+}
+2024-06-07 12:28:24.921 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController.GetAll (CleanArc.Web.Api)'
+2024-06-07 12:28:24.924 +05:00 [INF] Route matched with {action = "GetAll", controller = "RoomSizeUnit"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.RoomSizeUnit.Queries.GetAllRoomSizeUnits.GetAllRoomSizeUnitsQuery) on controller CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController (CleanArc.Web.Api).
+2024-06-07 12:28:24.938 +05:00 [INF] Entering CleanArc.Application.Features.RoomSizeUnit.Queries.GetAllRoomSizeUnits, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"FilterArray":[],"SortingArray":[]}}
+2024-06-07 12:28:24.940 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"FilterArray":[],"SortingArray":[]}
+2024-06-07 12:28:25.027 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":1,"Name":"Square Feet","Description":"Unit of measurement for room size in square feet.","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-29T12:34:48.99","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00"}]
+2024-06-07 12:28:25.037 +05:00 [INF] Exiting null, Handle with response: [{"ID":1,"Name":"Square Feet","Description":"Unit of measurement for room size in square feet.","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-29T12:34:48.99","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00"}]
+2024-06-07 12:28:25.037 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-07 12:28:25.043 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController.GetAll (CleanArc.Web.Api) in 118.4405ms
+2024-06-07 12:28:25.043 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController.GetAll (CleanArc.Web.Api)'
+2024-06-07 12:28:25.043 +05:00 [INF] Response StatusCode: 200
+2024-06-07 12:28:25.043 +05:00 [INF] Response StatusCode: 200
+2024-06-07 12:28:25.043 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/RoomSizeUnit/GetAll application/json 124 - 200 - application/json;+charset=utf-8 122.5934ms
+2024-06-07 12:31:05.721 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/api/v1/RoomSizeUnit/GetById/1 - -
+2024-06-07 12:31:05.722 +05:00 [INF] Request Method: GET, Path: /api/v1/RoomSizeUnit/GetById/1, Content-Type: null
+2024-06-07 12:31:05.725 +05:00 [INF] Request Method: GET, Path: /api/v1/RoomSizeUnit/GetById/1, Content-Type: null
+2024-06-07 12:31:05.725 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController.GetById (CleanArc.Web.Api)'
+2024-06-07 12:31:05.732 +05:00 [INF] Route matched with {action = "GetById", controller = "RoomSizeUnit"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController (CleanArc.Web.Api).
+2024-06-07 12:31:05.759 +05:00 [INF] Entering CleanArc.Application.Features.RoomSizeUnit.Queries.GetRoomSizeUnitById, Handle with parameter: {"Id":1}
+2024-06-07 12:31:05.762 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 1
+2024-06-07 12:31:05.783 +05:00 [INF] Exiting null, GetByIdAsync with response: {"ID":1,"Name":"Square Feet","Description":"Unit of measurement for room size in square feet.","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-29T12:34:48.99","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00"}
+2024-06-07 12:31:05.797 +05:00 [INF] Exiting null, Handle with response: {"ID":1,"Name":"Square Feet","Description":"Unit of measurement for room size in square feet.","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-29T12:34:48.99","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00"}
+2024-06-07 12:31:05.804 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-07 12:31:05.808 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController.GetById (CleanArc.Web.Api) in 76.1709ms
+2024-06-07 12:31:05.808 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController.GetById (CleanArc.Web.Api)'
+2024-06-07 12:31:05.808 +05:00 [INF] Response StatusCode: 200
+2024-06-07 12:31:05.809 +05:00 [INF] Response StatusCode: 200
+2024-06-07 12:31:05.809 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/api/v1/RoomSizeUnit/GetById/1 - - - 200 - application/json;+charset=utf-8 87.5691ms
+2024-06-07 12:31:30.579 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/RoomSizeUnit/Create application/json 68
+2024-06-07 12:31:30.580 +05:00 [INF] CORS policy execution successful.
+2024-06-07 12:31:30.580 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomSizeUnit/Create, Content-Type: application/json
+2024-06-07 12:31:30.580 +05:00 [INF] Request Body: {
+  "name": "create",
+  "description": "created",
+  "createdBy": 1
+}
+2024-06-07 12:31:30.607 +05:00 [INF] Executed DbCommand (16ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-07 12:31:30.608 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomSizeUnit/Create, Content-Type: application/json
+2024-06-07 12:31:30.608 +05:00 [INF] Request Body: {
+  "name": "create",
+  "description": "created",
+  "createdBy": 1
+}
+2024-06-07 12:31:30.608 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController.Create (CleanArc.Web.Api)'
+2024-06-07 12:31:30.611 +05:00 [INF] Route matched with {action = "Create", controller = "RoomSizeUnit"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.RoomSizeUnit.Command.CreateRoomSizeUnitCommand.CreateRoomSizeUnitCommand) on controller CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController (CleanArc.Web.Api).
+2024-06-07 12:31:30.616 +05:00 [INF] Entering CleanArc.Application.Features.RoomSizeUnit.Command.CreateRoomSizeUnitCommand, Handle with parameter: {"Name":"create","Description":"created","CreatedBy":1,"UserId":6}
+2024-06-07 12:31:30.616 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 6
+2024-06-07 12:31:30.616 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-06-07 12:31:30.616 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"Name":"create","Description":"created","IsActive":false,"IsDeleted":false,"CreatedBy":6,"CreatedAt":"0001-01-01T00:00:00","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00"}
+2024-06-07 12:31:30.625 +05:00 [INF] Exiting null, AddAsync with response: -1
+2024-06-07 12:31:30.626 +05:00 [INF] Exiting null, Handle with response: true
+2024-06-07 12:31:30.626 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-06-07 12:31:30.626 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController.Create (CleanArc.Web.Api) in 15.6739ms
+2024-06-07 12:31:30.626 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController.Create (CleanArc.Web.Api)'
+2024-06-07 12:31:30.627 +05:00 [INF] Response StatusCode: 200
+2024-06-07 12:31:30.627 +05:00 [INF] Response StatusCode: 200
+2024-06-07 12:31:30.627 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/RoomSizeUnit/Create application/json 68 - 200 - application/json;+charset=utf-8 47.5854ms
+2024-06-07 12:32:11.738 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/RoomSizeUnit/Update application/json 79
+2024-06-07 12:32:11.738 +05:00 [INF] CORS policy execution successful.
+2024-06-07 12:32:11.738 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomSizeUnit/Update, Content-Type: application/json
+2024-06-07 12:32:11.739 +05:00 [INF] Request Body: {
+  "id": 2,
+  "name": "update",
+  "description": "updated",
+  "updatedBy": 1
+}
+2024-06-07 12:32:11.755 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-07 12:32:11.755 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomSizeUnit/Update, Content-Type: application/json
+2024-06-07 12:32:11.755 +05:00 [INF] Request Body: {
+  "id": 2,
+  "name": "update",
+  "description": "updated",
+  "updatedBy": 1
+}
+2024-06-07 12:32:11.755 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController.Update (CleanArc.Web.Api)'
+2024-06-07 12:32:11.757 +05:00 [INF] Route matched with {action = "Update", controller = "RoomSizeUnit"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.RoomSizeUnit.Command.UpdateRoomSizeUnitCommand.UpdateRoomSizeUnitCommand) on controller CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController (CleanArc.Web.Api).
+2024-06-07 12:32:11.763 +05:00 [INF] Entering CleanArc.Application.Features.RoomSizeUnit.Command.UpdateRoomSizeUnitCommand, Handle with parameter: {"ID":2,"Name":"update","Description":"updated","UpdatedBy":1,"UserId":6}
+2024-06-07 12:32:11.763 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 6
+2024-06-07 12:32:11.763 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-06-07 12:32:11.763 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":2,"Name":"update","Description":"updated","IsActive":false,"IsDeleted":false,"CreatedBy":0,"CreatedAt":"0001-01-01T00:00:00","UpdatedBy":6,"UpdatedAt":"0001-01-01T00:00:00"}
+2024-06-07 12:32:11.777 +05:00 [INF] Exiting null, UpdateAsync with response: -1
+2024-06-07 12:32:11.777 +05:00 [INF] Exiting null, Handle with response: true
+2024-06-07 12:32:11.777 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-06-07 12:32:11.777 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController.Update (CleanArc.Web.Api) in 20.0965ms
+2024-06-07 12:32:11.777 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController.Update (CleanArc.Web.Api)'
+2024-06-07 12:32:11.778 +05:00 [INF] Response StatusCode: 200
+2024-06-07 12:32:11.778 +05:00 [INF] Response StatusCode: 200
+2024-06-07 12:32:11.778 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/RoomSizeUnit/Update application/json 79 - 200 - application/json;+charset=utf-8 39.9378ms
+2024-06-07 12:32:36.943 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/RoomSizeUnit/Delete application/json 42
+2024-06-07 12:32:36.943 +05:00 [INF] CORS policy execution successful.
+2024-06-07 12:32:36.944 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomSizeUnit/Delete, Content-Type: application/json
+2024-06-07 12:32:36.944 +05:00 [INF] Request Body: {
+  "selectedIds": "2",
+  "updatedBy": 1
+}
+2024-06-07 12:32:36.965 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-07 12:32:36.966 +05:00 [INF] Request Method: POST, Path: /api/v1/RoomSizeUnit/Delete, Content-Type: application/json
+2024-06-07 12:32:36.966 +05:00 [INF] Request Body: {
+  "selectedIds": "2",
+  "updatedBy": 1
+}
+2024-06-07 12:32:36.966 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController.Delete (CleanArc.Web.Api)'
+2024-06-07 12:32:36.968 +05:00 [INF] Route matched with {action = "Delete", controller = "RoomSizeUnit"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(CleanArc.Application.Features.RoomSizeUnit.Command.DeleteRoomSizeUnitCommand.DeleteRoomSizeUnitCommand) on controller CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController (CleanArc.Web.Api).
+2024-06-07 12:32:36.972 +05:00 [INF] Entering CleanArc.Application.Features.RoomSizeUnit.Command.DeleteRoomSizeUnitCommand, Handle with parameter: {"SelectedIds":"2","UpdatedBy":1,"UserId":6}
+2024-06-07 12:32:36.973 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 6
+2024-06-07 12:32:36.973 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-06-07 12:32:36.973 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, DeleteAsync with parameter: {"selectedIds":"2","updatedBy":6}
+2024-06-07 12:32:36.982 +05:00 [INF] Exiting null, DeleteAsync with response: -1
+2024-06-07 12:32:36.983 +05:00 [INF] Exiting null, Handle
+2024-06-07 12:32:36.983 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-06-07 12:32:36.983 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController.Delete (CleanArc.Web.Api) in 14.8686ms
+2024-06-07 12:32:36.983 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController.Delete (CleanArc.Web.Api)'
+2024-06-07 12:32:36.983 +05:00 [INF] Response StatusCode: 200
+2024-06-07 12:32:36.983 +05:00 [INF] Response StatusCode: 200
+2024-06-07 12:32:36.984 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/RoomSizeUnit/Delete application/json 42 - 200 - application/json;+charset=utf-8 40.5664ms
