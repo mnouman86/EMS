@@ -19,6 +19,7 @@ public interface IUnitOfWork
     public ISearchRoomAmenitiesRepository SearchRoomAmenitiesRepository { get; }
     public IRoomImagesRepository RoomImagesRepository { get; }
     public IRoomSizeUnitReposirory RoomSizeUnitReposirory { get; }
+    public IServiceRepository ServiceRepository { get; }
     Task CommitAsync();
     ValueTask RollBackAsync();
 }
