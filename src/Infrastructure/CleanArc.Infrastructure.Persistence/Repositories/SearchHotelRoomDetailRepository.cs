@@ -100,8 +100,8 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                             SortingArray = DataTableHelper.ToDataTable(SortingArray), // Convert list to DataTable
                             FilterArray = DataTableHelper.ToDataTable(FilterArray) // Convert list to DataTable
                         };
-                        var imageList = await connection.QueryAsync<RoomImage>(RoomImagesQueries.usp_GetByHotelID_RoomImages, parameters, commandType: CommandType.StoredProcedure);
-                        var amenitiesList = await connection.QueryAsync<RoomAmenities>(SearchRoomAmenitiesQueries.usp_GetByHotelID_RoomAmenities, parameters, commandType: CommandType.StoredProcedure);
+                        var imageList = await connection.QueryAsync<RoomImage>(RoomImagesQueries.usp_GetByHotelID_RoomImages, parameter, commandType: CommandType.StoredProcedure);
+                        var amenitiesList = await connection.QueryAsync<RoomAmenities>(SearchRoomAmenitiesQueries.usp_GetByHotelID_RoomAmenities, parameter, commandType: CommandType.StoredProcedure);
                         item.RoomImages = new List<RoomImage>();
                         item.RoomImages.AddRange(imageList);
                         item.RoomAmenities = new List<RoomAmenities>();
