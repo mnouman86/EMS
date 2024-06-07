@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.RoomSizeUnit.Queries.GetAllRoomSizeUnits
+namespace CleanArc.Application.Features.Test.Queries.GetByIdQuery
 {
-    internal class GetAllRoomSizeUnitsResult
+    internal class GetByIdQueryResult
     {
     }
 }

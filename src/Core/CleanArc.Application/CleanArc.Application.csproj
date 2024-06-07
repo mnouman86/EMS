@@ -23,8 +23,6 @@
     <PackageReference Include="System.Linq.Async" Version="6.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Contracts\Persistence\NewFolder1\" />
-    <Folder Include="Contracts\Persistence\NewFolder\" />
     <Folder Include="Features\City\Command\CreateCityCommand\" />
     <Folder Include="Features\City\Command\DeleteCityCommand\" />
     <Folder Include="Features\City\Command\UpdateCityCommand\" />
@@ -45,11 +43,6 @@
     <Folder Include="Features\ServiceCategory\Command\CreateServiceCategoryCommand\" />
     <Folder Include="Features\ServiceCategory\Queries\GetAllServiceCategories\" />
     <Folder Include="Features\ServiceCategory\Queries\GetServiceCategoryById\" />
-    <Folder Include="Features\Service\Command\CreateServiceCommand\" />
-    <Folder Include="Features\Service\Command\DeleteServiceCommand\" />
-    <Folder Include="Features\Service\Command\UpdateServiceCommand\" />
-    <Folder Include="Features\Service\Queries\GetAllServices\" />
-    <Folder Include="Features\Service\Queries\GetServiceById\" />
     <Folder Include="Features\State\Command\DeleteStateCommand\" />
     <Folder Include="Features\State\Command\UpdateStateCommand\" />
     <Folder Include="Features\State\Command\CreateStateCommand\" />
