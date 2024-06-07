@@ -35,5 +35,6 @@ namespace CleanArc.Domain.Entities.SearchHotelDetail
     {
         public string ImageTitle { get; set; }
         public string ImagePath { get; set; }
+        public bool IsMain { get; set; }
     }
 }
