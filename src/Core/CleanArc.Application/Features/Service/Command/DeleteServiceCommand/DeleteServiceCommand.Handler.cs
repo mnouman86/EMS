@@ -1,5 +1,6 @@
 ﻿using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
+using CleanArc.Application.Features.AgeType.Commands.DeleteAgeTypeCommand;
 using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.Extensions;
 using MapsterMapper;
@@ -13,21 +14,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.RoomSizeUnit.Command.DeleteRoomSizeUnitCommand;
+namespace CleanArc.Application.Features.Service.Command.DeleteServiceCommand;
 
-internal class DeleteRoomSizeUnitCommandHandler : IRequestHandler<DeleteRoomSizeUnitCommand, OperationResult<bool>>
+internal class DeleteServiceCommandHandler : IRequestHandler<DeleteServiceCommand, OperationResult<bool>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<DeleteRoomSizeUnitCommandHandler> _logger;
+    private readonly ILogger<DeleteServiceCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
     //private readonly IUnitOfWork _unitOfWork;
     //private readonly IAppUserManager _userManager;
 
 
-    public DeleteRoomSizeUnitCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<DeleteRoomSizeUnitCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public DeleteServiceCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<DeleteServiceCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -38,7 +39,7 @@ internal class DeleteRoomSizeUnitCommandHandler : IRequestHandler<DeleteRoomSize
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<bool>> Handle(DeleteRoomSizeUnitCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<bool>> Handle(DeleteServiceCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -56,7 +57,7 @@ internal class DeleteRoomSizeUnitCommandHandler : IRequestHandler<DeleteRoomSize
             //return OperationResult<bool>.SuccessResult(true);
             //await _unitOfWork.AgeTypeRepository.DeleteAsync(new Domain.Entities.AgeType.AgeType()
             // { UpdatedBy = user.Id, ID = request.ID });
-            await _unitOfWork.RoomSizeUnitReposirory.DeleteAsync(request.SelectedIds, user.Id);
+            await _unitOfWork.ServiceRepository.DeleteAsync(request.SelectedIds, user.Id);
             await _unitOfWork.CommitAsync();
             //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

@@ -27,6 +27,7 @@ public class UnitOfWork : IUnitOfWork
     public ISearchRoomAmenitiesRepository SearchRoomAmenitiesRepository { get; set; }
     public IRoomImagesRepository RoomImagesRepository { get; set; }
     public IRoomSizeUnitReposirory RoomSizeUnitReposirory { get; set; }
+    public IServiceRepository ServiceRepository { get; set; }
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
 
@@ -47,6 +48,8 @@ public class UnitOfWork : IUnitOfWork
         ILogger<SearchRoomAmenitiesRepository> _loggerSearchRoomAmenities,
         ILogger<RoomImagesRepository> _loggerRoomImages,
                 ILogger<RoomSizeUnitReposirory> _loggerRoomSizeUnit,
+                                ILogger<ServiceRepository> _loggerService,
+
 
 
 
@@ -70,7 +73,7 @@ public class UnitOfWork : IUnitOfWork
         SearchRoomAmenitiesRepository=new SearchRoomAmenitiesRepository(configuration, mapper, _loggerSearchRoomAmenities, httpContextAccessor);
         RoomImagesRepository=new RoomImagesRepository(configuration, mapper, _loggerRoomImages, httpContextAccessor);
         RoomSizeUnitReposirory = new RoomSizeUnitReposirory(configuration, mapper, _loggerRoomSizeUnit, httpContextAccessor);
-
+        ServiceRepository= new ServiceRepository(configuration, mapper, _loggerService, httpContextAccessor);
         this.configuration = configuration;
 
     }

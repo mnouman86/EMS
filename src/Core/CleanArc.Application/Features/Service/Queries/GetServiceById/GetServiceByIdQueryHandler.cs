@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.RoomSizeUnit.Command.DeleteeRoomSizeUnitCommand
+namespace CleanArc.Application.Features.Service.Queries.GetServiceById
 {
-    internal class DeleteeRoomSizeUnitCommand
+    internal class GetServiceByIdQueryHandler
     {
     }
 }

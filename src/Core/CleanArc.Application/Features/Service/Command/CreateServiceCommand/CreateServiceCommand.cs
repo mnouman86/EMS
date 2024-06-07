@@ -1,4 +1,5 @@
-﻿using CleanArc.Application.Models.Common;
+﻿using CleanArc.Application.Features.AgeType.Commands.CreateAgeTypeCommand;
+using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.ValidationBase.Contracts;
 using CleanArc.SharedKernel.ValidationBase;
 using FluentValidation;
@@ -10,14 +11,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json.Serialization;
 
-namespace CleanArc.Application.Features.RoomSizeUnit.Command.CreateRoomSizeUnitCommand;
+namespace CleanArc.Application.Features.Service.Command.CreateServiceCommand;
 
-public record CreateRoomSizeUnitCommand(string? Name, string? Description, int? CreatedBy) : IRequest<OperationResult<bool>>,
-    IValidatableModel<CreateRoomSizeUnitCommand>
+public  record CreateServiceCommand(string? Name, string? Description,int? ServiceCategoryID, int? CreatedBy) : IRequest<OperationResult<bool>>,
+    IValidatableModel<CreateServiceCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
-    public IValidator<CreateRoomSizeUnitCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateRoomSizeUnitCommand> validator)
+    public IValidator<CreateServiceCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateServiceCommand> validator)
     {
         validator.RuleFor(c => c.Name)
             .NotEmpty()
@@ -30,3 +31,4 @@ public record CreateRoomSizeUnitCommand(string? Name, string? Description, int? 
         return validator;
     }
 }
+
