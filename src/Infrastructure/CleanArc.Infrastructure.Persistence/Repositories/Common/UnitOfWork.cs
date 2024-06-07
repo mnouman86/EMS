@@ -26,6 +26,7 @@ public class UnitOfWork : IUnitOfWork
     public ISearchHotelRoomDetailRepository SearchHotelRoomDetailRepository { get; set; }
     public ISearchRoomAmenitiesRepository SearchRoomAmenitiesRepository { get; set; }
     public IRoomImagesRepository RoomImagesRepository { get; set; }
+    public IRoomSizeUnitReposirory RoomSizeUnitReposirory { get; set; }
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
 
@@ -45,6 +46,8 @@ public class UnitOfWork : IUnitOfWork
         ILogger<SearchHotelRoomDetailRepository> _loggerSearchHotelRoomDetail,
         ILogger<SearchRoomAmenitiesRepository> _loggerSearchRoomAmenities,
         ILogger<RoomImagesRepository> _loggerRoomImages,
+                ILogger<RoomSizeUnitReposirory> _loggerRoomSizeUnit,
+
 
 
         IHttpContextAccessor httpContextAccessor)
@@ -66,6 +69,8 @@ public class UnitOfWork : IUnitOfWork
         SearchHotelRoomDetailRepository=new SearchHotelRoomDetailRepository(configuration, mapper, _loggerSearchHotelRoomDetail, httpContextAccessor);
         SearchRoomAmenitiesRepository=new SearchRoomAmenitiesRepository(configuration, mapper, _loggerSearchRoomAmenities, httpContextAccessor);
         RoomImagesRepository=new RoomImagesRepository(configuration, mapper, _loggerRoomImages, httpContextAccessor);
+        RoomSizeUnitReposirory = new RoomSizeUnitReposirory(configuration, mapper, _loggerRoomSizeUnit, httpContextAccessor);
+
         this.configuration = configuration;
 
     }

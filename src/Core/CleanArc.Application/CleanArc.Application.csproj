@@ -40,11 +40,6 @@
     <Folder Include="Features\Language\Command\UpdateLanguageCommand\" />
     <Folder Include="Features\Language\Queries\GetLanguageById\" />
     <Folder Include="Features\Language\Queries\GetAllLanguages\" />
-    <Folder Include="Features\RoomSizeUnit\Command\CreateRoomSizeUnitCommand\" />
-    <Folder Include="Features\RoomSizeUnit\Command\DeleteeRoomSizeUnitCommand\" />
-    <Folder Include="Features\RoomSizeUnit\Command\UpdateRoomSizeUnitCommand\" />
-    <Folder Include="Features\RoomSizeUnit\Queries\GetRoomSizeUnitById\" />
-    <Folder Include="Features\RoomSizeUnit\Queries\GetAllRoomSizeUnits\" />
     <Folder Include="Features\ServiceCategory\Command\DeleteServiceCategoryCommand\" />
     <Folder Include="Features\ServiceCategory\Command\UpdateServiceCategoryCommand\" />
     <Folder Include="Features\ServiceCategory\Command\CreateServiceCategoryCommand\" />
