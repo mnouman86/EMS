@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Models.Service
 {
-    internal class CreateServiceDTO
+    public class CreateServiceDTO
     {
        // public int ID { get; set; }
         public string Name { get; set; }
