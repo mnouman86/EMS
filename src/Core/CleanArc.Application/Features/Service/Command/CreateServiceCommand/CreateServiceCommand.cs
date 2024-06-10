@@ -13,7 +13,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.Service.Command.CreateServiceCommand;
 
-public  record CreateServiceCommand(string? Name, string? Description,int? ServiceCategoryID, int? CreatedBy) : IRequest<OperationResult<bool>>,
+public  record CreateServiceCommand(string? Name, string? Description,int? ServiceCategoryID, string? Icon, int? CreatedBy) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateServiceCommand>
 {
     [JsonIgnore]
