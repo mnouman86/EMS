@@ -20,6 +20,12 @@ public interface IUnitOfWork
     public IRoomImagesRepository RoomImagesRepository { get; }
     public IRoomSizeUnitReposirory RoomSizeUnitReposirory { get; }
     public IServiceRepository ServiceRepository { get; }
+    public IServiceCategoryRepository ServiceCategoryRepository { get; }
+    public ICountryRepository CountryRepository { get; }
+    public IStateRepository StateRepository { get; }
+    public ICityRepository CityRepository { get; }
+    public ILanguageRepository LanguageRepository { get; }
+
     Task CommitAsync();
     ValueTask RollBackAsync();
 }

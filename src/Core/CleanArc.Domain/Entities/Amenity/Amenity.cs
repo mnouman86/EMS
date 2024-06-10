@@ -10,6 +10,9 @@ public class Amenity
 {
     public int ID { get; set; }
     public string? Name { get; set; }
+    public string? CategoryName { get; set; }
+    public string? AmenityName { get; set; }
+
     public string? Description { get; set; }
     public int? CategoryID { get; set; }
     public bool? IsActive { get; set; }
