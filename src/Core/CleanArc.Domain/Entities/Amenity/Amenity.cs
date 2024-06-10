@@ -15,6 +15,7 @@ public class Amenity
 
     public string? Description { get; set; }
     public int? CategoryID { get; set; }
+    public string? Icon { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }
