@@ -1,0 +1,48 @@
+2024-06-10 14:13:45.449 +05:00 [INF] Executed DbCommand (181ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-10 14:13:45.765 +05:00 [INF] Executed DbCommand (117ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-10 14:13:45.788 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-10 14:13:45.868 +05:00 [INF] Executed DbCommand (53ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-10 14:13:46.248 +05:00 [INF] Executed DbCommand (123ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-10 14:13:46.319 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-10 14:13:46.388 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-10 14:13:47.393 +05:00 [INF] Executed DbCommand (48ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-10 14:13:47.468 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-10 14:13:49.092 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-10 14:13:51.157 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-10 14:13:51.808 +05:00 [INF] Response StatusCode: 200
+2024-06-10 14:13:51.859 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-10 14:13:51.897 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 2788.2291ms
+2024-06-10 14:13:51.903 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-10 14:13:51.910 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 45.1451ms
+2024-06-10 14:13:52.094 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 191.1243ms
+2024-06-10 14:13:52.992 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json -
+2024-06-10 14:13:52.999 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-10 14:13:53.022 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-10 14:13:53.029 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-10 14:13:54.580 +05:00 [INF] Response StatusCode: 200
+2024-06-10 14:13:54.592 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1570.1635ms
+2024-06-10 14:13:55.164 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-10 14:13:55.173 +05:00 [INF] Response StatusCode: 404
+2024-06-10 14:13:55.180 +05:00 [INF] Response StatusCode: 404
+2024-06-10 14:13:55.190 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 2198.9526ms
