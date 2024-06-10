@@ -14,8 +14,6 @@ public class Amenity
     public string? AmenityName { get; set; }
 
     public string? Description { get; set; }
-    public string? CategoryName { get; set; }
-    public string? AmenityName { get; set; }
     public int? CategoryID { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
