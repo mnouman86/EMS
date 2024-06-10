@@ -110,7 +110,7 @@ public class CountryRepository : ICountryRepository
                     SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
                     FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 };
-                var result = await connection.QueryAsync<Country>(CountryQueries.usp_GetAll_CitytoCountryID, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<Country>(CountryQueries.usp_GetALL_Country, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }
