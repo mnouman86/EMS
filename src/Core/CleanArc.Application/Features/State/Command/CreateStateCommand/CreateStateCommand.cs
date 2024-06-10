@@ -16,11 +16,11 @@ using CleanArc.Domain.Entities.Country;
 namespace CleanArc.Application.Features.State.Command.CreateStateCommand;
 
 public record CreateStateCommand(string? Name, string? Description, int? CountryID , int? CreatedBy) : IRequest<OperationResult<bool>>,
-    IValidatableModel<CreateAgeTypeCommand>
+    IValidatableModel<CreateStateCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
-    public IValidator<CreateAgeTypeCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateAgeTypeCommand> validator)
+    public IValidator<CreateStateCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateStateCommand> validator)
     {
         validator.RuleFor(c => c.Name)
             .NotEmpty()
