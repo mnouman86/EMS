@@ -1,13 +1,20 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.Request;
+using CleanArc.Application.Models.Service;
 using CleanArc.Domain.Entities.RoomSizeUnit;
 using CleanArc.Domain.Entities.Service;
+using CleanArc.Infrastructure.Persistence.Helpers;
+using CleanArc.Infrastructure.Sql.SqlQueries;
+using CleanArc.SharedKernel.Extensions;
+using Dapper;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,48 +58,99 @@ public class ServiceRepository : IServiceRepository
         _httpContextAccessor = httpContextAccessor;
     }
     /// <inheritdoc/>
-    public Task<string> AddAsync(RoomSizeUnit entity)
+    public async Task<string> AddAsync(Service service)
     {
-        throw new NotImplementedException();
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, service))
+        {
+            using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+            {
+                connection.Open();
+                CreateServiceDTO createServiceDTO = _mapper.Map<CreateServiceDTO>(service);
+                var result = await connection.ExecuteAsync(ServiceQueries.Create_Service, createServiceDTO, commandType: CommandType.StoredProcedure);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                return result.ToString();
+            }
+        }
     }
 
-    public Task<string> AddAsync(Service entity)
+    public async Task<string> DeleteAsync(string selectedIds, int updatedBy)
     {
-        throw new NotImplementedException();
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
+        {
+            using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+            {
+                connection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add("@ID", selectedIds);
+                parameters.Add("@UpdatedBy", updatedBy);
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                var result = await connection.ExecuteAsync(ServiceQueries.Delete_Service, parameters, commandType: CommandType.StoredProcedure);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                return result.ToString();
+            }
+        }
     }
 
-    public Task<string> DeleteAsync(string selectedIds, int updatedBy)
+    public async Task<IReadOnlyList<Service>> GetAllAsync(SearchRequest searchRequest)
     {
-        throw new NotImplementedException();
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
+        {
+            using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+            {
+                connection.Open();
+                var parameters = new
+                {
+                    PageNumber = searchRequest.PageNumber,
+                    PageSize = searchRequest.PageSize,
+                    //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
+                    //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
+                    //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
+                    //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
+                    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
+                    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
+                };
+                var result = await connection.QueryAsync<Service>(ServiceQueries.usp_GetALL_Service, parameters, commandType: CommandType.StoredProcedure);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                return result.ToList();
+            }
+        }
+    }
+    public async Task<Service> GetByIdAsync(long id)
+    {
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
+        {
+            using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+            {
+                connection.Open();
+                var result = await connection.QuerySingleOrDefaultAsync<Service>(ServiceQueries.usp_GetByID_Service, new { ID = id }, commandType: CommandType.StoredProcedure);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                return result;
+            }
+        }
     }
 
-    public Task<IReadOnlyList<RoomSizeUnit>> GetAllAsync(SearchRequest request)
-    {
-        throw new NotImplementedException();
-    }
 
-    public Task<RoomSizeUnit> GetByIdAsync(long id)
-    {
-        throw new NotImplementedException();
-    }
 
-    public Task<string> UpdateAsync(RoomSizeUnit entity)
+    public async Task<string> UpdateAsync(Service service)
     {
-        throw new NotImplementedException();
-    }
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, service))
+        {
+            using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+            {
+                connection.Open();
+                UpdateServiceDTO updateServiceDTO = _mapper.Map<UpdateServiceDTO>(service);
 
-    public Task<string> UpdateAsync(Service entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    Task<IReadOnlyList<Service>> IRepository<Service>.GetAllAsync(SearchRequest request)
-    {
-        throw new NotImplementedException();
-    }
-
-    Task<Service> IRepository<Service>.GetByIdAsync(long id)
-    {
-        throw new NotImplementedException();
+                var result = await connection.ExecuteAsync(ServiceQueries.Update_Service, updateServiceDTO, commandType: CommandType.StoredProcedure);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                return result.ToString();
+            }
+        }
     }
 }
+
+/// <inheritdoc/>
+
+
+/// <inheritdoc/>

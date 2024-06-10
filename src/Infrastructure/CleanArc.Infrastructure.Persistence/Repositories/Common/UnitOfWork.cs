@@ -28,6 +28,11 @@ public class UnitOfWork : IUnitOfWork
     public IRoomImagesRepository RoomImagesRepository { get; set; }
     public IRoomSizeUnitReposirory RoomSizeUnitReposirory { get; set; }
     public IServiceRepository ServiceRepository { get; set; }
+    public IServiceCategoryRepository ServiceCategoryRepository { get; set; }
+    public ICountryRepository CountryRepository { get; set; }
+    public IStateRepository StateRepository { get; set; }
+    public ICityRepository CityRepository { get; set; }
+    public ILanguageRepository LanguageRepository { get; set; }
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
 
@@ -47,8 +52,14 @@ public class UnitOfWork : IUnitOfWork
         ILogger<SearchHotelRoomDetailRepository> _loggerSearchHotelRoomDetail,
         ILogger<SearchRoomAmenitiesRepository> _loggerSearchRoomAmenities,
         ILogger<RoomImagesRepository> _loggerRoomImages,
-                ILogger<RoomSizeUnitReposirory> _loggerRoomSizeUnit,
+        ILogger<RoomSizeUnitReposirory> _loggerRoomSizeUnit,
                                 ILogger<ServiceRepository> _loggerService,
+                                ILogger<ServiceCategoryRepository> _loggerServiceCategory,
+                                ILogger<CountryRepository> _loggerCountry,
+                                ILogger<StateRepository> _loggerState,
+                                ILogger<CityRepository> _loggerCity,
+                                ILogger<LanguageRepository> _loggerLanguage,
+
 
 
 
@@ -74,6 +85,12 @@ public class UnitOfWork : IUnitOfWork
         RoomImagesRepository=new RoomImagesRepository(configuration, mapper, _loggerRoomImages, httpContextAccessor);
         RoomSizeUnitReposirory = new RoomSizeUnitReposirory(configuration, mapper, _loggerRoomSizeUnit, httpContextAccessor);
         ServiceRepository= new ServiceRepository(configuration, mapper, _loggerService, httpContextAccessor);
+        ServiceCategoryRepository=new ServiceCategoryRepository(configuration, mapper, _loggerServiceCategory, httpContextAccessor);
+        CountryRepository=new CountryRepository(configuration, mapper, _loggerCountry, httpContextAccessor);
+        StateRepository = new StateRepository(configuration, mapper, _loggerState, httpContextAccessor);
+        CityRepository = new CityRepository(configuration, mapper, _loggerCity, httpContextAccessor);
+
+        LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         this.configuration = configuration;
 
     }
