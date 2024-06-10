@@ -56,7 +56,7 @@ internal class UpdateStateCommandHandler : IRequestHandler<UpdateStateCommand, O
 
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.StateRepository.UpdateAsync(new Domain.Entities.State.State()
-            { UpdatedBy = user.Id, ID = request.ID, Description = request.Description, CountryID = (int)request.CountryID , Name = request.Name });
+            { UpdatedBy = user.Id, ID = request.ID, Description = request.Description, CountryID = request.CountryID , Name = request.Name });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);
