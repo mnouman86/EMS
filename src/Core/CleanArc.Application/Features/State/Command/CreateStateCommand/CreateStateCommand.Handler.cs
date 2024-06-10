@@ -57,7 +57,7 @@ internal class CreateStateCommandHandler : IRequestHandler<CreateStateCommand, O
 
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.StateRepository.AddAsync(new Domain.Entities.State.State()
-            { CreatedBy = user.Id, Description = request.Description, CountryID = (int)request.CountryID , Name = request.Name});
+            { CreatedBy = user.Id, Description = request.Description, CountryID = request.CountryID , Name = request.Name});
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);
