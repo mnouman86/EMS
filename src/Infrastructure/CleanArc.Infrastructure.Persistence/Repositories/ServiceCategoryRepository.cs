@@ -1,4 +1,4 @@
-﻿using CleanArc.Application.Contracts.Persistence;
+using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.Request;
 using CleanArc.Application.Models.ServiceCategory;
 using CleanArc.Domain.Entities.ServiceCategory;
