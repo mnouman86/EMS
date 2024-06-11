@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +11,7 @@ namespace CleanArc.Application.Features.City.Queries.GetCityById
         public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string StateName { get; set; }
         public int StateID { get; set; }
         public string ImagePath { get; set; }
         public string ImageTitle { get; set; }

@@ -1,4 +1,4 @@
-﻿using CleanArc.Application.Contracts.Identity;
+using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Features.AgeType.Commands.DeleteAgeTypeCommand;
 using CleanArc.Application.Models.Common;
