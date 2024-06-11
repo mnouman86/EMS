@@ -13,7 +13,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.City.Command.CreateCityCommand;
 
-public record CreateCityCommand(string? Name, string? Description, int? StateID, string? ImagePath, string? ImageTitle, int? CreatedBy, bool? IsMain) : IRequest<OperationResult<bool>>,
+public record CreateCityCommand(string? Name, string? Description, int? StateID,bool? IsMain,  int? CreatedBy,  string? ImagePath , string? ImageTitle ) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateCityCommand>
 {
     [JsonIgnore]
@@ -32,15 +32,22 @@ public record CreateCityCommand(string? Name, string? Description, int? StateID,
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a valid StateID");
-        validator.RuleFor(c => c.ImagePath)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a valid ImagePath");
-        validator.RuleFor(c => c.ImageTitle)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a valid ImageTitle");
-       
+        //validator.RuleFor(c => c.ImagePath)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a valid ImagePath");
+        //validator.RuleFor(c => c.ImageTitle)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a valid ImageTitle");
+        //validator.RuleFor(c => c.ImagePath)
+        //  .Must(path => string.IsNullOrEmpty(path) || !string.IsNullOrEmpty(path))
+        //  .WithMessage("Please enter a valid ImagePath");
+
+        //validator.RuleFor(c => c.ImageTitle)
+        //    .Must(title => string.IsNullOrEmpty(title) || !string.IsNullOrEmpty(title))
+        //    .WithMessage("Please enter a valid ImageTitle");
+
         return validator;
     }
 
