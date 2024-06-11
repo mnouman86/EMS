@@ -5105,3 +5105,654 @@ DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
 2024-06-11 16:22:35.841 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
 2024-06-11 16:22:35.842 +05:00 [INF] Response StatusCode: 401
 2024-06-11 16:22:35.843 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/City/Create application/json 153 - 401 - application/json;+charset=utf-8 63.7568ms
+2024-06-11 16:40:25.647 +05:00 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-11 16:40:25.741 +05:00 [INF] Executed DbCommand (45ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-11 16:40:25.746 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-11 16:40:25.749 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-11 16:40:25.771 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-11 16:40:25.790 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-11 16:40:25.801 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-11 16:40:26.037 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-11 16:40:26.055 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-11 16:40:26.362 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-11 16:40:27.056 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-11 16:40:27.324 +05:00 [INF] Response StatusCode: 200
+2024-06-11 16:40:27.325 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-11 16:40:27.340 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 12.8389ms
+2024-06-11 16:40:27.342 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 978.0824ms
+2024-06-11 16:40:27.379 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-11 16:40:27.500 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 120.6104ms
+2024-06-11 16:40:29.118 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json -
+2024-06-11 16:40:29.120 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-11 16:40:29.215 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-11 16:40:29.217 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-11 16:40:29.297 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-11 16:40:29.298 +05:00 [INF] Response StatusCode: 404
+2024-06-11 16:40:29.299 +05:00 [INF] Response StatusCode: 404
+2024-06-11 16:40:29.303 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 185.2434ms
+2024-06-11 16:40:30.072 +05:00 [INF] Response StatusCode: 200
+2024-06-11 16:40:30.074 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 859.0945ms
+2024-06-11 16:42:58.174 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/Hotel/GetAll application/json 138
+2024-06-11 16:42:58.177 +05:00 [INF] CORS policy execution successful.
+2024-06-11 16:42:58.179 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-06-11 16:42:58.183 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-06-11 16:42:58.212 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-06-11 16:42:58.212 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-06-11 16:42:58.217 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-06-11 16:42:58.268 +05:00 [INF] Route matched with {action = "GetAll", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQuery) on controller CleanArc.Web.Api.Controllers.V1.Hotel.HotelController (CleanArc.Web.Api).
+2024-06-11 16:42:58.423 +05:00 [INF] Entering CleanArc.Application.Features.Hotel.Queries.GetAllHotels, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}}
+2024-06-11 16:42:58.662 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}
+2024-06-11 16:42:58.998 +05:00 [INF] Exiting null, GetAllAsync
+2024-06-11 16:42:58.999 +05:00 [INF] Exiting null, Handle
+2024-06-11 16:42:59.009 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api) in 734.1965ms
+2024-06-11 16:42:59.010 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-06-11 16:42:59.013 +05:00 [ERR] Error parsing column 17 (CheckInFrom=14:00:00 - Object)
+System.Data.DataException: Error parsing column 17 (CheckInFrom=14:00:00 - Object)
+ ---> System.InvalidCastException: Unable to cast object of type 'System.TimeSpan' to type 'System.Nullable`1[System.DateTime]'.
+   at Deserializecc156c3e-3c74-4efa-8b93-cbae4d8a76fd(DbDataReader)
+   --- End of inner exception stack trace ---
+   at Dapper.SqlMapper.ThrowDataException(Exception ex, Int32 index, IDataReader reader, Object value) in /_/Dapper/SqlMapper.cs:line 3925
+   at Deserializecc156c3e-3c74-4efa-8b93-cbae4d8a76fd(DbDataReader)
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command)
+   at CleanArc.Infrastructure.Persistence.Repositories.HotelRepository.GetAllAsync(SearchRequest searchRequest)
+   at CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQueryHandler.Handle(GetAllHotelsQuery request, CancellationToken cancellationToken)
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context)
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context)
+2024-06-11 16:42:59.046 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/Hotel/GetAll application/json 138 - 500 - - 871.3214ms
+2024-06-11 16:43:31.906 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/Hotel/GetAll application/json 138
+2024-06-11 16:43:31.907 +05:00 [INF] CORS policy execution successful.
+2024-06-11 16:43:31.907 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-06-11 16:43:31.908 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-06-11 16:43:31.918 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-06-11 16:43:31.918 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-06-11 16:43:31.918 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-06-11 16:43:31.919 +05:00 [INF] Route matched with {action = "GetAll", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQuery) on controller CleanArc.Web.Api.Controllers.V1.Hotel.HotelController (CleanArc.Web.Api).
+2024-06-11 16:43:31.986 +05:00 [INF] Entering CleanArc.Application.Features.Hotel.Queries.GetAllHotels, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}}
+2024-06-11 16:43:31.986 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}
+2024-06-11 16:43:32.022 +05:00 [INF] Exiting null, GetAllAsync
+2024-06-11 16:43:32.023 +05:00 [INF] Exiting null, Handle
+2024-06-11 16:43:32.024 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api) in 103.7658ms
+2024-06-11 16:43:32.024 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-06-11 16:43:32.025 +05:00 [ERR] Error parsing column 17 (CheckInFrom=14:00:00 - Object)
+System.Data.DataException: Error parsing column 17 (CheckInFrom=14:00:00 - Object)
+ ---> System.InvalidCastException: Unable to cast object of type 'System.TimeSpan' to type 'System.Nullable`1[System.DateTime]'.
+   at Deserializecc156c3e-3c74-4efa-8b93-cbae4d8a76fd(DbDataReader)
+   --- End of inner exception stack trace ---
+   at Dapper.SqlMapper.ThrowDataException(Exception ex, Int32 index, IDataReader reader, Object value) in /_/Dapper/SqlMapper.cs:line 3925
+   at Deserializecc156c3e-3c74-4efa-8b93-cbae4d8a76fd(DbDataReader)
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command)
+   at CleanArc.Infrastructure.Persistence.Repositories.HotelRepository.GetAllAsync(SearchRequest searchRequest)
+   at CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQueryHandler.Handle(GetAllHotelsQuery request, CancellationToken cancellationToken)
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context)
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context)
+2024-06-11 16:43:32.030 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/Hotel/GetAll application/json 138 - 500 - - 123.5246ms
+2024-06-11 16:43:39.109 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/Hotel/GetAll application/json 138
+2024-06-11 16:43:39.109 +05:00 [INF] CORS policy execution successful.
+2024-06-11 16:43:39.110 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-06-11 16:43:39.110 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-06-11 16:43:39.113 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-06-11 16:43:39.113 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-06-11 16:43:39.113 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-06-11 16:43:39.114 +05:00 [INF] Route matched with {action = "GetAll", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQuery) on controller CleanArc.Web.Api.Controllers.V1.Hotel.HotelController (CleanArc.Web.Api).
+2024-06-11 16:43:39.126 +05:00 [INF] Entering CleanArc.Application.Features.Hotel.Queries.GetAllHotels, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}}
+2024-06-11 16:43:39.126 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}
+2024-06-11 16:43:39.133 +05:00 [INF] Exiting null, GetAllAsync
+2024-06-11 16:43:39.133 +05:00 [INF] Exiting null, Handle
+2024-06-11 16:43:39.134 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api) in 19.7272ms
+2024-06-11 16:43:39.135 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-06-11 16:43:39.135 +05:00 [ERR] Error parsing column 17 (CheckInFrom=14:00:00 - Object)
+System.Data.DataException: Error parsing column 17 (CheckInFrom=14:00:00 - Object)
+ ---> System.InvalidCastException: Unable to cast object of type 'System.TimeSpan' to type 'System.Nullable`1[System.DateTime]'.
+   at Deserializecc156c3e-3c74-4efa-8b93-cbae4d8a76fd(DbDataReader)
+   --- End of inner exception stack trace ---
+   at Dapper.SqlMapper.ThrowDataException(Exception ex, Int32 index, IDataReader reader, Object value) in /_/Dapper/SqlMapper.cs:line 3925
+   at Deserializecc156c3e-3c74-4efa-8b93-cbae4d8a76fd(DbDataReader)
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command)
+   at CleanArc.Infrastructure.Persistence.Repositories.HotelRepository.GetAllAsync(SearchRequest searchRequest)
+   at CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQueryHandler.Handle(GetAllHotelsQuery request, CancellationToken cancellationToken)
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context)
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context)
+2024-06-11 16:43:39.144 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/Hotel/GetAll application/json 138 - 500 - - 35.5321ms
+2024-06-11 16:43:40.595 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/Hotel/GetAll application/json 138
+2024-06-11 16:43:40.596 +05:00 [INF] CORS policy execution successful.
+2024-06-11 16:43:40.596 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-06-11 16:43:40.596 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-06-11 16:43:40.597 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-06-11 16:43:40.597 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-06-11 16:43:40.597 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-06-11 16:43:40.598 +05:00 [INF] Route matched with {action = "GetAll", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQuery) on controller CleanArc.Web.Api.Controllers.V1.Hotel.HotelController (CleanArc.Web.Api).
+2024-06-11 16:43:40.602 +05:00 [INF] Entering CleanArc.Application.Features.Hotel.Queries.GetAllHotels, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}}
+2024-06-11 16:43:40.602 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}
+2024-06-11 16:43:40.610 +05:00 [INF] Exiting null, GetAllAsync
+2024-06-11 16:43:40.610 +05:00 [INF] Exiting null, Handle
+2024-06-11 16:43:40.611 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api) in 12.4562ms
+2024-06-11 16:43:40.611 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-06-11 16:43:40.612 +05:00 [ERR] Error parsing column 17 (CheckInFrom=14:00:00 - Object)
+System.Data.DataException: Error parsing column 17 (CheckInFrom=14:00:00 - Object)
+ ---> System.InvalidCastException: Unable to cast object of type 'System.TimeSpan' to type 'System.Nullable`1[System.DateTime]'.
+   at Deserializecc156c3e-3c74-4efa-8b93-cbae4d8a76fd(DbDataReader)
+   --- End of inner exception stack trace ---
+   at Dapper.SqlMapper.ThrowDataException(Exception ex, Int32 index, IDataReader reader, Object value) in /_/Dapper/SqlMapper.cs:line 3925
+   at Deserializecc156c3e-3c74-4efa-8b93-cbae4d8a76fd(DbDataReader)
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command)
+   at CleanArc.Infrastructure.Persistence.Repositories.HotelRepository.GetAllAsync(SearchRequest searchRequest)
+   at CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQueryHandler.Handle(GetAllHotelsQuery request, CancellationToken cancellationToken)
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context)
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context)
+2024-06-11 16:43:40.616 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/Hotel/GetAll application/json 138 - 500 - - 20.9775ms
+2024-06-11 16:43:44.382 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/Hotel/GetAll application/json 138
+2024-06-11 16:43:44.383 +05:00 [INF] CORS policy execution successful.
+2024-06-11 16:43:44.383 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-06-11 16:43:44.383 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-06-11 16:43:44.383 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-06-11 16:43:44.384 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-06-11 16:43:44.384 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-06-11 16:43:44.384 +05:00 [INF] Route matched with {action = "GetAll", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQuery) on controller CleanArc.Web.Api.Controllers.V1.Hotel.HotelController (CleanArc.Web.Api).
+2024-06-11 16:43:44.387 +05:00 [INF] Entering CleanArc.Application.Features.Hotel.Queries.GetAllHotels, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}}
+2024-06-11 16:43:44.387 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}
+2024-06-11 16:43:44.392 +05:00 [INF] Exiting null, GetAllAsync
+2024-06-11 16:43:44.392 +05:00 [INF] Exiting null, Handle
+2024-06-11 16:43:44.393 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api) in 8.9594ms
+2024-06-11 16:43:44.393 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-06-11 16:43:44.394 +05:00 [ERR] Error parsing column 17 (CheckInFrom=14:00:00 - Object)
+System.Data.DataException: Error parsing column 17 (CheckInFrom=14:00:00 - Object)
+ ---> System.InvalidCastException: Unable to cast object of type 'System.TimeSpan' to type 'System.Nullable`1[System.DateTime]'.
+   at Deserializecc156c3e-3c74-4efa-8b93-cbae4d8a76fd(DbDataReader)
+   --- End of inner exception stack trace ---
+   at Dapper.SqlMapper.ThrowDataException(Exception ex, Int32 index, IDataReader reader, Object value) in /_/Dapper/SqlMapper.cs:line 3925
+   at Deserializecc156c3e-3c74-4efa-8b93-cbae4d8a76fd(DbDataReader)
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command)
+   at CleanArc.Infrastructure.Persistence.Repositories.HotelRepository.GetAllAsync(SearchRequest searchRequest)
+   at CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQueryHandler.Handle(GetAllHotelsQuery request, CancellationToken cancellationToken)
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context)
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context)
+2024-06-11 16:43:44.401 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/Hotel/GetAll application/json 138 - 500 - - 18.9331ms
+2024-06-11 16:43:51.116 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/Hotel/GetAll application/json 138
+2024-06-11 16:43:51.117 +05:00 [INF] CORS policy execution successful.
+2024-06-11 16:43:51.117 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-06-11 16:43:51.118 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-06-11 16:43:51.119 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-06-11 16:43:51.120 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-06-11 16:43:51.120 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-06-11 16:43:51.121 +05:00 [INF] Route matched with {action = "GetAll", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQuery) on controller CleanArc.Web.Api.Controllers.V1.Hotel.HotelController (CleanArc.Web.Api).
+2024-06-11 16:43:51.159 +05:00 [INF] Entering CleanArc.Application.Features.Hotel.Queries.GetAllHotels, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}}
+2024-06-11 16:43:51.159 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}
+2024-06-11 16:43:51.166 +05:00 [INF] Exiting null, GetAllAsync
+2024-06-11 16:43:51.166 +05:00 [INF] Exiting null, Handle
+2024-06-11 16:43:51.168 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api) in 46.9531ms
+2024-06-11 16:43:51.168 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-06-11 16:43:51.169 +05:00 [ERR] Error parsing column 17 (CheckInFrom=14:00:00 - Object)
+System.Data.DataException: Error parsing column 17 (CheckInFrom=14:00:00 - Object)
+ ---> System.InvalidCastException: Unable to cast object of type 'System.TimeSpan' to type 'System.Nullable`1[System.DateTime]'.
+   at Deserializecc156c3e-3c74-4efa-8b93-cbae4d8a76fd(DbDataReader)
+   --- End of inner exception stack trace ---
+   at Dapper.SqlMapper.ThrowDataException(Exception ex, Int32 index, IDataReader reader, Object value) in /_/Dapper/SqlMapper.cs:line 3925
+   at Deserializecc156c3e-3c74-4efa-8b93-cbae4d8a76fd(DbDataReader)
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command)
+   at CleanArc.Infrastructure.Persistence.Repositories.HotelRepository.GetAllAsync(SearchRequest searchRequest)
+   at CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQueryHandler.Handle(GetAllHotelsQuery request, CancellationToken cancellationToken)
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context)
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context)
+2024-06-11 16:43:51.178 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/Hotel/GetAll application/json 138 - 500 - - 60.9127ms
+2024-06-11 16:44:29.009 +05:00 [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-11 16:44:29.167 +05:00 [INF] Executed DbCommand (79ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-11 16:44:29.177 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-11 16:44:29.198 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-11 16:44:29.231 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-11 16:44:29.266 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-11 16:44:29.291 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-11 16:44:29.694 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-11 16:44:29.711 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-11 16:44:30.076 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-11 16:44:30.281 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-11 16:44:30.466 +05:00 [INF] Response StatusCode: 200
+2024-06-11 16:44:30.538 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-11 16:44:30.548 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-11 16:44:30.556 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 469.2323ms
+2024-06-11 16:44:30.572 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 33.0499ms
+2024-06-11 16:44:30.682 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 133.4408ms
+2024-06-11 16:44:31.954 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json -
+2024-06-11 16:44:31.959 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-11 16:44:31.998 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-11 16:44:32.003 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-11 16:44:32.207 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-11 16:44:32.212 +05:00 [INF] Response StatusCode: 404
+2024-06-11 16:44:32.216 +05:00 [INF] Response StatusCode: 404
+2024-06-11 16:44:32.222 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 268.0546ms
+2024-06-11 16:44:32.840 +05:00 [INF] Response StatusCode: 200
+2024-06-11 16:44:32.848 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 849.2613ms
+2024-06-11 16:47:08.150 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/Hotel/GetAll application/json 137
+2024-06-11 16:47:08.156 +05:00 [INF] CORS policy execution successful.
+2024-06-11 16:47:08.161 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-06-11 16:47:08.168 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+    
+    ]
+  }
+}
+2024-06-11 16:47:08.207 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-06-11 16:47:08.209 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+    
+    ]
+  }
+}
+2024-06-11 16:47:08.214 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-06-11 16:47:08.240 +05:00 [INF] Route matched with {action = "GetAll", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQuery) on controller CleanArc.Web.Api.Controllers.V1.Hotel.HotelController (CleanArc.Web.Api).
+2024-06-11 16:47:18.771 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-11 16:47:18.917 +05:00 [INF] Entering CleanArc.Application.Features.Hotel.Queries.GetAllHotels, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}}
+2024-06-11 16:47:23.034 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}
+2024-06-11 16:47:28.712 +05:00 [INF] Exiting null, GetAllAsync
+2024-06-11 16:47:28.778 +05:00 [INF] Exiting null, Handle
+2024-06-11 16:47:28.863 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api) in 20615.1414ms
+2024-06-11 16:47:28.868 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-06-11 16:47:29.147 +05:00 [ERR] Error parsing column 17 (CheckInFrom=14:00:00 - Object)
+System.Data.DataException: Error parsing column 17 (CheckInFrom=14:00:00 - Object)
+ ---> System.InvalidCastException: Unable to cast object of type 'System.TimeSpan' to type 'System.Nullable`1[System.DateTime]'.
+   at Deserialize7b9a3fcb-df56-4e82-92db-42cf7921f50e(DbDataReader)
+   --- End of inner exception stack trace ---
+   at Dapper.SqlMapper.ThrowDataException(Exception ex, Int32 index, IDataReader reader, Object value) in /_/Dapper/SqlMapper.cs:line 3925
+   at Deserialize7b9a3fcb-df56-4e82-92db-42cf7921f50e(DbDataReader)
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command)
+   at CleanArc.Infrastructure.Persistence.Repositories.HotelRepository.GetAllAsync(SearchRequest searchRequest)
+   at CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQueryHandler.Handle(GetAllHotelsQuery request, CancellationToken cancellationToken)
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context)
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context)
+2024-06-11 16:47:29.206 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/Hotel/GetAll application/json 137 - 500 - - 21056.0269ms
+2024-06-11 16:47:39.813 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/Hotel/GetAll application/json 137
+2024-06-11 16:47:39.817 +05:00 [INF] CORS policy execution successful.
+2024-06-11 16:47:44.206 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-06-11 16:47:44.214 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+    
+    ]
+  }
+}
+2024-06-11 16:47:44.239 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-06-11 16:47:44.245 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+    
+    ]
+  }
+}
+2024-06-11 16:47:44.251 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-06-11 16:47:44.261 +05:00 [INF] Route matched with {action = "GetAll", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQuery) on controller CleanArc.Web.Api.Controllers.V1.Hotel.HotelController (CleanArc.Web.Api).
+2024-06-11 16:47:46.155 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-11 16:47:46.270 +05:00 [INF] Entering CleanArc.Application.Features.Hotel.Queries.GetAllHotels, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}}
+2024-06-11 16:48:07.838 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}
+2024-06-11 16:48:15.460 +05:00 [INF] Exiting null, GetAllAsync
+2024-06-11 16:48:19.545 +05:00 [INF] Exiting null, Handle
+2024-06-11 16:48:22.363 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api) in 38094.3047ms
+2024-06-11 16:48:22.370 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-06-11 16:50:55.746 +05:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-11 16:50:55.923 +05:00 [INF] Executed DbCommand (92ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-11 16:50:55.943 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-11 16:50:55.952 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-11 16:50:56.018 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-11 16:50:56.050 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-11 16:50:56.073 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-11 16:50:56.429 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-11 16:50:56.452 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-11 16:50:56.853 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-11 16:50:57.090 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-11 16:50:57.348 +05:00 [INF] Response StatusCode: 200
+2024-06-11 16:50:57.355 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-11 16:50:57.368 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 517.1321ms
+2024-06-11 16:50:57.373 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 16.9200ms
+2024-06-11 16:50:57.414 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-11 16:50:57.512 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 97.4433ms
+2024-06-11 16:50:58.655 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json -
+2024-06-11 16:50:58.660 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-11 16:50:58.801 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-11 16:50:58.817 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-11 16:50:58.930 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-11 16:50:58.933 +05:00 [INF] Response StatusCode: 404
+2024-06-11 16:50:58.935 +05:00 [INF] Response StatusCode: 404
+2024-06-11 16:50:58.943 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 287.6809ms
+2024-06-11 16:50:59.339 +05:00 [INF] Response StatusCode: 200
+2024-06-11 16:50:59.350 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 549.4691ms
