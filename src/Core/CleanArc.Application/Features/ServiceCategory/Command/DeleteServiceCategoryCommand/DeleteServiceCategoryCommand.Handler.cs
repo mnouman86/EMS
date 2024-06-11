@@ -1,4 +1,4 @@
-﻿using CleanArc.Application.Contracts.Identity;
+using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Features.AgeType.Commands.DeleteAgeTypeCommand;
 using CleanArc.Application.Models.Common;
@@ -57,7 +57,7 @@ namespace CleanArc.Application.Features.ServiceCategory.Command.DeleteServiceCat
                 //return OperationResult<bool>.SuccessResult(true);
                 //await _unitOfWork.AgeTypeRepository.DeleteAsync(new Domain.Entities.AgeType.AgeType()
                 // { UpdatedBy = user.Id, ID = request.ID });
-                await _unitOfWork.ServiceRepository.DeleteAsync(request.SelectedIds, user.Id);
+                await _unitOfWork.ServiceCategoryRepository.DeleteAsync(request.SelectedIds, user.Id);
                 await _unitOfWork.CommitAsync();
                 //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
                 return OperationResult<bool>.SuccessResult(true);

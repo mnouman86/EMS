@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +11,7 @@ namespace CleanArc.Domain.Entities.State
         public int? ID { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
+        public string countryName { get; set; } 
         public int? CountryID { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsDeleted { get; set; }
