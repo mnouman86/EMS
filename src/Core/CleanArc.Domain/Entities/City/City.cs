@@ -12,8 +12,8 @@ namespace CleanArc.Domain.Entities.City
         public string? Name { get; set; }
         public string? Description { get; set; }
         public int? StateID { get; set; }
-        public string? ImagePath { get; set; }
-        public string? ImageTitle { get; set; }
+        public string? ImagePath { get; set; } 
+        public string? ImageTitle { get; set; } 
         public bool? IsActive { get; set; }
         public bool? IsDeleted { get; set; }
         public int? CreatedBy { get; set; }
