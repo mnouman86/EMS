@@ -8,5 +8,5 @@ namespace CleanArc.Application.Features.Hotel.Queries.GetAllHotels;
 
 public record GetAllHotelsQueryResult(int Id,string Name, int CountryID, int StateID, int CityID, int ZipCode, string Address1,
     string Address2, string Latitude, string Longitude, string MobileNumber, string PhoneNumber, string Email,
-    string FocalPersonName, bool IsChanelManager, bool IsRating, bool IsChain, DateTime CheckInFrom, DateTime CheckInTo,
+    string FocalPersonName, bool IsChanelManager, bool IsRating, bool IsChain, string CheckInFrom, DateTime CheckInTo,
     DateTime CheckOutFrom, DateTime CheckOutTo, bool IsActive, bool IsDeleted, int CreatedBy, DateTime CreatedAt, DateTime UpdatedAt, int UpdatedBy);
