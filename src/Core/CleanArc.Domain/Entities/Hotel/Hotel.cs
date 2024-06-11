@@ -25,10 +25,10 @@ namespace CleanArc.Domain.Entities.Hotel
     public bool? IsChanelManager { get; set; }
     public bool? IsRating { get; set; }
     public bool? IsChain { get; set; }
-    public DateTime? CheckInFrom { get; set; }
-    public DateTime? CheckInTo { get; set; }
-    public DateTime? CheckOutFrom { get; set; }
-    public DateTime? CheckOutTo { get; set; }
+    public string? CheckInFrom { get; set; }
+    public string? CheckInTo { get; set; }
+    public string? CheckOutFrom { get; set; }
+    public string? CheckOutTo { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }
