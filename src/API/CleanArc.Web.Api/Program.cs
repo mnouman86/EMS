@@ -28,10 +28,14 @@ using Castle.DynamicProxy;
 using CleanArc.WebFramework.Interceptor;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
+using CleanArc.Application.Common;
 
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddControllers(options =>
+{
+    options.ModelBinderProviders.Insert(0, new TimeModelBinderProvider());
+});
 //builder.Host.UseSerilog(LoggingConfiguration.ConfigureLogger);
 builder.Host.UseSerilog();
 //builder.Host.UseKestrel(options =>

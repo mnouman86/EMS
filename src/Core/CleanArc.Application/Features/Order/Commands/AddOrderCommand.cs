@@ -7,7 +7,8 @@ using Mediator;
 
 namespace CleanArc.Application.Features.Order.Commands;
 
-public record AddOrderCommand( string OrderName) : IRequest<OperationResult<bool>>,
+public record AddOrderCommand( string OrderName) : IRequest<OperationResult<bool>>
+    ,
     IValidatableModel<AddOrderCommand>
 {
     [JsonIgnore]
