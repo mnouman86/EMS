@@ -60,6 +60,8 @@ internal class CreateRoomDetailCommandHandler : IRequestHandler<CreateRoomDetail
                 AdditionalMatricCharges = request.AdditionalMatricCharges,
                 RoomNumber = request.RoomNumber,
                 IsAvailable = request.IsAvailable,
+                IsRefundable=request.IsRefundable,
+                IsCancelation=request.IsCancelation
 
             });
             await _unitOfWork.CommitAsync();
