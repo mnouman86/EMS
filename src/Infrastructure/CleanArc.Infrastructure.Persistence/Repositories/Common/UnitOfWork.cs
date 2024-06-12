@@ -32,6 +32,10 @@ public class UnitOfWork : IUnitOfWork
     public ICountryRepository CountryRepository { get; set; }
     public IStateRepository StateRepository { get; set; }
     public ICityRepository CityRepository { get; set; }
+    public IMappingHotelAmenityRepository MappingHotelAmenityRepository { get; set; }
+    public IMappingHotelLanguageRepository MappingHotelLanguageRepository { get; set; }
+    public IMappingRoomAmenitiesRepository MappingRoomAmenitiesRepository { get; set; }
+    public IMappingRoomImageRepository MappingRoomImageRepository { get; set; }
     public ILanguageRepository LanguageRepository { get; set; }
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -59,6 +63,12 @@ public class UnitOfWork : IUnitOfWork
                                 ILogger<StateRepository> _loggerState,
                                 ILogger<CityRepository> _loggerCity,
                                 ILogger<LanguageRepository> _loggerLanguage,
+                                ILogger<MappingHotelAmenityRepository> _loggerMappingHotelAmenity,
+                                ILogger<MappingHotelLanguageRepository> _loggerMappingHotelLanguage,
+        ILogger<MappingRoomAmenitiesRepository> _loggerMappingRoomAmenities,
+        ILogger<MappingRoomImageRepository> _loggerMappingRoomImage,
+
+
 
 
 
@@ -89,6 +99,10 @@ public class UnitOfWork : IUnitOfWork
         CountryRepository=new CountryRepository(configuration, mapper, _loggerCountry, httpContextAccessor);
         StateRepository = new StateRepository(configuration, mapper, _loggerState, httpContextAccessor);
         CityRepository = new CityRepository(configuration, mapper, _loggerCity, httpContextAccessor);
+        MappingHotelAmenityRepository=new MappingHotelAmenityRepository(configuration, mapper, _loggerMappingHotelAmenity, httpContextAccessor);
+        MappingHotelLanguageRepository=new MappingHotelLanguageRepository(configuration, mapper, _loggerMappingHotelLanguage, httpContextAccessor);
+        MappingRoomAmenitiesRepository=new MappingRoomAmenitiesRepository(configuration, mapper, _loggerMappingRoomAmenities, httpContextAccessor);
+        MappingRoomImageRepository = new MappingRoomImageRepository(configuration, mapper, _loggerMappingRoomImage, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         this.configuration = configuration;
