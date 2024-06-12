@@ -25,6 +25,10 @@ public interface IUnitOfWork
     public IStateRepository StateRepository { get; }
     public ICityRepository CityRepository { get; }
     public ILanguageRepository LanguageRepository { get; }
+    public IMappingHotelAmenityRepository MappingHotelAmenityRepository { get; }
+    public IMappingHotelLanguageRepository MappingHotelLanguageRepository { get; }
+    public IMappingRoomAmenitiesRepository MappingRoomAmenitiesRepository { get; }
+    public IMappingRoomImageRepository MappingRoomImageRepository { get; }
 
     Task CommitAsync();
     ValueTask RollBackAsync();

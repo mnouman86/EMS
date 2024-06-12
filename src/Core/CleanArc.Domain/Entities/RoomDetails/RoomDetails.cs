@@ -24,4 +24,6 @@ public class RoomDetails
     public DateTime? CreatedAt { get; set; }
     public int? UpdatedBy { get; set; }
     public DateTime? UpdatedAt { get; set; }
+    public bool? IsCancelation { get; set; }
+    public bool? IsRefundable { get; set; }
 }
