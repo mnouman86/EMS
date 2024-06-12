@@ -65,6 +65,8 @@ internal class UpdateRoomDetailCommandHandler : IRequestHandler<UpdateRoomDetail
                 AdditionalMatricCharges = request.AdditionalMatricCharges,
                 RoomNumber = request.RoomNumber,
                 IsAvailable = request.IsAvailable,
+                IsRefundable = request.IsRefundable,
+                IsCancelation = request.IsCancelation
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

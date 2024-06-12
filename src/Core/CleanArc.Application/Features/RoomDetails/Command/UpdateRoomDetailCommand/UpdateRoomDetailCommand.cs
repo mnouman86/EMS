@@ -13,7 +13,7 @@ using System.Text.Json.Serialization;
 namespace CleanArc.Application.Features.RoomDetails.Command.UpdateRoomDetailCommand;
 
 public record UpdateRoomDetailCommand(int ID, int? HotelID, int? RoomTypeID, int? RoomSizeUnitID, string? RoomSize, bool? IsBathroomPrivate,
-    decimal? Price, decimal? AdditionalMatricCharges, string? RoomNumber, bool? IsAvailable, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+    decimal? Price, decimal? AdditionalMatricCharges, string? RoomNumber, bool? IsAvailable, int? UpdatedBy, bool? IsRefundable, bool? IsCancelation) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateRoomDetailCommand>
 {
     [JsonIgnore]
