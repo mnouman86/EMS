@@ -72,8 +72,8 @@ internal class UpdateHotelCommandHandler : IRequestHandler<UpdateHotelCommand, O
                 CheckInTo = request.CheckInTo,
                 CheckOutFrom = request.CheckOutFrom,
                 CheckOutTo = request.CheckOutTo,
-                IsDeleted = request.IsDeleted,
-                IsActive = request.IsActive,
+                //IsDeleted = request.IsDeleted,
+                //IsActive = request.IsActive,
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
