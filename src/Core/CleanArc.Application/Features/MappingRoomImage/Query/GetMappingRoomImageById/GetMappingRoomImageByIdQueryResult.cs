@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.MappingRoomImage.Query.GetMappingRoomImageById
 {
-    internal class GetMappingRoomImageByIdQueryResult
+    public  class GetMappingRoomImageByIdQueryResult
     {
     }
 }

@@ -1,6 +1,6 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Features.AgeType.Queries.GetAgeTypeById;
 using CleanArc.Application.Models.Common;
+using CleanArc.SharedKernel.Extensions;
 using MapsterMapper;
 using Mediator;
 using Microsoft.AspNetCore.Http;
@@ -10,43 +10,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.SharedKernel.Extensions;
 
-namespace CleanArc.Application.Features.MappingRoomImage.Query.GetMappingRoomImageById
+namespace CleanArc.Application.Features.Bank.Queries.GetBankById
 {
-    internal class GetMappingRoomImageByIdQueryHandler : IRequestHandler<GetMappingRoomImageByIdQuery, OperationResult<GetMappingRoomImageByIdQueryResult>>
+    internal class GetBankByIdQueryHandler : IRequestHandler<GetBankByIdQuery, OperationResult<GetBankByIdQueryResult>>
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly ILogger<GetMappingRoomImageByIdQueryHandler> _logger;
+        private readonly ILogger<GetBankByIdQueryHandler> _logger;
         private readonly IMapper _mapper;
         private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
 
 
 
-        public GetMappingRoomImageByIdQueryHandler(IUnitOfWork unitOfWork, ILogger<GetMappingRoomImageByIdQueryHandler> logger, IMapper mapper, IHttpContextAccessor httpContextAccessor)
+        public GetBankByIdQueryHandler(IUnitOfWork unitOfWork, ILogger<GetBankByIdQueryHandler> logger, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _httpContextAccessor = httpContextAccessor;
             _logger = logger;
         }
-        public async ValueTask<OperationResult<GetMappingRoomImageByIdQueryResult>> Handle(GetMappingRoomImageByIdQuery request, CancellationToken cancellationToken)
+        public async ValueTask<OperationResult<GetBankByIdQueryResult>> Handle(GetBankByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var ageType = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.Id);
+                var bank = await _unitOfWork.BankRepository.GetByIdAsync(request.Id);
 
-                if (ageType == null)
+                if (bank == null)
                 {
-                    return OperationResult<GetMappingRoomImageByIdQueryResult>.NotFoundResult("ageType not found");
+                    return OperationResult<GetBankByIdQueryResult>.NotFoundResult("bank not found");
                 }
 
                 //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetMappingRoomImageByIdQueryResult>(ageType);
+                var result = _mapper.Map<GetBankByIdQueryResult>(bank);
 
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-                return OperationResult<GetMappingRoomImageByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetBankByIdQueryResult>.SuccessResult(result);
             }
         }
 

@@ -1,8 +1,8 @@
-﻿using AutoMapper;
-using CleanArc.Application.Contracts.Identity;
+﻿using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.Extensions;
+using MapsterMapper;
 using Mediator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -13,21 +13,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.City.Command.UpdateCityCommand;
+namespace CleanArc.Application.Features.BusinessBankAccount.Command.UpdateBusinessBankAccountCommand;
 
-internal class UpdateCityCommandHandler : IRequestHandler<UpdateCityCommand, OperationResult<bool>>
+internal class UpdateBusinessBankAccountCommandHandler : IRequestHandler<UpdateBusinessBankAccountCommand, OperationResult<bool>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<UpdateCityCommandHandler> _logger;
+    private readonly ILogger<UpdateBusinessBankAccountCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
                                                                 //private readonly IUnitOfWork _unitOfWork;
                                                                 //private readonly IAppUserManager _userManager;
 
 
-    public UpdateCityCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateCityCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public UpdateBusinessBankAccountCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateBusinessBankAccountCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -38,7 +38,7 @@ internal class UpdateCityCommandHandler : IRequestHandler<UpdateCityCommand, Ope
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<bool>> Handle(UpdateCityCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<bool>> Handle(UpdateBusinessBankAccountCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -54,8 +54,8 @@ internal class UpdateCityCommandHandler : IRequestHandler<UpdateCityCommand, Ope
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.CityRepository.UpdateAsync(new Domain.Entities.City.City()
-            { UpdatedBy = user.Id, ID = request.ID, Description = request.Description, Name = request.Name, StateID = request.StateID, IsMain = request.IsMain  });
+            await _unitOfWork.BusinessBankAccountRepository.UpdateAsync(new Domain.Entities.BusinessBankAccount.BusinessBankAccount()
+            { UpdatedBy = user.Id, ID = request.ID, AccountTitle = request.AccountTitle, BankID = request.BankID, BusinessID = request.BusinessID, IBAN = request.IBAN });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

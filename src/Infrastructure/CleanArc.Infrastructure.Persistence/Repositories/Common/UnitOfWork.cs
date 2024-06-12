@@ -37,6 +37,9 @@ public class UnitOfWork : IUnitOfWork
     public IMappingRoomAmenitiesRepository MappingRoomAmenitiesRepository { get; set; }
     public IMappingRoomImageRepository MappingRoomImageRepository { get; set; }
     public ILanguageRepository LanguageRepository { get; set; }
+    public IBusinessRepository BusinessRepository { get; set; }
+    public IBankRepository BankRepository { get; set; }
+    public IBusinessBankAccountRepository BusinessBankAccountRepository { get; set; }
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
 
@@ -67,6 +70,12 @@ public class UnitOfWork : IUnitOfWork
                                 ILogger<MappingHotelLanguageRepository> _loggerMappingHotelLanguage,
         ILogger<MappingRoomAmenitiesRepository> _loggerMappingRoomAmenities,
         ILogger<MappingRoomImageRepository> _loggerMappingRoomImage,
+        ILogger<BusinessRepository> _loggerBusiness,
+        ILogger<BankRepository> _loggerBank,
+        ILogger<BusinessBankAccountRepository> _loggerBusinessBankAccount,
+
+
+
 
 
 
@@ -103,6 +112,9 @@ public class UnitOfWork : IUnitOfWork
         MappingHotelLanguageRepository=new MappingHotelLanguageRepository(configuration, mapper, _loggerMappingHotelLanguage, httpContextAccessor);
         MappingRoomAmenitiesRepository=new MappingRoomAmenitiesRepository(configuration, mapper, _loggerMappingRoomAmenities, httpContextAccessor);
         MappingRoomImageRepository = new MappingRoomImageRepository(configuration, mapper, _loggerMappingRoomImage, httpContextAccessor);
+        BusinessRepository = new BusinessRepository(configuration, mapper, _loggerBusiness, httpContextAccessor);
+        BankRepository = new BankRepository(configuration, mapper, _loggerBank, httpContextAccessor);
+        BusinessBankAccountRepository = new BusinessBankAccountRepository(configuration, mapper, _loggerBusinessBankAccount, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         this.configuration = configuration;
