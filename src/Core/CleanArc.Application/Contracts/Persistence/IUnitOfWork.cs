@@ -29,6 +29,9 @@ public interface IUnitOfWork
     public IMappingHotelLanguageRepository MappingHotelLanguageRepository { get; }
     public IMappingRoomAmenitiesRepository MappingRoomAmenitiesRepository { get; }
     public IMappingRoomImageRepository MappingRoomImageRepository { get; }
+    public IBusinessRepository BusinessRepository { get; }
+    public IBankRepository BankRepository { get; }
+    public IBusinessBankAccountRepository BusinessBankAccountRepository { get; }
 
     Task CommitAsync();
     ValueTask RollBackAsync();
