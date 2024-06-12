@@ -1,0 +1,1407 @@
+2024-06-12 15:53:12.746 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-12 15:53:12.868 +05:00 [INF] Executed DbCommand (62ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-12 15:53:12.886 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-12 15:53:12.903 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-12 15:53:12.937 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-12 15:53:12.965 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-12 15:53:12.987 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-12 15:53:13.387 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-12 15:53:13.415 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-12 15:53:13.901 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-12 15:53:14.719 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-12 15:53:14.937 +05:00 [INF] Response StatusCode: 200
+2024-06-12 15:53:14.967 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-12 15:53:14.980 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 1076.3664ms
+2024-06-12 15:53:14.992 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 24.2305ms
+2024-06-12 15:53:15.028 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-12 15:53:15.139 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 110.7424ms
+2024-06-12 15:53:16.035 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json -
+2024-06-12 15:53:16.041 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-12 15:53:16.087 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-12 15:53:16.093 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-12 15:53:16.328 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-12 15:53:16.333 +05:00 [INF] Response StatusCode: 404
+2024-06-12 15:53:16.337 +05:00 [INF] Response StatusCode: 404
+2024-06-12 15:53:16.345 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 309.8093ms
+2024-06-12 15:53:16.960 +05:00 [INF] Response StatusCode: 200
+2024-06-12 15:53:16.968 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 880.7021ms
+2024-06-12 15:54:58.503 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/City/Update application/json 152
+2024-06-12 15:54:58.553 +05:00 [INF] CORS policy execution successful.
+2024-06-12 15:54:58.561 +05:00 [INF] Request Method: POST, Path: /api/v1/City/Update, Content-Type: application/json
+2024-06-12 15:54:58.570 +05:00 [INF] Request Body: {
+  "id": 44,
+  "name": "abc",
+  "description": "abc",
+  "stateID": 5,
+  "imagePath": "wew",
+  "imageTitle": "wew",
+  "updatedBy": 0,
+  "isMain": true
+}
+2024-06-12 15:54:58.640 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-06-12 15:54:58.693 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-06-12 15:54:58.697 +05:00 [INF] Response StatusCode: 401
+2024-06-12 15:54:58.703 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/City/Update application/json 152 - 401 - application/json;+charset=utf-8 199.0429ms
+2024-06-12 15:55:19.536 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54
+2024-06-12 15:55:19.542 +05:00 [INF] CORS policy execution successful.
+2024-06-12 15:55:19.547 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-12 15:55:19.553 +05:00 [INF] Request Body: {
+  "userName": "Waqasbutt",
+  "password": "123@123"
+}
+2024-06-12 15:55:19.575 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-12 15:55:19.580 +05:00 [INF] Request Body: {
+  "userName": "Waqasbutt",
+  "password": "123@123"
+}
+2024-06-12 15:55:19.586 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-12 15:55:19.637 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-06-12 15:55:22.220 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-12 15:55:22.456 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"Waqasbutt","Password":"123@123"}
+2024-06-12 15:55:22.524 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"Waqasbutt","Password":"123@123","$type":"AdminGetTokenQuery"}
+2024-06-12 15:55:22.668 +05:00 [INF] Executed DbCommand (26ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-06-12 15:55:22.845 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1,"$type":"User"}
+2024-06-12 15:55:22.855 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-06-12 15:55:23.119 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-12 15:55:23.190 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-06-12 15:55:23.211 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-12 15:55:23.233 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-06-12 15:55:23.286 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-06-12 15:55:23.789 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-06-12 15:55:23.815 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-06-12 15:55:23.835 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.g-KPfElJxjt8EM0VT-bI-HmVMpsnaN7gZ_6pyOCzsHfdYg0Yo9421Q.nt7czJb--CdEukSDEoFIPg.LdDgaOWz-hxDqpC0gq6zgmF3zPnFUs0vm9LMjmCGVA_FfsEed902GivjA5oabQ6PT7t_gyox75k3rMIp90OHeOR7fwbuWhc4uKLxwV08DaYEoCVMQa3lwPKg7jqo4pvIhFmYoclTVrw9QGHhl5oftbRGHrtb9gRbxi3WiFlbwmHsrpRvXrB0wAuF9wiM9bmAvLJ6kWokN4b4kFbR1Co6koChIMNIyM4EZZVoLpXV_jI4HUrhpjZ0alLlfN8VW-_Tmo0wtfJWhZ2V5XCrG3JQF0vurVgooNgOttl7lusF-r3xPM0GY-ZycClCiqw7wNFb_YTIEPFmkj1J6Tf_CjtO4gKa-Aq1gj57Ywex8PF7TM7m7EmPkwB-fODkXGPhjzvW8sAytWxqZXOcBzTzLuYb_no18KEVfzw5J3cRAFBUB-3ZJgvpZgAOgdy5Z6VaGTNPVwpQ13L5XoLPNytkLqG8XWqHpDA-14gt71Ut4p_f7_qwVhQ9t5GNbXkB__dH9cRqxOXRo6ZGci8d5umidh85K8ru7TjobDiytcEBhfdQ5DjGV79KabMnruhdtWKvlibSbhUpWcL4KoFAlPQeleCli5saPztlZ_LoLtx1-pjiYaCdjizjoSpSXGFHY44mmJcR2nNenW4FPT2QDJ0n3kbmmuiQUxN12-1mMn5XJKbSk-jyxQk4pLuXwbnQS3kHThnqnt7rKbHJuvMAiEqKigwIfQ.g3yD6eGDu5gKQc7UQ0MmsA","refresh_token":"64274d4a-4cf9-495e-b265-08dc8ace28fa","token_type":"Bearer","expires_in":599999},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-06-12 15:55:23.848 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1617.2611ms.
+2024-06-12 15:55:23.869 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-12 15:55:23.885 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 4237.9878ms
+2024-06-12 15:55:23.890 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-12 15:55:23.893 +05:00 [INF] Response StatusCode: 200
+2024-06-12 15:55:23.899 +05:00 [INF] Response StatusCode: 200
+2024-06-12 15:55:23.905 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54 - 200 - application/json;+charset=utf-8 4368.9838ms
+2024-06-12 15:55:40.895 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/City/Update application/json 152
+2024-06-12 15:55:40.899 +05:00 [INF] CORS policy execution successful.
+2024-06-12 15:55:40.903 +05:00 [INF] Request Method: POST, Path: /api/v1/City/Update, Content-Type: application/json
+2024-06-12 15:55:40.908 +05:00 [INF] Request Body: {
+  "id": 44,
+  "name": "abc",
+  "description": "abc",
+  "stateID": 5,
+  "imagePath": "wew",
+  "imageTitle": "wew",
+  "updatedBy": 0,
+  "isMain": true
+}
+2024-06-12 15:55:41.183 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-12 15:55:41.206 +05:00 [INF] Request Method: POST, Path: /api/v1/City/Update, Content-Type: application/json
+2024-06-12 15:55:41.211 +05:00 [INF] Request Body: {
+  "id": 44,
+  "name": "abc",
+  "description": "abc",
+  "stateID": 5,
+  "imagePath": "wew",
+  "imageTitle": "wew",
+  "updatedBy": 0,
+  "isMain": true
+}
+2024-06-12 15:55:41.217 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api)'
+2024-06-12 15:55:41.231 +05:00 [INF] Route matched with {action = "Update", controller = "City"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.City.Command.UpdateCityCommand.UpdateCityCommand) on controller CleanArc.Web.Api.Controllers.V1.City.CityController (CleanArc.Web.Api).
+2024-06-12 15:55:46.964 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-12 15:55:47.228 +05:00 [INF] Entering CleanArc.Application.Features.City.Command.UpdateCityCommand, Handle with parameter: {"ID":44,"Name":"abc","Description":"abc","StateID":5,"ImagePath":"wew","ImageTitle":"wew","UpdatedBy":0,"IsMain":true,"UserId":6}
+2024-06-12 15:55:47.232 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 6
+2024-06-12 15:55:47.249 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-06-12 15:55:47.355 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":44,"Name":"abc","Description":"abc","StateName":null,"StateID":5,"ImagePath":"wew","ImageTitle":null,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":6,"UpdatedAt":null,"IsMain":true}
+2024-06-12 15:55:47.612 +05:00 [INF] Exiting null, UpdateAsync
+2024-06-12 15:55:47.656 +05:00 [INF] Exiting null, Handle
+2024-06-12 15:55:47.739 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api) in 6504.0423ms
+2024-06-12 15:55:47.745 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api)'
+2024-06-12 15:55:48.081 +05:00 [ERR] Procedure or function Update_City has too many arguments specified.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Procedure or function Update_City has too many arguments specified.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at CleanArc.Infrastructure.Persistence.Repositories.CityRepository.UpdateAsync(City city) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\CityRepository.cs:line 143
+   at CleanArc.Application.Features.City.Command.UpdateCityCommand.UpdateCityCommandHandler.Handle(UpdateCityCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\City\Command\UpdateCityCommand\UpdateCityCommand.Handelr.cs:line 57
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Update(TUpdateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 128
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:7eedefc3-7bc9-446a-8111-ea4bdb46056e
+Error Number:8144,State:2,Class:16
+2024-06-12 15:55:48.200 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/City/Update application/json 152 - 500 - - 7305.8069ms
+2024-06-12 15:56:55.664 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/City/Update application/json 152
+2024-06-12 15:56:55.669 +05:00 [INF] CORS policy execution successful.
+2024-06-12 15:56:55.679 +05:00 [INF] Request Method: POST, Path: /api/v1/City/Update, Content-Type: application/json
+2024-06-12 15:56:55.683 +05:00 [INF] Request Body: {
+  "id": 44,
+  "name": "abc",
+  "description": "abc",
+  "stateID": 5,
+  "imagePath": "wew",
+  "imageTitle": "wew",
+  "updatedBy": 0,
+  "isMain": true
+}
+2024-06-12 15:56:55.743 +05:00 [INF] Executed DbCommand (21ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-12 15:56:55.756 +05:00 [INF] Request Method: POST, Path: /api/v1/City/Update, Content-Type: application/json
+2024-06-12 15:56:55.761 +05:00 [INF] Request Body: {
+  "id": 44,
+  "name": "abc",
+  "description": "abc",
+  "stateID": 5,
+  "imagePath": "wew",
+  "imageTitle": "wew",
+  "updatedBy": 0,
+  "isMain": true
+}
+2024-06-12 15:56:55.768 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api)'
+2024-06-12 15:56:55.773 +05:00 [INF] Route matched with {action = "Update", controller = "City"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.City.Command.UpdateCityCommand.UpdateCityCommand) on controller CleanArc.Web.Api.Controllers.V1.City.CityController (CleanArc.Web.Api).
+2024-06-12 15:57:35.001 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-12 15:57:35.005 +05:00 [INF] Entering CleanArc.Application.Features.City.Command.UpdateCityCommand, Handle with parameter: {"ID":44,"Name":"abc","Description":"abc","StateID":5,"ImagePath":"wew","ImageTitle":"wew","UpdatedBy":0,"IsMain":true,"UserId":6}
+2024-06-12 15:57:35.008 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 6
+2024-06-12 15:57:35.011 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-06-12 15:57:35.013 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":44,"Name":"abc","Description":"abc","StateName":null,"StateID":5,"ImagePath":"wew","ImageTitle":null,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":6,"UpdatedAt":null,"IsMain":true}
+2024-06-12 15:57:35.072 +05:00 [INF] Exiting null, UpdateAsync
+2024-06-12 15:57:35.104 +05:00 [INF] Exiting null, Handle
+2024-06-12 15:57:36.386 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api) in 40607.0911ms
+2024-06-12 15:57:36.390 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api)'
+2024-06-12 15:57:36.753 +05:00 [ERR] Procedure or function Update_City has too many arguments specified.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Procedure or function Update_City has too many arguments specified.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at CleanArc.Infrastructure.Persistence.Repositories.CityRepository.UpdateAsync(City city) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\CityRepository.cs:line 143
+   at CleanArc.Application.Features.City.Command.UpdateCityCommand.UpdateCityCommandHandler.Handle(UpdateCityCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\City\Command\UpdateCityCommand\UpdateCityCommand.Handelr.cs:line 57
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Update(TUpdateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 128
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:7eedefc3-7bc9-446a-8111-ea4bdb46056e
+Error Number:8144,State:2,Class:16
+2024-06-12 15:57:36.769 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/City/Update application/json 152 - 500 - - 41104.8090ms
+2024-06-12 16:00:47.180 +05:00 [INF] Executed DbCommand (36ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-12 16:00:47.340 +05:00 [INF] Executed DbCommand (73ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-12 16:00:47.351 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-12 16:00:47.386 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-12 16:00:47.427 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-12 16:00:47.459 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-12 16:00:47.490 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-12 16:00:47.826 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-12 16:00:47.846 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-12 16:00:48.343 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-12 16:00:48.615 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-12 16:00:48.880 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:00:48.882 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-12 16:00:48.897 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-12 16:00:48.905 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 563.9281ms
+2024-06-12 16:00:48.905 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 14.7060ms
+2024-06-12 16:00:49.014 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 117.1315ms
+2024-06-12 16:00:50.610 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json -
+2024-06-12 16:00:50.617 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-12 16:00:50.635 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-12 16:00:50.642 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-12 16:00:50.994 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-12 16:00:50.998 +05:00 [INF] Response StatusCode: 404
+2024-06-12 16:00:51.002 +05:00 [INF] Response StatusCode: 404
+2024-06-12 16:00:51.009 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 399.1778ms
+2024-06-12 16:00:52.150 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:00:52.165 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1530.0466ms
+2024-06-12 16:01:31.672 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54
+2024-06-12 16:01:31.679 +05:00 [INF] CORS policy execution successful.
+2024-06-12 16:01:31.684 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-12 16:01:31.699 +05:00 [INF] Request Body: {
+  "userName": "Waqasbutt",
+  "password": "123@123"
+}
+2024-06-12 16:01:31.762 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-12 16:01:31.767 +05:00 [INF] Request Body: {
+  "userName": "Waqasbutt",
+  "password": "123@123"
+}
+2024-06-12 16:01:31.773 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-12 16:01:31.824 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-06-12 16:01:34.052 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-12 16:01:34.294 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"Waqasbutt","Password":"123@123"}
+2024-06-12 16:01:34.400 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"Waqasbutt","Password":"123@123","$type":"AdminGetTokenQuery"}
+2024-06-12 16:01:34.552 +05:00 [INF] Executed DbCommand (21ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-06-12 16:01:34.742 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1,"$type":"User"}
+2024-06-12 16:01:34.757 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-06-12 16:01:35.109 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-12 16:01:35.170 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-06-12 16:01:35.195 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-12 16:01:35.241 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-06-12 16:01:35.314 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-06-12 16:01:35.902 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-06-12 16:01:35.939 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-06-12 16:01:35.963 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.pJ24ia6B35qE4uHA5jEpT97PozUBTAYZP4x4MKH80oXmrCy7QAg3rw.rOySteUXMxrX4KkqdhkSag.yqp_ikJrCeb0Febbcrmstk9giVNdvHvadYUBdCJTDGhZIjPB5iKLMXH7WHa2Zu_XojE0r3Afz6NjJhm4GPTnLECPDKpsITAuYlCq434U4QMqmvGlOI3E1C2hXow8TYLQ8ftljf6Ffsuz5tuSVp0GEK1y95KUO5A_lNxYZHRFgu04vkTMAHFyJS7oRYrr7ERI8VTb9aWQiyvH68CwiA2KXQa4YDImDS027IjttYPzW8TLGbe7wA6z_n44qW2AwCw2Rf2HgcHiaSjOxv1s49Mf0ePycnN-1ekmhDTyfWnmChiwpOOE8KwF-UIqPhukMjL81JJNHCx04IsI26mdh4w5V-fNFAKp0_EXVGpR8x1NdznY3q4Rhs_ZVhtJZeo7mSCEo8aHwwKrkuJb-BCdc1z4JLrR7lzLjKPOZ06VW1TKLIqHAn5de7WaCOCpKs3ImnxkQbZpqyWlcv3rSV10ONJqnFEvmASbr3DbwkB_e5jliId7xXdov3pXuu16WYBpCf_5b89KZ6bgToyaICeihQA5RajxKST-lXn0KLQwI44GKRnSI_mPfRwds81vJjbeQsKYWtCjd7AlHgiTEmZQb6mH9nDS4RajHPMo5nl9Aq-MR-0CNEMcZmo2Yhhju40KbHKT2oxX3otCiO4x8msmAxUV8nkntrYauMXExf7n5vdkW1pXpkEs_LfDU12Med3rmhTPI7MjqMb1TNZQ5Yx9Z3xvIQ.ysN1khCbJf6VjIvUfX6LWA","refresh_token":"fbbb2460-c7d9-4271-5db3-08dc8acf06b7","token_type":"Bearer","expires_in":599999},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-06-12 16:01:35.977 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1914.4627ms.
+2024-06-12 16:01:36.004 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-12 16:01:36.044 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 4208.613ms
+2024-06-12 16:01:36.052 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-12 16:01:36.058 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:01:36.069 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:01:36.078 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54 - 200 - application/json;+charset=utf-8 4405.4159ms
+2024-06-12 16:02:44.830 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/City/Update application/json 152
+2024-06-12 16:02:44.835 +05:00 [INF] CORS policy execution successful.
+2024-06-12 16:02:44.841 +05:00 [INF] Request Method: POST, Path: /api/v1/City/Update, Content-Type: application/json
+2024-06-12 16:02:44.845 +05:00 [INF] Request Body: {
+  "id": 44,
+  "name": "abc",
+  "description": "abc",
+  "stateID": 5,
+  "imagePath": "wer",
+  "imageTitle": "wer",
+  "updatedBy": 0,
+  "isMain": true
+}
+2024-06-12 16:02:45.052 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-12 16:02:45.087 +05:00 [INF] Request Method: POST, Path: /api/v1/City/Update, Content-Type: application/json
+2024-06-12 16:02:45.091 +05:00 [INF] Request Body: {
+  "id": 44,
+  "name": "abc",
+  "description": "abc",
+  "stateID": 5,
+  "imagePath": "wer",
+  "imageTitle": "wer",
+  "updatedBy": 0,
+  "isMain": true
+}
+2024-06-12 16:02:45.095 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api)'
+2024-06-12 16:02:45.103 +05:00 [INF] Route matched with {action = "Update", controller = "City"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.City.Command.UpdateCityCommand.UpdateCityCommand) on controller CleanArc.Web.Api.Controllers.V1.City.CityController (CleanArc.Web.Api).
+2024-06-12 16:02:50.387 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-12 16:02:50.830 +05:00 [INF] Entering CleanArc.Application.Features.City.Command.UpdateCityCommand, Handle with parameter: {"ID":44,"Name":"abc","Description":"abc","StateID":5,"ImagePath":"wer","ImageTitle":"wer","UpdatedBy":0,"IsMain":true,"UserId":6}
+2024-06-12 16:02:50.836 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 6
+2024-06-12 16:02:50.851 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-06-12 16:03:04.169 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":44,"Name":"abc","Description":"abc","StateName":null,"StateID":5,"ImagePath":"wer","ImageTitle":null,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":6,"UpdatedAt":null,"IsMain":true}
+2024-06-12 16:03:17.132 +05:00 [INF] Exiting null, UpdateAsync
+2024-06-12 16:03:21.818 +05:00 [INF] Exiting null, Handle
+2024-06-12 16:03:26.069 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api) in 40962.4658ms
+2024-06-12 16:03:26.074 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api)'
+2024-06-12 16:07:41.103 +05:00 [ERR] Procedure or function Update_City has too many arguments specified.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Procedure or function Update_City has too many arguments specified.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at CleanArc.Infrastructure.Persistence.Repositories.CityRepository.UpdateAsync(City city) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\CityRepository.cs:line 143
+   at CleanArc.Application.Features.City.Command.UpdateCityCommand.UpdateCityCommandHandler.Handle(UpdateCityCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\City\Command\UpdateCityCommand\UpdateCityCommand.Handelr.cs:line 57
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Update(TUpdateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 128
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:d0aba3c1-e5cb-431a-b77f-3f137c4c5b41
+Error Number:8144,State:2,Class:16
+2024-06-12 16:07:41.259 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/City/Update application/json 152 - 500 - - 296429.2383ms
+2024-06-12 16:07:45.776 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/City/Update application/json 152
+2024-06-12 16:07:45.781 +05:00 [INF] CORS policy execution successful.
+2024-06-12 16:07:45.833 +05:00 [INF] Request Method: POST, Path: /api/v1/City/Update, Content-Type: application/json
+2024-06-12 16:07:45.837 +05:00 [INF] Request Body: {
+  "id": 44,
+  "name": "abc",
+  "description": "abc",
+  "stateID": 5,
+  "imagePath": "wer",
+  "imageTitle": "wer",
+  "updatedBy": 0,
+  "isMain": true
+}
+2024-06-12 16:07:45.864 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-12 16:07:45.872 +05:00 [INF] Request Method: POST, Path: /api/v1/City/Update, Content-Type: application/json
+2024-06-12 16:07:45.877 +05:00 [INF] Request Body: {
+  "id": 44,
+  "name": "abc",
+  "description": "abc",
+  "stateID": 5,
+  "imagePath": "wer",
+  "imageTitle": "wer",
+  "updatedBy": 0,
+  "isMain": true
+}
+2024-06-12 16:07:45.881 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api)'
+2024-06-12 16:07:45.885 +05:00 [INF] Route matched with {action = "Update", controller = "City"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.City.Command.UpdateCityCommand.UpdateCityCommand) on controller CleanArc.Web.Api.Controllers.V1.City.CityController (CleanArc.Web.Api).
+2024-06-12 16:07:49.897 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-12 16:07:49.901 +05:00 [INF] Entering CleanArc.Application.Features.City.Command.UpdateCityCommand, Handle with parameter: {"ID":44,"Name":"abc","Description":"abc","StateID":5,"ImagePath":"wer","ImageTitle":"wer","UpdatedBy":0,"IsMain":true,"UserId":6}
+2024-06-12 16:07:49.905 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 6
+2024-06-12 16:07:49.909 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-06-12 16:07:50.897 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":44,"Name":"abc","Description":"abc","StateName":null,"StateID":5,"ImagePath":"wer","ImageTitle":null,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":6,"UpdatedAt":null,"IsMain":true}
+2024-06-12 16:07:51.820 +05:00 [INF] Exiting null, UpdateAsync
+2024-06-12 16:07:51.850 +05:00 [INF] Exiting null, Handle
+2024-06-12 16:07:51.914 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api) in 6026.0519ms
+2024-06-12 16:07:51.919 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api)'
+2024-06-12 16:07:52.170 +05:00 [ERR] Procedure or function Update_City has too many arguments specified.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Procedure or function Update_City has too many arguments specified.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at CleanArc.Infrastructure.Persistence.Repositories.CityRepository.UpdateAsync(City city) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\CityRepository.cs:line 143
+   at CleanArc.Application.Features.City.Command.UpdateCityCommand.UpdateCityCommandHandler.Handle(UpdateCityCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\City\Command\UpdateCityCommand\UpdateCityCommand.Handelr.cs:line 57
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Update(TUpdateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 128
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:d0aba3c1-e5cb-431a-b77f-3f137c4c5b41
+Error Number:8144,State:2,Class:16
+2024-06-12 16:07:52.187 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/City/Update application/json 152 - 500 - - 6410.8121ms
+2024-06-12 16:08:03.208 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/City/Update application/json 152
+2024-06-12 16:08:03.211 +05:00 [INF] CORS policy execution successful.
+2024-06-12 16:08:03.219 +05:00 [INF] Request Method: POST, Path: /api/v1/City/Update, Content-Type: application/json
+2024-06-12 16:08:03.223 +05:00 [INF] Request Body: {
+  "id": 44,
+  "name": "abc",
+  "description": "abc",
+  "stateID": 5,
+  "imagePath": "wer",
+  "imageTitle": "wer",
+  "updatedBy": 0,
+  "isMain": true
+}
+2024-06-12 16:08:03.253 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-12 16:08:03.262 +05:00 [INF] Request Method: POST, Path: /api/v1/City/Update, Content-Type: application/json
+2024-06-12 16:08:03.265 +05:00 [INF] Request Body: {
+  "id": 44,
+  "name": "abc",
+  "description": "abc",
+  "stateID": 5,
+  "imagePath": "wer",
+  "imageTitle": "wer",
+  "updatedBy": 0,
+  "isMain": true
+}
+2024-06-12 16:08:03.269 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api)'
+2024-06-12 16:08:03.273 +05:00 [INF] Route matched with {action = "Update", controller = "City"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.City.Command.UpdateCityCommand.UpdateCityCommand) on controller CleanArc.Web.Api.Controllers.V1.City.CityController (CleanArc.Web.Api).
+2024-06-12 16:08:09.512 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-12 16:08:09.525 +05:00 [INF] Entering CleanArc.Application.Features.City.Command.UpdateCityCommand, Handle with parameter: {"ID":44,"Name":"abc","Description":"abc","StateID":5,"ImagePath":"wer","ImageTitle":"wer","UpdatedBy":0,"IsMain":true,"UserId":6}
+2024-06-12 16:08:09.528 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 6
+2024-06-12 16:08:09.532 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-06-12 16:08:14.236 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":44,"Name":"abc","Description":"abc","StateName":null,"StateID":5,"ImagePath":"wer","ImageTitle":null,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":6,"UpdatedAt":null,"IsMain":true}
+2024-06-12 16:08:22.971 +05:00 [INF] Exiting null, UpdateAsync
+2024-06-12 16:08:26.498 +05:00 [INF] Exiting null, Handle
+2024-06-12 16:08:29.299 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api) in 26020.7737ms
+2024-06-12 16:08:29.312 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api)'
+2024-06-12 16:10:08.870 +05:00 [ERR] Procedure or function Update_City has too many arguments specified.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Procedure or function Update_City has too many arguments specified.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at CleanArc.Infrastructure.Persistence.Repositories.CityRepository.UpdateAsync(City city) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\CityRepository.cs:line 143
+   at CleanArc.Application.Features.City.Command.UpdateCityCommand.UpdateCityCommandHandler.Handle(UpdateCityCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\City\Command\UpdateCityCommand\UpdateCityCommand.Handelr.cs:line 57
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Update(TUpdateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 128
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:d0aba3c1-e5cb-431a-b77f-3f137c4c5b41
+Error Number:8144,State:2,Class:16
+2024-06-12 16:10:08.926 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/City/Update application/json 152 - 500 - - 125718.5770ms
+2024-06-12 16:12:55.097 +05:00 [INF] Executed DbCommand (44ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-12 16:12:55.419 +05:00 [INF] Executed DbCommand (125ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-12 16:12:55.436 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-12 16:12:55.469 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-12 16:12:55.547 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-12 16:12:55.619 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-12 16:12:55.667 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-12 16:12:56.316 +05:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-12 16:12:56.375 +05:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-12 16:12:57.142 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-12 16:12:57.512 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-12 16:12:57.860 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:12:57.895 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-12 16:12:57.908 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 770.5383ms
+2024-06-12 16:12:57.915 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 19.7297ms
+2024-06-12 16:12:57.945 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-12 16:12:58.021 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 76.3258ms
+2024-06-12 16:12:58.747 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json -
+2024-06-12 16:12:58.752 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-12 16:12:58.788 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-12 16:12:58.826 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-12 16:12:59.161 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-12 16:12:59.165 +05:00 [INF] Response StatusCode: 404
+2024-06-12 16:12:59.170 +05:00 [INF] Response StatusCode: 404
+2024-06-12 16:12:59.178 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json - - 404 - - 431.3351ms
+2024-06-12 16:12:59.948 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:12:59.957 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1169.2750ms
+2024-06-12 16:13:30.345 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54
+2024-06-12 16:13:30.353 +05:00 [INF] CORS policy execution successful.
+2024-06-12 16:13:30.359 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-12 16:13:30.371 +05:00 [INF] Request Body: {
+  "userName": "Waqasbutt",
+  "password": "123@123"
+}
+2024-06-12 16:13:30.390 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-12 16:13:30.394 +05:00 [INF] Request Body: {
+  "userName": "Waqasbutt",
+  "password": "123@123"
+}
+2024-06-12 16:13:30.400 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-12 16:13:30.453 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-06-12 16:13:38.515 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-12 16:13:38.657 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"Waqasbutt","Password":"123@123"}
+2024-06-12 16:13:38.719 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"Waqasbutt","Password":"123@123","$type":"AdminGetTokenQuery"}
+2024-06-12 16:13:38.805 +05:00 [INF] Executed DbCommand (14ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-06-12 16:13:38.951 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1,"$type":"User"}
+2024-06-12 16:13:38.962 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-06-12 16:13:39.124 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-12 16:13:39.151 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-06-12 16:13:39.163 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-12 16:13:39.177 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-06-12 16:13:39.211 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-06-12 16:13:39.598 +05:00 [INF] Executed DbCommand (25ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-06-12 16:13:39.636 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-06-12 16:13:39.655 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.E306FEiINrLsTbZu8eWe7H_aZ-lN0hvCIEhHnlA0pcXNSELGN56_jQ.aF4C2d_u18Fmfz6fciho4Q.TSQfzgJnTYWd6KsgJowtA-XYuG1oSrWZzgRkVb6dDotPWsqYDOSztrbdSxUKUmkGTREoE18nO0zLZY75eZOPZepz-logbHWagjiXIoFQx0ZI6kG-EBZBExVS0itQyzws0_cpW8JlKh6ar7JCPBqCXxiNDrcAiioOhC866SAr0-8V9H7s5y6TOVi0ljUsdNYQgW3f_b9SuVAgS2m2qrsN2iIzUwcjnGgaSzYG7fP58Ibk6M-kedWEChJCgYx5huzsKEjFlUbeeqZ3lcsM9kIPhih2HW5ahghbX6eR0YtvlR32zVCGWnNGwA_WGg4nBs4Psi2FJ3a2cckdwjhLzNoh2nK-G1Yomy0QsHUq2PFHUBbDcApw3OEYgmAYMFslWpEjTMWcdD-Ixj2Y0GX0A6HwvGPyABtwAdFalTDTy9EtPSpqBBu507wZML8PlSZjipmqz4vsKsJR4hZXzsu4bM19POvcbr4oz6tDcBkd0lKuO_iZ__baShnADFmUw6MojdYLgfElV4Q32P-_1FKdvcFK_uRiPj252RmwTCRrz5eDFtUamABQ4iPOVQK120wqQgEm2BgpXCE9fgfzRLTv4boUfPX7cHUydeOy4c_tep9RyzI_pkT2mKpShqxad8i9EkefeRC9HcpFlo3A-UtSkqfPN2rzsc3xO_AxRE7yqLfE2p-9b52KV5PXORJosIsYqg4BkiN2woW4zTqs1a6OKyF0Dg.K7Ci9SD5IcS6DnpwAxLb4g","refresh_token":"f83d2e78-1b53-44e9-5a6a-08dc8ad0b61e","token_type":"Bearer","expires_in":599999},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-06-12 16:13:39.666 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1139.8375ms.
+2024-06-12 16:13:39.685 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-12 16:13:39.714 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 9247.3109ms
+2024-06-12 16:13:39.719 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-12 16:13:39.722 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:13:39.729 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:13:39.737 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54 - 200 - application/json;+charset=utf-8 9391.2228ms
+2024-06-12 16:14:22.262 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/City/Update application/json 112
+2024-06-12 16:14:22.268 +05:00 [INF] CORS policy execution successful.
+2024-06-12 16:14:22.273 +05:00 [INF] Request Method: POST, Path: /api/v1/City/Update, Content-Type: application/json
+2024-06-12 16:14:22.279 +05:00 [INF] Request Body: {
+  "id": 44,
+  "name": "werds",
+  "description": "qrwrwr",
+  "stateID": 5,
+  "updatedBy": 0,
+  "isMain": true
+}
+2024-06-12 16:14:22.589 +05:00 [INF] Executed DbCommand (31ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-12 16:14:22.620 +05:00 [INF] Request Method: POST, Path: /api/v1/City/Update, Content-Type: application/json
+2024-06-12 16:14:22.625 +05:00 [INF] Request Body: {
+  "id": 44,
+  "name": "werds",
+  "description": "qrwrwr",
+  "stateID": 5,
+  "updatedBy": 0,
+  "isMain": true
+}
+2024-06-12 16:14:22.632 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api)'
+2024-06-12 16:14:22.647 +05:00 [INF] Route matched with {action = "Update", controller = "City"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.City.Command.UpdateCityCommand.UpdateCityCommand) on controller CleanArc.Web.Api.Controllers.V1.City.CityController (CleanArc.Web.Api).
+2024-06-12 16:14:27.421 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-06-12 16:14:27.810 +05:00 [INF] Entering CleanArc.Application.Features.City.Command.UpdateCityCommand, Handle with parameter: {"ID":44,"Name":"werds","Description":"qrwrwr","StateID":5,"UpdatedBy":0,"IsMain":true,"UserId":6}
+2024-06-12 16:14:27.822 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 6
+2024-06-12 16:14:27.855 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-06-12 16:14:29.141 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":44,"Name":"werds","Description":"qrwrwr","StateName":null,"StateID":5,"ImagePath":null,"ImageTitle":null,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":6,"UpdatedAt":null,"IsMain":true}
+2024-06-12 16:14:30.058 +05:00 [INF] Exiting null, UpdateAsync with response: -1
+2024-06-12 16:14:30.063 +05:00 [INF] Exiting null, Handle with response: true
+2024-06-12 16:14:30.068 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 2642.4899ms.
+2024-06-12 16:14:30.074 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-06-12 16:14:30.082 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api) in 7431.628ms
+2024-06-12 16:14:30.086 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api)'
+2024-06-12 16:14:30.089 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:14:30.094 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:14:30.100 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/City/Update application/json 112 - 200 - application/json;+charset=utf-8 7837.2191ms
+2024-06-12 16:14:56.783 +05:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-12 16:14:56.854 +05:00 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-12 16:14:56.858 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-12 16:14:56.860 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-12 16:14:56.880 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-12 16:14:56.901 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-12 16:14:56.915 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-12 16:14:57.332 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-12 16:14:57.350 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-12 16:14:57.659 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-12 16:14:57.783 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-12 16:14:58.110 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:14:58.116 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 459.7658ms
+2024-06-12 16:14:59.939 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-12 16:14:59.939 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-12 16:14:59.948 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 7.9090ms
+2024-06-12 16:15:00.088 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 149.5412ms
+2024-06-12 16:15:02.014 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json 0
+2024-06-12 16:15:02.015 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-12 16:15:02.016 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-12 16:15:02.016 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-12 16:15:02.128 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-12 16:15:02.129 +05:00 [INF] Response StatusCode: 404
+2024-06-12 16:15:02.129 +05:00 [INF] Response StatusCode: 404
+2024-06-12 16:15:02.132 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json 0 - 404 - - 117.1533ms
+2024-06-12 16:15:02.779 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:15:02.782 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 767.0211ms
+2024-06-12 16:16:40.349 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-12 16:16:40.360 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-12 16:16:40.363 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:16:40.363 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 14.6406ms
+2024-06-12 16:16:40.912 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-12 16:16:40.976 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 64.2695ms
+2024-06-12 16:16:41.939 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-12 16:16:41.940 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 1.3498ms
+2024-06-12 16:16:42.520 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-12 16:16:42.520 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-12 16:16:42.667 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:16:42.667 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 147.2195ms
+2024-06-12 16:16:47.482 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-12 16:16:47.486 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-12 16:16:47.488 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:16:47.488 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 6.2573ms
+2024-06-12 16:16:47.872 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-12 16:16:47.885 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 12.0730ms
+2024-06-12 16:16:48.819 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-12 16:16:48.820 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 4.7285ms
+2024-06-12 16:16:49.302 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-12 16:16:49.303 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-12 16:16:49.484 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:16:49.485 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 182.4678ms
+2024-06-12 16:17:09.174 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54
+2024-06-12 16:17:09.177 +05:00 [INF] CORS policy execution successful.
+2024-06-12 16:17:09.177 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-12 16:17:09.179 +05:00 [INF] Request Body: {
+  "userName": "WaqasButt",
+  "password": "123@123"
+}
+2024-06-12 16:17:09.189 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-12 16:17:09.189 +05:00 [INF] Request Body: {
+  "userName": "WaqasButt",
+  "password": "123@123"
+}
+2024-06-12 16:17:09.190 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-12 16:17:09.214 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-06-12 16:17:09.364 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"WaqasButt","Password":"123@123"}
+2024-06-12 16:17:09.401 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"WaqasButt","Password":"123@123","$type":"AdminGetTokenQuery"}
+2024-06-12 16:17:09.513 +05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-06-12 16:17:09.650 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1,"$type":"User"}
+2024-06-12 16:17:09.654 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-06-12 16:17:09.797 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-12 16:17:09.815 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-06-12 16:17:09.821 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-12 16:17:09.831 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-06-12 16:17:09.867 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-06-12 16:17:10.194 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-06-12 16:17:10.218 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-06-12 16:17:10.234 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.UGfxaJ_ypIQtcsrjXSZEAFdazvnUjUt6yoytDON2TRFkmlVIkg0gxw.qzYWldZN85l9A3DNqR2y0g.n7qWJTd6TiJn_wRpKXlN7EgAMGRAkz6RL3E76pqJEWT7hWRiJYFDO0bP__cOT8ZKGw3aFl0RUGx27eHWN29TZ-AaCPJfxcdE38GGvb9pP6WCKjYVPivY4uT0mWU_41S_nqETD23-HImiTl4yQnwX8Mf2FB04myKD45jU84BfFjOgOG2nUEX5k1fM-fotPRkHGhDQ5tkKDBSdrpC3bvK47_lSxMJiFqMTOPn9c7AVu06qxfJ8UvTROB9pYkBPQbaLlTMBs5KUdi73n4SW04Rn3atM6cxEUO1t4Jfk9Hlrgv3XvfCkiRrY_4nsRNAbOMhEWcrnhORkGzNLpl1lMuTVeVig4HhhZkDkwVFK6k5lqTBt1KhYgTPHhWsY91hVR_vPWFRu7vKl2DVZ6t_KxdWYC00BSjQphED3u7kDZYI8tCUSb84PAk42c-rWjvRP4RZv4LYu9CaSzHCuk6NjP0v9V1dw9_efE53AEkSga37hkB_nQLdw4Ctnzq5ksy1ncYNFEKIpjixdb0-1fCPb2RR_8dJxwdKYHyEjbLrs9d1Sd83KmCUzNPVaRR6K0_-G4hOH5EG0iZr38ayE-FSsMbheb9GUU2guN8IQxwxEj7lUJyekPMCYHj2jXzspuEVIyZ0rDj9ysQ7jP48n2kH9VMZmy_lZDvNgtqFrOkJML7f0Dd_esqhjTfQatb0Q30L5JbL1z2gNkY9Qn0SUJhL7In1SSA.-MtsDjJlfXY5LG4EJv1MjQ","refresh_token":"6fbdd1c7-658a-4286-51fb-08dc8ad133a8","token_type":"Bearer","expires_in":599998},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-06-12 16:17:10.244 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-12 16:17:10.274 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 1051.2097ms
+2024-06-12 16:17:10.275 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-12 16:17:10.276 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:17:10.279 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:17:10.281 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54 - 200 - application/json;+charset=utf-8 1107.4763ms
+2024-06-12 16:18:14.413 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/City/Create application/json 150
+2024-06-12 16:18:14.414 +05:00 [INF] CORS policy execution successful.
+2024-06-12 16:18:14.415 +05:00 [INF] Request Method: POST, Path: /api/v1/City/Create, Content-Type: application/json
+2024-06-12 16:18:14.415 +05:00 [INF] Request Body: {
+  "name": "create",
+  "description": "created",
+  "stateID": 1,
+  "isMain": true,
+  "createdBy": 1,
+  "imagePath": "path",
+  "imageTitle": "title"
+}
+2024-06-12 16:18:14.551 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-12 16:18:14.559 +05:00 [INF] Request Method: POST, Path: /api/v1/City/Create, Content-Type: application/json
+2024-06-12 16:18:14.559 +05:00 [INF] Request Body: {
+  "name": "create",
+  "description": "created",
+  "stateID": 1,
+  "isMain": true,
+  "createdBy": 1,
+  "imagePath": "path",
+  "imageTitle": "title"
+}
+2024-06-12 16:18:14.560 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.City.CityController.Create (CleanArc.Web.Api)'
+2024-06-12 16:18:14.564 +05:00 [INF] Route matched with {action = "Create", controller = "City"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.City.Command.CreateCityCommand.CreateCityCommand) on controller CleanArc.Web.Api.Controllers.V1.City.CityController (CleanArc.Web.Api).
+2024-06-12 16:18:14.620 +05:00 [INF] Entering CleanArc.Application.Features.City.Command.CreateCityCommand, Handle with parameter: {"Name":"create","Description":"created","StateID":1,"IsMain":true,"CreatedBy":1,"ImagePath":"path","ImageTitle":"title","UserId":6}
+2024-06-12 16:18:14.621 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 6
+2024-06-12 16:18:14.632 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-06-12 16:18:14.645 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":null,"Name":"create","Description":"created","StateName":null,"StateID":1,"ImagePath":"path","ImageTitle":null,"IsActive":null,"IsDeleted":null,"CreatedBy":6,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"IsMain":true}
+2024-06-12 16:18:14.766 +05:00 [INF] Exiting null, AddAsync with response: -1
+2024-06-12 16:18:14.768 +05:00 [INF] Exiting null, Handle with response: true
+2024-06-12 16:18:14.769 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-06-12 16:18:14.771 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.City.CityController.Create (CleanArc.Web.Api) in 207.6278ms
+2024-06-12 16:18:14.772 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.City.CityController.Create (CleanArc.Web.Api)'
+2024-06-12 16:18:14.772 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:18:14.772 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:18:14.772 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/City/Create application/json 150 - 200 - application/json;+charset=utf-8 359.0622ms
+2024-06-12 16:18:49.009 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/City/GetAll application/json 126
+2024-06-12 16:18:49.010 +05:00 [INF] CORS policy execution successful.
+2024-06-12 16:18:49.010 +05:00 [INF] Request Method: POST, Path: /api/v1/City/GetAll, Content-Type: application/json
+2024-06-12 16:18:49.010 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+    ],
+    "sortingArray": [
+    ]
+  }
+}
+2024-06-12 16:18:49.013 +05:00 [INF] Request Method: POST, Path: /api/v1/City/GetAll, Content-Type: application/json
+2024-06-12 16:18:49.013 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "filterArray": [
+    ],
+    "sortingArray": [
+    ]
+  }
+}
+2024-06-12 16:18:49.013 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.City.CityController.GetAll (CleanArc.Web.Api)'
+2024-06-12 16:18:49.019 +05:00 [INF] Route matched with {action = "GetAll", controller = "City"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.City.Queries.GetAllCities.GetAllCitiesQuery) on controller CleanArc.Web.Api.Controllers.V1.City.CityController (CleanArc.Web.Api).
+2024-06-12 16:18:49.048 +05:00 [INF] Entering CleanArc.Application.Features.City.Queries.GetAllCities, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}}
+2024-06-12 16:18:49.050 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":100,"FilterArray":[],"SortingArray":[]}
+2024-06-12 16:18:49.193 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":6,"Name":"Islamabad","Description":"islamabad","StateName":null,"StateID":5,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-02T00:00:00","UpdatedBy":0,"UpdatedAt":null,"IsMain":null},{"ID":7,"Name":"Lahore","Description":"City of Lahore in Punjab","StateName":null,"StateID":6,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":null},{"ID":8,"Name":"Faisalabad","Description":"City of Faisalabad in Punjab","StateName":null,"StateID":6,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":null},{"ID":9,"Name":"Rawalpindi","Description":"City of Rawalpindi in Punjab","StateName":null,"StateID":6,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":null},{"ID":10,"Name":"Karachi","Description":"City of Karachi in Sindh","StateName":null,"StateID":7,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":null},{"ID":11,"Name":"Hyderabad","Description":"City of Hyderabad in Sindh","StateName":null,"StateID":7,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":null},{"ID":12,"Name":"Sukkur","Description":"City of Sukkur in Sindh","StateName":null,"StateID":7,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":null},{"ID":13,"Name":"Peshawar","Description":"City of Peshawar in Khyber Pakhtunkhwa","StateName":null,"StateID":8,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":null},{"ID":14,"Name":"Mardan","Description":"City of Mardan in Khyber Pakhtunkhwa","StateName":null,"StateID":8,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":null},{"ID":15,"Name":"Abbottabad","Description":"City of Abbottabad in Khyber Pakhtunkhwa","StateName":null,"StateID":8,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":null},{"ID":16,"Name":"Quetta","Description":"City of Quetta in Balochistan","StateName":null,"StateID":9,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":null},{"ID":17,"Name":"Gwadar","Description":"City of Gwadar in Balochistan","StateName":null,"StateID":9,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":null},{"ID":18,"Name":"Turbat","Description":"City of Turbat in Balochistan","StateName":null,"StateID":9,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":null},{"ID":19,"Name":"Islamabad","Description":"City of Islamabad in Islamabad Capital Territory","StateName":null,"StateID":10,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":null},{"ID":20,"Name":"Gilgit","Description":"City of Gilgit in Gilgit-Baltistan","StateName":null,"StateID":11,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":null},{"ID":21,"Name":"Skardu","Description":"City of Skardu in Gilgit-Baltistan","StateName":null,"StateID":11,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":null},{"ID":22,"Name":"Muzaffarabad","Description":"City of Muzaffarabad in Azad Jammu and Kashmir","StateName":null,"StateID":12,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":null},{"ID":23,"Name":"Mirpur","Description":"City of Mirpur in Azad Jammu and Kashmir","StateName":null,"StateID":12,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":null},{"ID":42,"Name":"test","Description":"test","StateName":null,"StateID":5,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":6,"CreatedAt":"2024-06-11T09:15:13.103","UpdatedBy":null,"UpdatedAt":null,"IsMain":null},{"ID":44,"Name":"werds","Description":"qrwrwr","StateName":null,"StateID":5,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":6,"CreatedAt":"2024-06-11T09:17:02.16","UpdatedBy":6,"UpdatedAt":"2024-06-12T11:14:30.043","IsMain":null}]
+2024-06-12 16:18:49.245 +05:00 [INF] Exiting null, Handle with response: [{"ID":6,"Name":"Islamabad","Description":"islamabad","StateName":null,"StateID":5,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-02T00:00:00","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","IsMain":false},{"ID":7,"Name":"Lahore","Description":"City of Lahore in Punjab","StateName":null,"StateID":6,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":false},{"ID":8,"Name":"Faisalabad","Description":"City of Faisalabad in Punjab","StateName":null,"StateID":6,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":false},{"ID":9,"Name":"Rawalpindi","Description":"City of Rawalpindi in Punjab","StateName":null,"StateID":6,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":false},{"ID":10,"Name":"Karachi","Description":"City of Karachi in Sindh","StateName":null,"StateID":7,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":false},{"ID":11,"Name":"Hyderabad","Description":"City of Hyderabad in Sindh","StateName":null,"StateID":7,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":false},{"ID":12,"Name":"Sukkur","Description":"City of Sukkur in Sindh","StateName":null,"StateID":7,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":false},{"ID":13,"Name":"Peshawar","Description":"City of Peshawar in Khyber Pakhtunkhwa","StateName":null,"StateID":8,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":false},{"ID":14,"Name":"Mardan","Description":"City of Mardan in Khyber Pakhtunkhwa","StateName":null,"StateID":8,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":false},{"ID":15,"Name":"Abbottabad","Description":"City of Abbottabad in Khyber Pakhtunkhwa","StateName":null,"StateID":8,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":false},{"ID":16,"Name":"Quetta","Description":"City of Quetta in Balochistan","StateName":null,"StateID":9,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":false},{"ID":17,"Name":"Gwadar","Description":"City of Gwadar in Balochistan","StateName":null,"StateID":9,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":false},{"ID":18,"Name":"Turbat","Description":"City of Turbat in Balochistan","StateName":null,"StateID":9,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":false},{"ID":19,"Name":"Islamabad","Description":"City of Islamabad in Islamabad Capital Territory","StateName":null,"StateID":10,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":false},{"ID":20,"Name":"Gilgit","Description":"City of Gilgit in Gilgit-Baltistan","StateName":null,"StateID":11,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":false},{"ID":21,"Name":"Skardu","Description":"City of Skardu in Gilgit-Baltistan","StateName":null,"StateID":11,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":false},{"ID":22,"Name":"Muzaffarabad","Description":"City of Muzaffarabad in Azad Jammu and Kashmir","StateName":null,"StateID":12,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":false},{"ID":23,"Name":"Mirpur","Description":"City of Mirpur in Azad Jammu and Kashmir","StateName":null,"StateID":12,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-05-30T10:20:21.6","UpdatedBy":1,"UpdatedAt":"2024-05-30T10:20:21.6","IsMain":false},{"ID":42,"Name":"test","Description":"test","StateName":null,"StateID":5,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":6,"CreatedAt":"2024-06-11T09:15:13.103","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","IsMain":false},{"ID":44,"Name":"werds","Description":"qrwrwr","StateName":null,"StateID":5,"ImagePath":null,"ImageTitle":null,"IsActive":true,"IsDeleted":false,"CreatedBy":6,"CreatedAt":"2024-06-11T09:17:02.16","UpdatedBy":6,"UpdatedAt":"2024-06-12T11:14:30.043","IsMain":false}]
+2024-06-12 16:18:49.248 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-12 16:18:49.256 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.City.CityController.GetAll (CleanArc.Web.Api) in 236.5032ms
+2024-06-12 16:18:49.256 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.City.CityController.GetAll (CleanArc.Web.Api)'
+2024-06-12 16:18:49.256 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:18:49.256 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:18:49.256 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/City/GetAll application/json 126 - 200 - application/json;+charset=utf-8 246.9761ms
+2024-06-12 16:20:37.250 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/City/Update application/json 114
+2024-06-12 16:20:37.251 +05:00 [INF] CORS policy execution successful.
+2024-06-12 16:20:37.251 +05:00 [INF] Request Method: POST, Path: /api/v1/City/Update, Content-Type: application/json
+2024-06-12 16:20:37.251 +05:00 [INF] Request Body: {
+  "id": 44,
+  "name": "update",
+  "description": "updated",
+  "stateID": 1,
+  "updatedBy": 1,
+  "isMain": true
+}
+2024-06-12 16:20:37.271 +05:00 [INF] Executed DbCommand (14ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-12 16:20:37.275 +05:00 [INF] Request Method: POST, Path: /api/v1/City/Update, Content-Type: application/json
+2024-06-12 16:20:37.275 +05:00 [INF] Request Body: {
+  "id": 44,
+  "name": "update",
+  "description": "updated",
+  "stateID": 1,
+  "updatedBy": 1,
+  "isMain": true
+}
+2024-06-12 16:20:37.276 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api)'
+2024-06-12 16:20:37.280 +05:00 [INF] Route matched with {action = "Update", controller = "City"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.City.Command.UpdateCityCommand.UpdateCityCommand) on controller CleanArc.Web.Api.Controllers.V1.City.CityController (CleanArc.Web.Api).
+2024-06-12 16:20:37.404 +05:00 [INF] Entering CleanArc.Application.Features.City.Command.UpdateCityCommand, Handle with parameter: {"ID":44,"Name":"update","Description":"updated","StateID":1,"UpdatedBy":1,"IsMain":true,"UserId":6}
+2024-06-12 16:20:37.404 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 6
+2024-06-12 16:20:37.405 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-06-12 16:20:37.406 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":44,"Name":"update","Description":"updated","StateName":null,"StateID":1,"ImagePath":null,"ImageTitle":null,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":6,"UpdatedAt":null,"IsMain":true}
+2024-06-12 16:20:37.470 +05:00 [INF] Exiting null, UpdateAsync with response: -1
+2024-06-12 16:20:37.472 +05:00 [INF] Exiting null, Handle with response: true
+2024-06-12 16:20:37.473 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-06-12 16:20:37.474 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api) in 193.4485ms
+2024-06-12 16:20:37.475 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api)'
+2024-06-12 16:20:37.476 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:20:37.477 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:20:37.477 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/City/Update application/json 114 - 200 - application/json;+charset=utf-8 226.9625ms
+2024-06-12 16:21:50.149 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-12 16:21:50.197 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-12 16:21:50.199 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:21:50.200 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 51.2002ms
+2024-06-12 16:21:51.074 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-12 16:21:51.075 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 1.2776ms
+2024-06-12 16:21:51.868 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-12 16:21:51.893 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 24.6008ms
+2024-06-12 16:21:52.607 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-12 16:21:52.608 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-12 16:21:52.900 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:21:52.901 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 294.1149ms
+2024-06-12 16:22:27.731 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54
+2024-06-12 16:22:27.732 +05:00 [INF] CORS policy execution successful.
+2024-06-12 16:22:27.732 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-12 16:22:27.732 +05:00 [INF] Request Body: {
+  "userName": "WaqasButt",
+  "password": "123@123"
+}
+2024-06-12 16:22:27.734 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-06-12 16:22:27.734 +05:00 [INF] Request Body: {
+  "userName": "WaqasButt",
+  "password": "123@123"
+}
+2024-06-12 16:22:27.735 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-12 16:22:27.735 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-06-12 16:22:27.736 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"WaqasButt","Password":"123@123"}
+2024-06-12 16:22:27.745 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"WaqasButt","Password":"123@123","$type":"AdminGetTokenQuery"}
+2024-06-12 16:22:27.762 +05:00 [INF] Executed DbCommand (16ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-06-12 16:22:27.764 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1,"$type":"User"}
+2024-06-12 16:22:27.765 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-06-12 16:22:27.849 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-12 16:22:27.854 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-06-12 16:22:27.857 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-06-12 16:22:27.863 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-06-12 16:22:27.868 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-06-12 16:22:27.896 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-06-12 16:22:27.897 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-06-12 16:22:27.898 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.TjU4b8XhLOOHtwPa1haBAFOxGJyvkVGz_cW_YdtF76Kp9H5kIKtXgg.LJlFW1jB23xGpgkzwJU7tg.QBxHsecpWk-ssWBk3t5-NMTqNQsMxlvsIBclwLRiaw-O8NZSg1q0Lpb6EDnFX3al3S-2iEtaHhu0LCq9tQqcom_9UBI7hlfVKNHummQDE6OYFzAecMPYQfzHCeJFaJN7Y2jwZAGh14qRv7_2BPOdAfwUBpWbn-SB-k9U9hkUxV05T5g2oGSPXIsjuFPxB0dzti-pA-x1w_frYrfU1hYE01nlrLfx6xi4oxHDCgzcY5E-fMI-LLmku2RzvsvavXrzXAlX3gUKBC34qweMVWfBCVi3BayfbzRFKHw_3AFZHqmYp21DzZuRqDHkrb5gMtHSrL0lop9ke2G5Segv9rPScyiRG4oYnP1mozIeF-cMZ_LrJpdNktxfnr-5glcldb4q0r0Q39c0gKnLcEl0-FurGeqjwThNLcWdyGvULPlM45nrNjrS-gRuS7AlLNVj4ihFKorCgEitKuAkmWiyuWlqDAZaR21Y_wdldXpsDUgWzhfAAZTKOP5m3qZmKn4vqwMMkX4013Cbf14gIGmlhjjD_ZTm9owsTx6eQukwxGhgW4tHR9DCEar1AsOX4zH58kdAzVn3wn5nqmzlC65HARumoNf-h-njolpAcUHJSE7GvFOX0VxhGTbjItrDJ7cQLIDC0nhZxzMNF6bd0GA1xhch5MyTPnhEUXiL_Z3r61HAvIDK7VepGk69alH6ux2Abo4gVq4wNJipTiE9PUJ4f8k52g.g8_oM0YQWqRyY9cR7endLQ","refresh_token":"10cbe06a-829e-4aa8-51fc-08dc8ad133a8","token_type":"Bearer","expires_in":599999},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-06-12 16:22:27.898 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-06-12 16:22:27.899 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 163.6629ms
+2024-06-12 16:22:27.899 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-06-12 16:22:27.899 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:22:27.899 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:22:27.900 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 54 - 200 - application/json;+charset=utf-8 167.8326ms
+2024-06-12 16:23:26.606 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/City/Update application/json 114
+2024-06-12 16:23:26.607 +05:00 [INF] CORS policy execution successful.
+2024-06-12 16:23:26.607 +05:00 [INF] Request Method: POST, Path: /api/v1/City/Update, Content-Type: application/json
+2024-06-12 16:23:26.607 +05:00 [INF] Request Body: {
+  "id": 44,
+  "name": "update",
+  "description": "updated",
+  "stateID": 1,
+  "updatedBy": 1,
+  "isMain": true
+}
+2024-06-12 16:23:26.653 +05:00 [INF] Executed DbCommand (34ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-06-12 16:23:26.657 +05:00 [INF] Request Method: POST, Path: /api/v1/City/Update, Content-Type: application/json
+2024-06-12 16:23:26.657 +05:00 [INF] Request Body: {
+  "id": 44,
+  "name": "update",
+  "description": "updated",
+  "stateID": 1,
+  "updatedBy": 1,
+  "isMain": true
+}
+2024-06-12 16:23:26.657 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api)'
+2024-06-12 16:23:26.658 +05:00 [INF] Route matched with {action = "Update", controller = "City"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.City.Command.UpdateCityCommand.UpdateCityCommand) on controller CleanArc.Web.Api.Controllers.V1.City.CityController (CleanArc.Web.Api).
+2024-06-12 16:23:26.660 +05:00 [INF] Entering CleanArc.Application.Features.City.Command.UpdateCityCommand, Handle with parameter: {"ID":44,"Name":"update","Description":"updated","StateID":1,"UpdatedBy":1,"IsMain":true,"UserId":6}
+2024-06-12 16:23:26.660 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 6
+2024-06-12 16:23:26.661 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"f7047030","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":6,"UserName":"Waqasbutt","NormalizedUserName":"WAQASBUTT","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAED1ZsyKDfiq9iGoxD1OpIelbt5J3aNL7FpIkHGoAHG6sHiTDwVkjsPd0C2ldwRhcOA==","SecurityStamp":"GO33SMNVYSJI2TDDHJTABVIXZIYKV3S2","ConcurrencyStamp":"e0c2ccb6-75e9-4e94-92c2-a2d535bff1be","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-06-12 16:23:26.661 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":44,"Name":"update","Description":"updated","StateName":null,"StateID":1,"ImagePath":null,"ImageTitle":null,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":6,"UpdatedAt":null,"IsMain":true}
+2024-06-12 16:23:26.674 +05:00 [INF] Exiting null, UpdateAsync with response: -1
+2024-06-12 16:23:26.674 +05:00 [INF] Exiting null, Handle with response: true
+2024-06-12 16:23:26.675 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-06-12 16:23:26.675 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api) in 17.0537ms
+2024-06-12 16:23:26.675 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.City.CityController.Update (CleanArc.Web.Api)'
+2024-06-12 16:23:26.676 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:23:26.676 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:23:26.676 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/City/Update application/json 114 - 200 - application/json;+charset=utf-8 70.1613ms
+2024-06-12 16:31:03.524 +05:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-12 16:31:03.608 +05:00 [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-12 16:31:03.613 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-12 16:31:03.617 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-12 16:31:03.642 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-12 16:31:03.662 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-12 16:31:03.672 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-12 16:31:03.900 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-12 16:31:03.913 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-12 16:31:04.165 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-12 16:31:04.246 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-12 16:31:04.379 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:31:04.389 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 225.6558ms
+2024-06-12 16:31:05.759 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-12 16:31:05.760 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-12 16:31:05.775 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 15.2711ms
+2024-06-12 16:31:05.950 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 190.4140ms
+2024-06-12 16:31:07.744 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json 0
+2024-06-12 16:31:07.746 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-12 16:31:07.844 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-12 16:31:07.845 +05:00 [INF] Response StatusCode: 404
+2024-06-12 16:31:07.846 +05:00 [INF] Response StatusCode: 404
+2024-06-12 16:31:07.849 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json 0 - 404 - - 104.6283ms
+2024-06-12 16:31:08.423 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-12 16:31:08.425 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-12 16:31:08.870 +05:00 [INF] Response StatusCode: 200
+2024-06-12 16:31:08.874 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 451.5083ms
+2024-06-12 17:28:41.601 +05:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-12 17:28:41.773 +05:00 [INF] Executed DbCommand (53ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-12 17:28:41.780 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-12 17:28:41.784 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-12 17:28:41.825 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-12 17:28:41.871 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-12 17:28:41.900 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-12 17:28:42.360 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-12 17:28:42.378 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-12 17:28:43.274 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-12 17:28:43.400 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-12 17:28:43.852 +05:00 [INF] Response StatusCode: 200
+2024-06-12 17:28:43.858 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 588.5516ms
+2024-06-12 17:28:45.672 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-12 17:28:45.672 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-12 17:28:45.680 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 7.7764ms
+2024-06-12 17:28:45.724 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 52.0408ms
+2024-06-12 17:28:47.449 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-12 17:28:47.452 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-12 17:28:47.980 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json 0
+2024-06-12 17:28:47.982 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-12 17:28:48.437 +05:00 [INF] Response StatusCode: 200
+2024-06-12 17:28:48.440 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 991.3029ms
+2024-06-12 17:28:49.879 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-12 17:28:49.879 +05:00 [INF] Response StatusCode: 404
+2024-06-12 17:28:49.880 +05:00 [INF] Response StatusCode: 404
+2024-06-12 17:28:49.887 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json 0 - 404 - - 1906.3456ms
+2024-06-12 18:53:47.199 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-12 18:53:47.245 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-12 18:53:47.248 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-12 18:53:47.249 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-12 18:53:47.271 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-12 18:53:47.282 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-12 18:53:47.288 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-12 18:53:47.511 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-12 18:53:47.526 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-12 18:53:47.646 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-12 18:53:47.700 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-12 18:53:47.774 +05:00 [INF] Response StatusCode: 200
+2024-06-12 18:53:47.776 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 130.5918ms
+2024-06-12 18:53:48.904 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-12 18:53:48.904 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-12 18:53:48.909 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 4.9150ms
+2024-06-12 18:53:48.922 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 18.3587ms
+2024-06-12 18:53:50.624 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json 0
+2024-06-12 18:53:50.624 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-12 18:53:50.657 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-12 18:53:50.657 +05:00 [INF] Response StatusCode: 404
+2024-06-12 18:53:50.657 +05:00 [INF] Response StatusCode: 404
+2024-06-12 18:53:50.658 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json 0 - 404 - - 34.5656ms
+2024-06-12 18:53:51.175 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-12 18:53:51.175 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-12 18:53:51.368 +05:00 [INF] Response StatusCode: 200
+2024-06-12 18:53:51.369 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 194.1588ms
+2024-06-12 19:04:03.218 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-12 19:04:03.265 +05:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-12 19:04:03.268 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-12 19:04:03.269 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-12 19:04:03.325 +05:00 [INF] Executed DbCommand (45ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-12 19:04:03.335 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-12 19:04:03.341 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-12 19:04:03.450 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-12 19:04:03.458 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-12 19:04:03.560 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-12 19:04:03.602 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-12 19:04:03.663 +05:00 [INF] Response StatusCode: 200
+2024-06-12 19:04:03.665 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 105.9523ms
+2024-06-12 19:04:04.755 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-12 19:04:04.757 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 2.1126ms
+2024-06-12 19:04:04.785 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-12 19:04:04.802 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 16.6406ms
+2024-06-12 19:04:05.979 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-12 19:04:05.980 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-12 19:04:06.140 +05:00 [INF] Response StatusCode: 200
+2024-06-12 19:04:06.141 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 161.8729ms
+2024-06-12 19:04:06.308 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json 0
+2024-06-12 19:04:06.309 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-12 19:04:06.337 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-12 19:04:06.337 +05:00 [INF] Response StatusCode: 404
+2024-06-12 19:04:06.337 +05:00 [INF] Response StatusCode: 404
+2024-06-12 19:04:06.338 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json 0 - 404 - - 29.1235ms
+2024-06-12 21:27:06.520 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-12 21:27:06.569 +05:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-12 21:27:06.572 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-12 21:27:06.573 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-12 21:27:06.594 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-12 21:27:06.605 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-12 21:27:06.611 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-12 21:27:06.748 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-12 21:27:06.760 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-12 21:27:06.892 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-12 21:27:06.947 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-12 21:27:07.020 +05:00 [INF] Response StatusCode: 200
+2024-06-12 21:27:07.023 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 132.9657ms
+2024-06-12 21:27:07.393 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-12 21:27:07.417 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 24.0048ms
+2024-06-12 21:27:08.316 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-12 21:27:08.318 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 1.9872ms
+2024-06-12 21:27:10.691 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-12 21:27:10.693 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-12 21:27:10.895 +05:00 [INF] Response StatusCode: 200
+2024-06-12 21:27:10.896 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 205.3116ms
+2024-06-12 21:27:11.036 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json 0
+2024-06-12 21:27:11.036 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-12 21:27:11.065 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-12 21:27:11.065 +05:00 [INF] Response StatusCode: 404
+2024-06-12 21:27:11.065 +05:00 [INF] Response StatusCode: 404
+2024-06-12 21:27:11.066 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json 0 - 404 - - 30.4488ms
+2024-06-12 21:43:41.263 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-12 21:43:41.306 +05:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-12 21:43:41.308 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-12 21:43:41.309 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-12 21:43:41.323 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-12 21:43:41.333 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-12 21:43:41.339 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-12 21:43:41.455 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-12 21:43:41.465 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-12 21:43:41.561 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-12 21:43:41.603 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-12 21:43:41.661 +05:00 [INF] Response StatusCode: 200
+2024-06-12 21:43:41.663 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 102.3016ms
+2024-06-12 21:43:42.770 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-12 21:43:42.785 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 15.2689ms
+2024-06-12 21:43:42.794 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-12 21:43:42.796 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 1.5012ms
+2024-06-12 21:43:44.309 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-12 21:43:44.310 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-12 21:43:44.536 +05:00 [INF] Response StatusCode: 200
+2024-06-12 21:43:44.537 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 227.2244ms
+2024-06-12 21:43:45.374 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/cart.json application/json 0
+2024-06-12 21:43:45.375 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-12 21:43:45.404 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-06-12 21:43:45.404 +05:00 [INF] Response StatusCode: 404
+2024-06-12 21:43:45.404 +05:00 [INF] Response StatusCode: 404
+2024-06-12 21:43:45.405 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/cart.json application/json 0 - 404 - - 31.1115ms
