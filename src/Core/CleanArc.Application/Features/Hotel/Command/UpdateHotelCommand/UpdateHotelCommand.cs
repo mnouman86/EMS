@@ -16,7 +16,7 @@ namespace CleanArc.Application.Features.Hotel.Command.UpdateHotelCommand;
 public record UpdateHotelCommand(int ID,string? Name, int? CountryID, int? StateID, int? CityID, int? ZipCode, string? Address1,
     string? Address2, string? Latitude, string? Longitude, string? MobileNumber, string? PhoneNumber, string? Email,
     string? FocalPersonName, bool? IsChanelManager, bool? IsRating, bool? IsChain, string? CheckInFrom, string? CheckInTo,
-    string? CheckOutFrom, string? CheckOutTo, bool? IsDeleted, bool? IsActive, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+    string? CheckOutFrom, string? CheckOutTo, int? UpdatedBy) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateHotelCommand>
 {
     [JsonIgnore]
@@ -51,18 +51,18 @@ public record UpdateHotelCommand(int ID,string? Name, int? CountryID, int? State
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a Address2");
-        validator.RuleFor(c => c.IsActive)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a IsActive");
+        //validator.RuleFor(c => c.IsActive)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a IsActive");
         validator.RuleFor(c => c.Latitude)
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a Latitude");
-        validator.RuleFor(c => c.IsDeleted)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a valid IsDeleted");
+        //validator.RuleFor(c => c.IsDeleted)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a valid IsDeleted");
         validator.RuleFor(c => c.Longitude)
            .NotEmpty()
            .NotNull()
