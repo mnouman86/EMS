@@ -57,8 +57,11 @@ namespace CleanArc.Application.Features.Business.Command.UpdateBusinessCommand
                 await _unitOfWork.BusinessRepository.UpdateAsync(new Domain.Entities.Business.Business()
                 {  UpdatedBy = user.Id, ID = request.ID,
                     Name = request.Name,
-                    Address = request.Address,
+                    Address1 = request.Address1,
+                    Address2 = request.Address2,
+                    Email = request.Email,
                     PhoneNumber = request.PhoneNumber,
+                    MobileNumber = request.MobileNumber,
                     Latitude = request.Latitude,
                     Longitude = request.Longitude,
                     CountryID = request.CountryID,
@@ -67,7 +70,7 @@ namespace CleanArc.Application.Features.Business.Command.UpdateBusinessCommand
                     TaxIdentificationNumber = request.TaxIdentificationNumber,
                     License = request.License,
                     ProofOfInsurance = request.ProofOfInsurance,
-                    BankAccountDetailID = request.BankAccountDetailID,
+                    //BankAccountDetailID = request.BankAccountDetailID,
                     IsCancelation = request.IsCancelation,
                     IsRefundable = request.IsRefundable,
                 });

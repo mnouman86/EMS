@@ -14,7 +14,7 @@ using System.Text.Json.Serialization;
 namespace CleanArc.Application.Features.Business.Command.UpdateBusinessCommand;
 
 public record UpdateBusinessCommand(int ID, string? Name,
-    string? PhoneNumber, string? Address, string? Latitude,
+    string? PhoneNumber,string? MobileNumber, string? Address1,string? Address2,string? Email, string? Latitude,
     string? Longitude, int? CountryID, int? StateID,
     int? CityID, string? TaxIdentificationNumber, string? License,
     string? ProofOfInsurance, int? BankAccountDetailID,
@@ -33,10 +33,22 @@ public record UpdateBusinessCommand(int ID, string? Name,
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a PhoneNumber");
-        validator.RuleFor(c => c.Address)
+        validator.RuleFor(c => c.MobileNumber)
+            .NotEmpty()
+            .NotNull()
+            .WithMessage("Please enter a Mobile Number");
+        validator.RuleFor(c => c.Address1)
            .NotEmpty()
            .NotNull()
-           .WithMessage("Please enter a Address");
+           .WithMessage("Please enter a Present Address");
+        validator.RuleFor(c => c.Address2)
+           .NotEmpty()
+           .NotNull()
+           .WithMessage("Please enter a Permanent Address");
+        validator.RuleFor(c => c.Email)
+           .NotEmpty()
+           .NotNull()
+           .WithMessage("Please enter a Email");
         validator.RuleFor(c => c.Latitude)
            .NotEmpty()
            .NotNull()
@@ -65,10 +77,10 @@ public record UpdateBusinessCommand(int ID, string? Name,
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a ProofOfInsurance");
-        validator.RuleFor(c => c.BankAccountDetailID)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a BankAccountDetailID");
+        //validator.RuleFor(c => c.BankAccountDetailID)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a BankAccountDetailID");
         validator.RuleFor(c => c.IsCancelation)
            .NotEmpty()
            .NotNull()
