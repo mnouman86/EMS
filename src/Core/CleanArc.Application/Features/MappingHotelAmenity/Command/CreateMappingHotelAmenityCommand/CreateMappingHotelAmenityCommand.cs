@@ -13,7 +13,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.MappingHotelAmenity.Command.CreateMappingHotelAmenityCommand;
 
-public record CreateMappingHotelAmenityCommand(int HotelID, string? AmenitiesIDs, int? CreatedBy, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record CreateMappingHotelAmenityCommand(int? HotelID, string? AmenitiesIDs, int? CreatedBy, int? UpdatedBy) : IRequest<OperationResult<bool>>,
 IValidatableModel<CreateMappingHotelAmenityCommand>
 {
     [JsonIgnore]
