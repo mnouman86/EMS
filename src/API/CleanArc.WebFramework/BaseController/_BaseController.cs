@@ -72,6 +72,7 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
     /// Gets all entities.
     /// </summary>
     /// <returns>An action result representing the operation result.</returns>
+    //[Authorize]
     [HttpPost("GetAll")]
     public async Task<IActionResult> GetAll([FromBody] TQuery model)
     {

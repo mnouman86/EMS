@@ -1,5 +1,4 @@
-﻿using CleanArc.Domain.Entities.SearchBusinessDetail;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +21,7 @@ public class GetAllSearchBusinessDetailsQueryResult
     public string BusinessName { get; set; }
     public int BusinessID { get; set; }
     public int CarID { get; set; }
-    //public List<SearchCarImage> CarImages { get; set; }
+    public List<CleanArc.Domain.Entities.SearchCarImage.SearchCarImage> CarImages { get; set; }
 
     //public int TotalDays { get; set; }
     //public string? Description { get; set; }
