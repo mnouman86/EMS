@@ -8,8 +8,10 @@ namespace CleanArc.Application.Models.MappingHotelAmenities
 {
     public class CreateMappingHotelAmenities
     {
-        public string? HotelIDs { get; set; }
+        public string? HotelID { get; set; }
         public string? AmenitiesIDs { get; set; }
         public int? CreatedBy { get; set; }
+
+        public int? UpdatedBy { get; set; }
     }
 }

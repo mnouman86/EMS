@@ -10,4 +10,7 @@ public class SearchRoomAmenities
 {
     public string? Amenity { get; set; }
     public string? Description { get; set; }
+    public bool Selected { get; set; }
+    public int ID { get; set; }
+    public int RoomID { get; set; }
 }
