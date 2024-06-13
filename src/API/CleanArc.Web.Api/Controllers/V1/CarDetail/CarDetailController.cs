@@ -20,7 +20,8 @@ namespace CleanArc.Web.Api.Controllers.V1.CarDetail
     {
         
         public CarDetailController(ISender sender, ILogger<_BaseController<CreateCarDetailCommand, UpdateCarDetailCommand, DeleteCarDetailCommand, bool, GetAllCarDetailQuery,
-   List<GetAllCarDetailQueryResult>, GetCarDetailByIdQuery, GetCarDetailByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
+   List<GetAllCarDetailQueryResult>, GetCarDetailByIdQuery, GetCarDetailByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : 
+            base(sender, logger, httpContextAccessor)
         {
 
         }
