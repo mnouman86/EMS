@@ -32,6 +32,7 @@ public interface IUnitOfWork
     public IBusinessRepository BusinessRepository { get; }
     public IBankRepository BankRepository { get; }
     public IBusinessBankAccountRepository BusinessBankAccountRepository { get; }
+    public ICarDetailRepository CarDetailRepository { get; }
 
     Task CommitAsync();
     ValueTask RollBackAsync();
