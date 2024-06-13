@@ -46,6 +46,8 @@ public class UnitOfWork : IUnitOfWork
     public ISearchCarAmenitiesRepository SearchCarAmenitiesRepository { get; set; }
     public IMappingCarAmenityRepository MappingCarAmenityRepository { get; set; }
     public ISearchBusinessCarDetailRepository SearchBusinessCarDetailRepository { get; set; }
+    public ISearchBusinessDetailRepository SearchBusinessDetailRepository { get; set; }
+
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
 
@@ -84,6 +86,7 @@ public class UnitOfWork : IUnitOfWork
                 ILogger<SearchCarAmenitiesRepository> _loggerSearchCarAmenities,
                 ILogger<MappingCarAmenityRepository> _loggerMappingCarAmenity,
                 ILogger<SearchBusinessCarDetailRepository> _loggerSearchBusinessCarDetail,
+                                ILogger<SearchBusinessDetailRepository> _loggerSearchBusinessDetail,
 
 
 
@@ -134,6 +137,7 @@ public class UnitOfWork : IUnitOfWork
         SearchCarAmenitiesRepository = new SearchCarAmenitiesRepository(configuration, mapper, _loggerSearchCarAmenities, httpContextAccessor);
         MappingCarAmenityRepository = new MappingCarAmenityRepository(configuration, mapper, _loggerMappingCarAmenity, httpContextAccessor);
         SearchBusinessCarDetailRepository = new SearchBusinessCarDetailRepository(configuration, mapper, _loggerSearchBusinessCarDetail, httpContextAccessor);
+        SearchBusinessDetailRepository = new SearchBusinessDetailRepository(configuration, mapper, _loggerSearchBusinessDetail, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         this.configuration = configuration;
