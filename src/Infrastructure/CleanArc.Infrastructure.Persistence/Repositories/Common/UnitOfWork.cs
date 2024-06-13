@@ -40,6 +40,7 @@ public class UnitOfWork : IUnitOfWork
     public IBusinessRepository BusinessRepository { get; set; }
     public IBankRepository BankRepository { get; set; }
     public IBusinessBankAccountRepository BusinessBankAccountRepository { get; set; }
+    public ICarDetailRepository CarDetailRepository { get; set; }
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
 
@@ -73,6 +74,7 @@ public class UnitOfWork : IUnitOfWork
         ILogger<BusinessRepository> _loggerBusiness,
         ILogger<BankRepository> _loggerBank,
         ILogger<BusinessBankAccountRepository> _loggerBusinessBankAccount,
+        ILogger<CarDetailRepository> _loggerCarDetail,
 
 
 
@@ -115,6 +117,7 @@ public class UnitOfWork : IUnitOfWork
         BusinessRepository = new BusinessRepository(configuration, mapper, _loggerBusiness, httpContextAccessor);
         BankRepository = new BankRepository(configuration, mapper, _loggerBank, httpContextAccessor);
         BusinessBankAccountRepository = new BusinessBankAccountRepository(configuration, mapper, _loggerBusinessBankAccount, httpContextAccessor);
+        CarDetailRepository = new CarDetailRepository(configuration, mapper, _loggerCarDetail, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         this.configuration = configuration;
