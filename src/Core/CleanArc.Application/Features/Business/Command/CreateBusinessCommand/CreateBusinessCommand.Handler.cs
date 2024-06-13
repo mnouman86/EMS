@@ -58,8 +58,11 @@ namespace CleanArc.Application.Features.Business.Command.CreateBusinessCommand
                 await _unitOfWork.BusinessRepository.AddAsync(new Domain.Entities.Business.Business()
                 { CreatedBy = user.Id,
                    Name = request.Name,
-                   Address = request.Address,
+                   Address1 = request.Address1,
+                   Address2 = request.Address2,
+                   Email = request.Email,
                    PhoneNumber = request.PhoneNumber,
+                   MobileNumber = request.MobileNumber,
                     Latitude = request.Latitude,
                     Longitude = request.Longitude, 
                    CountryID = request.CountryID,
@@ -68,7 +71,7 @@ namespace CleanArc.Application.Features.Business.Command.CreateBusinessCommand
                    TaxIdentificationNumber = request.TaxIdentificationNumber,
                   License= request.License,
                     ProofOfInsurance= request.ProofOfInsurance,
-                    BankAccountDetailID= request.BankAccountDetailID,
+                    //BankAccountDetailID= request.BankAccountDetailID,
                     IsCancelation= request.IsCancelation,
                     IsRefundable= request.IsRefundable,
                     
