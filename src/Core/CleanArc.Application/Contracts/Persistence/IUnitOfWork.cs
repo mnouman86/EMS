@@ -33,6 +33,10 @@ public interface IUnitOfWork
     public IBankRepository BankRepository { get; }
     public IBusinessBankAccountRepository BusinessBankAccountRepository { get; }
     public ICarDetailRepository CarDetailRepository { get; }
+    public ISearchCarImageRepository SearchCarImageRepository { get; }
+    public ISearchCarAmenitiesRepository SearchCarAmenitiesRepository { get; }
+    public IMappingCarAmenityRepository MappingCarAmenityRepository { get; }
+    public ISearchBusinessCarDetailRepository SearchBusinessCarDetailRepository { get; }
 
     Task CommitAsync();
     ValueTask RollBackAsync();
