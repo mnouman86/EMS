@@ -19,11 +19,11 @@ namespace CleanArc.Web.Api.Controllers.V1.SearchHotelImage;
 [ApiController]
 [Route("api/v{version:apiVersion}/SearchHotelImage")]
 //[Authorize]
-public class SearchHotelImageController : _BaseController<CreateSearchHotelImageCommand, UpdateSearchHotelImageCommand, DeleteSearchHotelImageCommand, bool, GetAllSearchHotelImageQuery,
+public class SearchHotelImageController : _BaseController<CreateSearchCarImageCommand, UpdateSearchHotelImageCommand, DeleteSearchHotelImageCommand, bool, GetAllSearchHotelImageQuery,
 List<GetAllSearchHotelImageQueryResult>, GetByIdSearchHotelImageQuery, GetByIdSearchHotelImageQueryResult>
 {
 
-    public SearchHotelImageController(ISender sender, ILogger<_BaseController<CreateSearchHotelImageCommand, UpdateSearchHotelImageCommand, DeleteSearchHotelImageCommand, bool, GetAllSearchHotelImageQuery,
+    public SearchHotelImageController(ISender sender, ILogger<_BaseController<CreateSearchCarImageCommand, UpdateSearchHotelImageCommand, DeleteSearchHotelImageCommand, bool, GetAllSearchHotelImageQuery,
 List<GetAllSearchHotelImageQueryResult>, GetByIdSearchHotelImageQuery, GetByIdSearchHotelImageQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 
