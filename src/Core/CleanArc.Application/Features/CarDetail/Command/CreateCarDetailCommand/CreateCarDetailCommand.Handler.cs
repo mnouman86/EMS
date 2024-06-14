@@ -65,8 +65,8 @@ namespace CleanArc.Application.Features.CarDetail.Command.CreateCarDetailCommand
                         PlateNumber = request.PlateNumber,
                     NoOfSeat = request.NoOfSeat,
                     RentPrice = request.RentPrice,
-                    IsRefundable = request.IsRefundable,
-                    IsCancelation = request.IsCancelation
+                    //IsRefundable = request.IsRefundable,
+                    //IsCancelation = request.IsCancelation
                             
 
                 });
