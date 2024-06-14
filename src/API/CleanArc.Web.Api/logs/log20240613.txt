@@ -1,0 +1,72 @@
+2024-06-13 16:14:18.268 +05:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-13 16:14:18.361 +05:00 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-13 16:14:18.368 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-13 16:14:18.374 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-13 16:14:18.397 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-13 16:14:18.416 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-13 16:14:18.427 +05:00 [INF] User profile is available. Using 'C:\Users\DEV 001\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-13 16:14:18.689 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-13 16:14:18.699 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-06-13 16:14:19.307 +05:00 [INF] Request starting HTTP/1.1 HEAD http://localhost:8746/ - -
+2024-06-13 16:14:19.306 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger - -
+2024-06-13 16:14:19.324 +05:00 [INF] Request Method: HEAD, Path: /, Content-Type: null
+2024-06-13 16:14:19.609 +05:00 [INF] Request Method: GET, Path: /swagger, Content-Type: null
+2024-06-13 16:14:19.615 +05:00 [INF] Response StatusCode: 301
+2024-06-13 16:14:19.680 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-06-13 16:14:19.696 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger - - - 301 - - 389.7076ms
+2024-06-13 16:14:19.709 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-06-13 16:14:19.790 +05:00 [INF] Response StatusCode: 200
+2024-06-13 16:14:19.797 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-06-13 16:14:19.797 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/swagger-ui-bundle.js - -
+2024-06-13 16:14:19.802 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/swagger-ui.css - -
+2024-06-13 16:14:19.804 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 124.1888ms
+2024-06-13 16:14:19.810 +05:00 [INF] Request Method: GET, Path: /swagger/swagger-ui.css, Content-Type: null
+2024-06-13 16:14:19.804 +05:00 [INF] Request Method: GET, Path: /swagger/swagger-ui-bundle.js, Content-Type: null
+2024-06-13 16:14:19.828 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-06-13 16:14:19.829 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/swagger-ui-standalone-preset.js - -
+2024-06-13 16:14:19.835 +05:00 [INF] Request Method: GET, Path: /swagger/swagger-ui-standalone-preset.js, Content-Type: null
+2024-06-13 16:14:19.849 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 13768 application/javascript;+charset=utf-8 56.2339ms
+2024-06-13 16:14:19.888 +05:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2024-06-13 16:14:19.888 +05:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2024-06-13 16:14:19.892 +05:00 [INF] Response StatusCode: 200
+2024-06-13 16:14:19.901 +05:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2024-06-13 16:14:19.898 +05:00 [INF] Response StatusCode: 200
+2024-06-13 16:14:19.905 +05:00 [INF] Response StatusCode: 200
+2024-06-13 16:14:19.915 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/swagger-ui.css - - - 200 144929 text/css 113.7003ms
+2024-06-13 16:14:19.929 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/swagger-ui-standalone-preset.js - - - 200 312163 text/javascript 99.2759ms
+2024-06-13 16:14:19.943 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/swagger-ui-bundle.js - - - 200 1061536 text/javascript 147.3257ms
+2024-06-13 16:14:19.971 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 143.1160ms
+2024-06-13 16:14:20.074 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-06-13 16:14:20.077 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-06-13 16:14:20.091 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/favicon-32x32.png - -
+2024-06-13 16:14:20.093 +05:00 [INF] Request Method: GET, Path: /swagger/favicon-32x32.png, Content-Type: null
+2024-06-13 16:14:20.096 +05:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2024-06-13 16:14:20.100 +05:00 [INF] Response StatusCode: 200
+2024-06-13 16:14:20.104 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/favicon-32x32.png - - - 200 628 image/png 13.0231ms
+2024-06-13 16:14:20.438 +05:00 [INF] Request Method: HEAD, Path: /, Content-Type: null
+2024-06-13 16:14:20.441 +05:00 [INF] Response StatusCode: 404
+2024-06-13 16:14:20.443 +05:00 [INF] Response StatusCode: 404
+2024-06-13 16:14:20.473 +05:00 [INF] Request finished HTTP/1.1 HEAD http://localhost:8746/ - - - 404 - - 1168.0301ms
+2024-06-13 16:14:20.625 +05:00 [INF] Response StatusCode: 200
+2024-06-13 16:14:20.629 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 554.7251ms

@@ -29,6 +29,7 @@ using CleanArc.WebFramework.Interceptor;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using CleanArc.Application.Common;
+using System.Net.Http.Headers;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -97,6 +98,44 @@ builder.Services.ConfigureGrpcPluginServices();
 builder.Services.AddAutoMapper(typeof(User), typeof(JwtService), typeof(UserController));
 
 var app = builder.Build();
+
+app.MapPost("/api/v1/uploadFile", async (HttpRequest request) =>
+{
+    try
+    {
+        var formCollection = await request.ReadFormAsync();
+        var file = formCollection.Files.FirstOrDefault();
+
+        if (file == null || file.Length == 0)
+        {
+            return Results.BadRequest("No file uploaded");
+        }
+
+        var folderName = Path.Combine("Resources", "Images2");
+        var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+
+        var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+        var fullPath = Path.Combine(pathToSave, fileName);
+        var dbPath = Path.Combine(folderName, fileName);
+
+        if (!Directory.Exists(pathToSave))
+        {
+            Directory.CreateDirectory(pathToSave);
+        }
+
+        using (var stream = new FileStream(fullPath, FileMode.Create))
+        {
+            await file.CopyToAsync(stream);
+        }
+
+        return Results.Ok(new { dbPath });
+    }
+    catch (Exception ex)
+    {
+        return Results.StatusCode(500);
+    }
+});
+
 app.UseCors(builder => builder
      .AllowAnyOrigin()
      .AllowAnyMethod()
@@ -138,6 +177,7 @@ app.UseCustomExceptionHandler();
 app.UseCustomLoggingHandler();
 
 app.UseSwaggerAndUI();
+app.UseHttpsRedirection();
 
 app.UseRouting();
 
