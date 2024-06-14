@@ -1,6 +1,7 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Features.AgeType.Queries.GetAllAgeType;
 using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.Request;
 using CleanArc.SharedKernel.Extensions;
 using MapsterMapper;
 using Mediator;
@@ -36,6 +37,12 @@ internal class GetAllBusinessQueryHandler : IRequestHandler<GetAllBusinessQuery,
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
+            //var userId = int.Parse(_httpContextAccessor?.HttpContext.User.Identity.GetUserId());
+            //if (request.searchRequest.FilterArray == null)
+            //{
+            //    request.searchRequest.FilterArray = new List<FilterParameter>();
+            //}
+           // request.searchRequest.FilterArray.Add(new FilterParameter { ParameterName = "CreatedBy", ParameterValue = Convert.ToString(userId) });
             var businesses = await _unitOfWork.BusinessRepository.GetAllAsync(request.searchRequest);
 
             //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();

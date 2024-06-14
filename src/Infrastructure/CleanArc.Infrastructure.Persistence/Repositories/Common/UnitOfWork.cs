@@ -1,4 +1,5 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
+using CleanArc.Domain.Entities.SearchCarAmenities;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -41,6 +42,12 @@ public class UnitOfWork : IUnitOfWork
     public IBankRepository BankRepository { get; set; }
     public IBusinessBankAccountRepository BusinessBankAccountRepository { get; set; }
     public ICarDetailRepository CarDetailRepository { get; set; }
+    public ISearchCarImageRepository SearchCarImageRepository {  get; set; }
+    public ISearchCarAmenitiesRepository SearchCarAmenitiesRepository { get; set; }
+    public IMappingCarAmenityRepository MappingCarAmenityRepository { get; set; }
+    public ISearchBusinessCarDetailRepository SearchBusinessCarDetailRepository { get; set; }
+    public ISearchBusinessDetailRepository SearchBusinessDetailRepository { get; set; }
+
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
 
@@ -75,6 +82,14 @@ public class UnitOfWork : IUnitOfWork
         ILogger<BankRepository> _loggerBank,
         ILogger<BusinessBankAccountRepository> _loggerBusinessBankAccount,
         ILogger<CarDetailRepository> _loggerCarDetail,
+                ILogger<SearchCarImageRepository> _loggerSearchCarImage,
+                ILogger<SearchCarAmenitiesRepository> _loggerSearchCarAmenities,
+                ILogger<MappingCarAmenityRepository> _loggerMappingCarAmenity,
+                ILogger<SearchBusinessCarDetailRepository> _loggerSearchBusinessCarDetail,
+                                ILogger<SearchBusinessDetailRepository> _loggerSearchBusinessDetail,
+
+
+
 
 
 
@@ -118,6 +133,11 @@ public class UnitOfWork : IUnitOfWork
         BankRepository = new BankRepository(configuration, mapper, _loggerBank, httpContextAccessor);
         BusinessBankAccountRepository = new BusinessBankAccountRepository(configuration, mapper, _loggerBusinessBankAccount, httpContextAccessor);
         CarDetailRepository = new CarDetailRepository(configuration, mapper, _loggerCarDetail, httpContextAccessor);
+        SearchCarImageRepository = new SearchCarImageRepository(configuration, mapper, _loggerSearchCarImage, httpContextAccessor);
+        SearchCarAmenitiesRepository = new SearchCarAmenitiesRepository(configuration, mapper, _loggerSearchCarAmenities, httpContextAccessor);
+        MappingCarAmenityRepository = new MappingCarAmenityRepository(configuration, mapper, _loggerMappingCarAmenity, httpContextAccessor);
+        SearchBusinessCarDetailRepository = new SearchBusinessCarDetailRepository(configuration, mapper, _loggerSearchBusinessCarDetail, httpContextAccessor);
+        SearchBusinessDetailRepository = new SearchBusinessDetailRepository(configuration, mapper, _loggerSearchBusinessDetail, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         this.configuration = configuration;

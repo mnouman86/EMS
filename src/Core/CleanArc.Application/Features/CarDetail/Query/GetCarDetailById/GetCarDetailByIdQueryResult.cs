@@ -23,5 +23,7 @@ namespace CleanArc.Application.Features.CarDetail.Query.GetCarDetailById
         public DateTime CreatedAt { get; set; }
         public int UpdatedBy { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public bool IsRefundable { get; set; }
+        public bool IsCancelation { get; set; }
     }
 }

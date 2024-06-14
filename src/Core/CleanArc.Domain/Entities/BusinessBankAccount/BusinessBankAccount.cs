@@ -11,6 +11,10 @@ namespace CleanArc.Domain.Entities.BusinessBankAccount
         public int ID { get; set; }
         public string? AccountTitle { get; set; }
         public int? BankID { get; set; }
+
+        public string BankName { get; set; }
+
+        public string BusinessName { get; set; }
         public int? BusinessID { get; set; }
         public string IBAN { get; set; }
         public bool? IsActive { get; set; }
