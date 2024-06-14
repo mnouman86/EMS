@@ -37,11 +37,11 @@ internal class GetAllBusinessQueryHandler : IRequestHandler<GetAllBusinessQuery,
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var userId = int.Parse(_httpContextAccessor?.HttpContext.User.Identity.GetUserId());
-            if (request.searchRequest.FilterArray == null)
-            {
-                request.searchRequest.FilterArray = new List<FilterParameter>();
-            }
+            //var userId = int.Parse(_httpContextAccessor?.HttpContext.User.Identity.GetUserId());
+            //if (request.searchRequest.FilterArray == null)
+            //{
+            //    request.searchRequest.FilterArray = new List<FilterParameter>();
+            //}
            // request.searchRequest.FilterArray.Add(new FilterParameter { ParameterName = "CreatedBy", ParameterValue = Convert.ToString(userId) });
             var businesses = await _unitOfWork.BusinessRepository.GetAllAsync(request.searchRequest);
 
