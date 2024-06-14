@@ -1,0 +1,6 @@
+@CleanArc.Web.FileUpload_HostAddress = http://localhost:5126
+
+GET {{CleanArc.Web.FileUpload_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
