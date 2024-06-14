@@ -1,4 +1,5 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using Microsoft.Identity.Client;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace CleanArc.Application.Models.Jwt;
 
@@ -8,12 +9,14 @@ public class AccessToken
     public string refresh_token { get; set; }
     public string token_type { get; set; }
     public int expires_in { get; set; }
+    public int userID { get; set; }
 
-    public AccessToken(JwtSecurityToken securityToken,string refreshToken="")
+    public AccessToken(JwtSecurityToken securityToken,string refreshToken="",int loginuserID=0)
     {
         access_token = new JwtSecurityTokenHandler().WriteToken(securityToken);
         token_type = "Bearer";
         expires_in = (int)(securityToken.ValidTo - DateTime.UtcNow).TotalSeconds;
         refresh_token = refreshToken;
+        userID = loginuserID;
     }
 }

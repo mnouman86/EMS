@@ -64,7 +64,9 @@ internal class UpdateCarDetailCommandHandler : IRequestHandler<UpdateCarDetailCo
                 VehicleIdentificationNumber = request.VehicleIdentificationNumber,
                 PlateNumber = request.PlateNumber,
                 NoOfSeat = request.NoOfSeat,
-                RentPrice = request.RentPrice
+                RentPrice = request.RentPrice,
+                IsRefundable = request.IsRefundable,
+                IsCancelation = request.IsCancelation
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

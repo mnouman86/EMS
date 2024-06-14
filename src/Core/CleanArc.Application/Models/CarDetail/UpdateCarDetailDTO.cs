@@ -16,10 +16,12 @@ namespace CleanArc.Application.Models.CarDetail
         public string? PlateNumber { get; set; }
         public int? NoOfSeat { get; set; }
         public int? RentPrice { get; set; }
-       // public bool? IsActive { get; set; }
-       // public bool? IsDeleted { get; set; }
-       // public int? CreatedBy { get; set; }
+        // public bool? IsActive { get; set; }
+        // public bool? IsDeleted { get; set; }
+        // public int? CreatedBy { get; set; }
         //public DateTime? CreatedAt { get; set; }
+        public bool? IsRefundable { get; set; }
+        public bool? IsCancelation { get; set; }
         public int? UpdatedBy { get; set; }
        // public DateTime? UpdatedAt { get; set; }
     }

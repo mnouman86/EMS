@@ -11,7 +11,10 @@ namespace CleanArc.Application.Models.Business
         //public int? ID { get; set; }
         public string? Name { get; set; }
         public string? PhoneNumber { get; set; }
-        public string? Address { get; set; }
+        public string? MobileNumber { get; set; }
+        public string? Address1 { get; set; }
+        public string? Address2 { get; set; }
+        public string? Email { get; set; }
         public string? Latitude { get; set; }
         public string? Longitude { get; set; }
         public int? CountryID { get; set; }
@@ -20,7 +23,7 @@ namespace CleanArc.Application.Models.Business
         public string? TaxIdentificationNumber { get; set; }
         public string? License { get; set; }
         public string? ProofOfInsurance { get; set; }
-        public int? BankAccountDetailID { get; set; }
+        //public int? BankAccountDetailID { get; set; }
         public bool? IsCancelation { get; set; }
         public bool? IsRefundable { get; set; }
        // public bool? IsActive { get; set; }
