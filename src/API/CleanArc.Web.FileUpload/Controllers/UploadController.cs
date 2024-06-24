@@ -15,7 +15,13 @@ namespace CleanArc.Web.FileUpload.Controllers
             {
                 var formCollection = await Request.ReadFormAsync();
                 var file = formCollection.Files.First();
-                var folderName = Path.Combine("Resources", "Images");
+                var category = formCollection["category"].ToString();
+                if (string.IsNullOrWhiteSpace(category))
+                {
+                    category = "Default";
+                }
+
+                var folderName = Path.Combine("Resources", "Images",category);
                 var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
                 if (file.Length > 0)
                 {
