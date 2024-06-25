@@ -48,5 +48,48 @@ namespace CleanArc.Web.UI.Controllers
 
             return View("Index");
         }
+        [HttpPost]
+        public async Task<IActionResult> Delete(string category, string fileName)
+        {
+            if (string.IsNullOrWhiteSpace(category) || string.IsNullOrWhiteSpace(fileName))
+            {
+                ModelState.AddModelError("File", "Invalid category or file name.");
+                return View("Index");
+            }
+
+            var result = await _fileUploadService.DeleteFileAsync(category, fileName);
+            if (result)
+            {
+                ViewBag.Message = "File deleted successfully.";
+            }
+            else
+            {
+                ModelState.AddModelError("File", "File deletion failed.");
+            }
+
+            return View("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(string category, string fileName, IFormFile newFile)
+        {
+            if (string.IsNullOrWhiteSpace(category) || string.IsNullOrWhiteSpace(fileName) || newFile == null || newFile.Length == 0)
+            {
+                ModelState.AddModelError("File", "Invalid input.");
+                return View("Index");
+            }
+
+            var result = await _fileUploadService.UpdateFileAsync(category, fileName, newFile);
+            if (result)
+            {
+                ViewBag.Message = "File updated successfully.";
+            }
+            else
+            {
+                ModelState.AddModelError("File", "File update failed.");
+            }
+
+            return View("Index");
+        }
     }
 }

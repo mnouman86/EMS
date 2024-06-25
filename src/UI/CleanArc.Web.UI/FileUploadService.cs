@@ -38,6 +38,36 @@ namespace CleanArc.Web.UI
                 }
             }
         }
+        public async Task<bool> DeleteFileAsync(string category, string fileName)
+        {
+            var requestUrl = $"/api/Upload/{category}/{fileName}"; // Use route parameters
+            var response = await _httpClient.DeleteAsync(requestUrl);
+            response.EnsureSuccessStatusCode();
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> UpdateFileAsync(string category, string fileName, IFormFile newFile)
+        {
+            using (var content = new MultipartFormDataContent())
+            {
+                content.Add(new StringContent(category), "category");
+                content.Add(new StringContent(fileName), "fileName");
+
+                using (var fileStream = newFile.OpenReadStream())
+                {
+                    var streamContent = new StreamContent(fileStream);
+                    streamContent.Headers.ContentType = new MediaTypeHeaderValue(newFile.ContentType);
+
+                    content.Add(streamContent, "newFile", newFile.FileName);
+
+                    var requestUrl = $"/api/Upload/{category}/{fileName}";
+                    var response = await _httpClient.PutAsync(requestUrl, content);
+
+                    return response.IsSuccessStatusCode;
+                }
+            }
+        }
+
     }
 
 }
