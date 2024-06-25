@@ -28,6 +28,11 @@ public class GetAllSearchHotelsQueryResult {
     public string? Description { get; set; }
     public decimal? Longitude { get; set; }
     public decimal? Latitude { get; set; }
-
+    public class HotelImage
+    {
+        public string ImageTitle { get; set; }
+        public string ImagePath { get; set; }
+        public bool IsMain { get; set; }
+    }
 }
 
