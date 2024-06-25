@@ -38,6 +38,8 @@ public interface IUnitOfWork
     public IMappingCarAmenityRepository MappingCarAmenityRepository { get; }
     public ISearchBusinessCarDetailRepository SearchBusinessCarDetailRepository { get; }
     public ISearchBusinessDetailRepository SearchBusinessDetailRepository { get; }
+    public ICarImageRepository CarImageRepository { get; }
+    public IHotelImageRepository HotelImageRepository { get; }
 
     Task CommitAsync();
     ValueTask RollBackAsync();
