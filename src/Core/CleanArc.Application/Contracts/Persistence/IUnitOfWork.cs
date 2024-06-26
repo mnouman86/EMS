@@ -40,6 +40,8 @@ public interface IUnitOfWork
     public ISearchBusinessDetailRepository SearchBusinessDetailRepository { get; }
     public ICarImageRepository CarImageRepository { get; }
     public IHotelImageRepository HotelImageRepository { get; }
+    public IRoomVisualRepository RoomVisualRepository { get; }
+
 
     Task CommitAsync();
     ValueTask RollBackAsync();

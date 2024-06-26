@@ -49,6 +49,7 @@ public class UnitOfWork : IUnitOfWork
     public ISearchBusinessDetailRepository SearchBusinessDetailRepository { get; set; }
     public ICarImageRepository CarImageRepository { get; set; }
     public IHotelImageRepository HotelImageRepository { get; set; }
+    public IRoomVisualRepository RoomVisualRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -91,6 +92,7 @@ public class UnitOfWork : IUnitOfWork
                                 ILogger<SearchBusinessDetailRepository> _loggerSearchBusinessDetail,
                                 ILogger<CarImageRepository> _loggerCarImage,
                                 ILogger<HotelImageRepository> _loggerHotelImage,
+                                ILogger<RoomVisualRepository> _loggerRoomVisual,
 
 
 
@@ -145,6 +147,7 @@ public class UnitOfWork : IUnitOfWork
         SearchBusinessDetailRepository = new SearchBusinessDetailRepository(configuration, mapper, _loggerSearchBusinessDetail, httpContextAccessor);
         CarImageRepository = new CarImageRepository(configuration, mapper, _loggerCarImage, httpContextAccessor);
         HotelImageRepository = new HotelImageRepository(configuration, mapper, _loggerHotelImage, httpContextAccessor);
+        RoomVisualRepository = new RoomVisualRepository(configuration, mapper, _loggerRoomVisual, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         this.configuration = configuration;
