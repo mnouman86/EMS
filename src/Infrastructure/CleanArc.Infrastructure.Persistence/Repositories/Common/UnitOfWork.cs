@@ -47,6 +47,9 @@ public class UnitOfWork : IUnitOfWork
     public IMappingCarAmenityRepository MappingCarAmenityRepository { get; set; }
     public ISearchBusinessCarDetailRepository SearchBusinessCarDetailRepository { get; set; }
     public ISearchBusinessDetailRepository SearchBusinessDetailRepository { get; set; }
+    public ICarImageRepository CarImageRepository { get; set; }
+    public IHotelImageRepository HotelImageRepository { get; set; }
+    public IRoomVisualRepository RoomVisualRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -87,6 +90,10 @@ public class UnitOfWork : IUnitOfWork
                 ILogger<MappingCarAmenityRepository> _loggerMappingCarAmenity,
                 ILogger<SearchBusinessCarDetailRepository> _loggerSearchBusinessCarDetail,
                                 ILogger<SearchBusinessDetailRepository> _loggerSearchBusinessDetail,
+                                ILogger<CarImageRepository> _loggerCarImage,
+                                ILogger<HotelImageRepository> _loggerHotelImage,
+                                ILogger<RoomVisualRepository> _loggerRoomVisual,
+
 
 
 
@@ -138,6 +145,9 @@ public class UnitOfWork : IUnitOfWork
         MappingCarAmenityRepository = new MappingCarAmenityRepository(configuration, mapper, _loggerMappingCarAmenity, httpContextAccessor);
         SearchBusinessCarDetailRepository = new SearchBusinessCarDetailRepository(configuration, mapper, _loggerSearchBusinessCarDetail, httpContextAccessor);
         SearchBusinessDetailRepository = new SearchBusinessDetailRepository(configuration, mapper, _loggerSearchBusinessDetail, httpContextAccessor);
+        CarImageRepository = new CarImageRepository(configuration, mapper, _loggerCarImage, httpContextAccessor);
+        HotelImageRepository = new HotelImageRepository(configuration, mapper, _loggerHotelImage, httpContextAccessor);
+        RoomVisualRepository = new RoomVisualRepository(configuration, mapper, _loggerRoomVisual, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         this.configuration = configuration;
