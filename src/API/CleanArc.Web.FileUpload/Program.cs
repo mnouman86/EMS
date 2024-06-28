@@ -16,6 +16,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseCors(builder => builder
+//.WithOrigins("http://your-angular-app-url")
      .AllowAnyOrigin()
      .AllowAnyMethod()
      .AllowAnyHeader());
@@ -24,9 +25,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-app.UseCors(builder => builder
-     .AllowAnyOrigin()
-     .AllowAnyMethod()
-     .AllowAnyHeader());
 
 app.Run();
