@@ -19,14 +19,14 @@
 <form asp-action="Delete" method="post" enctype="multipart/form-data">
     <input type="text" name="category" placeholder="Category" />
     <input type="text" name="fileName" placeholder="File Name" />
-    <button type="submit">Delete</button>
+    <button type="submit" class="btn btn-primary">Delete</button>
 </form>
 
 <form method="post" asp-action="Update" enctype="multipart/form-data">
     <input type="text" name="category" placeholder="Category" />
     <input type="text" name="fileName" placeholder="File Name" />
     <input type="file" name="newFile" />
-    <button type="submit">Update</button>
+    <button type="submit" class="btn btn-primary" >Update</button>
 </form>
 @if (ViewBag.Message != null)
 {
