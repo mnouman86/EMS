@@ -58,7 +58,9 @@ namespace CleanArc.Application.Features.RoomVisual.Command.CreateRoomVisualComma
                 //return OperationResult<bool>.SuccessResult(true);
                 await _unitOfWork.RoomVisualRepository.AddAsync(new Domain.Entities.RoomVisual.RoomVisual()
                 { CreatedBy = user.Id,
-                    
+                    HotelID= request.HotelID,
+                   RoomID= request.RoomID,
+                    CategoryID= request.CategoryID,
                     ImagePath = request.ImagePath,
                     ImageTitle = request.ImageTitle,
                     IsMain = (bool)request.IsMain
