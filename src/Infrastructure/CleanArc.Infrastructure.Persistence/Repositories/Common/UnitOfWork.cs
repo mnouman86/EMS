@@ -50,6 +50,10 @@ public class UnitOfWork : IUnitOfWork
     public ICarImageRepository CarImageRepository { get; set; }
     public IHotelImageRepository HotelImageRepository { get; set; }
     public IRoomVisualRepository RoomVisualRepository { get; set; }
+    public IAdvertisementRepository AdvertisementRepository { get; set; }
+    public IAdvertisementPlaceRepository AdvertisementPlaceRepository { get; set; }
+    public IAdvertisementPageRepository AdvertisementPageRepository { get; set; }
+
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -93,10 +97,9 @@ public class UnitOfWork : IUnitOfWork
                                 ILogger<CarImageRepository> _loggerCarImage,
                                 ILogger<HotelImageRepository> _loggerHotelImage,
                                 ILogger<RoomVisualRepository> _loggerRoomVisual,
-
-
-
-
+                                ILogger<AdvertisementRepository> _loggerAdvertisement,
+                                ILogger<AdvertisementPlaceRepository> _loggerAdvertisementPlace,
+                                ILogger<AdvertisementPageRepository> _loggerAdvertisementPage,
 
 
 
@@ -148,6 +151,9 @@ public class UnitOfWork : IUnitOfWork
         CarImageRepository = new CarImageRepository(configuration, mapper, _loggerCarImage, httpContextAccessor);
         HotelImageRepository = new HotelImageRepository(configuration, mapper, _loggerHotelImage, httpContextAccessor);
         RoomVisualRepository = new RoomVisualRepository(configuration, mapper, _loggerRoomVisual, httpContextAccessor);
+        AdvertisementRepository = new AdvertisementRepository(configuration, mapper, _loggerAdvertisement, httpContextAccessor);
+        AdvertisementPlaceRepository = new AdvertisementPlaceRepository(configuration, mapper, _loggerAdvertisementPlace, httpContextAccessor);
+        AdvertisementPageRepository = new AdvertisementPageRepository(configuration, mapper, _loggerAdvertisementPage, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         this.configuration = configuration;
