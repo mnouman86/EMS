@@ -74,7 +74,12 @@ public async Task<string> AddAsync(Advertisement Advertisement)
         {
             connection.Open();
                 CreateAdvertisementDTO createAdvertisementDTO = _mapper.Map<CreateAdvertisementDTO>(Advertisement);
-            var result = await connection.ExecuteAsync(AdvertisementQueries.Create_Ads, createAdvertisementDTO, commandType: CommandType.StoredProcedure);
+
+                var parameters = new DynamicParameters(createAdvertisementDTO);
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                var result = await connection.ExecuteAsync(AdvertisementQueries.Create_Ads, createAdvertisementDTO, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -108,6 +113,15 @@ public async Task<string> AddAsync(Advertisement Advertisement)
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
+
+                //var parameters = new DynamicParameters();
+
+                //parameters.Add("@PageNumber", searchRequest.PageNumber);
+                //parameters.Add("@PageSize", searchRequest.PageSize);
+                //parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), dbType: DbType.Object);
+                //parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), dbType: DbType.Object);
+                //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 var parameters = new
                 {
                     PageNumber = searchRequest.PageNumber,
@@ -116,7 +130,7 @@ public async Task<string> AddAsync(Advertisement Advertisement)
                     //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
                     //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
                     //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-                    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
+                SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
                     FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 };
                 var result = await connection.QueryAsync<Advertisement>(AdvertisementQueries.usp_GetALL_Ads, parameters, commandType: CommandType.StoredProcedure);
@@ -149,6 +163,9 @@ public async Task<string> AddAsync(Advertisement Advertisement)
             {
                 connection.Open();
                 UpdateAdvertisementDTO updateAdvertisementDTO = _mapper.Map<UpdateAdvertisementDTO>(entity);
+                var parameters = new DynamicParameters(updateAdvertisementDTO);
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.ExecuteAsync(AdvertisementQueries.Update_Ads, updateAdvertisementDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
