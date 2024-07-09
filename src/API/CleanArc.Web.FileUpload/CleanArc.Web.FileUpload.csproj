@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <Folder Include="Resources\Images\" />
-    <Folder Include="Resources\Images\Hotel\" />
   </ItemGroup>
 
 </Project>
