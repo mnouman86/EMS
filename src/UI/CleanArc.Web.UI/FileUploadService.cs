@@ -67,7 +67,61 @@ namespace CleanArc.Web.UI
                 }
             }
         }
+        public async Task<byte[]> GetImageAsync(string category, string fileName)
+        {
+            try
+            {
+                var requestUrl = $"/api/Upload/{category}/{fileName}";
+                var response = await _httpClient.GetAsync(requestUrl);
+                response.EnsureSuccessStatusCode();
 
+                return await response.Content.ReadAsByteArrayAsync();
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception as needed
+                throw new ApplicationException($"Failed to retrieve image: {ex.Message}", ex);
+            }
+        }
+
+        //public async Task<byte[]> GetImageAsyncs(string category, string imagePath)
+        //{
+        //    try
+        //    {
+        //        // Construct the request URL
+        //        var requestUrl = $"/api/Upload/{category}/{imagePath}";
+
+        //        // Send the GET request to the API endpoint
+        //        var response = await _httpClient.GetAsync(requestUrl);
+
+        //        // Ensure the request was successful
+        //        response.EnsureSuccessStatusCode();
+
+        //        // Read the response content as a byte array
+        //        return await response.Content.ReadAsByteArrayAsync();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Log the exception and rethrow it wrapped in an ApplicationException
+        //        throw new ApplicationException($"Failed to retrieve image: {ex.Message}", ex);
+        //    }
+        //}
+        //public async Task<byte[]> GetImageAsyncsed(string ImagePath)
+        //{
+        //    try
+        //    {
+        //        var requestUrl = $"/api/Upload/{ImagePath}";
+        //        var response = await _httpClient.GetAsync(requestUrl);
+        //        response.EnsureSuccessStatusCode();
+
+        //        return await response.Content.ReadAsByteArrayAsync();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Log or handle the exception as needed
+        //        throw new ApplicationException($"Failed to retrieve image: {ex.Message}", ex);
+        //    }
+        //}
     }
 
 }
