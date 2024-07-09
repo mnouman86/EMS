@@ -41,6 +41,10 @@ public interface IUnitOfWork
     public ICarImageRepository CarImageRepository { get; }
     public IHotelImageRepository HotelImageRepository { get; }
     public IRoomVisualRepository RoomVisualRepository { get; }
+    public IAdvertisementRepository AdvertisementRepository { get; }
+    public IAdvertisementPlaceRepository AdvertisementPlaceRepository { get; }
+    public IAdvertisementPageRepository AdvertisementPageRepository { get; }
+
 
 
     Task CommitAsync();
