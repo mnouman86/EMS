@@ -36,7 +36,8 @@ namespace CleanArc.Web.FileUpload.Controllers
                     {
                         file.CopyTo(stream);
                     }
-                    return Ok(new { dbPath });
+                    var fullDbPath = Path.Combine("..\\..\\..\\assets\\", dbPath);
+                    return Ok(new { dbPath = fullDbPath });
                 }
                 else
                 {
