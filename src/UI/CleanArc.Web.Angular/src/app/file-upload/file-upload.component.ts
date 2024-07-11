@@ -37,4 +37,6 @@ export class FileUploadComponent {
       this.message = 'Please select a file first.';
     }
   }
+
+
 }
