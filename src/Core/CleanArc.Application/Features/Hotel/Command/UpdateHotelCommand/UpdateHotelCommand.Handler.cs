@@ -67,6 +67,7 @@ internal class UpdateHotelCommandHandler : IRequestHandler<UpdateHotelCommand, O
                 //  Description = request.IsChain,
                 IsChanelManager = request.IsChanelManager,
                 IsRating = request.IsRating,
+                ServiceID = request.ServiceID,
                 IsChain = request.IsChain,
                 CheckInFrom = request.CheckInFrom,
                 CheckInTo = request.CheckInTo,

@@ -25,6 +25,7 @@ namespace CleanArc.Domain.Entities.Hotel
     public bool? IsChanelManager { get; set; }
     public bool? IsRating { get; set; }
     public bool? IsChain { get; set; }
+    public int? ServiceID { get; set; }
     public string? CheckInFrom { get; set; }
     public string? CheckInTo { get; set; }
     public string? CheckOutFrom { get; set; }

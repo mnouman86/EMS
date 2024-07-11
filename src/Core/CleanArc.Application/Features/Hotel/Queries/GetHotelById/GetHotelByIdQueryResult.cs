@@ -24,6 +24,7 @@ public class GetHotelByIdQueryResult
     public string FocalPersonName { get; set; }
     public bool IsChanelManager { get; set; }
     public bool IsRating { get; set; }
+    public int ServiceID { get; set; }
     public bool IsChain { get; set; }
     public DateTime? CheckInFrom { get; set; }
     public DateTime? CheckInTo { get; set; }
@@ -35,4 +36,6 @@ public class GetHotelByIdQueryResult
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
     public int UpdatedBy { get; set; }
+
+
 }
