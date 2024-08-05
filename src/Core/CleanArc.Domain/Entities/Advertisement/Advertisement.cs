@@ -19,19 +19,9 @@ public class Advertisement
     /// The page identifier.
     /// </value>
     public int? PageID { get; set; }
-    /// <summary>
-    /// Gets or sets the place identifier.
-    /// </summary>
-    /// <value>
-    /// The place identifier.
-    /// </value>
+    public string? PageName { get; set; }
     public int? PlaceID { get; set; }
-    /// <summary>
-    /// Gets or sets the image title.
-    /// </summary>
-    /// <value>
-    /// The image title.
-    /// </value>
+    public string? PlaceName { get; set; }
     public string? ImageTitle { get; set; }
     /// <summary>
     /// Gets or sets the image path.

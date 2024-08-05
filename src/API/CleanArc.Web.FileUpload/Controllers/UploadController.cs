@@ -36,7 +36,8 @@ namespace CleanArc.Web.FileUpload.Controllers
                     {
                         file.CopyTo(stream);
                     }
-                    return Ok(new { dbPath });
+                    var fullDbPath = Path.Combine("..\\..\\..\\assets\\", dbPath);
+                    return Ok(new { dbPath = fullDbPath });
                 }
                 else
                 {
@@ -89,7 +90,7 @@ namespace CleanArc.Web.FileUpload.Controllers
                 var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
 
                 // Construct new file path with the new file name
-                var newFileName = file.FileName; 
+                var newFileName = file.FileName;
 
                 var fullPath = Path.Combine(pathToSave, newFileName);
 
@@ -113,6 +114,29 @@ namespace CleanArc.Web.FileUpload.Controllers
 
                 // Return success message
                 return Ok(new { message = "File updated successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
+        }
+        [HttpGet("{category}/{fileName}")]
+        public IActionResult GetImage(string category, string fileName)
+        {
+            try
+            {
+                var folderName = Path.Combine("Resources", "Images", category);
+                var pathToRetrieve = Path.Combine(Directory.GetCurrentDirectory(), folderName, fileName);
+
+                if (System.IO.File.Exists(pathToRetrieve))
+                {
+                    var imageData = System.IO.File.ReadAllBytes(pathToRetrieve);
+                    return File(imageData, "image/jpeg"); // Adjust content type based on your image type
+                }
+                else
+                {
+                    return NotFound(new { message = "Image not found." });
+                }
             }
             catch (Exception ex)
             {

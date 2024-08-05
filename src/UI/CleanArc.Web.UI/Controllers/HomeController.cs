@@ -1,7 +1,8 @@
 using CleanArc.Web.UI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Diagnostics;
-using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 
 namespace CleanArc.Web.UI.Controllers
@@ -10,7 +11,6 @@ namespace CleanArc.Web.UI.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly FileUploadService _fileUploadService;
-
 
         public HomeController(ILogger<HomeController> logger, FileUploadService fileUploadService)
         {
@@ -48,6 +48,7 @@ namespace CleanArc.Web.UI.Controllers
 
             return View("Index");
         }
+
         [HttpPost]
         public async Task<IActionResult> Delete(string category, string fileName)
         {
@@ -91,5 +92,42 @@ namespace CleanArc.Web.UI.Controllers
 
             return View("Index");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetImage(string category, string fileName)
+        {
+            try
+            {
+                var imageData = await _fileUploadService.GetImageAsync(category, fileName);
+
+                if (imageData != null && imageData.Length > 0)
+                {
+                    return File(imageData, "image/jpeg"); // Adjust content type based on your image type
+                }
+                else
+                {
+                    return NotFound(new { message = "Image not found." });
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error retrieving image: {ex.Message}");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+       
+        private string GetImageContentType(string fileName)
+        {
+            var extension = Path.GetExtension(fileName).ToLowerInvariant();
+            return extension switch
+            {
+                ".jpg" or ".jpeg" => "image/jpeg",
+                ".png" => "image/png",
+                ".gif" => "image/gif",
+                ".bmp" => "image/bmp",
+                _ => "application/octet-stream", // Default for unknown file types
+            };
+        }
+       
     }
 }
