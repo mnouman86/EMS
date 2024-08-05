@@ -4,12 +4,449 @@
         <name>CleanArc.Web.Api</name>
     </assembly>
     <members>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ActivityAddress.ActivityAddressController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.ActivityAddress.ActivityAddressController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ActivityAddress.Commands.CreateActivityAddressCommand.CreateActivityAddressCommand,CleanArc.Application.Features.ActivityAddress.Commands.UpdateActivityAddressCommand.UpdateActivityAddressCommand,CleanArc.Application.Features.ActivityAddress.Commands.DeleteActivityAddressCommand.DeleteActivityAddressCommand,System.Boolean,CleanArc.Application.Features.ActivityAddress.Queries.GetAllActivityAddress.GetAllActivityAddressQuery,System.Collections.Generic.List{CleanArc.Application.Features.ActivityAddress.Queries.GetAllActivityAddress.GetAllActivityAddressQueryResult},CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddressById.GetActivityAddressByIdQuery,CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddressById.GetActivityAddressByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.ActivityAddress.ActivityAddressController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ActivityIncludedOption.ActivityIncludedOptionController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.ActivityIncludedOption.ActivityIncludedOptionController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ActivityIncludedOption.Commands.CreateActivityIncludedOptionCommand.CreateActivityIncludedOptionCommand,CleanArc.Application.Features.ActivityIncludedOption.Commands.UpdateActivityIncludedOptionCommand.UpdateActivityIncludedOptionCommand,CleanArc.Application.Features.ActivityIncludedOption.Commands.DeleteActivityIncludedOptionCommand.DeleteActivityIncludedOptionCommand,System.Boolean,CleanArc.Application.Features.ActivityIncludedOption.Queries.GetAllActivityIncludedOption.GetAllActivityIncludedOptionQuery,System.Collections.Generic.List{CleanArc.Application.Features.ActivityIncludedOption.Queries.GetAllActivityIncludedOption.GetAllActivityIncludedOptionQueryResult},CleanArc.Application.Features.ActivityIncludedOption.Queries.GetActivityIncludedOptionById.GetActivityIncludedOptionByIdQuery,CleanArc.Application.Features.ActivityIncludedOption.Queries.GetActivityIncludedOptionById.GetActivityIncludedOptionByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.ActivityIncludedOption.ActivityIncludedOptionController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ActivityManager.ActivityManagerController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.ActivityManager.ActivityManagerController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ActivityManager.Commands.CreateActivityManagerCommand.CreateActivityManagerCommand,CleanArc.Application.Features.ActivityManager.Commands.UpdateActivityManagerCommand.UpdateActivityManagerCommand,CleanArc.Application.Features.ActivityManager.Commands.DeleteActivityManagerCommand.DeleteActivityManagerCommand,System.Boolean,CleanArc.Application.Features.ActivityManager.Queries.GetAllActivityManager.GetAllActivityManagerQuery,System.Collections.Generic.List{CleanArc.Application.Features.ActivityManager.Queries.GetAllActivityManager.GetAllActivityManagerQueryResult},CleanArc.Application.Features.ActivityManager.Queries.GetActivityManagerById.GetActivityManagerByIdQuery,CleanArc.Application.Features.ActivityManager.Queries.GetActivityManagerById.GetActivityManagerByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.ActivityManager.ActivityManagerController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ActivityNature.ActivityNatureController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.ActivityNature.ActivityNatureController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ActivityNature.Commands.CreateActivityNatureCommand.CreateActivityNatureCommand,CleanArc.Application.Features.ActivityNature.Commands.UpdateActivityNatureCommand.UpdateActivityNatureCommand,CleanArc.Application.Features.ActivityNature.Commands.DeleteActivityNatureCommand.DeleteActivityNatureCommand,System.Boolean,CleanArc.Application.Features.ActivityNature.Queries.GetAllActivityNature.GetAllActivityNatureQuery,System.Collections.Generic.List{CleanArc.Application.Features.ActivityNature.Queries.GetAllActivityNature.GetAllActivityNatureQueryResult},CleanArc.Application.Features.ActivityNature.Queries.GetActivityNatureById.GetActivityNatureByIdQuery,CleanArc.Application.Features.ActivityNature.Queries.GetActivityNatureById.GetActivityNatureByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.ActivityNature.ActivityNatureController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ActivityPrivateParticipant.ActivityPrivateParticipantController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.ActivityPrivateParticipant.ActivityPrivateParticipantController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ActivityPrivateParticipant.Commands.CreateActivityPrivateParticipantCommand.CreateActivityPrivateParticipantCommand,CleanArc.Application.Features.ActivityPrivateParticipant.Commands.UpdateActivityPrivateParticipantCommand.UpdateActivityPrivateParticipantCommand,CleanArc.Application.Features.ActivityPrivateParticipant.Commands.DeleteActivityPrivateParticipantCommand.DeleteActivityPrivateParticipantCommand,System.Boolean,CleanArc.Application.Features.ActivityPrivateParticipant.Queries.GetAllActivityPrivateParticipant.GetAllActivityPrivateParticipantQuery,System.Collections.Generic.List{CleanArc.Application.Features.ActivityPrivateParticipant.Queries.GetAllActivityPrivateParticipant.GetAllActivityPrivateParticipantQueryResult},CleanArc.Application.Features.ActivityPrivateParticipant.Queries.GetActivityPrivateParticipantById.GetActivityPrivateParticipantByIdQuery,CleanArc.Application.Features.ActivityPrivateParticipant.Queries.GetActivityPrivateParticipantById.GetActivityPrivateParticipantByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.ActivityPrivateParticipant.ActivityPrivateParticipantController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ActivitySeason.ActivitySeasonController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.ActivitySeason.ActivitySeasonController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ActivitySeason.Commands.CreateActivitySeasonCommand.CreateActivitySeasonCommand,CleanArc.Application.Features.ActivitySeason.Commands.UpdateActivitySeasonCommand.UpdateActivitySeasonCommand,CleanArc.Application.Features.ActivitySeason.Commands.DeleteActivitySeasonCommand.DeleteActivitySeasonCommand,System.Boolean,CleanArc.Application.Features.ActivitySeason.Queries.GetAllActivitySeason.GetAllActivitySeasonQuery,System.Collections.Generic.List{CleanArc.Application.Features.ActivitySeason.Queries.GetAllActivitySeason.GetAllActivitySeasonQueryResult},CleanArc.Application.Features.ActivitySeason.Queries.GetActivitySeasonById.GetActivitySeasonByIdQuery,CleanArc.Application.Features.ActivitySeason.Queries.GetActivitySeasonById.GetActivitySeasonByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.ActivitySeason.ActivitySeasonController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ActivityTransportation.ActivityTransportationController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.ActivityTransportation.ActivityTransportationController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ActivityTransportation.Commands.CreateActivityTransportationCommand.CreateActivityTransportationCommand,CleanArc.Application.Features.ActivityTransportation.Commands.UpdateActivityTransportationCommand.UpdateActivityTransportationCommand,CleanArc.Application.Features.ActivityTransportation.Commands.DeleteActivityTransportationCommand.DeleteActivityTransportationCommand,System.Boolean,CleanArc.Application.Features.ActivityTransportation.Queries.GetAllActivityTransportation.GetAllActivityTransportationQuery,System.Collections.Generic.List{CleanArc.Application.Features.ActivityTransportation.Queries.GetAllActivityTransportation.GetAllActivityTransportationQueryResult},CleanArc.Application.Features.ActivityTransportation.Queries.GetActivityTransportationById.GetActivityTransportationByIdQuery,CleanArc.Application.Features.ActivityTransportation.Queries.GetActivityTransportationById.GetActivityTransportationByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.ActivityTransportation.ActivityTransportationController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ActivityType.ActivityTypeController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.ActivityType.ActivityTypeController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ActivityType.Commands.CreateActivityTypeCommand.CreateActivityTypeCommand,CleanArc.Application.Features.ActivityType.Commands.UpdateActivityTypeCommand.UpdateActivityTypeCommand,CleanArc.Application.Features.ActivityType.Commands.DeleteActivityTypeCommand.DeleteActivityTypeCommand,System.Boolean,CleanArc.Application.Features.ActivityType.Queries.GetAllActivityType.GetAllActivityTypeQuery,System.Collections.Generic.List{CleanArc.Application.Features.ActivityType.Queries.GetAllActivityType.GetAllActivityTypeQueryResult},CleanArc.Application.Features.ActivityType.Queries.GetActivityTypeById.GetActivityTypeByIdQuery,CleanArc.Application.Features.ActivityType.Queries.GetActivityTypeById.GetActivityTypeByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.ActivityType.ActivityTypeController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.Activity.ActivityController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.Activity.Commands.CreateActivityCommand.CreateActivityCommand,CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand.UpdateActivityCommand,CleanArc.Application.Features.Activity.Commands.DeleteActivityCommand.DeleteActivityCommand,System.Boolean,CleanArc.Application.Features.Activity.Queries.GetAllActivity.GetAllActivityQuery,System.Collections.Generic.List{CleanArc.Application.Features.Activity.Queries.GetAllActivity.GetAllActivityQueryResult},CleanArc.Application.Features.Activity.Queries.GetActivityById.GetActivityByIdQuery,CleanArc.Application.Features.Activity.Queries.GetActivityById.GetActivityByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.Activity.ActivityController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <member name="M:CleanArc.Web.Api.Controllers.V1.Admin.RoleManagerController.UpdateRolePermissions(CleanArc.Application.Features.Role.Commands.UpdateRoleClaimsCommand.UpdateRoleClaimsCommand)">
             <summary>
             Update a role permissions (claims) based on RouteKey received in AuthRoutes API
             </summary>
             <param name="model"></param>
             <returns></returns>
+        </member>
+        <member name="T:CleanArc.Web.Api.Controllers.V1.AdvertisementPage.AdvertisementPageController">
+            <summary>
+            AdvertisementPageController is responsible for managing HTTP requests related to advertisement page operations
+            such as creating, updating, deleting, and retrieving advertisement pages. It extends from a base controller
+            which provides common functionality for CRUD operations.
+            
+            The controller uses MediatR to send commands and queries to the corresponding handlers. It includes
+            endpoint definitions for the following actions:
+            
+            1. CreateAdvertisementPageCommand: Handles the creation of new advertisement pages.
+            2. UpdateAdvertisementPageCommand: Handles the updating of existing advertisement pages.
+            3. DeleteAdvertisementPageCommand: Handles the deletion of advertisement pages.
+            4. GetAllAdvertisementPageQuery: Retrieves a list of all advertisement pages.
+            5. GetAdvertisementPageByIdQuery: Retrieves a specific advertisement page by its ID.
+            
+            The controller uses dependency injection to receive instances of ISender (for sending commands and queries),
+            ILogger (for logging purposes), and IHttpContextAccessor (for accessing HTTP context information).
+            
+            The controller is versioned using the [ApiVersion] attribute and responds to routes prefixed with the API
+            version, specified as "api/v{version:apiVersion}/AdvertisementPage".
+            
+            Note: The actual endpoint methods are intended to be implemented to utilize the base controller’s 
+            operation result handling and user ID setting.
+            </summary>
+            <seealso cref="!:CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.AdvertisementPage.Commands.CreateAdvertisementPageCommand.CreateAdvertisementPageCommand, CleanArc.Application.Features.AdvertisementPage.Commands.UpdateAdvertisementPageCommand.UpdateAdvertisementPageCommand, CleanArc.Application.Features.AdvertisementPage.Commands.DeleteAdvertisementPageCommand.DeleteAdvertisementPageCommand, System.Boolean, CleanArc.Application.Features.AdvertisementPage.Queries.GetAllAdvertisementPage.GetAllAdvertisementPageQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.AdvertisementPage.Queries.GetAllAdvertisementPage.GetAllAdvertisementPageQueryResult&gt;, CleanArc.Application.Features.AdvertisementPage.Queries.GetAdvertisementPageById.GetAdvertisementPageByIdQuery, CleanArc.Application.Features.AdvertisementPage.Queries.GetAdvertisementPageById.GetAdvertisementPageByIdQueryResult&gt;" />
+        </member>
+        <member name="M:CleanArc.Web.Api.Controllers.V1.AdvertisementPage.AdvertisementPageController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.AdvertisementPage.Commands.CreateAdvertisementPageCommand.CreateAdvertisementPageCommand,CleanArc.Application.Features.AdvertisementPage.Commands.UpdateAdvertisementPageCommand.UpdateAdvertisementPageCommand,CleanArc.Application.Features.AdvertisementPage.Commands.DeleteAdvertisementPageCommand.DeleteAdvertisementPageCommand,System.Boolean,CleanArc.Application.Features.AdvertisementPage.Queries.GetAllAdvertisementPage.GetAllAdvertisementPageQuery,System.Collections.Generic.List{CleanArc.Application.Features.AdvertisementPage.Queries.GetAllAdvertisementPage.GetAllAdvertisementPageQueryResult},CleanArc.Application.Features.AdvertisementPage.Queries.GetAdvertisementPageById.GetAdvertisementPageByIdQuery,CleanArc.Application.Features.AdvertisementPage.Queries.GetAdvertisementPageById.GetAdvertisementPageByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.AdvertisementPage.AdvertisementPageController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <member name="T:CleanArc.Web.Api.Controllers.V1.AdvertisementPlace.AdvertisementPlaceController">
+            <summary>
+            
+            </summary>
+            <seealso cref="!:CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.AdvertisementPlace.Commands.CreateAdvertisementPlaceCommand.CreateAdvertisementPlaceCommand, CleanArc.Application.Features.AdvertisementPlace.Commands.UpdateAdvertisementPlaceCommand.UpdateAdvertisementPlaceCommand, CleanArc.Application.Features.AdvertisementPlace.Commands.DeleteAdvertisementPlaceCommand.DeleteAdvertisementPlaceCommand, System.Boolean, CleanArc.Application.Features.AdvertisementPlace.Queries.GetAllAdvertisementPlace.GetAllAdvertisementPlaceQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.AdvertisementPlace.Queries.GetAllAdvertisementPlace.GetAllAdvertisementPlaceQueryResult&gt;, CleanArc.Application.Features.AdvertisementPlace.Queries.GetAdvertisementPlaceById.GetAdvertisementPlaceByIdQuery, CleanArc.Application.Features.AdvertisementPlace.Queries.GetAdvertisementPlaceById.GetAdvertisementPlaceByIdQueryResult&gt;" />
+        </member>
+        <member name="M:CleanArc.Web.Api.Controllers.V1.AdvertisementPlace.AdvertisementPlaceController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.AdvertisementPlace.Commands.CreateAdvertisementPlaceCommand.CreateAdvertisementPlaceCommand,CleanArc.Application.Features.AdvertisementPlace.Commands.UpdateAdvertisementPlaceCommand.UpdateAdvertisementPlaceCommand,CleanArc.Application.Features.AdvertisementPlace.Commands.DeleteAdvertisementPlaceCommand.DeleteAdvertisementPlaceCommand,System.Boolean,CleanArc.Application.Features.AdvertisementPlace.Queries.GetAllAdvertisementPlace.GetAllAdvertisementPlaceQuery,System.Collections.Generic.List{CleanArc.Application.Features.AdvertisementPlace.Queries.GetAllAdvertisementPlace.GetAllAdvertisementPlaceQueryResult},CleanArc.Application.Features.AdvertisementPlace.Queries.GetAdvertisementPlaceById.GetAdvertisementPlaceByIdQuery,CleanArc.Application.Features.AdvertisementPlace.Queries.GetAdvertisementPlaceById.GetAdvertisementPlaceByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.AdvertisementPlace.AdvertisementPlaceController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <member name="T:CleanArc.Web.Api.Controllers.V1.Advertisement.AdvertisementController">
+            <summary>
+            AdvertisementController is responsible for managing HTTP requests related to advertisement operations
+            such as creating, updating, deleting, and retrieving advertisements. It extends from a base controller
+            which provides common functionality for CRUD operations.
+            
+            The controller uses MediatR to send commands and queries to the corresponding handlers. It includes
+            endpoint definitions for the following actions:
+            
+            1. CreateAdvertisementCommand: Handles the creation of new advertisements.
+            2. UpdateAdvertisementCommand: Handles the updating of existing advertisements.
+            3. DeleteAdvertisementCommand: Handles the deletion of advertisements.
+            4. GetAllAdvertisementQuery: Retrieves a list of all advertisements.
+            5. GetAdvertisementByIdQuery: Retrieves a specific advertisement by its ID.
+            
+            The controller uses dependency injection to receive instances of ISender (for sending commands and queries),
+            ILogger (for logging purposes), and IHttpContextAccessor (for accessing HTTP context information).
+            
+            The controller is versioned using the [ApiVersion] attribute and responds to routes prefixed with the API
+            version, specified as "api/v{version:apiVersion}/Advertisement".
+            
+            Note: The actual endpoint methods are intended to be implemented to utilize the base controller’s 
+            operation result handling and user ID setting.
+            </summary>
+            <seealso cref="!:CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Advertisement.Commands.CreateAdvertisementCommand.CreateAdvertisementCommand, CleanArc.Application.Features.Advertisement.Commands.UpdateAdvertisementCommand.UpdateAdvertisementCommand, CleanArc.Application.Features.Advertisement.Commands.DeleteAdvertisementCommand.DeleteAdvertisementCommand, System.Boolean, CleanArc.Application.Features.Advertisement.Queries.GetAllAdvertisement.GetAllAdvertisementQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Advertisement.Queries.GetAllAdvertisement.GetAllAdvertisementQueryResult&gt;, CleanArc.Application.Features.Advertisement.Queries.GetAdvertisementById.GetAdvertisementByIdQuery, CleanArc.Application.Features.Advertisement.Queries.GetAdvertisementById.GetAdvertisementByIdQueryResult&gt;" />
+        </member>
+        <member name="M:CleanArc.Web.Api.Controllers.V1.Advertisement.AdvertisementController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.Advertisement.Commands.CreateAdvertisementCommand.CreateAdvertisementCommand,CleanArc.Application.Features.Advertisement.Commands.UpdateAdvertisementCommand.UpdateAdvertisementCommand,CleanArc.Application.Features.Advertisement.Commands.DeleteAdvertisementCommand.DeleteAdvertisementCommand,System.Boolean,CleanArc.Application.Features.Advertisement.Queries.GetAllAdvertisement.GetAllAdvertisementQuery,System.Collections.Generic.List{CleanArc.Application.Features.Advertisement.Queries.GetAllAdvertisement.GetAllAdvertisementQueryResult},CleanArc.Application.Features.Advertisement.Queries.GetAdvertisementById.GetAdvertisementByIdQuery,CleanArc.Application.Features.Advertisement.Queries.GetAdvertisementById.GetAdvertisementByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.Advertisement.AdvertisementController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.AgeType.Commands.CreateAgeTypeCommand.CreateAgeTypeCommand,CleanArc.Application.Features.AgeType.Commands.UpdateAgeTypeCommand.UpdateAgeTypeCommand,CleanArc.Application.Features.AgeType.Commands.DeleteAgeTypeCommand.DeleteAgeTypeCommand,System.Boolean,CleanArc.Application.Features.AgeType.Queries.GetAllAgeType.GetAllAgeTypeQuery,System.Collections.Generic.List{CleanArc.Application.Features.AgeType.Queries.GetAllAgeType.GetAllAgeTypeQueryResult},CleanArc.Application.Features.AgeType.Queries.GetAgeTypeById.GetAgeTypeByIdQuery,CleanArc.Application.Features.AgeType.Queries.GetAgeTypeById.GetAgeTypeByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.AgeType.AgeTypeController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.Bank.BankController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.Bank.BankController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.Bank.Command.CreateBankCommand.CreateBankCommand,CleanArc.Application.Features.Bank.Command.UpdateBankCommand.UpdateBankCommand,CleanArc.Application.Features.Bank.Command.DeleteBankCommand.DeleteBankCommand,System.Boolean,CleanArc.Application.Features.Bank.Queries.GetAllBank.GetAllBankQuery,System.Collections.Generic.List{CleanArc.Application.Features.Bank.Queries.GetAllBank.GetAllBankQueryResult},CleanArc.Application.Features.Bank.Queries.GetBankById.GetBankByIdQuery,CleanArc.Application.Features.Bank.Queries.GetBankById.GetBankByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.Bank.BankController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.BusinessBankAccount.BusinessBankAccountController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.BusinessBankAccount.BusinessBankAccountController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.BusinessBankAccount.Command.BusinessBankAccountCommand.CreateBusinessBankAccountCommand,CleanArc.Application.Features.BusinessBankAccount.Command.UpdateBusinessBankAccountCommand.UpdateBusinessBankAccountCommand,CleanArc.Application.Features.BusinessBankAccount.Command.DeleteBusinessBankAccountCommand.DeleteBusinessBankAccountCommand,System.Boolean,CleanArc.Application.Features.BusinessBankAccount.Query.GetAllBusinessBankAccount.GetAllBusinessBankAccountQuery,System.Collections.Generic.List{CleanArc.Application.Features.BusinessBankAccount.Query.GetAllBusinessBankAccount.GetAllBusinessBankAccountQueryResult},CleanArc.Application.Features.BusinessBankAccount.Query.GetBusinessBankAccountById.GetBusinessBankAccountByIdQuery,CleanArc.Application.Features.BusinessBankAccount.Query.GetBusinessBankAccountById.GetBusinessBankAccountByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.BusinessBankAccount.BusinessBankAccountController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.BusinessType.BusinessTypeController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.BusinessType.BusinessTypeController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.BusinessType.Command.CreateBusinessTypeCommand.CreateBusinessTypeCommand,CleanArc.Application.Features.BusinessType.Command.UpdateBusinessTypeCommand.UpdateBusinessTypeCommand,CleanArc.Application.Features.BusinessType.Command.DeleteBusinessTypeCommand.DeleteBusinessTypeCommand,System.Boolean,CleanArc.Application.Features.BusinessType.Query.GetAllBusinessType.GetAllBusinessTypeQuery,System.Collections.Generic.List{CleanArc.Application.Features.BusinessType.Query.GetAllBusinessType.GetAllBusinessTypeQueryResult},CleanArc.Application.Features.BusinessType.Query.GetBusinessTypeById.GetBusinessTypeByIdQuery,CleanArc.Application.Features.BusinessType.Query.GetBusinessTypeById.GetBusinessTypeByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.BusinessType.BusinessTypeController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.Business.BusinessController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.Business.BusinessController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.Business.Command.CreateBusinessCommand.CreateBusinessCommand,CleanArc.Application.Features.Business.Command.UpdateBusinessCommand.UpdateBusinessCommand,CleanArc.Application.Features.Business.Command.DeleteBusinessCommand.DeleteBusinessCommand,System.Boolean,CleanArc.Application.Features.Business.Query.GetAllBusiness.GetAllBusinessQuery,System.Collections.Generic.List{CleanArc.Application.Features.Business.Query.GetAllBusiness.GetAllBusinessQueryResult},CleanArc.Application.Features.Business.Query.GetBusinessById.GetBusinessByIdQuery,CleanArc.Application.Features.Business.Query.GetBusinessById.GetBusinessByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.Business.BusinessController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.CarDetail.CarDetailController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.CarDetail.CarDetailController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.CarDetail.Command.CreateCarDetailCommand.CreateCarDetailCommand,CleanArc.Application.Features.CarDetail.Command.UpdateCarDetailCommand.UpdateCarDetailCommand,CleanArc.Application.Features.CarDetail.Command.DeleteCarDetailCommand.DeleteCarDetailCommand,System.Boolean,CleanArc.Application.Features.CarDetail.Query.GetAllCarDetail.GetAllCarDetailQuery,System.Collections.Generic.List{CleanArc.Application.Features.CarDetail.Query.GetAllCarDetail.GetAllCarDetailQueryResult},CleanArc.Application.Features.CarDetail.Query.GetCarDetailById.GetCarDetailByIdQuery,CleanArc.Application.Features.CarDetail.Query.GetCarDetailById.GetCarDetailByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.CarDetail.CarDetailController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.CarImage.CarImageController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.CarImage.CarImageController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.CarImage.Command.CreateCarImageCommand.CreateCarImageCommand,CleanArc.Application.Features.CarImage.Command.UpdateCarImageCommand.UpdateCarImageCommand,CleanArc.Application.Features.CarImage.Command.DeleteCarImageCommand.DeleteCarImageCommand,System.Boolean,CleanArc.Application.Features.CarImage.Query.GetAllCarImage.GetAllCarImageQuery,System.Collections.Generic.List{CleanArc.Application.Features.CarImage.Query.GetAllCarImage.GetAllCarImageQueryResult},CleanArc.Application.Features.CarImage.Query.GetCarImageById.GetCarImageByIdQuery,CleanArc.Application.Features.CarImage.Query.GetCarImageById.GetCarImageByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.CarImage.CarImageController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.Category.CategoryController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.Category.CategoryController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.Category.Command.CreateCategoryCommand.CreateCategoryCommand,CleanArc.Application.Features.Category.Command.UpdateCategoryCommand.UpdateCategoryCommand,CleanArc.Application.Features.Category.Command.DeleteCategoryCommand.DeleteCategoryCommand,System.Boolean,CleanArc.Application.Features.Category.Queries.GetAllCategories.GetAllCategoriesQuery,System.Collections.Generic.List{CleanArc.Application.Features.Category.Queries.GetAllCategories.GetAllCategoriesQueryResult},CleanArc.Application.Features.Category.Queries.GetCategoryById.GetCategoryByIdQuery,CleanArc.Application.Features.Category.Queries.GetCategoryById.GetCategoryByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.Category.CategoryController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.City.CityController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.City.CityController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.City.Command.CreateCityCommand.CreateCityCommand,CleanArc.Application.Features.City.Command.UpdateCityCommand.UpdateCityCommand,CleanArc.Application.Features.City.Command.DeleteCityCommand.DeleteCityCommand,System.Boolean,CleanArc.Application.Features.City.Queries.GetAllCities.GetAllCitiesQuery,System.Collections.Generic.List{CleanArc.Application.Features.City.Queries.GetAllCities.GetAllCitiesQueryResult},CleanArc.Application.Features.City.Queries.GetCityById.GetCityByIdQuery,CleanArc.Application.Features.City.Queries.GetCityById.GetCityByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.City.CityController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.Country.CountryController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.Country.CountryController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.Country.Command.CreateCountryCommand.CreateCountryCommand,CleanArc.Application.Features.Country.Command.UpdateCountryCommand.UpdateCountryCommand,CleanArc.Application.Features.Country.Command.DeleteCountryCommand.DeleteCountryCommand,System.Boolean,CleanArc.Application.Features.Country.Queries.GetAllCountries.GetAllCountryQuery,System.Collections.Generic.List{CleanArc.Application.Features.Country.Queries.GetAllCountries.GetAllCountryQueryResult},CleanArc.Application.Features.Country.Queries.GetCountryById.GetCountryByIdQuery,CleanArc.Application.Features.Country.Queries.GetCountryById.GetCountryByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.Country.CountryController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.DisabilityOption.DisabilityOptionController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.DisabilityOption.DisabilityOptionController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.DisabilityOption.Commands.CreateDisabilityOptionCommand.CreateDisabilityOptionCommand,CleanArc.Application.Features.DisabilityOption.Commands.UpdateDisabilityOptionCommand.UpdateDisabilityOptionCommand,CleanArc.Application.Features.DisabilityOption.Commands.DeleteDisabilityOptionCommand.DeleteDisabilityOptionCommand,System.Boolean,CleanArc.Application.Features.DisabilityOption.Queries.GetAllDisabilityOption.GetAllDisabilityOptionQuery,System.Collections.Generic.List{CleanArc.Application.Features.DisabilityOption.Queries.GetAllDisabilityOption.GetAllDisabilityOptionQueryResult},CleanArc.Application.Features.DisabilityOption.Queries.GetDisabilityOptionById.GetDisabilityOptionByIdQuery,CleanArc.Application.Features.DisabilityOption.Queries.GetDisabilityOptionById.GetDisabilityOptionByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.DisabilityOption.DisabilityOptionController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.HotelImage.HotelImageController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.HotelImage.HotelImageController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.HotelImage.Command.CreateHotelImageCommand.CreateHotelImageCommand,CleanArc.Application.Features.HotelImage.Command.UpdateHotelImageCommand.UpdateHotelImageCommand,CleanArc.Application.Features.HotelImage.Command.DeleteHotelImageCommand.DeleteHotelImageCommand,System.Boolean,CleanArc.Application.Features.HotelImage.Query.GetAllHotelImage.GetAllHotelImageQuery,System.Collections.Generic.List{CleanArc.Application.Features.HotelImage.Query.GetAllHotelImage.GetAllHotelImageQueryResult},CleanArc.Application.Features.HotelImage.Query.GetHotelImageById.GetHotelImageByIdQuery,CleanArc.Application.Features.HotelImage.Query.GetHotelImageById.GetHotelImageByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.HotelImage.HotelImageController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.Hotel.HotelController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.Hotel.Command.CreateHotelCommand.CreateHotelCommand,CleanArc.Application.Features.Hotel.Command.UpdateHotelCommand.UpdateHotelCommand,CleanArc.Application.Features.Hotel.Command.DeleteHotelCommand.DeleteHotelCommand,System.Boolean,CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQuery,System.Collections.Generic.List{CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQueryResult},CleanArc.Application.Features.Hotel.Queries.GetHotelById.GetHotelByIdQuery,CleanArc.Application.Features.Hotel.Queries.GetHotelById.GetHotelByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.Hotel.HotelController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.Language.LanguageController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.Language.LanguageController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.Language.Command.CreateLanguageCommand.CreateLanguageCommand,CleanArc.Application.Features.Language.Command.UpdateLanguageCommand.UpdateLanguageCommand,CleanArc.Application.Features.Language.Command.DeleteLanguageCommand.DeleteLanguageCommand,System.Boolean,CleanArc.Application.Features.Language.Queries.GetAllLanguages.GetAllLanguagesQuery,System.Collections.Generic.List{CleanArc.Application.Features.Language.Queries.GetAllLanguages.GetAllLanguagesQueryResult},CleanArc.Application.Features.Language.Queries.GetLanguageById.GetLanguageByIdQuery,CleanArc.Application.Features.Language.Queries.GetLanguageById.GetLanguageByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.Language.LanguageController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <member name="T:CleanArc.Web.Api.Controllers.V1.MappingHotelAmenities.MappingHotelAmenitiesController">
+            <summary>
+            MappingHotelAmenitiesController is responsible for handling HTTP requests related to hotel amenity mapping operations
+            such as creating, updating, deleting, and retrieving mappings between hotels and amenities. It extends from a base controller
+            which provides common functionality for CRUD operations.
+            
+            The controller uses MediatR to send commands and queries to the corresponding handlers. It includes
+            endpoint definitions for the following actions:
+            
+            1. CreateMappingHotelAmenityCommand: Handles the creation of new hotel-amenity mappings.
+            2. UpdateMappingHotelAmenityCommand: Handles the updating of existing hotel-amenity mappings.
+            3. DeleteMappingHotelAmenityCommand: Handles the deletion of hotel-amenity mappings.
+            4. GetAllMappingHotelAmenityQuery: Retrieves all hotel-amenity mappings.
+            5. GetMappingHotelAmenityByIDQuery: Retrieves a specific hotel-amenity mapping by its ID.
+            
+            The controller uses dependency injection to receive instances of ISender (for sending commands and queries),
+            ILogger (for logging purposes), and IHttpContextAccessor (for accessing HTTP context information).
+            
+            The controller is versioned using the [ApiVersion] attribute and responds to routes prefixed with the API
+            version, specified as "api/v{version:apiVersion}/MappingHotelAmenities".
+            
+            Note: The actual endpoint methods are intended to be implemented to utilize the base controller’s 
+            operation result handling and user ID setting.
+            
+            The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
+            SOLID principles.
+            </summary>
+            <seealso cref="!:CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.MappingHotelAmenity.Command.CreateMappingHotelAmenityCommand.CreateMappingHotelAmenityCommand, CleanArc.Application.Features.MappingHotelAmenity.Command.UpdateMappingHotelAmenityCommand.UpdateMappingHotelAmenityCommand, CleanArc.Application.FeaturesppingHotelAmenity.Command.DeleteMappingHotelAmenityCommand.DeleteMappingHotelAmenityCommand, System.Boolean, CleanArc.Application.Features.MappingHotelAmenity.Queries.GetAllMappingHotelAmenity.GetAllMappingHotelAmenityQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.MappingHotelAmenity.Queries.GetAllMappingHotelAmenity.GetAllMappingHotelAmenityQueryResult&gt;, CleanArc.Application.Features.MappingHotelAmenity.Queries.GetMappingHotelAmenityByID.GetMappingHotelAmenityByIDQuery, CleanArc.Application.Features.MappingHotelAmenity.Queries.GetMappingHotelAmenityByID.GetMappingHotelAmenityByIDQueryResult&gt;" />
+        </member>
+        <member name="M:CleanArc.Web.Api.Controllers.V1.MappingHotelAmenities.MappingHotelAmenitiesController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.MappingHotelAmenity.Command.CreateMappingHotelAmenityCommand.CreateMappingHotelAmenityCommand,CleanArc.Application.Features.MappingHotelAmenity.Command.UpdateMappingHotelAmenityCommand.UpdateMappingHotelAmenityCommand,CleanArc.Application.FeaturesppingHotelAmenity.Command.DeleteMappingHotelAmenityCommand.DeleteMappingHotelAmenityCommand,System.Boolean,CleanArc.Application.Features.MappingHotelAmenity.Queries.GetAllMappingHotelAmenity.GetAllMappingHotelAmenityQuery,System.Collections.Generic.List{CleanArc.Application.Features.MappingHotelAmenity.Queries.GetAllMappingHotelAmenity.GetAllMappingHotelAmenityQueryResult},CleanArc.Application.Features.MappingHotelAmenity.Queries.GetMappingHotelAmenityByID.GetMappingHotelAmenityByIDQuery,CleanArc.Application.Features.MappingHotelAmenity.Queries.GetMappingHotelAmenityByID.GetMappingHotelAmenityByIDQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.MappingHotelAmenities.MappingHotelAmenitiesController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <member name="T:CleanArc.Web.Api.Controllers.V1.MappingHotelLanguage.MappingHotelLanguageController">
+            <summary>
+            MappingHotelLanguageController is responsible for managing HTTP requests related to hotel-language mapping operations
+            such as creating, updating, deleting, and retrieving mappings between hotels and languages. It extends from a base controller
+            which provides common functionality for CRUD operations.
+            
+            The controller uses MediatR to send commands and queries to the corresponding handlers. It includes
+            endpoint definitions for the following actions:
+            
+            1. CreateMappingHotelLanguageCommand: Handles the creation of new mappings between hotels and languages.
+            2. UpdateMappingHotelLanguageCommand: Handles the updating of existing mappings between hotels and languages.
+            3. DeleteMappingHotelLanguageCommand: Handles the deletion of mappings between hotels and languages.
+            4. GetAllMappingHotelLanguageQuery: Retrieves a list of all mappings between hotels and languages.
+            5. GetMappingHotelLanguageByIdQuery: Retrieves a specific mapping between a hotel and language by its ID.
+            
+            The controller uses dependency injection to receive instances of ISender (for sending commands and queries),
+            ILogger (for logging purposes), and IHttpContextAccessor (for accessing HTTP context information).
+            
+            The controller is versioned using the [ApiVersion] attribute and responds to routes prefixed with the API
+            version, specified as "api/v{version:apiVersion}/MappingHotelLanguage".
+            
+            Note: The actual endpoint methods are intended to be implemented to utilize the base controller’s 
+            operation result handling and user ID setting.
+            
+            The controller adheres to Clean Architecture principles, ensuring a clean separation of concerns and adherence to 
+            SOLID principles.
+            </summary>
+            <seealso cref="!:CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.MappingHotelLanguage.Command.CreateMappingHotelLanguageCommand.CreateMappingHotelLanguageCommand, CleanArc.Application.Features.MappingHotelLanguage.Command.UpdateMappingHotelLanguageCommand.UpdateMappingHotelLanguageCommand, CleanArc.Application.Features.MappingHotelLanguage.Command.DeleteMappingHotelLanguageCommand.DeleteMappingHotelLanguageCommand, System.Boolean, CleanArc.Application.Features.MappingHotelLanguage.Queries.GetAllMappingHotelLanguage.GetAllMappingHotelLanguageQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.MappingHotelLanguage.Queries.GetAllMappingHotelLanguage.GetAllMappingHotelLanguageQueryResult&gt;, CleanArc.Application.Features.MappingHotelLanguage.Queries.GetMappingHotelLanguageById.GetMappingHotelLanguageByIdQuery, CleanArc.Application.Features.MappingHotelLanguage.Queries.GetMappingHotelLanguageById.GetMappingHotelLanguageByIdQueryResult&gt;" />
+        </member>
+        <member name="M:CleanArc.Web.Api.Controllers.V1.MappingHotelLanguage.MappingHotelLanguageController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.MappingHotelLanguage.Command.CreateMappingHotelLanguageCommand.CreateMappingHotelLanguageCommand,CleanArc.Application.Features.MappingHotelLanguage.Command.UpdateMappingHotelLanguageCommand.UpdateMappingHotelLanguageCommand,CleanArc.Application.Features.MappingHotelLanguage.Command.DeleteMappingHotelLanguageCommand.DeleteMappingHotelLanguageCommand,System.Boolean,CleanArc.Application.Features.MappingHotelLanguage.Queries.GetAllMappingHotelLanguage.GetAllMappingHotelLanguageQuery,System.Collections.Generic.List{CleanArc.Application.Features.MappingHotelLanguage.Queries.GetAllMappingHotelLanguage.GetAllMappingHotelLanguageQueryResult},CleanArc.Application.Features.MappingHotelLanguage.Queries.GetMappingHotelLanguageById.GetMappingHotelLanguageByIdQuery,CleanArc.Application.Features.MappingHotelLanguage.Queries.GetMappingHotelLanguageById.GetMappingHotelLanguageByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.MappingHotelLanguage.MappingHotelLanguageController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <member name="T:CleanArc.Web.Api.Controllers.V1.MappingRoomAmenities.MappingRoomAmenitiesController">
+            <summary>
+            MappingRoomAmenitiesController is responsible for managing HTTP requests related to room-amenity mapping operations
+            such as creating, updating, deleting, and retrieving mappings between rooms and amenities. It extends from a base controller
+            which provides common functionality for CRUD operations.
+            
+            The controller uses MediatR to send commands and queries to the corresponding handlers. It includes
+            endpoint definitions for the following actions:
+            
+            1. CreateMappingRoomAmenityCommand: Handles the creation of new mappings between rooms and amenities.
+            2. UpdateMappingRoomAmenityCommand: Handles the updating of existing mappings between rooms and amenities.
+            3. DeleteMappingRoomAmenityCommand: Handles the deletion of mappings between rooms and amenities.
+            4. GetAllMappingRoomAmenityQuery: Retrieves a list of all mappings between rooms and amenities.
+            5. GetMappingRoomAmenityByIdQuery: Retrieves a specific mapping between a room and amenity by its ID.
+            
+            The controller uses dependency injection to receive instances of ISender (for sending commands and queries),
+            ILogger (for logging purposes), and IHttpContextAccessor (for accessing HTTP context information).
+            
+            The controller is versioned using the [ApiVersion] attribute and responds to routes prefixed with the API
+            version, specified as "api/v{version:apiVersion}/MappingRoomAmenities".
+            
+            Note: The actual endpoint methods are intended to be implemented to utilize the base controller’s 
+            operation result handling and user ID setting.
+            
+            The controller adheres to Clean Architecture principles, ensuring a clean separation of concerns and adherence to 
+            SOLID principles.
+            </summary>
+            <seealso cref="!:CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.MappingRoomAmenity.Command.CreateMappingRoomAmenityCommand.CreateMappingRoomAmenityCommand, CleanArc.Application.Features.MappingRoomAmenity.Command.UpdateMappingRoomAmenityCommand.UpdateMappingRoomAmenityCommand, CleanArc.Application.Features.MappingRoomAmenity.Command.DeleteMappingRoomAmenityCommand.DeleteMappingRoomAmenityCommand, System.Boolean, CleanArc.Application.Features.MappingRoomAmenity.Query.GetAllMappingRoomAmenity.GetAllMappingRoomAmenityQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.MappingRoomAmenity.Query.GetAllMappingRoomAmenity.GetAllMappingRoomAmenityQueryResult&gt;, CleanArc.Application.Features.MappingRoomAmenity.Query.GetMappingRoomAmenityById.GetMappingRoomAmenityByIdQuery, CleanArc.Application.Features.MappingRoomAmenity.Query.GetMappingRoomAmenityById.GetMappingRoomAmenityByIdQueryResult&gt;" />
+        </member>
+        <member name="M:CleanArc.Web.Api.Controllers.V1.MappingRoomAmenities.MappingRoomAmenitiesController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.MappingRoomAmenity.Command.CreateMappingRoomAmenityCommand.CreateMappingRoomAmenityCommand,CleanArc.Application.Features.MappingRoomAmenity.Command.UpdateMappingRoomAmenityCommand.UpdateMappingRoomAmenityCommand,CleanArc.Application.Features.MappingRoomAmenity.Command.DeleteMappingRoomAmenityCommand.DeleteMappingRoomAmenityCommand,System.Boolean,CleanArc.Application.Features.MappingRoomAmenity.Query.GetAllMappingRoomAmenity.GetAllMappingRoomAmenityQuery,System.Collections.Generic.List{CleanArc.Application.Features.MappingRoomAmenity.Query.GetAllMappingRoomAmenity.GetAllMappingRoomAmenityQueryResult},CleanArc.Application.Features.MappingRoomAmenity.Query.GetMappingRoomAmenityById.GetMappingRoomAmenityByIdQuery,CleanArc.Application.Features.MappingRoomAmenity.Query.GetMappingRoomAmenityById.GetMappingRoomAmenityByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.MappingRoomAmenities.MappingRoomAmenitiesController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <member name="T:CleanArc.Web.Api.Controllers.V1.MappingRoomImages.MappingRoomImagesController">
+            <summary>
+            MappingRoomImagesController is responsible for managing HTTP requests related to room-image mapping operations
+            such as creating, updating, deleting, and retrieving mappings between rooms and images. It extends from a base controller
+            which provides common functionality for CRUD operations.
+            
+            The controller uses MediatR to send commands and queries to the corresponding handlers. It includes
+            endpoint definitions for the following actions:
+            
+            1. CreateMappingRoomImageCommand: Handles the creation of new mappings between rooms and images.
+            2. UpdateMappingRoomImageCommand: Handles the updating of existing mappings between rooms and images.
+            3. DeleteMappingRoomImageCommand: Handles the deletion of mappings between rooms and images.
+            4. GetAllMappingRoomImageQuery: Retrieves a list of all mappings between rooms and images.
+            5. GetMappingRoomImageByIdQuery: Retrieves a specific mapping between a room and image by its ID.
+            
+            The controller uses dependency injection to receive instances of ISender (for sending commands and queries),
+            ILogger (for logging purposes), and IHttpContextAccessor (for accessing HTTP context information).
+            
+            The controller is versioned using the [ApiVersion] attribute and responds to routes prefixed with the API
+            version, specified as "api/v{version:apiVersion}/MappingRoomImages".
+            
+            Note: The actual endpoint methods are intended to be implemented to utilize the base controller’s 
+            operation result handling and user ID setting.
+            
+            The controller adheres to Clean Architecture principles, ensuring a clean separation of concerns and adherence to 
+            SOLID principles.
+            </summary>
+            <seealso cref="!:CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.MappingRoomImage.Command.CreateMappingRoomImageCommand.CreateMappingRoomImageCommand, CleanArc.Application.Features.MappingRoomImage.Command.UpdateMappingRoomImageCommand.UpdateMappingRoomImageCommand, CleanArc.Application.Features.MappingRoomImage.Command.DeleteMappingRoomImageCommand.DeleteMappingRoomImageCommand, System.Boolean, CleanArc.Application.Features.MappingRoomImage.Query.GetAllMappingRoomImage.GetAllMappingRoomImageQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.MappingRoomImage.Query.GetAllMappingRoomImage.GetAllMappingRoomImageQueryResult&gt;, CleanArc.Application.Features.MappingRoomImage.Query.GetMappingRoomImageById.GetMappingRoomImageByIdQuery, CleanArc.Application.Features.MappingRoomImage.Query.GetMappingRoomImageById.GetMappingRoomImageByIdQueryResult&gt;" />
+        </member>
+        <member name="M:CleanArc.Web.Api.Controllers.V1.MappingRoomImages.MappingRoomImagesController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.MappingRoomImage.Command.CreateMappingRoomImageCommand.CreateMappingRoomImageCommand,CleanArc.Application.Features.MappingRoomImage.Command.UpdateMappingRoomImageCommand.UpdateMappingRoomImageCommand,CleanArc.Application.Features.MappingRoomImage.Command.DeleteMappingRoomImageCommand.DeleteMappingRoomImageCommand,System.Boolean,CleanArc.Application.Features.MappingRoomImage.Query.GetAllMappingRoomImage.GetAllMappingRoomImageQuery,System.Collections.Generic.List{CleanArc.Application.Features.MappingRoomImage.Query.GetAllMappingRoomImage.GetAllMappingRoomImageQueryResult},CleanArc.Application.Features.MappingRoomImage.Query.GetMappingRoomImageById.GetMappingRoomImageByIdQuery,CleanArc.Application.Features.MappingRoomImage.Query.GetMappingRoomImageById.GetMappingRoomImageByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.MappingRoomImages.MappingRoomImagesController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
         </member>
         <member name="T:CleanArc.Web.Api.Controllers.V1.Order.UrlController">
             <summary>l
@@ -28,6 +465,234 @@
             </summary>
             <param name="sender">The mediator sender for handling requests and responses.</param>
             <param name="logger">The logger for logging controller-related information.</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.RoomDetail.RoomDetailController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.RoomDetail.RoomDetailController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.RoomDetails.Command.CreateRoomDetailCommand.CreateRoomDetailCommand,CleanArc.Application.Features.RoomDetails.Command.UpdateRoomDetailCommand.UpdateRoomDetailCommand,CleanArc.Application.Features.RoomDetails.Command.DeleteRoomDetailCommand.DeleteRoomDetailCommand,System.Boolean,CleanArc.Application.Features.RoomDetails.Queries.GetAllRoomDetail.GetAllRoomDetailQuery,System.Collections.Generic.List{CleanArc.Application.Features.RoomDetails.Queries.GetAllRoomDetail.GetAllRoomDetailQueryResult},CleanArc.Application.Features.RoomDetails.Queries.GetRoomDetailById.GetRoomDetailByIdQuery,CleanArc.Application.Features.RoomDetails.Queries.GetRoomDetailById.GetRoomDetailByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.RoomDetail.RoomDetailController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.RoomImages.RoomImagesController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.RoomImages.RoomImagesController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.RoomImage.Command.CreateRoomImageCommand.CreateRoomImageCommand,CleanArc.Application.Features.RoomImage.Command.UpdateRoomImageCommand.UpdateRoomImageCommand,CleanArc.Application.Features.RoomImage.Command.DeleteRoomImageCommand.DeleteRoomImageCommand,System.Boolean,CleanArc.Application.Features.RoomImage.Queries.GetAllRoomImagesQuery.GetAllRoomImagesQuery,System.Collections.Generic.List{CleanArc.Application.Features.RoomImage.Queries.GetAllRoomImagesQuery.GetAllRoomImagesQueryResult},CleanArc.Application.Features.RoomImage.Queries.GetRoomImagesByIdQuery.GetRoomImagesByIdQuery,CleanArc.Application.Features.RoomImage.Queries.GetRoomImagesByIdQuery.GetRoomImagesByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.RoomImages.RoomImagesController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.RoomSizeUnit.Command.CreateRoomSizeUnitCommand.CreateRoomSizeUnitCommand,CleanArc.Application.Features.RoomSizeUnit.Command.UpdateRoomSizeUnitCommand.UpdateRoomSizeUnitCommand,CleanArc.Application.Features.RoomSizeUnit.Command.DeleteRoomSizeUnitCommand.DeleteRoomSizeUnitCommand,System.Boolean,CleanArc.Application.Features.RoomSizeUnit.Queries.GetAllRoomSizeUnits.GetAllRoomSizeUnitsQuery,System.Collections.Generic.List{CleanArc.Application.Features.RoomSizeUnit.Queries.GetAllRoomSizeUnits.GetAllRoomSizeUnitsQueryResult},CleanArc.Application.Features.RoomSizeUnit.Queries.GetRoomSizeUnitById.GetRoomSizeUnitByIdQuery,CleanArc.Application.Features.RoomSizeUnit.Queries.GetRoomSizeUnitById.GetRoomSizeUnitByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.RoomSizeUnit.RoomSizeUnitController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.RoomType.Command.CreateRoomTypeCommand.CreateRoomTypeCommand,CleanArc.Application.Features.RoomType.Command.UpdateRoomTypeCommand.UpdateRoomTypeCommand,CleanArc.Application.Features.RoomType.Command.DeleteRoomTypeCommand.DeleteRoomTypeCommand,System.Boolean,CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQuery,System.Collections.Generic.List{CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQueryResult},CleanArc.Application.Features.RoomType.Queries.GetRoomTypeById.GetRoomTypeByIdQuery,CleanArc.Application.Features.RoomType.Queries.GetRoomTypeById.GetRoomTypeByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.RoomVisual.RoomVisualController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.RoomVisual.RoomVisualController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.RoomVisual.Command.CreateRoomVisualCommand.CreateRoomVisualCommand,CleanArc.Application.Features.RoomVisual.Command.UpdateRoomVisualCommand.UpdateRoomVisualCommand,CleanArc.Application.Features.RoomVisual.Command.DeleteRoomVisualCommand.DeleteRoomVisualCommand,System.Boolean,CleanArc.Application.Features.RoomVisual.Query.GetAllRoomVisual.GetAllRoomVisualQuery,System.Collections.Generic.List{CleanArc.Application.Features.RoomVisual.Query.GetAllRoomVisual.GetAllRoomVisualQueryResult},CleanArc.Application.Features.RoomVisual.Query.GetRoomVisualById.GetRoomVisualByIdQuery,CleanArc.Application.Features.RoomVisual.Query.GetRoomVisualById.GetRoomVisualByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.RoomVisual.RoomVisualController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.SearchCarAmenity.SearchCarAmenityController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.SearchCarAmenity.SearchCarAmenityController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.SearchCarAmenities.Commands.CreateSearchCarAmenitiesCommand.CreateSearchCarAmenitiesCommand,CleanArc.Application.Features.SearchCarAmenities.Commands.UpdateSearchCarAmenitiesCommand.UpdateSearchCarAmenitiesCommand,CleanArc.Application.Features.SearchCarAmenities.Commands.DeleteSearchCarAmenitiesCommand.DeleteSearchCarAmenitiesCommand,System.Boolean,CleanArc.Application.Features.SearchCarAmenities.Queries.GetAllSearchCarAmenities.GetAllSearchCarAmenitiesQuery,System.Collections.Generic.List{CleanArc.Application.Features.SearchCarAmenities.Queries.GetAllSearchCarAmenities.GetAllSearchCarAmenitiesQueryResult},CleanArc.Application.Features.SearchCarAmenities.Queries.GetSearchCarAmenitiesById.GetSearchCarAmenitiesByIdQuery,CleanArc.Application.Features.SearchCarAmenities.Queries.GetSearchCarAmenitiesById.GetSearchCarAmenitiesByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.SearchCarAmenity.SearchCarAmenityController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.SearchCountryCities.SearchCountryCitiesController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.SearchCountryCities.SearchCountryCitiesController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.SearchCountryCities.Command.CreateSearchCountryCities.CreateSearchCountryCitiesCommand,CleanArc.Application.Features.SearchCountryCities.Command.UpdateSearchCountryCities.UpdateSearchCountryCitiesCommand,CleanArc.Application.Features.SearchCountryCities.Command.DeleteSearchCountryCities.DeleteSearchCountryCitiesCommand,System.Boolean,CleanArc.Application.Features.SearchCountryCities.Queries.GetAllSearchCountryCities.GetAllSearchCountryCitiesQueries,System.Collections.Generic.List{CleanArc.Application.Features.SearchCountryCities.Queries.GetAllSearchCountryCities.GetAllSearchCountryCitiesQueriesResult},CleanArc.Application.Features.SearchCountryCities.Queries.GetSearchCountryCitiesById.GetSearchCountryCitiesByIdQuery,CleanArc.Application.Features.SearchCountryCities.Queries.GetSearchCountryCitiesById.GetSearchCountryCitiesByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.SearchCountryCities.SearchCountryCitiesController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.SearchHotelAmenity.SearchHotelAmenityController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.SearchHotelAmenity.SearchHotelAmenityController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.SearchHotelAmenities.Commands.CreateSearchHotelAmenitiesCommand.CreateSearchHotelAmenitiesCommand,CleanArc.Application.Features.SearchHotelAmenities.Commands.UpdateSearchHotelAmenitiesCommand.UpdateSearchHotelAmenitiesCommand,CleanArc.Application.Features.SearchHotelAmenities.Commands.DeleteSearchHotelAmenitiesCommand.DeleteSearchHotelAmenitiesCommand,System.Boolean,CleanArc.Application.Features.SearchHotelAmenities.Queries.GetAllSearchHotelAmenities.GetAllSearchHotelAmenitiesQuery,System.Collections.Generic.List{CleanArc.Application.Features.SearchHotelAmenities.Queries.GetAllSearchHotelAmenities.GetAllSearchHotelAmenitiesQueryResult},CleanArc.Application.Features.SearchHotelAmenities.Queries.GetSearchHotelAmenitiesById.GetSearchHotelAmenitiesByIdQuery,CleanArc.Application.Features.SearchHotelAmenities.Queries.GetSearchHotelAmenitiesById.GetSearchHotelAmenitiesByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.SearchHotelAmenity.SearchHotelAmenityController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.SearchHotel.Commands.CreateSearchHotelCommand.CreateSearchHotelCommand,CleanArc.Application.Features.SearchHotel.Commands.UpdateSearchHotelCommand.UpdateSearchHotelCommand,CleanArc.Application.Features.SearchHotel.Commands.DeleteSearchHotelCommand.DeleteSearchHotelCommand,System.Boolean,CleanArc.Application.Features.SearchHotel.Queries.GetAllSearchHotels.GetAllSearchHotelsQuery,System.Collections.Generic.List{CleanArc.Application.Features.SearchHotel.Queries.GetAllSearchHotels.GetAllSearchHotelsQueryResult},CleanArc.Application.Features.SearchHotel.Queries.GetSearchHotelById.GetSearchHotelByIdQuery,CleanArc.Application.Features.SearchHotel.Queries.GetSearchHotelById.GetSearchHotelByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.SearchHotelImage.SearchHotelImageController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.SearchHotelImage.SearchHotelImageController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.SearchHotelImage.Command.CreateSearchHotelImageCommand.CreateSearchCarImageCommand,CleanArc.Application.Features.SearchHotelImage.Command.UpdateSearchHotelImageCommand.UpdateSearchHotelImageCommand,CleanArc.Application.Features.SearchHotelImage.Command.DeleteSearchHotelImageCommand.DeleteSearchHotelImageCommand,System.Boolean,CleanArc.Application.Features.SearchHotelImage.Queries.GetAllSearchHotelImage.GetAllSearchHotelImageQuery,System.Collections.Generic.List{CleanArc.Application.Features.SearchHotelImage.Queries.GetAllSearchHotelImage.GetAllSearchHotelImageQueryResult},CleanArc.Application.Features.SearchHotelImage.Queries.GetByIdSearchHotelImage.GetByIdSearchHotelImageQuery,CleanArc.Application.Features.SearchHotelImage.Queries.GetByIdSearchHotelImage.GetByIdSearchHotelImageQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.SearchHotelImage.SearchHotelImageController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.SearchHotelRoomDetail.Command.CreateSearchHotelRoomDetail.CreateSearchHotelRoomDetailCommand,CleanArc.Application.Features.SearchHotelRoomDetail.Command.UpdateSearchHotelRoomDetail.UpdateSearchHotelRoomDetailCommand,CleanArc.Application.Features.SearchHotelRoomDetail.Command.DeleteSearchHotelRoomDetail.DeleteSearchHotelRoomDetailCommand,System.Boolean,CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail.GetAllSearchHotelRoomDetailQuery,System.Collections.Generic.List{CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail.GetAllSearchHotelRoomDetailQueryResult},CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetSearchHotelRoomDetailById.GetSearchHotelRoomDetailByIdQuery,CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetSearchHotelRoomDetailById.GetSearchHotelRoomDetailByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail.SearchHotelRoomDetailController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.SearchRoomAmenities.SearchRoomAmenitiesController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.SearchRoomAmenities.SearchRoomAmenitiesController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.SearchRoomAmenities.Commands.CreateSearchRoomAmenities.CreateSearchRoomAmenitiesCommand,CleanArc.Application.Features.SearchRoomAmenities.Commands.UpdateSearchRoomAmenities.UpdateSearchRoomAmenitiesCommand,CleanArc.Application.Features.SearchRoomAmenities.Commands.DeleteSearchRoomAmenities.DeleteSearchRoomAmenitiesCommand,System.Boolean,CleanArc.Application.Features.SearchRoomAmenities.Queries.GetAllSearchRoomAmenities.GetAllSearchRoomAmenitiesQuery,System.Collections.Generic.List{CleanArc.Application.Features.SearchRoomAmenities.Queries.GetAllSearchRoomAmenities.GetAllSearchRoomAmenitiesQueryResult},CleanArc.Application.Features.SearchRoomAmenities.Queries.GetSearchRoomAmenitiesById.GetSearchRoomAmenitiesByIdQuery,CleanArc.Application.Features.SearchRoomAmenities.Queries.GetSearchRoomAmenitiesById.GetSearchRoomAmenitiesByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.SearchRoomAmenities.SearchRoomAmenitiesController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <member name="T:CleanArc.Web.Api.Controllers.V1.ServiceCategory.ServiceCategoryController">
+            <summary>
+            ServiceCategoryController is responsible for handling HTTP requests related to service categories operations
+            such as creating, updating, deleting, and retrieving service categories. It extends from a base controller
+            which provides common functionality for CRUD operations.
+            
+            The controller uses MediatR to send commands and queries to the corresponding handlers. It includes
+            endpoint definitions for the following actions:
+            
+            1. CreateServiceCategory: Handles the creation of a new service category.
+            2. UpdateServiceCategory: Handles the updating of an existing service category.
+            3. DeleteServiceCategory: Handles the deletion of an existing service category.
+            4. GetAllServiceCategories: Retrieves all service categories.
+            5. GetServiceCategoryById: Retrieves a specific service category by its ID.
+            
+            The controller uses dependency injection to receive instances of ISender (for sending commands and queries),
+            ILogger (for logging purposes), and IHttpContextAccessor (for accessing HTTP context information).
+            
+            The controller is versioned using the [ApiVersion] attribute and responds to routes prefixed with the API
+            version, specified as "api/v{version:apiVersion}/ServiceCategory".
+            
+            Note: The actual endpoint methods are intended to be implemented to utilize the base controller’s 
+            operation result handling and user ID setting.
+            
+            The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
+            SOLID principles.
+            </summary>
+            <seealso cref="!:CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ServiceCategory.Command.CreateServiceCategoryCommand.CreateServiceCategoryCommand, CleanArc.Application.Features.ServiceCategory.Command.UpdateServiceCategoryCommand.UpdateServiceCategoryCommand, CleanArc.Application.Features.ServiceCategory.Command.DeleteServiceCategoryCommand.DeleteServiceCategoryCommand, System.Boolean, CleanArc.Application.Features.ServiceCategory.Queries.GetAllServiceCategories.GetAllServiceCategoriesQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ServiceCategory.Queries.GetAllServiceCategories.GetAllServiceCategoriesQueryResult&gt;, CleanArc.Application.Features.ServiceCategory.Queries.GetServiceCategoryById.GetServiceCategoryByIdQuery, CleanArc.Application.Features.ServiceCategory.Queries.GetServiceCategoryById.GetServiceCategoryByIdQueryResult&gt;" />
+        </member>
+        <member name="M:CleanArc.Web.Api.Controllers.V1.ServiceCategory.ServiceCategoryController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ServiceCategory.Command.CreateServiceCategoryCommand.CreateServiceCategoryCommand,CleanArc.Application.Features.ServiceCategory.Command.UpdateServiceCategoryCommand.UpdateServiceCategoryCommand,CleanArc.Application.Features.ServiceCategory.Command.DeleteServiceCategoryCommand.DeleteServiceCategoryCommand,System.Boolean,CleanArc.Application.Features.ServiceCategory.Queries.GetAllServiceCategories.GetAllServiceCategoriesQuery,System.Collections.Generic.List{CleanArc.Application.Features.ServiceCategory.Queries.GetAllServiceCategories.GetAllServiceCategoriesQueryResult},CleanArc.Application.Features.ServiceCategory.Queries.GetServiceCategoryById.GetServiceCategoryByIdQuery,CleanArc.Application.Features.ServiceCategory.Queries.GetServiceCategoryById.GetServiceCategoryByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.ServiceCategory.ServiceCategoryController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <member name="T:CleanArc.Web.Api.Controllers.V1.Service.ServiceController">
+            <summary>
+            ServiceController is responsible for handling HTTP requests related to service operations
+            such as creating, updating, deleting, and retrieving services. It extends from a base controller
+            which provides common functionality for CRUD operations.
+            
+            The controller uses MediatR to send commands and queries to the corresponding handlers. It includes
+            endpoint definitions for the following actions:
+            
+            1. CreateService: Handles the creation of a new service.
+            2. UpdateService: Handles the updating of an existing service.
+            3. DeleteService: Handles the deletion of an existing service.
+            4. GetAllServices: Retrieves all services.
+            5. GetServiceById: Retrieves a specific service by its ID.
+            
+            The controller uses dependency injection to receive instances of ISender (for sending commands and queries),
+            ILogger (for logging purposes), and IHttpContextAccessor (for accessing HTTP context information).
+            
+            The controller is versioned using the [ApiVersion] attribute and responds to routes prefixed with the API
+            version, specified as "api/v{version:apiVersion}/Service".
+            
+            Note: The actual endpoint methods are intended to be implemented to utilize the base controller’s 
+            operation result handling and user ID setting.
+            
+            The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
+            SOLID principles.
+            </summary>
+            <seealso cref="!:CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Service.Command.CreateServiceCommand.CreateServiceCommand, CleanArc.Application.Features.Service.Command.UpdateServiceCommand.UpdateServiceCommand, CleanArc.Application.Features.Service.Command.DeleteServiceCommand.DeleteServiceCommand, System.Boolean, CleanArc.Application.Features.Service.Queries.GetAllServices.GetAllServicesQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Service.Queries.GetAllServices.GetAllServicesQueryResult&gt;, CleanArc.Application.Features.Service.Queries.GetServiceById.GetServiceByIdQuery, CleanArc.Application.Features.Service.Queries.GetServiceById.GetServiceByIdQueryResult&gt;" />
+        </member>
+        <member name="M:CleanArc.Web.Api.Controllers.V1.Service.ServiceController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.Service.Command.CreateServiceCommand.CreateServiceCommand,CleanArc.Application.Features.Service.Command.UpdateServiceCommand.UpdateServiceCommand,CleanArc.Application.Features.Service.Command.DeleteServiceCommand.DeleteServiceCommand,System.Boolean,CleanArc.Application.Features.Service.Queries.GetAllServices.GetAllServicesQuery,System.Collections.Generic.List{CleanArc.Application.Features.Service.Queries.GetAllServices.GetAllServicesQueryResult},CleanArc.Application.Features.Service.Queries.GetServiceById.GetServiceByIdQuery,CleanArc.Application.Features.Service.Queries.GetServiceById.GetServiceByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.Service.ServiceController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <member name="T:CleanArc.Web.Api.Controllers.V1.State.StateController">
+            <summary>
+            StateController is responsible for handling HTTP requests related to state operations
+            such as creating, updating, deleting, and retrieving states. It extends from a base controller
+            which provides common functionality for CRUD operations.
+            
+            The controller uses MediatR to send commands and queries to the corresponding handlers. It includes
+            endpoint definitions for the following actions:
+            
+            1. CreateState: Handles the creation of a new state.
+            2. UpdateState: Handles the updating of an existing state.
+            3. DeleteState: Handles the deletion of an existing state.
+            4. GetAllStates: Retrieves all states.
+            5. GetStateById: Retrieves a specific state by its ID.
+            
+            The controller uses dependency injection to receive instances of ISender (for sending commands and queries),
+            ILogger (for logging purposes), and IHttpContextAccessor (for accessing HTTP context information).
+            
+            The controller is versioned using the [ApiVersion] attribute and responds to routes prefixed with the API
+            version, specified as "api/v{version:apiVersion}/State".
+            
+            Note: The actual endpoint methods are intended to be implemented to utilize the base controller’s 
+            operation result handling and user ID setting.
+            
+            The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
+            SOLID principles. 
+            </summary>
+            <seealso cref="!:CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.State.Command.CreateStateCommand.CreateStateCommand, CleanArc.Application.Features.State.Command.UpdateStateCommand.UpdateStateCommand, CleanArc.Application.Features.State.Command.DeleteStateCommand.DeleteStateCommand, System.Boolean, CleanArc.Application.Features.State.Queries.GetAllStates.GetAllStatesQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.State.Queries.GetAllStates.GetAllStatesQueryResult&gt;, CleanArc.Application.Features.State.Queries.GetStateById.GetStateByIdQuery, CleanArc.Application.Features.State.Queries.GetStateById.GetStateByIdQueryResult&gt;" />
+        </member>
+        <member name="M:CleanArc.Web.Api.Controllers.V1.State.StateController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.State.Command.CreateStateCommand.CreateStateCommand,CleanArc.Application.Features.State.Command.UpdateStateCommand.UpdateStateCommand,CleanArc.Application.Features.State.Command.DeleteStateCommand.DeleteStateCommand,System.Boolean,CleanArc.Application.Features.State.Queries.GetAllStates.GetAllStatesQuery,System.Collections.Generic.List{CleanArc.Application.Features.State.Queries.GetAllStates.GetAllStatesQueryResult},CleanArc.Application.Features.State.Queries.GetStateById.GetStateByIdQuery,CleanArc.Application.Features.State.Queries.GetStateById.GetStateByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.State.StateController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.SubService.SubServiceController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.SubService.SubServiceController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.SubService.Commands.CreateSubServiceCommand.CreateSubServiceCommand,CleanArc.Application.Features.SubService.Commands.UpdateSubServiceCommand.UpdateSubServiceCommand,CleanArc.Application.Features.SubService.Commands.DeleteSubServiceCommand.DeleteSubServiceCommand,System.Boolean,CleanArc.Application.Features.SubService.Queries.GetAllSubService.GetAllSubServiceQuery,System.Collections.Generic.List{CleanArc.Application.Features.SubService.Queries.GetAllSubService.GetAllSubServiceQueryResult},CleanArc.Application.Features.SubService.Queries.GetSubServiceById.GetSubServiceByIdQuery,CleanArc.Application.Features.SubService.Queries.GetSubServiceById.GetSubServiceByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.SubService.SubServiceController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
         </member>
     </members>
 </doc>

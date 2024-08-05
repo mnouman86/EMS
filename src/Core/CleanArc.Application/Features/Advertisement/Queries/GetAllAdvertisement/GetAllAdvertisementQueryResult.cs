@@ -18,6 +18,7 @@ public class GetAllAdvertisementQueryResult
     public DateTime? StartDate { get; set; }
     public DateTime? EndDate { get; set; }
     public bool? IsActive { get; set; }
+    public bool? IsShow { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }
     public DateTime? CreatedAt { get; set; }

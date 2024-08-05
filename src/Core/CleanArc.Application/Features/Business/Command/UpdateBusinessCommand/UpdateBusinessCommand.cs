@@ -13,7 +13,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.Business.Command.UpdateBusinessCommand;
 
-public record UpdateBusinessCommand(int ID, string? Name,
+public record UpdateBusinessCommand(int ID, int? BusinessTypeID, string? Name,
     string? PhoneNumber,string? MobileNumber, string? Address1,string? Address2,string? Email, string? Latitude,
     string? Longitude, int? CountryID, int? StateID,
     int? CityID, string? TaxIdentificationNumber, string? License,
@@ -25,6 +25,10 @@ public record UpdateBusinessCommand(int ID, string? Name,
     public int UserId { get; set; }
     public IValidator<UpdateBusinessCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateBusinessCommand> validator)
     {
+        validator.RuleFor(c => c.BusinessTypeID)
+            .NotEmpty()
+            .NotNull()
+            .WithMessage("Please enter a valid BusinessTypeID");
         validator.RuleFor(c => c.Name)
             .NotEmpty()
             .NotNull()

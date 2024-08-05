@@ -64,7 +64,8 @@ internal class CreateAdvertisementCommandHandler: IRequestHandler<CreateAdvertis
                 ImageTitle = request.ImageTitle,
                 ImagePath = request.ImagePath,
                 StartDate = request.StartDate,
-                EndDate = request.EndDate
+                EndDate = request.EndDate,
+                IsShow = request.IsShow
                
 
             });
