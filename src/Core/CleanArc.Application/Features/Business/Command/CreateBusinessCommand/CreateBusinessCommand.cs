@@ -13,8 +13,8 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.Business.Command.CreateBusinessCommand;
 
-public record CreateBusinessCommand(string? Name,
-    string? PhoneNumber, string? MobileNumber,   string? Address1,string? Address2,string? Email, string? Latitude,
+public record CreateBusinessCommand(int? BusinessTypeID,string? Name,
+    string? PhoneNumber, string? MobileNumber, string? Address1,string? Address2,string? Email, string? Latitude,
     string? Longitude, int? CountryID, int? StateID,
     int? CityID, string? TaxIdentificationNumber, string? License, 
     string? ProofOfInsurance, int? BankAccountDetailID,
@@ -25,6 +25,10 @@ public record CreateBusinessCommand(string? Name,
     public int UserId { get; set; }
     public IValidator<CreateBusinessCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateBusinessCommand> validator)
     {
+        validator.RuleFor(c => c.BusinessTypeID)
+           .NotEmpty()
+           .NotNull()
+           .WithMessage("Please enter a valid BusinessTypeID");
         validator.RuleFor(c => c.Name)
             .NotEmpty()
             .NotNull()

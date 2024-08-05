@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Advertisement.Commands.CreateAdvertisementCommand;
-public record CreateAdvertisementCommand(int? PageID, int? PlaceID, string? ImageTitle, string? ImagePath, string? Url, DateTime? StartDate, DateTime? EndDate, int? CreatedBy) : IRequest<OperationResult<bool>>,
+public record CreateAdvertisementCommand(int? PageID, int? PlaceID, string? ImageTitle, string? ImagePath, string? Url, DateTime? StartDate, DateTime? EndDate, bool? IsShow, int? CreatedBy) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateAdvertisementCommand>
 {
     [JsonIgnore]
