@@ -67,7 +67,21 @@ namespace CleanArc.Web.UI
                 }
             }
         }
+        public async Task<byte[]> GetImageAsync(string category, string fileName)
+        {
+            try
+            {
+                var requestUrl = $"/api/Upload/{category}/{fileName}";
+                var response = await _httpClient.GetAsync(requestUrl);
+                response.EnsureSuccessStatusCode();
 
+                return await response.Content.ReadAsByteArrayAsync();
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception as needed
+                throw new ApplicationException($"Failed to retrieve image: {ex.Message}", ex);
+            }
+        }
     }
-
 }

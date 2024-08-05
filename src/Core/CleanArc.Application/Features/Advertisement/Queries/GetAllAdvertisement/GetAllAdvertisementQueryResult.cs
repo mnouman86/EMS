@@ -11,7 +11,9 @@ public class GetAllAdvertisementQueryResult
 
     public int ID { get; set; }
     public int? PageID { get; set; }
+    public string? PageName { get; set; }
     public int? PlaceID { get; set; }
+    public string? PlaceName { get; set; }
     public string? ImageTitle { get; set; }
     public string? ImagePath { get; set; }
     public string? Url { get; set; }

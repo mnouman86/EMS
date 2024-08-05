@@ -24,6 +24,7 @@ public class GetAllHotelsQueryResult
     public string FocalPersonName { get; set; }
     public bool IsChanelManager { get; set; }
     public bool IsRating { get; set; }
+    public int ServiceID { get; set; }
     public bool IsChain { get; set; }
     public DateTime? CheckInFrom { get; set; }
     public DateTime? CheckInTo { get; set; }
