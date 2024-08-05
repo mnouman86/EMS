@@ -30,6 +30,7 @@ public interface IUnitOfWork
     public IMappingRoomAmenitiesRepository MappingRoomAmenitiesRepository { get; }
     public IMappingRoomImageRepository MappingRoomImageRepository { get; }
     public IBusinessRepository BusinessRepository { get; }
+    public IBusinessTypeRepository BusinessTypeRepository { get; }
     public IBankRepository BankRepository { get; }
     public IBusinessBankAccountRepository BusinessBankAccountRepository { get; }
     public ICarDetailRepository CarDetailRepository { get; }
@@ -44,6 +45,18 @@ public interface IUnitOfWork
     public IAdvertisementRepository AdvertisementRepository { get; }
     public IAdvertisementPlaceRepository AdvertisementPlaceRepository { get; }
     public IAdvertisementPageRepository AdvertisementPageRepository { get; }
+    public IActivityTypeRepository ActivityTypeRepository { get; }
+    public IActivityNatureRepository ActivityNatureRepository { get; }
+    public IActivityManagerRepository ActivityManagerRepository { get; }
+    public IActivityIncludedOptionRepository ActivityIncludedOptionRepository { get; }
+    public IDisabilityOptionRepository DisabilityOptionRepository { get; }
+    public ISubServiceRepository SubServiceRepository { get; }
+    public IActivityPrivateParticipantRepository ActivityPrivateParticipantRepository { get; }
+    public IActivitySeasonRepository ActivitySeasonRepository { get; }
+    public IActivityTransportationRepository ActivityTransportationRepository { get; }
+    public IActivityAddressRepository ActivityAddressRepository { get; }
+    public IActivityRepository ActivityRepository { get; }
+
 
 
 
