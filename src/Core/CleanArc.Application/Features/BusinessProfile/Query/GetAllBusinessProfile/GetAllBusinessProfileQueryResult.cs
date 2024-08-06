@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.BusinessType.Query.GetBusinessTypeById
+namespace CleanArc.Application.Features.BusinessProfile.Query.GetAllBusinessProfile
 {
-    public class GetBusinessTypeByIdQueryResult
+    public class GetAllBusinessProfileQueryResult
     {
         public int? ID { get; set; }
         public int? CultureId { get; set; }
-        //public bool? IndividualPerson { get; set; }
-        //public  bool? Company { get; set; }
 
-        public string? BusinessTypeName { get; set; }
+        public string? Company { get; set; }
+        public string? IndividualPerson { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsDeleted { get; set; }
         public int? CreatedBy { get; set; }

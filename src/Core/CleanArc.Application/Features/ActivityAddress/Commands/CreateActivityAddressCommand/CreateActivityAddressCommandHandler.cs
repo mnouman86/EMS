@@ -58,8 +58,14 @@ internal class CreateActivityAddressCommandHandler: IRequestHandler<CreateActivi
 
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.ActivityAddressRepository.AddAsync(new Domain.Entities.ActivityAddress.ActivityAddress()
-            { CreatedBy = user.Id, Country = request.Country,State=request.State,
-            City=request.City,AddressLine1 = request.AddressLine1,AddressLine2 = request.AddressLine2,
+            { CreatedBy = user.Id,
+            CultureId = request.CultureId,
+                 ActivityID = request.ActivityID,
+                CountryLookUpID = request.CountryLookUpID,
+                StateLookUpID = request.StateLookUpID,
+                CityLookUpID = request.CityLookUpID,
+                AddressLine1 = request.AddressLine1,
+                AddressLine2 = request.AddressLine2,
             PostalCode=request.PostalCode,
             Latitude=request.Latitude,
             Longitude=request.Longitude

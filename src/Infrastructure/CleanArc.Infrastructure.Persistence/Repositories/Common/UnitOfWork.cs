@@ -66,7 +66,7 @@ public class UnitOfWork : IUnitOfWork
     public IActivityTransportationRepository ActivityTransportationRepository { get; set; }
     public IActivityAddressRepository ActivityAddressRepository { get; set; }
     public IActivityRepository ActivityRepository { get; set; }
-
+    public IBusinessProfileRepository BusinessProfileRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -126,7 +126,7 @@ public class UnitOfWork : IUnitOfWork
         ILogger<ActivityTransportationRepository> _loggerActivityTransportation,
         ILogger<ActivityAddressRepository> _loggerActivityAddress,
         ILogger<ActivityRepository> _loggerActivity,
-
+        ILogger<BusinessProfileRepository> _loggerBusinessProfile,
 
 
 
@@ -187,6 +187,7 @@ public class UnitOfWork : IUnitOfWork
         ActivityTransportationRepository = new ActivityTransportationRepository(configuration, mapper, _loggerActivityTransportation, httpContextAccessor);
         ActivityAddressRepository = new ActivityAddressRepository(configuration, mapper, _loggerActivityAddress, httpContextAccessor);
         ActivityRepository = new ActivityRepository(configuration, mapper, _loggerActivity, httpContextAccessor);
+        BusinessProfileRepository = new BusinessProfileRepository(configuration, mapper, _loggerBusinessProfile, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         this.configuration = configuration;
