@@ -11,11 +11,13 @@ public  class ActivityAddress
     
 {
     public int ID { get; set; }
-    public string? Country { get; set; }
-    public string? City { get; set; }
+    public int? CultureId { get; set; }
+    public int? ActivityID { get; set; }
+    public int? CountryLookUpID { get; set; }
+    public int? CityLookUpID { get; set; }
     public string? AddressLine1 { get; set; }
     public string? AddressLine2 { get; set; }
-    public string? State { get; set; }
+    public int? StateLookUpID { get; set; }
     public string? PostalCode { get; set; }
     public string? Latitude { get; set; }
     public string? Longitude { get; set; }
