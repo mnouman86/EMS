@@ -1,6 +1,7 @@
 ﻿using Azure.Core;
 using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.ActivityAddress;
+using CleanArc.Application.Models.BusinessType;
 using CleanArc.Application.Models.Request;
 using CleanArc.Application.Models.URL;
 using CleanArc.Domain.Entities.ActivityAddress;
@@ -74,7 +75,11 @@ public async Task<string> AddAsync(ActivityAddress ActivityAddress)
         {
             connection.Open();
                 CreateActivityAddressDTO createActivityAddressDTO = _mapper.Map<CreateActivityAddressDTO>(ActivityAddress);
-            var result = await connection.ExecuteAsync(ActivityAddressQueries.Create_ActivityAddress, createActivityAddressDTO, commandType: CommandType.StoredProcedure);
+                var parameters = new DynamicParameters(createActivityAddressDTO);
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                var result = await connection.ExecuteAsync(ActivityAddressQueries.Create_ActivityAddress, createActivityAddressDTO, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -108,17 +113,26 @@ public async Task<string> AddAsync(ActivityAddress ActivityAddress)
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                var parameters = new
-                {
-                    PageNumber = searchRequest.PageNumber,
-                    PageSize = searchRequest.PageSize,
-                    //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-                    //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-                    //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-                    //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-                    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
-                    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
-                };
+                var parameters = new DynamicParameters();
+                parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+                parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                //parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+                //parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                //var parameters = new
+                //{
+                //    PageNumber = searchRequest.PageNumber,
+                //    PageSize = searchRequest.PageSize,
+                //    //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
+                //    //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
+                //    //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
+                //    //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
+                //    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
+                //    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
+                //};
                 var result = await connection.QueryAsync<ActivityAddress>(ActivityAddressQueries.usp_GetAll_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
@@ -132,6 +146,10 @@ public async Task<string> AddAsync(ActivityAddress ActivityAddress)
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
                 var result = await connection.QuerySingleOrDefaultAsync<ActivityAddress>(ActivityAddressQueries.usp_GetByID_ActivityAddress, new { ID = id }, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
@@ -149,6 +167,9 @@ public async Task<string> AddAsync(ActivityAddress ActivityAddress)
             {
                 connection.Open();
                 UpdateActivityAddressDTO updateActivityAddressDTO = _mapper.Map<UpdateActivityAddressDTO>(entity);
+                var parameters = new DynamicParameters(updateActivityAddressDTO);
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.ExecuteAsync(ActivityAddressQueries.update_ActivityAddress, updateActivityAddressDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
