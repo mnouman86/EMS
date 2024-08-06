@@ -1,8 +1,8 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.ActivityType;
-using CleanArc.Application.Models.BusinessType;
+using CleanArc.Application.Models.BusinessProfile;
 using CleanArc.Application.Models.Request;
-using CleanArc.Domain.Entities.BusinessType;
+using CleanArc.Domain.Entities.BusinessProfile;
 using CleanArc.Infrastructure.Persistence.Helpers;
 using CleanArc.Infrastructure.Sql.SqlQueries;
 using CleanArc.SharedKernel.Extensions;
@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
-public class BusinessTypeRepository : IBusinessTypeRepository
+public class BusinessProfileRepository : IBusinessProfileRepository
 {
 
     /// <summary>
@@ -37,7 +37,7 @@ public class BusinessTypeRepository : IBusinessTypeRepository
     /// <summary>
     /// The logger for logging repository-related information.
     /// </summary>
-    private readonly ILogger<BusinessTypeRepository> _logger;
+    private readonly ILogger<BusinessProfileRepository> _logger;
 
     /// <summary>
     /// The HTTP context accessor for accessing HTTP context information.
@@ -51,7 +51,7 @@ public class BusinessTypeRepository : IBusinessTypeRepository
     /// <param name="mapper">The mapper for mapping between different object types.</param>
     /// <param name="logger">The logger for logging repository-related information.</param>
     /// <param name="httpContextAccessor">The HTTP context accessor for accessing HTTP context information.</param>
-    public BusinessTypeRepository(IConfiguration configuration, IMapper mapper, ILogger<BusinessTypeRepository> logger, IHttpContextAccessor httpContextAccessor)
+    public BusinessProfileRepository(IConfiguration configuration, IMapper mapper, ILogger<BusinessProfileRepository> logger, IHttpContextAccessor httpContextAccessor)
     {
         this.configuration = configuration;
         this._mapper = mapper;
@@ -59,19 +59,19 @@ public class BusinessTypeRepository : IBusinessTypeRepository
         _httpContextAccessor = httpContextAccessor;
     }
     /// <inheritdoc/>
-    public async Task<string> AddAsync(BusinessType BusinessType)
+    public async Task<string> AddAsync(BusinessProfile BusinessProfile)
     {
-        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, BusinessType))
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, BusinessProfile))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                CreateBusinessTypeDTO createBusinessTypeDTO = _mapper.Map<CreateBusinessTypeDTO>(BusinessType);
-                var parameters = new DynamicParameters(createBusinessTypeDTO);
+                CreateBusinessProfileDTO createBusinessProfileDTO = _mapper.Map<CreateBusinessProfileDTO>(BusinessProfile);
+                var parameters = new DynamicParameters(createBusinessProfileDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(BusinessTypeQueries.Create_Business, createBusinessTypeDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(BusinessProfileQueries.Create_BusinessProfile, createBusinessProfileDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }
@@ -91,7 +91,7 @@ public class BusinessTypeRepository : IBusinessTypeRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(BusinessTypeQueries.Delete_Business, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(BusinessProfileQueries.Delete_BusinessProfile, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }
@@ -99,7 +99,7 @@ public class BusinessTypeRepository : IBusinessTypeRepository
     }
 
     
-    public async Task<IReadOnlyList<BusinessType>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<IReadOnlyList<BusinessProfile>> GetAllAsync(SearchRequest searchRequest)
 
     {
      using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
@@ -131,13 +131,13 @@ public class BusinessTypeRepository : IBusinessTypeRepository
              //    Message = ("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output)
 
              //};
-             var result = await connection.QueryAsync<BusinessType>(BusinessTypeQueries.usp_GetAll_BusinessType, parameters, commandType: CommandType.StoredProcedure);
+             var result = await connection.QueryAsync<BusinessProfile>(BusinessProfileQueries.usp_GetALl_BusinessProfile, parameters, commandType: CommandType.StoredProcedure);
     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
              return result.ToList();
          }
      }
  }
-    public async Task<BusinessType> GetByIdAsync(long id)
+    public async Task<BusinessProfile> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
         {
@@ -148,7 +148,7 @@ public class BusinessTypeRepository : IBusinessTypeRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.QuerySingleOrDefaultAsync<BusinessType>(BusinessTypeQueries.usp_GetByID_Business, new { ID = id }, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<BusinessProfile>(BusinessProfileQueries.usp_GetByID_BusinessProfile, new { ID = id }, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -157,19 +157,19 @@ public class BusinessTypeRepository : IBusinessTypeRepository
 
 
 
-    public async Task<string> UpdateAsync(BusinessType BusinessType)
+    public async Task<string> UpdateAsync(BusinessProfile BusinessProfile)
     {
-        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, BusinessType))
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, BusinessProfile))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                UpdateBusinessTypeDTO updateBusinessTypeDTO = _mapper.Map<UpdateBusinessTypeDTO>(BusinessType);
-                var parameters = new DynamicParameters(updateBusinessTypeDTO);
+                UpdateBusinessProfileDTO updateBusinessProfileDTO = _mapper.Map<UpdateBusinessProfileDTO>(BusinessProfile);
+                var parameters = new DynamicParameters(updateBusinessProfileDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(BusinessTypeQueries.Update_Business, updateBusinessTypeDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(BusinessProfileQueries.Update_BusinessProfile, updateBusinessProfileDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }
