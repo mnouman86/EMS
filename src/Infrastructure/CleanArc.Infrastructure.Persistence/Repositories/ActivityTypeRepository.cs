@@ -1,6 +1,7 @@
 ﻿using Azure.Core;
 using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.ActivityType;
+using CleanArc.Application.Models.Advertisement;
 using CleanArc.Application.Models.Request;
 using CleanArc.Application.Models.URL;
 using CleanArc.Domain.Entities.ActivityType;
@@ -74,7 +75,11 @@ public async Task<string> AddAsync(ActivityType ActivityType)
         {
             connection.Open();
                 CreateActivityTypeDTO createActivityTypeDTO = _mapper.Map<CreateActivityTypeDTO>(ActivityType);
-            var result = await connection.ExecuteAsync(ActivityTypeQueries.Create_ActivityType, createActivityTypeDTO, commandType: CommandType.StoredProcedure);
+                var parameters = new DynamicParameters(createActivityTypeDTO);
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                var result = await connection.ExecuteAsync(ActivityTypeQueries.Create_ActivityType, createActivityTypeDTO, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -117,8 +122,11 @@ public async Task<string> AddAsync(ActivityType ActivityType)
                     //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
                     //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
                     SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
-                    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
-                };
+                    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray), // Convert list to DataTable
+                    Code = ("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output),
+                    Message = ("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output)
+
+            };
                 var result = await connection.QueryAsync<ActivityType>(ActivityTypeQueries.usp_GetAll_ActivityType, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
@@ -132,6 +140,10 @@ public async Task<string> AddAsync(ActivityType ActivityType)
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
                 var result = await connection.QuerySingleOrDefaultAsync<ActivityType>(ActivityTypeQueries.usp_GetByID_ActivityType, new { ID = id }, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
@@ -149,7 +161,9 @@ public async Task<string> AddAsync(ActivityType ActivityType)
             {
                 connection.Open();
                 UpdateActivityTypeDTO updateActivityTypeDTO = _mapper.Map<UpdateActivityTypeDTO>(entity);
-
+                var parameters = new DynamicParameters(updateActivityTypeDTO);
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 var result = await connection.ExecuteAsync(ActivityTypeQueries.update_ActivityType, updateActivityTypeDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
