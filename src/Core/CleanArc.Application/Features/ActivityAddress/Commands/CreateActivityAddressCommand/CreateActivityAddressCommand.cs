@@ -11,9 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityAddress.Commands.CreateActivityAddressCommand;
-public record CreateActivityAddressCommand(string? Country, string? City, string? AddressLine1,
+public record CreateActivityAddressCommand(int? ActivityID, int? CultureId,int? CountryLookUpID, int? CityLookUpID, string? AddressLine1,
     string? AddressLine2,
-    string? State,
+    int? StateLookUpID,
     string? PostalCode,
     string? Latitude,
     string? Longitude,
@@ -24,14 +24,14 @@ public record CreateActivityAddressCommand(string? Country, string? City, string
     public int UserId { get; set; }
     public IValidator<CreateActivityAddressCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateActivityAddressCommand> validator)
     {
-        validator.RuleFor(c => c.Country)
+        validator.RuleFor(c => c.CountryLookUpID)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please enter a valid Country");
-        validator.RuleFor(c => c.City)
+            .WithMessage("Please enter a valid CountryLookUpID");
+        validator.RuleFor(c => c.CityLookUpID)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please enter a City");
+            .WithMessage("Please enter a CityLookUpID");
         validator.RuleFor(c => c.AddressLine1)
             .NotEmpty()
             .NotNull()
@@ -40,7 +40,7 @@ public record CreateActivityAddressCommand(string? Country, string? City, string
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a AddressLine2");
-        validator.RuleFor(c => c.State)
+        validator.RuleFor(c => c.StateLookUpID)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a State");

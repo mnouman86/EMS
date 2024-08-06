@@ -9,6 +9,7 @@ namespace CleanArc.Application.Models.BusinessType
     public class CreateBusinessTypeDTO
     {
         //public int? ID { get; set; }
+        public int? CultureId { get; set; }
         //public bool? Company { get; set; }
 
         public string? BusinessTypeName { get; set; }
