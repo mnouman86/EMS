@@ -66,6 +66,10 @@ public class BusinessTypeRepository : IBusinessTypeRepository
             {
                 connection.Open();
                 CreateBusinessTypeDTO createBusinessTypeDTO = _mapper.Map<CreateBusinessTypeDTO>(BusinessType);
+                var parameters = new DynamicParameters(createBusinessTypeDTO);
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
                 var result = await connection.ExecuteAsync(BusinessTypeQueries.Create_Business, createBusinessTypeDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
@@ -100,18 +104,31 @@ public class BusinessTypeRepository : IBusinessTypeRepository
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                var parameters = new
-                {
-                    PageNumber = searchRequest.PageNumber,
-                    PageSize = searchRequest.PageSize,
-                    //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-                    //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-                    //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-                    //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-                    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
-                    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
-                };
-                var result = await connection.QueryAsync<BusinessType>(BusinessTypeQueries.usp_GetAll_Business, parameters, commandType: CommandType.StoredProcedure);
+                var parameters = new DynamicParameters();
+                parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+                parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                //parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+                //parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                //var parameters = new
+                //{
+                //    PageNumber = searchRequest.PageNumber,
+                //    PageSize = searchRequest.PageSize,
+                //    cultureId = searchRequest.CultureId,
+                //    //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
+                //    //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
+                //    //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
+                //    //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
+                //    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
+                //    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray), // Convert list to DataTable
+                //    Code = ("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output),
+                //    Message = ("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output)
+
+                //};
+                var result = await connection.QueryAsync<BusinessType>(BusinessTypeQueries.usp_GetAll_BusinessType, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }
@@ -124,6 +141,10 @@ public class BusinessTypeRepository : IBusinessTypeRepository
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
                 var result = await connection.QuerySingleOrDefaultAsync<BusinessType>(BusinessTypeQueries.usp_GetByID_Business, new { ID = id }, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
@@ -141,6 +162,9 @@ public class BusinessTypeRepository : IBusinessTypeRepository
             {
                 connection.Open();
                 UpdateBusinessTypeDTO updateBusinessTypeDTO = _mapper.Map<UpdateBusinessTypeDTO>(BusinessType);
+                var parameters = new DynamicParameters(updateBusinessTypeDTO);
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.ExecuteAsync(BusinessTypeQueries.Update_Business, updateBusinessTypeDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
@@ -148,8 +172,7 @@ public class BusinessTypeRepository : IBusinessTypeRepository
             }
         }
     }
-}
-/// <inheritdoc/>
+}/// <inheritdoc/>
 
 
 /// <inheritdoc/>

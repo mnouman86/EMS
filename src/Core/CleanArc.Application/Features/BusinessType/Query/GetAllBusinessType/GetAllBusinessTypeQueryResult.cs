@@ -9,8 +9,10 @@ namespace CleanArc.Application.Features.BusinessType.Query.GetAllBusinessType
     public class GetAllBusinessTypeQueryResult
     {
         public int? ID { get; set; }
-        public string? Company { get; set; }
-        public string? IndividualPerson { get; set; }
+        //public string? Company { get; set; }
+
+        public string? BusinessTypeName { get; set; }
+        //public string? IndividualPerson { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsDeleted { get; set; }
         public int? CreatedBy { get; set; }
