@@ -201,6 +201,15 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.BusinessProfile.BusinessProfileController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.BusinessProfile.BusinessProfileController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.BusinessProfile.Command.CreateBusinessProfileCommand.CreateBusinessProfileCommand,CleanArc.Application.Features.BusinessProfile.Command.UpdateBusinessProfileCommand.UpdateBusinessProfileCommand,CleanArc.Application.Features.BusinessProfile.Command.DeleteBusinessProfileCommand.DeleteBusinessProfileCommand,System.Boolean,CleanArc.Application.Features.BusinessProfile.Query.GetAllBusinessProfile.GetAllBusinessProfileQuery,System.Collections.Generic.List{CleanArc.Application.Features.BusinessProfile.Query.GetAllBusinessProfile.GetAllBusinessProfileQueryResult},CleanArc.Application.Features.BusinessProfile.Query.GetBusinessProfileById.GetBusinessProfileByIdQuery,CleanArc.Application.Features.BusinessProfile.Query.GetBusinessProfileById.GetBusinessProfileByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.BusinessProfile.BusinessProfileController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.BusinessType.BusinessTypeController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.BusinessType.BusinessTypeController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.BusinessType.Command.CreateBusinessTypeCommand.CreateBusinessTypeCommand,CleanArc.Application.Features.BusinessType.Command.UpdateBusinessTypeCommand.UpdateBusinessTypeCommand,CleanArc.Application.Features.BusinessType.Command.DeleteBusinessTypeCommand.DeleteBusinessTypeCommand,System.Boolean,CleanArc.Application.Features.BusinessType.Query.GetAllBusinessType.GetAllBusinessTypeQuery,System.Collections.Generic.List{CleanArc.Application.Features.BusinessType.Query.GetAllBusinessType.GetAllBusinessTypeQueryResult},CleanArc.Application.Features.BusinessType.Query.GetBusinessTypeById.GetBusinessTypeByIdQuery,CleanArc.Application.Features.BusinessType.Query.GetBusinessTypeById.GetBusinessTypeByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
