@@ -56,6 +56,8 @@ public interface IUnitOfWork
     public IActivityTransportationRepository ActivityTransportationRepository { get; }
     public IActivityAddressRepository ActivityAddressRepository { get; }
     public IActivityRepository ActivityRepository { get; }
+    public IBusinessProfileRepository BusinessProfileRepository { get; }
+
 
 
 
