@@ -57,8 +57,10 @@ namespace CleanArc.Application.Features.BusinessType.Command.CreateBusinessTypeC
                 //return OperationResult<bool>.SuccessResult(true);
                 await _unitOfWork.BusinessTypeRepository.AddAsync(new Domain.Entities.BusinessType.BusinessType()
                 { CreatedBy = user.Id,
-                    Company = request.Company,
-                    IndividualPerson = request.IndividualPerson,
+                    //Company = request.Company,
+                    BusinessTypeName = request.Name,
+                    CultureId = request.CultureId,
+                    //IndividualPerson = request.IndividualPerson,
                    
                 });
                 await _unitOfWork.CommitAsync();
