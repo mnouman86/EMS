@@ -57,7 +57,7 @@ internal class DeleteSubServiceCommandHandler: IRequestHandler<DeleteSubServiceC
             //return OperationResult<bool>.SuccessResult(true);
             //await _unitOfWork.SubServiceRepository.DeleteAsync(new Domain.Entities.SubService.SubService()
             // { UpdatedBy = user.Id, ID = request.ID });
-            await _unitOfWork.SubServiceRepository.DeleteAsync(request.SelectedIds, user.Id);
+            await _unitOfWork.SubServiceRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

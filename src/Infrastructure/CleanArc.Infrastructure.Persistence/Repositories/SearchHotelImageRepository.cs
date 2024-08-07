@@ -61,7 +61,7 @@ public class SearchHotelImageRepository : ISearchHotelImageRepository
         throw new NotImplementedException();
     }
 
-    public Task<string> DeleteAsync(string selectedIds, int updatedBy)
+    public Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
         throw new NotImplementedException();
     }

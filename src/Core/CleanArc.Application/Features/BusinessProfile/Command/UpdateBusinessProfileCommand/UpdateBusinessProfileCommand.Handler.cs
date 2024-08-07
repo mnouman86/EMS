@@ -61,6 +61,8 @@ namespace CleanArc.Application.Features.BusinessProfile.Command.UpdateBusinessPr
                     MobileNumber = request.MobileNumber,
                     PhoneNumber = request.PhoneNumber,
                     CountryID = request.CountryID,
+                    CityID=request.CityID,
+                    StateID = request.StateID,
                     EmailAddress = request.EmailAddress,
                     Address1 = request.Address1,
                     Address2 = request.Address2,

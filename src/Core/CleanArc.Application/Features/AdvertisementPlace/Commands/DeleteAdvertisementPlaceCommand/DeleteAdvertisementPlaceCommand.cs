@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.AdvertisementPlace.Commands.DeleteAdvertisementPlaceCommand;
 
-public record DeleteAdvertisementPlaceCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record DeleteAdvertisementPlaceCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<DeleteAdvertisementPlaceCommand>
 {
     [JsonIgnore]
