@@ -59,7 +59,7 @@ namespace CleanArc.Application.Features.BusinessType.Command.CreateBusinessTypeC
                 { CreatedBy = user.Id,
                     //Company = request.Company,
                     BusinessTypeName = request.Name,
-                    CultureId = request.CultureId,
+                   // CultureId = request.CultureId,
                     //IndividualPerson = request.IndividualPerson,
                    
                 });
