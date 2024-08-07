@@ -13,7 +13,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.City.Command.DeleteCityCommand
 {
-    public record DeleteCityCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+    public record DeleteCityCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<DeleteCityCommand>
     {
         [JsonIgnore]

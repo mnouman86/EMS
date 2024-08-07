@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.ActivityType.Commands.DeleteActivityTypeCommand;
 
-public record DeleteActivityTypeCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record DeleteActivityTypeCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<DeleteActivityTypeCommand>
 {
     [JsonIgnore]

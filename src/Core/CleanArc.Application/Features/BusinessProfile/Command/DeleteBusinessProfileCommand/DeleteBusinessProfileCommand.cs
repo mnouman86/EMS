@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.BusinessProfile.Command.DeleteBusinessProfileCommand
 {
-    public record  DeleteBusinessProfileCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+    public record  DeleteBusinessProfileCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<DeleteBusinessProfileCommand>
     {
         [JsonIgnore]

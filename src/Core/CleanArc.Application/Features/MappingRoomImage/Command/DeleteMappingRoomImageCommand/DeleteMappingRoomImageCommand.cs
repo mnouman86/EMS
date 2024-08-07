@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.MappingRoomImage.Command.DeleteMappingRoomImageCommand;
 
-public record DeleteMappingRoomImageCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record DeleteMappingRoomImageCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
 IValidatableModel<DeleteMappingRoomImageCommand>
 {
     [JsonIgnore]

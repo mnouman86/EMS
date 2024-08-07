@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.ActivitySeason.Commands.DeleteActivitySeasonCommand;
 
-public record DeleteActivitySeasonCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record DeleteActivitySeasonCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<DeleteActivitySeasonCommand>
 {
     [JsonIgnore]

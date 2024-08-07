@@ -13,7 +13,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.FeaturesppingCarAmenity.Command.DeleteMappingCarAmenityCommand;
 
-public record DeleteMappingCarAmenityCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record DeleteMappingCarAmenityCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<DeleteMappingCarAmenityCommand>
 {
     [JsonIgnore]
