@@ -84,7 +84,7 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
                 NotAllowedItems = request.NotAllowedItems,
                 AllowedItems = request.AllowedItems,
                 CurrencyLookUpID = request.CurrencyLookUpID,
-                PerGroupPrice = request.PerGroupPrice,
+               // PerGroupPrice = request.PerGroupPrice,
                 PerPersonPrice = request.PerPersonPrice,
                 //SeasonID = request.SeasonID,
 

@@ -20,7 +20,7 @@ namespace CleanArc.Application.Models.Activities
         public int? ActivityNatureLookUpID { get; set; }
         public int? MinGroupSize { get; set; }
         public int? MaxGroupSize { get; set; }
-        public int? IsPrivateActivity { get; set; }
+        public bool? IsPrivateActivity { get; set; }
         public string WhoCanParticipate { get; set; }
         public string WhoCannotParticipate { get; set; }
         public int? ManageActivityLookUpID { get; set; }
@@ -37,8 +37,8 @@ namespace CleanArc.Application.Models.Activities
         public int? CurrencyLookUpID { get; set; }
         public int? CultureId { get; set; }
 
-        public int? PerPersonPrice { get; set; }
-        public int? PerGroupPrice { get; set; }
+        public Decimal? PerPersonPrice { get; set; }
+       // public int? PerGroupPrice { get; set; }
         public int? UpdatedBy { get; set; }
         //public DateTime? UpdatedAt { get; set; }
     }
