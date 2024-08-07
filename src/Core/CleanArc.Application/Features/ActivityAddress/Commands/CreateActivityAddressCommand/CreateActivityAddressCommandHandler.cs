@@ -59,7 +59,7 @@ internal class CreateActivityAddressCommandHandler: IRequestHandler<CreateActivi
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.ActivityAddressRepository.AddAsync(new Domain.Entities.ActivityAddress.ActivityAddress()
             { CreatedBy = user.Id,
-            CultureId = request.CultureId,
+           // CultureId = request.CultureId,
                  ActivityID = request.ActivityID,
                 CountryLookUpID = request.CountryLookUpID,
                 StateLookUpID = request.StateLookUpID,
