@@ -22,6 +22,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using CleanArc.Application.Models.BusinessProfile;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -74,7 +75,11 @@ public async Task<string> AddAsync(SubService SubService)
         {
             connection.Open();
                 CreateSubServiceDTO createSubServiceDTO = _mapper.Map<CreateSubServiceDTO>(SubService);
-            var result = await connection.ExecuteAsync(SubServiceQueries.Create_SubService, createSubServiceDTO, commandType: CommandType.StoredProcedure);
+                var parameters = new DynamicParameters(createSubServiceDTO);
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                var result = await connection.ExecuteAsync(SubServiceQueries.Create_SubService, createSubServiceDTO, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -90,6 +95,7 @@ public async Task<string> AddAsync(SubService SubService)
                 connection.Open();
                 var parameters = new DynamicParameters();
                 parameters.Add("@ID", selectedIds);
+                parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
@@ -108,17 +114,27 @@ public async Task<string> AddAsync(SubService SubService)
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                var parameters = new
-                {
-                    PageNumber = searchRequest.PageNumber,
-                    PageSize = searchRequest.PageSize,
-                    //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-                    //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-                    //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-                    //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-                    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
-                    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
-                };
+                var parameters = new DynamicParameters();
+                parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+                parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                //parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+                //parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                //connection.Open();
+                //var parameters = new
+                //{
+                //    PageNumber = searchRequest.PageNumber,
+                //    PageSize = searchRequest.PageSize,
+                //    //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
+                //    //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
+                //    //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
+                //    //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
+                //    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
+                //    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
+                //};
                 var result = await connection.QueryAsync<SubService>(SubServiceQueries.usp_GetAll_SubService, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
@@ -132,7 +148,13 @@ public async Task<string> AddAsync(SubService SubService)
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                var result = await connection.QuerySingleOrDefaultAsync<SubService>(SubServiceQueries.usp_GetByID_SubService, new { ID = id }, commandType: CommandType.StoredProcedure);
+                var parameters = new DynamicParameters();
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                parameters.Add("@CultureId", 1, DbType.Int32);
+                parameters.Add("@ID", id, DbType.Int32);
+
+                var result = await connection.QuerySingleOrDefaultAsync<SubService>(SubServiceQueries.usp_GetByID_SubService, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -149,6 +171,9 @@ public async Task<string> AddAsync(SubService SubService)
             {
                 connection.Open();
                 UpdateSubServiceDTO updateSubServiceDTO = _mapper.Map<UpdateSubServiceDTO>(entity);
+                var parameters = new DynamicParameters(updateSubServiceDTO);
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.ExecuteAsync(SubServiceQueries.update_SubService, updateSubServiceDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
