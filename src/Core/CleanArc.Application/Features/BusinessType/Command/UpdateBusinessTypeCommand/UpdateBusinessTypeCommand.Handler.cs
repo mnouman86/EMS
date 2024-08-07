@@ -58,7 +58,7 @@ namespace CleanArc.Application.Features.BusinessType.Command.UpdateBusinessTypeC
                 {  UpdatedBy = user.Id, ID = request.ID,
                     //Company = request.Company,
                     BusinessTypeName = request.BusinessTypeName,
-                    CultureId = request.CultureId,
+                    //CultureId = request.CultureId,
                     //IndividualPerson = request.IndividualPerson,
                    
                 });
