@@ -71,7 +71,7 @@ public class BusinessTypeRepository : IBusinessTypeRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(BusinessTypeQueries.Create_Business, createBusinessTypeDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(BusinessTypeQueries.Create_BusinessType, createBusinessTypeDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }
@@ -91,7 +91,7 @@ public class BusinessTypeRepository : IBusinessTypeRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(BusinessTypeQueries.Delete_Business, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(BusinessTypeQueries.Delete_BusinessType, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }
@@ -147,8 +147,9 @@ public class BusinessTypeRepository : IBusinessTypeRepository
                 var parameters = new DynamicParameters();
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
-                var result = await connection.QuerySingleOrDefaultAsync<BusinessType>(BusinessTypeQueries.usp_GetByID_Business, new { ID = id }, commandType: CommandType.StoredProcedure);
+                parameters.Add("@CultureId", 1, DbType.Int32);
+                parameters.Add("@ID", id, DbType.Int32);
+                var result = await connection.QuerySingleOrDefaultAsync<BusinessType>(BusinessTypeQueries.usp_GetByID_BusinessType, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -169,7 +170,7 @@ public class BusinessTypeRepository : IBusinessTypeRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(BusinessTypeQueries.Update_Business, updateBusinessTypeDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(BusinessTypeQueries.Update_BusinessType, updateBusinessTypeDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }

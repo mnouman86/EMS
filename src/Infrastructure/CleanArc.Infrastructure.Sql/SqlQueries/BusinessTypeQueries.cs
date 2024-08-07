@@ -8,10 +8,10 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries
 {
     public static class BusinessTypeQueries
     {
-        public static string Create_Business => "Create_Business";
-        public static string Update_Business => "Update_Business";
-        public static string Delete_Business => "Delete_Business";
+        public static string Create_BusinessType => "Create_BusinessType";
+        public static string Update_BusinessType => "Update_BusinessType";
+        public static string Delete_BusinessType => "Delete_BusinessType";
         public static string usp_GetAll_BusinessType => "usp_GetAll_BusinessType";
-        public static string usp_GetByID_Business => "usp_GetByID_Business";
+        public static string usp_GetByID_BusinessType => "usp_GetByID_BusinessType";
     }
 }

@@ -13,7 +13,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.BusinessType.Command.UpdateBusinessTypeCommand;
 
-public record UpdateBusinessTypeCommand(int ID, string? BusinessTypeName,int? CultureId, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record UpdateBusinessTypeCommand(int ID, string? BusinessTypeName, int? UpdatedBy) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateBusinessTypeCommand>
 {
     [JsonIgnore]

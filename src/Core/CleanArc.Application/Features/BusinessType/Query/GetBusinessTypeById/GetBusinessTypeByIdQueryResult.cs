@@ -12,7 +12,8 @@ namespace CleanArc.Application.Features.BusinessType.Query.GetBusinessTypeById
         public int? CultureId { get; set; }
         //public bool? IndividualPerson { get; set; }
         //public  bool? Company { get; set; }
-
+        public int? Code { get; set; }
+        public int? Message { get; set; }
         public string? BusinessTypeName { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsDeleted { get; set; }
