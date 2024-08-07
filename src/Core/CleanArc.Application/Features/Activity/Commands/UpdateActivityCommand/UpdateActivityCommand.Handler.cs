@@ -82,7 +82,7 @@ internal class UpdateActivityCommandHandler:IRequestHandler<UpdateActivityComman
                 NotAllowedItems = request.NotAllowedItems,
                 AllowedItems = request.AllowedItems,
                 CurrencyLookUpID = request.CurrencyLookUpID,
-                PerGroupPrice = request.PerGroupPrice,
+                //PerGroupPrice = request.PerGroupPrice,
                 PerPersonPrice = request.PerPersonPrice,
             });
             await _unitOfWork.CommitAsync();
