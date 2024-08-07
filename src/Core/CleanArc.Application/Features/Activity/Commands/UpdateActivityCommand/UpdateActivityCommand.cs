@@ -24,7 +24,7 @@ public record UpdateActivityCommand(
    int? ActivityNatureLookUpID,
    int? MinGroupSize,
    int? MaxGroupSize,
-   int? IsPrivateActivity,
+   bool? IsPrivateActivity,
    //int? PrivateParticipantID,
    string? WhoCanParticipate,
    string? WhoCannotParticipate,
@@ -42,8 +42,8 @@ public record UpdateActivityCommand(
     string? AllowedItems,
     string? NotAllowedItems,
     int? CurrencyLookUpID,
-    int? PerPersonPrice,
-    int? PerGroupPrice,
+   Decimal? PerPersonPrice,
+    //int? PerGroupPrice,
      int? UpdatedBy) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateActivityCommand>
 {
@@ -161,10 +161,10 @@ public record UpdateActivityCommand(
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a PerPersonPrice");
-        validator.RuleFor(c => c.PerGroupPrice)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a PerGroupPrice");
+        //validator.RuleFor(c => c.PerGroupPrice)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a PerGroupPrice");
         return validator;
     }
 }

@@ -20,7 +20,7 @@ public class GetAllActivityQueryResult
     public int? ActivityNatureLookUpID { get; set; }
     public int? MinGroupSize { get; set; }
     public int? MaxGroupSize { get; set; }
-    public int? IsPrivateActivity { get; set; }
+    public bool? IsPrivateActivity { get; set; }
     public string WhoCanParticipate { get; set; }
     public string WhoCannotParticipate { get; set; }
     public int? ManageActivityLookUpID { get; set; }
@@ -36,8 +36,8 @@ public class GetAllActivityQueryResult
     public int? CultureId { get; set; }
     public int? Code { get; set; }
     public int? Message { get; set; }
-    public int? PerPersonPrice { get; set; }
-    public int? PerGroupPrice { get; set; }
+    public Decimal? PerPersonPrice { get; set; }
+    //public int? PerGroupPrice { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }

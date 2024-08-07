@@ -22,7 +22,7 @@ public record CreateActivityCommand(string? Title,
    int? ActivityNatureLookUpID,
    int? MinGroupSize,
    int? MaxGroupSize,
-   int? IsPrivateActivity,
+   bool? IsPrivateActivity,
    //int? PrivateParticipantID,
    string? WhoCanParticipate,
    string? WhoCannotParticipate,
@@ -40,8 +40,8 @@ public record CreateActivityCommand(string? Title,
     string ? AllowedItems,
     string?   NotAllowedItems,
     int? CurrencyLookUpID,
-    int? PerPersonPrice,
-    int? PerGroupPrice
+    Decimal? PerPersonPrice
+   // int? PerGroupPrice
    // int? SeasonID
     , int? CreatedBy) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateActivityCommand>
@@ -160,10 +160,10 @@ public record CreateActivityCommand(string? Title,
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a PerPersonPrice");
-        validator.RuleFor(c => c.PerGroupPrice)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a PerGroupPrice");
+        //validator.RuleFor(c => c.PerGroupPrice)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a PerGroupPrice");
         //validator.RuleFor(c => c.SeasonID)
         //   .NotEmpty()
         //   .NotNull()
