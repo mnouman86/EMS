@@ -1,6 +1,7 @@
 ﻿using Azure.Core;
 using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.ActivityNature;
+using CleanArc.Application.Models.BusinessProfile;
 using CleanArc.Application.Models.Request;
 using CleanArc.Application.Models.URL;
 using CleanArc.Domain.Entities.ActivityNature;
@@ -74,7 +75,11 @@ public async Task<string> AddAsync(ActivityNature ActivityNature)
         {
             connection.Open();
                 CreateActivityNatureDTO createActivityNatureDTO = _mapper.Map<CreateActivityNatureDTO>(ActivityNature);
-            var result = await connection.ExecuteAsync(ActivityNatureQueries.Create_ActivityNature, createActivityNatureDTO, commandType: CommandType.StoredProcedure);
+                var parameters = new DynamicParameters(createActivityNatureDTO);
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                var result = await connection.ExecuteAsync(ActivityNatureQueries.Create_ActivityNature, createActivityNatureDTO, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -90,6 +95,7 @@ public async Task<string> AddAsync(ActivityNature ActivityNature)
                 connection.Open();
                 var parameters = new DynamicParameters();
                 parameters.Add("@ID", selectedIds);
+                parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
@@ -108,17 +114,26 @@ public async Task<string> AddAsync(ActivityNature ActivityNature)
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                var parameters = new
-                {
-                    PageNumber = searchRequest.PageNumber,
-                    PageSize = searchRequest.PageSize,
-                    //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-                    //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-                    //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-                    //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-                    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
-                    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
-                };
+                var parameters = new DynamicParameters();
+                parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+                parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                //parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+                //parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                //var parameters = new
+                //{
+                //    PageNumber = searchRequest.PageNumber,
+                //    PageSize = searchRequest.PageSize,
+                //    //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
+                //    //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
+                //    //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
+                //    //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
+                //    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
+                //    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
+                //};
                 var result = await connection.QueryAsync<ActivityNature>(ActivityNatureQueries.usp_GetAll_ActivityNature, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
@@ -132,7 +147,13 @@ public async Task<string> AddAsync(ActivityNature ActivityNature)
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                var result = await connection.QuerySingleOrDefaultAsync<ActivityNature>(ActivityNatureQueries.usp_GetByID_ActivityNature, new { ID = id }, commandType: CommandType.StoredProcedure);
+                var parameters = new DynamicParameters();
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                parameters.Add("@CultureId", 1, DbType.Int32);
+                parameters.Add("@ID", id, DbType.Int32);
+
+                var result = await connection.QuerySingleOrDefaultAsync<ActivityNature>(ActivityNatureQueries.usp_GetByID_ActivityNature, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -149,6 +170,9 @@ public async Task<string> AddAsync(ActivityNature ActivityNature)
             {
                 connection.Open();
                 UpdateActivityNatureDTO updateActivityNatureDTO = _mapper.Map<UpdateActivityNatureDTO>(entity);
+                var parameters = new DynamicParameters(updateActivityNatureDTO);
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.ExecuteAsync(ActivityNatureQueries.update_ActivityNature, updateActivityNatureDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
