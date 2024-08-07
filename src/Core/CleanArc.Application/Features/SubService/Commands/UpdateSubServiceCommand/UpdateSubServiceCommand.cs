@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.SubService.Commands.UpdateSubServiceCommand;
-public record UpdateSubServiceCommand(int ID,String? Name, string? Description, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record UpdateSubServiceCommand(int ID,String? Name, int? ServiceID, string? Description, int? UpdatedBy) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateSubServiceCommand>
 {
     [JsonIgnore]
@@ -26,6 +26,10 @@ public record UpdateSubServiceCommand(int ID,String? Name, string? Description, 
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a Description");
+        validator.RuleFor(c => c.ServiceID)
+            .NotEmpty()
+            .NotNull()
+            .WithMessage("Please enter a ServiceID");
         return validator;
     }
 }
