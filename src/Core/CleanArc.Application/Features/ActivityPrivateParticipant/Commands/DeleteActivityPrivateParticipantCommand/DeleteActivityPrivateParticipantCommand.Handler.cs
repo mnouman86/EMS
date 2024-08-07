@@ -57,7 +57,7 @@ internal class DeleteActivityPrivateParticipantCommandHandler: IRequestHandler<D
             //return OperationResult<bool>.SuccessResult(true);
             //await _unitOfWork.ActivityPrivateParticipantRepository.DeleteAsync(new Domain.Entities.ActivityPrivateParticipant.ActivityPrivateParticipant()
             // { UpdatedBy = user.Id, ID = request.ID });
-            await _unitOfWork.ActivityPrivateParticipantRepository.DeleteAsync(request.SelectedIds, user.Id);
+            await _unitOfWork.ActivityPrivateParticipantRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

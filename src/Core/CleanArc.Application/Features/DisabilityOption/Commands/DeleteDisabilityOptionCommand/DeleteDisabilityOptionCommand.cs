@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.DisabilityOption.Commands.DeleteDisabilityOptionCommand;
 
-public record DeleteDisabilityOptionCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record DeleteDisabilityOptionCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<DeleteDisabilityOptionCommand>
 {
     [JsonIgnore]

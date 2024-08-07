@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.BusinessBankAccount.Command.DeleteBusinessBankAccountCommand
 {
-    public record DeleteBusinessBankAccountCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+    public record DeleteBusinessBankAccountCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<DeleteBusinessBankAccountCommand>
     {
         [JsonIgnore]
