@@ -10,7 +10,8 @@ namespace CleanArc.Application.Features.BusinessType.Query.GetAllBusinessType
     {
         public int? ID { get; set; }
         //public string? Company { get; set; }
-
+        public int? Code { get; set; }
+        public int? Message { get; set; }
         public string? BusinessTypeName { get; set; }
         //public string? IndividualPerson { get; set; }
         public bool? IsActive { get; set; }
