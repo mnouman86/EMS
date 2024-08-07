@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.SubService.Commands.CreateSubServiceCommand;
-public record CreateSubServiceCommand(string? Name, string? Description,int? CreatedBy) : IRequest<OperationResult<bool>>,
+public record CreateSubServiceCommand(string? Name, int? ServiceID, string? Description,int? CreatedBy) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateSubServiceCommand>
 {
     [JsonIgnore]
@@ -26,6 +26,10 @@ public record CreateSubServiceCommand(string? Name, string? Description,int? Cre
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a Description");
+        validator.RuleFor(c => c.ServiceID)
+            .NotEmpty()
+            .NotNull()
+            .WithMessage("Please enter a ServiceID");
         return validator;
     }
 }

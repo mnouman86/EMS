@@ -10,6 +10,8 @@ namespace CleanArc.Application.Features.SubService.Queries.GetSubServiceById
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
         public int ID { get; set; }
+        public int? ServiceID { get; set; }
+
         public string Name { get; set; }
         public string Description { get; set; }
         public bool IsDeleted { get; set; }
@@ -18,5 +20,8 @@ namespace CleanArc.Application.Features.SubService.Queries.GetSubServiceById
         public DateTime CreatedAt { get; set; }
         public int UpdatedBy { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public int? CultureId { get; set; }
+        public int? Code { get; set; }
+        public int? Message { get; set; }
     }
 }
