@@ -34,6 +34,8 @@ public class GetAllActivityQueryResult
     public string NotAllowedItems { get; set; }
     public int? CurrencyLookUpID { get; set; }
     public int? CultureId { get; set; }
+    public int? Code { get; set; }
+    public int? Message { get; set; }
     public int? PerPersonPrice { get; set; }
     public int? PerGroupPrice { get; set; }
     public bool? IsActive { get; set; }

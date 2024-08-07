@@ -30,6 +30,8 @@ namespace CleanArc.Application.Models.Activities
         public bool? IsTransportation { get; set; }
         public int? TransportationLookUpID { get; set; }
         public bool? IsDisability { get; set; }
+        public int? Code { get; set; }
+        public int? Message { get; set; }
         public string AllowedItems { get; set; }
         public string NotAllowedItems { get; set; }
         public int? CurrencyLookUpID { get; set; }
