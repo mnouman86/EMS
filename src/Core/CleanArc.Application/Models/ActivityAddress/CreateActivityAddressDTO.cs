@@ -10,8 +10,6 @@ namespace CleanArc.Application.Models.ActivityAddress
     {
         // public int ID { get; set; }
         public int? ActivityID { get; set; }
-        public int? CultureId { get; set; }
-
         public string? CountryLookUpID { get; set; }
         public string? CityLookUpID { get; set; }
         public string? AddressLine1 { get; set; }
@@ -23,6 +21,10 @@ namespace CleanArc.Application.Models.ActivityAddress
         //public bool? IsActive { get; set; }
         //public bool? IsDeleted { get; set; }
         public int? CreatedBy { get; set; }
+        public int? CultureId { get; set; }
+        public int? Code { get; set; }
+        public int? Message { get; set; }
+
         //public DateTime? CreatedAt { get; set; }
         //public int? UpdatedBy { get; set; }
         //public DateTime? UpdatedAt { get; set; }
