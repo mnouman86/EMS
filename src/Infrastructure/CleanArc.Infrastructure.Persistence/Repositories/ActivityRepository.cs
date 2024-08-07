@@ -171,6 +171,9 @@ public async Task<string> AddAsync(Activity Activity)
             {
                 connection.Open();
                 UpdateActivityDTO updateActivityDTO = _mapper.Map<UpdateActivityDTO>(entity);
+                var parameters = new DynamicParameters(updateActivityDTO);
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.ExecuteAsync(ActivityQueries.update_Activity, updateActivityDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
