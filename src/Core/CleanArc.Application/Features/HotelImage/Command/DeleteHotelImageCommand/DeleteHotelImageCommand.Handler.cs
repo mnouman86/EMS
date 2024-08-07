@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.HotelImage.Command.DeleteHotelImageComma
                     return OperationResult<bool>.FailureResult("User Not Found");
 
                
-                await _unitOfWork.HotelImageRepository.DeleteAsync(request.SelectedIds, user.Id);
+                await _unitOfWork.HotelImageRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
                 await _unitOfWork.CommitAsync();
                 //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
                 return OperationResult<bool>.SuccessResult(true);

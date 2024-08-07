@@ -13,7 +13,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.Hotel.Command.DeleteHotelCommand;
 
-public record DeleteHotelCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record DeleteHotelCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<DeleteHotelCommand>
 {
     [JsonIgnore]

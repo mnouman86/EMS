@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.SubService.Commands.DeleteSubServiceCommand;
 
-public record DeleteSubServiceCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record DeleteSubServiceCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<DeleteSubServiceCommand>
 {
     [JsonIgnore]

@@ -57,7 +57,7 @@ internal class DeleteActivityIncludedOptionCommandHandler: IRequestHandler<Delet
             //return OperationResult<bool>.SuccessResult(true);
             //await _unitOfWork.ActivityIncludedOptionRepository.DeleteAsync(new Domain.Entities.ActivityIncludedOption.ActivityIncludedOption()
             // { UpdatedBy = user.Id, ID = request.ID });
-            await _unitOfWork.ActivityIncludedOptionRepository.DeleteAsync(request.SelectedIds, user.Id);
+            await _unitOfWork.ActivityIncludedOptionRepository.DeleteAsync(request.SelectedIds, user.Id,request.CultureId);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

@@ -43,5 +43,5 @@ public interface IRepository<T> where T : class
     /// <param name="selectedIds">The identifiers of entities to be deleted.</param>
     /// <param name="updatedBy">The user ID who initiated the deletion.</param>
     /// <returns>A task representing the asynchronous operation, returning a message or identifier.</returns>
-    Task<string> DeleteAsync(string selectedIds, int updatedBy);
+    Task<string> DeleteAsync(string selectedIds, int updatedBy,int? CultureId);
 }

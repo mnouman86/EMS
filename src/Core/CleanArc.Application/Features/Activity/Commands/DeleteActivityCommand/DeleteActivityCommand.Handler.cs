@@ -57,7 +57,7 @@ internal class DeleteActivityCommandHandler: IRequestHandler<DeleteActivityComma
             //return OperationResult<bool>.SuccessResult(true);
             //await _unitOfWork.ActivityRepository.DeleteAsync(new Domain.Entities.Activity.Activity()
             // { UpdatedBy = user.Id, ID = request.ID });
-            await _unitOfWork.ActivityRepository.DeleteAsync(request.SelectedIds, user.Id);
+            await _unitOfWork.ActivityRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

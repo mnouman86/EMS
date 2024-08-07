@@ -19,6 +19,7 @@ public record CreateBusinessProfileCommand(int? BusinessTypeID, string FullLegal
     string EmailAddress,
     int? CountryID,
     int? CityID,
+    int? StateID,
     string Address1,
     string Address2,
     string Latitude,
@@ -60,6 +61,10 @@ public record CreateBusinessProfileCommand(int? BusinessTypeID, string FullLegal
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a valid CityID");
+        validator.RuleFor(c => c.StateID)
+           .NotEmpty()
+           .NotNull()
+           .WithMessage("Please enter a valid StateID");
         validator.RuleFor(c => c.Address1)
            .NotEmpty()
            .NotNull()

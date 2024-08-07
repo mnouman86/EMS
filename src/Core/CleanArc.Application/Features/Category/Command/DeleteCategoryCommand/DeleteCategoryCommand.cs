@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.Category.Command.DeleteCategoryCommand
 {
-    public record DeleteCategoryCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+    public record DeleteCategoryCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<DeleteCategoryCommand>
     {
         [JsonIgnore]

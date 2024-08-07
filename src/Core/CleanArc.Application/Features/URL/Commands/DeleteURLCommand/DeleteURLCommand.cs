@@ -9,7 +9,7 @@ namespace CleanArc.Application.Features.URL.Commands.DeleteURLCommand;
 
 //public record DeleteURLCommand(int Id,int UpdatedBy) : IRequest<OperationResult<bool>>,
 //    IValidatableModel<DeleteURLCommand>
-public record DeleteURLCommand(string SelectedIds) : IRequest<OperationResult<bool>>,
+public record DeleteURLCommand(string SelectedIds,int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<DeleteURLCommand>
 {
     [JsonIgnore]
