@@ -18,5 +18,8 @@ namespace CleanArc.Application.Features.ActivitySeason.Queries.GetActivitySeason
         public DateTime CreatedAt { get; set; }
         public int UpdatedBy { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public int? CultureId { get; set; }
+        public int? Code { get; set; }
+        public int? Message { get; set; }
     }
 }
