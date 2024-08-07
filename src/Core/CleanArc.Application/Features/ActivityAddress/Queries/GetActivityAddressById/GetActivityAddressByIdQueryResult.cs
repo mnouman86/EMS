@@ -11,8 +11,6 @@ namespace CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddre
     {
         public int ID { get; set; }
         public int? ActivityID { get; set; }
-        public int? CultureId { get; set; }
-
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
         public int? CountryLookUpID { get; set; }
@@ -27,5 +25,8 @@ namespace CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddre
         public DateTime? CreatedAt { get; set; }
         public int? UpdatedBy { get; set; }
         public DateTime? UpdatedAt { get; set; }
+        public int? CultureId { get; set; }
+        public int? Code { get; set; }
+        public int? Message { get; set; }
     }
 }
