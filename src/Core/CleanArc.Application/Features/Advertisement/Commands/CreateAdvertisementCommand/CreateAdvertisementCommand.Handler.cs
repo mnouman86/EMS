@@ -64,8 +64,12 @@ internal class CreateAdvertisementCommandHandler: IRequestHandler<CreateAdvertis
                 ImageTitle = request.ImageTitle,
                 ImagePath = request.ImagePath,
                 StartDate = request.StartDate,
-                EndDate = request.EndDate
-               
+                EndDate = request.EndDate,
+                Url = request.Url,  
+               IsShow= request.IsShow,
+               Code=request.Code,
+               Message=request.Message
+
 
             });
             await _unitOfWork.CommitAsync();

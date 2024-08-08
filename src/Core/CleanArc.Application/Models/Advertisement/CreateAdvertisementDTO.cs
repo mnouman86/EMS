@@ -16,9 +16,10 @@ namespace CleanArc.Application.Models.Advertisement
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public int? CreatedBy { get; set; }
-        //public int CultureId { get; set; }
-        //public int Code { get; set; }
-        //public string Message { get; set; }
+        public bool? IsShow { get; set; }
+
+        public int Code { get; set; }
+        public string Message { get; set; }
 
 
 
