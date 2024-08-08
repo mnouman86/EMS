@@ -56,7 +56,7 @@ namespace CleanArc.Application.Features.Business.Command.DeleteBusinessCommand
                 //return OperationResult<bool>.SuccessResult(true);
                 //await _unitOfWork.AgeTypeRepository.DeleteAsync(new Domain.Entities.AgeType.AgeType()
                 // { UpdatedBy = user.Id, ID = request.ID });
-                await _unitOfWork.BusinessRepository.DeleteAsync(request.SelectedIds, user.Id);
+                await _unitOfWork.BusinessRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
                 await _unitOfWork.CommitAsync();
                 //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
                 return OperationResult<bool>.SuccessResult(true);

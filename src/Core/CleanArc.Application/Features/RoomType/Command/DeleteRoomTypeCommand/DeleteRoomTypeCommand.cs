@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.RoomType.Command.DeleteRoomTypeCommand;
 
-public record DeleteRoomTypeCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record DeleteRoomTypeCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<DeleteRoomTypeCommand>
 {
     [JsonIgnore]
