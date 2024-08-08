@@ -61,6 +61,7 @@ public interface IUnitOfWork
 
     public IActivityDisabilityOptionRepository ActivityDisabilityOptionRepository { get; }
     public IActivityImageMappingRepository ActivityImageMappingRepository { get; }
+    public IActivitySeasonMappingRepository ActivitySeasonMappingRepository { get; }
 
 
 
