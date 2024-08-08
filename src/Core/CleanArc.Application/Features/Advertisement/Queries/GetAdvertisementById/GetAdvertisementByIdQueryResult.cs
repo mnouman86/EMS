@@ -27,6 +27,5 @@ namespace CleanArc.Application.Features.Advertisement.Queries.GetAdvertisementBy
         public DateTime? CreatedAt { get; set; }
         public int? UpdatedBy { get; set; }
         public DateTime? UpdatedAt { get; set; }
-        public bool IsShow {  get; set; }
     }
 }
