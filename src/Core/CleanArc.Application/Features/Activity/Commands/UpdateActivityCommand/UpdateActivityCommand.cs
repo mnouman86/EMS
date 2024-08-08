@@ -43,6 +43,9 @@ public record UpdateActivityCommand(
     string? NotAllowedItems,
     int? CurrencyLookUpID,
    Decimal? PerPersonPrice,
+   //string? OtherSubService,
+   // string? OtherManageActivity,
+
     //int? PerGroupPrice,
      int? UpdatedBy) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateActivityCommand>
@@ -117,10 +120,10 @@ public record UpdateActivityCommand(
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a Hours");
-        //validator.RuleFor(c => c.AddressID)
+        //validator.RuleFor(c => c.OtherManageActivity)
         //   .NotEmpty()
         //   .NotNull()
-        //   .WithMessage("Please enter a AddressID");
+        //   .WithMessage("Please enter a OtherManageActivity");
         validator.RuleFor(c => c.Description)
            .NotEmpty()
            .NotNull()
@@ -133,10 +136,10 @@ public record UpdateActivityCommand(
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a TransportationLookUpID ");
-        //validator.RuleFor(c => c.ActivityIncludeID)
+        //validator.RuleFor(c => c.OtherSubService)
         //   .NotEmpty()
         //   .NotNull()
-        //   .WithMessage("Please enter a Description");
+        //   .WithMessage("Please enter a OtherSubService");
         validator.RuleFor(c => c.IsDisability)
            .NotEmpty()
            .NotNull()
