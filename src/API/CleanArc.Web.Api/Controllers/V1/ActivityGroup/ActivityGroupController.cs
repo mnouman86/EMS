@@ -1,0 +1,111 @@
+﻿using Asp.Versioning;
+using CleanArc.Application.Features.ActivityGroup.Commands.CreateActivityGroupCommand;
+using CleanArc.Application.Features.ActivityGroup.Commands.DeleteActivityGroupCommand;
+using CleanArc.Application.Features.ActivityGroup.Commands.UpdateActivityGroupCommand;
+using CleanArc.Application.Features.ActivityGroup.Queries.GetActivityGroupById;
+using CleanArc.Application.Features.ActivityGroup.Queries.GetAllActivityGroup;
+using CleanArc.WebFramework.BaseController;
+using Mediator;
+using Microsoft.AspNetCore.Mvc;
+
+namespace CleanArc.Web.Api.Controllers.V1.ActivityGroup
+{
+    /// <summary>
+    /// ActivityGroupController is responsible for handling HTTP requests related to ActivityGroup operations
+    /// such as creating, updating, deleting, and retrieving age types. It extends from a base controller 
+    /// which provides common functionality for CRUD operations.
+    /// 
+    /// The controller uses MediatR to send commands and queries to the corresponding handlers. It includes
+    /// endpoint definitions for the following actions:
+    /// 
+    /// 1. CreateActivityGroup: Handles the creation of a new age type.
+    /// 2. UpdateActivityGroup: Handles the updating of an existing age type.
+    /// 3. DeleteActivityGroup: Handles the deletion of an existing age type.
+    /// 4. GetAllActivityGroup: Retrieves all age types.
+    /// 5. GetActivityGroupById: Retrieves a specific age type by its ID.
+    /// 
+    /// The controller uses dependency injection to receive instances of ISender (for sending commands and queries),
+    /// ILogger (for logging purposes), and IHttpContextAccessor (for accessing HTTP context information).
+    /// 
+    /// The controller is versioned using the [ApiVersion] attribute and responds to routes prefixed with the API
+    /// version, specified as "api/v{version:apiVersion}/ActivityGroup".
+    /// 
+    /// Note: The actual endpoint methods are commented out but are intended to be implemented as shown to utilize
+    /// the base controller's operation result handling and user ID setting.
+    /// 
+    /// Example Usage:
+    /// 
+    /// [HttpPost("CreateActivityGroup")]
+    /// public async Task<IActionResult> CreateActivityGroup(CreateActivityGroupCommand model)
+    /// {
+    ///     model.UserId = base.UserId;
+    ///     var command = await _sender.Send(model);
+    ///     return base.OperationResult(command);
+    /// }
+    /// 
+    /// This ensures that the UserId is set from the base controller before sending the command and that the operation
+    /// result is properly formatted for the response.
+    /// 
+    /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
+    /// SOLID principles.
+    /// </summary>
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityGroup.Commands.CreateActivityGroupCommand.CreateActivityGroupCommand, CleanArc.Application.Features.ActivityGroup.Commands.UpdateActivityGroupCommand.UpdateActivityGroupCommand, CleanArc.Application.Features.ActivityGroup.Commands.DeleteActivityGroupCommand.DeleteActivityGroupCommand, System.Boolean, CleanArc.Application.Features.ActivityGroup.Queries.GetAllActivityGroup.GetAllActivityGroupQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityGroup.Queries.GetAllActivityGroup.GetAllActivityGroupQueryResult&gt;, CleanArc.Application.Features.ActivityGroup.Queries.GetActivityGroupById.GetActivityGroupByIdQuery, CleanArc.Application.Features.ActivityGroup.Queries.GetActivityGroupById.GetActivityGroupByIdQueryResult&gt;" />
+    [ApiVersion("1")]
+    [ApiController]
+    [Route("api/v{version:apiVersion}/ActivityGroup")]
+    //[Authorize]
+    public class ActivityGroupController : _BaseController<CreateActivityGroupCommand, UpdateActivityGroupCommand, DeleteActivityGroupCommand, bool, GetAllActivityGroupQuery,
+    List<GetAllActivityGroupQueryResult>, GetActivityGroupByIdQuery, GetActivityGroupByIdQueryResult>
+    {
+        //private readonly ISender _sender;
+
+        //public ActivityGroupController(ISender sender)
+        //{
+        //    _sender = sender;
+        //}
+
+        //[HttpPost("CreateActivityGroup")]
+        //public async Task<IActionResult> CreateActivityGroup(CreateActivityGroupCommand model)
+        //{
+        //    model.UserId = base.UserId;
+        //    var command = await _sender.Send(model);
+
+        //    return base.OperationResult(command);
+        //}
+        //[HttpPost("UpdateActivityGroup")]
+        //public async Task<IActionResult> UpdateActivityGroup(UpdateActivityGroupCommand model)
+        //{
+        //    model.UserId = base.UserId;
+        //    var command = await _sender.Send(model);
+
+        //    return base.OperationResult(command);
+        //}
+        //[HttpPost("DeleteActivityGroup")]
+        //public async Task<IActionResult> DeleteActivityGroup(DeleteActivityGroupCommand model)
+        //{
+        //    model.UserId = base.UserId;
+        //    var command = await _sender.Send(model);
+
+        //    return base.OperationResult(command);
+        //}
+        //[HttpGet("GetAllActivityGroup")]
+        //public async Task<IActionResult> GetAllActivityGroup( )
+        //{
+        //    var queryResult = await _sender.Send(new GetAllActivityGroupQuery());
+
+        //    return base.OperationResult(queryResult);
+        //}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ActivityGroupController"/> class.
+        /// </summary>
+        /// <param name="sender">The mediator sender for handling requests and responses.</param>
+        /// <param name="logger">The logger for logging controller-related information.</param>
+        /// <param name="httpContextAccessor"></param>
+        public ActivityGroupController(ISender sender, ILogger<_BaseController<CreateActivityGroupCommand, UpdateActivityGroupCommand, DeleteActivityGroupCommand, bool, GetAllActivityGroupQuery,
+   List<GetAllActivityGroupQueryResult>, GetActivityGroupByIdQuery, GetActivityGroupByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
+        {
+
+        }
+
+    }
+}
