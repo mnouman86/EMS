@@ -18,6 +18,9 @@ namespace CleanArc.Application.Models.ActivityTransportation
         // public int? CreatedBy { get; set; }
         //public DateTime? CreatedAt { get; set; }
         public int? UpdatedBy { get; set; }
+        public int? CultureId { get; set; }
+        public int? Code { get; set; }
+        public int? Message { get; set; }
         //public DateTime? UpdatedAt { get; set; }
     }
 }
