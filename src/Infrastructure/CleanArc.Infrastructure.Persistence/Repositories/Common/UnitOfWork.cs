@@ -1,4 +1,5 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
+using CleanArc.Domain.Entities.ActivityDisabilityOption;
 using CleanArc.Domain.Entities.ActivityTransportation;
 using CleanArc.Domain.Entities.SearchCarAmenities;
 using MapsterMapper;
@@ -68,6 +69,7 @@ public class UnitOfWork : IUnitOfWork
     public IActivityRepository ActivityRepository { get; set; }
     public IBusinessProfileRepository BusinessProfileRepository { get; set; }
     public IActivityScheduleRepository ActivityScheduleRepository { get; set; }
+    public IActivityDisabilityOptionRepository ActivityDisabilityOptionRepository { get; set; }
 
 
     private readonly IConfiguration configuration;
@@ -130,6 +132,7 @@ public class UnitOfWork : IUnitOfWork
         ILogger<ActivityRepository> _loggerActivity,
         ILogger<BusinessProfileRepository> _loggerBusinessProfile,
         ILogger<ActivityScheduleRepository> _loggerActivitySchedule,
+        ILogger<ActivityDisabilityOptionRepository> _loggerActivityDisabilityOption,
 
 
 
@@ -193,6 +196,7 @@ public class UnitOfWork : IUnitOfWork
         ActivityRepository = new ActivityRepository(configuration, mapper, _loggerActivity, httpContextAccessor);
         BusinessProfileRepository = new BusinessProfileRepository(configuration, mapper, _loggerBusinessProfile, httpContextAccessor);
         ActivityScheduleRepository = new ActivityScheduleRepository(configuration, mapper, _loggerActivitySchedule, httpContextAccessor);
+        ActivityDisabilityOptionRepository = new ActivityDisabilityOptionRepository(configuration, mapper, _loggerActivityDisabilityOption, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         this.configuration = configuration;

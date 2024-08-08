@@ -59,6 +59,7 @@ public interface IUnitOfWork
     public IBusinessProfileRepository BusinessProfileRepository { get; }
     public IActivityScheduleRepository ActivityScheduleRepository { get; }
 
+    public IActivityDisabilityOptionRepository ActivityDisabilityOptionRepository { get; }
 
 
 
