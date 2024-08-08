@@ -12,7 +12,9 @@ namespace CleanArc.Application.Features.Advertisement.Queries.GetAdvertisementBy
 
         public int ID { get; set; }
         public int? PageID { get; set; }
+        public string? PageName { get; set; }
         public int? PlaceID { get; set; }
+        public string? PlaceName{ get; set; }
         public string? ImageTitle { get; set; }
         public string? ImagePath { get; set; }
         public string? Url { get; set; }
@@ -25,5 +27,6 @@ namespace CleanArc.Application.Features.Advertisement.Queries.GetAdvertisementBy
         public DateTime? CreatedAt { get; set; }
         public int? UpdatedBy { get; set; }
         public DateTime? UpdatedAt { get; set; }
+        public bool IsShow {  get; set; }
     }
 }
