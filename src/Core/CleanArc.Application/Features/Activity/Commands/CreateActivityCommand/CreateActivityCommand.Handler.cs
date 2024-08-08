@@ -86,6 +86,9 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
                 CurrencyLookUpID = request.CurrencyLookUpID,
                // PerGroupPrice = request.PerGroupPrice,
                 PerPersonPrice = request.PerPersonPrice,
+
+                OtherManageActivity=request.OtherManageActivity,
+                OtherSubService=request.OtherSubService
                 //SeasonID = request.SeasonID,
 
 
