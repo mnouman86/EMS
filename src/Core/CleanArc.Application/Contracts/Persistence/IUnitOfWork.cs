@@ -63,6 +63,7 @@ public interface IUnitOfWork
     public IActivityImageMappingRepository ActivityImageMappingRepository { get; }
     public IActivitySeasonMappingRepository ActivitySeasonMappingRepository { get; }
 
+    public IActivityGroupRepository ActivityGroupRepository { get; }
 
 
 
