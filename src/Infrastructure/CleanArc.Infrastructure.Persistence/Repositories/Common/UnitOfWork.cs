@@ -73,6 +73,7 @@ public class UnitOfWork : IUnitOfWork
     public IActivityImageMappingRepository ActivityImageMappingRepository { get; set; }
     public IActivitySeasonMappingRepository ActivitySeasonMappingRepository { get; set; }
 
+    public IActivityGroupRepository ActivityGroupRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -137,6 +138,7 @@ public class UnitOfWork : IUnitOfWork
         ILogger<ActivityDisabilityOptionRepository> _loggerActivityDisabilityOption,
         ILogger<ActivityImageMappingRepository> _loggerActivityImageMapping,
         ILogger<ActivitySeasonMappingRepository> _loggerActivitySeasonMapping,
+        ILogger<ActivityGroupRepository> _loggerActivityGroup,
 
 
 
@@ -203,6 +205,7 @@ public class UnitOfWork : IUnitOfWork
         ActivityDisabilityOptionRepository = new ActivityDisabilityOptionRepository(configuration, mapper, _loggerActivityDisabilityOption, httpContextAccessor);
         ActivityImageMappingRepository = new ActivityImageMappingRepository(configuration, mapper, _loggerActivityImageMapping, httpContextAccessor);
         ActivitySeasonMappingRepository = new ActivitySeasonMappingRepository(configuration, mapper, _loggerActivitySeasonMapping, httpContextAccessor);
+        ActivityGroupRepository = new ActivityGroupRepository(configuration, mapper, _loggerActivityGroup, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         this.configuration = configuration;
