@@ -63,7 +63,7 @@ public class RoomDetailsRepository:IRoomDetailsRepository
         }
     }
 
-    public async Task<string> DeleteAsync(string selectedIds, int updatedBy)
+    public async Task<string> DeleteAsync(string selectedIds, int updatedBy , int? CultureId)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
         {

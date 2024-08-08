@@ -8,6 +8,7 @@ namespace CleanArc.Application.Features.RoomImage.Queries.GetAllRoomImagesQuery
 {
     public class GetAllRoomImagesQueryResult
     {
+        public int ID { get; set; }
         public string ImageTitle { get; set; }
         public string ImagePath { get; set; }
         public int RoomID { get; set; }

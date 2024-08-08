@@ -48,7 +48,7 @@ internal class DeleteRoomDetailCommandHandler : IRequestHandler<DeleteRoomDetail
                 return OperationResult<bool>.FailureResult("User Not Found");
 
             
-            await _unitOfWork.RoomDetailsRepository.DeleteAsync(request.SelectedIds, user.Id);
+            await _unitOfWork.RoomDetailsRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
             await _unitOfWork.CommitAsync();
             //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

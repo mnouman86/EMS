@@ -1,4 +1,6 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
+using CleanArc.Domain.Entities.ActivityDisabilityOption;
+using CleanArc.Domain.Entities.ActivityTransportation;
 using CleanArc.Domain.Entities.SearchCarAmenities;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
@@ -39,6 +41,7 @@ public class UnitOfWork : IUnitOfWork
     public IMappingRoomImageRepository MappingRoomImageRepository { get; set; }
     public ILanguageRepository LanguageRepository { get; set; }
     public IBusinessRepository BusinessRepository { get; set; }
+    public IBusinessTypeRepository BusinessTypeRepository { get; set; }
     public IBankRepository BankRepository { get; set; }
     public IBusinessBankAccountRepository BusinessBankAccountRepository { get; set; }
     public ICarDetailRepository CarDetailRepository { get; set; }
@@ -53,6 +56,22 @@ public class UnitOfWork : IUnitOfWork
     public IAdvertisementRepository AdvertisementRepository { get; set; }
     public IAdvertisementPlaceRepository AdvertisementPlaceRepository { get; set; }
     public IAdvertisementPageRepository AdvertisementPageRepository { get; set; }
+    public IActivityTypeRepository ActivityTypeRepository { get; set; }
+    public IActivityNatureRepository ActivityNatureRepository { get; set; }
+    public IActivityManagerRepository ActivityManagerRepository { get; set; }
+    public IActivityIncludedOptionRepository ActivityIncludedOptionRepository { get; set; }
+    public IDisabilityOptionRepository DisabilityOptionRepository { get; set; }
+    public ISubServiceRepository SubServiceRepository { get; set; }
+    public IActivityPrivateParticipantRepository ActivityPrivateParticipantRepository { get; set; }
+    public IActivitySeasonRepository ActivitySeasonRepository { get; set; }
+    public IActivityTransportationRepository ActivityTransportationRepository { get; set; }
+    public IActivityAddressRepository ActivityAddressRepository { get; set; }
+    public IActivityRepository ActivityRepository { get; set; }
+    public IBusinessProfileRepository BusinessProfileRepository { get; set; }
+    public IActivityScheduleRepository ActivityScheduleRepository { get; set; }
+    public IActivityDisabilityOptionRepository ActivityDisabilityOptionRepository { get; set; }
+    public IActivityImageMappingRepository ActivityImageMappingRepository { get; set; }
+    public IActivitySeasonMappingRepository ActivitySeasonMappingRepository { get; set; }
 
 
     private readonly IConfiguration configuration;
@@ -75,24 +94,26 @@ public class UnitOfWork : IUnitOfWork
         ILogger<SearchRoomAmenitiesRepository> _loggerSearchRoomAmenities,
         ILogger<RoomImagesRepository> _loggerRoomImages,
         ILogger<RoomSizeUnitReposirory> _loggerRoomSizeUnit,
-                                ILogger<ServiceRepository> _loggerService,
-                                ILogger<ServiceCategoryRepository> _loggerServiceCategory,
-                                ILogger<CountryRepository> _loggerCountry,
-                                ILogger<StateRepository> _loggerState,
-                                ILogger<CityRepository> _loggerCity,
-                                ILogger<LanguageRepository> _loggerLanguage,
-                                ILogger<MappingHotelAmenityRepository> _loggerMappingHotelAmenity,
-                                ILogger<MappingHotelLanguageRepository> _loggerMappingHotelLanguage,
+        ILogger<ServiceRepository> _loggerService,
+        ILogger<ServiceCategoryRepository> _loggerServiceCategory,
+        ILogger<CountryRepository> _loggerCountry,
+        ILogger<StateRepository> _loggerState,
+        ILogger<CityRepository> _loggerCity,
+        ILogger<LanguageRepository> _loggerLanguage,
+        ILogger<MappingHotelAmenityRepository> _loggerMappingHotelAmenity,
+        ILogger<MappingHotelLanguageRepository> _loggerMappingHotelLanguage,
         ILogger<MappingRoomAmenitiesRepository> _loggerMappingRoomAmenities,
         ILogger<MappingRoomImageRepository> _loggerMappingRoomImage,
         ILogger<BusinessRepository> _loggerBusiness,
+        ILogger<BusinessTypeRepository> _loggerBusinessType,
+
         ILogger<BankRepository> _loggerBank,
         ILogger<BusinessBankAccountRepository> _loggerBusinessBankAccount,
         ILogger<CarDetailRepository> _loggerCarDetail,
-                ILogger<SearchCarImageRepository> _loggerSearchCarImage,
-                ILogger<SearchCarAmenitiesRepository> _loggerSearchCarAmenities,
-                ILogger<MappingCarAmenityRepository> _loggerMappingCarAmenity,
-                ILogger<SearchBusinessCarDetailRepository> _loggerSearchBusinessCarDetail,
+        ILogger<SearchCarImageRepository> _loggerSearchCarImage,
+        ILogger<SearchCarAmenitiesRepository> _loggerSearchCarAmenities,
+        ILogger<MappingCarAmenityRepository> _loggerMappingCarAmenity,
+        ILogger<SearchBusinessCarDetailRepository> _loggerSearchBusinessCarDetail,
                                 ILogger<SearchBusinessDetailRepository> _loggerSearchBusinessDetail,
                                 ILogger<CarImageRepository> _loggerCarImage,
                                 ILogger<HotelImageRepository> _loggerHotelImage,
@@ -100,12 +121,22 @@ public class UnitOfWork : IUnitOfWork
                                 ILogger<AdvertisementRepository> _loggerAdvertisement,
                                 ILogger<AdvertisementPlaceRepository> _loggerAdvertisementPlace,
                                 ILogger<AdvertisementPageRepository> _loggerAdvertisementPage,
-
-
-
-
-
-
+                                ILogger<ActivityTypeRepository> _loggerActivityType,
+                                ILogger<ActivityNatureRepository> _loggerActivityNature,
+                                ILogger<ActivityManagerRepository> _loggerActivityManager,
+                                ILogger<ActivityIncludedOptionRepository> _loggerActivityIncludedOption,
+                                ILogger<DisabilityOptionRepository> _loggerDisabilityOption,
+                                ILogger<SubServiceRepository> _loggerSubService,
+        ILogger<ActivityPrivateParticipantRepository> _loggerActivityPrivateParticipant,
+        ILogger<ActivitySeasonRepository> _loggerActivitySeason,
+        ILogger<ActivityTransportationRepository> _loggerActivityTransportation,
+        ILogger<ActivityAddressRepository> _loggerActivityAddress,
+        ILogger<ActivityRepository> _loggerActivity,
+        ILogger<BusinessProfileRepository> _loggerBusinessProfile,
+        ILogger<ActivityScheduleRepository> _loggerActivitySchedule,
+        ILogger<ActivityDisabilityOptionRepository> _loggerActivityDisabilityOption,
+        ILogger<ActivityImageMappingRepository> _loggerActivityImageMapping,
+        ILogger<ActivitySeasonMappingRepository> _loggerActivitySeasonMapping,
 
 
 
@@ -140,6 +171,8 @@ public class UnitOfWork : IUnitOfWork
         MappingRoomAmenitiesRepository=new MappingRoomAmenitiesRepository(configuration, mapper, _loggerMappingRoomAmenities, httpContextAccessor);
         MappingRoomImageRepository = new MappingRoomImageRepository(configuration, mapper, _loggerMappingRoomImage, httpContextAccessor);
         BusinessRepository = new BusinessRepository(configuration, mapper, _loggerBusiness, httpContextAccessor);
+        BusinessTypeRepository = new BusinessTypeRepository(configuration, mapper, _loggerBusinessType, httpContextAccessor);
+
         BankRepository = new BankRepository(configuration, mapper, _loggerBank, httpContextAccessor);
         BusinessBankAccountRepository = new BusinessBankAccountRepository(configuration, mapper, _loggerBusinessBankAccount, httpContextAccessor);
         CarDetailRepository = new CarDetailRepository(configuration, mapper, _loggerCarDetail, httpContextAccessor);
@@ -154,6 +187,22 @@ public class UnitOfWork : IUnitOfWork
         AdvertisementRepository = new AdvertisementRepository(configuration, mapper, _loggerAdvertisement, httpContextAccessor);
         AdvertisementPlaceRepository = new AdvertisementPlaceRepository(configuration, mapper, _loggerAdvertisementPlace, httpContextAccessor);
         AdvertisementPageRepository = new AdvertisementPageRepository(configuration, mapper, _loggerAdvertisementPage, httpContextAccessor);
+        ActivityTypeRepository = new ActivityTypeRepository(configuration, mapper, _loggerActivityType, httpContextAccessor);
+        ActivityNatureRepository = new ActivityNatureRepository(configuration, mapper, _loggerActivityNature, httpContextAccessor);
+        ActivityManagerRepository = new ActivityManagerRepository(configuration, mapper, _loggerActivityManager, httpContextAccessor);
+        ActivityIncludedOptionRepository = new ActivityIncludedOptionRepository(configuration, mapper, _loggerActivityIncludedOption, httpContextAccessor);
+        DisabilityOptionRepository = new DisabilityOptionRepository(configuration, mapper, _loggerDisabilityOption, httpContextAccessor);
+        SubServiceRepository = new SubServiceRepository(configuration, mapper, _loggerSubService, httpContextAccessor);
+        ActivityPrivateParticipantRepository = new ActivityPrivateParticipantRepository(configuration, mapper, _loggerActivityPrivateParticipant, httpContextAccessor);
+        ActivitySeasonRepository = new ActivitySeasonRepository(configuration, mapper, _loggerActivitySeason, httpContextAccessor);
+        ActivityTransportationRepository = new ActivityTransportationRepository(configuration, mapper, _loggerActivityTransportation, httpContextAccessor);
+        ActivityAddressRepository = new ActivityAddressRepository(configuration, mapper, _loggerActivityAddress, httpContextAccessor);
+        ActivityRepository = new ActivityRepository(configuration, mapper, _loggerActivity, httpContextAccessor);
+        BusinessProfileRepository = new BusinessProfileRepository(configuration, mapper, _loggerBusinessProfile, httpContextAccessor);
+        ActivityScheduleRepository = new ActivityScheduleRepository(configuration, mapper, _loggerActivitySchedule, httpContextAccessor);
+        ActivityDisabilityOptionRepository = new ActivityDisabilityOptionRepository(configuration, mapper, _loggerActivityDisabilityOption, httpContextAccessor);
+        ActivityImageMappingRepository = new ActivityImageMappingRepository(configuration, mapper, _loggerActivityImageMapping, httpContextAccessor);
+        ActivitySeasonMappingRepository = new ActivitySeasonMappingRepository(configuration, mapper, _loggerActivitySeasonMapping, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         this.configuration = configuration;

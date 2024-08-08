@@ -2,8 +2,10 @@
 using CleanArc.Application.Models.AgeType;
 using CleanArc.Application.Models.Amenity;
 using CleanArc.Application.Models.Request;
+using CleanArc.Domain.Entities.Advertisement;
 using CleanArc.Domain.Entities.AgeType;
 using CleanArc.Domain.Entities.Amenity;
+using CleanArc.Domain.Entities.SearchHotelRoomDetail;
 using CleanArc.Infrastructure.Persistence.Helpers;
 using CleanArc.Infrastructure.Sql.SqlQueries;
 using CleanArc.SharedKernel.Extensions;
@@ -74,7 +76,7 @@ public class AmenityRepository : IAmenityRepository
         }
     }
 
-    public async Task<string> DeleteAsync(string selectedIds, int updatedBy)
+    public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
         {
@@ -112,7 +114,21 @@ public class AmenityRepository : IAmenityRepository
                     SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
                     FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 };
+
+                // Call
+                List<FilterParameter> FilterArray = new List<FilterParameter>();
+                List<SortingParameter> SortingArray = new List<SortingParameter>();
+                FilterArray.Add(new FilterParameter { ParameterName = "PlaceID", ParameterValue = "4" });
+                var Adparameter = new
+                {
+                    PageNumber = searchRequest.PageNumber,
+                    PageSize = searchRequest.PageSize,
+                    SortingArray = DataTableHelper.ToDataTable(SortingArray), // Convert list to DataTable
+                    FilterArray = DataTableHelper.ToDataTable(FilterArray) // Convert list to DataTable
+                };
                 var result = await connection.QueryAsync<Amenity>(AmenityQueries.usp_GetALL_Amenity, parameters, commandType: CommandType.StoredProcedure);
+
+                //var advertisements = await connection.QueryAsync<Advertisement>(AdvertisementQueries.usp_GetALL_Ads, Adparameter, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }

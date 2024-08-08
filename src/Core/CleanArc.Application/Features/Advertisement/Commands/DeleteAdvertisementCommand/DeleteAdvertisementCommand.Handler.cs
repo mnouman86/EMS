@@ -57,7 +57,7 @@ internal class DeleteAdvertisementCommandHandler: IRequestHandler<DeleteAdvertis
             //return OperationResult<bool>.SuccessResult(true);
             //await _unitOfWork.AdvertisementRepository.DeleteAsync(new Domain.Entities.Advertisement.Advertisement()
             // { UpdatedBy = user.Id, ID = request.ID });
-            await _unitOfWork.AdvertisementRepository.DeleteAsync(request.SelectedIds, user.Id);
+            await _unitOfWork.AdvertisementRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

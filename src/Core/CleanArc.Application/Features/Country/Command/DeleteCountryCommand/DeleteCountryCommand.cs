@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.Country.Command.DeleteCountryCommand
 {
-    public record DeleteCountryCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+    public record DeleteCountryCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<DeleteCountryCommand>
     {
         [JsonIgnore]

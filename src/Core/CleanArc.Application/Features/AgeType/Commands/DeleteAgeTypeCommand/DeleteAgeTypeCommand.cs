@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.AgeType.Commands.DeleteAgeTypeCommand;
 
-public record DeleteAgeTypeCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record DeleteAgeTypeCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<DeleteAgeTypeCommand>
 {
     [JsonIgnore]
