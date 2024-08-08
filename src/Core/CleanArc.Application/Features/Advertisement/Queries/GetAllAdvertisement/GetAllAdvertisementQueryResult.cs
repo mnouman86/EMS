@@ -25,6 +25,7 @@ public class GetAllAdvertisementQueryResult
     public DateTime? CreatedAt { get; set; }
     public int? UpdatedBy { get; set; }
     public DateTime? UpdatedAt { get; set; }
+    public bool? IsShow {  get; set; }
 }
 
 //    public GetAllAdvertisementQueryResult(int iD, string name, string description, bool isDeleted, bool isActive, int createdBy, DateTime createdAt, int updatedBy, DateTime updatedAt)

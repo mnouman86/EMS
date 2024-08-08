@@ -17,6 +17,11 @@ namespace CleanArc.Application.Models.Advertisement
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public int? UpdatedBy { get; set; }
-        
+        public bool? IsShow { get; set; }
+        public int Code { get; set; }
+        public string Message { get; set; }
+
+
+
     }
 }

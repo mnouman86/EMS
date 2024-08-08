@@ -8,10 +8,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Advertisement.Commands.CreateAdvertisementCommand;
-public record CreateAdvertisementCommand(int? PageID, int? PlaceID, string? ImageTitle, string? ImagePath, string? Url, DateTime? StartDate, DateTime? EndDate, int? CreatedBy) : IRequest<OperationResult<bool>>,
+public record CreateAdvertisementCommand(int? PageID, int? PlaceID, string? ImageTitle, string? ImagePath, string? Url, DateTime? StartDate, DateTime? EndDate, int? CreatedBy, bool? IsShow, int Code, string Message) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateAdvertisementCommand>
 {
     [JsonIgnore]
