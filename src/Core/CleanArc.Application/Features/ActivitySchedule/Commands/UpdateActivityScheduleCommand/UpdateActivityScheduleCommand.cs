@@ -1,0 +1,32 @@
+﻿using CleanArc.Application.Models.Common;
+using CleanArc.SharedKernel.ValidationBase.Contracts;
+using CleanArc.SharedKernel.ValidationBase;
+using FluentValidation;
+using Mediator;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.Json.Serialization;
+
+namespace CleanArc.Application.Features.ActivitySchedule.Commands.UpdateActivityScheduleCommand;
+public record UpdateActivityScheduleCommand(int ID, int? ActivityID, string Title, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+    IValidatableModel<UpdateActivityScheduleCommand>
+{
+    [JsonIgnore]
+    public int UserId { get; set; }
+    public IValidator<UpdateActivityScheduleCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateActivityScheduleCommand> validator)
+    {
+        validator.RuleFor(c => c.ActivityID)
+            .NotEmpty()
+            .NotNull()
+            .WithMessage("Please enter a valid ActivityID");
+        validator.RuleFor(c => c.Title)
+            .NotEmpty()
+            .NotNull()
+            .WithMessage("Please enter a Title");
+        return validator;
+    }
+}
+
