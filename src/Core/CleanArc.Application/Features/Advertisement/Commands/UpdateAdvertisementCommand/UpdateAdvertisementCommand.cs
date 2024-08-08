@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.Advertisement.Commands.UpdateAdvertisementCommand;
-public record UpdateAdvertisementCommand(int ID, int? PageID, int? PlaceID, string? ImageTitle, string? ImagePath, string? Url, DateTime? StartDate, DateTime? EndDate, bool? IsShow, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record UpdateAdvertisementCommand(int ID, int? PageID, int? PlaceID, string? ImageTitle, string? ImagePath, string? Url, DateTime? StartDate, DateTime? EndDate, int? UpdatedBy, int Code, string Message) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateAdvertisementCommand>
 {
     [JsonIgnore]
