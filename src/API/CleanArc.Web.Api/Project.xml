@@ -49,6 +49,15 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ActivitySchedule.ActivityScheduleController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.ActivitySchedule.ActivityScheduleController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ActivitySchedule.Commands.CreateActivityScheduleCommand.CreateActivityScheduleCommand,CleanArc.Application.Features.ActivitySchedule.Commands.UpdateActivityScheduleCommand.UpdateActivityScheduleCommand,CleanArc.Application.Features.ActivitySchedule.Commands.DeleteActivityScheduleCommand.DeleteActivityScheduleCommand,System.Boolean,CleanArc.Application.Features.ActivitySchedule.Queries.GetAllActivitySchedule.GetAllActivityScheduleQuery,System.Collections.Generic.List{CleanArc.Application.Features.ActivitySchedule.Queries.GetAllActivitySchedule.GetAllActivityScheduleQueryResult},CleanArc.Application.Features.ActivitySchedule.Queries.GetActivityScheduleById.GetActivityScheduleByIdQuery,CleanArc.Application.Features.ActivitySchedule.Queries.GetActivityScheduleById.GetActivityScheduleByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.ActivitySchedule.ActivityScheduleController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ActivitySeason.ActivitySeasonController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.ActivitySeason.ActivitySeasonController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ActivitySeason.Commands.CreateActivitySeasonCommand.CreateActivitySeasonCommand,CleanArc.Application.Features.ActivitySeason.Commands.UpdateActivitySeasonCommand.UpdateActivitySeasonCommand,CleanArc.Application.Features.ActivitySeason.Commands.DeleteActivitySeasonCommand.DeleteActivitySeasonCommand,System.Boolean,CleanArc.Application.Features.ActivitySeason.Queries.GetAllActivitySeason.GetAllActivitySeasonQuery,System.Collections.Generic.List{CleanArc.Application.Features.ActivitySeason.Queries.GetAllActivitySeason.GetAllActivitySeasonQueryResult},CleanArc.Application.Features.ActivitySeason.Queries.GetActivitySeasonById.GetActivitySeasonByIdQuery,CleanArc.Application.Features.ActivitySeason.Queries.GetActivitySeasonById.GetActivitySeasonByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
