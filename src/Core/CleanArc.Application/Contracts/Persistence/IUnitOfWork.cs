@@ -60,6 +60,7 @@ public interface IUnitOfWork
     public IActivityScheduleRepository ActivityScheduleRepository { get; }
 
     public IActivityDisabilityOptionRepository ActivityDisabilityOptionRepository { get; }
+    public IActivityImageMappingRepository ActivityImageMappingRepository { get; }
 
 
 
