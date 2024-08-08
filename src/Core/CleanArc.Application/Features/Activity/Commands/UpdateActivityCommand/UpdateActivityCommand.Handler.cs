@@ -84,6 +84,8 @@ internal class UpdateActivityCommandHandler:IRequestHandler<UpdateActivityComman
                 CurrencyLookUpID = request.CurrencyLookUpID,
                 //PerGroupPrice = request.PerGroupPrice,
                 PerPersonPrice = request.PerPersonPrice,
+                //OtherManageActivity = request.OtherManageActivity,
+                //OtherSubService = request.OtherSubService
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

@@ -40,10 +40,13 @@ public record CreateActivityCommand(string? Title,
     string ? AllowedItems,
     string?   NotAllowedItems,
     int? CurrencyLookUpID,
-    Decimal? PerPersonPrice
-   // int? PerGroupPrice
-   // int? SeasonID
-    , int? CreatedBy) : IRequest<OperationResult<bool>>,
+    Decimal? PerPersonPrice,
+    string? OtherSubService,
+    string? OtherManageActivity,
+
+    // int? PerGroupPrice
+    // int? SeasonID
+     int? CreatedBy) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateActivityCommand>
 {
     [JsonIgnore]
@@ -116,10 +119,10 @@ public record CreateActivityCommand(string? Title,
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a Hours");
-        //validator.RuleFor(c => c.AddressID)
-        //   .NotEmpty()
-        //   .NotNull()
-        //   .WithMessage("Please enter a AddressID");
+        validator.RuleFor(c => c.OtherSubService)
+           .NotEmpty()
+           .NotNull()
+           .WithMessage("Please enter a OtherSubService");
         validator.RuleFor(c => c.Description)
            .NotEmpty()
            .NotNull()
@@ -132,10 +135,10 @@ public record CreateActivityCommand(string? Title,
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a TransportationLookUpID ");
-        //validator.RuleFor(c => c.ActivityIncludeID)
-        //   .NotEmpty()
-        //   .NotNull()
-        //   .WithMessage("Please enter a Description");
+        validator.RuleFor(c => c.OtherManageActivity)
+           .NotEmpty()
+           .NotNull()
+           .WithMessage("Please enter a OtherManageActivity");
         validator.RuleFor(c => c.IsDisability)
            .NotEmpty()
            .NotNull()

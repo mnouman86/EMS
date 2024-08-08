@@ -38,7 +38,9 @@ public  class Activity
     public int? Code { get; set; }
     public int? Message { get; set; }
     public Decimal? PerPersonPrice { get; set; }
-   // public int? PerGroupPrice { get; set; }
+    // public int? PerGroupPrice { get; set; }
+    public string? OtherSubService { get; set; }
+    public string? OtherManageActivity { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }

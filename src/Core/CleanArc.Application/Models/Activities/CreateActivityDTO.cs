@@ -39,6 +39,8 @@ namespace CleanArc.Application.Models.Activities
         public Decimal? PerGroupPrice { get; set; }
         //public bool? IsActive { get; set; }
         //public bool? IsDeleted { get; set; }
+        public string? OtherSubService { get; set; }
+        public string? OtherManageActivity { get; set; }
         public int? CreatedBy { get; set; }
         //public DateTime? CreatedAt { get; set; }
         //public int? UpdatedBy { get; set; }
