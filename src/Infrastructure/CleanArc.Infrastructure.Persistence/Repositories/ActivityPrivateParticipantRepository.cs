@@ -134,7 +134,7 @@ public async Task<string> AddAsync(ActivityPrivateParticipant ActivityPrivatePar
                 //    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
                 //    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 //};
-                var result = await connection.QueryAsync<ActivityPrivateParticipant>(ActivityPrivateParticipantQueries.usp_GetAll_ActivityPrivateParticipant, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<ActivityPrivateParticipant>(ActivityPrivateParticipantQueries.GetAll_PrivateParticipants, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }
@@ -153,7 +153,7 @@ public async Task<string> AddAsync(ActivityPrivateParticipant ActivityPrivatePar
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<ActivityPrivateParticipant>(ActivityPrivateParticipantQueries.usp_GetByID_ActivityPrivateParticipant, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<ActivityPrivateParticipant>(ActivityPrivateParticipantQueries.GetByID_PrivateParticipants, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
