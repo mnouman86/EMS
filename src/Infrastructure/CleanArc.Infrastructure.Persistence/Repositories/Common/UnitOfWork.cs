@@ -74,6 +74,7 @@ public class UnitOfWork : IUnitOfWork
     public IActivitySeasonMappingRepository ActivitySeasonMappingRepository { get; set; }
 
     public IActivityGroupRepository ActivityGroupRepository { get; set; }
+    public ICurrencyRepository CurrencyRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -139,6 +140,7 @@ public class UnitOfWork : IUnitOfWork
         ILogger<ActivityImageMappingRepository> _loggerActivityImageMapping,
         ILogger<ActivitySeasonMappingRepository> _loggerActivitySeasonMapping,
         ILogger<ActivityGroupRepository> _loggerActivityGroup,
+        ILogger<CurrencyRepository> _loggerCurrency,
 
 
 
@@ -206,6 +208,7 @@ public class UnitOfWork : IUnitOfWork
         ActivityImageMappingRepository = new ActivityImageMappingRepository(configuration, mapper, _loggerActivityImageMapping, httpContextAccessor);
         ActivitySeasonMappingRepository = new ActivitySeasonMappingRepository(configuration, mapper, _loggerActivitySeasonMapping, httpContextAccessor);
         ActivityGroupRepository = new ActivityGroupRepository(configuration, mapper, _loggerActivityGroup, httpContextAccessor);
+        CurrencyRepository = new CurrencyRepository(configuration, mapper, _loggerCurrency, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         this.configuration = configuration;
