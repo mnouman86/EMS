@@ -8,7 +8,6 @@ namespace CleanArc.Application.Models.Activities
 {
     public class CreateActivityDTO
     {
-        public int ID { get; set; }
         public string Title { get; set; }
         public int? LanguageLookUpID { get; set; }
         public int? ServiceLookUpID { get; set; }
@@ -36,15 +35,11 @@ namespace CleanArc.Application.Models.Activities
         public int? CultureId { get; set; }
         public int? Code { get; set; }
         public int? Message { get; set; }
-        public Decimal? PerGroupPrice { get; set; }
-        //public bool? IsActive { get; set; }
-        //public bool? IsDeleted { get; set; }
+        //public Decimal? PerGroupPrice { get; set; }
         public string? OtherSubService { get; set; }
         public string? OtherManageActivity { get; set; }
         public int? CreatedBy { get; set; }
-        //public DateTime? CreatedAt { get; set; }
-        //public int? UpdatedBy { get; set; }
-        //public DateTime? UpdatedAt { get; set; }
+        
 
     }
 }
