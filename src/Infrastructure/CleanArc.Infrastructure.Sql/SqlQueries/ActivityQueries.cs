@@ -11,7 +11,7 @@ public static class ActivityQueries
     public static string Create_Activity => "Create_Activity";
     public static string update_Activity => "update_Activity";
     public static string Delete_Activity => "Delete_Activity";
-    public static string usp_GetAll_Activity => "usp_GetAll_Activity";
+    public static string GetAll_Activity => "GetAll_Activity";
     public static string usp_GetByID_Activity => "usp_GetByID_Activity";
 
 

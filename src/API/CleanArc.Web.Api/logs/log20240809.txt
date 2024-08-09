@@ -1,0 +1,303 @@
+2024-08-09 09:33:31.998 +05:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-09 09:33:32.068 +05:00 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-09 09:33:32.091 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-09 09:33:32.096 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-09 09:33:32.127 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-08-09 09:33:32.145 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-08-09 09:33:32.165 +05:00 [INF] User profile is available. Using 'C:\Users\SHPL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-09 09:33:32.396 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-09 09:33:32.413 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-09 09:33:32.749 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-08-09 09:33:32.934 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-08-09 09:33:33.050 +05:00 [INF] Response StatusCode: 200
+2024-08-09 09:33:33.060 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 312.2327ms
+2024-08-09 09:33:33.161 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-08-09 09:33:33.207 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-08-09 09:33:33.212 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 13768 application/javascript;+charset=utf-8 50.5200ms
+2024-08-09 09:33:33.261 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 53.9800ms
+2024-08-09 09:33:33.354 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-08-09 09:33:33.357 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-08-09 09:33:33.996 +05:00 [INF] Response StatusCode: 200
+2024-08-09 09:33:33.999 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 644.9835ms
+2024-08-09 09:34:28.384 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-09 09:34:28.497 +05:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-09 09:34:28.505 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-09 09:34:28.512 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-09 09:34:28.528 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-08-09 09:34:28.541 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-08-09 09:34:28.550 +05:00 [INF] User profile is available. Using 'C:\Users\SHPL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-09 09:34:28.717 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-09 09:34:28.727 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-09 09:34:28.986 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-08-09 09:34:29.185 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-08-09 09:34:29.259 +05:00 [INF] Response StatusCode: 200
+2024-08-09 09:34:29.267 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 281.7910ms
+2024-08-09 09:34:29.379 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-08-09 09:34:29.384 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-08-09 09:34:29.419 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 13768 application/javascript;+charset=utf-8 39.2426ms
+2024-08-09 09:34:29.449 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 65.0641ms
+2024-08-09 09:34:29.536 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-08-09 09:34:29.539 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-08-09 09:34:29.970 +05:00 [INF] Response StatusCode: 200
+2024-08-09 09:34:29.977 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 440.8973ms
+2024-08-09 09:35:31.019 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/Activity/GetAll application/json 158
+2024-08-09 09:35:31.024 +05:00 [INF] CORS policy execution successful.
+2024-08-09 09:35:31.027 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/GetAll, Content-Type: application/json
+2024-08-09 09:35:31.031 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 1,
+    "cultureId": 1,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-08-09 09:35:31.038 +05:00 [WRN] Failed to determine the https port for redirect.
+2024-08-09 09:35:31.133 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/GetAll, Content-Type: application/json
+2024-08-09 09:35:31.135 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 1,
+    "cultureId": 1,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-08-09 09:35:31.137 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api)'
+2024-08-09 09:35:31.149 +05:00 [INF] Route matched with {action = "GetAll", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Activity.Queries.GetAllActivity.GetAllActivityQuery) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-09 09:35:34.560 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-09 09:35:34.656 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Queries.GetAllActivity, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":1,"CultureId":1,"FilterArray":[],"SortingArray":[]}}
+2024-08-09 09:35:35.580 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":1,"CultureId":1,"FilterArray":[],"SortingArray":[]}
+2024-08-09 09:35:36.564 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":5,"Title":"Example Activity Title","LanguageLookUpID":1,"ServiceLookUpID":9,"SubServiceLookUpID":1,"MinAge":18,"MaxAge":65,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MinGroupSize":5,"MaxGroupSize":20,"IsPrivateActivity":true,"WhoCanParticipate":"Everyone","WhoCannotParticipate":"No restrictions","ManageActivityLookUpID":1,"Days":2,"Hours":24,"Description":"Description of the activity","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":false,"AllowedItems":"Water bottles, Sunscreen","NotAllowedItems":"Weapons, Pets","CurrencyLookUpID":1,"CultureId":null,"Code":null,"Message":null,"PerPersonPrice":50.0,"OtherSubService":null,"OtherManageActivity":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T06:13:27.243","UpdatedBy":0,"UpdatedAt":"1900-01-01T00:00:00"}]
+2024-08-09 09:35:36.612 +05:00 [INF] Exiting null, Handle with response: [{"ID":5,"Title":"Example Activity Title","LanguageLookUpID":1,"LanguageName":null,"ServiceLookUpID":9,"SubServiceLookUpID":1,"MinAge":18,"MaxAge":65,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MinGroupSize":5,"MaxGroupSize":20,"IsPrivateActivity":true,"WhoCanParticipate":"Everyone","WhoCannotParticipate":"No restrictions","ManageActivityLookUpID":1,"Days":2,"Hours":24,"Description":"Description of the activity","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":false,"AllowedItems":"Water bottles, Sunscreen","NotAllowedItems":"Weapons, Pets","CurrencyLookUpID":1,"CultureId":null,"Code":null,"Message":null,"PerPersonPrice":50.0,"OtherSubService":null,"OtherManageActivity":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T06:13:27.243","UpdatedBy":0,"UpdatedAt":"1900-01-01T00:00:00"}]
+2024-08-09 09:35:36.617 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2052.2939ms.
+2024-08-09 09:35:36.623 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-09 09:35:36.649 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api) in 5496.7868ms
+2024-08-09 09:35:36.651 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api)'
+2024-08-09 09:35:36.653 +05:00 [INF] Response StatusCode: 200
+2024-08-09 09:35:36.655 +05:00 [INF] Response StatusCode: 200
+2024-08-09 09:35:36.657 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/Activity/GetAll application/json 158 - 200 - application/json;+charset=utf-8 5638.5943ms
+2024-08-09 09:36:51.718 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-09 09:36:51.786 +05:00 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-09 09:36:51.798 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-09 09:36:51.807 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-09 09:36:51.823 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-08-09 09:36:51.835 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-08-09 09:36:51.842 +05:00 [INF] User profile is available. Using 'C:\Users\SHPL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-09 09:36:52.012 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-09 09:36:52.025 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-09 09:36:52.216 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-08-09 09:36:52.356 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-08-09 09:36:52.426 +05:00 [INF] Response StatusCode: 200
+2024-08-09 09:36:52.434 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 218.9135ms
+2024-08-09 09:36:52.524 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-08-09 09:36:52.531 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-08-09 09:36:52.566 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 13768 application/javascript;+charset=utf-8 41.2208ms
+2024-08-09 09:36:52.591 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 59.8671ms
+2024-08-09 09:36:52.735 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-08-09 09:36:52.738 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-08-09 09:36:53.146 +05:00 [INF] Response StatusCode: 200
+2024-08-09 09:36:53.153 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 417.4540ms
+2024-08-09 09:37:26.354 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/Activity/GetAll application/json 156
+2024-08-09 09:37:26.373 +05:00 [INF] CORS policy execution successful.
+2024-08-09 09:37:26.375 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/GetAll, Content-Type: application/json
+2024-08-09 09:37:26.378 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 1,
+    "cultureId": 1,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-09 09:37:26.383 +05:00 [WRN] Failed to determine the https port for redirect.
+2024-08-09 09:37:26.532 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/GetAll, Content-Type: application/json
+2024-08-09 09:37:26.533 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 1,
+    "cultureId": 1,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-09 09:37:26.535 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api)'
+2024-08-09 09:37:26.547 +05:00 [INF] Route matched with {action = "GetAll", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Activity.Queries.GetAllActivity.GetAllActivityQuery) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-09 09:37:29.972 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-09 09:37:30.064 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Queries.GetAllActivity, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":1,"CultureId":1,"FilterArray":[],"SortingArray":[]}}
+2024-08-09 09:37:30.471 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":1,"CultureId":1,"FilterArray":[],"SortingArray":[]}
+2024-08-09 09:37:31.256 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":5,"Title":"Example Activity Title","LanguageLookUpID":1,"LanguageName":"Urdu","ServiceLookUpID":9,"SubServiceLookUpID":1,"MinAge":18,"MaxAge":65,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MinGroupSize":5,"MaxGroupSize":20,"IsPrivateActivity":true,"WhoCanParticipate":"Everyone","WhoCannotParticipate":"No restrictions","ManageActivityLookUpID":1,"Days":2,"Hours":24,"Description":"Description of the activity","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":false,"AllowedItems":"Water bottles, Sunscreen","NotAllowedItems":"Weapons, Pets","CurrencyLookUpID":1,"CultureId":null,"Code":null,"Message":null,"PerPersonPrice":50.0,"OtherSubService":null,"OtherManageActivity":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T06:13:27.243","UpdatedBy":0,"UpdatedAt":"1900-01-01T00:00:00"}]
+2024-08-09 09:37:31.305 +05:00 [INF] Exiting null, Handle with response: [{"ID":5,"Title":"Example Activity Title","LanguageLookUpID":1,"LanguageName":"Urdu","ServiceLookUpID":9,"SubServiceLookUpID":1,"MinAge":18,"MaxAge":65,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MinGroupSize":5,"MaxGroupSize":20,"IsPrivateActivity":true,"WhoCanParticipate":"Everyone","WhoCannotParticipate":"No restrictions","ManageActivityLookUpID":1,"Days":2,"Hours":24,"Description":"Description of the activity","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":false,"AllowedItems":"Water bottles, Sunscreen","NotAllowedItems":"Weapons, Pets","CurrencyLookUpID":1,"CultureId":null,"Code":null,"Message":null,"PerPersonPrice":50.0,"OtherSubService":null,"OtherManageActivity":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T06:13:27.243","UpdatedBy":0,"UpdatedAt":"1900-01-01T00:00:00"}]
+2024-08-09 09:37:31.310 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1333.6928ms.
+2024-08-09 09:37:31.318 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-09 09:37:31.349 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api) in 4798.3186ms
+2024-08-09 09:37:31.351 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api)'
+2024-08-09 09:37:31.353 +05:00 [INF] Response StatusCode: 200
+2024-08-09 09:37:31.356 +05:00 [INF] Response StatusCode: 200
+2024-08-09 09:37:31.358 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/Activity/GetAll application/json 156 - 200 - application/json;+charset=utf-8 5003.7987ms
+2024-08-09 09:39:07.359 +05:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-09 09:39:07.455 +05:00 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-09 09:39:07.463 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-09 09:39:07.467 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-09 09:39:07.487 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-08-09 09:39:07.506 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-08-09 09:39:07.552 +05:00 [INF] User profile is available. Using 'C:\Users\SHPL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-09 09:39:07.715 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-09 09:39:07.727 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-09 09:39:08.044 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-08-09 09:39:08.267 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-08-09 09:39:08.362 +05:00 [INF] Response StatusCode: 200
+2024-08-09 09:39:08.370 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 328.3920ms
+2024-08-09 09:39:08.482 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-08-09 09:39:08.514 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-08-09 09:39:08.517 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 13768 application/javascript;+charset=utf-8 35.1772ms
+2024-08-09 09:39:08.550 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 35.2484ms
+2024-08-09 09:39:08.658 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-08-09 09:39:08.660 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-08-09 09:39:09.230 +05:00 [INF] Response StatusCode: 200
+2024-08-09 09:39:09.259 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 600.6294ms
+2024-08-09 09:39:33.565 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/Activity/GetAll application/json 159
+2024-08-09 09:39:33.570 +05:00 [INF] CORS policy execution successful.
+2024-08-09 09:39:33.573 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/GetAll, Content-Type: application/json
+2024-08-09 09:39:33.578 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-08-09 09:39:33.582 +05:00 [WRN] Failed to determine the https port for redirect.
+2024-08-09 09:39:33.663 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/GetAll, Content-Type: application/json
+2024-08-09 09:39:33.665 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-08-09 09:39:33.666 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api)'
+2024-08-09 09:39:33.682 +05:00 [INF] Route matched with {action = "GetAll", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Activity.Queries.GetAllActivity.GetAllActivityQuery) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-09 09:39:45.398 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-09 09:39:45.485 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Queries.GetAllActivity, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"FilterArray":[],"SortingArray":[]}}
+2024-08-09 09:39:47.164 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"FilterArray":[],"SortingArray":[]}
+2024-08-09 09:39:48.527 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":5,"Title":"Example Activity Title","LanguageLookUpID":1,"LanguageName":"Urdu","ServiceLookUpID":9,"SubServiceLookUpID":1,"MinAge":18,"MaxAge":65,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MinGroupSize":5,"MaxGroupSize":20,"IsPrivateActivity":true,"WhoCanParticipate":"Everyone","WhoCannotParticipate":"No restrictions","ManageActivityLookUpID":1,"Days":2,"Hours":24,"Description":"Description of the activity","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":false,"AllowedItems":"Water bottles, Sunscreen","NotAllowedItems":"Weapons, Pets","CurrencyLookUpID":1,"CultureId":null,"Code":null,"Message":null,"PerPersonPrice":50.0,"OtherSubService":null,"OtherManageActivity":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T06:13:27.243","UpdatedBy":0,"UpdatedAt":"1900-01-01T00:00:00"},{"ID":8,"Title":"Sample Activity","LanguageLookUpID":1,"LanguageName":"Urdu","ServiceLookUpID":9,"SubServiceLookUpID":14,"MinAge":10,"MaxAge":50,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MinGroupSize":2,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"Everyone","WhoCannotParticipate":"No one","ManageActivityLookUpID":13,"Days":2,"Hours":24,"Description":"Description of the activity","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":false,"AllowedItems":"Allowed items list","NotAllowedItems":"Not allowed items list","CurrencyLookUpID":1,"CultureId":null,"Code":null,"Message":null,"PerPersonPrice":50.0,"OtherSubService":null,"OtherManageActivity":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T07:43:45.913","UpdatedBy":0,"UpdatedAt":"1900-01-01T00:00:00"},{"ID":9,"Title":"Sample test Activity","LanguageLookUpID":1,"LanguageName":"Urdu","ServiceLookUpID":9,"SubServiceLookUpID":10,"MinAge":10,"MaxAge":50,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MinGroupSize":2,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"Everyone","WhoCannotParticipate":"No one","ManageActivityLookUpID":1,"Days":2,"Hours":24,"Description":"Description of the activity","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":false,"AllowedItems":"Allowed items list","NotAllowedItems":"Not allowed items list","CurrencyLookUpID":1,"CultureId":null,"Code":null,"Message":null,"PerPersonPrice":50.0,"OtherSubService":null,"OtherManageActivity":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T07:46:19.933","UpdatedBy":0,"UpdatedAt":"1900-01-01T00:00:00"}]
+2024-08-09 09:39:48.571 +05:00 [INF] Exiting null, Handle with response: [{"ID":5,"Title":"Example Activity Title","LanguageLookUpID":1,"LanguageName":"Urdu","ServiceLookUpID":9,"SubServiceLookUpID":1,"MinAge":18,"MaxAge":65,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MinGroupSize":5,"MaxGroupSize":20,"IsPrivateActivity":true,"WhoCanParticipate":"Everyone","WhoCannotParticipate":"No restrictions","ManageActivityLookUpID":1,"Days":2,"Hours":24,"Description":"Description of the activity","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":false,"AllowedItems":"Water bottles, Sunscreen","NotAllowedItems":"Weapons, Pets","CurrencyLookUpID":1,"CultureId":null,"Code":null,"Message":null,"PerPersonPrice":50.0,"OtherSubService":null,"OtherManageActivity":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T06:13:27.243","UpdatedBy":0,"UpdatedAt":"1900-01-01T00:00:00"},{"ID":8,"Title":"Sample Activity","LanguageLookUpID":1,"LanguageName":"Urdu","ServiceLookUpID":9,"SubServiceLookUpID":14,"MinAge":10,"MaxAge":50,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MinGroupSize":2,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"Everyone","WhoCannotParticipate":"No one","ManageActivityLookUpID":13,"Days":2,"Hours":24,"Description":"Description of the activity","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":false,"AllowedItems":"Allowed items list","NotAllowedItems":"Not allowed items list","CurrencyLookUpID":1,"CultureId":null,"Code":null,"Message":null,"PerPersonPrice":50.0,"OtherSubService":null,"OtherManageActivity":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T07:43:45.913","UpdatedBy":0,"UpdatedAt":"1900-01-01T00:00:00"},{"ID":9,"Title":"Sample test Activity","LanguageLookUpID":1,"LanguageName":"Urdu","ServiceLookUpID":9,"SubServiceLookUpID":10,"MinAge":10,"MaxAge":50,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MinGroupSize":2,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"Everyone","WhoCannotParticipate":"No one","ManageActivityLookUpID":1,"Days":2,"Hours":24,"Description":"Description of the activity","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":false,"AllowedItems":"Allowed items list","NotAllowedItems":"Not allowed items list","CurrencyLookUpID":1,"CultureId":null,"Code":null,"Message":null,"PerPersonPrice":50.0,"OtherSubService":null,"OtherManageActivity":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T07:46:19.933","UpdatedBy":0,"UpdatedAt":"1900-01-01T00:00:00"}]
+2024-08-09 09:39:48.578 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3174.6971ms.
+2024-08-09 09:39:48.586 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-09 09:39:48.611 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api) in 14923.9443ms
+2024-08-09 09:39:48.613 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api)'
+2024-08-09 09:39:48.614 +05:00 [INF] Response StatusCode: 200
+2024-08-09 09:39:48.616 +05:00 [INF] Response StatusCode: 200
+2024-08-09 09:39:48.618 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/Activity/GetAll application/json 159 - 200 - application/json;+charset=utf-8 15053.0803ms
