@@ -116,10 +116,10 @@ public async Task<string> AddAsync(ActivityPrivateParticipant ActivityPrivatePar
                     //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
                     //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
                     //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-                    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
-                    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
+                    //SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
+                    //FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 };
-                var result = await connection.QueryAsync<ActivityPrivateParticipant>(ActivityPrivateParticipantQueries.usp_GetAll_ActivityPrivateParticipant, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<ActivityPrivateParticipant>(ActivityPrivateParticipantQueries.GetAll_PrivateParticipants, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }
@@ -132,7 +132,7 @@ public async Task<string> AddAsync(ActivityPrivateParticipant ActivityPrivatePar
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                var result = await connection.QuerySingleOrDefaultAsync<ActivityPrivateParticipant>(ActivityPrivateParticipantQueries.usp_GetByID_ActivityPrivateParticipant, new { ID = id }, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<ActivityPrivateParticipant>(ActivityPrivateParticipantQueries.GetByID_PrivateParticipants, new { ID = id }, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
