@@ -137,7 +137,7 @@ public async Task<string> AddAsync(ActivityDisabilityOption ActivityDisabilityOp
                 //        Message = ("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output)
 
                 //};
-                var result = await connection.QueryAsync<ActivityDisabilityOption>(ActivityDisabilityOptionQueries.usp_GetAll_ActivityDisabilityOption, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<ActivityDisabilityOption>(ActivityDisabilityOptionQueries.GetAll_DisabilityOptions, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }
@@ -156,7 +156,7 @@ public async Task<string> AddAsync(ActivityDisabilityOption ActivityDisabilityOp
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<ActivityDisabilityOption>(ActivityDisabilityOptionQueries.usp_GetByID_ActivityDisabilityOption, parameters , commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<ActivityDisabilityOption>(ActivityDisabilityOptionQueries.GetByID_DisabilityOptions, parameters , commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
