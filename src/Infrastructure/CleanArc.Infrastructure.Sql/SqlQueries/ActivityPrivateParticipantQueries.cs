@@ -11,8 +11,8 @@ public static class ActivityPrivateParticipantQueries
     public static string Create_ActivityPrivateParticipant => "Create_ActivityPrivateParticipant";
     public static string update_ActivityPrivateParticipant => "update_ActivityPrivateParticipant";
     public static string Delete_ActivityPrivateParticipant => "Delete_ActivityPrivateParticipant";
-    public static string usp_GetAll_ActivityPrivateParticipant => "usp_GetAll_ActivityPrivateParticipant";
-    public static string usp_GetByID_ActivityPrivateParticipant => "usp_GetByID_ActivityPrivateParticipant";
+    public static string GetAll_PrivateParticipants => "GetAll_PrivateParticipants";
+    public static string GetByID_PrivateParticipants => "GetByID_PrivateParticipants";
 
 
 }
