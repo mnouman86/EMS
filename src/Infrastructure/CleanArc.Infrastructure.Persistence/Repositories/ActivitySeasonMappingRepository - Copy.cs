@@ -1,10 +1,10 @@
 ﻿using Azure.Core;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Models.Activities;
-using CleanArc.Application.Models.ActivityPrivateParticipant;
+using CleanArc.Application.Models.ActivitySeasonMapping;
+using CleanArc.Application.Models.BusinessProfile;
 using CleanArc.Application.Models.Request;
 using CleanArc.Application.Models.URL;
-using CleanArc.Domain.Entities.ActivityPrivateParticipant;
+using CleanArc.Domain.Entities.ActivitySeasonMapping;
 using CleanArc.Domain.Entities.UserManagement;
 using CleanArc.Infrastructure.Persistence.Helpers;
 using CleanArc.Infrastructure.Sql;
@@ -30,7 +30,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories;
 /// Repository implementation for handling operations related to menus.
 /// </summary>
 /// <seealso cref="CleanArc.Application.Contracts.Persistence.IMenuRepository" />
-public class ActivityPrivateParticipantRepository:IActivityPrivateParticipantRepository
+public class ActivitySeasonMappingRepository:IActivitySeasonMappingRepository
 {
     /// <summary>
     /// The configuration for accessing application settings.
@@ -45,7 +45,7 @@ public class ActivityPrivateParticipantRepository:IActivityPrivateParticipantRep
     /// <summary>
     /// The logger for logging repository-related information.
     /// </summary>
-    private readonly ILogger<ActivityPrivateParticipantRepository> _logger;
+    private readonly ILogger<ActivitySeasonMappingRepository> _logger;
 
     /// <summary>
     /// The HTTP context accessor for accessing HTTP context information.
@@ -59,7 +59,7 @@ public class ActivityPrivateParticipantRepository:IActivityPrivateParticipantRep
     /// <param name="mapper">The mapper for mapping between different object types.</param>
     /// <param name="logger">The logger for logging repository-related information.</param>
     /// <param name="httpContextAccessor">The HTTP context accessor for accessing HTTP context information.</param>
-    public ActivityPrivateParticipantRepository(IConfiguration configuration, IMapper mapper, ILogger<ActivityPrivateParticipantRepository> logger, IHttpContextAccessor httpContextAccessor)
+    public ActivitySeasonMappingRepository(IConfiguration configuration, IMapper mapper, ILogger<ActivitySeasonMappingRepository> logger, IHttpContextAccessor httpContextAccessor)
     {
         this.configuration = configuration;
         this._mapper = mapper;
@@ -67,19 +67,19 @@ public class ActivityPrivateParticipantRepository:IActivityPrivateParticipantRep
         _httpContextAccessor = httpContextAccessor;
     }
 /// <inheritdoc/>
-public async Task<string> AddAsync(ActivityPrivateParticipant ActivityPrivateParticipant)
+public async Task<string> AddAsync(ActivitySeasonMapping ActivitySeasonMapping)
 {
-    using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, ActivityPrivateParticipant))
+    using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, ActivitySeasonMapping))
     {
         using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
         {
             connection.Open();
-                CreateActivityPrivateParticipantDTO createActivityPrivateParticipantDTO = _mapper.Map<CreateActivityPrivateParticipantDTO>(ActivityPrivateParticipant);
-                var parameters = new DynamicParameters(createActivityPrivateParticipantDTO);
+                CreateActivitySeasonMappingDTO createActivitySeasonMappingDTO = _mapper.Map<CreateActivitySeasonMappingDTO>(ActivitySeasonMapping);
+                var parameters = new DynamicParameters(createActivitySeasonMappingDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityPrivateParticipantQueries.Create_ActivityPrivateParticipant, createActivityPrivateParticipantDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivitySeasonMappingQueries.Mapping_Create_Seasons, createActivitySeasonMappingDTO, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -100,14 +100,14 @@ public async Task<string> AddAsync(ActivityPrivateParticipant ActivityPrivatePar
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityPrivateParticipantQueries.Delete_ActivityPrivateParticipant, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivitySeasonMappingQueries.Mapping_Delete_Seasons, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }
         }
     }
 
-    public async Task<IReadOnlyList<ActivityPrivateParticipant>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<IReadOnlyList<ActivitySeasonMapping>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -123,6 +123,7 @@ public async Task<string> AddAsync(ActivityPrivateParticipant ActivityPrivatePar
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
+                //connection.Open();
                 //var parameters = new
                 //{
                 //    PageNumber = searchRequest.PageNumber,
@@ -134,13 +135,13 @@ public async Task<string> AddAsync(ActivityPrivateParticipant ActivityPrivatePar
                 //    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
                 //    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 //};
-                var result = await connection.QueryAsync<ActivityPrivateParticipant>(ActivityPrivateParticipantQueries.usp_GetAll_ActivityPrivateParticipant, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<ActivitySeasonMapping>(ActivitySeasonMappingQueries.Mapping_GetAll_Seasons, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }
         }
     }
-    public async Task<ActivityPrivateParticipant> GetByIdAsync(long id)
+    public async Task<ActivitySeasonMapping> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
         {
@@ -153,7 +154,7 @@ public async Task<string> AddAsync(ActivityPrivateParticipant ActivityPrivatePar
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<ActivityPrivateParticipant>(ActivityPrivateParticipantQueries.usp_GetByID_ActivityPrivateParticipant, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<ActivitySeasonMapping>(ActivitySeasonMappingQueries.Mapping_GetByID_Seasons, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -162,19 +163,19 @@ public async Task<string> AddAsync(ActivityPrivateParticipant ActivityPrivatePar
 
 
 
-    public async Task<string> UpdateAsync(ActivityPrivateParticipant entity)
+    public async Task<string> UpdateAsync(ActivitySeasonMapping entity)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                UpdateActivityPrivateParticipantDTO updateActivityPrivateParticipantDTO = _mapper.Map<UpdateActivityPrivateParticipantDTO>(entity);
-                var parameters = new DynamicParameters(updateActivityPrivateParticipantDTO);
+                UpdateActivitySeasonMappingDTO updateActivitySeasonMappingDTO = _mapper.Map<UpdateActivitySeasonMappingDTO>(entity);
+                var parameters = new DynamicParameters(updateActivitySeasonMappingDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityPrivateParticipantQueries.update_ActivityPrivateParticipant, updateActivityPrivateParticipantDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivitySeasonMappingQueries.Mapping_Update_Seasons, updateActivitySeasonMappingDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }
