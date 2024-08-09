@@ -318,6 +318,15 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.Currency.CurrencyController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.Currency.CurrencyController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.Currency.Commands.CreateCurrencyCommand.CreateCurrencyCommand,CleanArc.Application.Features.Currency.Commands.UpdateCurrencyCommand.UpdateCurrencyCommand,CleanArc.Application.Features.Currency.Commands.DeleteCurrencyCommand.DeleteCurrencyCommand,System.Boolean,CleanArc.Application.Features.Currency.Queries.GetAllCurrency.GetAllCurrencyQuery,System.Collections.Generic.List{CleanArc.Application.Features.Currency.Queries.GetAllCurrency.GetAllCurrencyQueryResult},CleanArc.Application.Features.Currency.Queries.GetCurrencyById.GetCurrencyByIdQuery,CleanArc.Application.Features.Currency.Queries.GetCurrencyById.GetCurrencyByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.Currency.CurrencyController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.DisabilityOption.DisabilityOptionController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.DisabilityOption.DisabilityOptionController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.DisabilityOption.Commands.CreateDisabilityOptionCommand.CreateDisabilityOptionCommand,CleanArc.Application.Features.DisabilityOption.Commands.UpdateDisabilityOptionCommand.UpdateDisabilityOptionCommand,CleanArc.Application.Features.DisabilityOption.Commands.DeleteDisabilityOptionCommand.DeleteDisabilityOptionCommand,System.Boolean,CleanArc.Application.Features.DisabilityOption.Queries.GetAllDisabilityOption.GetAllDisabilityOptionQuery,System.Collections.Generic.List{CleanArc.Application.Features.DisabilityOption.Queries.GetAllDisabilityOption.GetAllDisabilityOptionQueryResult},CleanArc.Application.Features.DisabilityOption.Queries.GetDisabilityOptionById.GetDisabilityOptionByIdQuery,CleanArc.Application.Features.DisabilityOption.Queries.GetDisabilityOptionById.GetDisabilityOptionByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
