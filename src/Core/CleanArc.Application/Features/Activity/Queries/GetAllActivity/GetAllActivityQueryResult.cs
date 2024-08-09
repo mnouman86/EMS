@@ -9,8 +9,8 @@ namespace CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 public class GetAllActivityQueryResult
 {
 
-     public int ID { get; set; }
-     public string Title { get; set; }
+ public int ID { get; set; }
+  public string Title { get; set; }
      public int? LanguageLookUpID { get; set; }
         public string LanguageName { get; set; }
     public int? ServiceLookUpID { get; set; }

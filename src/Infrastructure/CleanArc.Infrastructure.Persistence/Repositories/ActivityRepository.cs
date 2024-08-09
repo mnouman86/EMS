@@ -147,7 +147,7 @@ public async Task<string> AddAsync(Activity Activity)
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
-                connection.Open();
+                
                 connection.Open();
                 var parameters = new DynamicParameters();
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
@@ -155,7 +155,7 @@ public async Task<string> AddAsync(Activity Activity)
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<Activity>(ActivityQueries.usp_GetByID_Activity, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<Activity>(ActivityQueries.GetByID_Activity, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
