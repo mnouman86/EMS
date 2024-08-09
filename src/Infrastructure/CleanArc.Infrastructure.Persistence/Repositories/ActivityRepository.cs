@@ -135,7 +135,7 @@ public async Task<string> AddAsync(Activity Activity)
                 //    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
                 //    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 //};
-                var result = await connection.QueryAsync<Activity>(ActivityQueries.usp_GetAll_Activity, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<Activity>(ActivityQueries.GetAll_Activity, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }
