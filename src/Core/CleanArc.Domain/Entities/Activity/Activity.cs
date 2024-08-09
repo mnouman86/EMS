@@ -13,6 +13,8 @@ public  class Activity
     public int ID { get; set; }
     public string Title { get; set; }
     public int? LanguageLookUpID { get; set; }
+
+    public string? LanguageName { get; set; }
     public int? ServiceLookUpID { get; set; }
     public int? SubServiceLookUpID { get; set; }
     public int? MinAge { get; set; }
