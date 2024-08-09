@@ -1,0 +1,34 @@
+﻿using CleanArc.Application.Models.Common;
+using CleanArc.SharedKernel.ValidationBase.Contracts;
+using CleanArc.SharedKernel.ValidationBase;
+using FluentValidation;
+using Mediator;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.Json.Serialization;
+
+namespace CleanArc.Application.Features.ActivityDisabilityMapping.Commands.UpdateActivityDisabilityMappingCommand;
+public record UpdateActivityDisabilityMappingCommand(int ID, int? DisabilityOptionsLookupID, int? ActivityID ,int? UpdatedBy) : IRequest<OperationResult<bool>>,
+    IValidatableModel<UpdateActivityDisabilityMappingCommand>
+{
+    [JsonIgnore]
+    public int UserId { get; set; }
+    public IValidator<UpdateActivityDisabilityMappingCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateActivityDisabilityMappingCommand> validator)
+    {
+
+        validator.RuleFor(c => c.DisabilityOptionsLookupID)
+    .NotEmpty()
+    .NotNull()
+    .WithMessage("Please enter a DisabilityOptionsLookupID");
+        validator.RuleFor(c => c.ActivityID)
+    .NotEmpty()
+    .NotNull()
+    .WithMessage("Please enter a ActivityID");
+        return validator;
+       
+    }
+}
+
