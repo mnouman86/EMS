@@ -46,7 +46,11 @@ public record CreateActivityCommand(string? Title,
 
     // int? PerGroupPrice
     // int? SeasonID
-     int? CreatedBy) : IRequest<OperationResult<bool>>,
+     int? CreatedBy,
+    int? CultureId,
+    int? Code,
+    string? Message
+    ) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateActivityCommand>
 {
     [JsonIgnore]
