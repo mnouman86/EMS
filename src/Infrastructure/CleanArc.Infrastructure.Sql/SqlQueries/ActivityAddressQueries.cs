@@ -11,8 +11,8 @@ public static class ActivityAddressQueries
     public static string Create_ActivityAddress => "Create_ActivityAddress";
     public static string update_ActivityAddress => "update_ActivityAddress";
     public static string Delete_ActivityAddress => "Delete_ActivityAddress";
-    public static string usp_GetAll_ActivityAddress => "usp_GetAll_ActivityAddress";
-    public static string usp_GetByID_ActivityAddress => "usp_GetByID_ActivityAddress";
+    public static string GetAll_ActivityAddress => "GetAll_ActivityAddress";
+    public static string GetByID_ActivityAddress => "GetByID_ActivityAddress";
 
 
 }

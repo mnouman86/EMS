@@ -11,7 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Activity.Commands.CreateActivityCommand;
-public record CreateActivityCommand(string? Title,
+public record CreateActivityCommand(
+    string? Title,
    int? LanguageLookUpID,
    int? ServiceLookUpID,
    int? SubServiceLookUpID,
@@ -23,7 +24,7 @@ public record CreateActivityCommand(string? Title,
    int? MinGroupSize,
    int? MaxGroupSize,
    bool? IsPrivateActivity,
-   //int? PrivateParticipantID,
+   int? PrivateParticipantLookUpID,
    string? WhoCanParticipate,
    string? WhoCannotParticipate,
    int? ManageActivityLookUpID,
@@ -73,14 +74,8 @@ public record CreateActivityCommand(string? Title,
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a SubServiceLookUpID");
-        validator.RuleFor(c => c.MinAge)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a MinAge");
-        validator.RuleFor(c => c.MaxAge)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a MaxAge");
+       
+       
         validator.RuleFor(c => c.ActivityTypeLookUpID)
            .NotEmpty()
            .NotNull()
@@ -131,10 +126,10 @@ public record CreateActivityCommand(string? Title,
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a Description");
-        validator.RuleFor(c => c.IsTransportation)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a Description");
+        //validator.RuleFor(c => c.IsTransportation)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a Description");
         validator.RuleFor(c => c.TransportationLookUpID)
            .NotEmpty()
            .NotNull()
@@ -143,18 +138,7 @@ public record CreateActivityCommand(string? Title,
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a OtherManageActivity");
-        validator.RuleFor(c => c.IsDisability)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a IsDisability");
-        //validator.RuleFor(c => c.DisabilitiesID)
-        //   .NotEmpty()
-        //   .NotNull()
-        //   .WithMessage("Please enter a Description");
-        //validator.RuleFor(c => c.Recommendation)
-        //   .NotEmpty()
-        //   .NotNull()
-        //   .WithMessage("Please enter a Recommendation");
+   
         validator.RuleFor(c => c.AllowedItems)
            .NotEmpty()
            .NotNull()
@@ -167,14 +151,6 @@ public record CreateActivityCommand(string? Title,
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a PerPersonPrice");
-        //validator.RuleFor(c => c.PerGroupPrice)
-        //   .NotEmpty()
-        //   .NotNull()
-        //   .WithMessage("Please enter a PerGroupPrice");
-        //validator.RuleFor(c => c.SeasonID)
-        //   .NotEmpty()
-        //   .NotNull()
-        //   .WithMessage("Please enter a SeasonID");
         return validator;
     }
 }

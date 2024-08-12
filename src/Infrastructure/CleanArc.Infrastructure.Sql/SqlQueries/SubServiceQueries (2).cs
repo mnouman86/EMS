@@ -11,8 +11,8 @@ public static class SubServiceQueries
     public static string Create_SubService => "Create_SubService";
     public static string update_SubService => "update_SubService";
     public static string Delete_SubService => "Delete_SubService";
-    public static string usp_GetAll_SubService => "usp_GetAll_SubService";
-    public static string usp_GetByID_SubService => "usp_GetByID_SubService";
+    public static string GetAll_SubServices => "GetAll_SubServices";
+    public static string GetByID_SubServices => "GetByID_SubServices";
 
 
 }

@@ -135,7 +135,7 @@ public async Task<string> AddAsync(ActivitySeason ActivitySeason)
                 //    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
                 //    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 //};
-                var result = await connection.QueryAsync<ActivitySeason>(ActivitySeasonQueries.usp_GetAll_ActivitySeason, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<ActivitySeason>(ActivitySeasonQueries.GetAll_Seasons, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }
@@ -154,7 +154,7 @@ public async Task<string> AddAsync(ActivitySeason ActivitySeason)
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<ActivitySeason>(ActivitySeasonQueries.usp_GetByID_ActivitySeason, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<ActivitySeason>(ActivitySeasonQueries.GetByID_Seasons, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }

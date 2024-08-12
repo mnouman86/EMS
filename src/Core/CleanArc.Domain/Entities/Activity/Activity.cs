@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Domain.Entities.Activity;
 
-public  class Activity
-    
+public  class Activity    
 {
     public int ID { get; set; }
     public string Title { get; set; }
@@ -24,6 +23,7 @@ public  class Activity
     public int? MinGroupSize { get; set; }
     public int? MaxGroupSize { get; set; }
     public bool? IsPrivateActivity { get; set; }
+    public int? PrivateParticipantLookUpID { get; set; }
     public string WhoCanParticipate { get; set; }
     public string WhoCannotParticipate { get; set; }
     public int? ManageActivityLookUpID { get; set; }
