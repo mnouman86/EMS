@@ -52,6 +52,7 @@ public  class Activity
     public int? UpdatedBy { get; set; }
     public DateTime? UpdatedAt { get; set; }
     public List<ActivityImageMapping> ActivityImages { get; set; }
+    public List<ActivityAddress> ActivityAddress { get; set; }
 
 
 
@@ -63,3 +64,16 @@ public class ActivityImageMapping
     public int? ActivityID { get; set; }
     public bool? IsMain { get; set; }
 }
+public class ActivityAddress
+{
+    public int? ActivityID { get; set; }
+    public int? CountryLookUpID { get; set; }
+    public int? CityLookUpID { get; set; }
+    public int? StateLookUpID { get; set; }
+    public string? AddressLine1 { get; set; }
+    public string? AddressLine2 { get; set; }
+    public string? PostalCode { get; set; }
+    public string? Latitude { get; set; }
+    public string? Longitude { get; set; }
+}
+

@@ -76,6 +76,7 @@ public class UnitOfWork : IUnitOfWork
 
     public IActivityGroupRepository ActivityGroupRepository { get; set; }
     public ICurrencyRepository CurrencyRepository { get; set; }
+    public IActivityPricePerParticipantRepository ActivityPricePerParticipantRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -143,6 +144,7 @@ public class UnitOfWork : IUnitOfWork
         ILogger<ActivityGroupRepository> _loggerActivityGroup,
         ILogger<CurrencyRepository> _loggerCurrency,
                 ILogger<ActivityDisabilityMappingRepository> _loggerActivityDisabilityMapping,
+                ILogger<ActivityPricePerParticipantRepository> _loggerActivityPricePerParticipant,
 
 
 
@@ -212,6 +214,7 @@ public class UnitOfWork : IUnitOfWork
         ActivityGroupRepository = new ActivityGroupRepository(configuration, mapper, _loggerActivityGroup, httpContextAccessor);
         CurrencyRepository = new CurrencyRepository(configuration, mapper, _loggerCurrency, httpContextAccessor);
         ActivityDisabilityMappingRepository = new ActivityDisabilityMappingRepository(configuration, mapper, _loggerActivityDisabilityMapping, httpContextAccessor);
+        ActivityPricePerParticipantRepository = new ActivityPricePerParticipantRepository(configuration, mapper, _loggerActivityPricePerParticipant, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         this.configuration = configuration;
