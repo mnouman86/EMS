@@ -32,6 +32,7 @@ namespace CleanArc.Application.Models.Activities
         public bool? IsDisability { get; set; }
         public int? Code { get; set; }
         public int? Message { get; set; }
+        public int? ActivityID { get; set; }
         public string AllowedItems { get; set; }
         public string NotAllowedItems { get; set; }
         public int? CurrencyLookUpID { get; set; }

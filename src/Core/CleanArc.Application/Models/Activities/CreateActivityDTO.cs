@@ -34,6 +34,7 @@ namespace CleanArc.Application.Models.Activities
         public int? PerPersonPrice { get; set; }
         public int? CultureId { get; set; }
         public int? Code { get; set; }
+        public int? ActivityID { get; set; }
         public int? Message { get; set; }
         //public Decimal? PerGroupPrice { get; set; }
         public string? OtherSubService { get; set; }
