@@ -1,4 +1,5 @@
 ﻿using CleanArc.Domain.Common;
+using CleanArc.Domain.Entities.SearchHotelRoomDetail;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,7 +50,15 @@ public  class Activity
     public DateTime? CreatedAt { get; set; }
     public int? UpdatedBy { get; set; }
     public DateTime? UpdatedAt { get; set; }
+    public List<ActivityImageMapping> ActivityImages { get; set; }
 
 
 
+}
+public class ActivityImageMapping
+{
+    public string? ImageTitle { get; set; }
+    public string? ImagePath { get; set; }
+    public int? ActivityID { get; set; }
+    public bool? IsMain { get; set; }
 }
