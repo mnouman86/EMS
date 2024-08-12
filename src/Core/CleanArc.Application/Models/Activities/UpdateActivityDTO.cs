@@ -36,6 +36,8 @@ namespace CleanArc.Application.Models.Activities
         public string AllowedItems { get; set; }
         public string NotAllowedItems { get; set; }
         public int? CurrencyLookUpID { get; set; }
+        public int? SeasonLookUpID { get; set; }
+
         public int? CultureId { get; set; }
         public string? OtherSubService { get; set; }
         public string? OtherManageActivity { get; set; }
