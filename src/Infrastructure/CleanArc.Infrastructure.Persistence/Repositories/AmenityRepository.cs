@@ -116,7 +116,7 @@ public class AmenityRepository : IAmenityRepository
                 };
 
                 // Call
-                List<FilterParameter> FilterArray = new List<FilterParameter>();
+                List<FilterParameter> FilterArray = new List<FilterParameter>(); 
                 List<SortingParameter> SortingArray = new List<SortingParameter>();
                 FilterArray.Add(new FilterParameter { ParameterName = "PlaceID", ParameterValue = "4" });
                 var Adparameter = new

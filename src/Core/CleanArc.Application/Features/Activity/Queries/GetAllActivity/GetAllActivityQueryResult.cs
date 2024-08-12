@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CleanArc.Domain.Entities.SearchHotelRoomDetail;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,9 +12,9 @@ public class GetAllActivityQueryResult
 
  public int ID { get; set; }
   public string Title { get; set; }
-     public int? LanguageLookUpID { get; set; }
-        public string LanguageName { get; set; }
-    public int? ServiceLookUpID { get; set; }
+  public int? LanguageLookUpID { get; set; }
+  public string LanguageName { get; set; }
+  public int? ServiceLookUpID { get; set; }
  public int? SubServiceLookUpID { get; set; }
  public int? MinAge { get; set; }
  public int? MaxAge { get; set; }
@@ -47,6 +48,8 @@ public class GetAllActivityQueryResult
  public DateTime? CreatedAt { get; set; }
  public int? UpdatedBy { get; set; }
  public DateTime? UpdatedAt { get; set; }
+
+public List<CleanArc.Domain.Entities.Activity.ActivityImageMapping> ActivityImages { get; set; }
 
 }
 
