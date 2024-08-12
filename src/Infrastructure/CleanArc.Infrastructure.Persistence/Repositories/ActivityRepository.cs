@@ -80,7 +80,7 @@ public async Task<string> AddAsync(Activity Activity)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityQueries.Create_Activity, createActivityDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync(ActivityQueries.Create_Activity, createActivityDTO, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -89,7 +89,7 @@ public async Task<string> AddAsync(Activity Activity)
 
     public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
-        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy,CultureId }))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
@@ -166,6 +166,10 @@ public async Task<string> AddAsync(Activity Activity)
 
     public async Task<string> UpdateAsync(Activity entity)
     {
+        try
+        {
+
+       
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
@@ -180,6 +184,12 @@ public async Task<string> AddAsync(Activity Activity)
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }
+        }
+        }
+        catch (Exception ex)
+        {
+
+            throw;
         }
     }
 }

@@ -135,7 +135,7 @@ public async Task<string> AddAsync(SubService SubService)
                 //    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
                 //    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 //};
-                var result = await connection.QueryAsync<SubService>(SubServiceQueries.usp_GetAll_SubService, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<SubService>(SubServiceQueries.GetAll_SubServices, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }
@@ -154,7 +154,7 @@ public async Task<string> AddAsync(SubService SubService)
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<SubService>(SubServiceQueries.usp_GetByID_SubService, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<SubService>(SubServiceQueries.GetByID_SubServices, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
