@@ -70,6 +70,7 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
                 MinGroupSize = request.MinGroupSize,
                 MaxGroupSize = request.MaxGroupSize,
                 IsPrivateActivity = request.IsPrivateActivity,
+                PrivateParticipantLookUpID = request.PrivateParticipantLookUpID,
                 WhoCannotParticipate = request.WhoCannotParticipate,
                 WhoCanParticipate = request.WhoCanParticipate,
                 ManageActivityLookUpID = request.ManageActivityLookUpID,
