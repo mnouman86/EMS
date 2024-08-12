@@ -40,6 +40,7 @@ public  class Activity
     public int? CultureId { get; set; }
     public int? Code { get; set; }
     public string? Message { get; set; }
+    public int? ActivityID { get; set; }
     public Decimal? PerPersonPrice { get; set; }
     // public int? PerGroupPrice { get; set; }
     public bool? IsActive { get; set; }
@@ -48,6 +49,7 @@ public  class Activity
     public DateTime? CreatedAt { get; set; }
     public int? UpdatedBy { get; set; }
     public DateTime? UpdatedAt { get; set; }
+
 
 
 }

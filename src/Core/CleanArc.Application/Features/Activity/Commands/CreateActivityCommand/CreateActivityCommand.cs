@@ -31,13 +31,13 @@ public record CreateActivityCommand(
    int? Days,
    int? Hours,
    //int? AddressID,
-   string? Description,
-   bool? IsTransportation,
+    string? Description,
+    bool? IsTransportation,
     int? TransportationLookUpID,
-   // int? ActivityIncludeID,
+    // int? ActivityIncludeID,
     bool? IsDisability,
-   // int? DisabilitiesID,
-   // string? Recommendation,
+    // int? DisabilitiesID,
+    // string? Recommendation,
     string ? AllowedItems,
     string?   NotAllowedItems,
     int? CurrencyLookUpID,
@@ -47,10 +47,12 @@ public record CreateActivityCommand(
 
     // int? PerGroupPrice
     // int? SeasonID
-     int? CreatedBy,
+    int? CreatedBy,
     int? CultureId,
     int? Code,
-    string? Message
+    string? Message,
+    int? ActivityID
+
     ) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateActivityCommand>
 {
