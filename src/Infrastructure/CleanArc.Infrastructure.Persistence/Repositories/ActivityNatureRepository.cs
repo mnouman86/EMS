@@ -134,7 +134,7 @@ public async Task<string> AddAsync(ActivityNature ActivityNature)
                 //    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
                 //    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 //};
-                var result = await connection.QueryAsync<ActivityNature>(ActivityNatureQueries.usp_GetAll_ActivityNature, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<ActivityNature>(ActivityNatureQueries.GetAll_Natures, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }
@@ -153,7 +153,7 @@ public async Task<string> AddAsync(ActivityNature ActivityNature)
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<ActivityNature>(ActivityNatureQueries.usp_GetByID_ActivityNature, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<ActivityNature>(ActivityNatureQueries.GetByID_Natures, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }

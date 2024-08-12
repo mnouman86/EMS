@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityImageMapping.Commands.CreateActivityImageMappingCommand;
-public record CreateActivityImageMappingCommand(int? ActivityID, string? ImagePath, string? ImageTitle, bool? IsMain, int? CreatedBy) : IRequest<OperationResult<bool>>,
+public record CreateActivityImageMappingCommand(int? ActivityID, string? ImagePath, string? ImageTitle, bool? IsMain, int? CreatedBy,int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateActivityImageMappingCommand>
 {
     [JsonIgnore]

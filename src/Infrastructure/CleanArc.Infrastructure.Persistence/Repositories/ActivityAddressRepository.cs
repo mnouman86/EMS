@@ -134,7 +134,7 @@ public async Task<string> AddAsync(ActivityAddress ActivityAddress)
                 //    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
                 //    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 //};
-                var result = await connection.QueryAsync<ActivityAddress>(ActivityAddressQueries.usp_GetAll_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<ActivityAddress>(ActivityAddressQueries.GetAll_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }
@@ -152,7 +152,7 @@ public async Task<string> AddAsync(ActivityAddress ActivityAddress)
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
-                var result = await connection.QuerySingleOrDefaultAsync<ActivityAddress>(ActivityAddressQueries.usp_GetByID_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<ActivityAddress>(ActivityAddressQueries.GetByID_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
