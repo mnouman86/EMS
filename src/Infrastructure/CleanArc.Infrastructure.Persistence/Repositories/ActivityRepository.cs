@@ -121,30 +121,46 @@ public async Task<string> AddAsync(Activity Activity)
                 parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
                 parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
                 parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
-                parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
-                parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+               // parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+               // parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
+               
                 var result = await connection.QueryAsync<Activity>(ActivityQueries.GetAll_Activity, parameters, commandType: CommandType.StoredProcedure);
                 foreach (var item in result)
                 {
-                    List<FilterParameter> FilterArray = new List<FilterParameter>();
-                    List<SortingParameter> SortingArray = new List<SortingParameter>();
-                    FilterArray.Add(new FilterParameter { ParameterName = "ActivityID", ParameterValue = item.ActivityID.ToString() });
-                    var parameter = new DynamicParameters();
-                    parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
-                    parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
-                    parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
-                    parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
-                    parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+                    var imageParams = new DynamicParameters();
+                    imageParams.Add("@ActivityID", item.ActivityID, DbType.Int32);
+                    imageParams.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
                     parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                    var imageList = await connection.QueryAsync<ActivityImageMapping>(ActivityImageMappingQueries.Mapping_GetByID_Activity_Image, parameter, commandType: CommandType.StoredProcedure);
-                    item.ActivityImages = new List<ActivityImageMapping>();
-                    item.ActivityImages.AddRange(imageList);
 
+                    var imageList = await connection.QueryAsync<ActivityImageMapping>(ActivityImageMappingQueries.Mapping_GetByID_Activity_Image, imageParams, commandType: CommandType.StoredProcedure);
+                    var AddressList = await connection.QueryAsync<ActivityAddress>(ActivityAddressQueries.GetByID_ActivityAddress, imageParams, commandType: CommandType.StoredProcedure);
+
+                    item.ActivityImages = imageList.ToList();
+                    item.ActivityAddress = AddressList.ToList();
                 }
+
+                //foreach (var item in result)
+                //{
+                //    List<FilterParameter> FilterArray = new List<FilterParameter>();
+                //    List<SortingParameter> SortingArray = new List<SortingParameter>();
+                //    FilterArray.Add(new FilterParameter { ParameterName = "ActivityID", ParameterValue = item.ActivityID.ToString() });
+                //    var parameter = new DynamicParameters();
+                //    parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+                //    parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                //    parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                //    parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+                //    parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+                //    parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                //    parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                //    var imageList = await connection.QueryAsync<ActivityImageMapping>(ActivityImageMappingQueries.Mapping_GetByID_Activity_Image, parameter, commandType: CommandType.StoredProcedure);
+                //    item.ActivityImages = new List<ActivityImageMapping>();
+                //    item.ActivityImages.AddRange(imageList);
+
+                //}
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }

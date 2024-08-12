@@ -51,6 +51,8 @@ public class GetAllActivityQueryResult
 
 public List<CleanArc.Domain.Entities.Activity.ActivityImageMapping> ActivityImages { get; set; }
 
+public List<CleanArc.Domain.Entities.Activity.ActivityAddress> ActivityAddress { get; set; }
+
 }
 
 //    public GetAllActivityQueryResult(int iD, string name, string description, bool isDeleted, bool isActive, int createdBy, DateTime createdAt, int updatedBy, DateTime updatedAt)
