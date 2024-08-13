@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.ActivitySeasonMapping
 {
     public class CreateActivitySeasonMappingDTO
     {
-        public int? SeasonLookUpID { get; set; }
+        public String? SeasonIDs { get; set; }
         public int? ActivityID { get; set; }
      
         //public string? Name { get; set; }
