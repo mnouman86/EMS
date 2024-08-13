@@ -16,7 +16,7 @@ namespace CleanArc.Application.Models.Activities
         public int? MaxAge { get; set; }
         public int? ActivityTypeLookUpID { get; set; }
         public int? ActivityNatureLookUpID { get; set; }
-        public int? MinGroupSize { get; set; }
+        //public int? MinGroupSize { get; set; }
         public int? MaxGroupSize { get; set; }
         public int? IsPrivateActivity { get; set; }
         public string WhoCanParticipate { get; set; }
@@ -34,7 +34,7 @@ namespace CleanArc.Application.Models.Activities
         public string? SeasonLookUpID { get; set; }
         public string? IncludeOptionLookUpID { get; set; }
         public string? DisabilityOptionLookUpID { get; set; }
-        public int? PerPersonPrice { get; set; }
+        public Decimal? PerPersonPrice { get; set; }
         public int? CultureId { get; set; }
         public int? Code { get; set; }
         public int? ActivityID { get; set; }

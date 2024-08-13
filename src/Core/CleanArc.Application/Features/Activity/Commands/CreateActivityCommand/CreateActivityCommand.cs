@@ -21,10 +21,10 @@ public record CreateActivityCommand(
    int? MaxAge,
    int? ActivityTypeLookUpID,
    int? ActivityNatureLookUpID,
-   int? MinGroupSize,
+   //int? MinGroupSize,
    int? MaxGroupSize,
    bool? IsPrivateActivity,
-   int? PrivateParticipantLookUpID,
+   //int? PrivateParticipantLookUpID,
    string? WhoCanParticipate,
    string? WhoCannotParticipate,
    int? ManageActivityLookUpID,
@@ -89,10 +89,10 @@ public record CreateActivityCommand(
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a ActivityNatureLookUpID");
-        validator.RuleFor(c => c.MinGroupSize)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a MinGroupSize");
+        //validator.RuleFor(c => c.MinGroupSize)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a MinGroupSize");
         validator.RuleFor(c => c.MaxGroupSize)
            .NotEmpty()
            .NotNull()
@@ -135,10 +135,10 @@ public record CreateActivityCommand(
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a IncludeOptionLookUpID");
-        validator.RuleFor(c => c.OtherSubService)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a OtherSubService");
+        //validator.RuleFor(c => c.OtherSubService)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a OtherSubService");
         validator.RuleFor(c => c.Description)
            .NotEmpty()
            .NotNull()
@@ -151,10 +151,10 @@ public record CreateActivityCommand(
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a TransportationLookUpID ");
-        validator.RuleFor(c => c.OtherManageActivity)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a OtherManageActivity");
+        //validator.RuleFor(c => c.OtherManageActivity)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a OtherManageActivity");
    
         validator.RuleFor(c => c.AllowedItems)
            .NotEmpty()
