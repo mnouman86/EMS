@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityDisabilityMapping.Commands.CreateActivityDisabilityMappingCommand;
-public record CreateActivityDisabilityMappingCommand( int? DisabilityOptionsLookupID, int? ActivityID, int? CreatedBy) : IRequest<OperationResult<bool>>,
+public record CreateActivityDisabilityMappingCommand(String? DisabilityOptionIDs, int? ActivityID, int? CreatedBy) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateActivityDisabilityMappingCommand>
 {
     [JsonIgnore]
@@ -19,10 +19,10 @@ public record CreateActivityDisabilityMappingCommand( int? DisabilityOptionsLook
     public IValidator<CreateActivityDisabilityMappingCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateActivityDisabilityMappingCommand> validator)
     {
       
-        validator.RuleFor(c => c.DisabilityOptionsLookupID)
+        validator.RuleFor(c => c.DisabilityOptionIDs)
     .NotEmpty()
     .NotNull()
-    .WithMessage("Please enter a DisabilityOptionsLookupID");
+    .WithMessage("Please enter a DisabilityOptionIDs");
         validator.RuleFor(c => c.ActivityID)
     .NotEmpty()
     .NotNull()

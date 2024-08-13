@@ -58,7 +58,7 @@ internal class CreateActivityDisabilityMappingCommandHandler: IRequestHandler<Cr
 
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.ActivityDisabilityMappingRepository.AddAsync(new Domain.Entities.ActivityDisabilityMapping.ActivityDisabilityMapping()
-            { CreatedBy = user.Id, DisabilityOptionsLookupID = request.DisabilityOptionsLookupID, ActivityID=request.ActivityID });
+            { CreatedBy = user.Id, DisabilityOptionIDs = request.DisabilityOptionIDs, ActivityID=request.ActivityID });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

@@ -10,7 +10,7 @@ namespace CleanArc.Application.Features.ActivitySeasonMapping.Queries.GetActivit
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
         public int ID { get; set; }
-        public int? SeasonLookUpID { get; set; }
+        public String? SeasonIDs { get; set; }
         public string? Name { get; set; }
         public int? ActivityID { get; set; }
         public string? Title { get; set; }
