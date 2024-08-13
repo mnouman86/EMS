@@ -13,7 +13,7 @@ public  class ActivityDisabilityMapping
     public int ID { get; set; }
     public string? Title { get; set; }
     public string? Name { get; set; }
-    public int? DisabilityOptionsLookupID { get; set; }
+    public String? DisabilityOptionIDs { get; set; }
     public int? ActivityID { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDelete { get; set; }

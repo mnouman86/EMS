@@ -1,5 +1,6 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Domain.Entities.ActivityDisabilityOption;
+using CleanArc.Domain.Entities.ActivityIncludeOptionMapping;
 using CleanArc.Domain.Entities.ActivityTransportation;
 using CleanArc.Domain.Entities.SearchCarAmenities;
 using MapsterMapper;
@@ -78,6 +79,7 @@ public class UnitOfWork : IUnitOfWork
     public ICurrencyRepository CurrencyRepository { get; set; }
     public IActivityPricePerParticipantRepository ActivityPricePerParticipantRepository { get; set; }
     public IActivityPerGroupPriceRepository ActivityPerGroupPriceRepository { get; set; }
+    public IActivityIncludeOptionMappingRepository ActivityIncludeOptionMappingRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -147,6 +149,7 @@ public class UnitOfWork : IUnitOfWork
                 ILogger<ActivityDisabilityMappingRepository> _loggerActivityDisabilityMapping,
                 ILogger<ActivityPricePerParticipantRepository> _loggerActivityPricePerParticipant,
                                 ILogger<ActivityPerGroupPriceRepository> _loggerActivityPerGroupPrice,
+                 ILogger<ActivityIncludeOptionMappingRepository> _loggerActivityIncludeOptionMapping,
 
 
 
@@ -218,6 +221,7 @@ public class UnitOfWork : IUnitOfWork
         ActivityDisabilityMappingRepository = new ActivityDisabilityMappingRepository(configuration, mapper, _loggerActivityDisabilityMapping, httpContextAccessor);
         ActivityPricePerParticipantRepository = new ActivityPricePerParticipantRepository(configuration, mapper, _loggerActivityPricePerParticipant, httpContextAccessor);
         ActivityPerGroupPriceRepository = new ActivityPerGroupPriceRepository(configuration, mapper, _loggerActivityPerGroupPrice, httpContextAccessor);
+        ActivityIncludeOptionMappingRepository = new ActivityIncludeOptionMappingRepository(configuration, mapper, _loggerActivityIncludeOptionMapping, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         this.configuration = configuration;

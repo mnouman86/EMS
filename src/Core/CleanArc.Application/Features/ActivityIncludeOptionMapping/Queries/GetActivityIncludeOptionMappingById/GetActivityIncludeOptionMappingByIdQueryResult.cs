@@ -4,17 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.ActivityDisabilityMapping.Queries.GetActivityDisabilityMappingById
+namespace CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetActivityIncludeOptionMappingById
 {
-    public class GetActivityDisabilityMappingByIdQueryResult
+    public class GetActivityIncludeOptionMappingByIdQueryResult
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
-
         public int ID { get; set; }
-        public string? Title { get; set; }
+        public string? IncludeOptionIDs { get; set; }
         public string? Name { get; set; }
-        public String? DisabilityOptionIDs { get; set; }
         public int? ActivityID { get; set; }
+        public string? Title { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsDelete { get; set; }
         public int? CreatedBy { get; set; }

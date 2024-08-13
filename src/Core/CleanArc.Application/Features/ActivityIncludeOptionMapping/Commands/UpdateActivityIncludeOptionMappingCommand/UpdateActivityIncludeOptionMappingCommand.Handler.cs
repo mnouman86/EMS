@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Features.ActivitySeasonMapping.Commands.CreateActivitySeasonMappingCommand;
+using CleanArc.Application.Features.ActivityIncludeOptionMapping.Commands.CreateActivityIncludeOptionMappingCommand;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -14,21 +14,21 @@ using Mediator;
 using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.Extensions;
 
-namespace CleanArc.Application.Features.ActivitySeasonMapping.Commands.UpdateActivitySeasonMappingCommand;
+namespace CleanArc.Application.Features.ActivityIncludeOptionMapping.Commands.UpdateActivityIncludeOptionMappingCommand;
 
-internal class UpdateActivitySeasonMappingCommandHandler:IRequestHandler<UpdateActivitySeasonMappingCommand, OperationResult<bool>>
+internal class UpdateActivityIncludeOptionMappingCommandHandler:IRequestHandler<UpdateActivityIncludeOptionMappingCommand, OperationResult<bool>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<UpdateActivitySeasonMappingCommandHandler> _logger;
+    private readonly ILogger<UpdateActivityIncludeOptionMappingCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
     //private readonly IUnitOfWork _unitOfWork;
     //private readonly IAppUserManager _userManager;
 
 
-    public UpdateActivitySeasonMappingCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateActivitySeasonMappingCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public UpdateActivityIncludeOptionMappingCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateActivityIncludeOptionMappingCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -39,7 +39,7 @@ internal class UpdateActivitySeasonMappingCommandHandler:IRequestHandler<UpdateA
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<bool>> Handle(UpdateActivitySeasonMappingCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<bool>> Handle(UpdateActivityIncludeOptionMappingCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -55,8 +55,8 @@ internal class UpdateActivitySeasonMappingCommandHandler:IRequestHandler<UpdateA
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.ActivitySeasonMappingRepository.UpdateAsync(new Domain.Entities.ActivitySeasonMapping.ActivitySeasonMapping()
-            { UpdatedBy = user.Id,ID= request.ID, SeasonIDs = request.SeasonIDs, ActivityID = request.ActivityID });
+            await _unitOfWork.ActivityIncludeOptionMappingRepository.UpdateAsync(new Domain.Entities.ActivityIncludeOptionMapping.ActivityIncludeOptionMapping()
+            { UpdatedBy = user.Id,ID= request.ID, IncludeOptionIDs = request.IncludeOptionIDs, ActivityID = request.ActivityID });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

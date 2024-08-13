@@ -56,7 +56,7 @@ internal class UpdateActivityDisabilityMappingCommandHandler:IRequestHandler<Upd
 
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.ActivityDisabilityMappingRepository.UpdateAsync(new Domain.Entities.ActivityDisabilityMapping.ActivityDisabilityMapping()
-            { UpdatedBy = user.Id,ID= request.ID, DisabilityOptionsLookupID = request.DisabilityOptionsLookupID, ActivityID = request.ActivityID });
+            { UpdatedBy = user.Id,ID= request.ID, DisabilityOptionIDs = request.DisabilityOptionIDs, ActivityID = request.ActivityID });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);
