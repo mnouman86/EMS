@@ -41,11 +41,13 @@ public record CreateActivityCommand(
     string ? AllowedItems,
     string?   NotAllowedItems,
     int? CurrencyLookUpID,
-    int? SeasonLookUpID,
+    //int? SeasonLookUpID,
     Decimal? PerPersonPrice,
     string? OtherSubService,
     string? OtherManageActivity,
-
+    string? DisabilityOptionLookUpID,
+    string? IncludeOptionLookUpID,
+     string? SeasonLookUpID,
     // int? PerGroupPrice
     // int? SeasonID
     int? CreatedBy,
@@ -121,6 +123,18 @@ public record CreateActivityCommand(
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a Hours");
+        validator.RuleFor(c => c.SeasonLookUpID)
+           .NotEmpty()
+           .NotNull()
+           .WithMessage("Please enter a SeasonLookUpID");
+        validator.RuleFor(c => c.DisabilityOptionLookUpID)
+           .NotEmpty()
+           .NotNull()
+           .WithMessage("Please enter a DisabilityOptionLookUpID");
+        validator.RuleFor(c => c.IncludeOptionLookUpID)
+           .NotEmpty()
+           .NotNull()
+           .WithMessage("Please enter a IncludeOptionLookUpID");
         validator.RuleFor(c => c.OtherSubService)
            .NotEmpty()
            .NotNull()
