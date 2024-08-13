@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.ActivityDisabilityMapping.Queries.GetAllActivityDisabilityMapping;
+namespace CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping;
 
-public class GetAllActivityDisabilityMappingQueryResult
+public class GetAllActivityIncludeOptionMappingQueryResult
 {
-
     public int ID { get; set; }
-    public string? Title { get; set; }
+    public String? SeasonIDs { get; set; }
     public string? Name { get; set; }
-    public String? DisabilityOptionIDs { get; set; }
     public int? ActivityID { get; set; }
+    public string? Title { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDelete { get; set; }
     public int? CreatedBy { get; set; }
@@ -25,7 +24,7 @@ public class GetAllActivityDisabilityMappingQueryResult
     public int? Message { get; set; }
 }
 
-//    public GetAllActivityDisabilityMappingQueryResult(int iD, string name, string description, bool isDeleted, bool isActive, int createdBy, DateTime createdAt, int updatedBy, DateTime updatedAt)
+//    public GetAllActivityIncludeOptionMappingQueryResult(int iD, string name, string description, bool isDeleted, bool isActive, int createdBy, DateTime createdAt, int updatedBy, DateTime updatedAt)
 //    {
 //        ID = iD;
 //        Name = name;

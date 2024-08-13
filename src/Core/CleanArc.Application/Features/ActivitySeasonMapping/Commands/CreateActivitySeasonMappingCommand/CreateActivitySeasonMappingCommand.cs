@@ -11,14 +11,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivitySeasonMapping.Commands.CreateActivitySeasonMappingCommand;
-public record CreateActivitySeasonMappingCommand(int? SeasonLookUpID, int? ActivityID, int? CreatedBy) : IRequest<OperationResult<bool>>,
+public record CreateActivitySeasonMappingCommand(String? SeasonIDs, int? ActivityID, int? CreatedBy) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateActivitySeasonMappingCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<CreateActivitySeasonMappingCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateActivitySeasonMappingCommand> validator)
     {
-        validator.RuleFor(c => c.SeasonLookUpID)
+        validator.RuleFor(c => c.SeasonIDs)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid SeasonLookUpID");

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
-public static class ActivitySeasonMappingQueries
+public static class ActivityIncludeOptionMappingQueries
 {
-    public static string Mapping_Create_Seasons => "Create_Mapping_Seasons";
+    public static string Mapping_Create_Seasons => "Create_Mapping_IncludeOptions";
     public static string Mapping_Update_Seasons => "Mapping_Update_Seasons";
     public static string Mapping_Delete_Seasons => "Mapping_Delete_Seasons";
     public static string Mapping_GetAll_Seasons => "Mapping_GetAll_Seasons";

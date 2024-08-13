@@ -58,7 +58,7 @@ internal class CreateActivitySeasonMappingCommandHandler: IRequestHandler<Create
 
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.ActivitySeasonMappingRepository.AddAsync(new Domain.Entities.ActivitySeasonMapping.ActivitySeasonMapping()
-            { CreatedBy = user.Id, SeasonLookUpID = request.SeasonLookUpID, ActivityID=request.SeasonLookUpID });
+            { CreatedBy = user.Id, SeasonIDs = request.SeasonIDs, ActivityID=request.ActivityID });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Models.ActivitySeasonMapping
+namespace CleanArc.Application.Models.ActivityIncludeOptionMapping
 {
-    public class UpdateActivitySeasonMappingDTO
+    public class UpdateActivityIncludeOptionMappingDTO
     {
 
         public int ID { get; set; }
-        public String? SeasonIDs { get; set; }
+        public string? IncludeOptionIDs { get; set; }
         public int? ActivityID { get; set; }
         //public bool? IsActive { get; set; }
         //public bool? IsDeleted { get; set; }

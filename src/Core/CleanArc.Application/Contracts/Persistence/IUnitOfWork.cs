@@ -69,6 +69,7 @@ public interface IUnitOfWork
     public ICurrencyRepository CurrencyRepository { get; }
     public IActivityPricePerParticipantRepository ActivityPricePerParticipantRepository { get; }
     public IActivityPerGroupPriceRepository ActivityPerGroupPriceRepository { get; }
+    public IActivityIncludeOptionMappingRepository ActivityIncludeOptionMappingRepository { get; }
 
 
 
