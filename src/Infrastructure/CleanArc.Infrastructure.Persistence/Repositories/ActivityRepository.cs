@@ -131,10 +131,10 @@ public async Task<string> AddAsync(Activity Activity)
                 foreach (var item in result)
                 {
                     var imageParams = new DynamicParameters();
-                    imageParams.Add("@ActivityID", item.ActivityID, DbType.Int32);
+                    imageParams.Add("@ID", item.ID, DbType.Int32);
                     imageParams.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
-                    parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                    parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                    imageParams.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    imageParams.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                     var imageList = await connection.QueryAsync<ActivityImageMapping>(ActivityImageMappingQueries.Mapping_GetByID_Activity_Image, imageParams, commandType: CommandType.StoredProcedure);
                     var AddressList = await connection.QueryAsync<ActivityAddress>(ActivityAddressQueries.GetByID_ActivityAddress, imageParams, commandType: CommandType.StoredProcedure);
