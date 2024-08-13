@@ -65,7 +65,7 @@ internal class UpdateActivityCommandHandler:IRequestHandler<UpdateActivityComman
                 MaxAge = request.MaxAge,
                 ActivityTypeLookUpID = request.ActivityTypeLookUpID,
                 ActivityNatureLookUpID = request.ActivityNatureLookUpID,
-                MinGroupSize = request.MinGroupSize,
+                //MinGroupSize = request.MinGroupSize,
                 MaxGroupSize = request.MaxGroupSize,
                 IsPrivateActivity = request.IsPrivateActivity,
                 WhoCannotParticipate = request.WhoCannotParticipate,
