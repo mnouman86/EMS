@@ -38,6 +38,7 @@ public  class Activity
     public string AllowedItems { get; set; }
     public string NotAllowedItems { get; set; }
     public int? CurrencyLookUpID { get; set; }
+    public int? SeasonLookUpID { get; set; }
     public int? CultureId { get; set; }
     public int? Code { get; set; }
     public string? Message { get; set; }

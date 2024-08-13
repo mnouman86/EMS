@@ -82,6 +82,7 @@ internal class UpdateActivityCommandHandler:IRequestHandler<UpdateActivityComman
                 NotAllowedItems = request.NotAllowedItems,
                 AllowedItems = request.AllowedItems,
                 CurrencyLookUpID = request.CurrencyLookUpID,
+                SeasonLookUpID = request.SeasonLookUpID,
                 //PerGroupPrice = request.PerGroupPrice,
                 PerPersonPrice = request.PerPersonPrice,
                 OtherManageActivity = request.OtherManageActivity,
