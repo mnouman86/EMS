@@ -38,7 +38,7 @@ public record UpdateActivityCommand(
     string? AllowedItems,
     string? NotAllowedItems,
     int? CurrencyLookUpID,
-    Decimal? PerPersonPrice,
+   // Decimal? PerPersonPrice,
      string? SeasonLookUpID,
     string? IncludeOptionLookUpID,
     string? DisabilityOptionLookUpID,
@@ -115,10 +115,10 @@ public record UpdateActivityCommand(
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a Hours");
-        validator.RuleFor(c => c.OtherManageActivity)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a OtherManageActivity");
+        //validator.RuleFor(c => c.OtherManageActivity)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a OtherManageActivity");
         validator.RuleFor(c => c.Description)
            .NotEmpty()
            .NotNull()
@@ -131,10 +131,10 @@ public record UpdateActivityCommand(
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a TransportationLookUpID ");
-        validator.RuleFor(c => c.OtherSubService)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a OtherSubService");
+        //validator.RuleFor(c => c.OtherSubService)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a OtherSubService");
         validator.RuleFor(c => c.IsDisability)
            .NotEmpty()
            .NotNull()
@@ -155,10 +155,10 @@ public record UpdateActivityCommand(
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a CurrencyLookUpID");
-        validator.RuleFor(c => c.PerPersonPrice)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a PerPersonPrice");
+        //validator.RuleFor(c => c.PerPersonPrice)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a PerPersonPrice");
         //validator.RuleFor(c => c.PerGroupPrice)
         //   .NotEmpty()
         //   .NotNull()
