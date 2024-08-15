@@ -56,7 +56,7 @@ internal class UpdateActivityPricePerParticipantCommandHandler:IRequestHandler<U
 
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.ActivityPricePerParticipantRepository.UpdateAsync(new Domain.Entities.ActivityPricePerParticipant.ActivityPricePerParticipant()
-            { UpdatedBy = user.Id, ActivityID = request.ActivityID, PerParticipationPrice = request.PerParticipationPrice });
+            { UpdatedBy = user.Id, ActivityID = request.ActivityID, PerParticipationPrice = request.PerParticipationPrice, CultureId=request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);
