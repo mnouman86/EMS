@@ -79,7 +79,7 @@ public async Task<string> AddAsync(ActivityType ActivityType)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityTypeQueries.Create_ActivityType, createActivityTypeDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityTypeQueries.Create_ActivityType, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -176,7 +176,7 @@ public async Task<string> AddAsync(ActivityType ActivityType)
                 var parameters = new DynamicParameters(updateActivityTypeDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.ExecuteAsync(ActivityTypeQueries.update_ActivityType, updateActivityTypeDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityTypeQueries.update_ActivityType, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }

@@ -79,7 +79,7 @@ public async Task<string> AddAsync(ActivityDisabilityOption ActivityDisabilityOp
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityDisabilityOptionQueries.Create_ActivityDisabilityOption, createActivityDisabilityOptionDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityDisabilityOptionQueries.Create_ActivityDisabilityOption, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -176,7 +176,7 @@ public async Task<string> AddAsync(ActivityDisabilityOption ActivityDisabilityOp
                 var parameters = new DynamicParameters(updateActivityDisabilityOptionDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.ExecuteAsync(ActivityDisabilityOptionQueries.update_ActivityDisabilityOption, updateActivityDisabilityOptionDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityDisabilityOptionQueries.update_ActivityDisabilityOption, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }

@@ -13,6 +13,7 @@ using System.Text.Json.Serialization;
 namespace CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand;
 public record UpdateActivityCommand(
    int ID,
+   int? CultureId,
   string? Title,
    int? LanguageLookUpID,
    int? ServiceLookUpID,

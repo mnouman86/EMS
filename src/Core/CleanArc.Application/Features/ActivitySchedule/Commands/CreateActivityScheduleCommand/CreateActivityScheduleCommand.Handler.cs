@@ -58,7 +58,7 @@ internal class CreateActivityScheduleCommandHandler: IRequestHandler<CreateActiv
 
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.ActivityScheduleRepository.AddAsync(new Domain.Entities.ActivitySchedule.ActivitySchedule()
-            { CreatedBy = user.Id, ActivityID = request.ActivityID,Title=request.Title  });
+            { CreatedBy = user.Id, ActivityID = request.ActivityID,Title=request.Title ,CultureId=request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

@@ -8,11 +8,11 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
 public static class ActivityScheduleQueries
 {
-    public static string Create_ActivitySchedule => "Create_ActivitySchedule";
-    public static string update_ActivitySchedule => "update_ActivitySchedule";
-    public static string Delete_ActivitySchedule => "Delete_ActivitySchedule";
-    public static string usp_GetAll_ActivitySchedule => "usp_GetAll_ActivitySchedule";
-    public static string usp_GetByID_ActivitySchedule => "usp_GetByID_ActivitySchedule";
+    public static string Create_ActivitySchedule => "Create_Schedule";
+    public static string update_ActivitySchedule => "update_Schedule";
+    public static string Delete_ActivitySchedule => "Delete_Schedule";
+    public static string usp_GetAll_ActivitySchedule => "GetAll_Schedule";
+    public static string usp_GetByID_ActivitySchedule => "GetByID_Schedule";
 
 
 }

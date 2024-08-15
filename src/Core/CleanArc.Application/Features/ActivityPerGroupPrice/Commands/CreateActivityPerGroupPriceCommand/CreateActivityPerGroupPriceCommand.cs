@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityPerGroupPrice.Commands.CreateActivityPerGroupPriceCommand;
-public record CreateActivityPerGroupPriceCommand(int? ActivityID, int? MinGroupSize, int? MaxGroupSize, decimal? Price, int? CreatedBy) : IRequest<OperationResult<bool>>,
+public record CreateActivityPerGroupPriceCommand(int? ActivityID, int? MinGroupSize, int? MaxGroupSize, decimal? Price, int? CreatedBy,int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateActivityPerGroupPriceCommand>
 {
     [JsonIgnore]

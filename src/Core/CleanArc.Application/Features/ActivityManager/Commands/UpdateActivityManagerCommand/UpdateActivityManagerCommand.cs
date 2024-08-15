@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.ActivityManager.Commands.UpdateActivityManagerCommand;
-public record UpdateActivityManagerCommand(int ID,String? Name, string? Description, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record UpdateActivityManagerCommand(int ID,String? Name, string? Description, int? UpdatedBy,int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateActivityManagerCommand>
 {
     [JsonIgnore]

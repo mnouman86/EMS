@@ -58,7 +58,7 @@ internal class CreateActivityPrivateParticipantCommandHandler: IRequestHandler<C
 
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.ActivityPrivateParticipantRepository.AddAsync(new Domain.Entities.ActivityPrivateParticipant.ActivityPrivateParticipant()
-            { CreatedBy = user.Id, Description = request.Description,Name=request.Name  });
+            { CreatedBy = user.Id, Description = request.Description,Name=request.Name,CultureId=request.CultureId  });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

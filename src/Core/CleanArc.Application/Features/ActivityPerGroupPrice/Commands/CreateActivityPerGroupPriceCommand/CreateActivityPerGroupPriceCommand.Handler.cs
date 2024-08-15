@@ -58,7 +58,7 @@ internal class CreateActivityPerGroupPriceCommandHandler: IRequestHandler<Create
 
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.ActivityPerGroupPriceRepository.AddAsync(new Domain.Entities.ActivityPerGroupPrice.ActivityPerGroupPrice()
-            { CreatedBy = user.Id, ActivityID = request.ActivityID,MinGroupSize=request.MinGroupSize, MaxGroupSize = request.MaxGroupSize, Price = request.Price });
+            { CreatedBy = user.Id, ActivityID = request.ActivityID,MinGroupSize=request.MinGroupSize, MaxGroupSize = request.MaxGroupSize, Price = request.Price,CultureId=request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

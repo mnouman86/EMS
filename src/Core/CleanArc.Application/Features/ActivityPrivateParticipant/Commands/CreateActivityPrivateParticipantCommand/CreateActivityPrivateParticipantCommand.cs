@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityPrivateParticipant.Commands.CreateActivityPrivateParticipantCommand;
-public record CreateActivityPrivateParticipantCommand(string? Name, string? Description,int? CreatedBy) : IRequest<OperationResult<bool>>,
+public record CreateActivityPrivateParticipantCommand(string? Name, string? Description,int? CreatedBy,int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateActivityPrivateParticipantCommand>
 {
     [JsonIgnore]
