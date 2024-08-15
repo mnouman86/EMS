@@ -174,7 +174,7 @@ public async Task<string> AddAsync(ActivityPerGroupPrice ActivityPerGroupPrice)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityPerGroupPriceQueries.Update_ActivityPerGroupPrice, updateActivityPerGroupPriceDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityPerGroupPriceQueries.Update_ActivityPerGroupPrice, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }

@@ -79,7 +79,7 @@ public async Task<string> AddAsync(ActivityPricePerParticipant ActivityPricePerP
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityPricePerParticipantQueries.Create_ActivityPricePerParticipant, createActivityPricePerParticipantDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityPricePerParticipantQueries.Create_ActivityPricePerParticipant, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -176,7 +176,7 @@ public async Task<string> AddAsync(ActivityPricePerParticipant ActivityPricePerP
                 var parameters = new DynamicParameters(updateActivityPricePerParticipantDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.ExecuteAsync(ActivityPricePerParticipantQueries.Activity_Update_ActivityIDPerParticiption, updateActivityPricePerParticipantDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityPricePerParticipantQueries.Activity_Update_ActivityIDPerParticiption, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }
