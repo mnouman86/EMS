@@ -4580,3 +4580,1183 @@ WHERE [u].[UserId] = @__p_0
 2024-08-15 16:11:47.375 +05:00 [INF] Response StatusCode: 200
 2024-08-15 16:11:47.379 +05:00 [INF] Response StatusCode: 200
 2024-08-15 16:11:47.385 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 789 - 200 - application/json;+charset=utf-8 74401.0549ms
+2024-08-15 16:26:41.426 +05:00 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-15 16:26:41.953 +05:00 [INF] Executed DbCommand (236ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-15 16:26:42.009 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-15 16:26:42.038 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-15 16:26:42.111 +05:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-08-15 16:26:42.220 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-08-15 16:26:42.313 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-15 16:26:43.413 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-15 16:26:43.481 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-15 16:26:45.086 +05:00 [INF] Now listening on: https://localhost:5002
+2024-08-15 16:26:46.453 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-08-15 16:26:47.095 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-08-15 16:26:47.830 +05:00 [INF] Response StatusCode: 200
+2024-08-15 16:26:47.857 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 1411.6497ms
+2024-08-15 16:26:47.898 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-08-15 16:26:47.898 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-08-15 16:26:47.956 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 58.3553ms
+2024-08-15 16:26:48.201 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 303.3853ms
+2024-08-15 16:26:49.293 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-08-15 16:26:49.302 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-15 16:26:49.322 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-08-15 16:26:49.330 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-08-15 16:26:49.969 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-15 16:26:50.000 +05:00 [INF] Response StatusCode: 404
+2024-08-15 16:26:50.007 +05:00 [INF] Response StatusCode: 404
+2024-08-15 16:26:50.014 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 720.6368ms
+2024-08-15 16:26:52.016 +05:00 [INF] Response StatusCode: 200
+2024-08-15 16:26:52.028 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 2706.0132ms
+2024-08-15 16:30:08.970 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 799
+2024-08-15 16:30:08.992 +05:00 [INF] CORS policy execution successful.
+2024-08-15 16:30:09.037 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:30:09.058 +05:00 [INF] Request Body: {
+ "id": 0,
+  "cultureId": 1,
+  "title": "test1234ok",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "perPersonPrice": 1,
+"updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4",
+
+}
+
+2024-08-15 16:30:09.800 +05:00 [INF] Executed DbCommand (80ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-15 16:30:10.159 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:30:10.174 +05:00 [INF] Request Body: {
+ "id": 0,
+  "cultureId": 1,
+  "title": "test1234ok",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "perPersonPrice": 1,
+"updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4",
+
+}
+
+2024-08-15 16:30:10.195 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:30:10.350 +05:00 [INF] Route matched with {action = "Update", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand.UpdateActivityCommand) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-15 16:30:17.350 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-08-15 16:30:17.409 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api) in 6998.9199ms
+2024-08-15 16:30:17.431 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:30:17.443 +05:00 [INF] Response StatusCode: 400
+2024-08-15 16:30:17.456 +05:00 [INF] Response StatusCode: 400
+2024-08-15 16:30:17.464 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 799 - 400 - application/json;+charset=utf-8 8493.4956ms
+2024-08-15 16:30:37.343 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 798
+2024-08-15 16:30:37.399 +05:00 [INF] CORS policy execution successful.
+2024-08-15 16:30:37.407 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:30:37.415 +05:00 [INF] Request Body: {
+ "id": 0,
+  "cultureId": 1,
+  "title": "test1234ok",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "perPersonPrice": 1,
+"updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4"
+
+}
+
+2024-08-15 16:30:37.693 +05:00 [INF] Executed DbCommand (17ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-15 16:30:37.713 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:30:37.728 +05:00 [INF] Request Body: {
+ "id": 0,
+  "cultureId": 1,
+  "title": "test1234ok",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "perPersonPrice": 1,
+"updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4"
+
+}
+
+2024-08-15 16:30:37.754 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:30:37.762 +05:00 [INF] Route matched with {action = "Update", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand.UpdateActivityCommand) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-15 16:30:48.040 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-15 16:30:48.858 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand, Handle with parameter: {"ID":0,"CultureId":1,"Title":"test1234ok","LanguageLookUpID":1,"ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":"string","MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":"string","Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","UpdatedBy":0,"UserId":5}
+2024-08-15 16:30:48.881 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-15 16:30:48.999 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-08-15 16:30:54.585 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":0,"Title":"test1234ok","LanguageLookUpID":1,"LanguageName":null,"ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":"string","MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":"string","Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","PerPersonPrice":null,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":5,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null,"ActivityID":null,"Duration":null,"Cancellation":null,"ActivityImages":null,"ActivityAddress":null}
+2024-08-15 16:31:02.839 +05:00 [INF] Exiting null, UpdateAsync
+2024-08-15 16:31:12.827 +05:00 [INF] Exiting null, Handle
+2024-08-15 16:31:16.256 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api) in 38480.1648ms
+2024-08-15 16:31:16.266 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:32:14.743 +05:00 [ERR] Procedure or function Update_Activity has too many arguments specified.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function Update_Activity has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at CleanArc.Infrastructure.Persistence.Repositories.ActivityRepository.UpdateAsync(Activity entity) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\ActivityRepository.cs:line 215
+   at CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand.UpdateActivityCommandHandler.Handle(UpdateActivityCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\Activity\Commands\UpdateActivityCommand\UpdateActivityCommand.Handler.cs:line 58
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Update(TUpdateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 129
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:b6264448-91bd-421e-878e-b4d89b584629
+Error Number:8144,State:2,Class:16
+2024-08-15 16:32:15.042 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 798 - 500 0 - 97698.7541ms
+2024-08-15 16:32:17.955 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 778
+2024-08-15 16:32:17.967 +05:00 [INF] CORS policy execution successful.
+2024-08-15 16:32:17.983 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:32:17.994 +05:00 [INF] Request Body: {
+ "id": 0,
+  "cultureId": 1,
+  "title": "test1234ok",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  
+"updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4"
+
+}
+
+2024-08-15 16:32:18.058 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-15 16:32:18.092 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:32:18.107 +05:00 [INF] Request Body: {
+ "id": 0,
+  "cultureId": 1,
+  "title": "test1234ok",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  
+"updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4"
+
+}
+
+2024-08-15 16:32:18.121 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:32:18.139 +05:00 [INF] Route matched with {action = "Update", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand.UpdateActivityCommand) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-15 16:32:22.418 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-15 16:32:22.849 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand, Handle with parameter: {"ID":0,"CultureId":1,"Title":"test1234ok","LanguageLookUpID":1,"ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":"string","MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":"string","Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","UpdatedBy":0,"UserId":5}
+2024-08-15 16:32:23.009 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-15 16:32:23.096 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-08-15 16:32:24.810 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":0,"Title":"test1234ok","LanguageLookUpID":1,"LanguageName":null,"ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":"string","MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":"string","Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","PerPersonPrice":null,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":5,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null,"ActivityID":null,"Duration":null,"Cancellation":null,"ActivityImages":null,"ActivityAddress":null}
+2024-08-15 16:32:26.314 +05:00 [INF] Exiting null, UpdateAsync
+2024-08-15 16:32:26.497 +05:00 [INF] Exiting null, Handle
+2024-08-15 16:32:26.723 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api) in 8565.9521ms
+2024-08-15 16:32:26.732 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:32:27.176 +05:00 [ERR] Procedure or function Update_Activity has too many arguments specified.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function Update_Activity has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at CleanArc.Infrastructure.Persistence.Repositories.ActivityRepository.UpdateAsync(Activity entity) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\ActivityRepository.cs:line 215
+   at CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand.UpdateActivityCommandHandler.Handle(UpdateActivityCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\Activity\Commands\UpdateActivityCommand\UpdateActivityCommand.Handler.cs:line 58
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Update(TUpdateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 129
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:b6264448-91bd-421e-878e-b4d89b584629
+Error Number:8144,State:2,Class:16
+2024-08-15 16:32:27.293 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 778 - 500 0 - 9338.1578ms
+2024-08-15 16:33:12.448 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 778
+2024-08-15 16:33:12.518 +05:00 [INF] CORS policy execution successful.
+2024-08-15 16:33:12.526 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:33:12.536 +05:00 [INF] Request Body: {
+ "id": 0,
+  "cultureId": 1,
+  "title": "test1234ok",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  
+"updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4"
+
+}
+
+2024-08-15 16:33:12.561 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-15 16:33:12.575 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:33:12.592 +05:00 [INF] Request Body: {
+ "id": 0,
+  "cultureId": 1,
+  "title": "test1234ok",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  
+"updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4"
+
+}
+
+2024-08-15 16:33:12.611 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:33:12.621 +05:00 [INF] Route matched with {action = "Update", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand.UpdateActivityCommand) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-15 16:33:16.687 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-15 16:33:16.741 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand, Handle with parameter: {"ID":0,"CultureId":1,"Title":"test1234ok","LanguageLookUpID":1,"ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":"string","MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":"string","Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","UpdatedBy":0,"UserId":5}
+2024-08-15 16:33:16.754 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-15 16:33:16.784 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-08-15 16:33:18.351 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":0,"Title":"test1234ok","LanguageLookUpID":1,"LanguageName":null,"ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":"string","MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":"string","Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","PerPersonPrice":null,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":5,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null,"ActivityID":null,"Duration":null,"Cancellation":null,"ActivityImages":null,"ActivityAddress":null}
+2024-08-15 16:33:26.603 +05:00 [INF] Exiting null, UpdateAsync
+2024-08-15 16:33:33.770 +05:00 [INF] Exiting null, Handle
+2024-08-15 16:33:37.684 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api) in 25050.2729ms
+2024-08-15 16:33:37.700 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:35:13.107 +05:00 [ERR] Procedure or function Update_Activity has too many arguments specified.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function Update_Activity has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at CleanArc.Infrastructure.Persistence.Repositories.ActivityRepository.UpdateAsync(Activity entity) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\ActivityRepository.cs:line 215
+   at CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand.UpdateActivityCommandHandler.Handle(UpdateActivityCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\Activity\Commands\UpdateActivityCommand\UpdateActivityCommand.Handler.cs:line 58
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Update(TUpdateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 129
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:b6264448-91bd-421e-878e-b4d89b584629
+Error Number:8144,State:2,Class:16
+2024-08-15 16:35:13.323 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 778 - 500 0 - 120877.5073ms
+2024-08-15 16:35:55.636 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 778
+2024-08-15 16:35:55.650 +05:00 [INF] CORS policy execution successful.
+2024-08-15 16:35:55.654 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:35:55.660 +05:00 [INF] Request Body: {
+ "id": 74,
+  "cultureId": 1,
+  "title": "test1234ok",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4"
+
+}
+
+2024-08-15 16:35:55.681 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-15 16:35:55.690 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:35:55.694 +05:00 [INF] Request Body: {
+ "id": 74,
+  "cultureId": 1,
+  "title": "test1234ok",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4"
+
+}
+
+2024-08-15 16:35:55.699 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:35:55.703 +05:00 [INF] Route matched with {action = "Update", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand.UpdateActivityCommand) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-15 16:35:58.146 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-15 16:35:58.173 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand, Handle with parameter: {"ID":74,"CultureId":1,"Title":"test1234ok","LanguageLookUpID":1,"ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":"string","MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":"string","Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","UpdatedBy":0,"UserId":5}
+2024-08-15 16:35:58.184 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-15 16:35:58.197 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-08-15 16:35:59.319 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":74,"Title":"test1234ok","LanguageLookUpID":1,"LanguageName":null,"ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":"string","MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":"string","Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","PerPersonPrice":null,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":5,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null,"ActivityID":null,"Duration":null,"Cancellation":null,"ActivityImages":null,"ActivityAddress":null}
+2024-08-15 16:36:00.276 +05:00 [INF] Exiting null, UpdateAsync
+2024-08-15 16:36:00.342 +05:00 [INF] Exiting null, Handle
+2024-08-15 16:36:00.410 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api) in 4699.4707ms
+2024-08-15 16:36:00.427 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:36:00.651 +05:00 [ERR] Procedure or function Update_Activity has too many arguments specified.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function Update_Activity has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at CleanArc.Infrastructure.Persistence.Repositories.ActivityRepository.UpdateAsync(Activity entity) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\ActivityRepository.cs:line 215
+   at CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand.UpdateActivityCommandHandler.Handle(UpdateActivityCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\Activity\Commands\UpdateActivityCommand\UpdateActivityCommand.Handler.cs:line 58
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Update(TUpdateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 129
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:b6264448-91bd-421e-878e-b4d89b584629
+Error Number:8144,State:2,Class:16
+2024-08-15 16:36:00.691 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 778 - 500 0 - 5055.1648ms
+2024-08-15 16:36:58.790 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-15 16:36:58.897 +05:00 [INF] Executed DbCommand (52ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-15 16:36:58.908 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-15 16:36:58.921 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-15 16:36:58.945 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-08-15 16:36:58.962 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-08-15 16:36:58.976 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-15 16:36:59.146 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-15 16:36:59.166 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-15 16:36:59.908 +05:00 [INF] Now listening on: https://localhost:5002
+2024-08-15 16:37:00.925 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-08-15 16:37:01.213 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-08-15 16:37:01.568 +05:00 [INF] Response StatusCode: 200
+2024-08-15 16:37:01.585 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 662.4489ms
+2024-08-15 16:37:01.607 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-08-15 16:37:01.607 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-08-15 16:37:01.626 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 19.2371ms
+2024-08-15 16:37:01.728 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 121.0256ms
+2024-08-15 16:37:02.237 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-08-15 16:37:02.250 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-15 16:37:02.285 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-08-15 16:37:02.290 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-08-15 16:37:02.510 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-15 16:37:02.515 +05:00 [INF] Response StatusCode: 404
+2024-08-15 16:37:02.518 +05:00 [INF] Response StatusCode: 404
+2024-08-15 16:37:02.521 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 283.9566ms
+2024-08-15 16:37:03.539 +05:00 [INF] Response StatusCode: 200
+2024-08-15 16:37:03.546 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1261.4306ms
+2024-08-15 16:37:22.717 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 50
+2024-08-15 16:37:22.730 +05:00 [INF] CORS policy execution successful.
+2024-08-15 16:37:22.738 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-08-15 16:37:22.747 +05:00 [INF] Request Body: {
+  "userName": "waqas",
+  "password": "123@123"
+}
+2024-08-15 16:37:22.766 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-08-15 16:37:22.775 +05:00 [INF] Request Body: {
+  "userName": "waqas",
+  "password": "123@123"
+}
+2024-08-15 16:37:22.784 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-08-15 16:37:22.837 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-08-15 16:37:25.246 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-15 16:37:25.549 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"waqas","Password":"123@123"}
+2024-08-15 16:37:25.684 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"waqas","Password":"123@123","$type":"AdminGetTokenQuery"}
+2024-08-15 16:37:25.865 +05:00 [INF] Executed DbCommand (38ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-08-15 16:37:26.065 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1,"$type":"User"}
+2024-08-15 16:37:26.134 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-08-15 16:37:26.413 +05:00 [INF] Executed DbCommand (22ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-08-15 16:37:26.470 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-08-15 16:37:26.501 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-08-15 16:37:26.534 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-08-15 16:37:26.729 +05:00 [INF] Executed DbCommand (134ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-08-15 16:37:27.405 +05:00 [INF] Executed DbCommand (31ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-08-15 16:37:30.105 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-08-15 16:37:30.135 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.B5PVF4fKzNSQZqIumkPjCT6_5zZlZUGUGCSJAx3GoFINbZBN7vpH_Q.X0MJpxvhR6ZiwBAaIsYi0w.WyCpMue53A9NrBM0xqz-prvDwExrzWREQ82AEsySLQqIMgj9AvDaZzcTRZvTBdQbMr3xolVzJj-R5ZviYVxrpU3DprbPBEzezpOdt3bJBW1EIrxonZYnvDlKdj34mT4ZtG9DYXTvH01v0ru73noMRjh_vXustGSH8JGk1HhNQHlI0DY5mFh4BVzf8szzOupyq9ynvYXfTtraDIX_RzO1qDlA-CgQ3rcoIM9KflT41raX7nKTviOeN7zoDWycQ5wZKUuK2L77aLU7ySiACIKBy5qOv2UxWi4-FofJV5FFK-U-87BlV7GocjODTyWhHd21G1s5a0A3qjDPq0EfDSSJ1TYh2vbfx57PRwk05oTQIU7sYsVW6XDRX2DH2M7fLVy4_GAaUhwie3bKX09zVD8iqlRwqa1kz9PXB-KfkQRwavYh4ObAJ-_d8VhuwiDrxzkzrU6MmwUDxKsVxkS7mXhb6tiZkwZJ2oUh3betlLIkbsIW6hI7FoWa8fzr3qi3Zyk4Frh6MJe0IwFHmkX43GzBCcrbOnlcOezBKsi9b1xd2rQn4nzezmB_yBKeHIr35TMVdK1BV3kYB2JR5Lh3rlng7ZHLicSkDxTY3A6faqW2FNJoDPjstPjlEQllQUMzOlaA6luss8fuDMejz0k6qexoGhpHc1_YRGFzcM_ubFQY8kQ7YcSEr9kVwSvGKsztWKki.4Hi-Nzw3z1NG6AeonpC5Dg","refresh_token":"020dc671-fd89-4ae7-2d44-08dcbd1ea387","token_type":"Bearer","expires_in":599995,"userID":5},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-08-15 16:37:30.156 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4892.8684ms.
+2024-08-15 16:37:30.188 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-15 16:37:30.247 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 7374.2969ms
+2024-08-15 16:37:30.258 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-08-15 16:37:30.267 +05:00 [INF] Response StatusCode: 200
+2024-08-15 16:37:30.283 +05:00 [INF] Response StatusCode: 200
+2024-08-15 16:37:30.298 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 50 - 200 - application/json;+charset=utf-8 7581.0060ms
+2024-08-15 16:38:19.638 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 778
+2024-08-15 16:38:19.666 +05:00 [INF] CORS policy execution successful.
+2024-08-15 16:38:19.672 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:38:19.679 +05:00 [INF] Request Body: {
+ "id": 74,
+  "cultureId": 1,
+  "title": "test1234ok",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4"
+
+}
+
+2024-08-15 16:38:19.986 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-15 16:38:20.052 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:38:20.060 +05:00 [INF] Request Body: {
+ "id": 74,
+  "cultureId": 1,
+  "title": "test1234ok",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4"
+
+}
+
+2024-08-15 16:38:20.071 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:38:20.090 +05:00 [INF] Route matched with {action = "Update", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand.UpdateActivityCommand) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-15 16:38:23.100 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-15 16:38:23.424 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand, Handle with parameter: {"ID":74,"CultureId":1,"Title":"test1234ok","LanguageLookUpID":1,"ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":"string","MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":"string","Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","UpdatedBy":0,"UserId":5}
+2024-08-15 16:38:23.435 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-15 16:38:23.472 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-08-15 16:38:25.056 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":74,"Title":"test1234ok","LanguageLookUpID":1,"LanguageName":null,"ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":"string","MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":"string","Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","PerPersonPrice":null,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":5,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null,"ActivityID":null,"Duration":null,"Cancellation":null,"ActivityImages":null,"ActivityAddress":null}
+2024-08-15 16:38:27.243 +05:00 [INF] Exiting null, UpdateAsync
+2024-08-15 16:38:27.366 +05:00 [INF] Exiting null, Handle
+2024-08-15 16:38:27.477 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api) in 7375.9675ms
+2024-08-15 16:38:27.510 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:38:28.069 +05:00 [ERR] Procedure or function Update_Activity has too many arguments specified.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function Update_Activity has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at CleanArc.Infrastructure.Persistence.Repositories.ActivityRepository.UpdateAsync(Activity entity) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\ActivityRepository.cs:line 215
+   at CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand.UpdateActivityCommandHandler.Handle(UpdateActivityCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\Activity\Commands\UpdateActivityCommand\UpdateActivityCommand.Handler.cs:line 58
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Update(TUpdateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 129
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:271f736f-b1e0-4387-9b69-d3d6f11221be
+Error Number:8144,State:2,Class:16
+2024-08-15 16:38:28.314 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 778 - 500 0 - 8675.6269ms
+2024-08-15 16:39:14.894 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 778
+2024-08-15 16:39:14.913 +05:00 [INF] CORS policy execution successful.
+2024-08-15 16:39:14.920 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:39:14.929 +05:00 [INF] Request Body: {
+ "id": 74,
+  "cultureId": 1,
+  "title": "test1234ok",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4"
+
+}
+
+2024-08-15 16:39:14.959 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-15 16:39:14.979 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:39:14.991 +05:00 [INF] Request Body: {
+ "id": 74,
+  "cultureId": 1,
+  "title": "test1234ok",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4"
+
+}
+
+2024-08-15 16:39:14.998 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:39:15.003 +05:00 [INF] Route matched with {action = "Update", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand.UpdateActivityCommand) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-15 16:39:20.264 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-15 16:39:20.279 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand, Handle with parameter: {"ID":74,"CultureId":1,"Title":"test1234ok","LanguageLookUpID":1,"ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":"string","MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":"string","Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","UpdatedBy":0,"UserId":5}
+2024-08-15 16:39:20.302 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-15 16:39:20.318 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-08-15 16:39:43.815 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":74,"Title":"test1234ok","LanguageLookUpID":1,"LanguageName":null,"ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":"string","MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":"string","Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","PerPersonPrice":null,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":5,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null,"ActivityID":null,"Duration":null,"Cancellation":null,"ActivityImages":null,"ActivityAddress":null}
+2024-08-15 16:39:51.236 +05:00 [INF] Exiting null, UpdateAsync
+2024-08-15 16:39:55.193 +05:00 [INF] Exiting null, Handle
+2024-08-15 16:40:16.148 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api) in 61136.5057ms
+2024-08-15 16:40:16.163 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:45:12.558 +05:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-15 16:45:12.843 +05:00 [INF] Executed DbCommand (118ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-15 16:45:12.909 +05:00 [INF] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-15 16:45:12.922 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-15 16:45:12.979 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-08-15 16:45:13.015 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-08-15 16:45:13.055 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-15 16:45:13.778 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-15 16:45:13.825 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-15 16:45:15.063 +05:00 [INF] Now listening on: https://localhost:5002
+2024-08-15 16:45:16.085 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-08-15 16:45:16.585 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-08-15 16:45:17.316 +05:00 [INF] Response StatusCode: 200
+2024-08-15 16:45:17.354 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 1279.2663ms
+2024-08-15 16:45:17.415 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-08-15 16:45:17.448 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-08-15 16:45:17.506 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 58.3560ms
+2024-08-15 16:45:17.672 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 256.7159ms
+2024-08-15 16:45:19.648 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-08-15 16:45:19.665 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-15 16:45:19.728 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-08-15 16:45:19.758 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-08-15 16:45:20.949 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-15 16:45:20.961 +05:00 [INF] Response StatusCode: 404
+2024-08-15 16:45:20.968 +05:00 [INF] Response StatusCode: 404
+2024-08-15 16:45:20.980 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 1331.9807ms
+2024-08-15 16:45:22.261 +05:00 [INF] Response StatusCode: 200
+2024-08-15 16:45:22.270 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 2541.9163ms
+2024-08-15 16:46:31.291 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 780
+2024-08-15 16:46:31.321 +05:00 [INF] CORS policy execution successful.
+2024-08-15 16:46:31.330 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:46:31.340 +05:00 [INF] Request Body: {
+ "id": 73,
+  "cultureId": 1,
+  "title": "test1234okaz",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4"
+
+}
+
+2024-08-15 16:46:31.879 +05:00 [INF] Executed DbCommand (42ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-15 16:46:32.122 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:46:32.140 +05:00 [INF] Request Body: {
+ "id": 73,
+  "cultureId": 1,
+  "title": "test1234okaz",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4"
+
+}
+
+2024-08-15 16:46:32.151 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:46:32.196 +05:00 [INF] Route matched with {action = "Update", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand.UpdateActivityCommand) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-15 16:46:34.938 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-15 16:46:35.685 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand, Handle with parameter: {"ID":73,"CultureId":1,"Title":"test1234okaz","LanguageLookUpID":1,"ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":"string","MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":"string","Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","UpdatedBy":0,"UserId":5}
+2024-08-15 16:46:35.701 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-15 16:46:35.763 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-08-15 16:46:37.101 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":73,"Title":"test1234okaz","LanguageLookUpID":1,"LanguageName":null,"ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":"string","MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":"string","Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","PerPersonPrice":null,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":5,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null,"ActivityID":null,"Duration":null,"Cancellation":null,"ActivityImages":null,"ActivityAddress":null}
+2024-08-15 16:46:41.588 +05:00 [INF] Exiting null, UpdateAsync with response: -1
+2024-08-15 16:46:41.678 +05:00 [INF] Exiting null, Handle with response: true
+2024-08-15 16:46:41.701 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 6745.5117ms.
+2024-08-15 16:46:41.732 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-08-15 16:46:41.772 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api) in 9561.2138ms
+2024-08-15 16:46:41.782 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:46:41.790 +05:00 [INF] Response StatusCode: 200
+2024-08-15 16:46:41.796 +05:00 [INF] Response StatusCode: 200
+2024-08-15 16:46:41.801 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 780 - 200 - application/json;+charset=utf-8 10513.5937ms
+2024-08-15 16:46:44.044 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 780
+2024-08-15 16:46:44.051 +05:00 [INF] CORS policy execution successful.
+2024-08-15 16:46:44.059 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:46:44.067 +05:00 [INF] Request Body: {
+ "id": 73,
+  "cultureId": 1,
+  "title": "test1234okaz",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4"
+
+}
+
+2024-08-15 16:46:44.271 +05:00 [INF] Executed DbCommand (17ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-15 16:46:44.287 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:46:44.295 +05:00 [INF] Request Body: {
+ "id": 73,
+  "cultureId": 1,
+  "title": "test1234okaz",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4"
+
+}
+
+2024-08-15 16:46:44.301 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:46:44.308 +05:00 [INF] Route matched with {action = "Update", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand.UpdateActivityCommand) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
