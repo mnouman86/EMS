@@ -74,6 +74,7 @@ internal class UpdateActivityCommandHandler:IRequestHandler<UpdateActivityComman
                 ManageActivityLookUpID = request.ManageActivityLookUpID,
                 Days = request.Days,
                 Hours = request.Hours,
+                Description = request.Description,
                 //AddressID = request.AddressID,
                 IsTransportation = request.IsTransportation,
                 TransportationLookUpID = request.TransportationLookUpID,
@@ -87,7 +88,9 @@ internal class UpdateActivityCommandHandler:IRequestHandler<UpdateActivityComman
                 //PerGroupPrice = request.PerGroupPrice,
                 PerPersonPrice = request.PerPersonPrice,
                 OtherManageActivity = request.OtherManageActivity,
-                OtherSubService = request.OtherSubService
+                OtherSubService = request.OtherSubService,
+                IncludeOptionLookUpID = request.IncludeOptionLookUpID,
+                DisabilityOptionLookUpID= request.DisabilityOptionLookUpID,
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
