@@ -79,7 +79,7 @@ public async Task<string> AddAsync(ActivityImageMapping ActivityImageMapping)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityImageMappingQueries.Mapping_Create_Activity_Image, createActivityImageMappingDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityImageMappingQueries.Mapping_Create_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -174,7 +174,7 @@ public async Task<string> AddAsync(ActivityImageMapping ActivityImageMapping)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityImageMappingQueries.Mapping_Update_ActivityImage, updateActivityImageMappingDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityImageMappingQueries.Mapping_Update_ActivityImage, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }
