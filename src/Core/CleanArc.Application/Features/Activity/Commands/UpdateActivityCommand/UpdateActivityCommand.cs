@@ -13,42 +13,35 @@ using System.Text.Json.Serialization;
 namespace CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand;
 public record UpdateActivityCommand(
    int ID,
-   int? CultureId,
-  string? Title,
+    int? CultureId,
+    string? Title,
    int? LanguageLookUpID,
    int? ServiceLookUpID,
    int? SubServiceLookUpID,
-   //int? BusinessID,
+   string? OtherSubService,
    int? MinAge,
    int? MaxAge,
    int? ActivityTypeLookUpID,
    int? ActivityNatureLookUpID,
-   int? MinGroupSize,
    int? MaxGroupSize,
    bool? IsPrivateActivity,
-   //int? PrivateParticipantID,
    string? WhoCanParticipate,
    string? WhoCannotParticipate,
    int? ManageActivityLookUpID,
+   string? OtherManageActivity,
    int? Days,
    int? Hours,
-   //int? AddressID,
-   string? Description,
-   bool? IsTransportation,
+    string? Description,
+    bool? IsTransportation,
     int? TransportationLookUpID,
-    // int? ActivityIncludeID,
     bool? IsDisability,
-    // int? DisabilitiesID,
-    // string? Recommendation,
     string? AllowedItems,
     string? NotAllowedItems,
     int? CurrencyLookUpID,
-    string? SeasonLookUpID,
-   Decimal? PerPersonPrice,
-   string? OtherSubService,
-    string? OtherManageActivity,
-
-     //int? PerGroupPrice,
+    Decimal? PerPersonPrice,
+     string? SeasonLookUpID,
+    string? IncludeOptionLookUpID,
+    string? DisabilityOptionLookUpID,
      int? UpdatedBy) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateActivityCommand>
 {
@@ -88,10 +81,10 @@ public record UpdateActivityCommand(
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a ActivityNatureLookUpID");
-        validator.RuleFor(c => c.MinGroupSize)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a MinGroupSize");
+        //validator.RuleFor(c => c.MinGroupSize)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a MinGroupSize");
         validator.RuleFor(c => c.MaxGroupSize)
            .NotEmpty()
            .NotNull()

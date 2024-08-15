@@ -215,7 +215,7 @@ void configureLogging(IHttpContextAccessor httpContextAccessor)
     .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
     //.WriteTo.Elasticsearch(ConfigureElasticSink(configuration, environment))
     .WriteTo.MSSqlServer(
-            connectionString: configuration.GetConnectionString("DBConnection"),
+            connectionString: configuration.GetConnectionString("DBConnection1"),
             sinkOptions: new MSSqlServerSinkOptions
             {
                 TableName = "Logs", // Customize the table name
