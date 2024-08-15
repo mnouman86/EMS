@@ -56,7 +56,7 @@ internal class UpdateActivityDisabilityOptionCommandHandler:IRequestHandler<Upda
 
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.ActivityDisabilityOptionRepository.UpdateAsync(new Domain.Entities.ActivityDisabilityOption.ActivityDisabilityOption()
-            { UpdatedBy = user.Id,ID= request.ID, Description = request.Description, Name = request.Name });
+            { UpdatedBy = user.Id,ID= request.ID, Description = request.Description, Name = request.Name,CultureId=request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

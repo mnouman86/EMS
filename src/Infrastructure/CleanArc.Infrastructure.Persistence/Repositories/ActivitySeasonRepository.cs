@@ -79,7 +79,7 @@ public async Task<string> AddAsync(ActivitySeason ActivitySeason)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivitySeasonQueries.Create_ActivitySeason, createActivitySeasonDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivitySeasonQueries.Create_ActivitySeason, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -100,7 +100,7 @@ public async Task<string> AddAsync(ActivitySeason ActivitySeason)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivitySeasonQueries.Delete_ActivitySeason, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivitySeasonQueries.Delete_Seasons, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }
@@ -175,7 +175,7 @@ public async Task<string> AddAsync(ActivitySeason ActivitySeason)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivitySeasonQueries.update_ActivitySeason, updateActivitySeasonDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivitySeasonQueries.Update_Seasons, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }

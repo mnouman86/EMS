@@ -58,7 +58,7 @@ internal class CreateActivitySeasonCommandHandler: IRequestHandler<CreateActivit
 
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.ActivitySeasonRepository.AddAsync(new Domain.Entities.ActivitySeason.ActivitySeason()
-            { CreatedBy = user.Id, Description = request.Description,Name=request.Name  });
+            { CreatedBy = user.Id, Description = request.Description,Name=request.Name });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

@@ -107,7 +107,7 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
     /// <param name="model">The model for creating the entity.</param>
     /// <returns>An action result representing the operation result.</returns>
     /// 
-    [Authorize]
+   [Authorize]
     [HttpPost("Create")]
     public async Task<IActionResult> Create([FromBody] TCreateCommand model)
     {

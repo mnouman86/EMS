@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.ActivityGroup.Commands.UpdateActivityGroupCommand;
-public record UpdateActivityGroupCommand(int ID, int? ActivityID, string? From, string To, int? Size, string Title, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record UpdateActivityGroupCommand(int ID, int? ActivityID, string? From, string To, int? Size,int? UpdatedBy,int CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateActivityGroupCommand>
 {
     [JsonIgnore]
@@ -22,10 +22,10 @@ public record UpdateActivityGroupCommand(int ID, int? ActivityID, string? From, 
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid ActivityID");
-        validator.RuleFor(c => c.Title)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a Title");
+        //validator.RuleFor(c => c.Title)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a Title");
         validator.RuleFor(c => c.From)
          .NotEmpty()
          .NotNull()

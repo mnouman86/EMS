@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityManager.Commands.CreateActivityManagerCommand;
-public record CreateActivityManagerCommand(string? Name, string? Description,int? CreatedBy) : IRequest<OperationResult<bool>>,
+public record CreateActivityManagerCommand(string? Name, string? Description,int? CreatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateActivityManagerCommand>
 {
     [JsonIgnore]

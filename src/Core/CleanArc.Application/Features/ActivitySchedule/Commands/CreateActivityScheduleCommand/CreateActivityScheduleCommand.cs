@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivitySchedule.Commands.CreateActivityScheduleCommand;
-public record CreateActivityScheduleCommand(int? ActivityID, string? Title, int? CreatedBy) : IRequest<OperationResult<bool>>,
+public record CreateActivityScheduleCommand(int? ActivityID, string? Title, int? CreatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateActivityScheduleCommand>
 {
     [JsonIgnore]

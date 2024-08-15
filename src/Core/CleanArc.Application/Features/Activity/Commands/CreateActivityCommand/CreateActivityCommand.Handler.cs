@@ -58,11 +58,13 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
 
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.ActivityRepository.AddAsync(new Domain.Entities.Activity.Activity()
-            { CreatedBy = user.Id, Description = request.Description,
+            {
+                CultureId = request.CultureId,
                 Title=request.Title,
                 LanguageLookUpID = request.LanguageLookUpID,
                 ServiceLookUpID = request.ServiceLookUpID,
                 SubServiceLookUpID = request.SubServiceLookUpID,
+                OtherSubService=request.OtherSubService,
                 MinAge = request.MinAge,
                 MaxAge = request.MaxAge,
                 ActivityTypeLookUpID = request.ActivityTypeLookUpID,
@@ -74,8 +76,10 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
                 WhoCannotParticipate = request.WhoCannotParticipate,
                 WhoCanParticipate = request.WhoCanParticipate,
                 ManageActivityLookUpID = request.ManageActivityLookUpID,
+                OtherManageActivity=request.OtherManageActivity,
                 Days = request.Days,
                 Hours = request.Hours,
+                Description = request.Description,
                 //AddressID = request.AddressID,
                 IsTransportation = request.IsTransportation,
                 TransportationLookUpID = request.TransportationLookUpID,
@@ -85,14 +89,12 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
                 NotAllowedItems = request.NotAllowedItems,
                 AllowedItems = request.AllowedItems,
                 CurrencyLookUpID = request.CurrencyLookUpID,
+                PerPersonPrice=request.PerPersonPrice,
+                CreatedBy=user.Id,
                 SeasonLookUpID = request.SeasonLookUpID,
                 IncludeOptionLookUpID = request.IncludeOptionLookUpID,
                 DisabilityOptionLookUpID= request.DisabilityOptionLookUpID,
                // PerGroupPrice = request.PerGroupPrice,
-                PerPersonPrice = request.PerPersonPrice,
-
-                OtherManageActivity=request.OtherManageActivity,
-                OtherSubService=request.OtherSubService
                 //SeasonID = request.SeasonID,
 
 

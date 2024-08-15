@@ -58,7 +58,7 @@ internal class CreateActivityNatureCommandHandler: IRequestHandler<CreateActivit
 
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.ActivityNatureRepository.AddAsync(new Domain.Entities.ActivityNature.ActivityNature()
-            { CreatedBy = user.Id, Description = request.Description,Name=request.Name  });
+            { CreatedBy = user.Id, Description = request.Description,Name=request.Name,CultureId=request.CultureId  });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);
