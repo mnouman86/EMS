@@ -79,7 +79,7 @@ public async Task<string> AddAsync(ActivityIncludeOptionMapping ActivityIncludeO
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityIncludeOptionMappingQueries.Mapping_Create_Seasons, createActivityIncludeOptionMappingDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityIncludeOptionMappingQueries.Mapping_Create_Seasons, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -175,7 +175,7 @@ public async Task<string> AddAsync(ActivityIncludeOptionMapping ActivityIncludeO
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityIncludeOptionMappingQueries.Mapping_Update_Seasons, updateActivityIncludeOptionMappingDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityIncludeOptionMappingQueries.Mapping_Update_Seasons, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }
