@@ -57,6 +57,7 @@ internal class UpdateActivityCommandHandler:IRequestHandler<UpdateActivityComman
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.ActivityRepository.UpdateAsync(new Domain.Entities.Activity.Activity()
             { UpdatedBy = user.Id,ID= request.ID,
+                CultureId=request.CultureId,
                 Title = request.Title,
                 LanguageLookUpID = request.LanguageLookUpID,
                 ServiceLookUpID = request.ServiceLookUpID,

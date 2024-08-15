@@ -79,7 +79,7 @@ public async Task<string> AddAsync(ActivityGroup ActivityGroup)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityGroupQueries.Create_Group, createActivityGroupDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityGroupQueries.Create_Group, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -134,7 +134,7 @@ public async Task<string> AddAsync(ActivityGroup ActivityGroup)
                 //    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
                 //    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 //};
-                var result = await connection.QueryAsync<ActivityGroup>(ActivityGroupQueries.usp_GetAll_Group, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<ActivityGroup>(ActivityGroupQueries.GetAll_Group, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }
@@ -153,7 +153,7 @@ public async Task<string> AddAsync(ActivityGroup ActivityGroup)
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<ActivityGroup>(ActivityGroupQueries.usp_GetByID_Group, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<ActivityGroup>(ActivityGroupQueries.GetByID_Group, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -174,7 +174,7 @@ public async Task<string> AddAsync(ActivityGroup ActivityGroup)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityGroupQueries.update_Group, updateActivityGroupDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityGroupQueries.update_Group, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }

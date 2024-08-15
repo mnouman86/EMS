@@ -58,7 +58,7 @@ internal class CreateActivityManagerCommandHandler: IRequestHandler<CreateActivi
 
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.ActivityManagerRepository.AddAsync(new Domain.Entities.ActivityManager.ActivityManager()
-            { CreatedBy = user.Id, Description = request.Description,Name=request.Name  });
+            { CreatedBy = user.Id, Description = request.Description,Name=request.Name , CultureId=request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

@@ -58,7 +58,7 @@ internal class CreateActivityGroupCommandHandler: IRequestHandler<CreateActivity
 
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.ActivityGroupRepository.AddAsync(new Domain.Entities.ActivityGroup.ActivityGroup()
-            { CreatedBy = user.Id, ActivityID = request.ActivityID,From=request.From, To = request.To, Size = request.Size });
+            { CreatedBy = user.Id, ActivityID = request.ActivityID,From=request.From, To = request.To, Size = request.Size, CultureId = request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

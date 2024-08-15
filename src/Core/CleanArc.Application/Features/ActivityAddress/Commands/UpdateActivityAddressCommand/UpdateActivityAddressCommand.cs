@@ -17,6 +17,7 @@ public record UpdateActivityAddressCommand(int ID, int? ActivityID, int? Country
     string? PostalCode,
     string? Latitude,
     string? Longitude,
+    int? CultureId,
      int? UpdatedBy) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateActivityAddressCommand>
 {

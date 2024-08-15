@@ -58,7 +58,7 @@ internal class CreateActivityDisabilityOptionCommandHandler: IRequestHandler<Cre
 
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.ActivityDisabilityOptionRepository.AddAsync(new Domain.Entities.ActivityDisabilityOption.ActivityDisabilityOption()
-            { CreatedBy = user.Id, Description = request.Description,Name=request.Name  });
+            { CreatedBy = user.Id, Description = request.Description,Name=request.Name,CultureId=request.CultureId  });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);
