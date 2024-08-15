@@ -86,7 +86,7 @@ internal class UpdateActivityCommandHandler:IRequestHandler<UpdateActivityComman
                 CurrencyLookUpID = request.CurrencyLookUpID,
                 SeasonLookUpID = request.SeasonLookUpID,
                 //PerGroupPrice = request.PerGroupPrice,
-                PerPersonPrice = request.PerPersonPrice,
+               // PerPersonPrice = request.PerPersonPrice,
                 OtherManageActivity = request.OtherManageActivity,
                 OtherSubService = request.OtherSubService,
                 IncludeOptionLookUpID = request.IncludeOptionLookUpID,
