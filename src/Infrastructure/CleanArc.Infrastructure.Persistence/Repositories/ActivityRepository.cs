@@ -210,7 +210,7 @@ public async Task<string> AddAsync(Activity Activity)
                 var parameters = new DynamicParameters(updateActivityDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                parameters.Add("@ActivityID ", dbType: DbType.Int32, direction: ParameterDirection.Output);
+               // parameters.Add("@ActivityID ", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                 var result = await connection.ExecuteAsync(ActivityQueries.update_Activity, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
