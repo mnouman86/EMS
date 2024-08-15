@@ -39,9 +39,9 @@ namespace CleanArc.Application.Features.Activity.Queries.GetActivityById
         public string AllowedItems { get; set; }
         public string NotAllowedItems { get; set; }
         public int? CurrencyLookUpID { get; set; }
-        //public string? SeasonLookUpID { get; set; }
-        //public string? IncludeOptionLookUpID { get; set; }
-        //public string? DisabilityOptionLookUpID { get; set; }
+        public string? SeasonLookUpID { get; set; }
+        public string? IncludeOptionLookUpID { get; set; }
+        public string? DisabilityOptionLookUpID { get; set; }
         public int? CultureId { get; set; }
         public int? Code { get; set; }
         public string? Message { get; set; }
