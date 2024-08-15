@@ -1,5 +1,6 @@
 ﻿using Azure.Core;
 using CleanArc.Application.Contracts.Persistence;
+using CleanArc.Application.Models.Activities;
 using CleanArc.Application.Models.ActivityIncludedOption;
 using CleanArc.Application.Models.Request;
 using CleanArc.Application.Models.URL;
@@ -74,7 +75,10 @@ public async Task<string> AddAsync(ActivityIncludedOption ActivityIncludedOption
         {
             connection.Open();
                 CreateActivityIncludedOptionDTO createActivityIncludedOptionDTO = _mapper.Map<CreateActivityIncludedOptionDTO>(ActivityIncludedOption);
-            var result = await connection.ExecuteAsync(ActivityIncludedOptionQueries.Create_ActivityIncludedOption, createActivityIncludedOptionDTO, commandType: CommandType.StoredProcedure);
+                var parameters = new DynamicParameters(createActivityIncludedOptionDTO);
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                var result = await connection.ExecuteAsync(ActivityIncludedOptionQueries.Create_ActivityIncludedOption, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -90,6 +94,7 @@ public async Task<string> AddAsync(ActivityIncludedOption ActivityIncludedOption
                 connection.Open();
                 var parameters = new DynamicParameters();
                 parameters.Add("@ID", selectedIds);
+                parameters.Add("@UpdatedBy", updatedBy);
                 parameters.Add("@UpdatedBy", updatedBy);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
@@ -140,7 +145,12 @@ public async Task<string> AddAsync(ActivityIncludedOption ActivityIncludedOption
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                var result = await connection.QuerySingleOrDefaultAsync<ActivityIncludedOption>(ActivityIncludedOptionQueries.Mapping_GetByID_IncludeOptions, new { ID = id }, commandType: CommandType.StoredProcedure);
+                var parameters = new DynamicParameters();
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                parameters.Add("@CultureId", 1, DbType.Int32);
+                parameters.Add("@ID", id, DbType.Int32);
+                var result = await connection.QuerySingleOrDefaultAsync<ActivityIncludedOption>(ActivityIncludedOptionQueries.Mapping_GetByID_IncludeOptions, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -157,8 +167,10 @@ public async Task<string> AddAsync(ActivityIncludedOption ActivityIncludedOption
             {
                 connection.Open();
                 UpdateActivityIncludedOptionDTO updateActivityIncludedOptionDTO = _mapper.Map<UpdateActivityIncludedOptionDTO>(entity);
-
-                var result = await connection.ExecuteAsync(ActivityIncludedOptionQueries.update_ActivityIncludedOption, updateActivityIncludedOptionDTO, commandType: CommandType.StoredProcedure);
+                var parameters = new DynamicParameters(updateActivityIncludedOptionDTO);
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                var result = await connection.ExecuteAsync(ActivityIncludedOptionQueries.update_ActivityIncludedOption, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }
