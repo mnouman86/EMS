@@ -4198,3 +4198,385 @@ WHERE [u].[UserId] = @__p_0
 2024-08-15 12:24:25.445 +05:00 [INF] Response StatusCode: 200
 2024-08-15 12:24:25.450 +05:00 [INF] Response StatusCode: 200
 2024-08-15 12:24:25.454 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 801 - 200 - application/json;+charset=utf-8 7151.1641ms
+2024-08-15 16:00:32.436 +05:00 [INF] Executed DbCommand (153ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-15 16:00:33.097 +05:00 [INF] Executed DbCommand (174ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-15 16:00:33.223 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-15 16:00:33.579 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-15 16:00:33.696 +05:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-08-15 16:00:33.817 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-08-15 16:00:34.006 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-15 16:00:34.934 +05:00 [INF] Executed DbCommand (50ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-15 16:00:35.049 +05:00 [INF] Executed DbCommand (58ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-15 16:00:37.008 +05:00 [INF] Now listening on: https://localhost:5002
+2024-08-15 16:00:40.548 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-08-15 16:00:43.743 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-08-15 16:00:44.682 +05:00 [INF] Response StatusCode: 200
+2024-08-15 16:00:44.703 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-08-15 16:00:44.721 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 4185.8273ms
+2024-08-15 16:00:44.729 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 26.4275ms
+2024-08-15 16:00:44.758 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-08-15 16:00:44.877 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 118.8867ms
+2024-08-15 16:00:46.239 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-08-15 16:00:46.253 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-15 16:00:46.293 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-08-15 16:00:46.304 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-08-15 16:00:46.908 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-15 16:00:46.923 +05:00 [INF] Response StatusCode: 404
+2024-08-15 16:00:46.930 +05:00 [INF] Response StatusCode: 404
+2024-08-15 16:00:46.941 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 703.4840ms
+2024-08-15 16:00:49.366 +05:00 [INF] Response StatusCode: 200
+2024-08-15 16:00:49.375 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 3081.8302ms
+2024-08-15 16:01:12.810 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 50
+2024-08-15 16:01:12.822 +05:00 [INF] CORS policy execution successful.
+2024-08-15 16:01:12.830 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-08-15 16:01:12.841 +05:00 [INF] Request Body: {
+  "userName": "waqas",
+  "password": "123@123"
+}
+2024-08-15 16:01:12.875 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-08-15 16:01:12.889 +05:00 [INF] Request Body: {
+  "userName": "waqas",
+  "password": "123@123"
+}
+2024-08-15 16:01:12.903 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-08-15 16:01:13.020 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-08-15 16:01:16.045 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-15 16:01:16.408 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"waqas","Password":"123@123"}
+2024-08-15 16:01:16.605 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"waqas","Password":"123@123","$type":"AdminGetTokenQuery"}
+2024-08-15 16:01:17.015 +05:00 [INF] Executed DbCommand (69ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-08-15 16:01:17.434 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1,"$type":"User"}
+2024-08-15 16:01:17.547 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-08-15 16:01:18.286 +05:00 [INF] Executed DbCommand (33ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-08-15 16:01:18.380 +05:00 [INF] Executed DbCommand (16ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-08-15 16:01:18.430 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-08-15 16:01:18.640 +05:00 [INF] Executed DbCommand (167ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-08-15 16:01:18.836 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-08-15 16:01:19.705 +05:00 [INF] Executed DbCommand (15ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-08-15 16:01:22.817 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-08-15 16:01:22.851 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.s--NOC8U7Ror4ATFwRI2UHa6CmNeco4sawpTll3N6sdNcXfgWX-TLw.6xe966HdP5Xhs28stWAAfg.6ZoQ9fX2Hq7PROKrC4zo3hE2xHGGgyTb6qfN5biP9Yv3bJtdm1aD-x2oqzmCPhtqsKBAka9KpC0PDqA_zvx2UeyH6IBHssgHtSZ7b3pdoOr9kaoIR6mSo6BqgCzoJWwRChYGG7LlIhHsYgzts1wYRA7KBfGnfTVyZyw-INGh_pKqPHg5yGKdZK-In21ScRO44pxwPaTKzk7YJSYJR7dJbqk5AeCBJcUdmvxmcbnd-y1DYm-rLqR0hqNiw5yarAeXMjnW7WiJYqtrtmUVA4JVfS_1owIrFlQRYPqnWOes40CrWdz8x86-iOXGim6_9g18UrQxnkeTYOSooDNkX7CVOIHRIma_SWEKNGeS4t-BCjo4cT-vpMKIK4XDa7tpKRnsSVoNN_ZjE1_5OWghhHFnxVqkksMcHS8A-hb8ConGVPIy7DyppiemcqZO4i5CvAjR-xPFFkBKFtEZLX6ZOxkowgTTFbq5jMEGx8t6v1GAWPHodmS513HmURC8k3v5jJXi7WvMXWCJG8V8_49-mlPTdsmK9fCY45yEfz_R3GLLrtqf5w28mxexepC-e3wp5h99kUOi4bhgZHB6k3tuVHUKYw2CBevNVMBYQZLDy5F5MNpKd96c1oR09IFR1ln1j9nU2f74x4KggtY-LWJpQZ9_WcS8DF6rH4_7iSu-DN4fmFDvET-VyRO0BG1wRcjq7ibO.hYnZLkGNVv_PAIlBdT1xew","refresh_token":"b723173c-857d-4bc5-49ae-08dcbd199770","token_type":"Bearer","expires_in":599995,"userID":5},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-08-15 16:01:22.876 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 6813.617ms.
+2024-08-15 16:01:22.906 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-15 16:01:22.962 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 9916.1878ms
+2024-08-15 16:01:22.973 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-08-15 16:01:22.980 +05:00 [INF] Response StatusCode: 200
+2024-08-15 16:01:22.991 +05:00 [INF] Response StatusCode: 200
+2024-08-15 16:01:22.998 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 50 - 200 - application/json;+charset=utf-8 10188.6073ms
+2024-08-15 16:04:15.964 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 802
+2024-08-15 16:04:15.972 +05:00 [INF] CORS policy execution successful.
+2024-08-15 16:04:15.981 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:04:15.992 +05:00 [INF] Request Body: {
+ "id": 73,
+  "cultureId": 1,
+  "title": "test1234er",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "perPersonPrice": 1,
+  "updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4",
+
+
+}
+2024-08-15 16:04:16.672 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-15 16:04:16.715 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:04:16.727 +05:00 [INF] Request Body: {
+ "id": 73,
+  "cultureId": 1,
+  "title": "test1234er",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "perPersonPrice": 1,
+  "updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4",
+
+
+}
+2024-08-15 16:04:16.739 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:04:16.765 +05:00 [INF] Route matched with {action = "Update", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand.UpdateActivityCommand) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-15 16:04:52.845 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-08-15 16:04:52.859 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api) in 36078.4897ms
+2024-08-15 16:04:52.866 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:04:52.915 +05:00 [INF] Response StatusCode: 400
+2024-08-15 16:04:52.925 +05:00 [INF] Response StatusCode: 400
+2024-08-15 16:04:52.933 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 802 - 400 - application/json;+charset=utf-8 36969.3424ms
+2024-08-15 16:04:58.810 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 801
+2024-08-15 16:04:58.826 +05:00 [INF] CORS policy execution successful.
+2024-08-15 16:04:58.850 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:04:58.875 +05:00 [INF] Request Body: {
+ "id": 73,
+  "cultureId": 1,
+  "title": "test1234er",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "perPersonPrice": 1,
+  "updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4"
+
+
+}
+2024-08-15 16:04:58.921 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-15 16:04:58.940 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:04:58.949 +05:00 [INF] Request Body: {
+ "id": 73,
+  "cultureId": 1,
+  "title": "test1234er",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "perPersonPrice": 1,
+  "updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4"
+
+
+}
+2024-08-15 16:04:58.959 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:04:58.969 +05:00 [INF] Route matched with {action = "Update", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand.UpdateActivityCommand) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-15 16:05:04.824 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-15 16:05:05.481 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand, Handle with parameter: {"ID":73,"CultureId":1,"Title":"test1234er","LanguageLookUpID":1,"ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":"string","MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":"string","Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"PerPersonPrice":1.0,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","UpdatedBy":0,"UserId":5}
+2024-08-15 16:05:05.497 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-15 16:05:05.560 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-08-15 16:05:24.276 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":73,"Title":"test1234er","LanguageLookUpID":1,"LanguageName":null,"ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":"string","MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":"string","Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","PerPersonPrice":1.0,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":5,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null,"ActivityID":null,"Duration":null,"Cancellation":null,"ActivityImages":null,"ActivityAddress":null}
+2024-08-15 16:05:34.884 +05:00 [INF] Exiting null, UpdateAsync with response: -1
+2024-08-15 16:05:34.897 +05:00 [INF] Exiting null, Handle with response: true
+2024-08-15 16:05:34.916 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 30078.1824ms.
+2024-08-15 16:05:34.928 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-08-15 16:05:34.939 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api) in 35957.278ms
+2024-08-15 16:05:34.953 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:05:34.961 +05:00 [INF] Response StatusCode: 200
+2024-08-15 16:05:34.968 +05:00 [INF] Response StatusCode: 200
+2024-08-15 16:05:34.975 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 801 - 200 - application/json;+charset=utf-8 36165.0565ms
+2024-08-15 16:10:32.984 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 789
+2024-08-15 16:10:33.016 +05:00 [INF] CORS policy execution successful.
+2024-08-15 16:10:33.024 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:10:33.033 +05:00 [INF] Request Body: {
+ "id": 73,
+  "cultureId": 1,
+  "title": "test1234er",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "perPersonPrice": 1,
+  "updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4"
+
+
+}
+2024-08-15 16:10:33.094 +05:00 [INF] Executed DbCommand (20ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-15 16:10:33.120 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Update, Content-Type: application/json
+2024-08-15 16:10:33.132 +05:00 [INF] Request Body: {
+ "id": 73,
+  "cultureId": 1,
+  "title": "test1234er",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "perPersonPrice": 1,
+  "updatedBy": 0,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4"
+
+
+}
+2024-08-15 16:10:33.145 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:10:33.161 +05:00 [INF] Route matched with {action = "Update", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand.UpdateActivityCommand) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-15 16:10:59.236 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-15 16:10:59.422 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand, Handle with parameter: {"ID":73,"CultureId":1,"Title":"test1234er","LanguageLookUpID":1,"ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":"","MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":"","Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"PerPersonPrice":1.0,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","UpdatedBy":0,"UserId":5}
+2024-08-15 16:10:59.433 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-15 16:10:59.438 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-08-15 16:11:15.705 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":73,"Title":"test1234er","LanguageLookUpID":1,"LanguageName":null,"ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":"","MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":"","Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","PerPersonPrice":1.0,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":5,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null,"ActivityID":null,"Duration":null,"Cancellation":null,"ActivityImages":null,"ActivityAddress":null}
+2024-08-15 16:11:36.733 +05:00 [INF] Exiting null, UpdateAsync with response: -1
+2024-08-15 16:11:47.325 +05:00 [INF] Exiting null, Handle with response: true
+2024-08-15 16:11:47.329 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 47909.1069ms.
+2024-08-15 16:11:47.335 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-08-15 16:11:47.348 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api) in 74169.8981ms
+2024-08-15 16:11:47.366 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Update (CleanArc.Web.Api)'
+2024-08-15 16:11:47.375 +05:00 [INF] Response StatusCode: 200
+2024-08-15 16:11:47.379 +05:00 [INF] Response StatusCode: 200
+2024-08-15 16:11:47.385 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Activity/Update application/json 789 - 200 - application/json;+charset=utf-8 74401.0549ms
