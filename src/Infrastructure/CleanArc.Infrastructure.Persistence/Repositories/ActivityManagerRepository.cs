@@ -1,5 +1,6 @@
 ﻿using Azure.Core;
 using CleanArc.Application.Contracts.Persistence;
+using CleanArc.Application.Models.Activities;
 using CleanArc.Application.Models.ActivityManager;
 using CleanArc.Application.Models.Request;
 using CleanArc.Application.Models.URL;
@@ -72,9 +73,14 @@ public async Task<string> AddAsync(ActivityManager ActivityManager)
     {
         using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
         {
-            connection.Open();
+         
+                connection.Open();
                 CreateActivityManagerDTO createActivityManagerDTO = _mapper.Map<CreateActivityManagerDTO>(ActivityManager);
-            var result = await connection.ExecuteAsync(ActivityManagerQueries.Create_ActivityManager, createActivityManagerDTO, commandType: CommandType.StoredProcedure);
+                var parameters = new DynamicParameters(createActivityManagerDTO);
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+              //  parameters.Add("@ActivityID ", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                var result = await connection.ExecuteAsync(ActivityManagerQueries.Create_ActivityManager, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -90,6 +96,7 @@ public async Task<string> AddAsync(ActivityManager ActivityManager)
                 connection.Open();
                 var parameters = new DynamicParameters();
                 parameters.Add("@ID", selectedIds);
+                parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
@@ -129,7 +136,12 @@ public async Task<string> AddAsync(ActivityManager ActivityManager)
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                var result = await connection.QuerySingleOrDefaultAsync<ActivityManager>(ActivityManagerQueries.GetByID_Manager, new { ID = id }, commandType: CommandType.StoredProcedure);
+                var parameters = new DynamicParameters();
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                parameters.Add("@CultureId", 1, DbType.Int32);
+                parameters.Add("@ID", id, DbType.Int32);
+                var result = await connection.QuerySingleOrDefaultAsync<ActivityManager>(ActivityManagerQueries.GetByID_Manager, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -146,8 +158,11 @@ public async Task<string> AddAsync(ActivityManager ActivityManager)
             {
                 connection.Open();
                 UpdateActivityManagerDTO updateActivityManagerDTO = _mapper.Map<UpdateActivityManagerDTO>(entity);
-
-                var result = await connection.ExecuteAsync(ActivityManagerQueries.update_ActivityManager, updateActivityManagerDTO, commandType: CommandType.StoredProcedure);
+                var parameters = new DynamicParameters(updateActivityManagerDTO);
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+               // parameters.Add("@ActivityID ", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                var result = await connection.ExecuteAsync(ActivityManagerQueries.update_ActivityManager, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }

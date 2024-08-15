@@ -79,7 +79,7 @@ public async Task<string> AddAsync(ActivityNature ActivityNature)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityNatureQueries.Create_ActivityNature, createActivityNatureDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityNatureQueries.Create_ActivityNature, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -174,7 +174,7 @@ public async Task<string> AddAsync(ActivityNature ActivityNature)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityNatureQueries.update_ActivityNature, updateActivityNatureDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityNatureQueries.update_ActivityNature, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }

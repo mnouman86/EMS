@@ -79,7 +79,7 @@ public async Task<string> AddAsync(ActivityAddress ActivityAddress)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityAddressQueries.Create_ActivityAddress, createActivityAddressDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityAddressQueries.Create_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -173,7 +173,7 @@ public async Task<string> AddAsync(ActivityAddress ActivityAddress)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityAddressQueries.update_ActivityAddress, updateActivityAddressDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityAddressQueries.update_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }

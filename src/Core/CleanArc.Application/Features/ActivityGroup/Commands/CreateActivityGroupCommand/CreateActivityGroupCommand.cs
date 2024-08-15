@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityGroup.Commands.CreateActivityGroupCommand;
-public record CreateActivityGroupCommand(int? ActivityID, string? From, string To, int? Size, int? CreatedBy) : IRequest<OperationResult<bool>>,
+public record CreateActivityGroupCommand(int? ActivityID, string? From, string To, int? Size, int? CreatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateActivityGroupCommand>
 {
     [JsonIgnore]

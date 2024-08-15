@@ -21,10 +21,8 @@ public  class Activity
     public int? MaxAge { get; set; }
     public int? ActivityTypeLookUpID { get; set; }
     public int? ActivityNatureLookUpID { get; set; }
-   // public int? MinGroupSize { get; set; }
     public int? MaxGroupSize { get; set; }
     public bool? IsPrivateActivity { get; set; }
-    //public int? PrivateParticipantLookUpID { get; set; }
     public string WhoCanParticipate { get; set; }
     public string WhoCannotParticipate { get; set; }
     public int? ManageActivityLookUpID { get; set; }
@@ -41,18 +39,19 @@ public  class Activity
     public string? SeasonLookUpID { get; set; }
     public string? IncludeOptionLookUpID { get; set; }
     public string? DisabilityOptionLookUpID { get; set; }
-    public int? CultureId { get; set; }
-    public int? Code { get; set; }
-    public string? Message { get; set; }
-    public int? ActivityID { get; set; }
     public Decimal? PerPersonPrice { get; set; }
-    // public int? PerGroupPrice { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }
     public DateTime? CreatedAt { get; set; }
     public int? UpdatedBy { get; set; }
     public DateTime? UpdatedAt { get; set; }
+    public int? CultureId { get; set; }
+    public int? Code { get; set; }
+    public int? Message { get; set; }
+    public int? ActivityID { get; set; }
+    public string? Duration { get; set; }
+    public string? Cancellation { get; set; }
     public List<ActivityImageMapping> ActivityImages { get; set; }
     public List<ActivityAddress> ActivityAddress { get; set; }
 

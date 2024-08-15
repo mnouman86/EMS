@@ -17,6 +17,7 @@ public record CreateActivityAddressCommand(int? ActivityID,int? CountryLookUpID,
     string? PostalCode,
     string? Latitude,
     string? Longitude,
+    int? CultureId,
     int? CreatedBy) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateActivityAddressCommand>
 {

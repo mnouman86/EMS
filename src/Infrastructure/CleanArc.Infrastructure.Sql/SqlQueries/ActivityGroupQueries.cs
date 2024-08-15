@@ -11,8 +11,8 @@ public static class ActivityGroupQueries
     public static string Create_Group => "Create_Group";
     public static string update_Group => "update_Group";
     public static string Delete_Group => "Delete_Group";
-    public static string usp_GetAll_Group => "usp_GetAll_Group";
-    public static string usp_GetByID_Group => "usp_GetByID_Group";
+    public static string GetAll_Group => "GetAll_Group";
+    public static string GetByID_Group => "GetByID_Group";
 
 
 }

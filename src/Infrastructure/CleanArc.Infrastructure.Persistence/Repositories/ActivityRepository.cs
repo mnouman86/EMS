@@ -78,12 +78,15 @@ public async Task<string> AddAsync(Activity Activity)
             connection.Open();
                 CreateActivityDTO createActivityDTO = _mapper.Map<CreateActivityDTO>(Activity);
                 var parameters = new DynamicParameters(createActivityDTO);
+                //parameters.AddDynamicParams(createActivityDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 parameters.Add("@ActivityID ", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync(ActivityQueries.Create_Activity, createActivityDTO, commandType: CommandType.StoredProcedure);
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                // var result = await connection.ExecuteScalarAsync(ActivityQueries.Create_Activity, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<int>(ActivityQueries.Create_Activity, parameters, commandType: CommandType.StoredProcedure);
+
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
     }
@@ -104,6 +107,8 @@ public async Task<string> AddAsync(Activity Activity)
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.ExecuteAsync(ActivityQueries.Delete_Activity, parameters, commandType: CommandType.StoredProcedure);
+               // var result = await connection.QuerySingleOrDefaultAsync<int>(ActivityQueries.Delete_Activity, parameters, commandType: CommandType.StoredProcedure);
+
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }
@@ -121,8 +126,8 @@ public async Task<string> AddAsync(Activity Activity)
                 parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
                 parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
                 parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
-               // parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
-               // parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+                parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+                parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
@@ -165,6 +170,7 @@ public async Task<string> AddAsync(Activity Activity)
                 return result.ToList();
             }
         }
+  
     }
     public async Task<Activity> GetByIdAsync(long id)
     {
@@ -206,7 +212,7 @@ public async Task<string> AddAsync(Activity Activity)
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 parameters.Add("@ActivityID ", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityQueries.update_Activity, updateActivityDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityQueries.update_Activity, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }

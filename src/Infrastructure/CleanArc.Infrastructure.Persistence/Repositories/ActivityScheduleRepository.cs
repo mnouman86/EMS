@@ -79,7 +79,7 @@ public async Task<string> AddAsync(ActivitySchedule ActivitySchedule)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityScheduleQueries.Create_ActivitySchedule, createActivityScheduleDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityScheduleQueries.Create_ActivitySchedule, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -174,7 +174,7 @@ public async Task<string> AddAsync(ActivitySchedule ActivitySchedule)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityScheduleQueries.update_ActivitySchedule, updateActivityScheduleDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityScheduleQueries.update_ActivitySchedule, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }

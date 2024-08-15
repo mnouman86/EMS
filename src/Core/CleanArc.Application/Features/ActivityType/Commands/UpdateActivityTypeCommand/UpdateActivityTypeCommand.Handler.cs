@@ -56,7 +56,7 @@ internal class UpdateActivityTypeCommandHandler:IRequestHandler<UpdateActivityTy
 
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.ActivityTypeRepository.UpdateAsync(new Domain.Entities.ActivityType.ActivityType()
-            { UpdatedBy = user.Id,ID= request.ID, Description = request.Description, Name = request.Name });
+            { UpdatedBy = user.Id,ID= request.ID, Description = request.Description, Name = request.Name, CultureId = request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.ActivityPerGroupPrice.Commands.UpdateActivityPerGroupPriceCommand;
-public record UpdateActivityPerGroupPriceCommand(int ID, int? ActivityID, int? MinGroupSize, int? MaxGroupSize, decimal? Price, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record UpdateActivityPerGroupPriceCommand(int ID, int? ActivityID, int? MinGroupSize, int? MaxGroupSize, decimal? Price, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateActivityPerGroupPriceCommand>
 {
     [JsonIgnore]
