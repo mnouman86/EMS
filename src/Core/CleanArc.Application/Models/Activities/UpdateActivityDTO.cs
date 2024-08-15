@@ -38,7 +38,7 @@ namespace CleanArc.Application.Models.Activities
         public string AllowedItems { get; set; }
         public string NotAllowedItems { get; set; }
         public int? CurrencyLookUpID { get; set; }
-        public Decimal? PerPersonPrice { get; set; }
+        //public Decimal? PerPersonPrice { get; set; }
         public string? SeasonLookUpID { get; set; }
         public string? IncludeOptionLookUpID { get; set; }
         public string? DisabilityOptionLookUpID { get; set; }
