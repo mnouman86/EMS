@@ -11,6 +11,7 @@ namespace CleanArc.Application.Models.Request
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
         public int? CultureId { get; set; }
+        public int? Id { get; set; }
         public List<FilterParameter> FilterArray { get; set; }
         public List<SortingParameter> SortingArray { get; set; }
     }

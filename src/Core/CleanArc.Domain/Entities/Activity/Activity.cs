@@ -52,20 +52,20 @@ public  class Activity
     public int? ActivityID { get; set; }
     public string? Duration { get; set; }
     public string? Cancellation { get; set; }
-    public List<ActivityImageMapping> ActivityImages { get; set; }
-    public List<ActivityAddress> ActivityAddress { get; set; }
+    public List<ActivityIDImageMapping> ActivityImages { get; set; }
+    public List<ActivityAddressMapping> ActivityAddress { get; set; }
 
 
 
 }
-public class ActivityImageMapping
+public class ActivityIDImageMapping
 {
     public string? ImageTitle { get; set; }
     public string? ImagePath { get; set; }
     public int? ActivityID { get; set; }
     public bool? IsMain { get; set; }
 }
-public class ActivityAddress
+public class ActivityAddressMapping
 {
     public int? ActivityID { get; set; }
     public int? CountryLookUpID { get; set; }

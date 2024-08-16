@@ -71,6 +71,7 @@ public interface IUnitOfWork
     public IActivityPerGroupPriceRepository ActivityPerGroupPriceRepository { get; }
     public IActivityIncludeOptionMappingRepository ActivityIncludeOptionMappingRepository { get; }
     public IActivityAddressMappingRepository ActivityAddressMappingRepository { get; }
+    public IActivityIDImageMappingRepository ActivityIDImageMappingRepository { get; }
 
 
 
