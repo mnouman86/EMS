@@ -4,6 +4,15 @@
         <name>CleanArc.Web.Api</name>
     </assembly>
     <members>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ActivityAddressMapping.ActivityAddressMappingController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.ActivityAddressMapping.ActivityAddressMappingController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ActivityAddressMapping.Commands.CreateActivityAddressMappingCommand.CreateActivityAddressMappingCommand,CleanArc.Application.Features.ActivityAddressMapping.Commands.UpdateActivityAddressMappingCommand.UpdateActivityAddressMappingCommand,CleanArc.Application.Features.ActivityAddressMapping.Commands.DeleteActivityAddressMappingCommand.DeleteActivityAddressMappingCommand,System.Boolean,CleanArc.Application.Features.ActivityAddressMapping.Queries.GetAllActivityAddressMapping.GetAllActivityAddressMappingQuery,System.Collections.Generic.List{CleanArc.Application.Features.ActivityAddressMapping.Queries.GetAllActivityAddressMapping.GetAllActivityAddressMappingQueryResult},CleanArc.Application.Features.ActivityAddressMapping.Queries.GetActivityAddressMappingById.GetActivityAddressMappingByIdQuery,CleanArc.Application.Features.ActivityAddressMapping.Queries.GetActivityAddressMappingById.GetActivityAddressMappingByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.ActivityAddressMapping.ActivityAddressMappingController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ActivityAddress.ActivityAddressController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.ActivityAddress.ActivityAddressController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ActivityAddress.Commands.CreateActivityAddressCommand.CreateActivityAddressCommand,CleanArc.Application.Features.ActivityAddress.Commands.UpdateActivityAddressCommand.UpdateActivityAddressCommand,CleanArc.Application.Features.ActivityAddress.Commands.DeleteActivityAddressCommand.DeleteActivityAddressCommand,System.Boolean,CleanArc.Application.Features.ActivityAddress.Queries.GetAllActivityAddress.GetAllActivityAddressQuery,System.Collections.Generic.List{CleanArc.Application.Features.ActivityAddress.Queries.GetAllActivityAddress.GetAllActivityAddressQueryResult},CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddressById.GetActivityAddressByIdQuery,CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddressById.GetActivityAddressByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>

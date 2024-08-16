@@ -80,6 +80,7 @@ public class UnitOfWork : IUnitOfWork
     public IActivityPricePerParticipantRepository ActivityPricePerParticipantRepository { get; set; }
     public IActivityPerGroupPriceRepository ActivityPerGroupPriceRepository { get; set; }
     public IActivityIncludeOptionMappingRepository ActivityIncludeOptionMappingRepository { get; set; }
+    public IActivityAddressMappingRepository ActivityAddressMappingRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -148,8 +149,9 @@ public class UnitOfWork : IUnitOfWork
         ILogger<CurrencyRepository> _loggerCurrency,
                 ILogger<ActivityDisabilityMappingRepository> _loggerActivityDisabilityMapping,
                 ILogger<ActivityPricePerParticipantRepository> _loggerActivityPricePerParticipant,
-                                ILogger<ActivityPerGroupPriceRepository> _loggerActivityPerGroupPrice,
-                 ILogger<ActivityIncludeOptionMappingRepository> _loggerActivityIncludeOptionMapping,
+                ILogger<ActivityPerGroupPriceRepository> _loggerActivityPerGroupPrice,
+                ILogger<ActivityIncludeOptionMappingRepository> _loggerActivityIncludeOptionMapping,
+                ILogger<ActivityAddressMappingRepository> _loggerActivityAddressMapping,
 
 
 
@@ -222,6 +224,7 @@ public class UnitOfWork : IUnitOfWork
         ActivityPricePerParticipantRepository = new ActivityPricePerParticipantRepository(configuration, mapper, _loggerActivityPricePerParticipant, httpContextAccessor);
         ActivityPerGroupPriceRepository = new ActivityPerGroupPriceRepository(configuration, mapper, _loggerActivityPerGroupPrice, httpContextAccessor);
         ActivityIncludeOptionMappingRepository = new ActivityIncludeOptionMappingRepository(configuration, mapper, _loggerActivityIncludeOptionMapping, httpContextAccessor);
+        ActivityAddressMappingRepository = new ActivityAddressMappingRepository(configuration, mapper, _loggerActivityAddressMapping, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         this.configuration = configuration;
