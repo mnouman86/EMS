@@ -4,24 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.ActivityAddress.Queries.GetAllActivityAddress;
+namespace CleanArc.Application.Features.ActivityAddressMapping.Queries.GetAllActivityAddressMapping;
 
-public class GetAllActivityAddressQueryResult
+public class GetAllActivityAddressMappingQueryResult
 {
     public int ID { get; set; }
     public int? ActivityID { get; set; }
-    public string AddressLine1 { get; set; }
-    public string AddressLine2 { get; set; }
-    public int? CountryLookUpID { get; set; }
-    public int? CityLookUpID { get; set; }
-    public int? StateLookUpID { get; set; }
-    public string PostalCode { get; set; }
-    public string Latitude { get; set; }
-    public string Longitude { get; set; }
-    public string? ActivityTitle { get; set; }
-    public string? CountryName { get; set; }
-    public string? CityName { get; set; }
-    public string? StateName { get; set; }
+    public string? ImagePath { get; set; }
+    public string? ImageTitle { get; set; }
+    public bool? IsMain { get; set; }
+    public int? CategoryID { get; set; }
+    public int? BusinessID { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }
@@ -33,7 +26,7 @@ public class GetAllActivityAddressQueryResult
     public int? Message { get; set; }
 }
 
-//    public GetAllActivityAddressQueryResult(int iD, string name, string description, bool isDeleted, bool isActive, int createdBy, DateTime createdAt, int updatedBy, DateTime updatedAt)
+//    public GetAllActivityAddressMappingQueryResult(int iD, string name, string description, bool isDeleted, bool isActive, int createdBy, DateTime createdAt, int updatedBy, DateTime updatedAt)
 //    {
 //        ID = iD;
 //        Name = name;
