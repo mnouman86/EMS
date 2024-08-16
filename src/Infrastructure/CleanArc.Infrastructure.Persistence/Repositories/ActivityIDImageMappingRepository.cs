@@ -1,10 +1,10 @@
 ﻿using Azure.Core;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Models.ActivityAddressMapping;
+using CleanArc.Application.Models.ActivityIDImageMapping;
 using CleanArc.Application.Models.BusinessProfile;
 using CleanArc.Application.Models.Request;
 using CleanArc.Application.Models.URL;
-using CleanArc.Domain.Entities.ActivityAddressMapping;
+using CleanArc.Domain.Entities.ActivityIDImageMapping;
 using CleanArc.Domain.Entities.UserManagement;
 using CleanArc.Infrastructure.Persistence.Helpers;
 using CleanArc.Infrastructure.Sql;
@@ -30,7 +30,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories;
 /// Repository implementation for handling operations related to menus.
 /// </summary>
 /// <seealso cref="CleanArc.Application.Contracts.Persistence.IMenuRepository" />
-public class ActivityAddressMappingRepository:IActivityAddressMappingRepository
+public class ActivityIDImageMappingRepository:IActivityIDImageMappingRepository
 {
     /// <summary>
     /// The configuration for accessing application settings.
@@ -45,7 +45,7 @@ public class ActivityAddressMappingRepository:IActivityAddressMappingRepository
     /// <summary>
     /// The logger for logging repository-related information.
     /// </summary>
-    private readonly ILogger<ActivityAddressMappingRepository> _logger;
+    private readonly ILogger<ActivityIDImageMappingRepository> _logger;
 
     /// <summary>
     /// The HTTP context accessor for accessing HTTP context information.
@@ -59,7 +59,7 @@ public class ActivityAddressMappingRepository:IActivityAddressMappingRepository
     /// <param name="mapper">The mapper for mapping between different object types.</param>
     /// <param name="logger">The logger for logging repository-related information.</param>
     /// <param name="httpContextAccessor">The HTTP context accessor for accessing HTTP context information.</param>
-    public ActivityAddressMappingRepository(IConfiguration configuration, IMapper mapper, ILogger<ActivityAddressMappingRepository> logger, IHttpContextAccessor httpContextAccessor)
+    public ActivityIDImageMappingRepository(IConfiguration configuration, IMapper mapper, ILogger<ActivityIDImageMappingRepository> logger, IHttpContextAccessor httpContextAccessor)
     {
         this.configuration = configuration;
         this._mapper = mapper;
@@ -67,19 +67,19 @@ public class ActivityAddressMappingRepository:IActivityAddressMappingRepository
         _httpContextAccessor = httpContextAccessor;
     }
 /// <inheritdoc/>
-public async Task<string> AddAsync(ActivityAddressMapping ActivityAddressMapping)
+public async Task<string> AddAsync(ActivityIDImageMapping ActivityIDImageMapping)
 {
-    using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, ActivityAddressMapping))
+    using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, ActivityIDImageMapping))
     {
         using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
         {
             connection.Open();
-                CreateActivityAddressMappingDTO createActivityAddressMappingDTO = _mapper.Map<CreateActivityAddressMappingDTO>(ActivityAddressMapping);
-                var parameters = new DynamicParameters(createActivityAddressMappingDTO);
+                CreateActivityIDImageMappingDTO createActivityIDImageMappingDTO = _mapper.Map<CreateActivityIDImageMappingDTO>(ActivityIDImageMapping);
+                var parameters = new DynamicParameters(createActivityIDImageMappingDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityAddressMappingQueries.Mapping_Create_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityIDImageMappingQueries.Mapping_Create_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -100,14 +100,14 @@ public async Task<string> AddAsync(ActivityAddressMapping ActivityAddressMapping
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityAddressMappingQueries.Mapping_Delete_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityIDImageMappingQueries.Mapping_Delete_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }
         }
     }
 
-    public async Task<IReadOnlyList<ActivityAddressMapping>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<IReadOnlyList<ActivityIDImageMapping>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -119,30 +119,30 @@ public async Task<string> AddAsync(ActivityAddressMapping ActivityAddressMapping
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", searchRequest.Id, DbType.Int32);
-                var result = await connection.QueryAsync<ActivityAddressMapping>(ActivityAddressMappingQueries.GetByActivityID_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<ActivityIDImageMapping>(ActivityIDImageMappingQueries.Mapping_GetByActivityID_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }
         }
     }
-    public Task<ActivityAddressMapping> GetByIdAsync(long id)
+    public Task<ActivityIDImageMapping> GetByIdAsync(long id)
     {
         throw new NotImplementedException();
     }
 
-    public async Task<string> UpdateAsync(ActivityAddressMapping entity)
+    public async Task<string> UpdateAsync(ActivityIDImageMapping entity)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                UpdateActivityAddressMappingDTO updateActivityAddressMappingDTO = _mapper.Map<UpdateActivityAddressMappingDTO>(entity);
-                var parameters = new DynamicParameters(updateActivityAddressMappingDTO);
+                UpdateActivityIDImageMappingDTO updateActivityIDImageMappingDTO = _mapper.Map<UpdateActivityIDImageMappingDTO>(entity);
+                var parameters = new DynamicParameters(updateActivityIDImageMappingDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityAddressMappingQueries.Mapping_Update_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(ActivityIDImageMappingQueries.Mapping_Update_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }

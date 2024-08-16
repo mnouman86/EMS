@@ -56,9 +56,9 @@ public class GetAllActivityQueryResult
     public string? Duration { get; set; }
     public string? Cancellation { get; set; }
 
-    public List<CleanArc.Domain.Entities.Activity.ActivityImageMapping> ActivityImages { get; set; }
+    public List<CleanArc.Domain.Entities.Activity.ActivityIDImageMapping> ActivityImages { get; set; }
 
-public List<CleanArc.Domain.Entities.Activity.ActivityAddress> ActivityAddress { get; set; }
+public List<CleanArc.Domain.Entities.Activity.ActivityAddressMapping> ActivityAddress { get; set; }
 
 }
 
