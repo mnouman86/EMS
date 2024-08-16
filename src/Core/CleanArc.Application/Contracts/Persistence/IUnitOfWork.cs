@@ -70,6 +70,7 @@ public interface IUnitOfWork
     public IActivityPricePerParticipantRepository ActivityPricePerParticipantRepository { get; }
     public IActivityPerGroupPriceRepository ActivityPerGroupPriceRepository { get; }
     public IActivityIncludeOptionMappingRepository ActivityIncludeOptionMappingRepository { get; }
+    public IActivityAddressMappingRepository ActivityAddressMappingRepository { get; }
 
 
 

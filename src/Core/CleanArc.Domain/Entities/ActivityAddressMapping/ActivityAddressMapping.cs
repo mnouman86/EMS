@@ -5,11 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Domain.Entities.ActivityAddress;
+namespace CleanArc.Domain.Entities.ActivityAddressMapping;
 
-public  class ActivityAddress
+public  class ActivityAddressMapping
     
 {
+
     public int ID { get; set; }
     public int? ActivityID { get; set; }
     public int? CountryLookUpID { get; set; }
@@ -20,10 +21,6 @@ public  class ActivityAddress
     public string? PostalCode { get; set; }
     public string? Latitude { get; set; }
     public string? Longitude { get; set; }
-    public string? ActivityTitle { get; set; }
-    public string? CountryName { get; set; } 
-    public string? CityName { get; set; }
-    public string? StateName { get; set; } 
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }
@@ -34,4 +31,7 @@ public  class ActivityAddress
     public int? Code { get; set; }
     public int? Message { get; set; }
 
+
 }
+
+
