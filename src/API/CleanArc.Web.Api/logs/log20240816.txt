@@ -765,3 +765,98 @@ END
 2024-08-16 14:36:43.204 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
 2024-08-16 14:36:43.277 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Queries.GetAllActivity, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
 2024-08-16 14:37:06.829 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-08-16 15:57:15.921 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-16 15:57:15.996 +05:00 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-16 15:57:16.004 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-16 15:57:16.014 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-16 15:57:16.042 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-08-16 15:57:16.059 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-08-16 15:57:16.074 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-16 15:57:16.233 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-16 15:57:16.250 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-16 15:57:16.565 +05:00 [INF] Now listening on: https://localhost:5002
+2024-08-16 15:57:17.418 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-08-16 15:57:17.592 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-08-16 15:57:17.728 +05:00 [INF] Response StatusCode: 200
+2024-08-16 15:57:17.738 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 323.2054ms
+2024-08-16 15:57:17.753 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-08-16 15:57:17.768 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 14.1494ms
+2024-08-16 15:57:17.778 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-08-16 15:57:17.848 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 69.6034ms
+2024-08-16 15:57:18.377 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-08-16 15:57:18.382 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-16 15:57:18.436 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-08-16 15:57:18.528 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-08-16 15:57:18.707 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-16 15:57:18.713 +05:00 [INF] Response StatusCode: 404
+2024-08-16 15:57:18.716 +05:00 [INF] Response StatusCode: 404
+2024-08-16 15:57:18.720 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 342.6337ms
+2024-08-16 15:57:19.500 +05:00 [INF] Response StatusCode: 200
+2024-08-16 15:57:19.503 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1066.5746ms
+2024-08-16 15:57:41.875 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Activity/GetAll application/json 170
+2024-08-16 15:57:41.881 +05:00 [INF] CORS policy execution successful.
+2024-08-16 15:57:41.887 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/GetAll, Content-Type: application/json
+2024-08-16 15:57:41.898 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+    
+    ]
+  }
+}
+2024-08-16 15:57:41.919 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/GetAll, Content-Type: application/json
+2024-08-16 15:57:41.929 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+    
+    ]
+  }
+}
+2024-08-16 15:57:41.938 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api)'
+2024-08-16 15:57:42.004 +05:00 [INF] Route matched with {action = "GetAll", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Activity.Queries.GetAllActivity.GetAllActivityQuery) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-16 15:57:45.338 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-16 15:57:45.648 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Queries.GetAllActivity, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-08-16 15:57:48.869 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-08-16 15:57:50.235 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":5,"Title":"Example Activity Title","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T06:13:27.243","UpdatedBy":0,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","ActivityImages":[{"ImageTitle":"Image 11","ImagePath":"../../../assets/img/Activity/1.jpeg","ActivityID":5,"IsMain":true},{"ImageTitle":"Image 12","ImagePath":"../../../assets/img/Activity/2.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 13","ImagePath":"../../../assets/img/Activity/3.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 14","ImagePath":"../../../assets/img/Activity/4.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 15","ImagePath":"../../../assets/img/Activity/5.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 16","ImagePath":"../../../assets/img/Activity/6.jpeg","ActivityID":5,"IsMain":false}],"ActivityAddress":[{"ActivityID":5,"CountryLookUpID":1,"CityLookUpID":22,"StateLookUpID":12,"AddressLine1":"Qui minima excepteur","AddressLine2":"Ratione qui aliquip ","PostalCode":"Numquam sit omnis do","Latitude":"Eaque totam molestia","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":22,"CityLookUpID":12,"StateLookUpID":5,"AddressLine1":"Test","AddressLine2":"Test","PostalCode":"333","Latitude":"Iure delectus autem","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":22,"CityLookUpID":12,"StateLookUpID":5,"AddressLine1":"Test111 updated","AddressLine2":"Test111 updated","PostalCode":"333","Latitude":"Iure delectus autem","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":0,"CityLookUpID":0,"StateLookUpID":0,"AddressLine1":"Test111 updated","AddressLine2":"Ratione qui aliquip ","PostalCode":"Numquam sit omnis do","Latitude":"Iure delectus autem","Longitude":"0.0"}]},{"ID":9,"Title":"Sample test Activity","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T07:46:19.933","UpdatedBy":0,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","ActivityImages":[],"ActivityAddress":[{"ActivityID":9,"CountryLookUpID":1,"CityLookUpID":17,"StateLookUpID":9,"AddressLine1":"Sunt proident quid","AddressLine2":"Qui ea fugiat necess","PostalCode":"Nemo sunt anim maior","Latitude":"Sint harum eum liber","Longitude":"Dolorum laborum modi"}]},{"ID":5,"Title":"Example Activity Title","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T06:13:27.243","UpdatedBy":0,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","ActivityImages":[{"ImageTitle":"Image 11","ImagePath":"../../../assets/img/Activity/1.jpeg","ActivityID":5,"IsMain":true},{"ImageTitle":"Image 12","ImagePath":"../../../assets/img/Activity/2.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 13","ImagePath":"../../../assets/img/Activity/3.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 14","ImagePath":"../../../assets/img/Activity/4.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 15","ImagePath":"../../../assets/img/Activity/5.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 16","ImagePath":"../../../assets/img/Activity/6.jpeg","ActivityID":5,"IsMain":false}],"ActivityAddress":[{"ActivityID":5,"CountryLookUpID":1,"CityLookUpID":22,"StateLookUpID":12,"AddressLine1":"Qui minima excepteur","AddressLine2":"Ratione qui aliquip ","PostalCode":"Numquam sit omnis do","Latitude":"Eaque totam molestia","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":22,"CityLookUpID":12,"StateLookUpID":5,"AddressLine1":"Test","AddressLine2":"Test","PostalCode":"333","Latitude":"Iure delectus autem","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":22,"CityLookUpID":12,"StateLookUpID":5,"AddressLine1":"Test111 updated","AddressLine2":"Test111 updated","PostalCode":"333","Latitude":"Iure delectus autem","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":0,"CityLookUpID":0,"StateLookUpID":0,"AddressLine1":"Test111 updated","AddressLine2":"Ratione qui aliquip ","PostalCode":"Numquam sit omnis do","Latitude":"Iure delectus autem","Longitude":"0.0"}]}]
+2024-08-16 15:57:50.408 +05:00 [INF] Exiting null, Handle with response: [{"ID":5,"Title":"Example Activity Title","PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T06:13:27.243","UpdatedBy":0,"UpdatedAt":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","ActivityImages":[{"ImageTitle":"Image 11","ImagePath":"../../../assets/img/Activity/1.jpeg","ActivityID":5,"IsMain":true},{"ImageTitle":"Image 12","ImagePath":"../../../assets/img/Activity/2.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 13","ImagePath":"../../../assets/img/Activity/3.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 14","ImagePath":"../../../assets/img/Activity/4.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 15","ImagePath":"../../../assets/img/Activity/5.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 16","ImagePath":"../../../assets/img/Activity/6.jpeg","ActivityID":5,"IsMain":false}],"ActivityAddress":[{"ActivityID":5,"CountryLookUpID":1,"CityLookUpID":22,"StateLookUpID":12,"AddressLine1":"Qui minima excepteur","AddressLine2":"Ratione qui aliquip ","PostalCode":"Numquam sit omnis do","Latitude":"Eaque totam molestia","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":22,"CityLookUpID":12,"StateLookUpID":5,"AddressLine1":"Test","AddressLine2":"Test","PostalCode":"333","Latitude":"Iure delectus autem","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":22,"CityLookUpID":12,"StateLookUpID":5,"AddressLine1":"Test111 updated","AddressLine2":"Test111 updated","PostalCode":"333","Latitude":"Iure delectus autem","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":0,"CityLookUpID":0,"StateLookUpID":0,"AddressLine1":"Test111 updated","AddressLine2":"Ratione qui aliquip ","PostalCode":"Numquam sit omnis do","Latitude":"Iure delectus autem","Longitude":"0.0"}]},{"ID":9,"Title":"Sample test Activity","PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T07:46:19.933","UpdatedBy":0,"UpdatedAt":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","ActivityImages":[],"ActivityAddress":[{"ActivityID":9,"CountryLookUpID":1,"CityLookUpID":17,"StateLookUpID":9,"AddressLine1":"Sunt proident quid","AddressLine2":"Qui ea fugiat necess","PostalCode":"Nemo sunt anim maior","Latitude":"Sint harum eum liber","Longitude":"Dolorum laborum modi"}]},{"ID":5,"Title":"Example Activity Title","PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T06:13:27.243","UpdatedBy":0,"UpdatedAt":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","ActivityImages":[{"ImageTitle":"Image 11","ImagePath":"../../../assets/img/Activity/1.jpeg","ActivityID":5,"IsMain":true},{"ImageTitle":"Image 12","ImagePath":"../../../assets/img/Activity/2.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 13","ImagePath":"../../../assets/img/Activity/3.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 14","ImagePath":"../../../assets/img/Activity/4.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 15","ImagePath":"../../../assets/img/Activity/5.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 16","ImagePath":"../../../assets/img/Activity/6.jpeg","ActivityID":5,"IsMain":false}],"ActivityAddress":[{"ActivityID":5,"CountryLookUpID":1,"CityLookUpID":22,"StateLookUpID":12,"AddressLine1":"Qui minima excepteur","AddressLine2":"Ratione qui aliquip ","PostalCode":"Numquam sit omnis do","Latitude":"Eaque totam molestia","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":22,"CityLookUpID":12,"StateLookUpID":5,"AddressLine1":"Test","AddressLine2":"Test","PostalCode":"333","Latitude":"Iure delectus autem","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":22,"CityLookUpID":12,"StateLookUpID":5,"AddressLine1":"Test111 updated","AddressLine2":"Test111 updated","PostalCode":"333","Latitude":"Iure delectus autem","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":0,"CityLookUpID":0,"StateLookUpID":0,"AddressLine1":"Test111 updated","AddressLine2":"Ratione qui aliquip ","PostalCode":"Numquam sit omnis do","Latitude":"Iure delectus autem","Longitude":"0.0"}]}]
+2024-08-16 15:57:50.434 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 5080.5003ms.
+2024-08-16 15:57:50.469 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-16 15:57:50.598 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api) in 8569.8125ms
+2024-08-16 15:57:50.637 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api)'
+2024-08-16 15:57:50.648 +05:00 [INF] Response StatusCode: 200
+2024-08-16 15:57:50.659 +05:00 [INF] Response StatusCode: 200
+2024-08-16 15:57:50.662 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Activity/GetAll application/json 170 - 200 - application/json;+charset=utf-8 8787.4842ms

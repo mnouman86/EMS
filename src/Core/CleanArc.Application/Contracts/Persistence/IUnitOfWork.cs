@@ -73,6 +73,7 @@ public interface IUnitOfWork
     public IActivityAddressMappingRepository ActivityAddressMappingRepository { get; }
     public IActivityIDImageMappingRepository ActivityIDImageMappingRepository { get; }
 
+    public IProcessOrderRepository ProcessOrderRepository { get; }
 
 
     Task CommitAsync();
