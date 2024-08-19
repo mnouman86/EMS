@@ -82,6 +82,7 @@ public class UnitOfWork : IUnitOfWork
     public IActivityIncludeOptionMappingRepository ActivityIncludeOptionMappingRepository { get; set; }
     public IActivityAddressMappingRepository ActivityAddressMappingRepository { get; set; }
     public IActivityIDImageMappingRepository ActivityIDImageMappingRepository { get; set; }
+    public IProcessOrderRepository ProcessOrderRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -153,7 +154,8 @@ public class UnitOfWork : IUnitOfWork
                 ILogger<ActivityPerGroupPriceRepository> _loggerActivityPerGroupPrice,
                 ILogger<ActivityIncludeOptionMappingRepository> _loggerActivityIncludeOptionMapping,
                 ILogger<ActivityAddressMappingRepository> _loggerActivityAddressMapping,
-                                ILogger<ActivityIDImageMappingRepository> _loggerActivityIDImageMapping,
+                ILogger<ActivityIDImageMappingRepository> _loggerActivityIDImageMapping,
+                ILogger<ProcessOrderRepository> _loggerProcessOrder,
 
 
 
@@ -228,6 +230,7 @@ public class UnitOfWork : IUnitOfWork
         ActivityIncludeOptionMappingRepository = new ActivityIncludeOptionMappingRepository(configuration, mapper, _loggerActivityIncludeOptionMapping, httpContextAccessor);
         ActivityAddressMappingRepository = new ActivityAddressMappingRepository(configuration, mapper, _loggerActivityAddressMapping, httpContextAccessor);
         ActivityIDImageMappingRepository = new ActivityIDImageMappingRepository(configuration, mapper, _loggerActivityIDImageMapping, httpContextAccessor);
+        ProcessOrderRepository = new ProcessOrderRepository(configuration, mapper, _loggerProcessOrder, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         this.configuration = configuration;

@@ -583,6 +583,15 @@
             <param name="sender">The mediator sender for handling requests and responses.</param>
             <param name="logger">The logger for logging controller-related information.</param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ProcessOrder.ProcessOrderController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.ProcessOrder.ProcessOrderController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ProcessOrder.Commands.CreateProcessOrderCommand.CreateProcessOrderCommand,CleanArc.Application.Features.ProcessOrder.Commands.UpdateProcessOrderCommand.UpdateProcessOrderCommand,CleanArc.Application.Features.ProcessOrder.Commands.DeleteProcessOrderCommand.DeleteProcessOrderCommand,System.Boolean,CleanArc.Application.Features.ProcessOrder.Queries.GetAllProcessOrder.GetAllProcessOrderQuery,System.Collections.Generic.List{CleanArc.Application.Features.ProcessOrder.Queries.GetAllProcessOrder.GetAllProcessOrderQueryResult},CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById.GetProcessOrderByIdQuery,CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById.GetProcessOrderByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.ProcessOrder.ProcessOrderController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.RoomDetail.RoomDetailController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.RoomDetail.RoomDetailController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.RoomDetails.Command.CreateRoomDetailCommand.CreateRoomDetailCommand,CleanArc.Application.Features.RoomDetails.Command.UpdateRoomDetailCommand.UpdateRoomDetailCommand,CleanArc.Application.Features.RoomDetails.Command.DeleteRoomDetailCommand.DeleteRoomDetailCommand,System.Boolean,CleanArc.Application.Features.RoomDetails.Queries.GetAllRoomDetail.GetAllRoomDetailQuery,System.Collections.Generic.List{CleanArc.Application.Features.RoomDetails.Queries.GetAllRoomDetail.GetAllRoomDetailQueryResult},CleanArc.Application.Features.RoomDetails.Queries.GetRoomDetailById.GetRoomDetailByIdQuery,CleanArc.Application.Features.RoomDetails.Queries.GetRoomDetailById.GetRoomDetailByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
