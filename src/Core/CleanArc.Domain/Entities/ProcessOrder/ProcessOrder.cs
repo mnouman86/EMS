@@ -44,6 +44,7 @@ public  class ProcessOrder
     public DateTime? CreatedAt { get; set; } // datetime NULL
     public int? UpdatedBy { get; set; } // int NULL
     public DateTime? UpdatedAt { get; set; } // datetime NULL
+    public int? PackageTypeID { get; set; }
     public int? CultureId { get; set; }
     public int? Code { get; set; }
     public int? Message { get; set; }
