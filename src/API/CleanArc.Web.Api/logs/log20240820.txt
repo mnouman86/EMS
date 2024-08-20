@@ -2139,3 +2139,283 @@ WHERE [u].[UserId] = @__p_0
 2024-08-20 13:11:25.050 +05:00 [INF] Response StatusCode: 200
 2024-08-20 13:11:25.056 +05:00 [INF] Response StatusCode: 200
 2024-08-20 13:11:25.064 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/api/v1/ProcessOrder/GetById/6 - - - 200 - application/json;+charset=utf-8 4681.0334ms
+2024-08-20 13:20:10.874 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-20 13:20:10.957 +05:00 [INF] Executed DbCommand (43ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-20 13:20:10.975 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-20 13:20:10.984 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-20 13:20:11.011 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-08-20 13:20:11.035 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-08-20 13:20:11.053 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-20 13:20:11.222 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-20 13:20:11.237 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-20 13:20:11.521 +05:00 [INF] Now listening on: https://localhost:5002
+2024-08-20 13:20:12.117 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-08-20 13:20:12.270 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-08-20 13:20:12.389 +05:00 [INF] Response StatusCode: 200
+2024-08-20 13:20:12.400 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 288.7897ms
+2024-08-20 13:20:12.409 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-08-20 13:20:12.418 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 8.8252ms
+2024-08-20 13:20:12.430 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-08-20 13:20:12.472 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 41.1518ms
+2024-08-20 13:20:12.933 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-08-20 13:20:12.937 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-20 13:20:12.970 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-08-20 13:20:12.973 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-08-20 13:20:13.104 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-20 13:20:13.109 +05:00 [INF] Response StatusCode: 404
+2024-08-20 13:20:13.112 +05:00 [INF] Response StatusCode: 404
+2024-08-20 13:20:13.116 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 183.1183ms
+2024-08-20 13:20:13.901 +05:00 [INF] Response StatusCode: 200
+2024-08-20 13:20:13.906 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 936.3125ms
+2024-08-20 13:21:49.457 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/PackageDetail/Create application/json 162
+2024-08-20 13:21:49.477 +05:00 [INF] CORS policy execution successful.
+2024-08-20 13:21:49.484 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageDetail/Create, Content-Type: application/json
+2024-08-20 13:21:49.491 +05:00 [INF] Request Body: {
+  "cultureId": 1,
+  "packageTypeID": 1,
+  "paymentOrderID": 1,
+  "stay": 1800.00,
+  "car": 250.00,
+  "flight": 200.00,
+  "thingsToDo": 75.00,
+  "createdBy": 5
+}
+2024-08-20 13:21:49.910 +05:00 [INF] Executed DbCommand (36ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-20 13:21:50.085 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageDetail/Create, Content-Type: application/json
+2024-08-20 13:21:50.094 +05:00 [INF] Request Body: {
+  "cultureId": 1,
+  "packageTypeID": 1,
+  "paymentOrderID": 1,
+  "stay": 1800.00,
+  "car": 250.00,
+  "flight": 200.00,
+  "thingsToDo": 75.00,
+  "createdBy": 5
+}
+2024-08-20 13:21:50.104 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api)'
+2024-08-20 13:21:50.147 +05:00 [INF] Route matched with {action = "Create", controller = "PackageDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.PackageDetail.Commands.CreatePackageDetailCommand.CreatePackageDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController (CleanArc.Web.Api).
+2024-08-20 13:21:55.444 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-20 13:21:56.493 +05:00 [INF] Entering CleanArc.Application.Features.PackageDetail.Commands.CreatePackageDetailCommand, Handle with parameter: {"PackageTypeID":1,"PaymentOrderID":1,"Stay":1800.00,"Car":250.00,"Flight":200.00,"ThingsToDo":75.00,"CultureId":1,"CreatedBy":5,"UserId":5}
+2024-08-20 13:21:56.503 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-20 13:21:56.544 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-08-20 13:21:57.569 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"PackageTypeID":1,"PaymentOrderID":1,"Stay":1800.00,"Car":250.00,"Flight":200.00,"ThingsToDo":75.00,"IsActive":null,"IsDeleted":null,"CreatedBy":5,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null}
+2024-08-20 13:21:59.502 +05:00 [INF] Exiting null, AddAsync with response: -1
+2024-08-20 13:21:59.571 +05:00 [INF] Exiting null, Handle with response: true
+2024-08-20 13:21:59.588 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 4130.2995ms.
+2024-08-20 13:21:59.609 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-08-20 13:21:59.650 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api) in 9488.3318ms
+2024-08-20 13:21:59.658 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api)'
+2024-08-20 13:21:59.672 +05:00 [INF] Response StatusCode: 200
+2024-08-20 13:21:59.679 +05:00 [INF] Response StatusCode: 200
+2024-08-20 13:21:59.683 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/PackageDetail/Create application/json 162 - 200 - application/json;+charset=utf-8 10226.5815ms
+2024-08-20 13:24:26.054 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/PackageDetail/Update application/json 176
+2024-08-20 13:24:26.086 +05:00 [INF] CORS policy execution successful.
+2024-08-20 13:24:26.096 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageDetail/Update, Content-Type: application/json
+2024-08-20 13:24:26.106 +05:00 [INF] Request Body: {
+  "id": 3,
+    "cultureId": 1,
+  "packageTypeID": 1,
+  "paymentOrderID": 1,
+  "stay": 1800.00,
+  "car": 2250.00,
+  "flight": 200.00,
+  "thingsToDo": 75.00,
+  "updatedBy": 1
+}
+2024-08-20 13:24:26.258 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-20 13:24:26.272 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageDetail/Update, Content-Type: application/json
+2024-08-20 13:24:26.280 +05:00 [INF] Request Body: {
+  "id": 3,
+    "cultureId": 1,
+  "packageTypeID": 1,
+  "paymentOrderID": 1,
+  "stay": 1800.00,
+  "car": 2250.00,
+  "flight": 200.00,
+  "thingsToDo": 75.00,
+  "updatedBy": 1
+}
+2024-08-20 13:24:26.286 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Update (CleanArc.Web.Api)'
+2024-08-20 13:24:26.305 +05:00 [INF] Route matched with {action = "Update", controller = "PackageDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.PackageDetail.Commands.UpdatePackageDetailCommand.UpdatePackageDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController (CleanArc.Web.Api).
+2024-08-20 13:24:27.921 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-20 13:24:28.104 +05:00 [INF] Entering CleanArc.Application.Features.PackageDetail.Commands.UpdatePackageDetailCommand, Handle with parameter: {"ID":3,"PackageTypeID":1,"PaymentOrderID":1,"Stay":1800.00,"Car":2250.00,"Flight":200.00,"ThingsToDo":75.00,"CultureId":1,"UpdatedBy":1,"UserId":5}
+2024-08-20 13:24:28.112 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-20 13:24:28.117 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-08-20 13:24:28.124 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":3,"PackageTypeID":1,"PaymentOrderID":1,"Stay":1800.00,"Car":2250.00,"Flight":200.00,"ThingsToDo":75.00,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":5,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null}
+2024-08-20 13:24:28.222 +05:00 [INF] Exiting null, UpdateAsync with response: -1
+2024-08-20 13:24:28.227 +05:00 [INF] Exiting null, Handle with response: true
+2024-08-20 13:24:28.231 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Update (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 306.7764ms.
+2024-08-20 13:24:28.237 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-08-20 13:24:28.241 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Update (CleanArc.Web.Api) in 1927.3993ms
+2024-08-20 13:24:28.245 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Update (CleanArc.Web.Api)'
+2024-08-20 13:24:28.250 +05:00 [INF] Response StatusCode: 200
+2024-08-20 13:24:28.254 +05:00 [INF] Response StatusCode: 200
+2024-08-20 13:24:28.256 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/PackageDetail/Update application/json 176 - 200 - application/json;+charset=utf-8 2202.8696ms
+2024-08-20 14:49:51.270 +05:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-20 14:49:51.567 +05:00 [INF] Executed DbCommand (75ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-20 14:49:51.589 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-20 14:49:51.602 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-20 14:49:51.830 +05:00 [INF] Executed DbCommand (189ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-08-20 14:49:51.969 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-08-20 14:49:52.059 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-20 14:49:52.656 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-20 14:49:52.694 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-20 14:49:53.989 +05:00 [INF] Now listening on: https://localhost:5002
+2024-08-20 14:49:55.305 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-08-20 14:49:55.927 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-08-20 14:49:56.453 +05:00 [INF] Response StatusCode: 200
+2024-08-20 14:49:56.528 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 1242.8703ms
+2024-08-20 14:49:56.647 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-08-20 14:49:56.674 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-08-20 14:49:56.703 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 28.9405ms
+2024-08-20 14:49:56.888 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 240.9003ms
+2024-08-20 14:49:58.829 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-08-20 14:49:58.858 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-20 14:49:58.965 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-08-20 14:49:58.976 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-08-20 14:49:59.506 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-20 14:49:59.516 +05:00 [INF] Response StatusCode: 404
+2024-08-20 14:49:59.523 +05:00 [INF] Response StatusCode: 404
+2024-08-20 14:49:59.531 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 702.0207ms
+2024-08-20 14:50:01.932 +05:00 [INF] Response StatusCode: 200
+2024-08-20 14:50:01.941 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 2975.9334ms
+2024-08-20 14:50:32.785 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Activity/GetAll application/json 169
+2024-08-20 14:50:32.800 +05:00 [INF] CORS policy execution successful.
+2024-08-20 14:50:32.809 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/GetAll, Content-Type: application/json
+2024-08-20 14:50:32.823 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+   
+    ]
+  }
+}
+2024-08-20 14:50:32.851 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/GetAll, Content-Type: application/json
+2024-08-20 14:50:32.864 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+   
+    ]
+  }
+}
+2024-08-20 14:50:32.873 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api)'
+2024-08-20 14:50:32.943 +05:00 [INF] Route matched with {action = "GetAll", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Activity.Queries.GetAllActivity.GetAllActivityQuery) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-20 14:50:36.107 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-20 14:50:36.584 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Queries.GetAllActivity, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-08-20 14:50:38.503 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-08-20 14:50:40.536 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":8,"Title":"Sample Activity","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T07:43:45.913","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","ActivityImages":[],"ActivityAddress":[]},{"ID":73,"Title":"Modi cumque mollit v","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":12341.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-08-16T05:34:53.617","UpdatedBy":1006,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"18 Days 40 Hours","Cancellation":"Partially Refundable","ActivityImages":[{"ImageTitle":"Unde omnis provident","ImagePath":"../../../assets/Resources/Images/Activity/Screenshot 2024-05-29 160610.png","ActivityID":73,"IsMain":false},{"ImageTitle":"Accusantium accusant","ImagePath":"../../../assets/Resources/Images/Activity/Screenshot 2024-05-29 160610.png","ActivityID":73,"IsMain":false}],"ActivityAddress":[{"ActivityID":73,"CountryLookUpID":1,"CityLookUpID":15,"StateLookUpID":8,"AddressLine1":"Error molestias non ","AddressLine2":"Doloribus doloremque","PostalCode":"Maxime at ipsum id q","Latitude":"Voluptatibus volupta","Longitude":"Autem dolorum quod o"},{"ActivityID":73,"CountryLookUpID":1,"CityLookUpID":18,"StateLookUpID":9,"AddressLine1":"Quis aliquam molesti","AddressLine2":"Sint iure veniam o","PostalCode":"Elit enim accusamus","Latitude":"Incididunt distincti","Longitude":"Maiores esse et illo"}]},{"ID":74,"Title":"Molestias dolor volu","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":56000.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-08-16T06:44:35.673","UpdatedBy":1006,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"4 Days 28 Hours","Cancellation":"Partially Refundable","ActivityImages":[{"ImageTitle":"Sunt qui nulla enim","ImagePath":"../../../assets/Resources/Images/Activity/Screenshot 2024-05-29 160610.png","ActivityID":74,"IsMain":true},{"ImageTitle":"Sunt qui nulla enim","ImagePath":"../../../assets/Resources/Images/Activity/Screenshot 2024-05-29 160610.png","ActivityID":74,"IsMain":true}],"ActivityAddress":[{"ActivityID":74,"CountryLookUpID":1,"CityLookUpID":9,"StateLookUpID":6,"AddressLine1":"Possimus elit volu","AddressLine2":"Nihil maxime dolorum","PostalCode":"Vitae vel molestiae ","Latitude":"Quam suscipit ration","Longitude":"Quod recusandae Vel"}]},{"ID":75,"Title":"Debitis nesciunt pr","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":40.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-08-16T10:22:24.577","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"20 Days 19 Hours","Cancellation":"Partially Refundable","ActivityImages":[],"ActivityAddress":[]},{"ID":76,"Title":"test12346789","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":1.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-08-20T07:53:40.077","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"1 Days 10 Hours","Cancellation":"Partially Refundable","ActivityImages":[],"ActivityAddress":[]}]
+2024-08-20 14:50:40.927 +05:00 [INF] Exiting null, Handle with response: [{"ID":8,"Title":"Sample Activity","PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T07:43:45.913","UpdatedBy":null,"UpdatedAt":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","ActivityImages":[],"ActivityAddress":[]},{"ID":73,"Title":"Modi cumque mollit v","PerPersonPrice":12341.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-08-16T05:34:53.617","UpdatedBy":1006,"UpdatedAt":null,"Duration":"18 Days 40 Hours","Cancellation":"Partially Refundable","ActivityImages":[{"ImageTitle":"Unde omnis provident","ImagePath":"../../../assets/Resources/Images/Activity/Screenshot 2024-05-29 160610.png","ActivityID":73,"IsMain":false},{"ImageTitle":"Accusantium accusant","ImagePath":"../../../assets/Resources/Images/Activity/Screenshot 2024-05-29 160610.png","ActivityID":73,"IsMain":false}],"ActivityAddress":[{"ActivityID":73,"CountryLookUpID":1,"CityLookUpID":15,"StateLookUpID":8,"AddressLine1":"Error molestias non ","AddressLine2":"Doloribus doloremque","PostalCode":"Maxime at ipsum id q","Latitude":"Voluptatibus volupta","Longitude":"Autem dolorum quod o"},{"ActivityID":73,"CountryLookUpID":1,"CityLookUpID":18,"StateLookUpID":9,"AddressLine1":"Quis aliquam molesti","AddressLine2":"Sint iure veniam o","PostalCode":"Elit enim accusamus","Latitude":"Incididunt distincti","Longitude":"Maiores esse et illo"}]},{"ID":74,"Title":"Molestias dolor volu","PerPersonPrice":56000.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-08-16T06:44:35.673","UpdatedBy":1006,"UpdatedAt":null,"Duration":"4 Days 28 Hours","Cancellation":"Partially Refundable","ActivityImages":[{"ImageTitle":"Sunt qui nulla enim","ImagePath":"../../../assets/Resources/Images/Activity/Screenshot 2024-05-29 160610.png","ActivityID":74,"IsMain":true},{"ImageTitle":"Sunt qui nulla enim","ImagePath":"../../../assets/Resources/Images/Activity/Screenshot 2024-05-29 160610.png","ActivityID":74,"IsMain":true}],"ActivityAddress":[{"ActivityID":74,"CountryLookUpID":1,"CityLookUpID":9,"StateLookUpID":6,"AddressLine1":"Possimus elit volu","AddressLine2":"Nihil maxime dolorum","PostalCode":"Vitae vel molestiae ","Latitude":"Quam suscipit ration","Longitude":"Quod recusandae Vel"}]},{"ID":75,"Title":"Debitis nesciunt pr","PerPersonPrice":40.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-08-16T10:22:24.577","UpdatedBy":null,"UpdatedAt":null,"Duration":"20 Days 19 Hours","Cancellation":"Partially Refundable","ActivityImages":[],"ActivityAddress":[]},{"ID":76,"Title":"test12346789","PerPersonPrice":1.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-08-20T07:53:40.077","UpdatedBy":null,"UpdatedAt":null,"Duration":"1 Days 10 Hours","Cancellation":"Partially Refundable","ActivityImages":[],"ActivityAddress":[]}]
+2024-08-20 14:50:40.964 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4837.0706ms.
+2024-08-20 14:50:41.026 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-20 14:50:41.190 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api) in 8226.5691ms
+2024-08-20 14:50:41.203 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api)'
+2024-08-20 14:50:41.213 +05:00 [INF] Response StatusCode: 200
+2024-08-20 14:50:41.226 +05:00 [INF] Response StatusCode: 200
+2024-08-20 14:50:41.236 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Activity/GetAll application/json 169 - 200 - application/json;+charset=utf-8 8451.0189ms
+2024-08-20 14:51:22.266 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/SearchHotelDetail/GetAll application/json 171
+2024-08-20 14:51:22.302 +05:00 [INF] CORS policy execution successful.
+2024-08-20 14:51:22.309 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchHotelDetail/GetAll, Content-Type: application/json
+2024-08-20 14:51:22.317 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-08-20 14:51:22.371 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchHotelDetail/GetAll, Content-Type: application/json
+2024-08-20 14:51:22.379 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-08-20 14:51:22.388 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController.GetAll (CleanArc.Web.Api)'
+2024-08-20 14:51:22.405 +05:00 [INF] Route matched with {action = "GetAll", controller = "SearchHotelDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.SearchHotel.Queries.GetAllSearchHotels.GetAllSearchHotelsQuery) on controller CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController (CleanArc.Web.Api).
+2024-08-20 14:51:24.557 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-20 14:51:24.780 +05:00 [INF] Entering CleanArc.Application.Features.SearchHotel.Queries.GetAllSearchHotels, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-08-20 14:51:24.794 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-08-20 14:51:25.152 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":17,"HotelID":6,"CityID":6,"HotelName":"butt g Hotel","CityName":"Islamabad","CityDescription":null,"RoomTypeName":"Single","RoomTypeDescription":null,"RoomDetailPrice":1000.00,"DiscountPercentage":10.0,"DiscountAmount":100.0000,"DiscountedPrice":900.0000,"ImagePath":null,"ImageTitle":null,"Description":null,"Longitude":null,"Latitude":null,"TotalDays":1,"HotelImages":[{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/1.png","IsMain":true},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/2.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/3.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/4.png","IsMain":false},{"ImageTitle":"title","ImagePath":"../../../assets/img/place/4.png","IsMain":false}]},{"ID":8,"HotelID":1,"CityID":19,"HotelName":"Siddiqi Hotel","CityName":"Islamabad","CityDescription":null,"RoomTypeName":"Standard King","RoomTypeDescription":null,"RoomDetailPrice":1500.00,"DiscountPercentage":15.0,"DiscountAmount":225.0000,"DiscountedPrice":1275.0000,"ImagePath":null,"ImageTitle":null,"Description":null,"Longitude":null,"Latitude":null,"TotalDays":1,"HotelImages":[{"ImageTitle":"MainTitle ","ImagePath":"../../../assets/img/place/2.png","IsMain":true},{"ImageTitle":"title","ImagePath":"../../../assets/img/place/5.png","IsMain":false},{"ImageTitle":"Title","ImagePath":"../../../assets/img/place/4.png","IsMain":false},{"ImageTitle":"title","ImagePath":"../../../assets/img/place/3.png","IsMain":false},{"ImageTitle":"title","ImagePath":"../../../assets/img/place/1.png","IsMain":false},{"ImageTitle":"title","ImagePath":"../../../assets/img/place/4.png","IsMain":false},{"ImageTitle":"title","ImagePath":"../../../assets/img/place/4.png","IsMain":false},{"ImageTitle":"fadsf","ImagePath":"../../../assets/Resources/Images/Hotel/3.jpeg","IsMain":false},{"ImageTitle":"TESTED","ImagePath":"../../../assets/Resources/Images/Hotel/10.jpeg","IsMain":false},{"ImageTitle":"TEST2","ImagePath":"../../../assets/Resources/Images/Hotel/9.jpeg","IsMain":false}]},{"ID":23,"HotelID":5,"CityID":6,"HotelName":"waseem Hotel","CityName":"Islamabad","CityDescription":null,"RoomTypeName":"Standard King","RoomTypeDescription":null,"RoomDetailPrice":1500.00,"DiscountPercentage":15.0,"DiscountAmount":225.0000,"DiscountedPrice":1275.0000,"ImagePath":null,"ImageTitle":null,"Description":null,"Longitude":null,"Latitude":null,"TotalDays":1,"HotelImages":[{"ImageTitle":"MainTitle","ImagePath":"../../../assets/img/place/3.png","IsMain":true},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/1.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/2.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/3.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/4.png","IsMain":false}]},{"ID":4,"HotelID":3,"CityID":7,"HotelName":"two star Hotel","CityName":"Lahore","CityDescription":null,"RoomTypeName":"Deluxe King","RoomTypeDescription":null,"RoomDetailPrice":2000.00,"DiscountPercentage":20.0,"DiscountAmount":400.0000,"DiscountedPrice":1600.0000,"ImagePath":null,"ImageTitle":null,"Description":null,"Longitude":null,"Latitude":null,"TotalDays":1,"HotelImages":[{"ImageTitle":"MainTitle","ImagePath":"../../../assets/img/place/3.png","IsMain":true},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/1.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/2.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/3.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/5.png","IsMain":false},{"ImageTitle":"title","ImagePath":"Resources/Images/Hotel/3.jpeg","IsMain":false}]},{"ID":5,"HotelID":2,"CityID":19,"HotelName":"five star Hotel","CityName":"Islamabad","CityDescription":null,"RoomTypeName":"Deluxe King","RoomTypeDescription":null,"RoomDetailPrice":2000.00,"DiscountPercentage":20.0,"DiscountAmount":400.0000,"DiscountedPrice":1600.0000,"ImagePath":null,"ImageTitle":null,"Description":null,"Longitude":null,"Latitude":null,"TotalDays":1,"HotelImages":[{"ImageTitle":"MainTitle","ImagePath":"../../../assets/img/place/1.png","IsMain":true},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/2.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/3.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/4.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/5.png","IsMain":false},{"ImageTitle":"title","ImagePath":"Resources/Images/Hotel/2.jpeg","IsMain":false}]}]
+2024-08-20 14:51:25.238 +05:00 [INF] Exiting null, Handle with response: [{"ID":17,"HotelID":6,"CityID":6,"HotelName":"butt g Hotel","CityName":"Islamabad","CityDescription":null,"RoomTypeName":"Single","RoomTypeDescription":null,"RoomDetailPrice":1000.00,"DiscountPercentage":10.0,"DiscountAmount":100.0000,"DiscountedPrice":900.0000,"ImagePath":null,"ImageTitle":null,"HotelImages":[{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/1.png","IsMain":true},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/2.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/3.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/4.png","IsMain":false},{"ImageTitle":"title","ImagePath":"../../../assets/img/place/4.png","IsMain":false}],"TotalDays":1,"Description":null,"Longitude":null,"Latitude":null},{"ID":8,"HotelID":1,"CityID":19,"HotelName":"Siddiqi Hotel","CityName":"Islamabad","CityDescription":null,"RoomTypeName":"Standard King","RoomTypeDescription":null,"RoomDetailPrice":1500.00,"DiscountPercentage":15.0,"DiscountAmount":225.0000,"DiscountedPrice":1275.0000,"ImagePath":null,"ImageTitle":null,"HotelImages":[{"ImageTitle":"MainTitle ","ImagePath":"../../../assets/img/place/2.png","IsMain":true},{"ImageTitle":"title","ImagePath":"../../../assets/img/place/5.png","IsMain":false},{"ImageTitle":"Title","ImagePath":"../../../assets/img/place/4.png","IsMain":false},{"ImageTitle":"title","ImagePath":"../../../assets/img/place/3.png","IsMain":false},{"ImageTitle":"title","ImagePath":"../../../assets/img/place/1.png","IsMain":false},{"ImageTitle":"title","ImagePath":"../../../assets/img/place/4.png","IsMain":false},{"ImageTitle":"title","ImagePath":"../../../assets/img/place/4.png","IsMain":false},{"ImageTitle":"fadsf","ImagePath":"../../../assets/Resources/Images/Hotel/3.jpeg","IsMain":false},{"ImageTitle":"TESTED","ImagePath":"../../../assets/Resources/Images/Hotel/10.jpeg","IsMain":false},{"ImageTitle":"TEST2","ImagePath":"../../../assets/Resources/Images/Hotel/9.jpeg","IsMain":false}],"TotalDays":1,"Description":null,"Longitude":null,"Latitude":null},{"ID":23,"HotelID":5,"CityID":6,"HotelName":"waseem Hotel","CityName":"Islamabad","CityDescription":null,"RoomTypeName":"Standard King","RoomTypeDescription":null,"RoomDetailPrice":1500.00,"DiscountPercentage":15.0,"DiscountAmount":225.0000,"DiscountedPrice":1275.0000,"ImagePath":null,"ImageTitle":null,"HotelImages":[{"ImageTitle":"MainTitle","ImagePath":"../../../assets/img/place/3.png","IsMain":true},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/1.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/2.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/3.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/4.png","IsMain":false}],"TotalDays":1,"Description":null,"Longitude":null,"Latitude":null},{"ID":4,"HotelID":3,"CityID":7,"HotelName":"two star Hotel","CityName":"Lahore","CityDescription":null,"RoomTypeName":"Deluxe King","RoomTypeDescription":null,"RoomDetailPrice":2000.00,"DiscountPercentage":20.0,"DiscountAmount":400.0000,"DiscountedPrice":1600.0000,"ImagePath":null,"ImageTitle":null,"HotelImages":[{"ImageTitle":"MainTitle","ImagePath":"../../../assets/img/place/3.png","IsMain":true},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/1.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/2.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/3.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/5.png","IsMain":false},{"ImageTitle":"title","ImagePath":"Resources/Images/Hotel/3.jpeg","IsMain":false}],"TotalDays":1,"Description":null,"Longitude":null,"Latitude":null},{"ID":5,"HotelID":2,"CityID":19,"HotelName":"five star Hotel","CityName":"Islamabad","CityDescription":null,"RoomTypeName":"Deluxe King","RoomTypeDescription":null,"RoomDetailPrice":2000.00,"DiscountPercentage":20.0,"DiscountAmount":400.0000,"DiscountedPrice":1600.0000,"ImagePath":null,"ImageTitle":null,"HotelImages":[{"ImageTitle":"MainTitle","ImagePath":"../../../assets/img/place/1.png","IsMain":true},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/2.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/3.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/4.png","IsMain":false},{"ImageTitle":"TITLE","ImagePath":"../../../assets/img/place/5.png","IsMain":false},{"ImageTitle":"title","ImagePath":"Resources/Images/Hotel/2.jpeg","IsMain":false}],"TotalDays":1,"Description":null,"Longitude":null,"Latitude":null}]
+2024-08-20 14:51:25.254 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 687.0114ms.
+2024-08-20 14:51:25.273 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-20 14:51:25.328 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController.GetAll (CleanArc.Web.Api) in 2914.4179ms
+2024-08-20 14:51:25.337 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.SearchHotelDetail.SearchHotelDetailController.GetAll (CleanArc.Web.Api)'
+2024-08-20 14:51:25.344 +05:00 [INF] Response StatusCode: 200
+2024-08-20 14:51:25.350 +05:00 [INF] Response StatusCode: 200
+2024-08-20 14:51:25.357 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/SearchHotelDetail/GetAll application/json 171 - 200 - application/json;+charset=utf-8 3091.3732ms
