@@ -15,6 +15,8 @@ public  class ProcessOrder
     public string? FirstName { get; set; } // nvarchar(50) NULL
     public string? LastName { get; set; } // nvarchar(50) NULL
     public string? Email { get; set; } // nvarchar(50) NULL
+    public string? PhoneNumber { get; set; }
+
     public string? CardHolderName { get; set; } // nvarchar(50) NULL
     public string? CardName { get; set; } // nvarchar(50) NULL
     public int? CardCVC { get; set; } // int NULL
