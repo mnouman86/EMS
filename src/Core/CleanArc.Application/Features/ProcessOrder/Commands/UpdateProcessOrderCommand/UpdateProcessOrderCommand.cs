@@ -12,6 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.ProcessOrder.Commands.UpdateProcessOrderCommand;
 public record UpdateProcessOrderCommand(int ID, string? OrderNumber, string? FirstName, string? LastName, string Email,
+   string? PhoneNumber,
     string? CardHolderName,
     string? CardName,
     int? CardCVC,
@@ -54,6 +55,10 @@ public record UpdateProcessOrderCommand(int ID, string? OrderNumber, string? Fir
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a Email");
+        validator.RuleFor(c => c.PhoneNumber)
+            .NotEmpty()
+            .NotNull()
+            .WithMessage("Please enter a valid PhoneNumber");
         validator.RuleFor(c => c.CardHolderName)
             .NotEmpty()
             .NotNull()
