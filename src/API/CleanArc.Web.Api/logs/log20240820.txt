@@ -1,0 +1,717 @@
+2024-08-20 09:29:28.945 +05:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-20 09:29:29.026 +05:00 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-20 09:29:29.034 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-20 09:29:29.039 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-20 09:29:29.073 +05:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-08-20 09:29:29.095 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-08-20 09:29:29.114 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-20 09:29:29.291 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-20 09:29:29.310 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-20 09:29:29.754 +05:00 [INF] Now listening on: https://localhost:5002
+2024-08-20 09:29:30.496 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-08-20 09:29:31.637 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-08-20 09:29:31.879 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:29:31.924 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-08-20 09:29:31.939 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 1428.9940ms
+2024-08-20 09:29:31.948 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 24.8149ms
+2024-08-20 09:29:31.965 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-08-20 09:29:32.034 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 69.4866ms
+2024-08-20 09:29:32.628 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-08-20 09:29:32.632 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-20 09:29:32.649 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-08-20 09:29:32.691 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-08-20 09:29:32.929 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-20 09:29:32.934 +05:00 [INF] Response StatusCode: 404
+2024-08-20 09:29:32.940 +05:00 [INF] Response StatusCode: 404
+2024-08-20 09:29:32.944 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 316.5763ms
+2024-08-20 09:29:33.866 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:29:33.869 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1219.9887ms
+2024-08-20 09:30:36.888 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 50
+2024-08-20 09:30:36.947 +05:00 [INF] CORS policy execution successful.
+2024-08-20 09:30:36.960 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-08-20 09:30:36.976 +05:00 [INF] Request Body: {
+  "userName": "waqas",
+  "password": "123@123"
+}
+2024-08-20 09:30:37.003 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-08-20 09:30:37.015 +05:00 [INF] Request Body: {
+  "userName": "waqas",
+  "password": "123@123"
+}
+2024-08-20 09:30:37.028 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-08-20 09:30:37.114 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-08-20 09:30:39.393 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-20 09:30:39.601 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"waqas","Password":"123@123"}
+2024-08-20 09:30:39.680 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"waqas","Password":"123@123","$type":"AdminGetTokenQuery"}
+2024-08-20 09:30:39.803 +05:00 [INF] Executed DbCommand (26ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-08-20 09:30:39.958 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1,"$type":"User"}
+2024-08-20 09:30:39.997 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-08-20 09:30:40.150 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-08-20 09:30:40.193 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-08-20 09:30:40.209 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-08-20 09:30:40.237 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-08-20 09:30:40.295 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-08-20 09:30:40.687 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-08-20 09:30:42.578 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-08-20 09:30:42.609 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.a_x12STyBGX_EnHwWxArVc-CVr6KjTccSK0KROLN7ov7k1zu2Dsicw.dyhvxHfxm7dwZ2__XTMKMQ.ybM8x2CjeHBxykQ6mkRw6IyihLtwfAI3-A_KvwN6jNi52ZpbkW0ouOpA24kwbm5rljWVx0BgdQydpMFx5w7DZ-dM_n9hjvgpmSMVtzK11CkzN4F0bsFOyQvU_JybUbhG3OVLlEJA6a4xyae3lfXs5AXtU-6xbMPLq5N-5IbJJCiHHvFrU2IeouVtQjYEgfMryOdA19eCbMpv_fMG3J6dOuNOvCjseiXAqpWa1l7hozkYz4GpwwCj6NNjMPVqdAKiMa-GkfCUPJ2GU6TbczneO-tD2eygsTZWXg_R4NqQR6qrvsROhoR8PKpp_nsujNQz1u3UJYQ5r7zqlXY6_RHfONXhUjxJdlXvHZUpOm87fXDvG4wNByN7mtKyIhz_ndQ_3_crcTgfJVD6ay4n6RgUQ-1l8PtBZ5NXchT-jgfvgnC2ZgUrdIkaBo9jROXztF7uYNne3X6i0sH7gW1_SGdUzntgZBlQO17ZAia7W0P0KKdhvoX0ggzGlWBKo9-foTmWD-hX85IVxTgkr-SXguG2Iynkg9jsBUuYUHXVD8tohV3zv-9Gyj63sDMopq4HHymyUmjo9MWx1bLpjf2w8cnwvPVhRy0abWgu3gVMMHv9bS3QsprcUBGj6PUFC_RmRAiH2n09LpONVsgwoi1YzF-zwfGwhnuqcrEkUxYdOPFFi3y5-TrZwV-Eavz-AeKmS3Rn.PfoFUpfPXchmLpUk-luQYA","refresh_token":"80b84800-4669-4794-00d1-08dcc0d0d8e4","token_type":"Bearer","expires_in":599997,"userID":5},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-08-20 09:30:42.625 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3217.5477ms.
+2024-08-20 09:30:42.656 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-20 09:30:42.709 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 5570.6449ms
+2024-08-20 09:30:42.720 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-08-20 09:30:42.727 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:30:42.741 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:30:42.753 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 50 - 200 - application/json;+charset=utf-8 5865.4195ms
+2024-08-20 09:31:39.632 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/PackageType/Create application/json 57
+2024-08-20 09:31:39.668 +05:00 [INF] CORS policy execution successful.
+2024-08-20 09:31:39.677 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageType/Create, Content-Type: application/json
+2024-08-20 09:31:39.684 +05:00 [INF] Request Body: {
+  "title": "test",
+  "cultureId": 1,
+  "createdBy": 0
+}
+2024-08-20 09:31:39.970 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-20 09:31:39.995 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageType/Create, Content-Type: application/json
+2024-08-20 09:31:40.003 +05:00 [INF] Request Body: {
+  "title": "test",
+  "cultureId": 1,
+  "createdBy": 0
+}
+2024-08-20 09:31:40.013 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.Create (CleanArc.Web.Api)'
+2024-08-20 09:31:40.027 +05:00 [INF] Route matched with {action = "Create", controller = "PackageType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.PackageType.Commands.CreatePackageTypeCommand.CreatePackageTypeCommand) on controller CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController (CleanArc.Web.Api).
+2024-08-20 09:31:42.031 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-20 09:31:43.380 +05:00 [INF] Entering CleanArc.Application.Features.PackageType.Commands.CreatePackageTypeCommand, Handle with parameter: {"Title":"test","CultureId":1,"CreatedBy":0,"UserId":5}
+2024-08-20 09:31:43.387 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-20 09:31:43.410 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-08-20 09:31:43.592 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"Title":"test","IsActive":null,"IsDeleted":null,"CreatedBy":5,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null}
+2024-08-20 09:31:44.011 +05:00 [INF] Exiting null, AddAsync with response: -1
+2024-08-20 09:31:44.016 +05:00 [INF] Exiting null, Handle with response: true
+2024-08-20 09:31:44.021 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.Create (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 1985.7322ms.
+2024-08-20 09:31:44.027 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-08-20 09:31:44.032 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.Create (CleanArc.Web.Api) in 3993.5239ms
+2024-08-20 09:31:44.037 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.Create (CleanArc.Web.Api)'
+2024-08-20 09:31:44.042 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:31:44.047 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:31:44.050 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/PackageType/Create application/json 57 - 200 - application/json;+charset=utf-8 4418.0695ms
+2024-08-20 09:32:21.549 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/PackageType/Create application/json 58
+2024-08-20 09:32:21.576 +05:00 [INF] CORS policy execution successful.
+2024-08-20 09:32:21.583 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageType/Create, Content-Type: application/json
+2024-08-20 09:32:21.588 +05:00 [INF] Request Body: {
+  "title": "test1",
+  "cultureId": 1,
+  "createdBy": 0
+}
+2024-08-20 09:32:21.647 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-20 09:32:21.655 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageType/Create, Content-Type: application/json
+2024-08-20 09:32:21.659 +05:00 [INF] Request Body: {
+  "title": "test1",
+  "cultureId": 1,
+  "createdBy": 0
+}
+2024-08-20 09:32:21.663 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.Create (CleanArc.Web.Api)'
+2024-08-20 09:32:21.667 +05:00 [INF] Route matched with {action = "Create", controller = "PackageType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.PackageType.Commands.CreatePackageTypeCommand.CreatePackageTypeCommand) on controller CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController (CleanArc.Web.Api).
+2024-08-20 09:32:23.483 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-20 09:32:24.586 +05:00 [INF] Entering CleanArc.Application.Features.PackageType.Commands.CreatePackageTypeCommand, Handle with parameter: {"Title":"test1","CultureId":1,"CreatedBy":0,"UserId":5}
+2024-08-20 09:32:24.600 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-20 09:32:24.604 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-08-20 09:32:24.609 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"Title":"test1","IsActive":null,"IsDeleted":null,"CreatedBy":5,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null}
+2024-08-20 09:32:24.670 +05:00 [INF] Exiting null, AddAsync with response: -1
+2024-08-20 09:32:24.678 +05:00 [INF] Exiting null, Handle with response: true
+2024-08-20 09:32:24.684 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.Create (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 1195.3659ms.
+2024-08-20 09:32:24.691 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-08-20 09:32:24.696 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.Create (CleanArc.Web.Api) in 3023.7872ms
+2024-08-20 09:32:24.719 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.Create (CleanArc.Web.Api)'
+2024-08-20 09:32:24.725 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:32:24.729 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:32:24.733 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/PackageType/Create application/json 58 - 200 - application/json;+charset=utf-8 3183.7774ms
+2024-08-20 09:32:41.184 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/PackageType/Update application/json 70
+2024-08-20 09:32:41.187 +05:00 [INF] CORS policy execution successful.
+2024-08-20 09:32:41.192 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageType/Update, Content-Type: application/json
+2024-08-20 09:32:41.197 +05:00 [INF] Request Body: {
+  "id": 2,
+  "title": "UPDATE",
+  "cultureId": 0,
+  "updatedBy": 0
+}
+2024-08-20 09:32:41.222 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-20 09:32:41.231 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageType/Update, Content-Type: application/json
+2024-08-20 09:32:41.240 +05:00 [INF] Request Body: {
+  "id": 2,
+  "title": "UPDATE",
+  "cultureId": 0,
+  "updatedBy": 0
+}
+2024-08-20 09:32:41.253 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.Update (CleanArc.Web.Api)'
+2024-08-20 09:32:41.263 +05:00 [INF] Route matched with {action = "Update", controller = "PackageType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.PackageType.Commands.UpdatePackageTypeCommand.UpdatePackageTypeCommand) on controller CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController (CleanArc.Web.Api).
+2024-08-20 09:32:44.848 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-20 09:32:44.995 +05:00 [INF] Entering CleanArc.Application.Features.PackageType.Commands.UpdatePackageTypeCommand, Handle with parameter: {"ID":2,"Title":"UPDATE","CultureId":0,"UpdatedBy":0,"UserId":5}
+2024-08-20 09:32:45.003 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-20 09:32:45.007 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-08-20 09:32:45.014 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":2,"Title":"UPDATE","IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":5,"UpdatedAt":null,"CultureId":0,"Code":null,"Message":null}
+2024-08-20 09:32:45.092 +05:00 [INF] Exiting null, UpdateAsync with response: -1
+2024-08-20 09:32:45.100 +05:00 [INF] Exiting null, Handle with response: true
+2024-08-20 09:32:45.110 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.Update (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 254.6549ms.
+2024-08-20 09:32:45.116 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-08-20 09:32:45.121 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.Update (CleanArc.Web.Api) in 3849.9373ms
+2024-08-20 09:32:45.127 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.Update (CleanArc.Web.Api)'
+2024-08-20 09:32:45.134 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:32:45.140 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:32:45.148 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/PackageType/Update application/json 70 - 200 - application/json;+charset=utf-8 3964.0495ms
+2024-08-20 09:34:12.340 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/PackageType/GetAll application/json 207
+2024-08-20 09:34:12.356 +05:00 [INF] CORS policy execution successful.
+2024-08-20 09:34:12.361 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageType/GetAll, Content-Type: application/json
+2024-08-20 09:34:12.367 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      {
+        
+      }
+    ],
+    "sortingArray": [
+      {
+       
+      }
+    ]
+  }
+}
+2024-08-20 09:34:12.373 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageType/GetAll, Content-Type: application/json
+2024-08-20 09:34:12.387 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      {
+        
+      }
+    ],
+    "sortingArray": [
+      {
+       
+      }
+    ]
+  }
+}
+2024-08-20 09:34:12.395 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.GetAll (CleanArc.Web.Api)'
+2024-08-20 09:34:12.410 +05:00 [INF] Route matched with {action = "GetAll", controller = "PackageType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.PackageType.Queries.GetAllPackageType.GetAllPackageTypeQuery) on controller CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController (CleanArc.Web.Api).
+2024-08-20 09:34:14.069 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-20 09:34:14.109 +05:00 [INF] Entering CleanArc.Application.Features.PackageType.Queries.GetAllPackageType, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[{"ParameterName":null,"ParameterValue":null}],"SortingArray":[{"SortingColumnName":null,"SortingColumnDirection":null}]}}
+2024-08-20 09:34:14.122 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[{"ParameterName":null,"ParameterValue":null}],"SortingArray":[{"SortingColumnName":null,"SortingColumnDirection":null}]}
+2024-08-20 09:34:14.335 +05:00 [INF] Exiting null, GetAllAsync with response: []
+2024-08-20 09:34:14.363 +05:00 [INF] Exiting null, Handle with response: []
+2024-08-20 09:34:14.368 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 288.517ms.
+2024-08-20 09:34:14.373 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-20 09:34:14.399 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.GetAll (CleanArc.Web.Api) in 1981.9116ms
+2024-08-20 09:34:14.405 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.GetAll (CleanArc.Web.Api)'
+2024-08-20 09:34:14.409 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:34:14.412 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:34:14.416 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/PackageType/GetAll application/json 207 - 200 - application/json;+charset=utf-8 2075.6232ms
+2024-08-20 09:34:58.368 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/PackageType/GetAll application/json 170
+2024-08-20 09:34:58.391 +05:00 [INF] CORS policy execution successful.
+2024-08-20 09:34:58.407 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageType/GetAll, Content-Type: application/json
+2024-08-20 09:34:58.415 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+    
+    ]
+  }
+}
+2024-08-20 09:34:58.425 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageType/GetAll, Content-Type: application/json
+2024-08-20 09:34:58.433 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+    
+    ]
+  }
+}
+2024-08-20 09:34:58.444 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.GetAll (CleanArc.Web.Api)'
+2024-08-20 09:34:58.455 +05:00 [INF] Route matched with {action = "GetAll", controller = "PackageType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.PackageType.Queries.GetAllPackageType.GetAllPackageTypeQuery) on controller CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController (CleanArc.Web.Api).
+2024-08-20 09:35:00.825 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-20 09:35:00.841 +05:00 [INF] Entering CleanArc.Application.Features.PackageType.Queries.GetAllPackageType, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-08-20 09:35:00.855 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-08-20 09:35:00.977 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":1,"Title":"test","IsActive":true,"IsDeleted":false,"CreatedBy":5,"CreatedAt":"2024-08-20T04:31:43.977","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":2,"Title":"UPDATE","IsActive":true,"IsDeleted":false,"CreatedBy":5,"CreatedAt":"2024-08-20T04:32:24.663","UpdatedBy":5,"UpdatedAt":"2024-08-20T04:32:45.083","CultureId":null,"Code":null,"Message":null}]
+2024-08-20 09:35:00.995 +05:00 [INF] Exiting null, Handle with response: [{"ID":1,"Title":"test","IsActive":true,"IsDeleted":false,"CreatedBy":5,"CreatedAt":"2024-08-20T04:31:43.977","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":2,"Title":"UPDATE","IsActive":true,"IsDeleted":false,"CreatedBy":5,"CreatedAt":"2024-08-20T04:32:24.663","UpdatedBy":5,"UpdatedAt":"2024-08-20T04:32:45.083","CultureId":null,"Code":null,"Message":null}]
+2024-08-20 09:35:01.002 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 162.7712ms.
+2024-08-20 09:35:01.008 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-20 09:35:01.022 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.GetAll (CleanArc.Web.Api) in 2556.0945ms
+2024-08-20 09:35:01.027 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.GetAll (CleanArc.Web.Api)'
+2024-08-20 09:35:01.033 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:35:01.038 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:35:01.043 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/PackageType/GetAll application/json 170 - 200 - application/json;+charset=utf-8 2674.4882ms
+2024-08-20 09:35:19.262 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/api/v1/PackageType/GetById/2 - -
+2024-08-20 09:35:19.271 +05:00 [INF] Request Method: GET, Path: /api/v1/PackageType/GetById/2, Content-Type: null
+2024-08-20 09:35:19.279 +05:00 [INF] Request Method: GET, Path: /api/v1/PackageType/GetById/2, Content-Type: null
+2024-08-20 09:35:19.288 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.GetById (CleanArc.Web.Api)'
+2024-08-20 09:35:19.299 +05:00 [INF] Route matched with {action = "GetById", controller = "PackageType"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController (CleanArc.Web.Api).
+2024-08-20 09:35:21.221 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-20 09:35:21.255 +05:00 [INF] Entering CleanArc.Application.Features.PackageType.Queries.GetPackageTypeById, Handle with parameter: {"Id":2}
+2024-08-20 09:35:21.268 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 2
+2024-08-20 09:35:21.361 +05:00 [INF] Exiting null, GetByIdAsync with response: {"ID":2,"Title":"UPDATE","IsActive":true,"IsDeleted":false,"CreatedBy":5,"CreatedAt":"2024-08-20T04:32:24.663","UpdatedBy":5,"UpdatedAt":"2024-08-20T04:32:45.083","CultureId":null,"Code":null,"Message":null}
+2024-08-20 09:35:21.385 +05:00 [INF] Exiting null, Handle with response: {"ID":2,"Title":"UPDATE","IsActive":true,"IsDeleted":false,"CreatedBy":5,"CreatedAt":"2024-08-20T04:32:24.663","UpdatedBy":5,"UpdatedAt":"2024-08-20T04:32:45.083","CultureId":null,"Code":null,"Message":null}
+2024-08-20 09:35:21.408 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.GetById (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 183.0218ms.
+2024-08-20 09:35:21.419 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-20 09:35:21.437 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.GetById (CleanArc.Web.Api) in 2131.8465ms
+2024-08-20 09:35:21.446 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.GetById (CleanArc.Web.Api)'
+2024-08-20 09:35:21.454 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:35:21.460 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:35:21.467 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/api/v1/PackageType/GetById/2 - - - 200 - application/json;+charset=utf-8 2205.2237ms
+2024-08-20 09:48:21.088 +05:00 [INF] Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-20 09:48:21.280 +05:00 [INF] Executed DbCommand (92ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-20 09:48:21.308 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-20 09:48:21.327 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-20 09:48:21.380 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-08-20 09:48:21.427 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-08-20 09:48:21.473 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-20 09:48:21.863 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-20 09:48:21.907 +05:00 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-20 09:48:22.829 +05:00 [INF] Now listening on: https://localhost:5002
+2024-08-20 09:48:23.220 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-08-20 09:48:23.485 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-08-20 09:48:23.671 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:48:23.731 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-08-20 09:48:23.733 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-08-20 09:48:23.749 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 531.2181ms
+2024-08-20 09:48:23.805 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 73.7222ms
+2024-08-20 09:48:23.899 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 165.7762ms
+2024-08-20 09:48:24.383 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-08-20 09:48:24.389 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-20 09:48:24.407 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-08-20 09:48:24.412 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-08-20 09:48:25.397 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-20 09:48:25.403 +05:00 [INF] Response StatusCode: 404
+2024-08-20 09:48:25.409 +05:00 [INF] Response StatusCode: 404
+2024-08-20 09:48:25.414 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 1031.4703ms
+2024-08-20 09:48:25.714 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:48:25.720 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1313.0373ms
+2024-08-20 09:49:28.133 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/PackageDetail/Create application/json 161
+2024-08-20 09:49:28.153 +05:00 [INF] CORS policy execution successful.
+2024-08-20 09:49:28.163 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageDetail/Create, Content-Type: application/json
+2024-08-20 09:49:28.188 +05:00 [INF] Request Body: {
+  "cultureId": 1,
+  "packageTypeID": 1,
+  "paymentOrderID": 6,
+  "stay": 100.00,
+  "car": 50.00,
+  "flight": 200.00,
+  "thingsToDo": 75.00,
+  "createdBy": 5
+}
+
+2024-08-20 09:49:28.891 +05:00 [INF] Executed DbCommand (72ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-20 09:49:29.234 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageDetail/Create, Content-Type: application/json
+2024-08-20 09:49:29.241 +05:00 [INF] Request Body: {
+  "cultureId": 1,
+  "packageTypeID": 1,
+  "paymentOrderID": 6,
+  "stay": 100.00,
+  "car": 50.00,
+  "flight": 200.00,
+  "thingsToDo": 75.00,
+  "createdBy": 5
+}
+
+2024-08-20 09:49:29.252 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api)'
+2024-08-20 09:49:29.316 +05:00 [INF] Route matched with {action = "Create", controller = "PackageDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.PackageDetail.Commands.CreatePackageDetailCommand.CreatePackageDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController (CleanArc.Web.Api).
+2024-08-20 09:49:31.898 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-20 09:49:33.331 +05:00 [INF] Entering CleanArc.Application.Features.PackageDetail.Commands.CreatePackageDetailCommand, Handle with parameter: {"PackageTypeID":1,"PaymentOrderID":6,"Stay":100.00,"Car":50.00,"Flight":200.00,"ThingsToDo":75.00,"CultureId":1,"CreatedBy":5,"UserId":5}
+2024-08-20 09:49:33.339 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-20 09:49:33.394 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-08-20 09:49:33.674 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"PackageTypeID":1,"PaymentOrderID":6,"Stay":100.00,"Car":50.00,"Flight":200.00,"ThingsToDo":75.00,"IsActive":null,"IsDeleted":null,"CreatedBy":5,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null}
+2024-08-20 09:49:34.800 +05:00 [INF] Exiting null, AddAsync with response: -1
+2024-08-20 09:49:34.868 +05:00 [INF] Exiting null, Handle with response: true
+2024-08-20 09:49:34.900 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 2982.2077ms.
+2024-08-20 09:49:35.020 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-08-20 09:49:35.103 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api) in 5762.8542ms
+2024-08-20 09:49:35.110 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api)'
+2024-08-20 09:49:35.117 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:49:35.122 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:49:35.126 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/PackageDetail/Create application/json 161 - 200 - application/json;+charset=utf-8 6993.5786ms
+2024-08-20 09:49:54.714 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/PackageDetail/Create application/json 165
+2024-08-20 09:49:54.718 +05:00 [INF] CORS policy execution successful.
+2024-08-20 09:49:54.723 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageDetail/Create, Content-Type: application/json
+2024-08-20 09:49:54.729 +05:00 [INF] Request Body: {
+  "cultureId": 1,
+  "packageTypeID": 1,
+  "paymentOrderID": 6,
+  "stay": 1000.00,
+  "car": 500.00,
+  "flight": 2000.00,
+  "thingsToDo": 750.00,
+  "createdBy": 5
+}
+
+2024-08-20 09:49:54.864 +05:00 [INF] Executed DbCommand (14ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-20 09:49:54.892 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageDetail/Create, Content-Type: application/json
+2024-08-20 09:49:54.920 +05:00 [INF] Request Body: {
+  "cultureId": 1,
+  "packageTypeID": 1,
+  "paymentOrderID": 6,
+  "stay": 1000.00,
+  "car": 500.00,
+  "flight": 2000.00,
+  "thingsToDo": 750.00,
+  "createdBy": 5
+}
+
+2024-08-20 09:49:54.929 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api)'
+2024-08-20 09:49:54.942 +05:00 [INF] Route matched with {action = "Create", controller = "PackageDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.PackageDetail.Commands.CreatePackageDetailCommand.CreatePackageDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController (CleanArc.Web.Api).
+2024-08-20 09:49:56.304 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-20 09:49:57.553 +05:00 [INF] Entering CleanArc.Application.Features.PackageDetail.Commands.CreatePackageDetailCommand, Handle with parameter: {"PackageTypeID":1,"PaymentOrderID":6,"Stay":1000.00,"Car":500.00,"Flight":2000.00,"ThingsToDo":750.00,"CultureId":1,"CreatedBy":5,"UserId":5}
+2024-08-20 09:49:57.557 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-20 09:49:57.560 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-08-20 09:49:57.565 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"PackageTypeID":1,"PaymentOrderID":6,"Stay":1000.00,"Car":500.00,"Flight":2000.00,"ThingsToDo":750.00,"IsActive":null,"IsDeleted":null,"CreatedBy":5,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null}
+2024-08-20 09:49:57.668 +05:00 [INF] Exiting null, AddAsync with response: -1
+2024-08-20 09:49:57.678 +05:00 [INF] Exiting null, Handle with response: true
+2024-08-20 09:49:57.689 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 1381.6197ms.
+2024-08-20 09:49:57.700 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-08-20 09:49:57.708 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api) in 2744.2877ms
+2024-08-20 09:49:57.714 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api)'
+2024-08-20 09:49:57.728 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:49:57.735 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:49:57.739 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/PackageDetail/Create application/json 165 - 200 - application/json;+charset=utf-8 3025.0694ms
+2024-08-20 09:51:11.505 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/PackageDetail/Create application/json 165
+2024-08-20 09:51:11.523 +05:00 [INF] CORS policy execution successful.
+2024-08-20 09:51:11.548 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageDetail/Create, Content-Type: application/json
+2024-08-20 09:51:11.552 +05:00 [INF] Request Body: {
+  "cultureId": 1,
+  "packageTypeID": 1,
+  "paymentOrderID": 6,
+  "stay": 1000.00,
+  "car": 500.00,
+  "flight": 2000.00,
+  "thingsToDo": 750.00,
+  "createdBy": 5
+}
+
+2024-08-20 09:51:11.581 +05:00 [INF] Executed DbCommand (15ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-20 09:51:11.589 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageDetail/Create, Content-Type: application/json
+2024-08-20 09:51:11.593 +05:00 [INF] Request Body: {
+  "cultureId": 1,
+  "packageTypeID": 1,
+  "paymentOrderID": 6,
+  "stay": 1000.00,
+  "car": 500.00,
+  "flight": 2000.00,
+  "thingsToDo": 750.00,
+  "createdBy": 5
+}
+
+2024-08-20 09:51:11.597 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api)'
+2024-08-20 09:51:11.600 +05:00 [INF] Route matched with {action = "Create", controller = "PackageDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.PackageDetail.Commands.CreatePackageDetailCommand.CreatePackageDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController (CleanArc.Web.Api).
+2024-08-20 09:51:13.567 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-20 09:51:14.595 +05:00 [INF] Entering CleanArc.Application.Features.PackageDetail.Commands.CreatePackageDetailCommand, Handle with parameter: {"PackageTypeID":1,"PaymentOrderID":6,"Stay":1000.00,"Car":500.00,"Flight":2000.00,"ThingsToDo":750.00,"CultureId":1,"CreatedBy":5,"UserId":5}
+2024-08-20 09:51:14.605 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-20 09:51:14.619 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-08-20 09:51:23.902 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"PackageTypeID":1,"PaymentOrderID":6,"Stay":1000.00,"Car":500.00,"Flight":2000.00,"ThingsToDo":750.00,"IsActive":null,"IsDeleted":null,"CreatedBy":5,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null}
+2024-08-20 09:51:37.175 +05:00 [INF] Exiting null, AddAsync with response: -1
+2024-08-20 09:51:39.871 +05:00 [INF] Exiting null, Handle with response: true
+2024-08-20 09:51:42.889 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 29314.5042ms.
+2024-08-20 09:51:50.882 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-08-20 09:51:53.149 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api) in 41546.5015ms
+2024-08-20 09:51:53.154 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api)'
+2024-08-20 09:51:53.157 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:51:53.163 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:51:53.168 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/PackageDetail/Create application/json 165 - 200 - application/json;+charset=utf-8 41665.2367ms
+2024-08-20 09:54:36.190 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/PackageDetail/Create application/json 165
+2024-08-20 09:54:36.217 +05:00 [INF] CORS policy execution successful.
+2024-08-20 09:54:36.223 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageDetail/Create, Content-Type: application/json
+2024-08-20 09:54:36.228 +05:00 [INF] Request Body: {
+  "cultureId": 1,
+  "packageTypeID": 1,
+  "paymentOrderID": 1,
+  "stay": 1000.00,
+  "car": 500.00,
+  "flight": 2000.00,
+  "thingsToDo": 750.00,
+  "createdBy": 5
+}
+
+2024-08-20 09:54:36.250 +05:00 [INF] Executed DbCommand (14ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-20 09:54:36.261 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageDetail/Create, Content-Type: application/json
+2024-08-20 09:54:36.269 +05:00 [INF] Request Body: {
+  "cultureId": 1,
+  "packageTypeID": 1,
+  "paymentOrderID": 1,
+  "stay": 1000.00,
+  "car": 500.00,
+  "flight": 2000.00,
+  "thingsToDo": 750.00,
+  "createdBy": 5
+}
+
+2024-08-20 09:54:36.276 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api)'
+2024-08-20 09:54:36.284 +05:00 [INF] Route matched with {action = "Create", controller = "PackageDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.PackageDetail.Commands.CreatePackageDetailCommand.CreatePackageDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController (CleanArc.Web.Api).
+2024-08-20 09:54:38.730 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-20 09:54:39.987 +05:00 [INF] Entering CleanArc.Application.Features.PackageDetail.Commands.CreatePackageDetailCommand, Handle with parameter: {"PackageTypeID":1,"PaymentOrderID":1,"Stay":1000.00,"Car":500.00,"Flight":2000.00,"ThingsToDo":750.00,"CultureId":1,"CreatedBy":5,"UserId":5}
+2024-08-20 09:54:39.994 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-20 09:54:39.998 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-08-20 09:54:40.817 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"PackageTypeID":1,"PaymentOrderID":1,"Stay":1000.00,"Car":500.00,"Flight":2000.00,"ThingsToDo":750.00,"IsActive":null,"IsDeleted":null,"CreatedBy":5,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null}
+2024-08-20 09:54:42.422 +05:00 [INF] Exiting null, AddAsync with response: -1
+2024-08-20 09:54:42.428 +05:00 [INF] Exiting null, Handle with response: true
+2024-08-20 09:54:42.434 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 3694.8455ms.
+2024-08-20 09:54:42.439 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-08-20 09:54:42.443 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api) in 6147.115ms
+2024-08-20 09:54:42.448 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Create (CleanArc.Web.Api)'
+2024-08-20 09:54:42.452 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:54:42.457 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:54:42.462 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/PackageDetail/Create application/json 165 - 200 - application/json;+charset=utf-8 6272.4029ms
+2024-08-20 09:55:44.970 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/PackageDetail/Update application/json 177
+2024-08-20 09:55:44.999 +05:00 [INF] CORS policy execution successful.
+2024-08-20 09:55:45.010 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageDetail/Update, Content-Type: application/json
+2024-08-20 09:55:45.018 +05:00 [INF] Request Body: {
+  "id": 2,
+   "cultureId": 1,
+  "packageTypeID": 1,
+  "paymentOrderID": 1,
+  "stay": 1000.00,
+  "car": 3500.00,
+  "flight": 2000.00,
+  "thingsToDo": 750.00,
+  "updatedBy": 1
+}
+2024-08-20 09:55:45.055 +05:00 [INF] Executed DbCommand (24ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-20 09:55:45.070 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageDetail/Update, Content-Type: application/json
+2024-08-20 09:55:45.084 +05:00 [INF] Request Body: {
+  "id": 2,
+   "cultureId": 1,
+  "packageTypeID": 1,
+  "paymentOrderID": 1,
+  "stay": 1000.00,
+  "car": 3500.00,
+  "flight": 2000.00,
+  "thingsToDo": 750.00,
+  "updatedBy": 1
+}
+2024-08-20 09:55:45.096 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Update (CleanArc.Web.Api)'
+2024-08-20 09:55:45.128 +05:00 [INF] Route matched with {action = "Update", controller = "PackageDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.PackageDetail.Commands.UpdatePackageDetailCommand.UpdatePackageDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController (CleanArc.Web.Api).
+2024-08-20 09:55:46.640 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-20 09:55:46.848 +05:00 [INF] Entering CleanArc.Application.Features.PackageDetail.Commands.UpdatePackageDetailCommand, Handle with parameter: {"ID":2,"PackageTypeID":1,"PaymentOrderID":1,"Stay":1000.00,"Car":3500.00,"Flight":2000.00,"ThingsToDo":750.00,"CultureId":1,"UpdatedBy":1,"UserId":5}
+2024-08-20 09:55:46.852 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-20 09:55:46.857 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-08-20 09:55:46.862 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":2,"PackageTypeID":1,"PaymentOrderID":1,"Stay":1000.00,"Car":3500.00,"Flight":2000.00,"ThingsToDo":750.00,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":5,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null}
+2024-08-20 09:55:46.960 +05:00 [INF] Exiting null, UpdateAsync with response: -1
+2024-08-20 09:55:46.969 +05:00 [INF] Exiting null, Handle with response: true
+2024-08-20 09:55:46.974 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Update (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 328.3482ms.
+2024-08-20 09:55:46.980 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-08-20 09:55:46.985 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Update (CleanArc.Web.Api) in 1839.6001ms
+2024-08-20 09:55:46.990 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Update (CleanArc.Web.Api)'
+2024-08-20 09:55:46.995 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:55:46.999 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:55:47.005 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/PackageDetail/Update application/json 177 - 200 - application/json;+charset=utf-8 2035.1320ms
+2024-08-20 09:56:16.609 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/PackageDetail/Update application/json 177
+2024-08-20 09:56:16.619 +05:00 [INF] CORS policy execution successful.
+2024-08-20 09:56:16.624 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageDetail/Update, Content-Type: application/json
+2024-08-20 09:56:16.634 +05:00 [INF] Request Body: {
+  "id": 6,
+   "cultureId": 1,
+  "packageTypeID": 1,
+  "paymentOrderID": 1,
+  "stay": 1000.00,
+  "car": 3500.00,
+  "flight": 2000.00,
+  "thingsToDo": 750.00,
+  "updatedBy": 1
+}
+2024-08-20 09:56:16.659 +05:00 [INF] Executed DbCommand (15ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-20 09:56:16.666 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageDetail/Update, Content-Type: application/json
+2024-08-20 09:56:16.670 +05:00 [INF] Request Body: {
+  "id": 6,
+   "cultureId": 1,
+  "packageTypeID": 1,
+  "paymentOrderID": 1,
+  "stay": 1000.00,
+  "car": 3500.00,
+  "flight": 2000.00,
+  "thingsToDo": 750.00,
+  "updatedBy": 1
+}
+2024-08-20 09:56:16.674 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Update (CleanArc.Web.Api)'
+2024-08-20 09:56:16.678 +05:00 [INF] Route matched with {action = "Update", controller = "PackageDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.PackageDetail.Commands.UpdatePackageDetailCommand.UpdatePackageDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController (CleanArc.Web.Api).
+2024-08-20 09:56:19.923 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-20 09:56:19.933 +05:00 [INF] Entering CleanArc.Application.Features.PackageDetail.Commands.UpdatePackageDetailCommand, Handle with parameter: {"ID":6,"PackageTypeID":1,"PaymentOrderID":1,"Stay":1000.00,"Car":3500.00,"Flight":2000.00,"ThingsToDo":750.00,"CultureId":1,"UpdatedBy":1,"UserId":5}
+2024-08-20 09:56:19.936 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-20 09:56:19.938 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"1d411f6d-6448-4e54-bb5f-010839177c3e","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":1}
+2024-08-20 09:56:19.943 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":6,"PackageTypeID":1,"PaymentOrderID":1,"Stay":1000.00,"Car":3500.00,"Flight":2000.00,"ThingsToDo":750.00,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":5,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null}
+2024-08-20 09:56:20.004 +05:00 [INF] Exiting null, UpdateAsync with response: -1
+2024-08-20 09:56:20.010 +05:00 [INF] Exiting null, Handle with response: true
+2024-08-20 09:56:20.018 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Update (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 85.7125ms.
+2024-08-20 09:56:20.026 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-08-20 09:56:20.031 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Update (CleanArc.Web.Api) in 3345.9297ms
+2024-08-20 09:56:20.034 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.Update (CleanArc.Web.Api)'
+2024-08-20 09:56:20.037 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:56:20.040 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:56:20.044 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/PackageDetail/Update application/json 177 - 200 - application/json;+charset=utf-8 3435.1031ms
+2024-08-20 09:59:07.782 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/PackageDetail/GetAll application/json 170
+2024-08-20 09:59:07.803 +05:00 [INF] CORS policy execution successful.
+2024-08-20 09:59:07.807 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageDetail/GetAll, Content-Type: application/json
+2024-08-20 09:59:07.816 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-20 09:59:07.823 +05:00 [INF] Request Method: POST, Path: /api/v1/PackageDetail/GetAll, Content-Type: application/json
+2024-08-20 09:59:07.830 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-20 09:59:07.839 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.GetAll (CleanArc.Web.Api)'
+2024-08-20 09:59:07.858 +05:00 [INF] Route matched with {action = "GetAll", controller = "PackageDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.PackageDetail.Queries.GetAllPackageDetail.GetAllPackageDetailQuery) on controller CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController (CleanArc.Web.Api).
+2024-08-20 09:59:09.475 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-20 09:59:09.506 +05:00 [INF] Entering CleanArc.Application.Features.PackageDetail.Queries.GetAllPackageDetail, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-08-20 09:59:09.516 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-08-20 09:59:09.731 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":5,"PackageTypeID":1,"PaymentOrderID":1,"Stay":100.00,"Car":50.00,"Flight":200.00,"ThingsToDo":75.0,"IsActive":true,"IsDeleted":false,"CreatedBy":5,"CreatedAt":"2024-08-20T04:54:22.173","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":6,"PackageTypeID":1,"PaymentOrderID":1,"Stay":1000.00,"Car":3500.00,"Flight":2000.00,"ThingsToDo":750.0,"IsActive":true,"IsDeleted":false,"CreatedBy":5,"CreatedAt":"2024-08-20T04:54:41.53","UpdatedBy":5,"UpdatedAt":"2024-08-20T04:56:20","CultureId":null,"Code":null,"Message":null}]
+2024-08-20 09:59:09.775 +05:00 [INF] Exiting null, Handle with response: [{"ID":5,"PackageTypeID":1,"PaymentOrderID":1,"Stay":100.00,"Car":50.00,"Flight":200.00,"ThingsToDo":75.0,"IsActive":true,"IsDeleted":false,"CreatedBy":5,"CreatedAt":"2024-08-20T04:54:22.173","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":6,"PackageTypeID":1,"PaymentOrderID":1,"Stay":1000.00,"Car":3500.00,"Flight":2000.00,"ThingsToDo":750.0,"IsActive":true,"IsDeleted":false,"CreatedBy":5,"CreatedAt":"2024-08-20T04:54:41.53","UpdatedBy":5,"UpdatedAt":"2024-08-20T04:56:20","CultureId":null,"Code":null,"Message":null}]
+2024-08-20 09:59:09.783 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 301.6313ms.
+2024-08-20 09:59:09.789 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-20 09:59:09.819 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.GetAll (CleanArc.Web.Api) in 1956.456ms
+2024-08-20 09:59:09.823 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.GetAll (CleanArc.Web.Api)'
+2024-08-20 09:59:09.828 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:59:09.831 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:59:09.835 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/PackageDetail/GetAll application/json 170 - 200 - application/json;+charset=utf-8 2052.6188ms
+2024-08-20 09:59:20.720 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/api/v1/PackageDetail/GetById/5 - -
+2024-08-20 09:59:20.728 +05:00 [INF] Request Method: GET, Path: /api/v1/PackageDetail/GetById/5, Content-Type: null
+2024-08-20 09:59:20.733 +05:00 [INF] Request Method: GET, Path: /api/v1/PackageDetail/GetById/5, Content-Type: null
+2024-08-20 09:59:20.739 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.GetById (CleanArc.Web.Api)'
+2024-08-20 09:59:20.751 +05:00 [INF] Route matched with {action = "GetById", controller = "PackageDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController (CleanArc.Web.Api).
+2024-08-20 09:59:22.524 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-20 09:59:22.565 +05:00 [INF] Entering CleanArc.Application.Features.PackageDetail.Queries.GetPackageDetailById, Handle with parameter: {"Id":5}
+2024-08-20 09:59:22.576 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 5
+2024-08-20 09:59:22.653 +05:00 [INF] Exiting null, GetByIdAsync with response: {"ID":5,"PackageTypeID":1,"PaymentOrderID":1,"Stay":100.00,"Car":50.00,"Flight":200.00,"ThingsToDo":75.0,"IsActive":true,"IsDeleted":false,"CreatedBy":5,"CreatedAt":"2024-08-20T04:54:22.173","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}
+2024-08-20 09:59:22.679 +05:00 [INF] Exiting null, Handle with response: {"ID":5,"PackageTypeID":1,"PaymentOrderID":1,"Stay":100.00,"Car":50.00,"Flight":200.00,"ThingsToDo":75.0,"IsActive":true,"IsDeleted":false,"CreatedBy":5,"CreatedAt":"2024-08-20T04:54:22.173","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}
+2024-08-20 09:59:22.697 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.GetById (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 168.0024ms.
+2024-08-20 09:59:22.706 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-20 09:59:22.719 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.GetById (CleanArc.Web.Api) in 1962.3204ms
+2024-08-20 09:59:22.728 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.GetById (CleanArc.Web.Api)'
+2024-08-20 09:59:22.733 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:59:22.738 +05:00 [INF] Response StatusCode: 200
+2024-08-20 09:59:22.741 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/api/v1/PackageDetail/GetById/5 - - - 200 - application/json;+charset=utf-8 2021.7599ms

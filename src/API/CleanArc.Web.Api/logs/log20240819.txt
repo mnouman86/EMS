@@ -1357,3 +1357,69 @@ WHERE [u].[UserId] = @__p_0
 2024-08-19 13:20:25.310 +05:00 [INF] Response StatusCode: 200
 2024-08-19 13:20:25.314 +05:00 [INF] Response StatusCode: 200
 2024-08-19 13:20:25.319 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/ProcessOrder/Update application/json 604 - 200 - application/json;+charset=utf-8 6753.0237ms
+2024-08-19 14:38:16.158 +05:00 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-19 14:38:16.352 +05:00 [INF] Executed DbCommand (74ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-19 14:38:16.365 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-19 14:38:16.372 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-19 14:38:16.427 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-08-19 14:38:16.531 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-08-19 14:38:16.586 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-19 14:38:17.067 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-19 14:38:17.096 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-19 14:38:17.864 +05:00 [INF] Now listening on: https://localhost:5002
+2024-08-19 14:38:19.190 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-08-19 14:38:19.735 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-08-19 14:38:20.216 +05:00 [INF] Response StatusCode: 200
+2024-08-19 14:38:20.298 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 1087.3022ms
+2024-08-19 14:38:20.407 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-08-19 14:38:20.407 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-08-19 14:38:20.458 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 51.0701ms
+2024-08-19 14:38:20.596 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 188.7899ms
+2024-08-19 14:38:22.497 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-08-19 14:38:22.505 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-19 14:38:22.571 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-08-19 14:38:22.582 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-08-19 14:38:23.753 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-19 14:38:23.760 +05:00 [INF] Response StatusCode: 404
+2024-08-19 14:38:23.767 +05:00 [INF] Response StatusCode: 404
+2024-08-19 14:38:23.775 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 1278.1097ms
+2024-08-19 14:38:25.140 +05:00 [INF] Response StatusCode: 200
+2024-08-19 14:38:25.145 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 2575.0301ms
+2024-08-19 14:42:03.046 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/api/v1/RoomVisual/GetById/5 - -
+2024-08-19 14:42:03.056 +05:00 [INF] Request Method: GET, Path: /api/v1/RoomVisual/GetById/5, Content-Type: null
+2024-08-19 14:42:03.108 +05:00 [INF] Request Method: GET, Path: /api/v1/RoomVisual/GetById/5, Content-Type: null
+2024-08-19 14:42:03.128 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.RoomVisual.RoomVisualController.GetById (CleanArc.Web.Api)'
+2024-08-19 14:42:03.191 +05:00 [INF] Route matched with {action = "GetById", controller = "RoomVisual"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.RoomVisual.RoomVisualController (CleanArc.Web.Api).
+2024-08-19 14:42:06.314 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.RoomVisual.RoomVisualController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-19 14:42:06.805 +05:00 [INF] Entering CleanArc.Application.Features.RoomVisual.Query.GetRoomVisualById, Handle with parameter: {"Id":5}
+2024-08-19 14:42:08.887 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 5
+2024-08-19 14:42:19.025 +05:00 [INF] Exiting null, GetByIdAsync with response: {"ID":5,"HotelID":2,"RoomID":11,"CategoryID":2,"ImageTitle":"RoomImage","ImagePath":"../../../assets/images/Movenpick Khi/MP3.jpg","IsMain":true,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-06-05T14:13:36.633","UpdatedBy":null,"UpdatedAt":null}
+2024-08-19 14:42:21.880 +05:00 [INF] Exiting null, Handle with response: {"ID":5,"HotelID":2,"RoomID":11,"CategoryID":2,"ImageTitle":"RoomImage","ImagePath":"../../../assets/images/Movenpick Khi/MP3.jpg","IsMain":true,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-06-05T14:13:36.633","UpdatedBy":null,"UpdatedAt":null}
+2024-08-19 14:42:21.905 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.RoomVisual.RoomVisualController.GetById (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 15578.1371ms.
+2024-08-19 14:42:21.933 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-19 14:42:22.015 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.RoomVisual.RoomVisualController.GetById (CleanArc.Web.Api) in 18805.5716ms
+2024-08-19 14:42:22.020 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.RoomVisual.RoomVisualController.GetById (CleanArc.Web.Api)'
+2024-08-19 14:42:22.024 +05:00 [INF] Response StatusCode: 200
+2024-08-19 14:42:22.031 +05:00 [INF] Response StatusCode: 200
+2024-08-19 14:42:22.036 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/api/v1/RoomVisual/GetById/5 - - - 200 - application/json;+charset=utf-8 18989.3658ms

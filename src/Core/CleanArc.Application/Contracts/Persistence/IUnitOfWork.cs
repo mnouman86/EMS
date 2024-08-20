@@ -74,6 +74,8 @@ public interface IUnitOfWork
     public IActivityIDImageMappingRepository ActivityIDImageMappingRepository { get; }
 
     public IProcessOrderRepository ProcessOrderRepository { get; }
+    public IPackageTypeRepository PackageTypeRepository { get; }
+    public IPackageDetailRepository PackageDetailRepository { get; }
 
 
     Task CommitAsync();
