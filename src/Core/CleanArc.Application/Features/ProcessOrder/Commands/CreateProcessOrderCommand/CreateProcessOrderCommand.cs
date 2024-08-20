@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ProcessOrder.Commands.CreateProcessOrderCommand;
 public record CreateProcessOrderCommand(string? OrderNumber, string? FirstName, string? LastName, string? Email,
+    string? PhoneNumber,
     string? CardHolderName,
     string? CardName,
     int? CardCVC,
@@ -54,6 +55,10 @@ public record CreateProcessOrderCommand(string? OrderNumber, string? FirstName, 
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a Email");
+        validator.RuleFor(c => c.PhoneNumber)
+           .NotEmpty()
+           .NotNull()
+           .WithMessage("Please enter a valid PhoneNumber");
         validator.RuleFor(c => c.CardHolderName)
             .NotEmpty()
             .NotNull()

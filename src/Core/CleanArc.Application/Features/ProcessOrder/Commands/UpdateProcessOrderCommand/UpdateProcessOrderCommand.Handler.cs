@@ -64,6 +64,7 @@ internal class UpdateProcessOrderCommandHandler:IRequestHandler<UpdateProcessOrd
                 FirstName = request.FirstName,
                 LastName = request.LastName,
                 Email = request.Email,
+                PhoneNumber = request.PhoneNumber,
                 CardHolderName = request.CardHolderName,
                 CardName = request.CardName,
                 CardCVC = request.CardCVC,
