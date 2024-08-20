@@ -81,6 +81,7 @@ internal class CreateProcessOrderCommandHandler: IRequestHandler<CreateProcessOr
                 NoOfAdults = request.NoOfAdults,
                 NoOfChildrens = request.NoOfChildrens,
                 NoOfRooms = request.NoOfRooms,
+                PackageTypeID = request.PackageTypeID,
                 OrderStatus = request.OrderStatus,
                 CreditDate = request.CreditDate,
                 
