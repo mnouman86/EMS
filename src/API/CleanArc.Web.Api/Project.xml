@@ -583,6 +583,24 @@
             <param name="sender">The mediator sender for handling requests and responses.</param>
             <param name="logger">The logger for logging controller-related information.</param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.PackageDetail.Commands.CreatePackageDetailCommand.CreatePackageDetailCommand,CleanArc.Application.Features.PackageDetail.Commands.UpdatePackageDetailCommand.UpdatePackageDetailCommand,CleanArc.Application.Features.PackageDetail.Commands.DeletePackageDetailCommand.DeletePackageDetailCommand,System.Boolean,CleanArc.Application.Features.PackageDetail.Queries.GetAllPackageDetail.GetAllPackageDetailQuery,System.Collections.Generic.List{CleanArc.Application.Features.PackageDetail.Queries.GetAllPackageDetail.GetAllPackageDetailQueryResult},CleanArc.Application.Features.PackageDetail.Queries.GetPackageDetailById.GetPackageDetailByIdQuery,CleanArc.Application.Features.PackageDetail.Queries.GetPackageDetailById.GetPackageDetailByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.PackageType.Commands.CreatePackageTypeCommand.CreatePackageTypeCommand,CleanArc.Application.Features.PackageType.Commands.UpdatePackageTypeCommand.UpdatePackageTypeCommand,CleanArc.Application.Features.PackageType.Commands.DeletePackageTypeCommand.DeletePackageTypeCommand,System.Boolean,CleanArc.Application.Features.PackageType.Queries.GetAllPackageType.GetAllPackageTypeQuery,System.Collections.Generic.List{CleanArc.Application.Features.PackageType.Queries.GetAllPackageType.GetAllPackageTypeQueryResult},CleanArc.Application.Features.PackageType.Queries.GetPackageTypeById.GetPackageTypeByIdQuery,CleanArc.Application.Features.PackageType.Queries.GetPackageTypeById.GetPackageTypeByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ProcessOrder.ProcessOrderController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.ProcessOrder.ProcessOrderController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ProcessOrder.Commands.CreateProcessOrderCommand.CreateProcessOrderCommand,CleanArc.Application.Features.ProcessOrder.Commands.UpdateProcessOrderCommand.UpdateProcessOrderCommand,CleanArc.Application.Features.ProcessOrder.Commands.DeleteProcessOrderCommand.DeleteProcessOrderCommand,System.Boolean,CleanArc.Application.Features.ProcessOrder.Queries.GetAllProcessOrder.GetAllProcessOrderQuery,System.Collections.Generic.List{CleanArc.Application.Features.ProcessOrder.Queries.GetAllProcessOrder.GetAllProcessOrderQueryResult},CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById.GetProcessOrderByIdQuery,CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById.GetProcessOrderByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
