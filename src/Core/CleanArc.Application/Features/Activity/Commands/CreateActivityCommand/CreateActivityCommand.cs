@@ -41,7 +41,12 @@ public record CreateActivityCommand(
     int? CreatedBy,
      string? SeasonLookUpID,
     string? IncludeOptionLookUpID,
-    string? DisabilityOptionLookUpID
+    string? DisabilityOptionLookUpID,
+    DateTime? EndDate,
+    DateTime? StartDate,
+    DateTime? EndTime,
+    DateTime? StartTime
+
 
     ) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateActivityCommand>
