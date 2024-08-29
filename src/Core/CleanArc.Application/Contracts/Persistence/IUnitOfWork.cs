@@ -76,6 +76,7 @@ public interface IUnitOfWork
     public IProcessOrderRepository ProcessOrderRepository { get; }
     public IPackageTypeRepository PackageTypeRepository { get; }
     public IPackageDetailRepository PackageDetailRepository { get; }
+    public IFAQsRepository FAQsRepository { get; }
 
 
     Task CommitAsync();

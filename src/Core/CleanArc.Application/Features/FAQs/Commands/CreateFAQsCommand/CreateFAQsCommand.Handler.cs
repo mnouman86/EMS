@@ -15,21 +15,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.ActivityIncludeOptionMapping.Commands.CreateActivityIncludeOptionMappingCommand;
+namespace CleanArc.Application.Features.FAQs.Commands.CreateFAQsCommand;
 
-internal class CreateActivityIncludeOptionMappingCommandHandler: IRequestHandler<CreateActivityIncludeOptionMappingCommand, OperationResult<bool>>
+internal class CreateFAQsCommandHandler: IRequestHandler<CreateFAQsCommand, OperationResult<bool>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<CreateActivityIncludeOptionMappingCommandHandler> _logger;
+    private readonly ILogger<CreateFAQsCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
     //private readonly IUnitOfWork _unitOfWork;
     //private readonly IAppUserManager _userManager;
 
 
-    public CreateActivityIncludeOptionMappingCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<CreateActivityIncludeOptionMappingCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public CreateFAQsCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<CreateFAQsCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -41,7 +41,7 @@ internal class CreateActivityIncludeOptionMappingCommandHandler: IRequestHandler
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateActivityIncludeOptionMappingCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<bool>> Handle(CreateFAQsCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -57,8 +57,14 @@ internal class CreateActivityIncludeOptionMappingCommandHandler: IRequestHandler
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.ActivityIncludeOptionMappingRepository.AddAsync(new Domain.Entities.ActivityIncludeOptionMapping.ActivityIncludeOptionMapping()
-            { CreatedBy = user.Id, IncludeOptionsLookUpID = request.IncludeOptionsLookUpID, ActivityID=request.ActivityID });
+            await _unitOfWork.FAQsRepository.AddAsync(new Domain.Entities.FAQs.FAQs()
+            { CreatedBy = user.Id,
+                CategoryServiceID = request.CategoryServiceID,
+                ServiceID=request.ServiceID,
+                SubServiceID = request.SubServiceID,
+                Question = request.Question,
+                Answer = request.Answer,
+                CultureId =request.CultureId  });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);
