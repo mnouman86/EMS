@@ -42,6 +42,10 @@ public record UpdateActivityCommand(
      string? SeasonLookUpID,
     string? IncludeOptionLookUpID,
     string? DisabilityOptionLookUpID,
+    DateTime? EndDate,
+    DateTime? StartDate,
+    DateTime? EndTime,
+    DateTime? StartTime,
      int? UpdatedBy) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateActivityCommand>
 {

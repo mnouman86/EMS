@@ -90,7 +90,11 @@ internal class UpdateActivityCommandHandler:IRequestHandler<UpdateActivityComman
                 OtherManageActivity = request.OtherManageActivity,
                 OtherSubService = request.OtherSubService,
                 IncludeOptionLookUpID = request.IncludeOptionLookUpID,
-                DisabilityOptionLookUpID= request.DisabilityOptionLookUpID,
+                EndDate = request.EndDate,
+                StartDate = request.StartDate,
+                StartTime = request.StartDate,
+                EndTime = request.EndDate,
+                DisabilityOptionLookUpID = request.DisabilityOptionLookUpID,
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

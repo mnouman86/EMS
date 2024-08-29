@@ -9,6 +9,7 @@ namespace CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSear
 {
     public class GetAllSearchHotelRoomDetailQueryResult
     {
+        public int? ID{ get; set; }
         public string ImageTitle { get; set; }
         public string ImagePath { get; set; }
         public decimal RoomDetailPrice { get; set; }

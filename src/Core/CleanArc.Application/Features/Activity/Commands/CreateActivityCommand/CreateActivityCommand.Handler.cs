@@ -94,7 +94,11 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
                 SeasonLookUpID = request.SeasonLookUpID,
                 IncludeOptionLookUpID = request.IncludeOptionLookUpID,
                 DisabilityOptionLookUpID= request.DisabilityOptionLookUpID,
-               // PerGroupPrice = request.PerGroupPrice,
+                EndDate = request.EndDate,
+                StartDate = request.StartDate,
+                StartTime = request.StartDate,
+                EndTime = request.EndDate
+                // PerGroupPrice = request.PerGroupPrice,
                 //SeasonID = request.SeasonID,
 
 
