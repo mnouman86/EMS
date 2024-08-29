@@ -9,7 +9,7 @@ namespace CleanArc.Application.Features.SearchBusinessCarDetail.Queries.GetAllSe
 {
     public class GetAllSearchBusinessCarDetailQueryResult
     {
-        public int CarID { get; set; }
+        public int ID { get; set; }
         public int BusinessID { get; set; }
         public string BusinessName { get; set; }
         public int CityID { get; set; }

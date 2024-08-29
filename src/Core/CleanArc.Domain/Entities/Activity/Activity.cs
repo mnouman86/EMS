@@ -52,6 +52,10 @@ public  class Activity
     public int? ActivityID { get; set; }
     public string? Duration { get; set; }
     public string? Cancellation { get; set; }
+    public DateTime? StartTime { get; set; } // Nullable TimeSpan for StartTime
+    public DateTime? EndTime { get; set; }   // Nullable TimeSpan for EndTime
+    public DateTime? StartDate { get; set; } // Nullable DateTime for StartDate
+    public DateTime? EndDate { get; set; }   // Nullable DateTime for EndDate
     public List<ActivityIDImageMapping> ActivityImages { get; set; }
     public List<ActivityAddressMapping> ActivityAddress { get; set; }
 
