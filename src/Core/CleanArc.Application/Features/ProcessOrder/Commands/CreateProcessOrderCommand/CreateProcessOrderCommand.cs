@@ -116,18 +116,18 @@ public record CreateProcessOrderCommand(string? OrderNumber, string? FirstName, 
           .NotEmpty()
           .NotNull()
           .WithMessage("Please enter a ToDate");
-        validator.RuleFor(c => c.NoOfAdults)
-          .NotEmpty()
-          .NotNull()
-          .WithMessage("Please enter a NoOfAdults");
-        validator.RuleFor(c => c.NoOfChildrens)
-          .NotEmpty()
-          .NotNull()
-          .WithMessage("Please enter a NoOfChildrens");
-        validator.RuleFor(c => c.NoOfRooms)
-        .NotEmpty()
-        .NotNull()
-        .WithMessage("Please enter a NoOfRooms");
+        //validator.RuleFor(c => c.NoOfAdults)
+        //  .NotEmpty()
+        //  .NotNull()
+        //  .WithMessage("Please enter a NoOfAdults");
+        //validator.RuleFor(c => c.NoOfChildrens)
+        //  .NotEmpty()
+        //  .NotNull()
+        //  .WithMessage("Please enter a NoOfChildrens");
+        //validator.RuleFor(c => c.NoOfRooms)
+        //.NotEmpty()
+        //.NotNull()
+        //.WithMessage("Please enter a NoOfRooms");
         validator.RuleFor(c => c.OrderStatus)
         .NotEmpty()
         .NotNull()
