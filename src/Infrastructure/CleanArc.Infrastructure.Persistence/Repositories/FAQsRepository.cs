@@ -1,10 +1,10 @@
 ﻿using Azure.Core;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Models.ActivityIncludeOptionMapping;
-using CleanArc.Application.Models.BusinessProfile;
+using CleanArc.Application.Models.FAQs;
+using CleanArc.Application.Models.Advertisement;
 using CleanArc.Application.Models.Request;
 using CleanArc.Application.Models.URL;
-using CleanArc.Domain.Entities.ActivityIncludeOptionMapping;
+using CleanArc.Domain.Entities.FAQs;
 using CleanArc.Domain.Entities.UserManagement;
 using CleanArc.Infrastructure.Persistence.Helpers;
 using CleanArc.Infrastructure.Sql;
@@ -30,7 +30,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories;
 /// Repository implementation for handling operations related to menus.
 /// </summary>
 /// <seealso cref="CleanArc.Application.Contracts.Persistence.IMenuRepository" />
-public class ActivityIncludeOptionMappingRepository:IActivityIncludeOptionMappingRepository
+public class FAQsRepository:IFAQsRepository
 {
     /// <summary>
     /// The configuration for accessing application settings.
@@ -45,7 +45,7 @@ public class ActivityIncludeOptionMappingRepository:IActivityIncludeOptionMappin
     /// <summary>
     /// The logger for logging repository-related information.
     /// </summary>
-    private readonly ILogger<ActivityIncludeOptionMappingRepository> _logger;
+    private readonly ILogger<FAQsRepository> _logger;
 
     /// <summary>
     /// The HTTP context accessor for accessing HTTP context information.
@@ -59,7 +59,7 @@ public class ActivityIncludeOptionMappingRepository:IActivityIncludeOptionMappin
     /// <param name="mapper">The mapper for mapping between different object types.</param>
     /// <param name="logger">The logger for logging repository-related information.</param>
     /// <param name="httpContextAccessor">The HTTP context accessor for accessing HTTP context information.</param>
-    public ActivityIncludeOptionMappingRepository(IConfiguration configuration, IMapper mapper, ILogger<ActivityIncludeOptionMappingRepository> logger, IHttpContextAccessor httpContextAccessor)
+    public FAQsRepository(IConfiguration configuration, IMapper mapper, ILogger<FAQsRepository> logger, IHttpContextAccessor httpContextAccessor)
     {
         this.configuration = configuration;
         this._mapper = mapper;
@@ -67,19 +67,19 @@ public class ActivityIncludeOptionMappingRepository:IActivityIncludeOptionMappin
         _httpContextAccessor = httpContextAccessor;
     }
 /// <inheritdoc/>
-public async Task<string> AddAsync(ActivityIncludeOptionMapping ActivityIncludeOptionMapping)
+public async Task<string> AddAsync(FAQs FAQs)
 {
-    using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, ActivityIncludeOptionMapping))
+    using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, FAQs))
     {
         using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
         {
             connection.Open();
-                CreateActivityIncludeOptionMappingDTO createActivityIncludeOptionMappingDTO = _mapper.Map<CreateActivityIncludeOptionMappingDTO>(ActivityIncludeOptionMapping);
-                var parameters = new DynamicParameters(createActivityIncludeOptionMappingDTO);
+                CreateFAQsDTO createFAQsDTO = _mapper.Map<CreateFAQsDTO>(FAQs);
+                var parameters = new DynamicParameters(createFAQsDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityIncludeOptionMappingQueries.Mapping_Create_Seasons, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(FAQsQueries.Create_FAQs, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -100,14 +100,14 @@ public async Task<string> AddAsync(ActivityIncludeOptionMapping ActivityIncludeO
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityIncludeOptionMappingQueries.Mapping_Delete_Seasons, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(FAQsQueries.Delete_FAQs, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }
         }
     }
 
-    public async Task<IReadOnlyList<ActivityIncludeOptionMapping>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<IReadOnlyList<FAQs>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -118,30 +118,32 @@ public async Task<string> AddAsync(ActivityIncludeOptionMapping ActivityIncludeO
                 parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
                 parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
                 parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
-                parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
-                parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+                //parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+                //parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                //connection.Open();
-                //var parameters = new
-                //{
-                //    PageNumber = searchRequest.PageNumber,
-                //    PageSize = searchRequest.PageSize,
-                //    //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-                //    //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-                //    //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-                //    //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-                //    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
-                //    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
+                //    var parameters = new
+                //    {
+                //        PageNumber = searchRequest.PageNumber,
+                //        PageSize = searchRequest.PageSize,
+                //        //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
+                //        //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
+                //        //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
+                //        //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
+                //        SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
+                //        FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray), // Convert list to DataTable
+                //        Code = ("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output),
+                //        Message = ("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output)
+
                 //};
-                var result = await connection.QueryAsync<ActivityIncludeOptionMapping>(ActivityIncludeOptionMappingQueries.Mapping_GetAllByActivityID_IncludeOptions, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<FAQs>(FAQsQueries.GetAll_FAQs, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }
         }
     }
-    public async Task<ActivityIncludeOptionMapping> GetByIdAsync(long id)
+    public async Task<FAQs> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
         {
@@ -154,7 +156,7 @@ public async Task<string> AddAsync(ActivityIncludeOptionMapping ActivityIncludeO
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<ActivityIncludeOptionMapping>(ActivityIncludeOptionMappingQueries.Mapping_GetByID_Seasons, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<FAQs>(FAQsQueries.GetByID_FAQs, parameters , commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -163,19 +165,18 @@ public async Task<string> AddAsync(ActivityIncludeOptionMapping ActivityIncludeO
 
 
 
-    public async Task<string> UpdateAsync(ActivityIncludeOptionMapping entity)
+    public async Task<string> UpdateAsync(FAQs entity)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                UpdateActivityIncludeOptionMappingDTO updateActivityIncludeOptionMappingDTO = _mapper.Map<UpdateActivityIncludeOptionMappingDTO>(entity);
-                var parameters = new DynamicParameters(updateActivityIncludeOptionMappingDTO);
+                UpdateFAQsDTO updateFAQsDTO = _mapper.Map<UpdateFAQsDTO>(entity);
+                var parameters = new DynamicParameters(updateFAQsDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
-                var result = await connection.ExecuteAsync(ActivityIncludeOptionMappingQueries.Mapping_Update_Seasons, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(FAQsQueries.update_FAQs, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }

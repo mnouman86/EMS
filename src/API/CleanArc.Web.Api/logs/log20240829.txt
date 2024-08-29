@@ -1,0 +1,1096 @@
+2024-08-29 11:06:16.375 +05:00 [INF] Executed DbCommand (51ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-29 11:06:16.731 +05:00 [INF] Executed DbCommand (123ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-29 11:06:16.758 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-29 11:06:16.777 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-29 11:06:16.861 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-08-29 11:06:16.937 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-08-29 11:06:16.983 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-29 11:06:17.770 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-29 11:06:17.816 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-29 11:06:19.510 +05:00 [INF] Now listening on: https://localhost:5002
+2024-08-29 11:06:20.761 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-08-29 11:06:21.563 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-08-29 11:06:22.157 +05:00 [INF] Response StatusCode: 200
+2024-08-29 11:06:22.183 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 1432.6898ms
+2024-08-29 11:06:22.256 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-08-29 11:06:22.256 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-08-29 11:06:22.318 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 62.2134ms
+2024-08-29 11:06:22.488 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 232.2160ms
+2024-08-29 11:06:23.369 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-08-29 11:06:23.379 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-08-29 11:06:23.391 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-29 11:06:23.397 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-08-29 11:06:26.379 +05:00 [INF] Response StatusCode: 200
+2024-08-29 11:06:26.398 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 3019.3128ms
+2024-08-29 11:06:26.417 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-29 11:06:26.425 +05:00 [INF] Response StatusCode: 404
+2024-08-29 11:06:26.432 +05:00 [INF] Response StatusCode: 404
+2024-08-29 11:06:26.441 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 3072.2239ms
+2024-08-29 11:42:50.241 +05:00 [INF] Executed DbCommand (43ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-29 11:42:50.467 +05:00 [INF] Executed DbCommand (85ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-29 11:42:50.490 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-29 11:42:50.505 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-29 11:42:50.564 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-08-29 11:42:50.644 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-08-29 11:42:50.693 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-29 11:42:51.275 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-29 11:42:51.316 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-29 11:42:52.511 +05:00 [INF] Now listening on: https://localhost:5002
+2024-08-29 11:42:53.545 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-08-29 11:42:54.160 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-08-29 11:42:54.694 +05:00 [INF] Response StatusCode: 200
+2024-08-29 11:42:54.720 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 1182.5716ms
+2024-08-29 11:42:54.759 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-08-29 11:42:54.759 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-08-29 11:42:54.790 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 31.4218ms
+2024-08-29 11:42:54.937 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 178.3429ms
+2024-08-29 11:42:55.989 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-08-29 11:42:56.002 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-29 11:42:56.032 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-08-29 11:42:56.044 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-08-29 11:42:56.583 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-29 11:42:56.598 +05:00 [INF] Response StatusCode: 404
+2024-08-29 11:42:56.612 +05:00 [INF] Response StatusCode: 404
+2024-08-29 11:42:56.625 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 636.8696ms
+2024-08-29 11:42:58.773 +05:00 [INF] Response StatusCode: 200
+2024-08-29 11:42:58.789 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 2756.4905ms
+2024-08-29 11:46:45.984 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Activity/Create application/json 919
+2024-08-29 11:46:46.061 +05:00 [INF] CORS policy execution successful.
+2024-08-29 11:46:46.073 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Create, Content-Type: application/json
+2024-08-29 11:46:46.087 +05:00 [INF] Request Body: {
+  "cultureId": 1,
+  "title": "test12346789",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "perPersonPrice": 1,
+  "createdBy": 1006,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4",
+"StartTime": "2024-08-28T10:00:00",
+ "EndTime": "2024-08-28T12:00:00", 
+"StartDate": "2024-08-28",
+ "EndDate": "2024-09-02"
+}
+
+2024-08-29 11:46:46.137 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-08-29 11:46:46.206 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-08-29 11:46:46.216 +05:00 [INF] Response StatusCode: 401
+2024-08-29 11:46:46.226 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Activity/Create application/json 919 - 401 - application/json;+charset=utf-8 241.9547ms
+2024-08-29 11:47:28.360 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 50
+2024-08-29 11:47:28.396 +05:00 [INF] CORS policy execution successful.
+2024-08-29 11:47:28.407 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-08-29 11:47:28.421 +05:00 [INF] Request Body: {
+  "userName": "waqas",
+  "password": "123@123"
+}
+2024-08-29 11:47:28.472 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-08-29 11:47:28.481 +05:00 [INF] Request Body: {
+  "userName": "waqas",
+  "password": "123@123"
+}
+2024-08-29 11:47:28.490 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-08-29 11:47:28.550 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-08-29 11:47:54.301 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-29 11:47:54.856 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"waqas","Password":"123@123"}
+2024-08-29 11:47:54.991 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"waqas","Password":"123@123","$type":"AdminGetTokenQuery"}
+2024-08-29 11:47:55.260 +05:00 [INF] Executed DbCommand (52ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-08-29 11:47:55.591 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"e9f5ccc8-85d1-4838-83a5-e6b00219cadc","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":2,"$type":"User"}
+2024-08-29 11:47:55.661 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-08-29 11:47:55.979 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-08-29 11:47:56.044 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-08-29 11:47:56.083 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-08-29 11:47:56.126 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-08-29 11:47:56.206 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-08-29 11:47:56.924 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-08-29 11:47:59.046 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-08-29 11:47:59.080 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.8emVun-cilzq87quDwWlJoSUnmSSYBy03rlszXwgmmmotIXoJtozoA.RctkQJ7c62bQtSWscs2cJA.0a6sw5jD_Vzw91sLPgKWwt80hUsKYPtz3DkJGMtKf6Ep_IZLTpqTJhBbw_vc2HYiRw5ZS_bvPKUNwguErZjdokW5WbDs-Yz24oouG-Mk9b_WsNI37yF1Ydc_g2HZpk8L_ZnAhBQIj6UeENfdxdLtjQ5G3ypF2YFuFnLvmsaQjyt13vxnjPYCZqctAOQ6WWsMQNtBEyaXmGPOWnT4qJX6R02D-8VXtuDKjf8kRLpeohsCpdwCc2HE3RxPI8I-h2gsJsJ7wZEbs1BsQD5ljW8slwoM2ToK_TvL9DwZ6XOsuIDP7olzxfNsHkC1ExadpGvXSE2FFSElJsUqQ8kiH1av4y-pseT_lza5Qoqq8uAdz5usCXfNGzXMvQRAEkmPVW1z_CLeHG_0_RFoybvhHouu1FnYWe-B3Vbvl8MWaLjvdaPe38jFvPMXUtsw1TgwIFmDzg3MP6SuAyhY17g_1MV3t2DwOIhXx1WZfJtsFloOl_3SzmwsJ8ozgjtvOehnMo4foPi0P7oS20VKTNz9CEOVyVYaUliLqEyUizaf_jlCnkspe7lDTKR1NFJyY1m2zMe8g70CitRxLFfiMA3rzHb75VthzzjgRv_lco-40iZPdoJEcdkNL3cokEW2sAsvNAVxTcB7Oy6q6vm0Zrdf2f-vKXOcYnFxPYRIpw2LvvLQqta2STk5k3Z38GZ4yO8o6i33.sLYdkaCoTwdHLH_GbjnT4w","refresh_token":"14d9ba0e-4ed6-4563-665b-08dcc7f683ad","token_type":"Bearer","expires_in":599996,"userID":5},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-08-29 11:47:59.104 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4783.8594ms.
+2024-08-29 11:47:59.138 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-29 11:47:59.172 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 30596.5223ms
+2024-08-29 11:47:59.187 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-08-29 11:47:59.197 +05:00 [INF] Response StatusCode: 200
+2024-08-29 11:47:59.211 +05:00 [INF] Response StatusCode: 200
+2024-08-29 11:47:59.223 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 50 - 200 - application/json;+charset=utf-8 30861.7988ms
+2024-08-29 11:48:28.511 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Activity/Create application/json 919
+2024-08-29 11:48:28.553 +05:00 [INF] CORS policy execution successful.
+2024-08-29 11:48:28.565 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Create, Content-Type: application/json
+2024-08-29 11:48:28.579 +05:00 [INF] Request Body: {
+  "cultureId": 1,
+  "title": "test12346789",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "perPersonPrice": 1,
+  "createdBy": 1006,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4",
+"StartTime": "2024-08-28T10:00:00",
+ "EndTime": "2024-08-28T12:00:00", 
+"StartDate": "2024-08-28",
+ "EndDate": "2024-09-02"
+}
+
+2024-08-29 11:48:28.910 +05:00 [INF] Executed DbCommand (21ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-08-29 11:48:28.947 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/Create, Content-Type: application/json
+2024-08-29 11:48:28.964 +05:00 [INF] Request Body: {
+  "cultureId": 1,
+  "title": "test12346789",
+  "languageLookUpID": 1,
+  "serviceLookUpID": 1,
+  "subServiceLookUpID": 1,
+  "otherSubService": "string",
+  "minAge": 1,
+  "maxAge": 11,
+  "activityTypeLookUpID": 1,
+  "activityNatureLookUpID": 1,
+  "maxGroupSize": 10,
+  "isPrivateActivity": true,
+  "whoCanParticipate": "string",
+  "whoCannotParticipate": "string",
+  "manageActivityLookUpID": 1,
+  "otherManageActivity": "string",
+  "days": 1,
+  "hours": 10,
+  "description": "string",
+  "isTransportation": true,
+  "transportationLookUpID": 1,
+  "isDisability": true,
+  "allowedItems": "string",
+  "notAllowedItems": "string",
+  "currencyLookUpID": 1,
+  "perPersonPrice": 1,
+  "createdBy": 1006,
+  "seasonLookUpID": "1",
+  "includeOptionLookUpID": "1,3",
+  "disabilityOptionLookUpID": "1,4",
+"StartTime": "2024-08-28T10:00:00",
+ "EndTime": "2024-08-28T12:00:00", 
+"StartDate": "2024-08-28",
+ "EndDate": "2024-09-02"
+}
+
+2024-08-29 11:48:28.974 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Create (CleanArc.Web.Api)'
+2024-08-29 11:48:28.994 +05:00 [INF] Route matched with {action = "Create", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.Activity.Commands.CreateActivityCommand.CreateActivityCommand) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-29 11:48:32.231 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-29 11:48:34.459 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Commands.CreateActivityCommand, Handle with parameter: {"CultureId":1,"Title":"test12346789","LanguageLookUpID":1,"ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":"string","MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":"string","Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"PerPersonPrice":1.0,"CreatedBy":1006,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","EndDate":"2024-09-02T00:00:00","StartDate":"2024-08-28T00:00:00","EndTime":"2024-08-28T12:00:00","StartTime":"2024-08-28T10:00:00","UserId":5}
+2024-08-29 11:48:34.476 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-08-29 11:48:34.553 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"e9f5ccc8-85d1-4838-83a5-e6b00219cadc","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":2}
+2024-08-29 11:48:37.306 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"Title":"test12346789","LanguageLookUpID":1,"LanguageName":null,"ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":"string","MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":"string","Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","PerPersonPrice":1.0,"IsActive":null,"IsDeleted":null,"CreatedBy":5,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null,"ActivityID":null,"Duration":null,"Cancellation":null,"StartTime":"2024-08-28T00:00:00","EndTime":"2024-09-02T00:00:00","StartDate":"2024-08-28T00:00:00","EndDate":"2024-09-02T00:00:00","ActivityImages":null,"ActivityAddress":null}
+2024-08-29 11:48:41.284 +05:00 [INF] Exiting null, AddAsync with response: 78
+2024-08-29 11:48:41.298 +05:00 [INF] Exiting null, Handle with response: true
+2024-08-29 11:48:41.313 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Create (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 9071.3294ms.
+2024-08-29 11:48:41.330 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-08-29 11:48:41.346 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Create (CleanArc.Web.Api) in 12338.0782ms
+2024-08-29 11:48:41.361 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.Create (CleanArc.Web.Api)'
+2024-08-29 11:48:41.373 +05:00 [INF] Response StatusCode: 200
+2024-08-29 11:48:41.386 +05:00 [INF] Response StatusCode: 200
+2024-08-29 11:48:41.398 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Activity/Create application/json 919 - 200 - application/json;+charset=utf-8 12886.3136ms
+2024-08-29 11:49:45.796 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Activity/GetAll application/json 171
+2024-08-29 11:49:45.825 +05:00 [INF] CORS policy execution successful.
+2024-08-29 11:49:45.849 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/GetAll, Content-Type: application/json
+2024-08-29 11:49:45.864 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 11:49:45.879 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/GetAll, Content-Type: application/json
+2024-08-29 11:49:45.894 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 11:49:45.906 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api)'
+2024-08-29 11:49:45.924 +05:00 [INF] Route matched with {action = "GetAll", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Activity.Queries.GetAllActivity.GetAllActivityQuery) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-29 11:49:48.851 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-29 11:49:48.902 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Queries.GetAllActivity, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-08-29 11:49:51.746 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-08-29 11:49:53.794 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":5,"Title":"Example Activity Title","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T06:13:27.243","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[{"ImageTitle":"Image 11","ImagePath":"../../../assets/img/Activity/1.jpeg","ActivityID":5,"IsMain":true},{"ImageTitle":"Image 12","ImagePath":"../../../assets/img/Activity/2.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 13","ImagePath":"../../../assets/img/Activity/3.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 14","ImagePath":"../../../assets/img/Activity/4.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 15","ImagePath":"../../../assets/img/Activity/5.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 16","ImagePath":"../../../assets/img/Activity/6.jpeg","ActivityID":5,"IsMain":false}],"ActivityAddress":[{"ActivityID":5,"CountryLookUpID":1,"CityLookUpID":22,"StateLookUpID":12,"AddressLine1":"Qui minima excepteur","AddressLine2":"Ratione qui aliquip ","PostalCode":"Numquam sit omnis do","Latitude":"Eaque totam molestia","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":22,"CityLookUpID":12,"StateLookUpID":5,"AddressLine1":"Test","AddressLine2":"Test","PostalCode":"333","Latitude":"Iure delectus autem","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":22,"CityLookUpID":12,"StateLookUpID":5,"AddressLine1":"Test111 updated","AddressLine2":"Test111 updated","PostalCode":"333","Latitude":"Iure delectus autem","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":0,"CityLookUpID":0,"StateLookUpID":0,"AddressLine1":"Test111 updated","AddressLine2":"Ratione qui aliquip ","PostalCode":"Numquam sit omnis do","Latitude":"Iure delectus autem","Longitude":"0.0"},{"ActivityID":5,"CountryLookUpID":1,"CityLookUpID":22,"StateLookUpID":12,"AddressLine1":"Test1_update","AddressLine2":"Test1_update","PostalCode":"456","Latitude":"Eaque totam molestiaEaque totam molestia","Longitude":"Iure delectus autem"}]},{"ID":8,"Title":"Sample Activity","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T07:43:45.913","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":9,"Title":"Sample test Activity","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T07:46:19.933","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[{"ActivityID":9,"CountryLookUpID":1,"CityLookUpID":17,"StateLookUpID":9,"AddressLine1":"Sunt proident quid","AddressLine2":"Qui ea fugiat necess","PostalCode":"Nemo sunt anim maior","Latitude":"Sint harum eum liber","Longitude":"Dolorum laborum modi"}]},{"ID":29,"Title":"test12346789","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":11.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-08-09T07:02:12.36","UpdatedBy":5,"UpdatedAt":"2024-08-20T07:09:35.907","CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"1 Days 10 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":32,"Title":"Sample Activity","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T06:30:07.94","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":33,"Title":"Sample Activity","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T06:34:09.543","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":43,"Title":"Sample Activity","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-08-13T08:20:00.797","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":57,"Title":"Sample Activity","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T10:37:19.153","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":61,"Title":"Sample Activity 123456","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T10:44:25.6","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":64,"Title":"123456","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T11:09:35.273","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]}]
+2024-08-29 11:49:53.921 +05:00 [INF] Exiting null, Handle with response: [{"ID":5,"Title":"Example Activity Title","PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T06:13:27.243","UpdatedBy":null,"UpdatedAt":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[{"ImageTitle":"Image 11","ImagePath":"../../../assets/img/Activity/1.jpeg","ActivityID":5,"IsMain":true},{"ImageTitle":"Image 12","ImagePath":"../../../assets/img/Activity/2.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 13","ImagePath":"../../../assets/img/Activity/3.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 14","ImagePath":"../../../assets/img/Activity/4.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 15","ImagePath":"../../../assets/img/Activity/5.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 16","ImagePath":"../../../assets/img/Activity/6.jpeg","ActivityID":5,"IsMain":false}],"ActivityAddress":[{"ActivityID":5,"CountryLookUpID":1,"CityLookUpID":22,"StateLookUpID":12,"AddressLine1":"Qui minima excepteur","AddressLine2":"Ratione qui aliquip ","PostalCode":"Numquam sit omnis do","Latitude":"Eaque totam molestia","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":22,"CityLookUpID":12,"StateLookUpID":5,"AddressLine1":"Test","AddressLine2":"Test","PostalCode":"333","Latitude":"Iure delectus autem","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":22,"CityLookUpID":12,"StateLookUpID":5,"AddressLine1":"Test111 updated","AddressLine2":"Test111 updated","PostalCode":"333","Latitude":"Iure delectus autem","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":0,"CityLookUpID":0,"StateLookUpID":0,"AddressLine1":"Test111 updated","AddressLine2":"Ratione qui aliquip ","PostalCode":"Numquam sit omnis do","Latitude":"Iure delectus autem","Longitude":"0.0"},{"ActivityID":5,"CountryLookUpID":1,"CityLookUpID":22,"StateLookUpID":12,"AddressLine1":"Test1_update","AddressLine2":"Test1_update","PostalCode":"456","Latitude":"Eaque totam molestiaEaque totam molestia","Longitude":"Iure delectus autem"}]},{"ID":8,"Title":"Sample Activity","PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T07:43:45.913","UpdatedBy":null,"UpdatedAt":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":9,"Title":"Sample test Activity","PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T07:46:19.933","UpdatedBy":null,"UpdatedAt":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[{"ActivityID":9,"CountryLookUpID":1,"CityLookUpID":17,"StateLookUpID":9,"AddressLine1":"Sunt proident quid","AddressLine2":"Qui ea fugiat necess","PostalCode":"Nemo sunt anim maior","Latitude":"Sint harum eum liber","Longitude":"Dolorum laborum modi"}]},{"ID":29,"Title":"test12346789","PerPersonPrice":11.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-08-09T07:02:12.36","UpdatedBy":5,"UpdatedAt":"2024-08-20T07:09:35.907","Duration":"1 Days 10 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":32,"Title":"Sample Activity","PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T06:30:07.94","UpdatedBy":null,"UpdatedAt":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":33,"Title":"Sample Activity","PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T06:34:09.543","UpdatedBy":null,"UpdatedAt":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":43,"Title":"Sample Activity","PerPersonPrice":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-08-13T08:20:00.797","UpdatedBy":null,"UpdatedAt":null,"Duration":"","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":57,"Title":"Sample Activity","PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T10:37:19.153","UpdatedBy":null,"UpdatedAt":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":61,"Title":"Sample Activity 123456","PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T10:44:25.6","UpdatedBy":null,"UpdatedAt":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":64,"Title":"123456","PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T11:09:35.273","UpdatedBy":null,"UpdatedAt":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]}]
+2024-08-29 11:49:53.948 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 5084.7663ms.
+2024-08-29 11:49:53.964 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-29 11:49:54.015 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api) in 8073.7828ms
+2024-08-29 11:49:54.030 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api)'
+2024-08-29 11:49:54.043 +05:00 [INF] Response StatusCode: 200
+2024-08-29 11:49:54.053 +05:00 [INF] Response StatusCode: 200
+2024-08-29 11:49:54.064 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Activity/GetAll application/json 171 - 200 - application/json;+charset=utf-8 8266.8870ms
+2024-08-29 11:59:25.950 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Activity/GetAll application/json 171
+2024-08-29 11:59:25.980 +05:00 [INF] CORS policy execution successful.
+2024-08-29 11:59:25.989 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/GetAll, Content-Type: application/json
+2024-08-29 11:59:26.002 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 11:59:26.014 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/GetAll, Content-Type: application/json
+2024-08-29 11:59:26.028 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 11:59:26.039 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api)'
+2024-08-29 11:59:26.051 +05:00 [INF] Route matched with {action = "GetAll", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Activity.Queries.GetAllActivity.GetAllActivityQuery) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-29 11:59:28.376 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-29 11:59:28.391 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Queries.GetAllActivity, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-08-29 11:59:29.853 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-08-29 11:59:31.411 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":5,"Title":"Example Activity Title","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T06:13:27.243","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[{"ImageTitle":"Image 11","ImagePath":"../../../assets/img/Activity/1.jpeg","ActivityID":5,"IsMain":true},{"ImageTitle":"Image 12","ImagePath":"../../../assets/img/Activity/2.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 13","ImagePath":"../../../assets/img/Activity/3.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 14","ImagePath":"../../../assets/img/Activity/4.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 15","ImagePath":"../../../assets/img/Activity/5.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 16","ImagePath":"../../../assets/img/Activity/6.jpeg","ActivityID":5,"IsMain":false}],"ActivityAddress":[{"ActivityID":5,"CountryLookUpID":1,"CityLookUpID":22,"StateLookUpID":12,"AddressLine1":"Qui minima excepteur","AddressLine2":"Ratione qui aliquip ","PostalCode":"Numquam sit omnis do","Latitude":"Eaque totam molestia","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":22,"CityLookUpID":12,"StateLookUpID":5,"AddressLine1":"Test","AddressLine2":"Test","PostalCode":"333","Latitude":"Iure delectus autem","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":22,"CityLookUpID":12,"StateLookUpID":5,"AddressLine1":"Test111 updated","AddressLine2":"Test111 updated","PostalCode":"333","Latitude":"Iure delectus autem","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":0,"CityLookUpID":0,"StateLookUpID":0,"AddressLine1":"Test111 updated","AddressLine2":"Ratione qui aliquip ","PostalCode":"Numquam sit omnis do","Latitude":"Iure delectus autem","Longitude":"0.0"},{"ActivityID":5,"CountryLookUpID":1,"CityLookUpID":22,"StateLookUpID":12,"AddressLine1":"Test1_update","AddressLine2":"Test1_update","PostalCode":"456","Latitude":"Eaque totam molestiaEaque totam molestia","Longitude":"Iure delectus autem"}]},{"ID":8,"Title":"Sample Activity","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T07:43:45.913","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":9,"Title":"Sample test Activity","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T07:46:19.933","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[{"ActivityID":9,"CountryLookUpID":1,"CityLookUpID":17,"StateLookUpID":9,"AddressLine1":"Sunt proident quid","AddressLine2":"Qui ea fugiat necess","PostalCode":"Nemo sunt anim maior","Latitude":"Sint harum eum liber","Longitude":"Dolorum laborum modi"}]},{"ID":29,"Title":"test12346789","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":11.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-08-09T07:02:12.36","UpdatedBy":5,"UpdatedAt":"2024-08-20T07:09:35.907","CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"1 Days 10 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":32,"Title":"Sample Activity","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T06:30:07.94","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":33,"Title":"Sample Activity","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T06:34:09.543","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":43,"Title":"Sample Activity","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-08-13T08:20:00.797","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":57,"Title":"Sample Activity","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T10:37:19.153","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":61,"Title":"Sample Activity 123456","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T10:44:25.6","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":"2024-08-28T10:00:00","EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":64,"Title":"123456","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T11:09:35.273","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]}]
+2024-08-29 11:59:31.451 +05:00 [INF] Exiting null, Handle with response: [{"ID":5,"Title":"Example Activity Title","PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T06:13:27.243","UpdatedBy":null,"UpdatedAt":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[{"ImageTitle":"Image 11","ImagePath":"../../../assets/img/Activity/1.jpeg","ActivityID":5,"IsMain":true},{"ImageTitle":"Image 12","ImagePath":"../../../assets/img/Activity/2.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 13","ImagePath":"../../../assets/img/Activity/3.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 14","ImagePath":"../../../assets/img/Activity/4.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 15","ImagePath":"../../../assets/img/Activity/5.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 16","ImagePath":"../../../assets/img/Activity/6.jpeg","ActivityID":5,"IsMain":false}],"ActivityAddress":[{"ActivityID":5,"CountryLookUpID":1,"CityLookUpID":22,"StateLookUpID":12,"AddressLine1":"Qui minima excepteur","AddressLine2":"Ratione qui aliquip ","PostalCode":"Numquam sit omnis do","Latitude":"Eaque totam molestia","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":22,"CityLookUpID":12,"StateLookUpID":5,"AddressLine1":"Test","AddressLine2":"Test","PostalCode":"333","Latitude":"Iure delectus autem","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":22,"CityLookUpID":12,"StateLookUpID":5,"AddressLine1":"Test111 updated","AddressLine2":"Test111 updated","PostalCode":"333","Latitude":"Iure delectus autem","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":0,"CityLookUpID":0,"StateLookUpID":0,"AddressLine1":"Test111 updated","AddressLine2":"Ratione qui aliquip ","PostalCode":"Numquam sit omnis do","Latitude":"Iure delectus autem","Longitude":"0.0"},{"ActivityID":5,"CountryLookUpID":1,"CityLookUpID":22,"StateLookUpID":12,"AddressLine1":"Test1_update","AddressLine2":"Test1_update","PostalCode":"456","Latitude":"Eaque totam molestiaEaque totam molestia","Longitude":"Iure delectus autem"}]},{"ID":8,"Title":"Sample Activity","PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T07:43:45.913","UpdatedBy":null,"UpdatedAt":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":9,"Title":"Sample test Activity","PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T07:46:19.933","UpdatedBy":null,"UpdatedAt":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[{"ActivityID":9,"CountryLookUpID":1,"CityLookUpID":17,"StateLookUpID":9,"AddressLine1":"Sunt proident quid","AddressLine2":"Qui ea fugiat necess","PostalCode":"Nemo sunt anim maior","Latitude":"Sint harum eum liber","Longitude":"Dolorum laborum modi"}]},{"ID":29,"Title":"test12346789","PerPersonPrice":11.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-08-09T07:02:12.36","UpdatedBy":5,"UpdatedAt":"2024-08-20T07:09:35.907","Duration":"1 Days 10 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":32,"Title":"Sample Activity","PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T06:30:07.94","UpdatedBy":null,"UpdatedAt":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":33,"Title":"Sample Activity","PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T06:34:09.543","UpdatedBy":null,"UpdatedAt":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":43,"Title":"Sample Activity","PerPersonPrice":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-08-13T08:20:00.797","UpdatedBy":null,"UpdatedAt":null,"Duration":"","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":57,"Title":"Sample Activity","PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T10:37:19.153","UpdatedBy":null,"UpdatedAt":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":61,"Title":"Sample Activity 123456","PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T10:44:25.6","UpdatedBy":null,"UpdatedAt":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":"2024-08-28T10:00:00","EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":64,"Title":"123456","PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T11:09:35.273","UpdatedBy":null,"UpdatedAt":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]}]
+2024-08-29 11:59:31.470 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3083.5781ms.
+2024-08-29 11:59:31.483 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-29 11:59:31.523 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api) in 5437.9988ms
+2024-08-29 11:59:31.534 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api)'
+2024-08-29 11:59:31.544 +05:00 [INF] Response StatusCode: 200
+2024-08-29 11:59:31.554 +05:00 [INF] Response StatusCode: 200
+2024-08-29 11:59:31.562 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Activity/GetAll application/json 171 - 200 - application/json;+charset=utf-8 5612.3836ms
+2024-08-29 12:02:01.020 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Activity/GetAll application/json 171
+2024-08-29 12:02:01.070 +05:00 [INF] CORS policy execution successful.
+2024-08-29 12:02:01.082 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/GetAll, Content-Type: application/json
+2024-08-29 12:02:01.097 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 12:02:01.111 +05:00 [INF] Request Method: POST, Path: /api/v1/Activity/GetAll, Content-Type: application/json
+2024-08-29 12:02:01.125 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 12:02:01.137 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api)'
+2024-08-29 12:02:01.147 +05:00 [INF] Route matched with {action = "GetAll", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Activity.Queries.GetAllActivity.GetAllActivityQuery) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-29 12:02:04.303 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-29 12:02:04.350 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Queries.GetAllActivity, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-08-29 12:02:05.828 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-08-29 12:02:06.597 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":5,"Title":"Example Activity Title","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T06:13:27.243","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[{"ImageTitle":"Image 11","ImagePath":"../../../assets/img/Activity/1.jpeg","ActivityID":5,"IsMain":true},{"ImageTitle":"Image 12","ImagePath":"../../../assets/img/Activity/2.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 13","ImagePath":"../../../assets/img/Activity/3.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 14","ImagePath":"../../../assets/img/Activity/4.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 15","ImagePath":"../../../assets/img/Activity/5.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 16","ImagePath":"../../../assets/img/Activity/6.jpeg","ActivityID":5,"IsMain":false}],"ActivityAddress":[{"ActivityID":5,"CountryLookUpID":1,"CityLookUpID":22,"StateLookUpID":12,"AddressLine1":"Qui minima excepteur","AddressLine2":"Ratione qui aliquip ","PostalCode":"Numquam sit omnis do","Latitude":"Eaque totam molestia","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":22,"CityLookUpID":12,"StateLookUpID":5,"AddressLine1":"Test","AddressLine2":"Test","PostalCode":"333","Latitude":"Iure delectus autem","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":22,"CityLookUpID":12,"StateLookUpID":5,"AddressLine1":"Test111 updated","AddressLine2":"Test111 updated","PostalCode":"333","Latitude":"Iure delectus autem","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":0,"CityLookUpID":0,"StateLookUpID":0,"AddressLine1":"Test111 updated","AddressLine2":"Ratione qui aliquip ","PostalCode":"Numquam sit omnis do","Latitude":"Iure delectus autem","Longitude":"0.0"},{"ActivityID":5,"CountryLookUpID":1,"CityLookUpID":22,"StateLookUpID":12,"AddressLine1":"Test1_update","AddressLine2":"Test1_update","PostalCode":"456","Latitude":"Eaque totam molestiaEaque totam molestia","Longitude":"Iure delectus autem"}]},{"ID":8,"Title":"Sample Activity","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T07:43:45.913","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":9,"Title":"Sample test Activity","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T07:46:19.933","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[{"ActivityID":9,"CountryLookUpID":1,"CityLookUpID":17,"StateLookUpID":9,"AddressLine1":"Sunt proident quid","AddressLine2":"Qui ea fugiat necess","PostalCode":"Nemo sunt anim maior","Latitude":"Sint harum eum liber","Longitude":"Dolorum laborum modi"}]},{"ID":29,"Title":"test12346789","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":11.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-08-09T07:02:12.36","UpdatedBy":5,"UpdatedAt":"2024-08-20T07:09:35.907","CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"1 Days 10 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":32,"Title":"Sample Activity","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T06:30:07.94","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":33,"Title":"Sample Activity","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T06:34:09.543","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":43,"Title":"Sample Activity","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-08-13T08:20:00.797","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":57,"Title":"Sample Activity","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T10:37:19.153","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":61,"Title":"Sample Activity 123456","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T10:44:25.6","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":"2024-08-28T10:00:00","EndTime":"2024-08-28T12:00:00","StartDate":"2024-08-28T00:00:00","EndDate":"2024-08-30T00:00:00","ActivityImages":[],"ActivityAddress":[]},{"ID":64,"Title":"123456","LanguageLookUpID":null,"LanguageName":null,"ServiceLookUpID":null,"SubServiceLookUpID":null,"OtherSubService":null,"MinAge":null,"MaxAge":null,"ActivityTypeLookUpID":null,"ActivityNatureLookUpID":null,"MaxGroupSize":null,"IsPrivateActivity":null,"WhoCanParticipate":null,"WhoCannotParticipate":null,"ManageActivityLookUpID":null,"OtherManageActivity":null,"Days":null,"Hours":null,"Description":null,"IsTransportation":null,"TransportationLookUpID":null,"IsDisability":null,"AllowedItems":null,"NotAllowedItems":null,"CurrencyLookUpID":null,"SeasonLookUpID":null,"IncludeOptionLookUpID":null,"DisabilityOptionLookUpID":null,"PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T11:09:35.273","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]}]
+2024-08-29 12:02:06.622 +05:00 [INF] Exiting null, Handle with response: [{"ID":5,"Title":"Example Activity Title","PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T06:13:27.243","UpdatedBy":null,"UpdatedAt":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[{"ImageTitle":"Image 11","ImagePath":"../../../assets/img/Activity/1.jpeg","ActivityID":5,"IsMain":true},{"ImageTitle":"Image 12","ImagePath":"../../../assets/img/Activity/2.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 13","ImagePath":"../../../assets/img/Activity/3.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 14","ImagePath":"../../../assets/img/Activity/4.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 15","ImagePath":"../../../assets/img/Activity/5.jpeg","ActivityID":5,"IsMain":false},{"ImageTitle":"Image 16","ImagePath":"../../../assets/img/Activity/6.jpeg","ActivityID":5,"IsMain":false}],"ActivityAddress":[{"ActivityID":5,"CountryLookUpID":1,"CityLookUpID":22,"StateLookUpID":12,"AddressLine1":"Qui minima excepteur","AddressLine2":"Ratione qui aliquip ","PostalCode":"Numquam sit omnis do","Latitude":"Eaque totam molestia","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":22,"CityLookUpID":12,"StateLookUpID":5,"AddressLine1":"Test","AddressLine2":"Test","PostalCode":"333","Latitude":"Iure delectus autem","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":22,"CityLookUpID":12,"StateLookUpID":5,"AddressLine1":"Test111 updated","AddressLine2":"Test111 updated","PostalCode":"333","Latitude":"Iure delectus autem","Longitude":"Iure delectus autem"},{"ActivityID":5,"CountryLookUpID":0,"CityLookUpID":0,"StateLookUpID":0,"AddressLine1":"Test111 updated","AddressLine2":"Ratione qui aliquip ","PostalCode":"Numquam sit omnis do","Latitude":"Iure delectus autem","Longitude":"0.0"},{"ActivityID":5,"CountryLookUpID":1,"CityLookUpID":22,"StateLookUpID":12,"AddressLine1":"Test1_update","AddressLine2":"Test1_update","PostalCode":"456","Latitude":"Eaque totam molestiaEaque totam molestia","Longitude":"Iure delectus autem"}]},{"ID":8,"Title":"Sample Activity","PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T07:43:45.913","UpdatedBy":null,"UpdatedAt":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":9,"Title":"Sample test Activity","PerPersonPrice":50.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-08-08T07:46:19.933","UpdatedBy":null,"UpdatedAt":null,"Duration":"2 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[{"ActivityID":9,"CountryLookUpID":1,"CityLookUpID":17,"StateLookUpID":9,"AddressLine1":"Sunt proident quid","AddressLine2":"Qui ea fugiat necess","PostalCode":"Nemo sunt anim maior","Latitude":"Sint harum eum liber","Longitude":"Dolorum laborum modi"}]},{"ID":29,"Title":"test12346789","PerPersonPrice":11.00,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-08-09T07:02:12.36","UpdatedBy":5,"UpdatedAt":"2024-08-20T07:09:35.907","Duration":"1 Days 10 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":32,"Title":"Sample Activity","PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T06:30:07.94","UpdatedBy":null,"UpdatedAt":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":33,"Title":"Sample Activity","PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T06:34:09.543","UpdatedBy":null,"UpdatedAt":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":43,"Title":"Sample Activity","PerPersonPrice":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-08-13T08:20:00.797","UpdatedBy":null,"UpdatedAt":null,"Duration":"","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":57,"Title":"Sample Activity","PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T10:37:19.153","UpdatedBy":null,"UpdatedAt":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]},{"ID":61,"Title":"Sample Activity 123456","PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T10:44:25.6","UpdatedBy":null,"UpdatedAt":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":"2024-08-28T10:00:00","EndTime":"2024-08-28T12:00:00","StartDate":"2024-08-28T00:00:00","EndDate":"2024-08-30T00:00:00","ActivityImages":[],"ActivityAddress":[]},{"ID":64,"Title":"123456","PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T11:09:35.273","UpdatedBy":null,"UpdatedAt":null,"Duration":"1 Days 24 Hours","Cancellation":"Partially Refundable","StartTime":null,"EndTime":null,"StartDate":null,"EndDate":null,"ActivityImages":[],"ActivityAddress":[]}]
+2024-08-29 12:02:06.633 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2317.9209ms.
+2024-08-29 12:02:06.639 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-29 12:02:06.649 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api) in 5479.2576ms
+2024-08-29 12:02:06.654 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetAll (CleanArc.Web.Api)'
+2024-08-29 12:02:06.659 +05:00 [INF] Response StatusCode: 200
+2024-08-29 12:02:06.666 +05:00 [INF] Response StatusCode: 200
+2024-08-29 12:02:06.673 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Activity/GetAll application/json 171 - 200 - application/json;+charset=utf-8 5651.9861ms
+2024-08-29 12:02:20.657 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/api/v1/Activity/GetById/61 - -
+2024-08-29 12:02:20.665 +05:00 [INF] Request Method: GET, Path: /api/v1/Activity/GetById/61, Content-Type: null
+2024-08-29 12:02:20.682 +05:00 [INF] Request Method: GET, Path: /api/v1/Activity/GetById/61, Content-Type: null
+2024-08-29 12:02:20.698 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetById (CleanArc.Web.Api)'
+2024-08-29 12:02:20.723 +05:00 [INF] Route matched with {action = "GetById", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-29 12:02:23.032 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-29 12:02:23.094 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Queries.GetActivityById, Handle with parameter: {"Id":61}
+2024-08-29 12:02:25.805 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 61
+2024-08-29 12:02:26.504 +05:00 [INF] Exiting null, GetByIdAsync with response: {"ID":61,"Title":"Sample Activity 123456","LanguageLookUpID":1,"LanguageName":"Urdu","ServiceLookUpID":1,"SubServiceLookUpID":4,"OtherSubService":null,"MinAge":18,"MaxAge":65,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":20,"IsPrivateActivity":true,"WhoCanParticipate":"Everyone","WhoCannotParticipate":"None","ManageActivityLookUpID":1,"OtherManageActivity":null,"Days":1,"Hours":24,"Description":"Sample Description","IsTransportation":true,"TransportationLookUpID":8,"IsDisability":true,"AllowedItems":"Item1, Item2","NotAllowedItems":"Item3, Item4","CurrencyLookUpID":9,"SeasonLookUpID":"1,2,3","IncludeOptionLookUpID":"4,5,6","DisabilityOptionLookUpID":"7,8,9","PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T10:44:25.6","UpdatedBy":0,"UpdatedAt":"1900-01-01T00:00:00","CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":null,"Cancellation":null,"StartTime":"2024-08-28T10:00:00","EndTime":"2024-08-28T12:00:00","StartDate":"2024-08-28T00:00:00","EndDate":"2024-08-30T00:00:00","ActivityImages":null,"ActivityAddress":null}
+2024-08-29 12:02:26.620 +05:00 [INF] Exiting null, Handle with response: {"ID":61,"Title":"Sample Activity 123456","LanguageLookUpID":1,"LanguageName":"Urdu","ServiceLookUpID":1,"SubServiceLookUpID":4,"OtherSubService":null,"MinAge":18,"MaxAge":65,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":20,"IsPrivateActivity":true,"WhoCanParticipate":"Everyone","WhoCannotParticipate":"None","ManageActivityLookUpID":1,"Days":1,"Hours":24,"Description":"Sample Description","IsTransportation":true,"TransportationLookUpID":8,"IsDisability":true,"AllowedItems":"Item1, Item2","NotAllowedItems":"Item3, Item4","CurrencyLookUpID":9,"SeasonLookUpID":"1,2,3","IncludeOptionLookUpID":"4,5,6","DisabilityOptionLookUpID":"7,8,9","CultureId":null,"Code":null,"Message":null,"ActivityID":null,"PerPersonPrice":100.00,"IsActive":true,"IsDeleted":false,"CreatedBy":10,"CreatedAt":"2024-08-13T10:44:25.6","UpdatedBy":0,"UpdatedAt":"1900-01-01T00:00:00","StartTime":"8/28/2024 10:00:00 AM","EndTime":"8/28/2024 12:00:00 PM","StartDate":"8/28/2024 12:00:00 AM","EndDate":"8/30/2024 12:00:00 AM"}
+2024-08-29 12:02:26.646 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetById (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3601.2087ms.
+2024-08-29 12:02:26.656 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-29 12:02:26.682 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetById (CleanArc.Web.Api) in 5942.1407ms
+2024-08-29 12:02:26.695 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetById (CleanArc.Web.Api)'
+2024-08-29 12:02:26.704 +05:00 [INF] Response StatusCode: 200
+2024-08-29 12:02:26.711 +05:00 [INF] Response StatusCode: 200
+2024-08-29 12:02:26.719 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/api/v1/Activity/GetById/61 - - - 200 - application/json;+charset=utf-8 6062.2905ms
+2024-08-29 12:03:12.108 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/api/v1/Activity/GetById/78 - -
+2024-08-29 12:03:12.148 +05:00 [INF] Request Method: GET, Path: /api/v1/Activity/GetById/78, Content-Type: null
+2024-08-29 12:03:12.163 +05:00 [INF] Request Method: GET, Path: /api/v1/Activity/GetById/78, Content-Type: null
+2024-08-29 12:03:12.177 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetById (CleanArc.Web.Api)'
+2024-08-29 12:03:12.190 +05:00 [INF] Route matched with {action = "GetById", controller = "Activity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.Activity.ActivityController (CleanArc.Web.Api).
+2024-08-29 12:03:14.355 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-29 12:03:14.370 +05:00 [INF] Entering CleanArc.Application.Features.Activity.Queries.GetActivityById, Handle with parameter: {"Id":78}
+2024-08-29 12:03:14.709 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 78
+2024-08-29 12:03:15.320 +05:00 [INF] Exiting null, GetByIdAsync with response: {"ID":78,"Title":"test12346789","LanguageLookUpID":1,"LanguageName":"Urdu","ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":null,"MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"OtherManageActivity":null,"Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","PerPersonPrice":1.00,"IsActive":true,"IsDeleted":false,"CreatedBy":5,"CreatedAt":"2024-08-29T06:48:38.28","UpdatedBy":0,"UpdatedAt":"1900-01-01T00:00:00","CultureId":null,"Code":null,"Message":null,"ActivityID":null,"Duration":null,"Cancellation":null,"StartTime":"2024-08-28T00:00:00","EndTime":"2024-09-02T00:00:00","StartDate":"2024-08-28T00:00:00","EndDate":"2024-09-02T00:00:00","ActivityImages":null,"ActivityAddress":null}
+2024-08-29 12:03:15.329 +05:00 [INF] Exiting null, Handle with response: {"ID":78,"Title":"test12346789","LanguageLookUpID":1,"LanguageName":"Urdu","ServiceLookUpID":1,"SubServiceLookUpID":1,"OtherSubService":null,"MinAge":1,"MaxAge":11,"ActivityTypeLookUpID":1,"ActivityNatureLookUpID":1,"MaxGroupSize":10,"IsPrivateActivity":true,"WhoCanParticipate":"string","WhoCannotParticipate":"string","ManageActivityLookUpID":1,"Days":1,"Hours":10,"Description":"string","IsTransportation":true,"TransportationLookUpID":1,"IsDisability":true,"AllowedItems":"string","NotAllowedItems":"string","CurrencyLookUpID":1,"SeasonLookUpID":"1","IncludeOptionLookUpID":"1,3","DisabilityOptionLookUpID":"1,4","CultureId":null,"Code":null,"Message":null,"ActivityID":null,"PerPersonPrice":1.00,"IsActive":true,"IsDeleted":false,"CreatedBy":5,"CreatedAt":"2024-08-29T06:48:38.28","UpdatedBy":0,"UpdatedAt":"1900-01-01T00:00:00","StartTime":"8/28/2024 12:00:00 AM","EndTime":"9/2/2024 12:00:00 AM","StartDate":"8/28/2024 12:00:00 AM","EndDate":"9/2/2024 12:00:00 AM"}
+2024-08-29 12:03:15.338 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetById (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 971.7729ms.
+2024-08-29 12:03:15.349 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-29 12:03:15.357 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetById (CleanArc.Web.Api) in 3154.7056ms
+2024-08-29 12:03:15.368 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Activity.ActivityController.GetById (CleanArc.Web.Api)'
+2024-08-29 12:03:15.376 +05:00 [INF] Response StatusCode: 200
+2024-08-29 12:03:15.382 +05:00 [INF] Response StatusCode: 200
+2024-08-29 12:03:15.390 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/api/v1/Activity/GetById/78 - - - 200 - application/json;+charset=utf-8 3283.2611ms
+2024-08-29 12:52:53.417 +05:00 [INF] Executed DbCommand (44ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-29 12:52:53.646 +05:00 [INF] Executed DbCommand (95ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-29 12:52:53.724 +05:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-29 12:52:53.747 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-29 12:52:53.825 +05:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-08-29 12:52:53.891 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-08-29 12:52:53.944 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-29 12:52:54.548 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-29 12:52:54.630 +05:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-29 12:52:55.974 +05:00 [INF] Now listening on: https://localhost:5002
+2024-08-29 12:52:58.189 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-08-29 12:52:58.736 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-08-29 12:52:59.222 +05:00 [INF] Response StatusCode: 200
+2024-08-29 12:52:59.250 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 1071.4069ms
+2024-08-29 12:52:59.310 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-08-29 12:52:59.310 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-08-29 12:52:59.358 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 39.0512ms
+2024-08-29 12:52:59.539 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 228.5407ms
+2024-08-29 12:53:00.476 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-08-29 12:53:00.490 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-29 12:53:00.505 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-08-29 12:53:00.517 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-08-29 12:53:01.152 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-29 12:53:01.163 +05:00 [INF] Response StatusCode: 404
+2024-08-29 12:53:01.174 +05:00 [INF] Response StatusCode: 404
+2024-08-29 12:53:01.184 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 709.0646ms
+2024-08-29 12:53:03.520 +05:00 [INF] Response StatusCode: 200
+2024-08-29 12:53:03.529 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 3024.4780ms
+2024-08-29 12:54:10.363 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/ActivityIncludeOption/GetAll application/json 170
+2024-08-29 12:54:10.392 +05:00 [INF] CORS policy execution successful.
+2024-08-29 12:54:10.403 +05:00 [INF] Request Method: POST, Path: /api/v1/ActivityIncludeOption/GetAll, Content-Type: application/json
+2024-08-29 12:54:10.420 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 12:54:10.452 +05:00 [INF] Request Method: POST, Path: /api/v1/ActivityIncludeOption/GetAll, Content-Type: application/json
+2024-08-29 12:54:10.466 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 12:54:10.479 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api)'
+2024-08-29 12:54:10.558 +05:00 [INF] Route matched with {action = "GetAll", controller = "ActivityIncludeOption"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping.GetAllActivityIncludeOptionMappingQuery) on controller CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController (CleanArc.Web.Api).
+2024-08-29 12:54:12.978 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-29 12:54:13.704 +05:00 [INF] Entering CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-08-29 12:54:13.963 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-08-29 12:54:14.834 +05:00 [INF] Exiting null, GetAllAsync
+2024-08-29 12:54:14.882 +05:00 [INF] Exiting null, Handle
+2024-08-29 12:54:15.016 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api) in 4434.6001ms
+2024-08-29 12:54:15.032 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api)'
+2024-08-29 12:54:15.373 +05:00 [ERR] @PageSize is not a parameter for procedure Mapping_GetAll_Seasons.
+System.Data.SqlClient.SqlException (0x80131904): @PageSize is not a parameter for procedure Mapping_GetAll_Seasons.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.ActivityIncludeOptionMappingRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\ActivityIncludeOptionMappingRepository.cs:line 138
+   at CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping.GetAllActivityIncludeOptionMappingQueryHandler.Handle(GetAllActivityIncludeOptionMappingQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\ActivityIncludeOptionMapping\Queries\GetAllActivityIncludeOptionMapping\GetAllActivityIncludeOptionMappingQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:095e3a66-5249-478e-8fd0-eb4f7eaaa8e5
+Error Number:8145,State:1,Class:16
+2024-08-29 12:54:15.644 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/ActivityIncludeOption/GetAll application/json 170 - 500 0 - 5280.7071ms
+2024-08-29 12:57:14.128 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/ActivityIncludeOption/GetAll application/json 171
+2024-08-29 12:57:14.142 +05:00 [INF] CORS policy execution successful.
+2024-08-29 12:57:14.152 +05:00 [INF] Request Method: POST, Path: /api/v1/ActivityIncludeOption/GetAll, Content-Type: application/json
+2024-08-29 12:57:14.166 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 12:57:14.227 +05:00 [INF] Request Method: POST, Path: /api/v1/ActivityIncludeOption/GetAll, Content-Type: application/json
+2024-08-29 12:57:14.241 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 12:57:14.253 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api)'
+2024-08-29 12:57:14.266 +05:00 [INF] Route matched with {action = "GetAll", controller = "ActivityIncludeOption"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping.GetAllActivityIncludeOptionMappingQuery) on controller CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController (CleanArc.Web.Api).
+2024-08-29 12:57:16.402 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-29 12:57:16.648 +05:00 [INF] Entering CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-08-29 12:57:17.900 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-08-29 12:57:24.746 +05:00 [INF] Exiting null, GetAllAsync
+2024-08-29 12:57:30.092 +05:00 [INF] Exiting null, Handle
+2024-08-29 12:57:32.956 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api) in 18676.5645ms
+2024-08-29 12:57:32.969 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api)'
+2024-08-29 13:31:00.842 +05:00 [INF] Executed DbCommand (43ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-29 13:31:01.097 +05:00 [INF] Executed DbCommand (93ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-29 13:31:01.135 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-29 13:31:01.179 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-29 13:31:01.253 +05:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-08-29 13:31:01.311 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-08-29 13:31:01.353 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-29 13:31:01.991 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-29 13:31:02.048 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-29 13:31:03.397 +05:00 [INF] Now listening on: https://localhost:5002
+2024-08-29 13:31:04.299 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-08-29 13:31:04.783 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-08-29 13:31:05.301 +05:00 [INF] Response StatusCode: 200
+2024-08-29 13:31:05.333 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-08-29 13:31:05.363 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 1068.7359ms
+2024-08-29 13:31:05.410 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 76.5658ms
+2024-08-29 13:31:05.625 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-08-29 13:31:05.778 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 152.9856ms
+2024-08-29 13:31:07.537 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-08-29 13:31:07.556 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-29 13:31:07.623 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-08-29 13:31:07.636 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-08-29 13:31:09.561 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-29 13:31:09.577 +05:00 [INF] Response StatusCode: 404
+2024-08-29 13:31:09.591 +05:00 [INF] Response StatusCode: 404
+2024-08-29 13:31:09.604 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 2067.5528ms
+2024-08-29 13:31:09.927 +05:00 [INF] Response StatusCode: 200
+2024-08-29 13:31:09.934 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 2310.7974ms
+2024-08-29 13:35:44.163 +05:00 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-29 13:35:44.329 +05:00 [INF] Executed DbCommand (43ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-29 13:35:44.348 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-08-29 13:35:44.359 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-08-29 13:35:44.400 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-08-29 13:35:44.445 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-08-29 13:35:44.467 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-08-29 13:35:44.857 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-29 13:35:44.879 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-08-29 13:35:45.381 +05:00 [INF] Now listening on: https://localhost:5002
+2024-08-29 13:35:46.134 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-08-29 13:35:47.868 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-08-29 13:35:48.363 +05:00 [INF] Response StatusCode: 200
+2024-08-29 13:35:48.382 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 2251.8872ms
+2024-08-29 13:35:48.471 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-08-29 13:35:48.471 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-08-29 13:35:48.495 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 23.8254ms
+2024-08-29 13:35:48.601 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 130.5720ms
+2024-08-29 13:35:50.154 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-08-29 13:35:50.165 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-29 13:35:50.171 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-08-29 13:35:50.185 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-08-29 13:35:50.615 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-08-29 13:35:50.627 +05:00 [INF] Response StatusCode: 404
+2024-08-29 13:35:50.632 +05:00 [INF] Response StatusCode: 404
+2024-08-29 13:35:50.638 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 485.4757ms
+2024-08-29 13:35:52.168 +05:00 [INF] Response StatusCode: 200
+2024-08-29 13:35:52.173 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 2001.6985ms
+2024-08-29 13:36:33.972 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/ActivityIncludeOption/GetAll application/json 169
+2024-08-29 13:36:33.980 +05:00 [INF] CORS policy execution successful.
+2024-08-29 13:36:33.989 +05:00 [INF] Request Method: POST, Path: /api/v1/ActivityIncludeOption/GetAll, Content-Type: application/json
+2024-08-29 13:36:34.003 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+    
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 13:36:34.031 +05:00 [INF] Request Method: POST, Path: /api/v1/ActivityIncludeOption/GetAll, Content-Type: application/json
+2024-08-29 13:36:34.047 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+    
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 13:36:34.061 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api)'
+2024-08-29 13:36:34.110 +05:00 [INF] Route matched with {action = "GetAll", controller = "ActivityIncludeOption"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping.GetAllActivityIncludeOptionMappingQuery) on controller CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController (CleanArc.Web.Api).
+2024-08-29 13:36:38.999 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-29 13:36:39.368 +05:00 [INF] Entering CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-08-29 13:36:40.036 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-08-29 13:36:41.930 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":71,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":78,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-29T11:48:38.46","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null},{"ID":70,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":78,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-29T11:48:38.46","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null},{"ID":69,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":29,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":0,"CreatedAt":"2024-08-20T12:09:36.047","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null},{"ID":68,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":29,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":0,"CreatedAt":"2024-08-20T12:09:36.047","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null},{"ID":67,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":76,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-20T12:00:46.263","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null},{"ID":66,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":76,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-20T12:00:46.263","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null},{"ID":65,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":75,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-14T20:05:28.69","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null},{"ID":64,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":75,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-14T20:05:28.69","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null},{"ID":63,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":74,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-14T20:01:45.953","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null},{"ID":62,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":74,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-14T20:01:45.953","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null}]
+2024-08-29 13:36:42.114 +05:00 [INF] Exiting null, Handle with response: [{"ID":71,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":78,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-29T11:48:38.46","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":70,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":78,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-29T11:48:38.46","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":69,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":29,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":0,"CreatedAt":"2024-08-20T12:09:36.047","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":68,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":29,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":0,"CreatedAt":"2024-08-20T12:09:36.047","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":67,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":76,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-20T12:00:46.263","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":66,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":76,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-20T12:00:46.263","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":65,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":75,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-14T20:05:28.69","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":64,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":75,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-14T20:05:28.69","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":63,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":74,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-14T20:01:45.953","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":62,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":74,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-14T20:01:45.953","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}]
+2024-08-29 13:36:42.138 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3121.7112ms.
+2024-08-29 13:36:42.166 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-29 13:36:42.241 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api) in 8115.6548ms
+2024-08-29 13:36:42.253 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api)'
+2024-08-29 13:36:42.263 +05:00 [INF] Response StatusCode: 200
+2024-08-29 13:36:42.276 +05:00 [INF] Response StatusCode: 200
+2024-08-29 13:36:42.288 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/ActivityIncludeOption/GetAll application/json 169 - 200 - application/json;+charset=utf-8 8315.3725ms
+2024-08-29 13:38:02.678 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/ActivityIncludeOption/GetAll application/json 250
+2024-08-29 13:38:02.702 +05:00 [INF] CORS policy execution successful.
+2024-08-29 13:38:02.709 +05:00 [INF] Request Method: POST, Path: /api/v1/ActivityIncludeOption/GetAll, Content-Type: application/json
+2024-08-29 13:38:02.725 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 0,
+    "pageSize": 0,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ActivityID",
+        "parameterValue": "129"
+      }
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 13:38:02.762 +05:00 [INF] Request Method: POST, Path: /api/v1/ActivityIncludeOption/GetAll, Content-Type: application/json
+2024-08-29 13:38:02.773 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 0,
+    "pageSize": 0,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ActivityID",
+        "parameterValue": "129"
+      }
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 13:38:02.780 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api)'
+2024-08-29 13:38:02.786 +05:00 [INF] Route matched with {action = "GetAll", controller = "ActivityIncludeOption"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping.GetAllActivityIncludeOptionMappingQuery) on controller CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController (CleanArc.Web.Api).
+2024-08-29 13:38:04.424 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-29 13:38:04.527 +05:00 [INF] Entering CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping, Handle with parameter: {"searchRequest":{"PageNumber":0,"PageSize":0,"CultureId":0,"Id":0,"FilterArray":[{"ParameterName":"ActivityID","ParameterValue":"129"}],"SortingArray":[]}}
+2024-08-29 13:38:06.001 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":0,"PageSize":0,"CultureId":0,"Id":0,"FilterArray":[{"ParameterName":"ActivityID","ParameterValue":"129"}],"SortingArray":[]}
+2024-08-29 13:38:06.883 +05:00 [INF] Exiting null, GetAllAsync
+2024-08-29 13:38:06.925 +05:00 [INF] Exiting null, Handle
+2024-08-29 13:38:07.009 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api) in 4215.9996ms
+2024-08-29 13:38:07.026 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api)'
+2024-08-29 13:38:07.235 +05:00 [ERR] The number of rows provided for a FETCH clause must be greater then zero.
+System.Data.SqlClient.SqlException (0x80131904): The number of rows provided for a FETCH clause must be greater then zero.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.ActivityIncludeOptionMappingRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\ActivityIncludeOptionMappingRepository.cs:line 138
+   at CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping.GetAllActivityIncludeOptionMappingQueryHandler.Handle(GetAllActivityIncludeOptionMappingQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\ActivityIncludeOptionMapping\Queries\GetAllActivityIncludeOptionMapping\GetAllActivityIncludeOptionMappingQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:0f6d6f29-c9eb-4eed-98c6-93a03af9140b
+Error Number:10744,State:1,Class:15
+2024-08-29 13:38:07.400 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/ActivityIncludeOption/GetAll application/json 250 - 500 0 - 4722.5561ms
+2024-08-29 13:38:13.638 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/ActivityIncludeOption/GetAll application/json 250
+2024-08-29 13:38:13.646 +05:00 [INF] CORS policy execution successful.
+2024-08-29 13:38:13.650 +05:00 [INF] Request Method: POST, Path: /api/v1/ActivityIncludeOption/GetAll, Content-Type: application/json
+2024-08-29 13:38:13.659 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 0,
+    "pageSize": 0,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ActivityID",
+        "parameterValue": "129"
+      }
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 13:38:13.667 +05:00 [INF] Request Method: POST, Path: /api/v1/ActivityIncludeOption/GetAll, Content-Type: application/json
+2024-08-29 13:38:13.677 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 0,
+    "pageSize": 0,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ActivityID",
+        "parameterValue": "129"
+      }
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 13:38:13.683 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api)'
+2024-08-29 13:38:13.689 +05:00 [INF] Route matched with {action = "GetAll", controller = "ActivityIncludeOption"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping.GetAllActivityIncludeOptionMappingQuery) on controller CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController (CleanArc.Web.Api).
+2024-08-29 13:38:15.223 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-29 13:38:15.245 +05:00 [INF] Entering CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping, Handle with parameter: {"searchRequest":{"PageNumber":0,"PageSize":0,"CultureId":0,"Id":0,"FilterArray":[{"ParameterName":"ActivityID","ParameterValue":"129"}],"SortingArray":[]}}
+2024-08-29 13:38:16.259 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":0,"PageSize":0,"CultureId":0,"Id":0,"FilterArray":[{"ParameterName":"ActivityID","ParameterValue":"129"}],"SortingArray":[]}
+2024-08-29 13:38:20.894 +05:00 [INF] Exiting null, GetAllAsync
+2024-08-29 13:38:24.426 +05:00 [INF] Exiting null, Handle
+2024-08-29 13:38:26.587 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api) in 12889.3132ms
+2024-08-29 13:38:26.606 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api)'
+2024-08-29 13:39:10.374 +05:00 [ERR] The number of rows provided for a FETCH clause must be greater then zero.
+System.Data.SqlClient.SqlException (0x80131904): The number of rows provided for a FETCH clause must be greater then zero.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.ActivityIncludeOptionMappingRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\ActivityIncludeOptionMappingRepository.cs:line 138
+   at CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping.GetAllActivityIncludeOptionMappingQueryHandler.Handle(GetAllActivityIncludeOptionMappingQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\ActivityIncludeOptionMapping\Queries\GetAllActivityIncludeOptionMapping\GetAllActivityIncludeOptionMappingQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:0f6d6f29-c9eb-4eed-98c6-93a03af9140b
+Error Number:10744,State:1,Class:15
+2024-08-29 13:39:10.439 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/ActivityIncludeOption/GetAll application/json 250 - 500 0 - 56799.4307ms
+2024-08-29 13:39:18.475 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/ActivityIncludeOption/GetAll application/json 251
+2024-08-29 13:39:18.485 +05:00 [INF] CORS policy execution successful.
+2024-08-29 13:39:18.489 +05:00 [INF] Request Method: POST, Path: /api/v1/ActivityIncludeOption/GetAll, Content-Type: application/json
+2024-08-29 13:39:18.494 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ActivityID",
+        "parameterValue": "129"
+      }
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 13:39:18.500 +05:00 [INF] Request Method: POST, Path: /api/v1/ActivityIncludeOption/GetAll, Content-Type: application/json
+2024-08-29 13:39:18.510 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ActivityID",
+        "parameterValue": "129"
+      }
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 13:39:18.516 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api)'
+2024-08-29 13:39:18.522 +05:00 [INF] Route matched with {action = "GetAll", controller = "ActivityIncludeOption"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping.GetAllActivityIncludeOptionMappingQuery) on controller CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController (CleanArc.Web.Api).
+2024-08-29 13:39:21.724 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-29 13:39:21.736 +05:00 [INF] Entering CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[{"ParameterName":"ActivityID","ParameterValue":"129"}],"SortingArray":[]}}
+2024-08-29 13:39:24.157 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[{"ParameterName":"ActivityID","ParameterValue":"129"}],"SortingArray":[]}
+2024-08-29 13:39:26.690 +05:00 [INF] Exiting null, GetAllAsync with response: []
+2024-08-29 13:39:26.697 +05:00 [INF] Exiting null, Handle with response: []
+2024-08-29 13:39:26.704 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4968.4355ms.
+2024-08-29 13:39:26.712 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-29 13:39:26.718 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api) in 8187.298ms
+2024-08-29 13:39:26.722 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api)'
+2024-08-29 13:39:26.726 +05:00 [INF] Response StatusCode: 200
+2024-08-29 13:39:26.730 +05:00 [INF] Response StatusCode: 200
+2024-08-29 13:39:26.734 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/ActivityIncludeOption/GetAll application/json 251 - 200 - application/json;+charset=utf-8 8258.8404ms
+2024-08-29 13:40:22.413 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/ActivityIncludeOption/GetAll application/json 170
+2024-08-29 13:40:22.427 +05:00 [INF] CORS policy execution successful.
+2024-08-29 13:40:22.436 +05:00 [INF] Request Method: POST, Path: /api/v1/ActivityIncludeOption/GetAll, Content-Type: application/json
+2024-08-29 13:40:22.447 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 13:40:22.457 +05:00 [INF] Request Method: POST, Path: /api/v1/ActivityIncludeOption/GetAll, Content-Type: application/json
+2024-08-29 13:40:22.470 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 13:40:22.479 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api)'
+2024-08-29 13:40:22.488 +05:00 [INF] Route matched with {action = "GetAll", controller = "ActivityIncludeOption"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping.GetAllActivityIncludeOptionMappingQuery) on controller CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController (CleanArc.Web.Api).
+2024-08-29 13:40:24.481 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-29 13:40:24.487 +05:00 [INF] Entering CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-08-29 13:40:26.186 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-08-29 13:40:27.575 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":71,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":78,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-29T11:48:38.46","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null},{"ID":70,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":78,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-29T11:48:38.46","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null},{"ID":69,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":29,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":0,"CreatedAt":"2024-08-20T12:09:36.047","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null},{"ID":68,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":29,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":0,"CreatedAt":"2024-08-20T12:09:36.047","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null},{"ID":67,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":76,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-20T12:00:46.263","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null},{"ID":66,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":76,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-20T12:00:46.263","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null},{"ID":65,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":75,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-14T20:05:28.69","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null},{"ID":64,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":75,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-14T20:05:28.69","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null},{"ID":63,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":74,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-14T20:01:45.953","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null},{"ID":62,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":74,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-14T20:01:45.953","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null}]
+2024-08-29 13:40:27.587 +05:00 [INF] Exiting null, Handle with response: [{"ID":71,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":78,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-29T11:48:38.46","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":70,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":78,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-29T11:48:38.46","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":69,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":29,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":0,"CreatedAt":"2024-08-20T12:09:36.047","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":68,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":29,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":0,"CreatedAt":"2024-08-20T12:09:36.047","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":67,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":76,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-20T12:00:46.263","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":66,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":76,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-20T12:00:46.263","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":65,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":75,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-14T20:05:28.69","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":64,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":75,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-14T20:05:28.69","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":63,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":74,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-14T20:01:45.953","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":62,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":74,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-14T20:01:45.953","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}]
+2024-08-29 13:40:27.594 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3108.6177ms.
+2024-08-29 13:40:27.601 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-29 13:40:27.606 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api) in 5103.8466ms
+2024-08-29 13:40:27.628 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api)'
+2024-08-29 13:40:27.635 +05:00 [INF] Response StatusCode: 200
+2024-08-29 13:40:27.640 +05:00 [INF] Response StatusCode: 200
+2024-08-29 13:40:27.646 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/ActivityIncludeOption/GetAll application/json 170 - 200 - application/json;+charset=utf-8 5233.0885ms
+2024-08-29 13:40:47.054 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/ActivityIncludeOption/GetAll application/json 250
+2024-08-29 13:40:47.059 +05:00 [INF] CORS policy execution successful.
+2024-08-29 13:40:47.063 +05:00 [INF] Request Method: POST, Path: /api/v1/ActivityIncludeOption/GetAll, Content-Type: application/json
+2024-08-29 13:40:47.068 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ActivityID",
+        "parameterValue": "78"
+      }
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 13:40:47.072 +05:00 [INF] Request Method: POST, Path: /api/v1/ActivityIncludeOption/GetAll, Content-Type: application/json
+2024-08-29 13:40:47.076 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ActivityID",
+        "parameterValue": "78"
+      }
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-08-29 13:40:47.079 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api)'
+2024-08-29 13:40:47.083 +05:00 [INF] Route matched with {action = "GetAll", controller = "ActivityIncludeOption"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping.GetAllActivityIncludeOptionMappingQuery) on controller CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController (CleanArc.Web.Api).
+2024-08-29 13:40:48.989 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-08-29 13:40:49.002 +05:00 [INF] Entering CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[{"ParameterName":"ActivityID","ParameterValue":"78"}],"SortingArray":[]}}
+2024-08-29 13:40:49.155 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[{"ParameterName":"ActivityID","ParameterValue":"78"}],"SortingArray":[]}
+2024-08-29 13:40:50.096 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":71,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":78,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-29T11:48:38.46","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null},{"ID":70,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":78,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-29T11:48:38.46","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"SeasonIDs":null}]
+2024-08-29 13:40:50.105 +05:00 [INF] Exiting null, Handle with response: [{"ID":71,"IncludeOptionsLookUpID":"3","IncludeOptionName":"Transportation (Bus, Car, Motorbikes, Boat, Others)","ActivityID":78,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-29T11:48:38.46","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":70,"IncludeOptionsLookUpID":"1","IncludeOptionName":"Hotel Pick-up and Drop-off","ActivityID":78,"Title":null,"IsActive":true,"IsDelete":null,"CreatedBy":5,"CreatedAt":"2024-08-29T11:48:38.46","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}]
+2024-08-29 13:40:50.114 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1113.806ms.
+2024-08-29 13:40:50.125 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-08-29 13:40:50.138 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api) in 3051.7174ms
+2024-08-29 13:40:50.150 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption.ActivityIncludeOptionController.GetAll (CleanArc.Web.Api)'
+2024-08-29 13:40:50.161 +05:00 [INF] Response StatusCode: 200
+2024-08-29 13:40:50.169 +05:00 [INF] Response StatusCode: 200
+2024-08-29 13:40:50.178 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/ActivityIncludeOption/GetAll application/json 250 - 200 - application/json;+charset=utf-8 3124.2717ms

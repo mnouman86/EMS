@@ -390,6 +390,15 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.FAQs.FAQsController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.FAQs.FAQsController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.FAQs.Commands.CreateFAQsCommand.CreateFAQsCommand,CleanArc.Application.Features.FAQs.Commands.UpdateFAQsCommand.UpdateFAQsCommand,CleanArc.Application.Features.FAQs.Commands.DeleteFAQsCommand.DeleteFAQsCommand,System.Boolean,CleanArc.Application.Features.FAQs.Queries.GetAllFAQs.GetAllFAQsQuery,System.Collections.Generic.List{CleanArc.Application.Features.FAQs.Queries.GetAllFAQs.GetAllFAQsQueryResult},CleanArc.Application.Features.FAQs.Queries.GetFAQsById.GetFAQsByIdQuery,CleanArc.Application.Features.FAQs.Queries.GetFAQsById.GetFAQsByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.FAQs.FAQsController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.HotelImage.HotelImageController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.HotelImage.HotelImageController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.HotelImage.Command.CreateHotelImageCommand.CreateHotelImageCommand,CleanArc.Application.Features.HotelImage.Command.UpdateHotelImageCommand.UpdateHotelImageCommand,CleanArc.Application.Features.HotelImage.Command.DeleteHotelImageCommand.DeleteHotelImageCommand,System.Boolean,CleanArc.Application.Features.HotelImage.Query.GetAllHotelImage.GetAllHotelImageQuery,System.Collections.Generic.List{CleanArc.Application.Features.HotelImage.Query.GetAllHotelImage.GetAllHotelImageQueryResult},CleanArc.Application.Features.HotelImage.Query.GetHotelImageById.GetHotelImageByIdQuery,CleanArc.Application.Features.HotelImage.Query.GetHotelImageById.GetHotelImageByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
