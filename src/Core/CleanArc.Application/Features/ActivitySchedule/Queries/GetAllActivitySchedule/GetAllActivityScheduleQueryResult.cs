@@ -11,6 +11,8 @@ public class GetAllActivityScheduleQueryResult
     public int ID { get; set; }
     public int? ActivityID { get; set; }
     public string Title { get; set; }
+    public string? ActivityTitle { get; set; }
+
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }

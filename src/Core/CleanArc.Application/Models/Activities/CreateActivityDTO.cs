@@ -41,6 +41,10 @@ namespace CleanArc.Application.Models.Activities
         public string? SeasonLookUpID { get; set; }
         public string? IncludeOptionLookUpID { get; set; }
         public string? DisabilityOptionLookUpID { get; set; }
+        public string? StartTime { get; set; } // Nullable TimeSpan for StartTime
+        public string? EndTime { get; set; }   // Nullable TimeSpan for EndTime
+        public string? StartDate { get; set; } // Nullable DateTime for StartDate
+        public string? EndDate { get; set; }   // Nullable DateTime for EndDate
         public int? Code { get; set; }
         public int? Message { get; set; }
        // public int? ActivityID { get; set; }
