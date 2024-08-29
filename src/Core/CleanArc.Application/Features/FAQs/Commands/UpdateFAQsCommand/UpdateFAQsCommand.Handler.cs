@@ -1,11 +1,7 @@
-﻿using CleanArc.Application.Contracts.Identity;
+﻿using AutoMapper;
+using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Features.URL.Commands.AddURLCommand;
-using CleanArc.Application.Models.Common;
-using CleanArc.Domain.Entities.User;
-using CleanArc.SharedKernel.Extensions;
-using MapsterMapper;
-using Mediator;
+using CleanArc.Application.Features.FAQs.Commands.CreateFAQsCommand;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -14,22 +10,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mediator;
+using CleanArc.Application.Models.Common;
+using CleanArc.SharedKernel.Extensions;
 
-namespace CleanArc.Application.Features.ActivityIncludeOptionMapping.Commands.CreateActivityIncludeOptionMappingCommand;
+namespace CleanArc.Application.Features.FAQs.Commands.UpdateFAQsCommand;
 
-internal class CreateActivityIncludeOptionMappingCommandHandler: IRequestHandler<CreateActivityIncludeOptionMappingCommand, OperationResult<bool>>
+internal class UpdateFAQsCommandHandler:IRequestHandler<UpdateFAQsCommand, OperationResult<bool>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<CreateActivityIncludeOptionMappingCommandHandler> _logger;
+    private readonly ILogger<UpdateFAQsCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
     //private readonly IUnitOfWork _unitOfWork;
     //private readonly IAppUserManager _userManager;
 
 
-    public CreateActivityIncludeOptionMappingCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<CreateActivityIncludeOptionMappingCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public UpdateFAQsCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateFAQsCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -40,8 +39,7 @@ internal class CreateActivityIncludeOptionMappingCommandHandler: IRequestHandler
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-
-    public async ValueTask<OperationResult<bool>> Handle(CreateActivityIncludeOptionMappingCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<bool>> Handle(UpdateFAQsCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -57,11 +55,19 @@ internal class CreateActivityIncludeOptionMappingCommandHandler: IRequestHandler
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.ActivityIncludeOptionMappingRepository.AddAsync(new Domain.Entities.ActivityIncludeOptionMapping.ActivityIncludeOptionMapping()
-            { CreatedBy = user.Id, IncludeOptionsLookUpID = request.IncludeOptionsLookUpID, ActivityID=request.ActivityID });
+            await _unitOfWork.FAQsRepository.UpdateAsync(new Domain.Entities.FAQs.FAQs()
+            { UpdatedBy = user.Id,
+                ID= request.ID,
+                CategoryServiceID = request.CategoryServiceID,
+                ServiceID = request.ServiceID,
+                SubServiceID = request.SubServiceID,
+                Question = request.Question,
+                Answer = request.Answer,
+                CultureId = request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);
         }
     }
+
 }

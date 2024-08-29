@@ -11,7 +11,7 @@ public static class ActivityIncludeOptionMappingQueries
     public static string Mapping_Create_Seasons => "Create_Mapping_IncludeOptions";
     public static string Mapping_Update_Seasons => "Mapping_Update_Seasons";
     public static string Mapping_Delete_Seasons => "Mapping_Delete_Seasons";
-    public static string Mapping_GetAll_Seasons => "Mapping_GetAll_Seasons";
+    public static string Mapping_GetAllByActivityID_IncludeOptions => "Mapping_GetAllByActivityID_IncludeOptions";
     public static string Mapping_GetByID_Seasons => "Mapping_GetByID_Seasons";
 
 

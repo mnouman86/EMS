@@ -11,17 +11,17 @@ using System.Threading.Tasks;
 using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.ActivityIncludeOptionMapping.Commands.UpdateActivityIncludeOptionMappingCommand;
-public record UpdateActivityIncludeOptionMappingCommand(int ID, string? IncludeOptionIDs, int? ActivityID, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record UpdateActivityIncludeOptionMappingCommand(int ID, string? IncludeOptionsLookUpID, int? ActivityID, int? UpdatedBy) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateActivityIncludeOptionMappingCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<UpdateActivityIncludeOptionMappingCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateActivityIncludeOptionMappingCommand> validator)
     {
-        validator.RuleFor(c => c.IncludeOptionIDs)
+        validator.RuleFor(c => c.IncludeOptionsLookUpID)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please enter a valid IncludeOptionIDs");
+            .WithMessage("Please enter a valid IncludeOptionsLookUpID");
         validator.RuleFor(c => c.ActivityID)
             .NotEmpty()
             .NotNull()

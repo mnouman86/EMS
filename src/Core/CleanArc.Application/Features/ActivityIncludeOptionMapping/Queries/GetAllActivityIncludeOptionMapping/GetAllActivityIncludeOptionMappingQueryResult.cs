@@ -9,8 +9,8 @@ namespace CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.Get
 public class GetAllActivityIncludeOptionMappingQueryResult
 {
     public int ID { get; set; }
-    public String? SeasonIDs { get; set; }
-    public string? Name { get; set; }
+    public string? IncludeOptionsLookUpID { get; set; }
+    public string? IncludeOptionName { get; set; }
     public int? ActivityID { get; set; }
     public string? Title { get; set; }
     public bool? IsActive { get; set; }
