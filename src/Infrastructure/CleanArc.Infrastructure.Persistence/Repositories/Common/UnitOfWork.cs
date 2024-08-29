@@ -85,6 +85,7 @@ public class UnitOfWork : IUnitOfWork
     public IProcessOrderRepository ProcessOrderRepository { get; set; }
     public IPackageTypeRepository PackageTypeRepository { get; set; }
     public IPackageDetailRepository PackageDetailRepository { get; set; }
+    public IFAQsRepository FAQsRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -160,6 +161,8 @@ public class UnitOfWork : IUnitOfWork
                 ILogger<ProcessOrderRepository> _loggerProcessOrder,
                 ILogger<PackageTypeRepository> _loggerPackageType,
                                 ILogger<PackageDetailRepository> _loggerPackageDetail,
+            ILogger<FAQsRepository> _loggerFAQs,
+
 
 
 
@@ -237,6 +240,7 @@ public class UnitOfWork : IUnitOfWork
         ProcessOrderRepository = new ProcessOrderRepository(configuration, mapper, _loggerProcessOrder, httpContextAccessor);
         PackageTypeRepository = new PackageTypeRepository(configuration, mapper, _loggerPackageType, httpContextAccessor);
         PackageDetailRepository = new PackageDetailRepository(configuration, mapper, _loggerPackageDetail, httpContextAccessor);
+        FAQsRepository = new FAQsRepository(configuration, mapper, _loggerFAQs, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         this.configuration = configuration;
