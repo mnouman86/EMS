@@ -40,10 +40,10 @@ public record CreateProcessOrderCommand(string? OrderNumber, string? FirstName, 
     public int UserId { get; set; }
     public IValidator<CreateProcessOrderCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateProcessOrderCommand> validator)
     {
-        validator.RuleFor(c => c.OrderNumber)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a valid OrderNumber");
+        //validator.RuleFor(c => c.OrderNumber)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a valid OrderNumber");
         validator.RuleFor(c => c.FirstName)
             .NotEmpty()
             .NotNull()
@@ -64,58 +64,58 @@ public record CreateProcessOrderCommand(string? OrderNumber, string? FirstName, 
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a CardHolderName");
-        validator.RuleFor(c => c.CardName)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a CardName");
-        validator.RuleFor(c => c.CardCVC)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a CardCVC");
-        validator.RuleFor(c => c.ExpirationMonth)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a ExpirationMonth");
-        validator.RuleFor(c => c.ExpirationYear)
-          .NotEmpty()
-          .NotNull()
-          .WithMessage("Please enter a ExpirationYear");
-        validator.RuleFor(c => c.CountryID)
-          .NotEmpty()
-          .NotNull()
-          .WithMessage("Please enter a CountryID");
-        validator.RuleFor(c => c.ExpirationMonth)
-          .NotEmpty()
-          .NotNull()
-          .WithMessage("Please enter a ExpirationMonth");
-        validator.RuleFor(c => c.ZipCode)
-          .NotEmpty()
-          .NotNull()
-          .WithMessage("Please enter a ZipCode");
-        validator.RuleFor(c => c.CategoryID)
-          .NotEmpty()
-          .NotNull()
-          .WithMessage("Please enter a CategoryID");
-        validator.RuleFor(c => c.ServiceID)
-          .NotEmpty()
-          .NotNull()
-          .WithMessage("Please enter a ServiceID");
-        validator.RuleFor(c => c.SubServiceID)
-          .NotEmpty()
-          .NotNull()
-          .WithMessage("Please enter a SubServiceID");
-        validator.RuleFor(c => c.Amount)
-          .NotEmpty()
-          .NotNull()
-          .WithMessage("Please enter a Amount");
-        validator.RuleFor(c => c.FromDate)
-          .NotEmpty()
-          .NotNull()
-          .WithMessage("Please enter a FromDate");
-        validator.RuleFor(c => c.ToDate)
-          .NotEmpty()
-          .NotNull()
-          .WithMessage("Please enter a ToDate");
+        //validator.RuleFor(c => c.CardName)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a CardName");
+        //validator.RuleFor(c => c.CardCVC)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a CardCVC");
+        //validator.RuleFor(c => c.ExpirationMonth)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a ExpirationMonth");
+        //validator.RuleFor(c => c.ExpirationYear)
+        //  .NotEmpty()
+        //  .NotNull()
+        //  .WithMessage("Please enter a ExpirationYear");
+        //validator.RuleFor(c => c.CountryID)
+        //  .NotEmpty()
+        //  .NotNull()
+        //  .WithMessage("Please enter a CountryID");
+        //validator.RuleFor(c => c.ExpirationMonth)
+        //  .NotEmpty()
+        //  .NotNull()
+        //  .WithMessage("Please enter a ExpirationMonth");
+        //validator.RuleFor(c => c.ZipCode)
+        //  .NotEmpty()
+        //  .NotNull()
+        //  .WithMessage("Please enter a ZipCode");
+        //validator.RuleFor(c => c.CategoryID)
+        //  .NotEmpty()
+        //  .NotNull()
+        //  .WithMessage("Please enter a CategoryID");
+        //validator.RuleFor(c => c.ServiceID)
+        //  .NotEmpty()
+        //  .NotNull()
+        //  .WithMessage("Please enter a ServiceID");
+        //validator.RuleFor(c => c.SubServiceID)
+        //  .NotEmpty()
+        //  .NotNull()
+        //  .WithMessage("Please enter a SubServiceID");
+        //validator.RuleFor(c => c.Amount)
+        //  .NotEmpty()
+        //  .NotNull()
+        //  .WithMessage("Please enter a Amount");
+        //validator.RuleFor(c => c.FromDate)
+        //  .NotEmpty()
+        //  .NotNull()
+        //  .WithMessage("Please enter a FromDate");
+        //validator.RuleFor(c => c.ToDate)
+        //  .NotEmpty()
+        //  .NotNull()
+        //  .WithMessage("Please enter a ToDate");
         //validator.RuleFor(c => c.NoOfAdults)
         //  .NotEmpty()
         //  .NotNull()
@@ -128,14 +128,14 @@ public record CreateProcessOrderCommand(string? OrderNumber, string? FirstName, 
         //.NotEmpty()
         //.NotNull()
         //.WithMessage("Please enter a NoOfRooms");
-        validator.RuleFor(c => c.OrderStatus)
-        .NotEmpty()
-        .NotNull()
-        .WithMessage("Please enter a OrderStatus");
-        validator.RuleFor(c => c.CreditDate)
-        .NotEmpty()
-        .NotNull()
-        .WithMessage("Please enter a CreditDate");
+        //validator.RuleFor(c => c.OrderStatus)
+        //.NotEmpty()
+        //.NotNull()
+        //.WithMessage("Please enter a OrderStatus");
+        //validator.RuleFor(c => c.CreditDate)
+        //.NotEmpty()
+        //.NotNull()
+        //.WithMessage("Please enter a CreditDate");
         
         return validator;
     }
