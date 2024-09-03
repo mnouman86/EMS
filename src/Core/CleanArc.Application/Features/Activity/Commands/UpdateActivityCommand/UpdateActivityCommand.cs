@@ -24,7 +24,7 @@ public record UpdateActivityCommand(
    int? ActivityTypeLookUpID,
    int? ActivityNatureLookUpID,
    int? MaxGroupSize,
-   bool? IsPrivateActivity,
+   //bool? IsPrivateActivity,
    string? WhoCanParticipate,
    string? WhoCannotParticipate,
    int? ManageActivityLookUpID,
@@ -44,8 +44,8 @@ public record UpdateActivityCommand(
     string? DisabilityOptionLookUpID,
     DateTime? EndDate,
     DateTime? StartDate,
-    DateTime? EndTime,
-    DateTime? StartTime,
+	string? EndTime,
+	string? StartTime,
      int? UpdatedBy) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateActivityCommand>
 {

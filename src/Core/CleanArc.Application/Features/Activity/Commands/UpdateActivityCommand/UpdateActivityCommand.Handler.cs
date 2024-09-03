@@ -68,7 +68,7 @@ internal class UpdateActivityCommandHandler:IRequestHandler<UpdateActivityComman
                 ActivityNatureLookUpID = request.ActivityNatureLookUpID,
                 //MinGroupSize = request.MinGroupSize,
                 MaxGroupSize = request.MaxGroupSize,
-                IsPrivateActivity = request.IsPrivateActivity,
+                //IsPrivateActivity = request.IsPrivateActivity,
                 WhoCannotParticipate = request.WhoCannotParticipate,
                 WhoCanParticipate = request.WhoCanParticipate,
                 ManageActivityLookUpID = request.ManageActivityLookUpID,
@@ -92,8 +92,8 @@ internal class UpdateActivityCommandHandler:IRequestHandler<UpdateActivityComman
                 IncludeOptionLookUpID = request.IncludeOptionLookUpID,
                 EndDate = request.EndDate,
                 StartDate = request.StartDate,
-                StartTime = request.StartDate,
-                EndTime = request.EndDate,
+                StartTime = request.StartTime,
+                EndTime = request.EndTime,
                 DisabilityOptionLookUpID = request.DisabilityOptionLookUpID,
             });
             await _unitOfWork.CommitAsync();
