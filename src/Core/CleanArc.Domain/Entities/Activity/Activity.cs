@@ -39,7 +39,7 @@ public  class Activity
     public string? SeasonLookUpID { get; set; }
     public string? IncludeOptionLookUpID { get; set; }
     public string? DisabilityOptionLookUpID { get; set; }
-    //public Decimal? PerPersonPrice { get; set; }
+    public Decimal? PerPersonPrice { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }
