@@ -71,7 +71,7 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
                 ActivityNatureLookUpID = request.ActivityNatureLookUpID,
               //  MinGroupSize = request.MinGroupSize,
                 MaxGroupSize = request.MaxGroupSize,
-                IsPrivateActivity = request.IsPrivateActivity,
+                //IsPrivateActivity = request.IsPrivateActivity,
                 //PrivateParticipantLookUpID = request.PrivateParticipantLookUpID,
                 WhoCannotParticipate = request.WhoCannotParticipate,
                 WhoCanParticipate = request.WhoCanParticipate,
@@ -89,15 +89,15 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
                 NotAllowedItems = request.NotAllowedItems,
                 AllowedItems = request.AllowedItems,
                 CurrencyLookUpID = request.CurrencyLookUpID,
-                PerPersonPrice=request.PerPersonPrice,
+               // PerPersonPrice=request.PerPersonPrice,
                 CreatedBy=user.Id,
                 SeasonLookUpID = request.SeasonLookUpID,
                 IncludeOptionLookUpID = request.IncludeOptionLookUpID,
                 DisabilityOptionLookUpID= request.DisabilityOptionLookUpID,
                 EndDate = request.EndDate,
                 StartDate = request.StartDate,
-                StartTime = request.StartDate,
-                EndTime = request.EndDate
+                StartTime = request.StartTime,
+                EndTime = request.EndTime
                 // PerGroupPrice = request.PerGroupPrice,
                 //SeasonID = request.SeasonID,
 

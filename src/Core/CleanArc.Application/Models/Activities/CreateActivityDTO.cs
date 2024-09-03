@@ -21,7 +21,7 @@ namespace CleanArc.Application.Models.Activities
         public int? ActivityNatureLookUpID { get; set; }
         //public int? MinGroupSize { get; set; }
         public int? MaxGroupSize { get; set; }
-        public int? IsPrivateActivity { get; set; }
+        //public int? IsPrivateActivity { get; set; }
         public string WhoCanParticipate { get; set; }
         public string WhoCannotParticipate { get; set; }
         public int? ManageActivityLookUpID { get; set; }
@@ -36,15 +36,15 @@ namespace CleanArc.Application.Models.Activities
         public string AllowedItems { get; set; }
         public string NotAllowedItems { get; set; }
         public int? CurrencyLookUpID { get; set; }
-        public Decimal? PerPersonPrice { get; set; }
+        //public Decimal? PerPersonPrice { get; set; }
         public int? CreatedBy { get; set; }
         public string? SeasonLookUpID { get; set; }
         public string? IncludeOptionLookUpID { get; set; }
         public string? DisabilityOptionLookUpID { get; set; }
         public string? StartTime { get; set; } // Nullable TimeSpan for StartTime
         public string? EndTime { get; set; }   // Nullable TimeSpan for EndTime
-        public string? StartDate { get; set; } // Nullable DateTime for StartDate
-        public string? EndDate { get; set; }   // Nullable DateTime for EndDate
+        public DateTime? StartDate { get; set; } // Nullable DateTime for StartDate
+        public DateTime? EndDate { get; set; }   // Nullable DateTime for EndDate
         public int? Code { get; set; }
         public int? Message { get; set; }
        // public int? ActivityID { get; set; }

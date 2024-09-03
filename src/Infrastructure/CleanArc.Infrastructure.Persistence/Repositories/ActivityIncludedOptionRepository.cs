@@ -132,7 +132,7 @@ public async Task<string> AddAsync(ActivityIncludedOption ActivityIncludedOption
                 parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.QueryAsync<ActivityIncludedOption>(ActivityIncludedOptionQueries.Mapping_GetAll_IncludeOptions, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<ActivityIncludedOption>(ActivityIncludedOptionQueries.LookUp_GetAll_IncludeOptions, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }
