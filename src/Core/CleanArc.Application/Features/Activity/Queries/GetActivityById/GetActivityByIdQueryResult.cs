@@ -24,7 +24,7 @@ namespace CleanArc.Application.Features.Activity.Queries.GetActivityById
         public int? ActivityNatureLookUpID { get; set; }
         // public int? MinGroupSize { get; set; }
         public int? MaxGroupSize { get; set; }
-        public bool? IsPrivateActivity { get; set; }
+        //public bool? IsPrivateActivity { get; set; }
         //public int? PrivateParticipantLookUpID { get; set; }
         public string WhoCanParticipate { get; set; }
         public string WhoCannotParticipate { get; set; }
