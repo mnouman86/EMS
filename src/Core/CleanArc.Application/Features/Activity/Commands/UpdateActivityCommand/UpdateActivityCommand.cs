@@ -38,7 +38,7 @@ public record UpdateActivityCommand(
     string? AllowedItems,
     string? NotAllowedItems,
     int? CurrencyLookUpID,
-   // Decimal? PerPersonPrice,
+    //Decimal? PerPersonPrice,
      string? SeasonLookUpID,
     string? IncludeOptionLookUpID,
     string? DisabilityOptionLookUpID,
