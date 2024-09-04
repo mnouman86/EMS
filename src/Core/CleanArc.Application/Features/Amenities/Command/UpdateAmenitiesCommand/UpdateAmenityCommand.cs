@@ -13,7 +13,7 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.Amenities.Command.UpdateAmenitiesCommand;
 
-public record UpdateAmenityCommand(int ID, String? Name, string? Description,int? CategoryID, string? Icon, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record UpdateAmenityCommand(int ID, String? Name, string? Description,int? CategoryID, int? ServiceCategoryID, string? Icon, int? UpdatedBy) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateAmenityCommand>
 {
     [JsonIgnore]
@@ -32,6 +32,10 @@ public record UpdateAmenityCommand(int ID, String? Name, string? Description,int
           .NotEmpty()
           .NotNull()
           .WithMessage("Please enter a CategoryID");
+        validator.RuleFor(c => c.ServiceCategoryID)
+  .NotEmpty()
+  .NotNull()
+  .WithMessage("Please enter a ServiceCategoryID");
         return validator;
     }
 }
