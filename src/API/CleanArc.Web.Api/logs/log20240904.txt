@@ -1,0 +1,490 @@
+2024-09-04 13:56:39.939 +05:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-04 13:56:40.117 +05:00 [INF] Executed DbCommand (71ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-04 13:56:40.157 +05:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-04 13:56:40.192 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-04 13:56:40.275 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-04 13:56:40.343 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-04 13:56:40.379 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-04 13:56:40.922 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-04 13:56:40.950 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-04 13:56:42.511 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-04 13:56:43.758 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-04 13:56:44.347 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-04 13:56:44.709 +05:00 [INF] Response StatusCode: 200
+2024-09-04 13:56:44.744 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 998.3846ms
+2024-09-04 13:56:44.961 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-04 13:56:44.961 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-04 13:56:45.020 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 58.3631ms
+2024-09-04 13:56:45.182 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 220.7947ms
+2024-09-04 13:56:45.922 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-04 13:56:45.930 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-04 13:56:45.945 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-04 13:56:45.952 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-04 13:56:47.925 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-04 13:56:47.935 +05:00 [INF] Response StatusCode: 404
+2024-09-04 13:56:47.939 +05:00 [INF] Response StatusCode: 404
+2024-09-04 13:56:47.942 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 2020.0776ms
+2024-09-04 13:56:48.380 +05:00 [INF] Response StatusCode: 200
+2024-09-04 13:56:48.386 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 2440.6498ms
+2024-09-04 13:57:28.689 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-04 13:57:28.830 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-04 13:57:28.850 +05:00 [INF] Response StatusCode: 200
+2024-09-04 13:57:28.860 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 171.5880ms
+2024-09-04 13:57:28.878 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-04 13:57:28.888 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-04 13:57:28.896 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 7.5288ms
+2024-09-04 13:57:28.945 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 67.4119ms
+2024-09-04 13:57:29.222 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-04 13:57:29.236 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-04 13:57:29.237 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-04 13:57:29.253 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-04 13:57:29.259 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-04 13:57:29.267 +05:00 [INF] Response StatusCode: 404
+2024-09-04 13:57:29.271 +05:00 [INF] Response StatusCode: 404
+2024-09-04 13:57:29.275 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 54.3332ms
+2024-09-04 13:57:30.142 +05:00 [INF] Response StatusCode: 200
+2024-09-04 13:57:30.149 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 911.4267ms
+2024-09-04 13:58:45.697 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-04 13:58:45.728 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-04 13:58:45.742 +05:00 [INF] Response StatusCode: 200
+2024-09-04 13:58:45.774 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-04 13:58:45.774 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-04 13:58:45.788 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 91.4709ms
+2024-09-04 13:58:45.792 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 17.6668ms
+2024-09-04 13:58:45.888 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 113.4977ms
+2024-09-04 13:58:46.061 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-04 13:58:46.065 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-04 13:58:46.071 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-04 13:58:46.074 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-04 13:58:46.075 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-04 13:58:46.085 +05:00 [INF] Response StatusCode: 404
+2024-09-04 13:58:46.089 +05:00 [INF] Response StatusCode: 404
+2024-09-04 13:58:46.093 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 32.0763ms
+2024-09-04 13:58:46.606 +05:00 [INF] Response StatusCode: 200
+2024-09-04 13:58:46.610 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 539.0509ms
+2024-09-04 13:59:05.457 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 50
+2024-09-04 13:59:05.465 +05:00 [INF] CORS policy execution successful.
+2024-09-04 13:59:05.472 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-09-04 13:59:05.479 +05:00 [INF] Request Body: {
+  "userName": "waqas",
+  "password": "123@123"
+}
+2024-09-04 13:59:05.492 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-09-04 13:59:05.499 +05:00 [INF] Request Body: {
+  "userName": "waqas",
+  "password": "123@123"
+}
+2024-09-04 13:59:05.506 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-09-04 13:59:05.561 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-09-04 13:59:08.188 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-04 13:59:08.594 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"waqas","Password":"123@123"}
+2024-09-04 13:59:08.671 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"waqas","Password":"123@123","$type":"AdminGetTokenQuery"}
+2024-09-04 13:59:08.820 +05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-09-04 13:59:08.842 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: null
+2024-09-04 13:59:08.863 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":null,"IsSuccess":false,"ErrorMessage":"User not found","IsException":false,"IsNotFound":false}
+2024-09-04 13:59:08.883 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.BadRequestObjectResult in 679.3311ms.
+2024-09-04 13:59:08.904 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-04 13:59:08.950 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 3375.3114ms
+2024-09-04 13:59:08.960 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-09-04 13:59:08.968 +05:00 [INF] Response StatusCode: 400
+2024-09-04 13:59:08.975 +05:00 [INF] Response StatusCode: 400
+2024-09-04 13:59:08.982 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 50 - 400 - application/json;+charset=utf-8 3525.1842ms
+2024-09-04 13:59:19.566 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 53
+2024-09-04 13:59:19.575 +05:00 [INF] CORS policy execution successful.
+2024-09-04 13:59:19.579 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-09-04 13:59:19.583 +05:00 [INF] Request Body: {
+  "userName": "waqas123",
+  "password": "123@123"
+}
+2024-09-04 13:59:19.619 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-09-04 13:59:19.628 +05:00 [INF] Request Body: {
+  "userName": "waqas123",
+  "password": "123@123"
+}
+2024-09-04 13:59:19.636 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-09-04 13:59:19.642 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-09-04 13:59:21.367 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-04 13:59:21.374 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"waqas123","Password":"123@123"}
+2024-09-04 13:59:21.465 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"waqas123","Password":"123@123","$type":"AdminGetTokenQuery"}
+2024-09-04 13:59:21.480 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-09-04 13:59:21.487 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: null
+2024-09-04 13:59:21.491 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":null,"IsSuccess":false,"ErrorMessage":"User not found","IsException":false,"IsNotFound":false}
+2024-09-04 13:59:21.497 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.BadRequestObjectResult in 123.2982ms.
+2024-09-04 13:59:21.504 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-04 13:59:21.508 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 1861.106ms
+2024-09-04 13:59:21.514 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-09-04 13:59:21.520 +05:00 [INF] Response StatusCode: 400
+2024-09-04 13:59:21.525 +05:00 [INF] Response StatusCode: 400
+2024-09-04 13:59:21.529 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 53 - 400 - application/json;+charset=utf-8 1962.8987ms
+2024-09-04 13:59:49.880 +05:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-04 13:59:49.979 +05:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-04 13:59:50.022 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-04 13:59:50.035 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-04 13:59:50.083 +05:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-04 13:59:50.100 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-04 13:59:50.111 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-04 13:59:50.272 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-04 13:59:50.289 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-04 13:59:50.566 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-04 13:59:51.215 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-04 13:59:51.351 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-04 13:59:51.471 +05:00 [INF] Response StatusCode: 200
+2024-09-04 13:59:51.482 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-04 13:59:51.489 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 275.5343ms
+2024-09-04 13:59:51.506 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 24.7315ms
+2024-09-04 13:59:51.779 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-04 13:59:51.860 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 81.2780ms
+2024-09-04 13:59:52.851 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-04 13:59:52.856 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-04 13:59:52.873 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-04 13:59:52.878 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-04 13:59:53.178 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-04 13:59:53.185 +05:00 [INF] Response StatusCode: 404
+2024-09-04 13:59:53.191 +05:00 [INF] Response StatusCode: 404
+2024-09-04 13:59:53.196 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 344.8181ms
+2024-09-04 13:59:54.158 +05:00 [INF] Response StatusCode: 200
+2024-09-04 13:59:54.162 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1288.7912ms
+2024-09-04 14:00:13.779 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 50
+2024-09-04 14:00:13.786 +05:00 [INF] CORS policy execution successful.
+2024-09-04 14:00:13.790 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-09-04 14:00:13.796 +05:00 [INF] Request Body: {
+  "userName": "waqas",
+  "password": "123@123"
+}
+2024-09-04 14:00:13.816 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-09-04 14:00:13.823 +05:00 [INF] Request Body: {
+  "userName": "waqas",
+  "password": "123@123"
+}
+2024-09-04 14:00:13.828 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-09-04 14:00:13.878 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-09-04 14:00:16.051 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-04 14:00:16.194 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"waqas","Password":"123@123"}
+2024-09-04 14:00:16.277 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"waqas","Password":"123@123","$type":"AdminGetTokenQuery"}
+2024-09-04 14:00:16.405 +05:00 [INF] Executed DbCommand (15ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-09-04 14:00:16.548 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"e9f5ccc8-85d1-4838-83a5-e6b00219cadc","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":2,"$type":"User"}
+2024-09-04 14:00:16.585 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-09-04 14:00:16.761 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-09-04 14:00:16.829 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-09-04 14:00:16.859 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-09-04 14:00:16.880 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-09-04 14:00:16.942 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-09-04 14:00:17.375 +05:00 [INF] Executed DbCommand (20ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-09-04 14:00:19.783 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-09-04 14:00:19.802 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.D2msUIvti0B_bbSLsHfNAZMTU-nDJGQ9oEQgXJQoEz5lW1Gn5pR7Og.87Z-TLLd6ZADNYBBatH1Vg.0x96f04_P8u3Wz4iU9xLdYgsrwzbi2Gbreb8ByH5He9OcxoGKOZafvkqZUJFzFMoFBxm32RaJ9DAuCBMzjEGklqWYPkijfni8Km0psYmsXK4jL2uNlpX6Bs0bdpJCWkYd2km59U9Etx8vgchNGtCMeg6CV6i6cJHjlZog0bVtr_f6HfKXuiJNpFkFkCnzydMR2oBIljgbtxM99rlGKPhov4hDSfpWlZMoNCaVV8LBOwpKMHkV6Gli4Ev8XTEzr-WZlU0OENgzeJwC6e3HJloCL11Sn21wEiwWOe6Sp4g-43eHaJg8gtjS64gHyVraT3dDlPT2nUWhVTrSKl_weFBPBLzQ1KE8TBWVPFQptVbGAvoh9H5vsj7jZKufYekNuWd2H1J6cBg-1at-Jl_1lJWO-M8Mg0_ZkdDJbvSUUEOOmWcieZ6lbJbosZb42meG0o6I-NW-B7AtA-SAgU6QRX0OjPcnnGXDRiD6PKB9FV-W-taWjsTGiEW8LGQKnzacBPCZt2cVaUMUBdPfDXnYxWXwwC5PtDSIBQrmI2hEoITioh1U-vpDP2mXl9fMbuaytMyWZMuwmbOSQJa04pCMqtTSplflzC7KEDEztC8DH6KkMObKpCaiL1RlpIbv5Frgpo1gG6oIoUP1lmvj2-1Pi5qxYSZO-YlSWByJ9ivOdNQyCI8WnhV7pZMK4slD3aXrPq1.1uMRV1sQc1UdQLFJrS-abg","refresh_token":"d7dfb1c2-7b27-4ed5-ac54-08dcccbfff23","token_type":"Bearer","expires_in":599996,"userID":5},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-09-04 14:00:19.818 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3754.8169ms.
+2024-09-04 14:00:19.832 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-04 14:00:19.863 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 5974.031ms
+2024-09-04 14:00:19.873 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-09-04 14:00:19.879 +05:00 [INF] Response StatusCode: 200
+2024-09-04 14:00:19.885 +05:00 [INF] Response StatusCode: 200
+2024-09-04 14:00:19.889 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 50 - 200 - application/json;+charset=utf-8 6110.2261ms
+2024-09-04 14:01:31.660 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Amenity/Create application/json 176
+2024-09-04 14:01:31.664 +05:00 [INF] CORS policy execution successful.
+2024-09-04 14:01:31.668 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/Create, Content-Type: application/json
+2024-09-04 14:01:31.673 +05:00 [INF] Request Body: {
+  "Name": "Swimming Pool",
+  "Description": "A large outdoor swimming pool",
+  "CategoryID": 1,
+  "ServiceCategoryID": 1,
+  "CreatedBy": "admin",
+  "Icon": "pool_icon.png"
+}
+
+2024-09-04 14:01:31.931 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-04 14:01:31.952 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/Create, Content-Type: application/json
+2024-09-04 14:01:31.957 +05:00 [INF] Request Body: {
+  "Name": "Swimming Pool",
+  "Description": "A large outdoor swimming pool",
+  "CategoryID": 1,
+  "ServiceCategoryID": 1,
+  "CreatedBy": "admin",
+  "Icon": "pool_icon.png"
+}
+
+2024-09-04 14:01:31.960 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.Create (CleanArc.Web.Api)'
+2024-09-04 14:01:31.970 +05:00 [INF] Route matched with {action = "Create", controller = "Amenity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.Amenities.Command.CreateAmenitiesCommand.CreateAmenityCommand) on controller CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController (CleanArc.Web.Api).
+2024-09-04 14:01:33.463 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-09-04 14:01:33.481 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.Create (CleanArc.Web.Api) in 1506.7809ms
+2024-09-04 14:01:33.486 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.Create (CleanArc.Web.Api)'
+2024-09-04 14:01:33.492 +05:00 [INF] Response StatusCode: 400
+2024-09-04 14:01:33.495 +05:00 [INF] Response StatusCode: 400
+2024-09-04 14:01:33.500 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Amenity/Create application/json 176 - 400 - application/json;+charset=utf-8 1840.1787ms
+2024-09-04 14:03:02.799 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Amenity/Create application/json 172
+2024-09-04 14:03:02.817 +05:00 [INF] CORS policy execution successful.
+2024-09-04 14:03:02.833 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/Create, Content-Type: application/json
+2024-09-04 14:03:02.842 +05:00 [INF] Request Body: 
+{
+  "name": "Swimming Pool",
+  "description": "A large outdoor swimming pool",
+  "categoryID": 3,
+  "serviceCategoryID": 5,
+  "createdBy": 1,
+  "icon": "pool_icon.png"
+
+}
+
+2024-09-04 14:03:02.860 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-04 14:03:02.868 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/Create, Content-Type: application/json
+2024-09-04 14:03:02.872 +05:00 [INF] Request Body: 
+{
+  "name": "Swimming Pool",
+  "description": "A large outdoor swimming pool",
+  "categoryID": 3,
+  "serviceCategoryID": 5,
+  "createdBy": 1,
+  "icon": "pool_icon.png"
+
+}
+
+2024-09-04 14:03:02.877 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.Create (CleanArc.Web.Api)'
+2024-09-04 14:03:02.882 +05:00 [INF] Route matched with {action = "Create", controller = "Amenity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.Amenities.Command.CreateAmenitiesCommand.CreateAmenityCommand) on controller CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController (CleanArc.Web.Api).
+2024-09-04 14:03:04.995 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-04 14:03:06.403 +05:00 [INF] Entering CleanArc.Application.Features.Amenities.Command.CreateAmenitiesCommand, Handle with parameter: {"Name":"Swimming Pool","Description":"A large outdoor swimming pool","CategoryID":3,"ServiceCategoryID":5,"Icon":"pool_icon.png","CreatedBy":1,"UserId":5}
+2024-09-04 14:03:06.411 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-09-04 14:03:06.442 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"e9f5ccc8-85d1-4838-83a5-e6b00219cadc","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":2}
+2024-09-04 14:03:06.786 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"Name":"Swimming Pool","CategoryName":null,"AmenityName":null,"ServiceCategoryID":5,"ServiceCategoryName":null,"Description":"A large outdoor swimming pool","CategoryID":3,"Icon":"pool_icon.png","IsActive":null,"IsDeleted":null,"CreatedBy":5,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null}
+2024-09-04 14:03:07.193 +05:00 [INF] Exiting null, AddAsync with response: -1
+2024-09-04 14:03:07.202 +05:00 [INF] Exiting null, Handle with response: true
+2024-09-04 14:03:07.209 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.Create (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 2208.6312ms.
+2024-09-04 14:03:07.215 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-09-04 14:03:07.220 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.Create (CleanArc.Web.Api) in 4332.4345ms
+2024-09-04 14:03:07.225 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.Create (CleanArc.Web.Api)'
+2024-09-04 14:03:07.232 +05:00 [INF] Response StatusCode: 200
+2024-09-04 14:03:07.237 +05:00 [INF] Response StatusCode: 200
+2024-09-04 14:03:07.243 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Amenity/Create application/json 172 - 200 - application/json;+charset=utf-8 4444.5395ms
+2024-09-04 14:05:21.791 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Amenity/Update application/json 211
+2024-09-04 14:05:21.812 +05:00 [INF] CORS policy execution successful.
+2024-09-04 14:05:21.818 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/Update, Content-Type: application/json
+2024-09-04 14:05:21.823 +05:00 [INF] Request Body: {
+  "id": 99,
+  "name": "Swimming Pool",
+  "description": "uodated_A large outdoor swimming pool",
+  "categoryID": 3,
+  "serviceCategoryID": 5,
+  "icon": "string",
+  "icon": "pool_icon.png",
+  "updatedBy": 0
+}
+
+
+2024-09-04 14:05:21.849 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-04 14:05:21.859 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/Update, Content-Type: application/json
+2024-09-04 14:05:21.867 +05:00 [INF] Request Body: {
+  "id": 99,
+  "name": "Swimming Pool",
+  "description": "uodated_A large outdoor swimming pool",
+  "categoryID": 3,
+  "serviceCategoryID": 5,
+  "icon": "string",
+  "icon": "pool_icon.png",
+  "updatedBy": 0
+}
+
+
+2024-09-04 14:05:21.873 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.Update (CleanArc.Web.Api)'
+2024-09-04 14:05:21.886 +05:00 [INF] Route matched with {action = "Update", controller = "Amenity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.Amenities.Command.UpdateAmenitiesCommand.UpdateAmenityCommand) on controller CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController (CleanArc.Web.Api).
+2024-09-04 14:05:24.084 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-04 14:05:24.111 +05:00 [INF] Entering CleanArc.Application.Features.Amenities.Command.UpdateAmenitiesCommand, Handle with parameter: {"ID":99,"Name":"Swimming Pool","Description":"uodated_A large outdoor swimming pool","CategoryID":3,"ServiceCategoryID":5,"Icon":"pool_icon.png","UpdatedBy":0,"UserId":5}
+2024-09-04 14:05:24.118 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-09-04 14:05:24.124 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"e9f5ccc8-85d1-4838-83a5-e6b00219cadc","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":2}
+2024-09-04 14:05:24.132 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":99,"Name":"Swimming Pool","CategoryName":null,"AmenityName":null,"ServiceCategoryID":5,"ServiceCategoryName":null,"Description":"uodated_A large outdoor swimming pool","CategoryID":3,"Icon":"pool_icon.png","IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":5,"UpdatedAt":null}
+2024-09-04 14:05:24.204 +05:00 [INF] Exiting null, UpdateAsync with response: -1
+2024-09-04 14:05:24.212 +05:00 [INF] Exiting null, Handle with response: true
+2024-09-04 14:05:24.220 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.Update (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 127.4049ms.
+2024-09-04 14:05:24.225 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-09-04 14:05:24.229 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.Update (CleanArc.Web.Api) in 2336.4041ms
+2024-09-04 14:05:24.243 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.Update (CleanArc.Web.Api)'
+2024-09-04 14:05:24.248 +05:00 [INF] Response StatusCode: 200
+2024-09-04 14:05:24.253 +05:00 [INF] Response StatusCode: 200
+2024-09-04 14:05:24.257 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Amenity/Update application/json 211 - 200 - application/json;+charset=utf-8 2466.6487ms
+2024-09-04 14:07:09.403 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/api/v1/Amenity/GetById/109 - -
+2024-09-04 14:07:09.417 +05:00 [INF] Request Method: GET, Path: /api/v1/Amenity/GetById/109, Content-Type: null
+2024-09-04 14:07:09.420 +05:00 [INF] Request Method: GET, Path: /api/v1/Amenity/GetById/109, Content-Type: null
+2024-09-04 14:07:09.425 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetById (CleanArc.Web.Api)'
+2024-09-04 14:07:09.436 +05:00 [INF] Route matched with {action = "GetById", controller = "Amenity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController (CleanArc.Web.Api).
+2024-09-04 14:07:14.413 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-04 14:07:14.461 +05:00 [INF] Entering CleanArc.Application.Features.Amenities.Queries.GetAmenitiesById, Handle with parameter: {"Id":109}
+2024-09-04 14:07:14.475 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 109
+2024-09-04 14:07:14.648 +05:00 [INF] Exiting null, GetByIdAsync with response: {"ID":109,"Name":null,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Description":"A large outdoor swimming pool","CategoryID":3,"Icon":"pool_icon.png","IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null}
+2024-09-04 14:07:14.684 +05:00 [INF] Exiting null, Handle with response: {"ID":109,"Name":null,"Description":"A large outdoor swimming pool","CategoryID":3,"ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Icon":"pool_icon.png","IsActive":true,"IsDeleted":false,"CreatedBy":0,"CreatedAt":"0001-01-01T00:00:00","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00"}
+2024-09-04 14:07:14.704 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetById (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 279.4933ms.
+2024-09-04 14:07:14.711 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-04 14:07:14.746 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetById (CleanArc.Web.Api) in 5301.9746ms
+2024-09-04 14:07:14.756 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetById (CleanArc.Web.Api)'
+2024-09-04 14:07:14.765 +05:00 [INF] Response StatusCode: 200
+2024-09-04 14:07:14.771 +05:00 [INF] Response StatusCode: 200
+2024-09-04 14:07:14.777 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/api/v1/Amenity/GetById/109 - - - 200 - application/json;+charset=utf-8 5373.7051ms
+2024-09-04 14:07:51.884 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 170
+2024-09-04 14:07:51.897 +05:00 [INF] CORS policy execution successful.
+2024-09-04 14:07:51.900 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 14:07:51.904 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-04 14:07:51.910 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 14:07:51.915 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-04 14:07:51.919 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 14:07:51.929 +05:00 [INF] Route matched with {action = "GetAll", controller = "Amenity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Amenities.Queries.GetAllAmenities.GetAllAmenitiesQuery) on controller CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController (CleanArc.Web.Api).
+2024-09-04 14:07:53.681 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-04 14:07:53.715 +05:00 [INF] Entering CleanArc.Application.Features.Amenities.Queries.GetAllAmenities, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-04 14:07:56.997 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-04 14:07:58.179 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":99,"Name":null,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Description":"uodated_A large outdoor swimming pool","CategoryID":3,"Icon":"pool_icon.png","IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":109,"Name":null,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Description":"A large outdoor swimming pool","CategoryID":3,"Icon":"pool_icon.png","IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null}]
+2024-09-04 14:07:58.229 +05:00 [INF] Exiting null, Handle with response: [{"ID":99,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","CategoryID":3,"ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Icon":"pool_icon.png","Description":"uodated_A large outdoor swimming pool","IsDeleted":false,"IsActive":true},{"ID":109,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","CategoryID":3,"ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Icon":"pool_icon.png","Description":"A large outdoor swimming pool","IsDeleted":false,"IsActive":true}]
+2024-09-04 14:07:58.236 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4544.8486ms.
+2024-09-04 14:07:58.241 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-04 14:07:58.248 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) in 6314.2023ms
+2024-09-04 14:07:58.251 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 14:07:58.256 +05:00 [INF] Response StatusCode: 200
+2024-09-04 14:07:58.258 +05:00 [INF] Response StatusCode: 200
+2024-09-04 14:07:58.264 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 170 - 200 - application/json;+charset=utf-8 6379.8894ms
+2024-09-04 14:08:38.035 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 171
+2024-09-04 14:08:38.038 +05:00 [INF] CORS policy execution successful.
+2024-09-04 14:08:38.041 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 14:08:38.045 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-04 14:08:38.048 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 14:08:38.053 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-04 14:08:38.057 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 14:08:38.061 +05:00 [INF] Route matched with {action = "GetAll", controller = "Amenity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Amenities.Queries.GetAllAmenities.GetAllAmenitiesQuery) on controller CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController (CleanArc.Web.Api).
+2024-09-04 14:08:40.423 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-04 14:08:40.428 +05:00 [INF] Entering CleanArc.Application.Features.Amenities.Queries.GetAllAmenities, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":100,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-04 14:08:41.934 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":100,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-04 14:08:42.686 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":99,"Name":null,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Description":"uodated_A large outdoor swimming pool","CategoryID":3,"Icon":"pool_icon.png","IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":109,"Name":null,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Description":"A large outdoor swimming pool","CategoryID":3,"Icon":"pool_icon.png","IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null}]
+2024-09-04 14:08:42.696 +05:00 [INF] Exiting null, Handle with response: [{"ID":99,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","CategoryID":3,"ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Icon":"pool_icon.png","Description":"uodated_A large outdoor swimming pool","IsDeleted":false,"IsActive":true},{"ID":109,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","CategoryID":3,"ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Icon":"pool_icon.png","Description":"A large outdoor swimming pool","IsDeleted":false,"IsActive":true}]
+2024-09-04 14:08:42.702 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2275.2885ms.
+2024-09-04 14:08:42.710 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-04 14:08:42.715 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) in 4650.3169ms
+2024-09-04 14:08:42.719 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 14:08:42.723 +05:00 [INF] Response StatusCode: 200
+2024-09-04 14:08:42.727 +05:00 [INF] Response StatusCode: 200
+2024-09-04 14:08:42.731 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 171 - 200 - application/json;+charset=utf-8 4696.1807ms

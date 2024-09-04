@@ -86,6 +86,7 @@ public class UnitOfWork : IUnitOfWork
     public IPackageTypeRepository PackageTypeRepository { get; set; }
     public IPackageDetailRepository PackageDetailRepository { get; set; }
     public IFAQsRepository FAQsRepository { get; set; }
+    public ISearchFilterStayRepository SearchFilterStayRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -162,6 +163,7 @@ public class UnitOfWork : IUnitOfWork
                 ILogger<PackageTypeRepository> _loggerPackageType,
                                 ILogger<PackageDetailRepository> _loggerPackageDetail,
             ILogger<FAQsRepository> _loggerFAQs,
+           ILogger<SearchFilterStayRepository> _loggerSearchFilterStay,
 
 
 
@@ -243,6 +245,8 @@ public class UnitOfWork : IUnitOfWork
         FAQsRepository = new FAQsRepository(configuration, mapper, _loggerFAQs, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
+        SearchFilterStayRepository = new SearchFilterStayRepository(configuration, mapper, _loggerSearchFilterStay, httpContextAccessor);
+
         this.configuration = configuration;
 
     }

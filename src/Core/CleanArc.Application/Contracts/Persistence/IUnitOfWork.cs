@@ -77,6 +77,7 @@ public interface IUnitOfWork
     public IPackageTypeRepository PackageTypeRepository { get; }
     public IPackageDetailRepository PackageDetailRepository { get; }
     public IFAQsRepository FAQsRepository { get; }
+    public ISearchFilterStayRepository SearchFilterStayRepository { get; }
 
 
     Task CommitAsync();
