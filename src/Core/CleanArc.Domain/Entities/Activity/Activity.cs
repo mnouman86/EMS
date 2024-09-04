@@ -22,7 +22,7 @@ public  class Activity
     public int? ActivityTypeLookUpID { get; set; }
     public int? ActivityNatureLookUpID { get; set; }
     public int? MaxGroupSize { get; set; }
-    public bool? IsPrivateActivity { get; set; }
+    //public bool? IsPrivateActivity { get; set; }
     public string WhoCanParticipate { get; set; }
     public string WhoCannotParticipate { get; set; }
     public int? ManageActivityLookUpID { get; set; }
@@ -52,8 +52,8 @@ public  class Activity
     public int? ActivityID { get; set; }
     public string? Duration { get; set; }
     public string? Cancellation { get; set; }
-    public DateTime? StartTime { get; set; } // Nullable TimeSpan for StartTime
-    public DateTime? EndTime { get; set; }   // Nullable TimeSpan for EndTime
+    public string? StartTime { get; set; } // Nullable TimeSpan for StartTime
+    public string? EndTime { get; set; }   // Nullable TimeSpan for EndTime
     public DateTime? StartDate { get; set; } // Nullable DateTime for StartDate
     public DateTime? EndDate { get; set; }   // Nullable DateTime for EndDate
     public List<ActivityIDImageMapping> ActivityImages { get; set; }

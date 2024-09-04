@@ -23,7 +23,7 @@ namespace CleanArc.Application.Models.Activities
         public int? ActivityNatureLookUpID { get; set; }
         //public int? MinGroupSize { get; set; }
         public int? MaxGroupSize { get; set; }
-        public int? IsPrivateActivity { get; set; }
+        //public int? IsPrivateActivity { get; set; }
         public string WhoCanParticipate { get; set; }
         public string WhoCannotParticipate { get; set; }
         public int? ManageActivityLookUpID { get; set; }
@@ -47,8 +47,8 @@ namespace CleanArc.Application.Models.Activities
         public int? UpdatedBy { get; set; }
         public string? StartTime { get; set; } // Nullable TimeSpan for StartTime
         public string? EndTime { get; set; }   // Nullable TimeSpan for EndTime
-        public string? StartDate { get; set; } // Nullable DateTime for StartDate
-        public string? EndDate { get; set; }   // Nullable DateTime for EndDate
+        public DateTime? StartDate { get; set; } // Nullable DateTime for StartDate
+        public DateTime? EndDate { get; set; }   // Nullable DateTime for EndDate
         //public DateTime? UpdatedAt { get; set; }
     }
 }
