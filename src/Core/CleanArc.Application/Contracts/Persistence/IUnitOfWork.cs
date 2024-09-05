@@ -78,6 +78,9 @@ public interface IUnitOfWork
     public IPackageDetailRepository PackageDetailRepository { get; }
     public IFAQsRepository FAQsRepository { get; }
     public ISearchFilterStayRepository SearchFilterStayRepository { get; }
+    public ISearchFilterThingsToDoRepository SearchFilterThingsToDoRepository { get; }
+    public ICarRentalSearchFilterRepository CarRentalSearchFilterRepository { get; }
+
 
 
     Task CommitAsync();
