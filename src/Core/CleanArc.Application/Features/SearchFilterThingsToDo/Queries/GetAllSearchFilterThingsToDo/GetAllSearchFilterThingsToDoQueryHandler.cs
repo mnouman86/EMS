@@ -36,7 +36,7 @@ namespace CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetAllSea
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var Product = await _unitOfWork.SearchFilterThingsToDoRepository.GetAllAsync(request.searchRequest);
+                var Product = await _unitOfWork.SearchFilterThingsToDoRepository.GetAllWithParamAsync(request.thingsToDoSearchFilterRequest);
 
                 //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
                 var result = _mapper.Map<List<GetAllSearchFilterThingsToDoQueryResult>>(Product);

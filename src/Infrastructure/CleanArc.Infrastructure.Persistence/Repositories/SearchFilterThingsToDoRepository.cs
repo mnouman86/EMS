@@ -70,53 +70,53 @@ public class SearchFilterThingsToDoRepository:ISearchFilterThingsToDoRepository
         _httpContextAccessor = httpContextAccessor;
     }
 /// <inheritdoc/>
-public async Task<string> AddAsync(SearchFilterThingsToDo SearchFilterThingsToDo)
-{
-    using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, SearchFilterThingsToDo))
-    {
-        using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
-        {
-            connection.Open();
-                CreateSearchFilterThingsToDoDTO createSearchFilterThingsToDoDTO = _mapper.Map<CreateSearchFilterThingsToDoDTO>(SearchFilterThingsToDo);
-                var parameters = new DynamicParameters(createSearchFilterThingsToDoDTO);
-                //parameters.AddDynamicParams(createSearchFilterThingsToDoDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                parameters.Add("@SearchFilterThingsToDoID ", dbType: DbType.Int32, direction: ParameterDirection.Output);
+//public async Task<string> AddAsync(SearchFilterThingsToDo SearchFilterThingsToDo)
+//{
+//    using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, SearchFilterThingsToDo))
+//    {
+//        using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+//        {
+//            connection.Open();
+//                CreateSearchFilterThingsToDoDTO createSearchFilterThingsToDoDTO = _mapper.Map<CreateSearchFilterThingsToDoDTO>(SearchFilterThingsToDo);
+//                var parameters = new DynamicParameters(createSearchFilterThingsToDoDTO);
+//                //parameters.AddDynamicParams(createSearchFilterThingsToDoDTO);
+//                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+//                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+//                parameters.Add("@SearchFilterThingsToDoID ", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                // var result = await connection.ExecuteScalarAsync(SearchFilterThingsToDoQueries.Create_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
-                var result = await connection.QuerySingleOrDefaultAsync<int>(SearchFilterThingsToDoQueries.Create_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
+//                // var result = await connection.ExecuteScalarAsync(SearchFilterThingsToDoQueries.Create_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
+//                var result = await connection.QuerySingleOrDefaultAsync<int>(SearchFilterThingsToDoQueries.Create_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-            return result.ToString();
-        }
-    }
-}
+//                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+//            return result.ToString();
+//        }
+//    }
+//}
+//    public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+//    {
+//        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy,CultureId }))
+//        {
+//            using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+//            {
+//                connection.Open();
+//                var parameters = new DynamicParameters();
+//                parameters.Add("@ID", selectedIds);
+//                parameters.Add("@CultureId", CultureId);
+//                parameters.Add("@UpdatedBy", updatedBy);
+//                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+//                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-    public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
-    {
-        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy,CultureId }))
-        {
-            using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
-            {
-                connection.Open();
-                var parameters = new DynamicParameters();
-                parameters.Add("@ID", selectedIds);
-                parameters.Add("@CultureId", CultureId);
-                parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+//                var result = await connection.ExecuteAsync(SearchFilterThingsToDoQueries.Delete_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
+//               // var result = await connection.QuerySingleOrDefaultAsync<int>(SearchFilterThingsToDoQueries.Delete_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
 
-                var result = await connection.ExecuteAsync(SearchFilterThingsToDoQueries.Delete_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
-               // var result = await connection.QuerySingleOrDefaultAsync<int>(SearchFilterThingsToDoQueries.Delete_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
+//                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+//                return result.ToString();
+//            }
+//        }
+//    }
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
-            }
-        }
-    }
+    public async Task<IReadOnlyList<SearchFilterThingsToDo>> GetAllWithParamAsync(ThingsToDoSearchFilterRequest searchRequest)
 
-    public async Task<IReadOnlyList<SearchFilterThingsToDo>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -173,58 +173,58 @@ public async Task<string> AddAsync(SearchFilterThingsToDo SearchFilterThingsToDo
         }
   
     }
-    public async Task<SearchFilterThingsToDo> GetByIdAsync(long id)
-    {
-        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
-        {
-            using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
-            {
+    //public async Task<SearchFilterThingsToDo> GetByIdAsync(long id)
+    //{
+    //    using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
+    //    {
+    //        using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+    //        {
                 
-                connection.Open();
-                var parameters = new DynamicParameters();
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                parameters.Add("@CultureId", 1, DbType.Int32);
-                parameters.Add("@ID", id, DbType.Int32);
+    //            connection.Open();
+    //            var parameters = new DynamicParameters();
+    //            parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+    //            parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+    //            parameters.Add("@CultureId", 1, DbType.Int32);
+    //            parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<SearchFilterThingsToDo>(SearchFilterThingsToDoQueries.GetByID_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result;
-            }
-        }
-    }
+    //            var result = await connection.QuerySingleOrDefaultAsync<SearchFilterThingsToDo>(SearchFilterThingsToDoQueries.GetByID_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
+    //            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+    //            return result;
+    //        }
+    //    }
+    //}
 
 
 
-    public async Task<string> UpdateAsync(SearchFilterThingsToDo entity)
-    {
-        try
-        {
+    //public async Task<string> UpdateAsync(SearchFilterThingsToDo entity)
+    //{
+    //    try
+    //    {
 
        
-        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
-        {
-            using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
-            {
-                connection.Open();
-                UpdateSearchFilterThingsToDoDTO updateSearchFilterThingsToDoDTO = _mapper.Map<UpdateSearchFilterThingsToDoDTO>(entity);
-                var parameters = new DynamicParameters(updateSearchFilterThingsToDoDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-               // parameters.Add("@SearchFilterThingsToDoID ", dbType: DbType.Int32, direction: ParameterDirection.Output);
+    //    using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
+    //    {
+    //        using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+    //        {
+    //            connection.Open();
+    //            UpdateSearchFilterThingsToDoDTO updateSearchFilterThingsToDoDTO = _mapper.Map<UpdateSearchFilterThingsToDoDTO>(entity);
+    //            var parameters = new DynamicParameters(updateSearchFilterThingsToDoDTO);
+    //            parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+    //            parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+    //           // parameters.Add("@SearchFilterThingsToDoID ", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(SearchFilterThingsToDoQueries.update_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
-            }
-        }
-        }
-        catch (Exception ex)
-        {
+    //            var result = await connection.ExecuteAsync(SearchFilterThingsToDoQueries.update_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
+    //            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+    //            return result.ToString();
+    //        }
+    //    }
+    //    }
+    //    catch (Exception ex)
+    //    {
 
-            throw;
-        }
-    }
+    //        throw;
+    //    }
+    //}
 }
 
 /// <inheritdoc/>

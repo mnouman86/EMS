@@ -59,17 +59,11 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             this._logger = logger;
             _httpContextAccessor = httpContextAccessor;
         }
-        public Task<string> AddAsync(CarRentalSearchFilter entity)
-        {
-            throw new NotImplementedException();
-        }
+       
 
-        public Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
-        {
-            throw new NotImplementedException();
-        }
+       
 
-        public async Task<IReadOnlyList<CarRentalSearchFilter>> GetAllAsync(SearchRequest searchRequest)
+        public async Task<IReadOnlyList<CarRentalSearchFilter>> GetAllWithParamAsync(CarRentalSearchFilterRequest searchRequest)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
             {
@@ -113,15 +107,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             }
         }
 
-        public Task<CarRentalSearchFilter> GetByIdAsync(long id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<string> UpdateAsync(CarRentalSearchFilter entity)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
 
