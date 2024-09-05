@@ -10,5 +10,5 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter;
 
-public record GetAllCarRentalSearchFilterQuery(SearchRequest searchRequest) : IRequest<OperationResult<List<GetAllCarRentalSearchFilterQueryResult>>>;
+public record GetAllCarRentalSearchFilterQuery(CarRentalSearchFilterRequest carRentalSearchFilterRequest) : IRequest<OperationResult<List<GetAllCarRentalSearchFilterQueryResult>>>;
 
