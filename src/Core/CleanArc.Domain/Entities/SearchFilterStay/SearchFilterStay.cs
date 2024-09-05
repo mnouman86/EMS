@@ -27,6 +27,7 @@ namespace CleanArc.Domain.Entities.SearchFilterStay
         public decimal? Longitude { get; set; }
         public decimal? Latitude { get; set; }
         public int? TotalDays { get; set; }
+
         public List<HotelImage> HotelImages { get; set; }
 
 
@@ -37,4 +38,5 @@ namespace CleanArc.Domain.Entities.SearchFilterStay
         public string ImagePath { get; set; }
         public bool IsMain { get; set; }
     }
+ 
 }

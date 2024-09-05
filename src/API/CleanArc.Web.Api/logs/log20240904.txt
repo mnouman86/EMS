@@ -687,3 +687,772 @@ END
 2024-09-04 15:30:03.582 +05:00 [INF] Response StatusCode: 200
 2024-09-04 15:30:03.590 +05:00 [INF] Response StatusCode: 200
 2024-09-04 15:30:03.596 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Category/GetAll application/json 256 - 200 - application/json;+charset=utf-8 3425.6722ms
+2024-09-04 15:58:17.171 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 167
+2024-09-04 15:58:17.189 +05:00 [INF] CORS policy execution successful.
+2024-09-04 15:58:17.193 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 15:58:17.196 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 0,
+    "pageSize": 0,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+   
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-04 15:58:17.245 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 15:58:17.253 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 0,
+    "pageSize": 0,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+   
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-04 15:58:17.259 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 15:58:17.273 +05:00 [INF] Route matched with {action = "GetAll", controller = "Amenity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Amenities.Queries.GetAllAmenities.GetAllAmenitiesQuery) on controller CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController (CleanArc.Web.Api).
+2024-09-04 15:58:19.298 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-04 15:58:19.374 +05:00 [INF] Entering CleanArc.Application.Features.Amenities.Queries.GetAllAmenities, Handle with parameter: {"searchRequest":{"PageNumber":0,"PageSize":0,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-04 15:58:20.770 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":0,"PageSize":0,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-04 15:58:21.948 +05:00 [INF] Exiting null, GetAllAsync
+2024-09-04 15:58:21.973 +05:00 [INF] Exiting null, Handle
+2024-09-04 15:58:22.024 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) in 4739.3713ms
+2024-09-04 15:58:22.029 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 15:58:22.203 +05:00 [ERR] The number of rows provided for a FETCH clause must be greater then zero.
+System.Data.SqlClient.SqlException (0x80131904): The number of rows provided for a FETCH clause must be greater then zero.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at System.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at System.Data.SqlClient.SqlDataReader.<>c__DisplayClass190_0.<ReadAsync>b__1(Task t)
+   at System.Data.SqlClient.SqlDataReader.InvokeRetryable[T](Func`2 moreFunc, TaskCompletionSource`1 source, IDisposable objectToDispose)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 452
+   at CleanArc.Infrastructure.Persistence.Repositories.AmenityRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\AmenityRepository.cs:line 129
+   at CleanArc.Application.Features.Amenities.Queries.GetAllAmenities.GetAllAmenitiesQueryHandler.Handle(GetAllAmenitiesQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\Amenities\Queries\GetAllAmenities\GetAllAmenitiesQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:29961626-4ca5-4bc0-81ad-2cdb3283c954
+Error Number:10744,State:1,Class:15
+2024-09-04 15:58:22.381 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 167 - 500 0 - 5210.4772ms
+2024-09-04 15:58:34.669 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 168
+2024-09-04 15:58:34.673 +05:00 [INF] CORS policy execution successful.
+2024-09-04 15:58:34.682 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 15:58:34.688 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+   
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-04 15:58:34.694 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 15:58:34.700 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+   
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-04 15:58:34.704 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 15:58:34.709 +05:00 [INF] Route matched with {action = "GetAll", controller = "Amenity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Amenities.Queries.GetAllAmenities.GetAllAmenitiesQuery) on controller CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController (CleanArc.Web.Api).
+2024-09-04 15:58:36.002 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-04 15:58:36.007 +05:00 [INF] Entering CleanArc.Application.Features.Amenities.Queries.GetAllAmenities, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-04 15:58:36.857 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-04 15:58:37.642 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":14,"Name":null,"CategoryName":"Hotel","AmenityName":"Mobile check-in","ServiceCategoryID":1,"ServiceCategoryName":"Stay","Description":"Individually controlled air conditioning units in rooms","CategoryID":1,"Icon":null,"IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":15,"Name":null,"CategoryName":"Hotel","AmenityName":"Express check-out","ServiceCategoryID":1,"ServiceCategoryName":"Stay","Description":"Individually controlled air conditioning units in rooms","CategoryID":1,"Icon":null,"IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":16,"Name":null,"CategoryName":"Hotel","AmenityName":"Business center","ServiceCategoryID":1,"ServiceCategoryName":"Stay","Description":"Individually controlled air conditioning units in rooms","CategoryID":1,"Icon":null,"IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":17,"Name":null,"CategoryName":"Hotel","AmenityName":"Free parking ","ServiceCategoryID":1,"ServiceCategoryName":"Stay","Description":"Individually controlled air conditioning units in rooms","CategoryID":1,"Icon":null,"IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":18,"Name":null,"CategoryName":"Hotel","AmenityName":"Pool view ","ServiceCategoryID":1,"ServiceCategoryName":"Stay","Description":"Individually controlled air conditioning units in rooms","CategoryID":1,"Icon":null,"IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":19,"Name":null,"CategoryName":"Hotel","AmenityName":"Jacuzzi ","ServiceCategoryID":1,"ServiceCategoryName":"Stay","Description":"Individually controlled air conditioning units in rooms","CategoryID":1,"Icon":null,"IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":20,"Name":null,"CategoryName":"Hotel","AmenityName":"Terrace ","ServiceCategoryID":1,"ServiceCategoryName":"Stay","Description":"Individually controlled air conditioning units in rooms","CategoryID":1,"Icon":null,"IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":21,"Name":null,"CategoryName":"Hotel","AmenityName":"Dishwasher ","ServiceCategoryID":1,"ServiceCategoryName":"Stay","Description":"Individually controlled air conditioning units in rooms","CategoryID":1,"Icon":null,"IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":22,"Name":null,"CategoryName":"Hotel","AmenityName":"Washing Machine ","ServiceCategoryID":1,"ServiceCategoryName":"Stay","Description":"Individually controlled air conditioning units in rooms","CategoryID":1,"Icon":null,"IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":24,"Name":null,"CategoryName":"Hotel","AmenityName":"Workspace ","ServiceCategoryID":1,"ServiceCategoryName":"Stay","Description":"Individually controlled air conditioning units in rooms","CategoryID":1,"Icon":null,"IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null}]
+2024-09-04 15:58:37.676 +05:00 [INF] Exiting null, Handle with response: [{"ID":14,"CategoryName":"Hotel","AmenityName":"Mobile check-in","CategoryID":1,"ServiceCategoryID":1,"ServiceCategoryName":"Stay","Icon":null,"Description":"Individually controlled air conditioning units in rooms","IsDeleted":false,"IsActive":true},{"ID":15,"CategoryName":"Hotel","AmenityName":"Express check-out","CategoryID":1,"ServiceCategoryID":1,"ServiceCategoryName":"Stay","Icon":null,"Description":"Individually controlled air conditioning units in rooms","IsDeleted":false,"IsActive":true},{"ID":16,"CategoryName":"Hotel","AmenityName":"Business center","CategoryID":1,"ServiceCategoryID":1,"ServiceCategoryName":"Stay","Icon":null,"Description":"Individually controlled air conditioning units in rooms","IsDeleted":false,"IsActive":true},{"ID":17,"CategoryName":"Hotel","AmenityName":"Free parking ","CategoryID":1,"ServiceCategoryID":1,"ServiceCategoryName":"Stay","Icon":null,"Description":"Individually controlled air conditioning units in rooms","IsDeleted":false,"IsActive":true},{"ID":18,"CategoryName":"Hotel","AmenityName":"Pool view ","CategoryID":1,"ServiceCategoryID":1,"ServiceCategoryName":"Stay","Icon":null,"Description":"Individually controlled air conditioning units in rooms","IsDeleted":false,"IsActive":true},{"ID":19,"CategoryName":"Hotel","AmenityName":"Jacuzzi ","CategoryID":1,"ServiceCategoryID":1,"ServiceCategoryName":"Stay","Icon":null,"Description":"Individually controlled air conditioning units in rooms","IsDeleted":false,"IsActive":true},{"ID":20,"CategoryName":"Hotel","AmenityName":"Terrace ","CategoryID":1,"ServiceCategoryID":1,"ServiceCategoryName":"Stay","Icon":null,"Description":"Individually controlled air conditioning units in rooms","IsDeleted":false,"IsActive":true},{"ID":21,"CategoryName":"Hotel","AmenityName":"Dishwasher ","CategoryID":1,"ServiceCategoryID":1,"ServiceCategoryName":"Stay","Icon":null,"Description":"Individually controlled air conditioning units in rooms","IsDeleted":false,"IsActive":true},{"ID":22,"CategoryName":"Hotel","AmenityName":"Washing Machine ","CategoryID":1,"ServiceCategoryID":1,"ServiceCategoryName":"Stay","Icon":null,"Description":"Individually controlled air conditioning units in rooms","IsDeleted":false,"IsActive":true},{"ID":24,"CategoryName":"Hotel","AmenityName":"Workspace ","CategoryID":1,"ServiceCategoryID":1,"ServiceCategoryName":"Stay","Icon":null,"Description":"Individually controlled air conditioning units in rooms","IsDeleted":false,"IsActive":true}]
+2024-09-04 15:58:37.685 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1679.5784ms.
+2024-09-04 15:58:37.693 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-04 15:58:37.703 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) in 2990.3591ms
+2024-09-04 15:58:37.708 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 15:58:37.713 +05:00 [INF] Response StatusCode: 200
+2024-09-04 15:58:37.718 +05:00 [INF] Response StatusCode: 200
+2024-09-04 15:58:37.722 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 168 - 200 - application/json;+charset=utf-8 3053.7195ms
+2024-09-04 16:01:47.081 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-04 16:01:47.157 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-04 16:01:47.184 +05:00 [INF] Response StatusCode: 200
+2024-09-04 16:01:47.208 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-04 16:01:47.208 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-04 16:01:47.219 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 138.4046ms
+2024-09-04 16:01:47.222 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 14.6113ms
+2024-09-04 16:01:47.264 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 56.1299ms
+2024-09-04 16:01:47.628 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-04 16:01:47.632 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-04 16:01:47.636 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-04 16:01:47.639 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-04 16:01:47.643 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-04 16:01:47.649 +05:00 [INF] Response StatusCode: 404
+2024-09-04 16:01:47.657 +05:00 [INF] Response StatusCode: 404
+2024-09-04 16:01:47.662 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 34.6363ms
+2024-09-04 16:01:48.161 +05:00 [INF] Response StatusCode: 200
+2024-09-04 16:01:48.164 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 528.2739ms
+2024-09-04 16:02:13.136 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 170
+2024-09-04 16:02:13.140 +05:00 [INF] CORS policy execution successful.
+2024-09-04 16:02:13.144 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:02:13.148 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-04 16:02:13.151 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:02:13.157 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-04 16:02:13.161 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:02:13.164 +05:00 [INF] Route matched with {action = "GetAll", controller = "Amenity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Amenities.Queries.GetAllAmenities.GetAllAmenitiesQuery) on controller CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController (CleanArc.Web.Api).
+2024-09-04 16:02:21.049 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-04 16:02:21.078 +05:00 [INF] Entering CleanArc.Application.Features.Amenities.Queries.GetAllAmenities, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-04 16:02:21.801 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-04 16:02:22.469 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":14,"Name":null,"CategoryName":"Hotel","AmenityName":"Mobile check-in","ServiceCategoryID":1,"ServiceCategoryName":"Stay","Description":"Individually controlled air conditioning units in rooms","CategoryID":1,"Icon":null,"IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":15,"Name":null,"CategoryName":"Hotel","AmenityName":"Express check-out","ServiceCategoryID":1,"ServiceCategoryName":"Stay","Description":"Individually controlled air conditioning units in rooms","CategoryID":1,"Icon":null,"IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":16,"Name":null,"CategoryName":"Hotel","AmenityName":"Business center","ServiceCategoryID":1,"ServiceCategoryName":"Stay","Description":"Individually controlled air conditioning units in rooms","CategoryID":1,"Icon":null,"IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":17,"Name":null,"CategoryName":"Hotel","AmenityName":"Free parking ","ServiceCategoryID":1,"ServiceCategoryName":"Stay","Description":"Individually controlled air conditioning units in rooms","CategoryID":1,"Icon":null,"IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":18,"Name":null,"CategoryName":"Hotel","AmenityName":"Pool view ","ServiceCategoryID":1,"ServiceCategoryName":"Stay","Description":"Individually controlled air conditioning units in rooms","CategoryID":1,"Icon":null,"IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":19,"Name":null,"CategoryName":"Hotel","AmenityName":"Jacuzzi ","ServiceCategoryID":1,"ServiceCategoryName":"Stay","Description":"Individually controlled air conditioning units in rooms","CategoryID":1,"Icon":null,"IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":20,"Name":null,"CategoryName":"Hotel","AmenityName":"Terrace ","ServiceCategoryID":1,"ServiceCategoryName":"Stay","Description":"Individually controlled air conditioning units in rooms","CategoryID":1,"Icon":null,"IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":21,"Name":null,"CategoryName":"Hotel","AmenityName":"Dishwasher ","ServiceCategoryID":1,"ServiceCategoryName":"Stay","Description":"Individually controlled air conditioning units in rooms","CategoryID":1,"Icon":null,"IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":22,"Name":null,"CategoryName":"Hotel","AmenityName":"Washing Machine ","ServiceCategoryID":1,"ServiceCategoryName":"Stay","Description":"Individually controlled air conditioning units in rooms","CategoryID":1,"Icon":null,"IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":24,"Name":null,"CategoryName":"Hotel","AmenityName":"Workspace ","ServiceCategoryID":1,"ServiceCategoryName":"Stay","Description":"Individually controlled air conditioning units in rooms","CategoryID":1,"Icon":null,"IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null}]
+2024-09-04 16:02:22.479 +05:00 [INF] Exiting null, Handle with response: [{"ID":14,"CategoryName":"Hotel","AmenityName":"Mobile check-in","CategoryID":1,"ServiceCategoryID":1,"ServiceCategoryName":"Stay","Icon":null,"Description":"Individually controlled air conditioning units in rooms","IsDeleted":false,"IsActive":true},{"ID":15,"CategoryName":"Hotel","AmenityName":"Express check-out","CategoryID":1,"ServiceCategoryID":1,"ServiceCategoryName":"Stay","Icon":null,"Description":"Individually controlled air conditioning units in rooms","IsDeleted":false,"IsActive":true},{"ID":16,"CategoryName":"Hotel","AmenityName":"Business center","CategoryID":1,"ServiceCategoryID":1,"ServiceCategoryName":"Stay","Icon":null,"Description":"Individually controlled air conditioning units in rooms","IsDeleted":false,"IsActive":true},{"ID":17,"CategoryName":"Hotel","AmenityName":"Free parking ","CategoryID":1,"ServiceCategoryID":1,"ServiceCategoryName":"Stay","Icon":null,"Description":"Individually controlled air conditioning units in rooms","IsDeleted":false,"IsActive":true},{"ID":18,"CategoryName":"Hotel","AmenityName":"Pool view ","CategoryID":1,"ServiceCategoryID":1,"ServiceCategoryName":"Stay","Icon":null,"Description":"Individually controlled air conditioning units in rooms","IsDeleted":false,"IsActive":true},{"ID":19,"CategoryName":"Hotel","AmenityName":"Jacuzzi ","CategoryID":1,"ServiceCategoryID":1,"ServiceCategoryName":"Stay","Icon":null,"Description":"Individually controlled air conditioning units in rooms","IsDeleted":false,"IsActive":true},{"ID":20,"CategoryName":"Hotel","AmenityName":"Terrace ","CategoryID":1,"ServiceCategoryID":1,"ServiceCategoryName":"Stay","Icon":null,"Description":"Individually controlled air conditioning units in rooms","IsDeleted":false,"IsActive":true},{"ID":21,"CategoryName":"Hotel","AmenityName":"Dishwasher ","CategoryID":1,"ServiceCategoryID":1,"ServiceCategoryName":"Stay","Icon":null,"Description":"Individually controlled air conditioning units in rooms","IsDeleted":false,"IsActive":true},{"ID":22,"CategoryName":"Hotel","AmenityName":"Washing Machine ","CategoryID":1,"ServiceCategoryID":1,"ServiceCategoryName":"Stay","Icon":null,"Description":"Individually controlled air conditioning units in rooms","IsDeleted":false,"IsActive":true},{"ID":24,"CategoryName":"Hotel","AmenityName":"Workspace ","CategoryID":1,"ServiceCategoryID":1,"ServiceCategoryName":"Stay","Icon":null,"Description":"Individually controlled air conditioning units in rooms","IsDeleted":false,"IsActive":true}]
+2024-09-04 16:02:22.487 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1425.9733ms.
+2024-09-04 16:02:22.492 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-04 16:02:22.497 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) in 9328.8196ms
+2024-09-04 16:02:22.501 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:02:22.505 +05:00 [INF] Response StatusCode: 200
+2024-09-04 16:02:22.507 +05:00 [INF] Response StatusCode: 200
+2024-09-04 16:02:22.510 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 170 - 200 - application/json;+charset=utf-8 9374.4307ms
+2024-09-04 16:03:41.320 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-04 16:03:41.398 +05:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-04 16:03:41.407 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-04 16:03:41.417 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-04 16:03:41.451 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-04 16:03:41.477 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-04 16:03:41.497 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-04 16:03:41.705 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-04 16:03:41.725 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-04 16:03:42.023 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-04 16:03:42.409 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-04 16:03:42.589 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-04 16:03:42.714 +05:00 [INF] Response StatusCode: 200
+2024-09-04 16:03:42.723 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 316.5660ms
+2024-09-04 16:03:42.733 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-04 16:03:42.742 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 9.2984ms
+2024-09-04 16:03:42.935 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-04 16:03:42.976 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 40.1129ms
+2024-09-04 16:03:43.816 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-04 16:03:43.820 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-04 16:03:43.847 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-04 16:03:43.851 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-04 16:03:43.966 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-04 16:03:43.971 +05:00 [INF] Response StatusCode: 404
+2024-09-04 16:03:43.974 +05:00 [INF] Response StatusCode: 404
+2024-09-04 16:03:43.978 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 161.9008ms
+2024-09-04 16:03:44.512 +05:00 [INF] Response StatusCode: 200
+2024-09-04 16:03:44.522 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 674.6977ms
+2024-09-04 16:04:10.892 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 170
+2024-09-04 16:04:10.898 +05:00 [INF] CORS policy execution successful.
+2024-09-04 16:04:10.902 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:04:10.907 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-04 16:04:10.926 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:04:10.934 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-04 16:04:10.941 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:04:10.988 +05:00 [INF] Route matched with {action = "GetAll", controller = "Amenity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Amenities.Queries.GetAllAmenities.GetAllAmenitiesQuery) on controller CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController (CleanArc.Web.Api).
+2024-09-04 16:04:13.369 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-04 16:04:13.615 +05:00 [INF] Entering CleanArc.Application.Features.Amenities.Queries.GetAllAmenities, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-04 16:04:14.328 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-04 16:04:15.343 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":99,"Name":null,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Description":"uodated_A large outdoor swimming pool","CategoryID":3,"Icon":"pool_icon.png","IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":109,"Name":null,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Description":"A large outdoor swimming pool","CategoryID":3,"Icon":"pool_icon.png","IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null}]
+2024-09-04 16:04:15.450 +05:00 [INF] Exiting null, Handle with response: [{"ID":99,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","CategoryID":3,"ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Icon":"pool_icon.png","Description":"uodated_A large outdoor swimming pool","IsDeleted":false,"IsActive":true},{"ID":109,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","CategoryID":3,"ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Icon":"pool_icon.png","Description":"A large outdoor swimming pool","IsDeleted":false,"IsActive":true}]
+2024-09-04 16:04:15.462 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2083.6815ms.
+2024-09-04 16:04:15.476 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-04 16:04:15.505 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) in 4501.8474ms
+2024-09-04 16:04:15.514 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:04:15.520 +05:00 [INF] Response StatusCode: 200
+2024-09-04 16:04:15.527 +05:00 [INF] Response StatusCode: 200
+2024-09-04 16:04:15.531 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 170 - 200 - application/json;+charset=utf-8 4639.1924ms
+2024-09-04 16:05:06.953 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 170
+2024-09-04 16:05:06.967 +05:00 [INF] CORS policy execution successful.
+2024-09-04 16:05:06.976 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:05:06.989 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-04 16:05:07.017 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:05:07.021 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-04 16:05:07.023 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:05:07.027 +05:00 [INF] Route matched with {action = "GetAll", controller = "Amenity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Amenities.Queries.GetAllAmenities.GetAllAmenitiesQuery) on controller CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController (CleanArc.Web.Api).
+2024-09-04 16:05:09.425 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-04 16:05:09.512 +05:00 [INF] Entering CleanArc.Application.Features.Amenities.Queries.GetAllAmenities, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-04 16:05:16.541 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-04 16:06:10.829 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":99,"Name":null,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Description":"uodated_A large outdoor swimming pool","CategoryID":3,"Icon":"pool_icon.png","IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":109,"Name":null,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Description":"A large outdoor swimming pool","CategoryID":3,"Icon":"pool_icon.png","IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null}]
+2024-09-04 16:06:10.836 +05:00 [INF] Exiting null, Handle with response: [{"ID":99,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","CategoryID":3,"ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Icon":"pool_icon.png","Description":"uodated_A large outdoor swimming pool","IsDeleted":false,"IsActive":true},{"ID":109,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","CategoryID":3,"ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Icon":"pool_icon.png","Description":"A large outdoor swimming pool","IsDeleted":false,"IsActive":true}]
+2024-09-04 16:06:10.841 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 61405.3986ms.
+2024-09-04 16:06:10.847 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-04 16:06:10.851 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) in 63820.2246ms
+2024-09-04 16:06:10.862 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:06:10.867 +05:00 [INF] Response StatusCode: 200
+2024-09-04 16:06:10.871 +05:00 [INF] Response StatusCode: 200
+2024-09-04 16:06:10.876 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 170 - 200 - application/json;+charset=utf-8 63922.2332ms
+2024-09-04 16:07:17.356 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 172
+2024-09-04 16:07:17.367 +05:00 [INF] CORS policy execution successful.
+2024-09-04 16:07:17.371 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:07:17.376 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-09-04 16:07:17.381 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:07:17.391 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-09-04 16:07:17.394 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:07:17.405 +05:00 [INF] Route matched with {action = "GetAll", controller = "Amenity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Amenities.Queries.GetAllAmenities.GetAllAmenitiesQuery) on controller CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController (CleanArc.Web.Api).
+2024-09-04 16:07:22.875 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-04 16:07:22.894 +05:00 [INF] Entering CleanArc.Application.Features.Amenities.Queries.GetAllAmenities, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-04 16:07:23.755 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-04 16:07:24.507 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":99,"Name":null,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Description":"uodated_A large outdoor swimming pool","CategoryID":3,"Icon":"pool_icon.png","IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":109,"Name":null,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Description":"A large outdoor swimming pool","CategoryID":3,"Icon":"pool_icon.png","IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null}]
+2024-09-04 16:07:24.511 +05:00 [INF] Exiting null, Handle with response: [{"ID":99,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","CategoryID":3,"ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Icon":"pool_icon.png","Description":"uodated_A large outdoor swimming pool","IsDeleted":false,"IsActive":true},{"ID":109,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","CategoryID":3,"ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Icon":"pool_icon.png","Description":"A large outdoor swimming pool","IsDeleted":false,"IsActive":true}]
+2024-09-04 16:07:24.514 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1636.2734ms.
+2024-09-04 16:07:24.518 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-04 16:07:24.526 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) in 7115.8725ms
+2024-09-04 16:07:24.529 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:07:24.533 +05:00 [INF] Response StatusCode: 200
+2024-09-04 16:07:24.536 +05:00 [INF] Response StatusCode: 200
+2024-09-04 16:07:24.539 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 172 - 200 - application/json;+charset=utf-8 7183.0953ms
+2024-09-04 16:08:20.810 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 255
+2024-09-04 16:08:20.812 +05:00 [INF] CORS policy execution successful.
+2024-09-04 16:08:20.815 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:08:20.819 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 0,
+    "pageSize": 0,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "SERVICECATEGORYID"
+        "parameterValue": "1"
+      }
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-09-04 16:08:20.842 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:08:20.846 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 0,
+    "pageSize": 0,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "SERVICECATEGORYID"
+        "parameterValue": "1"
+      }
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-09-04 16:08:20.849 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:08:20.852 +05:00 [INF] Route matched with {action = "GetAll", controller = "Amenity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Amenities.Queries.GetAllAmenities.GetAllAmenitiesQuery) on controller CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController (CleanArc.Web.Api).
+2024-09-04 16:08:24.183 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-09-04 16:08:24.191 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) in 3334.8707ms
+2024-09-04 16:08:24.196 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:08:24.200 +05:00 [INF] Response StatusCode: 400
+2024-09-04 16:08:24.210 +05:00 [INF] Response StatusCode: 400
+2024-09-04 16:08:24.214 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 255 - 400 - application/json;+charset=utf-8 3404.1158ms
+2024-09-04 16:08:55.256 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 255
+2024-09-04 16:08:55.258 +05:00 [INF] CORS policy execution successful.
+2024-09-04 16:08:55.262 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:08:55.265 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 0,
+    "pageSize": 0,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ServiceCategoryID"
+        "parameterValue": "1"
+      }
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-09-04 16:08:55.270 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:08:55.278 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 0,
+    "pageSize": 0,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ServiceCategoryID"
+        "parameterValue": "1"
+      }
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-09-04 16:08:55.282 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:08:55.286 +05:00 [INF] Route matched with {action = "GetAll", controller = "Amenity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Amenities.Queries.GetAllAmenities.GetAllAmenitiesQuery) on controller CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController (CleanArc.Web.Api).
+2024-09-04 16:08:57.930 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-09-04 16:08:57.946 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) in 2654.8216ms
+2024-09-04 16:08:57.950 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:08:57.954 +05:00 [INF] Response StatusCode: 400
+2024-09-04 16:08:57.958 +05:00 [INF] Response StatusCode: 400
+2024-09-04 16:08:57.961 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 255 - 400 - application/json;+charset=utf-8 2705.6775ms
+2024-09-04 16:09:16.746 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 256
+2024-09-04 16:09:16.749 +05:00 [INF] CORS policy execution successful.
+2024-09-04 16:09:16.760 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:09:16.767 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ServiceCategoryID"
+        "parameterValue": "1"
+      }
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-09-04 16:09:16.776 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:09:16.782 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ServiceCategoryID"
+        "parameterValue": "1"
+      }
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-09-04 16:09:16.787 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:09:16.791 +05:00 [INF] Route matched with {action = "GetAll", controller = "Amenity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Amenities.Queries.GetAllAmenities.GetAllAmenitiesQuery) on controller CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController (CleanArc.Web.Api).
+2024-09-04 16:09:18.089 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-09-04 16:09:18.102 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) in 1306.5436ms
+2024-09-04 16:09:18.124 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:09:18.136 +05:00 [INF] Response StatusCode: 400
+2024-09-04 16:09:18.140 +05:00 [INF] Response StatusCode: 400
+2024-09-04 16:09:18.143 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 256 - 400 - application/json;+charset=utf-8 1397.3956ms
+2024-09-04 16:10:31.144 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 257
+2024-09-04 16:10:31.166 +05:00 [INF] CORS policy execution successful.
+2024-09-04 16:10:31.172 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:10:31.176 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ServiceCategoryID",
+        "parameterValue": "1"
+      }
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-09-04 16:10:31.183 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:10:31.188 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ServiceCategoryID",
+        "parameterValue": "1"
+      }
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-09-04 16:10:31.191 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:10:31.194 +05:00 [INF] Route matched with {action = "GetAll", controller = "Amenity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Amenities.Queries.GetAllAmenities.GetAllAmenitiesQuery) on controller CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController (CleanArc.Web.Api).
+2024-09-04 16:10:33.159 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-04 16:10:33.164 +05:00 [INF] Entering CleanArc.Application.Features.Amenities.Queries.GetAllAmenities, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[{"ParameterName":"ServiceCategoryID","ParameterValue":"1"}],"SortingArray":[]}}
+2024-09-04 16:10:33.899 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[{"ParameterName":"ServiceCategoryID","ParameterValue":"1"}],"SortingArray":[]}
+2024-09-04 16:10:36.295 +05:00 [INF] Exiting null, GetAllAsync
+2024-09-04 16:10:36.322 +05:00 [INF] Exiting null, Handle
+2024-09-04 16:10:36.382 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) in 5183.8737ms
+2024-09-04 16:10:36.388 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:10:36.572 +05:00 [ERR] Ambiguous column name 'ServiceCategoryID'.
+System.Data.SqlClient.SqlException (0x80131904): Ambiguous column name 'ServiceCategoryID'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.AmenityRepository.GetAllAsync(SearchRequest searchRequest)
+   at CleanArc.Application.Features.Amenities.Queries.GetAllAmenities.GetAllAmenitiesQueryHandler.Handle(GetAllAmenitiesQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\Amenities\Queries\GetAllAmenities\GetAllAmenitiesQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:9c9c4b80-b3ac-445a-b8e0-fa6871539287
+Error Number:209,State:1,Class:16
+2024-09-04 16:10:36.677 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 257 - 500 0 - 5533.0835ms
+2024-09-04 16:11:03.499 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 257
+2024-09-04 16:11:03.504 +05:00 [INF] CORS policy execution successful.
+2024-09-04 16:11:03.507 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:11:03.511 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ServiceCategoryID",
+        "parameterValue": "1"
+      }
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-09-04 16:11:03.516 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:11:03.521 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ServiceCategoryID",
+        "parameterValue": "1"
+      }
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-09-04 16:11:03.523 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:11:03.527 +05:00 [INF] Route matched with {action = "GetAll", controller = "Amenity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Amenities.Queries.GetAllAmenities.GetAllAmenitiesQuery) on controller CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController (CleanArc.Web.Api).
+2024-09-04 16:11:05.005 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-04 16:11:05.018 +05:00 [INF] Entering CleanArc.Application.Features.Amenities.Queries.GetAllAmenities, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[{"ParameterName":"ServiceCategoryID","ParameterValue":"1"}],"SortingArray":[]}}
+2024-09-04 16:11:05.585 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[{"ParameterName":"ServiceCategoryID","ParameterValue":"1"}],"SortingArray":[]}
+2024-09-04 16:11:06.584 +05:00 [INF] Exiting null, GetAllAsync
+2024-09-04 16:11:06.607 +05:00 [INF] Exiting null, Handle
+2024-09-04 16:11:06.661 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) in 3128.8016ms
+2024-09-04 16:11:06.666 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:11:06.849 +05:00 [ERR] Ambiguous column name 'ServiceCategoryID'.
+System.Data.SqlClient.SqlException (0x80131904): Ambiguous column name 'ServiceCategoryID'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.AmenityRepository.GetAllAsync(SearchRequest searchRequest)
+   at CleanArc.Application.Features.Amenities.Queries.GetAllAmenities.GetAllAmenitiesQueryHandler.Handle(GetAllAmenitiesQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\Amenities\Queries\GetAllAmenities\GetAllAmenitiesQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:9c9c4b80-b3ac-445a-b8e0-fa6871539287
+Error Number:209,State:1,Class:16
+2024-09-04 16:11:06.871 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 257 - 500 0 - 3372.0896ms
+2024-09-04 16:11:42.049 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 171
+2024-09-04 16:11:42.054 +05:00 [INF] CORS policy execution successful.
+2024-09-04 16:11:42.057 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:11:42.062 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-09-04 16:11:42.068 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:11:42.071 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-09-04 16:11:42.075 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:11:42.080 +05:00 [INF] Route matched with {action = "GetAll", controller = "Amenity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Amenities.Queries.GetAllAmenities.GetAllAmenitiesQuery) on controller CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController (CleanArc.Web.Api).
+2024-09-04 16:11:43.609 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-04 16:11:43.614 +05:00 [INF] Entering CleanArc.Application.Features.Amenities.Queries.GetAllAmenities, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-04 16:11:44.441 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-04 16:11:45.809 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":99,"Name":null,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Description":"uodated_A large outdoor swimming pool","CategoryID":3,"Icon":"pool_icon.png","IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":109,"Name":null,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Description":"A large outdoor swimming pool","CategoryID":3,"Icon":"pool_icon.png","IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null}]
+2024-09-04 16:11:45.821 +05:00 [INF] Exiting null, Handle with response: [{"ID":99,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","CategoryID":3,"ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Icon":"pool_icon.png","Description":"uodated_A large outdoor swimming pool","IsDeleted":false,"IsActive":true},{"ID":109,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","CategoryID":3,"ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Icon":"pool_icon.png","Description":"A large outdoor swimming pool","IsDeleted":false,"IsActive":true}]
+2024-09-04 16:11:45.826 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2212.693ms.
+2024-09-04 16:11:45.831 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-04 16:11:45.835 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) in 3749.2855ms
+2024-09-04 16:11:45.840 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:11:45.845 +05:00 [INF] Response StatusCode: 200
+2024-09-04 16:11:45.850 +05:00 [INF] Response StatusCode: 200
+2024-09-04 16:11:45.854 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 171 - 200 - application/json;+charset=utf-8 3804.0724ms
+2024-09-04 16:11:52.839 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 171
+2024-09-04 16:11:52.845 +05:00 [INF] CORS policy execution successful.
+2024-09-04 16:11:52.849 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:11:52.855 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-09-04 16:11:52.860 +05:00 [INF] Request Method: POST, Path: /api/v1/Amenity/GetAll, Content-Type: application/json
+2024-09-04 16:11:52.865 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-09-04 16:11:52.872 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:11:52.877 +05:00 [INF] Route matched with {action = "GetAll", controller = "Amenity"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Amenities.Queries.GetAllAmenities.GetAllAmenitiesQuery) on controller CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController (CleanArc.Web.Api).
+2024-09-04 16:12:00.924 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-04 16:12:00.929 +05:00 [INF] Entering CleanArc.Application.Features.Amenities.Queries.GetAllAmenities, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-04 16:12:03.663 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-04 16:12:04.840 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":99,"Name":null,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Description":"uodated_A large outdoor swimming pool","CategoryID":3,"Icon":"pool_icon.png","IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null},{"ID":109,"Name":null,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Description":"A large outdoor swimming pool","CategoryID":3,"Icon":"pool_icon.png","IsActive":true,"IsDeleted":false,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null}]
+2024-09-04 16:12:04.854 +05:00 [INF] Exiting null, Handle with response: [{"ID":99,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","CategoryID":3,"ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Icon":"pool_icon.png","Description":"uodated_A large outdoor swimming pool","IsDeleted":false,"IsActive":true},{"ID":109,"CategoryName":"Bathroom","AmenityName":"Swimming Pool","CategoryID":3,"ServiceCategoryID":5,"ServiceCategoryName":"Things To Do","Icon":"pool_icon.png","Description":"A large outdoor swimming pool","IsDeleted":false,"IsActive":true}]
+2024-09-04 16:12:04.859 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3931.043ms.
+2024-09-04 16:12:04.864 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-04 16:12:04.869 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api) in 11987.3215ms
+2024-09-04 16:12:04.873 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Amenity.AmenityController.GetAll (CleanArc.Web.Api)'
+2024-09-04 16:12:04.877 +05:00 [INF] Response StatusCode: 200
+2024-09-04 16:12:04.880 +05:00 [INF] Response StatusCode: 200
+2024-09-04 16:12:04.884 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Amenity/GetAll application/json 171 - 200 - application/json;+charset=utf-8 12044.7614ms

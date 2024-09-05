@@ -87,6 +87,8 @@ public class UnitOfWork : IUnitOfWork
     public IPackageDetailRepository PackageDetailRepository { get; set; }
     public IFAQsRepository FAQsRepository { get; set; }
     public ISearchFilterStayRepository SearchFilterStayRepository { get; set; }
+    public ISearchFilterThingsToDoRepository SearchFilterThingsToDoRepository { get; set; }
+    public ICarRentalSearchFilterRepository CarRentalSearchFilterRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -164,6 +166,8 @@ public class UnitOfWork : IUnitOfWork
                                 ILogger<PackageDetailRepository> _loggerPackageDetail,
             ILogger<FAQsRepository> _loggerFAQs,
            ILogger<SearchFilterStayRepository> _loggerSearchFilterStay,
+                      ILogger<SearchFilterThingsToDoRepository> _loggerSearchFilterThingsToDo,
+                                            ILogger<CarRentalSearchFilterRepository> _loggerCarRentalSearchFilter,
 
 
 
@@ -246,6 +250,8 @@ public class UnitOfWork : IUnitOfWork
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         SearchFilterStayRepository = new SearchFilterStayRepository(configuration, mapper, _loggerSearchFilterStay, httpContextAccessor);
+        SearchFilterThingsToDoRepository = new SearchFilterThingsToDoRepository(configuration, mapper, _loggerSearchFilterThingsToDo, httpContextAccessor);
+        CarRentalSearchFilterRepository = new CarRentalSearchFilterRepository(configuration, mapper, _loggerCarRentalSearchFilter, httpContextAccessor);
 
         this.configuration = configuration;
 
