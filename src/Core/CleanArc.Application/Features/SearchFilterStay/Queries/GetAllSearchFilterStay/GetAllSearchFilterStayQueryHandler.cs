@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFil
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var SearchFilterStay = await _unitOfWork.SearchFilterStayRepository.GetAllAsync(request.searchRequest);
+            var SearchFilterStay = await _unitOfWork.SearchFilterStayRepository.GetAllWithParamAsync(request.searchRequestStays);
 
             //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
             var result = _mapper.Map<List<GetAllSearchFilterStayQueryResult>>(SearchFilterStay);

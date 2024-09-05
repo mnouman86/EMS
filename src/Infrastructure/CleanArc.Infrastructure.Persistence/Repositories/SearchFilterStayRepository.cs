@@ -1,6 +1,7 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.Request;
-using CleanArc.Domain.Entities.SearchFilterStay;
+//using CleanArc.Domain.Entities.SearchFilterStay;
+using CleanArc.Domain.Entities.SearchHotelDetail;
 using CleanArc.Domain.Entities.SearchHotelImage;
 using CleanArc.Infrastructure.Persistence.Helpers;
 using CleanArc.Infrastructure.Sql.SqlQueries;
@@ -57,17 +58,8 @@ public class SearchFilterStayRepository : ISearchFilterStayRepository
         this._logger = logger;
         _httpContextAccessor = httpContextAccessor;
     }
-    public Task<string> AddAsync(SearchFilterStay entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
-    {
-        throw new NotImplementedException();
-    }
-
-    public async Task<IReadOnlyList<SearchFilterStay>> GetAllAsync(SearchRequest searchRequest)
+   
+    public async Task<IReadOnlyList<SearchHotelDetail>> GetAllWithParamAsync(SearchRequestStays searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -78,14 +70,23 @@ public class SearchFilterStayRepository : ISearchFilterStayRepository
                 {
                     PageNumber = searchRequest.PageNumber,
                     PageSize = searchRequest.PageSize,
+                    HotelName = searchRequest.HotelName,
+                    MaxPrice = searchRequest.MaxPrice,
+                    MinPrice = searchRequest.MinPrice,
+                    HotelAmenities = searchRequest.HotelAmenities,
+                    RoomAmenities = searchRequest.RoomAmenities,
+                    BathroomAmenities = searchRequest.BathroomAmenities,
+                    RoomFeature = searchRequest.RoomFeature,
+                    RoomView = searchRequest.RoomView,
                     //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
                     //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
                     //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
                     //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
                     SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
                     FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
+
                 };
-                var result = await connection.QueryAsync<SearchFilterStay>(SearchFilterStayQueries.GetAll_SearchDetail, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<SearchHotelDetail>(SearchFilterStayQueries.GetAll_SearchDetail, parameters, commandType: CommandType.StoredProcedure);
                 foreach (var item in result) {
                     List<FilterParameter> ImagesFilterArray = new List<FilterParameter>();
                     List<SortingParameter> ImagesSortingArray = new List<SortingParameter>();
@@ -112,13 +113,4 @@ public class SearchFilterStayRepository : ISearchFilterStayRepository
         }
     }
 
-    public Task<SearchFilterStay> GetByIdAsync(long id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<string> UpdateAsync(SearchFilterStay entity)
-    {
-        throw new NotImplementedException();
-    }
 }

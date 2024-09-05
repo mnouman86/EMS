@@ -54,7 +54,7 @@ namespace CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail;
 [ApiController]
 [Route("api/v{version:apiVersion}/SearchFilterStayDetail")]
 //[Authorize]
-public class SearchFilterStayDetailController : _BaseController<CreateSearchFilterStayCommand, UpdateSearchFilterStayCommand, DeleteSearchFilterStayCommand, bool, GetAllSearchFilterStayQuery,
+public class SearchFilterStayController : _BaseController<CreateSearchFilterStayCommand, UpdateSearchFilterStayCommand, DeleteSearchFilterStayCommand, bool, GetAllSearchFilterStayQuery,
 List<GetAllSearchFilterStayQueryResult>, GetSearchFilterStayByIdQuery, GetSearchFilterStayByIdQueryResult>
 {
 
@@ -64,7 +64,7 @@ List<GetAllSearchFilterStayQueryResult>, GetSearchFilterStayByIdQuery, GetSearch
     /// <param name="sender">The mediator sender for handling requests and responses.</param>
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
-    public SearchFilterStayDetailController(ISender sender, ILogger<_BaseController<CreateSearchFilterStayCommand, UpdateSearchFilterStayCommand, DeleteSearchFilterStayCommand, bool, GetAllSearchFilterStayQuery,
+    public SearchFilterStayController(ISender sender, ILogger<_BaseController<CreateSearchFilterStayCommand, UpdateSearchFilterStayCommand, DeleteSearchFilterStayCommand, bool, GetAllSearchFilterStayQuery,
 List<GetAllSearchFilterStayQueryResult>, GetSearchFilterStayByIdQuery, GetSearchFilterStayByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 
