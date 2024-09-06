@@ -80,6 +80,8 @@ public interface IUnitOfWork
     public ISearchFilterStayRepository SearchFilterStayRepository { get; }
     public ISearchFilterThingsToDoRepository SearchFilterThingsToDoRepository { get; }
     public ICarRentalSearchFilterRepository CarRentalSearchFilterRepository { get; }
+    public IKBCAttractionRepository KBCAttractionRepository { get; }
+    public IKBCRelatedUrlLinkRepository KBCRelatedUrlLinkRepository { get; }
 
 
 

@@ -426,6 +426,24 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.KBCAttraction.KBCAttractionController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.KBCAttraction.KBCAttractionController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.KBCAttraction.Commands.CreateKBCAttractionCommand.CreateKBCAttractionCommand,CleanArc.Application.Features.KBCAttraction.Commands.UpdateKBCAttractionCommand.UpdateKBCAttractionCommand,CleanArc.Application.Features.KBCAttraction.Commands.DeleteKBCAttractionCommand.DeleteKBCAttractionCommand,System.Boolean,CleanArc.Application.Features.KBCAttraction.Queries.GetAllKBCAttraction.GetAllKBCAttractionQuery,System.Collections.Generic.List{CleanArc.Application.Features.KBCAttraction.Queries.GetAllKBCAttraction.GetAllKBCAttractionQueryResult},CleanArc.Application.Features.KBCAttraction.Queries.GetKBCAttractionById.GetKBCAttractionByIdQuery,CleanArc.Application.Features.KBCAttraction.Queries.GetKBCAttractionById.GetKBCAttractionByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.KBCAttraction.KBCAttractionController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.KBCRelatedUrlLink.KBCRelatedUrlLinkController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.KBCRelatedUrlLink.KBCRelatedUrlLinkController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.KBCRelatedUrlLink.Commands.CreateKBCRelatedUrlLinkCommand.CreateKBCRelatedUrlLinkCommand,CleanArc.Application.Features.KBCRelatedUrlLink.Commands.UpdateKBCRelatedUrlLinkCommand.UpdateKBCRelatedUrlLinkCommand,CleanArc.Application.Features.KBCRelatedUrlLink.Commands.DeleteKBCRelatedUrlLinkCommand.DeleteKBCRelatedUrlLinkCommand,System.Boolean,CleanArc.Application.Features.KBCRelatedUrlLink.Queries.GetAllKBCRelatedUrlLink.GetAllKBCRelatedUrlLinkQuery,System.Collections.Generic.List{CleanArc.Application.Features.KBCRelatedUrlLink.Queries.GetAllKBCRelatedUrlLink.GetAllKBCRelatedUrlLinkQueryResult},CleanArc.Application.Features.KBCRelatedUrlLink.Queries.GetKBCRelatedUrlLinkById.GetKBCRelatedUrlLinkByIdQuery,CleanArc.Application.Features.KBCRelatedUrlLink.Queries.GetKBCRelatedUrlLinkById.GetKBCRelatedUrlLinkByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.KBCRelatedUrlLink.KBCRelatedUrlLinkController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.Language.LanguageController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.Language.LanguageController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.Language.Command.CreateLanguageCommand.CreateLanguageCommand,CleanArc.Application.Features.Language.Command.UpdateLanguageCommand.UpdateLanguageCommand,CleanArc.Application.Features.Language.Command.DeleteLanguageCommand.DeleteLanguageCommand,System.Boolean,CleanArc.Application.Features.Language.Queries.GetAllLanguages.GetAllLanguagesQuery,System.Collections.Generic.List{CleanArc.Application.Features.Language.Queries.GetAllLanguages.GetAllLanguagesQueryResult},CleanArc.Application.Features.Language.Queries.GetLanguageById.GetLanguageByIdQuery,CleanArc.Application.Features.Language.Queries.GetLanguageById.GetLanguageByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>

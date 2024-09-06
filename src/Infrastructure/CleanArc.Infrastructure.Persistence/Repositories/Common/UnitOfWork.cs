@@ -89,6 +89,8 @@ public class UnitOfWork : IUnitOfWork
     public ISearchFilterStayRepository SearchFilterStayRepository { get; set; }
     public ISearchFilterThingsToDoRepository SearchFilterThingsToDoRepository { get; set; }
     public ICarRentalSearchFilterRepository CarRentalSearchFilterRepository { get; set; }
+    public IKBCAttractionRepository KBCAttractionRepository { get; set; }
+    public IKBCRelatedUrlLinkRepository KBCRelatedUrlLinkRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -168,6 +170,8 @@ public class UnitOfWork : IUnitOfWork
            ILogger<SearchFilterStayRepository> _loggerSearchFilterStay,
                       ILogger<SearchFilterThingsToDoRepository> _loggerSearchFilterThingsToDo,
                                             ILogger<CarRentalSearchFilterRepository> _loggerCarRentalSearchFilter,
+                                            ILogger<KBCAttractionRepository> _loggerKBCAttraction,
+                                            ILogger<KBCRelatedUrlLinkRepository> _loggerKBCRelatedUrlLink,
 
 
 
@@ -252,6 +256,8 @@ public class UnitOfWork : IUnitOfWork
         SearchFilterStayRepository = new SearchFilterStayRepository(configuration, mapper, _loggerSearchFilterStay, httpContextAccessor);
         SearchFilterThingsToDoRepository = new SearchFilterThingsToDoRepository(configuration, mapper, _loggerSearchFilterThingsToDo, httpContextAccessor);
         CarRentalSearchFilterRepository = new CarRentalSearchFilterRepository(configuration, mapper, _loggerCarRentalSearchFilter, httpContextAccessor);
+        KBCAttractionRepository = new KBCAttractionRepository(configuration, mapper, _loggerKBCAttraction, httpContextAccessor);
+        KBCRelatedUrlLinkRepository = new KBCRelatedUrlLinkRepository(configuration, mapper, _loggerKBCRelatedUrlLink, httpContextAccessor);
 
         this.configuration = configuration;
 

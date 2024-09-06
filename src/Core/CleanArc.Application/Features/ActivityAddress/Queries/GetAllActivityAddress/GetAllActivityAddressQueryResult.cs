@@ -9,7 +9,10 @@ namespace CleanArc.Application.Features.ActivityAddress.Queries.GetAllActivityAd
 public class GetAllActivityAddressQueryResult
 {
     public int ID { get; set; }
-    public int? ActivityID { get; set; }
+    public int? GenericAddressID { get; set; }
+    public int? ServiceID { get; set; }
+    public   string? ServiceName { get; set; }
+    public int? GenericID { get; set; }
     public string AddressLine1 { get; set; }
     public string AddressLine2 { get; set; }
     public int? CountryLookUpID { get; set; }

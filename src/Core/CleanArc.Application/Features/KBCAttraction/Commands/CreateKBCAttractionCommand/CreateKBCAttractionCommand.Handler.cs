@@ -1,7 +1,11 @@
-﻿using AutoMapper;
-using CleanArc.Application.Contracts.Identity;
+﻿using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Features.ActivityAddress.Commands.CreateActivityAddressCommand;
+using CleanArc.Application.Features.URL.Commands.AddURLCommand;
+using CleanArc.Application.Models.Common;
+using CleanArc.Domain.Entities.User;
+using CleanArc.SharedKernel.Extensions;
+using MapsterMapper;
+using Mediator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -10,25 +14,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Mediator;
-using CleanArc.Application.Models.Common;
-using CleanArc.SharedKernel.Extensions;
 
-namespace CleanArc.Application.Features.ActivityAddress.Commands.UpdateActivityAddressCommand;
+namespace CleanArc.Application.Features.KBCAttraction.Commands.CreateKBCAttractionCommand;
 
-internal class UpdateActivityAddressCommandHandler:IRequestHandler<UpdateActivityAddressCommand, OperationResult<bool>>
+internal class CreateKBCAttractionCommandHandler: IRequestHandler<CreateKBCAttractionCommand, OperationResult<bool>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<UpdateActivityAddressCommandHandler> _logger;
+    private readonly ILogger<CreateKBCAttractionCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
     //private readonly IUnitOfWork _unitOfWork;
     //private readonly IAppUserManager _userManager;
 
 
-    public UpdateActivityAddressCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateActivityAddressCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public CreateKBCAttractionCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<CreateKBCAttractionCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -39,7 +40,8 @@ internal class UpdateActivityAddressCommandHandler:IRequestHandler<UpdateActivit
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<bool>> Handle(UpdateActivityAddressCommand request, CancellationToken cancellationToken)
+
+    public async ValueTask<OperationResult<bool>> Handle(CreateKBCAttractionCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -55,25 +57,11 @@ internal class UpdateActivityAddressCommandHandler:IRequestHandler<UpdateActivit
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.ActivityAddressRepository.UpdateAsync(new Domain.Entities.ActivityAddress.ActivityAddress()
-            { UpdatedBy = user.Id,
-                ID= request.ID,
-                CultureId = request.CultureId,
-                GenericAddressID = request.GenericAddressID,
-                ServiceID = request.ServiceID,
-                CountryLookUpID = request.CountryLookUpID,
-                StateLookUpID = request.StateLookUpID,
-                CityLookUpID = request.CityLookUpID,
-                AddressLine1 = request.AddressLine1,
-                AddressLine2 = request.AddressLine2,
-                PostalCode = request.PostalCode,
-                Latitude = request.Latitude,
-                Longitude = request.Longitude
-            });
+            await _unitOfWork.KBCAttractionRepository.AddAsync(new Domain.Entities.KBCAttraction.KBCAttraction()
+            { CreatedBy = user.Id, Description = request.Description,Title=request.Title,CultureId=request.CultureId  });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);
         }
     }
-
 }

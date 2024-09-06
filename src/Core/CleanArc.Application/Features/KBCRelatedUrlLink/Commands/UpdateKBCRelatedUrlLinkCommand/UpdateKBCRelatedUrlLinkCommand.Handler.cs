@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Features.ActivityAddress.Commands.CreateActivityAddressCommand;
+using CleanArc.Application.Features.KBCRelatedUrlLink.Commands.CreateKBCRelatedUrlLinkCommand;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -14,21 +14,21 @@ using Mediator;
 using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.Extensions;
 
-namespace CleanArc.Application.Features.ActivityAddress.Commands.UpdateActivityAddressCommand;
+namespace CleanArc.Application.Features.KBCRelatedUrlLink.Commands.UpdateKBCRelatedUrlLinkCommand;
 
-internal class UpdateActivityAddressCommandHandler:IRequestHandler<UpdateActivityAddressCommand, OperationResult<bool>>
+internal class UpdateKBCRelatedUrlLinkCommandHandler:IRequestHandler<UpdateKBCRelatedUrlLinkCommand, OperationResult<bool>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<UpdateActivityAddressCommandHandler> _logger;
+    private readonly ILogger<UpdateKBCRelatedUrlLinkCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
     //private readonly IUnitOfWork _unitOfWork;
     //private readonly IAppUserManager _userManager;
 
 
-    public UpdateActivityAddressCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateActivityAddressCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public UpdateKBCRelatedUrlLinkCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateKBCRelatedUrlLinkCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -39,7 +39,7 @@ internal class UpdateActivityAddressCommandHandler:IRequestHandler<UpdateActivit
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<bool>> Handle(UpdateActivityAddressCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<bool>> Handle(UpdateKBCRelatedUrlLinkCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -55,21 +55,8 @@ internal class UpdateActivityAddressCommandHandler:IRequestHandler<UpdateActivit
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.ActivityAddressRepository.UpdateAsync(new Domain.Entities.ActivityAddress.ActivityAddress()
-            { UpdatedBy = user.Id,
-                ID= request.ID,
-                CultureId = request.CultureId,
-                GenericAddressID = request.GenericAddressID,
-                ServiceID = request.ServiceID,
-                CountryLookUpID = request.CountryLookUpID,
-                StateLookUpID = request.StateLookUpID,
-                CityLookUpID = request.CityLookUpID,
-                AddressLine1 = request.AddressLine1,
-                AddressLine2 = request.AddressLine2,
-                PostalCode = request.PostalCode,
-                Latitude = request.Latitude,
-                Longitude = request.Longitude
-            });
+            await _unitOfWork.KBCRelatedUrlLinkRepository.UpdateAsync(new Domain.Entities.KBCRelatedUrlLink.KBCRelatedUrlLink()
+            { UpdatedBy = user.Id,ID= request.ID, Description = request.Description, Title = request.Title, URL = request.URL, CultureId = request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

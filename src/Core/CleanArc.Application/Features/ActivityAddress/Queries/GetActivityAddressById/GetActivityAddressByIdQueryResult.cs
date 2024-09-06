@@ -10,7 +10,9 @@ namespace CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddre
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
         public int ID { get; set; }
-        public int? ActivityID { get; set; }
+        public int? GenericAddressID { get; set; }
+        public int? ServiceID { get; set; }
+        public string? ServiceName { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
         public int? CountryLookUpID { get; set; }
