@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityAddress.Commands.CreateActivityAddressCommand;
-public record CreateActivityAddressCommand(int? ActivityID,int? CountryLookUpID, int? CityLookUpID, string? AddressLine1,
+public record CreateActivityAddressCommand(int? GenericAddressID, int? ServiceID, int? CountryLookUpID, int? CityLookUpID, string? AddressLine1,
     string? AddressLine2,
     int? StateLookUpID,
     string? PostalCode,
