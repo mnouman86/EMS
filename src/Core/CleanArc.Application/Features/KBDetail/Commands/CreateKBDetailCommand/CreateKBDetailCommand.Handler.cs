@@ -15,21 +15,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.KBCAttraction.Commands.CreateKBCAttractionCommand;
+namespace CleanArc.Application.Features.KBDetail.Commands.CreateKBDetailCommand;
 
-internal class CreateKBCAttractionCommandHandler: IRequestHandler<CreateKBCAttractionCommand, OperationResult<bool>>
+internal class CreateKBDetailCommandHandler: IRequestHandler<CreateKBDetailCommand, OperationResult<bool>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<CreateKBCAttractionCommandHandler> _logger;
+    private readonly ILogger<CreateKBDetailCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
     //private readonly IUnitOfWork _unitOfWork;
     //private readonly IAppUserManager _userManager;
 
 
-    public CreateKBCAttractionCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<CreateKBCAttractionCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public CreateKBDetailCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<CreateKBDetailCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -41,7 +41,7 @@ internal class CreateKBCAttractionCommandHandler: IRequestHandler<CreateKBCAttra
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateKBCAttractionCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<bool>> Handle(CreateKBDetailCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -57,8 +57,29 @@ internal class CreateKBCAttractionCommandHandler: IRequestHandler<CreateKBCAttra
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.KBCAttractionRepository.AddAsync(new Domain.Entities.KBCAttraction.KBCAttraction()
-            { CreatedBy = user.Id, Description = request.Description,Title=request.Title,CultureId=request.CultureId  });
+            await _unitOfWork.KBDetailRepository.AddAsync(new Domain.Entities.KBDetail.KBDetail()
+            { CreatedBy = user.Id,
+                Title = request.Title,
+
+                KeyDate = request.KeyDate,
+                Cost = request.Cost,
+                ServiceID = request.ServiceID,
+                CoreAreaLookupID = request.CoreAreaLookupID,
+                RelatedUrlLinkLookupID = request.RelatedUrlLinkLookupID,
+                Access = request.Access,
+                Availablity = request.Availablity,
+                WhenToVisitIDs = request.WhenToVisitIDs,
+                AddressLine1 = request.AddressLine1,
+                AddressLine2 = request.AddressLine2,
+                CountryLookUpID = request.CountryLookUpID,
+                CityLookUpID = request.CityLookUpID,
+                StatelookUpID = request.StatelookUpID,
+                PostalCode = request.PostalCode,
+                Latitude = request.Latitude,
+                Longitude = request.Longitude,
+                
+
+                CultureId = request.CultureId  });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

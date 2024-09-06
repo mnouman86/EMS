@@ -10,14 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json.Serialization;
 
-namespace CleanArc.Application.Features.KBCAttraction.Commands.DeleteKBCAttractionCommand;
+namespace CleanArc.Application.Features.KBDetail.Commands.DeleteKBDetailCommand;
 
-public record DeleteKBCAttractionCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
-    IValidatableModel<DeleteKBCAttractionCommand>
+public record DeleteKBDetailCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
+    IValidatableModel<DeleteKBDetailCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
-    public IValidator<DeleteKBCAttractionCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteKBCAttractionCommand> validator)
+    public IValidator<DeleteKBDetailCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteKBDetailCommand> validator)
     {
         validator.RuleFor(c => c.SelectedIds)
             .NotEmpty()
@@ -28,6 +28,6 @@ public record DeleteKBCAttractionCommand(string SelectedIds, int? UpdatedBy, int
     }
 }
 
-//public record class DeleteKBCAttractionCommand
+//public record class DeleteKBDetailCommand
 //{
 //}

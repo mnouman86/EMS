@@ -1,10 +1,10 @@
 ﻿using Azure.Core;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Models.KBCAttraction;
+using CleanArc.Application.Models.KBDetail;
 using CleanArc.Application.Models.Advertisement;
 using CleanArc.Application.Models.Request;
 using CleanArc.Application.Models.URL;
-using CleanArc.Domain.Entities.KBCAttraction;
+using CleanArc.Domain.Entities.KBDetail;
 using CleanArc.Domain.Entities.UserManagement;
 using CleanArc.Infrastructure.Persistence.Helpers;
 using CleanArc.Infrastructure.Sql;
@@ -30,7 +30,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories;
 /// Repository implementation for handling operations related to menus.
 /// </summary>
 /// <seealso cref="CleanArc.Application.Contracts.Persistence.IMenuRepository" />
-public class KBCAttractionRepository:IKBCAttractionRepository
+public class KBDetailRepository:IKBDetailRepository
 {
     /// <summary>
     /// The configuration for accessing application settings.
@@ -45,7 +45,7 @@ public class KBCAttractionRepository:IKBCAttractionRepository
     /// <summary>
     /// The logger for logging repository-related information.
     /// </summary>
-    private readonly ILogger<KBCAttractionRepository> _logger;
+    private readonly ILogger<KBDetailRepository> _logger;
 
     /// <summary>
     /// The HTTP context accessor for accessing HTTP context information.
@@ -59,7 +59,7 @@ public class KBCAttractionRepository:IKBCAttractionRepository
     /// <param name="mapper">The mapper for mapping between different object types.</param>
     /// <param name="logger">The logger for logging repository-related information.</param>
     /// <param name="httpContextAccessor">The HTTP context accessor for accessing HTTP context information.</param>
-    public KBCAttractionRepository(IConfiguration configuration, IMapper mapper, ILogger<KBCAttractionRepository> logger, IHttpContextAccessor httpContextAccessor)
+    public KBDetailRepository(IConfiguration configuration, IMapper mapper, ILogger<KBDetailRepository> logger, IHttpContextAccessor httpContextAccessor)
     {
         this.configuration = configuration;
         this._mapper = mapper;
@@ -67,19 +67,21 @@ public class KBCAttractionRepository:IKBCAttractionRepository
         _httpContextAccessor = httpContextAccessor;
     }
 /// <inheritdoc/>
-public async Task<string> AddAsync(KBCAttraction KBCAttraction)
+public async Task<string> AddAsync(KBDetail KBDetail)
 {
-    using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, KBCAttraction))
+    using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, KBDetail))
     {
         using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
         {
             connection.Open();
-                CreateKBCAttractionDTO createKBCAttractionDTO = _mapper.Map<CreateKBCAttractionDTO>(KBCAttraction);
-                var parameters = new DynamicParameters(createKBCAttractionDTO);
+                CreateKBDetailDTO createKBDetailDTO = _mapper.Map<CreateKBDetailDTO>(KBDetail);
+                var parameters = new DynamicParameters(createKBDetailDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                parameters.Add("@KbDetailID", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                var result = await connection.QuerySingleOrDefaultAsync<int>(KBDetailQueries.Create_KBDetail, parameters, commandType: CommandType.StoredProcedure);
 
-                var result = await connection.ExecuteAsync(KBCAttractionQueries.Create_KBC_Attraction, parameters, commandType: CommandType.StoredProcedure);
+               // var result = await connection.ExecuteAsync(KBDetailQueries.Create_KBDetail, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result.ToString();
         }
@@ -100,14 +102,14 @@ public async Task<string> AddAsync(KBCAttraction KBCAttraction)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(KBCAttractionQueries.Delete_KBC_Attraction, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(KBDetailQueries.Delete_KBDetail, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }
         }
     }
 
-    public async Task<IReadOnlyList<KBCAttraction>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<IReadOnlyList<KBDetail>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -118,10 +120,11 @@ public async Task<string> AddAsync(KBCAttraction KBCAttraction)
                 parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
                 parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
                 parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
-                //parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
-                //parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+                parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+                parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                //parameters.Add("@KbDetailID", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                 //    var parameters = new
                 //    {
@@ -137,13 +140,13 @@ public async Task<string> AddAsync(KBCAttraction KBCAttraction)
                 //        Message = ("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output)
 
                 //};
-                var result = await connection.QueryAsync<KBCAttraction>(KBCAttractionQueries.usp_GetAll_KBC_Attraction, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<KBDetail>(KBDetailQueries.GetAll_KBDetail, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }
         }
     }
-    public async Task<KBCAttraction> GetByIdAsync(long id)
+    public async Task<KBDetail> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
         {
@@ -156,7 +159,7 @@ public async Task<string> AddAsync(KBCAttraction KBCAttraction)
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<KBCAttraction>(KBCAttractionQueries.usp_GetByID_KBC_Attraction, parameters , commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<KBDetail>(KBDetailQueries.GetByID_KBDetail, parameters , commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -165,18 +168,18 @@ public async Task<string> AddAsync(KBCAttraction KBCAttraction)
 
 
 
-    public async Task<string> UpdateAsync(KBCAttraction entity)
+    public async Task<string> UpdateAsync(KBDetail entity)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                UpdateKBCAttractionDTO updateKBCAttractionDTO = _mapper.Map<UpdateKBCAttractionDTO>(entity);
-                var parameters = new DynamicParameters(updateKBCAttractionDTO);
+                UpdateKBDetailDTO updateKBDetailDTO = _mapper.Map<UpdateKBDetailDTO>(entity);
+                var parameters = new DynamicParameters(updateKBDetailDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.ExecuteAsync(KBCAttractionQueries.update_KBC_Attraction, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteAsync(KBDetailQueries.Update_KBDetail, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToString();
             }
