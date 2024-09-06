@@ -1,4 +1,4 @@
-﻿using CleanArc.Domain.Entities.KBCAttraction;
+﻿using CleanArc.Domain.Entities.KBDetail;
 using CleanArc.Domain.Entities.Order;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Contracts.Persistence;
 
-public  interface IKBCAttractionRepository:IRepository<KBCAttraction>
+public  interface IKBDetailRepository:IRepository<KBDetail>
 {
    // Task CreateAgeType(AgeType ageType);
 }

@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.KBCAttraction.Queries.GetKBCAttractionById
+namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById
 {
-    public class GetKBCAttractionByIdQuery:IRequest<OperationResult<GetKBCAttractionByIdQueryResult>>
+    public class GetKBDetailByIdQuery:IRequest<OperationResult<GetKBDetailByIdQueryResult>>
     {
                 public int Id { get; set; }
 

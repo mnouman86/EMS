@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Features.KBCAttraction.Commands.CreateKBCAttractionCommand;
+using CleanArc.Application.Features.KBDetail.Commands.CreateKBDetailCommand;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -14,21 +14,21 @@ using Mediator;
 using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.Extensions;
 
-namespace CleanArc.Application.Features.KBCAttraction.Commands.UpdateKBCAttractionCommand;
+namespace CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand;
 
-internal class UpdateKBCAttractionCommandHandler:IRequestHandler<UpdateKBCAttractionCommand, OperationResult<bool>>
+internal class UpdateKBDetailCommandHandler:IRequestHandler<UpdateKBDetailCommand, OperationResult<bool>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<UpdateKBCAttractionCommandHandler> _logger;
+    private readonly ILogger<UpdateKBDetailCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
     //private readonly IUnitOfWork _unitOfWork;
     //private readonly IAppUserManager _userManager;
 
 
-    public UpdateKBCAttractionCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateKBCAttractionCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public UpdateKBDetailCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateKBDetailCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -39,7 +39,7 @@ internal class UpdateKBCAttractionCommandHandler:IRequestHandler<UpdateKBCAttrac
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<bool>> Handle(UpdateKBCAttractionCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<bool>> Handle(UpdateKBDetailCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -55,8 +55,18 @@ internal class UpdateKBCAttractionCommandHandler:IRequestHandler<UpdateKBCAttrac
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.KBCAttractionRepository.UpdateAsync(new Domain.Entities.KBCAttraction.KBCAttraction()
-            { UpdatedBy = user.Id,ID= request.ID, Description = request.Description, Title = request.Title, CultureId = request.CultureId });
+            await _unitOfWork.KBDetailRepository.UpdateAsync(new Domain.Entities.KBDetail.KBDetail()
+            { UpdatedBy = user.Id,ID= request.ID,
+                KeyDate = request.KeyDate,
+                Cost = request.Cost,
+                ServiceID = request.ServiceID,
+                CoreAreaLookupID = request.CoreAreaLookupID,
+                RelatedUrlLinkLookupID = request.RelatedUrlLinkLookupID,
+                Access = request.Access,
+                Availablity = request.Availablity,
+                WhenToVisitIDs = request.WhenToVisitIDs,
+                Title = request.Title,
+                CultureId = request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

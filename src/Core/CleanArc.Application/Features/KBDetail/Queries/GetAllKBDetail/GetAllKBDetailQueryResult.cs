@@ -4,13 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.KBCAttraction.Queries.GetAllKBCAttraction;
+namespace CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail;
 
-public class GetAllKBCAttractionQueryResult
+public class GetAllKBDetailQueryResult
 {
     public int ID { get; set; }
-    public string Title { get; set; }
-    public string Description { get; set; }
+    public string? Title { get; set; }
+    public string? KeyDate { get; set; }
+    public string? Cost { get; set; }
+    public int? ServiceID { get; set; }
+    public int? CoreAreaLookupID { get; set; }
+    public int? RelatedUrlLinkLookupID { get; set; }
+    public string? Access { get; set; }
+    public string? Availablity { get; set; }
+    public string? RelatedUrlLinkName { get; set; }
+    public string? WhenToVisitTitles { get; set; }
+    public string? CoreAreaName { get; set; }
     public bool IsDeleted { get; set; }
     public bool IsActive { get; set; }
     public int CreatedBy { get; set; }
@@ -22,7 +31,7 @@ public class GetAllKBCAttractionQueryResult
     public int? Message { get; set; }
 }
 
-//    public GetAllKBCAttractionQueryResult(int iD, string name, string description, bool isDeleted, bool isActive, int createdBy, DateTime createdAt, int updatedBy, DateTime updatedAt)
+//    public GetAllKBDetailQueryResult(int iD, string name, string description, bool isDeleted, bool isActive, int createdBy, DateTime createdAt, int updatedBy, DateTime updatedAt)
 //    {
 //        ID = iD;
 //        Name = name;
