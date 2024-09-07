@@ -83,6 +83,7 @@ public interface IUnitOfWork
     public IKBDetailRepository KBDetailRepository { get; }
     public IKBCRelatedUrlLinkRepository KBCRelatedUrlLinkRepository { get; }
     public IKBDescriptionRepository KBDescriptionRepository { get; }
+    public IKBMediaRepository KBMediaRepository { get; }
 
 
 

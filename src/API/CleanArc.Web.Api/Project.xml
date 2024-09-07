@@ -453,6 +453,15 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommand,CleanArc.Application.Features.KBMedia.Commands.UpdateKBMediaCommand.UpdateKBMediaCommand,CleanArc.Application.Features.KBMedia.Commands.DeleteKBMediaCommand.DeleteKBMediaCommand,System.Boolean,CleanArc.Application.Features.KBMedia.Queries.GetAllKBMedia.GetAllKBMediaQuery,System.Collections.Generic.List{CleanArc.Application.Features.KBMedia.Queries.GetAllKBMedia.GetAllKBMediaQueryResult},CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById.GetKBMediaByIdQuery,CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById.GetKBMediaByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.Language.LanguageController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.Language.LanguageController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.Language.Command.CreateLanguageCommand.CreateLanguageCommand,CleanArc.Application.Features.Language.Command.UpdateLanguageCommand.UpdateLanguageCommand,CleanArc.Application.Features.Language.Command.DeleteLanguageCommand.DeleteLanguageCommand,System.Boolean,CleanArc.Application.Features.Language.Queries.GetAllLanguages.GetAllLanguagesQuery,System.Collections.Generic.List{CleanArc.Application.Features.Language.Queries.GetAllLanguages.GetAllLanguagesQueryResult},CleanArc.Application.Features.Language.Queries.GetLanguageById.GetLanguageByIdQuery,CleanArc.Application.Features.Language.Queries.GetLanguageById.GetLanguageByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>

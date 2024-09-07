@@ -92,6 +92,7 @@ public class UnitOfWork : IUnitOfWork
     public IKBDetailRepository KBDetailRepository { get; set; }
     public IKBCRelatedUrlLinkRepository KBCRelatedUrlLinkRepository { get; set; }
     public IKBDescriptionRepository KBDescriptionRepository { get; set; }
+    public IKBMediaRepository KBMediaRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -174,6 +175,7 @@ public class UnitOfWork : IUnitOfWork
                                             ILogger<KBDetailRepository> _loggerKBDetail,
                                             ILogger<KBCRelatedUrlLinkRepository> _loggerKBCRelatedUrlLink,
                                             ILogger<KBDescriptionRepository> _loggerKBDescription,
+           ILogger<KBMediaRepository> _loggerKBMedia,
 
 
 
@@ -261,6 +263,7 @@ public class UnitOfWork : IUnitOfWork
         KBDetailRepository = new KBDetailRepository(configuration, mapper, _loggerKBDetail, httpContextAccessor);
         KBCRelatedUrlLinkRepository = new KBCRelatedUrlLinkRepository(configuration, mapper, _loggerKBCRelatedUrlLink, httpContextAccessor);
         KBDescriptionRepository = new KBDescriptionRepository(configuration, mapper, _loggerKBDescription, httpContextAccessor);
+        KBMediaRepository = new KBMediaRepository(configuration, mapper, _loggerKBMedia, httpContextAccessor);
 
         this.configuration = configuration;
 
