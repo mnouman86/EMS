@@ -82,6 +82,8 @@ public interface IUnitOfWork
     public ICarRentalSearchFilterRepository CarRentalSearchFilterRepository { get; }
     public IKBDetailRepository KBDetailRepository { get; }
     public IKBCRelatedUrlLinkRepository KBCRelatedUrlLinkRepository { get; }
+    public IKBDescriptionRepository KBDescriptionRepository { get; }
+
 
 
 

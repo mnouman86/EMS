@@ -435,6 +435,15 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.KBDescription.KBDescriptionController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.KBDescription.KBDescriptionController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.KBDescription.Commands.CreateKBDescriptionCommand.CreateKBDescriptionCommand,CleanArc.Application.Features.KBDescription.Commands.UpdateKBDescriptionCommand.UpdateKBDescriptionCommand,CleanArc.Application.Features.KBDescription.Commands.DeleteKBDescriptionCommand.DeleteKBDescriptionCommand,System.Boolean,CleanArc.Application.Features.KBDescription.Queries.GetAllKBDescription.GetAllKBDescriptionQuery,System.Collections.Generic.List{CleanArc.Application.Features.KBDescription.Queries.GetAllKBDescription.GetAllKBDescriptionQueryResult},CleanArc.Application.Features.KBDescription.Queries.GetKBDescriptionById.GetKBDescriptionByIdQuery,CleanArc.Application.Features.KBDescription.Queries.GetKBDescriptionById.GetKBDescriptionByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.KBDescription.KBDescriptionController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.KBDetail.Commands.CreateKBDetailCommand.CreateKBDetailCommand,CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand,CleanArc.Application.Features.KBDetail.Commands.DeleteKBDetailCommand.DeleteKBDetailCommand,System.Boolean,CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQuery,System.Collections.Generic.List{CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQueryResult},CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById.GetKBDetailByIdQuery,CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById.GetKBDetailByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
