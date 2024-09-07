@@ -2117,3 +2117,1404 @@ WHERE [u].[UserId] = @__p_0
 2024-09-07 13:43:49.515 +05:00 [INF] Response StatusCode: 200
 2024-09-07 13:43:49.529 +05:00 [INF] Response StatusCode: 200
 2024-09-07 13:43:49.542 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDescription/Update application/json 213 - 200 - application/json;+charset=utf-8 8422.1505ms
+2024-09-07 15:45:40.575 +05:00 [INF] Executed DbCommand (76ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-07 15:45:40.893 +05:00 [INF] Executed DbCommand (119ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-07 15:45:40.925 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-07 15:45:40.972 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-07 15:45:41.077 +05:00 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-07 15:45:41.219 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-07 15:45:41.309 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-07 15:45:42.095 +05:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-07 15:45:42.150 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-07 15:45:43.837 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-07 15:45:45.136 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-07 15:45:45.720 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-07 15:45:46.318 +05:00 [INF] Response StatusCode: 200
+2024-09-07 15:45:46.384 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 1256.2745ms
+2024-09-07 15:45:46.961 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-07 15:45:46.999 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-07 15:45:47.132 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 113.2877ms
+2024-09-07 15:45:47.244 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 283.6629ms
+2024-09-07 15:45:48.163 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-07 15:45:48.173 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-07 15:45:48.201 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-07 15:45:48.211 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-07 15:45:48.774 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-07 15:45:48.790 +05:00 [INF] Response StatusCode: 404
+2024-09-07 15:45:48.832 +05:00 [INF] Response StatusCode: 404
+2024-09-07 15:45:48.847 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 683.9758ms
+2024-09-07 15:45:51.477 +05:00 [INF] Response StatusCode: 200
+2024-09-07 15:45:51.494 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 3292.6202ms
+2024-09-07 15:46:43.140 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBMedia/GetAll application/json 171
+2024-09-07 15:46:43.161 +05:00 [INF] CORS policy execution successful.
+2024-09-07 15:46:43.186 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/GetAll, Content-Type: application/json
+2024-09-07 15:46:43.216 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-07 15:46:43.256 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/GetAll, Content-Type: application/json
+2024-09-07 15:46:43.266 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-07 15:46:43.282 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetAll (CleanArc.Web.Api)'
+2024-09-07 15:46:43.410 +05:00 [INF] Route matched with {action = "GetAll", controller = "KBMedia"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.KBMedia.Queries.GetAllKBMedia.GetAllKBMediaQuery) on controller CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController (CleanArc.Web.Api).
+2024-09-07 15:46:47.670 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-07 15:46:48.136 +05:00 [INF] Entering CleanArc.Application.Features.KBMedia.Queries.GetAllKBMedia, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-07 15:46:48.452 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-07 15:46:49.222 +05:00 [INF] Exiting null, GetAllAsync
+2024-09-07 15:46:49.287 +05:00 [INF] Exiting null, Handle
+2024-09-07 15:46:49.425 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetAll (CleanArc.Web.Api) in 5981.6506ms
+2024-09-07 15:46:49.444 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetAll (CleanArc.Web.Api)'
+2024-09-07 15:46:49.913 +05:00 [ERR] Could not find stored procedure 'GetAll_KBMedia'.
+System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'GetAll_KBMedia'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.KBMediaRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBMediaRepository.cs:line 143
+   at CleanArc.Application.Features.KBMedia.Queries.GetAllKBMedia.GetAllKBMediaQueryHandler.Handle(GetAllKBMediaQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\KBMedia\Queries\GetAllKBMedia\GetAllKBMediaQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:d7bce0db-4b00-44ba-9f4d-d04f369985f8
+Error Number:2812,State:1,Class:16
+2024-09-07 15:46:50.194 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBMedia/GetAll application/json 171 - 500 0 - 7054.4583ms
+2024-09-07 15:48:43.339 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-07 15:48:43.471 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-07 15:48:43.498 +05:00 [INF] Response StatusCode: 200
+2024-09-07 15:48:43.550 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 211.9427ms
+2024-09-07 15:48:44.018 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-07 15:48:44.022 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-07 15:48:44.042 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 23.6816ms
+2024-09-07 15:48:44.226 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 204.8778ms
+2024-09-07 15:48:45.147 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-07 15:48:45.161 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-07 15:48:45.182 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-07 15:48:45.188 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-07 15:48:45.211 +05:00 [INF] Response StatusCode: 404
+2024-09-07 15:48:45.222 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-07 15:48:45.235 +05:00 [INF] Response StatusCode: 404
+2024-09-07 15:48:45.265 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 117.5284ms
+2024-09-07 15:48:46.450 +05:00 [INF] Response StatusCode: 200
+2024-09-07 15:48:46.463 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1274.5264ms
+2024-09-07 15:49:38.138 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBMedia/GetAll application/json 171
+2024-09-07 15:49:38.195 +05:00 [INF] CORS policy execution successful.
+2024-09-07 15:49:38.208 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/GetAll, Content-Type: application/json
+2024-09-07 15:49:38.225 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-07 15:49:38.296 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/GetAll, Content-Type: application/json
+2024-09-07 15:49:38.310 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-07 15:49:38.320 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetAll (CleanArc.Web.Api)'
+2024-09-07 15:49:38.332 +05:00 [INF] Route matched with {action = "GetAll", controller = "KBMedia"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.KBMedia.Queries.GetAllKBMedia.GetAllKBMediaQuery) on controller CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController (CleanArc.Web.Api).
+2024-09-07 15:49:43.429 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-07 15:49:44.141 +05:00 [INF] Entering CleanArc.Application.Features.KBMedia.Queries.GetAllKBMedia, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-07 15:49:44.183 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-07 15:49:46.665 +05:00 [INF] Exiting null, GetAllAsync with response: []
+2024-09-07 15:49:46.979 +05:00 [INF] Exiting null, Handle with response: []
+2024-09-07 15:49:47.013 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3127.2181ms.
+2024-09-07 15:49:47.073 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-07 15:49:47.196 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetAll (CleanArc.Web.Api) in 8846.9065ms
+2024-09-07 15:49:47.204 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetAll (CleanArc.Web.Api)'
+2024-09-07 15:49:47.215 +05:00 [INF] Response StatusCode: 200
+2024-09-07 15:49:47.222 +05:00 [INF] Response StatusCode: 200
+2024-09-07 15:49:47.232 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBMedia/GetAll application/json 171 - 200 - application/json;+charset=utf-8 9093.5808ms
+2024-09-07 15:52:23.318 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 50
+2024-09-07 15:52:23.362 +05:00 [INF] CORS policy execution successful.
+2024-09-07 15:52:23.369 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-09-07 15:52:23.379 +05:00 [INF] Request Body: {
+  "userName": "waqas",
+  "password": "123@123"
+}
+2024-09-07 15:52:23.389 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-09-07 15:52:23.430 +05:00 [INF] Request Body: {
+  "userName": "waqas",
+  "password": "123@123"
+}
+2024-09-07 15:52:23.437 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-09-07 15:52:23.455 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-09-07 15:52:26.659 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-07 15:52:26.678 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"waqas","Password":"123@123"}
+2024-09-07 15:52:26.753 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"waqas","Password":"123@123","$type":"AdminGetTokenQuery"}
+2024-09-07 15:52:27.004 +05:00 [INF] Executed DbCommand (51ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-09-07 15:52:27.301 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"e9f5ccc8-85d1-4838-83a5-e6b00219cadc","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":2,"$type":"User"}
+2024-09-07 15:52:27.373 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-09-07 15:52:27.761 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-07 15:52:27.908 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-07 15:52:28.040 +05:00 [INF] Response StatusCode: 200
+2024-09-07 15:52:28.048 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 287.9089ms
+2024-09-07 15:52:28.092 +05:00 [INF] Executed DbCommand (19ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-09-07 15:52:28.109 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-07 15:52:28.111 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-07 15:52:28.128 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 19.1011ms
+2024-09-07 15:52:28.155 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 45.9888ms
+2024-09-07 15:52:28.201 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-09-07 15:52:28.248 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-09-07 15:52:28.314 +05:00 [INF] Executed DbCommand (27ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-09-07 15:52:28.414 +05:00 [INF] Executed DbCommand (15ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-09-07 15:52:29.558 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-07 15:52:29.567 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-07 15:52:29.607 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-07 15:52:29.619 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-07 15:52:29.627 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-07 15:52:29.634 +05:00 [INF] Response StatusCode: 404
+2024-09-07 15:52:29.649 +05:00 [INF] Response StatusCode: 404
+2024-09-07 15:52:29.665 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 107.4523ms
+2024-09-07 15:52:29.704 +05:00 [INF] Executed DbCommand (55ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-09-07 15:52:47.850 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-09-07 15:52:47.881 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.BV0frircvhhNsZfiBBXhjosJ4ELLdVO46OQNOZJ_on73dhK2ZwD7ug.-3uocm29z6okr5fEje0MrA.4-11dfauwz15I8llPR8AHJZc-F9gBADwp2oo0WLtm0c5NxAIoNYcCzqYC6435v8BN7w-MmcrBsYDRgfIKQWPV99PiYKIZTtY0qYft0OA-RXuS-jCUi9kpodWsDH6mH1fq5u6pVf4nR5IrY-SjhwDS2BZiV-AsDEg3NoXrf0K9WQwRJ79d9BgMJRE8PbU8K8eoqjywnp4hN5YWo2hsn2p8A5RYcwHmso7CNiCSkoe9i01pme0ILXoF9DTH1jQ3BgkUajOP1hdpWlbJnGqe1IIEgX8PXGSBd_H0rd6o-tFOQpzYY7NdYayj-PbqHyw9Mybvc1ZcbhfxdbnMtr3POt6Fj75Mxqw1loRcEZdnTm3bWUURKi-Ejn9vzAnxbCChSRRxuFUNBrNkQ0wvmC9Y8Ifw7jW8yLMd3_Aou_JxfrkJomXAwrGX-Lkg5VhCiTeTwHhszvurr0INZW_k-vrqEJg419398ZUtF1HykAjUPYDS2yu_m3JvGOfBBHtsa27C7Gwxpn_va5xnWQy6WZWhd7LTl18FvfeoRUp80cJfGoRgpsHGiNjo5PRKnI8thUj0I_RgdUhlpsKNeVcrOfqHHlSka5tZPjMb149Xsf_rFtMCOM6LNWQvNtUOwvEhtKxbm4I29TJizXPfwCfBJ_KR0Idt0nu5ubA8qHUENvSl77rXKnLBFkVmSmc6OZyLfYwsuOC.J7fKnU8j9404NJ41UM36YQ","refresh_token":"80d448bb-48d0-4423-a794-08dccf2b2ab8","token_type":"Bearer","expires_in":599980,"userID":5},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-09-07 15:52:47.901 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 21235.4683ms.
+2024-09-07 15:52:47.912 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-07 15:52:47.936 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 24470.8279ms
+2024-09-07 15:52:47.947 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-09-07 15:52:47.955 +05:00 [INF] Response StatusCode: 200
+2024-09-07 15:52:47.968 +05:00 [INF] Response StatusCode: 200
+2024-09-07 15:52:47.977 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 50 - 0 - application/json;+charset=utf-8 24659.3487ms
+2024-09-07 15:52:49.331 +05:00 [INF] Response StatusCode: 200
+2024-09-07 15:52:49.339 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 19732.1999ms
+2024-09-07 15:53:14.538 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 50
+2024-09-07 15:53:14.575 +05:00 [INF] CORS policy execution successful.
+2024-09-07 15:53:14.588 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-09-07 15:53:14.601 +05:00 [INF] Request Body: {
+  "userName": "waqas",
+  "password": "123@123"
+}
+2024-09-07 15:53:14.619 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-09-07 15:53:14.629 +05:00 [INF] Request Body: {
+  "userName": "waqas",
+  "password": "123@123"
+}
+2024-09-07 15:53:14.639 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-09-07 15:53:14.658 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-09-07 15:53:44.960 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-07 15:53:44.974 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"waqas","Password":"123@123"}
+2024-09-07 15:53:45.016 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"waqas","Password":"123@123","$type":"AdminGetTokenQuery"}
+2024-09-07 15:53:45.073 +05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-09-07 15:53:45.102 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"e9f5ccc8-85d1-4838-83a5-e6b00219cadc","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":2,"$type":"User"}
+2024-09-07 15:53:45.203 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-09-07 15:53:45.398 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-09-07 15:53:45.426 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-09-07 15:53:45.452 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-09-07 15:53:45.477 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-09-07 15:53:45.504 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-09-07 15:53:45.545 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-09-07 15:53:57.019 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-09-07 15:53:57.029 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.dN1CLw09RMgl308XEmxuJhf6igBIK7P3Cnisfh4BDKnhAiZh7-J9Tw.z_0vMziscEFztpyYXCipYA.b1grBKFSUHuCs2yFf-CCC9lCuaQ35OM85kGIMGpwPhZBo9xJQW8Hz5YCK3f6upgHrT2AS3EqJOuNPEalItNRsSFG_FK_PyQV1V0YqdQst9leX2NvWrVPuuDGoYRlzaA1-TuCidoXHdxv9ia30JxEYfHprtat_DSg5RHv8rQaekfjzCTBWiU1Ssdd3D-rykYYyW_H4oyaC_piIG-ShnjYv-XIL6LmdwxH6xPkYpDhU4AphobTXufxhq8o3XtBaq1ZwoLbbBnjwULwAgvtI1UbbTKDz03ZdUOVzEmaEBX2CbXFGmZ8eSs12N1cvsJA1-1jA0X3lQyYv76C2PC6qxUQ6bHdg5pgm39XJqrHOzpg-rUW-KN7Xo8WrcbF27d5_ZEYg8GOLHDI6lN0U3M2s-Hw_uHRXUzgg8clo_COd9b4tYjfDSMvJU62ieimoM00Xeu9he5ONUqriR7HSjx19SrGwk874gg5np-vhvJrkq3MwqC4EgJvhzdxKSNScFjafX_x6azuQ2WGc4lfOg9taXvNWdJyxBuu9sym_VYr24HnhO4huLyl4BSDToUUQpmxoCkSuRMalN93CDDQJJKLQj25c34NLjP8nIQJkPaByudNoTa_c3pdX2wnNbbR1jfYH4P87NZseU_pLt0Yx4_qTqecwVYgMlFw6aE9M__JqUN3Qm0xCSW5HT-47qXFE0iKT_gK.4xeEjSf-TXezo_9h2StZOg","refresh_token":"380ed304-e44f-40a9-a795-08dccf2b2ab8","token_type":"Bearer","expires_in":599987,"userID":5},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-09-07 15:53:57.044 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 12070.644ms.
+2024-09-07 15:53:57.057 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-07 15:53:57.069 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 42397.6754ms
+2024-09-07 15:53:57.086 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-09-07 15:53:57.100 +05:00 [INF] Response StatusCode: 200
+2024-09-07 15:53:57.114 +05:00 [INF] Response StatusCode: 200
+2024-09-07 15:53:57.128 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 50 - 200 - application/json;+charset=utf-8 42589.2063ms
+2024-09-07 15:55:28.775 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 147
+2024-09-07 15:55:28.829 +05:00 [INF] CORS policy execution successful.
+2024-09-07 15:55:28.843 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 15:55:28.860 +05:00 [INF] Request Body: {
+  "kbDescriptionID": 2,
+  "mediaType": "Test",
+  "imagePath": "Test",
+  "imageTitle": "Test",
+  "isMain": 1,
+  "createdBy": 0,
+  "cultureId": 0
+}
+2024-09-07 15:55:29.219 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-07 15:55:29.272 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 15:55:29.283 +05:00 [INF] Request Body: {
+  "kbDescriptionID": 2,
+  "mediaType": "Test",
+  "imagePath": "Test",
+  "imageTitle": "Test",
+  "isMain": 1,
+  "createdBy": 0,
+  "cultureId": 0
+}
+2024-09-07 15:55:29.293 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 15:55:29.319 +05:00 [INF] Route matched with {action = "Create", controller = "KBMedia"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommand) on controller CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController (CleanArc.Web.Api).
+2024-09-07 15:55:33.545 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-09-07 15:55:33.562 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) in 4223.6796ms
+2024-09-07 15:55:33.579 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 15:55:33.593 +05:00 [INF] Response StatusCode: 400
+2024-09-07 15:55:33.606 +05:00 [INF] Response StatusCode: 400
+2024-09-07 15:55:33.621 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 147 - 400 - application/json;+charset=utf-8 4846.4966ms
+2024-09-07 15:57:14.646 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 150
+2024-09-07 15:57:14.678 +05:00 [INF] CORS policy execution successful.
+2024-09-07 15:57:14.701 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 15:57:14.717 +05:00 [INF] Request Body: {
+  "kbDescriptionID": 2,
+  "mediaType": "Test",
+  "imagePath": "Test",
+  "imageTitle": "Test",
+  "isMain": true,
+  "createdBy": 0,
+  "cultureId": 0
+}
+2024-09-07 15:57:14.781 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-07 15:57:14.815 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 15:57:14.834 +05:00 [INF] Request Body: {
+  "kbDescriptionID": 2,
+  "mediaType": "Test",
+  "imagePath": "Test",
+  "imageTitle": "Test",
+  "isMain": true,
+  "createdBy": 0,
+  "cultureId": 0
+}
+2024-09-07 15:57:14.848 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 15:57:14.862 +05:00 [INF] Route matched with {action = "Create", controller = "KBMedia"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommand) on controller CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController (CleanArc.Web.Api).
+2024-09-07 15:57:17.925 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-07 15:57:19.800 +05:00 [INF] Entering CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand, Handle with parameter: {"KBDescriptionID":2,"MediaType":"Test","ImagePath":"Test","ImageTitle":"Test","IsMain":true,"CreatedBy":0,"CultureId":0,"UserId":5}
+2024-09-07 15:57:19.819 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-09-07 15:57:19.857 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"e9f5ccc8-85d1-4838-83a5-e6b00219cadc","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":2}
+2024-09-07 15:57:19.895 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"KBDescriptionID":2,"MediaType":"Test","ImagePath":"Test","ImageTitle":"Test","IsMain":true,"IsActive":null,"IsDeleted":null,"CreatedBy":5,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":0,"Code":null,"Message":null}
+2024-09-07 15:57:20.131 +05:00 [INF] Exiting null, AddAsync
+2024-09-07 15:57:20.199 +05:00 [INF] Exiting null, Handle
+2024-09-07 15:57:20.335 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) in 5453.1108ms
+2024-09-07 15:57:20.353 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 15:57:20.715 +05:00 [ERR] Procedure or function Create_KBMedia has too many arguments specified.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function Create_KBMedia has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at CleanArc.Infrastructure.Persistence.Repositories.KBMediaRepository.AddAsync(KBMedia KBMedia) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBMediaRepository.cs:line 84
+   at CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommandHandler.Handle(CreateKBMediaCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\KBMedia\Commands\CreateKBMediaCommand\CreateKBMediaCommand.Handler.cs:line 60
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Create(TCreateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 115
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:8935d810-7ce2-41a5-826b-509f7fbad66f
+Error Number:8144,State:2,Class:16
+2024-09-07 15:57:20.782 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 150 - 500 0 - 6135.9943ms
+2024-09-07 15:57:54.209 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 150
+2024-09-07 15:57:54.248 +05:00 [INF] CORS policy execution successful.
+2024-09-07 15:57:54.263 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 15:57:54.276 +05:00 [INF] Request Body: {
+  "kbDescriptionID": 2,
+  "mediaType": "Test",
+  "imagePath": "Test",
+  "imageTitle": "Test",
+  "isMain": true,
+  "createdBy": 0,
+  "cultureId": 0
+}
+2024-09-07 15:57:54.331 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-07 15:57:54.382 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 15:57:54.425 +05:00 [INF] Request Body: {
+  "kbDescriptionID": 2,
+  "mediaType": "Test",
+  "imagePath": "Test",
+  "imageTitle": "Test",
+  "isMain": true,
+  "createdBy": 0,
+  "cultureId": 0
+}
+2024-09-07 15:57:54.464 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 15:57:54.519 +05:00 [INF] Route matched with {action = "Create", controller = "KBMedia"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommand) on controller CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController (CleanArc.Web.Api).
+2024-09-07 15:57:59.294 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-07 15:58:00.561 +05:00 [INF] Entering CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand, Handle with parameter: {"KBDescriptionID":2,"MediaType":"Test","ImagePath":"Test","ImageTitle":"Test","IsMain":true,"CreatedBy":0,"CultureId":0,"UserId":5}
+2024-09-07 15:58:00.578 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-09-07 15:58:00.592 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"e9f5ccc8-85d1-4838-83a5-e6b00219cadc","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":2}
+2024-09-07 15:58:08.626 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"KBDescriptionID":2,"MediaType":"Test","ImagePath":"Test","ImageTitle":"Test","IsMain":true,"IsActive":null,"IsDeleted":null,"CreatedBy":5,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":0,"Code":null,"Message":null}
+2024-09-07 15:58:38.379 +05:00 [INF] Exiting null, AddAsync
+2024-09-07 15:58:44.969 +05:00 [INF] Exiting null, Handle
+2024-09-07 15:58:49.109 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) in 54551.9085ms
+2024-09-07 15:58:49.118 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 15:59:04.618 +05:00 [ERR] Procedure or function Create_KBMedia has too many arguments specified.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function Create_KBMedia has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at CleanArc.Infrastructure.Persistence.Repositories.KBMediaRepository.AddAsync(KBMedia KBMedia) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBMediaRepository.cs:line 84
+   at CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommandHandler.Handle(CreateKBMediaCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\KBMedia\Commands\CreateKBMediaCommand\CreateKBMediaCommand.Handler.cs:line 60
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Create(TCreateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 115
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:8935d810-7ce2-41a5-826b-509f7fbad66f
+Error Number:8144,State:2,Class:16
+2024-09-07 15:59:04.687 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 150 - 500 0 - 70478.2958ms
+2024-09-07 16:00:12.228 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 150
+2024-09-07 16:00:12.270 +05:00 [INF] CORS policy execution successful.
+2024-09-07 16:00:12.286 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 16:00:12.294 +05:00 [INF] Request Body: {
+  "kbDescriptionID": 2,
+  "mediaType": "Test",
+  "imagePath": "Test",
+  "imageTitle": "Test",
+  "isMain": true,
+  "createdBy": 1,
+  "cultureId": 0
+}
+2024-09-07 16:00:12.321 +05:00 [INF] Executed DbCommand (14ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-07 16:00:12.334 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 16:00:12.342 +05:00 [INF] Request Body: {
+  "kbDescriptionID": 2,
+  "mediaType": "Test",
+  "imagePath": "Test",
+  "imageTitle": "Test",
+  "isMain": true,
+  "createdBy": 1,
+  "cultureId": 0
+}
+2024-09-07 16:00:12.351 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 16:00:12.359 +05:00 [INF] Route matched with {action = "Create", controller = "KBMedia"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommand) on controller CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController (CleanArc.Web.Api).
+2024-09-07 16:00:16.878 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-07 16:00:18.349 +05:00 [INF] Entering CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand, Handle with parameter: {"KBDescriptionID":2,"MediaType":"Test","ImagePath":"Test","ImageTitle":"Test","IsMain":true,"CreatedBy":1,"CultureId":0,"UserId":5}
+2024-09-07 16:00:18.359 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-09-07 16:00:18.368 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"e9f5ccc8-85d1-4838-83a5-e6b00219cadc","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":2}
+2024-09-07 16:00:47.883 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"KBDescriptionID":2,"MediaType":"Test","ImagePath":"Test","ImageTitle":"Test","IsMain":true,"IsActive":null,"IsDeleted":null,"CreatedBy":5,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":0,"Code":null,"Message":null}
+2024-09-07 16:00:49.704 +05:00 [INF] Exiting null, AddAsync
+2024-09-07 16:00:49.755 +05:00 [INF] Exiting null, Handle
+2024-09-07 16:00:49.880 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) in 37509.9044ms
+2024-09-07 16:00:49.896 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 16:00:50.266 +05:00 [ERR] Procedure or function Create_KBMedia has too many arguments specified.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function Create_KBMedia has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at CleanArc.Infrastructure.Persistence.Repositories.KBMediaRepository.AddAsync(KBMedia KBMedia) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBMediaRepository.cs:line 84
+   at CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommandHandler.Handle(CreateKBMediaCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\KBMedia\Commands\CreateKBMediaCommand\CreateKBMediaCommand.Handler.cs:line 60
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Create(TCreateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 115
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:8935d810-7ce2-41a5-826b-509f7fbad66f
+Error Number:8144,State:2,Class:16
+2024-09-07 16:00:50.400 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 150 - 500 0 - 38172.4600ms
+2024-09-07 16:01:04.412 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 150
+2024-09-07 16:01:04.423 +05:00 [INF] CORS policy execution successful.
+2024-09-07 16:01:04.433 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 16:01:04.449 +05:00 [INF] Request Body: {
+  "kbDescriptionID": 2,
+  "mediaType": "Test",
+  "imagePath": "Test",
+  "imageTitle": "Test",
+  "isMain": true,
+  "createdBy": 1,
+  "cultureId": 1
+}
+2024-09-07 16:01:04.479 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-07 16:01:04.496 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 16:01:04.508 +05:00 [INF] Request Body: {
+  "kbDescriptionID": 2,
+  "mediaType": "Test",
+  "imagePath": "Test",
+  "imageTitle": "Test",
+  "isMain": true,
+  "createdBy": 1,
+  "cultureId": 1
+}
+2024-09-07 16:01:04.538 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 16:01:04.626 +05:00 [INF] Route matched with {action = "Create", controller = "KBMedia"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommand) on controller CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController (CleanArc.Web.Api).
+2024-09-07 16:01:08.471 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-07 16:01:09.521 +05:00 [INF] Entering CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand, Handle with parameter: {"KBDescriptionID":2,"MediaType":"Test","ImagePath":"Test","ImageTitle":"Test","IsMain":true,"CreatedBy":1,"CultureId":1,"UserId":5}
+2024-09-07 16:01:09.531 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-09-07 16:01:09.542 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"e9f5ccc8-85d1-4838-83a5-e6b00219cadc","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":2}
+2024-09-07 16:01:10.721 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"KBDescriptionID":2,"MediaType":"Test","ImagePath":"Test","ImageTitle":"Test","IsMain":true,"IsActive":null,"IsDeleted":null,"CreatedBy":5,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null}
+2024-09-07 16:01:11.662 +05:00 [INF] Exiting null, AddAsync
+2024-09-07 16:01:11.742 +05:00 [INF] Exiting null, Handle
+2024-09-07 16:01:11.909 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) in 7227.5112ms
+2024-09-07 16:01:11.920 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 16:01:12.295 +05:00 [ERR] Procedure or function Create_KBMedia has too many arguments specified.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function Create_KBMedia has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at CleanArc.Infrastructure.Persistence.Repositories.KBMediaRepository.AddAsync(KBMedia KBMedia) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBMediaRepository.cs:line 84
+   at CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommandHandler.Handle(CreateKBMediaCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\KBMedia\Commands\CreateKBMediaCommand\CreateKBMediaCommand.Handler.cs:line 60
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Create(TCreateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 115
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:8935d810-7ce2-41a5-826b-509f7fbad66f
+Error Number:8144,State:2,Class:16
+2024-09-07 16:01:12.356 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 150 - 500 0 - 7944.2011ms
+2024-09-07 16:01:39.392 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-07 16:01:39.492 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-07 16:01:39.537 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:01:39.555 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 162.8395ms
+2024-09-07 16:01:39.585 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-07 16:01:39.590 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-07 16:01:39.653 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 63.2675ms
+2024-09-07 16:01:39.789 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 204.4074ms
+2024-09-07 16:01:41.182 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-07 16:01:41.189 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-07 16:01:41.225 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-07 16:01:41.233 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-07 16:01:41.276 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-07 16:01:41.343 +05:00 [INF] Response StatusCode: 404
+2024-09-07 16:01:41.377 +05:00 [INF] Response StatusCode: 404
+2024-09-07 16:01:41.391 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 209.5960ms
+2024-09-07 16:01:42.772 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:01:42.786 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1596.5786ms
+2024-09-07 16:02:26.184 +05:00 [INF] Executed DbCommand (43ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-07 16:02:26.578 +05:00 [INF] Executed DbCommand (99ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-07 16:02:26.602 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-07 16:02:26.619 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-07 16:02:26.705 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-07 16:02:26.893 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-07 16:02:26.945 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-07 16:02:27.722 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-07 16:02:27.761 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-07 16:02:29.306 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-07 16:02:30.951 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-07 16:02:31.765 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-07 16:02:32.390 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:02:32.434 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 1493.2206ms
+2024-09-07 16:02:32.907 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-07 16:02:32.907 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-07 16:02:32.943 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 35.2020ms
+2024-09-07 16:02:33.172 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 265.1370ms
+2024-09-07 16:02:35.553 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-07 16:02:35.555 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-07 16:02:35.607 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-07 16:02:35.615 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-07 16:02:36.090 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-07 16:02:36.102 +05:00 [INF] Response StatusCode: 404
+2024-09-07 16:02:36.111 +05:00 [INF] Response StatusCode: 404
+2024-09-07 16:02:36.120 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 567.0942ms
+2024-09-07 16:02:38.228 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:02:38.263 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 2710.6427ms
+2024-09-07 16:03:41.870 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 150
+2024-09-07 16:03:41.887 +05:00 [INF] CORS policy execution successful.
+2024-09-07 16:03:41.902 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 16:03:41.921 +05:00 [INF] Request Body: {
+  "kbDescriptionID": 2,
+  "mediaType": "Test",
+  "imagePath": "Test",
+  "imageTitle": "Test",
+  "isMain": true,
+  "createdBy": 1,
+  "cultureId": 1
+}
+2024-09-07 16:03:42.570 +05:00 [INF] Executed DbCommand (43ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-07 16:03:42.872 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 16:03:42.885 +05:00 [INF] Request Body: {
+  "kbDescriptionID": 2,
+  "mediaType": "Test",
+  "imagePath": "Test",
+  "imageTitle": "Test",
+  "isMain": true,
+  "createdBy": 1,
+  "cultureId": 1
+}
+2024-09-07 16:03:42.898 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 16:03:43.015 +05:00 [INF] Route matched with {action = "Create", controller = "KBMedia"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommand) on controller CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController (CleanArc.Web.Api).
+2024-09-07 16:03:46.442 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-07 16:03:47.671 +05:00 [INF] Entering CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand, Handle with parameter: {"KBDescriptionID":2,"MediaType":"Test","ImagePath":"Test","ImageTitle":"Test","IsMain":true,"CreatedBy":1,"CultureId":1,"UserId":5}
+2024-09-07 16:03:47.685 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-09-07 16:03:47.740 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"e9f5ccc8-85d1-4838-83a5-e6b00219cadc","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":2}
+2024-09-07 16:03:49.005 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"KBDescriptionID":2,"MediaType":"Test","ImagePath":"Test","ImageTitle":"Test","IsMain":true,"IsActive":null,"IsDeleted":null,"CreatedBy":5,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null}
+2024-09-07 16:03:52.999 +05:00 [INF] Exiting null, AddAsync
+2024-09-07 16:03:53.048 +05:00 [INF] Exiting null, Handle
+2024-09-07 16:03:53.180 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) in 10136.3255ms
+2024-09-07 16:03:53.194 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 16:03:53.926 +05:00 [ERR] Procedure or function Create_KBMedia has too many arguments specified.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function Create_KBMedia has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at CleanArc.Infrastructure.Persistence.Repositories.KBMediaRepository.AddAsync(KBMedia KBMedia) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBMediaRepository.cs:line 84
+   at CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommandHandler.Handle(CreateKBMediaCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\KBMedia\Commands\CreateKBMediaCommand\CreateKBMediaCommand.Handler.cs:line 60
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Create(TCreateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 115
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:48a5287f-0a3c-4e6b-b77c-15f18d1bf09d
+Error Number:8144,State:2,Class:16
+2024-09-07 16:03:54.372 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 150 - 500 0 - 12501.6200ms
+2024-09-07 16:04:11.278 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 150
+2024-09-07 16:04:11.295 +05:00 [INF] CORS policy execution successful.
+2024-09-07 16:04:11.324 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 16:04:11.335 +05:00 [INF] Request Body: {
+  "kbDescriptionID": 2,
+  "mediaType": "Test",
+  "imagePath": "Test",
+  "imageTitle": "Test",
+  "isMain": true,
+  "createdBy": 1,
+  "cultureId": 1
+}
+2024-09-07 16:04:11.586 +05:00 [INF] Executed DbCommand (22ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-07 16:04:11.619 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 16:04:11.635 +05:00 [INF] Request Body: {
+  "kbDescriptionID": 2,
+  "mediaType": "Test",
+  "imagePath": "Test",
+  "imageTitle": "Test",
+  "isMain": true,
+  "createdBy": 1,
+  "cultureId": 1
+}
+2024-09-07 16:04:11.649 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 16:04:11.669 +05:00 [INF] Route matched with {action = "Create", controller = "KBMedia"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommand) on controller CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController (CleanArc.Web.Api).
+2024-09-07 16:04:17.452 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-07 16:04:18.699 +05:00 [INF] Entering CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand, Handle with parameter: {"KBDescriptionID":2,"MediaType":"Test","ImagePath":"Test","ImageTitle":"Test","IsMain":true,"CreatedBy":1,"CultureId":1,"UserId":5}
+2024-09-07 16:04:18.712 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-09-07 16:04:18.723 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"e9f5ccc8-85d1-4838-83a5-e6b00219cadc","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":2}
+2024-09-07 16:04:19.652 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"KBDescriptionID":2,"MediaType":"Test","ImagePath":"Test","ImageTitle":"Test","IsMain":true,"IsActive":null,"IsDeleted":null,"CreatedBy":5,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null}
+2024-09-07 16:04:26.455 +05:00 [INF] Exiting null, AddAsync
+2024-09-07 16:04:30.506 +05:00 [INF] Exiting null, Handle
+2024-09-07 16:04:34.821 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) in 23126.6489ms
+2024-09-07 16:04:34.830 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 16:05:49.395 +05:00 [ERR] Procedure or function Create_KBMedia has too many arguments specified.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function Create_KBMedia has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at CleanArc.Infrastructure.Persistence.Repositories.KBMediaRepository.AddAsync(KBMedia KBMedia) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBMediaRepository.cs:line 84
+   at CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommandHandler.Handle(CreateKBMediaCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\KBMedia\Commands\CreateKBMediaCommand\CreateKBMediaCommand.Handler.cs:line 60
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Create(TCreateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 115
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:48a5287f-0a3c-4e6b-b77c-15f18d1bf09d
+Error Number:8144,State:2,Class:16
+2024-09-07 16:05:49.508 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 150 - 500 0 - 98229.7898ms
+2024-09-07 16:05:52.375 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 150
+2024-09-07 16:05:52.417 +05:00 [INF] CORS policy execution successful.
+2024-09-07 16:05:52.440 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 16:05:52.461 +05:00 [INF] Request Body: {
+  "kbDescriptionID": 2,
+  "mediaType": "Test",
+  "imagePath": "Test",
+  "imageTitle": "Test",
+  "isMain": true,
+  "createdBy": 1,
+  "cultureId": 1
+}
+2024-09-07 16:05:52.514 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-07 16:05:52.540 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 16:05:52.555 +05:00 [INF] Request Body: {
+  "kbDescriptionID": 2,
+  "mediaType": "Test",
+  "imagePath": "Test",
+  "imageTitle": "Test",
+  "isMain": true,
+  "createdBy": 1,
+  "cultureId": 1
+}
+2024-09-07 16:05:52.567 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 16:05:52.581 +05:00 [INF] Route matched with {action = "Create", controller = "KBMedia"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommand) on controller CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController (CleanArc.Web.Api).
+2024-09-07 16:06:00.071 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-07 16:06:01.265 +05:00 [INF] Entering CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand, Handle with parameter: {"KBDescriptionID":2,"MediaType":"Test","ImagePath":"Test","ImageTitle":"Test","IsMain":true,"CreatedBy":1,"CultureId":1,"UserId":5}
+2024-09-07 16:06:01.284 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-09-07 16:06:01.302 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"e9f5ccc8-85d1-4838-83a5-e6b00219cadc","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":2}
+2024-09-07 16:06:02.823 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"KBDescriptionID":2,"MediaType":"Test","ImagePath":"Test","ImageTitle":"Test","IsMain":true,"IsActive":null,"IsDeleted":null,"CreatedBy":5,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null}
+2024-09-07 16:06:03.877 +05:00 [INF] Exiting null, AddAsync
+2024-09-07 16:06:03.941 +05:00 [INF] Exiting null, Handle
+2024-09-07 16:06:04.094 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) in 11498.3458ms
+2024-09-07 16:06:04.122 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 16:06:04.481 +05:00 [ERR] Procedure or function Create_KBMedia has too many arguments specified.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function Create_KBMedia has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at CleanArc.Infrastructure.Persistence.Repositories.KBMediaRepository.AddAsync(KBMedia KBMedia) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBMediaRepository.cs:line 84
+   at CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommandHandler.Handle(CreateKBMediaCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\KBMedia\Commands\CreateKBMediaCommand\CreateKBMediaCommand.Handler.cs:line 60
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Create(TCreateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 115
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:48a5287f-0a3c-4e6b-b77c-15f18d1bf09d
+Error Number:8144,State:2,Class:16
+2024-09-07 16:06:04.544 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 150 - 500 0 - 12169.4538ms
+2024-09-07 16:08:56.091 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 150
+2024-09-07 16:08:56.145 +05:00 [INF] CORS policy execution successful.
+2024-09-07 16:08:56.179 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 16:08:56.194 +05:00 [INF] Request Body: {
+  "kbDescriptionID": 2,
+  "mediaType": "Test",
+  "imagePath": "Test",
+  "imageTitle": "Test",
+  "isMain": true,
+  "createdBy": 1,
+  "cultureId": 1
+}
+2024-09-07 16:08:56.234 +05:00 [INF] Executed DbCommand (21ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-07 16:08:56.251 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 16:08:56.269 +05:00 [INF] Request Body: {
+  "kbDescriptionID": 2,
+  "mediaType": "Test",
+  "imagePath": "Test",
+  "imageTitle": "Test",
+  "isMain": true,
+  "createdBy": 1,
+  "cultureId": 1
+}
+2024-09-07 16:08:56.286 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 16:08:56.302 +05:00 [INF] Route matched with {action = "Create", controller = "KBMedia"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommand) on controller CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController (CleanArc.Web.Api).
+2024-09-07 16:09:39.032 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-07 16:09:40.159 +05:00 [INF] Entering CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand, Handle with parameter: {"KBDescriptionID":2,"MediaType":"Test","ImagePath":"Test","ImageTitle":"Test","IsMain":true,"CreatedBy":1,"CultureId":1,"UserId":5}
+2024-09-07 16:09:40.178 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-09-07 16:09:40.198 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"e9f5ccc8-85d1-4838-83a5-e6b00219cadc","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":2}
+2024-09-07 16:09:40.839 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"KBDescriptionID":2,"MediaType":"Test","ImagePath":"Test","ImageTitle":"Test","IsMain":true,"IsActive":null,"IsDeleted":null,"CreatedBy":5,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null}
+2024-09-07 16:09:42.031 +05:00 [INF] Exiting null, AddAsync
+2024-09-07 16:09:42.106 +05:00 [INF] Exiting null, Handle
+2024-09-07 16:09:42.278 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) in 45956.242ms
+2024-09-07 16:09:42.296 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 16:09:42.794 +05:00 [ERR] Procedure or function Create_KBMedia has too many arguments specified.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function Create_KBMedia has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at CleanArc.Infrastructure.Persistence.Repositories.KBMediaRepository.AddAsync(KBMedia KBMedia) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBMediaRepository.cs:line 84
+   at CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommandHandler.Handle(CreateKBMediaCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\KBMedia\Commands\CreateKBMediaCommand\CreateKBMediaCommand.Handler.cs:line 60
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Create(TCreateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 115
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:48a5287f-0a3c-4e6b-b77c-15f18d1bf09d
+Error Number:8144,State:2,Class:16
+2024-09-07 16:09:42.854 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 150 - 500 0 - 46763.3811ms
+2024-09-07 16:18:07.396 +05:00 [INF] Executed DbCommand (50ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-07 16:18:07.659 +05:00 [INF] Executed DbCommand (115ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-07 16:18:07.687 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-07 16:18:07.732 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-07 16:18:07.820 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-07 16:18:07.940 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-07 16:18:07.992 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-07 16:18:08.609 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-07 16:18:08.652 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-07 16:18:09.827 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-07 16:18:11.303 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-07 16:18:11.725 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-07 16:18:12.188 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:18:12.213 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 942.0255ms
+2024-09-07 16:18:12.494 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-07 16:18:12.494 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-07 16:18:12.575 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 80.3889ms
+2024-09-07 16:18:12.692 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 197.5821ms
+2024-09-07 16:18:13.579 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-07 16:18:13.591 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-07 16:18:13.609 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-07 16:18:13.622 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-07 16:18:14.169 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-07 16:18:14.181 +05:00 [INF] Response StatusCode: 404
+2024-09-07 16:18:14.192 +05:00 [INF] Response StatusCode: 404
+2024-09-07 16:18:14.203 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 624.4243ms
+2024-09-07 16:18:16.860 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:18:16.897 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 3287.8550ms
+2024-09-07 16:19:58.925 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 199
+2024-09-07 16:19:59.016 +05:00 [INF] CORS policy execution successful.
+2024-09-07 16:19:59.025 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 16:19:59.037 +05:00 [INF] Request Body: {
+ "CultureId": 1,
+  "KBDescriptionID": 123,  
+  "MediaType": "Image",   
+  "ImagePath": "https://example.com/image.jpg", 
+  "ImageTitle": "Sample Image", 
+  "IsMain": true,   
+  "CreatedBy": 1,  
+
+}
+2024-09-07 16:19:59.785 +05:00 [INF] Executed DbCommand (38ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-07 16:20:00.205 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 16:20:00.212 +05:00 [INF] Request Body: {
+ "CultureId": 1,
+  "KBDescriptionID": 123,  
+  "MediaType": "Image",   
+  "ImagePath": "https://example.com/image.jpg", 
+  "ImageTitle": "Sample Image", 
+  "IsMain": true,   
+  "CreatedBy": 1,  
+
+}
+2024-09-07 16:20:00.228 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 16:20:00.297 +05:00 [INF] Route matched with {action = "Create", controller = "KBMedia"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommand) on controller CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController (CleanArc.Web.Api).
+2024-09-07 16:20:04.849 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-09-07 16:20:04.922 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) in 4595.4815ms
+2024-09-07 16:20:04.938 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 16:20:04.947 +05:00 [INF] Response StatusCode: 400
+2024-09-07 16:20:04.957 +05:00 [INF] Response StatusCode: 400
+2024-09-07 16:20:04.965 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 199 - 400 - application/json;+charset=utf-8 6039.8940ms
+2024-09-07 16:20:26.255 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 197
+2024-09-07 16:20:26.296 +05:00 [INF] CORS policy execution successful.
+2024-09-07 16:20:26.304 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 16:20:26.315 +05:00 [INF] Request Body: {
+ "CultureId": 1,
+  "KBDescriptionID": 2,  
+  "MediaType": "Image",   
+  "ImagePath": "https://example.com/image.jpg", 
+  "ImageTitle": "Sample Image", 
+  "IsMain": true,   
+  "CreatedBy": 1,  
+
+}
+2024-09-07 16:20:26.669 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-07 16:20:26.708 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 16:20:26.729 +05:00 [INF] Request Body: {
+ "CultureId": 1,
+  "KBDescriptionID": 2,  
+  "MediaType": "Image",   
+  "ImagePath": "https://example.com/image.jpg", 
+  "ImageTitle": "Sample Image", 
+  "IsMain": true,   
+  "CreatedBy": 1,  
+
+}
+2024-09-07 16:20:26.737 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 16:20:26.745 +05:00 [INF] Route matched with {action = "Create", controller = "KBMedia"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommand) on controller CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController (CleanArc.Web.Api).
+2024-09-07 16:20:30.405 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-09-07 16:20:30.418 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) in 3663.2886ms
+2024-09-07 16:20:30.430 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 16:20:30.440 +05:00 [INF] Response StatusCode: 400
+2024-09-07 16:20:30.450 +05:00 [INF] Response StatusCode: 400
+2024-09-07 16:20:30.460 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 197 - 400 - application/json;+charset=utf-8 4204.8694ms
+2024-09-07 16:20:38.079 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 194
+2024-09-07 16:20:38.087 +05:00 [INF] CORS policy execution successful.
+2024-09-07 16:20:38.099 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 16:20:38.112 +05:00 [INF] Request Body: {
+ "CultureId": 1,
+  "KBDescriptionID": 2,  
+  "MediaType": "Image",   
+  "ImagePath": "https://example.com/image.jpg", 
+  "ImageTitle": "Sample Image", 
+  "IsMain": true,   
+  "CreatedBy": 1 
+}
+2024-09-07 16:20:38.201 +05:00 [INF] Executed DbCommand (22ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-07 16:20:38.225 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Create, Content-Type: application/json
+2024-09-07 16:20:38.238 +05:00 [INF] Request Body: {
+ "CultureId": 1,
+  "KBDescriptionID": 2,  
+  "MediaType": "Image",   
+  "ImagePath": "https://example.com/image.jpg", 
+  "ImageTitle": "Sample Image", 
+  "IsMain": true,   
+  "CreatedBy": 1 
+}
+2024-09-07 16:20:38.249 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 16:20:38.258 +05:00 [INF] Route matched with {action = "Create", controller = "KBMedia"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommand) on controller CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController (CleanArc.Web.Api).
+2024-09-07 16:20:42.982 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-07 16:20:45.034 +05:00 [INF] Entering CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand, Handle with parameter: {"KBDescriptionID":2,"MediaType":"Image","ImagePath":"https://example.com/image.jpg","ImageTitle":"Sample Image","IsMain":true,"CreatedBy":1,"CultureId":1,"UserId":5}
+2024-09-07 16:20:45.050 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-09-07 16:20:45.135 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"e9f5ccc8-85d1-4838-83a5-e6b00219cadc","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":2}
+2024-09-07 16:20:46.832 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"KBDescriptionID":2,"MediaType":"Image","ImagePath":"https://example.com/image.jpg","ImageTitle":"Sample Image","IsMain":true,"IsActive":null,"IsDeleted":null,"CreatedBy":5,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null}
+2024-09-07 16:20:49.795 +05:00 [INF] Exiting null, AddAsync with response: -1
+2024-09-07 16:20:49.913 +05:00 [INF] Exiting null, Handle with response: true
+2024-09-07 16:20:49.941 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 6939.6068ms.
+2024-09-07 16:20:49.961 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-09-07 16:20:49.974 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api) in 11704.9728ms
+2024-09-07 16:20:49.989 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Create (CleanArc.Web.Api)'
+2024-09-07 16:20:50.000 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:20:50.011 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:20:50.021 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Create application/json 194 - 200 - application/json;+charset=utf-8 11942.3112ms
+2024-09-07 16:21:30.316 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBMedia/GetAll application/json 169
+2024-09-07 16:21:30.373 +05:00 [INF] CORS policy execution successful.
+2024-09-07 16:21:30.385 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/GetAll, Content-Type: application/json
+2024-09-07 16:21:30.401 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+    
+    ]
+  }
+}
+2024-09-07 16:21:30.416 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/GetAll, Content-Type: application/json
+2024-09-07 16:21:30.433 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+    
+    ]
+  }
+}
+2024-09-07 16:21:30.489 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetAll (CleanArc.Web.Api)'
+2024-09-07 16:21:30.537 +05:00 [INF] Route matched with {action = "GetAll", controller = "KBMedia"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.KBMedia.Queries.GetAllKBMedia.GetAllKBMediaQuery) on controller CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController (CleanArc.Web.Api).
+2024-09-07 16:21:33.801 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-07 16:21:33.852 +05:00 [INF] Entering CleanArc.Application.Features.KBMedia.Queries.GetAllKBMedia, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-07 16:21:33.869 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-07 16:21:34.393 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":1,"KBDescriptionID":2,"MediaType":"Test","ImagePath":"Test","ImageTitle":"Test","IsMain":true,"IsActive":true,"IsDeleted":false,"CreatedBy":5,"CreatedAt":"2024-09-07T11:12:30.113","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":2,"KBDescriptionID":2,"MediaType":"Image","ImagePath":"https://example.com/image.jpg","ImageTitle":"Sample Image","IsMain":true,"IsActive":true,"IsDeleted":false,"CreatedBy":5,"CreatedAt":"2024-09-07T11:20:48.36","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}]
+2024-09-07 16:21:34.464 +05:00 [INF] Exiting null, Handle with response: [{"ID":1,"KBDescriptionID":2,"MediaType":"Test","ImagePath":"Test","ImageTitle":"Test","IsMain":true,"IsDeleted":false,"IsActive":true,"CreatedBy":5,"CreatedAt":"2024-09-07T11:12:30.113","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","CultureId":null,"Code":null,"Message":null},{"ID":2,"KBDescriptionID":2,"MediaType":"Image","ImagePath":"https://example.com/image.jpg","ImageTitle":"Sample Image","IsMain":true,"IsDeleted":false,"IsActive":true,"CreatedBy":5,"CreatedAt":"2024-09-07T11:20:48.36","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","CultureId":null,"Code":null,"Message":null}]
+2024-09-07 16:21:34.479 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 671.1824ms.
+2024-09-07 16:21:34.494 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-07 16:21:34.593 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetAll (CleanArc.Web.Api) in 4029.6559ms
+2024-09-07 16:21:34.614 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetAll (CleanArc.Web.Api)'
+2024-09-07 16:21:34.639 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:21:34.658 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:21:34.666 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBMedia/GetAll application/json 169 - 200 - application/json;+charset=utf-8 4350.1941ms
+2024-09-07 16:21:53.598 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/api/v1/KBMedia/GetById/2 - -
+2024-09-07 16:21:53.624 +05:00 [INF] Request Method: GET, Path: /api/v1/KBMedia/GetById/2, Content-Type: null
+2024-09-07 16:21:53.644 +05:00 [INF] Request Method: GET, Path: /api/v1/KBMedia/GetById/2, Content-Type: null
+2024-09-07 16:21:53.655 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetById (CleanArc.Web.Api)'
+2024-09-07 16:21:53.682 +05:00 [INF] Route matched with {action = "GetById", controller = "KBMedia"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController (CleanArc.Web.Api).
+2024-09-07 16:21:59.152 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-07 16:21:59.208 +05:00 [INF] Entering CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById, Handle with parameter: {"Id":2}
+2024-09-07 16:21:59.222 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 2
+2024-09-07 16:21:59.419 +05:00 [INF] Exiting null, GetByIdAsync
+2024-09-07 16:21:59.483 +05:00 [INF] Exiting null, Handle
+2024-09-07 16:21:59.620 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetById (CleanArc.Web.Api) in 5926.5978ms
+2024-09-07 16:21:59.631 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetById (CleanArc.Web.Api)'
+2024-09-07 16:22:00.121 +05:00 [ERR] Could not find stored procedure 'GetByID_KBMedia'.
+System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'GetByID_KBMedia'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 489
+   at CleanArc.Infrastructure.Persistence.Repositories.KBMediaRepository.GetByIdAsync(Int64 id) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBMediaRepository.cs:line 162
+   at CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById.GetKBMediaByIdQueryHandler.Handle(GetKBMediaByIdQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\KBMedia\Queries\GetKBMediaById\GetKBMediaByIdQueryHandler.cs:line 37
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CallSite.Target(Closure, CallSite, Object)
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetById(Int32 id) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 100
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:7779e54d-68f4-4e75-a041-b648673afbb5
+Error Number:2812,State:62,Class:16
+2024-09-07 16:22:00.521 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/api/v1/KBMedia/GetById/2 - - - 500 0 - 6923.6408ms
+2024-09-07 16:23:01.061 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Update application/json 203
+2024-09-07 16:23:01.153 +05:00 [INF] CORS policy execution successful.
+2024-09-07 16:23:01.186 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Update, Content-Type: application/json
+2024-09-07 16:23:01.201 +05:00 [INF] Request Body: {
+  "id": 1,
+    "KBDescriptionID": 2,  
+  "MediaType": "Image",   
+  "ImagePath": "https://update.com/image.jpg", 
+  "ImageTitle": "updateImage", 
+  "IsMain": true, 
+  "updatedBy": 0,
+  "cultureId": 0
+}
+2024-09-07 16:23:01.259 +05:00 [INF] Executed DbCommand (35ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-07 16:23:01.287 +05:00 [INF] Request Method: POST, Path: /api/v1/KBMedia/Update, Content-Type: application/json
+2024-09-07 16:23:01.302 +05:00 [INF] Request Body: {
+  "id": 1,
+    "KBDescriptionID": 2,  
+  "MediaType": "Image",   
+  "ImagePath": "https://update.com/image.jpg", 
+  "ImageTitle": "updateImage", 
+  "IsMain": true, 
+  "updatedBy": 0,
+  "cultureId": 0
+}
+2024-09-07 16:23:01.312 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Update (CleanArc.Web.Api)'
+2024-09-07 16:23:01.337 +05:00 [INF] Route matched with {action = "Update", controller = "KBMedia"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.KBMedia.Commands.UpdateKBMediaCommand.UpdateKBMediaCommand) on controller CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController (CleanArc.Web.Api).
+2024-09-07 16:23:04.334 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-07 16:23:04.758 +05:00 [INF] Entering CleanArc.Application.Features.KBMedia.Commands.UpdateKBMediaCommand, Handle with parameter: {"ID":1,"KBDescriptionID":2,"MediaType":"Image","ImagePath":"https://update.com/image.jpg","ImageTitle":"updateImage","IsMain":true,"UpdatedBy":0,"CultureId":0,"UserId":5}
+2024-09-07 16:23:04.767 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 5
+2024-09-07 16:23:04.775 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"ac36d3ef","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":5,"UserName":"waqas","NormalizedUserName":"WAQAS","Email":"waqas@abc.com","NormalizedEmail":"WAQAS@ABC.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEKxdIC7hkHoSEjxvHyfYFq8Q1+Cpnrw80oKZ/GYEEySgbE6cJzqcUjH2ZhIzyZ/62w==","SecurityStamp":"JSPUTQQOTBRQSTXECXCILANFH3LH52L2","ConcurrencyStamp":"e9f5ccc8-85d1-4838-83a5-e6b00219cadc","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":2}
+2024-09-07 16:23:04.787 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":1,"KBDescriptionID":2,"MediaType":"Image","ImagePath":"https://update.com/image.jpg","ImageTitle":"updateImage","IsMain":true,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":5,"UpdatedAt":null,"CultureId":0,"Code":null,"Message":null}
+2024-09-07 16:23:04.907 +05:00 [INF] Exiting null, UpdateAsync with response: -1
+2024-09-07 16:23:04.917 +05:00 [INF] Exiting null, Handle with response: true
+2024-09-07 16:23:04.928 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Update (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 575.9592ms.
+2024-09-07 16:23:04.942 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-09-07 16:23:04.954 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Update (CleanArc.Web.Api) in 3597.1691ms
+2024-09-07 16:23:04.965 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.Update (CleanArc.Web.Api)'
+2024-09-07 16:23:04.974 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:23:04.982 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:23:04.992 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBMedia/Update application/json 203 - 200 - application/json;+charset=utf-8 3932.0131ms
+2024-09-07 16:23:21.300 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/api/v1/KBMedia/GetById/1 - -
+2024-09-07 16:23:21.309 +05:00 [INF] Request Method: GET, Path: /api/v1/KBMedia/GetById/1, Content-Type: null
+2024-09-07 16:23:21.321 +05:00 [INF] Request Method: GET, Path: /api/v1/KBMedia/GetById/1, Content-Type: null
+2024-09-07 16:23:21.332 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetById (CleanArc.Web.Api)'
+2024-09-07 16:23:21.341 +05:00 [INF] Route matched with {action = "GetById", controller = "KBMedia"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController (CleanArc.Web.Api).
+2024-09-07 16:26:23.674 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-07 16:26:23.733 +05:00 [INF] Entering CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById, Handle with parameter: {"Id":1}
+2024-09-07 16:26:23.749 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-07 16:26:24.268 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 1
+2024-09-07 16:26:24.316 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/api/v1/KBMedia/GetById/1 - -
+2024-09-07 16:26:24.320 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-07 16:26:24.375 +05:00 [INF] Request Method: GET, Path: /api/v1/KBMedia/GetById/1, Content-Type: null
+2024-09-07 16:26:24.405 +05:00 [INF] Request Method: GET, Path: /api/v1/KBMedia/GetById/1, Content-Type: null
+2024-09-07 16:26:24.436 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetById (CleanArc.Web.Api)'
+2024-09-07 16:26:24.460 +05:00 [INF] Exiting null, GetByIdAsync with response: {"ID":1,"KBDescriptionID":2,"MediaType":"Image","ImagePath":"https://update.com/image.jpg","ImageTitle":"updateImage","IsMain":true,"IsActive":true,"IsDeleted":false,"CreatedBy":5,"CreatedAt":"2024-09-07T11:12:30.113","UpdatedBy":5,"UpdatedAt":"2024-09-07T11:23:04.9","CultureId":null,"Code":null,"Message":null}
+2024-09-07 16:26:24.464 +05:00 [INF] Route matched with {action = "GetById", controller = "KBMedia"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController (CleanArc.Web.Api).
+2024-09-07 16:26:24.518 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-07 16:26:24.566 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-07 16:26:26.747 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-07 16:26:26.748 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:26:26.764 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:26:26.770 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 3021.4884ms
+2024-09-07 16:26:26.778 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 2458.9273ms
+2024-09-07 16:26:26.788 +05:00 [INF] Exiting null, Handle with response: {"ID":1,"KBDescriptionID":2,"MediaType":"Image","ImagePath":"https://update.com/image.jpg","ImageTitle":"updateImage","IsMain":true,"IsDeleted":false,"IsActive":true,"CreatedBy":5,"CreatedAt":"2024-09-07T11:12:30.113","UpdatedBy":5,"UpdatedAt":"2024-09-07T11:23:04.9","CultureId":null,"Code":null,"Message":null}
+2024-09-07 16:26:26.794 +05:00 [INF] Entering CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById, Handle with parameter: {"Id":1}
+2024-09-07 16:26:28.060 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 1
+2024-09-07 16:26:28.064 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-07 16:26:28.064 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-07 16:26:28.064 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetById (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4367.4203ms.
+2024-09-07 16:26:28.134 +05:00 [INF] Exiting null, GetByIdAsync with response: {"ID":1,"KBDescriptionID":2,"MediaType":"Image","ImagePath":"https://update.com/image.jpg","ImageTitle":"updateImage","IsMain":true,"IsActive":true,"IsDeleted":false,"CreatedBy":5,"CreatedAt":"2024-09-07T11:12:30.113","UpdatedBy":5,"UpdatedAt":"2024-09-07T11:23:04.9","CultureId":null,"Code":null,"Message":null}
+2024-09-07 16:26:28.140 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-07 16:26:28.153 +05:00 [INF] Exiting null, Handle with response: {"ID":1,"KBDescriptionID":2,"MediaType":"Image","ImagePath":"https://update.com/image.jpg","ImageTitle":"updateImage","IsMain":true,"IsDeleted":false,"IsActive":true,"CreatedBy":5,"CreatedAt":"2024-09-07T11:12:30.113","UpdatedBy":5,"UpdatedAt":"2024-09-07T11:23:04.9","CultureId":null,"Code":null,"Message":null}
+2024-09-07 16:26:28.134 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 69.9587ms
+2024-09-07 16:26:28.171 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetById (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1407.2265ms.
+2024-09-07 16:26:28.185 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-07 16:26:28.195 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetById (CleanArc.Web.Api) in 186842.3894ms
+2024-09-07 16:26:28.206 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetById (CleanArc.Web.Api) in 3628.7864ms
+2024-09-07 16:26:28.210 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetById (CleanArc.Web.Api)'
+2024-09-07 16:26:28.226 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetById (CleanArc.Web.Api)'
+2024-09-07 16:26:28.236 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:26:28.243 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:26:28.250 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 186.8902ms
+2024-09-07 16:26:28.253 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:26:28.258 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:26:28.269 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/api/v1/KBMedia/GetById/1 - - - 0 - application/json;+charset=utf-8 186968.9648ms
+2024-09-07 16:26:28.276 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/api/v1/KBMedia/GetById/1 - - - 0 - application/json;+charset=utf-8 3959.5708ms
+2024-09-07 16:26:29.482 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-07 16:26:29.490 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-07 16:26:29.499 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-07 16:26:29.509 +05:00 [INF] Response StatusCode: 404
+2024-09-07 16:26:29.515 +05:00 [INF] Response StatusCode: 404
+2024-09-07 16:26:29.525 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 42.8500ms
+2024-09-07 16:26:29.543 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-07 16:26:29.550 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-07 16:26:31.040 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:26:31.051 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1508.0761ms
+2024-09-07 16:26:43.281 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/api/v1/KBMedia/GetById/2 - -
+2024-09-07 16:26:43.290 +05:00 [INF] Request Method: GET, Path: /api/v1/KBMedia/GetById/2, Content-Type: null
+2024-09-07 16:26:43.308 +05:00 [INF] Request Method: GET, Path: /api/v1/KBMedia/GetById/2, Content-Type: null
+2024-09-07 16:26:43.319 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetById (CleanArc.Web.Api)'
+2024-09-07 16:26:43.345 +05:00 [INF] Route matched with {action = "GetById", controller = "KBMedia"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController (CleanArc.Web.Api).
+2024-09-07 16:26:49.468 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-07 16:26:49.483 +05:00 [INF] Entering CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById, Handle with parameter: {"Id":2}
+2024-09-07 16:26:50.586 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 2
+2024-09-07 16:26:50.660 +05:00 [INF] Exiting null, GetByIdAsync with response: {"ID":2,"KBDescriptionID":2,"MediaType":"Image","ImagePath":"https://example.com/image.jpg","ImageTitle":"Sample Image","IsMain":true,"IsActive":true,"IsDeleted":false,"CreatedBy":5,"CreatedAt":"2024-09-07T11:20:48.36","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}
+2024-09-07 16:26:50.672 +05:00 [INF] Exiting null, Handle with response: {"ID":2,"KBDescriptionID":2,"MediaType":"Image","ImagePath":"https://example.com/image.jpg","ImageTitle":"Sample Image","IsMain":true,"IsDeleted":false,"IsActive":true,"CreatedBy":5,"CreatedAt":"2024-09-07T11:20:48.36","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","CultureId":null,"Code":null,"Message":null}
+2024-09-07 16:26:50.687 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetById (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1205.5352ms.
+2024-09-07 16:26:50.701 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-07 16:26:50.721 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetById (CleanArc.Web.Api) in 7365.084ms
+2024-09-07 16:26:50.733 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.GetById (CleanArc.Web.Api)'
+2024-09-07 16:26:50.744 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:26:50.753 +05:00 [INF] Response StatusCode: 200
+2024-09-07 16:26:50.761 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/api/v1/KBMedia/GetById/2 - - - 200 - application/json;+charset=utf-8 7479.9791ms
