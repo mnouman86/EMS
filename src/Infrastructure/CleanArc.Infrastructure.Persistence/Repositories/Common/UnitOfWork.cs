@@ -91,6 +91,7 @@ public class UnitOfWork : IUnitOfWork
     public ICarRentalSearchFilterRepository CarRentalSearchFilterRepository { get; set; }
     public IKBDetailRepository KBDetailRepository { get; set; }
     public IKBCRelatedUrlLinkRepository KBCRelatedUrlLinkRepository { get; set; }
+    public IKBDescriptionRepository KBDescriptionRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -172,6 +173,7 @@ public class UnitOfWork : IUnitOfWork
                                             ILogger<CarRentalSearchFilterRepository> _loggerCarRentalSearchFilter,
                                             ILogger<KBDetailRepository> _loggerKBDetail,
                                             ILogger<KBCRelatedUrlLinkRepository> _loggerKBCRelatedUrlLink,
+                                            ILogger<KBDescriptionRepository> _loggerKBDescription,
 
 
 
@@ -258,6 +260,7 @@ public class UnitOfWork : IUnitOfWork
         CarRentalSearchFilterRepository = new CarRentalSearchFilterRepository(configuration, mapper, _loggerCarRentalSearchFilter, httpContextAccessor);
         KBDetailRepository = new KBDetailRepository(configuration, mapper, _loggerKBDetail, httpContextAccessor);
         KBCRelatedUrlLinkRepository = new KBCRelatedUrlLinkRepository(configuration, mapper, _loggerKBCRelatedUrlLink, httpContextAccessor);
+        KBDescriptionRepository = new KBDescriptionRepository(configuration, mapper, _loggerKBDescription, httpContextAccessor);
 
         this.configuration = configuration;
 
