@@ -90,9 +90,10 @@ public class UnitOfWork : IUnitOfWork
     public ISearchFilterThingsToDoRepository SearchFilterThingsToDoRepository { get; set; }
     public ICarRentalSearchFilterRepository CarRentalSearchFilterRepository { get; set; }
     public IKBDetailRepository KBDetailRepository { get; set; }
-    public IKBCRelatedUrlLinkRepository KBCRelatedUrlLinkRepository { get; set; }
+    public IKBRelatedUrlLinkRepository KBRelatedUrlLinkRepository { get; set; }
     public IKBDescriptionRepository KBDescriptionRepository { get; set; }
     public IKBMediaRepository KBMediaRepository { get; set; }
+    public IKBTimingRepository KBTimingRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -173,9 +174,10 @@ public class UnitOfWork : IUnitOfWork
                       ILogger<SearchFilterThingsToDoRepository> _loggerSearchFilterThingsToDo,
                                             ILogger<CarRentalSearchFilterRepository> _loggerCarRentalSearchFilter,
                                             ILogger<KBDetailRepository> _loggerKBDetail,
-                                            ILogger<KBCRelatedUrlLinkRepository> _loggerKBCRelatedUrlLink,
+                                            ILogger<KBRelatedUrlLinkRepository> _loggerKBRelatedUrlLink,
                                             ILogger<KBDescriptionRepository> _loggerKBDescription,
            ILogger<KBMediaRepository> _loggerKBMedia,
+           ILogger<KBTimingRepository> _loggerKBTiming,
 
 
 
@@ -261,9 +263,10 @@ public class UnitOfWork : IUnitOfWork
         SearchFilterThingsToDoRepository = new SearchFilterThingsToDoRepository(configuration, mapper, _loggerSearchFilterThingsToDo, httpContextAccessor);
         CarRentalSearchFilterRepository = new CarRentalSearchFilterRepository(configuration, mapper, _loggerCarRentalSearchFilter, httpContextAccessor);
         KBDetailRepository = new KBDetailRepository(configuration, mapper, _loggerKBDetail, httpContextAccessor);
-        KBCRelatedUrlLinkRepository = new KBCRelatedUrlLinkRepository(configuration, mapper, _loggerKBCRelatedUrlLink, httpContextAccessor);
+        KBRelatedUrlLinkRepository = new KBRelatedUrlLinkRepository(configuration, mapper, _loggerKBRelatedUrlLink, httpContextAccessor);
         KBDescriptionRepository = new KBDescriptionRepository(configuration, mapper, _loggerKBDescription, httpContextAccessor);
         KBMediaRepository = new KBMediaRepository(configuration, mapper, _loggerKBMedia, httpContextAccessor);
+        KBTimingRepository = new KBTimingRepository(configuration, mapper, _loggerKBTiming, httpContextAccessor);
 
         this.configuration = configuration;
 
