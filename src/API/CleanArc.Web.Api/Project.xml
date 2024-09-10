@@ -372,6 +372,15 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.CoreArea.CoreAreaController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.CoreArea.CoreAreaController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.CoreArea.Commands.CreateCoreAreaCommand.CreateCoreAreaCommand,CleanArc.Application.Features.CoreArea.Commands.UpdateCoreAreaCommand.UpdateCoreAreaCommand,CleanArc.Application.Features.CoreArea.Commands.DeleteCoreAreaCommand.DeleteCoreAreaCommand,System.Boolean,CleanArc.Application.Features.CoreArea.Queries.GetAllCoreArea.GetAllCoreAreaQuery,System.Collections.Generic.List{CleanArc.Application.Features.CoreArea.Queries.GetAllCoreArea.GetAllCoreAreaQueryResult},CleanArc.Application.Features.CoreArea.Queries.GetCoreAreaById.GetCoreAreaByIdQuery,CleanArc.Application.Features.CoreArea.Queries.GetCoreAreaById.GetCoreAreaByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.CoreArea.CoreAreaController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.Country.CountryController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.Country.CountryController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.Country.Command.CreateCountryCommand.CreateCountryCommand,CleanArc.Application.Features.Country.Command.UpdateCountryCommand.UpdateCountryCommand,CleanArc.Application.Features.Country.Command.DeleteCountryCommand.DeleteCountryCommand,System.Boolean,CleanArc.Application.Features.Country.Queries.GetAllCountries.GetAllCountryQuery,System.Collections.Generic.List{CleanArc.Application.Features.Country.Queries.GetAllCountries.GetAllCountryQueryResult},CleanArc.Application.Features.Country.Queries.GetCountryById.GetCountryByIdQuery,CleanArc.Application.Features.Country.Queries.GetCountryById.GetCountryByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
@@ -421,6 +430,51 @@
         <member name="M:CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.Hotel.Command.CreateHotelCommand.CreateHotelCommand,CleanArc.Application.Features.Hotel.Command.UpdateHotelCommand.UpdateHotelCommand,CleanArc.Application.Features.Hotel.Command.DeleteHotelCommand.DeleteHotelCommand,System.Boolean,CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQuery,System.Collections.Generic.List{CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQueryResult},CleanArc.Application.Features.Hotel.Queries.GetHotelById.GetHotelByIdQuery,CleanArc.Application.Features.Hotel.Queries.GetHotelById.GetHotelByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
             Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.Hotel.HotelController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.KBDescription.KBDescriptionController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.KBDescription.KBDescriptionController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.KBDescription.Commands.CreateKBDescriptionCommand.CreateKBDescriptionCommand,CleanArc.Application.Features.KBDescription.Commands.UpdateKBDescriptionCommand.UpdateKBDescriptionCommand,CleanArc.Application.Features.KBDescription.Commands.DeleteKBDescriptionCommand.DeleteKBDescriptionCommand,System.Boolean,CleanArc.Application.Features.KBDescription.Queries.GetAllKBDescription.GetAllKBDescriptionQuery,System.Collections.Generic.List{CleanArc.Application.Features.KBDescription.Queries.GetAllKBDescription.GetAllKBDescriptionQueryResult},CleanArc.Application.Features.KBDescription.Queries.GetKBDescriptionById.GetKBDescriptionByIdQuery,CleanArc.Application.Features.KBDescription.Queries.GetKBDescriptionById.GetKBDescriptionByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.KBDescription.KBDescriptionController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.KBDetail.Commands.CreateKBDetailCommand.CreateKBDetailCommand,CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand,CleanArc.Application.Features.KBDetail.Commands.DeleteKBDetailCommand.DeleteKBDetailCommand,System.Boolean,CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQuery,System.Collections.Generic.List{CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQueryResult},CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById.GetKBDetailByIdQuery,CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById.GetKBDetailByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommand,CleanArc.Application.Features.KBMedia.Commands.UpdateKBMediaCommand.UpdateKBMediaCommand,CleanArc.Application.Features.KBMedia.Commands.DeleteKBMediaCommand.DeleteKBMediaCommand,System.Boolean,CleanArc.Application.Features.KBMedia.Queries.GetAllKBMedia.GetAllKBMediaQuery,System.Collections.Generic.List{CleanArc.Application.Features.KBMedia.Queries.GetAllKBMedia.GetAllKBMediaQueryResult},CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById.GetKBMediaByIdQuery,CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById.GetKBMediaByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.KBRelatedUrlLink.KBRelatedUrlLinkController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.KBRelatedUrlLink.KBRelatedUrlLinkController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.KBRelatedUrlLink.Commands.CreateKBRelatedUrlLinkCommand.CreateKBRelatedUrlLinkCommand,CleanArc.Application.Features.KBRelatedUrlLink.Commands.UpdateKBRelatedUrlLinkCommand.UpdateKBRelatedUrlLinkCommand,CleanArc.Application.Features.KBRelatedUrlLink.Commands.DeleteKBRelatedUrlLinkCommand.DeleteKBRelatedUrlLinkCommand,System.Boolean,CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetAllKBRelatedUrlLink.GetAllKBRelatedUrlLinkQuery,System.Collections.Generic.List{CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetAllKBRelatedUrlLink.GetAllKBRelatedUrlLinkQueryResult},CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetKBRelatedUrlLinkById.GetKBRelatedUrlLinkByIdQuery,CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetKBRelatedUrlLinkById.GetKBRelatedUrlLinkByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.KBRelatedUrlLink.KBRelatedUrlLinkController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.KBTiming.KBTimingController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.KBTiming.KBTimingController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.KBTiming.Commands.CreateKBTimingCommand.CreateKBTimingCommand,CleanArc.Application.Features.KBTiming.Commands.UpdateKBTimingCommand.UpdateKBTimingCommand,CleanArc.Application.Features.KBTiming.Commands.DeleteKBTimingCommand.DeleteKBTimingCommand,System.Boolean,CleanArc.Application.Features.KBTiming.Queries.GetAllKBTiming.GetAllKBTimingQuery,System.Collections.Generic.List{CleanArc.Application.Features.KBTiming.Queries.GetAllKBTiming.GetAllKBTimingQueryResult},CleanArc.Application.Features.KBTiming.Queries.GetKBTimingById.GetKBTimingByIdQuery,CleanArc.Application.Features.KBTiming.Queries.GetKBTimingById.GetKBTimingByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.KBTiming.KBTimingController"/> class.
             </summary>
             <param name="sender">The mediator sender for handling requests and responses.</param>
             <param name="logger">The logger for logging controller-related information.</param>
