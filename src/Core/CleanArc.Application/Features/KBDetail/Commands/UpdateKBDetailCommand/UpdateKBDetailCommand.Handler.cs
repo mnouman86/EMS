@@ -61,7 +61,7 @@ internal class UpdateKBDetailCommandHandler:IRequestHandler<UpdateKBDetailComman
                 Cost = request.Cost,
                 ServiceID = request.ServiceID,
                 CoreAreaLookupID = request.CoreAreaLookupID,
-                RelatedUrlLinkLookupID = request.RelatedUrlLinkLookupID,
+                //RelatedUrlLinkLookupID = request.RelatedUrlLinkLookupID,
                 RelatedAreasLookupIDs = request.RelatedAreasLookupIDs,
                 Access = request.Access,
                 Availablity = request.Availablity,
