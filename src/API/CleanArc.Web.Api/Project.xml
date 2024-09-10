@@ -480,6 +480,15 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.KBWhenToVisit.KBWhenToVisitController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.KBWhenToVisit.KBWhenToVisitController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.KBWhenToVisit.Commands.CreateKBWhenToVisitCommand.CreateKBWhenToVisitCommand,CleanArc.Application.Features.KBWhenToVisit.Commands.UpdateKBWhenToVisitCommand.UpdateKBWhenToVisitCommand,CleanArc.Application.Features.KBWhenToVisit.Commands.DeleteKBWhenToVisitCommand.DeleteKBWhenToVisitCommand,System.Boolean,CleanArc.Application.Features.KBWhenToVisit.Queries.GetAllKBWhenToVisit.GetAllKBWhenToVisitQuery,System.Collections.Generic.List{CleanArc.Application.Features.KBWhenToVisit.Queries.GetAllKBWhenToVisit.GetAllKBWhenToVisitQueryResult},CleanArc.Application.Features.KBWhenToVisit.Queries.GetKBWhenToVisitById.GetKBWhenToVisitByIdQuery,CleanArc.Application.Features.KBWhenToVisit.Queries.GetKBWhenToVisitById.GetKBWhenToVisitByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.KBWhenToVisit.KBWhenToVisitController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.Language.LanguageController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.Language.LanguageController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.Language.Command.CreateLanguageCommand.CreateLanguageCommand,CleanArc.Application.Features.Language.Command.UpdateLanguageCommand.UpdateLanguageCommand,CleanArc.Application.Features.Language.Command.DeleteLanguageCommand.DeleteLanguageCommand,System.Boolean,CleanArc.Application.Features.Language.Queries.GetAllLanguages.GetAllLanguagesQuery,System.Collections.Generic.List{CleanArc.Application.Features.Language.Queries.GetAllLanguages.GetAllLanguagesQueryResult},CleanArc.Application.Features.Language.Queries.GetLanguageById.GetLanguageByIdQuery,CleanArc.Application.Features.Language.Queries.GetLanguageById.GetLanguageByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
