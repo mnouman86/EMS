@@ -9,7 +9,8 @@ namespace CleanArc.Application.Models.ActivityAddress
     public class CreateActivityAddressDTO
     {
         // public int ID { get; set; }
-        public int? ActivityID { get; set; }
+        public int? ServiceID { get; set; }
+        public int? GenericAddressID { get; set; }
         public string? CountryLookUpID { get; set; }
         public string? CityLookUpID { get; set; }
         public string? AddressLine1 { get; set; }
