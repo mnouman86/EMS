@@ -17,6 +17,7 @@ public record CreateKBDetailCommand(string? Title,
     int? ServiceID,
     int? CoreAreaLookupID,
     int? RelatedUrlLinkLookupID,
+    string? RelatedAreasLookupIDs,
     string? Access,
     string? Availablity,
     string? WhenToVisitIDs,
@@ -75,14 +76,14 @@ public record CreateKBDetailCommand(string? Title,
             .NotNull()
             .WithMessage("Please enter a WhenToVisitIDs");
        
-        validator.RuleFor(c => c.AddressLine1)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a AddressLine1");
-        validator.RuleFor(c => c.AddressLine2)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a AddressLine2");
+        //validator.RuleFor(c => c.AddressLine1)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a AddressLine1");
+        //validator.RuleFor(c => c.AddressLine2)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a AddressLine2");
         validator.RuleFor(c => c.CountryLookUpID)
             .NotEmpty()
             .NotNull()

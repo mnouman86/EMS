@@ -19,6 +19,8 @@ public class GetAllKBDetailQueryResult
     public string? Availablity { get; set; }
     public string? RelatedUrlLinkName { get; set; }
     public string? WhenToVisitTitles { get; set; }
+    public string? RelatedAreasLookupIDs { get; set; }
+
     public string? CoreAreaName { get; set; }
     public bool IsDeleted { get; set; }
     public bool IsActive { get; set; }
