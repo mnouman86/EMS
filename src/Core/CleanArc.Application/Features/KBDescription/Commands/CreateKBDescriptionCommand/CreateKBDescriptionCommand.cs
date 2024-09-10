@@ -33,10 +33,10 @@ public record CreateKBDescriptionCommand(
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a KBDetailID");
-        validator.RuleFor(c => c.SubHeading)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a SubHeading ");
+        //validator.RuleFor(c => c.SubHeading)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a SubHeading ");
         validator.RuleFor(c => c.Content)
           .NotEmpty()
           .NotNull()

@@ -16,6 +16,8 @@ namespace CleanArc.Application.Models.KBDetail
         public int? ServiceID { get; set; }
         public int? CoreAreaLookupID { get; set; }
         public int? RelatedUrlLinkLookupID { get; set; }
+        public string? RelatedAreasLookupIDs { get; set; }
+
         public string? Access { get; set; }
         public string? Availablity { get; set; }
         public string? WhenToVisitIDs { get; set; }

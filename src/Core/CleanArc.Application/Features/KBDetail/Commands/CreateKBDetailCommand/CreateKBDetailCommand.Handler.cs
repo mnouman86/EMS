@@ -66,6 +66,7 @@ internal class CreateKBDetailCommandHandler: IRequestHandler<CreateKBDetailComma
                 ServiceID = request.ServiceID,
                 CoreAreaLookupID = request.CoreAreaLookupID,
                 RelatedUrlLinkLookupID = request.RelatedUrlLinkLookupID,
+                RelatedAreasLookupIDs = request.RelatedAreasLookupIDs,
                 Access = request.Access,
                 Availablity = request.Availablity,
                 WhenToVisitIDs = request.WhenToVisitIDs,
