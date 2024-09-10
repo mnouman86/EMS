@@ -58,8 +58,9 @@ internal class UpdateActivityAddressCommandHandler:IRequestHandler<UpdateActivit
             await _unitOfWork.ActivityAddressRepository.UpdateAsync(new Domain.Entities.ActivityAddress.ActivityAddress()
             { UpdatedBy = user.Id,
                 ID= request.ID,
-                CultureId = request.CultureId,  
-                ActivityID = request.ActivityID,
+                CultureId = request.CultureId,
+                GenericAddressID = request.GenericAddressID,
+                ServiceID = request.ServiceID,
                 CountryLookUpID = request.CountryLookUpID,
                 StateLookUpID = request.StateLookUpID,
                 CityLookUpID = request.CityLookUpID,

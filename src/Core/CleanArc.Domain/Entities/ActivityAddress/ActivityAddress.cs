@@ -11,7 +11,10 @@ public  class ActivityAddress
     
 {
     public int ID { get; set; }
-    public int? ActivityID { get; set; }
+    public int? ServiceID { get; set; }
+    public string? ServiceName { get; set; }
+
+    public int? GenericAddressID { get; set; }
     public int? CountryLookUpID { get; set; }
     public int? CityLookUpID { get; set; }
     public int? StateLookUpID { get; set; }
