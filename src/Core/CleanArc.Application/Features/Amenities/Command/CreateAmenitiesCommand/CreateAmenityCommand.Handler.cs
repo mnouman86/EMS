@@ -51,7 +51,9 @@ internal class CreateAmenityCommandHandler: IRequestHandler<CreateAmenityCommand
 
            
             await _unitOfWork.AmenityRepository.AddAsync(new Domain.Entities.Amenity.Amenity()
-            { CreatedBy = user.Id, Description = request.Description, Name = request.Name, CategoryID=request.CategoryID,Icon=request.Icon});
+            { CreatedBy = user.Id, Description = request.Description, Name = request.Name, CategoryID=request.CategoryID,
+                ServiceCategoryID=request.ServiceCategoryID,
+                Icon=request.Icon});
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);
