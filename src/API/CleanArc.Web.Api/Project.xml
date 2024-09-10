@@ -345,6 +345,15 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.CarRentalSearchFilter.Command.CreateCarRentalSearchFilter.CreateCarRentalSearchFilterCommand,CleanArc.Application.Features.CarRentalSearchFilter.Command.UpdateCarRentalSearchFilter.UpdateCarRentalSearchFilterCommand,CleanArc.Application.Features.CarRentalSearchFilter.Command.DeleteCarRentalSearchFilter.DeleteCarRentalSearchFilterCommand,System.Boolean,CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery,System.Collections.Generic.List{CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQueryResult},CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetCarRentalSearchFilterById.GetCarRentalSearchFilterByIdQuery,CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetCarRentalSearchFilterById.GetCarRentalSearchFilterByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.Category.CategoryController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.Category.CategoryController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.Category.Command.CreateCategoryCommand.CreateCategoryCommand,CleanArc.Application.Features.Category.Command.UpdateCategoryCommand.UpdateCategoryCommand,CleanArc.Application.Features.Category.Command.DeleteCategoryCommand.DeleteCategoryCommand,System.Boolean,CleanArc.Application.Features.Category.Queries.GetAllCategories.GetAllCategoriesQuery,System.Collections.Generic.List{CleanArc.Application.Features.Category.Queries.GetAllCategories.GetAllCategoriesQueryResult},CleanArc.Application.Features.Category.Queries.GetCategoryById.GetCategoryByIdQuery,CleanArc.Application.Features.Category.Queries.GetCategoryById.GetCategoryByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
@@ -686,6 +695,24 @@
         <member name="M:CleanArc.Web.Api.Controllers.V1.SearchCountryCities.SearchCountryCitiesController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.SearchCountryCities.Command.CreateSearchCountryCities.CreateSearchCountryCitiesCommand,CleanArc.Application.Features.SearchCountryCities.Command.UpdateSearchCountryCities.UpdateSearchCountryCitiesCommand,CleanArc.Application.Features.SearchCountryCities.Command.DeleteSearchCountryCities.DeleteSearchCountryCitiesCommand,System.Boolean,CleanArc.Application.Features.SearchCountryCities.Queries.GetAllSearchCountryCities.GetAllSearchCountryCitiesQueries,System.Collections.Generic.List{CleanArc.Application.Features.SearchCountryCities.Queries.GetAllSearchCountryCities.GetAllSearchCountryCitiesQueriesResult},CleanArc.Application.Features.SearchCountryCities.Queries.GetSearchCountryCitiesById.GetSearchCountryCitiesByIdQuery,CleanArc.Application.Features.SearchCountryCities.Queries.GetSearchCountryCitiesById.GetSearchCountryCitiesByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
             Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.SearchCountryCities.SearchCountryCitiesController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.SearchFilterStay.Commands.CreateSearchFilterStayCommand.CreateSearchFilterStayCommand,CleanArc.Application.Features.SearchFilterStay.Commands.UpdateSearchFilterStayCommand.UpdateSearchFilterStayCommand,CleanArc.Application.Features.SearchFilterStay.Commands.DeleteSearchFilterStayCommand.DeleteSearchFilterStayCommand,System.Boolean,CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay.GetAllSearchFilterStayQuery,System.Collections.Generic.List{CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay.GetAllSearchFilterStayQueryResult},CleanArc.Application.Features.SearchFilterStay.Queries.GetSearchFilterStayById.GetSearchFilterStayByIdQuery,CleanArc.Application.Features.SearchFilterStay.Queries.GetSearchFilterStayById.GetSearchFilterStayByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="!:SearchFilterStayDetailController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.SearchFilterThingsToDo.SearchFilterThingsToDoController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.SearchFilterThingsToDo.SearchFilterThingsToDoController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.SearchFilterThingsToDo.Commands.CreateSearchFilterThingsToDoCommand.CreateSearchFilterThingsToDoCommand,CleanArc.Application.Features.SearchFilterThingsToDo.Commands.UpdateSearchFilterThingsToDoCommand.UpdateSearchFilterThingsToDoCommand,CleanArc.Application.Features.SearchFilterThingsToDo.Commands.DeleteSearchFilterThingsToDoCommand.DeleteSearchFilterThingsToDoCommand,System.Boolean,CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetAllSearchFilterThingsToDo.GetAllSearchFilterThingsToDoQuery,System.Collections.Generic.List{CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetAllSearchFilterThingsToDo.GetAllSearchFilterThingsToDoQueryResult},CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetSearchFilterThingsToDoById.GetSearchFilterThingsToDoByIdQuery,CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetSearchFilterThingsToDoById.GetSearchFilterThingsToDoByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.SearchFilterThingsToDo.SearchFilterThingsToDoController"/> class.
             </summary>
             <param name="sender">The mediator sender for handling requests and responses.</param>
             <param name="logger">The logger for logging controller-related information.</param>
