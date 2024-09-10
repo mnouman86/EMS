@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Models.KBTiming
+namespace CleanArc.Application.Models.KBWhenToVisit
 {
-    public class CreateKBTimingDTO
+    public class CreateKBWhenToVisitDTO
     {
         // public int ID { get; set; }
-        public int? KBDetailID { get; set; }
-        public int? Day { get; set; }
-        public string? TimeFrom { get; set; }
-        public string? TimeTo { get; set; }
-        public bool? IsAlwaysOpen { get; set; }
+       // public int? KBDetailID { get; set; }
+        public string? Title { get; set; }
+        public string? Description { get; set; }
+       // public string? URL { get; set; }
 
         //public bool? IsActive { get; set; }
         //public bool? IsDeleted { get; set; }
