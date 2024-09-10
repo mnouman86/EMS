@@ -29,10 +29,10 @@ int KBContentType, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bo
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a KBDetailID");
-        validator.RuleFor(c => c.SubHeading)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a SubHeading ");
+        //validator.RuleFor(c => c.SubHeading)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a SubHeading ");
         validator.RuleFor(c => c.Content)
           .NotEmpty()
           .NotNull()
