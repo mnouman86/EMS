@@ -15,10 +15,11 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById
         public string? Cost { get; set; }
         public int? ServiceID { get; set; }
         public int? CoreAreaLookupID { get; set; }
-        public int? RelatedUrlLinkLookupID { get; set; }
+        //public int? RelatedUrlLinkLookupID { get; set; }
+        public string? RelatedAreasLookupIDs { get; set; }
         public string? Access { get; set; }
         public string? Availablity { get; set; }
-        public string? RelatedUrlLinkName { get; set; }
+       // public string? RelatedUrlLinkName { get; set; }
         public string? WhenToVisitTitles { get; set; }
         public string? CoreAreaName { get; set; }
         public bool IsDeleted { get; set; }
