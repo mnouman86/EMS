@@ -372,6 +372,15 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.CoreArea.CoreAreaController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.CoreArea.CoreAreaController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.CoreArea.Commands.CreateCoreAreaCommand.CreateCoreAreaCommand,CleanArc.Application.Features.CoreArea.Commands.UpdateCoreAreaCommand.UpdateCoreAreaCommand,CleanArc.Application.Features.CoreArea.Commands.DeleteCoreAreaCommand.DeleteCoreAreaCommand,System.Boolean,CleanArc.Application.Features.CoreArea.Queries.GetAllCoreArea.GetAllCoreAreaQuery,System.Collections.Generic.List{CleanArc.Application.Features.CoreArea.Queries.GetAllCoreArea.GetAllCoreAreaQueryResult},CleanArc.Application.Features.CoreArea.Queries.GetCoreAreaById.GetCoreAreaByIdQuery,CleanArc.Application.Features.CoreArea.Queries.GetCoreAreaById.GetCoreAreaByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.CoreArea.CoreAreaController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.Country.CountryController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.Country.CountryController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.Country.Command.CreateCountryCommand.CreateCountryCommand,CleanArc.Application.Features.Country.Command.UpdateCountryCommand.UpdateCountryCommand,CleanArc.Application.Features.Country.Command.DeleteCountryCommand.DeleteCountryCommand,System.Boolean,CleanArc.Application.Features.Country.Queries.GetAllCountries.GetAllCountryQuery,System.Collections.Generic.List{CleanArc.Application.Features.Country.Queries.GetAllCountries.GetAllCountryQueryResult},CleanArc.Application.Features.Country.Queries.GetCountryById.GetCountryByIdQuery,CleanArc.Application.Features.Country.Queries.GetCountryById.GetCountryByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
