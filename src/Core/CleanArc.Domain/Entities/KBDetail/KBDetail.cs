@@ -16,7 +16,7 @@ public  class KBDetail
     public string? Cost { get; set; }
     public int? ServiceID { get; set; }
     public int? CoreAreaLookupID { get; set; }
-    public int? RelatedUrlLinkLookupID { get; set; }
+   // public int? RelatedUrlLinkLookupID { get; set; }
     public string? RelatedAreasLookupIDs { get; set; }
     public string? Access { get; set; }
     public string? Availablity { get; set; }
@@ -39,7 +39,7 @@ public  class KBDetail
     public string? Latitude { get; set; }
     public string? Longitude { get; set; }
     public int? KbDetailID { get; set; }
-    public string? RelatedUrlLinkName { get; set; }
+    //public string? RelatedUrlLinkName { get; set; }
     public string? WhenToVisitTitles { get; set; }
     public string? CoreAreaName { get; set; }
 

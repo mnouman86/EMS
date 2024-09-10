@@ -17,7 +17,7 @@ public record UpdateKBDetailCommand(int ID,
     string? Cost,
     int? ServiceID,
     int? CoreAreaLookupID,
-    int? RelatedUrlLinkLookupID,
+    //int? RelatedUrlLinkLookupID,
     string? RelatedAreasLookupIDs,
     string? Access,
     string? Availablity,
@@ -51,10 +51,10 @@ public record UpdateKBDetailCommand(int ID,
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a CoreAreaLookupID");
-        validator.RuleFor(c => c.RelatedUrlLinkLookupID)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a RelatedUrlLinkLookupID");
+        //validator.RuleFor(c => c.RelatedUrlLinkLookupID)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a RelatedUrlLinkLookupID");
         validator.RuleFor(c => c.Access)
             .NotEmpty()
             .NotNull()
