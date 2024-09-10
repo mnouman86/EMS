@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.KBTiming.Commands.UpdateKBTimingCommand;
-public record UpdateKBTimingCommand(int ID,int? KBDetailID, string? Day, string? TimeFrom, string? TimeTo, bool? IsAlwaysOpen, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
+public record UpdateKBTimingCommand(int ID,int? KBDetailID, int? Day, string? TimeFrom, string? TimeTo, bool? IsAlwaysOpen, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateKBTimingCommand>
 {
     [JsonIgnore]

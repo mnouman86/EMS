@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.KBTiming.Queries.GetAllKBTiming;
+namespace CleanArc.Application.Features.KBWhenToVisit.Queries.GetAllKBWhenToVisit;
 
-public class GetAllKBTimingQueryResult
+public class GetAllKBWhenToVisitQueryResult
 {
     public int ID { get; set; }
-    public int? KBDetailID { get; set; }
-    public int? Day { get; set; }
-    public string? TimeFrom { get; set; }
-    public string? TimeTo { get; set; }
-    public bool? IsAlwaysOpen { get; set; }
+  //public int? KBDetailID { get; set; }
+    public string Title { get; set; }
+    public string Description { get; set; }
+   // public string URL { get; set; }
     public bool IsDeleted { get; set; }
     public bool IsActive { get; set; }
     public int CreatedBy { get; set; }
@@ -25,7 +24,7 @@ public class GetAllKBTimingQueryResult
     public int? Message { get; set; }
 }
 
-//    public GetAllKBTimingQueryResult(int iD, string name, string description, bool isDeleted, bool isActive, int createdBy, DateTime createdAt, int updatedBy, DateTime updatedAt)
+//    public GetAllKBWhenToVisitQueryResult(int iD, string name, string description, bool isDeleted, bool isActive, int createdBy, DateTime createdAt, int updatedBy, DateTime updatedAt)
 //    {
 //        ID = iD;
 //        Name = name;
