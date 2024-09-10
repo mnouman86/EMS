@@ -9,5 +9,5 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay;
 
-public record GetAllSearchFilterStayQuery(SearchRequestStays searchRequestStays) : IRequest<OperationResult<List<GetAllSearchFilterStayQueryResult>>>;
+public record GetAllSearchFilterStayQuery(SearchRequestStays searchRequest) : IRequest<OperationResult<List<GetAllSearchFilterStayQueryResult>>>;
 
