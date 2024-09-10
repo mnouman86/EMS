@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.ActivityAddress.Commands.UpdateActivityAddressCommand;
-public record UpdateActivityAddressCommand(int ID, int? ActivityID, int? CountryLookUpID, int? CityLookUpID, string? AddressLine1,
+public record UpdateActivityAddressCommand(int ID, int? GenericAddressID, int? ServiceID, int? CountryLookUpID, int? CityLookUpID, string? AddressLine1,
     string? AddressLine2,
     int? StateLookUpID,
     string? PostalCode,

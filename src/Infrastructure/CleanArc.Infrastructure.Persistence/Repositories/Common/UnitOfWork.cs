@@ -89,6 +89,12 @@ public class UnitOfWork : IUnitOfWork
     public ISearchFilterStayRepository SearchFilterStayRepository { get; set; }
     public ISearchFilterThingsToDoRepository SearchFilterThingsToDoRepository { get; set; }
     public ICarRentalSearchFilterRepository CarRentalSearchFilterRepository { get; set; }
+    public IKBDetailRepository KBDetailRepository { get; set; }
+    public IKBRelatedUrlLinkRepository KBRelatedUrlLinkRepository { get; set; }
+    public IKBDescriptionRepository KBDescriptionRepository { get; set; }
+    public IKBMediaRepository KBMediaRepository { get; set; }
+    public IKBTimingRepository KBTimingRepository { get; set; }
+    public ICoreAreaRepository CoreAreaRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -168,6 +174,12 @@ public class UnitOfWork : IUnitOfWork
            ILogger<SearchFilterStayRepository> _loggerSearchFilterStay,
                       ILogger<SearchFilterThingsToDoRepository> _loggerSearchFilterThingsToDo,
                                             ILogger<CarRentalSearchFilterRepository> _loggerCarRentalSearchFilter,
+                                            ILogger<KBDetailRepository> _loggerKBDetail,
+                                            ILogger<KBRelatedUrlLinkRepository> _loggerKBRelatedUrlLink,
+                                            ILogger<KBDescriptionRepository> _loggerKBDescription,
+           ILogger<KBMediaRepository> _loggerKBMedia,
+           ILogger<KBTimingRepository> _loggerKBTiming,
+           ILogger<CoreAreaRepository> _loggerCoreArea,
 
 
 
@@ -252,6 +264,12 @@ public class UnitOfWork : IUnitOfWork
         SearchFilterStayRepository = new SearchFilterStayRepository(configuration, mapper, _loggerSearchFilterStay, httpContextAccessor);
         SearchFilterThingsToDoRepository = new SearchFilterThingsToDoRepository(configuration, mapper, _loggerSearchFilterThingsToDo, httpContextAccessor);
         CarRentalSearchFilterRepository = new CarRentalSearchFilterRepository(configuration, mapper, _loggerCarRentalSearchFilter, httpContextAccessor);
+        KBDetailRepository = new KBDetailRepository(configuration, mapper, _loggerKBDetail, httpContextAccessor);
+        KBRelatedUrlLinkRepository = new KBRelatedUrlLinkRepository(configuration, mapper, _loggerKBRelatedUrlLink, httpContextAccessor);
+        KBDescriptionRepository = new KBDescriptionRepository(configuration, mapper, _loggerKBDescription, httpContextAccessor);
+        KBMediaRepository = new KBMediaRepository(configuration, mapper, _loggerKBMedia, httpContextAccessor);
+        KBTimingRepository = new KBTimingRepository(configuration, mapper, _loggerKBTiming, httpContextAccessor);
+        CoreAreaRepository = new CoreAreaRepository(configuration, mapper, _loggerCoreArea, httpContextAccessor);
 
         this.configuration = configuration;
 

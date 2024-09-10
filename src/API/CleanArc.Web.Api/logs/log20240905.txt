@@ -1856,3 +1856,1284 @@ Error Number:10744,State:1,Class:15
 2024-09-05 12:20:13.566 +05:00 [INF] Response StatusCode: 200
 2024-09-05 12:20:13.575 +05:00 [INF] Response StatusCode: 200
 2024-09-05 12:20:13.608 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/SearchFilterStayDetail/GetAll application/json 374 - 200 - application/json;+charset=utf-8 6238.3091ms
+2024-09-05 15:35:32.872 +05:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-05 15:35:33.136 +05:00 [INF] Executed DbCommand (86ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-05 15:35:33.149 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-05 15:35:33.164 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-05 15:35:33.205 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-05 15:35:33.248 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-05 15:35:33.283 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-05 15:35:33.927 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-05 15:35:33.965 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-05 15:35:35.268 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-05 15:35:36.369 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-05 15:35:36.801 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-05 15:35:37.300 +05:00 [INF] Response StatusCode: 200
+2024-09-05 15:35:37.323 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 968.1361ms
+2024-09-05 15:35:37.586 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-05 15:35:37.587 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-05 15:35:37.637 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 49.7917ms
+2024-09-05 15:35:37.909 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 322.5161ms
+2024-09-05 15:35:39.710 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-05 15:35:39.720 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-05 15:35:39.731 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-05 15:35:39.739 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-05 15:35:43.611 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-05 15:35:43.620 +05:00 [INF] Response StatusCode: 404
+2024-09-05 15:35:43.627 +05:00 [INF] Response StatusCode: 404
+2024-09-05 15:35:43.634 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 3925.0030ms
+2024-09-05 15:35:43.904 +05:00 [INF] Response StatusCode: 200
+2024-09-05 15:35:43.911 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 4180.7428ms
+2024-09-05 15:36:42.499 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/SearchFilterStayDetail/GetAll application/json 393
+2024-09-05 15:36:42.512 +05:00 [INF] CORS policy execution successful.
+2024-09-05 15:36:42.523 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchFilterStayDetail/GetAll, Content-Type: application/json
+2024-09-05 15:36:42.540 +05:00 [INF] Request Body: {
+  "searchRequestStays": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "hotelName": "string",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "hotelAmenities": "string",
+    "roomAmenities": "string",
+    "bathroomAmenities": "string",
+    "roomView": "string",
+    "roomFeature": "string"
+  }
+}
+2024-09-05 15:36:42.582 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchFilterStayDetail/GetAll, Content-Type: application/json
+2024-09-05 15:36:42.600 +05:00 [INF] Request Body: {
+  "searchRequestStays": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "hotelName": "string",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "hotelAmenities": "string",
+    "roomAmenities": "string",
+    "bathroomAmenities": "string",
+    "roomView": "string",
+    "roomFeature": "string"
+  }
+}
+2024-09-05 15:36:42.623 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api)'
+2024-09-05 15:36:42.712 +05:00 [INF] Route matched with {action = "GetAll", controller = "SearchFilterStay"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay.GetAllSearchFilterStayQuery) on controller CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController (CleanArc.Web.Api).
+2024-09-05 15:36:48.315 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-05 15:36:49.283 +05:00 [INF] Entering CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay, Handle with parameter: {"searchRequestStays":{"HotelName":"string","MaxPrice":0.0,"MinPrice":0.0,"HotelAmenities":"string","RoomAmenities":"string","BathroomAmenities":"string","RoomView":"string","RoomFeature":"string","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-05 15:37:02.678 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"HotelName":"string","MaxPrice":0.0,"MinPrice":0.0,"HotelAmenities":"string","RoomAmenities":"string","BathroomAmenities":"string","RoomView":"string","RoomFeature":"string","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-05 15:37:06.816 +05:00 [INF] Exiting null, GetAllWithParamAsync
+2024-09-05 15:37:06.878 +05:00 [INF] Exiting null, Handle
+2024-09-05 15:37:06.988 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api) in 24250.9288ms
+2024-09-05 15:37:07.016 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api)'
+2024-09-05 15:37:07.311 +05:00 [ERR] Invalid column name 'string'.
+Invalid column name 'string'.
+Invalid column name 'string'.
+Invalid column name 'string'.
+Invalid column name 'string'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'string'.
+Invalid column name 'string'.
+Invalid column name 'string'.
+Invalid column name 'string'.
+Invalid column name 'string'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.SearchFilterStayRepository.GetAllWithParamAsync(SearchRequestStays searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\SearchFilterStayRepository.cs:line 89
+   at CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay.GetAllSearchFilterStayQueryHandler.Handle(GetAllSearchFilterStayQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\SearchFilterStay\Queries\GetAllSearchFilterStay\GetAllSearchFilterStayQueryHandler.cs:line 38
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:a17ce850-6cb5-4a1b-b9af-ea334a27da2b
+Error Number:207,State:1,Class:16
+2024-09-05 15:37:07.556 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/SearchFilterStayDetail/GetAll application/json 393 - 500 0 - 25056.6415ms
+2024-09-05 15:37:25.939 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/SearchFilterStayDetail/GetAll application/json 393
+2024-09-05 15:37:25.944 +05:00 [INF] CORS policy execution successful.
+2024-09-05 15:37:25.947 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchFilterStayDetail/GetAll, Content-Type: application/json
+2024-09-05 15:37:25.951 +05:00 [INF] Request Body: {
+  "searchRequestStays": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "hotelName": "string",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "hotelAmenities": "string",
+    "roomAmenities": "string",
+    "bathroomAmenities": "string",
+    "roomView": "string",
+    "roomFeature": "string"
+  }
+}
+2024-09-05 15:37:25.979 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchFilterStayDetail/GetAll, Content-Type: application/json
+2024-09-05 15:37:25.984 +05:00 [INF] Request Body: {
+  "searchRequestStays": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "hotelName": "string",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "hotelAmenities": "string",
+    "roomAmenities": "string",
+    "bathroomAmenities": "string",
+    "roomView": "string",
+    "roomFeature": "string"
+  }
+}
+2024-09-05 15:37:25.988 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api)'
+2024-09-05 15:37:25.994 +05:00 [INF] Route matched with {action = "GetAll", controller = "SearchFilterStay"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay.GetAllSearchFilterStayQuery) on controller CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController (CleanArc.Web.Api).
+2024-09-05 15:37:27.688 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-05 15:37:27.826 +05:00 [INF] Entering CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay, Handle with parameter: {"searchRequestStays":{"HotelName":"string","MaxPrice":0.0,"MinPrice":0.0,"HotelAmenities":"string","RoomAmenities":"string","BathroomAmenities":"string","RoomView":"string","RoomFeature":"string","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-05 15:37:32.776 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"HotelName":"string","MaxPrice":0.0,"MinPrice":0.0,"HotelAmenities":"string","RoomAmenities":"string","BathroomAmenities":"string","RoomView":"string","RoomFeature":"string","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-05 15:37:52.518 +05:00 [INF] Exiting null, GetAllWithParamAsync
+2024-09-05 15:37:56.867 +05:00 [INF] Exiting null, Handle
+2024-09-05 15:37:59.748 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api) in 33747.8404ms
+2024-09-05 15:37:59.754 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api)'
+2024-09-05 15:38:31.274 +05:00 [ERR] Invalid column name 'string'.
+Invalid column name 'string'.
+Invalid column name 'string'.
+Invalid column name 'string'.
+Invalid column name 'string'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'string'.
+Invalid column name 'string'.
+Invalid column name 'string'.
+Invalid column name 'string'.
+Invalid column name 'string'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.SearchFilterStayRepository.GetAllWithParamAsync(SearchRequestStays searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\SearchFilterStayRepository.cs:line 89
+   at CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay.GetAllSearchFilterStayQueryHandler.Handle(GetAllSearchFilterStayQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\SearchFilterStay\Queries\GetAllSearchFilterStay\GetAllSearchFilterStayQueryHandler.cs:line 38
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:a17ce850-6cb5-4a1b-b9af-ea334a27da2b
+Error Number:207,State:1,Class:16
+2024-09-05 15:38:31.367 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/SearchFilterStayDetail/GetAll application/json 393 - 500 0 - 65427.8517ms
+2024-09-05 15:38:32.998 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/SearchFilterStayDetail/GetAll application/json 369
+2024-09-05 15:38:33.003 +05:00 [INF] CORS policy execution successful.
+2024-09-05 15:38:33.011 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchFilterStayDetail/GetAll, Content-Type: application/json
+2024-09-05 15:38:33.017 +05:00 [INF] Request Body: {
+  "searchRequestStays": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "hotelName": "butt g hotel",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "hotelAmenities": "",
+    "roomAmenities": "",
+    "bathroomAmenities": "",
+    "roomView": "",
+    "roomFeature": ""
+  }
+}
+2024-09-05 15:38:33.022 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchFilterStayDetail/GetAll, Content-Type: application/json
+2024-09-05 15:38:33.028 +05:00 [INF] Request Body: {
+  "searchRequestStays": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "hotelName": "butt g hotel",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "hotelAmenities": "",
+    "roomAmenities": "",
+    "bathroomAmenities": "",
+    "roomView": "",
+    "roomFeature": ""
+  }
+}
+2024-09-05 15:38:33.035 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api)'
+2024-09-05 15:38:33.046 +05:00 [INF] Route matched with {action = "GetAll", controller = "SearchFilterStay"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay.GetAllSearchFilterStayQuery) on controller CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController (CleanArc.Web.Api).
+2024-09-05 15:38:35.633 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-05 15:38:35.658 +05:00 [INF] Entering CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay, Handle with parameter: {"searchRequestStays":{"HotelName":"butt g hotel","MaxPrice":0.0,"MinPrice":0.0,"HotelAmenities":"","RoomAmenities":"","BathroomAmenities":"","RoomView":"","RoomFeature":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-05 15:38:40.631 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"HotelName":"butt g hotel","MaxPrice":0.0,"MinPrice":0.0,"HotelAmenities":"","RoomAmenities":"","BathroomAmenities":"","RoomView":"","RoomFeature":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-05 15:38:52.194 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: []
+2024-09-05 15:38:57.027 +05:00 [INF] Exiting null, Handle with response: []
+2024-09-05 15:38:57.038 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 21393.7644ms.
+2024-09-05 15:38:57.054 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-05 15:38:57.087 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api) in 24031.2793ms
+2024-09-05 15:38:57.092 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api)'
+2024-09-05 15:38:57.097 +05:00 [INF] Response StatusCode: 200
+2024-09-05 15:38:57.101 +05:00 [INF] Response StatusCode: 200
+2024-09-05 15:38:57.105 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/SearchFilterStayDetail/GetAll application/json 369 - 200 - application/json;+charset=utf-8 24106.9576ms
+2024-09-05 15:39:15.505 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/SearchFilterStayDetail/GetAll application/json 357
+2024-09-05 15:39:15.508 +05:00 [INF] CORS policy execution successful.
+2024-09-05 15:39:15.512 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchFilterStayDetail/GetAll, Content-Type: application/json
+2024-09-05 15:39:15.517 +05:00 [INF] Request Body: {
+  "searchRequestStays": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "hotelName": "",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "hotelAmenities": "",
+    "roomAmenities": "",
+    "bathroomAmenities": "",
+    "roomView": "",
+    "roomFeature": ""
+  }
+}
+2024-09-05 15:39:15.521 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchFilterStayDetail/GetAll, Content-Type: application/json
+2024-09-05 15:39:15.526 +05:00 [INF] Request Body: {
+  "searchRequestStays": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "hotelName": "",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "hotelAmenities": "",
+    "roomAmenities": "",
+    "bathroomAmenities": "",
+    "roomView": "",
+    "roomFeature": ""
+  }
+}
+2024-09-05 15:39:15.530 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api)'
+2024-09-05 15:39:15.535 +05:00 [INF] Route matched with {action = "GetAll", controller = "SearchFilterStay"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay.GetAllSearchFilterStayQuery) on controller CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController (CleanArc.Web.Api).
+2024-09-05 15:39:19.002 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-05 15:39:19.006 +05:00 [INF] Entering CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay, Handle with parameter: {"searchRequestStays":{"HotelName":"","MaxPrice":0.0,"MinPrice":0.0,"HotelAmenities":"","RoomAmenities":"","BathroomAmenities":"","RoomView":"","RoomFeature":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-05 15:39:26.989 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"HotelName":"","MaxPrice":0.0,"MinPrice":0.0,"HotelAmenities":"","RoomAmenities":"","BathroomAmenities":"","RoomView":"","RoomFeature":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-05 15:39:28.527 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: []
+2024-09-05 15:39:28.532 +05:00 [INF] Exiting null, Handle with response: []
+2024-09-05 15:39:28.536 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 9530.4357ms.
+2024-09-05 15:39:28.541 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-05 15:39:28.546 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api) in 13003.6291ms
+2024-09-05 15:39:28.552 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api)'
+2024-09-05 15:39:28.558 +05:00 [INF] Response StatusCode: 200
+2024-09-05 15:39:28.563 +05:00 [INF] Response StatusCode: 200
+2024-09-05 15:39:28.566 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/SearchFilterStayDetail/GetAll application/json 357 - 200 - application/json;+charset=utf-8 13061.8678ms
+2024-09-05 15:41:44.318 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/SearchFilterStayDetail/GetAll application/json 369
+2024-09-05 15:41:44.336 +05:00 [INF] CORS policy execution successful.
+2024-09-05 15:41:44.346 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchFilterStayDetail/GetAll, Content-Type: application/json
+2024-09-05 15:41:44.352 +05:00 [INF] Request Body: {
+  "searchRequestStays": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "hotelName": "butt g Hotel",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "hotelAmenities": "",
+    "roomAmenities": "",
+    "bathroomAmenities": "",
+    "roomView": "",
+    "roomFeature": ""
+  }
+}
+2024-09-05 15:41:44.356 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchFilterStayDetail/GetAll, Content-Type: application/json
+2024-09-05 15:41:44.363 +05:00 [INF] Request Body: {
+  "searchRequestStays": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "hotelName": "butt g Hotel",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "hotelAmenities": "",
+    "roomAmenities": "",
+    "bathroomAmenities": "",
+    "roomView": "",
+    "roomFeature": ""
+  }
+}
+2024-09-05 15:41:44.370 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api)'
+2024-09-05 15:41:44.376 +05:00 [INF] Route matched with {action = "GetAll", controller = "SearchFilterStay"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay.GetAllSearchFilterStayQuery) on controller CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController (CleanArc.Web.Api).
+2024-09-05 15:41:46.417 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-05 15:41:46.421 +05:00 [INF] Entering CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay, Handle with parameter: {"searchRequestStays":{"HotelName":"butt g Hotel","MaxPrice":0.0,"MinPrice":0.0,"HotelAmenities":"","RoomAmenities":"","BathroomAmenities":"","RoomView":"","RoomFeature":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-05 15:41:47.414 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"HotelName":"butt g Hotel","MaxPrice":0.0,"MinPrice":0.0,"HotelAmenities":"","RoomAmenities":"","BathroomAmenities":"","RoomView":"","RoomFeature":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-05 15:41:48.603 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: []
+2024-09-05 15:41:48.612 +05:00 [INF] Exiting null, Handle with response: []
+2024-09-05 15:41:48.616 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2195.8522ms.
+2024-09-05 15:41:48.623 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-05 15:41:48.629 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api) in 4243.3644ms
+2024-09-05 15:41:48.636 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api)'
+2024-09-05 15:41:48.643 +05:00 [INF] Response StatusCode: 200
+2024-09-05 15:41:48.650 +05:00 [INF] Response StatusCode: 200
+2024-09-05 15:41:48.656 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/SearchFilterStayDetail/GetAll application/json 369 - 200 - application/json;+charset=utf-8 4338.4138ms
+2024-09-05 15:41:54.180 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/SearchFilterStayDetail/GetAll application/json 369
+2024-09-05 15:41:54.271 +05:00 [INF] CORS policy execution successful.
+2024-09-05 15:41:54.284 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchFilterStayDetail/GetAll, Content-Type: application/json
+2024-09-05 15:41:54.294 +05:00 [INF] Request Body: {
+  "searchRequestStays": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "hotelName": "butt g Hotel",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "hotelAmenities": "",
+    "roomAmenities": "",
+    "bathroomAmenities": "",
+    "roomView": "",
+    "roomFeature": ""
+  }
+}
+2024-09-05 15:41:54.302 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchFilterStayDetail/GetAll, Content-Type: application/json
+2024-09-05 15:41:54.309 +05:00 [INF] Request Body: {
+  "searchRequestStays": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "hotelName": "butt g Hotel",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "hotelAmenities": "",
+    "roomAmenities": "",
+    "bathroomAmenities": "",
+    "roomView": "",
+    "roomFeature": ""
+  }
+}
+2024-09-05 15:41:54.318 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api)'
+2024-09-05 15:41:54.325 +05:00 [INF] Route matched with {action = "GetAll", controller = "SearchFilterStay"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay.GetAllSearchFilterStayQuery) on controller CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController (CleanArc.Web.Api).
+2024-09-05 15:41:58.334 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-05 15:41:58.341 +05:00 [INF] Entering CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay, Handle with parameter: {"searchRequestStays":{"HotelName":"butt g Hotel","MaxPrice":0.0,"MinPrice":0.0,"HotelAmenities":"","RoomAmenities":"","BathroomAmenities":"","RoomView":"","RoomFeature":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-05 15:42:00.010 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"HotelName":"butt g Hotel","MaxPrice":0.0,"MinPrice":0.0,"HotelAmenities":"","RoomAmenities":"","BathroomAmenities":"","RoomView":"","RoomFeature":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-05 15:42:18.508 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: []
+2024-09-05 15:42:27.110 +05:00 [INF] Exiting null, Handle with response: []
+2024-09-05 15:42:27.117 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 28776.847ms.
+2024-09-05 15:42:27.125 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-05 15:42:27.130 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api) in 32793.4812ms
+2024-09-05 15:42:27.135 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api)'
+2024-09-05 15:42:27.140 +05:00 [INF] Response StatusCode: 200
+2024-09-05 15:42:27.145 +05:00 [INF] Response StatusCode: 200
+2024-09-05 15:42:27.149 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/SearchFilterStayDetail/GetAll application/json 369 - 200 - application/json;+charset=utf-8 32968.6015ms
+2024-09-05 15:44:48.123 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/SearchFilterStayDetail/GetAll application/json 369
+2024-09-05 15:44:48.163 +05:00 [INF] CORS policy execution successful.
+2024-09-05 15:44:48.167 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchFilterStayDetail/GetAll, Content-Type: application/json
+2024-09-05 15:44:48.171 +05:00 [INF] Request Body: {
+  "searchRequestStays": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "hotelName": "butt g Hotel",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "hotelAmenities": "",
+    "roomAmenities": "",
+    "bathroomAmenities": "",
+    "roomView": "",
+    "roomFeature": ""
+  }
+}
+2024-09-05 15:44:48.175 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchFilterStayDetail/GetAll, Content-Type: application/json
+2024-09-05 15:44:48.180 +05:00 [INF] Request Body: {
+  "searchRequestStays": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "hotelName": "butt g Hotel",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "hotelAmenities": "",
+    "roomAmenities": "",
+    "bathroomAmenities": "",
+    "roomView": "",
+    "roomFeature": ""
+  }
+}
+2024-09-05 15:44:48.184 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api)'
+2024-09-05 15:44:48.189 +05:00 [INF] Route matched with {action = "GetAll", controller = "SearchFilterStay"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay.GetAllSearchFilterStayQuery) on controller CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController (CleanArc.Web.Api).
+2024-09-05 15:44:50.291 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-05 15:44:50.304 +05:00 [INF] Entering CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay, Handle with parameter: {"searchRequestStays":{"HotelName":"butt g Hotel","MaxPrice":0.0,"MinPrice":0.0,"HotelAmenities":"","RoomAmenities":"","BathroomAmenities":"","RoomView":"","RoomFeature":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-05 15:45:03.404 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"HotelName":"butt g Hotel","MaxPrice":0.0,"MinPrice":0.0,"HotelAmenities":"","RoomAmenities":"","BathroomAmenities":"","RoomView":"","RoomFeature":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-05 15:45:45.271 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: []
+2024-09-05 15:45:45.287 +05:00 [INF] Exiting null, Handle with response: []
+2024-09-05 15:45:45.291 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 54987.8499ms.
+2024-09-05 15:45:45.296 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-05 15:45:45.300 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api) in 57106.343ms
+2024-09-05 15:45:45.311 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api)'
+2024-09-05 15:45:45.319 +05:00 [INF] Response StatusCode: 200
+2024-09-05 15:45:45.324 +05:00 [INF] Response StatusCode: 200
+2024-09-05 15:45:45.328 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/SearchFilterStayDetail/GetAll application/json 369 - 200 - application/json;+charset=utf-8 57205.2337ms
+2024-09-05 15:45:47.468 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/SearchFilterStayDetail/GetAll application/json 369
+2024-09-05 15:45:47.476 +05:00 [INF] CORS policy execution successful.
+2024-09-05 15:45:47.482 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchFilterStayDetail/GetAll, Content-Type: application/json
+2024-09-05 15:45:47.488 +05:00 [INF] Request Body: {
+  "searchRequestStays": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "hotelName": "butt g Hotel",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "hotelAmenities": "",
+    "roomAmenities": "",
+    "bathroomAmenities": "",
+    "roomView": "",
+    "roomFeature": ""
+  }
+}
+2024-09-05 15:45:47.500 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchFilterStayDetail/GetAll, Content-Type: application/json
+2024-09-05 15:45:47.506 +05:00 [INF] Request Body: {
+  "searchRequestStays": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "hotelName": "butt g Hotel",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "hotelAmenities": "",
+    "roomAmenities": "",
+    "bathroomAmenities": "",
+    "roomView": "",
+    "roomFeature": ""
+  }
+}
+2024-09-05 15:45:47.510 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api)'
+2024-09-05 15:45:47.515 +05:00 [INF] Route matched with {action = "GetAll", controller = "SearchFilterStay"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay.GetAllSearchFilterStayQuery) on controller CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController (CleanArc.Web.Api).
+2024-09-05 15:45:51.646 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-05 15:45:51.651 +05:00 [INF] Entering CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay, Handle with parameter: {"searchRequestStays":{"HotelName":"butt g Hotel","MaxPrice":0.0,"MinPrice":0.0,"HotelAmenities":"","RoomAmenities":"","BathroomAmenities":"","RoomView":"","RoomFeature":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-05 15:45:53.614 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"HotelName":"butt g Hotel","MaxPrice":0.0,"MinPrice":0.0,"HotelAmenities":"","RoomAmenities":"","BathroomAmenities":"","RoomView":"","RoomFeature":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-05 15:46:27.727 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: []
+2024-09-05 15:46:27.738 +05:00 [INF] Exiting null, Handle with response: []
+2024-09-05 15:46:27.745 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 36094.0732ms.
+2024-09-05 15:46:27.753 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-05 15:46:27.761 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api) in 40241.4587ms
+2024-09-05 15:46:27.784 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api)'
+2024-09-05 15:46:27.789 +05:00 [INF] Response StatusCode: 200
+2024-09-05 15:46:27.795 +05:00 [INF] Response StatusCode: 200
+2024-09-05 15:46:27.800 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/SearchFilterStayDetail/GetAll application/json 369 - 200 - application/json;+charset=utf-8 40331.7062ms
+2024-09-05 15:49:13.849 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/SearchFilterStayDetail/GetAll application/json 369
+2024-09-05 15:49:13.866 +05:00 [INF] CORS policy execution successful.
+2024-09-05 15:49:13.874 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchFilterStayDetail/GetAll, Content-Type: application/json
+2024-09-05 15:49:13.879 +05:00 [INF] Request Body: {
+  "searchRequestStays": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "hotelName": "butt g Hotel",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "hotelAmenities": "",
+    "roomAmenities": "",
+    "bathroomAmenities": "",
+    "roomView": "",
+    "roomFeature": ""
+  }
+}
+2024-09-05 15:49:13.884 +05:00 [INF] Request Method: POST, Path: /api/v1/SearchFilterStayDetail/GetAll, Content-Type: application/json
+2024-09-05 15:49:13.888 +05:00 [INF] Request Body: {
+  "searchRequestStays": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "hotelName": "butt g Hotel",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "hotelAmenities": "",
+    "roomAmenities": "",
+    "bathroomAmenities": "",
+    "roomView": "",
+    "roomFeature": ""
+  }
+}
+2024-09-05 15:49:13.892 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api)'
+2024-09-05 15:49:13.895 +05:00 [INF] Route matched with {action = "GetAll", controller = "SearchFilterStay"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay.GetAllSearchFilterStayQuery) on controller CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController (CleanArc.Web.Api).
+2024-09-05 15:49:15.596 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-05 15:49:15.603 +05:00 [INF] Entering CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay, Handle with parameter: {"searchRequestStays":{"HotelName":"butt g Hotel","MaxPrice":0.0,"MinPrice":0.0,"HotelAmenities":"","RoomAmenities":"","BathroomAmenities":"","RoomView":"","RoomFeature":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-05 15:49:16.309 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"HotelName":"butt g Hotel","MaxPrice":0.0,"MinPrice":0.0,"HotelAmenities":"","RoomAmenities":"","BathroomAmenities":"","RoomView":"","RoomFeature":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-05 15:49:17.241 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: []
+2024-09-05 15:49:17.246 +05:00 [INF] Exiting null, Handle with response: []
+2024-09-05 15:49:17.250 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1648.6782ms.
+2024-09-05 15:49:17.254 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-05 15:49:17.257 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api) in 3342.9837ms
+2024-09-05 15:49:17.261 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail.SearchFilterStayController.GetAll (CleanArc.Web.Api)'
+2024-09-05 15:49:17.265 +05:00 [INF] Response StatusCode: 200
+2024-09-05 15:49:17.268 +05:00 [INF] Response StatusCode: 200
+2024-09-05 15:49:17.273 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/SearchFilterStayDetail/GetAll application/json 369 - 200 - application/json;+charset=utf-8 3423.5368ms
+2024-09-05 16:05:25.658 +05:00 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-05 16:05:25.947 +05:00 [INF] Executed DbCommand (134ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-05 16:05:25.982 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-05 16:05:26.004 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-05 16:05:26.053 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-05 16:05:26.170 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-05 16:05:26.216 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-05 16:05:26.729 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-05 16:05:26.757 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-05 16:05:27.986 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-05 16:05:29.179 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-05 16:05:29.725 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-05 16:05:30.091 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:05:30.105 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 934.7936ms
+2024-09-05 16:05:31.344 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-05 16:05:31.361 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-05 16:05:31.403 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 41.2345ms
+2024-09-05 16:05:31.496 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 152.3632ms
+2024-09-05 16:05:32.747 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-05 16:05:32.775 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-05 16:05:32.789 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-05 16:05:32.807 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-05 16:05:33.608 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-05 16:05:33.649 +05:00 [INF] Response StatusCode: 404
+2024-09-05 16:05:33.672 +05:00 [INF] Response StatusCode: 404
+2024-09-05 16:05:33.708 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 961.7841ms
+2024-09-05 16:05:36.428 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:05:36.442 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 3653.0101ms
+2024-09-05 16:12:00.097 +05:00 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-05 16:12:00.306 +05:00 [INF] Executed DbCommand (51ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-05 16:12:00.317 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-05 16:12:00.325 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-05 16:12:00.368 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-05 16:12:00.436 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-05 16:12:00.493 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-05 16:12:01.384 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-05 16:12:01.431 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-05 16:12:02.528 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-05 16:12:03.383 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-05 16:12:03.840 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-05 16:12:04.558 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:12:04.594 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-05 16:12:04.618 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 1239.6883ms
+2024-09-05 16:12:04.666 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 71.8119ms
+2024-09-05 16:12:04.911 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-05 16:12:05.000 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 89.1903ms
+2024-09-05 16:12:06.295 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-05 16:12:06.314 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-05 16:12:06.354 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-05 16:12:06.441 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-05 16:12:07.266 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-05 16:12:07.273 +05:00 [INF] Response StatusCode: 404
+2024-09-05 16:12:07.279 +05:00 [INF] Response StatusCode: 404
+2024-09-05 16:12:07.285 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 990.1532ms
+2024-09-05 16:12:09.523 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:12:09.529 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 3175.0807ms
+2024-09-05 16:13:04.906 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 312
+2024-09-05 16:13:04.964 +05:00 [INF] CORS policy execution successful.
+2024-09-05 16:13:04.988 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-05 16:13:05.016 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "carAmenities": ""
+  }
+}
+2024-09-05 16:13:05.053 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-05 16:13:05.065 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "carAmenities": ""
+  }
+}
+2024-09-05 16:13:05.078 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-05 16:13:05.163 +05:00 [INF] Route matched with {action = "GetAll", controller = "CarRentalSearchFilter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery) on controller CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController (CleanArc.Web.Api).
+2024-09-05 16:13:09.092 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-05 16:13:10.812 +05:00 [INF] Entering CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter, Handle with parameter: {"carRentalSearchFilterRequest":{"BusinessName":"","CityName":"","CarModel":"","MaxPrice":0.0,"MinPrice":0.0,"CarAmenities":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-05 16:13:13.882 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"BusinessName":"","CityName":"","CarModel":"","MaxPrice":0.0,"MinPrice":0.0,"CarAmenities":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-05 16:13:18.659 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: [{"ID":null,"BusinessID":29,"BusinessName":"Siddiqi Hospitality Pvt Limited","CityID":3,"CarModel":"Suzuki Alto","CarModelYear":"2021","CarRentPrice":1500.0,"CarDetailPrice":1500.0,"DiscountAmount":225.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"},{"Amenity":"6 Bags","Description":"6 bags"}]},{"ID":null,"BusinessID":32,"BusinessName":"AutoCraft","CityID":16,"CarModel":"Suzuki Wagon R","CarModelYear":"2020","CarRentPrice":2200.0,"CarDetailPrice":2200.0,"DiscountAmount":0.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"},{"Amenity":"6 Bags","Description":"6 bags"}]},{"ID":null,"BusinessID":30,"BusinessName":"Abc Company Pvt Limited ","CityID":9,"CarModel":"Suzuki Cultus","CarModelYear":"2019","CarRentPrice":2500.0,"CarDetailPrice":2500.0,"DiscountAmount":625.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"},{"Amenity":"6 Bags","Description":"6 bags"}]}]
+2024-09-05 16:13:18.888 +05:00 [INF] Exiting null, Handle with response: [{"ID":null,"BusinessID":29,"BusinessName":"Siddiqi Hospitality Pvt Limited","CityID":3,"CarModel":"Suzuki Alto","CarModelYear":"2021","CarRentPrice":1500.0,"CarDetailPrice":1500.0,"DiscountPercentage":0.0,"DiscountAmount":225.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"},{"Amenity":"6 Bags","Description":"6 bags"}]},{"ID":null,"BusinessID":32,"BusinessName":"AutoCraft","CityID":16,"CarModel":"Suzuki Wagon R","CarModelYear":"2020","CarRentPrice":2200.0,"CarDetailPrice":2200.0,"DiscountPercentage":0.0,"DiscountAmount":0.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"},{"Amenity":"6 Bags","Description":"6 bags"}]},{"ID":null,"BusinessID":30,"BusinessName":"Abc Company Pvt Limited ","CityID":9,"CarModel":"Suzuki Cultus","CarModelYear":"2019","CarRentPrice":2500.0,"CarDetailPrice":2500.0,"DiscountPercentage":0.0,"DiscountAmount":625.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"},{"Amenity":"6 Bags","Description":"6 bags"}]}]
+2024-09-05 16:13:18.903 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 9799.2933ms.
+2024-09-05 16:13:18.940 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-05 16:13:19.023 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) in 13836.8803ms
+2024-09-05 16:13:19.030 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-05 16:13:19.036 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:13:19.043 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:13:19.049 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 312 - 200 - application/json;+charset=utf-8 14142.5022ms
+2024-09-05 16:15:22.483 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-05 16:15:22.715 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-05 16:15:22.730 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:15:22.766 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-05 16:15:22.766 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 282.7423ms
+2024-09-05 16:15:22.766 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-05 16:15:22.779 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 13.3538ms
+2024-09-05 16:15:22.820 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 54.1028ms
+2024-09-05 16:15:23.484 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-05 16:15:23.494 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-05 16:15:23.507 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-05 16:15:23.532 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-05 16:15:23.561 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-05 16:15:23.675 +05:00 [INF] Response StatusCode: 404
+2024-09-05 16:15:23.684 +05:00 [INF] Response StatusCode: 404
+2024-09-05 16:15:23.714 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 237.5441ms
+2024-09-05 16:15:25.344 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:15:25.356 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1862.4076ms
+2024-09-05 16:20:46.840 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 312
+2024-09-05 16:20:46.888 +05:00 [INF] CORS policy execution successful.
+2024-09-05 16:20:46.893 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-05 16:20:46.899 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "carAmenities": ""
+  }
+}
+2024-09-05 16:20:46.927 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-05 16:20:46.931 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "carAmenities": ""
+  }
+}
+2024-09-05 16:20:46.936 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-05 16:20:46.940 +05:00 [INF] Route matched with {action = "GetAll", controller = "CarRentalSearchFilter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery) on controller CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController (CleanArc.Web.Api).
+2024-09-05 16:20:49.658 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-05 16:20:49.773 +05:00 [INF] Entering CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter, Handle with parameter: {"carRentalSearchFilterRequest":{"BusinessName":"","CityName":"","CarModel":"","MaxPrice":0.0,"MinPrice":0.0,"CarAmenities":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-05 16:20:50.308 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"BusinessName":"","CityName":"","CarModel":"","MaxPrice":0.0,"MinPrice":0.0,"CarAmenities":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-05 16:20:51.508 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: []
+2024-09-05 16:20:51.515 +05:00 [INF] Exiting null, Handle with response: []
+2024-09-05 16:20:51.520 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1856.8977ms.
+2024-09-05 16:20:51.528 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-05 16:20:51.535 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) in 4589.702ms
+2024-09-05 16:20:51.541 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-05 16:20:51.546 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:20:51.551 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:20:51.556 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 312 - 200 - application/json;+charset=utf-8 4716.0302ms
+2024-09-05 16:20:52.513 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-05 16:20:52.566 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-05 16:20:52.581 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:20:52.587 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 73.8982ms
+2024-09-05 16:20:52.614 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-05 16:20:52.614 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-05 16:20:52.624 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 8.9360ms
+2024-09-05 16:20:52.655 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 41.4027ms
+2024-09-05 16:20:53.441 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-05 16:20:53.445 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-05 16:20:53.452 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-05 16:20:53.458 +05:00 [INF] Response StatusCode: 404
+2024-09-05 16:20:53.465 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-05 16:20:53.468 +05:00 [INF] Response StatusCode: 404
+2024-09-05 16:20:53.475 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-05 16:20:53.479 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 38.3510ms
+2024-09-05 16:20:54.202 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:20:54.207 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 742.1247ms
+2024-09-05 16:21:07.834 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 312
+2024-09-05 16:21:07.839 +05:00 [INF] CORS policy execution successful.
+2024-09-05 16:21:07.844 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-05 16:21:07.853 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "carAmenities": ""
+  }
+}
+2024-09-05 16:21:07.867 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-05 16:21:07.873 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "carAmenities": ""
+  }
+}
+2024-09-05 16:21:07.881 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-05 16:21:07.900 +05:00 [INF] Route matched with {action = "GetAll", controller = "CarRentalSearchFilter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery) on controller CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController (CleanArc.Web.Api).
+2024-09-05 16:21:09.923 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-05 16:21:09.950 +05:00 [INF] Entering CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter, Handle with parameter: {"carRentalSearchFilterRequest":{"BusinessName":"","CityName":"","CarModel":"","MaxPrice":0.0,"MinPrice":0.0,"CarAmenities":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-05 16:21:10.708 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"BusinessName":"","CityName":"","CarModel":"","MaxPrice":0.0,"MinPrice":0.0,"CarAmenities":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-05 16:21:11.998 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: []
+2024-09-05 16:21:12.004 +05:00 [INF] Exiting null, Handle with response: []
+2024-09-05 16:21:12.008 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2079.504ms.
+2024-09-05 16:21:12.014 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-05 16:21:12.023 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) in 4111.7765ms
+2024-09-05 16:21:12.031 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-05 16:21:12.034 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:21:12.038 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:21:12.044 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 312 - 200 - application/json;+charset=utf-8 4210.3858ms
+2024-09-05 16:21:30.009 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 312
+2024-09-05 16:21:30.017 +05:00 [INF] CORS policy execution successful.
+2024-09-05 16:21:30.022 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-05 16:21:30.027 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "carAmenities": ""
+  }
+}
+2024-09-05 16:21:30.056 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-05 16:21:30.063 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "carAmenities": ""
+  }
+}
+2024-09-05 16:21:30.067 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-05 16:21:30.071 +05:00 [INF] Route matched with {action = "GetAll", controller = "CarRentalSearchFilter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery) on controller CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController (CleanArc.Web.Api).
+2024-09-05 16:21:45.030 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-05 16:21:45.037 +05:00 [INF] Entering CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter, Handle with parameter: {"carRentalSearchFilterRequest":{"BusinessName":"","CityName":"","CarModel":"","MaxPrice":0.0,"MinPrice":0.0,"CarAmenities":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-05 16:21:46.950 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"BusinessName":"","CityName":"","CarModel":"","MaxPrice":0.0,"MinPrice":0.0,"CarAmenities":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-05 16:26:32.463 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: []
+2024-09-05 16:26:32.487 +05:00 [INF] Exiting null, Handle with response: []
+2024-09-05 16:26:32.498 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 287461.9248ms.
+2024-09-05 16:26:32.519 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-05 16:26:32.522 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) in 302446.9613ms
+2024-09-05 16:26:32.525 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-05 16:26:32.528 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:26:32.531 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:26:32.534 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 312 - 200 - application/json;+charset=utf-8 302524.9863ms
+2024-09-05 16:26:43.439 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 321
+2024-09-05 16:26:43.445 +05:00 [INF] CORS policy execution successful.
+2024-09-05 16:26:43.450 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-05 16:26:43.461 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ],
+    "businessName": "",
+    "cityName": "Islamabad",
+    "carModel": "",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "carAmenities": ""
+  }
+}
+2024-09-05 16:26:43.470 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-05 16:26:43.513 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ],
+    "businessName": "",
+    "cityName": "Islamabad",
+    "carModel": "",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "carAmenities": ""
+  }
+}
+2024-09-05 16:26:43.526 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-05 16:26:43.540 +05:00 [INF] Route matched with {action = "GetAll", controller = "CarRentalSearchFilter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery) on controller CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController (CleanArc.Web.Api).
+2024-09-05 16:26:45.633 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-05 16:26:45.638 +05:00 [INF] Entering CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter, Handle with parameter: {"carRentalSearchFilterRequest":{"BusinessName":"","CityName":"Islamabad","CarModel":"","MaxPrice":0.0,"MinPrice":0.0,"CarAmenities":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-05 16:26:46.670 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"BusinessName":"","CityName":"Islamabad","CarModel":"","MaxPrice":0.0,"MinPrice":0.0,"CarAmenities":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-05 16:26:52.180 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: []
+2024-09-05 16:26:52.185 +05:00 [INF] Exiting null, Handle with response: []
+2024-09-05 16:26:52.190 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 6552.9059ms.
+2024-09-05 16:26:52.195 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-05 16:26:52.199 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) in 8646.3158ms
+2024-09-05 16:26:52.204 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-05 16:26:52.208 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:26:52.212 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:26:52.216 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 321 - 200 - application/json;+charset=utf-8 8776.7337ms
+2024-09-05 16:27:36.906 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 321
+2024-09-05 16:27:36.921 +05:00 [INF] CORS policy execution successful.
+2024-09-05 16:27:36.929 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-05 16:27:36.936 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ],
+    "businessName": "",
+    "cityName": "Islamabad",
+    "carModel": "",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "carAmenities": ""
+  }
+}
+2024-09-05 16:27:36.941 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-05 16:27:36.948 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ],
+    "businessName": "",
+    "cityName": "Islamabad",
+    "carModel": "",
+    "maxPrice": 0,
+    "minPrice": 0,
+    "carAmenities": ""
+  }
+}
+2024-09-05 16:27:36.953 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-05 16:27:36.956 +05:00 [INF] Route matched with {action = "GetAll", controller = "CarRentalSearchFilter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery) on controller CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController (CleanArc.Web.Api).
+2024-09-05 16:27:39.090 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-05 16:27:39.105 +05:00 [INF] Entering CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter, Handle with parameter: {"carRentalSearchFilterRequest":{"BusinessName":"","CityName":"Islamabad","CarModel":"","MaxPrice":0.0,"MinPrice":0.0,"CarAmenities":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-05 16:27:40.301 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"BusinessName":"","CityName":"Islamabad","CarModel":"","MaxPrice":0.0,"MinPrice":0.0,"CarAmenities":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-05 16:28:37.065 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: []
+2024-09-05 16:28:37.080 +05:00 [INF] Exiting null, Handle with response: []
+2024-09-05 16:28:37.087 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 57983.8852ms.
+2024-09-05 16:28:37.092 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-05 16:28:37.096 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) in 60133.7891ms
+2024-09-05 16:28:37.106 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-05 16:28:37.112 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:28:37.116 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:28:37.119 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 321 - 200 - application/json;+charset=utf-8 60212.7314ms
+2024-09-05 16:28:44.715 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 327
+2024-09-05 16:28:44.721 +05:00 [INF] CORS policy execution successful.
+2024-09-05 16:28:44.725 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-05 16:28:44.730 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ],
+    "businessName": "",
+    "cityName": "Islamabad",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": ""
+  }
+}
+2024-09-05 16:28:44.737 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-05 16:28:44.745 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ],
+    "businessName": "",
+    "cityName": "Islamabad",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": ""
+  }
+}
+2024-09-05 16:28:44.752 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-05 16:28:44.758 +05:00 [INF] Route matched with {action = "GetAll", controller = "CarRentalSearchFilter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery) on controller CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController (CleanArc.Web.Api).
+2024-09-05 16:28:47.122 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-05 16:28:47.128 +05:00 [INF] Entering CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter, Handle with parameter: {"carRentalSearchFilterRequest":{"BusinessName":"","CityName":"Islamabad","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-05 16:28:47.583 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"BusinessName":"","CityName":"Islamabad","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-05 16:29:02.057 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: []
+2024-09-05 16:29:02.062 +05:00 [INF] Exiting null, Handle with response: []
+2024-09-05 16:29:02.066 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 14938.9733ms.
+2024-09-05 16:29:02.071 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-05 16:29:02.075 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) in 17306.0267ms
+2024-09-05 16:29:02.079 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-05 16:29:02.084 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:29:02.088 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:29:02.093 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 327 - 200 - application/json;+charset=utf-8 17377.8015ms
+2024-09-05 16:37:44.537 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 327
+2024-09-05 16:37:44.544 +05:00 [INF] CORS policy execution successful.
+2024-09-05 16:37:44.553 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-05 16:37:44.572 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ],
+    "businessName": "AutoCraft",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": ""
+  }
+}
+2024-09-05 16:37:44.580 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-05 16:37:44.586 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ],
+    "businessName": "AutoCraft",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": ""
+  }
+}
+2024-09-05 16:37:44.590 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-05 16:37:44.593 +05:00 [INF] Route matched with {action = "GetAll", controller = "CarRentalSearchFilter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery) on controller CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController (CleanArc.Web.Api).
+2024-09-05 16:37:46.323 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-05 16:37:46.329 +05:00 [INF] Entering CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter, Handle with parameter: {"carRentalSearchFilterRequest":{"BusinessName":"AutoCraft","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-05 16:37:47.059 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"BusinessName":"AutoCraft","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"","PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-05 16:37:51.618 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: [{"ID":null,"BusinessID":32,"BusinessName":"AutoCraft","CityID":16,"CarModel":"Suzuki Wagon R","CarModelYear":"2020","CarRentPrice":2200.0,"CarDetailPrice":2200.0,"DiscountAmount":0.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"},{"Amenity":"6 Bags","Description":"6 bags"}]}]
+2024-09-05 16:37:51.624 +05:00 [INF] Exiting null, Handle with response: [{"ID":null,"BusinessID":32,"BusinessName":"AutoCraft","CityID":16,"CarModel":"Suzuki Wagon R","CarModelYear":"2020","CarRentPrice":2200.0,"CarDetailPrice":2200.0,"DiscountPercentage":0.0,"DiscountAmount":0.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"},{"Amenity":"6 Bags","Description":"6 bags"}]}]
+2024-09-05 16:37:51.631 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 5303.7915ms.
+2024-09-05 16:37:51.636 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-05 16:37:51.645 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) in 7044.6235ms
+2024-09-05 16:37:51.650 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-05 16:37:51.654 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:37:51.659 +05:00 [INF] Response StatusCode: 200
+2024-09-05 16:37:51.670 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 327 - 200 - application/json;+charset=utf-8 7133.0565ms

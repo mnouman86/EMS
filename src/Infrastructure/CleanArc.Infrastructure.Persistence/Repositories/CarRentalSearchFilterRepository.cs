@@ -74,14 +74,21 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     {
                         PageNumber = searchRequest.PageNumber,
                         PageSize = searchRequest.PageSize,
-                        //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-                        //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-                        //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-                        //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-                        SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
+                         BusinessName = searchRequest.BusinessName,
+                         CityName = searchRequest.CityName,
+                         CarModel = searchRequest.CarModel,
+                         MaxPrice = searchRequest.MaxPrice,
+                         MinPrice = searchRequest.MinPrice,
+                         CarAmenities = searchRequest.CarAmenities,
+
+                         //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
+                         //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
+                         //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
+                         //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
+                         SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
                         FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                     };
-                    var result = await connection.QueryAsync<CarRentalSearchFilter>(CarRentalSearchFilterQueries.usp_GetALLByBusinessID_Cars, parameters, commandType: CommandType.StoredProcedure);
+                    var result = await connection.QueryAsync<CarRentalSearchFilter>(CarRentalSearchFilterQueries.GetAll_CarSearchFilter, parameters, commandType: CommandType.StoredProcedure);
                     foreach (var item in result)
                     {
                         List<FilterParameter> FilterArray = new List<FilterParameter>();
