@@ -58,7 +58,7 @@ internal class CreateKBWhenToVisitCommandHandler: IRequestHandler<CreateKBWhenTo
 
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.KBWhenToVisitRepository.AddAsync(new Domain.Entities.KBWhenToVisit.KBWhenToVisit()
-            { CreatedBy = user.Id,  Description = request.Description,Title=request.Title, CultureId =request.CultureId  });
+            { CreatedBy = user.Id,  Description = request.Description, Name = request.Name, CultureId =request.CultureId  });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);

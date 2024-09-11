@@ -10,7 +10,7 @@ public class GetAllKBWhenToVisitQueryResult
 {
     public int ID { get; set; }
   //public int? KBDetailID { get; set; }
-    public string Title { get; set; }
+    public string Name { get; set; }
     public string Description { get; set; }
    // public string URL { get; set; }
     public bool IsDeleted { get; set; }
