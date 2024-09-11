@@ -13,7 +13,10 @@ namespace CleanArc.Application.Models.KBDescription
         public string? SubHeading { get; set; }
         public string? Content { get; set; }
         public string? KBContentType { get; set; }
-
+        public string? MediaType { get; set; }
+        public string? ImagePath { get; set; }
+        public string? ImageTitle { get; set; }
+        public bool? IsMain { get; set; }
         //public bool? IsActive { get; set; }
         //public bool? IsDeleted { get; set; }
         public int? CreatedBy { get; set; }
