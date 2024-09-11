@@ -14,7 +14,7 @@ public  class KBDescription
     public int? KBDetailID { get; set; }
     public string? SubHeading { get; set; }
     public string? Content { get; set; }
-    public int? KBContentType { get; set; }
+    public string? KBContentType { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }

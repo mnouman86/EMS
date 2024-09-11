@@ -14,7 +14,7 @@ namespace CleanArc.Application.Features.KBDescription.Commands.UpdateKBDescripti
 public record UpdateKBDescriptionCommand(int ID, int? KBDetailID,
 string SubHeading,
 string Content,
-int KBContentType, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
+string? KBContentType, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateKBDescriptionCommand>
 {
     [JsonIgnore]
