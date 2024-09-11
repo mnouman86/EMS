@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.CoreArea.Commands.UpdateCoreAreaCommand;
-public record UpdateCoreAreaCommand( int ID,String? Title, string? Description, int? Type, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
+public record UpdateCoreAreaCommand( int ID,String? Name, string? Description, int? Type, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateCoreAreaCommand>
 {
     [JsonIgnore]
@@ -19,7 +19,7 @@ public record UpdateCoreAreaCommand( int ID,String? Title, string? Description, 
     public IValidator<UpdateCoreAreaCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateCoreAreaCommand> validator)
     {
         
-        validator.RuleFor(c => c.Title)
+        validator.RuleFor(c => c.Name)
             .NotEmpty()
 
             .NotNull()

@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.CoreArea.Commands.CreateCoreAreaCommand;
-public record CreateCoreAreaCommand(string? Title, string? Description, int? Type, int? CreatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
+public record CreateCoreAreaCommand(string? Name, string? Description, int? Type, int? CreatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateCoreAreaCommand>
 {
     [JsonIgnore]
@@ -19,7 +19,7 @@ public record CreateCoreAreaCommand(string? Title, string? Description, int? Typ
     public IValidator<CreateCoreAreaCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateCoreAreaCommand> validator)
     {
         
-        validator.RuleFor(c => c.Title)
+        validator.RuleFor(c => c.Name)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Title");
