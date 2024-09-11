@@ -93,7 +93,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     {
                         List<FilterParameter> FilterArray = new List<FilterParameter>();
                         List<SortingParameter> SortingArray = new List<SortingParameter>();
-                        FilterArray.Add(new FilterParameter { ParameterName = "CarId", ParameterValue = item.ID.ToString() });
+                        FilterArray.Add(new FilterParameter { ParameterName = "CarId", ParameterValue = item.CarID.ToString() });
                         var parameter = new
                         {
                             PageNumber = searchRequest.PageNumber,
