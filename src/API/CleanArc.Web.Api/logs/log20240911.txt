@@ -930,3 +930,1376 @@ END
 2024-09-11 11:14:39.924 +05:00 [INF] Response StatusCode: 200
 2024-09-11 11:14:39.936 +05:00 [INF] Response StatusCode: 200
 2024-09-11 11:14:39.946 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 171 - 200 - application/json;+charset=utf-8 8616.6038ms
+2024-09-11 11:22:00.580 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 333
+2024-09-11 11:22:00.595 +05:00 [INF] CORS policy execution successful.
+2024-09-11 11:22:00.609 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:22:00.618 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "null",
+    "cityName": "null",
+    "carModel": "null",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "null"
+  }
+}
+2024-09-11 11:22:00.650 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:22:00.655 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "null",
+    "cityName": "null",
+    "carModel": "null",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "null"
+  }
+}
+2024-09-11 11:22:00.660 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:22:00.667 +05:00 [INF] Route matched with {action = "GetAll", controller = "CarRentalSearchFilter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery) on controller CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController (CleanArc.Web.Api).
+2024-09-11 11:22:04.142 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 11:22:04.225 +05:00 [INF] Entering CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter, Handle with parameter: {"carRentalSearchFilterRequest":{"BusinessName":"null","CityName":"null","CarModel":"null","MaxPrice":null,"MinPrice":null,"CarAmenities":"null","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-11 11:22:05.174 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"BusinessName":"null","CityName":"null","CarModel":"null","MaxPrice":null,"MinPrice":null,"CarAmenities":"null","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-11 11:22:06.646 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: []
+2024-09-11 11:22:06.679 +05:00 [INF] Exiting null, Handle with response: []
+2024-09-11 11:22:06.687 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2538.5095ms.
+2024-09-11 11:22:06.694 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-11 11:22:06.707 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) in 6036.6212ms
+2024-09-11 11:22:06.712 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:22:06.717 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:22:06.728 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:22:06.736 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 333 - 200 - application/json;+charset=utf-8 6157.2569ms
+2024-09-11 11:25:36.180 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 171
+2024-09-11 11:25:36.193 +05:00 [INF] CORS policy execution successful.
+2024-09-11 11:25:36.196 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-11 11:25:36.200 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-11 11:25:36.206 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-11 11:25:36.210 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-11 11:25:36.213 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:25:36.217 +05:00 [INF] Route matched with {action = "GetAll", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQuery) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-11 11:25:39.030 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 11:25:39.037 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-11 11:25:39.833 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-11 11:25:41.019 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":13,"Title":"Example Title","KeyDate":"132165","Cost":"100 USD","ServiceID":5,"CoreAreaLookupID":1,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2,3","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-09-06T07:43:37.923","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"40.7128","Longitude":"-74.0060","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"AddressID":40},{"ID":14,"Title":"Example Title","KeyDate":"132165","Cost":"100 USD","ServiceID":6,"CoreAreaLookupID":1,"RelatedAreasLookupIDs":"1","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2,3","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-09-06T07:45:28.23","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"40.7128","Longitude":"-74.0060","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"AddressID":41},{"ID":16,"Title":"Test Title","KeyDate":"132165","Cost":"100 USD","ServiceID":6,"CoreAreaLookupID":1,"RelatedAreasLookupIDs":"1","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2,3","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-09-06T11:17:42.553","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"40.7128","Longitude":"-74.0060","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"AddressID":43},{"ID":22,"Title":"Updated Title","KeyDate":"132165","Cost":"100","ServiceID":6,"CoreAreaLookupID":1,"RelatedAreasLookupIDs":"1,2","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2,3","IsActive":true,"IsDeleted":false,"CreatedBy":1001,"CreatedAt":"2024-09-10T07:38:26.48","UpdatedBy":1001,"UpdatedAt":"2024-09-10T08:00:12.893","CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"40.7128","Longitude":"-74.0060","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"AddressID":49},{"ID":23,"Title":"Sample Title","KeyDate":"132165","Cost":"100","ServiceID":6,"CoreAreaLookupID":1,"RelatedAreasLookupIDs":"1,2","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2,3","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-09-10T08:27:41.503","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"40.7128","Longitude":"-74.0060","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"AddressID":50},{"ID":25,"Title":"Exercitation saepe f","KeyDate":"03-Jan-2023","Cost":"Nisi molestias quas ","ServiceID":20,"CoreAreaLookupID":1,"RelatedAreasLookupIDs":"3, 4","Access":"Deserunt vitae iusto","Availablity":"Aliquid laboris dolo","WhenToVisitIDs":"2, 3, 4","IsActive":true,"IsDeleted":false,"CreatedBy":3,"CreatedAt":"2024-09-11T05:02:07.763","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":23,"StatelookUpID":12,"PostalCode":"Enim impedit omnis ","Latitude":"Minim veniam ducimu","Longitude":"Architecto nesciunt","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"AddressID":52},{"ID":26,"Title":"Nemo totam provident","KeyDate":"09-Apr-1981","Cost":"Itaque culpa esse ","ServiceID":19,"CoreAreaLookupID":1,"RelatedAreasLookupIDs":"3, 4, 10","Access":"Eu dolor voluptatem","Availablity":"Repellendus Incidid","WhenToVisitIDs":"3, 4, 5, 6","IsActive":true,"IsDeleted":false,"CreatedBy":3,"CreatedAt":"2024-09-11T05:10:59.61","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":22,"StatelookUpID":12,"PostalCode":"Fuga Molestias ex d","Latitude":"Reprehenderit recus","Longitude":"Est voluptatem minim","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"AddressID":53},{"ID":27,"Title":"Cumque modi sit labo","KeyDate":"27-May-2005","Cost":"Qui esse asperiores ","ServiceID":19,"CoreAreaLookupID":1,"RelatedAreasLookupIDs":"3, 4, 10","Access":"Omnis maxime distinc","Availablity":"Modi eos ut quaerat ","WhenToVisitIDs":"1, 2, 3, 4","IsActive":true,"IsDeleted":false,"CreatedBy":3,"CreatedAt":"2024-09-11T05:12:28.343","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":22,"StatelookUpID":12,"PostalCode":"Ipsam aliqua Tempor","Latitude":"Consequat Ut aute s","Longitude":"Vel ea eu numquam ad","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"AddressID":54}]
+2024-09-11 11:25:41.026 +05:00 [INF] Exiting null, Handle with response: [{"ID":13,"Title":"Example Title","KeyDate":"132165","Cost":"100 USD","ServiceID":5,"CoreAreaLookupID":1,"WhenToVisitIDs":"1,2,3","RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","IsDeleted":false,"IsActive":true,"CreatedBy":1,"CreatedAt":"2024-09-06T07:43:37.923","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":40,"CityLookUpID":19,"CountryLookUpID":1,"Latitude":"40.7128","Longitude":"-74.0060","PostalCode":"12345","StatelookUpID":5,"CultureId":null,"Code":null,"Message":null},{"ID":14,"Title":"Example Title","KeyDate":"132165","Cost":"100 USD","ServiceID":6,"CoreAreaLookupID":1,"WhenToVisitIDs":"1,2,3","RelatedAreasLookupIDs":"1","Access":"Public","Availablity":"Available","IsDeleted":false,"IsActive":true,"CreatedBy":1,"CreatedAt":"2024-09-06T07:45:28.23","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":41,"CityLookUpID":19,"CountryLookUpID":1,"Latitude":"40.7128","Longitude":"-74.0060","PostalCode":"12345","StatelookUpID":5,"CultureId":null,"Code":null,"Message":null},{"ID":16,"Title":"Test Title","KeyDate":"132165","Cost":"100 USD","ServiceID":6,"CoreAreaLookupID":1,"WhenToVisitIDs":"1,2,3","RelatedAreasLookupIDs":"1","Access":"Public","Availablity":"Available","IsDeleted":false,"IsActive":true,"CreatedBy":1006,"CreatedAt":"2024-09-06T11:17:42.553","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":43,"CityLookUpID":19,"CountryLookUpID":1,"Latitude":"40.7128","Longitude":"-74.0060","PostalCode":"12345","StatelookUpID":5,"CultureId":null,"Code":null,"Message":null},{"ID":22,"Title":"Updated Title","KeyDate":"132165","Cost":"100","ServiceID":6,"CoreAreaLookupID":1,"WhenToVisitIDs":"1,2,3","RelatedAreasLookupIDs":"1,2","Access":"Public","Availablity":"Available","IsDeleted":false,"IsActive":true,"CreatedBy":1001,"CreatedAt":"2024-09-10T07:38:26.48","UpdatedBy":1001,"UpdatedAt":"2024-09-10T08:00:12.893","AddressID":49,"CityLookUpID":19,"CountryLookUpID":1,"Latitude":"40.7128","Longitude":"-74.0060","PostalCode":"12345","StatelookUpID":5,"CultureId":null,"Code":null,"Message":null},{"ID":23,"Title":"Sample Title","KeyDate":"132165","Cost":"100","ServiceID":6,"CoreAreaLookupID":1,"WhenToVisitIDs":"1,2,3","RelatedAreasLookupIDs":"1,2","Access":"Public","Availablity":"Available","IsDeleted":false,"IsActive":true,"CreatedBy":1006,"CreatedAt":"2024-09-10T08:27:41.503","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":50,"CityLookUpID":19,"CountryLookUpID":1,"Latitude":"40.7128","Longitude":"-74.0060","PostalCode":"12345","StatelookUpID":5,"CultureId":null,"Code":null,"Message":null},{"ID":25,"Title":"Exercitation saepe f","KeyDate":"03-Jan-2023","Cost":"Nisi molestias quas ","ServiceID":20,"CoreAreaLookupID":1,"WhenToVisitIDs":"2, 3, 4","RelatedAreasLookupIDs":"3, 4","Access":"Deserunt vitae iusto","Availablity":"Aliquid laboris dolo","IsDeleted":false,"IsActive":true,"CreatedBy":3,"CreatedAt":"2024-09-11T05:02:07.763","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":52,"CityLookUpID":23,"CountryLookUpID":1,"Latitude":"Minim veniam ducimu","Longitude":"Architecto nesciunt","PostalCode":"Enim impedit omnis ","StatelookUpID":12,"CultureId":null,"Code":null,"Message":null},{"ID":26,"Title":"Nemo totam provident","KeyDate":"09-Apr-1981","Cost":"Itaque culpa esse ","ServiceID":19,"CoreAreaLookupID":1,"WhenToVisitIDs":"3, 4, 5, 6","RelatedAreasLookupIDs":"3, 4, 10","Access":"Eu dolor voluptatem","Availablity":"Repellendus Incidid","IsDeleted":false,"IsActive":true,"CreatedBy":3,"CreatedAt":"2024-09-11T05:10:59.61","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":53,"CityLookUpID":22,"CountryLookUpID":1,"Latitude":"Reprehenderit recus","Longitude":"Est voluptatem minim","PostalCode":"Fuga Molestias ex d","StatelookUpID":12,"CultureId":null,"Code":null,"Message":null},{"ID":27,"Title":"Cumque modi sit labo","KeyDate":"27-May-2005","Cost":"Qui esse asperiores ","ServiceID":19,"CoreAreaLookupID":1,"WhenToVisitIDs":"1, 2, 3, 4","RelatedAreasLookupIDs":"3, 4, 10","Access":"Omnis maxime distinc","Availablity":"Modi eos ut quaerat ","IsDeleted":false,"IsActive":true,"CreatedBy":3,"CreatedAt":"2024-09-11T05:12:28.343","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":54,"CityLookUpID":22,"CountryLookUpID":1,"Latitude":"Consequat Ut aute s","Longitude":"Vel ea eu numquam ad","PostalCode":"Ipsam aliqua Tempor","StatelookUpID":12,"CultureId":null,"Code":null,"Message":null}]
+2024-09-11 11:25:41.035 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1999.9335ms.
+2024-09-11 11:25:41.039 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-11 11:25:41.059 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) in 4836.0302ms
+2024-09-11 11:25:41.062 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:25:41.065 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:25:41.068 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:25:41.072 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 171 - 200 - application/json;+charset=utf-8 4891.2627ms
+2024-09-11 11:27:19.270 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 249
+2024-09-11 11:27:19.285 +05:00 [INF] CORS policy execution successful.
+2024-09-11 11:27:19.294 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-11 11:27:19.299 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "serviceID",
+        "parameterValue": "19"
+      }
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-11 11:27:19.303 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-11 11:27:19.310 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "serviceID",
+        "parameterValue": "19"
+      }
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-11 11:27:19.314 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:27:19.319 +05:00 [INF] Route matched with {action = "GetAll", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQuery) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-11 11:27:22.052 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 11:27:22.070 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[{"ParameterName":"serviceID","ParameterValue":"19"}],"SortingArray":[]}}
+2024-09-11 11:27:22.711 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[{"ParameterName":"serviceID","ParameterValue":"19"}],"SortingArray":[]}
+2024-09-11 11:27:23.274 +05:00 [INF] Exiting null, GetAllAsync
+2024-09-11 11:27:23.298 +05:00 [INF] Exiting null, Handle
+2024-09-11 11:27:23.350 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) in 4027.6345ms
+2024-09-11 11:27:23.355 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:27:23.535 +05:00 [ERR] Ambiguous column name 'serviceID'.
+System.Data.SqlClient.SqlException (0x80131904): Ambiguous column name 'serviceID'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.KBDetailRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBDetailRepository.cs:line 143
+   at CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQueryHandler.Handle(GetAllKBDetailQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\KBDetail\Queries\GetAllKBDetail\GetAllKBDetailQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:f02b0165-8dbd-4d2e-aaf2-86f7b1369600
+Error Number:209,State:1,Class:16
+2024-09-11 11:27:23.735 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 249 - 500 0 - 4465.3150ms
+2024-09-11 11:27:30.255 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 249
+2024-09-11 11:27:30.262 +05:00 [INF] CORS policy execution successful.
+2024-09-11 11:27:30.265 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-11 11:27:30.271 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "serviceID",
+        "parameterValue": "19"
+      }
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-11 11:27:30.274 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-11 11:27:30.279 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "serviceID",
+        "parameterValue": "19"
+      }
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-11 11:27:30.283 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:27:30.291 +05:00 [INF] Route matched with {action = "GetAll", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQuery) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-11 11:27:32.967 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 11:27:32.973 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[{"ParameterName":"serviceID","ParameterValue":"19"}],"SortingArray":[]}}
+2024-09-11 11:27:33.901 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[{"ParameterName":"serviceID","ParameterValue":"19"}],"SortingArray":[]}
+2024-09-11 11:27:39.428 +05:00 [INF] Exiting null, GetAllAsync
+2024-09-11 11:27:42.770 +05:00 [INF] Exiting null, Handle
+2024-09-11 11:27:45.462 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) in 15167.3209ms
+2024-09-11 11:27:45.469 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:28:00.119 +05:00 [ERR] Ambiguous column name 'serviceID'.
+System.Data.SqlClient.SqlException (0x80131904): Ambiguous column name 'serviceID'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.KBDetailRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBDetailRepository.cs:line 143
+   at CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQueryHandler.Handle(GetAllKBDetailQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\KBDetail\Queries\GetAllKBDetail\GetAllKBDetailQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:f02b0165-8dbd-4d2e-aaf2-86f7b1369600
+Error Number:209,State:1,Class:16
+2024-09-11 11:28:00.178 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 249 - 500 0 - 29923.2207ms
+2024-09-11 11:28:01.950 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 249
+2024-09-11 11:28:01.954 +05:00 [INF] CORS policy execution successful.
+2024-09-11 11:28:01.965 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-11 11:28:01.970 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ServiceID",
+        "parameterValue": "19"
+      }
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-11 11:28:01.976 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-11 11:28:01.982 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ServiceID",
+        "parameterValue": "19"
+      }
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-11 11:28:01.987 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:28:01.994 +05:00 [INF] Route matched with {action = "GetAll", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQuery) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-11 11:28:04.510 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 11:28:04.517 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[{"ParameterName":"ServiceID","ParameterValue":"19"}],"SortingArray":[]}}
+2024-09-11 11:28:05.270 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[{"ParameterName":"ServiceID","ParameterValue":"19"}],"SortingArray":[]}
+2024-09-11 11:28:05.756 +05:00 [INF] Exiting null, GetAllAsync
+2024-09-11 11:28:05.778 +05:00 [INF] Exiting null, Handle
+2024-09-11 11:28:05.829 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) in 3830.4556ms
+2024-09-11 11:28:05.834 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:28:06.011 +05:00 [ERR] Ambiguous column name 'ServiceID'.
+System.Data.SqlClient.SqlException (0x80131904): Ambiguous column name 'ServiceID'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.KBDetailRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBDetailRepository.cs:line 143
+   at CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQueryHandler.Handle(GetAllKBDetailQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\KBDetail\Queries\GetAllKBDetail\GetAllKBDetailQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:f02b0165-8dbd-4d2e-aaf2-86f7b1369600
+Error Number:209,State:1,Class:16
+2024-09-11 11:28:06.046 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 249 - 500 0 - 4095.7571ms
+2024-09-11 11:28:09.022 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 249
+2024-09-11 11:28:09.026 +05:00 [INF] CORS policy execution successful.
+2024-09-11 11:28:09.030 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-11 11:28:09.042 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ServiceID",
+        "parameterValue": "19"
+      }
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-11 11:28:09.051 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-11 11:28:09.055 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ServiceID",
+        "parameterValue": "19"
+      }
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-11 11:28:09.059 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:28:09.063 +05:00 [INF] Route matched with {action = "GetAll", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQuery) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-11 11:28:12.477 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 11:28:12.485 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[{"ParameterName":"ServiceID","ParameterValue":"19"}],"SortingArray":[]}}
+2024-09-11 11:28:13.259 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[{"ParameterName":"ServiceID","ParameterValue":"19"}],"SortingArray":[]}
+2024-09-11 11:28:21.673 +05:00 [INF] Exiting null, GetAllAsync
+2024-09-11 11:28:24.412 +05:00 [INF] Exiting null, Handle
+2024-09-11 11:28:26.179 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) in 17109.9464ms
+2024-09-11 11:28:26.185 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:28:58.291 +05:00 [ERR] Ambiguous column name 'ServiceID'.
+System.Data.SqlClient.SqlException (0x80131904): Ambiguous column name 'ServiceID'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.KBDetailRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBDetailRepository.cs:line 143
+   at CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQueryHandler.Handle(GetAllKBDetailQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\KBDetail\Queries\GetAllKBDetail\GetAllKBDetailQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:f02b0165-8dbd-4d2e-aaf2-86f7b1369600
+Error Number:209,State:1,Class:16
+2024-09-11 11:28:58.361 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 249 - 500 0 - 49338.2412ms
+2024-09-11 11:29:58.643 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 317
+2024-09-11 11:29:58.646 +05:00 [INF] CORS policy execution successful.
+2024-09-11 11:29:58.649 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:29:58.654 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": ""
+  }
+}
+2024-09-11 11:29:58.660 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:29:58.670 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": ""
+  }
+}
+2024-09-11 11:29:58.675 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:29:58.682 +05:00 [INF] Route matched with {action = "GetAll", controller = "CarRentalSearchFilter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery) on controller CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController (CleanArc.Web.Api).
+2024-09-11 11:30:01.204 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 11:30:01.210 +05:00 [INF] Entering CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter, Handle with parameter: {"carRentalSearchFilterRequest":{"BusinessName":"","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-11 11:30:01.700 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"BusinessName":"","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-11 11:30:06.730 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: [{"ID":null,"BusinessID":29,"BusinessName":"Siddiqi Hospitality Pvt Limited","CityID":3,"CarModel":"Suzuki Alto","CarModelYear":"2021","CarRentPrice":1500.0,"CarDetailPrice":1500.0,"DiscountAmount":225.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"ID":null,"BusinessID":32,"BusinessName":"AutoCraft","CityID":16,"CarModel":"Suzuki Wagon R","CarModelYear":"2020","CarRentPrice":2200.0,"CarDetailPrice":2200.0,"DiscountAmount":0.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"ID":null,"BusinessID":30,"BusinessName":"Abc Company Pvt Limited ","CityID":9,"CarModel":"Suzuki Cultus","CarModelYear":"2019","CarRentPrice":2500.0,"CarDetailPrice":2500.0,"DiscountAmount":625.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]}]
+2024-09-11 11:30:06.751 +05:00 [INF] Exiting null, Handle with response: [{"ID":null,"BusinessID":29,"BusinessName":"Siddiqi Hospitality Pvt Limited","CityID":3,"CarModel":"Suzuki Alto","CarModelYear":"2021","CarRentPrice":1500.0,"CarDetailPrice":1500.0,"DiscountPercentage":0.0,"DiscountAmount":225.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"ID":null,"BusinessID":32,"BusinessName":"AutoCraft","CityID":16,"CarModel":"Suzuki Wagon R","CarModelYear":"2020","CarRentPrice":2200.0,"CarDetailPrice":2200.0,"DiscountPercentage":0.0,"DiscountAmount":0.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"ID":null,"BusinessID":30,"BusinessName":"Abc Company Pvt Limited ","CityID":9,"CarModel":"Suzuki Cultus","CarModelYear":"2019","CarRentPrice":2500.0,"CarDetailPrice":2500.0,"DiscountPercentage":0.0,"DiscountAmount":625.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]}]
+2024-09-11 11:30:06.757 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 5549.0991ms.
+2024-09-11 11:30:06.764 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-11 11:30:06.779 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) in 8090.0288ms
+2024-09-11 11:30:06.784 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:30:06.789 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:30:06.794 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:30:06.800 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 317 - 200 - application/json;+charset=utf-8 8156.8591ms
+2024-09-11 11:33:54.298 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 249
+2024-09-11 11:33:54.381 +05:00 [INF] CORS policy execution successful.
+2024-09-11 11:33:54.384 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-11 11:33:54.392 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ServiceID",
+        "parameterValue": "19"
+      }
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-11 11:33:54.398 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-11 11:33:54.402 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ServiceID",
+        "parameterValue": "19"
+      }
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-11 11:33:54.405 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:33:54.407 +05:00 [INF] Route matched with {action = "GetAll", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQuery) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-11 11:33:57.299 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 11:33:57.304 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[{"ParameterName":"ServiceID","ParameterValue":"19"}],"SortingArray":[]}}
+2024-09-11 11:33:58.100 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[{"ParameterName":"ServiceID","ParameterValue":"19"}],"SortingArray":[]}
+2024-09-11 11:33:58.673 +05:00 [INF] Exiting null, GetAllAsync
+2024-09-11 11:33:58.720 +05:00 [INF] Exiting null, Handle
+2024-09-11 11:33:58.802 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) in 4391.3292ms
+2024-09-11 11:33:58.808 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:33:58.978 +05:00 [ERR] Ambiguous column name 'ServiceID'.
+System.Data.SqlClient.SqlException (0x80131904): Ambiguous column name 'ServiceID'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.KBDetailRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBDetailRepository.cs:line 143
+   at CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQueryHandler.Handle(GetAllKBDetailQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\KBDetail\Queries\GetAllKBDetail\GetAllKBDetailQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:78081faf-c2cb-49b8-a2ac-00733e97c7ab
+Error Number:209,State:1,Class:16
+2024-09-11 11:33:58.999 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 249 - 500 0 - 4700.9219ms
+2024-09-11 11:34:05.803 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 249
+2024-09-11 11:34:05.807 +05:00 [INF] CORS policy execution successful.
+2024-09-11 11:34:05.810 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-11 11:34:05.814 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ServiceID",
+        "parameterValue": "19"
+      }
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-11 11:34:05.822 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-11 11:34:05.829 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      {
+        "parameterName": "ServiceID",
+        "parameterValue": "19"
+      }
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-11 11:34:05.836 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:34:05.842 +05:00 [INF] Route matched with {action = "GetAll", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQuery) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-11 11:34:20.855 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 11:34:20.859 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[{"ParameterName":"ServiceID","ParameterValue":"19"}],"SortingArray":[]}}
+2024-09-11 11:34:21.231 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[{"ParameterName":"ServiceID","ParameterValue":"19"}],"SortingArray":[]}
+2024-09-11 11:34:21.992 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":26,"Title":"Nemo totam provident","KeyDate":"09-Apr-1981","Cost":"Itaque culpa esse ","ServiceID":19,"CoreAreaLookupID":1,"RelatedAreasLookupIDs":"3, 4, 10","Access":"Eu dolor voluptatem","Availablity":"Repellendus Incidid","WhenToVisitIDs":"3, 4, 5, 6","IsActive":true,"IsDeleted":false,"CreatedBy":3,"CreatedAt":"2024-09-11T05:10:59.61","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":22,"StatelookUpID":12,"PostalCode":"Fuga Molestias ex d","Latitude":"Reprehenderit recus","Longitude":"Est voluptatem minim","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"AddressID":53},{"ID":27,"Title":"Cumque modi sit labo","KeyDate":"27-May-2005","Cost":"Qui esse asperiores ","ServiceID":19,"CoreAreaLookupID":1,"RelatedAreasLookupIDs":"3, 4, 10","Access":"Omnis maxime distinc","Availablity":"Modi eos ut quaerat ","WhenToVisitIDs":"1, 2, 3, 4","IsActive":true,"IsDeleted":false,"CreatedBy":3,"CreatedAt":"2024-09-11T05:12:28.343","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":22,"StatelookUpID":12,"PostalCode":"Ipsam aliqua Tempor","Latitude":"Consequat Ut aute s","Longitude":"Vel ea eu numquam ad","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"AddressID":54}]
+2024-09-11 11:34:21.998 +05:00 [INF] Exiting null, Handle with response: [{"ID":26,"Title":"Nemo totam provident","KeyDate":"09-Apr-1981","Cost":"Itaque culpa esse ","ServiceID":19,"CoreAreaLookupID":1,"WhenToVisitIDs":"3, 4, 5, 6","RelatedAreasLookupIDs":"3, 4, 10","Access":"Eu dolor voluptatem","Availablity":"Repellendus Incidid","IsDeleted":false,"IsActive":true,"CreatedBy":3,"CreatedAt":"2024-09-11T05:10:59.61","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":53,"CityLookUpID":22,"CountryLookUpID":1,"Latitude":"Reprehenderit recus","Longitude":"Est voluptatem minim","PostalCode":"Fuga Molestias ex d","StatelookUpID":12,"CultureId":null,"Code":null,"Message":null},{"ID":27,"Title":"Cumque modi sit labo","KeyDate":"27-May-2005","Cost":"Qui esse asperiores ","ServiceID":19,"CoreAreaLookupID":1,"WhenToVisitIDs":"1, 2, 3, 4","RelatedAreasLookupIDs":"3, 4, 10","Access":"Omnis maxime distinc","Availablity":"Modi eos ut quaerat ","IsDeleted":false,"IsActive":true,"CreatedBy":3,"CreatedAt":"2024-09-11T05:12:28.343","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":54,"CityLookUpID":22,"CountryLookUpID":1,"Latitude":"Consequat Ut aute s","Longitude":"Vel ea eu numquam ad","PostalCode":"Ipsam aliqua Tempor","StatelookUpID":12,"CultureId":null,"Code":null,"Message":null}]
+2024-09-11 11:34:22.002 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1143.45ms.
+2024-09-11 11:34:22.006 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-11 11:34:22.010 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) in 16159.5029ms
+2024-09-11 11:34:22.013 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:34:22.018 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:34:22.021 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:34:22.025 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 249 - 200 - application/json;+charset=utf-8 16221.5213ms
+2024-09-11 11:41:44.688 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 320
+2024-09-11 11:41:44.717 +05:00 [INF] CORS policy execution successful.
+2024-09-11 11:41:44.722 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:41:44.728 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "108"
+  }
+}
+2024-09-11 11:41:44.736 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:41:44.745 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "108"
+  }
+}
+2024-09-11 11:41:44.755 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:41:44.764 +05:00 [INF] Route matched with {action = "GetAll", controller = "CarRentalSearchFilter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery) on controller CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController (CleanArc.Web.Api).
+2024-09-11 11:41:49.589 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 11:41:49.599 +05:00 [INF] Entering CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter, Handle with parameter: {"carRentalSearchFilterRequest":{"BusinessName":"","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"108","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-11 11:41:50.363 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"BusinessName":"","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"108","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-11 11:41:53.009 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: [{"ID":null,"BusinessID":32,"BusinessName":"AutoCraft","CityID":8,"CarModel":"Toyota Fortuner","CarModelYear":"2022","CarRentPrice":7000.0,"CarDetailPrice":7000.0,"DiscountAmount":0.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]}]
+2024-09-11 11:41:53.015 +05:00 [INF] Exiting null, Handle with response: [{"ID":null,"BusinessID":32,"BusinessName":"AutoCraft","CityID":8,"CarModel":"Toyota Fortuner","CarModelYear":"2022","CarRentPrice":7000.0,"CarDetailPrice":7000.0,"DiscountPercentage":0.0,"DiscountAmount":0.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]}]
+2024-09-11 11:41:53.021 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3428.366ms.
+2024-09-11 11:41:53.027 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-11 11:41:53.032 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) in 8257.2339ms
+2024-09-11 11:41:53.037 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:41:53.042 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:41:53.046 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:41:53.052 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 320 - 200 - application/json;+charset=utf-8 8363.4854ms
+2024-09-11 11:42:35.386 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 323
+2024-09-11 11:42:35.391 +05:00 [INF] CORS policy execution successful.
+2024-09-11 11:42:35.395 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:42:35.399 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "108,93"
+  }
+}
+2024-09-11 11:42:35.406 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:42:35.412 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "108,93"
+  }
+}
+2024-09-11 11:42:35.418 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:42:35.424 +05:00 [INF] Route matched with {action = "GetAll", controller = "CarRentalSearchFilter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery) on controller CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController (CleanArc.Web.Api).
+2024-09-11 11:42:37.212 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 11:42:37.217 +05:00 [INF] Entering CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter, Handle with parameter: {"carRentalSearchFilterRequest":{"BusinessName":"","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"108,93","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-11 11:42:37.715 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"BusinessName":"","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"108,93","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-11 11:42:40.106 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: [{"ID":null,"BusinessID":29,"BusinessName":"Siddiqi Hospitality Pvt Limited","CityID":3,"CarModel":"Suzuki Alto","CarModelYear":"2021","CarRentPrice":1500.0,"CarDetailPrice":1500.0,"DiscountAmount":225.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"ID":null,"BusinessID":32,"BusinessName":"AutoCraft","CityID":16,"CarModel":"Suzuki Wagon R","CarModelYear":"2020","CarRentPrice":2200.0,"CarDetailPrice":2200.0,"DiscountAmount":0.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"ID":null,"BusinessID":30,"BusinessName":"Abc Company Pvt Limited ","CityID":9,"CarModel":"Suzuki Cultus","CarModelYear":"2019","CarRentPrice":2500.0,"CarDetailPrice":2500.0,"DiscountAmount":625.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]}]
+2024-09-11 11:42:40.111 +05:00 [INF] Exiting null, Handle with response: [{"ID":null,"BusinessID":29,"BusinessName":"Siddiqi Hospitality Pvt Limited","CityID":3,"CarModel":"Suzuki Alto","CarModelYear":"2021","CarRentPrice":1500.0,"CarDetailPrice":1500.0,"DiscountPercentage":0.0,"DiscountAmount":225.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"ID":null,"BusinessID":32,"BusinessName":"AutoCraft","CityID":16,"CarModel":"Suzuki Wagon R","CarModelYear":"2020","CarRentPrice":2200.0,"CarDetailPrice":2200.0,"DiscountPercentage":0.0,"DiscountAmount":0.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"ID":null,"BusinessID":30,"BusinessName":"Abc Company Pvt Limited ","CityID":9,"CarModel":"Suzuki Cultus","CarModelYear":"2019","CarRentPrice":2500.0,"CarDetailPrice":2500.0,"DiscountPercentage":0.0,"DiscountAmount":625.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]}]
+2024-09-11 11:42:40.117 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2901.062ms.
+2024-09-11 11:42:40.122 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-11 11:42:40.125 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) in 4696.09ms
+2024-09-11 11:42:40.128 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:42:40.132 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:42:40.134 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:42:40.138 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 323 - 200 - application/json;+charset=utf-8 4751.6829ms
+2024-09-11 11:45:14.991 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 319
+2024-09-11 11:45:15.004 +05:00 [INF] CORS policy execution successful.
+2024-09-11 11:45:15.006 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:45:15.011 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "94"
+  }
+}
+2024-09-11 11:45:15.015 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:45:15.019 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "94"
+  }
+}
+2024-09-11 11:45:15.023 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:45:15.026 +05:00 [INF] Route matched with {action = "GetAll", controller = "CarRentalSearchFilter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery) on controller CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController (CleanArc.Web.Api).
+2024-09-11 11:45:18.647 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 11:45:18.652 +05:00 [INF] Entering CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter, Handle with parameter: {"carRentalSearchFilterRequest":{"BusinessName":"","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"94","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-11 11:45:19.457 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"BusinessName":"","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"94","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-11 11:47:15.397 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: [{"ID":null,"BusinessID":29,"BusinessName":"Siddiqi Hospitality Pvt Limited","CityID":3,"CarModel":"Suzuki Alto","CarModelYear":"2021","CarRentPrice":1500.0,"CarDetailPrice":1500.0,"DiscountAmount":225.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"ID":null,"BusinessID":32,"BusinessName":"AutoCraft","CityID":16,"CarModel":"Suzuki Wagon R","CarModelYear":"2020","CarRentPrice":2200.0,"CarDetailPrice":2200.0,"DiscountAmount":0.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"ID":null,"BusinessID":30,"BusinessName":"Abc Company Pvt Limited ","CityID":9,"CarModel":"Suzuki Cultus","CarModelYear":"2019","CarRentPrice":2500.0,"CarDetailPrice":2500.0,"DiscountAmount":625.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]}]
+2024-09-11 11:47:15.403 +05:00 [INF] Exiting null, Handle with response: [{"ID":null,"BusinessID":29,"BusinessName":"Siddiqi Hospitality Pvt Limited","CityID":3,"CarModel":"Suzuki Alto","CarModelYear":"2021","CarRentPrice":1500.0,"CarDetailPrice":1500.0,"DiscountPercentage":0.0,"DiscountAmount":225.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"ID":null,"BusinessID":32,"BusinessName":"AutoCraft","CityID":16,"CarModel":"Suzuki Wagon R","CarModelYear":"2020","CarRentPrice":2200.0,"CarDetailPrice":2200.0,"DiscountPercentage":0.0,"DiscountAmount":0.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"ID":null,"BusinessID":30,"BusinessName":"Abc Company Pvt Limited ","CityID":9,"CarModel":"Suzuki Cultus","CarModelYear":"2019","CarRentPrice":2500.0,"CarDetailPrice":2500.0,"DiscountPercentage":0.0,"DiscountAmount":625.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]}]
+2024-09-11 11:47:15.407 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 116755.4894ms.
+2024-09-11 11:47:15.411 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-11 11:47:15.415 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) in 120384.467ms
+2024-09-11 11:47:15.418 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:47:15.421 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:47:15.425 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:47:15.429 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 319 - 200 - application/json;+charset=utf-8 120438.0595ms
+2024-09-11 11:47:37.234 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 319
+2024-09-11 11:47:37.238 +05:00 [INF] CORS policy execution successful.
+2024-09-11 11:47:37.242 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:47:37.247 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "94"
+  }
+}
+2024-09-11 11:47:37.251 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:47:37.256 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "94"
+  }
+}
+2024-09-11 11:47:37.260 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:47:37.264 +05:00 [INF] Route matched with {action = "GetAll", controller = "CarRentalSearchFilter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery) on controller CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController (CleanArc.Web.Api).
+2024-09-11 11:47:41.308 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 11:47:41.312 +05:00 [INF] Entering CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter, Handle with parameter: {"carRentalSearchFilterRequest":{"BusinessName":"","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"94","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-11 11:47:42.389 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"BusinessName":"","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"94","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-11 11:48:05.256 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: [{"ID":null,"BusinessID":29,"BusinessName":"Siddiqi Hospitality Pvt Limited","CityID":3,"CarModel":"Suzuki Alto","CarModelYear":"2021","CarRentPrice":1500.0,"CarDetailPrice":1500.0,"DiscountAmount":225.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"ID":null,"BusinessID":32,"BusinessName":"AutoCraft","CityID":16,"CarModel":"Suzuki Wagon R","CarModelYear":"2020","CarRentPrice":2200.0,"CarDetailPrice":2200.0,"DiscountAmount":0.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"ID":null,"BusinessID":30,"BusinessName":"Abc Company Pvt Limited ","CityID":9,"CarModel":"Suzuki Cultus","CarModelYear":"2019","CarRentPrice":2500.0,"CarDetailPrice":2500.0,"DiscountAmount":625.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]}]
+2024-09-11 11:48:05.264 +05:00 [INF] Exiting null, Handle with response: [{"ID":null,"BusinessID":29,"BusinessName":"Siddiqi Hospitality Pvt Limited","CityID":3,"CarModel":"Suzuki Alto","CarModelYear":"2021","CarRentPrice":1500.0,"CarDetailPrice":1500.0,"DiscountPercentage":0.0,"DiscountAmount":225.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"ID":null,"BusinessID":32,"BusinessName":"AutoCraft","CityID":16,"CarModel":"Suzuki Wagon R","CarModelYear":"2020","CarRentPrice":2200.0,"CarDetailPrice":2200.0,"DiscountPercentage":0.0,"DiscountAmount":0.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"ID":null,"BusinessID":30,"BusinessName":"Abc Company Pvt Limited ","CityID":9,"CarModel":"Suzuki Cultus","CarModelYear":"2019","CarRentPrice":2500.0,"CarDetailPrice":2500.0,"DiscountPercentage":0.0,"DiscountAmount":625.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]}]
+2024-09-11 11:48:05.269 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 23958.2811ms.
+2024-09-11 11:48:05.274 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-11 11:48:05.278 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) in 28008.8823ms
+2024-09-11 11:48:05.282 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:48:05.286 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:48:05.290 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:48:05.294 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 319 - 200 - application/json;+charset=utf-8 28060.6205ms
+2024-09-11 11:48:14.965 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 319
+2024-09-11 11:48:14.969 +05:00 [INF] CORS policy execution successful.
+2024-09-11 11:48:14.973 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:48:14.978 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "94"
+  }
+}
+2024-09-11 11:48:14.982 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:48:14.987 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "94"
+  }
+}
+2024-09-11 11:48:14.992 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:48:14.997 +05:00 [INF] Route matched with {action = "GetAll", controller = "CarRentalSearchFilter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery) on controller CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController (CleanArc.Web.Api).
+2024-09-11 11:48:20.413 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 11:48:20.420 +05:00 [INF] Entering CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter, Handle with parameter: {"carRentalSearchFilterRequest":{"BusinessName":"","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"94","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-11 11:48:21.091 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"BusinessName":"","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"94","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-11 11:51:41.807 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: [{"ID":null,"BusinessID":29,"BusinessName":"Siddiqi Hospitality Pvt Limited","CityID":3,"CarModel":"Suzuki Alto","CarModelYear":"2021","CarRentPrice":1500.0,"CarDetailPrice":1500.0,"DiscountAmount":225.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"ID":null,"BusinessID":32,"BusinessName":"AutoCraft","CityID":16,"CarModel":"Suzuki Wagon R","CarModelYear":"2020","CarRentPrice":2200.0,"CarDetailPrice":2200.0,"DiscountAmount":0.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"ID":null,"BusinessID":30,"BusinessName":"Abc Company Pvt Limited ","CityID":9,"CarModel":"Suzuki Cultus","CarModelYear":"2019","CarRentPrice":2500.0,"CarDetailPrice":2500.0,"DiscountAmount":625.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]}]
+2024-09-11 11:51:41.820 +05:00 [INF] Exiting null, Handle with response: [{"ID":null,"BusinessID":29,"BusinessName":"Siddiqi Hospitality Pvt Limited","CityID":3,"CarModel":"Suzuki Alto","CarModelYear":"2021","CarRentPrice":1500.0,"CarDetailPrice":1500.0,"DiscountPercentage":0.0,"DiscountAmount":225.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"ID":null,"BusinessID":32,"BusinessName":"AutoCraft","CityID":16,"CarModel":"Suzuki Wagon R","CarModelYear":"2020","CarRentPrice":2200.0,"CarDetailPrice":2200.0,"DiscountPercentage":0.0,"DiscountAmount":0.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"ID":null,"BusinessID":30,"BusinessName":"Abc Company Pvt Limited ","CityID":9,"CarModel":"Suzuki Cultus","CarModelYear":"2019","CarRentPrice":2500.0,"CarDetailPrice":2500.0,"DiscountPercentage":0.0,"DiscountAmount":625.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]}]
+2024-09-11 11:51:41.826 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 201406.8962ms.
+2024-09-11 11:51:41.830 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-11 11:51:41.833 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) in 206829.1005ms
+2024-09-11 11:51:41.839 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:51:41.843 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:51:41.846 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:51:41.851 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 319 - 200 - application/json;+charset=utf-8 206885.4737ms
+2024-09-11 11:51:44.965 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 319
+2024-09-11 11:51:44.970 +05:00 [INF] CORS policy execution successful.
+2024-09-11 11:51:45.058 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:51:45.066 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "94"
+  }
+}
+2024-09-11 11:51:45.075 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:51:45.080 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "94"
+  }
+}
+2024-09-11 11:51:45.084 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:51:45.087 +05:00 [INF] Route matched with {action = "GetAll", controller = "CarRentalSearchFilter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery) on controller CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController (CleanArc.Web.Api).
+2024-09-11 11:51:48.483 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 11:51:48.488 +05:00 [INF] Entering CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter, Handle with parameter: {"carRentalSearchFilterRequest":{"BusinessName":"","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"94","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-11 11:51:49.324 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"BusinessName":"","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"94","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-11 11:54:35.784 +05:00 [INF] Exiting null, GetAllWithParamAsync
+2024-09-11 11:54:35.813 +05:00 [INF] Exiting null, Handle
+2024-09-11 11:54:35.870 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) in 170777.592ms
+2024-09-11 11:54:35.875 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:54:36.039 +05:00 [ERR] Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+System.MissingMethodException: Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+   at CleanArc.Domain.Entities.CarRentalSearchFilter.CarRentalSearchFilter.get_ID()
+   at CleanArc.Infrastructure.Persistence.Repositories.CarRentalSearchFilterRepository.GetAllWithParamAsync(CarRentalSearchFilterRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\CarRentalSearchFilterRepository.cs:line 96
+   at CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQueryHandler.Handle(GetAllCarRentalSearchFilterQuery request, CancellationToken cancellationToken)
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+2024-09-11 11:54:36.078 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 319 - 500 0 - 171113.0459ms
+2024-09-11 11:54:36.871 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-11 11:54:36.919 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-11 11:54:36.929 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:54:36.949 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 78.7868ms
+2024-09-11 11:54:36.953 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-11 11:54:36.953 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-11 11:54:36.962 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 8.8549ms
+2024-09-11 11:54:36.993 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 40.3899ms
+2024-09-11 11:54:37.636 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-11 11:54:37.639 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-11 11:54:37.643 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-11 11:54:37.647 +05:00 [INF] Response StatusCode: 404
+2024-09-11 11:54:37.650 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-11 11:54:37.653 +05:00 [INF] Response StatusCode: 404
+2024-09-11 11:54:37.656 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-11 11:54:37.659 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 22.9202ms
+2024-09-11 11:54:38.298 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:54:38.303 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 653.4065ms
+2024-09-11 11:54:57.432 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 319
+2024-09-11 11:54:57.439 +05:00 [INF] CORS policy execution successful.
+2024-09-11 11:54:57.445 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:54:57.451 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "94"
+  }
+}
+2024-09-11 11:54:57.462 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:54:57.473 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "94"
+  }
+}
+2024-09-11 11:54:57.481 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:54:57.495 +05:00 [INF] Route matched with {action = "GetAll", controller = "CarRentalSearchFilter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery) on controller CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController (CleanArc.Web.Api).
+2024-09-11 11:55:00.636 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 11:55:00.641 +05:00 [INF] Entering CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter, Handle with parameter: {"carRentalSearchFilterRequest":{"BusinessName":"","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"94","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-11 11:55:01.653 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"BusinessName":"","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"94","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-11 11:58:30.245 +05:00 [INF] Exiting null, GetAllWithParamAsync
+2024-09-11 11:58:30.267 +05:00 [INF] Exiting null, Handle
+2024-09-11 11:58:30.318 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) in 212813.8044ms
+2024-09-11 11:58:30.323 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:58:30.488 +05:00 [ERR] Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+System.MissingMethodException: Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+   at CleanArc.Domain.Entities.CarRentalSearchFilter.CarRentalSearchFilter.get_ID()
+   at CleanArc.Infrastructure.Persistence.Repositories.CarRentalSearchFilterRepository.GetAllWithParamAsync(CarRentalSearchFilterRequest searchRequest)
+   at CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQueryHandler.Handle(GetAllCarRentalSearchFilterQuery request, CancellationToken cancellationToken)
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+2024-09-11 11:58:30.506 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 319 - 500 0 - 213073.9127ms
+2024-09-11 11:58:30.758 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-11 11:58:30.826 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-11 11:58:30.840 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:58:30.854 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 95.8541ms
+2024-09-11 11:58:30.863 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-11 11:58:30.863 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-11 11:58:30.872 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 7.5723ms
+2024-09-11 11:58:30.909 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 45.4312ms
+2024-09-11 11:58:31.340 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-11 11:58:31.343 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-11 11:58:31.349 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-11 11:58:31.352 +05:00 [INF] Response StatusCode: 404
+2024-09-11 11:58:31.354 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-11 11:58:31.357 +05:00 [INF] Response StatusCode: 404
+2024-09-11 11:58:31.359 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-11 11:58:31.362 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 21.5996ms
+2024-09-11 11:58:32.141 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:58:32.144 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 789.3288ms
+2024-09-11 11:59:07.724 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 319
+2024-09-11 11:59:07.727 +05:00 [INF] CORS policy execution successful.
+2024-09-11 11:59:07.734 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:59:07.738 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "94"
+  }
+}
+2024-09-11 11:59:07.744 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:59:07.748 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "94"
+  }
+}
+2024-09-11 11:59:07.754 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:59:07.762 +05:00 [INF] Route matched with {action = "GetAll", controller = "CarRentalSearchFilter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery) on controller CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController (CleanArc.Web.Api).
+2024-09-11 11:59:10.833 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 11:59:10.838 +05:00 [INF] Entering CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter, Handle with parameter: {"carRentalSearchFilterRequest":{"BusinessName":"","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"94","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-11 11:59:10.881 +05:00 [INF] Exiting null, Handle
+2024-09-11 11:59:10.951 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) in 3183.8196ms
+2024-09-11 11:59:10.955 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:59:11.012 +05:00 [ERR] Method not found: 'System.Nullable`1<Int32> CleanArc.Domain.Entities.CarRentalSearchFilter.CarRentalSearchFilter.get_CarID()'.
+System.MissingMethodException: Method not found: 'System.Nullable`1<Int32> CleanArc.Domain.Entities.CarRentalSearchFilter.CarRentalSearchFilter.get_CarID()'.
+   at CleanArc.Infrastructure.Persistence.Repositories.CarRentalSearchFilterRepository.GetAllWithParamAsync(CarRentalSearchFilterRequest searchRequest)
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[TStateMachine](TStateMachine& stateMachine)
+   at CleanArc.Infrastructure.Persistence.Repositories.CarRentalSearchFilterRepository.GetAllWithParamAsync(CarRentalSearchFilterRequest searchRequest)
+   at CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQueryHandler.Handle(GetAllCarRentalSearchFilterQuery request, CancellationToken cancellationToken)
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+2024-09-11 11:59:11.028 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 319 - 500 0 - 3304.0112ms
+2024-09-11 11:59:20.775 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 319
+2024-09-11 11:59:20.784 +05:00 [INF] CORS policy execution successful.
+2024-09-11 11:59:20.786 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:59:20.791 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "94"
+  }
+}
+2024-09-11 11:59:20.823 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 11:59:20.831 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "94"
+  }
+}
+2024-09-11 11:59:20.835 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:59:20.840 +05:00 [INF] Route matched with {action = "GetAll", controller = "CarRentalSearchFilter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery) on controller CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController (CleanArc.Web.Api).
+2024-09-11 11:59:24.367 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 11:59:24.372 +05:00 [INF] Entering CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter, Handle with parameter: {"carRentalSearchFilterRequest":{"BusinessName":"","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"94","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-11 11:59:24.412 +05:00 [INF] Exiting null, Handle
+2024-09-11 11:59:24.482 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) in 3635.6003ms
+2024-09-11 11:59:24.487 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 11:59:24.546 +05:00 [ERR] Method not found: 'System.Nullable`1<Int32> CleanArc.Domain.Entities.CarRentalSearchFilter.CarRentalSearchFilter.get_CarID()'.
+System.MissingMethodException: Method not found: 'System.Nullable`1<Int32> CleanArc.Domain.Entities.CarRentalSearchFilter.CarRentalSearchFilter.get_CarID()'.
+   at CleanArc.Infrastructure.Persistence.Repositories.CarRentalSearchFilterRepository.GetAllWithParamAsync(CarRentalSearchFilterRequest searchRequest)
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[TStateMachine](TStateMachine& stateMachine)
+   at CleanArc.Infrastructure.Persistence.Repositories.CarRentalSearchFilterRepository.GetAllWithParamAsync(CarRentalSearchFilterRequest searchRequest)
+   at CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQueryHandler.Handle(GetAllCarRentalSearchFilterQuery request, CancellationToken cancellationToken)
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+2024-09-11 11:59:24.565 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 319 - 500 0 - 3789.0944ms
+2024-09-11 11:59:54.880 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-11 11:59:54.944 +05:00 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-11 11:59:54.955 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-11 11:59:54.961 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-11 11:59:54.985 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-11 11:59:55.019 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-11 11:59:55.050 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-11 11:59:55.315 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-11 11:59:55.333 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-11 11:59:55.954 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-11 11:59:56.333 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-11 11:59:56.805 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-11 11:59:56.979 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:59:56.989 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 659.0142ms
+2024-09-11 11:59:57.123 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-11 11:59:57.123 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-11 11:59:57.138 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 14.9007ms
+2024-09-11 11:59:57.193 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 70.6141ms
+2024-09-11 11:59:57.655 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-11 11:59:57.661 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-11 11:59:57.698 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-11 11:59:57.702 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-11 11:59:57.891 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-11 11:59:57.897 +05:00 [INF] Response StatusCode: 404
+2024-09-11 11:59:57.901 +05:00 [INF] Response StatusCode: 404
+2024-09-11 11:59:57.905 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 249.6735ms
+2024-09-11 11:59:58.781 +05:00 [INF] Response StatusCode: 200
+2024-09-11 11:59:58.786 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1087.9511ms
+2024-09-11 12:00:23.452 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 319
+2024-09-11 12:00:23.458 +05:00 [INF] CORS policy execution successful.
+2024-09-11 12:00:23.463 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 12:00:23.470 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "94"
+  }
+}
+2024-09-11 12:00:23.492 +05:00 [INF] Request Method: POST, Path: /api/v1/CarRentalSearchFilter/GetAll, Content-Type: application/json
+2024-09-11 12:00:23.503 +05:00 [INF] Request Body: {
+  "carRentalSearchFilterRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ],
+    "businessName": "",
+    "cityName": "",
+    "carModel": "",
+    "maxPrice": null,
+    "minPrice": null,
+    "carAmenities": "94"
+  }
+}
+2024-09-11 12:00:23.514 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 12:00:23.567 +05:00 [INF] Route matched with {action = "GetAll", controller = "CarRentalSearchFilter"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter.GetAllCarRentalSearchFilterQuery) on controller CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController (CleanArc.Web.Api).
+2024-09-11 12:00:26.070 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 12:00:26.335 +05:00 [INF] Entering CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter, Handle with parameter: {"carRentalSearchFilterRequest":{"BusinessName":"","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"94","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-11 12:00:27.659 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllWithParamAsync with parameter: {"BusinessName":"","CityName":"","CarModel":"","MaxPrice":null,"MinPrice":null,"CarAmenities":"94","PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-11 12:00:49.386 +05:00 [INF] Exiting null, GetAllWithParamAsync with response: [{"CarID":3,"BusinessID":29,"BusinessName":"Siddiqi Hospitality Pvt Limited","CityID":3,"CarModel":"Suzuki Alto","CarModelYear":"2021","CarRentPrice":1500.0,"CarDetailPrice":1500.0,"DiscountAmount":225.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[{"ImageTitle":"car","ImagePath":"../../../assets/img/place/11.jpeg","RoomID":null,"IsMain":true},{"ImageTitle":"car","ImagePath":"../../../assets/img/place/12.jpeg","RoomID":null,"IsMain":false},{"ImageTitle":"car","ImagePath":"../../../assets/img/place/13.jpeg","RoomID":null,"IsMain":false},{"ImageTitle":"car","ImagePath":"../../../assets/img/place/14.jpeg","RoomID":null,"IsMain":false},{"ImageTitle":"car","ImagePath":"../../../assets/img/place/15.jpeg","RoomID":null,"IsMain":false},{"ImageTitle":"car","ImagePath":"../../../assets/img/place/16.jpeg","RoomID":null,"IsMain":false}],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"CarID":16,"BusinessID":32,"BusinessName":"AutoCraft","CityID":16,"CarModel":"Suzuki Wagon R","CarModelYear":"2020","CarRentPrice":2200.0,"CarDetailPrice":2200.0,"DiscountAmount":0.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[{"ImageTitle":"CAR","ImagePath":"../../../assets/img/place/11.jpeg","RoomID":null,"IsMain":false}],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"CarID":9,"BusinessID":30,"BusinessName":"Abc Company Pvt Limited ","CityID":9,"CarModel":"Suzuki Cultus","CarModelYear":"2019","CarRentPrice":2500.0,"CarDetailPrice":2500.0,"DiscountAmount":625.00,"DiscountedPrice":null,"TotalDays":1,"SearchCarImage":[{"ImageTitle":"CAR","ImagePath":"../../../assets/img/place/11.jpeg","RoomID":null,"IsMain":false},{"ImageTitle":"Hotel","ImagePath":"../../../assets/img/place/1.png","RoomID":null,"IsMain":false},{"ImageTitle":"Hotel","ImagePath":"../../../assets/img/place/11.jpeg","RoomID":null,"IsMain":false}],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]}]
+2024-09-11 12:00:49.554 +05:00 [INF] Exiting null, Handle with response: [{"CarID":3,"BusinessID":29,"BusinessName":"Siddiqi Hospitality Pvt Limited","CityID":3,"CarModel":"Suzuki Alto","CarModelYear":"2021","CarRentPrice":1500.0,"CarDetailPrice":1500.0,"DiscountPercentage":0.0,"DiscountAmount":225.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[{"ImageTitle":"car","ImagePath":"../../../assets/img/place/11.jpeg","RoomID":null,"IsMain":true},{"ImageTitle":"car","ImagePath":"../../../assets/img/place/12.jpeg","RoomID":null,"IsMain":false},{"ImageTitle":"car","ImagePath":"../../../assets/img/place/13.jpeg","RoomID":null,"IsMain":false},{"ImageTitle":"car","ImagePath":"../../../assets/img/place/14.jpeg","RoomID":null,"IsMain":false},{"ImageTitle":"car","ImagePath":"../../../assets/img/place/15.jpeg","RoomID":null,"IsMain":false},{"ImageTitle":"car","ImagePath":"../../../assets/img/place/16.jpeg","RoomID":null,"IsMain":false}],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"CarID":16,"BusinessID":32,"BusinessName":"AutoCraft","CityID":16,"CarModel":"Suzuki Wagon R","CarModelYear":"2020","CarRentPrice":2200.0,"CarDetailPrice":2200.0,"DiscountPercentage":0.0,"DiscountAmount":0.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[{"ImageTitle":"CAR","ImagePath":"../../../assets/img/place/11.jpeg","RoomID":null,"IsMain":false}],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]},{"CarID":9,"BusinessID":30,"BusinessName":"Abc Company Pvt Limited ","CityID":9,"CarModel":"Suzuki Cultus","CarModelYear":"2019","CarRentPrice":2500.0,"CarDetailPrice":2500.0,"DiscountPercentage":0.0,"DiscountAmount":625.00,"DiscountedPrice":0.0,"TotalDays":1,"SearchCarImage":[{"ImageTitle":"CAR","ImagePath":"../../../assets/img/place/11.jpeg","RoomID":null,"IsMain":false},{"ImageTitle":"Hotel","ImagePath":"../../../assets/img/place/1.png","RoomID":null,"IsMain":false},{"ImageTitle":"Hotel","ImagePath":"../../../assets/img/place/11.jpeg","RoomID":null,"IsMain":false}],"SearchCarAmenities":[{"Amenity":"GPS Navigation System","Description":"Integrated GPS navigation system for navigation assistance."},{"Amenity":"Bluetooth Connectivity","Description":"Bluetooth connectivity for hands-free calling and audio streaming."},{"Amenity":"Parking Assist System","Description":"Parking assist system with sensors and/or cameras for easier parking."},{"Amenity":"Keyless Entry System","Description":"Keyless entry system for convenient access to the vehicle."},{"Amenity":"Heated Seats","Description":"Heated seats for added comfort during colder weather."},{"Amenity":"Backup Camera","Description":"Backup Camera"},{"Amenity":"Automatic","Description":"automatic"},{"Amenity":"Manual","Description":"manual"},{"Amenity":"2 Bags","Description":"2 bags"},{"Amenity":"4 Bags","Description":"4 bags"}]}]
+2024-09-11 12:00:49.573 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 23488.3663ms.
+2024-09-11 12:00:49.593 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-11 12:00:49.657 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api) in 26078.0513ms
+2024-09-11 12:00:49.664 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CarRentalSearchFilter.CarRentalSearchFilterController.GetAll (CleanArc.Web.Api)'
+2024-09-11 12:00:49.670 +05:00 [INF] Response StatusCode: 200
+2024-09-11 12:00:49.677 +05:00 [INF] Response StatusCode: 200
+2024-09-11 12:00:49.681 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 319 - 200 - application/json;+charset=utf-8 26228.8817ms
