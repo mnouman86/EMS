@@ -57,6 +57,7 @@ internal class UpdateKBDetailCommandHandler:IRequestHandler<UpdateKBDetailComman
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.KBDetailRepository.UpdateAsync(new Domain.Entities.KBDetail.KBDetail()
             { UpdatedBy = user.Id,ID= request.ID,
+                Title = request.Title,
                 KeyDate = request.KeyDate,
                 Cost = request.Cost,
                 ServiceID = request.ServiceID,
@@ -66,7 +67,14 @@ internal class UpdateKBDetailCommandHandler:IRequestHandler<UpdateKBDetailComman
                 Access = request.Access,
                 Availablity = request.Availablity,
                 WhenToVisitIDs = request.WhenToVisitIDs,
-                Title = request.Title,
+                AddressLine1 = request.AddressLine1,
+                AddressLine2 = request.AddressLine2,
+                CountryLookUpID = request.CountryLookUpID,
+                CityLookUpID = request.CityLookUpID,
+                StatelookUpID = request.StatelookUpID,
+                PostalCode = request.PostalCode,
+                Latitude = request.Latitude,
+                Longitude = request.Longitude,
                 CultureId = request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
