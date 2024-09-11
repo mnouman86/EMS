@@ -86,6 +86,7 @@ public interface IUnitOfWork
     public IKBMediaRepository KBMediaRepository { get; }
     public IKBTimingRepository KBTimingRepository { get; }
     public ICoreAreaRepository CoreAreaRepository { get; }
+    public IKBWhenToVisitRepository KBWhenToVisitRepository { get; }
 
 
 
