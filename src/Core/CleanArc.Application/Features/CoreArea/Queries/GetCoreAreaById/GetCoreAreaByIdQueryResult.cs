@@ -11,7 +11,7 @@ namespace CleanArc.Application.Features.CoreArea.Queries.GetCoreAreaById
     {
         public int ID { get; set; }
         //public int? KBDetailID { get; set; }
-        public string? Title { get; set; }
+        public string? Name { get; set; }
         public string? Description { get; set; }
         public int? Type { get; set; }
         public bool? IsActive { get; set; }
