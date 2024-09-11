@@ -14,6 +14,15 @@ namespace CleanArc.Application.Models.KBDetail
         public string? KeyDate { get; set; }
         public string? Cost { get; set; }
         public int? ServiceID { get; set; }
+
+        public string? AddressLine1 { get; set; }
+        public string? AddressLine2 { get; set; }
+        public int? CountryLookUpID { get; set; }
+        public int? CityLookUpID { get; set; }
+        public int? StatelookUpID { get; set; }
+        public string? PostalCode { get; set; }
+        public string? Latitude { get; set; }
+        public string? Longitude { get; set; }
         public int? CoreAreaLookupID { get; set; }
        // public int? RelatedUrlLinkLookupID { get; set; }
         public string? RelatedAreasLookupIDs { get; set; }
