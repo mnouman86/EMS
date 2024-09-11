@@ -35,7 +35,7 @@ public async ValueTask<OperationResult<List<GetAllCarRentalSearchFilterQueryResu
 {
     using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
     {
-        var searchcar = await _unitOfWork.CarRentalSearchFilterRepository.GetAllWithParamAsync(request.carRentalSearchFilterRequest);
+        var searchcar = await _unitOfWork.CarRentalSearchFilterRepository.GetAllWithParamAsync(request.searchRequest);
 
         //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
         var result = _mapper.Map<List<GetAllCarRentalSearchFilterQueryResult>>(searchcar);
