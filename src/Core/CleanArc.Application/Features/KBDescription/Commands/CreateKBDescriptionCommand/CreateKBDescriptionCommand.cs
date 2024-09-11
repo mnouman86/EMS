@@ -15,7 +15,7 @@ public record CreateKBDescriptionCommand(
     int? KBDetailID,
     string SubHeading,
     string Content,
-    int? KBContentType,
+    string? KBContentType,
     int? CreatedBy,
     int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateKBDescriptionCommand>
