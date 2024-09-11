@@ -2303,3 +2303,992 @@ END
 2024-09-11 12:00:49.670 +05:00 [INF] Response StatusCode: 200
 2024-09-11 12:00:49.677 +05:00 [INF] Response StatusCode: 200
 2024-09-11 12:00:49.681 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/CarRentalSearchFilter/GetAll application/json 319 - 200 - application/json;+charset=utf-8 26228.8817ms
+2024-09-11 12:03:19.018 +05:00 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-11 12:03:19.179 +05:00 [INF] Executed DbCommand (60ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-11 12:03:19.199 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-11 12:03:19.211 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-11 12:03:19.254 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-11 12:03:19.297 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-11 12:03:19.323 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-11 12:03:19.630 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-11 12:03:19.651 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-11 12:03:20.234 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-11 12:03:20.909 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-11 12:03:21.098 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-11 12:03:21.260 +05:00 [INF] Response StatusCode: 200
+2024-09-11 12:03:21.272 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-11 12:03:21.277 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 370.1446ms
+2024-09-11 12:03:21.296 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 24.2939ms
+2024-09-11 12:03:21.404 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-11 12:03:21.475 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 70.7490ms
+2024-09-11 12:03:21.968 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-11 12:03:21.973 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-11 12:03:22.004 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-11 12:03:22.011 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-11 12:03:22.351 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-11 12:03:22.359 +05:00 [INF] Response StatusCode: 404
+2024-09-11 12:03:22.364 +05:00 [INF] Response StatusCode: 404
+2024-09-11 12:03:22.371 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 402.6529ms
+2024-09-11 12:03:23.654 +05:00 [INF] Response StatusCode: 200
+2024-09-11 12:03:23.659 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1654.7423ms
+2024-09-11 12:03:47.678 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 53
+2024-09-11 12:03:47.683 +05:00 [INF] CORS policy execution successful.
+2024-09-11 12:03:47.687 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-09-11 12:03:47.698 +05:00 [INF] Request Body: {
+  "userName": "vendor2",
+  "password": "123@a123"
+}
+2024-09-11 12:03:47.721 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-09-11 12:03:47.733 +05:00 [INF] Request Body: {
+  "userName": "vendor2",
+  "password": "123@a123"
+}
+2024-09-11 12:03:47.743 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-09-11 12:03:47.787 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-09-11 12:03:52.837 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 12:03:52.971 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"vendor2","Password":"123@a123"}
+2024-09-11 12:03:53.070 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"vendor2","Password":"123@a123","$type":"AdminGetTokenQuery"}
+2024-09-11 12:03:53.195 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-09-11 12:03:53.352 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"06adb683-8fd9-4988-ab15-b52e437d2098","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":3,"$type":"User"}
+2024-09-11 12:03:53.397 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-09-11 12:03:53.593 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-09-11 12:03:53.647 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-09-11 12:03:53.671 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-09-11 12:03:53.692 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-09-11 12:03:53.743 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-09-11 12:03:54.087 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-09-11 12:03:55.420 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-09-11 12:03:55.446 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.Ywv6acL7GCV36Hzwgy2HqULwwMwwL8YkJZ9EHMfnr2FAVJH7Npw5oA.YanlbE837wuEsUVZVBpD8g.H2EK4SqjmGF3ATu-hCMDPq_fU0r-va-P7Pb7Jl0Ylh9hvmyUAO_G0zXxrjp1V1tL1DmtjXZ7FYodWzlRN-PK6Qd5EWeofi7QtMh6O19r5_Bb6YfGGDrfV73-AqGfEl2lY058_CHPDJ1n992eKThYofbggmB1GZGvaeceLpwpjpiBzC4IUMb2oCTcdPRUfBtB0ferLlPL42X7t-jfipKy4tF8_KGpKxMFIzCJ5yXpsQEjcCt6nCFXpiv0D-uWePyBY0RtYL1nwJ9gdxpCGjHRj1WP3aMTN4ho3e2oZsCdTQm1iRNK4amnkOMc6NqAqIRcEdL0MrEH5DUTRvHMMNfyJiMY9wsbIpwCaZpXXYhq34LP7gcrz_e1tTsHDXOaSWRtD28aJI5fweO4tzQhTqNb-PvamG4k0A34AEM8Qx45ejI0cACe1XgAnS1_11isVPyOS7IDJc0hrqPGXAL2ZOKp1pqx_Xb6ReMohCN32GVcQxIC_8lgU2M8MlHmJzwNE5Bry7kQxTEJfkSpV48FnbNZ6xI3AhUeRW510oLgTKv14YoG6drY2WxYhr1JtX4qjfc_l1TZNWInBej_zUznctXH0yD0DJXc9uIzmQ1nmXdUKwqspCVFzy8leNPPShrbAfAG-YQEa-eeJfWbzpdEHyH_ZAAdbW0ygtjyXiXMnhVwpo1kc2zuNxBha9z0klyztu35eUafcubx9ixu9l58iR0GdQ.MuScepC2EMM0Y5kZKy5fPw","refresh_token":"3ceba1a3-03cf-4b66-cbcf-08dcd22fe5b8","token_type":"Bearer","expires_in":599997,"userID":1006},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-09-11 12:03:55.462 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2611.5846ms.
+2024-09-11 12:03:55.484 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-11 12:03:55.523 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 7723.8395ms
+2024-09-11 12:03:55.533 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-09-11 12:03:55.538 +05:00 [INF] Response StatusCode: 200
+2024-09-11 12:03:55.545 +05:00 [INF] Response StatusCode: 200
+2024-09-11 12:03:55.551 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 53 - 200 - application/json;+charset=utf-8 7872.9454ms
+2024-09-11 12:06:29.193 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 507
+2024-09-11 12:06:29.211 +05:00 [INF] CORS policy execution successful.
+2024-09-11 12:06:29.215 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-11 12:06:29.220 +05:00 [INF] Request Body: {
+  "CultureId": 1,
+  "ID": 27,
+  "Title": "Cumque modi sit labo",
+  "KeyDate": "2024-09-11",
+  "Cost": "20000fgs00",
+  "ServiceID": 19,
+  "CoreAreaLookupID": 2,
+  "RelatedAreasLookupIDs": "10",
+  "Access": "Public",
+  "Availablity": "Always Open",
+  "WhenToVisitIDs": "2,3",
+  "AddressLine1": "123 Main St",
+  "AddressLine2": "Suite 100",
+  "CountryLookUpID": 1,
+  "CityLookUpID": 19,
+  "StatelookUpID": 5,
+  "PostalCode": "12345",
+  "Latitude": "40.7128",
+  "Longitude": "-74.0060",
+  "UpdatedBy": 1001
+}
+
+2024-09-11 12:06:29.439 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-11 12:06:29.470 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-11 12:06:29.479 +05:00 [INF] Request Body: {
+  "CultureId": 1,
+  "ID": 27,
+  "Title": "Cumque modi sit labo",
+  "KeyDate": "2024-09-11",
+  "Cost": "20000fgs00",
+  "ServiceID": 19,
+  "CoreAreaLookupID": 2,
+  "RelatedAreasLookupIDs": "10",
+  "Access": "Public",
+  "Availablity": "Always Open",
+  "WhenToVisitIDs": "2,3",
+  "AddressLine1": "123 Main St",
+  "AddressLine2": "Suite 100",
+  "CountryLookUpID": 1,
+  "CityLookUpID": 19,
+  "StatelookUpID": 5,
+  "PostalCode": "12345",
+  "Latitude": "40.7128",
+  "Longitude": "-74.0060",
+  "UpdatedBy": 1001
+}
+
+2024-09-11 12:06:29.486 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-11 12:06:29.503 +05:00 [INF] Route matched with {action = "Update", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-11 12:06:31.915 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 12:06:32.198 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand, Handle with parameter: {"ID":27,"Title":"Cumque modi sit labo","KeyDate":"2024-09-11","Cost":"20000fgs00","ServiceID":19,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"10","Access":"Public","Availablity":"Always Open","WhenToVisitIDs":"2,3","UpdatedBy":1001,"CultureId":1,"UserId":1006}
+2024-09-11 12:06:32.208 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-09-11 12:06:32.229 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"06adb683-8fd9-4988-ab15-b52e437d2098","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":3}
+2024-09-11 12:06:32.974 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":27,"Title":"Cumque modi sit labo","KeyDate":"2024-09-11","Cost":"20000fgs00","ServiceID":19,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"10","Access":"Public","Availablity":"Always Open","WhenToVisitIDs":"2,3","IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":1006,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":null,"CityLookUpID":null,"StatelookUpID":null,"PostalCode":null,"Latitude":null,"Longitude":null,"KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"AddressID":0}
+2024-09-11 12:06:34.163 +05:00 [INF] Exiting null, UpdateAsync
+2024-09-11 12:06:34.191 +05:00 [INF] Exiting null, Handle
+2024-09-11 12:06:34.242 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) in 4726.4462ms
+2024-09-11 12:06:34.249 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-11 12:06:34.458 +05:00 [ERR] Procedure or function 'Update_KBDetail' expects parameter '@AddressLine1', which was not supplied.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function 'Update_KBDetail' expects parameter '@AddressLine1', which was not supplied.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at CleanArc.Infrastructure.Persistence.Repositories.KBDetailRepository.UpdateAsync(KBDetail entity) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBDetailRepository.cs:line 182
+   at CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommandHandler.Handle(UpdateKBDetailCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\KBDetail\Commands\UpdateKBDetailCommand\UpdateKBDetailCommand.Handler.cs:line 58
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Update(TUpdateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 129
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:03ed3d53-2d4a-41ba-a982-8cd942d390fa
+Error Number:201,State:4,Class:16
+2024-09-11 12:06:34.596 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 507 - 500 0 - 5403.0720ms
+2024-09-11 12:06:37.430 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 507
+2024-09-11 12:06:37.444 +05:00 [INF] CORS policy execution successful.
+2024-09-11 12:06:37.513 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-11 12:06:37.529 +05:00 [INF] Request Body: {
+  "CultureId": 1,
+  "ID": 27,
+  "Title": "Cumque modi sit labo",
+  "KeyDate": "2024-09-11",
+  "Cost": "20000fgs00",
+  "ServiceID": 19,
+  "CoreAreaLookupID": 2,
+  "RelatedAreasLookupIDs": "10",
+  "Access": "Public",
+  "Availablity": "Always Open",
+  "WhenToVisitIDs": "2,3",
+  "AddressLine1": "123 Main St",
+  "AddressLine2": "Suite 100",
+  "CountryLookUpID": 1,
+  "CityLookUpID": 19,
+  "StatelookUpID": 5,
+  "PostalCode": "12345",
+  "Latitude": "40.7128",
+  "Longitude": "-74.0060",
+  "UpdatedBy": 1001
+}
+
+2024-09-11 12:06:37.547 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-11 12:06:37.555 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-11 12:06:37.559 +05:00 [INF] Request Body: {
+  "CultureId": 1,
+  "ID": 27,
+  "Title": "Cumque modi sit labo",
+  "KeyDate": "2024-09-11",
+  "Cost": "20000fgs00",
+  "ServiceID": 19,
+  "CoreAreaLookupID": 2,
+  "RelatedAreasLookupIDs": "10",
+  "Access": "Public",
+  "Availablity": "Always Open",
+  "WhenToVisitIDs": "2,3",
+  "AddressLine1": "123 Main St",
+  "AddressLine2": "Suite 100",
+  "CountryLookUpID": 1,
+  "CityLookUpID": 19,
+  "StatelookUpID": 5,
+  "PostalCode": "12345",
+  "Latitude": "40.7128",
+  "Longitude": "-74.0060",
+  "UpdatedBy": 1001
+}
+
+2024-09-11 12:06:37.564 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-11 12:06:37.570 +05:00 [INF] Route matched with {action = "Update", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-11 12:06:55.472 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 12:06:55.476 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand, Handle with parameter: {"ID":27,"Title":"Cumque modi sit labo","KeyDate":"2024-09-11","Cost":"20000fgs00","ServiceID":19,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"10","Access":"Public","Availablity":"Always Open","WhenToVisitIDs":"2,3","UpdatedBy":1001,"CultureId":1,"UserId":1006}
+2024-09-11 12:06:55.480 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-09-11 12:06:55.484 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"06adb683-8fd9-4988-ab15-b52e437d2098","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":3}
+2024-09-11 12:06:56.397 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":27,"Title":"Cumque modi sit labo","KeyDate":"2024-09-11","Cost":"20000fgs00","ServiceID":19,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"10","Access":"Public","Availablity":"Always Open","WhenToVisitIDs":"2,3","IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":1006,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":null,"CityLookUpID":null,"StatelookUpID":null,"PostalCode":null,"Latitude":null,"Longitude":null,"KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"AddressID":0}
+2024-09-11 12:07:03.633 +05:00 [INF] Exiting null, UpdateAsync
+2024-09-11 12:07:06.084 +05:00 [INF] Exiting null, Handle
+2024-09-11 12:07:08.151 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) in 30575.077ms
+2024-09-11 12:07:08.157 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-11 12:15:45.441 +05:00 [ERR] Procedure or function 'Update_KBDetail' expects parameter '@AddressLine1', which was not supplied.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function 'Update_KBDetail' expects parameter '@AddressLine1', which was not supplied.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at CleanArc.Infrastructure.Persistence.Repositories.KBDetailRepository.UpdateAsync(KBDetail entity) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBDetailRepository.cs:line 182
+   at CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommandHandler.Handle(UpdateKBDetailCommand request, CancellationToken cancellationToken)
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Update(TUpdateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 129
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:03ed3d53-2d4a-41ba-a982-8cd942d390fa
+Error Number:201,State:4,Class:16
+2024-09-11 12:15:45.684 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 507 - 500 0 - 548254.2534ms
+2024-09-11 12:15:46.500 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-11 12:15:46.550 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-11 12:15:46.564 +05:00 [INF] Response StatusCode: 200
+2024-09-11 12:15:46.567 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 67.6089ms
+2024-09-11 12:15:46.736 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-11 12:15:46.736 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-11 12:15:46.742 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 5.9818ms
+2024-09-11 12:15:46.776 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 39.9209ms
+2024-09-11 12:15:47.050 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-11 12:15:47.055 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-11 12:15:47.058 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-11 12:15:47.061 +05:00 [INF] Response StatusCode: 404
+2024-09-11 12:15:47.066 +05:00 [INF] Response StatusCode: 404
+2024-09-11 12:15:47.069 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 18.7171ms
+2024-09-11 12:15:47.072 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-11 12:15:47.075 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-11 12:15:47.578 +05:00 [INF] Response StatusCode: 200
+2024-09-11 12:15:47.583 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 511.3291ms
+2024-09-11 12:16:20.893 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 507
+2024-09-11 12:16:20.896 +05:00 [INF] CORS policy execution successful.
+2024-09-11 12:16:20.900 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-11 12:16:20.904 +05:00 [INF] Request Body: {
+  "CultureId": 1,
+  "ID": 27,
+  "Title": "Cumque modi sit labo",
+  "KeyDate": "2024-09-11",
+  "Cost": "20000fgs00",
+  "ServiceID": 19,
+  "CoreAreaLookupID": 2,
+  "RelatedAreasLookupIDs": "10",
+  "Access": "Public",
+  "Availablity": "Always Open",
+  "WhenToVisitIDs": "2,3",
+  "AddressLine1": "123 Main St",
+  "AddressLine2": "Suite 100",
+  "CountryLookUpID": 1,
+  "CityLookUpID": 19,
+  "StatelookUpID": 5,
+  "PostalCode": "12345",
+  "Latitude": "40.7128",
+  "Longitude": "-74.0060",
+  "UpdatedBy": 1001
+}
+
+2024-09-11 12:16:20.981 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-11 12:16:20.994 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-11 12:16:21.002 +05:00 [INF] Request Body: {
+  "CultureId": 1,
+  "ID": 27,
+  "Title": "Cumque modi sit labo",
+  "KeyDate": "2024-09-11",
+  "Cost": "20000fgs00",
+  "ServiceID": 19,
+  "CoreAreaLookupID": 2,
+  "RelatedAreasLookupIDs": "10",
+  "Access": "Public",
+  "Availablity": "Always Open",
+  "WhenToVisitIDs": "2,3",
+  "AddressLine1": "123 Main St",
+  "AddressLine2": "Suite 100",
+  "CountryLookUpID": 1,
+  "CityLookUpID": 19,
+  "StatelookUpID": 5,
+  "PostalCode": "12345",
+  "Latitude": "40.7128",
+  "Longitude": "-74.0060",
+  "UpdatedBy": 1001
+}
+
+2024-09-11 12:16:21.009 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-11 12:16:21.024 +05:00 [INF] Route matched with {action = "Update", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-11 12:16:21.048 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) in 14.0772ms
+2024-09-11 12:16:21.057 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-11 12:16:21.471 +05:00 [ERR] Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand'. Path: $ | LineNumber: 0 | BytePositionInLine: 1.
+System.NotSupportedException: Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand'. Path: $ | LineNumber: 0 | BytePositionInLine: 1.
+ ---> System.NotSupportedException: Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand'.
+   --- End of inner exception stack trace ---
+   at System.Text.Json.ThrowHelper.ThrowNotSupportedException(ReadStack& state, Utf8JsonReader& reader, NotSupportedException ex)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCoreAsObject(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadCore[TValue](Utf8JsonReader& reader, JsonTypeInfo jsonTypeInfo, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ContinueDeserialize[TValue](ReadBufferState& bufferState, JsonReaderState& jsonReaderState, ReadStack& readStack, JsonTypeInfo jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.ReadFromStreamAsync[TValue](Stream utf8Json, JsonTypeInfo jsonTypeInfo, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder.BindModelAsync(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+2024-09-11 12:16:21.499 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 507 - 500 0 - 605.7742ms
+2024-09-11 12:16:31.518 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 507
+2024-09-11 12:16:31.522 +05:00 [INF] CORS policy execution successful.
+2024-09-11 12:16:31.527 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-11 12:16:31.559 +05:00 [INF] Request Body: {
+  "CultureId": 1,
+  "ID": 27,
+  "Title": "Cumque modi sit labo",
+  "KeyDate": "2024-09-11",
+  "Cost": "20000fgs00",
+  "ServiceID": 19,
+  "CoreAreaLookupID": 2,
+  "RelatedAreasLookupIDs": "10",
+  "Access": "Public",
+  "Availablity": "Always Open",
+  "WhenToVisitIDs": "2,3",
+  "AddressLine1": "123 Main St",
+  "AddressLine2": "Suite 100",
+  "CountryLookUpID": 1,
+  "CityLookUpID": 19,
+  "StatelookUpID": 5,
+  "PostalCode": "12345",
+  "Latitude": "40.7128",
+  "Longitude": "-74.0060",
+  "UpdatedBy": 1001
+}
+
+2024-09-11 12:16:31.631 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-11 12:16:31.637 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-11 12:16:31.643 +05:00 [INF] Request Body: {
+  "CultureId": 1,
+  "ID": 27,
+  "Title": "Cumque modi sit labo",
+  "KeyDate": "2024-09-11",
+  "Cost": "20000fgs00",
+  "ServiceID": 19,
+  "CoreAreaLookupID": 2,
+  "RelatedAreasLookupIDs": "10",
+  "Access": "Public",
+  "Availablity": "Always Open",
+  "WhenToVisitIDs": "2,3",
+  "AddressLine1": "123 Main St",
+  "AddressLine2": "Suite 100",
+  "CountryLookUpID": 1,
+  "CityLookUpID": 19,
+  "StatelookUpID": 5,
+  "PostalCode": "12345",
+  "Latitude": "40.7128",
+  "Longitude": "-74.0060",
+  "UpdatedBy": 1001
+}
+
+2024-09-11 12:16:31.649 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-11 12:16:31.656 +05:00 [INF] Route matched with {action = "Update", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-11 12:16:31.669 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) in 4.8526ms
+2024-09-11 12:16:31.677 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-11 12:16:32.072 +05:00 [ERR] Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand'. Path: $ | LineNumber: 0 | BytePositionInLine: 1.
+System.NotSupportedException: Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand'. Path: $ | LineNumber: 0 | BytePositionInLine: 1.
+ ---> System.NotSupportedException: Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand'.
+   --- End of inner exception stack trace ---
+   at System.Text.Json.ThrowHelper.ThrowNotSupportedException(ReadStack& state, Utf8JsonReader& reader, NotSupportedException ex)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCoreAsObject(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadCore[TValue](Utf8JsonReader& reader, JsonTypeInfo jsonTypeInfo, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ContinueDeserialize[TValue](ReadBufferState& bufferState, JsonReaderState& jsonReaderState, ReadStack& readStack, JsonTypeInfo jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.ReadFromStreamAsync[TValue](Stream utf8Json, JsonTypeInfo jsonTypeInfo, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder.BindModelAsync(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+2024-09-11 12:16:32.095 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 507 - 500 0 - 577.3180ms
+2024-09-11 12:16:32.343 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 507
+2024-09-11 12:16:32.351 +05:00 [INF] CORS policy execution successful.
+2024-09-11 12:16:32.355 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-11 12:16:32.362 +05:00 [INF] Request Body: {
+  "CultureId": 1,
+  "ID": 27,
+  "Title": "Cumque modi sit labo",
+  "KeyDate": "2024-09-11",
+  "Cost": "20000fgs00",
+  "ServiceID": 19,
+  "CoreAreaLookupID": 2,
+  "RelatedAreasLookupIDs": "10",
+  "Access": "Public",
+  "Availablity": "Always Open",
+  "WhenToVisitIDs": "2,3",
+  "AddressLine1": "123 Main St",
+  "AddressLine2": "Suite 100",
+  "CountryLookUpID": 1,
+  "CityLookUpID": 19,
+  "StatelookUpID": 5,
+  "PostalCode": "12345",
+  "Latitude": "40.7128",
+  "Longitude": "-74.0060",
+  "UpdatedBy": 1001
+}
+
+2024-09-11 12:16:32.378 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-11 12:16:32.383 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-11 12:16:32.388 +05:00 [INF] Request Body: {
+  "CultureId": 1,
+  "ID": 27,
+  "Title": "Cumque modi sit labo",
+  "KeyDate": "2024-09-11",
+  "Cost": "20000fgs00",
+  "ServiceID": 19,
+  "CoreAreaLookupID": 2,
+  "RelatedAreasLookupIDs": "10",
+  "Access": "Public",
+  "Availablity": "Always Open",
+  "WhenToVisitIDs": "2,3",
+  "AddressLine1": "123 Main St",
+  "AddressLine2": "Suite 100",
+  "CountryLookUpID": 1,
+  "CityLookUpID": 19,
+  "StatelookUpID": 5,
+  "PostalCode": "12345",
+  "Latitude": "40.7128",
+  "Longitude": "-74.0060",
+  "UpdatedBy": 1001
+}
+
+2024-09-11 12:16:32.394 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-11 12:16:32.400 +05:00 [INF] Route matched with {action = "Update", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-11 12:16:32.412 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) in 2.4822ms
+2024-09-11 12:16:32.424 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-11 12:16:32.844 +05:00 [ERR] Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand'. Path: $ | LineNumber: 0 | BytePositionInLine: 1.
+System.NotSupportedException: Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand'. Path: $ | LineNumber: 0 | BytePositionInLine: 1.
+ ---> System.NotSupportedException: Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand'.
+   --- End of inner exception stack trace ---
+   at System.Text.Json.ThrowHelper.ThrowNotSupportedException(ReadStack& state, Utf8JsonReader& reader, NotSupportedException ex)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCoreAsObject(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadCore[TValue](Utf8JsonReader& reader, JsonTypeInfo jsonTypeInfo, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ContinueDeserialize[TValue](ReadBufferState& bufferState, JsonReaderState& jsonReaderState, ReadStack& readStack, JsonTypeInfo jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.ReadFromStreamAsync[TValue](Stream utf8Json, JsonTypeInfo jsonTypeInfo, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder.BindModelAsync(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+2024-09-11 12:16:32.888 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 507 - 500 0 - 544.8201ms
+2024-09-11 12:16:33.121 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 507
+2024-09-11 12:16:33.126 +05:00 [INF] CORS policy execution successful.
+2024-09-11 12:16:33.134 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-11 12:16:33.144 +05:00 [INF] Request Body: {
+  "CultureId": 1,
+  "ID": 27,
+  "Title": "Cumque modi sit labo",
+  "KeyDate": "2024-09-11",
+  "Cost": "20000fgs00",
+  "ServiceID": 19,
+  "CoreAreaLookupID": 2,
+  "RelatedAreasLookupIDs": "10",
+  "Access": "Public",
+  "Availablity": "Always Open",
+  "WhenToVisitIDs": "2,3",
+  "AddressLine1": "123 Main St",
+  "AddressLine2": "Suite 100",
+  "CountryLookUpID": 1,
+  "CityLookUpID": 19,
+  "StatelookUpID": 5,
+  "PostalCode": "12345",
+  "Latitude": "40.7128",
+  "Longitude": "-74.0060",
+  "UpdatedBy": 1001
+}
+
+2024-09-11 12:16:33.168 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-11 12:16:33.185 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-11 12:16:33.197 +05:00 [INF] Request Body: {
+  "CultureId": 1,
+  "ID": 27,
+  "Title": "Cumque modi sit labo",
+  "KeyDate": "2024-09-11",
+  "Cost": "20000fgs00",
+  "ServiceID": 19,
+  "CoreAreaLookupID": 2,
+  "RelatedAreasLookupIDs": "10",
+  "Access": "Public",
+  "Availablity": "Always Open",
+  "WhenToVisitIDs": "2,3",
+  "AddressLine1": "123 Main St",
+  "AddressLine2": "Suite 100",
+  "CountryLookUpID": 1,
+  "CityLookUpID": 19,
+  "StatelookUpID": 5,
+  "PostalCode": "12345",
+  "Latitude": "40.7128",
+  "Longitude": "-74.0060",
+  "UpdatedBy": 1001
+}
+
+2024-09-11 12:16:33.207 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-11 12:16:33.216 +05:00 [INF] Route matched with {action = "Update", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-11 12:16:33.233 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) in 6.1429ms
+2024-09-11 12:16:33.244 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-11 12:16:33.629 +05:00 [ERR] Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand'. Path: $ | LineNumber: 0 | BytePositionInLine: 1.
+System.NotSupportedException: Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand'. Path: $ | LineNumber: 0 | BytePositionInLine: 1.
+ ---> System.NotSupportedException: Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand'.
+   --- End of inner exception stack trace ---
+   at System.Text.Json.ThrowHelper.ThrowNotSupportedException(ReadStack& state, Utf8JsonReader& reader, NotSupportedException ex)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCoreAsObject(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadCore[TValue](Utf8JsonReader& reader, JsonTypeInfo jsonTypeInfo, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ContinueDeserialize[TValue](ReadBufferState& bufferState, JsonReaderState& jsonReaderState, ReadStack& readStack, JsonTypeInfo jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.ReadFromStreamAsync[TValue](Stream utf8Json, JsonTypeInfo jsonTypeInfo, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder.BindModelAsync(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+2024-09-11 12:16:33.647 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 507 - 500 0 - 526.4232ms
+2024-09-11 12:16:34.879 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 507
+2024-09-11 12:16:34.887 +05:00 [INF] CORS policy execution successful.
+2024-09-11 12:16:34.893 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-11 12:16:34.898 +05:00 [INF] Request Body: {
+  "CultureId": 1,
+  "ID": 27,
+  "Title": "Cumque modi sit labo",
+  "KeyDate": "2024-09-11",
+  "Cost": "20000fgs00",
+  "ServiceID": 19,
+  "CoreAreaLookupID": 2,
+  "RelatedAreasLookupIDs": "10",
+  "Access": "Public",
+  "Availablity": "Always Open",
+  "WhenToVisitIDs": "2,3",
+  "AddressLine1": "123 Main St",
+  "AddressLine2": "Suite 100",
+  "CountryLookUpID": 1,
+  "CityLookUpID": 19,
+  "StatelookUpID": 5,
+  "PostalCode": "12345",
+  "Latitude": "40.7128",
+  "Longitude": "-74.0060",
+  "UpdatedBy": 1001
+}
+
+2024-09-11 12:16:34.915 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-11 12:16:34.924 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-11 12:16:34.932 +05:00 [INF] Request Body: {
+  "CultureId": 1,
+  "ID": 27,
+  "Title": "Cumque modi sit labo",
+  "KeyDate": "2024-09-11",
+  "Cost": "20000fgs00",
+  "ServiceID": 19,
+  "CoreAreaLookupID": 2,
+  "RelatedAreasLookupIDs": "10",
+  "Access": "Public",
+  "Availablity": "Always Open",
+  "WhenToVisitIDs": "2,3",
+  "AddressLine1": "123 Main St",
+  "AddressLine2": "Suite 100",
+  "CountryLookUpID": 1,
+  "CityLookUpID": 19,
+  "StatelookUpID": 5,
+  "PostalCode": "12345",
+  "Latitude": "40.7128",
+  "Longitude": "-74.0060",
+  "UpdatedBy": 1001
+}
+
+2024-09-11 12:16:34.942 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-11 12:16:34.947 +05:00 [INF] Route matched with {action = "Update", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-11 12:16:34.960 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) in 2.713ms
+2024-09-11 12:16:34.970 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-11 12:16:35.275 +05:00 [ERR] Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand'. Path: $ | LineNumber: 0 | BytePositionInLine: 1.
+System.NotSupportedException: Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand'. Path: $ | LineNumber: 0 | BytePositionInLine: 1.
+ ---> System.NotSupportedException: Deserialization of types without a parameterless constructor, a singular parameterized constructor, or a parameterized constructor annotated with 'JsonConstructorAttribute' is not supported. Type 'CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand'.
+   --- End of inner exception stack trace ---
+   at System.Text.Json.ThrowHelper.ThrowNotSupportedException(ReadStack& state, Utf8JsonReader& reader, NotSupportedException ex)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCoreAsObject(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadCore[TValue](Utf8JsonReader& reader, JsonTypeInfo jsonTypeInfo, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ContinueDeserialize[TValue](ReadBufferState& bufferState, JsonReaderState& jsonReaderState, ReadStack& readStack, JsonTypeInfo jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.ReadFromStreamAsync[TValue](Stream utf8Json, JsonTypeInfo jsonTypeInfo, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder.BindModelAsync(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+2024-09-11 12:16:35.305 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 507 - 500 0 - 425.8702ms
+2024-09-11 12:16:43.440 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-11 12:16:43.531 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-11 12:16:43.556 +05:00 [INF] Response StatusCode: 200
+2024-09-11 12:16:43.563 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 122.8762ms
+2024-09-11 12:16:43.582 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-11 12:16:43.584 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-11 12:16:43.594 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 10.0849ms
+2024-09-11 12:16:43.605 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 23.3175ms
+2024-09-11 12:16:44.012 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-11 12:16:44.018 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-11 12:16:44.023 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-11 12:16:44.025 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-11 12:16:44.033 +05:00 [INF] Response StatusCode: 404
+2024-09-11 12:16:44.037 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-11 12:16:44.040 +05:00 [INF] Response StatusCode: 404
+2024-09-11 12:16:44.045 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 33.0670ms
+2024-09-11 12:16:44.507 +05:00 [INF] Response StatusCode: 200
+2024-09-11 12:16:44.515 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 490.0646ms
+2024-09-11 12:17:03.235 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-11 12:17:03.312 +05:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-11 12:17:03.324 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-11 12:17:03.340 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-11 12:17:03.358 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-11 12:17:03.375 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-11 12:17:03.390 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-11 12:17:03.563 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-11 12:17:03.577 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-11 12:17:03.817 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-11 12:17:04.163 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-11 12:17:04.373 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-11 12:17:04.628 +05:00 [INF] Response StatusCode: 200
+2024-09-11 12:17:04.639 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 478.0861ms
+2024-09-11 12:17:04.655 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-11 12:17:04.666 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 11.7018ms
+2024-09-11 12:17:04.800 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-11 12:17:04.871 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 70.9562ms
+2024-09-11 12:17:05.283 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-11 12:17:05.289 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-11 12:17:05.318 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-11 12:17:05.323 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-11 12:17:05.559 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-11 12:17:05.565 +05:00 [INF] Response StatusCode: 404
+2024-09-11 12:17:05.569 +05:00 [INF] Response StatusCode: 404
+2024-09-11 12:17:05.576 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 293.2250ms
+2024-09-11 12:17:06.846 +05:00 [INF] Response StatusCode: 200
+2024-09-11 12:17:06.849 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1530.9912ms
+2024-09-11 12:17:40.377 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 507
+2024-09-11 12:17:40.387 +05:00 [INF] CORS policy execution successful.
+2024-09-11 12:17:40.408 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-11 12:17:40.415 +05:00 [INF] Request Body: {
+  "CultureId": 1,
+  "ID": 27,
+  "Title": "Cumque modi sit labo",
+  "KeyDate": "2024-09-11",
+  "Cost": "20000fgs00",
+  "ServiceID": 19,
+  "CoreAreaLookupID": 2,
+  "RelatedAreasLookupIDs": "10",
+  "Access": "Public",
+  "Availablity": "Always Open",
+  "WhenToVisitIDs": "2,3",
+  "AddressLine1": "123 Main St",
+  "AddressLine2": "Suite 100",
+  "CountryLookUpID": 1,
+  "CityLookUpID": 19,
+  "StatelookUpID": 5,
+  "PostalCode": "12345",
+  "Latitude": "40.7128",
+  "Longitude": "-74.0060",
+  "UpdatedBy": 1001
+}
+
+2024-09-11 12:17:40.680 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-11 12:17:40.792 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-11 12:17:40.802 +05:00 [INF] Request Body: {
+  "CultureId": 1,
+  "ID": 27,
+  "Title": "Cumque modi sit labo",
+  "KeyDate": "2024-09-11",
+  "Cost": "20000fgs00",
+  "ServiceID": 19,
+  "CoreAreaLookupID": 2,
+  "RelatedAreasLookupIDs": "10",
+  "Access": "Public",
+  "Availablity": "Always Open",
+  "WhenToVisitIDs": "2,3",
+  "AddressLine1": "123 Main St",
+  "AddressLine2": "Suite 100",
+  "CountryLookUpID": 1,
+  "CityLookUpID": 19,
+  "StatelookUpID": 5,
+  "PostalCode": "12345",
+  "Latitude": "40.7128",
+  "Longitude": "-74.0060",
+  "UpdatedBy": 1001
+}
+
+2024-09-11 12:17:40.812 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-11 12:17:40.866 +05:00 [INF] Route matched with {action = "Update", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-11 12:17:43.529 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 12:17:43.942 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand, Handle with parameter: {"ID":27,"Title":"Cumque modi sit labo","KeyDate":"2024-09-11","Cost":"20000fgs00","ServiceID":19,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"10","Access":"Public","Availablity":"Always Open","WhenToVisitIDs":"2,3","AddressLine1":"123 Main St","AddressLine2":"Suite 100","CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Longitude":"-74.0060","Latitude":"40.7128","UpdatedBy":1001,"CultureId":1,"UserId":1006}
+2024-09-11 12:17:43.948 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-09-11 12:17:43.973 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"06adb683-8fd9-4988-ab15-b52e437d2098","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":3}
+2024-09-11 12:17:44.949 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":27,"Title":"Cumque modi sit labo","KeyDate":"2024-09-11","Cost":"20000fgs00","ServiceID":19,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"10","Access":"Public","Availablity":"Always Open","WhenToVisitIDs":"2,3","IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":1006,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null,"AddressLine1":"123 Main St","AddressLine2":"Suite 100","CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"40.7128","Longitude":"-74.0060","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"AddressID":0}
+2024-09-11 12:17:46.807 +05:00 [INF] Exiting null, UpdateAsync with response: -1
+2024-09-11 12:17:46.848 +05:00 [INF] Exiting null, Handle with response: true
+2024-09-11 12:17:46.863 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 3320.3961ms.
+2024-09-11 12:17:46.887 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-09-11 12:17:46.933 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) in 6050.9485ms
+2024-09-11 12:17:46.940 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-11 12:17:46.944 +05:00 [INF] Response StatusCode: 200
+2024-09-11 12:17:46.949 +05:00 [INF] Response StatusCode: 200
+2024-09-11 12:17:46.953 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 507 - 200 - application/json;+charset=utf-8 6576.1180ms
+2024-09-11 12:18:32.113 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 493
+2024-09-11 12:18:32.119 +05:00 [INF] CORS policy execution successful.
+2024-09-11 12:18:32.123 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-11 12:18:32.129 +05:00 [INF] Request Body: {
+  "CultureId": 1,
+  "ID": 27,
+  "Title": "update",
+  "KeyDate": "2024-09-11",
+  "Cost": "20000fgs00",
+  "ServiceID": 19,
+  "CoreAreaLookupID": 2,
+  "RelatedAreasLookupIDs": "10",
+  "Access": "Public",
+  "Availablity": "Always Open",
+  "WhenToVisitIDs": "2,3",
+  "AddressLine1": "123 Main St",
+  "AddressLine2": "Suite 100",
+  "CountryLookUpID": 1,
+  "CityLookUpID": 19,
+  "StatelookUpID": 5,
+  "PostalCode": "12345",
+  "Latitude": "40.7128",
+  "Longitude": "-74.0060",
+  "UpdatedBy": 1001
+}
+
+2024-09-11 12:18:32.262 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-11 12:18:32.273 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-11 12:18:32.277 +05:00 [INF] Request Body: {
+  "CultureId": 1,
+  "ID": 27,
+  "Title": "update",
+  "KeyDate": "2024-09-11",
+  "Cost": "20000fgs00",
+  "ServiceID": 19,
+  "CoreAreaLookupID": 2,
+  "RelatedAreasLookupIDs": "10",
+  "Access": "Public",
+  "Availablity": "Always Open",
+  "WhenToVisitIDs": "2,3",
+  "AddressLine1": "123 Main St",
+  "AddressLine2": "Suite 100",
+  "CountryLookUpID": 1,
+  "CityLookUpID": 19,
+  "StatelookUpID": 5,
+  "PostalCode": "12345",
+  "Latitude": "40.7128",
+  "Longitude": "-74.0060",
+  "UpdatedBy": 1001
+}
+
+2024-09-11 12:18:32.280 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-11 12:18:32.284 +05:00 [INF] Route matched with {action = "Update", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-11 12:18:35.985 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-11 12:18:35.993 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand, Handle with parameter: {"ID":27,"Title":"update","KeyDate":"2024-09-11","Cost":"20000fgs00","ServiceID":19,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"10","Access":"Public","Availablity":"Always Open","WhenToVisitIDs":"2,3","AddressLine1":"123 Main St","AddressLine2":"Suite 100","CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Longitude":"-74.0060","Latitude":"40.7128","UpdatedBy":1001,"CultureId":1,"UserId":1006}
+2024-09-11 12:18:35.997 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-09-11 12:18:36.002 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"06adb683-8fd9-4988-ab15-b52e437d2098","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":3}
+2024-09-11 12:18:36.391 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":27,"Title":"update","KeyDate":"2024-09-11","Cost":"20000fgs00","ServiceID":19,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"10","Access":"Public","Availablity":"Always Open","WhenToVisitIDs":"2,3","IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":1006,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null,"AddressLine1":"123 Main St","AddressLine2":"Suite 100","CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"40.7128","Longitude":"-74.0060","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"AddressID":0}
+2024-09-11 12:18:37.273 +05:00 [INF] Exiting null, UpdateAsync with response: -1
+2024-09-11 12:18:37.278 +05:00 [INF] Exiting null, Handle with response: true
+2024-09-11 12:18:37.281 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkResult in 1291.3743ms.
+2024-09-11 12:18:37.286 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-09-11 12:18:37.291 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) in 5002.9309ms
+2024-09-11 12:18:37.295 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-11 12:18:37.299 +05:00 [INF] Response StatusCode: 200
+2024-09-11 12:18:37.302 +05:00 [INF] Response StatusCode: 200
+2024-09-11 12:18:37.306 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 493 - 200 - application/json;+charset=utf-8 5192.5617ms
