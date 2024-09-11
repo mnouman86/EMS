@@ -14,7 +14,12 @@ namespace CleanArc.Application.Features.KBDescription.Commands.UpdateKBDescripti
 public record UpdateKBDescriptionCommand(int ID, int? KBDetailID,
 string SubHeading,
 string Content,
-string? KBContentType, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
+string? KBContentType,
+string MediaType,
+ string ImagePath,
+string ImageTitle,
+bool? IsMain,
+int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateKBDescriptionCommand>
 {
     [JsonIgnore]
@@ -29,14 +34,26 @@ string? KBContentType, int? UpdatedBy, int? CultureId) : IRequest<OperationResul
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a KBDetailID");
+        validator.RuleFor(c => c.MediaType)
+    .NotEmpty()
+    .NotNull()
+    .WithMessage("Please enter a MediaType");
+        validator.RuleFor(c => c.ImagePath)
+            .NotEmpty()
+            .NotNull()
+            .WithMessage("Please enter a ImagePath");
+        validator.RuleFor(c => c.ImageTitle)
+            .NotEmpty()
+            .NotNull()
+            .WithMessage("Please enter a ImageTitle");
         //validator.RuleFor(c => c.SubHeading)
         //    .NotEmpty()
         //    .NotNull()
         //    .WithMessage("Please enter a SubHeading ");
-        validator.RuleFor(c => c.Content)
-          .NotEmpty()
-          .NotNull()
-          .WithMessage("Please enter a Content ");
+        //validator.RuleFor(c => c.Content)
+        //  .NotEmpty()
+        //  .NotNull()
+        //  .WithMessage("Please enter a Content ");
         return validator;
     }
 }
