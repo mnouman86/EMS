@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.KBWhenToVisit.Commands.UpdateKBWhenToVisitCommand;
-public record UpdateKBWhenToVisitCommand( int ID,String? Title, string? Description, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
+public record UpdateKBWhenToVisitCommand( int ID,String? Name, string? Description, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<UpdateKBWhenToVisitCommand>
 {
     [JsonIgnore]
@@ -19,11 +19,11 @@ public record UpdateKBWhenToVisitCommand( int ID,String? Title, string? Descript
     public IValidator<UpdateKBWhenToVisitCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateKBWhenToVisitCommand> validator)
     {
        
-        validator.RuleFor(c => c.Title)
+        validator.RuleFor(c => c.Name)
             .NotEmpty()
 
             .NotNull()
-            .WithMessage("Please enter a valid Title");
+            .WithMessage("Please enter a valid Name");
         validator.RuleFor(c => c.Description)
             .NotEmpty()
             .NotNull()

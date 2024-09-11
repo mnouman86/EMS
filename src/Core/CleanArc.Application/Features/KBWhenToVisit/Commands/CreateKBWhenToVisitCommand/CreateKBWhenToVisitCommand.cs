@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.KBWhenToVisit.Commands.CreateKBWhenToVisitCommand;
-public record CreateKBWhenToVisitCommand(string? Title, string? Description, int? CreatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
+public record CreateKBWhenToVisitCommand(string? Name, string? Description, int? CreatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateKBWhenToVisitCommand>
 {
     [JsonIgnore]
@@ -19,10 +19,10 @@ public record CreateKBWhenToVisitCommand(string? Title, string? Description, int
     public IValidator<CreateKBWhenToVisitCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateKBWhenToVisitCommand> validator)
     {
        
-        validator.RuleFor(c => c.Title)
+        validator.RuleFor(c => c.Name)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please enter a valid Title");
+            .WithMessage("Please enter a valid Name");
         validator.RuleFor(c => c.Description)
             .NotEmpty()
             .NotNull()

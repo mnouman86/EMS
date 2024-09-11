@@ -56,7 +56,7 @@ internal class UpdateKBWhenToVisitCommandHandler:IRequestHandler<UpdateKBWhenToV
 
             //return OperationResult<bool>.SuccessResult(true);
             await _unitOfWork.KBWhenToVisitRepository.UpdateAsync(new Domain.Entities.KBWhenToVisit.KBWhenToVisit()
-            { UpdatedBy = user.Id,ID= request.ID, Description = request.Description, Title = request.Title,  CultureId = request.CultureId });
+            { UpdatedBy = user.Id,ID= request.ID, Description = request.Description, Name = request.Name,  CultureId = request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<bool>.SuccessResult(true);
