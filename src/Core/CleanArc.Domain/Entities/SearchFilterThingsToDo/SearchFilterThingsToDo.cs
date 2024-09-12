@@ -11,35 +11,16 @@ namespace CleanArc.Domain.Entities.SearchFilterThingsToDo;
 public  class SearchFilterThingsToDo
 {
     public int ID { get; set; }
-    public string Title { get; set; }
-    public int? LanguageLookUpID { get; set; }
-    public string? LanguageName { get; set; }
-    public int? ServiceLookUpID { get; set; }
-    public int? SubServiceLookUpID { get; set; }
-    public string? OtherSubService { get; set; }
-    public int? MinAge { get; set; }
-    public int? MaxAge { get; set; }
-    public int? ActivityTypeLookUpID { get; set; }
-    public int? ActivityNatureLookUpID { get; set; }
-    public int? MaxGroupSize { get; set; }
-    //public bool? IsPrivateActivity { get; set; }
-    public string WhoCanParticipate { get; set; }
-    public string WhoCannotParticipate { get; set; }
-    public int? ManageActivityLookUpID { get; set; }
-    public string? OtherManageActivity { get; set; }
-    public int? Days { get; set; }
-    public int? Hours { get; set; }
-    public string Description { get; set; }
-    public bool? IsTransportation { get; set; }
-    public int? TransportationLookUpID { get; set; }
-    public bool? IsDisability { get; set; }
-    public string AllowedItems { get; set; }
-    public string NotAllowedItems { get; set; }
-    public int? CurrencyLookUpID { get; set; }
-    public string? SeasonLookUpID { get; set; }
-    public string? IncludeOptionLookUpID { get; set; }
-    public string? DisabilityOptionLookUpID { get; set; }
-    public Decimal? PerPersonPrice { get; set; }
+    public int? CityID { get; set; }                 // Maps to C.ID AS CityID
+    public string? CityName { get; set; }            // ISNULL(C.Name, '''') AS CityName
+    public string? ActivityName { get; set; }        // ISNULL(A.Title, '''') AS ActivityName
+    public string? SeasonName { get; set; }          // ISNULL(LS.Name, '''') AS SeasonName
+    public decimal? ActivityPrice { get; set; }      // ISNULL(A.PerPersonPrice, 0) AS ActivityPrice
+    public decimal? DiscountPercentage { get; set; } // Maps to DiscountPercentage
+    public decimal? DiscountAmount { get; set; }     // Maps to DiscountAmount
+    public decimal? DiscountedPrice { get; set; }    // Maps to DiscountedPrice
+    public int? Days { get; set; }                   // ISNULL(A.Days, 0) AS Days
+    public int? Hours { get; set; }                  // ISNULL(A.Hours, 0) AS Hours
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }
@@ -49,13 +30,11 @@ public  class SearchFilterThingsToDo
     public int? CultureId { get; set; }
     public int? Code { get; set; }
     public int? Message { get; set; }
-    public int? ActivityID { get; set; }
-    public string? Duration { get; set; }
-    public string? Cancellation { get; set; }
-    public string? StartTime { get; set; } // Nullable TimeSpan for StartTime
-    public string? EndTime { get; set; }   // Nullable TimeSpan for EndTime
-    public DateTime? StartDate { get; set; } // Nullable DateTime for StartDate
-    public DateTime? EndDate { get; set; }   // Nullable DateTime for EndDate
+    
+    //public string? StartTime { get; set; } // Nullable TimeSpan for StartTime
+    //public string? EndTime { get; set; }   // Nullable TimeSpan for EndTime
+    //public DateTime? StartDate { get; set; } // Nullable DateTime for StartDate
+    //public DateTime? EndDate { get; set; }   // Nullable DateTime for EndDate
     public List<ActivityIDImageMapping> ActivityImages { get; set; }
     public List<ActivityAddressMapping> ActivityAddress { get; set; }
 
