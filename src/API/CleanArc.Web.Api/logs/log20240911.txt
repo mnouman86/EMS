@@ -4473,3 +4473,52 @@ END
 2024-09-11 14:46:44.914 +05:00 [INF] Response StatusCode: 200
 2024-09-11 14:46:44.919 +05:00 [INF] Response StatusCode: 200
 2024-09-11 14:46:44.923 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDescription/GetAll application/json 171 - 200 - application/json;+charset=utf-8 6938.7895ms
+2024-09-11 17:05:52.760 +05:00 [INF] Executed DbCommand (117ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-11 17:05:53.059 +05:00 [INF] Executed DbCommand (120ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-11 17:05:53.094 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-11 17:05:53.182 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-11 17:05:53.332 +05:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-11 17:05:53.404 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-11 17:05:53.486 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-11 17:05:54.291 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-11 17:05:54.370 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-11 17:05:56.014 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-11 17:05:56.866 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-11 17:05:57.711 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-11 17:05:58.285 +05:00 [INF] Response StatusCode: 200
+2024-09-11 17:05:58.303 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 1459.7170ms
+2024-09-11 17:05:58.575 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-11 17:05:58.575 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-11 17:05:58.633 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 57.5016ms
+2024-09-11 17:05:58.780 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 205.1902ms
+2024-09-11 17:05:59.719 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-11 17:05:59.737 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-11 17:05:59.763 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-11 17:05:59.788 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-11 17:06:00.337 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-11 17:06:00.359 +05:00 [INF] Response StatusCode: 404
+2024-09-11 17:06:00.376 +05:00 [INF] Response StatusCode: 404
+2024-09-11 17:06:00.388 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 664.4365ms
+2024-09-11 17:06:02.687 +05:00 [INF] Response StatusCode: 200
+2024-09-11 17:06:02.695 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 2931.8829ms

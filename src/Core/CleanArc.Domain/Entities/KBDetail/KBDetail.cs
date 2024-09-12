@@ -42,6 +42,6 @@ public  class KBDetail
     //public string? RelatedUrlLinkName { get; set; }
     public string? WhenToVisitTitles { get; set; }
     public string? CoreAreaName { get; set; }
-    public int AddressID { get; set; }
+    //public int AddressID { get; set; }
 
 }
