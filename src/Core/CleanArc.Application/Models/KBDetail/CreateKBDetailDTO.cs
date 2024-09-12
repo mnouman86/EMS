@@ -38,7 +38,7 @@ namespace CleanArc.Application.Models.KBDetail
         public string? Latitude { get; set; }
         public string? Longitude { get; set; }
         public int? KbDetailID { get; set; }
-        public int AddressID { get; set; }
+       // public int AddressID { get; set; }
 
     }
 }
