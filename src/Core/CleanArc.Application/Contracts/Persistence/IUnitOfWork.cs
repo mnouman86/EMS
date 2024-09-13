@@ -88,6 +88,8 @@ public interface IUnitOfWork
     public ICoreAreaRepository CoreAreaRepository { get; }
     public IKBWhenToVisitRepository KBWhenToVisitRepository { get; }
     public IKBInterestedRepository KBInterestedRepository { get; }
+    public IUserExperienceRepository UserExperienceRepository { get; }
+
 
 
 
