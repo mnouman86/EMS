@@ -453,6 +453,15 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.KBInterested.KBInterestedController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.KBInterested.KBInterestedController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.KBInterested.Commands.CreateKBInterestedCommand.CreateKBInterestedCommand,CleanArc.Application.Features.KBInterested.Commands.UpdateKBInterestedCommand.UpdateKBInterestedCommand,CleanArc.Application.Features.KBInterested.Commands.DeleteKBInterestedCommand.DeleteKBInterestedCommand,System.Boolean,CleanArc.Application.Features.KBInterested.Queries.GetAllKBInterested.GetAllKBInterestedQuery,System.Collections.Generic.List{CleanArc.Application.Features.KBInterested.Queries.GetAllKBInterested.GetAllKBInterestedQueryResult},CleanArc.Application.Features.KBInterested.Queries.GetKBInterestedById.GetKBInterestedByIdQuery,CleanArc.Application.Features.KBInterested.Queries.GetKBInterestedById.GetKBInterestedByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.KBInterested.KBInterestedController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.KBMedia.KBMediaController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommand,CleanArc.Application.Features.KBMedia.Commands.UpdateKBMediaCommand.UpdateKBMediaCommand,CleanArc.Application.Features.KBMedia.Commands.DeleteKBMediaCommand.DeleteKBMediaCommand,System.Boolean,CleanArc.Application.Features.KBMedia.Queries.GetAllKBMedia.GetAllKBMediaQuery,System.Collections.Generic.List{CleanArc.Application.Features.KBMedia.Queries.GetAllKBMedia.GetAllKBMediaQueryResult},CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById.GetKBMediaByIdQuery,CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById.GetKBMediaByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
