@@ -97,6 +97,7 @@ public class UnitOfWork : IUnitOfWork
     public ICoreAreaRepository CoreAreaRepository { get; set; }
     public IKBWhenToVisitRepository KBWhenToVisitRepository { get; set; }
     public IKBInterestedRepository KBInterestedRepository { get; set; }
+    public IUserExperienceRepository UserExperienceRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -184,6 +185,7 @@ public class UnitOfWork : IUnitOfWork
            ILogger<CoreAreaRepository> _loggerCoreArea,
            ILogger<KBWhenToVisitRepository> _loggerKBWhenToVisit,
            ILogger<KBInterestedRepository> _loggerKBInterested,
+           ILogger<UserExperienceRepository> _loggerUserExperience,
 
 
 
@@ -276,6 +278,7 @@ public class UnitOfWork : IUnitOfWork
         CoreAreaRepository = new CoreAreaRepository(configuration, mapper, _loggerCoreArea, httpContextAccessor);
         KBWhenToVisitRepository = new KBWhenToVisitRepository(configuration, mapper, _loggerKBWhenToVisit, httpContextAccessor);
         KBInterestedRepository = new KBInterestedRepository(configuration, mapper, _loggerKBInterested, httpContextAccessor);
+        UserExperienceRepository = new UserExperienceRepository(configuration, mapper, _loggerUserExperience, httpContextAccessor);
 
         this.configuration = configuration;
 
