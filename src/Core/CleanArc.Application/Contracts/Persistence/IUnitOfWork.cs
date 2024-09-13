@@ -89,6 +89,7 @@ public interface IUnitOfWork
     public IKBWhenToVisitRepository KBWhenToVisitRepository { get; }
     public IKBInterestedRepository KBInterestedRepository { get; }
     public IUserExperienceRepository UserExperienceRepository { get; }
+    public ICheckProfileStatusRepository CheckProfileStatusRepository { get; }
 
 
 
