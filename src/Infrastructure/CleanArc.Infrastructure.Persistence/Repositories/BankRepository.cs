@@ -2,6 +2,7 @@
 using CleanArc.Application.Models.AgeType;
 using CleanArc.Application.Models.Bank;
 using CleanArc.Application.Models.Request;
+using CleanArc.Domain.Common;
 using CleanArc.Domain.Entities.AgeType;
 using CleanArc.Domain.Entities.Bank;
 using CleanArc.Infrastructure.Persistence.Helpers;
@@ -12,7 +13,7 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; 
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -59,7 +60,7 @@ public class BankRepository : IBankRepository
         _httpContextAccessor = httpContextAccessor;
     }
     /// <inheritdoc/>
-    public async Task<string> AddAsync(Bank bank)
+    public async Task<ResponseEntity> AddAsync(Bank bank)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, bank))
         {
@@ -67,9 +68,9 @@ public class BankRepository : IBankRepository
             {
                 connection.Open();
                 CreateBankDTO createBankDTO = _mapper.Map<CreateBankDTO>(bank);
-                var result = await connection.ExecuteAsync(BankQueries.Create_Bank, createBankDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(BankQueries.Create_Bank, createBankDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

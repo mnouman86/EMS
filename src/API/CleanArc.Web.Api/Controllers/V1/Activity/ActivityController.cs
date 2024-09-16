@@ -4,6 +4,7 @@ using CleanArc.Application.Features.Activity.Commands.DeleteActivityCommand;
 using CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand;
 using CleanArc.Application.Features.Activity.Queries.GetActivityById;
 using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
+using CleanArc.Domain.Common;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
 using Microsoft.AspNetCore.Mvc;
@@ -54,7 +55,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Activity
     [ApiController]
     [Route("api/v{version:apiVersion}/Activity")]
     //[Authorize]
-    public class ActivityController : _BaseController<CreateActivityCommand, UpdateActivityCommand, DeleteActivityCommand, bool, GetAllActivityQuery,
+    public class ActivityController : _BaseController<CreateActivityCommand, UpdateActivityCommand, DeleteActivityCommand, ResponseEntity, GetAllActivityQuery,
     List<GetAllActivityQueryResult>, GetActivityByIdQuery, GetActivityByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +102,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Activity
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public ActivityController(ISender sender, ILogger<_BaseController<CreateActivityCommand, UpdateActivityCommand, DeleteActivityCommand, bool, GetAllActivityQuery,
+        public ActivityController(ISender sender, ILogger<_BaseController<CreateActivityCommand, UpdateActivityCommand, DeleteActivityCommand, ResponseEntity, GetAllActivityQuery,
    List<GetAllActivityQueryResult>, GetActivityByIdQuery, GetActivityByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

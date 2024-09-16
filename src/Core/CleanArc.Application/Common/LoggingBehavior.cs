@@ -1,6 +1,6 @@
 ﻿using CleanArc.Application.Models.Common;
 using Mediator;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Common;
 

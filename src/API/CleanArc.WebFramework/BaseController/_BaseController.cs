@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using Serilog.Context;
 using CleanArc.Application.Models.Request;
 

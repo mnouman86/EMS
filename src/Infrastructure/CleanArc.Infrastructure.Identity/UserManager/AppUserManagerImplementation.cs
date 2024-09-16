@@ -7,7 +7,7 @@ using CleanArc.SharedKernel.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 
 namespace CleanArc.Infrastructure.Identity.UserManager;
 

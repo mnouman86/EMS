@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Azure;
+using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.Activity.Commands.CreateActivityCommand;
 public record CreateActivityCommand(
@@ -48,7 +50,7 @@ public record CreateActivityCommand(
     string? StartTime
 
 
-    ) : IRequest<OperationResult<bool>>,
+    ) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateActivityCommand>
 {
     [JsonIgnore]

@@ -14,7 +14,7 @@ using Dapper;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -67,7 +67,7 @@ public class ActivityManagerRepository:IActivityManagerRepository
         _httpContextAccessor = httpContextAccessor;
     }
 /// <inheritdoc/>
-public async Task<string> AddAsync(ActivityManager ActivityManager)
+public async Task<ResponseEntity> AddAsync(ActivityManager ActivityManager)
 {
     using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, ActivityManager))
     {
@@ -80,9 +80,9 @@ public async Task<string> AddAsync(ActivityManager ActivityManager)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
               //  parameters.Add("@ActivityID ", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                var result = await connection.ExecuteAsync(ActivityManagerQueries.Create_ActivityManager, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityManagerQueries.Create_ActivityManager, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-            return result.ToString();
+            return result;
         }
     }
 }

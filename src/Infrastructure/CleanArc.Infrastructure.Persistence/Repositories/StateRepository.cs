@@ -10,7 +10,7 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -56,7 +56,7 @@ public class StateRepository : IStateRepository
         _httpContextAccessor = httpContextAccessor;
     }
     /// <inheritdoc/>
-    public async Task<string> AddAsync(State state)
+    public async Task<ResponseEntity> AddAsync(State state)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, state))
         {
@@ -64,9 +64,9 @@ public class StateRepository : IStateRepository
             {
                 connection.Open();
                 CreateStateDTO createStateDTO = _mapper.Map<CreateStateDTO>(state);
-                var result = await connection.ExecuteAsync(StateQueries.Create_State, createStateDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(StateQueries.Create_State, createStateDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

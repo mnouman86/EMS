@@ -14,7 +14,7 @@ using Dapper;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -67,7 +67,7 @@ public class KBMediaRepository:IKBMediaRepository
         _httpContextAccessor = httpContextAccessor;
     }
 /// <inheritdoc/>
-public async Task<string> AddAsync(KBMedia KBMedia)
+public async Task<ResponseEntity> AddAsync(KBMedia KBMedia)
 {
     using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, KBMedia))
     {
@@ -81,9 +81,9 @@ public async Task<string> AddAsync(KBMedia KBMedia)
                 //parameters.Add("@KBMediaID", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 //var result = await connection.QuerySingleOrDefaultAsync<int>(KBMediaQueries.Create_KBMedia, parameters, commandType: CommandType.StoredProcedure);
 
-               var result = await connection.ExecuteAsync(KBMediaQueries.Create_KBMedia, parameters, commandType: CommandType.StoredProcedure);
+               var result = await connection.ExecuteScalarAsync<ResponseEntity>(KBMediaQueries.Create_KBMedia, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-            return result.ToString();
+            return result;
         }
     }
 }

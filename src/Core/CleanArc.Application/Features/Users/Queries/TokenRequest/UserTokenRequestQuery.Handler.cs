@@ -1,7 +1,7 @@
 ﻿using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Models.Common;
 using Mediator;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.Users.Queries.TokenRequest;
 

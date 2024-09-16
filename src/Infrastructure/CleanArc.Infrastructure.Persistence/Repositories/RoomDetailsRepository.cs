@@ -9,7 +9,7 @@ using Dapper;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -48,7 +48,7 @@ public class RoomDetailsRepository:IRoomDetailsRepository
         this._logger = logger;
         _httpContextAccessor = httpContextAccessor;
     }
-    public async Task<string> AddAsync(RoomDetails roomDetails)
+    public async Task<ResponseEntity> AddAsync(RoomDetails roomDetails)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, roomDetails))
         {
@@ -56,9 +56,9 @@ public class RoomDetailsRepository:IRoomDetailsRepository
             {
                 connection.Open();
                 CreateRoomDetailsDTO createRoomDetailsDTO = _mapper.Map<CreateRoomDetailsDTO>(roomDetails);
-                var result = await connection.ExecuteAsync(RoomDetailQueries.Create_RoomDetail, createRoomDetailsDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(RoomDetailQueries.Create_RoomDetail, createRoomDetailsDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

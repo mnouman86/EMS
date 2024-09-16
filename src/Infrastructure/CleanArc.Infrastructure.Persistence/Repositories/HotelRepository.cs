@@ -11,7 +11,7 @@ using Dapper;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -51,7 +51,7 @@ public class HotelRepository : IHotelRepository
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public async Task<string> AddAsync(Hotel hotel)
+    public async Task<ResponseEntity> AddAsync(Hotel hotel)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, hotel))
         {
@@ -59,9 +59,9 @@ public class HotelRepository : IHotelRepository
             {
                 connection.Open();
                 CreateHotelDTO createHotelDTO = _mapper.Map<CreateHotelDTO>(hotel);
-                var result = await connection.ExecuteAsync(HotelQueries.Create_Hotel, createHotelDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(HotelQueries.Create_Hotel, createHotelDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

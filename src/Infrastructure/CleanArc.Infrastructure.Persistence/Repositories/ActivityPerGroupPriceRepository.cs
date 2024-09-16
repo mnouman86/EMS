@@ -14,7 +14,7 @@ using Dapper;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -67,7 +67,7 @@ public class ActivityPerGroupPriceRepository:IActivityPerGroupPriceRepository
         _httpContextAccessor = httpContextAccessor;
     }
 /// <inheritdoc/>
-public async Task<string> AddAsync(ActivityPerGroupPrice ActivityPerGroupPrice)
+public async Task<ResponseEntity> AddAsync(ActivityPerGroupPrice ActivityPerGroupPrice)
 {
     using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, ActivityPerGroupPrice))
     {
@@ -79,9 +79,9 @@ public async Task<string> AddAsync(ActivityPerGroupPrice ActivityPerGroupPrice)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityPerGroupPriceQueries.Create_ActivityPerGroupPrice, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityPerGroupPriceQueries.Create_ActivityPerGroupPrice, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-            return result.ToString();
+            return result;
         }
     }
 }

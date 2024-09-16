@@ -10,7 +10,7 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -56,7 +56,7 @@ public class CityRepository : ICityRepository
         _httpContextAccessor = httpContextAccessor;
     }
     /// <inheritdoc/>
-    public async Task<string> AddAsync(City city)
+    public async Task<ResponseEntity> AddAsync(City city)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, city))
         {
@@ -64,9 +64,9 @@ public class CityRepository : ICityRepository
             {
                 connection.Open();
                 CreateCityDTO createCityDTO = _mapper.Map<CreateCityDTO>(city);
-                var result = await connection.ExecuteAsync(CityQueries.Create_City, createCityDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(CityQueries.Create_City, createCityDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

@@ -9,7 +9,7 @@ using Dapper;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -56,7 +56,7 @@ public class SearchHotelImageRepository : ISearchHotelImageRepository
         this._logger = logger;
         _httpContextAccessor = httpContextAccessor;
     }
-    public Task<string> AddAsync(SearchHotelImage entity)
+    public Task<ResponseEntity> AddAsync(SearchHotelImage entity)
     {
         throw new NotImplementedException();
     }

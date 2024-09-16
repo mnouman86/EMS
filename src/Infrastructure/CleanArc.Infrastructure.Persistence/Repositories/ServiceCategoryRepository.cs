@@ -10,7 +10,7 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -57,7 +57,7 @@ public class ServiceCategoryRepository : IServiceCategoryRepository
         this._logger = logger;
         _httpContextAccessor = httpContextAccessor;
     }
-    public async Task<string> AddAsync(ServiceCategory serviceCategory)
+    public async Task<ResponseEntity> AddAsync(ServiceCategory serviceCategory)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, serviceCategory))
         {
@@ -65,9 +65,9 @@ public class ServiceCategoryRepository : IServiceCategoryRepository
             {
                 connection.Open();
                 CreateServiceCategoryDTO createServiceCategoryDTO = _mapper.Map<CreateServiceCategoryDTO>(serviceCategory);
-                var result = await connection.ExecuteAsync(ServiceCategoryQueries.Create_ServiceCategory, createServiceCategoryDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ServiceCategoryQueries.Create_ServiceCategory, createServiceCategoryDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

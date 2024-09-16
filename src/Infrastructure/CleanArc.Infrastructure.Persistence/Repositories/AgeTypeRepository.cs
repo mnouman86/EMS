@@ -13,7 +13,7 @@ using Dapper;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -66,7 +66,7 @@ public class AgeTypeRepository:IAgeTypeRepository
         _httpContextAccessor = httpContextAccessor;
     }
 /// <inheritdoc/>
-public async Task<string> AddAsync(AgeType ageType)
+public async Task<ResponseEntity> AddAsync(AgeType ageType)
 {
     using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, ageType))
     {
@@ -74,9 +74,9 @@ public async Task<string> AddAsync(AgeType ageType)
         {
             connection.Open();
                 CreateAgeTypeDTO createAgeTypeDTO = _mapper.Map<CreateAgeTypeDTO>(ageType);
-            var result = await connection.ExecuteAsync(AgeTypeQueries.Create_AgeType, createAgeTypeDTO, commandType: CommandType.StoredProcedure);
+            var result = await connection.ExecuteScalarAsync<ResponseEntity>(AgeTypeQueries.Create_AgeType, createAgeTypeDTO, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-            return result.ToString();
+            return result;
         }
     }
 }

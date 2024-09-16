@@ -4,6 +4,7 @@ using CleanArc.Application.Models.ActivityAddressMapping;
 using CleanArc.Application.Models.BusinessProfile;
 using CleanArc.Application.Models.Request;
 using CleanArc.Application.Models.URL;
+using CleanArc.Domain.Common;
 using CleanArc.Domain.Entities.ActivityAddressMapping;
 using CleanArc.Domain.Entities.UserManagement;
 using CleanArc.Infrastructure.Persistence.Helpers;
@@ -67,7 +68,7 @@ public class ActivityAddressMappingRepository:IActivityAddressMappingRepository
         _httpContextAccessor = httpContextAccessor;
     }
 /// <inheritdoc/>
-public async Task<string> AddAsync(ActivityAddressMapping ActivityAddressMapping)
+public async Task<ResponseEntity> AddAsync(ActivityAddressMapping ActivityAddressMapping)
 {
     using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, ActivityAddressMapping))
     {
@@ -79,9 +80,9 @@ public async Task<string> AddAsync(ActivityAddressMapping ActivityAddressMapping
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityAddressMappingQueries.Mapping_Create_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityAddressMappingQueries.Mapping_Create_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-            return result.ToString();
+            return result;
         }
     }
 }

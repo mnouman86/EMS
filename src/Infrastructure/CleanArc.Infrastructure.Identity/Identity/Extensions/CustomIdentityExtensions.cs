@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using Microsoft.Extensions.Options;
 
 namespace CleanArc.Infrastructure.Identity.Identity.Extensions;

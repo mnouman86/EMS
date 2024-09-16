@@ -1,4 +1,5 @@
 ﻿using CleanArc.Application.Models.Request;
+using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Contracts.Persistence;
 /// <summary>
@@ -28,7 +29,7 @@ public interface IRepository<T> where T : class
     /// </summary>
     /// <param name="entity">The entity to be added.</param>
     /// <returns>A task representing the asynchronous operation, returning a message or identifier.</returns>
-    Task<string> AddAsync(T entity);
+    Task<ResponseEntity> AddAsync(T entity);
 
     /// <summary>
     /// Updates an existing entity asynchronously.

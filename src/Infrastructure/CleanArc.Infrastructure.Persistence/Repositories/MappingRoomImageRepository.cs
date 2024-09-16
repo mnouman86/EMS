@@ -4,7 +4,7 @@ using CleanArc.Domain.Entities.MappingRoomImage;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,7 +51,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             _httpContextAccessor = httpContextAccessor;
         }
         /// <inheritdoc/>
-        public Task<string> AddAsync(MappingRoomImage entity)
+        public Task<ResponseEntity> AddAsync(MappingRoomImage entity)
         {
             throw new NotImplementedException();
         }
