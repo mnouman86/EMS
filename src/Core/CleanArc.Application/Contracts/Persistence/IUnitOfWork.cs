@@ -90,6 +90,7 @@ public interface IUnitOfWork
     public IKBInterestedRepository KBInterestedRepository { get; }
     public IUserExperienceRepository UserExperienceRepository { get; }
     public ICheckProfileStatusRepository CheckProfileStatusRepository { get; }
+    public IPopularItemsVisitRepository PopularItemsVisitRepository { get; }
 
 
 

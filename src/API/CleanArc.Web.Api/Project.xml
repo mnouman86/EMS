@@ -700,6 +700,15 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.PopularItemsVisit.Commands.CreatePopularItemsVisitCommand.CreatePopularItemsVisitCommand,CleanArc.Application.Features.PopularItemsVisit.Commands.UpdatePopularItemsVisitCommand.UpdatePopularItemsVisitCommand,CleanArc.Application.Features.PopularItemsVisit.Commands.DeletePopularItemsVisitCommand.DeletePopularItemsVisitCommand,System.Boolean,CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularItemsVisit.GetAllPopularItemsVisitQuery,System.Collections.Generic.List{CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularItemsVisit.GetAllPopularItemsVisitQueryResult},CleanArc.Application.Features.PopularItemsVisit.Queries.GetPopularItemsVisitById.GetPopularItemsVisitByIdQuery,CleanArc.Application.Features.PopularItemsVisit.Queries.GetPopularItemsVisitById.GetPopularItemsVisitByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ProcessOrder.ProcessOrderController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.ProcessOrder.ProcessOrderController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ProcessOrder.Commands.CreateProcessOrderCommand.CreateProcessOrderCommand,CleanArc.Application.Features.ProcessOrder.Commands.UpdateProcessOrderCommand.UpdateProcessOrderCommand,CleanArc.Application.Features.ProcessOrder.Commands.DeleteProcessOrderCommand.DeleteProcessOrderCommand,System.Boolean,CleanArc.Application.Features.ProcessOrder.Queries.GetAllProcessOrder.GetAllProcessOrderQuery,System.Collections.Generic.List{CleanArc.Application.Features.ProcessOrder.Queries.GetAllProcessOrder.GetAllProcessOrderQueryResult},CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById.GetProcessOrderByIdQuery,CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById.GetProcessOrderByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
