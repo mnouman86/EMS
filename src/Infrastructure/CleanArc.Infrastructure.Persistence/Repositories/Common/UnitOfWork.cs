@@ -98,6 +98,8 @@ public class UnitOfWork : IUnitOfWork
     public IKBWhenToVisitRepository KBWhenToVisitRepository { get; set; }
     public IKBInterestedRepository KBInterestedRepository { get; set; }
     public IUserExperienceRepository UserExperienceRepository { get; set; }
+    public ICheckProfileStatusRepository CheckProfileStatusRepository { get; set; }
+    public IPopularItemsVisitRepository PopularItemsVisitRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -186,6 +188,8 @@ public class UnitOfWork : IUnitOfWork
            ILogger<KBWhenToVisitRepository> _loggerKBWhenToVisit,
            ILogger<KBInterestedRepository> _loggerKBInterested,
            ILogger<UserExperienceRepository> _loggerUserExperience,
+           ILogger<CheckProfileStatusRepository> _loggerCheckProfileStatus,
+           ILogger<PopularItemsVisitRepository> _loggerPopularItemsVisit,
 
 
 
@@ -279,6 +283,8 @@ public class UnitOfWork : IUnitOfWork
         KBWhenToVisitRepository = new KBWhenToVisitRepository(configuration, mapper, _loggerKBWhenToVisit, httpContextAccessor);
         KBInterestedRepository = new KBInterestedRepository(configuration, mapper, _loggerKBInterested, httpContextAccessor);
         UserExperienceRepository = new UserExperienceRepository(configuration, mapper, _loggerUserExperience, httpContextAccessor);
+        CheckProfileStatusRepository = new CheckProfileStatusRepository(configuration, mapper, _loggerCheckProfileStatus, httpContextAccessor);
+        PopularItemsVisitRepository = new PopularItemsVisitRepository(configuration, mapper, _loggerPopularItemsVisit, httpContextAccessor);
 
         this.configuration = configuration;
 
