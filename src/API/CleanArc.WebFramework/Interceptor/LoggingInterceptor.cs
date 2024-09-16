@@ -1,7 +1,7 @@
 ﻿using Castle.DynamicProxy;
 using CleanArc.WebFramework.Middlewares;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Reflection;
 

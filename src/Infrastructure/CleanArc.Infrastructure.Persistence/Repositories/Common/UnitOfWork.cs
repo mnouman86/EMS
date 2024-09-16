@@ -6,7 +6,7 @@ using CleanArc.Domain.Entities.SearchCarAmenities;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories.Common;
 

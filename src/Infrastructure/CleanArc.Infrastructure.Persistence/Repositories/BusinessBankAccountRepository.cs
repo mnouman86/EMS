@@ -10,7 +10,7 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -59,7 +59,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
         }
         /// <inheritdoc/>
 
-        public async Task<string> AddAsync(BusinessBankAccount businessBankAccount)
+        public async Task<ResponseEntity> AddAsync(BusinessBankAccount businessBankAccount)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, businessBankAccount))
             {
@@ -67,9 +67,9 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 {
                     connection.Open();
                     CreateBusinessBankAccountDTO createBusinessBankAccount = _mapper.Map<CreateBusinessBankAccountDTO>(businessBankAccount);
-                    var result = await connection.ExecuteAsync(BusinessBankAccountQueries.Create_BusinessBankAccount, createBusinessBankAccount, commandType: CommandType.StoredProcedure);
+                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(BusinessBankAccountQueries.Create_BusinessBankAccount, createBusinessBankAccount, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    return result.ToString();
+                    return result;
                 }
             }
         }

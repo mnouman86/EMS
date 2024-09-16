@@ -11,7 +11,7 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -59,7 +59,7 @@ public class BusinessTypeRepository : IBusinessTypeRepository
         _httpContextAccessor = httpContextAccessor;
     }
     /// <inheritdoc/>
-    public async Task<string> AddAsync(BusinessType BusinessType)
+    public async Task<ResponseEntity> AddAsync(BusinessType BusinessType)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, BusinessType))
         {
@@ -71,9 +71,9 @@ public class BusinessTypeRepository : IBusinessTypeRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(BusinessTypeQueries.Create_BusinessType, createBusinessTypeDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(BusinessTypeQueries.Create_BusinessType, createBusinessTypeDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

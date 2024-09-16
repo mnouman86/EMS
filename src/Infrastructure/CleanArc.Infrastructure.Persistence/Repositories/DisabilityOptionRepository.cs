@@ -13,7 +13,7 @@ using Dapper;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -66,7 +66,7 @@ public class DisabilityOptionRepository:IDisabilityOptionRepository
         _httpContextAccessor = httpContextAccessor;
     }
 /// <inheritdoc/>
-public async Task<string> AddAsync(DisabilityOption DisabilityOption)
+public async Task<ResponseEntity> AddAsync(DisabilityOption DisabilityOption)
 {
     using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, DisabilityOption))
     {
@@ -74,9 +74,9 @@ public async Task<string> AddAsync(DisabilityOption DisabilityOption)
         {
             connection.Open();
                 CreateDisabilityOptionDTO createDisabilityOptionDTO = _mapper.Map<CreateDisabilityOptionDTO>(DisabilityOption);
-            var result = await connection.ExecuteAsync(DisabilityOptionQueries.Create_DisabilityOption, createDisabilityOptionDTO, commandType: CommandType.StoredProcedure);
+            var result = await connection.ExecuteScalarAsync<ResponseEntity>(DisabilityOptionQueries.Create_DisabilityOption, createDisabilityOptionDTO, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-            return result.ToString();
+            return result;
         }
     }
 }

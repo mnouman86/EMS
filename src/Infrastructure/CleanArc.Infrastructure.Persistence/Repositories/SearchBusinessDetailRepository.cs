@@ -10,7 +10,7 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -57,7 +57,7 @@ public class SearchBusinessDetailRepository : ISearchBusinessDetailRepository
         this._logger = logger;
         _httpContextAccessor = httpContextAccessor;
     }
-    public Task<string> AddAsync(SearchBusinessDetail entity)
+    public Task<ResponseEntity> AddAsync(SearchBusinessDetail entity)
     {
         throw new NotImplementedException();
     }

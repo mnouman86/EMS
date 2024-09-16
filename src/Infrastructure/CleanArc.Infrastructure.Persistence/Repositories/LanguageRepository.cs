@@ -12,7 +12,7 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -59,7 +59,7 @@ public class LanguageRepository : ILanguageRepository
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public async Task<string> AddAsync(Language language)
+    public async Task<ResponseEntity> AddAsync(Language language)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, language))
         {
@@ -67,9 +67,9 @@ public class LanguageRepository : ILanguageRepository
             {
                 connection.Open();
                 CreateLanguageDTO createLanguageDTO = _mapper.Map<CreateLanguageDTO>(language);
-                var result = await connection.ExecuteAsync(LanguageQueries.Create_Language, createLanguageDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(LanguageQueries.Create_Language, createLanguageDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

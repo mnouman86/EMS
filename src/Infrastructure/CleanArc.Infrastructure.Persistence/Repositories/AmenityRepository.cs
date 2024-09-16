@@ -13,7 +13,7 @@ using Dapper;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -61,7 +61,7 @@ public class AmenityRepository : IAmenityRepository
         this._logger = logger;
         _httpContextAccessor = httpContextAccessor;
     }
-    public async Task<string> AddAsync(Amenity amenity)
+    public async Task<ResponseEntity> AddAsync(Amenity amenity)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, amenity))
         {
@@ -69,9 +69,9 @@ public class AmenityRepository : IAmenityRepository
             {
                 connection.Open();
                 CreateAmenityDTO createAmenityDTO = _mapper.Map<CreateAmenityDTO>(amenity);
-                var result = await connection.ExecuteAsync(AmenityQueries.Create_Amenity, createAmenityDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(AmenityQueries.Create_Amenity, createAmenityDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

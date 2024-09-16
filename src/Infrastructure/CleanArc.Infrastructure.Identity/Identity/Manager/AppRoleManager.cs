@@ -1,6 +1,6 @@
 ﻿using CleanArc.Domain.Entities.User;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 
 namespace CleanArc.Infrastructure.Identity.Identity.Manager;
 

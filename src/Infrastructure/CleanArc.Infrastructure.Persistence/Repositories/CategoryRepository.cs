@@ -12,7 +12,7 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -59,7 +59,7 @@ public class CategoryRepository : ICategoryRepository
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public async Task<string> AddAsync(Category category)
+    public async Task<ResponseEntity> AddAsync(Category category)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, category))
         {
@@ -67,9 +67,9 @@ public class CategoryRepository : ICategoryRepository
             {
                 connection.Open();
                 CreateCategoryDTO createCategoryDTO = _mapper.Map<CreateCategoryDTO>(category);
-                var result = await connection.ExecuteAsync(CategoryQueries.Create_Category, createCategoryDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(CategoryQueries.Create_Category, createCategoryDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

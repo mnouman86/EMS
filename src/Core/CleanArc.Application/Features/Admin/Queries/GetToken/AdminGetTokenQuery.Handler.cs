@@ -4,7 +4,7 @@ using CleanArc.Application.Features.Users.Commands.Create;
 using CleanArc.Application.Models.Common;
 using CleanArc.Application.Models.Jwt;
 using Mediator;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.Admin.Queries.GetToken;
 

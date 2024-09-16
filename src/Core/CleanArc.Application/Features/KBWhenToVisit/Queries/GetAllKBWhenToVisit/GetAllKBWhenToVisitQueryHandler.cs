@@ -4,7 +4,7 @@ using CleanArc.SharedKernel.Extensions;
 using MapsterMapper;
 using Mediator;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using Serilog.Core;
 using System;
 using System.Collections.Generic;

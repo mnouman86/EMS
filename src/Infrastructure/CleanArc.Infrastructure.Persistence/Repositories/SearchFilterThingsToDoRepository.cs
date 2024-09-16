@@ -16,7 +16,7 @@ using Dapper;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -70,7 +70,7 @@ public class SearchFilterThingsToDoRepository:ISearchFilterThingsToDoRepository
         _httpContextAccessor = httpContextAccessor;
     }
 /// <inheritdoc/>
-//public async Task<string> AddAsync(SearchFilterThingsToDo SearchFilterThingsToDo)
+//public async Task<ResponseEntity> AddAsync(SearchFilterThingsToDo SearchFilterThingsToDo)
 //{
 //    using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, SearchFilterThingsToDo))
 //    {

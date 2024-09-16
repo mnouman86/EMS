@@ -13,7 +13,7 @@ using Dapper;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -66,7 +66,7 @@ public class AdvertisementPageRepository:IAdvertisementPageRepository
         _httpContextAccessor = httpContextAccessor;
     }
 /// <inheritdoc/>
-public async Task<string> AddAsync(AdvertisementPage AdvertisementPage)
+public async Task<ResponseEntity> AddAsync(AdvertisementPage AdvertisementPage)
 {
     using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, AdvertisementPage))
     {
@@ -74,9 +74,9 @@ public async Task<string> AddAsync(AdvertisementPage AdvertisementPage)
         {
             connection.Open();
                 CreateAdvertisementPageDTO createAdvertisementPageDTO = _mapper.Map<CreateAdvertisementPageDTO>(AdvertisementPage);
-            var result = await connection.ExecuteAsync(AdvertisementPageQueries.Create_Page, createAdvertisementPageDTO, commandType: CommandType.StoredProcedure);
+            var result = await connection.ExecuteScalarAsync<ResponseEntity>(AdvertisementPageQueries.Create_Page, createAdvertisementPageDTO, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-            return result.ToString();
+            return result;
         }
     }
 }

@@ -10,7 +10,7 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System.Data;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
@@ -53,7 +53,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             _httpContextAccessor = httpContextAccessor;
         }
         /// <inheritdoc/>
-        public async Task<string> AddAsync(Hotel_Image HotelImage)
+        public async Task<ResponseEntity> AddAsync(Hotel_Image HotelImage)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, HotelImage))
             {
@@ -61,9 +61,9 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 {
                     connection.Open();
                     CreateHotelImageDTO createHotelImageDTO = _mapper.Map<CreateHotelImageDTO>(HotelImage);
-                    var result = await connection.ExecuteAsync(HotelImageQueries.Create_HotelImage, createHotelImageDTO, commandType: CommandType.StoredProcedure);
+                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(HotelImageQueries.Create_HotelImage, createHotelImageDTO, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    return result.ToString();
+                    return result;
                 }
             }
         }

@@ -9,7 +9,7 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -55,7 +55,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             this._logger = logger;
             _httpContextAccessor = httpContextAccessor;
         }
-        public async Task<string> AddAsync(MappingCarAmenities mappingCarAmenities)
+        public async Task<ResponseEntity> AddAsync(MappingCarAmenities mappingCarAmenities)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, mappingCarAmenities))
             {
@@ -63,9 +63,9 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 {
                     connection.Open();
                     CreateMappingCarAmenities createMappingCarAmenities = _mapper.Map<CreateMappingCarAmenities>(mappingCarAmenities);
-                    var result = await connection.ExecuteAsync(MappingCarAmenitiesQueries.Create_Mapping_CarAmenities, createMappingCarAmenities, commandType: CommandType.StoredProcedure);
+                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(MappingCarAmenitiesQueries.Create_Mapping_CarAmenities, createMappingCarAmenities, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    return result.ToString();
+                    return result;
                 }
             }
         }

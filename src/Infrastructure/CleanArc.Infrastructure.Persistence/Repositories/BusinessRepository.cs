@@ -10,7 +10,7 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -58,7 +58,7 @@ public class BusinessRepository : IBusinessRepository
         _httpContextAccessor = httpContextAccessor;
     }
     /// <inheritdoc/>
-    public async Task<string> AddAsync(Business business)
+    public async Task<ResponseEntity> AddAsync(Business business)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, business))
         {
@@ -66,9 +66,9 @@ public class BusinessRepository : IBusinessRepository
             {
                 connection.Open();
                 CreateBusinessDTO createBusinessDTO = _mapper.Map<CreateBusinessDTO>(business);
-                var result = await connection.ExecuteAsync(BusinessQueries.Create_Business, createBusinessDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(BusinessQueries.Create_Business, createBusinessDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

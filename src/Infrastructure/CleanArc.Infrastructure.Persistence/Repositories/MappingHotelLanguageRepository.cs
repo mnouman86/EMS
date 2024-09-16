@@ -9,7 +9,7 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -56,7 +56,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             _httpContextAccessor = httpContextAccessor;
         }
         /// <inheritdoc/>
-        public async Task<string> AddAsync(MappingHotelLanguage mappingHotelLanguage)
+        public async Task<ResponseEntity> AddAsync(MappingHotelLanguage mappingHotelLanguage)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, mappingHotelLanguage))
             {
@@ -64,9 +64,9 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 {
                     connection.Open();
                     CreateMappingHotelLanguageDTO createMappingHotelLanguageDTO = _mapper.Map<CreateMappingHotelLanguageDTO>(mappingHotelLanguage);
-                    var result = await connection.ExecuteAsync(MappingHotelLanguageQueries.Create_Mapping_HotelLanguages, createMappingHotelLanguageDTO, commandType: CommandType.StoredProcedure);
+                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(MappingHotelLanguageQueries.Create_Mapping_HotelLanguages, createMappingHotelLanguageDTO, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    return result.ToString();
+                    return result;
                 }
             }
         }

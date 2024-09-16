@@ -14,7 +14,7 @@ using Mediator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System.Data;
 using System.Data.SqlClient;
 using System.Reflection;
@@ -100,7 +100,7 @@ public class MenuRepository : IMenuRepository
     }
 
     /// <inheritdoc/>
-    public async Task<string> AddAsync(Menu entity)
+    public async Task<ResponseEntity> AddAsync(Menu entity)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
         {
@@ -108,9 +108,9 @@ public class MenuRepository : IMenuRepository
             {
                 connection.Open();
                 AddUrlDto addUrlDto = _mapper.Map<AddUrlDto>(entity);
-                var result = await connection.ExecuteAsync(UrlQueries.AddUrl, addUrlDto, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(UrlQueries.AddUrl, addUrlDto, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

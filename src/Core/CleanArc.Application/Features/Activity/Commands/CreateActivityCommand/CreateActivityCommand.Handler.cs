@@ -8,7 +8,7 @@ using MapsterMapper;
 using Mediator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Activity.Commands.CreateActivityCommand;
 
-internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityCommand, OperationResult<bool>>
+internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -41,14 +41,14 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateActivityCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateActivityCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -57,7 +57,7 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.ActivityRepository.AddAsync(new Domain.Entities.Activity.Activity()
+           var result= await _unitOfWork.ActivityRepository.AddAsync(new Domain.Entities.Activity.Activity()
             {
                 CultureId = request.CultureId,
                 Title=request.Title,
@@ -104,8 +104,8 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
 
             });
             await _unitOfWork.CommitAsync();
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }
