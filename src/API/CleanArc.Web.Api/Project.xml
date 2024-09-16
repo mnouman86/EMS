@@ -363,6 +363,15 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.CheckProfileStatus.CheckProfileStatusController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.CheckProfileStatus.CheckProfileStatusController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.CheckProfileStatus.Commands.CreateCheckProfileStatusCommand.CreateCheckProfileStatusCommand,CleanArc.Application.Features.CheckProfileStatus.Commands.UpdateCheckProfileStatusCommand.UpdateCheckProfileStatusCommand,CleanArc.Application.Features.CheckProfileStatus.Commands.DeleteCheckProfileStatusCommand.DeleteCheckProfileStatusCommand,System.Boolean,CleanArc.Application.Features.CheckProfileStatus.Queries.GetAllCheckProfileStatus.GetAllCheckProfileStatusQuery,System.Collections.Generic.List{CleanArc.Application.Features.CheckProfileStatus.Queries.GetAllCheckProfileStatus.GetAllCheckProfileStatusQueryResult},CleanArc.Application.Features.CheckProfileStatus.Queries.GetCheckProfileStatusById.GetCheckProfileStatusByIdQuery,CleanArc.Application.Features.CheckProfileStatus.Queries.GetCheckProfileStatusById.GetCheckProfileStatusByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.CheckProfileStatus.CheckProfileStatusController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.City.CityController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.City.CityController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.City.Command.CreateCityCommand.CreateCityCommand,CleanArc.Application.Features.City.Command.UpdateCityCommand.UpdateCityCommand,CleanArc.Application.Features.City.Command.DeleteCityCommand.DeleteCityCommand,System.Boolean,CleanArc.Application.Features.City.Queries.GetAllCities.GetAllCitiesQuery,System.Collections.Generic.List{CleanArc.Application.Features.City.Queries.GetAllCities.GetAllCitiesQueryResult},CleanArc.Application.Features.City.Queries.GetCityById.GetCityByIdQuery,CleanArc.Application.Features.City.Queries.GetCityById.GetCityByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
@@ -686,6 +695,15 @@
         <member name="M:CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.PackageType.Commands.CreatePackageTypeCommand.CreatePackageTypeCommand,CleanArc.Application.Features.PackageType.Commands.UpdatePackageTypeCommand.UpdatePackageTypeCommand,CleanArc.Application.Features.PackageType.Commands.DeletePackageTypeCommand.DeletePackageTypeCommand,System.Boolean,CleanArc.Application.Features.PackageType.Queries.GetAllPackageType.GetAllPackageTypeQuery,System.Collections.Generic.List{CleanArc.Application.Features.PackageType.Queries.GetAllPackageType.GetAllPackageTypeQueryResult},CleanArc.Application.Features.PackageType.Queries.GetPackageTypeById.GetPackageTypeByIdQuery,CleanArc.Application.Features.PackageType.Queries.GetPackageTypeById.GetPackageTypeByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
             Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.PackageType.PackageTypeController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.PopularItemsVisit.Commands.CreatePopularItemsVisitCommand.CreatePopularItemsVisitCommand,CleanArc.Application.Features.PopularItemsVisit.Commands.UpdatePopularItemsVisitCommand.UpdatePopularItemsVisitCommand,CleanArc.Application.Features.PopularItemsVisit.Commands.DeletePopularItemsVisitCommand.DeletePopularItemsVisitCommand,System.Boolean,CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularItemsVisit.GetAllPopularItemsVisitQuery,System.Collections.Generic.List{CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularItemsVisit.GetAllPopularItemsVisitQueryResult},CleanArc.Application.Features.PopularItemsVisit.Queries.GetPopularItemsVisitById.GetPopularItemsVisitByIdQuery,CleanArc.Application.Features.PopularItemsVisit.Queries.GetPopularItemsVisitById.GetPopularItemsVisitByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController"/> class.
             </summary>
             <param name="sender">The mediator sender for handling requests and responses.</param>
             <param name="logger">The logger for logging controller-related information.</param>
