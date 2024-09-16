@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.KBTiming.Commands.CreateKBTimingCommand;
-public record CreateKBTimingCommand(int? KBDetailID, int? Day, string? TimeFrom, string? TimeTo, bool? IsAlwaysOpen, int? CreatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
+public record CreateKBTimingCommand(int? KBDetailID, string? Day, string? TimeFrom, string? TimeTo, bool? IsAlwaysOpen, int? CreatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
     IValidatableModel<CreateKBTimingCommand>
 {
     [JsonIgnore]
@@ -26,14 +26,14 @@ public record CreateKBTimingCommand(int? KBDetailID, int? Day, string? TimeFrom,
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Day ");
-        validator.RuleFor(c => c.TimeFrom)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a TimeFrom ");
-        validator.RuleFor(c => c.TimeTo)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a TimeTo ");
+        //validator.RuleFor(c => c.TimeFrom)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a TimeFrom ");
+        //validator.RuleFor(c => c.TimeTo)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a TimeTo ");
         validator.RuleFor(c => c.IsAlwaysOpen)
             .NotEmpty()
             .NotNull()
