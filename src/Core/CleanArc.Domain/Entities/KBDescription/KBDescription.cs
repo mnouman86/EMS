@@ -19,6 +19,7 @@ public  class KBDescription
     public string? ImagePath { get; set; }
     public string? ImageTitle { get; set; }
     public bool? IsMain { get; set; }
+    public int? MediaID { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }

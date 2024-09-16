@@ -10,7 +10,7 @@ public class GetAllKBTimingQueryResult
 {
     public int ID { get; set; }
     public int? KBDetailID { get; set; }
-    public int? Day { get; set; }
+    public string? Day { get; set; }
     public string? TimeFrom { get; set; }
     public string? TimeTo { get; set; }
     public bool? IsAlwaysOpen { get; set; }
