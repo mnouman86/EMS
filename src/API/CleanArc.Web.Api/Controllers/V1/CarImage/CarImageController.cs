@@ -6,7 +6,7 @@ using CleanArc.Application.Features.CarImage.Query.GetAllCarImage;
 using CleanArc.Application.Features.CarImage.Query.GetCarImageById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.CarImage
 {
@@ -49,13 +49,13 @@ namespace CleanArc.Web.Api.Controllers.V1.CarImage
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles. 
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.CarImage.Command.CreateCarImageCommand.CreateCarImageCommand, CleanArc.Application.Features.CarImage.Command.UpdateCarImageCommand.UpdateCarImageCommand, CleanArc.Application.Features.CarImage.Command.DeleteCarImageCommand.DeleteCarImageCommand, System.Boolean, CleanArc.Application.Features.CarImage.Query.GetAllCarImage.GetAllCarImageQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.CarImage.Query.GetAllCarImage.GetAllCarImageQueryResult&gt;, CleanArc.Application.Features.CarImage.Query.GetCarImageById.GetCarImageByIdQuery, CleanArc.Application.Features.CarImage.Query.GetCarImageById.GetCarImageByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.CarImage.Command.CreateCarImageCommand.CreateCarImageCommand, CleanArc.Application.Features.CarImage.Command.UpdateCarImageCommand.UpdateCarImageCommand, CleanArc.Application.Features.CarImage.Command.DeleteCarImageCommand.DeleteCarImageCommand, System.ResponseEntity, CleanArc.Application.Features.CarImage.Query.GetAllCarImage.GetAllCarImageQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.CarImage.Query.GetAllCarImage.GetAllCarImageQueryResult&gt;, CleanArc.Application.Features.CarImage.Query.GetCarImageById.GetCarImageByIdQuery, CleanArc.Application.Features.CarImage.Query.GetCarImageById.GetCarImageByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/CarImage")]
     //[Authorize]
 
-    public class CarImageController : _BaseController<CreateCarImageCommand, UpdateCarImageCommand, DeleteCarImageCommand, bool, GetAllCarImageQuery,
+    public class CarImageController : _BaseController<CreateCarImageCommand, UpdateCarImageCommand, DeleteCarImageCommand, ResponseEntity, GetAllCarImageQuery,
     List<GetAllCarImageQueryResult>, GetCarImageByIdQuery, GetCarImageByIdQueryResult>
     {
 
@@ -65,7 +65,7 @@ namespace CleanArc.Web.Api.Controllers.V1.CarImage
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public CarImageController(ISender sender, ILogger<_BaseController<CreateCarImageCommand, UpdateCarImageCommand, DeleteCarImageCommand, bool, GetAllCarImageQuery,
+        public CarImageController(ISender sender, ILogger<_BaseController<CreateCarImageCommand, UpdateCarImageCommand, DeleteCarImageCommand, ResponseEntity, GetAllCarImageQuery,
    List<GetAllCarImageQueryResult>, GetCarImageByIdQuery, GetCarImageByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) :
             base(sender, logger, httpContextAccessor)
         {

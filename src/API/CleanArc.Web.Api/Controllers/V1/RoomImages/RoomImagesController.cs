@@ -6,7 +6,7 @@ using CleanArc.Application.Features.RoomImage.Queries.GetAllRoomImagesQuery;
 using CleanArc.Application.Features.RoomImage.Queries.GetRoomImagesByIdQuery;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.RoomImages;
 /// <summary>
@@ -48,11 +48,11 @@ namespace CleanArc.Web.Api.Controllers.V1.RoomImages;
 /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles.
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.RoomImage.Command.CreateRoomImageCommand.CreateRoomImageCommand, CleanArc.Application.Features.RoomImage.Command.UpdateRoomImageCommand.UpdateRoomImageCommand, CleanArc.Application.Features.RoomImage.Command.DeleteRoomImageCommand.DeleteRoomImageCommand, System.Boolean, CleanArc.Application.Features.RoomImage.Queries.GetAllRoomImagesQuery.GetAllRoomImagesQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.RoomImage.Queries.GetAllRoomImagesQuery.GetAllRoomImagesQueryResult&gt;, CleanArc.Application.Features.RoomImage.Queries.GetRoomImagesByIdQuery.GetRoomImagesByIdQuery, CleanArc.Application.Features.RoomImage.Queries.GetRoomImagesByIdQuery.GetRoomImagesByIdQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.RoomImage.Command.CreateRoomImageCommand.CreateRoomImageCommand, CleanArc.Application.Features.RoomImage.Command.UpdateRoomImageCommand.UpdateRoomImageCommand, CleanArc.Application.Features.RoomImage.Command.DeleteRoomImageCommand.DeleteRoomImageCommand, System.ResponseEntity, CleanArc.Application.Features.RoomImage.Queries.GetAllRoomImagesQuery.GetAllRoomImagesQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.RoomImage.Queries.GetAllRoomImagesQuery.GetAllRoomImagesQueryResult&gt;, CleanArc.Application.Features.RoomImage.Queries.GetRoomImagesByIdQuery.GetRoomImagesByIdQuery, CleanArc.Application.Features.RoomImage.Queries.GetRoomImagesByIdQuery.GetRoomImagesByIdQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/RoomImages")]
-public class RoomImagesController : _BaseController<CreateRoomImageCommand, UpdateRoomImageCommand, DeleteRoomImageCommand, bool, GetAllRoomImagesQuery,
+public class RoomImagesController : _BaseController<CreateRoomImageCommand, UpdateRoomImageCommand, DeleteRoomImageCommand, ResponseEntity, GetAllRoomImagesQuery,
     List<GetAllRoomImagesQueryResult>, GetRoomImagesByIdQuery, GetRoomImagesByIdQueryResult>
 {
 
@@ -62,7 +62,7 @@ public class RoomImagesController : _BaseController<CreateRoomImageCommand, Upda
     /// <param name="sender">The mediator sender for handling requests and responses.</param>
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
-    public RoomImagesController(ISender sender, ILogger<_BaseController<CreateRoomImageCommand, UpdateRoomImageCommand, DeleteRoomImageCommand, bool, GetAllRoomImagesQuery,
+    public RoomImagesController(ISender sender, ILogger<_BaseController<CreateRoomImageCommand, UpdateRoomImageCommand, DeleteRoomImageCommand, ResponseEntity, GetAllRoomImagesQuery,
 List<GetAllRoomImagesQueryResult>, GetRoomImagesByIdQuery, GetRoomImagesByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 

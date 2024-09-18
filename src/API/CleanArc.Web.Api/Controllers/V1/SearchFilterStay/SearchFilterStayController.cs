@@ -6,7 +6,7 @@ using CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterS
 using CleanArc.Application.Features.SearchFilterStay.Queries.GetSearchFilterStayById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail;
 
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.SearchFilterStayDetail;
 /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles.
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.SearchFilterStay.Commands.CreateSearchFilterStayCommand.CreateSearchFilterStayCommand, CleanArc.Application.Features.SearchFilterStay.Commands.UpdateSearchFilterStayCommand.UpdateSearchFilterStayCommand, CleanArc.Application.Features.SearchFilterStay.Commands.DeleteSearchFilterStayCommand.DeleteSearchFilterStayCommand, System.Boolean, CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay.GetAllSearchFilterStayQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay.GetAllSearchFilterStayQueryResult&gt;, CleanArc.Application.Features.SearchFilterStay.Queries.GetSearchFilterStayById.GetSearchFilterStayByIdQuery, CleanArc.Application.Features.SearchFilterStay.Queries.GetSearchFilterStayById.GetSearchFilterStayByIdQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.SearchFilterStay.Commands.CreateSearchFilterStayCommand.CreateSearchFilterStayCommand, CleanArc.Application.Features.SearchFilterStay.Commands.UpdateSearchFilterStayCommand.UpdateSearchFilterStayCommand, CleanArc.Application.Features.SearchFilterStay.Commands.DeleteSearchFilterStayCommand.DeleteSearchFilterStayCommand, System.ResponseEntity, CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay.GetAllSearchFilterStayQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay.GetAllSearchFilterStayQueryResult&gt;, CleanArc.Application.Features.SearchFilterStay.Queries.GetSearchFilterStayById.GetSearchFilterStayByIdQuery, CleanArc.Application.Features.SearchFilterStay.Queries.GetSearchFilterStayById.GetSearchFilterStayByIdQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/SearchFilterStayDetail")]
 //[Authorize]
-public class SearchFilterStayController : _BaseController<CreateSearchFilterStayCommand, UpdateSearchFilterStayCommand, DeleteSearchFilterStayCommand, bool, GetAllSearchFilterStayQuery,
+public class SearchFilterStayController : _BaseController<CreateSearchFilterStayCommand, UpdateSearchFilterStayCommand, DeleteSearchFilterStayCommand, ResponseEntity, GetAllSearchFilterStayQuery,
 List<GetAllSearchFilterStayQueryResult>, GetSearchFilterStayByIdQuery, GetSearchFilterStayByIdQueryResult>
 {
 
@@ -64,7 +64,7 @@ List<GetAllSearchFilterStayQueryResult>, GetSearchFilterStayByIdQuery, GetSearch
     /// <param name="sender">The mediator sender for handling requests and responses.</param>
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
-    public SearchFilterStayController(ISender sender, ILogger<_BaseController<CreateSearchFilterStayCommand, UpdateSearchFilterStayCommand, DeleteSearchFilterStayCommand, bool, GetAllSearchFilterStayQuery,
+    public SearchFilterStayController(ISender sender, ILogger<_BaseController<CreateSearchFilterStayCommand, UpdateSearchFilterStayCommand, DeleteSearchFilterStayCommand, ResponseEntity, GetAllSearchFilterStayQuery,
 List<GetAllSearchFilterStayQueryResult>, GetSearchFilterStayByIdQuery, GetSearchFilterStayByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 

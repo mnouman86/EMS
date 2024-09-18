@@ -6,7 +6,7 @@ using CleanArc.Application.Features.ActivitySeasonMapping.Queries.GetActivitySea
 using CleanArc.Application.Features.ActivitySeasonMapping.Queries.GetAllActivitySeasonMapping;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.ActivitySeasonMapping
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivitySeasonMapping
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivitySeasonMapping.Commands.CreateActivitySeasonMappingCommand.CreateActivitySeasonMappingCommand, CleanArc.Application.Features.ActivitySeasonMapping.Commands.UpdateActivitySeasonMappingCommand.UpdateActivitySeasonMappingCommand, CleanArc.Application.Features.ActivitySeasonMapping.Commands.DeleteActivitySeasonMappingCommand.DeleteActivitySeasonMappingCommand, System.Boolean, CleanArc.Application.Features.ActivitySeasonMapping.Queries.GetAllActivitySeasonMapping.GetAllActivitySeasonMappingQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivitySeasonMapping.Queries.GetAllActivitySeasonMapping.GetAllActivitySeasonMappingQueryResult&gt;, CleanArc.Application.Features.ActivitySeasonMapping.Queries.GetActivitySeasonMappingById.GetActivitySeasonMappingByIdQuery, CleanArc.Application.Features.ActivitySeasonMapping.Queries.GetActivitySeasonMappingById.GetActivitySeasonMappingByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivitySeasonMapping.Commands.CreateActivitySeasonMappingCommand.CreateActivitySeasonMappingCommand, CleanArc.Application.Features.ActivitySeasonMapping.Commands.UpdateActivitySeasonMappingCommand.UpdateActivitySeasonMappingCommand, CleanArc.Application.Features.ActivitySeasonMapping.Commands.DeleteActivitySeasonMappingCommand.DeleteActivitySeasonMappingCommand, System.ResponseEntity, CleanArc.Application.Features.ActivitySeasonMapping.Queries.GetAllActivitySeasonMapping.GetAllActivitySeasonMappingQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivitySeasonMapping.Queries.GetAllActivitySeasonMapping.GetAllActivitySeasonMappingQueryResult&gt;, CleanArc.Application.Features.ActivitySeasonMapping.Queries.GetActivitySeasonMappingById.GetActivitySeasonMappingByIdQuery, CleanArc.Application.Features.ActivitySeasonMapping.Queries.GetActivitySeasonMappingById.GetActivitySeasonMappingByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/ActivitySeasonMapping")]
     //[Authorize]
-    public class ActivitySeasonMappingController : _BaseController<CreateActivitySeasonMappingCommand, UpdateActivitySeasonMappingCommand, DeleteActivitySeasonMappingCommand, bool, GetAllActivitySeasonMappingQuery,
+    public class ActivitySeasonMappingController : _BaseController<CreateActivitySeasonMappingCommand, UpdateActivitySeasonMappingCommand, DeleteActivitySeasonMappingCommand, ResponseEntity, GetAllActivitySeasonMappingQuery,
     List<GetAllActivitySeasonMappingQueryResult>, GetActivitySeasonMappingByIdQuery, GetActivitySeasonMappingByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivitySeasonMapping
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public ActivitySeasonMappingController(ISender sender, ILogger<_BaseController<CreateActivitySeasonMappingCommand, UpdateActivitySeasonMappingCommand, DeleteActivitySeasonMappingCommand, bool, GetAllActivitySeasonMappingQuery,
+        public ActivitySeasonMappingController(ISender sender, ILogger<_BaseController<CreateActivitySeasonMappingCommand, UpdateActivitySeasonMappingCommand, DeleteActivitySeasonMappingCommand, ResponseEntity, GetAllActivitySeasonMappingQuery,
    List<GetAllActivitySeasonMappingQueryResult>, GetActivitySeasonMappingByIdQuery, GetActivitySeasonMappingByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

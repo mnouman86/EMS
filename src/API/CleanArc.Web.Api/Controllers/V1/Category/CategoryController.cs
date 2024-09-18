@@ -6,7 +6,7 @@ using CleanArc.Application.Features.Category.Queries.GetAllCategories;
 using CleanArc.Application.Features.Category.Queries.GetCategoryById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.Category
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.Category
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles. 
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Category.Command.CreateCategoryCommand.CreateCategoryCommand, CleanArc.Application.Features.Category.Command.UpdateCategoryCommand.UpdateCategoryCommand, CleanArc.Application.Features.Category.Command.DeleteCategoryCommand.DeleteCategoryCommand, System.Boolean, CleanArc.Application.Features.Category.Queries.GetAllCategories.GetAllCategoriesQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Category.Queries.GetAllCategories.GetAllCategoriesQueryResult&gt;, CleanArc.Application.Features.Category.Queries.GetCategoryById.GetCategoryByIdQuery, CleanArc.Application.Features.Category.Queries.GetCategoryById.GetCategoryByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Category.Command.CreateCategoryCommand.CreateCategoryCommand, CleanArc.Application.Features.Category.Command.UpdateCategoryCommand.UpdateCategoryCommand, CleanArc.Application.Features.Category.Command.DeleteCategoryCommand.DeleteCategoryCommand, System.ResponseEntity, CleanArc.Application.Features.Category.Queries.GetAllCategories.GetAllCategoriesQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Category.Queries.GetAllCategories.GetAllCategoriesQueryResult&gt;, CleanArc.Application.Features.Category.Queries.GetCategoryById.GetCategoryByIdQuery, CleanArc.Application.Features.Category.Queries.GetCategoryById.GetCategoryByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/Category")]
     //[Authorize]
-    public class CategoryController : _BaseController<CreateCategoryCommand, UpdateCategoryCommand, DeleteCategoryCommand, bool, GetAllCategoriesQuery,
+    public class CategoryController : _BaseController<CreateCategoryCommand, UpdateCategoryCommand, DeleteCategoryCommand, ResponseEntity, GetAllCategoriesQuery,
     List<GetAllCategoriesQueryResult>, GetCategoryByIdQuery, GetCategoryByIdQueryResult>
     {
 
@@ -64,7 +64,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Category
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public CategoryController(ISender sender, ILogger<_BaseController<CreateCategoryCommand, UpdateCategoryCommand, DeleteCategoryCommand, bool, GetAllCategoriesQuery,
+        public CategoryController(ISender sender, ILogger<_BaseController<CreateCategoryCommand, UpdateCategoryCommand, DeleteCategoryCommand, ResponseEntity, GetAllCategoriesQuery,
    List<GetAllCategoriesQueryResult>, GetCategoryByIdQuery, GetCategoryByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

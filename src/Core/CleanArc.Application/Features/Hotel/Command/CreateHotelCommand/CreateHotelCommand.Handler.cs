@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Hotel.Command.CreateHotelCommand;
 
-internal class CreateHotelCommandHandler:IRequestHandler<CreateHotelCommand, OperationResult<bool>>
+internal class CreateHotelCommandHandler:IRequestHandler<CreateHotelCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
 private readonly IAppUserManager _userManager;
@@ -41,15 +41,15 @@ public CreateHotelCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userMan
     //_userManager = userManager;
 }
 
-public async ValueTask<OperationResult<bool>> Handle(CreateHotelCommand request, CancellationToken cancellationToken)
+public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateHotelCommand request, CancellationToken cancellationToken)
 {
     using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
     {
 
         var user = await _userManager.GetUserByIdAsync(request.UserId);
         if (user == null)
-            return OperationResult<bool>.FailureResult("User Not Found");
-        await _unitOfWork.HotelRepository.AddAsync(new Domain.Entities.Hotel.Hotel()
+            return OperationResult<ResponseEntity>.FailureResult("User Not Found");
+            var result = await _unitOfWork.HotelRepository.AddAsync(new Domain.Entities.Hotel.Hotel()
         { CreatedBy = user.Id,  
             Name = request.Name,
             CountryID = request.CountryID,
@@ -76,7 +76,7 @@ public async ValueTask<OperationResult<bool>> Handle(CreateHotelCommand request,
         });
         await _unitOfWork.CommitAsync();
         (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-        return OperationResult<bool>.SuccessResult(true);
+        return OperationResult<ResponseEntity>.SuccessResult(result);
     }
 }
 }

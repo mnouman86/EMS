@@ -16,7 +16,7 @@ using CleanArc.SharedKernel.Extensions;
 
 namespace CleanArc.Application.Features.SearchFilterThingsToDo.Commands.UpdateSearchFilterThingsToDoCommand;
 
-internal class UpdateSearchFilterThingsToDoCommandHandler:IRequestHandler<UpdateSearchFilterThingsToDoCommand, OperationResult<bool>>
+internal class UpdateSearchFilterThingsToDoCommandHandler:IRequestHandler<UpdateSearchFilterThingsToDoCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -39,14 +39,14 @@ internal class UpdateSearchFilterThingsToDoCommandHandler:IRequestHandler<Update
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<bool>> Handle(UpdateSearchFilterThingsToDoCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateSearchFilterThingsToDoCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -54,8 +54,8 @@ internal class UpdateSearchFilterThingsToDoCommandHandler:IRequestHandler<Update
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.ActivityRepository.UpdateAsync(new Domain.Entities.Activity.Activity()
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            var result = await _unitOfWork.ActivityRepository.UpdateAsync(new Domain.Entities.Activity.Activity()
             { UpdatedBy = user.Id,ID= request.ID,
                 CultureId=request.CultureId,
                 Title = request.Title,
@@ -98,7 +98,7 @@ internal class UpdateSearchFilterThingsToDoCommandHandler:IRequestHandler<Update
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 

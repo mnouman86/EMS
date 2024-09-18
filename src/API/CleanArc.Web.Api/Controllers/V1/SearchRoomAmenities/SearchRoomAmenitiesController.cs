@@ -6,7 +6,7 @@ using CleanArc.Application.Features.SearchRoomAmenities.Queries.GetAllSearchRoom
 using CleanArc.Application.Features.SearchRoomAmenities.Queries.GetSearchRoomAmenitiesById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.SearchRoomAmenities;
 /// <summary>
@@ -48,12 +48,12 @@ namespace CleanArc.Web.Api.Controllers.V1.SearchRoomAmenities;
 /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles.
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.SearchRoomAmenities.Commands.CreateSearchRoomAmenities.CreateSearchRoomAmenitiesCommand, CleanArc.Application.Features.SearchRoomAmenities.Commands.UpdateSearchRoomAmenities.UpdateSearchRoomAmenitiesCommand, CleanArc.Application.Features.SearchRoomAmenities.Commands.DeleteSearchRoomAmenities.DeleteSearchRoomAmenitiesCommand, System.Boolean, CleanArc.Application.Features.SearchRoomAmenities.Queries.GetAllSearchRoomAmenities.GetAllSearchRoomAmenitiesQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.SearchRoomAmenities.Queries.GetAllSearchRoomAmenities.GetAllSearchRoomAmenitiesQueryResult&gt;, CleanArc.Application.Features.SearchRoomAmenities.Queries.GetSearchRoomAmenitiesById.GetSearchRoomAmenitiesByIdQuery, CleanArc.Application.Features.SearchRoomAmenities.Queries.GetSearchRoomAmenitiesById.GetSearchRoomAmenitiesByIdQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.SearchRoomAmenities.Commands.CreateSearchRoomAmenities.CreateSearchRoomAmenitiesCommand, CleanArc.Application.Features.SearchRoomAmenities.Commands.UpdateSearchRoomAmenities.UpdateSearchRoomAmenitiesCommand, CleanArc.Application.Features.SearchRoomAmenities.Commands.DeleteSearchRoomAmenities.DeleteSearchRoomAmenitiesCommand, System.ResponseEntity, CleanArc.Application.Features.SearchRoomAmenities.Queries.GetAllSearchRoomAmenities.GetAllSearchRoomAmenitiesQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.SearchRoomAmenities.Queries.GetAllSearchRoomAmenities.GetAllSearchRoomAmenitiesQueryResult&gt;, CleanArc.Application.Features.SearchRoomAmenities.Queries.GetSearchRoomAmenitiesById.GetSearchRoomAmenitiesByIdQuery, CleanArc.Application.Features.SearchRoomAmenities.Queries.GetSearchRoomAmenitiesById.GetSearchRoomAmenitiesByIdQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/SearchRoomAmenities")]
 //[Authorize]
-public class SearchRoomAmenitiesController : _BaseController<CreateSearchRoomAmenitiesCommand, UpdateSearchRoomAmenitiesCommand, DeleteSearchRoomAmenitiesCommand, bool, GetAllSearchRoomAmenitiesQuery,
+public class SearchRoomAmenitiesController : _BaseController<CreateSearchRoomAmenitiesCommand, UpdateSearchRoomAmenitiesCommand, DeleteSearchRoomAmenitiesCommand, ResponseEntity, GetAllSearchRoomAmenitiesQuery,
 List<GetAllSearchRoomAmenitiesQueryResult>, GetSearchRoomAmenitiesByIdQuery, GetSearchRoomAmenitiesByIdQueryResult>
 {
 
@@ -63,7 +63,7 @@ List<GetAllSearchRoomAmenitiesQueryResult>, GetSearchRoomAmenitiesByIdQuery, Get
     /// <param name="sender">The mediator sender for handling requests and responses.</param>
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
-    public SearchRoomAmenitiesController(ISender sender, ILogger<_BaseController<CreateSearchRoomAmenitiesCommand, UpdateSearchRoomAmenitiesCommand, DeleteSearchRoomAmenitiesCommand, bool, GetAllSearchRoomAmenitiesQuery,
+    public SearchRoomAmenitiesController(ISender sender, ILogger<_BaseController<CreateSearchRoomAmenitiesCommand, UpdateSearchRoomAmenitiesCommand, DeleteSearchRoomAmenitiesCommand, ResponseEntity, GetAllSearchRoomAmenitiesQuery,
 List<GetAllSearchRoomAmenitiesQueryResult>, GetSearchRoomAmenitiesByIdQuery, GetSearchRoomAmenitiesByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 

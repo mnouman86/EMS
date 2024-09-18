@@ -93,7 +93,7 @@ public async Task<ResponseEntity> AddAsync(Activity Activity)
     }
 }
 
-    public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy,CultureId }))
         {
@@ -107,11 +107,11 @@ public async Task<ResponseEntity> AddAsync(Activity Activity)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityQueries.Delete_Activity, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityQueries.Delete_Activity, parameters, commandType: CommandType.StoredProcedure);
                // var result = await connection.QuerySingleOrDefaultAsync<int>(ActivityQueries.Delete_Activity, parameters, commandType: CommandType.StoredProcedure);
 
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }
@@ -196,34 +196,25 @@ public async Task<ResponseEntity> AddAsync(Activity Activity)
 
 
 
-    public async Task<string> UpdateAsync(Activity entity)
+    public async Task<ResponseEntity> UpdateAsync(Activity entity)
     {
-        try
-        {
-
-       
-        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
-        {
-            using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+        
+            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
             {
-                connection.Open();
-                UpdateActivityDTO updateActivityDTO = _mapper.Map<UpdateActivityDTO>(entity);
-                var parameters = new DynamicParameters(updateActivityDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-               // parameters.Add("@ActivityID ", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+                {
+                    connection.Open();
+                    UpdateActivityDTO updateActivityDTO = _mapper.Map<UpdateActivityDTO>(entity);
+                    var parameters = new DynamicParameters(updateActivityDTO);
+                    parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                    // parameters.Add("@ActivityID ", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityQueries.update_Activity, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityQueries.update_Activity, parameters, commandType: CommandType.StoredProcedure);
+                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                    return result;
+                }
             }
-        }
-        }
-        catch (Exception ex)
-        {
-
-            throw;
-        }
     }
 }
 

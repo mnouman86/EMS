@@ -86,7 +86,7 @@ public async Task<ResponseEntity> AddAsync(PopularItemsVisit PopularItemsVisit)
     }
 }
 
-    public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
         {
@@ -100,9 +100,9 @@ public async Task<ResponseEntity> AddAsync(PopularItemsVisit PopularItemsVisit)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(PopularItemsVisitQueries.Delete_PopularItemsVisit, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(PopularItemsVisitQueries.Delete_PopularItemsVisit, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }
@@ -165,7 +165,7 @@ public async Task<ResponseEntity> AddAsync(PopularItemsVisit PopularItemsVisit)
 
 
 
-    public async Task<string> UpdateAsync(PopularItemsVisit entity)
+    public async Task<ResponseEntity> UpdateAsync(PopularItemsVisit entity)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
         {
@@ -176,9 +176,9 @@ public async Task<ResponseEntity> AddAsync(PopularItemsVisit PopularItemsVisit)
                 var parameters = new DynamicParameters(updatePopularItemsVisitDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.ExecuteAsync(PopularItemsVisitQueries.update_PopularItemsVisit, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(PopularItemsVisitQueries.update_PopularItemsVisit, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

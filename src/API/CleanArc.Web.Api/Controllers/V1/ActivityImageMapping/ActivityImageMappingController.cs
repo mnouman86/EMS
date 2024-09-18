@@ -6,7 +6,7 @@ using CleanArc.Application.Features.ActivityImageMapping.Queries.GetActivityImag
 using CleanArc.Application.Features.ActivityImageMapping.Queries.GetAllActivityImageMapping;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.ActivityImageMapping
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityImageMapping
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityImageMapping.Commands.CreateActivityImageMappingCommand.CreateActivityImageMappingCommand, CleanArc.Application.Features.ActivityImageMapping.Commands.UpdateActivityImageMappingCommand.UpdateActivityImageMappingCommand, CleanArc.Application.Features.ActivityImageMapping.Commands.DeleteActivityImageMappingCommand.DeleteActivityImageMappingCommand, System.Boolean, CleanArc.Application.Features.ActivityImageMapping.Queries.GetAllActivityImageMapping.GetAllActivityImageMappingQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityImageMapping.Queries.GetAllActivityImageMapping.GetAllActivityImageMappingQueryResult&gt;, CleanArc.Application.Features.ActivityImageMapping.Queries.GetActivityImageMappingById.GetActivityImageMappingByIdQuery, CleanArc.Application.Features.ActivityImageMapping.Queries.GetActivityImageMappingById.GetActivityImageMappingByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityImageMapping.Commands.CreateActivityImageMappingCommand.CreateActivityImageMappingCommand, CleanArc.Application.Features.ActivityImageMapping.Commands.UpdateActivityImageMappingCommand.UpdateActivityImageMappingCommand, CleanArc.Application.Features.ActivityImageMapping.Commands.DeleteActivityImageMappingCommand.DeleteActivityImageMappingCommand, System.ResponseEntity, CleanArc.Application.Features.ActivityImageMapping.Queries.GetAllActivityImageMapping.GetAllActivityImageMappingQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityImageMapping.Queries.GetAllActivityImageMapping.GetAllActivityImageMappingQueryResult&gt;, CleanArc.Application.Features.ActivityImageMapping.Queries.GetActivityImageMappingById.GetActivityImageMappingByIdQuery, CleanArc.Application.Features.ActivityImageMapping.Queries.GetActivityImageMappingById.GetActivityImageMappingByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/ActivityImageMapping")]
     //[Authorize]
-    public class ActivityImageMappingController : _BaseController<CreateActivityImageMappingCommand, UpdateActivityImageMappingCommand, DeleteActivityImageMappingCommand, bool, GetAllActivityImageMappingQuery,
+    public class ActivityImageMappingController : _BaseController<CreateActivityImageMappingCommand, UpdateActivityImageMappingCommand, DeleteActivityImageMappingCommand, ResponseEntity, GetAllActivityImageMappingQuery,
     List<GetAllActivityImageMappingQueryResult>, GetActivityImageMappingByIdQuery, GetActivityImageMappingByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityImageMapping
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public ActivityImageMappingController(ISender sender, ILogger<_BaseController<CreateActivityImageMappingCommand, UpdateActivityImageMappingCommand, DeleteActivityImageMappingCommand, bool, GetAllActivityImageMappingQuery,
+        public ActivityImageMappingController(ISender sender, ILogger<_BaseController<CreateActivityImageMappingCommand, UpdateActivityImageMappingCommand, DeleteActivityImageMappingCommand, ResponseEntity, GetAllActivityImageMappingQuery,
    List<GetAllActivityImageMappingQueryResult>, GetActivityImageMappingByIdQuery, GetActivityImageMappingByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

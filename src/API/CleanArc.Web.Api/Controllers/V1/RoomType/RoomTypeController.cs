@@ -6,7 +6,7 @@ using CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes;
 using CleanArc.Application.Features.RoomType.Queries.GetRoomTypeById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.RoomType
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.RoomType
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles. 
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.RoomType.Command.CreateRoomTypeCommand.CreateRoomTypeCommand, CleanArc.Application.Features.RoomType.Command.UpdateRoomTypeCommand.UpdateRoomTypeCommand, CleanArc.Application.Features.RoomType.Command.DeleteRoomTypeCommand.DeleteRoomTypeCommand, System.Boolean, CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQueryResult&gt;, CleanArc.Application.Features.RoomType.Queries.GetRoomTypeById.GetRoomTypeByIdQuery, CleanArc.Application.Features.RoomType.Queries.GetRoomTypeById.GetRoomTypeByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.RoomType.Command.CreateRoomTypeCommand.CreateRoomTypeCommand, CleanArc.Application.Features.RoomType.Command.UpdateRoomTypeCommand.UpdateRoomTypeCommand, CleanArc.Application.Features.RoomType.Command.DeleteRoomTypeCommand.DeleteRoomTypeCommand, System.ResponseEntity, CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQueryResult&gt;, CleanArc.Application.Features.RoomType.Queries.GetRoomTypeById.GetRoomTypeByIdQuery, CleanArc.Application.Features.RoomType.Queries.GetRoomTypeById.GetRoomTypeByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/RoomType")]
     //[Authorize]
-    public class RoomTypeController : _BaseController<CreateRoomTypeCommand, UpdateRoomTypeCommand, DeleteRoomTypeCommand, bool, GetAllRoomTypesQuery,
+    public class RoomTypeController : _BaseController<CreateRoomTypeCommand, UpdateRoomTypeCommand, DeleteRoomTypeCommand, ResponseEntity, GetAllRoomTypesQuery,
     List<GetAllRoomTypesQueryResult>, GetRoomTypeByIdQuery, GetRoomTypeByIdQueryResult>
     {
 
@@ -64,7 +64,7 @@ namespace CleanArc.Web.Api.Controllers.V1.RoomType
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public RoomTypeController(ISender sender, ILogger<_BaseController<CreateRoomTypeCommand, UpdateRoomTypeCommand, DeleteRoomTypeCommand, bool, GetAllRoomTypesQuery,
+        public RoomTypeController(ISender sender, ILogger<_BaseController<CreateRoomTypeCommand, UpdateRoomTypeCommand, DeleteRoomTypeCommand, ResponseEntity, GetAllRoomTypesQuery,
    List<GetAllRoomTypesQueryResult>, GetRoomTypeByIdQuery, GetRoomTypeByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

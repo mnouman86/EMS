@@ -6,7 +6,7 @@ using CleanArc.Application.Features.SearchCountryCities.Queries.GetAllSearchCoun
 using CleanArc.Application.Features.SearchCountryCities.Queries.GetSearchCountryCitiesById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.SearchCountryCities;
 
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.SearchCountryCities;
 /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles.
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.SearchCountryCities.Command.CreateSearchCountryCities.CreateSearchCountryCitiesCommand, CleanArc.Application.Features.SearchCountryCities.Command.UpdateSearchCountryCities.UpdateSearchCountryCitiesCommand, CleanArc.Application.Features.SearchCountryCities.Command.DeleteSearchCountryCities.DeleteSearchCountryCitiesCommand, System.Boolean, CleanArc.Application.Features.SearchCountryCities.Queries.GetAllSearchCountryCities.GetAllSearchCountryCitiesQueries, System.Collections.Generic.List&lt;CleanArc.Application.Features.SearchCountryCities.Queries.GetAllSearchCountryCities.GetAllSearchCountryCitiesQueriesResult&gt;, CleanArc.Application.Features.SearchCountryCities.Queries.GetSearchCountryCitiesById.GetSearchCountryCitiesByIdQuery, CleanArc.Application.Features.SearchCountryCities.Queries.GetSearchCountryCitiesById.GetSearchCountryCitiesByIdQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.SearchCountryCities.Command.CreateSearchCountryCities.CreateSearchCountryCitiesCommand, CleanArc.Application.Features.SearchCountryCities.Command.UpdateSearchCountryCities.UpdateSearchCountryCitiesCommand, CleanArc.Application.Features.SearchCountryCities.Command.DeleteSearchCountryCities.DeleteSearchCountryCitiesCommand, System.ResponseEntity, CleanArc.Application.Features.SearchCountryCities.Queries.GetAllSearchCountryCities.GetAllSearchCountryCitiesQueries, System.Collections.Generic.List&lt;CleanArc.Application.Features.SearchCountryCities.Queries.GetAllSearchCountryCities.GetAllSearchCountryCitiesQueriesResult&gt;, CleanArc.Application.Features.SearchCountryCities.Queries.GetSearchCountryCitiesById.GetSearchCountryCitiesByIdQuery, CleanArc.Application.Features.SearchCountryCities.Queries.GetSearchCountryCitiesById.GetSearchCountryCitiesByIdQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/SearchCountryCities")]
 //[Authorize]
-public class SearchCountryCitiesController : _BaseController<CreateSearchCountryCitiesCommand, UpdateSearchCountryCitiesCommand, DeleteSearchCountryCitiesCommand, bool, GetAllSearchCountryCitiesQueries,
+public class SearchCountryCitiesController : _BaseController<CreateSearchCountryCitiesCommand, UpdateSearchCountryCitiesCommand, DeleteSearchCountryCitiesCommand, ResponseEntity, GetAllSearchCountryCitiesQueries,
 List<GetAllSearchCountryCitiesQueriesResult>, GetSearchCountryCitiesByIdQuery, GetSearchCountryCitiesByIdQueryResult>
 {
 
@@ -64,7 +64,7 @@ List<GetAllSearchCountryCitiesQueriesResult>, GetSearchCountryCitiesByIdQuery, G
     /// <param name="sender">The mediator sender for handling requests and responses.</param>
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
-    public SearchCountryCitiesController(ISender sender, ILogger<_BaseController<CreateSearchCountryCitiesCommand, UpdateSearchCountryCitiesCommand, DeleteSearchCountryCitiesCommand, bool, GetAllSearchCountryCitiesQueries,
+    public SearchCountryCitiesController(ISender sender, ILogger<_BaseController<CreateSearchCountryCitiesCommand, UpdateSearchCountryCitiesCommand, DeleteSearchCountryCitiesCommand, ResponseEntity, GetAllSearchCountryCitiesQueries,
 List<GetAllSearchCountryCitiesQueriesResult>, GetSearchCountryCitiesByIdQuery, GetSearchCountryCitiesByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 

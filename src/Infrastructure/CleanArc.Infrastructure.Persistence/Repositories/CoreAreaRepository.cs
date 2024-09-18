@@ -86,7 +86,7 @@ public async Task<ResponseEntity> AddAsync(CoreArea CoreArea)
     }
 }
 
-    public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
         {
@@ -100,9 +100,9 @@ public async Task<ResponseEntity> AddAsync(CoreArea CoreArea)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(CoreAreaQueries.Delete_CoreArea, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(CoreAreaQueries.Delete_CoreArea, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }
@@ -165,7 +165,7 @@ public async Task<ResponseEntity> AddAsync(CoreArea CoreArea)
 
 
 
-    public async Task<string> UpdateAsync(CoreArea entity)
+    public async Task<ResponseEntity> UpdateAsync(CoreArea entity)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
         {
@@ -176,9 +176,9 @@ public async Task<ResponseEntity> AddAsync(CoreArea CoreArea)
                 var parameters = new DynamicParameters(updateCoreAreaDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.ExecuteAsync(CoreAreaQueries.Update_CoreArea, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(CoreAreaQueries.Update_CoreArea, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

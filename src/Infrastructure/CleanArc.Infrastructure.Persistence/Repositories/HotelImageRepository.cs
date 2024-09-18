@@ -68,7 +68,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             }
         }
 
-        //public Task<string> DeleteAsync(string selectedIds, int updatedBy)
+        //public Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy)
         //{
         //    throw new NotImplementedException();
         //}
@@ -116,7 +116,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             }
         }
 
-        public async Task<string> UpdateAsync(Hotel_Image HotelImage)
+        public async Task<ResponseEntity> UpdateAsync(Hotel_Image HotelImage)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, HotelImage))
             {
@@ -125,13 +125,13 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     connection.Open();
                     UpdateHotelImageDTO updateHotelImageDTO = _mapper.Map<UpdateHotelImageDTO>(HotelImage);
 
-                    var result = await connection.ExecuteAsync(HotelImageQueries.Update_HotelImage, updateHotelImageDTO, commandType: CommandType.StoredProcedure);
+                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(HotelImageQueries.Update_HotelImage, updateHotelImageDTO, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    return result.ToString();
+                    return result;
                 }
             }
         }
-        public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+        public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
             {
@@ -143,9 +143,9 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     parameters.Add("@UpdatedBy", updatedBy);
                     parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                    var result = await connection.ExecuteAsync(HotelImageQueries.Delete_HotelImage, parameters, commandType: CommandType.StoredProcedure);
+                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(HotelImageQueries.Delete_HotelImage, parameters, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    return result.ToString();
+                    return result;
                 }
             }
         }

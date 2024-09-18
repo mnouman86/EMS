@@ -73,7 +73,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             }
         }
 
-        public Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+        public Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
         {
             throw new NotImplementedException();
         }
@@ -88,7 +88,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<string> UpdateAsync(MappingRoomAmenities entity)
+        public Task<ResponseEntity> UpdateAsync(MappingRoomAmenities entity)
         {
             throw new NotImplementedException();
         }

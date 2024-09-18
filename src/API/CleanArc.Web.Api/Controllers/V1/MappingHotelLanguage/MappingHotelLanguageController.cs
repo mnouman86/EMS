@@ -6,7 +6,7 @@ using CleanArc.Application.Features.MappingHotelLanguage.Queries.GetAllMappingHo
 using CleanArc.Application.Features.MappingHotelLanguage.Queries.GetMappingHotelLanguageById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.MappingHotelLanguage;
 /// <summary>
@@ -35,11 +35,11 @@ namespace CleanArc.Web.Api.Controllers.V1.MappingHotelLanguage;
 /// The controller adheres to Clean Architecture principles, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles.
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.MappingHotelLanguage.Command.CreateMappingHotelLanguageCommand.CreateMappingHotelLanguageCommand, CleanArc.Application.Features.MappingHotelLanguage.Command.UpdateMappingHotelLanguageCommand.UpdateMappingHotelLanguageCommand, CleanArc.Application.Features.MappingHotelLanguage.Command.DeleteMappingHotelLanguageCommand.DeleteMappingHotelLanguageCommand, System.Boolean, CleanArc.Application.Features.MappingHotelLanguage.Queries.GetAllMappingHotelLanguage.GetAllMappingHotelLanguageQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.MappingHotelLanguage.Queries.GetAllMappingHotelLanguage.GetAllMappingHotelLanguageQueryResult&gt;, CleanArc.Application.Features.MappingHotelLanguage.Queries.GetMappingHotelLanguageById.GetMappingHotelLanguageByIdQuery, CleanArc.Application.Features.MappingHotelLanguage.Queries.GetMappingHotelLanguageById.GetMappingHotelLanguageByIdQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.MappingHotelLanguage.Command.CreateMappingHotelLanguageCommand.CreateMappingHotelLanguageCommand, CleanArc.Application.Features.MappingHotelLanguage.Command.UpdateMappingHotelLanguageCommand.UpdateMappingHotelLanguageCommand, CleanArc.Application.Features.MappingHotelLanguage.Command.DeleteMappingHotelLanguageCommand.DeleteMappingHotelLanguageCommand, System.ResponseEntity, CleanArc.Application.Features.MappingHotelLanguage.Queries.GetAllMappingHotelLanguage.GetAllMappingHotelLanguageQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.MappingHotelLanguage.Queries.GetAllMappingHotelLanguage.GetAllMappingHotelLanguageQueryResult&gt;, CleanArc.Application.Features.MappingHotelLanguage.Queries.GetMappingHotelLanguageById.GetMappingHotelLanguageByIdQuery, CleanArc.Application.Features.MappingHotelLanguage.Queries.GetMappingHotelLanguageById.GetMappingHotelLanguageByIdQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/MappingHotelLanguage")]
-public class MappingHotelLanguageController : _BaseController<CreateMappingHotelLanguageCommand, UpdateMappingHotelLanguageCommand, DeleteMappingHotelLanguageCommand, bool, GetAllMappingHotelLanguageQuery,
+public class MappingHotelLanguageController : _BaseController<CreateMappingHotelLanguageCommand, UpdateMappingHotelLanguageCommand, DeleteMappingHotelLanguageCommand, ResponseEntity, GetAllMappingHotelLanguageQuery,
     List<GetAllMappingHotelLanguageQueryResult>, GetMappingHotelLanguageByIdQuery, GetMappingHotelLanguageByIdQueryResult>
 {
 
@@ -49,7 +49,7 @@ public class MappingHotelLanguageController : _BaseController<CreateMappingHotel
     /// <param name="sender">The mediator sender for handling requests and responses.</param>
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
-    public MappingHotelLanguageController(ISender sender, ILogger<_BaseController<CreateMappingHotelLanguageCommand, UpdateMappingHotelLanguageCommand, DeleteMappingHotelLanguageCommand, bool, GetAllMappingHotelLanguageQuery,
+    public MappingHotelLanguageController(ISender sender, ILogger<_BaseController<CreateMappingHotelLanguageCommand, UpdateMappingHotelLanguageCommand, DeleteMappingHotelLanguageCommand, ResponseEntity, GetAllMappingHotelLanguageQuery,
 List<GetAllMappingHotelLanguageQueryResult>, GetMappingHotelLanguageByIdQuery, GetMappingHotelLanguageByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 

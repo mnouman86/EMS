@@ -6,7 +6,7 @@ using CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHo
 using CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetSearchHotelRoomDetailById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail;
 /// <summary>
@@ -48,11 +48,11 @@ namespace CleanArc.Web.Api.Controllers.V1.SearchHotelRoomDetail;
 /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles.
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.SearchHotelRoomDetail.Command.CreateSearchHotelRoomDetail.CreateSearchHotelRoomDetailCommand, CleanArc.Application.Features.SearchHotelRoomDetail.Command.UpdateSearchHotelRoomDetail.UpdateSearchHotelRoomDetailCommand, CleanArc.Application.Features.SearchHotelRoomDetail.Command.DeleteSearchHotelRoomDetail.DeleteSearchHotelRoomDetailCommand, System.Boolean, CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail.GetAllSearchHotelRoomDetailQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail.GetAllSearchHotelRoomDetailQueryResult&gt;, CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetSearchHotelRoomDetailById.GetSearchHotelRoomDetailByIdQuery, CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetSearchHotelRoomDetailById.GetSearchHotelRoomDetailByIdQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.SearchHotelRoomDetail.Command.CreateSearchHotelRoomDetail.CreateSearchHotelRoomDetailCommand, CleanArc.Application.Features.SearchHotelRoomDetail.Command.UpdateSearchHotelRoomDetail.UpdateSearchHotelRoomDetailCommand, CleanArc.Application.Features.SearchHotelRoomDetail.Command.DeleteSearchHotelRoomDetail.DeleteSearchHotelRoomDetailCommand, System.ResponseEntity, CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail.GetAllSearchHotelRoomDetailQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetAllSearchHotelRoomDetail.GetAllSearchHotelRoomDetailQueryResult&gt;, CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetSearchHotelRoomDetailById.GetSearchHotelRoomDetailByIdQuery, CleanArc.Application.Features.SearchHotelRoomDetail.Queries.GetSearchHotelRoomDetailById.GetSearchHotelRoomDetailByIdQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/SearchHotelRoomDetail")]
-public class SearchHotelRoomDetailController : _BaseController<CreateSearchHotelRoomDetailCommand, UpdateSearchHotelRoomDetailCommand, DeleteSearchHotelRoomDetailCommand, bool, GetAllSearchHotelRoomDetailQuery,
+public class SearchHotelRoomDetailController : _BaseController<CreateSearchHotelRoomDetailCommand, UpdateSearchHotelRoomDetailCommand, DeleteSearchHotelRoomDetailCommand, ResponseEntity, GetAllSearchHotelRoomDetailQuery,
     List<GetAllSearchHotelRoomDetailQueryResult>, GetSearchHotelRoomDetailByIdQuery, GetSearchHotelRoomDetailByIdQueryResult>
 {
 
@@ -62,7 +62,7 @@ public class SearchHotelRoomDetailController : _BaseController<CreateSearchHotel
     /// <param name="sender">The mediator sender for handling requests and responses.</param>
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
-    public SearchHotelRoomDetailController(ISender sender, ILogger<_BaseController<CreateSearchHotelRoomDetailCommand, UpdateSearchHotelRoomDetailCommand, DeleteSearchHotelRoomDetailCommand, bool, GetAllSearchHotelRoomDetailQuery,
+    public SearchHotelRoomDetailController(ISender sender, ILogger<_BaseController<CreateSearchHotelRoomDetailCommand, UpdateSearchHotelRoomDetailCommand, DeleteSearchHotelRoomDetailCommand, ResponseEntity, GetAllSearchHotelRoomDetailQuery,
 List<GetAllSearchHotelRoomDetailQueryResult>, GetSearchHotelRoomDetailByIdQuery, GetSearchHotelRoomDetailByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 

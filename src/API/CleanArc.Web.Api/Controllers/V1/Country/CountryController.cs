@@ -6,7 +6,7 @@ using CleanArc.Application.Features.Country.Queries.GetAllCountries;
 using CleanArc.Application.Features.Country.Queries.GetCountryById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.Country;
 
@@ -49,11 +49,11 @@ namespace CleanArc.Web.Api.Controllers.V1.Country;
 /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles.
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Country.Command.CreateCountryCommand.CreateCountryCommand, CleanArc.Application.Features.Country.Command.UpdateCountryCommand.UpdateCountryCommand, CleanArc.Application.Features.Country.Command.DeleteCountryCommand.DeleteCountryCommand, System.Boolean, CleanArc.Application.Features.Country.Queries.GetAllCountries.GetAllCountryQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Country.Queries.GetAllCountries.GetAllCountryQueryResult&gt;, CleanArc.Application.Features.Country.Queries.GetCountryById.GetCountryByIdQuery, CleanArc.Application.Features.Country.Queries.GetCountryById.GetCountryByIdQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Country.Command.CreateCountryCommand.CreateCountryCommand, CleanArc.Application.Features.Country.Command.UpdateCountryCommand.UpdateCountryCommand, CleanArc.Application.Features.Country.Command.DeleteCountryCommand.DeleteCountryCommand, System.ResponseEntity, CleanArc.Application.Features.Country.Queries.GetAllCountries.GetAllCountryQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Country.Queries.GetAllCountries.GetAllCountryQueryResult&gt;, CleanArc.Application.Features.Country.Queries.GetCountryById.GetCountryByIdQuery, CleanArc.Application.Features.Country.Queries.GetCountryById.GetCountryByIdQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/Country")]
-public class CountryController : _BaseController<CreateCountryCommand, UpdateCountryCommand, DeleteCountryCommand, bool, GetAllCountryQuery,
+public class CountryController : _BaseController<CreateCountryCommand, UpdateCountryCommand, DeleteCountryCommand, ResponseEntity, GetAllCountryQuery,
     List<GetAllCountryQueryResult>, GetCountryByIdQuery, GetCountryByIdQueryResult>
 {
 
@@ -63,7 +63,7 @@ public class CountryController : _BaseController<CreateCountryCommand, UpdateCou
     /// <param name="sender">The mediator sender for handling requests and responses.</param>
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
-    public CountryController(ISender sender, ILogger<_BaseController<CreateCountryCommand, UpdateCountryCommand, DeleteCountryCommand, bool, GetAllCountryQuery,
+    public CountryController(ISender sender, ILogger<_BaseController<CreateCountryCommand, UpdateCountryCommand, DeleteCountryCommand, ResponseEntity, GetAllCountryQuery,
 List<GetAllCountryQueryResult>, GetCountryByIdQuery, GetCountryByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 

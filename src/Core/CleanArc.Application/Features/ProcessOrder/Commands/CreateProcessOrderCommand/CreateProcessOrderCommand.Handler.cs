@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ProcessOrder.Commands.CreateProcessOrderCommand;
 
-internal class CreateProcessOrderCommandHandler: IRequestHandler<CreateProcessOrderCommand, OperationResult<bool>>
+internal class CreateProcessOrderCommandHandler: IRequestHandler<CreateProcessOrderCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -41,14 +41,14 @@ internal class CreateProcessOrderCommandHandler: IRequestHandler<CreateProcessOr
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateProcessOrderCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateProcessOrderCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -56,8 +56,8 @@ internal class CreateProcessOrderCommandHandler: IRequestHandler<CreateProcessOr
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.ProcessOrderRepository.AddAsync(new Domain.Entities.ProcessOrder.ProcessOrder()
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            var result = await _unitOfWork.ProcessOrderRepository.AddAsync(new Domain.Entities.ProcessOrder.ProcessOrder()
             { CreatedBy = user.Id,
                  CultureId = request.CultureId,
                 OrderNumber = request.OrderNumber,
@@ -88,7 +88,7 @@ internal class CreateProcessOrderCommandHandler: IRequestHandler<CreateProcessOr
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }

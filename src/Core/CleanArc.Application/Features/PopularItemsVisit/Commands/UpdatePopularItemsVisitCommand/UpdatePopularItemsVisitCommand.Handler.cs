@@ -16,7 +16,7 @@ using CleanArc.SharedKernel.Extensions;
 
 namespace CleanArc.Application.Features.PopularItemsVisit.Commands.UpdatePopularItemsVisitCommand;
 
-internal class UpdatePopularItemsVisitCommandHandler:IRequestHandler<UpdatePopularItemsVisitCommand, OperationResult<bool>>
+internal class UpdatePopularItemsVisitCommandHandler:IRequestHandler<UpdatePopularItemsVisitCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -39,14 +39,14 @@ internal class UpdatePopularItemsVisitCommandHandler:IRequestHandler<UpdatePopul
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<bool>> Handle(UpdatePopularItemsVisitCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdatePopularItemsVisitCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -54,8 +54,8 @@ internal class UpdatePopularItemsVisitCommandHandler:IRequestHandler<UpdatePopul
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.PopularItemsVisitRepository.UpdateAsync(new Domain.Entities.PopularItemsVisit.PopularItemsVisit()
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            var result = await _unitOfWork.PopularItemsVisitRepository.UpdateAsync(new Domain.Entities.PopularItemsVisit.PopularItemsVisit()
             { UpdatedBy = user.Id,
                 ID= request.ID,
                 UserID = request.UserID,
@@ -67,7 +67,7 @@ internal class UpdatePopularItemsVisitCommandHandler:IRequestHandler<UpdatePopul
                 CultureId = request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 

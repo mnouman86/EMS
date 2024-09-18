@@ -2,7 +2,7 @@
 using CleanArc.SharedKernel.ValidationBase.Contracts;
 using CleanArc.SharedKernel.ValidationBase;
 using FluentValidation;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ public record CreatePackageDetailCommand(int? PackageTypeID, int? PaymentOrderID
     decimal? Flight,
     decimal? ThingsToDo,
     int? CultureId,
-    int? CreatedBy) : IRequest<OperationResult<bool>>,
+    int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreatePackageDetailCommand>
 {
     [JsonIgnore]

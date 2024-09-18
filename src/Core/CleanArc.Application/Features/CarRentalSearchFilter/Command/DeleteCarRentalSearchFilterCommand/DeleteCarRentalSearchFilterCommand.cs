@@ -8,12 +8,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.CarRentalSearchFilter.Command.DeleteCarRentalSearchFilter;
 
-public record DeleteCarRentalSearchFilterCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record DeleteCarRentalSearchFilterCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<DeleteCarRentalSearchFilterCommand>
 {
     [JsonIgnore]

@@ -16,7 +16,7 @@ using CleanArc.SharedKernel.Extensions;
 
 namespace CleanArc.Application.Features.KBMedia.Commands.UpdateKBMediaCommand;
 
-internal class UpdateKBMediaCommandHandler:IRequestHandler<UpdateKBMediaCommand, OperationResult<bool>>
+internal class UpdateKBMediaCommandHandler:IRequestHandler<UpdateKBMediaCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -39,14 +39,14 @@ internal class UpdateKBMediaCommandHandler:IRequestHandler<UpdateKBMediaCommand,
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<bool>> Handle(UpdateKBMediaCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateKBMediaCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -54,8 +54,8 @@ internal class UpdateKBMediaCommandHandler:IRequestHandler<UpdateKBMediaCommand,
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.KBMediaRepository.UpdateAsync(new Domain.Entities.KBMedia.KBMedia()
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            var result = await _unitOfWork.KBMediaRepository.UpdateAsync(new Domain.Entities.KBMedia.KBMedia()
             { UpdatedBy = user.Id,ID= request.ID,
                 KBDescriptionID = request.KBDescriptionID,
                 MediaType = request.MediaType,
@@ -65,7 +65,7 @@ internal class UpdateKBMediaCommandHandler:IRequestHandler<UpdateKBMediaCommand,
                 CultureId = request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 

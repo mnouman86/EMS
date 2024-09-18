@@ -6,7 +6,7 @@ using CleanArc.Application.Features.CheckProfileStatus.Queries.GetCheckProfileSt
 using CleanArc.Application.Features.CheckProfileStatus.Queries.GetAllCheckProfileStatus;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.CheckProfileStatus
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.CheckProfileStatus
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.CheckProfileStatus.Commands.CreateCheckProfileStatusCommand.CreateCheckProfileStatusCommand, CleanArc.Application.Features.CheckProfileStatus.Commands.UpdateCheckProfileStatusCommand.UpdateCheckProfileStatusCommand, CleanArc.Application.Features.CheckProfileStatus.Commands.DeleteCheckProfileStatusCommand.DeleteCheckProfileStatusCommand, System.Boolean, CleanArc.Application.Features.CheckProfileStatus.Queries.GetAllCheckProfileStatus.GetAllCheckProfileStatusQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.CheckProfileStatus.Queries.GetAllCheckProfileStatus.GetAllCheckProfileStatusQueryResult&gt;, CleanArc.Application.Features.CheckProfileStatus.Queries.GetCheckProfileStatusById.GetCheckProfileStatusByIdQuery, CleanArc.Application.Features.CheckProfileStatus.Queries.GetCheckProfileStatusById.GetCheckProfileStatusByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.CheckProfileStatus.Commands.CreateCheckProfileStatusCommand.CreateCheckProfileStatusCommand, CleanArc.Application.Features.CheckProfileStatus.Commands.UpdateCheckProfileStatusCommand.UpdateCheckProfileStatusCommand, CleanArc.Application.Features.CheckProfileStatus.Commands.DeleteCheckProfileStatusCommand.DeleteCheckProfileStatusCommand, System.ResponseEntity, CleanArc.Application.Features.CheckProfileStatus.Queries.GetAllCheckProfileStatus.GetAllCheckProfileStatusQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.CheckProfileStatus.Queries.GetAllCheckProfileStatus.GetAllCheckProfileStatusQueryResult&gt;, CleanArc.Application.Features.CheckProfileStatus.Queries.GetCheckProfileStatusById.GetCheckProfileStatusByIdQuery, CleanArc.Application.Features.CheckProfileStatus.Queries.GetCheckProfileStatusById.GetCheckProfileStatusByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/CheckProfileStatus")]
     //[Authorize]
-    public class CheckProfileStatusController : _BaseController<CreateCheckProfileStatusCommand, UpdateCheckProfileStatusCommand, DeleteCheckProfileStatusCommand, bool, GetAllCheckProfileStatusQuery,
+    public class CheckProfileStatusController : _BaseController<CreateCheckProfileStatusCommand, UpdateCheckProfileStatusCommand, DeleteCheckProfileStatusCommand, ResponseEntity, GetAllCheckProfileStatusQuery,
     List<GetAllCheckProfileStatusQueryResult>, GetCheckProfileStatusByIdQuery, GetCheckProfileStatusByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.CheckProfileStatus
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public CheckProfileStatusController(ISender sender, ILogger<_BaseController<CreateCheckProfileStatusCommand, UpdateCheckProfileStatusCommand, DeleteCheckProfileStatusCommand, bool, GetAllCheckProfileStatusQuery,
+        public CheckProfileStatusController(ISender sender, ILogger<_BaseController<CreateCheckProfileStatusCommand, UpdateCheckProfileStatusCommand, DeleteCheckProfileStatusCommand, ResponseEntity, GetAllCheckProfileStatusQuery,
    List<GetAllCheckProfileStatusQueryResult>, GetCheckProfileStatusByIdQuery, GetCheckProfileStatusByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

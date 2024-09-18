@@ -9,11 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ServiceCategory.Command.UpdateServiceCategoryCommand;
 
-public record  UpdateServiceCategoryCommand(int ID, String? Name, string? Description, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record  UpdateServiceCategoryCommand(int ID, String? Name, string? Description, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<UpdateServiceCategoryCommand>
 {
     [JsonIgnore]

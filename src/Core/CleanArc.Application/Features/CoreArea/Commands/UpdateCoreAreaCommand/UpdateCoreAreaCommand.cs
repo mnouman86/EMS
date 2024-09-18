@@ -8,10 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.CoreArea.Commands.UpdateCoreAreaCommand;
-public record UpdateCoreAreaCommand( int ID,String? Name, string? Description, int? Type, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
+public record UpdateCoreAreaCommand( int ID,String? Name, string? Description, int? Type, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateCoreAreaCommand>
 {
     [JsonIgnore]

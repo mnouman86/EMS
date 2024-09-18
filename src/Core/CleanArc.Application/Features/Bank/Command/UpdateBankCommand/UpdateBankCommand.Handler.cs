@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Bank.Command.UpdateBankCommand
 {
-    internal class UpdateBankCommandHandler : IRequestHandler<UpdateBankCommand, OperationResult<bool>>
+    internal class UpdateBankCommandHandler : IRequestHandler<UpdateBankCommand, OperationResult<ResponseEntity>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IAppUserManager _userManager;
@@ -38,14 +38,14 @@ namespace CleanArc.Application.Features.Bank.Command.UpdateBankCommand
             //_unitOfWork = unitOfWork;
             //_userManager = userManager;
         }
-        public async ValueTask<OperationResult<bool>> Handle(UpdateBankCommand request, CancellationToken cancellationToken)
+        public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateBankCommand request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
 
                 var user = await _userManager.GetUserByIdAsync(request.UserId);
                 if (user == null)
-                    return OperationResult<bool>.FailureResult("User Not Found");
+                    return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
                 //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
                 //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -53,12 +53,12 @@ namespace CleanArc.Application.Features.Bank.Command.UpdateBankCommand
                 //await _unitOfWork.CommitAsync();
                 //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-                //return OperationResult<bool>.SuccessResult(true);
-                await _unitOfWork.BankRepository.UpdateAsync(new Domain.Entities.Bank.Bank()
+                //return OperationResult<ResponseEntity>.SuccessResult(result);
+                var result = await _unitOfWork.BankRepository.UpdateAsync(new Domain.Entities.Bank.Bank()
                 { UpdatedBy = user.Id, ID = request.ID, Description = request.Description, Name = request.Name });
                 await _unitOfWork.CommitAsync();
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-                return OperationResult<bool>.SuccessResult(true);
+                return OperationResult<ResponseEntity>.SuccessResult(result);
             }
         }
 

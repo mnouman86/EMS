@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.ValidationBase;
 using CleanArc.SharedKernel.ValidationBase.Contracts;
@@ -7,7 +7,7 @@ using Mediator;
 
 namespace CleanArc.Application.Features.URL.Commands.UpdateURLCommand;
 
-public record UpdateURLCommand(int Id,string Path, string Title, string Description) : IRequest<OperationResult<bool>>,
+public record UpdateURLCommand(int Id,string Path, string Title, string Description) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateURLCommand>
 {
     [JsonIgnore]

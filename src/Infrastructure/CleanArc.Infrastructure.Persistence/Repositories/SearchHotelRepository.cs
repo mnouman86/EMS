@@ -62,7 +62,7 @@ public class SearchHotelRepository : ISearchHotelRepository
         throw new NotImplementedException();
     }
 
-    public Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
         throw new NotImplementedException();
     }
@@ -117,7 +117,7 @@ public class SearchHotelRepository : ISearchHotelRepository
         throw new NotImplementedException();
     }
 
-    public Task<string> UpdateAsync(SearchHotelDetail entity)
+    public Task<ResponseEntity> UpdateAsync(SearchHotelDetail entity)
     {
         throw new NotImplementedException();
     }

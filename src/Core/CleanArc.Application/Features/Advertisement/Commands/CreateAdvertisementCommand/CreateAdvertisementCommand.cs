@@ -2,7 +2,7 @@
 using CleanArc.SharedKernel.ValidationBase.Contracts;
 using CleanArc.SharedKernel.ValidationBase;
 using FluentValidation;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Advertisement.Commands.CreateAdvertisementCommand;
-public record CreateAdvertisementCommand(int? PageID, int? PlaceID, string? ImageTitle, string? ImagePath, string? Url, DateTime? StartDate, DateTime? EndDate, bool? IsShow, int? CreatedBy,int Code, string? Message) : IRequest<OperationResult<bool>>,
+public record CreateAdvertisementCommand(int? PageID, int? PlaceID, string? ImageTitle, string? ImagePath, string? Url, DateTime? StartDate, DateTime? EndDate, bool? IsShow, int? CreatedBy,int Code, string? Message) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateAdvertisementCommand>
 {
     [JsonIgnore]

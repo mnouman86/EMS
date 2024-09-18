@@ -6,7 +6,7 @@ using CleanArc.Application.Features.ActivityType.Queries.GetActivityTypeById;
 using CleanArc.Application.Features.ActivityType.Queries.GetAllActivityType;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.ActivityType
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityType
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityType.Commands.CreateActivityTypeCommand.CreateActivityTypeCommand, CleanArc.Application.Features.ActivityType.Commands.UpdateActivityTypeCommand.UpdateActivityTypeCommand, CleanArc.Application.Features.ActivityType.Commands.DeleteActivityTypeCommand.DeleteActivityTypeCommand, System.Boolean, CleanArc.Application.Features.ActivityType.Queries.GetAllActivityType.GetAllActivityTypeQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityType.Queries.GetAllActivityType.GetAllActivityTypeQueryResult&gt;, CleanArc.Application.Features.ActivityType.Queries.GetActivityTypeById.GetActivityTypeByIdQuery, CleanArc.Application.Features.ActivityType.Queries.GetActivityTypeById.GetActivityTypeByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityType.Commands.CreateActivityTypeCommand.CreateActivityTypeCommand, CleanArc.Application.Features.ActivityType.Commands.UpdateActivityTypeCommand.UpdateActivityTypeCommand, CleanArc.Application.Features.ActivityType.Commands.DeleteActivityTypeCommand.DeleteActivityTypeCommand, System.ResponseEntity, CleanArc.Application.Features.ActivityType.Queries.GetAllActivityType.GetAllActivityTypeQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityType.Queries.GetAllActivityType.GetAllActivityTypeQueryResult&gt;, CleanArc.Application.Features.ActivityType.Queries.GetActivityTypeById.GetActivityTypeByIdQuery, CleanArc.Application.Features.ActivityType.Queries.GetActivityTypeById.GetActivityTypeByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/ActivityType")]
     //[Authorize]
-    public class ActivityTypeController : _BaseController<CreateActivityTypeCommand, UpdateActivityTypeCommand, DeleteActivityTypeCommand, bool, GetAllActivityTypeQuery,
+    public class ActivityTypeController : _BaseController<CreateActivityTypeCommand, UpdateActivityTypeCommand, DeleteActivityTypeCommand, ResponseEntity, GetAllActivityTypeQuery,
     List<GetAllActivityTypeQueryResult>, GetActivityTypeByIdQuery, GetActivityTypeByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityType
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public ActivityTypeController(ISender sender, ILogger<_BaseController<CreateActivityTypeCommand, UpdateActivityTypeCommand, DeleteActivityTypeCommand, bool, GetAllActivityTypeQuery,
+        public ActivityTypeController(ISender sender, ILogger<_BaseController<CreateActivityTypeCommand, UpdateActivityTypeCommand, DeleteActivityTypeCommand, ResponseEntity, GetAllActivityTypeQuery,
    List<GetAllActivityTypeQueryResult>, GetActivityTypeByIdQuery, GetActivityTypeByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

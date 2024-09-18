@@ -4,9 +4,10 @@ using CleanArc.Application.Features.ActivityAddressMapping.Commands.DeleteActivi
 using CleanArc.Application.Features.ActivityAddressMapping.Commands.UpdateActivityAddressMappingCommand;
 using CleanArc.Application.Features.ActivityAddressMapping.Queries.GetActivityAddressMappingById;
 using CleanArc.Application.Features.ActivityAddressMapping.Queries.GetAllActivityAddressMapping;
+using CleanArc.Domain.Common;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.ActivityAddressMapping
 {
@@ -49,12 +50,12 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityAddressMapping
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityAddressMapping.Commands.CreateActivityAddressMappingCommand.CreateActivityAddressMappingCommand, CleanArc.Application.Features.ActivityAddressMapping.Commands.UpdateActivityAddressMappingCommand.UpdateActivityAddressMappingCommand, CleanArc.Application.Features.ActivityAddressMapping.Commands.DeleteActivityAddressMappingCommand.DeleteActivityAddressMappingCommand, System.Boolean, CleanArc.Application.Features.ActivityAddressMapping.Queries.GetAllActivityAddressMapping.GetAllActivityAddressMappingQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityAddressMapping.Queries.GetAllActivityAddressMapping.GetAllActivityAddressMappingQueryResult&gt;, CleanArc.Application.Features.ActivityAddressMapping.Queries.GetActivityAddressMappingById.GetActivityAddressMappingByIdQuery, CleanArc.Application.Features.ActivityAddressMapping.Queries.GetActivityAddressMappingById.GetActivityAddressMappingByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityAddressMapping.Commands.CreateActivityAddressMappingCommand.CreateActivityAddressMappingCommand, CleanArc.Application.Features.ActivityAddressMapping.Commands.UpdateActivityAddressMappingCommand.UpdateActivityAddressMappingCommand, CleanArc.Application.Features.ActivityAddressMapping.Commands.DeleteActivityAddressMappingCommand.DeleteActivityAddressMappingCommand, System.ResponseEntity, CleanArc.Application.Features.ActivityAddressMapping.Queries.GetAllActivityAddressMapping.GetAllActivityAddressMappingQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityAddressMapping.Queries.GetAllActivityAddressMapping.GetAllActivityAddressMappingQueryResult&gt;, CleanArc.Application.Features.ActivityAddressMapping.Queries.GetActivityAddressMappingById.GetActivityAddressMappingByIdQuery, CleanArc.Application.Features.ActivityAddressMapping.Queries.GetActivityAddressMappingById.GetActivityAddressMappingByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/ActivityAddressMapping")]
     //[Authorize]
-    public class ActivityAddressMappingController : _BaseController<CreateActivityAddressMappingCommand, UpdateActivityAddressMappingCommand, DeleteActivityAddressMappingCommand, bool, GetAllActivityAddressMappingQuery,
+    public class ActivityAddressMappingController : _BaseController<CreateActivityAddressMappingCommand, UpdateActivityAddressMappingCommand, DeleteActivityAddressMappingCommand, ResponseEntity, GetAllActivityAddressMappingQuery,
     List<GetAllActivityAddressMappingQueryResult>, GetActivityAddressMappingByIdQuery, GetActivityAddressMappingByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +102,7 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityAddressMapping
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public ActivityAddressMappingController(ISender sender, ILogger<_BaseController<CreateActivityAddressMappingCommand, UpdateActivityAddressMappingCommand, DeleteActivityAddressMappingCommand, bool, GetAllActivityAddressMappingQuery,
+        public ActivityAddressMappingController(ISender sender, ILogger<_BaseController<CreateActivityAddressMappingCommand, UpdateActivityAddressMappingCommand, DeleteActivityAddressMappingCommand, ResponseEntity, GetAllActivityAddressMappingQuery,
    List<GetAllActivityAddressMappingQueryResult>, GetActivityAddressMappingByIdQuery, GetActivityAddressMappingByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

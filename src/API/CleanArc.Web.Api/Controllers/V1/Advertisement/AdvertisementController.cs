@@ -6,7 +6,7 @@ using CleanArc.Application.Features.Advertisement.Queries.GetAdvertisementById;
 using CleanArc.Application.Features.Advertisement.Queries.GetAllAdvertisement;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.Advertisement
 {
@@ -33,12 +33,12 @@ namespace CleanArc.Web.Api.Controllers.V1.Advertisement
     /// Note: The actual endpoint methods are intended to be implemented to utilize the base controller’s 
     /// operation result handling and user ID setting.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Advertisement.Commands.CreateAdvertisementCommand.CreateAdvertisementCommand, CleanArc.Application.Features.Advertisement.Commands.UpdateAdvertisementCommand.UpdateAdvertisementCommand, CleanArc.Application.Features.Advertisement.Commands.DeleteAdvertisementCommand.DeleteAdvertisementCommand, System.Boolean, CleanArc.Application.Features.Advertisement.Queries.GetAllAdvertisement.GetAllAdvertisementQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Advertisement.Queries.GetAllAdvertisement.GetAllAdvertisementQueryResult&gt;, CleanArc.Application.Features.Advertisement.Queries.GetAdvertisementById.GetAdvertisementByIdQuery, CleanArc.Application.Features.Advertisement.Queries.GetAdvertisementById.GetAdvertisementByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Advertisement.Commands.CreateAdvertisementCommand.CreateAdvertisementCommand, CleanArc.Application.Features.Advertisement.Commands.UpdateAdvertisementCommand.UpdateAdvertisementCommand, CleanArc.Application.Features.Advertisement.Commands.DeleteAdvertisementCommand.DeleteAdvertisementCommand, System.ResponseEntity, CleanArc.Application.Features.Advertisement.Queries.GetAllAdvertisement.GetAllAdvertisementQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Advertisement.Queries.GetAllAdvertisement.GetAllAdvertisementQueryResult&gt;, CleanArc.Application.Features.Advertisement.Queries.GetAdvertisementById.GetAdvertisementByIdQuery, CleanArc.Application.Features.Advertisement.Queries.GetAdvertisementById.GetAdvertisementByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/Advertisement")]
     //[Authorize]
-    public class AdvertisementController : _BaseController<CreateAdvertisementCommand, UpdateAdvertisementCommand, DeleteAdvertisementCommand, bool, GetAllAdvertisementQuery,
+    public class AdvertisementController : _BaseController<CreateAdvertisementCommand, UpdateAdvertisementCommand, DeleteAdvertisementCommand, ResponseEntity, GetAllAdvertisementQuery,
     List<GetAllAdvertisementQueryResult>, GetAdvertisementByIdQuery, GetAdvertisementByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -85,7 +85,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Advertisement
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public AdvertisementController(ISender sender, ILogger<_BaseController<CreateAdvertisementCommand, UpdateAdvertisementCommand, DeleteAdvertisementCommand, bool, GetAllAdvertisementQuery,
+        public AdvertisementController(ISender sender, ILogger<_BaseController<CreateAdvertisementCommand, UpdateAdvertisementCommand, DeleteAdvertisementCommand, ResponseEntity, GetAllAdvertisementQuery,
    List<GetAllAdvertisementQueryResult>, GetAdvertisementByIdQuery, GetAdvertisementByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

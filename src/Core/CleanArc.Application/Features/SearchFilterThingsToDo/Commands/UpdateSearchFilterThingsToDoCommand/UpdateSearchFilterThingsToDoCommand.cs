@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.SearchFilterThingsToDo.Commands.UpdateSearchFilterThingsToDoCommand;
 public record UpdateSearchFilterThingsToDoCommand(
@@ -46,7 +46,7 @@ public record UpdateSearchFilterThingsToDoCommand(
     DateTime? StartDate,
 	string? EndTime,
 	string? StartTime,
-     int? UpdatedBy) : IRequest<OperationResult<bool>>,
+     int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateSearchFilterThingsToDoCommand>
 {
     [JsonIgnore]

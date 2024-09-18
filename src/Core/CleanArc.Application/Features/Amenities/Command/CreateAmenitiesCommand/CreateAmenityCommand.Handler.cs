@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Amenities.Command.CreateAmenitiesCommand;
 
-internal class CreateAmenityCommandHandler: IRequestHandler<CreateAmenityCommand, OperationResult<bool>>
+internal class CreateAmenityCommandHandler: IRequestHandler<CreateAmenityCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -40,23 +40,23 @@ internal class CreateAmenityCommandHandler: IRequestHandler<CreateAmenityCommand
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateAmenityCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateAmenityCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
-           
-            await _unitOfWork.AmenityRepository.AddAsync(new Domain.Entities.Amenity.Amenity()
+
+            var result = await _unitOfWork.AmenityRepository.AddAsync(new Domain.Entities.Amenity.Amenity()
             { CreatedBy = user.Id, Description = request.Description, Name = request.Name, CategoryID=request.CategoryID,
                 ServiceCategoryID=request.ServiceCategoryID,
                 Icon=request.Icon});
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }

@@ -63,7 +63,7 @@ public class RoomImagesRepository : IRoomImagesRepository
         throw new NotImplementedException();
     }
 
-    public Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
         throw new NotImplementedException();
     }
@@ -99,7 +99,7 @@ public class RoomImagesRepository : IRoomImagesRepository
         throw new NotImplementedException();
     }
 
-    public Task<string> UpdateAsync(RoomImages entity)
+    public Task<ResponseEntity> UpdateAsync(RoomImages entity)
     {
         throw new NotImplementedException();
     }

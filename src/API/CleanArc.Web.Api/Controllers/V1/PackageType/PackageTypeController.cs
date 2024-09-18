@@ -6,7 +6,7 @@ using CleanArc.Application.Features.PackageType.Queries.GetPackageTypeById;
 using CleanArc.Application.Features.PackageType.Queries.GetAllPackageType;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.PackageType
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.PackageType
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.PackageType.Commands.CreatePackageTypeCommand.CreatePackageTypeCommand, CleanArc.Application.Features.PackageType.Commands.UpdatePackageTypeCommand.UpdatePackageTypeCommand, CleanArc.Application.Features.PackageType.Commands.DeletePackageTypeCommand.DeletePackageTypeCommand, System.Boolean, CleanArc.Application.Features.PackageType.Queries.GetAllPackageType.GetAllPackageTypeQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.PackageType.Queries.GetAllPackageType.GetAllPackageTypeQueryResult&gt;, CleanArc.Application.Features.PackageType.Queries.GetPackageTypeById.GetPackageTypeByIdQuery, CleanArc.Application.Features.PackageType.Queries.GetPackageTypeById.GetPackageTypeByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.PackageType.Commands.CreatePackageTypeCommand.CreatePackageTypeCommand, CleanArc.Application.Features.PackageType.Commands.UpdatePackageTypeCommand.UpdatePackageTypeCommand, CleanArc.Application.Features.PackageType.Commands.DeletePackageTypeCommand.DeletePackageTypeCommand, System.ResponseEntity, CleanArc.Application.Features.PackageType.Queries.GetAllPackageType.GetAllPackageTypeQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.PackageType.Queries.GetAllPackageType.GetAllPackageTypeQueryResult&gt;, CleanArc.Application.Features.PackageType.Queries.GetPackageTypeById.GetPackageTypeByIdQuery, CleanArc.Application.Features.PackageType.Queries.GetPackageTypeById.GetPackageTypeByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/PackageType")]
     //[Authorize]
-    public class PackageTypeController : _BaseController<CreatePackageTypeCommand, UpdatePackageTypeCommand, DeletePackageTypeCommand, bool, GetAllPackageTypeQuery,
+    public class PackageTypeController : _BaseController<CreatePackageTypeCommand, UpdatePackageTypeCommand, DeletePackageTypeCommand, ResponseEntity, GetAllPackageTypeQuery,
     List<GetAllPackageTypeQueryResult>, GetPackageTypeByIdQuery, GetPackageTypeByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.PackageType
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public PackageTypeController(ISender sender, ILogger<_BaseController<CreatePackageTypeCommand, UpdatePackageTypeCommand, DeletePackageTypeCommand, bool, GetAllPackageTypeQuery,
+        public PackageTypeController(ISender sender, ILogger<_BaseController<CreatePackageTypeCommand, UpdatePackageTypeCommand, DeletePackageTypeCommand, ResponseEntity, GetAllPackageTypeQuery,
    List<GetAllPackageTypeQueryResult>, GetPackageTypeByIdQuery, GetPackageTypeByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

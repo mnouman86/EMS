@@ -6,19 +6,19 @@ using CleanArc.Application.Features.AdvertisementPlace.Queries.GetAdvertisementP
 using CleanArc.Application.Features.AdvertisementPlace.Queries.GetAllAdvertisementPlace;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.AdvertisementPlace
 {
     /// <summary>
     /// 
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.AdvertisementPlace.Commands.CreateAdvertisementPlaceCommand.CreateAdvertisementPlaceCommand, CleanArc.Application.Features.AdvertisementPlace.Commands.UpdateAdvertisementPlaceCommand.UpdateAdvertisementPlaceCommand, CleanArc.Application.Features.AdvertisementPlace.Commands.DeleteAdvertisementPlaceCommand.DeleteAdvertisementPlaceCommand, System.Boolean, CleanArc.Application.Features.AdvertisementPlace.Queries.GetAllAdvertisementPlace.GetAllAdvertisementPlaceQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.AdvertisementPlace.Queries.GetAllAdvertisementPlace.GetAllAdvertisementPlaceQueryResult&gt;, CleanArc.Application.Features.AdvertisementPlace.Queries.GetAdvertisementPlaceById.GetAdvertisementPlaceByIdQuery, CleanArc.Application.Features.AdvertisementPlace.Queries.GetAdvertisementPlaceById.GetAdvertisementPlaceByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.AdvertisementPlace.Commands.CreateAdvertisementPlaceCommand.CreateAdvertisementPlaceCommand, CleanArc.Application.Features.AdvertisementPlace.Commands.UpdateAdvertisementPlaceCommand.UpdateAdvertisementPlaceCommand, CleanArc.Application.Features.AdvertisementPlace.Commands.DeleteAdvertisementPlaceCommand.DeleteAdvertisementPlaceCommand, System.ResponseEntity, CleanArc.Application.Features.AdvertisementPlace.Queries.GetAllAdvertisementPlace.GetAllAdvertisementPlaceQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.AdvertisementPlace.Queries.GetAllAdvertisementPlace.GetAllAdvertisementPlaceQueryResult&gt;, CleanArc.Application.Features.AdvertisementPlace.Queries.GetAdvertisementPlaceById.GetAdvertisementPlaceByIdQuery, CleanArc.Application.Features.AdvertisementPlace.Queries.GetAdvertisementPlaceById.GetAdvertisementPlaceByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/AdvertisementPlace")]
     //[Authorize]
-    public class AdvertisementPlaceController : _BaseController<CreateAdvertisementPlaceCommand, UpdateAdvertisementPlaceCommand, DeleteAdvertisementPlaceCommand, bool, GetAllAdvertisementPlaceQuery,
+    public class AdvertisementPlaceController : _BaseController<CreateAdvertisementPlaceCommand, UpdateAdvertisementPlaceCommand, DeleteAdvertisementPlaceCommand, ResponseEntity, GetAllAdvertisementPlaceQuery,
     List<GetAllAdvertisementPlaceQueryResult>, GetAdvertisementPlaceByIdQuery, GetAdvertisementPlaceByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -65,7 +65,7 @@ namespace CleanArc.Web.Api.Controllers.V1.AdvertisementPlace
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public AdvertisementPlaceController(ISender sender, ILogger<_BaseController<CreateAdvertisementPlaceCommand, UpdateAdvertisementPlaceCommand, DeleteAdvertisementPlaceCommand, bool, GetAllAdvertisementPlaceQuery,
+        public AdvertisementPlaceController(ISender sender, ILogger<_BaseController<CreateAdvertisementPlaceCommand, UpdateAdvertisementPlaceCommand, DeleteAdvertisementPlaceCommand, ResponseEntity, GetAllAdvertisementPlaceQuery,
    List<GetAllAdvertisementPlaceQueryResult>, GetAdvertisementPlaceByIdQuery, GetAdvertisementPlaceByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

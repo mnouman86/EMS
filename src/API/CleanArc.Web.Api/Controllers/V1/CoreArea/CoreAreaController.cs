@@ -6,7 +6,7 @@ using CleanArc.Application.Features.CoreArea.Queries.GetCoreAreaById;
 using CleanArc.Application.Features.CoreArea.Queries.GetAllCoreArea;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.CoreArea
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.CoreArea
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.CoreArea.Commands.CreateCoreAreaCommand.CreateCoreAreaCommand, CleanArc.Application.Features.CoreArea.Commands.UpdateCoreAreaCommand.UpdateCoreAreaCommand, CleanArc.Application.Features.CoreArea.Commands.DeleteCoreAreaCommand.DeleteCoreAreaCommand, System.Boolean, CleanArc.Application.Features.CoreArea.Queries.GetAllCoreArea.GetAllCoreAreaQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.CoreArea.Queries.GetAllCoreArea.GetAllCoreAreaQueryResult&gt;, CleanArc.Application.Features.CoreArea.Queries.GetCoreAreaById.GetCoreAreaByIdQuery, CleanArc.Application.Features.CoreArea.Queries.GetCoreAreaById.GetCoreAreaByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.CoreArea.Commands.CreateCoreAreaCommand.CreateCoreAreaCommand, CleanArc.Application.Features.CoreArea.Commands.UpdateCoreAreaCommand.UpdateCoreAreaCommand, CleanArc.Application.Features.CoreArea.Commands.DeleteCoreAreaCommand.DeleteCoreAreaCommand, System.ResponseEntity, CleanArc.Application.Features.CoreArea.Queries.GetAllCoreArea.GetAllCoreAreaQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.CoreArea.Queries.GetAllCoreArea.GetAllCoreAreaQueryResult&gt;, CleanArc.Application.Features.CoreArea.Queries.GetCoreAreaById.GetCoreAreaByIdQuery, CleanArc.Application.Features.CoreArea.Queries.GetCoreAreaById.GetCoreAreaByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/CoreArea")]
     //[Authorize]
-    public class CoreAreaController : _BaseController<CreateCoreAreaCommand, UpdateCoreAreaCommand, DeleteCoreAreaCommand, bool, GetAllCoreAreaQuery,
+    public class CoreAreaController : _BaseController<CreateCoreAreaCommand, UpdateCoreAreaCommand, DeleteCoreAreaCommand, ResponseEntity, GetAllCoreAreaQuery,
     List<GetAllCoreAreaQueryResult>, GetCoreAreaByIdQuery, GetCoreAreaByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.CoreArea
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public CoreAreaController(ISender sender, ILogger<_BaseController<CreateCoreAreaCommand, UpdateCoreAreaCommand, DeleteCoreAreaCommand, bool, GetAllCoreAreaQuery,
+        public CoreAreaController(ISender sender, ILogger<_BaseController<CreateCoreAreaCommand, UpdateCoreAreaCommand, DeleteCoreAreaCommand, ResponseEntity, GetAllCoreAreaQuery,
    List<GetAllCoreAreaQueryResult>, GetCoreAreaByIdQuery, GetCoreAreaByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

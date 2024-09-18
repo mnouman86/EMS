@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.KBDescription.Commands.UpdateKBDescriptionCommand;
 public record UpdateKBDescriptionCommand(int ID, int? KBDetailID,
@@ -19,7 +19,7 @@ string MediaType,
  string ImagePath,
 string ImageTitle,
 bool? IsMain,
-int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
+int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateKBDescriptionCommand>
 {
     [JsonIgnore]

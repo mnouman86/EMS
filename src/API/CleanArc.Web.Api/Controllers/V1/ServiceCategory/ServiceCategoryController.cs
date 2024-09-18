@@ -4,9 +4,10 @@ using CleanArc.Application.Features.ServiceCategory.Command.DeleteServiceCategor
 using CleanArc.Application.Features.ServiceCategory.Command.UpdateServiceCategoryCommand;
 using CleanArc.Application.Features.ServiceCategory.Queries.GetAllServiceCategories;
 using CleanArc.Application.Features.ServiceCategory.Queries.GetServiceCategoryById;
+using CleanArc.Domain.Common;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.ServiceCategory
 {
@@ -36,12 +37,12 @@ namespace CleanArc.Web.Api.Controllers.V1.ServiceCategory
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ServiceCategory.Command.CreateServiceCategoryCommand.CreateServiceCategoryCommand, CleanArc.Application.Features.ServiceCategory.Command.UpdateServiceCategoryCommand.UpdateServiceCategoryCommand, CleanArc.Application.Features.ServiceCategory.Command.DeleteServiceCategoryCommand.DeleteServiceCategoryCommand, System.Boolean, CleanArc.Application.Features.ServiceCategory.Queries.GetAllServiceCategories.GetAllServiceCategoriesQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ServiceCategory.Queries.GetAllServiceCategories.GetAllServiceCategoriesQueryResult&gt;, CleanArc.Application.Features.ServiceCategory.Queries.GetServiceCategoryById.GetServiceCategoryByIdQuery, CleanArc.Application.Features.ServiceCategory.Queries.GetServiceCategoryById.GetServiceCategoryByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ServiceCategory.Command.CreateServiceCategoryCommand.CreateServiceCategoryCommand, CleanArc.Application.Features.ServiceCategory.Command.UpdateServiceCategoryCommand.UpdateServiceCategoryCommand, CleanArc.Application.Features.ServiceCategory.Command.DeleteServiceCategoryCommand.DeleteServiceCategoryCommand, System.ResponseEntity, CleanArc.Application.Features.ServiceCategory.Queries.GetAllServiceCategories.GetAllServiceCategoriesQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ServiceCategory.Queries.GetAllServiceCategories.GetAllServiceCategoriesQueryResult&gt;, CleanArc.Application.Features.ServiceCategory.Queries.GetServiceCategoryById.GetServiceCategoryByIdQuery, CleanArc.Application.Features.ServiceCategory.Queries.GetServiceCategoryById.GetServiceCategoryByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/ServiceCategory")]
     //[Authorize]
-    public class ServiceCategoryController : _BaseController<CreateServiceCategoryCommand, UpdateServiceCategoryCommand, DeleteServiceCategoryCommand, bool, GetAllServiceCategoriesQuery,
+    public class ServiceCategoryController : _BaseController<CreateServiceCategoryCommand, UpdateServiceCategoryCommand, DeleteServiceCategoryCommand, ResponseEntity, GetAllServiceCategoriesQuery,
     List<GetAllServiceCategoriesQueryResult>, GetServiceCategoryByIdQuery, GetServiceCategoryByIdQueryResult>
     {
 
@@ -51,7 +52,7 @@ namespace CleanArc.Web.Api.Controllers.V1.ServiceCategory
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public ServiceCategoryController(ISender sender, ILogger<_BaseController<CreateServiceCategoryCommand, UpdateServiceCategoryCommand, DeleteServiceCategoryCommand, bool, GetAllServiceCategoriesQuery,
+        public ServiceCategoryController(ISender sender, ILogger<_BaseController<CreateServiceCategoryCommand, UpdateServiceCategoryCommand, DeleteServiceCategoryCommand, ResponseEntity, GetAllServiceCategoriesQuery,
    List<GetAllServiceCategoriesQueryResult>, GetServiceCategoryByIdQuery, GetServiceCategoryByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

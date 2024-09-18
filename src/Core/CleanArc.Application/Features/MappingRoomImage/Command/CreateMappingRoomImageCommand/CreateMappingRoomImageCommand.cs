@@ -7,12 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.MappingRoomImage.Command.CreateMappingRoomImageCommand;
 
-public record CreateMappingRoomImageCommand(int? RoomID, int? CategoryID, string? ImagePaths , string? ImageTitles, string? IsMains, int? CreatedBy) : IRequest<OperationResult<bool>>,
+public record CreateMappingRoomImageCommand(int? RoomID, int? CategoryID, string? ImagePaths , string? ImageTitles, string? IsMains, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<CreateMappingRoomImageCommand>
 {
     [JsonIgnore]

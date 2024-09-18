@@ -6,7 +6,7 @@ using CleanArc.Application.Features.FAQs.Queries.GetFAQsById;
 using CleanArc.Application.Features.FAQs.Queries.GetAllFAQs;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.FAQs
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.FAQs
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.FAQs.Commands.CreateFAQsCommand.CreateFAQsCommand, CleanArc.Application.Features.FAQs.Commands.UpdateFAQsCommand.UpdateFAQsCommand, CleanArc.Application.Features.FAQs.Commands.DeleteFAQsCommand.DeleteFAQsCommand, System.Boolean, CleanArc.Application.Features.FAQs.Queries.GetAllFAQs.GetAllFAQsQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.FAQs.Queries.GetAllFAQs.GetAllFAQsQueryResult&gt;, CleanArc.Application.Features.FAQs.Queries.GetFAQsById.GetFAQsByIdQuery, CleanArc.Application.Features.FAQs.Queries.GetFAQsById.GetFAQsByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.FAQs.Commands.CreateFAQsCommand.CreateFAQsCommand, CleanArc.Application.Features.FAQs.Commands.UpdateFAQsCommand.UpdateFAQsCommand, CleanArc.Application.Features.FAQs.Commands.DeleteFAQsCommand.DeleteFAQsCommand, System.ResponseEntity, CleanArc.Application.Features.FAQs.Queries.GetAllFAQs.GetAllFAQsQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.FAQs.Queries.GetAllFAQs.GetAllFAQsQueryResult&gt;, CleanArc.Application.Features.FAQs.Queries.GetFAQsById.GetFAQsByIdQuery, CleanArc.Application.Features.FAQs.Queries.GetFAQsById.GetFAQsByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/FAQs")]
     //[Authorize]
-    public class FAQsController : _BaseController<CreateFAQsCommand, UpdateFAQsCommand, DeleteFAQsCommand, bool, GetAllFAQsQuery,
+    public class FAQsController : _BaseController<CreateFAQsCommand, UpdateFAQsCommand, DeleteFAQsCommand, ResponseEntity, GetAllFAQsQuery,
     List<GetAllFAQsQueryResult>, GetFAQsByIdQuery, GetFAQsByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.FAQs
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public FAQsController(ISender sender, ILogger<_BaseController<CreateFAQsCommand, UpdateFAQsCommand, DeleteFAQsCommand, bool, GetAllFAQsQuery,
+        public FAQsController(ISender sender, ILogger<_BaseController<CreateFAQsCommand, UpdateFAQsCommand, DeleteFAQsCommand, ResponseEntity, GetAllFAQsQuery,
    List<GetAllFAQsQueryResult>, GetFAQsByIdQuery, GetFAQsByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

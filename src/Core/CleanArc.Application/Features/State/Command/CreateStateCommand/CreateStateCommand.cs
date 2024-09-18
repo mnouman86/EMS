@@ -9,13 +9,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 using CleanArc.Domain.Entities.Country;
 
 
 namespace CleanArc.Application.Features.State.Command.CreateStateCommand;
 
-public record CreateStateCommand(string? Name, string? Description, int? CountryID , int? CreatedBy) : IRequest<OperationResult<bool>>,
+public record CreateStateCommand(string? Name, string? Description, int? CountryID , int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateStateCommand>
 {
     [JsonIgnore]

@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Business.Command.UpdateBusinessCommand
 {
-    internal class UpdateBusinessCommandHandler : IRequestHandler<UpdateBusinessCommand, OperationResult<bool>>
+    internal class UpdateBusinessCommandHandler : IRequestHandler<UpdateBusinessCommand, OperationResult<ResponseEntity>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IAppUserManager _userManager;
@@ -38,14 +38,14 @@ namespace CleanArc.Application.Features.Business.Command.UpdateBusinessCommand
             //_unitOfWork = unitOfWork;
             //_userManager = userManager;
         }
-        public async ValueTask<OperationResult<bool>> Handle(UpdateBusinessCommand request, CancellationToken cancellationToken)
+        public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateBusinessCommand request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
 
                 var user = await _userManager.GetUserByIdAsync(request.UserId);
                 if (user == null)
-                    return OperationResult<bool>.FailureResult("User Not Found");
+                    return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
                 //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
                 //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -53,8 +53,8 @@ namespace CleanArc.Application.Features.Business.Command.UpdateBusinessCommand
                 //await _unitOfWork.CommitAsync();
                 //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-                //return OperationResult<bool>.SuccessResult(true);
-                await _unitOfWork.BusinessRepository.UpdateAsync(new Domain.Entities.Business.Business()
+                //return OperationResult<ResponseEntity>.SuccessResult(result);
+                var result = await _unitOfWork.BusinessRepository.UpdateAsync(new Domain.Entities.Business.Business()
                 {  UpdatedBy = user.Id, ID = request.ID,
                     BusinessTypeID = request.BusinessTypeID,
                     Name = request.Name,
@@ -77,7 +77,7 @@ namespace CleanArc.Application.Features.Business.Command.UpdateBusinessCommand
                 });
                 await _unitOfWork.CommitAsync();
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-                return OperationResult<bool>.SuccessResult(true);
+                return OperationResult<ResponseEntity>.SuccessResult(result);
             }
         }
 

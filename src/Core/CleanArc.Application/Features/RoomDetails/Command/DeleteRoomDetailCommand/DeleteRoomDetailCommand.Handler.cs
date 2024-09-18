@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.RoomDetails.Command.DeleteRoomDetailCommand;
 
-internal class DeleteRoomDetailCommandHandler : IRequestHandler<DeleteRoomDetailCommand, OperationResult<bool>>
+internal class DeleteRoomDetailCommandHandler : IRequestHandler<DeleteRoomDetailCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -38,20 +38,20 @@ internal class DeleteRoomDetailCommandHandler : IRequestHandler<DeleteRoomDetail
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<bool>> Handle(DeleteRoomDetailCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(DeleteRoomDetailCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
-            
-            await _unitOfWork.RoomDetailsRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+
+            var result = await _unitOfWork.RoomDetailsRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
             await _unitOfWork.CommitAsync();
             //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 

@@ -8,14 +8,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.PackageDetail.Commands.UpdatePackageDetailCommand;
 public record UpdatePackageDetailCommand(int ID, int? PackageTypeID, int? PaymentOrderID, decimal? Stay, decimal? Car,
     decimal? Flight,
     decimal? ThingsToDo,
     int? CultureId,
-     int? UpdatedBy) : IRequest<OperationResult<bool>>,
+     int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdatePackageDetailCommand>
 {
     [JsonIgnore]

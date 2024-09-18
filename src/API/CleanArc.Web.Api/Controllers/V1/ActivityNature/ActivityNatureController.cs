@@ -6,7 +6,7 @@ using CleanArc.Application.Features.ActivityNature.Queries.GetActivityNatureById
 using CleanArc.Application.Features.ActivityNature.Queries.GetAllActivityNature;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.ActivityNature
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityNature
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityNature.Commands.CreateActivityNatureCommand.CreateActivityNatureCommand, CleanArc.Application.Features.ActivityNature.Commands.UpdateActivityNatureCommand.UpdateActivityNatureCommand, CleanArc.Application.Features.ActivityNature.Commands.DeleteActivityNatureCommand.DeleteActivityNatureCommand, System.Boolean, CleanArc.Application.Features.ActivityNature.Queries.GetAllActivityNature.GetAllActivityNatureQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityNature.Queries.GetAllActivityNature.GetAllActivityNatureQueryResult&gt;, CleanArc.Application.Features.ActivityNature.Queries.GetActivityNatureById.GetActivityNatureByIdQuery, CleanArc.Application.Features.ActivityNature.Queries.GetActivityNatureById.GetActivityNatureByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityNature.Commands.CreateActivityNatureCommand.CreateActivityNatureCommand, CleanArc.Application.Features.ActivityNature.Commands.UpdateActivityNatureCommand.UpdateActivityNatureCommand, CleanArc.Application.Features.ActivityNature.Commands.DeleteActivityNatureCommand.DeleteActivityNatureCommand, System.ResponseEntity, CleanArc.Application.Features.ActivityNature.Queries.GetAllActivityNature.GetAllActivityNatureQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityNature.Queries.GetAllActivityNature.GetAllActivityNatureQueryResult&gt;, CleanArc.Application.Features.ActivityNature.Queries.GetActivityNatureById.GetActivityNatureByIdQuery, CleanArc.Application.Features.ActivityNature.Queries.GetActivityNatureById.GetActivityNatureByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/ActivityNature")]
     //[Authorize]
-    public class ActivityNatureController : _BaseController<CreateActivityNatureCommand, UpdateActivityNatureCommand, DeleteActivityNatureCommand, bool, GetAllActivityNatureQuery,
+    public class ActivityNatureController : _BaseController<CreateActivityNatureCommand, UpdateActivityNatureCommand, DeleteActivityNatureCommand, ResponseEntity, GetAllActivityNatureQuery,
     List<GetAllActivityNatureQueryResult>, GetActivityNatureByIdQuery, GetActivityNatureByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityNature
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public ActivityNatureController(ISender sender, ILogger<_BaseController<CreateActivityNatureCommand, UpdateActivityNatureCommand, DeleteActivityNatureCommand, bool, GetAllActivityNatureQuery,
+        public ActivityNatureController(ISender sender, ILogger<_BaseController<CreateActivityNatureCommand, UpdateActivityNatureCommand, DeleteActivityNatureCommand, ResponseEntity, GetAllActivityNatureQuery,
    List<GetAllActivityNatureQueryResult>, GetActivityNatureByIdQuery, GetActivityNatureByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

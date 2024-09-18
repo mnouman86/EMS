@@ -9,11 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.MappingRoomAmenity.Command.CreateMappingRoomAmenityCommand;
 
-public record CreateMappingRoomAmenityCommand(int RoomID, string? AmenitiesIDs, int? CategoryID, int? CreatedBy, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record CreateMappingRoomAmenityCommand(int RoomID, string? AmenitiesIDs, int? CategoryID, int? CreatedBy, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<CreateMappingRoomAmenityCommand>
 {
     [JsonIgnore]

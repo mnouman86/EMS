@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.SearchFilterThingsToDo.Commands.CreateSearchFilterThingsToDoCommand;
 
-internal class CreateSearchFilterThingsToDoCommandHandler: IRequestHandler<CreateSearchFilterThingsToDoCommand, OperationResult<bool>>
+internal class CreateSearchFilterThingsToDoCommandHandler: IRequestHandler<CreateSearchFilterThingsToDoCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -41,14 +41,14 @@ internal class CreateSearchFilterThingsToDoCommandHandler: IRequestHandler<Creat
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateSearchFilterThingsToDoCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateSearchFilterThingsToDoCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -56,7 +56,7 @@ internal class CreateSearchFilterThingsToDoCommandHandler: IRequestHandler<Creat
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
             //await _unitOfWork.SearchFilterThingsToDoRepository.AddAsync(new Domain.Entities.SearchFilterThingsToDo.SearchFilterThingsToDo()
             //{
             //    CultureId = request.CultureId,
@@ -105,7 +105,7 @@ internal class CreateSearchFilterThingsToDoCommandHandler: IRequestHandler<Creat
            // });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(null);
         }
     }
 }

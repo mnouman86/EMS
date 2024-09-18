@@ -78,7 +78,7 @@ public class BusinessProfileRepository : IBusinessProfileRepository
         }
     }
 
-    public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
         {
@@ -92,9 +92,9 @@ public class BusinessProfileRepository : IBusinessProfileRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(BusinessProfileQueries.Delete_BusinessProfile, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(BusinessProfileQueries.Delete_BusinessProfile, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }
@@ -161,7 +161,7 @@ public class BusinessProfileRepository : IBusinessProfileRepository
 
 
 
-    public async Task<string> UpdateAsync(BusinessProfile BusinessProfile)
+    public async Task<ResponseEntity> UpdateAsync(BusinessProfile BusinessProfile)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, BusinessProfile))
         {
@@ -173,9 +173,9 @@ public class BusinessProfileRepository : IBusinessProfileRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(BusinessProfileQueries.Update_BusinessProfile, updateBusinessProfileDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(BusinessProfileQueries.Update_BusinessProfile, updateBusinessProfileDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

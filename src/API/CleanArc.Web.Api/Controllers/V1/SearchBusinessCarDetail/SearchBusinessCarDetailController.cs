@@ -6,7 +6,7 @@ using CleanArc.Application.Features.SearchBusinessCarDetail.Queries.GetAllSearch
 using CleanArc.Application.Features.SearchBusinessCarDetail.Queries.GetSearchBusinessCarDetailById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.SearchBusinessCarDetail;
 /// <summary>
@@ -48,11 +48,11 @@ namespace CleanArc.Web.Api.Controllers.V1.SearchBusinessCarDetail;
 /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles.
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.SearchBusinessCarDetail.Command.CreateSearchBusinessCarDetail.CreateSearchBusinessCarDetailCommand, CleanArc.Application.Features.SearchBusinessCarDetail.Command.UpdateSearchBusinessCarDetail.UpdateSearchBusinessCarDetailCommand, CleanArc.Application.Features.SearchBusinessCarDetail.Command.DeleteSearchBusinessCarDetail.DeleteSearchBusinessCarDetailCommand, System.Boolean, CleanArc.Application.Features.SearchBusinessCarDetail.Queries.GetAllSearchBusinessCarDetail.GetAllSearchBusinessCarDetailQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.SearchBusinessCarDetail.Queries.GetAllSearchBusinessCarDetail.GetAllSearchBusinessCarDetailQueryResult&gt;, CleanArc.Application.Features.SearchBusinessCarDetail.Queries.GetSearchBusinessCarDetailById.GetSearchBusinessCarDetailByIdQuery, CleanArc.Application.Features.SearchBusinessCarDetail.Queries.GetSearchBusinessCarDetailById.GetSearchBusinessCarDetailByIdQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.SearchBusinessCarDetail.Command.CreateSearchBusinessCarDetail.CreateSearchBusinessCarDetailCommand, CleanArc.Application.Features.SearchBusinessCarDetail.Command.UpdateSearchBusinessCarDetail.UpdateSearchBusinessCarDetailCommand, CleanArc.Application.Features.SearchBusinessCarDetail.Command.DeleteSearchBusinessCarDetail.DeleteSearchBusinessCarDetailCommand, System.ResponseEntity, CleanArc.Application.Features.SearchBusinessCarDetail.Queries.GetAllSearchBusinessCarDetail.GetAllSearchBusinessCarDetailQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.SearchBusinessCarDetail.Queries.GetAllSearchBusinessCarDetail.GetAllSearchBusinessCarDetailQueryResult&gt;, CleanArc.Application.Features.SearchBusinessCarDetail.Queries.GetSearchBusinessCarDetailById.GetSearchBusinessCarDetailByIdQuery, CleanArc.Application.Features.SearchBusinessCarDetail.Queries.GetSearchBusinessCarDetailById.GetSearchBusinessCarDetailByIdQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/SearchBusinessCarDetail")]
-public class SearchBusinessCarDetailController : _BaseController<CreateSearchBusinessCarDetailCommand, UpdateSearchBusinessCarDetailCommand, DeleteSearchBusinessCarDetailCommand, bool, GetAllSearchBusinessCarDetailQuery,
+public class SearchBusinessCarDetailController : _BaseController<CreateSearchBusinessCarDetailCommand, UpdateSearchBusinessCarDetailCommand, DeleteSearchBusinessCarDetailCommand, ResponseEntity, GetAllSearchBusinessCarDetailQuery,
     List<GetAllSearchBusinessCarDetailQueryResult>, GetSearchBusinessCarDetailByIdQuery, GetSearchBusinessCarDetailByIdQueryResult>
 {
 
@@ -62,7 +62,7 @@ public class SearchBusinessCarDetailController : _BaseController<CreateSearchBus
     /// <param name="sender">The mediator sender for handling requests and responses.</param>
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
-    public SearchBusinessCarDetailController(ISender sender, ILogger<_BaseController<CreateSearchBusinessCarDetailCommand, UpdateSearchBusinessCarDetailCommand, DeleteSearchBusinessCarDetailCommand, bool, GetAllSearchBusinessCarDetailQuery,
+    public SearchBusinessCarDetailController(ISender sender, ILogger<_BaseController<CreateSearchBusinessCarDetailCommand, UpdateSearchBusinessCarDetailCommand, DeleteSearchBusinessCarDetailCommand, ResponseEntity, GetAllSearchBusinessCarDetailQuery,
 List<GetAllSearchBusinessCarDetailQueryResult>, GetSearchBusinessCarDetailByIdQuery, GetSearchBusinessCarDetailByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 

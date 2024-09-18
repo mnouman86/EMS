@@ -6,7 +6,7 @@ using CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddressBy
 using CleanArc.Application.Features.ActivityAddress.Queries.GetAllActivityAddress;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.ActivityAddress
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityAddress
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityAddress.Commands.CreateActivityAddressCommand.CreateActivityAddressCommand, CleanArc.Application.Features.ActivityAddress.Commands.UpdateActivityAddressCommand.UpdateActivityAddressCommand, CleanArc.Application.Features.ActivityAddress.Commands.DeleteActivityAddressCommand.DeleteActivityAddressCommand, System.Boolean, CleanArc.Application.Features.ActivityAddress.Queries.GetAllActivityAddress.GetAllActivityAddressQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityAddress.Queries.GetAllActivityAddress.GetAllActivityAddressQueryResult&gt;, CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddressById.GetActivityAddressByIdQuery, CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddressById.GetActivityAddressByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityAddress.Commands.CreateActivityAddressCommand.CreateActivityAddressCommand, CleanArc.Application.Features.ActivityAddress.Commands.UpdateActivityAddressCommand.UpdateActivityAddressCommand, CleanArc.Application.Features.ActivityAddress.Commands.DeleteActivityAddressCommand.DeleteActivityAddressCommand, System.ResponseEntity, CleanArc.Application.Features.ActivityAddress.Queries.GetAllActivityAddress.GetAllActivityAddressQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityAddress.Queries.GetAllActivityAddress.GetAllActivityAddressQueryResult&gt;, CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddressById.GetActivityAddressByIdQuery, CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddressById.GetActivityAddressByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/ActivityAddress")]
     //[Authorize]
-    public class ActivityAddressController : _BaseController<CreateActivityAddressCommand, UpdateActivityAddressCommand, DeleteActivityAddressCommand, bool, GetAllActivityAddressQuery,
+    public class ActivityAddressController : _BaseController<CreateActivityAddressCommand, UpdateActivityAddressCommand, DeleteActivityAddressCommand, ResponseEntity, GetAllActivityAddressQuery,
     List<GetAllActivityAddressQueryResult>, GetActivityAddressByIdQuery, GetActivityAddressByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityAddress
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public ActivityAddressController(ISender sender, ILogger<_BaseController<CreateActivityAddressCommand, UpdateActivityAddressCommand, DeleteActivityAddressCommand, bool, GetAllActivityAddressQuery,
+        public ActivityAddressController(ISender sender, ILogger<_BaseController<CreateActivityAddressCommand, UpdateActivityAddressCommand, DeleteActivityAddressCommand, ResponseEntity, GetAllActivityAddressQuery,
    List<GetAllActivityAddressQueryResult>, GetActivityAddressByIdQuery, GetActivityAddressByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

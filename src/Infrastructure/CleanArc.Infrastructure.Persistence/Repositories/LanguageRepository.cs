@@ -74,7 +74,7 @@ public class LanguageRepository : ILanguageRepository
         }
     }
 
-    public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
         {
@@ -87,9 +87,9 @@ public class LanguageRepository : ILanguageRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(LanguageQueries.Delete_Language, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(LanguageQueries.Delete_Language, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }
@@ -134,7 +134,7 @@ public class LanguageRepository : ILanguageRepository
 
 
 
-    public async Task<string> UpdateAsync(Language language)
+    public async Task<ResponseEntity> UpdateAsync(Language language)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, language))
         {
@@ -143,9 +143,9 @@ public class LanguageRepository : ILanguageRepository
                 connection.Open();
                 UpdateLanguageDTO updateLanguageDTO = _mapper.Map<UpdateLanguageDTO>(language);
 
-                var result = await connection.ExecuteAsync(LanguageQueries.Update_Language, updateLanguageDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(LanguageQueries.Update_Language, updateLanguageDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

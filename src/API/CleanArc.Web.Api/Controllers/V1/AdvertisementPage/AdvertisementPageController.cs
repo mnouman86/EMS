@@ -6,7 +6,7 @@ using CleanArc.Application.Features.AdvertisementPage.Queries.GetAdvertisementPa
 using CleanArc.Application.Features.AdvertisementPage.Queries.GetAllAdvertisementPage;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.AdvertisementPage
 {
@@ -33,12 +33,12 @@ namespace CleanArc.Web.Api.Controllers.V1.AdvertisementPage
     /// Note: The actual endpoint methods are intended to be implemented to utilize the base controller’s 
     /// operation result handling and user ID setting.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.AdvertisementPage.Commands.CreateAdvertisementPageCommand.CreateAdvertisementPageCommand, CleanArc.Application.Features.AdvertisementPage.Commands.UpdateAdvertisementPageCommand.UpdateAdvertisementPageCommand, CleanArc.Application.Features.AdvertisementPage.Commands.DeleteAdvertisementPageCommand.DeleteAdvertisementPageCommand, System.Boolean, CleanArc.Application.Features.AdvertisementPage.Queries.GetAllAdvertisementPage.GetAllAdvertisementPageQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.AdvertisementPage.Queries.GetAllAdvertisementPage.GetAllAdvertisementPageQueryResult&gt;, CleanArc.Application.Features.AdvertisementPage.Queries.GetAdvertisementPageById.GetAdvertisementPageByIdQuery, CleanArc.Application.Features.AdvertisementPage.Queries.GetAdvertisementPageById.GetAdvertisementPageByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.AdvertisementPage.Commands.CreateAdvertisementPageCommand.CreateAdvertisementPageCommand, CleanArc.Application.Features.AdvertisementPage.Commands.UpdateAdvertisementPageCommand.UpdateAdvertisementPageCommand, CleanArc.Application.Features.AdvertisementPage.Commands.DeleteAdvertisementPageCommand.DeleteAdvertisementPageCommand, System.ResponseEntity, CleanArc.Application.Features.AdvertisementPage.Queries.GetAllAdvertisementPage.GetAllAdvertisementPageQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.AdvertisementPage.Queries.GetAllAdvertisementPage.GetAllAdvertisementPageQueryResult&gt;, CleanArc.Application.Features.AdvertisementPage.Queries.GetAdvertisementPageById.GetAdvertisementPageByIdQuery, CleanArc.Application.Features.AdvertisementPage.Queries.GetAdvertisementPageById.GetAdvertisementPageByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/AdvertisementPage")]
     //[Authorize]
-    public class AdvertisementPageController : _BaseController<CreateAdvertisementPageCommand, UpdateAdvertisementPageCommand, DeleteAdvertisementPageCommand, bool, GetAllAdvertisementPageQuery,
+    public class AdvertisementPageController : _BaseController<CreateAdvertisementPageCommand, UpdateAdvertisementPageCommand, DeleteAdvertisementPageCommand, ResponseEntity, GetAllAdvertisementPageQuery,
     List<GetAllAdvertisementPageQueryResult>, GetAdvertisementPageByIdQuery, GetAdvertisementPageByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -85,7 +85,7 @@ namespace CleanArc.Web.Api.Controllers.V1.AdvertisementPage
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public AdvertisementPageController(ISender sender, ILogger<_BaseController<CreateAdvertisementPageCommand, UpdateAdvertisementPageCommand, DeleteAdvertisementPageCommand, bool, GetAllAdvertisementPageQuery,
+        public AdvertisementPageController(ISender sender, ILogger<_BaseController<CreateAdvertisementPageCommand, UpdateAdvertisementPageCommand, DeleteAdvertisementPageCommand, ResponseEntity, GetAllAdvertisementPageQuery,
    List<GetAllAdvertisementPageQueryResult>, GetAdvertisementPageByIdQuery, GetAdvertisementPageByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

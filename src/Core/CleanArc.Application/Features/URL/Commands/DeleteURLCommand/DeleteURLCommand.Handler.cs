@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.URL.Commands.DeleteURLCommand;
 
-internal class DeleteURLCommandHandler : IRequestHandler<DeleteURLCommand, OperationResult<bool>>
+internal class DeleteURLCommandHandler : IRequestHandler<DeleteURLCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -27,20 +27,20 @@ internal class DeleteURLCommandHandler : IRequestHandler<DeleteURLCommand, Opera
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(DeleteURLCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(DeleteURLCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
             var user = await _userManager.GetUserByIdAsync(request.UserId);
 
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
-            await _unitOfWork.URLRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.URLRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
 
             await _unitOfWork.CommitAsync();
 
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }

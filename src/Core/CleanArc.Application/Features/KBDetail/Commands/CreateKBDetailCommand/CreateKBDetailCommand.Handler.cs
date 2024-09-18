@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.KBDetail.Commands.CreateKBDetailCommand;
 
-internal class CreateKBDetailCommandHandler: IRequestHandler<CreateKBDetailCommand, OperationResult<bool>>
+internal class CreateKBDetailCommandHandler: IRequestHandler<CreateKBDetailCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -41,14 +41,14 @@ internal class CreateKBDetailCommandHandler: IRequestHandler<CreateKBDetailComma
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateKBDetailCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateKBDetailCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -56,8 +56,8 @@ internal class CreateKBDetailCommandHandler: IRequestHandler<CreateKBDetailComma
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.KBDetailRepository.AddAsync(new Domain.Entities.KBDetail.KBDetail()
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            var result = await _unitOfWork.KBDetailRepository.AddAsync(new Domain.Entities.KBDetail.KBDetail()
             { CreatedBy = user.Id,
                 Title = request.Title,
 
@@ -83,7 +83,7 @@ internal class CreateKBDetailCommandHandler: IRequestHandler<CreateKBDetailComma
                 CultureId = request.CultureId  });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }

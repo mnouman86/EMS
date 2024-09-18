@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ServiceCategory.Command.UpdateServiceCategoryCommand;
 
-internal class UpdateServiceCategoryCommandHandler : IRequestHandler<UpdateServiceCategoryCommand, OperationResult<bool>>
+internal class UpdateServiceCategoryCommandHandler : IRequestHandler<UpdateServiceCategoryCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -38,14 +38,14 @@ internal class UpdateServiceCategoryCommandHandler : IRequestHandler<UpdateServi
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<bool>> Handle(UpdateServiceCategoryCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateServiceCategoryCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -53,12 +53,12 @@ internal class UpdateServiceCategoryCommandHandler : IRequestHandler<UpdateServi
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.ServiceCategoryRepository.UpdateAsync(new Domain.Entities.ServiceCategory.ServiceCategory()
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            var result = await _unitOfWork.ServiceCategoryRepository.UpdateAsync(new Domain.Entities.ServiceCategory.ServiceCategory()
             { UpdatedBy = user.Id, ID = request.ID, Description = request.Description, Name = request.Name });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 

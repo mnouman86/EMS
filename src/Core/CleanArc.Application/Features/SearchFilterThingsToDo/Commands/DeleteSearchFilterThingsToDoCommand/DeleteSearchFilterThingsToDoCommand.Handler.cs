@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.SearchFilterThingsToDo.Commands.DeleteSearchFilterThingsToDoCommand;
 
-internal class DeleteSearchFilterThingsToDoCommandHandler: IRequestHandler<DeleteSearchFilterThingsToDoCommand, OperationResult<bool>>
+internal class DeleteSearchFilterThingsToDoCommandHandler: IRequestHandler<DeleteSearchFilterThingsToDoCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -39,14 +39,14 @@ internal class DeleteSearchFilterThingsToDoCommandHandler: IRequestHandler<Delet
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<bool>> Handle(DeleteSearchFilterThingsToDoCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(DeleteSearchFilterThingsToDoCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -54,13 +54,13 @@ internal class DeleteSearchFilterThingsToDoCommandHandler: IRequestHandler<Delet
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
             //await _unitOfWork.SearchFilterThingsToDoRepository.DeleteAsync(new Domain.Entities.SearchFilterThingsToDo.SearchFilterThingsToDo()
             // { UpdatedBy = user.Id, ID = request.ID });
            // await _unitOfWork.SearchFilterThingsToDoRepository.DeleteAsync(request.SelectedIds,request.UserId, request.CultureId);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(null);
         }
     }
 

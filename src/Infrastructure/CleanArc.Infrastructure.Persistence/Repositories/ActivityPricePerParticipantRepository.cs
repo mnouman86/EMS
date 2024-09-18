@@ -86,7 +86,7 @@ public async Task<ResponseEntity> AddAsync(ActivityPricePerParticipant ActivityP
     }
 }
 
-    public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
         {
@@ -100,9 +100,9 @@ public async Task<ResponseEntity> AddAsync(ActivityPricePerParticipant ActivityP
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityPricePerParticipantQueries.Delete_ActivityPricePerParticipant, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityPricePerParticipantQueries.Delete_ActivityPricePerParticipant, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }
@@ -165,7 +165,7 @@ public async Task<ResponseEntity> AddAsync(ActivityPricePerParticipant ActivityP
 
 
 
-    public async Task<string> UpdateAsync(ActivityPricePerParticipant entity)
+    public async Task<ResponseEntity> UpdateAsync(ActivityPricePerParticipant entity)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
         {
@@ -176,9 +176,9 @@ public async Task<ResponseEntity> AddAsync(ActivityPricePerParticipant ActivityP
                 var parameters = new DynamicParameters(updateActivityPricePerParticipantDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.ExecuteAsync(ActivityPricePerParticipantQueries.Activity_Update_ActivityIDPerParticiption, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityPricePerParticipantQueries.Activity_Update_ActivityIDPerParticiption, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

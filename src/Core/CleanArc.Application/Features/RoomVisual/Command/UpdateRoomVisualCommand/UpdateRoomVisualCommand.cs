@@ -9,11 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.RoomVisual.Command.UpdateRoomVisualCommand
 {
-    public record UpdateRoomVisualCommand(int ID, int? HotelID, int? RoomID, int? CategoryID, String? ImagePath, string? ImageTitle, bool? IsMain, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+    public record UpdateRoomVisualCommand(int ID, int? HotelID, int? RoomID, int? CategoryID, String? ImagePath, string? ImageTitle, bool? IsMain, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateRoomVisualCommand>
     {
         [JsonIgnore]

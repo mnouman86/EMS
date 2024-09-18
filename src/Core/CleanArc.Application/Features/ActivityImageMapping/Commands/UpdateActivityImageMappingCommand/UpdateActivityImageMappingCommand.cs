@@ -8,10 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ActivityImageMapping.Commands.UpdateActivityImageMappingCommand;
-public record UpdateActivityImageMappingCommand(int ID, int? ActivityID, string? ImagePath, string? ImageTitle, bool? IsMain, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record UpdateActivityImageMappingCommand(int ID, int? ActivityID, string? ImagePath, string? ImageTitle, bool? IsMain, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateActivityImageMappingCommand>
 {
     [JsonIgnore]

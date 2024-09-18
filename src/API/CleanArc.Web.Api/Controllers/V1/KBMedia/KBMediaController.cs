@@ -6,7 +6,7 @@ using CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById;
 using CleanArc.Application.Features.KBMedia.Queries.GetAllKBMedia;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.KBMedia
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.KBMedia
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommand, CleanArc.Application.Features.KBMedia.Commands.UpdateKBMediaCommand.UpdateKBMediaCommand, CleanArc.Application.Features.KBMedia.Commands.DeleteKBMediaCommand.DeleteKBMediaCommand, System.Boolean, CleanArc.Application.Features.KBMedia.Queries.GetAllKBMedia.GetAllKBMediaQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.KBMedia.Queries.GetAllKBMedia.GetAllKBMediaQueryResult&gt;, CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById.GetKBMediaByIdQuery, CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById.GetKBMediaByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand.CreateKBMediaCommand, CleanArc.Application.Features.KBMedia.Commands.UpdateKBMediaCommand.UpdateKBMediaCommand, CleanArc.Application.Features.KBMedia.Commands.DeleteKBMediaCommand.DeleteKBMediaCommand, System.ResponseEntity, CleanArc.Application.Features.KBMedia.Queries.GetAllKBMedia.GetAllKBMediaQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.KBMedia.Queries.GetAllKBMedia.GetAllKBMediaQueryResult&gt;, CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById.GetKBMediaByIdQuery, CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById.GetKBMediaByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/KBMedia")]
     //[Authorize]
-    public class KBMediaController : _BaseController<CreateKBMediaCommand, UpdateKBMediaCommand, DeleteKBMediaCommand, bool, GetAllKBMediaQuery,
+    public class KBMediaController : _BaseController<CreateKBMediaCommand, UpdateKBMediaCommand, DeleteKBMediaCommand, ResponseEntity, GetAllKBMediaQuery,
     List<GetAllKBMediaQueryResult>, GetKBMediaByIdQuery, GetKBMediaByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.KBMedia
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public KBMediaController(ISender sender, ILogger<_BaseController<CreateKBMediaCommand, UpdateKBMediaCommand, DeleteKBMediaCommand, bool, GetAllKBMediaQuery,
+        public KBMediaController(ISender sender, ILogger<_BaseController<CreateKBMediaCommand, UpdateKBMediaCommand, DeleteKBMediaCommand, ResponseEntity, GetAllKBMediaQuery,
    List<GetAllKBMediaQueryResult>, GetKBMediaByIdQuery, GetKBMediaByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

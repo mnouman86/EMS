@@ -8,10 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.FAQs.Commands.UpdateFAQsCommand;
-public record UpdateFAQsCommand(int ID,int? CategoryServiceID, int? ServiceID, int? SubServiceID, string? Question, string? Answer, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
+public record UpdateFAQsCommand(int ID,int? CategoryServiceID, int? ServiceID, int? SubServiceID, string? Question, string? Answer, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateFAQsCommand>
 {
     [JsonIgnore]

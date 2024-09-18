@@ -6,7 +6,7 @@ using CleanArc.Application.Features.ActivityTransportation.Queries.GetActivityTr
 using CleanArc.Application.Features.ActivityTransportation.Queries.GetAllActivityTransportation;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.ActivityTransportation
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityTransportation
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityTransportation.Commands.CreateActivityTransportationCommand.CreateActivityTransportationCommand, CleanArc.Application.Features.ActivityTransportation.Commands.UpdateActivityTransportationCommand.UpdateActivityTransportationCommand, CleanArc.Application.Features.ActivityTransportation.Commands.DeleteActivityTransportationCommand.DeleteActivityTransportationCommand, System.Boolean, CleanArc.Application.Features.ActivityTransportation.Queries.GetAllActivityTransportation.GetAllActivityTransportationQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityTransportation.Queries.GetAllActivityTransportation.GetAllActivityTransportationQueryResult&gt;, CleanArc.Application.Features.ActivityTransportation.Queries.GetActivityTransportationById.GetActivityTransportationByIdQuery, CleanArc.Application.Features.ActivityTransportation.Queries.GetActivityTransportationById.GetActivityTransportationByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityTransportation.Commands.CreateActivityTransportationCommand.CreateActivityTransportationCommand, CleanArc.Application.Features.ActivityTransportation.Commands.UpdateActivityTransportationCommand.UpdateActivityTransportationCommand, CleanArc.Application.Features.ActivityTransportation.Commands.DeleteActivityTransportationCommand.DeleteActivityTransportationCommand, System.ResponseEntity, CleanArc.Application.Features.ActivityTransportation.Queries.GetAllActivityTransportation.GetAllActivityTransportationQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityTransportation.Queries.GetAllActivityTransportation.GetAllActivityTransportationQueryResult&gt;, CleanArc.Application.Features.ActivityTransportation.Queries.GetActivityTransportationById.GetActivityTransportationByIdQuery, CleanArc.Application.Features.ActivityTransportation.Queries.GetActivityTransportationById.GetActivityTransportationByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/ActivityTransportation")]
     //[Authorize]
-    public class ActivityTransportationController : _BaseController<CreateActivityTransportationCommand, UpdateActivityTransportationCommand, DeleteActivityTransportationCommand, bool, GetAllActivityTransportationQuery,
+    public class ActivityTransportationController : _BaseController<CreateActivityTransportationCommand, UpdateActivityTransportationCommand, DeleteActivityTransportationCommand, ResponseEntity, GetAllActivityTransportationQuery,
     List<GetAllActivityTransportationQueryResult>, GetActivityTransportationByIdQuery, GetActivityTransportationByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityTransportation
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public ActivityTransportationController(ISender sender, ILogger<_BaseController<CreateActivityTransportationCommand, UpdateActivityTransportationCommand, DeleteActivityTransportationCommand, bool, GetAllActivityTransportationQuery,
+        public ActivityTransportationController(ISender sender, ILogger<_BaseController<CreateActivityTransportationCommand, UpdateActivityTransportationCommand, DeleteActivityTransportationCommand, ResponseEntity, GetAllActivityTransportationQuery,
    List<GetAllActivityTransportationQueryResult>, GetActivityTransportationByIdQuery, GetActivityTransportationByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

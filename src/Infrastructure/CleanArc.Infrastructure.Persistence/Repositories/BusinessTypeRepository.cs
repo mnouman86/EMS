@@ -78,7 +78,7 @@ public class BusinessTypeRepository : IBusinessTypeRepository
         }
     }
 
-    public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
         {
@@ -91,9 +91,9 @@ public class BusinessTypeRepository : IBusinessTypeRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(BusinessTypeQueries.Delete_BusinessType, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(BusinessTypeQueries.Delete_BusinessType, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }
@@ -158,7 +158,7 @@ public class BusinessTypeRepository : IBusinessTypeRepository
 
 
 
-    public async Task<string> UpdateAsync(BusinessType BusinessType)
+    public async Task<ResponseEntity> UpdateAsync(BusinessType BusinessType)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, BusinessType))
         {
@@ -170,9 +170,9 @@ public class BusinessTypeRepository : IBusinessTypeRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(BusinessTypeQueries.Update_BusinessType, updateBusinessTypeDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(BusinessTypeQueries.Update_BusinessType, updateBusinessTypeDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

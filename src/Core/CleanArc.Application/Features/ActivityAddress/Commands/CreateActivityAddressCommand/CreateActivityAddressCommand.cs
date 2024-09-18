@@ -2,7 +2,7 @@
 using CleanArc.SharedKernel.ValidationBase.Contracts;
 using CleanArc.SharedKernel.ValidationBase;
 using FluentValidation;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ public record CreateActivityAddressCommand(int? GenericAddressID, int? ServiceID
     string? Latitude,
     string? Longitude,
     int? CultureId,
-    int? CreatedBy) : IRequest<OperationResult<bool>>,
+    int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateActivityAddressCommand>
 {
     [JsonIgnore]

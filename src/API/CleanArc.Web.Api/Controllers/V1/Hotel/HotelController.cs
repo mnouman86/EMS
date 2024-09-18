@@ -6,7 +6,7 @@ using CleanArc.Application.Features.Hotel.Queries.GetAllHotels;
 using CleanArc.Application.Features.Hotel.Queries.GetHotelById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.Hotel
 {
@@ -49,13 +49,13 @@ namespace CleanArc.Web.Api.Controllers.V1.Hotel
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles. 
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Hotel.Command.CreateHotelCommand.CreateHotelCommand, CleanArc.Application.Features.Hotel.Command.UpdateHotelCommand.UpdateHotelCommand, CleanArc.Application.Features.Hotel.Command.DeleteHotelCommand.DeleteHotelCommand, System.Boolean, CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQueryResult&gt;, CleanArc.Application.Features.Hotel.Queries.GetHotelById.GetHotelByIdQuery, CleanArc.Application.Features.Hotel.Queries.GetHotelById.GetHotelByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Hotel.Command.CreateHotelCommand.CreateHotelCommand, CleanArc.Application.Features.Hotel.Command.UpdateHotelCommand.UpdateHotelCommand, CleanArc.Application.Features.Hotel.Command.DeleteHotelCommand.DeleteHotelCommand, System.ResponseEntity, CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQueryResult&gt;, CleanArc.Application.Features.Hotel.Queries.GetHotelById.GetHotelByIdQuery, CleanArc.Application.Features.Hotel.Queries.GetHotelById.GetHotelByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/Hotel")]
     //[Authorize]
 
-    public class HotelController : _BaseController<CreateHotelCommand, UpdateHotelCommand, DeleteHotelCommand, bool, GetAllHotelsQuery,
+    public class HotelController : _BaseController<CreateHotelCommand, UpdateHotelCommand, DeleteHotelCommand, ResponseEntity, GetAllHotelsQuery,
     List<GetAllHotelsQueryResult>, GetHotelByIdQuery, GetHotelByIdQueryResult>
     {
         /// <summary>
@@ -64,7 +64,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Hotel
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public HotelController(ISender sender, ILogger<_BaseController<CreateHotelCommand, UpdateHotelCommand, DeleteHotelCommand, bool, GetAllHotelsQuery,
+        public HotelController(ISender sender, ILogger<_BaseController<CreateHotelCommand, UpdateHotelCommand, DeleteHotelCommand, ResponseEntity, GetAllHotelsQuery,
    List<GetAllHotelsQueryResult>, GetHotelByIdQuery, GetHotelByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
 
 

@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Country.Command.UpdateCountryCommand
 {
-    internal class UpdateCountryCommandHandler : IRequestHandler<UpdateCountryCommand, OperationResult<bool>>
+    internal class UpdateCountryCommandHandler : IRequestHandler<UpdateCountryCommand, OperationResult<ResponseEntity>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IAppUserManager _userManager;
@@ -39,14 +39,14 @@ namespace CleanArc.Application.Features.Country.Command.UpdateCountryCommand
             //_unitOfWork = unitOfWork;
             //_userManager = userManager;
         }
-        public async ValueTask<OperationResult<bool>> Handle(UpdateCountryCommand request, CancellationToken cancellationToken)
+        public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateCountryCommand request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
 
                 var user = await _userManager.GetUserByIdAsync(request.UserId);
                 if (user == null)
-                    return OperationResult<bool>.FailureResult("User Not Found");
+                    return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
                 //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
                 //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -54,12 +54,12 @@ namespace CleanArc.Application.Features.Country.Command.UpdateCountryCommand
                 //await _unitOfWork.CommitAsync();
                 //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-                //return OperationResult<bool>.SuccessResult(true);
-                await _unitOfWork.CountryRepository.UpdateAsync(new Domain.Entities.Country.Country()
+                //return OperationResult<ResponseEntity>.SuccessResult(result);
+                var result = await _unitOfWork.CountryRepository.UpdateAsync(new Domain.Entities.Country.Country()
                 { UpdatedBy = user.Id, ID = request.ID, Description = request.Description, Name = request.Name });
                 await _unitOfWork.CommitAsync();
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-                return OperationResult<bool>.SuccessResult(true);
+                return OperationResult<ResponseEntity>.SuccessResult(result);
             }
         }
 

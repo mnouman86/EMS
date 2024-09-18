@@ -8,10 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ActivityGroup.Commands.UpdateActivityGroupCommand;
-public record UpdateActivityGroupCommand(int ID, int? ActivityID, string? From, string To, int? Size,int? UpdatedBy,int CultureId) : IRequest<OperationResult<bool>>,
+public record UpdateActivityGroupCommand(int ID, int? ActivityID, string? From, string To, int? Size,int? UpdatedBy,int CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateActivityGroupCommand>
 {
     [JsonIgnore]

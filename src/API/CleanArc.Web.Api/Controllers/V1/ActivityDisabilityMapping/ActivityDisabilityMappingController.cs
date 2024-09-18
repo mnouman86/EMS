@@ -6,7 +6,7 @@ using CleanArc.Application.Features.ActivityDisabilityMapping.Queries.GetActivit
 using CleanArc.Application.Features.ActivityDisabilityMapping.Queries.GetAllActivityDisabilityMapping;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.ActivityDisabilityMapping
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityDisabilityMapping
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityDisabilityMapping.Commands.CreateActivityDisabilityMappingCommand.CreateActivityDisabilityMappingCommand, CleanArc.Application.Features.ActivityDisabilityMapping.Commands.UpdateActivityDisabilityMappingCommand.UpdateActivityDisabilityMappingCommand, CleanArc.Application.Features.ActivityDisabilityMapping.Commands.DeleteActivityDisabilityMappingCommand.DeleteActivityDisabilityMappingCommand, System.Boolean, CleanArc.Application.Features.ActivityDisabilityMapping.Queries.GetAllActivityDisabilityMapping.GetAllActivityDisabilityMappingQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityDisabilityMapping.Queries.GetAllActivityDisabilityMapping.GetAllActivityDisabilityMappingQueryResult&gt;, CleanArc.Application.Features.ActivityDisabilityMapping.Queries.GetActivityDisabilityMappingById.GetActivityDisabilityMappingByIdQuery, CleanArc.Application.Features.ActivityDisabilityMapping.Queries.GetActivityDisabilityMappingById.GetActivityDisabilityMappingByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityDisabilityMapping.Commands.CreateActivityDisabilityMappingCommand.CreateActivityDisabilityMappingCommand, CleanArc.Application.Features.ActivityDisabilityMapping.Commands.UpdateActivityDisabilityMappingCommand.UpdateActivityDisabilityMappingCommand, CleanArc.Application.Features.ActivityDisabilityMapping.Commands.DeleteActivityDisabilityMappingCommand.DeleteActivityDisabilityMappingCommand, System.ResponseEntity, CleanArc.Application.Features.ActivityDisabilityMapping.Queries.GetAllActivityDisabilityMapping.GetAllActivityDisabilityMappingQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityDisabilityMapping.Queries.GetAllActivityDisabilityMapping.GetAllActivityDisabilityMappingQueryResult&gt;, CleanArc.Application.Features.ActivityDisabilityMapping.Queries.GetActivityDisabilityMappingById.GetActivityDisabilityMappingByIdQuery, CleanArc.Application.Features.ActivityDisabilityMapping.Queries.GetActivityDisabilityMappingById.GetActivityDisabilityMappingByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/ActivityDisabilityMapping")]
     //[Authorize]
-    public class ActivityDisabilityMappingController : _BaseController<CreateActivityDisabilityMappingCommand, UpdateActivityDisabilityMappingCommand, DeleteActivityDisabilityMappingCommand, bool, GetAllActivityDisabilityMappingQuery,
+    public class ActivityDisabilityMappingController : _BaseController<CreateActivityDisabilityMappingCommand, UpdateActivityDisabilityMappingCommand, DeleteActivityDisabilityMappingCommand, ResponseEntity, GetAllActivityDisabilityMappingQuery,
     List<GetAllActivityDisabilityMappingQueryResult>, GetActivityDisabilityMappingByIdQuery, GetActivityDisabilityMappingByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityDisabilityMapping
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public ActivityDisabilityMappingController(ISender sender, ILogger<_BaseController<CreateActivityDisabilityMappingCommand, UpdateActivityDisabilityMappingCommand, DeleteActivityDisabilityMappingCommand, bool, GetAllActivityDisabilityMappingQuery,
+        public ActivityDisabilityMappingController(ISender sender, ILogger<_BaseController<CreateActivityDisabilityMappingCommand, UpdateActivityDisabilityMappingCommand, DeleteActivityDisabilityMappingCommand, ResponseEntity, GetAllActivityDisabilityMappingQuery,
    List<GetAllActivityDisabilityMappingQueryResult>, GetActivityDisabilityMappingByIdQuery, GetActivityDisabilityMappingByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

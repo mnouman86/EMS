@@ -71,7 +71,7 @@ public class CityRepository : ICityRepository
         }
     }
 
-    public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
         {
@@ -84,9 +84,9 @@ public class CityRepository : ICityRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(CityQueries.Delete_City, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(CityQueries.Delete_City, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }
@@ -131,7 +131,7 @@ public class CityRepository : ICityRepository
 
 
 
-    public async Task<string> UpdateAsync(City city)
+    public async Task<ResponseEntity> UpdateAsync(City city)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, city))
         {
@@ -140,9 +140,9 @@ public class CityRepository : ICityRepository
                 connection.Open();
                 UpdateCityDTO updateCityDTO = _mapper.Map<UpdateCityDTO>(city);
 
-                var result = await connection.ExecuteAsync(CityQueries.Update_City, updateCityDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(CityQueries.Update_City, updateCityDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

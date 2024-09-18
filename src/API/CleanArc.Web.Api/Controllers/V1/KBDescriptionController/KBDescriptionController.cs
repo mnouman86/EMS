@@ -6,7 +6,7 @@ using CleanArc.Application.Features.KBDescription.Queries.GetKBDescriptionById;
 using CleanArc.Application.Features.KBDescription.Queries.GetAllKBDescription;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.KBDescription
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.KBDescription
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.KBDescription.Commands.CreateKBDescriptionCommand.CreateKBDescriptionCommand, CleanArc.Application.Features.KBDescription.Commands.UpdateKBDescriptionCommand.UpdateKBDescriptionCommand, CleanArc.Application.Features.KBDescription.Commands.DeleteKBDescriptionCommand.DeleteKBDescriptionCommand, System.Boolean, CleanArc.Application.Features.KBDescription.Queries.GetAllKBDescription.GetAllKBDescriptionQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.KBDescription.Queries.GetAllKBDescription.GetAllKBDescriptionQueryResult&gt;, CleanArc.Application.Features.KBDescription.Queries.GetKBDescriptionById.GetKBDescriptionByIdQuery, CleanArc.Application.Features.KBDescription.Queries.GetKBDescriptionById.GetKBDescriptionByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.KBDescription.Commands.CreateKBDescriptionCommand.CreateKBDescriptionCommand, CleanArc.Application.Features.KBDescription.Commands.UpdateKBDescriptionCommand.UpdateKBDescriptionCommand, CleanArc.Application.Features.KBDescription.Commands.DeleteKBDescriptionCommand.DeleteKBDescriptionCommand, System.ResponseEntity, CleanArc.Application.Features.KBDescription.Queries.GetAllKBDescription.GetAllKBDescriptionQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.KBDescription.Queries.GetAllKBDescription.GetAllKBDescriptionQueryResult&gt;, CleanArc.Application.Features.KBDescription.Queries.GetKBDescriptionById.GetKBDescriptionByIdQuery, CleanArc.Application.Features.KBDescription.Queries.GetKBDescriptionById.GetKBDescriptionByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/KBDescription")]
     //[Authorize]
-    public class KBDescriptionController : _BaseController<CreateKBDescriptionCommand, UpdateKBDescriptionCommand, DeleteKBDescriptionCommand, bool, GetAllKBDescriptionQuery,
+    public class KBDescriptionController : _BaseController<CreateKBDescriptionCommand, UpdateKBDescriptionCommand, DeleteKBDescriptionCommand, ResponseEntity, GetAllKBDescriptionQuery,
     List<GetAllKBDescriptionQueryResult>, GetKBDescriptionByIdQuery, GetKBDescriptionByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.KBDescription
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public KBDescriptionController(ISender sender, ILogger<_BaseController<CreateKBDescriptionCommand, UpdateKBDescriptionCommand, DeleteKBDescriptionCommand, bool, GetAllKBDescriptionQuery,
+        public KBDescriptionController(ISender sender, ILogger<_BaseController<CreateKBDescriptionCommand, UpdateKBDescriptionCommand, DeleteKBDescriptionCommand, ResponseEntity, GetAllKBDescriptionQuery,
    List<GetAllKBDescriptionQueryResult>, GetKBDescriptionByIdQuery, GetKBDescriptionByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

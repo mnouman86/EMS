@@ -9,11 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.Language.Command.CreateLanguageCommand
 {
-    public record CreateLanguageCommand(string? Name, string? Description, int? CreatedBy) : IRequest<OperationResult<bool>>,
+    public record CreateLanguageCommand(string? Name, string? Description, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateLanguageCommand>
     {
         [JsonIgnore]

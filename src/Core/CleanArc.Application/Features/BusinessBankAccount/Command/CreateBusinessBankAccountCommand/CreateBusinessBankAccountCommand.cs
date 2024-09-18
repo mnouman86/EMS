@@ -9,11 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.BusinessBankAccount.Command.BusinessBankAccountCommand;
 
-public record CreateBusinessBankAccountCommand(string? AccountTitle, int? BankID, int? BusinessID,string IBAN, int? CreatedBy) : IRequest<OperationResult<bool>>,
+public record CreateBusinessBankAccountCommand(string? AccountTitle, int? BankID, int? BusinessID,string IBAN, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateBusinessBankAccountCommand>
 {
     [JsonIgnore]

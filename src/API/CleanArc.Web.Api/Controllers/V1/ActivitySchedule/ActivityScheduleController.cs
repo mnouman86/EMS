@@ -6,7 +6,7 @@ using CleanArc.Application.Features.ActivitySchedule.Queries.GetActivitySchedule
 using CleanArc.Application.Features.ActivitySchedule.Queries.GetAllActivitySchedule;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.ActivitySchedule
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivitySchedule
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivitySchedule.Commands.CreateActivityScheduleCommand.CreateActivityScheduleCommand, CleanArc.Application.Features.ActivitySchedule.Commands.UpdateActivityScheduleCommand.UpdateActivityScheduleCommand, CleanArc.Application.Features.ActivitySchedule.Commands.DeleteActivityScheduleCommand.DeleteActivityScheduleCommand, System.Boolean, CleanArc.Application.Features.ActivitySchedule.Queries.GetAllActivitySchedule.GetAllActivityScheduleQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivitySchedule.Queries.GetAllActivitySchedule.GetAllActivityScheduleQueryResult&gt;, CleanArc.Application.Features.ActivitySchedule.Queries.GetActivityScheduleById.GetActivityScheduleByIdQuery, CleanArc.Application.Features.ActivitySchedule.Queries.GetActivityScheduleById.GetActivityScheduleByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivitySchedule.Commands.CreateActivityScheduleCommand.CreateActivityScheduleCommand, CleanArc.Application.Features.ActivitySchedule.Commands.UpdateActivityScheduleCommand.UpdateActivityScheduleCommand, CleanArc.Application.Features.ActivitySchedule.Commands.DeleteActivityScheduleCommand.DeleteActivityScheduleCommand, System.ResponseEntity, CleanArc.Application.Features.ActivitySchedule.Queries.GetAllActivitySchedule.GetAllActivityScheduleQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivitySchedule.Queries.GetAllActivitySchedule.GetAllActivityScheduleQueryResult&gt;, CleanArc.Application.Features.ActivitySchedule.Queries.GetActivityScheduleById.GetActivityScheduleByIdQuery, CleanArc.Application.Features.ActivitySchedule.Queries.GetActivityScheduleById.GetActivityScheduleByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/ActivitySchedule")]
     //[Authorize]
-    public class ActivityScheduleController : _BaseController<CreateActivityScheduleCommand, UpdateActivityScheduleCommand, DeleteActivityScheduleCommand, bool, GetAllActivityScheduleQuery,
+    public class ActivityScheduleController : _BaseController<CreateActivityScheduleCommand, UpdateActivityScheduleCommand, DeleteActivityScheduleCommand, ResponseEntity, GetAllActivityScheduleQuery,
     List<GetAllActivityScheduleQueryResult>, GetActivityScheduleByIdQuery, GetActivityScheduleByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivitySchedule
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public ActivityScheduleController(ISender sender, ILogger<_BaseController<CreateActivityScheduleCommand, UpdateActivityScheduleCommand, DeleteActivityScheduleCommand, bool, GetAllActivityScheduleQuery,
+        public ActivityScheduleController(ISender sender, ILogger<_BaseController<CreateActivityScheduleCommand, UpdateActivityScheduleCommand, DeleteActivityScheduleCommand, ResponseEntity, GetAllActivityScheduleQuery,
    List<GetAllActivityScheduleQueryResult>, GetActivityScheduleByIdQuery, GetActivityScheduleByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

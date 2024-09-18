@@ -68,7 +68,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             }
         }
 
-        public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+        public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
             {
@@ -81,9 +81,9 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                    var result = await connection.ExecuteAsync(CarDetailQueries.Delete_CarDetail, parameters, commandType: CommandType.StoredProcedure);
+                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(CarDetailQueries.Delete_CarDetail, parameters, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    return result.ToString();
+                    return result;
                 }
             }
         }
@@ -128,7 +128,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 
 
 
-        public async Task<string> UpdateAsync(CarDetail carDetail)
+        public async Task<ResponseEntity> UpdateAsync(CarDetail carDetail)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, carDetail))
             {
@@ -137,9 +137,9 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     connection.Open();
                     UpdateCarDetailDTO updateCarDetailDTO = _mapper.Map<UpdateCarDetailDTO>(carDetail);
 
-                    var result = await connection.ExecuteAsync(CarDetailQueries.Update_CarDetail, updateCarDetailDTO, commandType: CommandType.StoredProcedure);
+                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(CarDetailQueries.Update_CarDetail, updateCarDetailDTO, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    return result.ToString();
+                    return result;
                 }
             }
         }

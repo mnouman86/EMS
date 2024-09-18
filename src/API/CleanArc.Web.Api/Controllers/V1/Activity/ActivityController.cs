@@ -7,7 +7,7 @@ using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 using CleanArc.Domain.Common;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.Activity
 {
@@ -50,7 +50,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Activity
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Activity.Commands.CreateActivityCommand.CreateActivityCommand, CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand.UpdateActivityCommand, CleanArc.Application.Features.Activity.Commands.DeleteActivityCommand.DeleteActivityCommand, System.Boolean, CleanArc.Application.Features.Activity.Queries.GetAllActivity.GetAllActivityQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Activity.Queries.GetAllActivity.GetAllActivityQueryResult&gt;, CleanArc.Application.Features.Activity.Queries.GetActivityById.GetActivityByIdQuery, CleanArc.Application.Features.Activity.Queries.GetActivityById.GetActivityByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Activity.Commands.CreateActivityCommand.CreateActivityCommand, CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand.UpdateActivityCommand, CleanArc.Application.Features.Activity.Commands.DeleteActivityCommand.DeleteActivityCommand, System.ResponseEntity, CleanArc.Application.Features.Activity.Queries.GetAllActivity.GetAllActivityQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Activity.Queries.GetAllActivity.GetAllActivityQueryResult&gt;, CleanArc.Application.Features.Activity.Queries.GetActivityById.GetActivityByIdQuery, CleanArc.Application.Features.Activity.Queries.GetActivityById.GetActivityByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/Activity")]

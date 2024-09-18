@@ -6,7 +6,7 @@ using CleanArc.Application.Features.SearchHotelImage.Queries.GetAllSearchHotelIm
 using CleanArc.Application.Features.SearchHotelImage.Queries.GetByIdSearchHotelImage;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.SearchHotelImage;
 /// <summary>
@@ -48,12 +48,12 @@ namespace CleanArc.Web.Api.Controllers.V1.SearchHotelImage;
 /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles.
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.SearchHotelImage.Command.CreateSearchHotelImageCommand.CreateSearchCarImageCommand, CleanArc.Application.Features.SearchHotelImage.Command.UpdateSearchHotelImageCommand.UpdateSearchHotelImageCommand, CleanArc.Application.Features.SearchHotelImage.Command.DeleteSearchHotelImageCommand.DeleteSearchHotelImageCommand, System.Boolean, CleanArc.Application.Features.SearchHotelImage.Queries.GetAllSearchHotelImage.GetAllSearchHotelImageQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.SearchHotelImage.Queries.GetAllSearchHotelImage.GetAllSearchHotelImageQueryResult&gt;, CleanArc.Application.Features.SearchHotelImage.Queries.GetByIdSearchHotelImage.GetByIdSearchHotelImageQuery, CleanArc.Application.Features.SearchHotelImage.Queries.GetByIdSearchHotelImage.GetByIdSearchHotelImageQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.SearchHotelImage.Command.CreateSearchHotelImageCommand.CreateSearchCarImageCommand, CleanArc.Application.Features.SearchHotelImage.Command.UpdateSearchHotelImageCommand.UpdateSearchHotelImageCommand, CleanArc.Application.Features.SearchHotelImage.Command.DeleteSearchHotelImageCommand.DeleteSearchHotelImageCommand, System.ResponseEntity, CleanArc.Application.Features.SearchHotelImage.Queries.GetAllSearchHotelImage.GetAllSearchHotelImageQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.SearchHotelImage.Queries.GetAllSearchHotelImage.GetAllSearchHotelImageQueryResult&gt;, CleanArc.Application.Features.SearchHotelImage.Queries.GetByIdSearchHotelImage.GetByIdSearchHotelImageQuery, CleanArc.Application.Features.SearchHotelImage.Queries.GetByIdSearchHotelImage.GetByIdSearchHotelImageQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/SearchHotelImage")]
 //[Authorize]
-public class SearchHotelImageController : _BaseController<CreateSearchCarImageCommand, UpdateSearchHotelImageCommand, DeleteSearchHotelImageCommand, bool, GetAllSearchHotelImageQuery,
+public class SearchHotelImageController : _BaseController<CreateSearchCarImageCommand, UpdateSearchHotelImageCommand, DeleteSearchHotelImageCommand, ResponseEntity, GetAllSearchHotelImageQuery,
 List<GetAllSearchHotelImageQueryResult>, GetByIdSearchHotelImageQuery, GetByIdSearchHotelImageQueryResult>
 {
 
@@ -63,7 +63,7 @@ List<GetAllSearchHotelImageQueryResult>, GetByIdSearchHotelImageQuery, GetByIdSe
     /// <param name="sender">The mediator sender for handling requests and responses.</param>
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
-    public SearchHotelImageController(ISender sender, ILogger<_BaseController<CreateSearchCarImageCommand, UpdateSearchHotelImageCommand, DeleteSearchHotelImageCommand, bool, GetAllSearchHotelImageQuery,
+    public SearchHotelImageController(ISender sender, ILogger<_BaseController<CreateSearchCarImageCommand, UpdateSearchHotelImageCommand, DeleteSearchHotelImageCommand, ResponseEntity, GetAllSearchHotelImageQuery,
 List<GetAllSearchHotelImageQueryResult>, GetByIdSearchHotelImageQuery, GetByIdSearchHotelImageQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 

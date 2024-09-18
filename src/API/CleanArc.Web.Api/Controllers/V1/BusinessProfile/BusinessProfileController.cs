@@ -6,7 +6,7 @@ using CleanArc.Application.Features.BusinessProfile.Query.GetAllBusinessProfile;
 using CleanArc.Application.Features.BusinessProfile.Query.GetBusinessProfileById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.BusinessProfile;
 
@@ -49,11 +49,11 @@ namespace CleanArc.Web.Api.Controllers.V1.BusinessProfile;
 /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles. 
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.BusinessProfile.Command.CreateBusinessProfileCommand.CreateBusinessProfileCommand, CleanArc.Application.Features.BusinessProfile.Command.UpdateBusinessProfileCommand.UpdateBusinessProfileCommand, CleanArc.Application.Features.BusinessProfile.Command.DeleteBusinessProfileCommand.DeleteBusinessProfileCommand, System.Boolean, CleanArc.Application.Features.BusinessProfile.Query.GetAllBusinessProfile.GetAllBusinessProfileQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.BusinessProfile.Query.GetAllBusinessProfile.GetAllBusinessProfileQueryResult&gt;, CleanArc.Application.Features.BusinessProfile.Query.GetBusinessProfileById.GetBusinessProfileByIdQuery, CleanArc.Application.Features.BusinessProfile.Query.GetBusinessProfileById.GetBusinessProfileByIdQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.BusinessProfile.Command.CreateBusinessProfileCommand.CreateBusinessProfileCommand, CleanArc.Application.Features.BusinessProfile.Command.UpdateBusinessProfileCommand.UpdateBusinessProfileCommand, CleanArc.Application.Features.BusinessProfile.Command.DeleteBusinessProfileCommand.DeleteBusinessProfileCommand, System.ResponseEntity, CleanArc.Application.Features.BusinessProfile.Query.GetAllBusinessProfile.GetAllBusinessProfileQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.BusinessProfile.Query.GetAllBusinessProfile.GetAllBusinessProfileQueryResult&gt;, CleanArc.Application.Features.BusinessProfile.Query.GetBusinessProfileById.GetBusinessProfileByIdQuery, CleanArc.Application.Features.BusinessProfile.Query.GetBusinessProfileById.GetBusinessProfileByIdQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/BusinessProfile")]
-public class BusinessProfileController : _BaseController<CreateBusinessProfileCommand, UpdateBusinessProfileCommand, DeleteBusinessProfileCommand, bool, GetAllBusinessProfileQuery,
+public class BusinessProfileController : _BaseController<CreateBusinessProfileCommand, UpdateBusinessProfileCommand, DeleteBusinessProfileCommand, ResponseEntity, GetAllBusinessProfileQuery,
 List<GetAllBusinessProfileQueryResult>, GetBusinessProfileByIdQuery, GetBusinessProfileByIdQueryResult>
 {
 
@@ -63,7 +63,7 @@ List<GetAllBusinessProfileQueryResult>, GetBusinessProfileByIdQuery, GetBusiness
     /// <param name="sender">The mediator sender for handling requests and responses.</param>
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
-    public BusinessProfileController(ISender sender, ILogger<_BaseController<CreateBusinessProfileCommand, UpdateBusinessProfileCommand, DeleteBusinessProfileCommand, bool, GetAllBusinessProfileQuery,
+    public BusinessProfileController(ISender sender, ILogger<_BaseController<CreateBusinessProfileCommand, UpdateBusinessProfileCommand, DeleteBusinessProfileCommand, ResponseEntity, GetAllBusinessProfileQuery,
 List<GetAllBusinessProfileQueryResult>, GetBusinessProfileByIdQuery, GetBusinessProfileByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 

@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.MappingRoomAmenity.Command.CreateMappingRoomAmenityCommand;
 
-internal class CreateMappingRoomAmenityCommandHandler : IRequestHandler<CreateMappingRoomAmenityCommand, OperationResult<bool>>
+internal class CreateMappingRoomAmenityCommandHandler : IRequestHandler<CreateMappingRoomAmenityCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -41,14 +41,14 @@ internal class CreateMappingRoomAmenityCommandHandler : IRequestHandler<CreateMa
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateMappingRoomAmenityCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateMappingRoomAmenityCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -56,12 +56,12 @@ internal class CreateMappingRoomAmenityCommandHandler : IRequestHandler<CreateMa
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.MappingRoomAmenitiesRepository.AddAsync(new Domain.Entities.MappingRoomAmenities.MappingRoomAmenities()
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            var result = await _unitOfWork.MappingRoomAmenitiesRepository.AddAsync(new Domain.Entities.MappingRoomAmenities.MappingRoomAmenities()
             { CreatedBy = user.Id, UpdatedBy = user.Id, RoomID = request.RoomID, AmenitiesIDs = request.AmenitiesIDs, CategoryID =request.CategoryID});
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }

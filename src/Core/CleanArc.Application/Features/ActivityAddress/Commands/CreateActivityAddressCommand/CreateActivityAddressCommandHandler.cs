@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityAddress.Commands.CreateActivityAddressCommand;
 
-internal class CreateActivityAddressCommandHandler: IRequestHandler<CreateActivityAddressCommand, OperationResult<bool>>
+internal class CreateActivityAddressCommandHandler: IRequestHandler<CreateActivityAddressCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -41,14 +41,14 @@ internal class CreateActivityAddressCommandHandler: IRequestHandler<CreateActivi
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateActivityAddressCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateActivityAddressCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -56,8 +56,8 @@ internal class CreateActivityAddressCommandHandler: IRequestHandler<CreateActivi
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.ActivityAddressRepository.AddAsync(new Domain.Entities.ActivityAddress.ActivityAddress()
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+           var result= await _unitOfWork.ActivityAddressRepository.AddAsync(new Domain.Entities.ActivityAddress.ActivityAddress()
             { CreatedBy = user.Id,
                  CultureId = request.CultureId,
                 GenericAddressID = request.GenericAddressID,
@@ -74,7 +74,7 @@ internal class CreateActivityAddressCommandHandler: IRequestHandler<CreateActivi
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }

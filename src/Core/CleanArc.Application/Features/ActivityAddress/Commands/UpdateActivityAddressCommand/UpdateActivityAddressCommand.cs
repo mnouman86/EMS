@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ActivityAddress.Commands.UpdateActivityAddressCommand;
 public record UpdateActivityAddressCommand(int ID, int? GenericAddressID, int? ServiceID, int? CountryLookUpID, int? CityLookUpID, string? AddressLine1,
@@ -18,7 +18,7 @@ public record UpdateActivityAddressCommand(int ID, int? GenericAddressID, int? S
     string? Latitude,
     string? Longitude,
     int? CultureId,
-     int? UpdatedBy) : IRequest<OperationResult<bool>>,
+     int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateActivityAddressCommand>
 {
     [JsonIgnore]

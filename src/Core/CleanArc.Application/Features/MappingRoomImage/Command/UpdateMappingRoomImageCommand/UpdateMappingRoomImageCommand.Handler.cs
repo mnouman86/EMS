@@ -16,7 +16,7 @@ using CleanArc.SharedKernel.Extensions;
 
 namespace CleanArc.Application.Features.MappingRoomImage.Command.UpdateMappingRoomImageCommand
 {
-    internal class UpdateMappingRoomImageCommandHandler : IRequestHandler<UpdateMappingRoomImageCommand, OperationResult<bool>>
+    internal class UpdateMappingRoomImageCommandHandler : IRequestHandler<UpdateMappingRoomImageCommand, OperationResult<ResponseEntity>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IAppUserManager _userManager;
@@ -39,14 +39,14 @@ namespace CleanArc.Application.Features.MappingRoomImage.Command.UpdateMappingRo
             //_unitOfWork = unitOfWork;
             //_userManager = userManager;
         }
-        public async ValueTask<OperationResult<bool>> Handle(UpdateMappingRoomImageCommand request, CancellationToken cancellationToken)
+        public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateMappingRoomImageCommand request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
 
                 var user = await _userManager.GetUserByIdAsync(request.UserId);
                 if (user == null)
-                    return OperationResult<bool>.FailureResult("User Not Found");
+                    return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
                 //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
                 //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -54,12 +54,12 @@ namespace CleanArc.Application.Features.MappingRoomImage.Command.UpdateMappingRo
                 //await _unitOfWork.CommitAsync();
                 //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-                //return OperationResult<bool>.SuccessResult(true);
-                await _unitOfWork.AgeTypeRepository.UpdateAsync(new Domain.Entities.AgeType.AgeType()
+                //return OperationResult<ResponseEntity>.SuccessResult(result);
+                var result = await _unitOfWork.AgeTypeRepository.UpdateAsync(new Domain.Entities.AgeType.AgeType()
                 { UpdatedBy = user.Id, ID = request.ID, Description = request.Description, Name = request.Name });
                 await _unitOfWork.CommitAsync();
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-                return OperationResult<bool>.SuccessResult(true);
+                return OperationResult<ResponseEntity>.SuccessResult(result);
             }
         }
 

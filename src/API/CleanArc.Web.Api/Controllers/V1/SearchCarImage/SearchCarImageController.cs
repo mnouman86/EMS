@@ -12,7 +12,7 @@ using CleanArc.Application.Features.SearchCarImage.Queries.GetByIdSearchCarImage
 using CleanArc.WebFramework.BaseController;
 using Mediator;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 using CleanArc.Application.Features.SearchHotelImage.Command.CreateSearchHotelImageCommand;
 
 namespace CleanArc.Web.Api.Controllers.V1.SearchCarImage;
@@ -20,11 +20,11 @@ namespace CleanArc.Web.Api.Controllers.V1.SearchCarImage;
 [ApiController]
 [Route("api/v{version:apiVersion}/SearchCarImage")]
 //[Authorize]
-public class SearchCarImageController : _BaseController<CreateSearchCarImageCommand, UpdateSearchCarImageCommand, DeleteSearchCarImageCommand, bool, GetAllSearchCarImageQuery,
+public class SearchCarImageController : _BaseController<CreateSearchCarImageCommand, UpdateSearchCarImageCommand, DeleteSearchCarImageCommand, ResponseEntity, GetAllSearchCarImageQuery,
 List<GetAllSearchCarImageQueryResult>, GetByIdSearchCarImageQuery, GetByIdSearchCarImageQueryResult>
 {
 
-    public SearchCarImageController(ISender sender, ILogger<_BaseController<CreateSearchCarImageCommand, UpdateSearchCarImageCommand, DeleteSearchCarImageCommand, bool, GetAllSearchCarImageQuery,
+    public SearchCarImageController(ISender sender, ILogger<_BaseController<CreateSearchCarImageCommand, UpdateSearchCarImageCommand, DeleteSearchCarImageCommand, ResponseEntity, GetAllSearchCarImageQuery,
 List<GetAllSearchCarImageQueryResult>, GetByIdSearchCarImageQuery, GetByIdSearchCarImageQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 
