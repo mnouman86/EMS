@@ -6,7 +6,7 @@ using CleanArc.Application.Features.PackageDetail.Queries.GetPackageDetailById;
 using CleanArc.Application.Features.PackageDetail.Queries.GetAllPackageDetail;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.PackageDetail
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.PackageDetail
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.PackageDetail.Commands.CreatePackageDetailCommand.CreatePackageDetailCommand, CleanArc.Application.Features.PackageDetail.Commands.UpdatePackageDetailCommand.UpdatePackageDetailCommand, CleanArc.Application.Features.PackageDetail.Commands.DeletePackageDetailCommand.DeletePackageDetailCommand, System.Boolean, CleanArc.Application.Features.PackageDetail.Queries.GetAllPackageDetail.GetAllPackageDetailQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.PackageDetail.Queries.GetAllPackageDetail.GetAllPackageDetailQueryResult&gt;, CleanArc.Application.Features.PackageDetail.Queries.GetPackageDetailById.GetPackageDetailByIdQuery, CleanArc.Application.Features.PackageDetail.Queries.GetPackageDetailById.GetPackageDetailByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.PackageDetail.Commands.CreatePackageDetailCommand.CreatePackageDetailCommand, CleanArc.Application.Features.PackageDetail.Commands.UpdatePackageDetailCommand.UpdatePackageDetailCommand, CleanArc.Application.Features.PackageDetail.Commands.DeletePackageDetailCommand.DeletePackageDetailCommand, System.ResponseEntity, CleanArc.Application.Features.PackageDetail.Queries.GetAllPackageDetail.GetAllPackageDetailQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.PackageDetail.Queries.GetAllPackageDetail.GetAllPackageDetailQueryResult&gt;, CleanArc.Application.Features.PackageDetail.Queries.GetPackageDetailById.GetPackageDetailByIdQuery, CleanArc.Application.Features.PackageDetail.Queries.GetPackageDetailById.GetPackageDetailByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/PackageDetail")]
     //[Authorize]
-    public class PackageDetailController : _BaseController<CreatePackageDetailCommand, UpdatePackageDetailCommand, DeletePackageDetailCommand, bool, GetAllPackageDetailQuery,
+    public class PackageDetailController : _BaseController<CreatePackageDetailCommand, UpdatePackageDetailCommand, DeletePackageDetailCommand, ResponseEntity, GetAllPackageDetailQuery,
     List<GetAllPackageDetailQueryResult>, GetPackageDetailByIdQuery, GetPackageDetailByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.PackageDetail
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public PackageDetailController(ISender sender, ILogger<_BaseController<CreatePackageDetailCommand, UpdatePackageDetailCommand, DeletePackageDetailCommand, bool, GetAllPackageDetailQuery,
+        public PackageDetailController(ISender sender, ILogger<_BaseController<CreatePackageDetailCommand, UpdatePackageDetailCommand, DeletePackageDetailCommand, ResponseEntity, GetAllPackageDetailQuery,
    List<GetAllPackageDetailQueryResult>, GetPackageDetailByIdQuery, GetPackageDetailByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

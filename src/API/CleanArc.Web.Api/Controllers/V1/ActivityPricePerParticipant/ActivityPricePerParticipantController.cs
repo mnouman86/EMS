@@ -6,7 +6,7 @@ using CleanArc.Application.Features.ActivityPricePerParticipant.Queries.GetActiv
 using CleanArc.Application.Features.ActivityPricePerParticipant.Queries.GetAllActivityPricePerParticipant;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.ActivityPricePerParticipant
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityPricePerParticipant
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityPricePerParticipant.Commands.CreateActivityPricePerParticipantCommand.CreateActivityPricePerParticipantCommand, CleanArc.Application.Features.ActivityPricePerParticipant.Commands.UpdateActivityPricePerParticipantCommand.UpdateActivityPricePerParticipantCommand, CleanArc.Application.Features.ActivityPricePerParticipant.Commands.DeleteActivityPricePerParticipantCommand.DeleteActivityPricePerParticipantCommand, System.Boolean, CleanArc.Application.Features.ActivityPricePerParticipant.Queries.GetAllActivityPricePerParticipant.GetAllActivityPricePerParticipantQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityPricePerParticipant.Queries.GetAllActivityPricePerParticipant.GetAllActivityPricePerParticipantQueryResult&gt;, CleanArc.Application.Features.ActivityPricePerParticipant.Queries.GetActivityPricePerParticipantById.GetActivityPricePerParticipantByIdQuery, CleanArc.Application.Features.ActivityPricePerParticipant.Queries.GetActivityPricePerParticipantById.GetActivityPricePerParticipantByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityPricePerParticipant.Commands.CreateActivityPricePerParticipantCommand.CreateActivityPricePerParticipantCommand, CleanArc.Application.Features.ActivityPricePerParticipant.Commands.UpdateActivityPricePerParticipantCommand.UpdateActivityPricePerParticipantCommand, CleanArc.Application.Features.ActivityPricePerParticipant.Commands.DeleteActivityPricePerParticipantCommand.DeleteActivityPricePerParticipantCommand, System.ResponseEntity, CleanArc.Application.Features.ActivityPricePerParticipant.Queries.GetAllActivityPricePerParticipant.GetAllActivityPricePerParticipantQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityPricePerParticipant.Queries.GetAllActivityPricePerParticipant.GetAllActivityPricePerParticipantQueryResult&gt;, CleanArc.Application.Features.ActivityPricePerParticipant.Queries.GetActivityPricePerParticipantById.GetActivityPricePerParticipantByIdQuery, CleanArc.Application.Features.ActivityPricePerParticipant.Queries.GetActivityPricePerParticipantById.GetActivityPricePerParticipantByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/ActivityPricePerParticipant")]
     //[Authorize]
-    public class ActivityPricePerParticipantController : _BaseController<CreateActivityPricePerParticipantCommand, UpdateActivityPricePerParticipantCommand, DeleteActivityPricePerParticipantCommand, bool, GetAllActivityPricePerParticipantQuery,
+    public class ActivityPricePerParticipantController : _BaseController<CreateActivityPricePerParticipantCommand, UpdateActivityPricePerParticipantCommand, DeleteActivityPricePerParticipantCommand, ResponseEntity, GetAllActivityPricePerParticipantQuery,
     List<GetAllActivityPricePerParticipantQueryResult>, GetActivityPricePerParticipantByIdQuery, GetActivityPricePerParticipantByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityPricePerParticipant
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public ActivityPricePerParticipantController(ISender sender, ILogger<_BaseController<CreateActivityPricePerParticipantCommand, UpdateActivityPricePerParticipantCommand, DeleteActivityPricePerParticipantCommand, bool, GetAllActivityPricePerParticipantQuery,
+        public ActivityPricePerParticipantController(ISender sender, ILogger<_BaseController<CreateActivityPricePerParticipantCommand, UpdateActivityPricePerParticipantCommand, DeleteActivityPricePerParticipantCommand, ResponseEntity, GetAllActivityPricePerParticipantQuery,
    List<GetAllActivityPricePerParticipantQueryResult>, GetActivityPricePerParticipantByIdQuery, GetActivityPricePerParticipantByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

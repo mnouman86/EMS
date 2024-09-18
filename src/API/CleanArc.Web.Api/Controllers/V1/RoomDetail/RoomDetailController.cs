@@ -6,7 +6,7 @@ using CleanArc.Application.Features.RoomDetails.Queries.GetAllRoomDetail;
 using CleanArc.Application.Features.RoomDetails.Queries.GetRoomDetailById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.RoomDetail
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.RoomDetail
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.RoomDetails.Command.CreateRoomDetailCommand.CreateRoomDetailCommand, CleanArc.Application.Features.RoomDetails.Command.UpdateRoomDetailCommand.UpdateRoomDetailCommand, CleanArc.Application.Features.RoomDetails.Command.DeleteRoomDetailCommand.DeleteRoomDetailCommand, System.Boolean, CleanArc.Application.Features.RoomDetails.Queries.GetAllRoomDetail.GetAllRoomDetailQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.RoomDetails.Queries.GetAllRoomDetail.GetAllRoomDetailQueryResult&gt;, CleanArc.Application.Features.RoomDetails.Queries.GetRoomDetailById.GetRoomDetailByIdQuery, CleanArc.Application.Features.RoomDetails.Queries.GetRoomDetailById.GetRoomDetailByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.RoomDetails.Command.CreateRoomDetailCommand.CreateRoomDetailCommand, CleanArc.Application.Features.RoomDetails.Command.UpdateRoomDetailCommand.UpdateRoomDetailCommand, CleanArc.Application.Features.RoomDetails.Command.DeleteRoomDetailCommand.DeleteRoomDetailCommand, System.ResponseEntity, CleanArc.Application.Features.RoomDetails.Queries.GetAllRoomDetail.GetAllRoomDetailQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.RoomDetails.Queries.GetAllRoomDetail.GetAllRoomDetailQueryResult&gt;, CleanArc.Application.Features.RoomDetails.Queries.GetRoomDetailById.GetRoomDetailByIdQuery, CleanArc.Application.Features.RoomDetails.Queries.GetRoomDetailById.GetRoomDetailByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/RoomDetail")]
     //[Authorize]
-    public class RoomDetailController : _BaseController<CreateRoomDetailCommand, UpdateRoomDetailCommand, DeleteRoomDetailCommand, bool, GetAllRoomDetailQuery,
+    public class RoomDetailController : _BaseController<CreateRoomDetailCommand, UpdateRoomDetailCommand, DeleteRoomDetailCommand, ResponseEntity, GetAllRoomDetailQuery,
     List<GetAllRoomDetailQueryResult>, GetRoomDetailByIdQuery, GetRoomDetailByIdQueryResult>
     {
 
@@ -64,7 +64,7 @@ namespace CleanArc.Web.Api.Controllers.V1.RoomDetail
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public RoomDetailController(ISender sender, ILogger<_BaseController<CreateRoomDetailCommand, UpdateRoomDetailCommand, DeleteRoomDetailCommand, bool, GetAllRoomDetailQuery,
+        public RoomDetailController(ISender sender, ILogger<_BaseController<CreateRoomDetailCommand, UpdateRoomDetailCommand, DeleteRoomDetailCommand, ResponseEntity, GetAllRoomDetailQuery,
    List<GetAllRoomDetailQueryResult>, GetRoomDetailByIdQuery, GetRoomDetailByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

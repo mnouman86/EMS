@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.DisabilityOption.Commands.CreateDisabilityOptionCommand;
 
-internal class CreateDisabilityOptionCommandHandler: IRequestHandler<CreateDisabilityOptionCommand, OperationResult<bool>>
+internal class CreateDisabilityOptionCommandHandler: IRequestHandler<CreateDisabilityOptionCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -41,14 +41,14 @@ internal class CreateDisabilityOptionCommandHandler: IRequestHandler<CreateDisab
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateDisabilityOptionCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateDisabilityOptionCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -56,12 +56,12 @@ internal class CreateDisabilityOptionCommandHandler: IRequestHandler<CreateDisab
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.DisabilityOptionRepository.AddAsync(new Domain.Entities.DisabilityOption.DisabilityOption()
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            var result = await _unitOfWork.DisabilityOptionRepository.AddAsync(new Domain.Entities.DisabilityOption.DisabilityOption()
             { CreatedBy = user.Id, Description = request.Description,Name=request.Name  });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }

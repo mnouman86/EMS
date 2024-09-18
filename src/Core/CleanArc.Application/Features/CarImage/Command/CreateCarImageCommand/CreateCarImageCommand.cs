@@ -9,11 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.CarImage.Command.CreateCarImageCommand;
 
-public record CreateCarImageCommand(int? BusinessID, int? CarID,  String? ImagePath, string? ImageTitle, bool? IsMain, int? CreatedBy) : IRequest<OperationResult<bool>>,
+public record CreateCarImageCommand(int? BusinessID, int? CarID,  String? ImagePath, string? ImageTitle, bool? IsMain, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateCarImageCommand>
 {
     [JsonIgnore]

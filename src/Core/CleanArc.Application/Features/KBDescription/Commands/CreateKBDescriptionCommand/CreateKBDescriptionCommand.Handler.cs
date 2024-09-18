@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.KBDescription.Commands.CreateKBDescriptionCommand;
 
-internal class CreateKBDescriptionCommandHandler: IRequestHandler<CreateKBDescriptionCommand, OperationResult<bool>>
+internal class CreateKBDescriptionCommandHandler: IRequestHandler<CreateKBDescriptionCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -41,14 +41,14 @@ internal class CreateKBDescriptionCommandHandler: IRequestHandler<CreateKBDescri
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateKBDescriptionCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateKBDescriptionCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -56,8 +56,8 @@ internal class CreateKBDescriptionCommandHandler: IRequestHandler<CreateKBDescri
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.KBDescriptionRepository.AddAsync(new Domain.Entities.KBDescription.KBDescription()
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            var result = await _unitOfWork.KBDescriptionRepository.AddAsync(new Domain.Entities.KBDescription.KBDescription()
             { CreatedBy = user.Id, KBDetailID = request.KBDetailID,SubHeading=request.SubHeading, Content = request.Content,KBContentType=request.KBContentType,
                 MediaType = request.MediaType,
                 ImageTitle = request.ImageTitle,
@@ -66,7 +66,7 @@ internal class CreateKBDescriptionCommandHandler: IRequestHandler<CreateKBDescri
                 CultureId =request.CultureId  });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }

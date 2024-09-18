@@ -6,7 +6,7 @@ using CleanArc.Application.Features.SubService.Queries.GetSubServiceById;
 using CleanArc.Application.Features.SubService.Queries.GetAllSubService;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.SubService
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.SubService
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.SubService.Commands.CreateSubServiceCommand.CreateSubServiceCommand, CleanArc.Application.Features.SubService.Commands.UpdateSubServiceCommand.UpdateSubServiceCommand, CleanArc.Application.Features.SubService.Commands.DeleteSubServiceCommand.DeleteSubServiceCommand, System.Boolean, CleanArc.Application.Features.SubService.Queries.GetAllSubService.GetAllSubServiceQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.SubService.Queries.GetAllSubService.GetAllSubServiceQueryResult&gt;, CleanArc.Application.Features.SubService.Queries.GetSubServiceById.GetSubServiceByIdQuery, CleanArc.Application.Features.SubService.Queries.GetSubServiceById.GetSubServiceByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.SubService.Commands.CreateSubServiceCommand.CreateSubServiceCommand, CleanArc.Application.Features.SubService.Commands.UpdateSubServiceCommand.UpdateSubServiceCommand, CleanArc.Application.Features.SubService.Commands.DeleteSubServiceCommand.DeleteSubServiceCommand, System.ResponseEntity, CleanArc.Application.Features.SubService.Queries.GetAllSubService.GetAllSubServiceQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.SubService.Queries.GetAllSubService.GetAllSubServiceQueryResult&gt;, CleanArc.Application.Features.SubService.Queries.GetSubServiceById.GetSubServiceByIdQuery, CleanArc.Application.Features.SubService.Queries.GetSubServiceById.GetSubServiceByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/SubService")]
     //[Authorize]
-    public class SubServiceController : _BaseController<CreateSubServiceCommand, UpdateSubServiceCommand, DeleteSubServiceCommand, bool, GetAllSubServiceQuery,
+    public class SubServiceController : _BaseController<CreateSubServiceCommand, UpdateSubServiceCommand, DeleteSubServiceCommand, ResponseEntity, GetAllSubServiceQuery,
     List<GetAllSubServiceQueryResult>, GetSubServiceByIdQuery, GetSubServiceByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.SubService
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public SubServiceController(ISender sender, ILogger<_BaseController<CreateSubServiceCommand, UpdateSubServiceCommand, DeleteSubServiceCommand, bool, GetAllSubServiceQuery,
+        public SubServiceController(ISender sender, ILogger<_BaseController<CreateSubServiceCommand, UpdateSubServiceCommand, DeleteSubServiceCommand, ResponseEntity, GetAllSubServiceQuery,
    List<GetAllSubServiceQueryResult>, GetSubServiceByIdQuery, GetSubServiceByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

@@ -16,7 +16,7 @@ using CleanArc.SharedKernel.Extensions;
 
 namespace CleanArc.Application.Features.ActivityIncludedOption.Commands.UpdateActivityIncludedOptionCommand;
 
-internal class UpdateActivityIncludedOptionCommandHandler:IRequestHandler<UpdateActivityIncludedOptionCommand, OperationResult<bool>>
+internal class UpdateActivityIncludedOptionCommandHandler:IRequestHandler<UpdateActivityIncludedOptionCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -39,14 +39,14 @@ internal class UpdateActivityIncludedOptionCommandHandler:IRequestHandler<Update
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<bool>> Handle(UpdateActivityIncludedOptionCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateActivityIncludedOptionCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -54,12 +54,12 @@ internal class UpdateActivityIncludedOptionCommandHandler:IRequestHandler<Update
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.ActivityIncludedOptionRepository.UpdateAsync(new Domain.Entities.ActivityIncludedOption.ActivityIncludedOption()
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            var result = await _unitOfWork.ActivityIncludedOptionRepository.UpdateAsync(new Domain.Entities.ActivityIncludedOption.ActivityIncludedOption()
             { UpdatedBy = user.Id,ID= request.ID, Description = request.Description, Name = request.Name });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 

@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.ValidationBase;
 using CleanArc.SharedKernel.ValidationBase.Contracts;
@@ -15,7 +15,7 @@ namespace CleanArc.Application.Features.URL.Commands.AddURLCommand;
 /// <seealso cref="Mediator.IMessage" />
 /// <seealso cref="CleanArc.SharedKernel.ValidationBase.Contracts.IValidatableModel{CleanArc.Application.Features.URL.Commands.AddURLCommand.AddURLCommand}" />
 /// <seealso cref="System.IEquatable{CleanArc.Application.Features.URL.Commands.AddURLCommand.AddURLCommand}" />
-public record AddURLCommand(string Path, string Title, string Description) : IRequest<OperationResult<bool>>,
+public record AddURLCommand(string Path, string Title, string Description) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<AddURLCommand>
 {
     /// <summary>

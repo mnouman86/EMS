@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Bank.Command.CreateBankCommand;
 
-internal class CreateBankCommandHandler : IRequestHandler<CreateBankCommand, OperationResult<bool>>
+internal class CreateBankCommandHandler : IRequestHandler<CreateBankCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -39,14 +39,14 @@ internal class CreateBankCommandHandler : IRequestHandler<CreateBankCommand, Ope
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateBankCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateBankCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -54,12 +54,12 @@ internal class CreateBankCommandHandler : IRequestHandler<CreateBankCommand, Ope
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.BankRepository.AddAsync(new Domain.Entities.Bank.Bank()
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            var result = await _unitOfWork.BankRepository.AddAsync(new Domain.Entities.Bank.Bank()
             { CreatedBy = user.Id, Description = request.Description, Name = request.Name });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }

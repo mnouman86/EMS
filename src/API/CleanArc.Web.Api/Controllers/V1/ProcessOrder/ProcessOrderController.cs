@@ -6,7 +6,7 @@ using CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById;
 using CleanArc.Application.Features.ProcessOrder.Queries.GetAllProcessOrder;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.ProcessOrder
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.ProcessOrder
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ProcessOrder.Commands.CreateProcessOrderCommand.CreateProcessOrderCommand, CleanArc.Application.Features.ProcessOrder.Commands.UpdateProcessOrderCommand.UpdateProcessOrderCommand, CleanArc.Application.Features.ProcessOrder.Commands.DeleteProcessOrderCommand.DeleteProcessOrderCommand, System.Boolean, CleanArc.Application.Features.ProcessOrder.Queries.GetAllProcessOrder.GetAllProcessOrderQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ProcessOrder.Queries.GetAllProcessOrder.GetAllProcessOrderQueryResult&gt;, CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById.GetProcessOrderByIdQuery, CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById.GetProcessOrderByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ProcessOrder.Commands.CreateProcessOrderCommand.CreateProcessOrderCommand, CleanArc.Application.Features.ProcessOrder.Commands.UpdateProcessOrderCommand.UpdateProcessOrderCommand, CleanArc.Application.Features.ProcessOrder.Commands.DeleteProcessOrderCommand.DeleteProcessOrderCommand, System.ResponseEntity, CleanArc.Application.Features.ProcessOrder.Queries.GetAllProcessOrder.GetAllProcessOrderQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ProcessOrder.Queries.GetAllProcessOrder.GetAllProcessOrderQueryResult&gt;, CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById.GetProcessOrderByIdQuery, CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById.GetProcessOrderByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/ProcessOrder")]
     //[Authorize]
-    public class ProcessOrderController : _BaseController<CreateProcessOrderCommand, UpdateProcessOrderCommand, DeleteProcessOrderCommand, bool, GetAllProcessOrderQuery,
+    public class ProcessOrderController : _BaseController<CreateProcessOrderCommand, UpdateProcessOrderCommand, DeleteProcessOrderCommand, ResponseEntity, GetAllProcessOrderQuery,
     List<GetAllProcessOrderQueryResult>, GetProcessOrderByIdQuery, GetProcessOrderByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.ProcessOrder
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public ProcessOrderController(ISender sender, ILogger<_BaseController<CreateProcessOrderCommand, UpdateProcessOrderCommand, DeleteProcessOrderCommand, bool, GetAllProcessOrderQuery,
+        public ProcessOrderController(ISender sender, ILogger<_BaseController<CreateProcessOrderCommand, UpdateProcessOrderCommand, DeleteProcessOrderCommand, ResponseEntity, GetAllProcessOrderQuery,
    List<GetAllProcessOrderQueryResult>, GetProcessOrderByIdQuery, GetProcessOrderByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

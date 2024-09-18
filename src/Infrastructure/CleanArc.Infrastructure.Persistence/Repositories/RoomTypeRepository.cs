@@ -72,7 +72,7 @@ public class RoomTypeRepository : IRoomTypeRepository
         }
     }
 
-    public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
         {
@@ -85,9 +85,9 @@ public class RoomTypeRepository : IRoomTypeRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(RoomTypeQueries.Delete_RoomType, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(RoomTypeQueries.Delete_RoomType, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }
@@ -132,7 +132,7 @@ public class RoomTypeRepository : IRoomTypeRepository
 
 
 
-    public async Task<string> UpdateAsync(RoomType roomType)
+    public async Task<ResponseEntity> UpdateAsync(RoomType roomType)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, roomType))
         {
@@ -141,9 +141,9 @@ public class RoomTypeRepository : IRoomTypeRepository
                 connection.Open();
                 UpdateRoomTypeDTO updateRoomTypeDTO = _mapper.Map<UpdateRoomTypeDTO>(roomType);
 
-                var result = await connection.ExecuteAsync(RoomTypeQueries.Update_RoomType, updateRoomTypeDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(RoomTypeQueries.Update_RoomType, updateRoomTypeDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

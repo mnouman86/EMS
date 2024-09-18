@@ -74,7 +74,7 @@ public class CategoryRepository : ICategoryRepository
         }
     }
 
-    public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
         {
@@ -87,9 +87,9 @@ public class CategoryRepository : ICategoryRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(CategoryQueries.Delete_Category, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(CategoryQueries.Delete_Category, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }
@@ -132,7 +132,7 @@ public class CategoryRepository : ICategoryRepository
         }
     }
 
-    public async Task<string> UpdateAsync(Category category)
+    public async Task<ResponseEntity> UpdateAsync(Category category)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, category))
         {
@@ -141,9 +141,9 @@ public class CategoryRepository : ICategoryRepository
                 connection.Open();
                 UpdateCategoryDTO updateCategoryDTO = _mapper.Map<UpdateCategoryDTO>(category);
 
-                var result = await connection.ExecuteAsync(CategoryQueries.Update_Category, updateCategoryDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(CategoryQueries.Update_Category, updateCategoryDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

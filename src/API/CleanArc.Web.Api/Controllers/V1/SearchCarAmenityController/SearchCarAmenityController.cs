@@ -6,7 +6,7 @@ using CleanArc.Application.Features.SearchCarAmenities.Queries.GetAllSearchCarAm
 using CleanArc.Application.Features.SearchCarAmenities.Queries.GetSearchCarAmenitiesById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.SearchCarAmenity;
 /// <summary>
@@ -48,12 +48,12 @@ namespace CleanArc.Web.Api.Controllers.V1.SearchCarAmenity;
 /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles. 
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.SearchCarAmenities.Commands.CreateSearchCarAmenitiesCommand.CreateSearchCarAmenitiesCommand, CleanArc.Application.Features.SearchCarAmenities.Commands.UpdateSearchCarAmenitiesCommand.UpdateSearchCarAmenitiesCommand, CleanArc.Application.Features.SearchCarAmenities.Commands.DeleteSearchCarAmenitiesCommand.DeleteSearchCarAmenitiesCommand, System.Boolean, CleanArc.Application.Features.SearchCarAmenities.Queries.GetAllSearchCarAmenities.GetAllSearchCarAmenitiesQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.SearchCarAmenities.Queries.GetAllSearchCarAmenities.GetAllSearchCarAmenitiesQueryResult&gt;, CleanArc.Application.Features.SearchCarAmenities.Queries.GetSearchCarAmenitiesById.GetSearchCarAmenitiesByIdQuery, CleanArc.Application.Features.SearchCarAmenities.Queries.GetSearchCarAmenitiesById.GetSearchCarAmenitiesByIdQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.SearchCarAmenities.Commands.CreateSearchCarAmenitiesCommand.CreateSearchCarAmenitiesCommand, CleanArc.Application.Features.SearchCarAmenities.Commands.UpdateSearchCarAmenitiesCommand.UpdateSearchCarAmenitiesCommand, CleanArc.Application.Features.SearchCarAmenities.Commands.DeleteSearchCarAmenitiesCommand.DeleteSearchCarAmenitiesCommand, System.ResponseEntity, CleanArc.Application.Features.SearchCarAmenities.Queries.GetAllSearchCarAmenities.GetAllSearchCarAmenitiesQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.SearchCarAmenities.Queries.GetAllSearchCarAmenities.GetAllSearchCarAmenitiesQueryResult&gt;, CleanArc.Application.Features.SearchCarAmenities.Queries.GetSearchCarAmenitiesById.GetSearchCarAmenitiesByIdQuery, CleanArc.Application.Features.SearchCarAmenities.Queries.GetSearchCarAmenitiesById.GetSearchCarAmenitiesByIdQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/SearchCarAmenity")]
 //[Authorize]
-public class SearchCarAmenityController : _BaseController<CreateSearchCarAmenitiesCommand, UpdateSearchCarAmenitiesCommand, DeleteSearchCarAmenitiesCommand, bool, GetAllSearchCarAmenitiesQuery,
+public class SearchCarAmenityController : _BaseController<CreateSearchCarAmenitiesCommand, UpdateSearchCarAmenitiesCommand, DeleteSearchCarAmenitiesCommand, ResponseEntity, GetAllSearchCarAmenitiesQuery,
 List<GetAllSearchCarAmenitiesQueryResult>, GetSearchCarAmenitiesByIdQuery, GetSearchCarAmenitiesByIdQueryResult>
 {
 
@@ -63,7 +63,7 @@ List<GetAllSearchCarAmenitiesQueryResult>, GetSearchCarAmenitiesByIdQuery, GetSe
     /// <param name="sender">The mediator sender for handling requests and responses.</param>
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
-    public SearchCarAmenityController(ISender sender, ILogger<_BaseController<CreateSearchCarAmenitiesCommand, UpdateSearchCarAmenitiesCommand, DeleteSearchCarAmenitiesCommand, bool, GetAllSearchCarAmenitiesQuery,
+    public SearchCarAmenityController(ISender sender, ILogger<_BaseController<CreateSearchCarAmenitiesCommand, UpdateSearchCarAmenitiesCommand, DeleteSearchCarAmenitiesCommand, ResponseEntity, GetAllSearchCarAmenitiesQuery,
 List<GetAllSearchCarAmenitiesQueryResult>, GetSearchCarAmenitiesByIdQuery, GetSearchCarAmenitiesByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 

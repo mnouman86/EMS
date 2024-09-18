@@ -13,7 +13,7 @@ using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.URL.Commands.UpdateURLCommand;
 
-internal class UpdateURLCommandHandler : IRequestHandler<UpdateURLCommand, OperationResult<bool>>
+internal class UpdateURLCommandHandler : IRequestHandler<UpdateURLCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -35,14 +35,14 @@ internal class UpdateURLCommandHandler : IRequestHandler<UpdateURLCommand, Opera
 
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(UpdateURLCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateURLCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
             var user = await _userManager.GetUserByIdAsync(request.UserId);
 
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
           var result=  await _unitOfWork.URLRepository.UpdateAsync(new Domain.Entities.UserManagement.URL()
             { Id = request.Id, UpdatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -50,7 +50,7 @@ internal class UpdateURLCommandHandler : IRequestHandler<UpdateURLCommand, Opera
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }

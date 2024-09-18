@@ -6,7 +6,7 @@ using CleanArc.Application.Features.ActivityPrivateParticipant.Queries.GetActivi
 using CleanArc.Application.Features.ActivityPrivateParticipant.Queries.GetAllActivityPrivateParticipant;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.ActivityPrivateParticipant
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityPrivateParticipant
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityPrivateParticipant.Commands.CreateActivityPrivateParticipantCommand.CreateActivityPrivateParticipantCommand, CleanArc.Application.Features.ActivityPrivateParticipant.Commands.UpdateActivityPrivateParticipantCommand.UpdateActivityPrivateParticipantCommand, CleanArc.Application.Features.ActivityPrivateParticipant.Commands.DeleteActivityPrivateParticipantCommand.DeleteActivityPrivateParticipantCommand, System.Boolean, CleanArc.Application.Features.ActivityPrivateParticipant.Queries.GetAllActivityPrivateParticipant.GetAllActivityPrivateParticipantQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityPrivateParticipant.Queries.GetAllActivityPrivateParticipant.GetAllActivityPrivateParticipantQueryResult&gt;, CleanArc.Application.Features.ActivityPrivateParticipant.Queries.GetActivityPrivateParticipantById.GetActivityPrivateParticipantByIdQuery, CleanArc.Application.Features.ActivityPrivateParticipant.Queries.GetActivityPrivateParticipantById.GetActivityPrivateParticipantByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityPrivateParticipant.Commands.CreateActivityPrivateParticipantCommand.CreateActivityPrivateParticipantCommand, CleanArc.Application.Features.ActivityPrivateParticipant.Commands.UpdateActivityPrivateParticipantCommand.UpdateActivityPrivateParticipantCommand, CleanArc.Application.Features.ActivityPrivateParticipant.Commands.DeleteActivityPrivateParticipantCommand.DeleteActivityPrivateParticipantCommand, System.ResponseEntity, CleanArc.Application.Features.ActivityPrivateParticipant.Queries.GetAllActivityPrivateParticipant.GetAllActivityPrivateParticipantQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityPrivateParticipant.Queries.GetAllActivityPrivateParticipant.GetAllActivityPrivateParticipantQueryResult&gt;, CleanArc.Application.Features.ActivityPrivateParticipant.Queries.GetActivityPrivateParticipantById.GetActivityPrivateParticipantByIdQuery, CleanArc.Application.Features.ActivityPrivateParticipant.Queries.GetActivityPrivateParticipantById.GetActivityPrivateParticipantByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/ActivityPrivateParticipant")]
     //[Authorize]
-    public class ActivityPrivateParticipantController : _BaseController<CreateActivityPrivateParticipantCommand, UpdateActivityPrivateParticipantCommand, DeleteActivityPrivateParticipantCommand, bool, GetAllActivityPrivateParticipantQuery,
+    public class ActivityPrivateParticipantController : _BaseController<CreateActivityPrivateParticipantCommand, UpdateActivityPrivateParticipantCommand, DeleteActivityPrivateParticipantCommand, ResponseEntity, GetAllActivityPrivateParticipantQuery,
     List<GetAllActivityPrivateParticipantQueryResult>, GetActivityPrivateParticipantByIdQuery, GetActivityPrivateParticipantByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityPrivateParticipant
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public ActivityPrivateParticipantController(ISender sender, ILogger<_BaseController<CreateActivityPrivateParticipantCommand, UpdateActivityPrivateParticipantCommand, DeleteActivityPrivateParticipantCommand, bool, GetAllActivityPrivateParticipantQuery,
+        public ActivityPrivateParticipantController(ISender sender, ILogger<_BaseController<CreateActivityPrivateParticipantCommand, UpdateActivityPrivateParticipantCommand, DeleteActivityPrivateParticipantCommand, ResponseEntity, GetAllActivityPrivateParticipantQuery,
    List<GetAllActivityPrivateParticipantQueryResult>, GetActivityPrivateParticipantByIdQuery, GetActivityPrivateParticipantByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

@@ -6,7 +6,7 @@ using CleanArc.Application.Features.KBInterested.Queries.GetKBInterestedById;
 using CleanArc.Application.Features.KBInterested.Queries.GetAllKBInterested;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.KBInterested
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.KBInterested
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.KBInterested.Commands.CreateKBInterestedCommand.CreateKBInterestedCommand, CleanArc.Application.Features.KBInterested.Commands.UpdateKBInterestedCommand.UpdateKBInterestedCommand, CleanArc.Application.Features.KBInterested.Commands.DeleteKBInterestedCommand.DeleteKBInterestedCommand, System.Boolean, CleanArc.Application.Features.KBInterested.Queries.GetAllKBInterested.GetAllKBInterestedQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.KBInterested.Queries.GetAllKBInterested.GetAllKBInterestedQueryResult&gt;, CleanArc.Application.Features.KBInterested.Queries.GetKBInterestedById.GetKBInterestedByIdQuery, CleanArc.Application.Features.KBInterested.Queries.GetKBInterestedById.GetKBInterestedByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.KBInterested.Commands.CreateKBInterestedCommand.CreateKBInterestedCommand, CleanArc.Application.Features.KBInterested.Commands.UpdateKBInterestedCommand.UpdateKBInterestedCommand, CleanArc.Application.Features.KBInterested.Commands.DeleteKBInterestedCommand.DeleteKBInterestedCommand, System.ResponseEntity, CleanArc.Application.Features.KBInterested.Queries.GetAllKBInterested.GetAllKBInterestedQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.KBInterested.Queries.GetAllKBInterested.GetAllKBInterestedQueryResult&gt;, CleanArc.Application.Features.KBInterested.Queries.GetKBInterestedById.GetKBInterestedByIdQuery, CleanArc.Application.Features.KBInterested.Queries.GetKBInterestedById.GetKBInterestedByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/KBInterested")]
     //[Authorize]
-    public class KBInterestedController : _BaseController<CreateKBInterestedCommand, UpdateKBInterestedCommand, DeleteKBInterestedCommand, bool, GetAllKBInterestedQuery,
+    public class KBInterestedController : _BaseController<CreateKBInterestedCommand, UpdateKBInterestedCommand, DeleteKBInterestedCommand, ResponseEntity, GetAllKBInterestedQuery,
     List<GetAllKBInterestedQueryResult>, GetKBInterestedByIdQuery, GetKBInterestedByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.KBInterested
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public KBInterestedController(ISender sender, ILogger<_BaseController<CreateKBInterestedCommand, UpdateKBInterestedCommand, DeleteKBInterestedCommand, bool, GetAllKBInterestedQuery,
+        public KBInterestedController(ISender sender, ILogger<_BaseController<CreateKBInterestedCommand, UpdateKBInterestedCommand, DeleteKBInterestedCommand, ResponseEntity, GetAllKBInterestedQuery,
    List<GetAllKBInterestedQueryResult>, GetKBInterestedByIdQuery, GetKBInterestedByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

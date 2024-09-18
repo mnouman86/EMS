@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.KBTiming.Commands.DeleteKBTimingCommand;
 
-internal class DeleteKBTimingCommandHandler: IRequestHandler<DeleteKBTimingCommand, OperationResult<bool>>
+internal class DeleteKBTimingCommandHandler: IRequestHandler<DeleteKBTimingCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -39,14 +39,14 @@ internal class DeleteKBTimingCommandHandler: IRequestHandler<DeleteKBTimingComma
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<bool>> Handle(DeleteKBTimingCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(DeleteKBTimingCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -54,13 +54,13 @@ internal class DeleteKBTimingCommandHandler: IRequestHandler<DeleteKBTimingComma
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
             //await _unitOfWork.KBTimingRepository.DeleteAsync(new Domain.Entities.KBTiming.KBTiming()
             // { UpdatedBy = user.Id, ID = request.ID });
-            await _unitOfWork.KBTimingRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.KBTimingRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 

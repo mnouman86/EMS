@@ -73,7 +73,7 @@ public class RoomSizeUnitReposirory : IRoomSizeUnitReposirory
         }
     }
 
-    public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
         {
@@ -86,9 +86,9 @@ public class RoomSizeUnitReposirory : IRoomSizeUnitReposirory
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(RoomSizeUnitQueries.Delete_RoomSizeUnit, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(RoomSizeUnitQueries.Delete_RoomSizeUnit, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }
@@ -133,7 +133,7 @@ public class RoomSizeUnitReposirory : IRoomSizeUnitReposirory
 
 
 
-    public async Task<string> UpdateAsync(RoomSizeUnit roomSizeUnit)
+    public async Task<ResponseEntity> UpdateAsync(RoomSizeUnit roomSizeUnit)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, roomSizeUnit))
         {
@@ -142,9 +142,9 @@ public class RoomSizeUnitReposirory : IRoomSizeUnitReposirory
                 connection.Open();
                 UpdateRoomSizeUnitDTO updateRoomSizeUnitDTO = _mapper.Map<UpdateRoomSizeUnitDTO>(roomSizeUnit);
 
-                var result = await connection.ExecuteAsync(RoomSizeUnitQueries.Update_RoomSizeUnit, updateRoomSizeUnitDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(RoomSizeUnitQueries.Update_RoomSizeUnit, updateRoomSizeUnitDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

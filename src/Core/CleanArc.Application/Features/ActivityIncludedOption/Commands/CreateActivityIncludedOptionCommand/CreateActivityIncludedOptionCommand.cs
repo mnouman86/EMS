@@ -2,7 +2,7 @@
 using CleanArc.SharedKernel.ValidationBase.Contracts;
 using CleanArc.SharedKernel.ValidationBase;
 using FluentValidation;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityIncludedOption.Commands.CreateActivityIncludedOptionCommand;
-public record CreateActivityIncludedOptionCommand(string? Name, string? Description,int? CreatedBy) : IRequest<OperationResult<bool>>,
+public record CreateActivityIncludedOptionCommand(string? Name, string? Description,int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateActivityIncludedOptionCommand>
 {
     [JsonIgnore]

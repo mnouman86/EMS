@@ -76,7 +76,7 @@ public class AmenityRepository : IAmenityRepository
         }
     }
 
-    public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
         {
@@ -89,9 +89,9 @@ public class AmenityRepository : IAmenityRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(AmenityQueries.Delete_Amenity, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(AmenityQueries.Delete_Amenity, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }
@@ -150,7 +150,7 @@ public class AmenityRepository : IAmenityRepository
 
 
 
-    public async Task<string> UpdateAsync(Amenity amenity)
+    public async Task<ResponseEntity> UpdateAsync(Amenity amenity)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, amenity))
         {
@@ -159,9 +159,9 @@ public class AmenityRepository : IAmenityRepository
                 connection.Open();
                 UpdateAmenityDTO updateAmenityDTO = _mapper.Map<UpdateAmenityDTO>(amenity);
 
-                var result = await connection.ExecuteAsync(AmenityQueries.Update_Amenity, updateAmenityDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(AmenityQueries.Update_Amenity, updateAmenityDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

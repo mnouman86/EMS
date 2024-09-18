@@ -6,7 +6,7 @@ using CleanArc.Application.Features.CarDetail.Query.GetAllCarDetail;
 using CleanArc.Application.Features.CarDetail.Query.GetCarDetailById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.CarDetail
 {
@@ -49,13 +49,13 @@ namespace CleanArc.Web.Api.Controllers.V1.CarDetail
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.CarDetail.Command.CreateCarDetailCommand.CreateCarDetailCommand, CleanArc.Application.Features.CarDetail.Command.UpdateCarDetailCommand.UpdateCarDetailCommand, CleanArc.Application.Features.CarDetail.Command.DeleteCarDetailCommand.DeleteCarDetailCommand, System.Boolean, CleanArc.Application.Features.CarDetail.Query.GetAllCarDetail.GetAllCarDetailQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.CarDetail.Query.GetAllCarDetail.GetAllCarDetailQueryResult&gt;, CleanArc.Application.Features.CarDetail.Query.GetCarDetailById.GetCarDetailByIdQuery, CleanArc.Application.Features.CarDetail.Query.GetCarDetailById.GetCarDetailByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.CarDetail.Command.CreateCarDetailCommand.CreateCarDetailCommand, CleanArc.Application.Features.CarDetail.Command.UpdateCarDetailCommand.UpdateCarDetailCommand, CleanArc.Application.Features.CarDetail.Command.DeleteCarDetailCommand.DeleteCarDetailCommand, System.ResponseEntity, CleanArc.Application.Features.CarDetail.Query.GetAllCarDetail.GetAllCarDetailQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.CarDetail.Query.GetAllCarDetail.GetAllCarDetailQueryResult&gt;, CleanArc.Application.Features.CarDetail.Query.GetCarDetailById.GetCarDetailByIdQuery, CleanArc.Application.Features.CarDetail.Query.GetCarDetailById.GetCarDetailByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/CarDetail")]
     //[Authorize]
 
-    public class CarDetailController : _BaseController<CreateCarDetailCommand, UpdateCarDetailCommand, DeleteCarDetailCommand, bool, GetAllCarDetailQuery,
+    public class CarDetailController : _BaseController<CreateCarDetailCommand, UpdateCarDetailCommand, DeleteCarDetailCommand, ResponseEntity, GetAllCarDetailQuery,
     List<GetAllCarDetailQueryResult>, GetCarDetailByIdQuery, GetCarDetailByIdQueryResult>
     {
 
@@ -65,7 +65,7 @@ namespace CleanArc.Web.Api.Controllers.V1.CarDetail
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public CarDetailController(ISender sender, ILogger<_BaseController<CreateCarDetailCommand, UpdateCarDetailCommand, DeleteCarDetailCommand, bool, GetAllCarDetailQuery,
+        public CarDetailController(ISender sender, ILogger<_BaseController<CreateCarDetailCommand, UpdateCarDetailCommand, DeleteCarDetailCommand, ResponseEntity, GetAllCarDetailQuery,
    List<GetAllCarDetailQueryResult>, GetCarDetailByIdQuery, GetCarDetailByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) :
             base(sender, logger, httpContextAccessor)
         {

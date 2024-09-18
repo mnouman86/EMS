@@ -2,7 +2,7 @@
 using CleanArc.SharedKernel.ValidationBase.Contracts;
 using CleanArc.SharedKernel.ValidationBase;
 using FluentValidation;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityImageMapping.Commands.CreateActivityImageMappingCommand;
-public record CreateActivityImageMappingCommand(int? ActivityID, string? ImagePath, string? ImageTitle, bool? IsMain, int? CreatedBy,int? CultureId) : IRequest<OperationResult<bool>>,
+public record CreateActivityImageMappingCommand(int? ActivityID, string? ImagePath, string? ImageTitle, bool? IsMain, int? CreatedBy,int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateActivityImageMappingCommand>
 {
     [JsonIgnore]

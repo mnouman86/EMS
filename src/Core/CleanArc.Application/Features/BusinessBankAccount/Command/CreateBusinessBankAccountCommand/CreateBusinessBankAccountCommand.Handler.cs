@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.BusinessBankAccount.Command.BusinessBankAccountCommand;
 
-internal class CreateBusinessBankAccountCommandHandler : IRequestHandler<CreateBusinessBankAccountCommand, OperationResult<bool>>
+internal class CreateBusinessBankAccountCommandHandler : IRequestHandler<CreateBusinessBankAccountCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -40,14 +40,14 @@ internal class CreateBusinessBankAccountCommandHandler : IRequestHandler<CreateB
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateBusinessBankAccountCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateBusinessBankAccountCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -55,12 +55,12 @@ internal class CreateBusinessBankAccountCommandHandler : IRequestHandler<CreateB
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.BusinessBankAccountRepository.AddAsync(new Domain.Entities.BusinessBankAccount.BusinessBankAccount()
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            var result = await _unitOfWork.BusinessBankAccountRepository.AddAsync(new Domain.Entities.BusinessBankAccount.BusinessBankAccount()
             { CreatedBy = user.Id, AccountTitle = request.AccountTitle, BankID = request.BankID, BusinessID=request.BusinessID, IBAN=request.IBAN });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }

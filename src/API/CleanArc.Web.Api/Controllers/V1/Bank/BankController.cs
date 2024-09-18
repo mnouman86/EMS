@@ -6,7 +6,7 @@ using CleanArc.Application.Features.Bank.Queries.GetAllBank;
 using CleanArc.Application.Features.Bank.Queries.GetBankById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.Bank
 {
@@ -49,11 +49,11 @@ namespace CleanArc.Web.Api.Controllers.V1.Bank
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles. 
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Bank.Command.CreateBankCommand.CreateBankCommand, CleanArc.Application.Features.Bank.Command.UpdateBankCommand.UpdateBankCommand, CleanArc.Application.Features.Bank.Command.DeleteBankCommand.DeleteBankCommand, System.Boolean, CleanArc.Application.Features.Bank.Queries.GetAllBank.GetAllBankQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Bank.Queries.GetAllBank.GetAllBankQueryResult&gt;, CleanArc.Application.Features.Bank.Queries.GetBankById.GetBankByIdQuery, CleanArc.Application.Features.Bank.Queries.GetBankById.GetBankByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Bank.Command.CreateBankCommand.CreateBankCommand, CleanArc.Application.Features.Bank.Command.UpdateBankCommand.UpdateBankCommand, CleanArc.Application.Features.Bank.Command.DeleteBankCommand.DeleteBankCommand, System.ResponseEntity, CleanArc.Application.Features.Bank.Queries.GetAllBank.GetAllBankQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Bank.Queries.GetAllBank.GetAllBankQueryResult&gt;, CleanArc.Application.Features.Bank.Queries.GetBankById.GetBankByIdQuery, CleanArc.Application.Features.Bank.Queries.GetBankById.GetBankByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/BankController")]
-    public class BankController : _BaseController<CreateBankCommand, UpdateBankCommand, DeleteBankCommand, bool, GetAllBankQuery,
+    public class BankController : _BaseController<CreateBankCommand, UpdateBankCommand, DeleteBankCommand, ResponseEntity, GetAllBankQuery,
     List<GetAllBankQueryResult>, GetBankByIdQuery, GetBankByIdQueryResult>
     {
 
@@ -63,7 +63,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Bank
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public BankController(ISender sender, ILogger<_BaseController<CreateBankCommand, UpdateBankCommand, DeleteBankCommand, bool, GetAllBankQuery,
+        public BankController(ISender sender, ILogger<_BaseController<CreateBankCommand, UpdateBankCommand, DeleteBankCommand, ResponseEntity, GetAllBankQuery,
    List<GetAllBankQueryResult>, GetBankByIdQuery, GetBankByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

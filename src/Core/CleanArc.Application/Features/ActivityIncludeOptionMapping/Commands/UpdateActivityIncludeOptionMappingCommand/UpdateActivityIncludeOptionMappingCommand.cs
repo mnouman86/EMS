@@ -8,10 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ActivityIncludeOptionMapping.Commands.UpdateActivityIncludeOptionMappingCommand;
-public record UpdateActivityIncludeOptionMappingCommand(int ID, string? IncludeOptionsLookUpID, int? ActivityID, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record UpdateActivityIncludeOptionMappingCommand(int ID, string? IncludeOptionsLookUpID, int? ActivityID, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateActivityIncludeOptionMappingCommand>
 {
     [JsonIgnore]

@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Category.Command.CreateCategoryCommand;
 
-internal class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, OperationResult<bool>>
+internal class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -39,19 +39,19 @@ internal class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryComm
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
-            await _unitOfWork.CategoryRepository.AddAsync(new Domain.Entities.Category.Category()
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
+            var result = await _unitOfWork.CategoryRepository.AddAsync(new Domain.Entities.Category.Category()
             { CreatedBy = user.Id, Description = request.Description, Name = request.Name });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }

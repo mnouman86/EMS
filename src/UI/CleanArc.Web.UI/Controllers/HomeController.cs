@@ -1,6 +1,6 @@
 using CleanArc.Web.UI.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;

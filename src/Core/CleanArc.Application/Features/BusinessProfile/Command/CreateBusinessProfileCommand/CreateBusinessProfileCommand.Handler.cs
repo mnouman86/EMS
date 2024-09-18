@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.BusinessProfile.Command.CreateBusinessProfileCommand
 {
-    internal class CreateBusinessProfileCommandHnadler : IRequestHandler<CreateBusinessProfileCommand, OperationResult<bool>>
+    internal class CreateBusinessProfileCommandHnadler : IRequestHandler<CreateBusinessProfileCommand, OperationResult<ResponseEntity>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IAppUserManager _userManager;
@@ -39,14 +39,14 @@ namespace CleanArc.Application.Features.BusinessProfile.Command.CreateBusinessPr
             //_userManager = userManager;
         }
 
-        public async ValueTask<OperationResult<bool>> Handle(CreateBusinessProfileCommand request, CancellationToken cancellationToken)
+        public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateBusinessProfileCommand request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
 
                 var user = await _userManager.GetUserByIdAsync(request.UserId);
                 if (user == null)
-                    return OperationResult<bool>.FailureResult("User Not Found");
+                    return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
                 //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
                 //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -54,8 +54,8 @@ namespace CleanArc.Application.Features.BusinessProfile.Command.CreateBusinessPr
                 //await _unitOfWork.CommitAsync();
                 //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-                //return OperationResult<bool>.SuccessResult(true);
-                await _unitOfWork.BusinessProfileRepository.AddAsync(new Domain.Entities.BusinessProfile.BusinessProfile()
+                //return OperationResult<ResponseEntity>.SuccessResult(result);
+                var result = await _unitOfWork.BusinessProfileRepository.AddAsync(new Domain.Entities.BusinessProfile.BusinessProfile()
                 { CreatedBy = user.Id,
                     BusinessTypeID = request.BusinessTypeID,
                     FullLegalName = request.FullLegalName,
@@ -75,7 +75,7 @@ namespace CleanArc.Application.Features.BusinessProfile.Command.CreateBusinessPr
                 });
                 await _unitOfWork.CommitAsync();
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-                return OperationResult<bool>.SuccessResult(true);
+                return OperationResult<ResponseEntity>.SuccessResult(result);
             }
         }
     }

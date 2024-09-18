@@ -9,12 +9,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 using Azure.Core;
 
 namespace CleanArc.Application.Features.Service.Command.UpdateServiceCommand
 {
-    public record UpdateServiceCommand(int ID, String? Name, int? ServiceCategoryID, string? Description, string? Icon, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+    public record UpdateServiceCommand(int ID, String? Name, int? ServiceCategoryID, string? Description, string? Icon, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateServiceCommand>
     {
         [JsonIgnore]

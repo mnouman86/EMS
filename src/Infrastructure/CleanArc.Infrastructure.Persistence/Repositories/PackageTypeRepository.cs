@@ -86,7 +86,7 @@ public async Task<ResponseEntity> AddAsync(PackageType PackageType)
     }
 }
 
-    public async Task<string> DeleteAsync(string selectedIds, int updatedBy,int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy,int? CultureId)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
         {
@@ -100,9 +100,9 @@ public async Task<ResponseEntity> AddAsync(PackageType PackageType)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(PackageTypeQueries.Delete_PackageType, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(PackageTypeQueries.Delete_PackageType, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }
@@ -161,7 +161,7 @@ public async Task<ResponseEntity> AddAsync(PackageType PackageType)
 
 
 
-    public async Task<string> UpdateAsync(PackageType entity)
+    public async Task<ResponseEntity> UpdateAsync(PackageType entity)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
         {
@@ -173,9 +173,9 @@ public async Task<ResponseEntity> AddAsync(PackageType PackageType)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(PackageTypeQueries.Update_PackageType, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(PackageTypeQueries.Update_PackageType, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

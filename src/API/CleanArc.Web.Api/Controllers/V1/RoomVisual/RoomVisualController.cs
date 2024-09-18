@@ -6,7 +6,7 @@ using CleanArc.Application.Features.RoomVisual.Query.GetAllRoomVisual;
 using CleanArc.Application.Features.RoomVisual.Query.GetRoomVisualById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.RoomVisual
 {
@@ -49,13 +49,13 @@ namespace CleanArc.Web.Api.Controllers.V1.RoomVisual
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles. 
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.RoomVisual.Command.CreateRoomVisualCommand.CreateRoomVisualCommand, CleanArc.Application.Features.RoomVisual.Command.UpdateRoomVisualCommand.UpdateRoomVisualCommand, CleanArc.Application.Features.RoomVisual.Command.DeleteRoomVisualCommand.DeleteRoomVisualCommand, System.Boolean, CleanArc.Application.Features.RoomVisual.Query.GetAllRoomVisual.GetAllRoomVisualQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.RoomVisual.Query.GetAllRoomVisual.GetAllRoomVisualQueryResult&gt;, CleanArc.Application.Features.RoomVisual.Query.GetRoomVisualById.GetRoomVisualByIdQuery, CleanArc.Application.Features.RoomVisual.Query.GetRoomVisualById.GetRoomVisualByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.RoomVisual.Command.CreateRoomVisualCommand.CreateRoomVisualCommand, CleanArc.Application.Features.RoomVisual.Command.UpdateRoomVisualCommand.UpdateRoomVisualCommand, CleanArc.Application.Features.RoomVisual.Command.DeleteRoomVisualCommand.DeleteRoomVisualCommand, System.ResponseEntity, CleanArc.Application.Features.RoomVisual.Query.GetAllRoomVisual.GetAllRoomVisualQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.RoomVisual.Query.GetAllRoomVisual.GetAllRoomVisualQueryResult&gt;, CleanArc.Application.Features.RoomVisual.Query.GetRoomVisualById.GetRoomVisualByIdQuery, CleanArc.Application.Features.RoomVisual.Query.GetRoomVisualById.GetRoomVisualByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/RoomVisual")]
     //[Authorize]
 
-    public class RoomVisualController : _BaseController<CreateRoomVisualCommand, UpdateRoomVisualCommand, DeleteRoomVisualCommand, bool, GetAllRoomVisualQuery,
+    public class RoomVisualController : _BaseController<CreateRoomVisualCommand, UpdateRoomVisualCommand, DeleteRoomVisualCommand, ResponseEntity, GetAllRoomVisualQuery,
     List<GetAllRoomVisualQueryResult>, GetRoomVisualByIdQuery, GetRoomVisualByIdQueryResult>
     {
 
@@ -65,7 +65,7 @@ namespace CleanArc.Web.Api.Controllers.V1.RoomVisual
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public RoomVisualController(ISender sender, ILogger<_BaseController<CreateRoomVisualCommand, UpdateRoomVisualCommand, DeleteRoomVisualCommand, bool, GetAllRoomVisualQuery,
+        public RoomVisualController(ISender sender, ILogger<_BaseController<CreateRoomVisualCommand, UpdateRoomVisualCommand, DeleteRoomVisualCommand, ResponseEntity, GetAllRoomVisualQuery,
    List<GetAllRoomVisualQueryResult>, GetRoomVisualByIdQuery, GetRoomVisualByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) :
             base(sender, logger, httpContextAccessor)
         {

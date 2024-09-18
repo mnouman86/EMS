@@ -6,7 +6,7 @@ using CleanArc.Application.Features.MappingRoomAmenity.Query.GetAllMappingRoomAm
 using CleanArc.Application.Features.MappingRoomAmenity.Query.GetMappingRoomAmenityById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.MappingRoomAmenities;
 
@@ -36,12 +36,12 @@ namespace CleanArc.Web.Api.Controllers.V1.MappingRoomAmenities;
 /// The controller adheres to Clean Architecture principles, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles.
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.MappingRoomAmenity.Command.CreateMappingRoomAmenityCommand.CreateMappingRoomAmenityCommand, CleanArc.Application.Features.MappingRoomAmenity.Command.UpdateMappingRoomAmenityCommand.UpdateMappingRoomAmenityCommand, CleanArc.Application.Features.MappingRoomAmenity.Command.DeleteMappingRoomAmenityCommand.DeleteMappingRoomAmenityCommand, System.Boolean, CleanArc.Application.Features.MappingRoomAmenity.Query.GetAllMappingRoomAmenity.GetAllMappingRoomAmenityQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.MappingRoomAmenity.Query.GetAllMappingRoomAmenity.GetAllMappingRoomAmenityQueryResult&gt;, CleanArc.Application.Features.MappingRoomAmenity.Query.GetMappingRoomAmenityById.GetMappingRoomAmenityByIdQuery, CleanArc.Application.Features.MappingRoomAmenity.Query.GetMappingRoomAmenityById.GetMappingRoomAmenityByIdQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.MappingRoomAmenity.Command.CreateMappingRoomAmenityCommand.CreateMappingRoomAmenityCommand, CleanArc.Application.Features.MappingRoomAmenity.Command.UpdateMappingRoomAmenityCommand.UpdateMappingRoomAmenityCommand, CleanArc.Application.Features.MappingRoomAmenity.Command.DeleteMappingRoomAmenityCommand.DeleteMappingRoomAmenityCommand, System.ResponseEntity, CleanArc.Application.Features.MappingRoomAmenity.Query.GetAllMappingRoomAmenity.GetAllMappingRoomAmenityQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.MappingRoomAmenity.Query.GetAllMappingRoomAmenity.GetAllMappingRoomAmenityQueryResult&gt;, CleanArc.Application.Features.MappingRoomAmenity.Query.GetMappingRoomAmenityById.GetMappingRoomAmenityByIdQuery, CleanArc.Application.Features.MappingRoomAmenity.Query.GetMappingRoomAmenityById.GetMappingRoomAmenityByIdQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/MappingRoomAmenities")]
 //[Authorize]
-public class MappingRoomAmenitiesController : _BaseController<CreateMappingRoomAmenityCommand, UpdateMappingRoomAmenityCommand, DeleteMappingRoomAmenityCommand, bool, GetAllMappingRoomAmenityQuery,
+public class MappingRoomAmenitiesController : _BaseController<CreateMappingRoomAmenityCommand, UpdateMappingRoomAmenityCommand, DeleteMappingRoomAmenityCommand, ResponseEntity, GetAllMappingRoomAmenityQuery,
 List<GetAllMappingRoomAmenityQueryResult>, GetMappingRoomAmenityByIdQuery, GetMappingRoomAmenityByIdQueryResult>
 {
 
@@ -51,7 +51,7 @@ List<GetAllMappingRoomAmenityQueryResult>, GetMappingRoomAmenityByIdQuery, GetMa
     /// <param name="sender">The mediator sender for handling requests and responses.</param>
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
-    public MappingRoomAmenitiesController(ISender sender, ILogger<_BaseController<CreateMappingRoomAmenityCommand, UpdateMappingRoomAmenityCommand, DeleteMappingRoomAmenityCommand, bool, GetAllMappingRoomAmenityQuery,
+    public MappingRoomAmenitiesController(ISender sender, ILogger<_BaseController<CreateMappingRoomAmenityCommand, UpdateMappingRoomAmenityCommand, DeleteMappingRoomAmenityCommand, ResponseEntity, GetAllMappingRoomAmenityQuery,
 List<GetAllMappingRoomAmenityQueryResult>, GetMappingRoomAmenityByIdQuery, GetMappingRoomAmenityByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 

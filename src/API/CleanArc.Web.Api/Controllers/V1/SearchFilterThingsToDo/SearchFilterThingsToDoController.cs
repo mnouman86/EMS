@@ -6,7 +6,7 @@ using CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetSearchFilt
 using CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetAllSearchFilterThingsToDo;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.SearchFilterThingsToDo
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.SearchFilterThingsToDo
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.SearchFilterThingsToDo.Commands.CreateSearchFilterThingsToDoCommand.CreateSearchFilterThingsToDoCommand, CleanArc.Application.Features.SearchFilterThingsToDo.Commands.UpdateSearchFilterThingsToDoCommand.UpdateSearchFilterThingsToDoCommand, CleanArc.Application.Features.SearchFilterThingsToDo.Commands.DeleteSearchFilterThingsToDoCommand.DeleteSearchFilterThingsToDoCommand, System.Boolean, CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetAllSearchFilterThingsToDo.GetAllSearchFilterThingsToDoQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetAllSearchFilterThingsToDo.GetAllSearchFilterThingsToDoQueryResult&gt;, CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetSearchFilterThingsToDoById.GetSearchFilterThingsToDoByIdQuery, CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetSearchFilterThingsToDoById.GetSearchFilterThingsToDoByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.SearchFilterThingsToDo.Commands.CreateSearchFilterThingsToDoCommand.CreateSearchFilterThingsToDoCommand, CleanArc.Application.Features.SearchFilterThingsToDo.Commands.UpdateSearchFilterThingsToDoCommand.UpdateSearchFilterThingsToDoCommand, CleanArc.Application.Features.SearchFilterThingsToDo.Commands.DeleteSearchFilterThingsToDoCommand.DeleteSearchFilterThingsToDoCommand, System.ResponseEntity, CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetAllSearchFilterThingsToDo.GetAllSearchFilterThingsToDoQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetAllSearchFilterThingsToDo.GetAllSearchFilterThingsToDoQueryResult&gt;, CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetSearchFilterThingsToDoById.GetSearchFilterThingsToDoByIdQuery, CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetSearchFilterThingsToDoById.GetSearchFilterThingsToDoByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/SearchFilterThingsToDo")]
     //[Authorize]
-    public class SearchFilterThingsToDoController : _BaseController<CreateSearchFilterThingsToDoCommand, UpdateSearchFilterThingsToDoCommand, DeleteSearchFilterThingsToDoCommand, bool, GetAllSearchFilterThingsToDoQuery,
+    public class SearchFilterThingsToDoController : _BaseController<CreateSearchFilterThingsToDoCommand, UpdateSearchFilterThingsToDoCommand, DeleteSearchFilterThingsToDoCommand, ResponseEntity, GetAllSearchFilterThingsToDoQuery,
     List<GetAllSearchFilterThingsToDoQueryResult>, GetSearchFilterThingsToDoByIdQuery, GetSearchFilterThingsToDoByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.SearchFilterThingsToDo
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public SearchFilterThingsToDoController(ISender sender, ILogger<_BaseController<CreateSearchFilterThingsToDoCommand, UpdateSearchFilterThingsToDoCommand, DeleteSearchFilterThingsToDoCommand, bool, GetAllSearchFilterThingsToDoQuery,
+        public SearchFilterThingsToDoController(ISender sender, ILogger<_BaseController<CreateSearchFilterThingsToDoCommand, UpdateSearchFilterThingsToDoCommand, DeleteSearchFilterThingsToDoCommand, ResponseEntity, GetAllSearchFilterThingsToDoQuery,
    List<GetAllSearchFilterThingsToDoQueryResult>, GetSearchFilterThingsToDoByIdQuery, GetSearchFilterThingsToDoByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

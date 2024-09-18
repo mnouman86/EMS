@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.Currency.Commands.UpdateCurrencyCommand;
 public record UpdateCurrencyCommand(
@@ -16,7 +16,7 @@ public record UpdateCurrencyCommand(
   string? Name,
   int? CurrencyCode,
    int? Rate,
-  int? UpdatedBy) : IRequest<OperationResult<bool>>,
+  int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateCurrencyCommand>
 {
     [JsonIgnore]

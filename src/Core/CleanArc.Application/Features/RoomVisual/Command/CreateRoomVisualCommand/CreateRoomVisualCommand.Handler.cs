@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.RoomVisual.Command.CreateRoomVisualCommand
 {
-    internal class CreateRoomVisualCommandHandler : IRequestHandler<CreateRoomVisualCommand, OperationResult<bool>>
+    internal class CreateRoomVisualCommandHandler : IRequestHandler<CreateRoomVisualCommand, OperationResult<ResponseEntity>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IAppUserManager _userManager;
@@ -40,14 +40,14 @@ namespace CleanArc.Application.Features.RoomVisual.Command.CreateRoomVisualComma
             //_userManager = userManager;
         }
 
-        public async ValueTask<OperationResult<bool>> Handle(CreateRoomVisualCommand request, CancellationToken cancellationToken)
+        public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateRoomVisualCommand request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
 
                 var user = await _userManager.GetUserByIdAsync(request.UserId);
                 if (user == null)
-                    return OperationResult<bool>.FailureResult("User Not Found");
+                    return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
                 //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
                 //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -55,8 +55,8 @@ namespace CleanArc.Application.Features.RoomVisual.Command.CreateRoomVisualComma
                 //await _unitOfWork.CommitAsync();
                 //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-                //return OperationResult<bool>.SuccessResult(true);
-                await _unitOfWork.RoomVisualRepository.AddAsync(new Domain.Entities.RoomVisual.RoomVisual()
+                //return OperationResult<ResponseEntity>.SuccessResult(result);
+                var result = await _unitOfWork.RoomVisualRepository.AddAsync(new Domain.Entities.RoomVisual.RoomVisual()
                 { CreatedBy = user.Id,
                     HotelID= request.HotelID,
                    RoomID= request.RoomID,
@@ -72,7 +72,7 @@ namespace CleanArc.Application.Features.RoomVisual.Command.CreateRoomVisualComma
                 });
                 await _unitOfWork.CommitAsync();
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-                return OperationResult<bool>.SuccessResult(true);
+                return OperationResult<ResponseEntity>.SuccessResult(result);
             }
         }
     }

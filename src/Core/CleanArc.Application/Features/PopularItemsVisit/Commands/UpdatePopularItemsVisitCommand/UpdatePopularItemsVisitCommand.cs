@@ -8,14 +8,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.PopularItemsVisit.Commands.UpdatePopularItemsVisitCommand;
 public record UpdatePopularItemsVisitCommand(int ID, int? UserID, string? PageVisiteUrl,
     string? SessionDuration,
     int? VisitCount,
     DateTime? LastVisitAt,  
-    int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
+    int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdatePopularItemsVisitCommand>
 {
     [JsonIgnore]

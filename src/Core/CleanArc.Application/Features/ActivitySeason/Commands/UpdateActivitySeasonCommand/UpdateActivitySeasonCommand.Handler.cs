@@ -16,7 +16,7 @@ using CleanArc.SharedKernel.Extensions;
 
 namespace CleanArc.Application.Features.ActivitySeason.Commands.UpdateActivitySeasonCommand;
 
-internal class UpdateActivitySeasonCommandHandler:IRequestHandler<UpdateActivitySeasonCommand, OperationResult<bool>>
+internal class UpdateActivitySeasonCommandHandler:IRequestHandler<UpdateActivitySeasonCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -39,14 +39,14 @@ internal class UpdateActivitySeasonCommandHandler:IRequestHandler<UpdateActivity
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<bool>> Handle(UpdateActivitySeasonCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateActivitySeasonCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -54,12 +54,12 @@ internal class UpdateActivitySeasonCommandHandler:IRequestHandler<UpdateActivity
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.ActivitySeasonRepository.UpdateAsync(new Domain.Entities.ActivitySeason.ActivitySeason()
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            var result = await _unitOfWork.ActivitySeasonRepository.UpdateAsync(new Domain.Entities.ActivitySeason.ActivitySeason()
             { UpdatedBy = user.Id,ID= request.ID, Description = request.Description, Name = request.Name });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 

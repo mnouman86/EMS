@@ -81,7 +81,7 @@ public async Task<ResponseEntity> AddAsync(DisabilityOption DisabilityOption)
     }
 }
 
-    public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
         {
@@ -94,9 +94,9 @@ public async Task<ResponseEntity> AddAsync(DisabilityOption DisabilityOption)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(DisabilityOptionQueries.Delete_DisabilityOption, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(DisabilityOptionQueries.Delete_DisabilityOption, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }
@@ -141,7 +141,7 @@ public async Task<ResponseEntity> AddAsync(DisabilityOption DisabilityOption)
 
 
 
-    public async Task<string> UpdateAsync(DisabilityOption entity)
+    public async Task<ResponseEntity> UpdateAsync(DisabilityOption entity)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
         {
@@ -150,9 +150,9 @@ public async Task<ResponseEntity> AddAsync(DisabilityOption DisabilityOption)
                 connection.Open();
                 UpdateDisabilityOptionDTO updateDisabilityOptionDTO = _mapper.Map<UpdateDisabilityOptionDTO>(entity);
 
-                var result = await connection.ExecuteAsync(DisabilityOptionQueries.update_DisabilityOption, updateDisabilityOptionDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(DisabilityOptionQueries.update_DisabilityOption, updateDisabilityOptionDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

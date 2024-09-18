@@ -16,7 +16,7 @@ using CleanArc.SharedKernel.Extensions;
 
 namespace CleanArc.Application.Features.MappingRoomImage.Command.CreateMappingRoomImageCommand;
 
-internal class CreateMappingRoomImageCommandHandler : IRequestHandler<CreateMappingRoomImageCommand, OperationResult<bool>>
+internal class CreateMappingRoomImageCommandHandler : IRequestHandler<CreateMappingRoomImageCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -40,14 +40,14 @@ internal class CreateMappingRoomImageCommandHandler : IRequestHandler<CreateMapp
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateMappingRoomImageCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateMappingRoomImageCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -55,8 +55,8 @@ internal class CreateMappingRoomImageCommandHandler : IRequestHandler<CreateMapp
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.MappingRoomImageRepository.AddAsync(new Domain.Entities.MappingRoomImage.MappingRoomImage()
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            var result = await _unitOfWork.MappingRoomImageRepository.AddAsync(new Domain.Entities.MappingRoomImage.MappingRoomImage()
             { CreatedBy = user.Id, RoomID = request.RoomID, CategoryID = request.CategoryID,
                 ImagePaths=request.ImagePaths,
                 ImageTitles=request.ImageTitles,
@@ -65,7 +65,7 @@ internal class CreateMappingRoomImageCommandHandler : IRequestHandler<CreateMapp
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }

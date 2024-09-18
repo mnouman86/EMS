@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.RoomSizeUnit.Command.CreateRoomSizeUnitCommand;
 
-internal class CreateRoomSizeUnitCommandHandler : IRequestHandler<CreateRoomSizeUnitCommand, OperationResult<bool>>
+internal class CreateRoomSizeUnitCommandHandler : IRequestHandler<CreateRoomSizeUnitCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -39,14 +39,14 @@ internal class CreateRoomSizeUnitCommandHandler : IRequestHandler<CreateRoomSize
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateRoomSizeUnitCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateRoomSizeUnitCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -55,11 +55,11 @@ internal class CreateRoomSizeUnitCommandHandler : IRequestHandler<CreateRoomSize
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.RoomSizeUnitReposirory.AddAsync(new Domain.Entities.RoomSizeUnit.RoomSizeUnit()
+            var result = await _unitOfWork.RoomSizeUnitReposirory.AddAsync(new Domain.Entities.RoomSizeUnit.RoomSizeUnit()
             { CreatedBy = user.Id, Description = request.Description, Name = request.Name });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }

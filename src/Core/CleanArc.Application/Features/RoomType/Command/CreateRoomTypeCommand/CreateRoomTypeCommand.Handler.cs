@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.RoomType.Command.CreateRoomTypeCommand;
 
-internal class CreateRoomTypeCommandHandler : IRequestHandler<CreateRoomTypeCommand, OperationResult<bool>>
+internal class CreateRoomTypeCommandHandler : IRequestHandler<CreateRoomTypeCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -39,21 +39,21 @@ internal class CreateRoomTypeCommandHandler : IRequestHandler<CreateRoomTypeComm
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateRoomTypeCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateRoomTypeCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
-           
-            await _unitOfWork.RoomTypeRepository.AddAsync(new Domain.Entities.RoomType.RoomType()
+
+            var result = await _unitOfWork.RoomTypeRepository.AddAsync(new Domain.Entities.RoomType.RoomType()
             { CreatedBy = user.Id, Description = request.Description, Name = request.Name });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }

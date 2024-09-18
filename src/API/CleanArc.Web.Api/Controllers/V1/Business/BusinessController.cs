@@ -6,7 +6,7 @@ using CleanArc.Application.Features.Business.Query.GetAllBusiness;
 using CleanArc.Application.Features.Business.Query.GetBusinessById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.Business;
 
@@ -49,11 +49,11 @@ namespace CleanArc.Web.Api.Controllers.V1.Business;
 /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles. 
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Business.Command.CreateBusinessCommand.CreateBusinessCommand, CleanArc.Application.Features.Business.Command.UpdateBusinessCommand.UpdateBusinessCommand, CleanArc.Application.Features.Business.Command.DeleteBusinessCommand.DeleteBusinessCommand, System.Boolean, CleanArc.Application.Features.Business.Query.GetAllBusiness.GetAllBusinessQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Business.Query.GetAllBusiness.GetAllBusinessQueryResult&gt;, CleanArc.Application.Features.Business.Query.GetBusinessById.GetBusinessByIdQuery, CleanArc.Application.Features.Business.Query.GetBusinessById.GetBusinessByIdQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Business.Command.CreateBusinessCommand.CreateBusinessCommand, CleanArc.Application.Features.Business.Command.UpdateBusinessCommand.UpdateBusinessCommand, CleanArc.Application.Features.Business.Command.DeleteBusinessCommand.DeleteBusinessCommand, System.ResponseEntity, CleanArc.Application.Features.Business.Query.GetAllBusiness.GetAllBusinessQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Business.Query.GetAllBusiness.GetAllBusinessQueryResult&gt;, CleanArc.Application.Features.Business.Query.GetBusinessById.GetBusinessByIdQuery, CleanArc.Application.Features.Business.Query.GetBusinessById.GetBusinessByIdQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/Business")]
-public class BusinessController : _BaseController<CreateBusinessCommand, UpdateBusinessCommand, DeleteBusinessCommand, bool, GetAllBusinessQuery,
+public class BusinessController : _BaseController<CreateBusinessCommand, UpdateBusinessCommand, DeleteBusinessCommand, ResponseEntity, GetAllBusinessQuery,
 List<GetAllBusinessQueryResult>, GetBusinessByIdQuery, GetBusinessByIdQueryResult>
 {
 
@@ -63,7 +63,7 @@ List<GetAllBusinessQueryResult>, GetBusinessByIdQuery, GetBusinessByIdQueryResul
     /// <param name="sender">The mediator sender for handling requests and responses.</param>
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
-    public BusinessController(ISender sender, ILogger<_BaseController<CreateBusinessCommand, UpdateBusinessCommand, DeleteBusinessCommand, bool, GetAllBusinessQuery,
+    public BusinessController(ISender sender, ILogger<_BaseController<CreateBusinessCommand, UpdateBusinessCommand, DeleteBusinessCommand, ResponseEntity, GetAllBusinessQuery,
 List<GetAllBusinessQueryResult>, GetBusinessByIdQuery, GetBusinessByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 

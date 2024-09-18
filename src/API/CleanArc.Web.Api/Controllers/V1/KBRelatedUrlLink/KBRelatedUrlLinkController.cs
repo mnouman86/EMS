@@ -6,7 +6,7 @@ using CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetKBRelatedUrlLink
 using CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetAllKBRelatedUrlLink;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.KBRelatedUrlLink
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.KBRelatedUrlLink
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.KBRelatedUrlLink.Commands.CreateKBRelatedUrlLinkCommand.CreateKBRelatedUrlLinkCommand, CleanArc.Application.Features.KBRelatedUrlLink.Commands.UpdateKBRelatedUrlLinkCommand.UpdateKBRelatedUrlLinkCommand, CleanArc.Application.Features.KBRelatedUrlLink.Commands.DeleteKBRelatedUrlLinkCommand.DeleteKBRelatedUrlLinkCommand, System.Boolean, CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetAllKBRelatedUrlLink.GetAllKBRelatedUrlLinkQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetAllKBRelatedUrlLink.GetAllKBRelatedUrlLinkQueryResult&gt;, CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetKBRelatedUrlLinkById.GetKBRelatedUrlLinkByIdQuery, CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetKBRelatedUrlLinkById.GetKBRelatedUrlLinkByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.KBRelatedUrlLink.Commands.CreateKBRelatedUrlLinkCommand.CreateKBRelatedUrlLinkCommand, CleanArc.Application.Features.KBRelatedUrlLink.Commands.UpdateKBRelatedUrlLinkCommand.UpdateKBRelatedUrlLinkCommand, CleanArc.Application.Features.KBRelatedUrlLink.Commands.DeleteKBRelatedUrlLinkCommand.DeleteKBRelatedUrlLinkCommand, System.ResponseEntity, CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetAllKBRelatedUrlLink.GetAllKBRelatedUrlLinkQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetAllKBRelatedUrlLink.GetAllKBRelatedUrlLinkQueryResult&gt;, CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetKBRelatedUrlLinkById.GetKBRelatedUrlLinkByIdQuery, CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetKBRelatedUrlLinkById.GetKBRelatedUrlLinkByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/KBRelatedUrlLink")]
     //[Authorize]
-    public class KBRelatedUrlLinkController : _BaseController<CreateKBRelatedUrlLinkCommand, UpdateKBRelatedUrlLinkCommand, DeleteKBRelatedUrlLinkCommand, bool, GetAllKBRelatedUrlLinkQuery,
+    public class KBRelatedUrlLinkController : _BaseController<CreateKBRelatedUrlLinkCommand, UpdateKBRelatedUrlLinkCommand, DeleteKBRelatedUrlLinkCommand, ResponseEntity, GetAllKBRelatedUrlLinkQuery,
     List<GetAllKBRelatedUrlLinkQueryResult>, GetKBRelatedUrlLinkByIdQuery, GetKBRelatedUrlLinkByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.KBRelatedUrlLink
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public KBRelatedUrlLinkController(ISender sender, ILogger<_BaseController<CreateKBRelatedUrlLinkCommand, UpdateKBRelatedUrlLinkCommand, DeleteKBRelatedUrlLinkCommand, bool, GetAllKBRelatedUrlLinkQuery,
+        public KBRelatedUrlLinkController(ISender sender, ILogger<_BaseController<CreateKBRelatedUrlLinkCommand, UpdateKBRelatedUrlLinkCommand, DeleteKBRelatedUrlLinkCommand, ResponseEntity, GetAllKBRelatedUrlLinkQuery,
    List<GetAllKBRelatedUrlLinkQueryResult>, GetKBRelatedUrlLinkByIdQuery, GetKBRelatedUrlLinkByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

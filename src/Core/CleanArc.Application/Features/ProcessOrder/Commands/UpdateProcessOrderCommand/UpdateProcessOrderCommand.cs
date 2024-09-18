@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ProcessOrder.Commands.UpdateProcessOrderCommand;
 public record UpdateProcessOrderCommand(int ID, string? OrderNumber, string? FirstName, string? LastName, string Email,
@@ -32,7 +32,7 @@ public record UpdateProcessOrderCommand(int ID, string? OrderNumber, string? Fir
     string OrderStatus,
     DateTime? CreditDate,
     int? CultureId,
-     int? UpdatedBy) : IRequest<OperationResult<bool>>,
+     int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateProcessOrderCommand>
 {
     [JsonIgnore]

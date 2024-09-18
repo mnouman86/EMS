@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.Business.Command.CreateBusinessCommand;
 
@@ -18,7 +18,7 @@ public record CreateBusinessCommand(int? BusinessTypeID,string? Name,
     string? Longitude, int? CountryID, int? StateID,
     int? CityID, string? TaxIdentificationNumber, string? License, 
     string? ProofOfInsurance, int? BankAccountDetailID,
-    bool? IsCancelation, bool? IsRefundable, int? CreatedBy) : IRequest<OperationResult<bool>>,
+    bool? IsCancelation, bool? IsRefundable, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateBusinessCommand>
 {
     [JsonIgnore]

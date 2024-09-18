@@ -6,7 +6,7 @@ using CleanArc.Application.Features.ActivityPerGroupPrice.Queries.GetActivityPer
 using CleanArc.Application.Features.ActivityPerGroupPrice.Queries.GetAllActivityPerGroupPrice;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.ActivityPerGroupPrice
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityPerGroupPrice
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityPerGroupPrice.Commands.CreateActivityPerGroupPriceCommand.CreateActivityPerGroupPriceCommand, CleanArc.Application.Features.ActivityPerGroupPrice.Commands.UpdateActivityPerGroupPriceCommand.UpdateActivityPerGroupPriceCommand, CleanArc.Application.Features.ActivityPerGroupPrice.Commands.DeleteActivityPerGroupPriceCommand.DeleteActivityPerGroupPriceCommand, System.Boolean, CleanArc.Application.Features.ActivityPerGroupPrice.Queries.GetAllActivityPerGroupPrice.GetAllActivityPerGroupPriceQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityPerGroupPrice.Queries.GetAllActivityPerGroupPrice.GetAllActivityPerGroupPriceQueryResult&gt;, CleanArc.Application.Features.ActivityPerGroupPrice.Queries.GetActivityPerGroupPriceById.GetActivityPerGroupPriceByIdQuery, CleanArc.Application.Features.ActivityPerGroupPrice.Queries.GetActivityPerGroupPriceById.GetActivityPerGroupPriceByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityPerGroupPrice.Commands.CreateActivityPerGroupPriceCommand.CreateActivityPerGroupPriceCommand, CleanArc.Application.Features.ActivityPerGroupPrice.Commands.UpdateActivityPerGroupPriceCommand.UpdateActivityPerGroupPriceCommand, CleanArc.Application.Features.ActivityPerGroupPrice.Commands.DeleteActivityPerGroupPriceCommand.DeleteActivityPerGroupPriceCommand, System.ResponseEntity, CleanArc.Application.Features.ActivityPerGroupPrice.Queries.GetAllActivityPerGroupPrice.GetAllActivityPerGroupPriceQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityPerGroupPrice.Queries.GetAllActivityPerGroupPrice.GetAllActivityPerGroupPriceQueryResult&gt;, CleanArc.Application.Features.ActivityPerGroupPrice.Queries.GetActivityPerGroupPriceById.GetActivityPerGroupPriceByIdQuery, CleanArc.Application.Features.ActivityPerGroupPrice.Queries.GetActivityPerGroupPriceById.GetActivityPerGroupPriceByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/ActivityPerGroupPrice")]
     //[Authorize]
-    public class ActivityPerGroupPriceController : _BaseController<CreateActivityPerGroupPriceCommand, UpdateActivityPerGroupPriceCommand, DeleteActivityPerGroupPriceCommand, bool, GetAllActivityPerGroupPriceQuery,
+    public class ActivityPerGroupPriceController : _BaseController<CreateActivityPerGroupPriceCommand, UpdateActivityPerGroupPriceCommand, DeleteActivityPerGroupPriceCommand, ResponseEntity, GetAllActivityPerGroupPriceQuery,
     List<GetAllActivityPerGroupPriceQueryResult>, GetActivityPerGroupPriceByIdQuery, GetActivityPerGroupPriceByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityPerGroupPrice
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public ActivityPerGroupPriceController(ISender sender, ILogger<_BaseController<CreateActivityPerGroupPriceCommand, UpdateActivityPerGroupPriceCommand, DeleteActivityPerGroupPriceCommand, bool, GetAllActivityPerGroupPriceQuery,
+        public ActivityPerGroupPriceController(ISender sender, ILogger<_BaseController<CreateActivityPerGroupPriceCommand, UpdateActivityPerGroupPriceCommand, DeleteActivityPerGroupPriceCommand, ResponseEntity, GetAllActivityPerGroupPriceQuery,
    List<GetAllActivityPerGroupPriceQueryResult>, GetActivityPerGroupPriceByIdQuery, GetActivityPerGroupPriceByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

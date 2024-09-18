@@ -63,7 +63,7 @@ public class RoomDetailsRepository:IRoomDetailsRepository
         }
     }
 
-    public async Task<string> DeleteAsync(string selectedIds, int updatedBy , int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy , int? CultureId)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
         {
@@ -76,9 +76,9 @@ public class RoomDetailsRepository:IRoomDetailsRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(RoomDetailQueries.Delete_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(RoomDetailQueries.Delete_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }
@@ -123,7 +123,7 @@ public class RoomDetailsRepository:IRoomDetailsRepository
 
 
 
-    public async Task<string> UpdateAsync(RoomDetails roomDetails)
+    public async Task<ResponseEntity> UpdateAsync(RoomDetails roomDetails)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, roomDetails))
         {
@@ -132,9 +132,9 @@ public class RoomDetailsRepository:IRoomDetailsRepository
                 connection.Open();
                 UpdateRoomDetailsDTO updateRoomDetailsDTO = _mapper.Map<UpdateRoomDetailsDTO>(roomDetails);
 
-                var result = await connection.ExecuteAsync(RoomDetailQueries.Update_RoomDetail, updateRoomDetailsDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(RoomDetailQueries.Update_RoomDetail, updateRoomDetailsDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

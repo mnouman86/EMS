@@ -9,11 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.CarDetail.Command.CreateCarDetailCommand;
 
-public record CreateCarDetailCommand(int? BusinessID, string? Model, string? Year, String? VehicleIdentificationNumber, string? PlateNumber, int? NoOfSeat, int? RentPrice, int? CreatedBy) : IRequest<OperationResult<bool>>,
+public record CreateCarDetailCommand(int? BusinessID, string? Model, string? Year, String? VehicleIdentificationNumber, string? PlateNumber, int? NoOfSeat, int? RentPrice, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateCarDetailCommand>
 {
     [JsonIgnore]

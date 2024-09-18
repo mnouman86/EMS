@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.KBRelatedUrlLink.Commands.CreateKBRelatedUrlLinkCommand;
 
-internal class CreateKBRelatedUrlLinkCommandHandler: IRequestHandler<CreateKBRelatedUrlLinkCommand, OperationResult<bool>>
+internal class CreateKBRelatedUrlLinkCommandHandler: IRequestHandler<CreateKBRelatedUrlLinkCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -41,14 +41,14 @@ internal class CreateKBRelatedUrlLinkCommandHandler: IRequestHandler<CreateKBRel
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateKBRelatedUrlLinkCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateKBRelatedUrlLinkCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -56,12 +56,12 @@ internal class CreateKBRelatedUrlLinkCommandHandler: IRequestHandler<CreateKBRel
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.KBRelatedUrlLinkRepository.AddAsync(new Domain.Entities.KBRelatedUrlLink.KBRelatedUrlLink()
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            var result = await _unitOfWork.KBRelatedUrlLinkRepository.AddAsync(new Domain.Entities.KBRelatedUrlLink.KBRelatedUrlLink()
             { CreatedBy = user.Id, KBDetailID = request.KBDetailID, Description = request.Description,Title=request.Title, URL = request.URL, CultureId =request.CultureId  });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }

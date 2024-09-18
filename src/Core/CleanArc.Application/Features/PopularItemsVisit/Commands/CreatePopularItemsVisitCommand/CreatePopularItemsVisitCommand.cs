@@ -2,7 +2,7 @@
 using CleanArc.SharedKernel.ValidationBase.Contracts;
 using CleanArc.SharedKernel.ValidationBase;
 using FluentValidation;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.PopularItemsVisit.Commands.CreatePopularItemsVisitCommand;
 public record CreatePopularItemsVisitCommand(int? UserID, string? PageVisiteUrl, DateTime? FirstVisitAt,
-    DateTime? LastVisitAt, int? VisitCount, string? SessionDuration,int? CreatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
+    DateTime? LastVisitAt, int? VisitCount, string? SessionDuration,int? CreatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreatePopularItemsVisitCommand>
 {
     [JsonIgnore]

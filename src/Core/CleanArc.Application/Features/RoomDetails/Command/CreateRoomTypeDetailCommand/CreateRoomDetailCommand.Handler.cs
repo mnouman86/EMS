@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.RoomDetails.Command.CreateRoomDetailCommand;
 
-internal class CreateRoomDetailCommandHandler : IRequestHandler<CreateRoomDetailCommand, OperationResult<bool>>
+internal class CreateRoomDetailCommandHandler : IRequestHandler<CreateRoomDetailCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -39,17 +39,17 @@ internal class CreateRoomDetailCommandHandler : IRequestHandler<CreateRoomDetail
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateRoomDetailCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateRoomDetailCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
-           
-            await _unitOfWork.RoomDetailsRepository.AddAsync(new Domain.Entities.RoomDetails.RoomDetails()
+
+            var result = await _unitOfWork.RoomDetailsRepository.AddAsync(new Domain.Entities.RoomDetails.RoomDetails()
             { CreatedBy = user.Id,
                 HotelID = request.HotelID,
                 RoomTypeID = request.RoomTypeID,
@@ -66,7 +66,7 @@ internal class CreateRoomDetailCommandHandler : IRequestHandler<CreateRoomDetail
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }

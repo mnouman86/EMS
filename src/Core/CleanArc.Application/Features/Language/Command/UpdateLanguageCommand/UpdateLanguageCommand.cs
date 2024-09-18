@@ -7,12 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Language.Command.UpdateLanguageCommand;
 
-public record UpdateLanguageCommand(int ID, String? Name, string? Description, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record UpdateLanguageCommand(int ID, String? Name, string? Description, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<UpdateLanguageCommand>
 {
     [JsonIgnore]

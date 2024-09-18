@@ -2,7 +2,7 @@
 using CleanArc.SharedKernel.ValidationBase.Contracts;
 using CleanArc.SharedKernel.ValidationBase;
 using FluentValidation;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ public record CreateCurrencyCommand(
     int? CultureId,
     int? Code,
     string? Message
-    ) : IRequest<OperationResult<bool>>,
+    ) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateCurrencyCommand>
 {
     [JsonIgnore]

@@ -9,11 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.MappingHotelLanguage.Command.CreateMappingHotelLanguageCommand;
 
-public record CreateMappingHotelLanguageCommand(string? HotelIDs, string? LanguageIDs, int? CreatedBy) : IRequest<OperationResult<bool>>,
+public record CreateMappingHotelLanguageCommand(string? HotelIDs, string? LanguageIDs, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateMappingHotelLanguageCommand>
 {
     [JsonIgnore]

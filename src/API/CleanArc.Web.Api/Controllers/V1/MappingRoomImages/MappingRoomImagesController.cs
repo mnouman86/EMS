@@ -6,7 +6,7 @@ using CleanArc.Application.Features.MappingRoomImage.Query.GetAllMappingRoomImag
 using CleanArc.Application.Features.MappingRoomImage.Query.GetMappingRoomImageById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.MappingRoomImages;
 
@@ -36,11 +36,11 @@ namespace CleanArc.Web.Api.Controllers.V1.MappingRoomImages;
 /// The controller adheres to Clean Architecture principles, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles.
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.MappingRoomImage.Command.CreateMappingRoomImageCommand.CreateMappingRoomImageCommand, CleanArc.Application.Features.MappingRoomImage.Command.UpdateMappingRoomImageCommand.UpdateMappingRoomImageCommand, CleanArc.Application.Features.MappingRoomImage.Command.DeleteMappingRoomImageCommand.DeleteMappingRoomImageCommand, System.Boolean, CleanArc.Application.Features.MappingRoomImage.Query.GetAllMappingRoomImage.GetAllMappingRoomImageQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.MappingRoomImage.Query.GetAllMappingRoomImage.GetAllMappingRoomImageQueryResult&gt;, CleanArc.Application.Features.MappingRoomImage.Query.GetMappingRoomImageById.GetMappingRoomImageByIdQuery, CleanArc.Application.Features.MappingRoomImage.Query.GetMappingRoomImageById.GetMappingRoomImageByIdQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.MappingRoomImage.Command.CreateMappingRoomImageCommand.CreateMappingRoomImageCommand, CleanArc.Application.Features.MappingRoomImage.Command.UpdateMappingRoomImageCommand.UpdateMappingRoomImageCommand, CleanArc.Application.Features.MappingRoomImage.Command.DeleteMappingRoomImageCommand.DeleteMappingRoomImageCommand, System.ResponseEntity, CleanArc.Application.Features.MappingRoomImage.Query.GetAllMappingRoomImage.GetAllMappingRoomImageQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.MappingRoomImage.Query.GetAllMappingRoomImage.GetAllMappingRoomImageQueryResult&gt;, CleanArc.Application.Features.MappingRoomImage.Query.GetMappingRoomImageById.GetMappingRoomImageByIdQuery, CleanArc.Application.Features.MappingRoomImage.Query.GetMappingRoomImageById.GetMappingRoomImageByIdQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/MappingRoomImages")]
-public class MappingRoomImagesController : _BaseController<CreateMappingRoomImageCommand, UpdateMappingRoomImageCommand, DeleteMappingRoomImageCommand, bool, GetAllMappingRoomImageQuery,
+public class MappingRoomImagesController : _BaseController<CreateMappingRoomImageCommand, UpdateMappingRoomImageCommand, DeleteMappingRoomImageCommand, ResponseEntity, GetAllMappingRoomImageQuery,
 List<GetAllMappingRoomImageQueryResult>, GetMappingRoomImageByIdQuery, GetMappingRoomImageByIdQueryResult>
 {
 
@@ -50,7 +50,7 @@ List<GetAllMappingRoomImageQueryResult>, GetMappingRoomImageByIdQuery, GetMappin
     /// <param name="sender">The mediator sender for handling requests and responses.</param>
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
-    public MappingRoomImagesController(ISender sender, ILogger<_BaseController<CreateMappingRoomImageCommand, UpdateMappingRoomImageCommand, DeleteMappingRoomImageCommand, bool, GetAllMappingRoomImageQuery,
+    public MappingRoomImagesController(ISender sender, ILogger<_BaseController<CreateMappingRoomImageCommand, UpdateMappingRoomImageCommand, DeleteMappingRoomImageCommand, ResponseEntity, GetAllMappingRoomImageQuery,
 List<GetAllMappingRoomImageQueryResult>, GetMappingRoomImageByIdQuery, GetMappingRoomImageByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 

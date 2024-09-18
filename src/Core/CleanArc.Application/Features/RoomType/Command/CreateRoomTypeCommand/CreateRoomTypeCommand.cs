@@ -8,11 +8,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.RoomType.Command.CreateRoomTypeCommand;
 
-public record CreateRoomTypeCommand(string? Name, string? Description, int? CreatedBy) : IRequest<OperationResult<bool>>,
+public record CreateRoomTypeCommand(string? Name, string? Description, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateRoomTypeCommand>
 {
     [JsonIgnore]

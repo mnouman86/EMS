@@ -7,7 +7,7 @@ using CleanArc.Application.Features.Amenities.Queries.GetAmenitiesById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.Amenity
 {
@@ -15,10 +15,10 @@ namespace CleanArc.Web.Api.Controllers.V1.Amenity
     [ApiController]
     [Route("api/v{version:apiVersion}/Amenity")]
     //[Authorize]
-    public class AmenityController: _BaseController<CreateAmenityCommand, UpdateAmenityCommand, DeleteAmenityCommand, bool, GetAllAmenitiesQuery,
+    public class AmenityController: _BaseController<CreateAmenityCommand, UpdateAmenityCommand, DeleteAmenityCommand, ResponseEntity, GetAllAmenitiesQuery,
     List<GetAllAmenitiesQueryResult>, GetAmenityByIdQuery, GetAmenityByIdQueryResult>
     {    
-            public AmenityController(ISender sender, ILogger<_BaseController<CreateAmenityCommand, UpdateAmenityCommand, DeleteAmenityCommand, bool, GetAllAmenitiesQuery,
+            public AmenityController(ISender sender, ILogger<_BaseController<CreateAmenityCommand, UpdateAmenityCommand, DeleteAmenityCommand, ResponseEntity, GetAllAmenitiesQuery,
        List<GetAllAmenitiesQueryResult>, GetAmenityByIdQuery, GetAmenityByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
             {
 

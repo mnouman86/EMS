@@ -7,12 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.MappingRoomImage.Command.DeleteMappingRoomImageCommand;
 
-public record DeleteMappingRoomImageCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
+public record DeleteMappingRoomImageCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<DeleteMappingRoomImageCommand>
 {
     [JsonIgnore]

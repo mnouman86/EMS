@@ -6,7 +6,7 @@ using CleanArc.Application.Features.AgeType.Queries.GetAgeTypeById;
 using CleanArc.Application.Features.AgeType.Queries.GetAllAgeType;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.AgeType
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.AgeType
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.AgeType.Commands.CreateAgeTypeCommand.CreateAgeTypeCommand, CleanArc.Application.Features.AgeType.Commands.UpdateAgeTypeCommand.UpdateAgeTypeCommand, CleanArc.Application.Features.AgeType.Commands.DeleteAgeTypeCommand.DeleteAgeTypeCommand, System.Boolean, CleanArc.Application.Features.AgeType.Queries.GetAllAgeType.GetAllAgeTypeQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.AgeType.Queries.GetAllAgeType.GetAllAgeTypeQueryResult&gt;, CleanArc.Application.Features.AgeType.Queries.GetAgeTypeById.GetAgeTypeByIdQuery, CleanArc.Application.Features.AgeType.Queries.GetAgeTypeById.GetAgeTypeByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.AgeType.Commands.CreateAgeTypeCommand.CreateAgeTypeCommand, CleanArc.Application.Features.AgeType.Commands.UpdateAgeTypeCommand.UpdateAgeTypeCommand, CleanArc.Application.Features.AgeType.Commands.DeleteAgeTypeCommand.DeleteAgeTypeCommand, System.ResponseEntity, CleanArc.Application.Features.AgeType.Queries.GetAllAgeType.GetAllAgeTypeQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.AgeType.Queries.GetAllAgeType.GetAllAgeTypeQueryResult&gt;, CleanArc.Application.Features.AgeType.Queries.GetAgeTypeById.GetAgeTypeByIdQuery, CleanArc.Application.Features.AgeType.Queries.GetAgeTypeById.GetAgeTypeByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/AgeType")]
     //[Authorize]
-    public class AgeTypeController : _BaseController<CreateAgeTypeCommand, UpdateAgeTypeCommand, DeleteAgeTypeCommand, bool, GetAllAgeTypeQuery,
+    public class AgeTypeController : _BaseController<CreateAgeTypeCommand, UpdateAgeTypeCommand, DeleteAgeTypeCommand, ResponseEntity, GetAllAgeTypeQuery,
     List<GetAllAgeTypeQueryResult>, GetAgeTypeByIdQuery, GetAgeTypeByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.AgeType
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public AgeTypeController(ISender sender, ILogger<_BaseController<CreateAgeTypeCommand, UpdateAgeTypeCommand, DeleteAgeTypeCommand, bool, GetAllAgeTypeQuery,
+        public AgeTypeController(ISender sender, ILogger<_BaseController<CreateAgeTypeCommand, UpdateAgeTypeCommand, DeleteAgeTypeCommand, ResponseEntity, GetAllAgeTypeQuery,
    List<GetAllAgeTypeQueryResult>, GetAgeTypeByIdQuery, GetAgeTypeByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

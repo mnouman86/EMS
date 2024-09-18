@@ -6,7 +6,7 @@ using CleanArc.Application.Features.UserExperience.Queries.GetUserExperienceById
 using CleanArc.Application.Features.UserExperience.Queries.GetAllUserExperience;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.UserExperience
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.UserExperience
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.UserExperience.Commands.CreateUserExperienceCommand.CreateUserExperienceCommand, CleanArc.Application.Features.UserExperience.Commands.UpdateUserExperienceCommand.UpdateUserExperienceCommand, CleanArc.Application.Features.UserExperience.Commands.DeleteUserExperienceCommand.DeleteUserExperienceCommand, System.Boolean, CleanArc.Application.Features.UserExperience.Queries.GetAllUserExperience.GetAllUserExperienceQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.UserExperience.Queries.GetAllUserExperience.GetAllUserExperienceQueryResult&gt;, CleanArc.Application.Features.UserExperience.Queries.GetUserExperienceById.GetUserExperienceByIdQuery, CleanArc.Application.Features.UserExperience.Queries.GetUserExperienceById.GetUserExperienceByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.UserExperience.Commands.CreateUserExperienceCommand.CreateUserExperienceCommand, CleanArc.Application.Features.UserExperience.Commands.UpdateUserExperienceCommand.UpdateUserExperienceCommand, CleanArc.Application.Features.UserExperience.Commands.DeleteUserExperienceCommand.DeleteUserExperienceCommand, System.ResponseEntity, CleanArc.Application.Features.UserExperience.Queries.GetAllUserExperience.GetAllUserExperienceQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.UserExperience.Queries.GetAllUserExperience.GetAllUserExperienceQueryResult&gt;, CleanArc.Application.Features.UserExperience.Queries.GetUserExperienceById.GetUserExperienceByIdQuery, CleanArc.Application.Features.UserExperience.Queries.GetUserExperienceById.GetUserExperienceByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/UserExperience")]
     //[Authorize]
-    public class UserExperienceController : _BaseController<CreateUserExperienceCommand, UpdateUserExperienceCommand, DeleteUserExperienceCommand, bool, GetAllUserExperienceQuery,
+    public class UserExperienceController : _BaseController<CreateUserExperienceCommand, UpdateUserExperienceCommand, DeleteUserExperienceCommand, ResponseEntity, GetAllUserExperienceQuery,
     List<GetAllUserExperienceQueryResult>, GetUserExperienceByIdQuery, GetUserExperienceByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.UserExperience
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public UserExperienceController(ISender sender, ILogger<_BaseController<CreateUserExperienceCommand, UpdateUserExperienceCommand, DeleteUserExperienceCommand, bool, GetAllUserExperienceQuery,
+        public UserExperienceController(ISender sender, ILogger<_BaseController<CreateUserExperienceCommand, UpdateUserExperienceCommand, DeleteUserExperienceCommand, ResponseEntity, GetAllUserExperienceQuery,
    List<GetAllUserExperienceQueryResult>, GetUserExperienceByIdQuery, GetUserExperienceByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

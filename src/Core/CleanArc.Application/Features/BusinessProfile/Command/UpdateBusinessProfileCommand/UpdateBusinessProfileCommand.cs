@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.BusinessProfile.Command.UpdateBusinessProfileCommand;
 
@@ -26,7 +26,7 @@ public record UpdateBusinessProfileCommand(int ID,
     string Latitude,
     string Longitude,
     int? ServiceID,
-    int? UpdatedBy) : IRequest<OperationResult<bool>>,
+    int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateBusinessProfileCommand>
 {
     [JsonIgnore]

@@ -86,7 +86,7 @@ public async Task<ResponseEntity> AddAsync(ActivityPrivateParticipant ActivityPr
     }
 }
 
-    public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
         {
@@ -100,9 +100,9 @@ public async Task<ResponseEntity> AddAsync(ActivityPrivateParticipant ActivityPr
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityPrivateParticipantQueries.Delete_ActivityPrivateParticipant, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityPrivateParticipantQueries.Delete_ActivityPrivateParticipant, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }
@@ -162,7 +162,7 @@ public async Task<ResponseEntity> AddAsync(ActivityPrivateParticipant ActivityPr
 
 
 
-    public async Task<string> UpdateAsync(ActivityPrivateParticipant entity)
+    public async Task<ResponseEntity> UpdateAsync(ActivityPrivateParticipant entity)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
         {
@@ -174,9 +174,9 @@ public async Task<ResponseEntity> AddAsync(ActivityPrivateParticipant ActivityPr
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(ActivityPrivateParticipantQueries.update_ActivityPrivateParticipant, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityPrivateParticipantQueries.update_ActivityPrivateParticipant, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

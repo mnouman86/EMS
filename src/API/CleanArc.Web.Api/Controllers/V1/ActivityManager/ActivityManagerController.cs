@@ -6,7 +6,7 @@ using CleanArc.Application.Features.ActivityManager.Queries.GetActivityManagerBy
 using CleanArc.Application.Features.ActivityManager.Queries.GetAllActivityManager;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.ActivityManager
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityManager
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityManager.Commands.CreateActivityManagerCommand.CreateActivityManagerCommand, CleanArc.Application.Features.ActivityManager.Commands.UpdateActivityManagerCommand.UpdateActivityManagerCommand, CleanArc.Application.Features.ActivityManager.Commands.DeleteActivityManagerCommand.DeleteActivityManagerCommand, System.Boolean, CleanArc.Application.Features.ActivityManager.Queries.GetAllActivityManager.GetAllActivityManagerQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityManager.Queries.GetAllActivityManager.GetAllActivityManagerQueryResult&gt;, CleanArc.Application.Features.ActivityManager.Queries.GetActivityManagerById.GetActivityManagerByIdQuery, CleanArc.Application.Features.ActivityManager.Queries.GetActivityManagerById.GetActivityManagerByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityManager.Commands.CreateActivityManagerCommand.CreateActivityManagerCommand, CleanArc.Application.Features.ActivityManager.Commands.UpdateActivityManagerCommand.UpdateActivityManagerCommand, CleanArc.Application.Features.ActivityManager.Commands.DeleteActivityManagerCommand.DeleteActivityManagerCommand, System.ResponseEntity, CleanArc.Application.Features.ActivityManager.Queries.GetAllActivityManager.GetAllActivityManagerQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityManager.Queries.GetAllActivityManager.GetAllActivityManagerQueryResult&gt;, CleanArc.Application.Features.ActivityManager.Queries.GetActivityManagerById.GetActivityManagerByIdQuery, CleanArc.Application.Features.ActivityManager.Queries.GetActivityManagerById.GetActivityManagerByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/ActivityManager")]
     //[Authorize]
-    public class ActivityManagerController : _BaseController<CreateActivityManagerCommand, UpdateActivityManagerCommand, DeleteActivityManagerCommand, bool, GetAllActivityManagerQuery,
+    public class ActivityManagerController : _BaseController<CreateActivityManagerCommand, UpdateActivityManagerCommand, DeleteActivityManagerCommand, ResponseEntity, GetAllActivityManagerQuery,
     List<GetAllActivityManagerQueryResult>, GetActivityManagerByIdQuery, GetActivityManagerByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityManager
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public ActivityManagerController(ISender sender, ILogger<_BaseController<CreateActivityManagerCommand, UpdateActivityManagerCommand, DeleteActivityManagerCommand, bool, GetAllActivityManagerQuery,
+        public ActivityManagerController(ISender sender, ILogger<_BaseController<CreateActivityManagerCommand, UpdateActivityManagerCommand, DeleteActivityManagerCommand, ResponseEntity, GetAllActivityManagerQuery,
    List<GetAllActivityManagerQueryResult>, GetActivityManagerByIdQuery, GetActivityManagerByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

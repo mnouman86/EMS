@@ -9,14 +9,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.Hotel.Command.CreateHotelCommand;
 
 public record CreateHotelCommand(string? Name,int? CountryID, int? StateID, int? CityID,  int? ZipCode, string? Address1,
     string? Address2, string? Latitude, string? Longitude, string? MobileNumber,string? PhoneNumber, string? Email,
     string? FocalPersonName, bool? IsChanelManager, bool? IsRating, bool? IsChain, int? ServiceID, string? CheckInFrom, string? CheckInTo,
-    string? CheckOutFrom, string? CheckOutTo,int? CreatedBy) : IRequest<OperationResult<bool>>
+    string? CheckOutFrom, string? CheckOutTo,int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>
     //,
     //IValidatableModel<CreateHotelCommand>
 {

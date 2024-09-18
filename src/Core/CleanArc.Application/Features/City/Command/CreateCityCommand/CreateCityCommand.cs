@@ -9,11 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.City.Command.CreateCityCommand;
 
-public record CreateCityCommand(string? Name, string? Description, int? StateID,bool? IsMain,  int? CreatedBy,  string? ImagePath , string? ImageTitle ) : IRequest<OperationResult<bool>>,
+public record CreateCityCommand(string? Name, string? Description, int? StateID,bool? IsMain,  int? CreatedBy,  string? ImagePath , string? ImageTitle ) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateCityCommand>
 {
     [JsonIgnore]

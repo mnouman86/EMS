@@ -6,7 +6,7 @@ using CleanArc.Application.Features.Language.Queries.GetAllLanguages;
 using CleanArc.Application.Features.Language.Queries.GetLanguageById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.Language;
 /// <summary>
@@ -49,11 +49,11 @@ namespace CleanArc.Web.Api.Controllers.V1.Language;
 /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles.
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Language.Command.CreateLanguageCommand.CreateLanguageCommand, CleanArc.Application.Features.Language.Command.UpdateLanguageCommand.UpdateLanguageCommand, CleanArc.Application.Features.Language.Command.DeleteLanguageCommand.DeleteLanguageCommand, System.Boolean, CleanArc.Application.Features.Language.Queries.GetAllLanguages.GetAllLanguagesQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Language.Queries.GetAllLanguages.GetAllLanguagesQueryResult&gt;, CleanArc.Application.Features.Language.Queries.GetLanguageById.GetLanguageByIdQuery, CleanArc.Application.Features.Language.Queries.GetLanguageById.GetLanguageByIdQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Language.Command.CreateLanguageCommand.CreateLanguageCommand, CleanArc.Application.Features.Language.Command.UpdateLanguageCommand.UpdateLanguageCommand, CleanArc.Application.Features.Language.Command.DeleteLanguageCommand.DeleteLanguageCommand, System.ResponseEntity, CleanArc.Application.Features.Language.Queries.GetAllLanguages.GetAllLanguagesQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Language.Queries.GetAllLanguages.GetAllLanguagesQueryResult&gt;, CleanArc.Application.Features.Language.Queries.GetLanguageById.GetLanguageByIdQuery, CleanArc.Application.Features.Language.Queries.GetLanguageById.GetLanguageByIdQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/Language")]
-public class LanguageController : _BaseController<CreateLanguageCommand, UpdateLanguageCommand, DeleteLanguageCommand, bool, GetAllLanguagesQuery,
+public class LanguageController : _BaseController<CreateLanguageCommand, UpdateLanguageCommand, DeleteLanguageCommand, ResponseEntity, GetAllLanguagesQuery,
     List<GetAllLanguagesQueryResult>, GetLanguageByIdQuery, GetLanguageByIdQueryResult>
 {
     /// <summary>
@@ -62,7 +62,7 @@ public class LanguageController : _BaseController<CreateLanguageCommand, UpdateL
     /// <param name="sender">The mediator sender for handling requests and responses.</param>
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
-    public LanguageController(ISender sender, ILogger<_BaseController<CreateLanguageCommand, UpdateLanguageCommand, DeleteLanguageCommand, bool, GetAllLanguagesQuery,
+    public LanguageController(ISender sender, ILogger<_BaseController<CreateLanguageCommand, UpdateLanguageCommand, DeleteLanguageCommand, ResponseEntity, GetAllLanguagesQuery,
 List<GetAllLanguagesQueryResult>, GetLanguageByIdQuery, GetLanguageByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 

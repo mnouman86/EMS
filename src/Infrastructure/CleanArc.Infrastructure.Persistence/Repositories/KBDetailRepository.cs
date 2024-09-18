@@ -82,14 +82,14 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
                 var result = await connection.ExecuteScalarAsync<ResponseEntity>(KBDetailQueries.Create_KBDetail, parameters, commandType: CommandType.StoredProcedure);
                 //var result = await connection.QuerySingleOrDefaultAsync<int>(KBDetailQueries.Create_KBDetail, parameters, commandType: CommandType.StoredProcedure);
 
-               // var result = await connection.ExecuteAsync(KBDetailQueries.Create_KBDetail, parameters, commandType: CommandType.StoredProcedure);
+               // var result = await connection.ExecuteScalarAsync<ResponseEntity>(KBDetailQueries.Create_KBDetail, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result;
         }
     }
 }
 
-    public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
         {
@@ -103,9 +103,9 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteAsync(KBDetailQueries.Delete_KBDetail, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(KBDetailQueries.Delete_KBDetail, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }
@@ -169,7 +169,7 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
 
 
 
-    public async Task<string> UpdateAsync(KBDetail entity)
+    public async Task<ResponseEntity> UpdateAsync(KBDetail entity)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
         {
@@ -180,9 +180,9 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
                 var parameters = new DynamicParameters(updateKBDetailDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.ExecuteAsync(KBDetailQueries.Update_KBDetail, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.ExecuteScalarAsync<ResponseEntity>(KBDetailQueries.Update_KBDetail, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToString();
+                return result;
             }
         }
     }

@@ -6,7 +6,7 @@ using CleanArc.Application.Features.MappingHotelAmenity.Queries.GetMappingHotelA
 using CleanArc.Application.FeaturesppingHotelAmenity.Command.DeleteMappingHotelAmenityCommand;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.MappingHotelAmenities
 {
@@ -36,11 +36,11 @@ namespace CleanArc.Web.Api.Controllers.V1.MappingHotelAmenities
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.MappingHotelAmenity.Command.CreateMappingHotelAmenityCommand.CreateMappingHotelAmenityCommand, CleanArc.Application.Features.MappingHotelAmenity.Command.UpdateMappingHotelAmenityCommand.UpdateMappingHotelAmenityCommand, CleanArc.Application.FeaturesppingHotelAmenity.Command.DeleteMappingHotelAmenityCommand.DeleteMappingHotelAmenityCommand, System.Boolean, CleanArc.Application.Features.MappingHotelAmenity.Queries.GetAllMappingHotelAmenity.GetAllMappingHotelAmenityQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.MappingHotelAmenity.Queries.GetAllMappingHotelAmenity.GetAllMappingHotelAmenityQueryResult&gt;, CleanArc.Application.Features.MappingHotelAmenity.Queries.GetMappingHotelAmenityByID.GetMappingHotelAmenityByIDQuery, CleanArc.Application.Features.MappingHotelAmenity.Queries.GetMappingHotelAmenityByID.GetMappingHotelAmenityByIDQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.MappingHotelAmenity.Command.CreateMappingHotelAmenityCommand.CreateMappingHotelAmenityCommand, CleanArc.Application.Features.MappingHotelAmenity.Command.UpdateMappingHotelAmenityCommand.UpdateMappingHotelAmenityCommand, CleanArc.Application.FeaturesppingHotelAmenity.Command.DeleteMappingHotelAmenityCommand.DeleteMappingHotelAmenityCommand, System.ResponseEntity, CleanArc.Application.Features.MappingHotelAmenity.Queries.GetAllMappingHotelAmenity.GetAllMappingHotelAmenityQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.MappingHotelAmenity.Queries.GetAllMappingHotelAmenity.GetAllMappingHotelAmenityQueryResult&gt;, CleanArc.Application.Features.MappingHotelAmenity.Queries.GetMappingHotelAmenityByID.GetMappingHotelAmenityByIDQuery, CleanArc.Application.Features.MappingHotelAmenity.Queries.GetMappingHotelAmenityByID.GetMappingHotelAmenityByIDQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/MappingHotelAmenities")]
-    public class MappingHotelAmenitiesController : _BaseController<CreateMappingHotelAmenityCommand, UpdateMappingHotelAmenityCommand, DeleteMappingHotelAmenityCommand, bool, GetAllMappingHotelAmenityQuery,
+    public class MappingHotelAmenitiesController : _BaseController<CreateMappingHotelAmenityCommand, UpdateMappingHotelAmenityCommand, DeleteMappingHotelAmenityCommand, ResponseEntity, GetAllMappingHotelAmenityQuery,
     List<GetAllMappingHotelAmenityQueryResult>, GetMappingHotelAmenityByIDQuery, GetMappingHotelAmenityByIDQueryResult>
     {
 
@@ -50,7 +50,7 @@ namespace CleanArc.Web.Api.Controllers.V1.MappingHotelAmenities
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public MappingHotelAmenitiesController(ISender sender, ILogger<_BaseController<CreateMappingHotelAmenityCommand, UpdateMappingHotelAmenityCommand, DeleteMappingHotelAmenityCommand, bool, GetAllMappingHotelAmenityQuery,
+        public MappingHotelAmenitiesController(ISender sender, ILogger<_BaseController<CreateMappingHotelAmenityCommand, UpdateMappingHotelAmenityCommand, DeleteMappingHotelAmenityCommand, ResponseEntity, GetAllMappingHotelAmenityQuery,
    List<GetAllMappingHotelAmenityQueryResult>, GetMappingHotelAmenityByIDQuery, GetMappingHotelAmenityByIDQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

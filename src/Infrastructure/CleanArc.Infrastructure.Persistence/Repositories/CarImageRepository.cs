@@ -68,7 +68,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             }
         }
 
-        //public Task<string> DeleteAsync(string selectedIds, int updatedBy)
+        //public Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy)
         //{
         //    throw new NotImplementedException();
         //}
@@ -116,7 +116,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             }
         }
 
-        public async Task<string> UpdateAsync(CarImage CarImage)
+        public async Task<ResponseEntity> UpdateAsync(CarImage CarImage)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, CarImage))
             {
@@ -125,13 +125,13 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     connection.Open();
                     UpdateCarImageDTO updateCarImageDTO = _mapper.Map<UpdateCarImageDTO>(CarImage);
 
-                    var result = await connection.ExecuteAsync(CarImageQueries.Update_CarImage, updateCarImageDTO, commandType: CommandType.StoredProcedure);
+                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(CarImageQueries.Update_CarImage, updateCarImageDTO, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    return result.ToString();
+                    return result;
                 }
             }
         }
-        public async Task<string> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+        public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
             {
@@ -143,9 +143,9 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     parameters.Add("@UpdatedBy", updatedBy);
                     parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                    var result = await connection.ExecuteAsync(CarImageQueries.Delete_CarImage, parameters, commandType: CommandType.StoredProcedure);
+                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(CarImageQueries.Delete_CarImage, parameters, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    return result.ToString();
+                    return result;
                 }
             }
         }

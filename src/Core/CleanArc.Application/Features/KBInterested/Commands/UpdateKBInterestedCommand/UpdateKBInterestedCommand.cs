@@ -8,10 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.KBInterested.Commands.UpdateKBInterestedCommand;
-public record UpdateKBInterestedCommand(int ID,string? Type, string? Name, string? Description, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<bool>>,
+public record UpdateKBInterestedCommand(int ID,string? Type, string? Name, string? Description, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateKBInterestedCommand>
 {
     [JsonIgnore]

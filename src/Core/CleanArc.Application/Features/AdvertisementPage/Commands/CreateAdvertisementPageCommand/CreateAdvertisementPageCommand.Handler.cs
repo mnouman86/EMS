@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.AdvertisementPage.Commands.CreateAdvertisementPageCommand;
 
-internal class CreateAdvertisementPageCommandHandler: IRequestHandler<CreateAdvertisementPageCommand, OperationResult<bool>>
+internal class CreateAdvertisementPageCommandHandler: IRequestHandler<CreateAdvertisementPageCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -41,14 +41,14 @@ internal class CreateAdvertisementPageCommandHandler: IRequestHandler<CreateAdve
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateAdvertisementPageCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateAdvertisementPageCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -56,12 +56,12 @@ internal class CreateAdvertisementPageCommandHandler: IRequestHandler<CreateAdve
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.AdvertisementPageRepository.AddAsync(new Domain.Entities.AdvertisementPage.AdvertisementPage()
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            var result = await _unitOfWork.AdvertisementPageRepository.AddAsync(new Domain.Entities.AdvertisementPage.AdvertisementPage()
             { CreatedBy = user.Id, Description = request.Description,Name=request.Name  });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }

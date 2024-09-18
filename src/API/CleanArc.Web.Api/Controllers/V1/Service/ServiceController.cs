@@ -6,7 +6,7 @@ using CleanArc.Application.Features.Service.Queries.GetAllServices;
 using CleanArc.Application.Features.Service.Queries.GetServiceById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.Service;
 /// <summary>
@@ -35,12 +35,12 @@ namespace CleanArc.Web.Api.Controllers.V1.Service;
 /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles.
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Service.Command.CreateServiceCommand.CreateServiceCommand, CleanArc.Application.Features.Service.Command.UpdateServiceCommand.UpdateServiceCommand, CleanArc.Application.Features.Service.Command.DeleteServiceCommand.DeleteServiceCommand, System.Boolean, CleanArc.Application.Features.Service.Queries.GetAllServices.GetAllServicesQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Service.Queries.GetAllServices.GetAllServicesQueryResult&gt;, CleanArc.Application.Features.Service.Queries.GetServiceById.GetServiceByIdQuery, CleanArc.Application.Features.Service.Queries.GetServiceById.GetServiceByIdQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Service.Command.CreateServiceCommand.CreateServiceCommand, CleanArc.Application.Features.Service.Command.UpdateServiceCommand.UpdateServiceCommand, CleanArc.Application.Features.Service.Command.DeleteServiceCommand.DeleteServiceCommand, System.ResponseEntity, CleanArc.Application.Features.Service.Queries.GetAllServices.GetAllServicesQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Service.Queries.GetAllServices.GetAllServicesQueryResult&gt;, CleanArc.Application.Features.Service.Queries.GetServiceById.GetServiceByIdQuery, CleanArc.Application.Features.Service.Queries.GetServiceById.GetServiceByIdQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/Service")]
 //[Authorize]
-public class ServiceController : _BaseController<CreateServiceCommand, UpdateServiceCommand, DeleteServiceCommand, bool, GetAllServicesQuery,
+public class ServiceController : _BaseController<CreateServiceCommand, UpdateServiceCommand, DeleteServiceCommand, ResponseEntity, GetAllServicesQuery,
     List<GetAllServicesQueryResult>, GetServiceByIdQuery, GetServiceByIdQueryResult>
 {
 
@@ -50,7 +50,7 @@ public class ServiceController : _BaseController<CreateServiceCommand, UpdateSer
     /// <param name="sender">The mediator sender for handling requests and responses.</param>
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
-    public ServiceController(ISender sender, ILogger<_BaseController<CreateServiceCommand, UpdateServiceCommand, DeleteServiceCommand, bool, GetAllServicesQuery,
+    public ServiceController(ISender sender, ILogger<_BaseController<CreateServiceCommand, UpdateServiceCommand, DeleteServiceCommand, ResponseEntity, GetAllServicesQuery,
 List<GetAllServicesQueryResult>, GetServiceByIdQuery, GetServiceByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 

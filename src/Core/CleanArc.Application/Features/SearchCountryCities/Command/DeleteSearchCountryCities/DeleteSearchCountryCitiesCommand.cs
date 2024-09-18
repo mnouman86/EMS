@@ -9,11 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.SearchCountryCities.Command.DeleteSearchCountryCities;
 
-public record DeleteSearchCountryCitiesCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record DeleteSearchCountryCitiesCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<DeleteSearchCountryCitiesCommand>
 {
     [JsonIgnore]

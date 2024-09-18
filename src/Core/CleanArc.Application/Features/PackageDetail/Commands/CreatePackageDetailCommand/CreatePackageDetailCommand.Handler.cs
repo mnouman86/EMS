@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.PackageDetail.Commands.CreatePackageDetailCommand;
 
-internal class CreatePackageDetailCommandHandler: IRequestHandler<CreatePackageDetailCommand, OperationResult<bool>>
+internal class CreatePackageDetailCommandHandler: IRequestHandler<CreatePackageDetailCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -41,14 +41,14 @@ internal class CreatePackageDetailCommandHandler: IRequestHandler<CreatePackageD
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreatePackageDetailCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreatePackageDetailCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -56,8 +56,8 @@ internal class CreatePackageDetailCommandHandler: IRequestHandler<CreatePackageD
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.PackageDetailRepository.AddAsync(new Domain.Entities.PackageDetail.PackageDetail()
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            var result = await _unitOfWork.PackageDetailRepository.AddAsync(new Domain.Entities.PackageDetail.PackageDetail()
             { CreatedBy = user.Id,
                  CultureId = request.CultureId,
                 PackageTypeID = request.PackageTypeID,
@@ -71,7 +71,7 @@ internal class CreatePackageDetailCommandHandler: IRequestHandler<CreatePackageD
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }

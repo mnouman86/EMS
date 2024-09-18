@@ -9,11 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.MappingHotelAmenity.Command.UpdateMappingHotelAmenityCommand;
 
-public record UpdateMappingHotelAmenityCommand(int ID, String? Name, string? Description, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record UpdateMappingHotelAmenityCommand(int ID, String? Name, string? Description, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateMappingHotelAmenityCommand>
 {
     [JsonIgnore]

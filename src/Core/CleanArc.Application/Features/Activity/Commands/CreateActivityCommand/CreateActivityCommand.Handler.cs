@@ -56,7 +56,7 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
            var result= await _unitOfWork.ActivityRepository.AddAsync(new Domain.Entities.Activity.Activity()
             {
                 CultureId = request.CultureId,

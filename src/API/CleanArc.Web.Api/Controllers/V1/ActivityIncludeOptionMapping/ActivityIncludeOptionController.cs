@@ -6,7 +6,7 @@ using CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetActi
 using CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetAllActivityIncludeOptionMapping;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 using CleanArc.Application.Features.ActivityIncludedOption.Queries.GetAllActivityIncludedOption;
 
 namespace CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption
@@ -50,12 +50,12 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityIncludeOption.Commands.CreateActivityIncludeOptionCommand.CreateActivityIncludeOptionCommand, CleanArc.Application.Features.ActivityIncludeOption.Commands.UpdateActivityIncludeOptionCommand.UpdateActivityIncludeOptionCommand, CleanArc.Application.Features.ActivityIncludeOption.Commands.DeleteActivityIncludeOptionCommand.DeleteActivityIncludeOptionCommand, System.Boolean, CleanArc.Application.Features.ActivityIncludeOption.Queries.GetAllActivityIncludeOption.GetAllActivityIncludeOptionQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityIncludeOption.Queries.GetAllActivityIncludeOption.GetAllActivityIncludeOptionQueryResult&gt;, CleanArc.Application.Features.ActivityIncludeOption.Queries.GetActivityIncludeOptionById.GetActivityIncludeOptionByIdQuery, CleanArc.Application.Features.ActivityIncludeOption.Queries.GetActivityIncludeOptionById.GetActivityIncludeOptionByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityIncludeOption.Commands.CreateActivityIncludeOptionCommand.CreateActivityIncludeOptionCommand, CleanArc.Application.Features.ActivityIncludeOption.Commands.UpdateActivityIncludeOptionCommand.UpdateActivityIncludeOptionCommand, CleanArc.Application.Features.ActivityIncludeOption.Commands.DeleteActivityIncludeOptionCommand.DeleteActivityIncludeOptionCommand, System.ResponseEntity, CleanArc.Application.Features.ActivityIncludeOption.Queries.GetAllActivityIncludeOption.GetAllActivityIncludeOptionQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityIncludeOption.Queries.GetAllActivityIncludeOption.GetAllActivityIncludeOptionQueryResult&gt;, CleanArc.Application.Features.ActivityIncludeOption.Queries.GetActivityIncludeOptionById.GetActivityIncludeOptionByIdQuery, CleanArc.Application.Features.ActivityIncludeOption.Queries.GetActivityIncludeOptionById.GetActivityIncludeOptionByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/ActivityIncludeOption")]
     //[Authorize]
-    public class ActivityIncludeOptionController : _BaseController<CreateActivityIncludeOptionMappingCommand, UpdateActivityIncludeOptionMappingCommand, DeleteActivityIncludeOptionMappingCommand, bool, GetAllActivityIncludeOptionMappingQuery,
+    public class ActivityIncludeOptionController : _BaseController<CreateActivityIncludeOptionMappingCommand, UpdateActivityIncludeOptionMappingCommand, DeleteActivityIncludeOptionMappingCommand, ResponseEntity, GetAllActivityIncludeOptionMappingQuery,
     List<GetAllActivityIncludeOptionMappingQueryResult>, GetActivityIncludeOptionMappingByIdQuery, GetActivityIncludeOptionMappingByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -102,7 +102,7 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityIncludeOption
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public ActivityIncludeOptionController(ISender sender, ILogger<_BaseController<CreateActivityIncludeOptionMappingCommand, UpdateActivityIncludeOptionMappingCommand, DeleteActivityIncludeOptionMappingCommand, bool, GetAllActivityIncludeOptionMappingQuery,
+        public ActivityIncludeOptionController(ISender sender, ILogger<_BaseController<CreateActivityIncludeOptionMappingCommand, UpdateActivityIncludeOptionMappingCommand, DeleteActivityIncludeOptionMappingCommand, ResponseEntity, GetAllActivityIncludeOptionMappingQuery,
     List<GetAllActivityIncludeOptionMappingQueryResult>, GetActivityIncludeOptionMappingByIdQuery, GetActivityIncludeOptionMappingByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

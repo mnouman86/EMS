@@ -6,7 +6,7 @@ using CleanArc.Application.Features.DisabilityOption.Queries.GetDisabilityOption
 using CleanArc.Application.Features.DisabilityOption.Queries.GetAllDisabilityOption;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.DisabilityOption
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.DisabilityOption
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.DisabilityOption.Commands.CreateDisabilityOptionCommand.CreateDisabilityOptionCommand, CleanArc.Application.Features.DisabilityOption.Commands.UpdateDisabilityOptionCommand.UpdateDisabilityOptionCommand, CleanArc.Application.Features.DisabilityOption.Commands.DeleteDisabilityOptionCommand.DeleteDisabilityOptionCommand, System.Boolean, CleanArc.Application.Features.DisabilityOption.Queries.GetAllDisabilityOption.GetAllDisabilityOptionQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.DisabilityOption.Queries.GetAllDisabilityOption.GetAllDisabilityOptionQueryResult&gt;, CleanArc.Application.Features.DisabilityOption.Queries.GetDisabilityOptionById.GetDisabilityOptionByIdQuery, CleanArc.Application.Features.DisabilityOption.Queries.GetDisabilityOptionById.GetDisabilityOptionByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.DisabilityOption.Commands.CreateDisabilityOptionCommand.CreateDisabilityOptionCommand, CleanArc.Application.Features.DisabilityOption.Commands.UpdateDisabilityOptionCommand.UpdateDisabilityOptionCommand, CleanArc.Application.Features.DisabilityOption.Commands.DeleteDisabilityOptionCommand.DeleteDisabilityOptionCommand, System.ResponseEntity, CleanArc.Application.Features.DisabilityOption.Queries.GetAllDisabilityOption.GetAllDisabilityOptionQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.DisabilityOption.Queries.GetAllDisabilityOption.GetAllDisabilityOptionQueryResult&gt;, CleanArc.Application.Features.DisabilityOption.Queries.GetDisabilityOptionById.GetDisabilityOptionByIdQuery, CleanArc.Application.Features.DisabilityOption.Queries.GetDisabilityOptionById.GetDisabilityOptionByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/DisabilityOption")]
     //[Authorize]
-    public class DisabilityOptionController : _BaseController<CreateDisabilityOptionCommand, UpdateDisabilityOptionCommand, DeleteDisabilityOptionCommand, bool, GetAllDisabilityOptionQuery,
+    public class DisabilityOptionController : _BaseController<CreateDisabilityOptionCommand, UpdateDisabilityOptionCommand, DeleteDisabilityOptionCommand, ResponseEntity, GetAllDisabilityOptionQuery,
     List<GetAllDisabilityOptionQueryResult>, GetDisabilityOptionByIdQuery, GetDisabilityOptionByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.DisabilityOption
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public DisabilityOptionController(ISender sender, ILogger<_BaseController<CreateDisabilityOptionCommand, UpdateDisabilityOptionCommand, DeleteDisabilityOptionCommand, bool, GetAllDisabilityOptionQuery,
+        public DisabilityOptionController(ISender sender, ILogger<_BaseController<CreateDisabilityOptionCommand, UpdateDisabilityOptionCommand, DeleteDisabilityOptionCommand, ResponseEntity, GetAllDisabilityOptionQuery,
    List<GetAllDisabilityOptionQueryResult>, GetDisabilityOptionByIdQuery, GetDisabilityOptionByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

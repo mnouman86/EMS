@@ -6,7 +6,7 @@ using CleanArc.Application.Features.RoomSizeUnit.Queries.GetAllRoomSizeUnits;
 using CleanArc.Application.Features.RoomSizeUnit.Queries.GetRoomSizeUnitById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.RoomSizeUnit;
 
@@ -49,11 +49,11 @@ namespace CleanArc.Web.Api.Controllers.V1.RoomSizeUnit;
 /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles.
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.RoomSizeUnit.Command.CreateRoomSizeUnitCommand.CreateRoomSizeUnitCommand, CleanArc.Application.Features.RoomSizeUnit.Command.UpdateRoomSizeUnitCommand.UpdateRoomSizeUnitCommand, CleanArc.Application.Features.RoomSizeUnit.Command.DeleteRoomSizeUnitCommand.DeleteRoomSizeUnitCommand, System.Boolean, CleanArc.Application.Features.RoomSizeUnit.Queries.GetAllRoomSizeUnits.GetAllRoomSizeUnitsQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.RoomSizeUnit.Queries.GetAllRoomSizeUnits.GetAllRoomSizeUnitsQueryResult&gt;, CleanArc.Application.Features.RoomSizeUnit.Queries.GetRoomSizeUnitById.GetRoomSizeUnitByIdQuery, CleanArc.Application.Features.RoomSizeUnit.Queries.GetRoomSizeUnitById.GetRoomSizeUnitByIdQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.RoomSizeUnit.Command.CreateRoomSizeUnitCommand.CreateRoomSizeUnitCommand, CleanArc.Application.Features.RoomSizeUnit.Command.UpdateRoomSizeUnitCommand.UpdateRoomSizeUnitCommand, CleanArc.Application.Features.RoomSizeUnit.Command.DeleteRoomSizeUnitCommand.DeleteRoomSizeUnitCommand, System.ResponseEntity, CleanArc.Application.Features.RoomSizeUnit.Queries.GetAllRoomSizeUnits.GetAllRoomSizeUnitsQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.RoomSizeUnit.Queries.GetAllRoomSizeUnits.GetAllRoomSizeUnitsQueryResult&gt;, CleanArc.Application.Features.RoomSizeUnit.Queries.GetRoomSizeUnitById.GetRoomSizeUnitByIdQuery, CleanArc.Application.Features.RoomSizeUnit.Queries.GetRoomSizeUnitById.GetRoomSizeUnitByIdQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/RoomSizeUnit")]
-public class RoomSizeUnitController : _BaseController<CreateRoomSizeUnitCommand, UpdateRoomSizeUnitCommand, DeleteRoomSizeUnitCommand, bool, GetAllRoomSizeUnitsQuery,
+public class RoomSizeUnitController : _BaseController<CreateRoomSizeUnitCommand, UpdateRoomSizeUnitCommand, DeleteRoomSizeUnitCommand, ResponseEntity, GetAllRoomSizeUnitsQuery,
     List<GetAllRoomSizeUnitsQueryResult>, GetRoomSizeUnitByIdQuery, GetRoomSizeUnitByIdQueryResult>
 {
 
@@ -63,7 +63,7 @@ public class RoomSizeUnitController : _BaseController<CreateRoomSizeUnitCommand,
     /// <param name="sender">The mediator sender for handling requests and responses.</param>
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
-    public RoomSizeUnitController(ISender sender, ILogger<_BaseController<CreateRoomSizeUnitCommand, UpdateRoomSizeUnitCommand, DeleteRoomSizeUnitCommand, bool, GetAllRoomSizeUnitsQuery,
+    public RoomSizeUnitController(ISender sender, ILogger<_BaseController<CreateRoomSizeUnitCommand, UpdateRoomSizeUnitCommand, DeleteRoomSizeUnitCommand, ResponseEntity, GetAllRoomSizeUnitsQuery,
 List<GetAllRoomSizeUnitsQueryResult>, GetRoomSizeUnitByIdQuery, GetRoomSizeUnitByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 

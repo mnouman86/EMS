@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivitySchedule.Commands.CreateActivityScheduleCommand;
 
-internal class CreateActivityScheduleCommandHandler: IRequestHandler<CreateActivityScheduleCommand, OperationResult<bool>>
+internal class CreateActivityScheduleCommandHandler: IRequestHandler<CreateActivityScheduleCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -41,14 +41,14 @@ internal class CreateActivityScheduleCommandHandler: IRequestHandler<CreateActiv
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<bool>> Handle(CreateActivityScheduleCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateActivityScheduleCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
-                return OperationResult<bool>.FailureResult("User Not Found");
+                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -56,12 +56,12 @@ internal class CreateActivityScheduleCommandHandler: IRequestHandler<CreateActiv
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
-            await _unitOfWork.ActivityScheduleRepository.AddAsync(new Domain.Entities.ActivitySchedule.ActivitySchedule()
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            var result = await _unitOfWork.ActivityScheduleRepository.AddAsync(new Domain.Entities.ActivitySchedule.ActivitySchedule()
             { CreatedBy = user.Id, ActivityID = request.ActivityID,Title=request.Title ,CultureId=request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<bool>.SuccessResult(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 }

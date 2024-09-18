@@ -9,11 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.BusinessType.Command.UpdateBusinessTypeCommand;
 
-public record UpdateBusinessTypeCommand(int ID, string? BusinessTypeName, int? UpdatedBy) : IRequest<OperationResult<bool>>,
+public record UpdateBusinessTypeCommand(int ID, string? BusinessTypeName, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateBusinessTypeCommand>
 {
     [JsonIgnore]

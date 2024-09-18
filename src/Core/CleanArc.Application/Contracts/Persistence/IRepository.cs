@@ -36,7 +36,7 @@ public interface IRepository<T> where T : class
     /// </summary>
     /// <param name="entity">The entity to be updated.</param>
     /// <returns>A task representing the asynchronous operation, returning a message or identifier.</returns>
-    Task<string> UpdateAsync(T entity);
+    Task<ResponseEntity> UpdateAsync(T entity);
 
     /// <summary>
     /// Deletes entities based on the provided identifiers asynchronously.
@@ -44,5 +44,5 @@ public interface IRepository<T> where T : class
     /// <param name="selectedIds">The identifiers of entities to be deleted.</param>
     /// <param name="updatedBy">The user ID who initiated the deletion.</param>
     /// <returns>A task representing the asynchronous operation, returning a message or identifier.</returns>
-    Task<string> DeleteAsync(string selectedIds, int updatedBy,int? CultureId);
+    Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy,int? CultureId);
 }

@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.ValidationBase;
 using CleanArc.SharedKernel.ValidationBase.Contracts;
@@ -7,9 +7,9 @@ using Mediator;
 
 namespace CleanArc.Application.Features.URL.Commands.DeleteURLCommand;
 
-//public record DeleteURLCommand(int Id,int UpdatedBy) : IRequest<OperationResult<bool>>,
+//public record DeleteURLCommand(int Id,int UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
 //    IValidatableModel<DeleteURLCommand>
-public record DeleteURLCommand(string SelectedIds,int? CultureId) : IRequest<OperationResult<bool>>,
+public record DeleteURLCommand(string SelectedIds,int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<DeleteURLCommand>
 {
     [JsonIgnore]

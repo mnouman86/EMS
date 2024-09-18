@@ -6,7 +6,7 @@ using CleanArc.Application.Features.KBTiming.Queries.GetKBTimingById;
 using CleanArc.Application.Features.KBTiming.Queries.GetAllKBTiming;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.KBTiming
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.KBTiming
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.KBTiming.Commands.CreateKBTimingCommand.CreateKBTimingCommand, CleanArc.Application.Features.KBTiming.Commands.UpdateKBTimingCommand.UpdateKBTimingCommand, CleanArc.Application.Features.KBTiming.Commands.DeleteKBTimingCommand.DeleteKBTimingCommand, System.Boolean, CleanArc.Application.Features.KBTiming.Queries.GetAllKBTiming.GetAllKBTimingQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.KBTiming.Queries.GetAllKBTiming.GetAllKBTimingQueryResult&gt;, CleanArc.Application.Features.KBTiming.Queries.GetKBTimingById.GetKBTimingByIdQuery, CleanArc.Application.Features.KBTiming.Queries.GetKBTimingById.GetKBTimingByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.KBTiming.Commands.CreateKBTimingCommand.CreateKBTimingCommand, CleanArc.Application.Features.KBTiming.Commands.UpdateKBTimingCommand.UpdateKBTimingCommand, CleanArc.Application.Features.KBTiming.Commands.DeleteKBTimingCommand.DeleteKBTimingCommand, System.ResponseEntity, CleanArc.Application.Features.KBTiming.Queries.GetAllKBTiming.GetAllKBTimingQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.KBTiming.Queries.GetAllKBTiming.GetAllKBTimingQueryResult&gt;, CleanArc.Application.Features.KBTiming.Queries.GetKBTimingById.GetKBTimingByIdQuery, CleanArc.Application.Features.KBTiming.Queries.GetKBTimingById.GetKBTimingByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/KBTiming")]
     //[Authorize]
-    public class KBTimingController : _BaseController<CreateKBTimingCommand, UpdateKBTimingCommand, DeleteKBTimingCommand, bool, GetAllKBTimingQuery,
+    public class KBTimingController : _BaseController<CreateKBTimingCommand, UpdateKBTimingCommand, DeleteKBTimingCommand, ResponseEntity, GetAllKBTimingQuery,
     List<GetAllKBTimingQueryResult>, GetKBTimingByIdQuery, GetKBTimingByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.KBTiming
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public KBTimingController(ISender sender, ILogger<_BaseController<CreateKBTimingCommand, UpdateKBTimingCommand, DeleteKBTimingCommand, bool, GetAllKBTimingQuery,
+        public KBTimingController(ISender sender, ILogger<_BaseController<CreateKBTimingCommand, UpdateKBTimingCommand, DeleteKBTimingCommand, ResponseEntity, GetAllKBTimingQuery,
    List<GetAllKBTimingQueryResult>, GetKBTimingByIdQuery, GetKBTimingByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

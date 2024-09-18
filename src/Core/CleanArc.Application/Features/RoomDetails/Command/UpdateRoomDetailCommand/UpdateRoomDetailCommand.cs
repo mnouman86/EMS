@@ -8,12 +8,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.RoomDetails.Command.UpdateRoomDetailCommand;
 
 public record UpdateRoomDetailCommand(int ID, int? HotelID, int? RoomTypeID, int? RoomSizeUnitID, string? RoomSize, bool? IsBathroomPrivate,
-    decimal? Price, decimal? AdditionalMatricCharges, string? RoomNumber, bool? IsAvailable, int? UpdatedBy, bool? IsRefundable, bool? IsCancelation) : IRequest<OperationResult<bool>>,
+    decimal? Price, decimal? AdditionalMatricCharges, string? RoomNumber, bool? IsAvailable, int? UpdatedBy, bool? IsRefundable, bool? IsCancelation) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateRoomDetailCommand>
 {
     [JsonIgnore]

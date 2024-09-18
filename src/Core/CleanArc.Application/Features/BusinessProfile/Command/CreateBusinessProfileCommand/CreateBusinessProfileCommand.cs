@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.BusinessProfile.Command.CreateBusinessProfileCommand;
 
@@ -26,7 +26,7 @@ public record CreateBusinessProfileCommand(int? BusinessTypeID, string FullLegal
     string Longitude,
     int? ServiceID,
  
-     int? CreatedBy) : IRequest<OperationResult<bool>>,
+     int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateBusinessProfileCommand>
 {
     [JsonIgnore]

@@ -6,7 +6,7 @@ using CleanArc.Application.Features.Currency.Queries.GetCurrencyById;
 using CleanArc.Application.Features.Currency.Queries.GetAllCurrency;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.Currency
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.Currency
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Currency.Commands.CreateCurrencyCommand.CreateCurrencyCommand, CleanArc.Application.Features.Currency.Commands.UpdateCurrencyCommand.UpdateCurrencyCommand, CleanArc.Application.Features.Currency.Commands.DeleteCurrencyCommand.DeleteCurrencyCommand, System.Boolean, CleanArc.Application.Features.Currency.Queries.GetAllCurrency.GetAllCurrencyQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Currency.Queries.GetAllCurrency.GetAllCurrencyQueryResult&gt;, CleanArc.Application.Features.Currency.Queries.GetCurrencyById.GetCurrencyByIdQuery, CleanArc.Application.Features.Currency.Queries.GetCurrencyById.GetCurrencyByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Currency.Commands.CreateCurrencyCommand.CreateCurrencyCommand, CleanArc.Application.Features.Currency.Commands.UpdateCurrencyCommand.UpdateCurrencyCommand, CleanArc.Application.Features.Currency.Commands.DeleteCurrencyCommand.DeleteCurrencyCommand, System.ResponseEntity, CleanArc.Application.Features.Currency.Queries.GetAllCurrency.GetAllCurrencyQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Currency.Queries.GetAllCurrency.GetAllCurrencyQueryResult&gt;, CleanArc.Application.Features.Currency.Queries.GetCurrencyById.GetCurrencyByIdQuery, CleanArc.Application.Features.Currency.Queries.GetCurrencyById.GetCurrencyByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/Currency")]
     //[Authorize]
-    public class CurrencyController : _BaseController<CreateCurrencyCommand, UpdateCurrencyCommand, DeleteCurrencyCommand, bool, GetAllCurrencyQuery,
+    public class CurrencyController : _BaseController<CreateCurrencyCommand, UpdateCurrencyCommand, DeleteCurrencyCommand, ResponseEntity, GetAllCurrencyQuery,
     List<GetAllCurrencyQueryResult>, GetCurrencyByIdQuery, GetCurrencyByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Currency
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public CurrencyController(ISender sender, ILogger<_BaseController<CreateCurrencyCommand, UpdateCurrencyCommand, DeleteCurrencyCommand, bool, GetAllCurrencyQuery,
+        public CurrencyController(ISender sender, ILogger<_BaseController<CreateCurrencyCommand, UpdateCurrencyCommand, DeleteCurrencyCommand, ResponseEntity, GetAllCurrencyQuery,
    List<GetAllCurrencyQueryResult>, GetCurrencyByIdQuery, GetCurrencyByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

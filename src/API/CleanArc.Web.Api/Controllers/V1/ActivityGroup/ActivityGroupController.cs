@@ -6,7 +6,7 @@ using CleanArc.Application.Features.ActivityGroup.Queries.GetActivityGroupById;
 using CleanArc.Application.Features.ActivityGroup.Queries.GetAllActivityGroup;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
 namespace CleanArc.Web.Api.Controllers.V1.ActivityGroup
 {
@@ -49,12 +49,12 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityGroup
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityGroup.Commands.CreateActivityGroupCommand.CreateActivityGroupCommand, CleanArc.Application.Features.ActivityGroup.Commands.UpdateActivityGroupCommand.UpdateActivityGroupCommand, CleanArc.Application.Features.ActivityGroup.Commands.DeleteActivityGroupCommand.DeleteActivityGroupCommand, System.Boolean, CleanArc.Application.Features.ActivityGroup.Queries.GetAllActivityGroup.GetAllActivityGroupQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityGroup.Queries.GetAllActivityGroup.GetAllActivityGroupQueryResult&gt;, CleanArc.Application.Features.ActivityGroup.Queries.GetActivityGroupById.GetActivityGroupByIdQuery, CleanArc.Application.Features.ActivityGroup.Queries.GetActivityGroupById.GetActivityGroupByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.ActivityGroup.Commands.CreateActivityGroupCommand.CreateActivityGroupCommand, CleanArc.Application.Features.ActivityGroup.Commands.UpdateActivityGroupCommand.UpdateActivityGroupCommand, CleanArc.Application.Features.ActivityGroup.Commands.DeleteActivityGroupCommand.DeleteActivityGroupCommand, System.ResponseEntity, CleanArc.Application.Features.ActivityGroup.Queries.GetAllActivityGroup.GetAllActivityGroupQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.ActivityGroup.Queries.GetAllActivityGroup.GetAllActivityGroupQueryResult&gt;, CleanArc.Application.Features.ActivityGroup.Queries.GetActivityGroupById.GetActivityGroupByIdQuery, CleanArc.Application.Features.ActivityGroup.Queries.GetActivityGroupById.GetActivityGroupByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/ActivityGroup")]
     //[Authorize]
-    public class ActivityGroupController : _BaseController<CreateActivityGroupCommand, UpdateActivityGroupCommand, DeleteActivityGroupCommand, bool, GetAllActivityGroupQuery,
+    public class ActivityGroupController : _BaseController<CreateActivityGroupCommand, UpdateActivityGroupCommand, DeleteActivityGroupCommand, ResponseEntity, GetAllActivityGroupQuery,
     List<GetAllActivityGroupQueryResult>, GetActivityGroupByIdQuery, GetActivityGroupByIdQueryResult>
     {
         //private readonly ISender _sender;
@@ -101,7 +101,7 @@ namespace CleanArc.Web.Api.Controllers.V1.ActivityGroup
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public ActivityGroupController(ISender sender, ILogger<_BaseController<CreateActivityGroupCommand, UpdateActivityGroupCommand, DeleteActivityGroupCommand, bool, GetAllActivityGroupQuery,
+        public ActivityGroupController(ISender sender, ILogger<_BaseController<CreateActivityGroupCommand, UpdateActivityGroupCommand, DeleteActivityGroupCommand, ResponseEntity, GetAllActivityGroupQuery,
    List<GetAllActivityGroupQueryResult>, GetActivityGroupByIdQuery, GetActivityGroupByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 
