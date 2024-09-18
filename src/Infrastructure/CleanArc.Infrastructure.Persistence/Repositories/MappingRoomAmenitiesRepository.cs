@@ -66,7 +66,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 {
                     connection.Open();
                     CreateMappingRoomAmenities createMappingRoomAmenities = _mapper.Map<CreateMappingRoomAmenities>(mappingRoomAmenities);
-                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(MappingRoomAmenitiesQueries.Create_Mapping_RoomAmenities, createMappingRoomAmenities, commandType: CommandType.StoredProcedure);
+                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(MappingRoomAmenitiesQueries.Create_Mapping_RoomAmenities, createMappingRoomAmenities, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
                 }

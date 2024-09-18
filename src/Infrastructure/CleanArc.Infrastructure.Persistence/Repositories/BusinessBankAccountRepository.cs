@@ -67,7 +67,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 {
                     connection.Open();
                     CreateBusinessBankAccountDTO createBusinessBankAccount = _mapper.Map<CreateBusinessBankAccountDTO>(businessBankAccount);
-                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(BusinessBankAccountQueries.Create_BusinessBankAccount, createBusinessBankAccount, commandType: CommandType.StoredProcedure);
+                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(BusinessBankAccountQueries.Create_BusinessBankAccount, createBusinessBankAccount, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
                 }
@@ -87,7 +87,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(BusinessBankAccountQueries.Delete_BusinessBankAccount, parameters, commandType: CommandType.StoredProcedure);
+                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(BusinessBankAccountQueries.Delete_BusinessBankAccount, parameters, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
                 }
@@ -143,7 +143,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     connection.Open();
                     UpdateBusinessBankAccountDTO updateBusinessBankAccountDTO = _mapper.Map<UpdateBusinessBankAccountDTO>(businessBankAccount);
 
-                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(BusinessBankAccountQueries.Update_BusinessBankAccount, updateBusinessBankAccountDTO, commandType: CommandType.StoredProcedure);
+                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(BusinessBankAccountQueries.Update_BusinessBankAccount, updateBusinessBankAccountDTO, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
                 }

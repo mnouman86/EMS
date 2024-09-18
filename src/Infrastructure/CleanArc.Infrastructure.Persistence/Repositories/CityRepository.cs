@@ -64,7 +64,7 @@ public class CityRepository : ICityRepository
             {
                 connection.Open();
                 CreateCityDTO createCityDTO = _mapper.Map<CreateCityDTO>(city);
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(CityQueries.Create_City, createCityDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CityQueries.Create_City, createCityDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -84,7 +84,7 @@ public class CityRepository : ICityRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(CityQueries.Delete_City, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CityQueries.Delete_City, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -140,7 +140,7 @@ public class CityRepository : ICityRepository
                 connection.Open();
                 UpdateCityDTO updateCityDTO = _mapper.Map<UpdateCityDTO>(city);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(CityQueries.Update_City, updateCityDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CityQueries.Update_City, updateCityDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }

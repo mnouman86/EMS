@@ -65,7 +65,7 @@ public class RoomTypeRepository : IRoomTypeRepository
             {
                 connection.Open();
                 CreateRoomTypeDTO createRoomTypeDTO = _mapper.Map<CreateRoomTypeDTO>(roomType);
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(RoomTypeQueries.Create_RoomType, createRoomTypeDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomTypeQueries.Create_RoomType, createRoomTypeDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -85,7 +85,7 @@ public class RoomTypeRepository : IRoomTypeRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(RoomTypeQueries.Delete_RoomType, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomTypeQueries.Delete_RoomType, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -141,7 +141,7 @@ public class RoomTypeRepository : IRoomTypeRepository
                 connection.Open();
                 UpdateRoomTypeDTO updateRoomTypeDTO = _mapper.Map<UpdateRoomTypeDTO>(roomType);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(RoomTypeQueries.Update_RoomType, updateRoomTypeDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomTypeQueries.Update_RoomType, updateRoomTypeDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }

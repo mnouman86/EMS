@@ -66,7 +66,7 @@ public class ServiceRepository : IServiceRepository
             {
                 connection.Open();
                 CreateServiceDTO createServiceDTO = _mapper.Map<CreateServiceDTO>(service);
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ServiceQueries.Create_Service, createServiceDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ServiceQueries.Create_Service, createServiceDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -86,7 +86,7 @@ public class ServiceRepository : IServiceRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ServiceQueries.Delete_Service, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ServiceQueries.Delete_Service, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -142,7 +142,7 @@ public class ServiceRepository : IServiceRepository
                 connection.Open();
                 UpdateServiceDTO updateServiceDTO = _mapper.Map<UpdateServiceDTO>(service);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ServiceQueries.Update_Service, updateServiceDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ServiceQueries.Update_Service, updateServiceDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }

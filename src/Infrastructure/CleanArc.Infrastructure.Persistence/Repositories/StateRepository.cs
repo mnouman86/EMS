@@ -64,7 +64,7 @@ public class StateRepository : IStateRepository
             {
                 connection.Open();
                 CreateStateDTO createStateDTO = _mapper.Map<CreateStateDTO>(state);
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(StateQueries.Create_State, createStateDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(StateQueries.Create_State, createStateDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -84,7 +84,7 @@ public class StateRepository : IStateRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(StateQueries.Delete_State, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(StateQueries.Delete_State, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -140,7 +140,7 @@ public class StateRepository : IStateRepository
                 connection.Open();
                 UpdateStateDTO updateStateDTO = _mapper.Map<UpdateStateDTO>(state);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(StateQueries.Update_State, updateStateDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(StateQueries.Update_State, updateStateDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }

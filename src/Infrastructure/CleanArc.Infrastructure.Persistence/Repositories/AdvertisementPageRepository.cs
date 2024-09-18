@@ -74,7 +74,7 @@ public async Task<ResponseEntity> AddAsync(AdvertisementPage AdvertisementPage)
         {
             connection.Open();
                 CreateAdvertisementPageDTO createAdvertisementPageDTO = _mapper.Map<CreateAdvertisementPageDTO>(AdvertisementPage);
-            var result = await connection.ExecuteScalarAsync<ResponseEntity>(AdvertisementPageQueries.Create_Page, createAdvertisementPageDTO, commandType: CommandType.StoredProcedure);
+            var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementPageQueries.Create_Page, createAdvertisementPageDTO, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result;
         }
@@ -94,7 +94,7 @@ public async Task<ResponseEntity> AddAsync(AdvertisementPage AdvertisementPage)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(AdvertisementPageQueries.Delete_Page, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementPageQueries.Delete_Page, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -150,7 +150,7 @@ public async Task<ResponseEntity> AddAsync(AdvertisementPage AdvertisementPage)
                 connection.Open();
                 UpdateAdvertisementPageDTO updateAdvertisementPageDTO = _mapper.Map<UpdateAdvertisementPageDTO>(entity);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(AdvertisementPageQueries.Update_Page, updateAdvertisementPageDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementPageQueries.Update_Page, updateAdvertisementPageDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }

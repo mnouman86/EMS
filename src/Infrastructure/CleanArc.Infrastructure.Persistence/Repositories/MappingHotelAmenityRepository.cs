@@ -63,7 +63,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 {
                     connection.Open();
                     CreateMappingHotelAmenities createMappingHotelAmenities = _mapper.Map<CreateMappingHotelAmenities>(mappingHotelAmenities);
-                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(MappingHotelAmenitiesQueries.Create_Mapping_HotelAmenities, createMappingHotelAmenities, commandType: CommandType.StoredProcedure);
+                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(MappingHotelAmenitiesQueries.Create_Mapping_HotelAmenities, createMappingHotelAmenities, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
                 }
