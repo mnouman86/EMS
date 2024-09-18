@@ -64,7 +64,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 {
                     connection.Open();
                     CreateMappingHotelLanguageDTO createMappingHotelLanguageDTO = _mapper.Map<CreateMappingHotelLanguageDTO>(mappingHotelLanguage);
-                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(MappingHotelLanguageQueries.Create_Mapping_HotelLanguages, createMappingHotelLanguageDTO, commandType: CommandType.StoredProcedure);
+                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(MappingHotelLanguageQueries.Create_Mapping_HotelLanguages, createMappingHotelLanguageDTO, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
                 }

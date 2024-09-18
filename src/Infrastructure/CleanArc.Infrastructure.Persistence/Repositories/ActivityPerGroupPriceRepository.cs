@@ -79,7 +79,7 @@ public async Task<ResponseEntity> AddAsync(ActivityPerGroupPrice ActivityPerGrou
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityPerGroupPriceQueries.Create_ActivityPerGroupPrice, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityPerGroupPriceQueries.Create_ActivityPerGroupPrice, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result;
         }
@@ -100,7 +100,7 @@ public async Task<ResponseEntity> AddAsync(ActivityPerGroupPrice ActivityPerGrou
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityPerGroupPriceQueries.Delete_ActivityPerGroupPrice, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityPerGroupPriceQueries.Delete_ActivityPerGroupPrice, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -174,7 +174,7 @@ public async Task<ResponseEntity> AddAsync(ActivityPerGroupPrice ActivityPerGrou
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityPerGroupPriceQueries.Update_ActivityPerGroupPrice, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityPerGroupPriceQueries.Update_ActivityPerGroupPrice, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }

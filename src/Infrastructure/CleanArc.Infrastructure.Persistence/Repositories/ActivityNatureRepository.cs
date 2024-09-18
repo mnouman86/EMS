@@ -79,7 +79,7 @@ public async Task<ResponseEntity> AddAsync(ActivityNature ActivityNature)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityNatureQueries.Create_ActivityNature, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityNatureQueries.Create_ActivityNature, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result;
         }
@@ -100,7 +100,7 @@ public async Task<ResponseEntity> AddAsync(ActivityNature ActivityNature)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityNatureQueries.Delete_ActivityNature, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityNatureQueries.Delete_ActivityNature, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -174,7 +174,7 @@ public async Task<ResponseEntity> AddAsync(ActivityNature ActivityNature)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityNatureQueries.update_ActivityNature, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityNatureQueries.update_ActivityNature, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }

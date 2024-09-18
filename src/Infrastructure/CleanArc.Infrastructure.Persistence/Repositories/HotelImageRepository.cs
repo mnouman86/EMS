@@ -61,7 +61,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 {
                     connection.Open();
                     CreateHotelImageDTO createHotelImageDTO = _mapper.Map<CreateHotelImageDTO>(HotelImage);
-                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(HotelImageQueries.Create_HotelImage, createHotelImageDTO, commandType: CommandType.StoredProcedure);
+                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelImageQueries.Create_HotelImage, createHotelImageDTO, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
                 }
@@ -125,7 +125,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     connection.Open();
                     UpdateHotelImageDTO updateHotelImageDTO = _mapper.Map<UpdateHotelImageDTO>(HotelImage);
 
-                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(HotelImageQueries.Update_HotelImage, updateHotelImageDTO, commandType: CommandType.StoredProcedure);
+                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelImageQueries.Update_HotelImage, updateHotelImageDTO, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
                 }
@@ -143,7 +143,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     parameters.Add("@UpdatedBy", updatedBy);
                     parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(HotelImageQueries.Delete_HotelImage, parameters, commandType: CommandType.StoredProcedure);
+                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelImageQueries.Delete_HotelImage, parameters, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
                 }

@@ -65,7 +65,7 @@ public class ServiceCategoryRepository : IServiceCategoryRepository
             {
                 connection.Open();
                 CreateServiceCategoryDTO createServiceCategoryDTO = _mapper.Map<CreateServiceCategoryDTO>(serviceCategory);
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ServiceCategoryQueries.Create_ServiceCategory, createServiceCategoryDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ServiceCategoryQueries.Create_ServiceCategory, createServiceCategoryDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -85,7 +85,7 @@ public class ServiceCategoryRepository : IServiceCategoryRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ServiceCategoryQueries.Delete_ServiceCategory, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ServiceCategoryQueries.Delete_ServiceCategory, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -141,7 +141,7 @@ public class ServiceCategoryRepository : IServiceCategoryRepository
                 connection.Open();
                 UpdateServiceCategoryDTO updateServiceCategoryDTO = _mapper.Map<UpdateServiceCategoryDTO>(serviceCategory);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ServiceCategoryQueries.Update_ServiceCategory, updateServiceCategoryDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ServiceCategoryQueries.Update_ServiceCategory, updateServiceCategoryDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }

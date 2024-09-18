@@ -85,7 +85,7 @@ public async Task<ResponseEntity> AddAsync(Activity Activity)
 
                 // var result = await connection.ExecuteScalarAsync(ActivityQueries.Create_Activity, parameters, commandType: CommandType.StoredProcedure);
                 //var result = await connection.QuerySingleOrDefaultAsync<int>(ActivityQueries.Create_Activity, parameters, commandType: CommandType.StoredProcedure);
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityQueries.Create_Activity, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityQueries.Create_Activity, parameters, commandType: CommandType.StoredProcedure);
 
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result;
@@ -107,7 +107,7 @@ public async Task<ResponseEntity> AddAsync(Activity Activity)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityQueries.Delete_Activity, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityQueries.Delete_Activity, parameters, commandType: CommandType.StoredProcedure);
                // var result = await connection.QuerySingleOrDefaultAsync<int>(ActivityQueries.Delete_Activity, parameters, commandType: CommandType.StoredProcedure);
 
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
@@ -210,7 +210,7 @@ public async Task<ResponseEntity> AddAsync(Activity Activity)
                     parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                     // parameters.Add("@ActivityID ", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                    var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityQueries.update_Activity, parameters, commandType: CommandType.StoredProcedure);
+                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityQueries.update_Activity, parameters, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
                 }

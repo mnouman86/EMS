@@ -81,7 +81,7 @@ public async Task<ResponseEntity> AddAsync(KBMedia KBMedia)
                 //parameters.Add("@KBMediaID", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 //var result = await connection.QuerySingleOrDefaultAsync<int>(KBMediaQueries.Create_KBMedia, parameters, commandType: CommandType.StoredProcedure);
 
-               var result = await connection.ExecuteScalarAsync<ResponseEntity>(KBMediaQueries.Create_KBMedia, parameters, commandType: CommandType.StoredProcedure);
+               var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBMediaQueries.Create_KBMedia, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result;
         }
@@ -102,7 +102,7 @@ public async Task<ResponseEntity> AddAsync(KBMedia KBMedia)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(KBMediaQueries.Delete_KBMedia, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBMediaQueries.Delete_KBMedia, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -179,7 +179,7 @@ public async Task<ResponseEntity> AddAsync(KBMedia KBMedia)
                 var parameters = new DynamicParameters(updateKBMediaDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(KBMediaQueries.Update_KBMedia, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBMediaQueries.Update_KBMedia, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }

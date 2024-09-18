@@ -106,7 +106,7 @@ public class SearchFilterThingsToDoRepository:ISearchFilterThingsToDoRepository
 //                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 //                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-//                var result = await connection.ExecuteScalarAsync<ResponseEntity>(SearchFilterThingsToDoQueries.Delete_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
+//                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SearchFilterThingsToDoQueries.Delete_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
 //               // var result = await connection.QuerySingleOrDefaultAsync<int>(SearchFilterThingsToDoQueries.Delete_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
 
 //                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
@@ -228,7 +228,7 @@ public class SearchFilterThingsToDoRepository:ISearchFilterThingsToDoRepository
     //            parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
     //           // parameters.Add("@SearchFilterThingsToDoID ", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-    //            var result = await connection.ExecuteScalarAsync<ResponseEntity>(SearchFilterThingsToDoQueries.update_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
+    //            var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SearchFilterThingsToDoQueries.update_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
     //            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
     //            return result;
     //        }

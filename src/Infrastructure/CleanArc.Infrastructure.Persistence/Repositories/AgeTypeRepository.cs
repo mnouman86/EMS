@@ -74,7 +74,7 @@ public async Task<ResponseEntity> AddAsync(AgeType ageType)
         {
             connection.Open();
                 CreateAgeTypeDTO createAgeTypeDTO = _mapper.Map<CreateAgeTypeDTO>(ageType);
-            var result = await connection.ExecuteScalarAsync<ResponseEntity>(AgeTypeQueries.Create_AgeType, createAgeTypeDTO, commandType: CommandType.StoredProcedure);
+            var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AgeTypeQueries.Create_AgeType, createAgeTypeDTO, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result;
         }
@@ -94,7 +94,7 @@ public async Task<ResponseEntity> AddAsync(AgeType ageType)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(AgeTypeQueries.Delete_AgeType, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AgeTypeQueries.Delete_AgeType, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -150,7 +150,7 @@ public async Task<ResponseEntity> AddAsync(AgeType ageType)
                 connection.Open();
                 UpdateAgeTypeDTO updateAgeTypeDTO = _mapper.Map<UpdateAgeTypeDTO>(entity);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(AgeTypeQueries.update_AgeType, updateAgeTypeDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AgeTypeQueries.update_AgeType, updateAgeTypeDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }

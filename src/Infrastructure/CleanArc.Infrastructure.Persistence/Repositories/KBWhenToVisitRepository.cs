@@ -79,7 +79,7 @@ public async Task<ResponseEntity> AddAsync(KBWhenToVisit KBWhenToVisit)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(KBWhenToVisitQueries.Create_WhenToVisit, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBWhenToVisitQueries.Create_WhenToVisit, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result;
         }
@@ -100,7 +100,7 @@ public async Task<ResponseEntity> AddAsync(KBWhenToVisit KBWhenToVisit)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(KBWhenToVisitQueries.Delete_WhenToVisit, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBWhenToVisitQueries.Delete_WhenToVisit, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -176,7 +176,7 @@ public async Task<ResponseEntity> AddAsync(KBWhenToVisit KBWhenToVisit)
                 var parameters = new DynamicParameters(updateKBWhenToVisitDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(KBWhenToVisitQueries.update_WhenToVisit, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBWhenToVisitQueries.update_WhenToVisit, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }

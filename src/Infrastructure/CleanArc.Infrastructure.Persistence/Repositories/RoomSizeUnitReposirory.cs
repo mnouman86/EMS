@@ -66,7 +66,7 @@ public class RoomSizeUnitReposirory : IRoomSizeUnitReposirory
             {
                 connection.Open();
                 CreateRoomSizeUnitDTO createRoomSizeUnit = _mapper.Map<CreateRoomSizeUnitDTO>(roomSizeUnit);
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(RoomSizeUnitQueries.Create_RoomSizeUnit, createRoomSizeUnit, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomSizeUnitQueries.Create_RoomSizeUnit, createRoomSizeUnit, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -86,7 +86,7 @@ public class RoomSizeUnitReposirory : IRoomSizeUnitReposirory
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(RoomSizeUnitQueries.Delete_RoomSizeUnit, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomSizeUnitQueries.Delete_RoomSizeUnit, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -142,7 +142,7 @@ public class RoomSizeUnitReposirory : IRoomSizeUnitReposirory
                 connection.Open();
                 UpdateRoomSizeUnitDTO updateRoomSizeUnitDTO = _mapper.Map<UpdateRoomSizeUnitDTO>(roomSizeUnit);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(RoomSizeUnitQueries.Update_RoomSizeUnit, updateRoomSizeUnitDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomSizeUnitQueries.Update_RoomSizeUnit, updateRoomSizeUnitDTO, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }

@@ -125,7 +125,7 @@ public class URLRepository:IURLRepository
             {
                 connection.Open();
                 AddUrlDto addUrlDto = _mapper.Map<AddUrlDto>(entity);
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(UrlQueries.AddUrl, addUrlDto, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(UrlQueries.AddUrl, addUrlDto, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -142,7 +142,7 @@ public class URLRepository:IURLRepository
                 connection.Open();
                 UpdateUrlDto updateUrlDto = _mapper.Map<UpdateUrlDto>(entity);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(UrlQueries.UpdateUrl, updateUrlDto, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(UrlQueries.UpdateUrl, updateUrlDto, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -163,7 +163,7 @@ public class URLRepository:IURLRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(UrlQueries.DeleteURL, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(UrlQueries.DeleteURL, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }

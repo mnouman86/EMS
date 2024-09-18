@@ -79,7 +79,7 @@ public async Task<ResponseEntity> AddAsync(ActivityDisabilityOption ActivityDisa
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityDisabilityOptionQueries.Create_ActivityDisabilityOption, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityDisabilityOptionQueries.Create_ActivityDisabilityOption, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result;
         }
@@ -100,7 +100,7 @@ public async Task<ResponseEntity> AddAsync(ActivityDisabilityOption ActivityDisa
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityDisabilityOptionQueries.Delete_ActivityDisabilityOption, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityDisabilityOptionQueries.Delete_ActivityDisabilityOption, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -176,7 +176,7 @@ public async Task<ResponseEntity> AddAsync(ActivityDisabilityOption ActivityDisa
                 var parameters = new DynamicParameters(updateActivityDisabilityOptionDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.ExecuteScalarAsync<ResponseEntity>(ActivityDisabilityOptionQueries.update_ActivityDisabilityOption, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityDisabilityOptionQueries.update_ActivityDisabilityOption, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
