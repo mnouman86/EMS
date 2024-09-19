@@ -16,7 +16,7 @@ namespace CleanArc.Application.Models.PackageType
         public int? CreatedBy { get; set; } // int NULL
         public int? CultureId { get; set; }
         public int? Code { get; set; }
-        public int? Message { get; set; }
+        public string? Message { get; set; }
 
        
 
