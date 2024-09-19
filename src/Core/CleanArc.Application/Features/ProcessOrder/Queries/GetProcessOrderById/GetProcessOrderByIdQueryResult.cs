@@ -45,6 +45,6 @@ namespace CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById
         public DateTime? UpdatedAt { get; set; } // datetime NULL
         public int? CultureId { get; set; }
         public int? Code { get; set; }
-        public int? Message { get; set; }
+        public string? Message { get; set; }
     }
 }
