@@ -27,7 +27,7 @@ public  class PopularItemsVisit
     public DateTime? UpdatedAt { get; set; }
     public int? CultureId { get; set; }
     public int? Code { get; set; }
-    public int? Message { get; set; }
+    public string? Message { get; set; }
     // Fields from the User (U) table
     //public string? Name { get; set; } // User's name
     //public string? UserName { get; set; } // Username

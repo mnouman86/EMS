@@ -24,7 +24,7 @@ namespace CleanArc.Application.Features.BusinessProfile.Query.GetBusinessProfile
         public string Longitude { get; set; }
         public int? ServiceID { get; set; }
         public int? Code { get; set; }
-        public int? Message { get; set; }
+        public string? Message { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsDeleted { get; set; }
         public int? CreatedBy { get; set; }
