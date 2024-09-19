@@ -27,7 +27,7 @@ public class GetAllCheckProfileStatusQueryResult
     //public DateTime UpdatedAt { get; set; }
     //public int? CultureId { get; set; }
     //public int? Code { get; set; }
-    //public int? Message { get; set; }
+    //public string? Message { get; set; }
 }
 
 //    public GetAllCheckProfileStatusQueryResult(int iD, string name, string description, bool isDeleted, bool isActive, int createdBy, DateTime createdAt, int updatedBy, DateTime updatedAt)

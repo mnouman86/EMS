@@ -11,7 +11,7 @@ namespace CleanArc.Application.Models.BusinessType
         //public int? ID { get; set; }
         public int? CultureId { get; set; }
         public int? Code { get; set; }
-        public int? Message { get; set; }
+        public string? Message { get; set; }
 
         public string? BusinessTypeName { get; set; }
         //public bool? IndividualPerson { get; set; }

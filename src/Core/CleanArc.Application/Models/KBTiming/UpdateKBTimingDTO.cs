@@ -22,7 +22,7 @@ namespace CleanArc.Application.Models.KBTiming
         public int? UpdatedBy { get; set; }
         public int? CultureId { get; set; }
         public int? Code { get; set; }
-        public int? Message { get; set; }
+        public string? Message { get; set; }
         //public DateTime? UpdatedAt { get; set; }
     }
 }
