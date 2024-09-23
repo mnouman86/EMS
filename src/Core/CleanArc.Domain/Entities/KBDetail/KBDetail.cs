@@ -29,7 +29,7 @@ public  class KBDetail
     public DateTime? UpdatedAt { get; set; }
     public int? CultureId { get; set; }
     public int? Code { get; set; }
-    public int? Message { get; set; }
+    public string? Message { get; set; }
     public string? AddressLine1 { get; set; }
     public string? AddressLine2 { get; set; }
     public int? CountryLookUpID { get; set; }

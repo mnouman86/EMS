@@ -1,0 +1,630 @@
+2024-09-20 09:39:31.036 +05:00 [INF] Executed DbCommand (42ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-20 09:39:31.272 +05:00 [INF] Executed DbCommand (75ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-20 09:39:31.323 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-20 09:39:31.383 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-20 09:39:31.448 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-20 09:39:31.541 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-20 09:39:31.588 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-20 09:39:32.176 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-20 09:39:32.207 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-20 09:39:33.696 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-20 09:39:35.368 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-20 09:39:36.031 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-20 09:39:36.489 +05:00 [INF] Response StatusCode: 200
+2024-09-20 09:39:36.505 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 1143.5299ms
+2024-09-20 09:39:36.531 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-20 09:39:36.549 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 18.0603ms
+2024-09-20 09:39:36.820 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-20 09:39:36.966 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 145.1897ms
+2024-09-20 09:39:38.581 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-20 09:39:38.588 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-20 09:39:38.603 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-20 09:39:38.609 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-20 09:39:40.967 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-20 09:39:40.978 +05:00 [INF] Response StatusCode: 404
+2024-09-20 09:39:40.983 +05:00 [INF] Response StatusCode: 404
+2024-09-20 09:39:40.988 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 2407.2563ms
+2024-09-20 09:39:41.588 +05:00 [INF] Response StatusCode: 200
+2024-09-20 09:39:41.594 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 2991.4272ms
+2024-09-20 09:40:22.589 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/PopularItemsVisit/GetAll application/json 171
+2024-09-20 09:40:22.627 +05:00 [INF] CORS policy execution successful.
+2024-09-20 09:40:22.640 +05:00 [INF] Request Method: POST, Path: /api/v1/PopularItemsVisit/GetAll, Content-Type: application/json
+2024-09-20 09:40:22.653 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-20 09:40:22.689 +05:00 [INF] Request Method: POST, Path: /api/v1/PopularItemsVisit/GetAll, Content-Type: application/json
+2024-09-20 09:40:22.696 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-20 09:40:22.702 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api)'
+2024-09-20 09:40:22.778 +05:00 [INF] Route matched with {action = "GetAll", controller = "PopularItemsVisit"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularItemsVisit.GetAllPopularItemsVisitQuery) on controller CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController (CleanArc.Web.Api).
+2024-09-20 09:40:26.551 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-20 09:40:27.040 +05:00 [INF] Entering CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularItemsVisit, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-20 09:40:29.448 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-20 09:40:32.223 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":1,"UserID":null,"PageVisiteUrl":"https://example.com/page","DateTime":null,"SessionDuration":"34","VisitCount":5,"FirstVisitAt":"2024-09-01T12:00:00","LastVisitAt":"2024-09-15T12:00:00","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-09-16T04:57:08.96","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"UserId":1,"Name":null,"FamilyName":null,"GeneratedCode":"9918356f","UserName":"admin","NormalizedUserName":"ADMIN","Email":"admin@site.com","NormalizedEmail":"ADMIN@SITE.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEBGB6tDMFcgHiaHYN6h5oheT1nWJwLx0eOAEwFoU4UTr1oEkUn75q1X+Rm2k54ryjQ==","SecurityStamp":"EVPS4R2PE5VUG26H6RJ2RFDN3VQMGDS3","ConcurrencyStamp":"c82b8113-781f-4a70-a261-e1443d7370a2","PhoneNumber":null,"PhoneNumberConfirmed":true,"TwoFactorEnabled":false,"LockoutEnd":"2024-07-10T05:11:58.5269277+00:00","LockoutEnabled":false,"AccessFailedCount":0},{"ID":2,"UserID":null,"PageVisiteUrl":"https://update.com/page","DateTime":null,"SessionDuration":"90","VisitCount":6,"FirstVisitAt":"2024-09-01T12:00:00","LastVisitAt":"2024-09-15T13:00:00","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-09-16T04:57:37.1","UpdatedBy":1006,"UpdatedAt":"2024-09-16T05:16:37.45","CultureId":null,"Code":null,"Message":null,"UserId":1,"Name":null,"FamilyName":null,"GeneratedCode":"9918356f","UserName":"admin","NormalizedUserName":"ADMIN","Email":"admin@site.com","NormalizedEmail":"ADMIN@SITE.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEBGB6tDMFcgHiaHYN6h5oheT1nWJwLx0eOAEwFoU4UTr1oEkUn75q1X+Rm2k54ryjQ==","SecurityStamp":"EVPS4R2PE5VUG26H6RJ2RFDN3VQMGDS3","ConcurrencyStamp":"c82b8113-781f-4a70-a261-e1443d7370a2","PhoneNumber":null,"PhoneNumberConfirmed":true,"TwoFactorEnabled":false,"LockoutEnd":"2024-07-10T05:11:58.5269277+00:00","LockoutEnabled":false,"AccessFailedCount":0},{"ID":2,"UserID":null,"PageVisiteUrl":"https://update.com/page","DateTime":null,"SessionDuration":"90","VisitCount":6,"FirstVisitAt":"2024-09-01T12:00:00","LastVisitAt":"2024-09-15T13:00:00","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-09-16T04:57:37.1","UpdatedBy":1006,"UpdatedAt":"2024-09-16T05:16:37.45","CultureId":null,"Code":null,"Message":null,"UserId":1,"Name":null,"FamilyName":null,"GeneratedCode":"9918356f","UserName":"admin","NormalizedUserName":"ADMIN","Email":"admin@site.com","NormalizedEmail":"ADMIN@SITE.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEBGB6tDMFcgHiaHYN6h5oheT1nWJwLx0eOAEwFoU4UTr1oEkUn75q1X+Rm2k54ryjQ==","SecurityStamp":"EVPS4R2PE5VUG26H6RJ2RFDN3VQMGDS3","ConcurrencyStamp":"c82b8113-781f-4a70-a261-e1443d7370a2","PhoneNumber":null,"PhoneNumberConfirmed":true,"TwoFactorEnabled":false,"LockoutEnd":"2024-07-10T05:11:58.5269277+00:00","LockoutEnabled":false,"AccessFailedCount":0}]
+2024-09-20 09:40:32.505 +05:00 [INF] Exiting null, Handle with response: [{"ID":1,"PageVisiteUrl":"https://example.com/page","SessionDuration":"34","VisitCount":5,"FirstVisitAt":"2024-09-01T12:00:00","LastVisitAt":"2024-09-15T12:00:00","IsDeleted":false,"IsActive":true,"CreatedBy":1006,"CreatedAt":"2024-09-16T04:57:08.96","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","CultureId":null,"Code":null,"Message":null,"UserId":1,"Name":null,"FamilyName":null,"GeneratedCode":"9918356f","UserName":"admin","NormalizedUserName":"ADMIN","Email":"admin@site.com","NormalizedEmail":"ADMIN@SITE.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEBGB6tDMFcgHiaHYN6h5oheT1nWJwLx0eOAEwFoU4UTr1oEkUn75q1X+Rm2k54ryjQ==","SecurityStamp":"EVPS4R2PE5VUG26H6RJ2RFDN3VQMGDS3","ConcurrencyStamp":"c82b8113-781f-4a70-a261-e1443d7370a2","PhoneNumber":null,"PhoneNumberConfirmed":true,"TwoFactorEnabled":false,"LockoutEnd":"2024-07-10T05:11:58.5269277+00:00","LockoutEnabled":false,"AccessFailedCount":0},{"ID":2,"PageVisiteUrl":"https://update.com/page","SessionDuration":"90","VisitCount":6,"FirstVisitAt":"2024-09-01T12:00:00","LastVisitAt":"2024-09-15T13:00:00","IsDeleted":false,"IsActive":true,"CreatedBy":1006,"CreatedAt":"2024-09-16T04:57:37.1","UpdatedBy":1006,"UpdatedAt":"2024-09-16T05:16:37.45","CultureId":null,"Code":null,"Message":null,"UserId":1,"Name":null,"FamilyName":null,"GeneratedCode":"9918356f","UserName":"admin","NormalizedUserName":"ADMIN","Email":"admin@site.com","NormalizedEmail":"ADMIN@SITE.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEBGB6tDMFcgHiaHYN6h5oheT1nWJwLx0eOAEwFoU4UTr1oEkUn75q1X+Rm2k54ryjQ==","SecurityStamp":"EVPS4R2PE5VUG26H6RJ2RFDN3VQMGDS3","ConcurrencyStamp":"c82b8113-781f-4a70-a261-e1443d7370a2","PhoneNumber":null,"PhoneNumberConfirmed":true,"TwoFactorEnabled":false,"LockoutEnd":"2024-07-10T05:11:58.5269277+00:00","LockoutEnabled":false,"AccessFailedCount":0},{"ID":2,"PageVisiteUrl":"https://update.com/page","SessionDuration":"90","VisitCount":6,"FirstVisitAt":"2024-09-01T12:00:00","LastVisitAt":"2024-09-15T13:00:00","IsDeleted":false,"IsActive":true,"CreatedBy":1006,"CreatedAt":"2024-09-16T04:57:37.1","UpdatedBy":1006,"UpdatedAt":"2024-09-16T05:16:37.45","CultureId":null,"Code":null,"Message":null,"UserId":1,"Name":null,"FamilyName":null,"GeneratedCode":"9918356f","UserName":"admin","NormalizedUserName":"ADMIN","Email":"admin@site.com","NormalizedEmail":"ADMIN@SITE.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEBGB6tDMFcgHiaHYN6h5oheT1nWJwLx0eOAEwFoU4UTr1oEkUn75q1X+Rm2k54ryjQ==","SecurityStamp":"EVPS4R2PE5VUG26H6RJ2RFDN3VQMGDS3","ConcurrencyStamp":"c82b8113-781f-4a70-a261-e1443d7370a2","PhoneNumber":null,"PhoneNumberConfirmed":true,"TwoFactorEnabled":false,"LockoutEnd":"2024-07-10T05:11:58.5269277+00:00","LockoutEnabled":false,"AccessFailedCount":0}]
+2024-09-20 09:40:32.529 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 5959.8864ms.
+2024-09-20 09:40:32.566 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-20 09:40:32.686 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api) in 9873.1837ms
+2024-09-20 09:40:32.695 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api)'
+2024-09-20 09:40:32.700 +05:00 [INF] Response StatusCode: 200
+2024-09-20 09:40:32.706 +05:00 [INF] Response StatusCode: 200
+2024-09-20 09:40:32.712 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/PopularItemsVisit/GetAll application/json 171 - 200 - application/json;+charset=utf-8 10123.1322ms
+2024-09-20 12:35:37.013 +05:00 [INF] Executed DbCommand (65ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-20 12:35:37.618 +05:00 [INF] Executed DbCommand (229ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-20 12:35:37.666 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-20 12:35:37.717 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-20 12:35:37.859 +05:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-20 12:35:38.058 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-20 12:35:38.107 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-20 12:35:39.237 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-20 12:35:39.274 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-20 12:35:41.810 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-20 12:35:44.520 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-20 12:35:45.503 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-20 12:35:46.359 +05:00 [INF] Response StatusCode: 200
+2024-09-20 12:35:46.380 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 1866.0710ms
+2024-09-20 12:35:46.795 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-20 12:35:46.795 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-20 12:35:46.862 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 66.2775ms
+2024-09-20 12:35:47.035 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 239.6348ms
+2024-09-20 12:35:48.393 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-20 12:35:48.401 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-20 12:35:48.408 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-20 12:35:48.414 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-20 12:35:51.972 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-20 12:35:51.988 +05:00 [INF] Response StatusCode: 404
+2024-09-20 12:35:52.019 +05:00 [INF] Response StatusCode: 404
+2024-09-20 12:35:52.051 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 3658.7936ms
+2024-09-20 12:35:53.049 +05:00 [INF] Response StatusCode: 200
+2024-09-20 12:35:53.066 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 4664.8849ms
+2024-09-20 12:36:23.784 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/PopularItemsVisit/GetAll application/json 171
+2024-09-20 12:36:23.815 +05:00 [INF] CORS policy execution successful.
+2024-09-20 12:36:23.848 +05:00 [INF] Request Method: POST, Path: /api/v1/PopularItemsVisit/GetAll, Content-Type: application/json
+2024-09-20 12:36:23.875 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-20 12:36:23.911 +05:00 [INF] Request Method: POST, Path: /api/v1/PopularItemsVisit/GetAll, Content-Type: application/json
+2024-09-20 12:36:23.922 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-20 12:36:23.934 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api)'
+2024-09-20 12:36:24.016 +05:00 [INF] Route matched with {action = "GetAll", controller = "PopularItemsVisit"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularItemsVisit.GetAllPopularItemsVisitQuery) on controller CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController (CleanArc.Web.Api).
+2024-09-20 12:36:28.780 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-20 12:36:29.855 +05:00 [INF] Entering CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularItemsVisit, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-20 12:36:32.159 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-20 12:36:32.592 +05:00 [INF] Exiting null, GetAllAsync
+2024-09-20 12:36:32.983 +05:00 [INF] Exiting null, Handle with response: [{"PageId":1,"URL":"https://example.com/page1","PageTitle":"Example Page 1","Count":10,"ImageURL":"https://example.com/image1.jpg"},{"PageId":2,"URL":"https://example.com/page2","PageTitle":"Example Page 2","Count":5,"ImageURL":"https://example.com/image2.jpg"}]
+2024-09-20 12:36:33.006 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4200.4096ms.
+2024-09-20 12:36:33.032 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-20 12:36:33.120 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api) in 9078.6124ms
+2024-09-20 12:36:33.130 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api)'
+2024-09-20 12:36:33.140 +05:00 [INF] Response StatusCode: 200
+2024-09-20 12:36:33.150 +05:00 [INF] Response StatusCode: 200
+2024-09-20 12:36:33.160 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/PopularItemsVisit/GetAll application/json 171 - 200 - application/json;+charset=utf-8 9375.1998ms
+2024-09-20 12:40:11.037 +05:00 [INF] Executed DbCommand (62ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-20 12:40:11.515 +05:00 [INF] Executed DbCommand (188ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-20 12:40:11.539 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-20 12:40:11.556 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-20 12:40:11.749 +05:00 [INF] Executed DbCommand (138ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-20 12:40:11.876 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-20 12:40:11.927 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-20 12:40:12.828 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-20 12:40:12.869 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-20 12:40:14.353 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-20 12:40:24.450 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-20 12:40:25.681 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-20 12:40:27.774 +05:00 [INF] Response StatusCode: 200
+2024-09-20 12:40:27.958 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 3526.3153ms
+2024-09-20 12:40:28.295 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-20 12:40:28.397 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 101.9400ms
+2024-09-20 12:40:30.671 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-20 12:40:30.831 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 159.5192ms
+2024-09-20 12:40:33.773 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-20 12:40:33.793 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-20 12:40:33.817 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-20 12:40:33.835 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-20 12:40:34.603 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-20 12:40:34.616 +05:00 [INF] Response StatusCode: 404
+2024-09-20 12:40:34.628 +05:00 [INF] Response StatusCode: 404
+2024-09-20 12:40:34.640 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 866.8198ms
+2024-09-20 12:40:38.765 +05:00 [INF] Response StatusCode: 200
+2024-09-20 12:40:38.791 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 4974.4659ms
+2024-09-20 12:41:23.800 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/PopularItemsVisit/GetAll application/json 170
+2024-09-20 12:41:23.827 +05:00 [INF] CORS policy execution successful.
+2024-09-20 12:41:23.846 +05:00 [INF] Request Method: POST, Path: /api/v1/PopularItemsVisit/GetAll, Content-Type: application/json
+2024-09-20 12:41:23.907 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-20 12:41:24.023 +05:00 [INF] Request Method: POST, Path: /api/v1/PopularItemsVisit/GetAll, Content-Type: application/json
+2024-09-20 12:41:24.032 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-20 12:41:24.061 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api)'
+2024-09-20 12:41:24.166 +05:00 [INF] Route matched with {action = "GetAll", controller = "PopularItemsVisit"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularItemsVisit.GetAllPopularItemsVisitQuery) on controller CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController (CleanArc.Web.Api).
+2024-09-20 12:41:43.445 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-20 12:41:44.145 +05:00 [INF] Entering CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularItemsVisit, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-20 12:41:47.283 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-20 12:41:48.138 +05:00 [INF] Exiting null, GetAllAsync
+2024-09-20 12:41:48.210 +05:00 [INF] Exiting null, Handle
+2024-09-20 12:41:48.404 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api) in 24201.2106ms
+2024-09-20 12:41:48.425 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api)'
+2024-09-20 12:41:48.870 +05:00 [ERR] Could not find stored procedure 'KnowledgeBase.GetAll_PopularItemsVisits'.
+System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'KnowledgeBase.GetAll_PopularItemsVisits'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.PopularItemsVisitRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\PopularItemsVisitRepository.cs:line 143
+   at CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularItemsVisit.GetAllPopularItemsVisitQueryHandler.Handle(GetAllPopularItemsVisitQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\PopularItemsVisit\Queries\GetAllPopularItemsVisit\GetAllPopularItemsVisitQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:97f9558e-e48d-40ce-9b61-9c79bdc1661c
+Error Number:2812,State:1,Class:16
+2024-09-20 12:41:49.296 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/PopularItemsVisit/GetAll application/json 170 - 500 0 - 25493.2067ms
+2024-09-20 12:43:11.678 +05:00 [INF] Executed DbCommand (64ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-20 12:43:11.978 +05:00 [INF] Executed DbCommand (120ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-20 12:43:12.014 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-20 12:43:12.057 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-20 12:43:12.176 +05:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-20 12:43:12.336 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-20 12:43:12.386 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-20 12:43:13.340 +05:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-20 12:43:13.403 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-20 12:43:15.248 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-20 12:43:16.671 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-20 12:43:17.231 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-20 12:43:17.906 +05:00 [INF] Response StatusCode: 200
+2024-09-20 12:43:17.948 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 1285.4190ms
+2024-09-20 12:43:18.443 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-20 12:43:18.449 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-20 12:43:18.485 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 42.1086ms
+2024-09-20 12:43:18.602 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 153.6094ms
+2024-09-20 12:43:19.994 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-20 12:43:20.002 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-20 12:43:20.011 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-20 12:43:20.017 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-20 12:43:20.939 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-20 12:43:21.158 +05:00 [INF] Response StatusCode: 404
+2024-09-20 12:43:21.208 +05:00 [INF] Response StatusCode: 404
+2024-09-20 12:43:21.216 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 1222.4959ms
+2024-09-20 12:43:24.073 +05:00 [INF] Response StatusCode: 200
+2024-09-20 12:43:24.084 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 4081.0482ms
+2024-09-20 12:46:12.359 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/PopularItemsVisit/GetAll application/json 163
+2024-09-20 12:46:12.397 +05:00 [INF] CORS policy execution successful.
+2024-09-20 12:46:12.409 +05:00 [INF] Request Method: POST, Path: /api/v1/PopularItemsVisit/GetAll, Content-Type: application/json
+2024-09-20 12:46:12.422 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+    
+    ],
+    "sortingArray": [
+    ]
+  }
+}
+2024-09-20 12:46:12.456 +05:00 [INF] Request Method: POST, Path: /api/v1/PopularItemsVisit/GetAll, Content-Type: application/json
+2024-09-20 12:46:12.470 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+    
+    ],
+    "sortingArray": [
+    ]
+  }
+}
+2024-09-20 12:46:12.499 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api)'
+2024-09-20 12:46:12.611 +05:00 [INF] Route matched with {action = "GetAll", controller = "PopularItemsVisit"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularItemsVisit.GetAllPopularItemsVisitQuery) on controller CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController (CleanArc.Web.Api).
+2024-09-20 12:50:31.569 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-20 12:50:32.116 +05:00 [INF] Entering CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularItemsVisit, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-20 12:50:33.963 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-20 12:50:34.246 +05:00 [INF] Exiting null, GetAllAsync
+2024-09-20 12:50:34.502 +05:00 [INF] Exiting null, Handle with response: [{"PageId":1,"URL":"https://example.com/page1","PageTitle":"Example Page 1","Count":10,"ImageURL":"https://example.com/image1.jpg"},{"PageId":2,"URL":"https://example.com/page2","PageTitle":"Example Page 2","Count":5,"ImageURL":"https://example.com/image2.jpg"}]
+2024-09-20 12:50:34.529 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2936.963ms.
+2024-09-20 12:50:34.558 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-20 12:50:34.685 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api) in 261974.2292ms
+2024-09-20 12:50:34.700 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api)'
+2024-09-20 12:50:34.713 +05:00 [INF] Response StatusCode: 200
+2024-09-20 12:50:34.727 +05:00 [INF] Response StatusCode: 200
+2024-09-20 12:50:34.740 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/PopularItemsVisit/GetAll application/json 163 - 200 - application/json;+charset=utf-8 262358.5862ms
+2024-09-20 16:52:41.271 +05:00 [INF] Executed DbCommand (61ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-20 16:52:41.487 +05:00 [INF] Executed DbCommand (104ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-20 16:52:41.551 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-20 16:52:41.571 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-20 16:52:41.635 +05:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-20 16:52:41.755 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-20 16:52:41.841 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-20 16:52:42.368 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-20 16:52:42.403 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-20 16:52:43.999 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-20 16:52:45.735 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-20 16:52:46.318 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-20 16:52:46.756 +05:00 [INF] Response StatusCode: 200
+2024-09-20 16:52:46.769 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-20 16:52:46.785 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 1070.1945ms
+2024-09-20 16:52:46.791 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 21.2275ms
+2024-09-20 16:52:47.010 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-20 16:52:47.121 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 111.1587ms
+2024-09-20 16:52:48.304 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-20 16:52:48.313 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-20 16:52:48.323 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-20 16:52:48.330 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-20 16:52:51.225 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-20 16:52:51.236 +05:00 [INF] Response StatusCode: 404
+2024-09-20 16:52:51.242 +05:00 [INF] Response StatusCode: 404
+2024-09-20 16:52:51.286 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 2983.1103ms
+2024-09-20 16:52:51.943 +05:00 [INF] Response StatusCode: 200
+2024-09-20 16:52:51.947 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 3624.3206ms
+2024-09-20 16:53:33.272 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/PopularItemsVisit/GetAll application/json 172
+2024-09-20 16:53:33.280 +05:00 [INF] CORS policy execution successful.
+2024-09-20 16:53:33.288 +05:00 [INF] Request Method: POST, Path: /api/v1/PopularItemsVisit/GetAll, Content-Type: application/json
+2024-09-20 16:53:33.300 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+
+    ]
+  }
+}
+2024-09-20 16:53:33.322 +05:00 [INF] Request Method: POST, Path: /api/v1/PopularItemsVisit/GetAll, Content-Type: application/json
+2024-09-20 16:53:33.331 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+
+    ]
+  }
+}
+2024-09-20 16:53:33.337 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api)'
+2024-09-20 16:53:33.411 +05:00 [INF] Route matched with {action = "GetAll", controller = "PopularItemsVisit"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularItemsVisit.GetAllPopularItemsVisitQuery) on controller CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController (CleanArc.Web.Api).
+2024-09-20 16:53:42.260 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-20 16:53:42.735 +05:00 [INF] Entering CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularItemsVisit, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-20 16:53:44.310 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-20 16:53:44.941 +05:00 [INF] Exiting null, GetAllAsync
+2024-09-20 16:53:44.984 +05:00 [INF] Exiting null, Handle
+2024-09-20 16:53:45.108 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api) in 11671.4263ms
+2024-09-20 16:53:45.125 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api)'
+2024-09-20 16:53:45.623 +05:00 [ERR] Procedure or function GetAll_PopularItemsVisitstest has too many arguments specified.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function GetAll_PopularItemsVisitstest has too many arguments specified.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.PopularItemsVisitRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\PopularItemsVisitRepository.cs:line 143
+   at CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularItemsVisit.GetAllPopularItemsVisitQueryHandler.Handle(GetAllPopularItemsVisitQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\PopularItemsVisit\Queries\GetAllPopularItemsVisit\GetAllPopularItemsVisitQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:20f514ed-7a77-4ee3-b6f6-6d1641d93b12
+Error Number:8144,State:2,Class:16
+2024-09-20 16:53:45.846 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/PopularItemsVisit/GetAll application/json 172 - 500 0 - 12573.1894ms
+2024-09-20 16:54:29.327 +05:00 [INF] Executed DbCommand (65ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-20 16:54:29.552 +05:00 [INF] Executed DbCommand (72ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-20 16:54:29.574 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-20 16:54:29.594 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-20 16:54:29.636 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-20 16:54:29.707 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-20 16:54:29.727 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-20 16:54:30.294 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-20 16:54:30.321 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-20 16:54:31.156 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-20 16:54:32.313 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-20 16:54:32.876 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-20 16:54:33.210 +05:00 [INF] Response StatusCode: 200
+2024-09-20 16:54:33.225 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 930.5636ms
+2024-09-20 16:54:33.469 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-20 16:54:33.469 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-20 16:54:33.493 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12364 application/javascript;+charset=utf-8 24.1206ms
+2024-09-20 16:54:33.704 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 234.2541ms
+2024-09-20 16:54:34.655 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-20 16:54:34.664 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-20 16:54:34.703 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-20 16:54:34.710 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-20 16:54:35.278 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-20 16:54:35.286 +05:00 [INF] Response StatusCode: 404
+2024-09-20 16:54:35.293 +05:00 [INF] Response StatusCode: 404
+2024-09-20 16:54:35.300 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 644.4610ms
+2024-09-20 16:54:37.498 +05:00 [INF] Response StatusCode: 200
+2024-09-20 16:54:37.505 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 2802.3540ms
+2024-09-20 16:55:09.945 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/PopularItemsVisit/GetAll application/json 171
+2024-09-20 16:55:09.955 +05:00 [INF] CORS policy execution successful.
+2024-09-20 16:55:09.971 +05:00 [INF] Request Method: POST, Path: /api/v1/PopularItemsVisit/GetAll, Content-Type: application/json
+2024-09-20 16:55:09.984 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-20 16:55:10.002 +05:00 [INF] Request Method: POST, Path: /api/v1/PopularItemsVisit/GetAll, Content-Type: application/json
+2024-09-20 16:55:10.008 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-20 16:55:10.013 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api)'
+2024-09-20 16:55:10.058 +05:00 [INF] Route matched with {action = "GetAll", controller = "PopularItemsVisit"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularItemsVisit.GetAllPopularItemsVisitQuery) on controller CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController (CleanArc.Web.Api).
+2024-09-20 16:55:12.982 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-20 16:55:13.292 +05:00 [INF] Entering CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularItemsVisit, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-20 16:55:13.706 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-20 16:55:14.145 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":0,"UserID":null,"PageVisiteUrl":null,"DateTime":null,"SessionDuration":null,"VisitCount":null,"FirstVisitAt":null,"LastVisitAt":null,"IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"UserId":null,"Name":null,"FamilyName":null,"GeneratedCode":null,"UserName":null,"NormalizedUserName":null,"Email":null,"NormalizedEmail":null,"EmailConfirmed":null,"PasswordHash":null,"SecurityStamp":null,"ConcurrencyStamp":null,"PhoneNumber":null,"PhoneNumberConfirmed":null,"TwoFactorEnabled":null,"LockoutEnd":null,"LockoutEnabled":null,"AccessFailedCount":null,"PageId":5,"Title":"five star Hotel","ServiceCategoryID":1,"ImagePath":"../../../assets/images/Movenpick Khi/MP3.jpg","IpAddress":null,"PageURL":"singleitemdetails/5","VisitAt":"09/20/2024 11:43:00","TotalVisitCount":5}]
+2024-09-20 16:55:14.278 +05:00 [INF] Exiting null, Handle with response: [{"PageId":5,"Title":"five star Hotel","ServiceCategoryID":1,"ImagePath":"../../../assets/images/Movenpick Khi/MP3.jpg","IpAddress":null,"PageURL":"singleitemdetails/5","VisitAt":"09/20/2024 11:43:00","TotalVisitCount":5}]
+2024-09-20 16:55:14.292 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1297.2578ms.
+2024-09-20 16:55:14.309 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-20 16:55:14.346 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api) in 4274.8508ms
+2024-09-20 16:55:14.352 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.PopularItemsVisit.PopularItemsVisitController.GetAll (CleanArc.Web.Api)'
+2024-09-20 16:55:14.357 +05:00 [INF] Response StatusCode: 200
+2024-09-20 16:55:14.364 +05:00 [INF] Response StatusCode: 200
+2024-09-20 16:55:14.370 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/PopularItemsVisit/GetAll application/json 171 - 200 - application/json;+charset=utf-8 4425.0804ms
