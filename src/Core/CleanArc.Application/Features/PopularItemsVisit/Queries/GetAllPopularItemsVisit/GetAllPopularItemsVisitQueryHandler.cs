@@ -36,10 +36,10 @@ namespace CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularI
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var Product = await _unitOfWork.PopularItemsVisitRepository.GetAllAsync(request.searchRequest);
+                var visit = await _unitOfWork.PopularItemsVisitRepository.GetAllAsync(request.searchRequest);
 
                 //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-                var result = _mapper.Map<List<GetAllPopularItemsVisitQueryResult>>(Product);
+                var result = _mapper.Map<List<GetAllPopularItemsVisitQueryResult>>(visit);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return OperationResult<List<GetAllPopularItemsVisitQueryResult>>.SuccessResult(result);
             }
