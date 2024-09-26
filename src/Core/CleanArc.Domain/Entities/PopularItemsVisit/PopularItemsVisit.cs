@@ -27,7 +27,7 @@ public  class PopularItemsVisit
     public DateTime? UpdatedAt { get; set; }
     public int? CultureId { get; set; }
     public int? Code { get; set; }
-    public int? Message { get; set; }
+    public string? Message { get; set; }
     // Fields from the User (U) table
     //public string? Name { get; set; } // User's name
     //public string? UserName { get; set; } // Username
@@ -51,5 +51,14 @@ public  class PopularItemsVisit
     public DateTimeOffset? LockoutEnd { get; set; }
     public bool? LockoutEnabled { get; set; }
     public int? AccessFailedCount { get; set; }
+    public int? PageId { get;set; }
+    public string? Title { get;set; }
+    public int? ServiceCategoryID { get; set; }
+    public string? ImagePath { get; set; }
+    public string? IpAddress { get; set; }
+    public string? PageURL { get; set; }
+   // public string? VisitAt { get; set; }
+    public int? TotalVisitCount { get;set; }
+    //public string? ImagePath { get;set; }
 
 }

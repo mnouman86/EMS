@@ -41,7 +41,7 @@ namespace CleanArc.Application.Models.ProcessOrder
         //public DateTime? UpdatedAt { get; set; } // datetime NULL
         public int? CultureId { get; set; }
         public int? Code { get; set; }
-        public int? Message { get; set; }
+        public string? Message { get; set; }
         public int? PackageTypeID { get; set; }
         //public DateTime? CreatedAt { get; set; }
         //public int? UpdatedBy { get; set; }

@@ -46,7 +46,7 @@ namespace CleanArc.Application.Models.Activities
         public DateTime? StartDate { get; set; } // Nullable DateTime for StartDate
         public DateTime? EndDate { get; set; }   // Nullable DateTime for EndDate
         public int? Code { get; set; }
-        public int? Message { get; set; }
+        public string? Message { get; set; }
        // public int? ActivityID { get; set; }
         //public Decimal? PerGroupPrice { get; set; }
 

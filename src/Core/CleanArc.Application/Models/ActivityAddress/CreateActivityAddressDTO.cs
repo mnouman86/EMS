@@ -24,7 +24,7 @@ namespace CleanArc.Application.Models.ActivityAddress
         public int? CreatedBy { get; set; }
         public int? CultureId { get; set; }
         public int? Code { get; set; }
-        public int? Message { get; set; }
+        public string? Message { get; set; }
 
         //public DateTime? CreatedAt { get; set; }
         //public int? UpdatedBy { get; set; }

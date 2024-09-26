@@ -23,7 +23,7 @@ namespace CleanArc.Application.Models.FAQs
         //public DateTime? UpdatedAt { get; set; } // Nullable DateTime for UpdatedAt
         public int? CultureId { get; set; }
         public int? Code { get; set; }
-        public int? Message { get; set; }
+        public string? Message { get; set; }
         //public DateTime? UpdatedAt { get; set; }
     }
 }

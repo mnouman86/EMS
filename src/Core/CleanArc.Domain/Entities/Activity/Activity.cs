@@ -48,7 +48,7 @@ public  class Activity
     public DateTime? UpdatedAt { get; set; }
     public int? CultureId { get; set; }
     public int? Code { get; set; }
-    public int? Message { get; set; }
+    public string? Message { get; set; }
     public int? ActivityID { get; set; }
     public string? Duration { get; set; }
     public string? Cancellation { get; set; }

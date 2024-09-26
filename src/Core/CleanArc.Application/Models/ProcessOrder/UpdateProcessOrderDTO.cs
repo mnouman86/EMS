@@ -42,6 +42,6 @@ namespace CleanArc.Application.Models.ProcessOrder
 
         public int? CultureId { get; set; }
         public int? Code { get; set; }
-        public int? Message { get; set; }
+        public string? Message { get; set; }
     }
 }
