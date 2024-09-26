@@ -60,7 +60,7 @@ internal class CreateKBMediaCommandHandler: IRequestHandler<CreateKBMediaCommand
             var result = await _unitOfWork.KBMediaRepository.AddAsync(new Domain.Entities.KBMedia.KBMedia()
             { CreatedBy = user.Id,
                 KBDescriptionID = request.KBDescriptionID,
-                MediaType = request.MediaType,
+               // MediaType = request.MediaType,
                 ImageTitle = request.ImageTitle,
                 ImagePath = request.ImagePath,
                 IsMain = request.IsMain,

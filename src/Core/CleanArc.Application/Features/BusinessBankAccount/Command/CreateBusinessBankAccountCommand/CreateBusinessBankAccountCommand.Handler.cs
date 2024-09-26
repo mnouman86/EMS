@@ -64,3 +64,4 @@ internal class CreateBusinessBankAccountCommandHandler : IRequestHandler<CreateB
         }
     }
 }
+

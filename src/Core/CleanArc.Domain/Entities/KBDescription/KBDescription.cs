@@ -28,6 +28,6 @@ public  class KBDescription
     public DateTime? UpdatedAt { get; set; }
     public int? CultureId { get; set; }
     public int? Code { get; set; }
-    public int? Message { get; set; }
+    public string? Message { get; set; }
 
 }
