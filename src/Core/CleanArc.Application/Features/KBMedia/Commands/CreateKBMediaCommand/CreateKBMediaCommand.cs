@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand;
 public record CreateKBMediaCommand(
     int? KBDescriptionID,
-    string MediaType,
+    //string MediaType,
      string ImagePath,
     string ImageTitle,
     bool? IsMain,
@@ -30,10 +30,7 @@ public record CreateKBMediaCommand(
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid KBDescriptionID");
-        validator.RuleFor(c => c.MediaType)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a MediaType");
+       
         validator.RuleFor(c => c.ImagePath)
             .NotEmpty()
             .NotNull()
