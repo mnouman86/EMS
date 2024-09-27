@@ -10,6 +10,7 @@ public class GetAllKBDetailQueryResult
 {
     public int ID { get; set; }
     public string? Title { get; set; }
+    public int? GenericTitleID { get; set; }  // Maps to GenericTitleID
     public string? KeyDate { get; set; }
     public string? Cost { get; set; }
     public int? ServiceID { get; set; }

@@ -13,6 +13,7 @@ using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 namespace CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand;
 public record UpdateKBDetailCommand(int ID,
     string? Title,
+    //int? GenericTitleID,
     string? KeyDate,
     string? Cost,
     int? ServiceID,
