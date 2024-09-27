@@ -59,7 +59,7 @@ internal class CreateKBMediaCommandHandler: IRequestHandler<CreateKBMediaCommand
             //return OperationResult<bool>.SuccessResult(true);
             var result = await _unitOfWork.KBMediaRepository.AddAsync(new Domain.Entities.KBMedia.KBMedia()
             { CreatedBy = user.Id,
-                KBDescriptionID = request.KBDescriptionID,
+                GenericTitleID = request.GenericTitleID,
                // MediaType = request.MediaType,
                 ImageTitle = request.ImageTitle,
                 ImagePath = request.ImagePath,
