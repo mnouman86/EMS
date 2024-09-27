@@ -49,7 +49,9 @@ public class UpdateHotelDTO
     public string MobileNumber { get; set; }
     public string PhoneNumber { get; set; }
     public string Email { get; set; }
-    public string FocalPersonName { get; set; }
+	public int? ServiceID { get; set; }
+
+	public string FocalPersonName { get; set; }
     public bool? IsChanelManager { get; set; }
     public bool? IsRating { get; set; }
     public bool? IsChain { get; set; }
