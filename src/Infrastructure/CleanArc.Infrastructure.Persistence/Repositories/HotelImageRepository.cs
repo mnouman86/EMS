@@ -10,8 +10,11 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System.Data;
+using System.Globalization;
+using CleanArc.Application.Models.KBDetail;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
@@ -108,8 +111,14 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             {
                 using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
                 {
+
                     connection.Open();
-                    var result = await connection.QuerySingleOrDefaultAsync<Hotel_Image>(HotelImageQueries.usp_GetByID_HotelImage, new { ID = id }, commandType: CommandType.StoredProcedure);
+					var parameters = new DynamicParameters();
+					parameters.Add("@CultureID", 1);
+					parameters.Add("@ID", id);
+					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+					var result = await connection.QuerySingleOrDefaultAsync<Hotel_Image>(HotelImageQueries.usp_GetByID_HotelImage, parameters, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
                 }
@@ -124,8 +133,10 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 {
                     connection.Open();
                     UpdateHotelImageDTO updateHotelImageDTO = _mapper.Map<UpdateHotelImageDTO>(HotelImage);
-
-                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelImageQueries.Update_HotelImage, updateHotelImageDTO, commandType: CommandType.StoredProcedure);
+					var parameters = new DynamicParameters(updateHotelImageDTO);
+					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+					var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelImageQueries.Update_HotelImage, parameters, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
                 }
@@ -140,7 +151,8 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     connection.Open();
                     var parameters = new DynamicParameters();
                     parameters.Add("@ID", selectedIds);
-                    parameters.Add("@UpdatedBy", updatedBy);
+					parameters.Add("@CultureID", 1);
+					parameters.Add("@UpdatedBy", updatedBy);
                     parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelImageQueries.Delete_HotelImage, parameters, commandType: CommandType.StoredProcedure);
