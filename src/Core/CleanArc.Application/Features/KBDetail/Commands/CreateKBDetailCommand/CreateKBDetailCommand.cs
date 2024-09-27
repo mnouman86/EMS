@@ -11,7 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.KBDetail.Commands.CreateKBDetailCommand;
-public record CreateKBDetailCommand(string? Title,
+public record CreateKBDetailCommand(
+    string? Title,
+   // int? GenericTitleID,
     string? KeyDate,
     string? Cost,
     int? ServiceID,

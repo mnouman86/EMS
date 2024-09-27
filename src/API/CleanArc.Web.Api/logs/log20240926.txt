@@ -1,0 +1,1695 @@
+2024-09-26 09:51:57.865 +05:00 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-26 09:51:58.021 +05:00 [INF] Executed DbCommand (58ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-26 09:51:58.037 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-26 09:51:58.048 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-26 09:51:58.084 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-26 09:51:58.149 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-26 09:51:58.189 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-26 09:51:58.668 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-26 09:51:58.708 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-26 09:52:00.051 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-26 09:52:00.872 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-26 09:52:01.283 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-26 09:52:01.658 +05:00 [INF] Response StatusCode: 200
+2024-09-26 09:52:01.668 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-26 09:52:01.675 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 809.2613ms
+2024-09-26 09:52:01.687 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 18.2676ms
+2024-09-26 09:52:02.092 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-26 09:52:02.249 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 156.7410ms
+2024-09-26 09:52:04.116 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-26 09:52:04.128 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-26 09:52:04.185 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-26 09:52:04.195 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-26 09:52:05.859 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-26 09:52:05.877 +05:00 [INF] Response StatusCode: 404
+2024-09-26 09:52:05.883 +05:00 [INF] Response StatusCode: 404
+2024-09-26 09:52:05.889 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 1774.4390ms
+2024-09-26 09:52:06.802 +05:00 [INF] Response StatusCode: 200
+2024-09-26 09:52:06.806 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 2621.4295ms
+2024-09-26 09:57:21.802 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 53
+2024-09-26 09:57:21.827 +05:00 [INF] CORS policy execution successful.
+2024-09-26 09:57:21.838 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-09-26 09:57:21.847 +05:00 [INF] Request Body: {
+  "userName": "vendor2",
+  "password": "123@a123"
+}
+2024-09-26 09:57:21.867 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-09-26 09:57:21.872 +05:00 [INF] Request Body: {
+  "userName": "vendor2",
+  "password": "123@a123"
+}
+2024-09-26 09:57:21.881 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-09-26 09:57:21.948 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-09-26 09:57:24.722 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 09:57:25.008 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"vendor2","Password":"123@a123"}
+2024-09-26 09:57:25.108 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"vendor2","Password":"123@a123","$type":"AdminGetTokenQuery"}
+2024-09-26 09:57:25.264 +05:00 [INF] Executed DbCommand (16ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-09-26 09:57:25.453 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"09ee7547-eacc-462e-acb9-55e5e3139907","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":4,"$type":"User"}
+2024-09-26 09:57:25.491 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-09-26 09:57:25.643 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-09-26 09:57:25.695 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-09-26 09:57:25.716 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-09-26 09:57:25.732 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-09-26 09:57:25.775 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-09-26 09:57:26.244 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-09-26 09:57:28.532 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-09-26 09:57:28.556 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.xPw78v2mwlIkrESsBHXSb6mKgHwOXueV3sFfTp15hzmn9KJMSuwsIA.CBuxwR0V6KsjyrOc9O5YLg.AgrEHZErVfcS0e2EB-2d_oEJLdLzPeH3aFiDbKE3HxUyrwCyjIhql_ySe8bR6NjgONnNoWwGBS7Azf-G1Z3t60Vqzb93eZqD_4BuPxkyDulWVkTwmy9Tdq-UTfYOQB44829bBkUQS96SpYNFgENAnxe8mtLEHIVLEIfZcBTRWNRRhXjtnfoaKgtRrfZ61KDl-5O-weEVJsxdmnovwcvmWr7umj8dkEmypRFTggf_x1LPoZvvUpPSCC51ZqWuirgI4HeGWA3K0Y-3AnLze9JAXPOhjCHGmPchoHWj8IKWmphg4vYaNfTBcC4vQ5cUg2oUmGHc6ROB-_glrT6JwswA06gNmfeBMi5rUBMUMYFb7Tne3HqX2KGnUz5FKK3Q-9GFi4xrVh8pRtWmzXuVXYCThDgKIBc9Y94vckrD_tmG_uiA9c--zWFSKdApnOri71mqi8VQjjwPmsyT89dd7yDYpBBmvvJlgRxXc9OZye_a-R3kyak4YKRKRVYQCYut7wXIFWWKkUkSV3bW4hlkHKMitH27s8eHwg51caaD2bY4r8oFXSNHYSziti_41tojGyWVhOh9IUVtArN-WxUV5O9PVudDy7IkrO7wnRvxyYgUIj_kRgGNOdMxBGPoQvYLgYR35Sb23FJxRBGRnqH4okx7ZXWUKix4RhUCqRr8T11oagNO7LCrL1bNCW4APaqggKvWlqtGOwMG1zZPGKTaihp6hw.azM0J544XfVFw_I5Bo5hRA","refresh_token":"71bc7b3d-ca95-48e1-e65b-08dcdde7b722","token_type":"Bearer","expires_in":599996,"userID":1006},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-09-26 09:57:28.573 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3835.7438ms.
+2024-09-26 09:57:28.595 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-26 09:57:28.658 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 6689.1542ms
+2024-09-26 09:57:28.669 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-09-26 09:57:28.673 +05:00 [INF] Response StatusCode: 200
+2024-09-26 09:57:28.679 +05:00 [INF] Response StatusCode: 200
+2024-09-26 09:57:28.685 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 53 - 200 - application/json;+charset=utf-8 6883.2960ms
+2024-09-26 10:01:23.514 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Hotel/GetAll application/json 171
+2024-09-26 10:01:23.529 +05:00 [INF] CORS policy execution successful.
+2024-09-26 10:01:23.543 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-09-26 10:01:23.553 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-09-26 10:01:23.588 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-09-26 10:01:23.592 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-09-26 10:01:23.596 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-09-26 10:01:23.607 +05:00 [INF] Route matched with {action = "GetAll", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQuery) on controller CleanArc.Web.Api.Controllers.V1.Hotel.HotelController (CleanArc.Web.Api).
+2024-09-26 10:01:26.762 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 10:01:26.859 +05:00 [INF] Entering CleanArc.Application.Features.Hotel.Queries.GetAllHotels, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-26 10:01:27.071 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-26 10:01:27.546 +05:00 [INF] Exiting null, GetAllAsync
+2024-09-26 10:01:27.570 +05:00 [INF] Exiting null, Handle
+2024-09-26 10:01:27.631 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api) in 4016.3518ms
+2024-09-26 10:01:27.638 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-09-26 10:01:27.852 +05:00 [ERR] Ambiguous column name 'IsDeleted'.
+System.Data.SqlClient.SqlException (0x80131904): Ambiguous column name 'IsDeleted'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.HotelRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\HotelRepository.cs:line 109
+   at CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQueryHandler.Handle(GetAllHotelsQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\Hotel\Queries\GetAllHotels\GetAllHotelsQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:3d6ec279-7c55-4dfa-bbc2-106041e702cf
+Error Number:209,State:1,Class:16
+2024-09-26 10:01:28.014 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Hotel/GetAll application/json 171 - 500 0 - 4500.0967ms
+2024-09-26 10:01:39.309 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Hotel/GetAll application/json 171
+2024-09-26 10:01:39.313 +05:00 [INF] CORS policy execution successful.
+2024-09-26 10:01:39.321 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-09-26 10:01:39.327 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-09-26 10:01:39.333 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-09-26 10:01:39.341 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-09-26 10:01:39.344 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-09-26 10:01:39.349 +05:00 [INF] Route matched with {action = "GetAll", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQuery) on controller CleanArc.Web.Api.Controllers.V1.Hotel.HotelController (CleanArc.Web.Api).
+2024-09-26 10:01:42.066 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 10:01:42.071 +05:00 [INF] Entering CleanArc.Application.Features.Hotel.Queries.GetAllHotels, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-26 10:01:42.084 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-26 10:01:42.142 +05:00 [INF] Exiting null, GetAllAsync
+2024-09-26 10:01:42.164 +05:00 [INF] Exiting null, Handle
+2024-09-26 10:01:42.215 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api) in 2860.9101ms
+2024-09-26 10:01:42.221 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-09-26 10:01:42.397 +05:00 [ERR] Ambiguous column name 'IsDeleted'.
+System.Data.SqlClient.SqlException (0x80131904): Ambiguous column name 'IsDeleted'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.HotelRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\HotelRepository.cs:line 109
+   at CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQueryHandler.Handle(GetAllHotelsQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\Hotel\Queries\GetAllHotels\GetAllHotelsQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:3d6ec279-7c55-4dfa-bbc2-106041e702cf
+Error Number:209,State:1,Class:16
+2024-09-26 10:01:42.430 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Hotel/GetAll application/json 171 - 500 0 - 3120.9898ms
+2024-09-26 10:02:31.017 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Hotel/GetAll application/json 171
+2024-09-26 10:02:31.020 +05:00 [INF] CORS policy execution successful.
+2024-09-26 10:02:31.023 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-09-26 10:02:31.028 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-26 10:02:31.034 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-09-26 10:02:31.038 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-26 10:02:31.048 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-09-26 10:02:31.052 +05:00 [INF] Route matched with {action = "GetAll", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQuery) on controller CleanArc.Web.Api.Controllers.V1.Hotel.HotelController (CleanArc.Web.Api).
+2024-09-26 10:02:33.611 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 10:02:33.629 +05:00 [INF] Entering CleanArc.Application.Features.Hotel.Queries.GetAllHotels, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-26 10:02:33.637 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-26 10:02:33.692 +05:00 [INF] Exiting null, GetAllAsync
+2024-09-26 10:02:33.716 +05:00 [INF] Exiting null, Handle
+2024-09-26 10:02:33.764 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api) in 2707.7914ms
+2024-09-26 10:02:33.769 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-09-26 10:02:33.945 +05:00 [ERR] Ambiguous column name 'IsDeleted'.
+System.Data.SqlClient.SqlException (0x80131904): Ambiguous column name 'IsDeleted'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.HotelRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\HotelRepository.cs:line 109
+   at CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQueryHandler.Handle(GetAllHotelsQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\Hotel\Queries\GetAllHotels\GetAllHotelsQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:3d6ec279-7c55-4dfa-bbc2-106041e702cf
+Error Number:209,State:1,Class:16
+2024-09-26 10:02:33.978 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Hotel/GetAll application/json 171 - 500 0 - 2961.3444ms
+2024-09-26 10:03:15.903 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Country/GetAll application/json 171
+2024-09-26 10:03:15.907 +05:00 [INF] CORS policy execution successful.
+2024-09-26 10:03:15.910 +05:00 [INF] Request Method: POST, Path: /api/v1/Country/GetAll, Content-Type: application/json
+2024-09-26 10:03:15.914 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-26 10:03:15.918 +05:00 [INF] Request Method: POST, Path: /api/v1/Country/GetAll, Content-Type: application/json
+2024-09-26 10:03:15.922 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-26 10:03:15.926 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Country.CountryController.GetAll (CleanArc.Web.Api)'
+2024-09-26 10:03:15.938 +05:00 [INF] Route matched with {action = "GetAll", controller = "Country"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Country.Queries.GetAllCountries.GetAllCountryQuery) on controller CleanArc.Web.Api.Controllers.V1.Country.CountryController (CleanArc.Web.Api).
+2024-09-26 10:03:21.884 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Country.CountryController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 10:03:21.899 +05:00 [INF] Entering CleanArc.Application.Features.Country.Queries.GetAllCountries, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-26 10:03:21.910 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-26 10:03:22.035 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":1,"Name":"Pakistan","Description":"Pakistan","IsActive":true,"IsDeleted":false,"CreatedAt":"2024-05-02T00:00:00","CreatedBy":1,"UpdatedBy":0,"UpdatedAt":null}]
+2024-09-26 10:03:22.183 +05:00 [INF] Exiting null, Handle with response: [{"ID":1,"Name":"Pakistan","Description":"Pakistan","IsActive":true,"IsDeleted":false,"CreatedAt":"2024-05-02T00:00:00","CreatedBy":1,"UpdatedBy":0,"UpdatedAt":null}]
+2024-09-26 10:03:22.189 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Country.CountryController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 300.5487ms.
+2024-09-26 10:03:22.197 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-26 10:03:22.230 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Country.CountryController.GetAll (CleanArc.Web.Api) in 6284.6738ms
+2024-09-26 10:03:22.236 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Country.CountryController.GetAll (CleanArc.Web.Api)'
+2024-09-26 10:03:22.241 +05:00 [INF] Response StatusCode: 200
+2024-09-26 10:03:22.245 +05:00 [INF] Response StatusCode: 200
+2024-09-26 10:03:22.248 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Country/GetAll application/json 171 - 200 - application/json;+charset=utf-8 6344.6691ms
+2024-09-26 10:03:37.059 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Hotel/GetAll application/json 171
+2024-09-26 10:03:37.070 +05:00 [INF] CORS policy execution successful.
+2024-09-26 10:03:37.079 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-09-26 10:03:37.085 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-26 10:03:37.092 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-09-26 10:03:37.097 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 0,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-26 10:03:37.100 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-09-26 10:03:37.105 +05:00 [INF] Route matched with {action = "GetAll", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQuery) on controller CleanArc.Web.Api.Controllers.V1.Hotel.HotelController (CleanArc.Web.Api).
+2024-09-26 10:04:03.586 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 10:04:03.599 +05:00 [INF] Entering CleanArc.Application.Features.Hotel.Queries.GetAllHotels, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-26 10:04:03.604 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-26 10:04:03.652 +05:00 [INF] Exiting null, GetAllAsync
+2024-09-26 10:04:03.679 +05:00 [INF] Exiting null, Handle
+2024-09-26 10:04:03.731 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api) in 26621.6245ms
+2024-09-26 10:04:03.735 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-09-26 10:04:03.930 +05:00 [ERR] Ambiguous column name 'IsDeleted'.
+System.Data.SqlClient.SqlException (0x80131904): Ambiguous column name 'IsDeleted'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.HotelRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\HotelRepository.cs:line 109
+   at CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQueryHandler.Handle(GetAllHotelsQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\Hotel\Queries\GetAllHotels\GetAllHotelsQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:3d6ec279-7c55-4dfa-bbc2-106041e702cf
+Error Number:209,State:1,Class:16
+2024-09-26 10:04:03.957 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Hotel/GetAll application/json 171 - 500 0 - 26898.7782ms
+2024-09-26 10:04:05.606 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/Hotel/GetAll application/json 144
+2024-09-26 10:04:05.613 +05:00 [INF] CORS policy execution successful.
+2024-09-26 10:04:05.616 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-09-26 10:04:05.630 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+   
+ 
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-26 10:04:05.636 +05:00 [INF] Request Method: POST, Path: /api/v1/Hotel/GetAll, Content-Type: application/json
+2024-09-26 10:04:05.643 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+   
+ 
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-26 10:04:05.646 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-09-26 10:04:05.649 +05:00 [INF] Route matched with {action = "GetAll", controller = "Hotel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQuery) on controller CleanArc.Web.Api.Controllers.V1.Hotel.HotelController (CleanArc.Web.Api).
+2024-09-26 10:04:14.500 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 10:04:14.506 +05:00 [INF] Entering CleanArc.Application.Features.Hotel.Queries.GetAllHotels, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":null,"Id":null,"FilterArray":[],"SortingArray":[]}}
+2024-09-26 10:04:14.512 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":null,"Id":null,"FilterArray":[],"SortingArray":[]}
+2024-09-26 10:04:14.557 +05:00 [INF] Exiting null, GetAllAsync
+2024-09-26 10:04:14.579 +05:00 [INF] Exiting null, Handle
+2024-09-26 10:04:14.628 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api) in 8975.1409ms
+2024-09-26 10:04:14.634 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Hotel.HotelController.GetAll (CleanArc.Web.Api)'
+2024-09-26 10:04:14.807 +05:00 [ERR] Ambiguous column name 'IsDeleted'.
+System.Data.SqlClient.SqlException (0x80131904): Ambiguous column name 'IsDeleted'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.HotelRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\HotelRepository.cs:line 109
+   at CleanArc.Application.Features.Hotel.Queries.GetAllHotels.GetAllHotelsQueryHandler.Handle(GetAllHotelsQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\Hotel\Queries\GetAllHotels\GetAllHotelsQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:3d6ec279-7c55-4dfa-bbc2-106041e702cf
+Error Number:209,State:1,Class:16
+2024-09-26 10:04:14.837 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/Hotel/GetAll application/json 144 - 500 0 - 9234.8555ms
+2024-09-26 10:07:35.928 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 170
+2024-09-26 10:07:35.940 +05:00 [INF] CORS policy execution successful.
+2024-09-26 10:07:35.945 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-26 10:07:35.949 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-26 10:07:35.953 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-26 10:07:35.960 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-26 10:07:35.964 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-26 10:07:35.973 +05:00 [INF] Route matched with {action = "GetAll", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQuery) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-26 10:07:38.882 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 10:07:38.898 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-26 10:07:39.947 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-26 10:07:40.678 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":5,"Title":"Sample Title","KeyDate":"2024-09-25","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-09-25T12:09:03.087","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"12.345678","Longitude":"98.765432","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null}]
+2024-09-26 10:07:40.725 +05:00 [INF] Exiting null, Handle with response: [{"ID":5,"Title":"Sample Title","KeyDate":"2024-09-25","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"WhenToVisitIDs":"1,2","RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","IsDeleted":false,"IsActive":true,"CreatedBy":1,"CreatedAt":"2024-09-25T12:09:03.087","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":0,"CityLookUpID":19,"CountryLookUpID":1,"Latitude":"12.345678","Longitude":"98.765432","PostalCode":"12345","StatelookUpID":5,"CultureId":null,"Code":null,"Message":null}]
+2024-09-26 10:07:40.730 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1844.5783ms.
+2024-09-26 10:07:40.734 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-26 10:07:40.753 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) in 4776.6054ms
+2024-09-26 10:07:40.758 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-26 10:07:40.762 +05:00 [INF] Response StatusCode: 200
+2024-09-26 10:07:40.767 +05:00 [INF] Response StatusCode: 200
+2024-09-26 10:07:40.771 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 170 - 200 - application/json;+charset=utf-8 4843.1678ms
+2024-09-26 10:13:38.837 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Create application/json 480
+2024-09-26 10:13:38.868 +05:00 [INF] CORS policy execution successful.
+2024-09-26 10:13:38.873 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Create, Content-Type: application/json
+2024-09-26 10:13:38.881 +05:00 [INF] Request Body: {
+  "title": "Sample Title1",
+  "keyDate": "2024-09-25",
+  "cost": "100",
+  "serviceID": 1,
+  "coreAreaLookupID": 2,
+  "relatedAreasLookupIDs": "1,2,3",
+  "access": "Public",
+  "availablity": "Available",
+  "whenToVisitIDs": "1,2",
+  "addressLine1": "house no 6",
+  "addressLine2": "house no 6",
+  "countryLookUpID": 1,
+  "cityLookUpID": 19,
+  "statelookUpID": 5,
+  "postalCode": "12345",
+  "longitude": "98.765432",
+  "latitude": "12.345678",
+  "createdBy": 0,
+  "cultureId": 0
+}
+2024-09-26 10:13:39.093 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-26 10:13:39.131 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Create, Content-Type: application/json
+2024-09-26 10:13:39.140 +05:00 [INF] Request Body: {
+  "title": "Sample Title1",
+  "keyDate": "2024-09-25",
+  "cost": "100",
+  "serviceID": 1,
+  "coreAreaLookupID": 2,
+  "relatedAreasLookupIDs": "1,2,3",
+  "access": "Public",
+  "availablity": "Available",
+  "whenToVisitIDs": "1,2",
+  "addressLine1": "house no 6",
+  "addressLine2": "house no 6",
+  "countryLookUpID": 1,
+  "cityLookUpID": 19,
+  "statelookUpID": 5,
+  "postalCode": "12345",
+  "longitude": "98.765432",
+  "latitude": "12.345678",
+  "createdBy": 0,
+  "cultureId": 0
+}
+2024-09-26 10:13:39.144 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Create (CleanArc.Web.Api)'
+2024-09-26 10:13:39.155 +05:00 [INF] Route matched with {action = "Create", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.KBDetail.Commands.CreateKBDetailCommand.CreateKBDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-26 10:13:45.747 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 10:13:46.725 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Commands.CreateKBDetailCommand, Handle with parameter: {"Title":"Sample Title1","KeyDate":"2024-09-25","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","AddressLine1":"house no 6","AddressLine2":"house no 6","CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Longitude":"98.765432","Latitude":"12.345678","CreatedBy":0,"CultureId":0,"UserId":1006}
+2024-09-26 10:13:46.733 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-09-26 10:13:46.756 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"09ee7547-eacc-462e-acb9-55e5e3139907","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":4}
+2024-09-26 10:13:48.023 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"Title":"Sample Title1","KeyDate":"2024-09-25","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","IsActive":null,"IsDeleted":null,"CreatedBy":1006,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":0,"Code":null,"Message":null,"AddressLine1":"house no 6","AddressLine2":"house no 6","CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"12.345678","Longitude":"98.765432","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null}
+2024-09-26 10:13:48.516 +05:00 [INF] Exiting null, AddAsync with response: {"IsSuccess":true,"Message":"","RecordID":6}
+2024-09-26 10:13:48.521 +05:00 [INF] Exiting null, Handle with response: true
+2024-09-26 10:13:48.525 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Create (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2771.6926ms.
+2024-09-26 10:13:48.529 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-26 10:13:48.535 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Create (CleanArc.Web.Api) in 9370.7842ms
+2024-09-26 10:13:48.540 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Create (CleanArc.Web.Api)'
+2024-09-26 10:13:48.544 +05:00 [INF] Response StatusCode: 200
+2024-09-26 10:13:48.547 +05:00 [INF] Response StatusCode: 200
+2024-09-26 10:13:48.551 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Create application/json 480 - 200 - application/json;+charset=utf-8 9713.7554ms
+2024-09-26 10:17:57.473 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 170
+2024-09-26 10:17:57.492 +05:00 [INF] CORS policy execution successful.
+2024-09-26 10:17:57.496 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-26 10:17:57.506 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-26 10:17:57.512 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-26 10:17:57.516 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-26 10:17:57.520 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-26 10:17:57.524 +05:00 [INF] Route matched with {action = "GetAll", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQuery) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-26 10:18:09.713 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 10:18:09.718 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-26 10:18:10.564 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-26 10:18:11.142 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":5,"Title":"Sample Title","KeyDate":"2024-09-25","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-09-25T12:09:03.087","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"12.345678","Longitude":"98.765432","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null},{"ID":6,"Title":"Sample Title1","KeyDate":"2024-09-25","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-09-26T05:15:28.48","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"12.345678","Longitude":"98.765432","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null}]
+2024-09-26 10:18:11.151 +05:00 [INF] Exiting null, Handle with response: [{"ID":5,"Title":"Sample Title","KeyDate":"2024-09-25","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"WhenToVisitIDs":"1,2","RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","IsDeleted":false,"IsActive":true,"CreatedBy":1,"CreatedAt":"2024-09-25T12:09:03.087","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":0,"CityLookUpID":19,"CountryLookUpID":1,"Latitude":"12.345678","Longitude":"98.765432","PostalCode":"12345","StatelookUpID":5,"CultureId":null,"Code":null,"Message":null},{"ID":6,"Title":"Sample Title1","KeyDate":"2024-09-25","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"WhenToVisitIDs":"1,2","RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","IsDeleted":false,"IsActive":true,"CreatedBy":1006,"CreatedAt":"2024-09-26T05:15:28.48","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":0,"CityLookUpID":19,"CountryLookUpID":1,"Latitude":"12.345678","Longitude":"98.765432","PostalCode":"12345","StatelookUpID":5,"CultureId":null,"Code":null,"Message":null}]
+2024-09-26 10:18:11.163 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1446.0793ms.
+2024-09-26 10:18:11.171 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-26 10:18:11.176 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) in 13648.0808ms
+2024-09-26 10:18:11.181 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-26 10:18:11.186 +05:00 [INF] Response StatusCode: 200
+2024-09-26 10:18:11.190 +05:00 [INF] Response StatusCode: 200
+2024-09-26 10:18:11.199 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 170 - 200 - application/json;+charset=utf-8 13725.8966ms
+2024-09-26 10:18:56.971 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 511
+2024-09-26 10:18:56.984 +05:00 [INF] CORS policy execution successful.
+2024-09-26 10:18:56.993 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-26 10:18:56.998 +05:00 [INF] Request Body: {
+  "id": 6,
+"title": "Sample Title11",
+  "keyDate": "2024-09-26",
+  "cost": "100",
+  "serviceID": 1,
+  "coreAreaLookupID": 2,
+  "relatedAreasLookupIDs": "1,2,3",
+  "access": "Public",
+  "availablity": "Available",
+  "whenToVisitIDs": "1,2",
+  "addressLine1": "house no 6, Islamabad",
+  "addressLine2": "house no 6 Islamabad",
+  "countryLookUpID": 1,
+  "cityLookUpID": 19,
+  "statelookUpID": 5,
+  "postalCode": "12345",
+  "longitude": "98.765432",
+  "latitude": "12.345678",
+  "updatedBy": 0,
+  "cultureId": 1
+}
+2024-09-26 10:18:57.015 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-26 10:18:57.027 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-26 10:18:57.034 +05:00 [INF] Request Body: {
+  "id": 6,
+"title": "Sample Title11",
+  "keyDate": "2024-09-26",
+  "cost": "100",
+  "serviceID": 1,
+  "coreAreaLookupID": 2,
+  "relatedAreasLookupIDs": "1,2,3",
+  "access": "Public",
+  "availablity": "Available",
+  "whenToVisitIDs": "1,2",
+  "addressLine1": "house no 6, Islamabad",
+  "addressLine2": "house no 6 Islamabad",
+  "countryLookUpID": 1,
+  "cityLookUpID": 19,
+  "statelookUpID": 5,
+  "postalCode": "12345",
+  "longitude": "98.765432",
+  "latitude": "12.345678",
+  "updatedBy": 0,
+  "cultureId": 1
+}
+2024-09-26 10:18:57.039 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-26 10:18:57.049 +05:00 [INF] Route matched with {action = "Update", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-26 10:19:00.026 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 10:19:00.166 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand, Handle with parameter: {"ID":6,"Title":"Sample Title11","KeyDate":"2024-09-26","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","AddressLine1":"house no 6, Islamabad","AddressLine2":"house no 6 Islamabad","CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Longitude":"98.765432","Latitude":"12.345678","UpdatedBy":0,"CultureId":1,"UserId":1006}
+2024-09-26 10:19:00.172 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-09-26 10:19:00.177 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"09ee7547-eacc-462e-acb9-55e5e3139907","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":4}
+2024-09-26 10:19:01.428 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":6,"Title":"Sample Title11","KeyDate":"2024-09-26","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":1006,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null,"AddressLine1":"house no 6, Islamabad","AddressLine2":"house no 6 Islamabad","CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"12.345678","Longitude":"98.765432","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null}
+2024-09-26 10:19:02.176 +05:00 [INF] Exiting null, UpdateAsync
+2024-09-26 10:19:02.207 +05:00 [INF] Exiting null, Handle
+2024-09-26 10:19:02.277 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) in 5220.223ms
+2024-09-26 10:19:02.283 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-26 10:19:02.494 +05:00 [ERR] Invalid column name 'Title'.
+Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 0, current count = 1.
+System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'Title'.
+Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 0, current count = 1.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 489
+   at CleanArc.Infrastructure.Persistence.Repositories.KBDetailRepository.UpdateAsync(KBDetail entity) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBDetailRepository.cs:line 183
+   at CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommandHandler.Handle(UpdateKBDetailCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\KBDetail\Commands\UpdateKBDetailCommand\UpdateKBDetailCommand.Handler.cs:line 58
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Update(TUpdateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 129
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:04acdac9-ef1f-4e12-9601-1260084d693b
+Error Number:207,State:1,Class:16
+2024-09-26 10:19:02.567 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 511 - 500 0 - 5596.0581ms
+2024-09-26 10:20:22.329 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 511
+2024-09-26 10:20:22.338 +05:00 [INF] CORS policy execution successful.
+2024-09-26 10:20:22.358 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-26 10:20:22.364 +05:00 [INF] Request Body: {
+  "id": 6,
+"title": "Sample Title11",
+  "keyDate": "2024-09-26",
+  "cost": "100",
+  "serviceID": 1,
+  "coreAreaLookupID": 2,
+  "relatedAreasLookupIDs": "1,2,3",
+  "access": "Public",
+  "availablity": "Available",
+  "whenToVisitIDs": "1,2",
+  "addressLine1": "house no 6, Islamabad",
+  "addressLine2": "house no 6 Islamabad",
+  "countryLookUpID": 1,
+  "cityLookUpID": 19,
+  "statelookUpID": 5,
+  "postalCode": "12345",
+  "longitude": "98.765432",
+  "latitude": "12.345678",
+  "updatedBy": 0,
+  "cultureId": 1
+}
+2024-09-26 10:20:22.383 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-26 10:20:22.393 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-26 10:20:22.396 +05:00 [INF] Request Body: {
+  "id": 6,
+"title": "Sample Title11",
+  "keyDate": "2024-09-26",
+  "cost": "100",
+  "serviceID": 1,
+  "coreAreaLookupID": 2,
+  "relatedAreasLookupIDs": "1,2,3",
+  "access": "Public",
+  "availablity": "Available",
+  "whenToVisitIDs": "1,2",
+  "addressLine1": "house no 6, Islamabad",
+  "addressLine2": "house no 6 Islamabad",
+  "countryLookUpID": 1,
+  "cityLookUpID": 19,
+  "statelookUpID": 5,
+  "postalCode": "12345",
+  "longitude": "98.765432",
+  "latitude": "12.345678",
+  "updatedBy": 0,
+  "cultureId": 1
+}
+2024-09-26 10:20:22.399 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-26 10:20:22.403 +05:00 [INF] Route matched with {action = "Update", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-26 10:20:25.008 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 10:20:25.020 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand, Handle with parameter: {"ID":6,"Title":"Sample Title11","KeyDate":"2024-09-26","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","AddressLine1":"house no 6, Islamabad","AddressLine2":"house no 6 Islamabad","CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Longitude":"98.765432","Latitude":"12.345678","UpdatedBy":0,"CultureId":1,"UserId":1006}
+2024-09-26 10:20:25.032 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-09-26 10:20:25.037 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"09ee7547-eacc-462e-acb9-55e5e3139907","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":4}
+2024-09-26 10:20:25.537 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":6,"Title":"Sample Title11","KeyDate":"2024-09-26","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":1006,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null,"AddressLine1":"house no 6, Islamabad","AddressLine2":"house no 6 Islamabad","CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"12.345678","Longitude":"98.765432","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null}
+2024-09-26 10:20:42.571 +05:00 [INF] Exiting null, UpdateAsync
+2024-09-26 10:20:45.468 +05:00 [INF] Exiting null, Handle
+2024-09-26 10:20:47.791 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) in 25385.6639ms
+2024-09-26 10:20:47.798 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-26 10:22:00.018 +05:00 [ERR] Invalid column name 'Title'.
+Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 0, current count = 1.
+System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'Title'.
+Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 0, current count = 1.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 489
+   at CleanArc.Infrastructure.Persistence.Repositories.KBDetailRepository.UpdateAsync(KBDetail entity) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBDetailRepository.cs:line 183
+   at CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommandHandler.Handle(UpdateKBDetailCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\KBDetail\Commands\UpdateKBDetailCommand\UpdateKBDetailCommand.Handler.cs:line 58
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Update(TUpdateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 129
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:04acdac9-ef1f-4e12-9601-1260084d693b
+Error Number:207,State:1,Class:16
+2024-09-26 10:22:00.162 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 511 - 500 0 - 97832.9437ms
+2024-09-26 10:22:15.908 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/api/v1/KBDetail/GetById/6 - -
+2024-09-26 10:22:15.913 +05:00 [INF] Request Method: GET, Path: /api/v1/KBDetail/GetById/6, Content-Type: null
+2024-09-26 10:22:15.918 +05:00 [INF] Request Method: GET, Path: /api/v1/KBDetail/GetById/6, Content-Type: null
+2024-09-26 10:22:15.925 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetById (CleanArc.Web.Api)'
+2024-09-26 10:22:15.940 +05:00 [INF] Route matched with {action = "GetById", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-26 10:22:17.858 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 10:22:17.894 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById, Handle with parameter: {"Id":6}
+2024-09-26 10:22:17.908 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 6
+2024-09-26 10:22:17.973 +05:00 [INF] Exiting null, GetByIdAsync with response: {"ID":6,"Title":"Sample Title1","KeyDate":"2024-09-25","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-09-26T05:15:28.48","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"12.345678","Longitude":"98.765432","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null}
+2024-09-26 10:22:18.015 +05:00 [INF] Exiting null, Handle with response: {"ID":6,"Title":"Sample Title1","KeyDate":"2024-09-25","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"WhenToVisitIDs":"1,2","RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","IsDeleted":false,"IsActive":true,"CreatedBy":1006,"CreatedAt":"2024-09-26T05:15:28.48","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":0,"CityLookUpID":19,"CountryLookUpID":1,"Latitude":"12.345678","Longitude":"98.765432","PostalCode":"12345","StatelookUpID":5,"CultureId":null,"Code":null,"Message":null}
+2024-09-26 10:22:18.032 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetById (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 170.2136ms.
+2024-09-26 10:22:18.042 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-26 10:22:18.054 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetById (CleanArc.Web.Api) in 2106.5281ms
+2024-09-26 10:22:18.076 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetById (CleanArc.Web.Api)'
+2024-09-26 10:22:18.080 +05:00 [INF] Response StatusCode: 200
+2024-09-26 10:22:18.084 +05:00 [INF] Response StatusCode: 200
+2024-09-26 10:22:18.089 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/api/v1/KBDetail/GetById/6 - - - 200 - application/json;+charset=utf-8 2180.3713ms
+2024-09-26 10:24:33.366 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 511
+2024-09-26 10:24:33.405 +05:00 [INF] CORS policy execution successful.
+2024-09-26 10:24:33.411 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-26 10:24:33.417 +05:00 [INF] Request Body: {
+  "id": 6,
+"title": "Sample Title11",
+  "keyDate": "2024-09-26",
+  "cost": "100",
+  "serviceID": 1,
+  "coreAreaLookupID": 2,
+  "relatedAreasLookupIDs": "1,2,3",
+  "access": "Public",
+  "availablity": "Available",
+  "whenToVisitIDs": "1,2",
+  "addressLine1": "house no 6, Islamabad",
+  "addressLine2": "house no 6 Islamabad",
+  "countryLookUpID": 1,
+  "cityLookUpID": 19,
+  "statelookUpID": 5,
+  "postalCode": "12345",
+  "longitude": "98.765432",
+  "latitude": "12.345678",
+  "updatedBy": 0,
+  "cultureId": 1
+}
+2024-09-26 10:24:33.427 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-26 10:24:33.432 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-26 10:24:33.438 +05:00 [INF] Request Body: {
+  "id": 6,
+"title": "Sample Title11",
+  "keyDate": "2024-09-26",
+  "cost": "100",
+  "serviceID": 1,
+  "coreAreaLookupID": 2,
+  "relatedAreasLookupIDs": "1,2,3",
+  "access": "Public",
+  "availablity": "Available",
+  "whenToVisitIDs": "1,2",
+  "addressLine1": "house no 6, Islamabad",
+  "addressLine2": "house no 6 Islamabad",
+  "countryLookUpID": 1,
+  "cityLookUpID": 19,
+  "statelookUpID": 5,
+  "postalCode": "12345",
+  "longitude": "98.765432",
+  "latitude": "12.345678",
+  "updatedBy": 0,
+  "cultureId": 1
+}
+2024-09-26 10:24:33.442 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-26 10:24:33.445 +05:00 [INF] Route matched with {action = "Update", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-26 10:24:44.414 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 10:24:44.429 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand, Handle with parameter: {"ID":6,"Title":"Sample Title11","KeyDate":"2024-09-26","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","AddressLine1":"house no 6, Islamabad","AddressLine2":"house no 6 Islamabad","CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Longitude":"98.765432","Latitude":"12.345678","UpdatedBy":0,"CultureId":1,"UserId":1006}
+2024-09-26 10:24:44.434 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-09-26 10:24:44.439 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"09ee7547-eacc-462e-acb9-55e5e3139907","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":4}
+2024-09-26 10:24:45.396 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":6,"Title":"Sample Title11","KeyDate":"2024-09-26","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":1006,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null,"AddressLine1":"house no 6, Islamabad","AddressLine2":"house no 6 Islamabad","CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"12.345678","Longitude":"98.765432","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null}
+2024-09-26 10:25:03.816 +05:00 [INF] Exiting null, UpdateAsync
+2024-09-26 10:25:07.240 +05:00 [INF] Exiting null, Handle
+2024-09-26 10:25:10.337 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) in 36887.5818ms
+2024-09-26 10:25:10.345 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-26 10:25:53.288 +05:00 [ERR] Invalid column name 'Title'.
+Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 0, current count = 1.
+System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'Title'.
+Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 0, current count = 1.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 489
+   at CleanArc.Infrastructure.Persistence.Repositories.KBDetailRepository.UpdateAsync(KBDetail entity) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBDetailRepository.cs:line 183
+   at CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommandHandler.Handle(UpdateKBDetailCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\KBDetail\Commands\UpdateKBDetailCommand\UpdateKBDetailCommand.Handler.cs:line 58
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Update(TUpdateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 129
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:04acdac9-ef1f-4e12-9601-1260084d693b
+Error Number:207,State:1,Class:16
+2024-09-26 10:25:53.369 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 511 - 500 0 - 80003.6066ms
+2024-09-26 10:28:53.796 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 511
+2024-09-26 10:28:53.822 +05:00 [INF] CORS policy execution successful.
+2024-09-26 10:28:53.827 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-26 10:28:53.832 +05:00 [INF] Request Body: {
+  "id": 6,
+"title": "Sample Title11",
+  "keyDate": "2024-09-26",
+  "cost": "100",
+  "serviceID": 1,
+  "coreAreaLookupID": 2,
+  "relatedAreasLookupIDs": "1,2,3",
+  "access": "Public",
+  "availablity": "Available",
+  "whenToVisitIDs": "1,2",
+  "addressLine1": "house no 6, Islamabad",
+  "addressLine2": "house no 6 Islamabad",
+  "countryLookUpID": 1,
+  "cityLookUpID": 19,
+  "statelookUpID": 5,
+  "postalCode": "12345",
+  "longitude": "98.765432",
+  "latitude": "12.345678",
+  "updatedBy": 0,
+  "cultureId": 1
+}
+2024-09-26 10:28:53.878 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-26 10:28:53.887 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-26 10:28:53.894 +05:00 [INF] Request Body: {
+  "id": 6,
+"title": "Sample Title11",
+  "keyDate": "2024-09-26",
+  "cost": "100",
+  "serviceID": 1,
+  "coreAreaLookupID": 2,
+  "relatedAreasLookupIDs": "1,2,3",
+  "access": "Public",
+  "availablity": "Available",
+  "whenToVisitIDs": "1,2",
+  "addressLine1": "house no 6, Islamabad",
+  "addressLine2": "house no 6 Islamabad",
+  "countryLookUpID": 1,
+  "cityLookUpID": 19,
+  "statelookUpID": 5,
+  "postalCode": "12345",
+  "longitude": "98.765432",
+  "latitude": "12.345678",
+  "updatedBy": 0,
+  "cultureId": 1
+}
+2024-09-26 10:28:53.901 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-26 10:28:53.906 +05:00 [INF] Route matched with {action = "Update", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-26 10:28:55.730 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 10:28:55.735 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand, Handle with parameter: {"ID":6,"Title":"Sample Title11","KeyDate":"2024-09-26","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","AddressLine1":"house no 6, Islamabad","AddressLine2":"house no 6 Islamabad","CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Longitude":"98.765432","Latitude":"12.345678","UpdatedBy":0,"CultureId":1,"UserId":1006}
+2024-09-26 10:28:55.740 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-09-26 10:28:55.745 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"09ee7547-eacc-462e-acb9-55e5e3139907","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":4}
+2024-09-26 10:28:56.684 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":6,"Title":"Sample Title11","KeyDate":"2024-09-26","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":1006,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null,"AddressLine1":"house no 6, Islamabad","AddressLine2":"house no 6 Islamabad","CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"12.345678","Longitude":"98.765432","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null}
+2024-09-26 10:29:02.401 +05:00 [INF] Exiting null, UpdateAsync
+2024-09-26 10:29:05.661 +05:00 [INF] Exiting null, Handle
+2024-09-26 10:29:09.524 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) in 15608.3711ms
+2024-09-26 10:29:09.530 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-26 10:33:57.326 +05:00 [ERR] Invalid column name 'Title'.
+Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 0, current count = 1.
+System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'Title'.
+Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 0, current count = 1.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 489
+   at CleanArc.Infrastructure.Persistence.Repositories.KBDetailRepository.UpdateAsync(KBDetail entity) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\KBDetailRepository.cs:line 183
+   at CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommandHandler.Handle(UpdateKBDetailCommand request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\KBDetail\Commands\UpdateKBDetailCommand\UpdateKBDetailCommand.Handler.cs:line 58
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Update(TUpdateCommand model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 129
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:04acdac9-ef1f-4e12-9601-1260084d693b
+Error Number:207,State:1,Class:16
+2024-09-26 10:33:57.432 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 511 - 500 0 - 303635.9566ms
+2024-09-26 10:57:16.706 +05:00 [INF] Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-26 10:57:16.945 +05:00 [INF] Executed DbCommand (85ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-26 10:57:16.974 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-26 10:57:17.055 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-26 10:57:17.115 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-26 10:57:17.231 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-26 10:57:17.277 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-26 10:57:17.806 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-26 10:57:17.833 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-26 10:57:19.350 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-26 10:57:20.144 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-26 10:57:20.761 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-26 10:57:21.174 +05:00 [INF] Response StatusCode: 200
+2024-09-26 10:57:21.189 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 1050.7250ms
+2024-09-26 10:57:21.380 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-26 10:57:21.380 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-26 10:57:21.398 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 17.8275ms
+2024-09-26 10:57:21.719 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 338.3165ms
+2024-09-26 10:57:22.605 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-26 10:57:22.612 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-26 10:57:22.631 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-26 10:57:22.637 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-26 10:57:25.003 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-26 10:57:25.014 +05:00 [INF] Response StatusCode: 404
+2024-09-26 10:57:25.020 +05:00 [INF] Response StatusCode: 404
+2024-09-26 10:57:25.026 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 2421.1216ms
+2024-09-26 10:57:25.663 +05:00 [INF] Response StatusCode: 200
+2024-09-26 10:57:25.669 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 3038.1903ms
+2024-09-26 10:58:05.256 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 53
+2024-09-26 10:58:05.264 +05:00 [INF] CORS policy execution successful.
+2024-09-26 10:58:05.269 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-09-26 10:58:05.275 +05:00 [INF] Request Body: {
+  "userName": "vendor2",
+  "password": "123@a123"
+}
+2024-09-26 10:58:05.296 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-09-26 10:58:05.305 +05:00 [INF] Request Body: {
+  "userName": "vendor2",
+  "password": "123@a123"
+}
+2024-09-26 10:58:05.310 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-09-26 10:58:05.338 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-09-26 10:58:12.678 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 10:58:12.887 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"vendor2","Password":"123@a123"}
+2024-09-26 10:58:12.995 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"vendor2","Password":"123@a123","$type":"AdminGetTokenQuery"}
+2024-09-26 10:58:13.150 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-09-26 10:58:13.261 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"09ee7547-eacc-462e-acb9-55e5e3139907","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":4,"$type":"User"}
+2024-09-26 10:58:13.297 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-09-26 10:58:13.558 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-09-26 10:58:13.594 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-09-26 10:58:13.609 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-09-26 10:58:13.631 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-09-26 10:58:13.687 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-09-26 10:58:14.101 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-09-26 10:58:16.566 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-09-26 10:58:16.613 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.zm3duVOhiTl0K5k-9h_gi6Y10YzpqyZZ0RS0LChaFYB_sYRpuHMtjw.Sxp1wxojsvMuiuFe2WHurw.I6TUSmTgszLIfZlx6VMFLsPLJoH5FClW-NHJMYu1LpWsc2C_Yv87MvFfEuOGupjZWp7e8h41Urw3SO-5PGdXxEDFxa1VNHZ_txMKZnTyL7DZOhxQHJ1bnKO0kmYLuRgbNGyapK9RxhsMQiUPEd5eIelFxM6ZVXl3NlABvxwMlIPZDrobp6LEhPjIwZq31GJ-lSG7xDDqSvL3gzOxesgq8kkzDfeVTyxgz-qsZtehWl-rUeuxg_OyePsYnlczib28FPccwPOZaiwCcg6K52pJ8iHuQykDORqj4MiRg0UK-juq6sYSnQHTMFXp_eHkZjHfv9OtJ61WF9HfLvTg6YjYe8VPTX-rdHpmLlJohG6y-X6yHvmih7zsNzfw0KB_BvZ8TNTTelqVJHXZRLqJGxaOq8ljZGBdyBTvzyPa4umxDugj7QVaxDW1MaYN0Nx84XFVE1IDIRWVoQ03vjW5JF75ELSTuhjlHt_XoYNTyGzHbjBilqLG1B6o9OhyhPej1rrEBbihWOJIiI6Pl7G7dtcVAI-1AMUXiWK7gPve4BqJ_bZSK44SNq4-XlpNfORXRHJ0VHC5fVG9ZVwg6ifkxz0nJRsu6FSQ72ZdFY1P76ayHM3gHfMni5S7zgMG8PFPqpWfmltF6xxC0YnvGfOyutHB1trgjuW2PBYR5cMgfuwu-cRxrNCWhvnh69yk4nJAwKKGlOtRk6djc4g7R5L9IyOzzQ.axh32V6aq6_-0WJYxlCleA","refresh_token":"f6013f63-d84e-4ba3-79ed-08dcddf0357a","token_type":"Bearer","expires_in":599996,"userID":1006},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-09-26 10:58:16.634 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3943.0201ms.
+2024-09-26 10:58:16.675 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-26 10:58:16.731 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 11375.9238ms
+2024-09-26 10:58:16.740 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-09-26 10:58:16.746 +05:00 [INF] Response StatusCode: 200
+2024-09-26 10:58:16.757 +05:00 [INF] Response StatusCode: 200
+2024-09-26 10:58:16.764 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/AdminManager/Login application/json 53 - 200 - application/json;+charset=utf-8 11507.7812ms
+2024-09-26 11:06:45.378 +05:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-26 11:06:45.452 +05:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-26 11:06:45.466 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-09-26 11:06:45.480 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-09-26 11:06:45.510 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-09-26 11:06:45.541 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-09-26 11:06:45.556 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-26 11:06:45.722 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-26 11:06:45.736 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-09-26 11:06:46.034 +05:00 [INF] Now listening on: https://localhost:5002
+2024-09-26 11:06:46.963 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/index.html - -
+2024-09-26 11:06:47.297 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-09-26 11:06:47.638 +05:00 [INF] Response StatusCode: 200
+2024-09-26 11:06:47.669 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - -
+2024-09-26 11:06:47.678 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/index.html - - - 200 - text/html;charset=utf-8 720.0916ms
+2024-09-26 11:06:47.692 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 23.8287ms
+2024-09-26 11:06:47.792 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/_vs/browserLink - -
+2024-09-26 11:06:47.866 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 74.1387ms
+2024-09-26 11:06:48.428 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/cart.json application/json -
+2024-09-26 11:06:48.434 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-26 11:06:48.472 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - -
+2024-09-26 11:06:48.478 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-09-26 11:06:48.805 +05:00 [INF] Request Method: GET, Path: /cart.json, Content-Type: application/json
+2024-09-26 11:06:48.818 +05:00 [INF] Response StatusCode: 404
+2024-09-26 11:06:48.828 +05:00 [INF] Response StatusCode: 404
+2024-09-26 11:06:48.836 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/cart.json application/json - - 404 0 - 409.0089ms
+2024-09-26 11:06:50.349 +05:00 [INF] Response StatusCode: 200
+2024-09-26 11:06:50.354 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1882.1377ms
+2024-09-26 11:08:09.880 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Create application/json 480
+2024-09-26 11:08:09.885 +05:00 [INF] CORS policy execution successful.
+2024-09-26 11:08:09.889 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Create, Content-Type: application/json
+2024-09-26 11:08:09.895 +05:00 [INF] Request Body: {
+  "title": "Sample Title1",
+  "keyDate": "2024-09-25",
+  "cost": "100",
+  "serviceID": 1,
+  "coreAreaLookupID": 2,
+  "relatedAreasLookupIDs": "1,2,3",
+  "access": "Public",
+  "availablity": "Available",
+  "whenToVisitIDs": "1,2",
+  "addressLine1": "house no 6",
+  "addressLine2": "house no 6",
+  "countryLookUpID": 1,
+  "cityLookUpID": 19,
+  "statelookUpID": 5,
+  "postalCode": "12345",
+  "longitude": "98.765432",
+  "latitude": "12.345678",
+  "createdBy": 0,
+  "cultureId": 0
+}
+2024-09-26 11:08:09.927 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-09-26 11:08:09.997 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-09-26 11:08:10.001 +05:00 [INF] Response StatusCode: 401
+2024-09-26 11:08:10.004 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Create application/json 480 - 401 - application/json;+charset=utf-8 123.9151ms
+2024-09-26 11:08:11.440 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Create application/json 480
+2024-09-26 11:08:11.445 +05:00 [INF] CORS policy execution successful.
+2024-09-26 11:08:11.449 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Create, Content-Type: application/json
+2024-09-26 11:08:11.454 +05:00 [INF] Request Body: {
+  "title": "Sample Title1",
+  "keyDate": "2024-09-25",
+  "cost": "100",
+  "serviceID": 1,
+  "coreAreaLookupID": 2,
+  "relatedAreasLookupIDs": "1,2,3",
+  "access": "Public",
+  "availablity": "Available",
+  "whenToVisitIDs": "1,2",
+  "addressLine1": "house no 6",
+  "addressLine2": "house no 6",
+  "countryLookUpID": 1,
+  "cityLookUpID": 19,
+  "statelookUpID": 5,
+  "postalCode": "12345",
+  "longitude": "98.765432",
+  "latitude": "12.345678",
+  "createdBy": 0,
+  "cultureId": 0
+}
+2024-09-26 11:08:11.505 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-09-26 11:08:11.512 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-09-26 11:08:11.515 +05:00 [INF] Response StatusCode: 401
+2024-09-26 11:08:11.518 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Create application/json 480 - 401 - application/json;+charset=utf-8 77.6304ms
+2024-09-26 11:08:36.863 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Create application/json 480
+2024-09-26 11:08:36.869 +05:00 [INF] CORS policy execution successful.
+2024-09-26 11:08:36.874 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Create, Content-Type: application/json
+2024-09-26 11:08:36.880 +05:00 [INF] Request Body: {
+  "title": "Sample Title1",
+  "keyDate": "2024-09-25",
+  "cost": "100",
+  "serviceID": 1,
+  "coreAreaLookupID": 2,
+  "relatedAreasLookupIDs": "1,2,3",
+  "access": "Public",
+  "availablity": "Available",
+  "whenToVisitIDs": "1,2",
+  "addressLine1": "house no 6",
+  "addressLine2": "house no 6",
+  "countryLookUpID": 1,
+  "cityLookUpID": 19,
+  "statelookUpID": 5,
+  "postalCode": "12345",
+  "longitude": "98.765432",
+  "latitude": "12.345678",
+  "createdBy": 0,
+  "cultureId": 0
+}
+2024-09-26 11:08:37.192 +05:00 [INF] Executed DbCommand (15ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-26 11:08:37.329 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Create, Content-Type: application/json
+2024-09-26 11:08:37.335 +05:00 [INF] Request Body: {
+  "title": "Sample Title1",
+  "keyDate": "2024-09-25",
+  "cost": "100",
+  "serviceID": 1,
+  "coreAreaLookupID": 2,
+  "relatedAreasLookupIDs": "1,2,3",
+  "access": "Public",
+  "availablity": "Available",
+  "whenToVisitIDs": "1,2",
+  "addressLine1": "house no 6",
+  "addressLine2": "house no 6",
+  "countryLookUpID": 1,
+  "cityLookUpID": 19,
+  "statelookUpID": 5,
+  "postalCode": "12345",
+  "longitude": "98.765432",
+  "latitude": "12.345678",
+  "createdBy": 0,
+  "cultureId": 0
+}
+2024-09-26 11:08:37.339 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Create (CleanArc.Web.Api)'
+2024-09-26 11:08:37.380 +05:00 [INF] Route matched with {action = "Create", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.KBDetail.Commands.CreateKBDetailCommand.CreateKBDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-26 11:08:40.185 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 11:08:41.204 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Commands.CreateKBDetailCommand, Handle with parameter: {"Title":"Sample Title1","KeyDate":"2024-09-25","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","AddressLine1":"house no 6","AddressLine2":"house no 6","CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Longitude":"98.765432","Latitude":"12.345678","CreatedBy":0,"CultureId":0,"UserId":1006}
+2024-09-26 11:08:41.213 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-09-26 11:08:41.246 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"09ee7547-eacc-462e-acb9-55e5e3139907","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":4}
+2024-09-26 11:08:42.699 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"Title":"Sample Title1","GenericTitleID":null,"KeyDate":"2024-09-25","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","IsActive":null,"IsDeleted":null,"CreatedBy":1006,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":0,"Code":null,"Message":null,"AddressLine1":"house no 6","AddressLine2":"house no 6","CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"12.345678","Longitude":"98.765432","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null}
+2024-09-26 11:08:44.294 +05:00 [INF] Exiting null, AddAsync with response: {"IsSuccess":true,"Message":"","RecordID":7}
+2024-09-26 11:08:44.357 +05:00 [INF] Exiting null, Handle with response: true
+2024-09-26 11:08:44.374 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Create (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4178.0864ms.
+2024-09-26 11:08:44.397 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-26 11:08:44.423 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Create (CleanArc.Web.Api) in 7026.8327ms
+2024-09-26 11:08:44.434 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Create (CleanArc.Web.Api)'
+2024-09-26 11:08:44.446 +05:00 [INF] Response StatusCode: 200
+2024-09-26 11:08:44.454 +05:00 [INF] Response StatusCode: 200
+2024-09-26 11:08:44.458 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Create application/json 480 - 200 - application/json;+charset=utf-8 7595.3737ms
+2024-09-26 11:09:29.378 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 510
+2024-09-26 11:09:29.385 +05:00 [INF] CORS policy execution successful.
+2024-09-26 11:09:29.389 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-26 11:09:29.420 +05:00 [INF] Request Body:   "id": 6,
+"title": "Sample Title11",
+  "keyDate": "2024-09-26",
+  "cost": "100",
+  "serviceID": 1,
+  "coreAreaLookupID": 2,
+  "relatedAreasLookupIDs": "1,2,3",
+  "access": "Public",
+  "availablity": "Available",
+  "whenToVisitIDs": "1,2",
+  "addressLine1": "house no 6, Islamabad",
+  "addressLine2": "house no 6 Islamabad",
+  "countryLookUpID": 1,
+  "cityLookUpID": 19,
+  "statelookUpID": 5,
+  "postalCode": "12345",
+  "longitude": "98.765432",
+  "latitude": "12.345678",
+  "updatedBy": 0,
+  "cultureId": 1
+}
+
+2024-09-26 11:09:29.501 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-26 11:09:29.512 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-26 11:09:29.515 +05:00 [INF] Request Body:   "id": 6,
+"title": "Sample Title11",
+  "keyDate": "2024-09-26",
+  "cost": "100",
+  "serviceID": 1,
+  "coreAreaLookupID": 2,
+  "relatedAreasLookupIDs": "1,2,3",
+  "access": "Public",
+  "availablity": "Available",
+  "whenToVisitIDs": "1,2",
+  "addressLine1": "house no 6, Islamabad",
+  "addressLine2": "house no 6 Islamabad",
+  "countryLookUpID": 1,
+  "cityLookUpID": 19,
+  "statelookUpID": 5,
+  "postalCode": "12345",
+  "longitude": "98.765432",
+  "latitude": "12.345678",
+  "updatedBy": 0,
+  "cultureId": 1
+}
+
+2024-09-26 11:09:29.520 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-26 11:09:29.530 +05:00 [INF] Route matched with {action = "Update", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-26 11:09:31.653 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult'.
+2024-09-26 11:09:31.659 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) in 2122.9488ms
+2024-09-26 11:09:31.664 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-26 11:09:31.668 +05:00 [INF] Response StatusCode: 400
+2024-09-26 11:09:31.672 +05:00 [INF] Response StatusCode: 400
+2024-09-26 11:09:31.675 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 510 - 400 - application/json;+charset=utf-8 2296.6629ms
+2024-09-26 11:10:41.046 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 511
+2024-09-26 11:10:41.058 +05:00 [INF] CORS policy execution successful.
+2024-09-26 11:10:41.065 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-26 11:10:41.072 +05:00 [INF] Request Body: {  "id": 6,
+"title": "Sample Title11",
+  "keyDate": "2024-09-26",
+  "cost": "100",
+  "serviceID": 1,
+  "coreAreaLookupID": 2,
+  "relatedAreasLookupIDs": "1,2,3",
+  "access": "Public",
+  "availablity": "Available",
+  "whenToVisitIDs": "1,2",
+  "addressLine1": "house no 6, Islamabad",
+  "addressLine2": "house no 6 Islamabad",
+  "countryLookUpID": 1,
+  "cityLookUpID": 19,
+  "statelookUpID": 5,
+  "postalCode": "12345",
+  "longitude": "98.765432",
+  "latitude": "12.345678",
+  "updatedBy": 0,
+  "cultureId": 1
+}
+
+2024-09-26 11:10:41.097 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-26 11:10:41.103 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-26 11:10:41.107 +05:00 [INF] Request Body: {  "id": 6,
+"title": "Sample Title11",
+  "keyDate": "2024-09-26",
+  "cost": "100",
+  "serviceID": 1,
+  "coreAreaLookupID": 2,
+  "relatedAreasLookupIDs": "1,2,3",
+  "access": "Public",
+  "availablity": "Available",
+  "whenToVisitIDs": "1,2",
+  "addressLine1": "house no 6, Islamabad",
+  "addressLine2": "house no 6 Islamabad",
+  "countryLookUpID": 1,
+  "cityLookUpID": 19,
+  "statelookUpID": 5,
+  "postalCode": "12345",
+  "longitude": "98.765432",
+  "latitude": "12.345678",
+  "updatedBy": 0,
+  "cultureId": 1
+}
+
+2024-09-26 11:10:41.109 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-26 11:10:41.112 +05:00 [INF] Route matched with {action = "Update", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-26 11:10:42.833 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 11:10:42.966 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand, Handle with parameter: {"ID":6,"Title":"Sample Title11","KeyDate":"2024-09-26","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","AddressLine1":"house no 6, Islamabad","AddressLine2":"house no 6 Islamabad","CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Longitude":"98.765432","Latitude":"12.345678","UpdatedBy":0,"CultureId":1,"UserId":1006}
+2024-09-26 11:10:42.973 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-09-26 11:10:42.977 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"09ee7547-eacc-462e-acb9-55e5e3139907","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":4}
+2024-09-26 11:10:43.193 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":6,"Title":"Sample Title11","GenericTitleID":null,"KeyDate":"2024-09-26","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":1006,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null,"AddressLine1":"house no 6, Islamabad","AddressLine2":"house no 6 Islamabad","CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"12.345678","Longitude":"98.765432","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null}
+2024-09-26 11:10:44.204 +05:00 [INF] Exiting null, UpdateAsync with response: {"IsSuccess":true,"Message":"KBDetail has been updated successfully!","RecordID":6}
+2024-09-26 11:10:44.233 +05:00 [INF] Exiting null, Handle with response: true
+2024-09-26 11:10:44.240 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1402.8092ms.
+2024-09-26 11:10:44.247 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-26 11:10:44.253 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) in 3136.7784ms
+2024-09-26 11:10:44.258 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-26 11:10:44.264 +05:00 [INF] Response StatusCode: 200
+2024-09-26 11:10:44.268 +05:00 [INF] Response StatusCode: 200
+2024-09-26 11:10:44.272 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 511 - 200 - application/json;+charset=utf-8 3225.8772ms
+2024-09-26 11:11:18.418 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 169
+2024-09-26 11:11:18.423 +05:00 [INF] CORS policy execution successful.
+2024-09-26 11:11:18.426 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-26 11:11:18.431 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+    
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-26 11:11:18.434 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-26 11:11:18.438 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+    
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-26 11:11:18.443 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-26 11:11:18.454 +05:00 [INF] Route matched with {action = "GetAll", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQuery) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-26 11:11:20.626 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 11:11:20.659 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-26 11:11:21.301 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-26 11:11:21.922 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":5,"Title":"Sample Title","GenericTitleID":3,"KeyDate":"2024-09-25","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-09-25T12:09:03.087","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"12.345678","Longitude":"98.765432","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null},{"ID":6,"Title":"Sample Title1","GenericTitleID":17,"KeyDate":"2024-09-26","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-09-26T05:15:28.48","UpdatedBy":1006,"UpdatedAt":"2024-09-26T06:12:24.16","CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"12.345678","Longitude":"98.765432","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null},{"ID":7,"Title":"Sample Title1","GenericTitleID":19,"KeyDate":"2024-09-25","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-09-26T06:10:23.61","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"12.345678","Longitude":"98.765432","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null}]
+2024-09-26 11:11:21.973 +05:00 [INF] Exiting null, Handle with response: [{"ID":5,"Title":"Sample Title","GenericTitleID":3,"KeyDate":"2024-09-25","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"WhenToVisitIDs":"1,2","RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","IsDeleted":false,"IsActive":true,"CreatedBy":1,"CreatedAt":"2024-09-25T12:09:03.087","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":0,"CityLookUpID":19,"CountryLookUpID":1,"Latitude":"12.345678","Longitude":"98.765432","PostalCode":"12345","StatelookUpID":5,"CultureId":null,"Code":null,"Message":null},{"ID":6,"Title":"Sample Title1","GenericTitleID":17,"KeyDate":"2024-09-26","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"WhenToVisitIDs":"1,2","RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","IsDeleted":false,"IsActive":true,"CreatedBy":1006,"CreatedAt":"2024-09-26T05:15:28.48","UpdatedBy":1006,"UpdatedAt":"2024-09-26T06:12:24.16","AddressID":0,"CityLookUpID":19,"CountryLookUpID":1,"Latitude":"12.345678","Longitude":"98.765432","PostalCode":"12345","StatelookUpID":5,"CultureId":null,"Code":null,"Message":null},{"ID":7,"Title":"Sample Title1","GenericTitleID":19,"KeyDate":"2024-09-25","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"WhenToVisitIDs":"1,2","RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","IsDeleted":false,"IsActive":true,"CreatedBy":1006,"CreatedAt":"2024-09-26T06:10:23.61","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":0,"CityLookUpID":19,"CountryLookUpID":1,"Latitude":"12.345678","Longitude":"98.765432","PostalCode":"12345","StatelookUpID":5,"CultureId":null,"Code":null,"Message":null}]
+2024-09-26 11:11:21.980 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1345.6449ms.
+2024-09-26 11:11:21.985 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-26 11:11:22.003 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) in 3543.7449ms
+2024-09-26 11:11:22.009 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-26 11:11:22.014 +05:00 [INF] Response StatusCode: 200
+2024-09-26 11:11:22.018 +05:00 [INF] Response StatusCode: 200
+2024-09-26 11:11:22.022 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 169 - 200 - application/json;+charset=utf-8 3603.4416ms
+2024-09-26 11:12:01.261 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 511
+2024-09-26 11:12:01.267 +05:00 [INF] CORS policy execution successful.
+2024-09-26 11:12:01.271 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-26 11:12:01.276 +05:00 [INF] Request Body: {  "id": 6,
+"title": "Sample Title11",
+  "keyDate": "2024-09-26",
+  "cost": "100",
+  "serviceID": 1,
+  "coreAreaLookupID": 2,
+  "relatedAreasLookupIDs": "1,2,3",
+  "access": "Public",
+  "availablity": "Available",
+  "whenToVisitIDs": "1,2",
+  "addressLine1": "house no 6, Islamabad",
+  "addressLine2": "house no 6 Islamabad",
+  "countryLookUpID": 1,
+  "cityLookUpID": 19,
+  "statelookUpID": 5,
+  "postalCode": "12345",
+  "longitude": "98.765432",
+  "latitude": "12.345678",
+  "updatedBy": 0,
+  "cultureId": 1
+}
+
+2024-09-26 11:12:01.288 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-09-26 11:12:01.297 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/Update, Content-Type: application/json
+2024-09-26 11:12:01.305 +05:00 [INF] Request Body: {  "id": 6,
+"title": "Sample Title11",
+  "keyDate": "2024-09-26",
+  "cost": "100",
+  "serviceID": 1,
+  "coreAreaLookupID": 2,
+  "relatedAreasLookupIDs": "1,2,3",
+  "access": "Public",
+  "availablity": "Available",
+  "whenToVisitIDs": "1,2",
+  "addressLine1": "house no 6, Islamabad",
+  "addressLine2": "house no 6 Islamabad",
+  "countryLookUpID": 1,
+  "cityLookUpID": 19,
+  "statelookUpID": 5,
+  "postalCode": "12345",
+  "longitude": "98.765432",
+  "latitude": "12.345678",
+  "updatedBy": 0,
+  "cultureId": 1
+}
+
+2024-09-26 11:12:01.308 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-26 11:12:01.312 +05:00 [INF] Route matched with {action = "Update", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand.UpdateKBDetailCommand) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-26 11:12:03.794 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 11:12:03.802 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand, Handle with parameter: {"ID":6,"Title":"Sample Title11","KeyDate":"2024-09-26","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","AddressLine1":"house no 6, Islamabad","AddressLine2":"house no 6 Islamabad","CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Longitude":"98.765432","Latitude":"12.345678","UpdatedBy":0,"CultureId":1,"UserId":1006}
+2024-09-26 11:12:03.813 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-09-26 11:12:03.819 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"09ee7547-eacc-462e-acb9-55e5e3139907","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":null,"LockoutEnabled":false,"AccessFailedCount":4}
+2024-09-26 11:12:04.631 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":6,"Title":"Sample Title11","GenericTitleID":null,"KeyDate":"2024-09-26","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":1006,"UpdatedAt":null,"CultureId":1,"Code":null,"Message":null,"AddressLine1":"house no 6, Islamabad","AddressLine2":"house no 6 Islamabad","CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"12.345678","Longitude":"98.765432","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null}
+2024-09-26 11:13:42.652 +05:00 [INF] Exiting null, UpdateAsync with response: {"IsSuccess":true,"Message":"KBDetail has been updated successfully!","RecordID":6}
+2024-09-26 11:13:42.657 +05:00 [INF] Exiting null, Handle with response: true
+2024-09-26 11:13:42.660 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 98860.4471ms.
+2024-09-26 11:13:42.664 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-26 11:13:42.667 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api) in 101351.3218ms
+2024-09-26 11:13:42.671 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.Update (CleanArc.Web.Api)'
+2024-09-26 11:13:42.674 +05:00 [INF] Response StatusCode: 200
+2024-09-26 11:13:42.677 +05:00 [INF] Response StatusCode: 200
+2024-09-26 11:13:42.680 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/Update application/json 511 - 200 - application/json;+charset=utf-8 101419.7587ms
+2024-09-26 11:13:52.868 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 169
+2024-09-26 11:13:52.876 +05:00 [INF] CORS policy execution successful.
+2024-09-26 11:13:52.883 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-26 11:13:52.894 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+    
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-26 11:13:52.900 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
+2024-09-26 11:13:52.909 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+    
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-09-26 11:13:52.913 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-26 11:13:52.915 +05:00 [INF] Route matched with {action = "GetAll", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQuery) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-26 11:13:54.940 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 11:13:54.948 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-09-26 11:13:55.850 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-09-26 11:13:56.061 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":5,"Title":"Sample Title","GenericTitleID":3,"KeyDate":"2024-09-25","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-09-25T12:09:03.087","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"12.345678","Longitude":"98.765432","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null},{"ID":6,"Title":"Sample Title11","GenericTitleID":17,"KeyDate":"2024-09-26","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-09-26T05:15:28.48","UpdatedBy":1006,"UpdatedAt":"2024-09-26T06:15:21.61","CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"12.345678","Longitude":"98.765432","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null},{"ID":7,"Title":"Sample Title1","GenericTitleID":19,"KeyDate":"2024-09-25","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-09-26T06:10:23.61","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"12.345678","Longitude":"98.765432","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null}]
+2024-09-26 11:13:56.067 +05:00 [INF] Exiting null, Handle with response: [{"ID":5,"Title":"Sample Title","GenericTitleID":3,"KeyDate":"2024-09-25","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"WhenToVisitIDs":"1,2","RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","IsDeleted":false,"IsActive":true,"CreatedBy":1,"CreatedAt":"2024-09-25T12:09:03.087","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":0,"CityLookUpID":19,"CountryLookUpID":1,"Latitude":"12.345678","Longitude":"98.765432","PostalCode":"12345","StatelookUpID":5,"CultureId":null,"Code":null,"Message":null},{"ID":6,"Title":"Sample Title11","GenericTitleID":17,"KeyDate":"2024-09-26","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"WhenToVisitIDs":"1,2","RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","IsDeleted":false,"IsActive":true,"CreatedBy":1006,"CreatedAt":"2024-09-26T05:15:28.48","UpdatedBy":1006,"UpdatedAt":"2024-09-26T06:15:21.61","AddressID":0,"CityLookUpID":19,"CountryLookUpID":1,"Latitude":"12.345678","Longitude":"98.765432","PostalCode":"12345","StatelookUpID":5,"CultureId":null,"Code":null,"Message":null},{"ID":7,"Title":"Sample Title1","GenericTitleID":19,"KeyDate":"2024-09-25","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"WhenToVisitIDs":"1,2","RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","IsDeleted":false,"IsActive":true,"CreatedBy":1006,"CreatedAt":"2024-09-26T06:10:23.61","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":0,"CityLookUpID":19,"CountryLookUpID":1,"Latitude":"12.345678","Longitude":"98.765432","PostalCode":"12345","StatelookUpID":5,"CultureId":null,"Code":null,"Message":null}]
+2024-09-26 11:13:56.072 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1127.0386ms.
+2024-09-26 11:13:56.079 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-26 11:13:56.083 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) in 3161.9784ms
+2024-09-26 11:13:56.088 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
+2024-09-26 11:13:56.092 +05:00 [INF] Response StatusCode: 200
+2024-09-26 11:13:56.096 +05:00 [INF] Response StatusCode: 200
+2024-09-26 11:13:56.099 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5002/api/v1/KBDetail/GetAll application/json 169 - 200 - application/json;+charset=utf-8 3231.2079ms
+2024-09-26 11:14:11.529 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5002/api/v1/KBDetail/GetById/6 - -
+2024-09-26 11:14:11.532 +05:00 [INF] Request Method: GET, Path: /api/v1/KBDetail/GetById/6, Content-Type: null
+2024-09-26 11:14:11.544 +05:00 [INF] Request Method: GET, Path: /api/v1/KBDetail/GetById/6, Content-Type: null
+2024-09-26 11:14:11.550 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetById (CleanArc.Web.Api)'
+2024-09-26 11:14:11.561 +05:00 [INF] Route matched with {action = "GetById", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
+2024-09-26 11:14:15.928 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-09-26 11:14:15.965 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById, Handle with parameter: {"Id":6}
+2024-09-26 11:14:15.975 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 6
+2024-09-26 11:14:16.016 +05:00 [INF] Exiting null, GetByIdAsync with response: {"ID":6,"Title":"Sample Title11","GenericTitleID":17,"KeyDate":"2024-09-26","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","WhenToVisitIDs":"1,2","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-09-26T05:15:28.48","UpdatedBy":1006,"UpdatedAt":"2024-09-26T06:15:21.61","CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"12.345678","Longitude":"98.765432","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null}
+2024-09-26 11:14:16.063 +05:00 [INF] Exiting null, Handle with response: {"ID":6,"Title":"Sample Title11","GenericTitleID":17,"KeyDate":"2024-09-26","Cost":"100","ServiceID":1,"CoreAreaLookupID":2,"WhenToVisitIDs":"1,2","RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Available","IsDeleted":false,"IsActive":true,"CreatedBy":1006,"CreatedAt":"2024-09-26T05:15:28.48","UpdatedBy":1006,"UpdatedAt":"2024-09-26T06:15:21.61","AddressID":0,"CityLookUpID":19,"CountryLookUpID":1,"Latitude":"12.345678","Longitude":"98.765432","PostalCode":"12345","StatelookUpID":5,"CultureId":null,"Code":null,"Message":null}
+2024-09-26 11:14:16.077 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetById (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 141.3068ms.
+2024-09-26 11:14:16.083 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-09-26 11:14:16.093 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetById (CleanArc.Web.Api) in 4525.7189ms
+2024-09-26 11:14:16.100 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetById (CleanArc.Web.Api)'
+2024-09-26 11:14:16.103 +05:00 [INF] Response StatusCode: 200
+2024-09-26 11:14:16.107 +05:00 [INF] Response StatusCode: 200
+2024-09-26 11:14:16.112 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5002/api/v1/KBDetail/GetById/6 - - - 200 - application/json;+charset=utf-8 4582.7717ms
