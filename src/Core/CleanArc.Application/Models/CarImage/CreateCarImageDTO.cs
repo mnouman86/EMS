@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.CarImage
 {
     public class CreateCarImageDTO
     {
-        public int? BusinessID { get; set; }
+        //public int? BusinessID { get; set; }
         public int? CarID { get; set; }
         public string? ImagePath { get; set; } // NVARCHAR(MAX)
         public string? ImageTitle { get; set; } // NVARCHAR(MAX)

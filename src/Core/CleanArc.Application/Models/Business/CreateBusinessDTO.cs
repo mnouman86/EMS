@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.Business
 {
     public class CreateBusinessDTO
     {
-        public int? BusinessTypeID { get; set; }
+        //public int? BusinessTypeID { get; set; }
 
         public string? Name { get; set; }
         public string? PhoneNumber { get; set; }
