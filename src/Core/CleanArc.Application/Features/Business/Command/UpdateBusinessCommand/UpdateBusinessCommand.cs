@@ -25,10 +25,10 @@ public record UpdateBusinessCommand(int ID, int? BusinessTypeID, string? Name,
     public int UserId { get; set; }
     public IValidator<UpdateBusinessCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateBusinessCommand> validator)
     {
-        validator.RuleFor(c => c.BusinessTypeID)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a valid BusinessTypeID");
+        //validator.RuleFor(c => c.BusinessTypeID)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a valid BusinessTypeID");
         validator.RuleFor(c => c.Name)
             .NotEmpty()
             .NotNull()

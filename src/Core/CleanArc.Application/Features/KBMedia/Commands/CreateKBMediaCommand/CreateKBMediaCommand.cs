@@ -12,8 +12,9 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.KBMedia.Commands.CreateKBMediaCommand;
 public record CreateKBMediaCommand(
-    int? KBDescriptionID,
-    //string MediaType,
+    int? GenericTitleID,
+   // int? KBDescriptionID,
+   //string MediaType,
      string ImagePath,
     string ImageTitle,
     bool? IsMain,
@@ -26,10 +27,10 @@ public record CreateKBMediaCommand(
     public int UserId { get; set; }
     public IValidator<CreateKBMediaCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateKBMediaCommand> validator)
     {
-        validator.RuleFor(c => c.KBDescriptionID)
+        validator.RuleFor(c => c.GenericTitleID)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please enter a valid KBDescriptionID");
+            .WithMessage("Please enter a valid  GenericTitleID");
        
         validator.RuleFor(c => c.ImagePath)
             .NotEmpty()

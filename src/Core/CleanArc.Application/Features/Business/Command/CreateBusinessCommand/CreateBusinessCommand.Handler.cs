@@ -57,7 +57,7 @@ namespace CleanArc.Application.Features.Business.Command.CreateBusinessCommand
                 //return OperationResult<ResponseEntity>.SuccessResult(result);
                 var result = await _unitOfWork.BusinessRepository.AddAsync(new Domain.Entities.Business.Business()
                 { CreatedBy = user.Id,
-                  BusinessTypeID=request.BusinessTypeID,
+                  //BusinessTypeID=request.BusinessTypeID,
                    Name = request.Name,
                    Address1 = request.Address1,
                    Address2 = request.Address2,

@@ -58,7 +58,7 @@ namespace CleanArc.Application.Features.CarImage.Command.CreateCarImageCommand
                 //return OperationResult<ResponseEntity>.SuccessResult(result);
                 var result = await _unitOfWork.CarImageRepository.AddAsync(new Domain.Entities.CarImage.CarImage()
                 { CreatedBy = user.Id,
-                    BusinessID = request.BusinessID,
+                    //BusinessID = request.BusinessID,
                     CarID = request.CarID,
                     ImagePath = request.ImagePath,
                     ImageTitle = request.ImageTitle,

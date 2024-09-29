@@ -8,11 +8,11 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
 public static class KBMediaQueries
 {
-    public static string Create_KBMedia => "KnowledgeBase.Create_KBMedia";
-    public static string Update_KBMedia => "KnowledgeBase.Update_KBMedia";
-    public static string Delete_KBMedia => "KnowledgeBase.Delete_KBMedia";
-    public static string GetAll_KBMedia => "KnowledgeBase.GetAll_KBMedia";
-    public static string GetByID_KBMedia => "KnowledgeBase.GetByID_KBMedia";
+    public static string Create_Media => "Create_Media";
+    public static string Update_Media => "Update_Media";
+    public static string Delete_Media => "Delete_Media";
+    public static string GetAll_Media => "GetAll_Media";
+    public static string GetByID_Media => "GetByID_Media";
 
 
 }
