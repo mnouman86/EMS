@@ -13,17 +13,17 @@ using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.CarImage.Command.UpdateCarImageCommand
 {
-    public record UpdateCarImageCommand(int ID, int? BusinessID, int? CarID, string? ImagePath, string? ImageTitle, bool? IsMain, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+    public record UpdateCarImageCommand(int ID, int? CarID, string? ImagePath, string? ImageTitle, bool? IsMain, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateCarImageCommand>
     {
         [JsonIgnore]
         public int UserId { get; set; }
         public IValidator<UpdateCarImageCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateCarImageCommand> validator)
         {
-            validator.RuleFor(c => c.BusinessID)
-             .NotEmpty()
-             .NotNull()
-             .WithMessage("Please enter a valid BusinessID");
+            //validator.RuleFor(c => c.BusinessID)
+            // .NotEmpty()
+            // .NotNull()
+            // .WithMessage("Please enter a valid BusinessID");
             validator.RuleFor(c => c.CarID)
                 .NotEmpty()
                 .NotNull()

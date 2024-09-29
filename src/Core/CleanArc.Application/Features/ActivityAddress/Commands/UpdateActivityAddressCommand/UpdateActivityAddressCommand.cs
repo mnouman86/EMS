@@ -33,14 +33,14 @@ public record UpdateActivityAddressCommand(int ID, int? GenericAddressID, int? S
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a CityLookUpID");
-        validator.RuleFor(c => c.AddressLine1)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a AddressLine1");
-        validator.RuleFor(c => c.AddressLine2)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a AddressLine2");
+        //validator.RuleFor(c => c.AddressLine1)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a AddressLine1");
+        //validator.RuleFor(c => c.AddressLine2)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a AddressLine2");
         validator.RuleFor(c => c.StateLookUpID)
             .NotEmpty()
             .NotNull()

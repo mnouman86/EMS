@@ -56,7 +56,7 @@ namespace CleanArc.Application.Features.Business.Command.UpdateBusinessCommand
                 //return OperationResult<ResponseEntity>.SuccessResult(result);
                 var result = await _unitOfWork.BusinessRepository.UpdateAsync(new Domain.Entities.Business.Business()
                 {  UpdatedBy = user.Id, ID = request.ID,
-                    BusinessTypeID = request.BusinessTypeID,
+                    //BusinessTypeID = request.BusinessTypeID,
                     Name = request.Name,
                     Address1 = request.Address1,
                     Address2 = request.Address2,

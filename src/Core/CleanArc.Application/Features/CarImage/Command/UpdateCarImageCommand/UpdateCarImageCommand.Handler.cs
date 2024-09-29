@@ -59,7 +59,7 @@ internal class UpdateCarImageCommandHandler : IRequestHandler<UpdateCarImageComm
             {
                 UpdatedBy = user.Id,
                 ID = request.ID,
-                BusinessID = request.BusinessID,
+                //BusinessID = request.BusinessID,
                 CarID = request.CarID,
                 ImagePath = request.ImagePath,
                 ImageTitle = request.ImageTitle,
