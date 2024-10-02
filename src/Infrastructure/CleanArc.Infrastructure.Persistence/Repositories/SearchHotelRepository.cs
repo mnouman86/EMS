@@ -90,19 +90,28 @@ public class SearchHotelRepository : ISearchHotelRepository
                     List<FilterParameter> ImagesFilterArray = new List<FilterParameter>();
                     List<SortingParameter> ImagesSortingArray = new List<SortingParameter>();
 
-                    ImagesFilterArray.Add(new FilterParameter { ParameterName = "HotelID", ParameterValue = item.HotelID.ToString() });
-    var parameter = new
-                    {
-                        PageNumber = searchRequest.PageNumber,
-                        PageSize = searchRequest.PageSize,
-                        //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-                        //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-                        //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-                        //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-                        SortingArray = DataTableHelper.ToDataTable(ImagesSortingArray), // Convert list to DataTable
-                        FilterArray = DataTableHelper.ToDataTable(ImagesFilterArray) // Convert list to DataTable
-                    };
-                    var imageList = await connection.QueryAsync<HotelImage>(SearchHotelImageQueries.usp_GetByHotelID_HotelImage, parameter, commandType: CommandType.StoredProcedure);
+                    ImagesFilterArray.Add(new FilterParameter { ParameterName = "genericTitleID", ParameterValue = item.HotelID.ToString() });
+					//var parameter = new
+					//                {
+					//                    PageNumber = searchRequest.PageNumber,
+					//                    PageSize = searchRequest.PageSize,
+					//                    //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
+					//                    //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
+					//                    //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
+					//                    //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
+					//                    SortingArray = DataTableHelper.ToDataTable(ImagesSortingArray), // Convert list to DataTable
+					//                    FilterArray = DataTableHelper.ToDataTable(ImagesFilterArray) // Convert list to DataTable
+					//                };
+
+					var parameter = new DynamicParameters();
+					parameter.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+					parameter.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+					parameter.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+					parameter.Add("@SortingArray", DataTableHelper.ToDataTable(ImagesSortingArray), DbType.Object); // Ensure proper type
+					parameter.Add("@FilterArray", DataTableHelper.ToDataTable(ImagesFilterArray), DbType.Object); // Ensure proper type
+					parameter.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+					parameter.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+					var imageList = await connection.QueryAsync<HotelImage>(SearchHotelImageQueries.usp_GetByHotelID_HotelImage, parameter, commandType: CommandType.StoredProcedure);
                     item.HotelImages = new List<HotelImage>();
                     item.HotelImages.AddRange(imageList);
                 }
