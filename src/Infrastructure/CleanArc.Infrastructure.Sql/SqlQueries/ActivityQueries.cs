@@ -12,6 +12,7 @@ public static class ActivityQueries
     public static string update_Activity => "update_Activity";
     public static string Delete_Activity => "Delete_Activity";
     public static string GetAll_Activity => "GetAll_Activity";
+    //public static string GetAll_ActivitySearchDetail => "GetAll_ActivitySearchDetail";
     public static string GetByID_Activity => "GetByID_Activity";
 
 

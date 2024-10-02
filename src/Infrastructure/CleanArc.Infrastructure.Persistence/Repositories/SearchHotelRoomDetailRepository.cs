@@ -93,14 +93,15 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                         List<FilterParameter> FilterArray = new List<FilterParameter>();
                         List<SortingParameter> SortingArray = new List<SortingParameter>();
                         FilterArray.Add(new FilterParameter { ParameterName = "RoomID", ParameterValue = item.ID.ToString() });
-                        var parameter = new
-                        {
-                            PageNumber = searchRequest.PageNumber,
-                            PageSize = searchRequest.PageSize,
-                            SortingArray = DataTableHelper.ToDataTable(SortingArray), // Convert list to DataTable
-                            FilterArray = DataTableHelper.ToDataTable(FilterArray) // Convert list to DataTable
-                        };
-                        var imageList = await connection.QueryAsync<RoomImage>(RoomImagesQueries.usp_GetByHotelID_RoomImages, parameter, commandType: CommandType.StoredProcedure);
+						var parameter = new DynamicParameters();
+						parameter.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+						parameter.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+						parameter.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+						parameter.Add("@SortingArray", DataTableHelper.ToDataTable(SortingArray), DbType.Object); // Ensure proper type
+						parameter.Add("@FilterArray", DataTableHelper.ToDataTable(FilterArray), DbType.Object); // Ensure proper type
+						parameter.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+						parameter.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+						var imageList = await connection.QueryAsync<RoomImage>(RoomImagesQueries.usp_GetByHotelID_RoomImages, parameter, commandType: CommandType.StoredProcedure);
                         var amenitiesList = await connection.QueryAsync<RoomAmenities>(SearchRoomAmenitiesQueries.usp_GetByHotelID_RoomAmenities, parameter, commandType: CommandType.StoredProcedure);
                         item.RoomImages = new List<RoomImage>();
                         item.RoomImages.AddRange(imageList);
