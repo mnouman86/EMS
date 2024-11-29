@@ -94,6 +94,10 @@ public interface IUnitOfWork
     public ICustomerReviewRepository CustomerReviewRepository { get; }
     public ICustomerAwarenessRepository CustomerAwarenessRepository { get; }
     public ICampaignRepository CampaignRepository { get; }
+    public ICampaignTargetRepository CampaignTargetRepository { get; }
+    public ICampaignTargetItemsRepository CampaignTargetItemsRepository { get; }
+
+
     public IGroupActivityParticipantsRepository GroupActivityParticipantsRepository { get; }
 
 
