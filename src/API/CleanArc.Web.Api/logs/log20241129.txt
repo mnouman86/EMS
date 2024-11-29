@@ -1,0 +1,155 @@
+2024-11-29 12:05:52.981 +05:00 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-11-29 12:05:53.095 +05:00 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-11-29 12:05:53.101 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-11-29 12:05:53.109 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-11-29 12:05:53.147 +05:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-11-29 12:05:53.163 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-11-29 12:05:53.179 +05:00 [INF] User profile is available. Using 'C:\Users\SHPL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-29 12:05:53.605 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-11-29 12:05:53.626 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-11-29 12:05:54.341 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger - -
+2024-11-29 12:05:54.658 +05:00 [INF] Request Method: GET, Path: /swagger, Content-Type: null
+2024-11-29 12:05:54.737 +05:00 [INF] Response StatusCode: 301
+2024-11-29 12:05:54.774 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-11-29 12:05:54.811 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger - - - 301 - - 446.7122ms
+2024-11-29 12:05:54.842 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-11-29 12:05:54.898 +05:00 [INF] Response StatusCode: 200
+2024-11-29 12:05:54.905 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 130.7900ms
+2024-11-29 12:05:54.953 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/swagger-ui.css - -
+2024-11-29 12:05:54.966 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/swagger-ui-standalone-preset.js - -
+2024-11-29 12:05:54.967 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/swagger-ui-bundle.js - -
+2024-11-29 12:05:54.966 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-11-29 12:05:54.978 +05:00 [INF] Request Method: GET, Path: /swagger/swagger-ui-bundle.js, Content-Type: null
+2024-11-29 12:05:54.969 +05:00 [INF] Request Method: GET, Path: /swagger/swagger-ui.css, Content-Type: null
+2024-11-29 12:05:54.973 +05:00 [INF] Request Method: GET, Path: /swagger/swagger-ui-standalone-preset.js, Content-Type: null
+2024-11-29 12:05:54.996 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 13768 application/javascript;+charset=utf-8 28.4855ms
+2024-11-29 12:05:55.040 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-11-29 12:05:55.072 +05:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2024-11-29 12:05:55.076 +05:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2024-11-29 12:05:55.080 +05:00 [INF] Response StatusCode: 200
+2024-11-29 12:05:55.084 +05:00 [INF] Response StatusCode: 200
+2024-11-29 12:05:55.097 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/swagger-ui.css - - - 200 144929 text/css 143.4666ms
+2024-11-29 12:05:55.115 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/swagger-ui-standalone-preset.js - - - 200 312163 text/javascript 148.4203ms
+2024-11-29 12:05:55.125 +05:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2024-11-29 12:05:55.127 +05:00 [INF] Response StatusCode: 200
+2024-11-29 12:05:55.145 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/swagger-ui-bundle.js - - - 200 1061536 text/javascript 178.4958ms
+2024-11-29 12:05:55.182 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 142.6053ms
+2024-11-29 12:05:55.278 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-11-29 12:05:55.282 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-11-29 12:05:55.347 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/favicon-32x32.png - -
+2024-11-29 12:05:55.360 +05:00 [INF] Request Method: GET, Path: /swagger/favicon-32x32.png, Content-Type: null
+2024-11-29 12:05:55.377 +05:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2024-11-29 12:05:55.386 +05:00 [INF] Response StatusCode: 200
+2024-11-29 12:05:55.394 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/favicon-32x32.png - - - 200 628 image/png 47.1536ms
+2024-11-29 12:05:56.285 +05:00 [INF] Response StatusCode: 200
+2024-11-29 12:05:56.288 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1009.4489ms
+2024-11-29 14:42:10.439 +05:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-11-29 14:42:10.511 +05:00 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-11-29 14:42:10.517 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-11-29 14:42:10.521 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-11-29 14:42:10.542 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-11-29 14:42:10.559 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-11-29 14:42:10.570 +05:00 [INF] User profile is available. Using 'C:\Users\SHPL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-29 14:42:10.813 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-11-29 14:42:10.837 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-11-29 14:42:11.423 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-11-29 14:42:11.615 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-11-29 14:42:12.078 +05:00 [INF] Response StatusCode: 200
+2024-11-29 14:42:12.089 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 668.0560ms
+2024-11-29 14:42:12.211 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-11-29 14:42:12.218 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-11-29 14:42:12.226 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 13768 application/javascript;+charset=utf-8 13.8730ms
+2024-11-29 14:42:12.287 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 69.4050ms
+2024-11-29 14:42:12.500 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-11-29 14:42:12.506 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-11-29 14:42:13.559 +05:00 [INF] Response StatusCode: 200
+2024-11-29 14:42:13.568 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1068.2514ms
+2024-11-29 14:42:42.076 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTarget/GetAll application/json 171
+2024-11-29 14:42:42.082 +05:00 [INF] CORS policy execution successful.
+2024-11-29 14:42:42.090 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTarget/GetAll, Content-Type: application/json
+2024-11-29 14:42:42.100 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-11-29 14:42:42.112 +05:00 [WRN] Failed to determine the https port for redirect.
+2024-11-29 14:42:43.853 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTarget/GetAll, Content-Type: application/json
+2024-11-29 14:42:43.858 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-11-29 14:42:43.866 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTarget.CampaignTargetController.GetAll (CleanArc.Web.Api)'
+2024-11-29 14:42:43.912 +05:00 [INF] Route matched with {action = "GetAll", controller = "CampaignTarget"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CampaignTarget.Queries.GetAllCampaignTarget.GetAllCampaignTargetQuery) on controller CleanArc.Web.Api.Controllers.V1.CampaignTarget.CampaignTargetController (CleanArc.Web.Api).
+2024-11-29 14:42:44.099 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CampaignTarget.CampaignTargetController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-11-29 14:42:44.609 +05:00 [INF] Entering CleanArc.Application.Features.CampaignTarget.Queries.GetAllCampaignTarget, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-11-29 14:42:45.043 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-11-29 14:42:45.676 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":21,"Title":"Weekly Special Discount","Description":null,"StartDate":"11/07/2024 00:00:00","EndDate":"11/09/2024 00:00:00","Duration":3,"DiscountType":"Percentage","DiscountValue":15.00,"RecurrenceType":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-11-08T06:23:44.353","UpdatedBy":null,"UpdatedAt":null},{"ID":22,"Title":"Monthly Campaign","Description":null,"StartDate":"11/01/2023 00:00:00","EndDate":"12/05/2023 00:00:00","Duration":5,"DiscountType":"Percentage","DiscountValue":15.00,"RecurrenceType":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-11-08T11:02:25.12","UpdatedBy":null,"UpdatedAt":null},{"ID":23,"Title":"Yearly Campaign ","Description":null,"StartDate":"11/15/2023 00:00:00","EndDate":"11/21/2023 00:00:00","Duration":6,"DiscountType":"Amount","DiscountValue":15.00,"RecurrenceType":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null}]
+2024-11-29 14:42:45.795 +05:00 [INF] Exiting null, Handle with response: [{"ID":21,"CampaignID":null,"GenericTitleID":null,"ServiceCategoryID":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-11-08T06:23:44.353","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":22,"CampaignID":null,"GenericTitleID":null,"ServiceCategoryID":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-11-08T11:02:25.12","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null},{"ID":23,"CampaignID":null,"GenericTitleID":null,"ServiceCategoryID":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}]
+2024-11-29 14:42:45.810 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CampaignTarget.CampaignTargetController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1699.3731ms.
+2024-11-29 14:42:45.829 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-11-29 14:42:45.902 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CampaignTarget.CampaignTargetController.GetAll (CleanArc.Web.Api) in 1977.6873ms
+2024-11-29 14:42:45.908 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTarget.CampaignTargetController.GetAll (CleanArc.Web.Api)'
+2024-11-29 14:42:45.912 +05:00 [INF] Response StatusCode: 200
+2024-11-29 14:42:45.920 +05:00 [INF] Response StatusCode: 200
+2024-11-29 14:42:45.926 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTarget/GetAll application/json 171 - 200 - application/json;+charset=utf-8 3849.6404ms
