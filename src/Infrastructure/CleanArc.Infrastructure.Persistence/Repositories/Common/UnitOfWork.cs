@@ -103,6 +103,9 @@ public class UnitOfWork : IUnitOfWork
     public ICustomerReviewRepository CustomerReviewRepository { get; set; }
     public ICustomerAwarenessRepository CustomerAwarenessRepository { get; set; }
     public ICampaignRepository CampaignRepository { get; set; }
+    public ICampaignTargetRepository CampaignTargetRepository { get; set; }
+    public ICampaignTargetItemsRepository CampaignTargetItemsRepository { get; set; }
+
     public IGroupActivityParticipantsRepository GroupActivityParticipantsRepository { get; set; }
 
     private readonly IConfiguration configuration;
@@ -197,6 +200,9 @@ public class UnitOfWork : IUnitOfWork
            ILogger<CustomerReviewRepository> _loggerCustomerReview,
            ILogger<CustomerAwarenessRepository> _loggerCustomerAwareness,
            ILogger<CampaignRepository> _loggerCampaign,
+           ILogger<CampaignTargetRepository> _loggerCampaignTarget,
+           ILogger<CampaignTargetItemsRepository> _loggerCampaignTargetItems,
+
            ILogger<GroupActivityParticipantsRepository> _loggerGroupActivityParticipants,
 
 
@@ -296,6 +302,9 @@ public class UnitOfWork : IUnitOfWork
         CustomerReviewRepository = new CustomerReviewRepository(configuration, mapper, _loggerCustomerReview, httpContextAccessor);
         CustomerAwarenessRepository = new CustomerAwarenessRepository(configuration, mapper, _loggerCustomerAwareness, httpContextAccessor);
         CampaignRepository = new CampaignRepository(configuration, mapper, _loggerCampaign, httpContextAccessor);
+        CampaignTargetRepository = new CampaignTargetRepository(configuration, mapper, _loggerCampaignTarget, httpContextAccessor);
+        CampaignTargetItemsRepository = new CampaignTargetItemsRepository(configuration, mapper, _loggerCampaignTargetItems, httpContextAccessor);
+
         GroupActivityParticipantsRepository = new GroupActivityParticipantsRepository(configuration, mapper, _loggerGroupActivityParticipants, httpContextAccessor);
 
         this.configuration = configuration;
