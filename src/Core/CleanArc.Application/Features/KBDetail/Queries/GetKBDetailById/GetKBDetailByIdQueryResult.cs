@@ -41,5 +41,11 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById
         public int? CultureId { get; set; }
         public int? Code { get; set; }
         public string? Message { get; set; }
+        public string Status { get; set; }
+        public int? ApprovedBy { get; set; }
+        public string Remarks { get; set; }
+        public string ApprovedDate { get; set; }
+        public bool IsContributed { get; set; }
+        public int? ExistingContentID { get; set; }
     }
 }

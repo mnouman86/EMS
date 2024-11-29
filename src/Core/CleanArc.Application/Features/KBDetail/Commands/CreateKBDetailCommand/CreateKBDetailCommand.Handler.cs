@@ -78,6 +78,11 @@ internal class CreateKBDetailCommandHandler: IRequestHandler<CreateKBDetailComma
                 PostalCode = request.PostalCode,
                 Latitude = request.Latitude,
                 Longitude = request.Longitude,
+
+                Status = request.Status,
+                    ApprovedBy = request.ApprovedBy,
+                    Remarks= request.Remarks,
+                    IsContributed= request.IsContributed,
                 
 
                 CultureId = request.CultureId  });

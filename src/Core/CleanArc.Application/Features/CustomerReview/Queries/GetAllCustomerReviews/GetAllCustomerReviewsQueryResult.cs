@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CleanArc.Application.Features.CustomerReview.Queries.GetAllCustomerReviews;
+
+public class GetAllCustomerReviewsQueryResult
+{
+    public int? ID { get; set; }
+    public int? GenericTitleID { get; set; }
+    public int? ServiceCategoryID { get; set; }
+    public int? Rating { get; set; }
+    public string? Description { get; set; }
+    public string? Status { get; set; }
+    public int? ApprovedBy { get; set; }
+    public DateTime? ApprovedDate { get; set; }
+    public bool? IsActive { get; set; }
+    public bool? IsDeleted { get; set; }
+    public int? CreatedBy { get; set; }
+    public DateTime? CreatedAt { get; set; }
+    public int? UpdatedBy { get; set; }
+    public DateTime? UpdatedAt { get; set; }
+}
