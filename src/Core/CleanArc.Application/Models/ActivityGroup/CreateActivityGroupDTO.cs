@@ -10,8 +10,8 @@ namespace CleanArc.Application.Models.ActivityGroup
     {
 
         public int? ActivityID { get; set; }
-        public string? From { get; set; } // Assumes the column name is "From"
-        public string? To { get; set; }
+        //public string? From { get; set; } // Assumes the column name is "From"
+        //public string? To { get; set; }
         public int? Size { get; set; }
         public int? CreatedBy { get; set; }
         public int? CultureId { get; set; }

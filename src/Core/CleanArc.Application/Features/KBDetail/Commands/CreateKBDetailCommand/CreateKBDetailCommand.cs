@@ -32,6 +32,12 @@ public record CreateKBDetailCommand(
     string? Longitude,
     string? Latitude,
    // string? Description,
+   string Status,
+   int? ApprovedBy,
+   string Remarks,
+   //string ApprovedDate,
+   //int? ExistingContentID,
+   bool IsContributed,
     int? CreatedBy,
     int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateKBDetailCommand>

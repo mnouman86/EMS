@@ -76,6 +76,13 @@ internal class UpdateKBDetailCommandHandler:IRequestHandler<UpdateKBDetailComman
                 PostalCode = request.PostalCode,
                 Latitude = request.Latitude,
                 Longitude = request.Longitude,
+
+                Status = request.Status,
+                ApprovedBy = request.ApprovedBy,
+                Remarks = request.Remarks,
+                IsContributed = request.IsContributed,
+                ApprovedDate=request.ApprovedDate,
+               ExistingContentID=request.ExistingContentID,
                 CultureId = request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

@@ -46,4 +46,11 @@ public  class KBDetail
     public string? CoreAreaName { get; set; }
     //public int AddressID { get; set; }
 
+    public string Status { get; set; }
+    public int? ApprovedBy { get; set; }
+    public string Remarks { get; set; }
+    public string ApprovedDate { get; set; }
+    public bool IsContributed { get; set; }
+    public int? ExistingContentID { get; set; }
+
 }
