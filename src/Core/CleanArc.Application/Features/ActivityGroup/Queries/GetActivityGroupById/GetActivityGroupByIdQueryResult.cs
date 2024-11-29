@@ -11,8 +11,8 @@ namespace CleanArc.Application.Features.ActivityGroup.Queries.GetActivityGroupBy
     {
         public int ID { get; set; }
         public int? ActivityID { get; set; }
-        public string? From { get; set; } // Assumes the column name is "From"
-        public string? To { get; set; }
+        //public string? From { get; set; } // Assumes the column name is "From"
+        //public string? To { get; set; }
         public int? Size { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsDeleted { get; set; }

@@ -91,6 +91,10 @@ public interface IUnitOfWork
     public IUserExperienceRepository UserExperienceRepository { get; }
     public ICheckProfileStatusRepository CheckProfileStatusRepository { get; }
     public IPopularItemsVisitRepository PopularItemsVisitRepository { get; }
+    public ICustomerReviewRepository CustomerReviewRepository { get; }
+    public ICustomerAwarenessRepository CustomerAwarenessRepository { get; }
+    public ICampaignRepository CampaignRepository { get; }
+    public IGroupActivityParticipantsRepository GroupActivityParticipantsRepository { get; }
 
 
 

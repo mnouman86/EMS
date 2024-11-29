@@ -12,8 +12,8 @@ namespace CleanArc.Application.Models.ActivityGroup
       
         public int ID { get; set; }
         public int? ActivityID { get; set; }
-        public string? From { get; set; } // Assumes the column name is "From"
-        public string? To { get; set; }
+        //public string? From { get; set; } // Assumes the column name is "From"
+        //public string? To { get; set; }
         public int? Size { get; set; }
         public int? UpdatedBy { get; set; }
        // public DateTime? UpdatedAt { get; set; }

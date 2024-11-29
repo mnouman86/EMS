@@ -100,6 +100,10 @@ public class UnitOfWork : IUnitOfWork
     public IUserExperienceRepository UserExperienceRepository { get; set; }
     public ICheckProfileStatusRepository CheckProfileStatusRepository { get; set; }
     public IPopularItemsVisitRepository PopularItemsVisitRepository { get; set; }
+    public ICustomerReviewRepository CustomerReviewRepository { get; set; }
+    public ICustomerAwarenessRepository CustomerAwarenessRepository { get; set; }
+    public ICampaignRepository CampaignRepository { get; set; }
+    public IGroupActivityParticipantsRepository GroupActivityParticipantsRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -190,6 +194,10 @@ public class UnitOfWork : IUnitOfWork
            ILogger<UserExperienceRepository> _loggerUserExperience,
            ILogger<CheckProfileStatusRepository> _loggerCheckProfileStatus,
            ILogger<PopularItemsVisitRepository> _loggerPopularItemsVisit,
+           ILogger<CustomerReviewRepository> _loggerCustomerReview,
+           ILogger<CustomerAwarenessRepository> _loggerCustomerAwareness,
+           ILogger<CampaignRepository> _loggerCampaign,
+           ILogger<GroupActivityParticipantsRepository> _loggerGroupActivityParticipants,
 
 
 
@@ -285,6 +293,10 @@ public class UnitOfWork : IUnitOfWork
         UserExperienceRepository = new UserExperienceRepository(configuration, mapper, _loggerUserExperience, httpContextAccessor);
         CheckProfileStatusRepository = new CheckProfileStatusRepository(configuration, mapper, _loggerCheckProfileStatus, httpContextAccessor);
         PopularItemsVisitRepository = new PopularItemsVisitRepository(configuration, mapper, _loggerPopularItemsVisit, httpContextAccessor);
+        CustomerReviewRepository = new CustomerReviewRepository(configuration, mapper, _loggerCustomerReview, httpContextAccessor);
+        CustomerAwarenessRepository = new CustomerAwarenessRepository(configuration, mapper, _loggerCustomerAwareness, httpContextAccessor);
+        CampaignRepository = new CampaignRepository(configuration, mapper, _loggerCampaign, httpContextAccessor);
+        GroupActivityParticipantsRepository = new GroupActivityParticipantsRepository(configuration, mapper, _loggerGroupActivityParticipants, httpContextAccessor);
 
         this.configuration = configuration;
 

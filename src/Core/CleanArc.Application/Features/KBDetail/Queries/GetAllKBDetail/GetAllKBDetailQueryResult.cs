@@ -40,6 +40,13 @@ public class GetAllKBDetailQueryResult
     public int? CultureId { get; set; }
     public int? Code { get; set; }
     public string? Message { get; set; }
+
+    public string Status { get; set; }
+    public int? ApprovedBy { get; set; }
+    public string Remarks { get; set; }
+    public string ApprovedDate { get; set; }
+    public bool IsContributed { get; set; }
+    public int? ExistingContentID { get; set; }
 }
 
 //    public GetAllKBDetailQueryResult(int iD, string name, string description, bool isDeleted, bool isActive, int createdBy, DateTime createdAt, int updatedBy, DateTime updatedAt)
