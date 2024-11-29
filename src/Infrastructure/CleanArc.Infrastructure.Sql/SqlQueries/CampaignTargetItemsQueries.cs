@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CleanArc.Infrastructure.Sql.SqlQueries;
+
+public static class CampaignTargetItemsQueries
+{
+    public static string Create_CampaignTargetItems => "Create_CampaignTargetItems";
+    public static string Update_CampaignTargetItems => "Update_CampaignTargetItems";
+    public static string Delete_CampaignTargetItems => "Delete_CampaignTargetItems";
+    public static string usp_GetALL_CampaignTargetItems => "GetALL_CampaignTargetItems";
+    public static string usp_GetByID_CampaignTargetItems => "GetByID_CampaignTargetItems";
+
+}
