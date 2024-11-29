@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityGroup.Commands.CreateActivityGroupCommand;
-public record CreateActivityGroupCommand(int? ActivityID, string? From, string To, int? Size, int? CreatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateActivityGroupCommand(int? ActivityID,  int? Size, int? CreatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateActivityGroupCommand>
 {
     [JsonIgnore]
@@ -22,14 +22,14 @@ public record CreateActivityGroupCommand(int? ActivityID, string? From, string T
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid ActivityID");
-        validator.RuleFor(c => c.From)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a From");
-        validator.RuleFor(c => c.To)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a To");
+        //validator.RuleFor(c => c.From)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a From");
+        //validator.RuleFor(c => c.To)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a To");
         validator.RuleFor(c => c.Size)
           .NotEmpty()
           .NotNull()
