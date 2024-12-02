@@ -13,5 +13,6 @@ namespace CleanArc.Application.Models.CampaignTarget
         public int? GenericTitleID { get; set; }
         public int? ServiceCategoryID { get; set; }
         public int? UpdatedBy { get; set; }
+        public int? CultureID { get; set; }
     }
 }

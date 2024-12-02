@@ -48,7 +48,7 @@ internal class DeleteCampaignTargetCommandHandler : IRequestHandler<DeleteCampai
                 return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
 
-            var result = await _unitOfWork.CampaignRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.CampaignTargetRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
             await _unitOfWork.CommitAsync();
             //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
