@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.Campaign.Queries.GetAllCampaigns;
+using CleanArc.Application.Features.CampaignTarget.Queries.GetAllCampaignTarget;
 
 namespace CleanArc.Application.Features.CampaignTarget.Queries.GetAllCampaignTarget
 {
@@ -36,9 +36,7 @@ namespace CleanArc.Application.Features.CampaignTarget.Queries.GetAllCampaignTar
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var CampaignTarget = await _unitOfWork.CampaignRepository.GetAllAsync(request.searchRequest);
-
-                //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
+                var CampaignTarget = await _unitOfWork.CampaignTargetRepository.GetAllAsync(request.searchRequest);
                 var result = _mapper.Map<List<GetAllCampaignTargetQueryResult>>(CampaignTarget);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return OperationResult<List<GetAllCampaignTargetQueryResult>>.SuccessResult(result);

@@ -49,7 +49,7 @@ internal class CreateCampaignTargetCommandHandler : IRequestHandler<CreateCampai
                 return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
 
-            var result = await _unitOfWork.CampaignTargetRepository.AddAsync(new Domain.Entities.CampaignTarget.CampaignTargetItems()
+            var result = await _unitOfWork.CampaignTargetRepository.AddAsync(new Domain.Entities.CampaignTarget.CampaignTarget()
             { CreatedBy = user.Id,
                 CampaignID = request.CampaignID,
                 GenericTitleID = request.GenericTitleID,
