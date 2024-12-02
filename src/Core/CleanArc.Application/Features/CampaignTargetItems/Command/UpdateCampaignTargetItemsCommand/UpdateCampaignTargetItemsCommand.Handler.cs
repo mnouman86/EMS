@@ -52,6 +52,7 @@ internal class UpdateCampaignTargetItemsCommandHandler : IRequestHandler<UpdateC
             { UpdatedBy = user.Id, ID = request.ID,
                 CampaignTargetID = request.CampaignTargetID,
                 CampaignItemIDs = request.CampaignItemIDs,
+                ApplyAllItem =request.ApplyAllItem,
                 
             });
             await _unitOfWork.CommitAsync();

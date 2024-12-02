@@ -14,6 +14,7 @@ namespace CleanArc.Application.Features.CampaignTargetItems.Command.CreateCampai
 
 public record CreateCampaignTargetItemsCommand(int? CampaignTargetID, 
 string? CampaignItemIDs,
+bool? ApplyAllItem,
 int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateCampaignTargetItemsCommand>
 {
