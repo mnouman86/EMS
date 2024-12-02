@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Models.CampaignTarget;
 
-public class CreateCampaignTargetItemsDTO
+public class CreateCampaignTargetDTO
 {
     public int? CampaignID { get; set; }
     public int? GenericTitleID { get; set; }
     public int? ServiceCategoryID { get; set; }
     public int? CreatedBy { get; set; }
+    public int? CultureID { get; set; }
 }

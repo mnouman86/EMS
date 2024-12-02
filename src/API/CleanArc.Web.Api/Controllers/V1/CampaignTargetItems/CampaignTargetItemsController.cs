@@ -8,7 +8,7 @@ using CleanArc.WebFramework.BaseController;
 using Mediator;
 using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
-namespace CleanArc.Web.Api.Controllers.V1.Campaign
+namespace CleanArc.Web.Api.Controllers.V1.CampaignTargetItems
 {
     /// <summary>
     /// CampaignController is responsible for handling HTTP requests related to room type operations
