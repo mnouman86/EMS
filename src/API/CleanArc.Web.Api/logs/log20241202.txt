@@ -2737,3 +2737,811 @@ WHERE [u].[UserId] = @__p_0
 2024-12-02 12:19:40.736 +05:00 [INF] Response StatusCode: 200
 2024-12-02 12:19:40.744 +05:00 [INF] Response StatusCode: 200
 2024-12-02 12:19:40.752 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTarget/Update application/json 101 - 200 - application/json;+charset=utf-8 15691.3843ms
+2024-12-02 12:33:46.496 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-12-02 12:33:46.571 +05:00 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-12-02 12:33:46.579 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-12-02 12:33:46.584 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-12-02 12:33:46.605 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-12-02 12:33:46.623 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-12-02 12:33:46.634 +05:00 [INF] User profile is available. Using 'C:\Users\SHPL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-12-02 12:33:46.837 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-12-02 12:33:46.851 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-12-02 12:33:47.181 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-12-02 12:33:47.375 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-12-02 12:33:47.472 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:33:47.487 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 306.1746ms
+2024-12-02 12:33:47.511 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-12-02 12:33:47.518 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 13768 application/javascript;+charset=utf-8 6.8892ms
+2024-12-02 12:33:47.551 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-12-02 12:33:47.602 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 51.2250ms
+2024-12-02 12:33:47.671 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-12-02 12:33:47.676 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-12-02 12:33:48.705 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:33:48.712 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1040.7132ms
+2024-12-02 12:34:20.870 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/GetAll application/json 171
+2024-12-02 12:34:20.877 +05:00 [INF] CORS policy execution successful.
+2024-12-02 12:34:20.879 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/GetAll, Content-Type: application/json
+2024-12-02 12:34:20.882 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 1111,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+   
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-02 12:34:20.887 +05:00 [WRN] Failed to determine the https port for redirect.
+2024-12-02 12:34:21.005 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/GetAll, Content-Type: application/json
+2024-12-02 12:34:21.008 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 1111,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+   
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-02 12:34:21.014 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetAll (CleanArc.Web.Api)'
+2024-12-02 12:34:21.045 +05:00 [INF] Route matched with {action = "GetAll", controller = "CampaignTargetItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CampaignTargetItems.Queries.GetAllCampaignTargetItems.GetAllCampaignTargetItemsQuery) on controller CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController (CleanArc.Web.Api).
+2024-12-02 12:34:21.169 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-02 12:34:21.320 +05:00 [INF] Entering CleanArc.Application.Features.CampaignTargetItems.Queries.GetAllCampaignTargetItems, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":1111,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-12-02 12:34:21.441 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":1111,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-12-02 12:34:21.733 +05:00 [INF] Exiting null, GetAllAsync
+2024-12-02 12:34:21.750 +05:00 [INF] Exiting null, Handle
+2024-12-02 12:34:21.813 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetAll (CleanArc.Web.Api) in 761.6231ms
+2024-12-02 12:34:21.819 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetAll (CleanArc.Web.Api)'
+2024-12-02 12:34:22.457 +05:00 [ERR] Could not find stored procedure 'GetALL_CampaignTargetItems'.
+System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'GetALL_CampaignTargetItems'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.CampaignTargetItemsRepository.GetAllAsync(SearchRequest searchRequest) in D:\OAT\Backend\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\CampaignTargetItemsRepository.cs:line 142
+   at CleanArc.Application.Features.CampaignTargetItems.Queries.GetAllCampaignTargetItems.GetAllCampaignTargetItemsQueryHandler.Handle(GetAllCampaignTargetItemsQuery request, CancellationToken cancellationToken) in D:\OAT\Backend\LLP_Core\src\Core\CleanArc.Application\Features\CampaignTargetItems\Queries\GetAllCampaignTargetItemsQuery\GetAllCampaignTargetItemsQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:c93c0fa9-8b99-409d-98f4-5d65913b6691
+Error Number:2812,State:1,Class:16
+2024-12-02 12:34:22.626 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/GetAll application/json 171 - 500 - - 1755.0620ms
+2024-12-02 12:34:57.533 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/GetAll application/json 171
+2024-12-02 12:34:57.536 +05:00 [INF] CORS policy execution successful.
+2024-12-02 12:34:57.539 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/GetAll, Content-Type: application/json
+2024-12-02 12:34:57.543 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 1111,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+   
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-02 12:34:57.588 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/GetAll, Content-Type: application/json
+2024-12-02 12:34:57.595 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 1111,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+   
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-02 12:34:57.599 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetAll (CleanArc.Web.Api)'
+2024-12-02 12:34:57.603 +05:00 [INF] Route matched with {action = "GetAll", controller = "CampaignTargetItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CampaignTargetItems.Queries.GetAllCampaignTargetItems.GetAllCampaignTargetItemsQuery) on controller CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController (CleanArc.Web.Api).
+2024-12-02 12:35:35.663 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-02 12:35:35.744 +05:00 [INF] Entering CleanArc.Application.Features.CampaignTargetItems.Queries.GetAllCampaignTargetItems, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":1111,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-12-02 12:35:35.746 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":1111,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-12-02 12:35:41.116 +05:00 [INF] Exiting null, GetAllAsync
+2024-12-02 12:35:44.887 +05:00 [INF] Exiting null, Handle
+2024-12-02 12:35:47.430 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetAll (CleanArc.Web.Api) in 49824.1974ms
+2024-12-02 12:35:47.433 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetAll (CleanArc.Web.Api)'
+2024-12-02 12:36:48.559 +05:00 [ERR] Could not find stored procedure 'GetALL_CampaignTargetItems'.
+System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'GetALL_CampaignTargetItems'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.CampaignTargetItemsRepository.GetAllAsync(SearchRequest searchRequest) in D:\OAT\Backend\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\CampaignTargetItemsRepository.cs:line 142
+   at CleanArc.Application.Features.CampaignTargetItems.Queries.GetAllCampaignTargetItems.GetAllCampaignTargetItemsQueryHandler.Handle(GetAllCampaignTargetItemsQuery request, CancellationToken cancellationToken) in D:\OAT\Backend\LLP_Core\src\Core\CleanArc.Application\Features\CampaignTargetItems\Queries\GetAllCampaignTargetItemsQuery\GetAllCampaignTargetItemsQueryHandler.cs:line 39
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:c93c0fa9-8b99-409d-98f4-5d65913b6691
+Error Number:2812,State:1,Class:16
+2024-12-02 12:36:48.697 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/GetAll application/json 171 - 500 - - 111164.0310ms
+2024-12-02 12:36:49.675 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-12-02 12:36:49.755 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-12-02 12:36:49.775 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:36:49.780 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 105.0531ms
+2024-12-02 12:36:49.813 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-12-02 12:36:49.826 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-12-02 12:36:49.829 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 13768 application/javascript;+charset=utf-8 3.1462ms
+2024-12-02 12:36:49.854 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 40.5448ms
+2024-12-02 12:36:50.110 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-12-02 12:36:50.113 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-12-02 12:36:51.052 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:36:51.063 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 952.8613ms
+2024-12-02 12:37:14.830 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/GetAll application/json 172
+2024-12-02 12:37:14.833 +05:00 [INF] CORS policy execution successful.
+2024-12-02 12:37:14.837 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/GetAll, Content-Type: application/json
+2024-12-02 12:37:14.840 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-02 12:37:14.852 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/GetAll, Content-Type: application/json
+2024-12-02 12:37:14.855 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-02 12:37:14.857 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetAll (CleanArc.Web.Api)'
+2024-12-02 12:37:14.861 +05:00 [INF] Route matched with {action = "GetAll", controller = "CampaignTargetItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CampaignTargetItems.Queries.GetAllCampaignTargetItems.GetAllCampaignTargetItemsQuery) on controller CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController (CleanArc.Web.Api).
+2024-12-02 12:37:19.046 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-02 12:37:19.054 +05:00 [INF] Entering CleanArc.Application.Features.CampaignTargetItems.Queries.GetAllCampaignTargetItems, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-12-02 12:37:19.058 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-12-02 12:37:25.330 +05:00 [INF] Exiting null, GetAllAsync with response: []
+2024-12-02 12:37:33.356 +05:00 [INF] Exiting null, Handle with response: []
+2024-12-02 12:37:33.363 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 14310.741ms.
+2024-12-02 12:37:33.370 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-02 12:37:33.388 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetAll (CleanArc.Web.Api) in 18525.3201ms
+2024-12-02 12:37:33.390 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetAll (CleanArc.Web.Api)'
+2024-12-02 12:37:33.392 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:37:33.394 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:37:33.396 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/GetAll application/json 172 - 200 - application/json;+charset=utf-8 18566.0150ms
+2024-12-02 12:38:59.348 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/Create application/json 75
+2024-12-02 12:38:59.355 +05:00 [INF] CORS policy execution successful.
+2024-12-02 12:38:59.359 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/Create, Content-Type: application/json
+2024-12-02 12:38:59.363 +05:00 [INF] Request Body: {
+  "campaignTargetID": 1,
+  "campaignItemIDs": "1,2,3",
+  "createdBy": 0
+}
+2024-12-02 12:38:59.390 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-12-02 12:38:59.426 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-12-02 12:38:59.432 +05:00 [INF] Response StatusCode: 401
+2024-12-02 12:38:59.438 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/Create application/json 75 - 401 - application/json;+charset=utf-8 88.9599ms
+2024-12-02 12:39:20.801 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/Create application/json 75
+2024-12-02 12:39:20.804 +05:00 [INF] CORS policy execution successful.
+2024-12-02 12:39:20.807 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/Create, Content-Type: application/json
+2024-12-02 12:39:20.808 +05:00 [INF] Request Body: {
+  "campaignTargetID": 1,
+  "campaignItemIDs": "1,2,3",
+  "createdBy": 0
+}
+2024-12-02 12:39:21.039 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-12-02 12:39:21.142 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/Create, Content-Type: application/json
+2024-12-02 12:39:21.145 +05:00 [INF] Request Body: {
+  "campaignTargetID": 1,
+  "campaignItemIDs": "1,2,3",
+  "createdBy": 0
+}
+2024-12-02 12:39:21.152 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api)'
+2024-12-02 12:39:21.163 +05:00 [INF] Route matched with {action = "Create", controller = "CampaignTargetItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.CampaignTargetItems.Command.CreateCampaignTargetItemsCommand.CreateCampaignTargetItemsCommand) on controller CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController (CleanArc.Web.Api).
+2024-12-02 12:39:29.067 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-02 12:39:29.111 +05:00 [INF] Entering CleanArc.Application.Features.CampaignTargetItems.Command.CreateCampaignTargetItemsCommand, Handle with parameter: {"CampaignTargetID":1,"CampaignItemIDs":"1,2,3","CreatedBy":0,"UserId":1006}
+2024-12-02 12:39:29.114 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-12-02 12:39:29.123 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"192cf2e7-5385-4967-969e-c168de49c092","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":"2024-10-08T05:00:57.8364177+00:00","LockoutEnabled":false,"AccessFailedCount":4}
+2024-12-02 12:39:29.127 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"CampaignTargetID":1,"CampaignItemIDs":"1,2,3","IsActive":null,"IsDeleted":null,"CreatedBy":1006,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null}
+2024-12-02 12:39:32.266 +05:00 [INF] Exiting null, AddAsync
+2024-12-02 12:39:35.014 +05:00 [INF] Exiting null, Handle
+2024-12-02 12:39:37.799 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api) in 16632.7331ms
+2024-12-02 12:39:37.800 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api)'
+2024-12-02 12:40:09.171 +05:00 [ERR] Could not find stored procedure 'Create_CampaignTargetItem'.
+System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'Create_CampaignTargetItem'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 489
+   at CleanArc.Infrastructure.Persistence.Repositories.CampaignTargetItemsRepository.AddAsync(CampaignTargetItems CampaignTargetItems) in D:\OAT\Backend\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\CampaignTargetItemsRepository.cs:line 82
+   at CleanArc.Application.Features.CampaignTargetItems.Command.CreateCampaignTargetItemsCommand.CreateCampaignTargetItemsCommandHandler.Handle(CreateCampaignTargetItemsCommand request, CancellationToken cancellationToken) in D:\OAT\Backend\LLP_Core\src\Core\CleanArc.Application\Features\CampaignTargetItems\Command\CreateCampaignTargetItemsCommand\CreateCampaignTargetItemsCommand.Handler.cs:line 52
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Create(TCreateCommand model) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 115
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:c93c0fa9-8b99-409d-98f4-5d65913b6691
+Error Number:2812,State:62,Class:16
+2024-12-02 12:40:09.264 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/Create application/json 75 - 500 - - 48463.4411ms
+2024-12-02 12:40:10.296 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-12-02 12:40:10.401 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-12-02 12:40:10.413 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:40:10.418 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 121.2904ms
+2024-12-02 12:40:10.534 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-12-02 12:40:10.537 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 13768 application/javascript;+charset=utf-8 3.9634ms
+2024-12-02 12:40:10.546 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-12-02 12:40:10.590 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 43.5240ms
+2024-12-02 12:40:10.892 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-12-02 12:40:10.900 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-12-02 12:40:11.574 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:40:11.579 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 686.7053ms
+2024-12-02 12:40:34.849 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/Create application/json 75
+2024-12-02 12:40:34.851 +05:00 [INF] CORS policy execution successful.
+2024-12-02 12:40:34.853 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/Create, Content-Type: application/json
+2024-12-02 12:40:34.855 +05:00 [INF] Request Body: {
+  "campaignTargetID": 1,
+  "campaignItemIDs": "1,2,3",
+  "createdBy": 1
+}
+2024-12-02 12:40:34.863 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-12-02 12:40:34.867 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-12-02 12:40:34.868 +05:00 [INF] Response StatusCode: 401
+2024-12-02 12:40:34.870 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/Create application/json 75 - 401 - application/json;+charset=utf-8 20.6531ms
+2024-12-02 12:40:50.376 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/Create application/json 75
+2024-12-02 12:40:50.382 +05:00 [INF] CORS policy execution successful.
+2024-12-02 12:40:50.385 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/Create, Content-Type: application/json
+2024-12-02 12:40:50.388 +05:00 [INF] Request Body: {
+  "campaignTargetID": 1,
+  "campaignItemIDs": "1,2,3",
+  "createdBy": 1
+}
+2024-12-02 12:40:50.425 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-12-02 12:40:50.433 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/Create, Content-Type: application/json
+2024-12-02 12:40:50.438 +05:00 [INF] Request Body: {
+  "campaignTargetID": 1,
+  "campaignItemIDs": "1,2,3",
+  "createdBy": 1
+}
+2024-12-02 12:40:50.442 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api)'
+2024-12-02 12:40:50.450 +05:00 [INF] Route matched with {action = "Create", controller = "CampaignTargetItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.CampaignTargetItems.Command.CreateCampaignTargetItemsCommand.CreateCampaignTargetItemsCommand) on controller CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController (CleanArc.Web.Api).
+2024-12-02 12:40:53.056 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-02 12:40:53.061 +05:00 [INF] Entering CleanArc.Application.Features.CampaignTargetItems.Command.CreateCampaignTargetItemsCommand, Handle with parameter: {"CampaignTargetID":1,"CampaignItemIDs":"1,2,3","CreatedBy":1,"UserId":1006}
+2024-12-02 12:40:53.065 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-12-02 12:40:53.072 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"192cf2e7-5385-4967-969e-c168de49c092","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":"2024-10-08T05:00:57.8364177+00:00","LockoutEnabled":false,"AccessFailedCount":4}
+2024-12-02 12:40:53.077 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"CampaignTargetID":1,"CampaignItemIDs":"1,2,3","IsActive":null,"IsDeleted":null,"CreatedBy":1006,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null}
+2024-12-02 12:40:56.326 +05:00 [INF] Exiting null, AddAsync
+2024-12-02 12:40:59.450 +05:00 [INF] Exiting null, Handle
+2024-12-02 12:41:02.196 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api) in 11742.8228ms
+2024-12-02 12:41:02.198 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api)'
+2024-12-02 12:42:12.299 +05:00 [ERR] Procedure or function 'Create_CampaignTargetItems' expects parameter '@CultureId', which was not supplied.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function 'Create_CampaignTargetItems' expects parameter '@CultureId', which was not supplied.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 489
+   at CleanArc.Infrastructure.Persistence.Repositories.CampaignTargetItemsRepository.AddAsync(CampaignTargetItems CampaignTargetItems) in D:\OAT\Backend\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\CampaignTargetItemsRepository.cs:line 82
+   at CleanArc.Application.Features.CampaignTargetItems.Command.CreateCampaignTargetItemsCommand.CreateCampaignTargetItemsCommandHandler.Handle(CreateCampaignTargetItemsCommand request, CancellationToken cancellationToken)
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Create(TCreateCommand model) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 115
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:c93c0fa9-8b99-409d-98f4-5d65913b6691
+Error Number:201,State:4,Class:16
+2024-12-02 12:42:12.382 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/Create application/json 75 - 500 - - 82006.4279ms
+2024-12-02 12:42:13.447 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-12-02 12:42:13.535 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-12-02 12:42:13.557 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:42:13.562 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 115.5381ms
+2024-12-02 12:42:13.749 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-12-02 12:42:13.753 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 13768 application/javascript;+charset=utf-8 3.7208ms
+2024-12-02 12:42:13.765 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-12-02 12:42:13.774 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 8.6150ms
+2024-12-02 12:42:14.065 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-12-02 12:42:14.070 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-12-02 12:42:14.646 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:42:14.653 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 587.7984ms
+2024-12-02 12:42:38.644 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/Create application/json 75
+2024-12-02 12:42:38.649 +05:00 [INF] CORS policy execution successful.
+2024-12-02 12:42:38.655 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/Create, Content-Type: application/json
+2024-12-02 12:42:38.658 +05:00 [INF] Request Body: {
+  "campaignTargetID": 1,
+  "campaignItemIDs": "1,2,3",
+  "createdBy": 1
+}
+2024-12-02 12:42:38.693 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-12-02 12:42:38.698 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/Create, Content-Type: application/json
+2024-12-02 12:42:38.702 +05:00 [INF] Request Body: {
+  "campaignTargetID": 1,
+  "campaignItemIDs": "1,2,3",
+  "createdBy": 1
+}
+2024-12-02 12:42:38.705 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api)'
+2024-12-02 12:42:38.716 +05:00 [INF] Route matched with {action = "Create", controller = "CampaignTargetItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.CampaignTargetItems.Command.CreateCampaignTargetItemsCommand.CreateCampaignTargetItemsCommand) on controller CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController (CleanArc.Web.Api).
+2024-12-02 12:42:40.542 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-02 12:42:40.552 +05:00 [INF] Entering CleanArc.Application.Features.CampaignTargetItems.Command.CreateCampaignTargetItemsCommand, Handle with parameter: {"CampaignTargetID":1,"CampaignItemIDs":"1,2,3","CreatedBy":1,"UserId":1006}
+2024-12-02 12:42:40.555 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-12-02 12:42:40.558 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"192cf2e7-5385-4967-969e-c168de49c092","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":"2024-10-08T05:00:57.8364177+00:00","LockoutEnabled":false,"AccessFailedCount":4}
+2024-12-02 12:42:40.561 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"CampaignTargetID":1,"CampaignItemIDs":"1,2,3","IsActive":null,"IsDeleted":null,"CreatedBy":1006,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null}
+2024-12-02 12:42:41.332 +05:00 [INF] Exiting null, AddAsync
+2024-12-02 12:42:41.366 +05:00 [INF] Exiting null, Handle
+2024-12-02 12:42:41.439 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api) in 2717.1282ms
+2024-12-02 12:42:41.442 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api)'
+2024-12-02 12:42:41.647 +05:00 [ERR] Procedure or function 'Create_CampaignTargetItems' expects parameter '@CultureId', which was not supplied.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function 'Create_CampaignTargetItems' expects parameter '@CultureId', which was not supplied.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 489
+   at CleanArc.Infrastructure.Persistence.Repositories.CampaignTargetItemsRepository.AddAsync(CampaignTargetItems CampaignTargetItems) in D:\OAT\Backend\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\CampaignTargetItemsRepository.cs:line 82
+   at CleanArc.Application.Features.CampaignTargetItems.Command.CreateCampaignTargetItemsCommand.CreateCampaignTargetItemsCommandHandler.Handle(CreateCampaignTargetItemsCommand request, CancellationToken cancellationToken)
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Create(TCreateCommand model) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 115
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:c93c0fa9-8b99-409d-98f4-5d65913b6691
+Error Number:201,State:4,Class:16
+2024-12-02 12:42:41.661 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/Create application/json 75 - 500 - - 3017.0450ms
+2024-12-02 12:42:45.988 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/Create application/json 75
+2024-12-02 12:42:45.992 +05:00 [INF] CORS policy execution successful.
+2024-12-02 12:42:46.001 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/Create, Content-Type: application/json
+2024-12-02 12:42:46.006 +05:00 [INF] Request Body: {
+  "campaignTargetID": 1,
+  "campaignItemIDs": "1,2,3",
+  "createdBy": 1
+}
+2024-12-02 12:42:46.056 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-12-02 12:42:46.064 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/Create, Content-Type: application/json
+2024-12-02 12:42:46.070 +05:00 [INF] Request Body: {
+  "campaignTargetID": 1,
+  "campaignItemIDs": "1,2,3",
+  "createdBy": 1
+}
+2024-12-02 12:42:46.075 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api)'
+2024-12-02 12:42:46.079 +05:00 [INF] Route matched with {action = "Create", controller = "CampaignTargetItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.CampaignTargetItems.Command.CreateCampaignTargetItemsCommand.CreateCampaignTargetItemsCommand) on controller CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController (CleanArc.Web.Api).
+2024-12-02 12:42:47.456 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-02 12:42:47.461 +05:00 [INF] Entering CleanArc.Application.Features.CampaignTargetItems.Command.CreateCampaignTargetItemsCommand, Handle with parameter: {"CampaignTargetID":1,"CampaignItemIDs":"1,2,3","CreatedBy":1,"UserId":1006}
+2024-12-02 12:42:47.462 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-12-02 12:42:47.464 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"192cf2e7-5385-4967-969e-c168de49c092","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":"2024-10-08T05:00:57.8364177+00:00","LockoutEnabled":false,"AccessFailedCount":4}
+2024-12-02 12:42:47.466 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"CampaignTargetID":1,"CampaignItemIDs":"1,2,3","IsActive":null,"IsDeleted":null,"CreatedBy":1006,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null}
+2024-12-02 12:42:51.135 +05:00 [INF] Exiting null, AddAsync
+2024-12-02 12:42:52.658 +05:00 [INF] Exiting null, Handle
+2024-12-02 12:42:54.347 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api) in 8265.0955ms
+2024-12-02 12:42:54.349 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api)'
+2024-12-02 12:43:19.733 +05:00 [ERR] Procedure or function 'Create_CampaignTargetItems' expects parameter '@CultureId', which was not supplied.
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function 'Create_CampaignTargetItems' expects parameter '@CultureId', which was not supplied.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 489
+   at CleanArc.Infrastructure.Persistence.Repositories.CampaignTargetItemsRepository.AddAsync(CampaignTargetItems CampaignTargetItems) in D:\OAT\Backend\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\CampaignTargetItemsRepository.cs:line 82
+   at CleanArc.Application.Features.CampaignTargetItems.Command.CreateCampaignTargetItemsCommand.CreateCampaignTargetItemsCommandHandler.Handle(CreateCampaignTargetItemsCommand request, CancellationToken cancellationToken)
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.Create(TCreateCommand model) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 115
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\OAT\Backend\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:c93c0fa9-8b99-409d-98f4-5d65913b6691
+Error Number:201,State:4,Class:16
+2024-12-02 12:43:19.818 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/Create application/json 75 - 500 - - 33829.8346ms
+2024-12-02 12:43:20.790 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-12-02 12:43:20.853 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-12-02 12:43:20.876 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:43:20.881 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 90.4865ms
+2024-12-02 12:43:20.945 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-12-02 12:43:20.950 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 13768 application/javascript;+charset=utf-8 4.8218ms
+2024-12-02 12:43:21.088 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-12-02 12:43:21.110 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 22.3619ms
+2024-12-02 12:43:21.304 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-12-02 12:43:21.307 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-12-02 12:43:21.957 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:43:21.961 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 657.3130ms
+2024-12-02 12:43:45.605 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/Create application/json 71
+2024-12-02 12:43:45.609 +05:00 [INF] CORS policy execution successful.
+2024-12-02 12:43:45.614 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/Create, Content-Type: application/json
+2024-12-02 12:43:45.619 +05:00 [INF] Request Body: {
+  "campaignTargetID": 1,
+  "campaignItemIDs": "1",
+  "createdBy": 1
+}
+2024-12-02 12:43:45.640 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-12-02 12:43:45.645 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/Create, Content-Type: application/json
+2024-12-02 12:43:45.649 +05:00 [INF] Request Body: {
+  "campaignTargetID": 1,
+  "campaignItemIDs": "1",
+  "createdBy": 1
+}
+2024-12-02 12:43:45.655 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api)'
+2024-12-02 12:43:45.673 +05:00 [INF] Route matched with {action = "Create", controller = "CampaignTargetItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.CampaignTargetItems.Command.CreateCampaignTargetItemsCommand.CreateCampaignTargetItemsCommand) on controller CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController (CleanArc.Web.Api).
+2024-12-02 12:43:48.804 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-02 12:43:48.809 +05:00 [INF] Entering CleanArc.Application.Features.CampaignTargetItems.Command.CreateCampaignTargetItemsCommand, Handle with parameter: {"CampaignTargetID":1,"CampaignItemIDs":"1","CreatedBy":1,"UserId":1006}
+2024-12-02 12:43:48.811 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-12-02 12:43:48.812 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"192cf2e7-5385-4967-969e-c168de49c092","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":"2024-10-08T05:00:57.8364177+00:00","LockoutEnabled":false,"AccessFailedCount":4}
+2024-12-02 12:43:48.813 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"CampaignTargetID":1,"CampaignItemIDs":"1","IsActive":null,"IsDeleted":null,"CreatedBy":1006,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null}
+2024-12-02 12:43:52.228 +05:00 [INF] Exiting null, AddAsync
+2024-12-02 12:43:56.085 +05:00 [INF] Exiting null, Handle
+2024-12-02 12:43:58.921 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api) in 13241.2481ms
+2024-12-02 12:43:58.923 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api)'
+2024-12-02 12:46:07.634 +05:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-12-02 12:46:07.762 +05:00 [INF] Executed DbCommand (46ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-12-02 12:46:07.772 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-12-02 12:46:07.779 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-12-02 12:46:07.802 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-12-02 12:46:07.823 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-12-02 12:46:07.833 +05:00 [INF] User profile is available. Using 'C:\Users\SHPL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-12-02 12:46:08.124 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-12-02 12:46:08.144 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-12-02 12:46:08.546 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-12-02 12:46:08.885 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-12-02 12:46:09.115 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:46:09.128 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-12-02 12:46:09.136 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 600.4556ms
+2024-12-02 12:46:09.141 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 13768 application/javascript;+charset=utf-8 12.3908ms
+2024-12-02 12:46:09.167 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-12-02 12:46:09.244 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 76.7121ms
+2024-12-02 12:46:09.312 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-12-02 12:46:09.323 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-12-02 12:46:10.687 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:46:10.696 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1384.2017ms
+2024-12-02 12:46:34.646 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/Create application/json 71
+2024-12-02 12:46:34.651 +05:00 [INF] CORS policy execution successful.
+2024-12-02 12:46:34.656 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/Create, Content-Type: application/json
+2024-12-02 12:46:34.661 +05:00 [INF] Request Body: {
+  "campaignTargetID": 1,
+  "campaignItemIDs": "1",
+  "createdBy": 1
+}
+2024-12-02 12:46:34.668 +05:00 [WRN] Failed to determine the https port for redirect.
+2024-12-02 12:46:35.028 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-12-02 12:46:35.106 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/Create, Content-Type: application/json
+2024-12-02 12:46:35.108 +05:00 [INF] Request Body: {
+  "campaignTargetID": 1,
+  "campaignItemIDs": "1",
+  "createdBy": 1
+}
+2024-12-02 12:46:35.112 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api)'
+2024-12-02 12:46:35.130 +05:00 [INF] Route matched with {action = "Create", controller = "CampaignTargetItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.CampaignTargetItems.Command.CreateCampaignTargetItemsCommand.CreateCampaignTargetItemsCommand) on controller CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController (CleanArc.Web.Api).
+2024-12-02 12:46:38.643 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-02 12:46:38.928 +05:00 [INF] Entering CleanArc.Application.Features.CampaignTargetItems.Command.CreateCampaignTargetItemsCommand, Handle with parameter: {"CampaignTargetID":1,"CampaignItemIDs":"1","CreatedBy":1,"UserId":1006}
+2024-12-02 12:46:38.932 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-12-02 12:46:38.951 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"192cf2e7-5385-4967-969e-c168de49c092","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":"2024-10-08T05:00:57.8364177+00:00","LockoutEnabled":false,"AccessFailedCount":4}
+2024-12-02 12:46:39.161 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"CampaignTargetID":1,"CampaignItemIDs":"1","IsActive":null,"IsDeleted":null,"CreatedBy":1006,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":null}
+2024-12-02 12:46:44.038 +05:00 [INF] Exiting null, AddAsync
+2024-12-02 12:46:50.748 +05:00 [INF] Exiting null, Handle with response: true
+2024-12-02 12:46:50.761 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 12108.8093ms.
+2024-12-02 12:46:50.773 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-02 12:46:50.787 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api) in 15651.5257ms
+2024-12-02 12:46:50.790 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Create (CleanArc.Web.Api)'
+2024-12-02 12:46:50.792 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:46:50.795 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:46:50.797 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/Create application/json 71 - 200 - application/json;+charset=utf-8 16151.7673ms
+2024-12-02 12:47:12.674 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/GetAll application/json 171
+2024-12-02 12:47:12.677 +05:00 [INF] CORS policy execution successful.
+2024-12-02 12:47:12.681 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/GetAll, Content-Type: application/json
+2024-12-02 12:47:12.685 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 11,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+          ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-02 12:47:12.706 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/GetAll, Content-Type: application/json
+2024-12-02 12:47:12.709 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 11,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+          ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-02 12:47:12.711 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetAll (CleanArc.Web.Api)'
+2024-12-02 12:47:12.715 +05:00 [INF] Route matched with {action = "GetAll", controller = "CampaignTargetItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.CampaignTargetItems.Queries.GetAllCampaignTargetItems.GetAllCampaignTargetItemsQuery) on controller CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController (CleanArc.Web.Api).
+2024-12-02 12:47:14.414 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-02 12:47:14.474 +05:00 [INF] Entering CleanArc.Application.Features.CampaignTargetItems.Queries.GetAllCampaignTargetItems, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":11,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-12-02 12:47:14.477 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":11,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-12-02 12:47:14.844 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":1,"CampaignTargetID":1,"CampaignItemIDs":"1","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-12-02T07:48:48.323","UpdatedBy":null,"UpdatedAt":null,"CultureId":null}]
+2024-12-02 12:47:14.867 +05:00 [INF] Exiting null, Handle with response: [{"ID":1,"CampaignTargetID":1,"CampaignItemIDs":"1","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-12-02T07:48:48.323","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}]
+2024-12-02 12:47:14.872 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 454.2047ms.
+2024-12-02 12:47:14.876 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-02 12:47:14.889 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetAll (CleanArc.Web.Api) in 2172.8149ms
+2024-12-02 12:47:14.892 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetAll (CleanArc.Web.Api)'
+2024-12-02 12:47:14.893 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:47:14.894 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:47:14.896 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/GetAll application/json 171 - 200 - application/json;+charset=utf-8 2221.6095ms
+2024-12-02 12:47:31.399 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/api/v1/CampaignTargetItems/GetById/1 - -
+2024-12-02 12:47:31.403 +05:00 [INF] Request Method: GET, Path: /api/v1/CampaignTargetItems/GetById/1, Content-Type: null
+2024-12-02 12:47:31.410 +05:00 [INF] Request Method: GET, Path: /api/v1/CampaignTargetItems/GetById/1, Content-Type: null
+2024-12-02 12:47:31.413 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetById (CleanArc.Web.Api)'
+2024-12-02 12:47:31.421 +05:00 [INF] Route matched with {action = "GetById", controller = "CampaignTargetItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController (CleanArc.Web.Api).
+2024-12-02 12:47:34.028 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-02 12:47:34.057 +05:00 [INF] Entering CleanArc.Application.Features.CampaignTargetItems.Queries.GetCampaignTargetItemsById, Handle with parameter: {"Id":1}
+2024-12-02 12:47:34.077 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 1
+2024-12-02 12:47:34.738 +05:00 [INF] Exiting null, GetByIdAsync with response: {"ID":1,"CampaignTargetID":1,"CampaignItemIDs":"1","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-12-02T07:48:48.323","UpdatedBy":null,"UpdatedAt":null,"CultureId":null}
+2024-12-02 12:47:34.798 +05:00 [INF] Exiting null, Handle with response: {"ID":1,"CampaignTargetID":1,"CampaignItemIDs":"1","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-12-02T07:48:48.323","UpdatedBy":null,"UpdatedAt":null}
+2024-12-02 12:47:34.819 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetById (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 786.9961ms.
+2024-12-02 12:47:34.822 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-02 12:47:34.829 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetById (CleanArc.Web.Api) in 3404.1637ms
+2024-12-02 12:47:34.831 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.GetById (CleanArc.Web.Api)'
+2024-12-02 12:47:34.834 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:47:34.838 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:47:34.843 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/api/v1/CampaignTargetItems/GetById/1 - - - 200 - application/json;+charset=utf-8 3443.4633ms
+2024-12-02 12:47:57.502 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/Update application/json 88
+2024-12-02 12:47:57.507 +05:00 [INF] CORS policy execution successful.
+2024-12-02 12:47:57.510 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/Update, Content-Type: application/json
+2024-12-02 12:47:57.512 +05:00 [INF] Request Body: {
+  "id": 1,
+  "campaignTargetID": 1,
+  "campaignItemIDs": "1,2,3",
+  "updatedBy": 120
+}
+2024-12-02 12:47:57.537 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-12-02 12:47:57.542 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/Update, Content-Type: application/json
+2024-12-02 12:47:57.544 +05:00 [INF] Request Body: {
+  "id": 1,
+  "campaignTargetID": 1,
+  "campaignItemIDs": "1,2,3",
+  "updatedBy": 120
+}
+2024-12-02 12:47:57.545 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Update (CleanArc.Web.Api)'
+2024-12-02 12:47:57.548 +05:00 [INF] Route matched with {action = "Update", controller = "CampaignTargetItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.CampaignTargetItems.Command.UpdateCampaignTargetItemsCommand.UpdateCampaignTargetItemsCommand) on controller CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController (CleanArc.Web.Api).
+2024-12-02 12:47:59.466 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-02 12:47:59.483 +05:00 [INF] Entering CleanArc.Application.Features.CampaignTargetItems.Command.UpdateCampaignTargetItemsCommand, Handle with parameter: {"ID":1,"CampaignTargetID":1,"CampaignItemIDs":"1,2,3","UpdatedBy":120,"UserId":1006}
+2024-12-02 12:47:59.485 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-12-02 12:47:59.488 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"192cf2e7-5385-4967-969e-c168de49c092","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":"2024-10-08T05:00:57.8364177+00:00","LockoutEnabled":false,"AccessFailedCount":4}
+2024-12-02 12:47:59.491 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":1,"CampaignTargetID":1,"CampaignItemIDs":"1,2,3","IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":1006,"UpdatedAt":null,"CultureId":null}
+2024-12-02 12:48:04.810 +05:00 [INF] Exiting null, UpdateAsync with response: {"IsSuccess":true,"Message":"","RecordID":1}
+2024-12-02 12:48:04.814 +05:00 [INF] Exiting null, Handle with response: true
+2024-12-02 12:48:04.817 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Update (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 5348.7241ms.
+2024-12-02 12:48:04.821 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-02 12:48:04.824 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Update (CleanArc.Web.Api) in 7274.8036ms
+2024-12-02 12:48:04.827 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Update (CleanArc.Web.Api)'
+2024-12-02 12:48:04.828 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:48:04.831 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:48:04.833 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/Update application/json 88 - 200 - application/json;+charset=utf-8 7330.4194ms
+2024-12-02 12:48:22.302 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/Delete application/json 61
+2024-12-02 12:48:22.308 +05:00 [INF] CORS policy execution successful.
+2024-12-02 12:48:22.312 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/Delete, Content-Type: application/json
+2024-12-02 12:48:22.315 +05:00 [INF] Request Body: {
+  "selectedIds": "1",
+  "updatedBy": 12,
+  "cultureId": 1
+}
+2024-12-02 12:48:22.336 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-12-02 12:48:22.343 +05:00 [INF] Request Method: POST, Path: /api/v1/CampaignTargetItems/Delete, Content-Type: application/json
+2024-12-02 12:48:22.345 +05:00 [INF] Request Body: {
+  "selectedIds": "1",
+  "updatedBy": 12,
+  "cultureId": 1
+}
+2024-12-02 12:48:22.348 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Delete (CleanArc.Web.Api)'
+2024-12-02 12:48:22.359 +05:00 [INF] Route matched with {action = "Delete", controller = "CampaignTargetItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(CleanArc.Application.Features.CampaignTargetItems.Command.DeleteCampaignTargetItemsCommand.DeleteCampaignTargetItemsCommand) on controller CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController (CleanArc.Web.Api).
+2024-12-02 12:48:24.186 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Delete (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-02 12:48:24.195 +05:00 [INF] Entering CleanArc.Application.Features.CampaignTargetItems.Command.DeleteCampaignTargetItemsCommand, Handle with parameter: {"SelectedIds":"1","UpdatedBy":12,"CultureId":1,"UserId":1006}
+2024-12-02 12:48:24.197 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-12-02 12:48:24.199 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"192cf2e7-5385-4967-969e-c168de49c092","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":"2024-10-08T05:00:57.8364177+00:00","LockoutEnabled":false,"AccessFailedCount":4}
+2024-12-02 12:48:24.204 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, DeleteAsync with parameter: {"selectedIds":"1","updatedBy":1006}
+2024-12-02 12:48:28.787 +05:00 [INF] Exiting null, DeleteAsync with response: {"IsSuccess":true,"Message":"CustomerView Has been deleted Successfully","RecordID":1}
+2024-12-02 12:48:28.790 +05:00 [INF] Exiting null, Handle
+2024-12-02 12:48:28.793 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Delete (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4603.7661ms.
+2024-12-02 12:48:28.795 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-02 12:48:28.800 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Delete (CleanArc.Web.Api) in 6435.8025ms
+2024-12-02 12:48:28.803 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.CampaignTargetItems.CampaignTargetItemsController.Delete (CleanArc.Web.Api)'
+2024-12-02 12:48:28.805 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:48:28.807 +05:00 [INF] Response StatusCode: 200
+2024-12-02 12:48:28.809 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/CampaignTargetItems/Delete application/json 61 - 200 - application/json;+charset=utf-8 6507.2293ms

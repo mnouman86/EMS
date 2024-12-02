@@ -17,5 +17,7 @@ public class CampaignTargetItems
     public DateTime? CreatedAt { get; set; }
     public int? UpdatedBy { get; set; }
     public DateTime? UpdatedAt { get; set; }
+    public int? CultureId { get; set; }
+
 
 }

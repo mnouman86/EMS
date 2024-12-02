@@ -11,4 +11,5 @@ public class CreateCampaignTargetItemsDTO
     public int? CampaignTargetID { get; set; }
     public string? CampaignItemIDs { get; set; }
     public int? CreatedBy { get; set; }
+    public int? CultureId { get; set; }
 }
