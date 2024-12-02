@@ -48,7 +48,7 @@ internal class UpdateCampaignTargetCommandHandler : IRequestHandler<UpdateCampai
                 return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
 
-            var result = await _unitOfWork.CampaignTargetRepository.UpdateAsync(new Domain.Entities.CampaignTarget.CampaignTargetItems()
+            var result = await _unitOfWork.CampaignTargetRepository.UpdateAsync(new Domain.Entities.CampaignTarget.CampaignTarget()
             { UpdatedBy = user.Id, ID = request.ID,
                 CampaignID = request.CampaignID,
                 GenericTitleID = request.GenericTitleID,

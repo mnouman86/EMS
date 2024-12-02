@@ -13,6 +13,9 @@ public class GetAllCampaignTargetQueryResult
     public int? CampaignID { get; set; }
     public int? GenericTitleID { get; set; }
     public int? ServiceCategoryID { get; set; }
+    public string? CampaignName { get; set; }
+    public string? GenericTitle { get; set; }
+    public string? ServiceCategoryName { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }
