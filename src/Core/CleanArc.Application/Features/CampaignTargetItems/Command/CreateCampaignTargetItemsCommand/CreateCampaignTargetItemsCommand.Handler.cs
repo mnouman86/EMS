@@ -52,7 +52,8 @@ internal class CreateCampaignTargetItemsCommandHandler : IRequestHandler<CreateC
             var result = await _unitOfWork.CampaignTargetItemsRepository.AddAsync(new Domain.Entities.CampaignTargetItems.CampaignTargetItems()
             { CreatedBy = user.Id,
                 CampaignTargetID = request.CampaignTargetID,
-                CampaignItemIDs = request.CampaignItemIDs
+                CampaignItemIDs = request.CampaignItemIDs,
+                ApplyAllItem= request.ApplyAllItem,
                  });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

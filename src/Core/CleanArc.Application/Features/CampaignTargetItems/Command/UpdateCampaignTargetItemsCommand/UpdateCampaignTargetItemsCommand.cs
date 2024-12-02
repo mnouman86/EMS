@@ -14,6 +14,7 @@ namespace CleanArc.Application.Features.CampaignTargetItems.Command.UpdateCampai
 
 public record UpdateCampaignTargetItemsCommand(int ID, int CampaignTargetID,
 string CampaignItemIDs,
+bool ApplyAllItem,
 int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateCampaignTargetItemsCommand>
 {

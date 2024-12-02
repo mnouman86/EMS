@@ -12,6 +12,8 @@ namespace CleanArc.Application.Models.CampaignTargetItems
         public int? CampaignTargetID { get; set; }
         public string? CampaignItemIDs { get; set; }
         public int? UpdatedBy { get; set; }
+        public bool? ApplyAllItem { get; set; }
+
         public int? CultureId { get; set; }
         
     }

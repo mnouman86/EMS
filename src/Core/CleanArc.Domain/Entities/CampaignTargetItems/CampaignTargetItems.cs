@@ -11,6 +11,8 @@ public class CampaignTargetItems
     public int ID { get; set; }
     public int? CampaignTargetID { get; set; }
     public string? CampaignItemIDs { get; set; }
+    public bool? ApplyAllItem { get; set; }
+
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }
