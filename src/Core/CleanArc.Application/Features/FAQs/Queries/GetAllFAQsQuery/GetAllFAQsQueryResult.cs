@@ -9,8 +9,8 @@ namespace CleanArc.Application.Features.FAQs.Queries.GetAllFAQs;
 public class GetAllFAQsQueryResult
 {
     public int ID { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
+    public string CategoryServiceName { get; set; }
+    public string ServiceName { get; set; }
     public bool IsDeleted { get; set; }
     public bool IsActive { get; set; }
     public int CreatedBy { get; set; }
