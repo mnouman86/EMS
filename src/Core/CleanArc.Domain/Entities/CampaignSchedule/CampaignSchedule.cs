@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Domain.Entities.Campaign;
+namespace CleanArc.Domain.Entities.CampaignSchedule;
 
-public class Campaign
+public class CampaignSchedule
 {
     public int ID { get; set; }
     public string? Title { get; set; }
