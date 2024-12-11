@@ -74,7 +74,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     {
                         PageNumber = searchRequest.PageNumber,
                         PageSize = searchRequest.PageSize,
-                         BusinessName = searchRequest.BusinessName,
+                         Name = searchRequest.Name,
                          CityName = searchRequest.CityName,
                          CarModel = searchRequest.CarModel,
                          MaxPrice = searchRequest.MaxPrice,

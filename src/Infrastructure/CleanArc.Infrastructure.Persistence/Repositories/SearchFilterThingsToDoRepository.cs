@@ -127,7 +127,7 @@ public class SearchFilterThingsToDoRepository:ISearchFilterThingsToDoRepository
                 {
                     PageNumber = searchRequest.PageNumber,
                     PageSize = searchRequest.PageSize,
-                    ActivityName = searchRequest.ActivityName,
+                    Name = searchRequest.Name,
                     CityName= searchRequest.CityName,
                     MaxPrice = searchRequest.MaxPrice,
                     MinPrice = searchRequest.MinPrice,
