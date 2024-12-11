@@ -11,7 +11,7 @@ public class GetAllSearchFilterThingsToDoQueryResult
 {
     public int? CityID { get; set; }                 // Maps to C.ID AS CityID
     public string? CityName { get; set; }            // ISNULL(C.Name, '''') AS CityName
-    public string? ActivityName { get; set; }        // ISNULL(A.Title, '''') AS ActivityName
+    public string? Name { get; set; }        // ISNULL(A.Title, '''') AS ActivityName
     public string? SeasonName { get; set; }          // ISNULL(LS.Name, '''') AS SeasonName
     public decimal? ActivityPrice { get; set; }      // ISNULL(A.PerPersonPrice, 0) AS ActivityPrice
     public decimal? DiscountPercentage { get; set; } // Maps to DiscountPercentage
@@ -19,7 +19,11 @@ public class GetAllSearchFilterThingsToDoQueryResult
     public decimal? DiscountedPrice { get; set; }    // Maps to DiscountedPrice
     public int? Days { get; set; }                   // ISNULL(A.Days, 0) AS Days
     public int? Hours { get; set; }                  // ISNULL(A.Hours, 0) AS Hours
-    public bool? IsActive { get; set; }
+
+	public string? Duration { get; set; }
+
+	public bool? IsActive { get; set; }
+
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }
     public DateTime? CreatedAt { get; set; }
