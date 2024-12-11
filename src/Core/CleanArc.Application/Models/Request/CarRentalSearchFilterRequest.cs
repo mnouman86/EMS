@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.Request
 {
     public class CarRentalSearchFilterRequest : SearchRequest
     {
-        public string? BusinessName { get; set; }
+        public string? Name { get; set; }
         public string? CityName { get; set; }
         public string? CarModel { get; set; }
         public decimal? MaxPrice { get; set; }

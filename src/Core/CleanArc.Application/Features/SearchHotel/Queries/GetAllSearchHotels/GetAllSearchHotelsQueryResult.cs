@@ -11,7 +11,7 @@ public class GetAllSearchHotelsQueryResult {
     public int ID { get; set; }
     public int HotelID { get; set; }
     public int CityID { get; set; }
-    public string HotelName { get; set; }
+    public string Name { get; set; }
     public string CityName { get; set; }
     public string CityDescription { get; set; }
     public string RoomTypeName { get; set; }
