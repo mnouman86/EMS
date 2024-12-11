@@ -4,19 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Domain.Entities.Campaign;
+namespace CleanArc.Application.Features.HomeSlider.Queries.GetHomeSliderById;
 
-public class Campaign
+public class GetHomeSliderByIdQueryResult
+//(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
 {
     public int ID { get; set; }
     public string? Title { get; set; }
     public string? Description { get; set; }
-    public string? StartDate { get; set; } // Changed to string
-    public string? EndDate { get; set; }   // Changed to string
-    public int? Duration { get; set; }
-    public string? DiscountType { get; set; }
-    public decimal? DiscountValue { get; set; }
-    public string? RecurrenceType { get; set; }
+    public string? Url { get; set; }
+    public string? Image { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }
@@ -26,5 +23,4 @@ public class Campaign
     public int? CultureId { get; set; }
     public int? Code { get; set; }
     public string? Message { get; set; }
-
 }

@@ -104,6 +104,8 @@ public class UnitOfWork : IUnitOfWork
     public ICustomerAwarenessRepository CustomerAwarenessRepository { get; set; }
     public ICampaignRepository CampaignRepository { get; set; }
     public IGroupActivityParticipantsRepository GroupActivityParticipantsRepository { get; set; }
+    public ICampaignScheduleRepository CampaignScheduleRepository { get; set; }
+    public IHomeSliderRepository HomeSliderRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -198,6 +200,8 @@ public class UnitOfWork : IUnitOfWork
            ILogger<CustomerAwarenessRepository> _loggerCustomerAwareness,
            ILogger<CampaignRepository> _loggerCampaign,
            ILogger<GroupActivityParticipantsRepository> _loggerGroupActivityParticipants,
+           ILogger<CampaignScheduleRepository> _loggerCampaignSchedule,
+           ILogger<HomeSliderRepository> _loggerHomeSlider,
 
 
 
@@ -297,6 +301,8 @@ public class UnitOfWork : IUnitOfWork
         CustomerAwarenessRepository = new CustomerAwarenessRepository(configuration, mapper, _loggerCustomerAwareness, httpContextAccessor);
         CampaignRepository = new CampaignRepository(configuration, mapper, _loggerCampaign, httpContextAccessor);
         GroupActivityParticipantsRepository = new GroupActivityParticipantsRepository(configuration, mapper, _loggerGroupActivityParticipants, httpContextAccessor);
+        CampaignScheduleRepository = new CampaignScheduleRepository(configuration, mapper, _loggerCampaignSchedule, httpContextAccessor);
+        HomeSliderRepository = new HomeSliderRepository(configuration, mapper, _loggerHomeSlider, httpContextAccessor);
 
         this.configuration = configuration;
 

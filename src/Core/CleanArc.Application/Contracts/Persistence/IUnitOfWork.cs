@@ -95,6 +95,8 @@ public interface IUnitOfWork
     public ICustomerAwarenessRepository CustomerAwarenessRepository { get; }
     public ICampaignRepository CampaignRepository { get; }
     public IGroupActivityParticipantsRepository GroupActivityParticipantsRepository { get; }
+    public ICampaignScheduleRepository CampaignScheduleRepository { get; }
+    public IHomeSliderRepository HomeSliderRepository { get; }
 
 
 
