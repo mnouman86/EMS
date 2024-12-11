@@ -99,6 +99,8 @@ public interface IUnitOfWork
 
 
     public IGroupActivityParticipantsRepository GroupActivityParticipantsRepository { get; }
+    public ICampaignScheduleRepository CampaignScheduleRepository { get; }
+    public IHomeSliderRepository HomeSliderRepository { get; }
 
 
 

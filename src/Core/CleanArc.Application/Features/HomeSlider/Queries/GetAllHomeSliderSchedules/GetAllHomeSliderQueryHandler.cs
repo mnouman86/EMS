@@ -11,18 +11,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.Campaign.Queries.GetAllCampaigns
+namespace CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders
 {
-    internal class GetAllCampaignSchedulesQueryHandler : IRequestHandler<GetAllCampaignsQuery, OperationResult<List<GetAllCampaignsQueryResult>>>
+    internal class GetAllHomeSliderSchedulesQueryHandler : IRequestHandler<GetAllHomeSlidersQuery, OperationResult<List<GetAllHomeSlidersQueryResult>>>
     {
 
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly ILogger<GetAllCampaignSchedulesQueryHandler> _logger;
+        private readonly ILogger<GetAllHomeSliderSchedulesQueryHandler> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
 
 
-        public GetAllCampaignSchedulesQueryHandler(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, ILogger<GetAllCampaignSchedulesQueryHandler> logger)
+        public GetAllHomeSliderSchedulesQueryHandler(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, ILogger<GetAllHomeSliderSchedulesQueryHandler> logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -31,16 +31,16 @@ namespace CleanArc.Application.Features.Campaign.Queries.GetAllCampaigns
 
         }
 
-        public async ValueTask<OperationResult<List<GetAllCampaignsQueryResult>>> Handle(GetAllCampaignsQuery request, CancellationToken cancellationToken)
+        public async ValueTask<OperationResult<List<GetAllHomeSlidersQueryResult>>> Handle(GetAllHomeSlidersQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var Campaign = await _unitOfWork.CampaignRepository.GetAllAsync(request.searchRequest);
+                var HomeSlider = await _unitOfWork.HomeSliderRepository.GetAllAsync(request.searchRequest);
 
                 //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-                var result = _mapper.Map<List<GetAllCampaignsQueryResult>>(Campaign);
+                var result = _mapper.Map<List<GetAllHomeSlidersQueryResult>>(HomeSlider);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return OperationResult<List<GetAllCampaignsQueryResult>>.SuccessResult(result);
+                return OperationResult<List<GetAllHomeSlidersQueryResult>>.SuccessResult(result);
             }
         }
     }
