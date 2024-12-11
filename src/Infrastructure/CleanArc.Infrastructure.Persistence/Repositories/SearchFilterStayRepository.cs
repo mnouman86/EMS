@@ -71,7 +71,7 @@ public class SearchFilterStayRepository : ISearchFilterStayRepository
 				{
 					PageNumber = searchRequest.PageNumber,
 					PageSize = searchRequest.PageSize,
-					HotelName = searchRequest.HotelName,
+					Name = searchRequest.Name,
 					MaxPrice = searchRequest.MaxPrice,
 					MinPrice = searchRequest.MinPrice,
 					HotelAmenities = searchRequest.HotelAmenities,
