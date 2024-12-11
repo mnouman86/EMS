@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Domain.Entities.Campaign;
+namespace CleanArc.Application.Features.CampaignSchedule.Queries.GetAllCampaignSchedules;
 
-public class Campaign
+public class GetAllCampaignSchedulesQueryResult
+//(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
 {
     public int ID { get; set; }
     public string? Title { get; set; }
@@ -16,7 +17,7 @@ public class Campaign
     public int? Duration { get; set; }
     public string? DiscountType { get; set; }
     public decimal? DiscountValue { get; set; }
-    public string? RecurrenceType { get; set; }
+    //public string? RecurrenceType { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }

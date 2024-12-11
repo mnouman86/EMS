@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Models.Campaign
+namespace CleanArc.Application.Models.CampaignSchedule
 {
-    public class UpdateCampaignDTO
+    public class UpdateCampaignScheduleDTO
     {
         public int ID { get; set; }
         public string? Title { get; set; }
