@@ -10,9 +10,14 @@ namespace CleanArc.Application.Features.FAQs.Queries.GetFAQsById
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
         public int ID { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public bool IsDeleted { get; set; }
+		public int CategoryServiceID { get; set; }
+		public int ServiceID { get; set; }
+		public int SubServiceID { get; set; }
+		public string ServiceName { get; set; }
+		public string Question { get; set; }
+		public string Answer { get; set; }
+		public string CategoryServiceName { get; set; }
+		public bool IsDeleted { get; set; }
         public bool IsActive { get; set; }
         public int CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; }
