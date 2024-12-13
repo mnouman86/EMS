@@ -1,10 +1,10 @@
 ﻿using Azure.Core;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Models.Campaign;
+using CleanArc.Application.Models.HomeSlider;
 using CleanArc.Application.Models.Advertisement;
 using CleanArc.Application.Models.Request;
 using CleanArc.Application.Models.URL;
-using CleanArc.Domain.Entities.Campaign;
+using CleanArc.Domain.Entities.HomeSlider;
 using CleanArc.Domain.Entities.UserManagement;
 using CleanArc.Infrastructure.Persistence.Helpers;
 using CleanArc.Infrastructure.Sql;
@@ -31,7 +31,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories;
 /// Repository implementation for handling operations related to menus.
 /// </summary>
 /// <seealso cref="CleanArc.Application.Contracts.Persistence.IMenuRepository" />
-public class CampaignRepository : ICampaignRepository
+public class HomeSliderRepository : IHomeSliderRepository
 {
     /// <summary>
     /// The configuration for accessing application settings.
@@ -46,7 +46,7 @@ public class CampaignRepository : ICampaignRepository
     /// <summary>
     /// The logger for logging repository-related information.
     /// </summary>
-    private readonly ILogger<CampaignRepository> _logger;
+    private readonly ILogger<HomeSliderRepository> _logger;
 
     /// <summary>
     /// The HTTP context accessor for accessing HTTP context information.
@@ -60,7 +60,7 @@ public class CampaignRepository : ICampaignRepository
     /// <param name="mapper">The mapper for mapping between different object types.</param>
     /// <param name="logger">The logger for logging repository-related information.</param>
     /// <param name="httpContextAccessor">The HTTP context accessor for accessing HTTP context information.</param>
-    public CampaignRepository(IConfiguration configuration, IMapper mapper, ILogger<CampaignRepository> logger, IHttpContextAccessor httpContextAccessor)
+    public HomeSliderRepository(IConfiguration configuration, IMapper mapper, ILogger<HomeSliderRepository> logger, IHttpContextAccessor httpContextAccessor)
     {
         this.configuration = configuration;
         this._mapper = mapper;
@@ -68,22 +68,22 @@ public class CampaignRepository : ICampaignRepository
         _httpContextAccessor = httpContextAccessor;
     }
     /// <inheritdoc/>
-    public async Task<ResponseEntity> AddAsync(Campaign Campaign)
+    public async Task<ResponseEntity> AddAsync(HomeSlider HomeSlider)
     {
-        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, Campaign))
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, HomeSlider))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                CreateCampaignDTO createCampaignDTO = _mapper.Map<CreateCampaignDTO>(Campaign);
-                var parameters = new DynamicParameters(createCampaignDTO);
+                CreateHomeSliderDTO createHomeSliderDTO = _mapper.Map<CreateHomeSliderDTO>(HomeSlider);
+                var parameters = new DynamicParameters(createHomeSliderDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-               // parameters.Add("@CampaignID", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignQueries.Create_Campaign, parameters, commandType: CommandType.StoredProcedure);
-                //var result = await connection.QuerySingleOrDefaultAsync<int>(CampaignQueries.Create_Campaign, parameters, commandType: CommandType.StoredProcedure);
+               // parameters.Add("@HomeSliderID", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HomeSliderQueries.Create_HomeSlider, parameters, commandType: CommandType.StoredProcedure);
+                //var result = await connection.QuerySingleOrDefaultAsync<int>(HomeSliderQueries.Create_HomeSlider, parameters, commandType: CommandType.StoredProcedure);
 
-                // var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignQueries.Create_Campaign, parameters, commandType: CommandType.StoredProcedure);
+                // var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HomeSliderQueries.Create_HomeSlider, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -104,14 +104,14 @@ public class CampaignRepository : ICampaignRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignQueries.Delete_Campaign, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HomeSliderQueries.Delete_HomeSlider, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
     }
 
-    public async Task<IReadOnlyList<Campaign>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<IReadOnlyList<HomeSlider>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -126,7 +126,7 @@ public class CampaignRepository : ICampaignRepository
                 parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                //parameters.Add("@CampaignID", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                //parameters.Add("@HomeSliderID", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                 //    var parameters = new
                 //    {
@@ -142,13 +142,13 @@ public class CampaignRepository : ICampaignRepository
                 //        Message = ("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output)
 
                 //};
-                var result = await connection.QueryAsync<Campaign>(CampaignQueries.usp_GetALL_Campaign, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<HomeSlider>(HomeSliderQueries.usp_GetALL_HomeSlider, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }
         }
     }
-    public async Task<Campaign> GetByIdAsync(long id)
+    public async Task<HomeSlider> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
         {
@@ -161,7 +161,7 @@ public class CampaignRepository : ICampaignRepository
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<Campaign>(CampaignQueries.usp_GetByID_Campaign, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<HomeSlider>(HomeSliderQueries.usp_GetByID_HomeSlider, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -170,18 +170,18 @@ public class CampaignRepository : ICampaignRepository
 
 
 
-    public async Task<ResponseEntity> UpdateAsync(Campaign entity)
+    public async Task<ResponseEntity> UpdateAsync(HomeSlider entity)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                UpdateCampaignDTO updateCampaignDTO = _mapper.Map<UpdateCampaignDTO>(entity);
-                var parameters = new DynamicParameters(updateCampaignDTO);
+                UpdateHomeSliderDTO updateHomeSliderDTO = _mapper.Map<UpdateHomeSliderDTO>(entity);
+                var parameters = new DynamicParameters(updateHomeSliderDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignQueries.Update_Campaign, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HomeSliderQueries.Update_HomeSlider, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
