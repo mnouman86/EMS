@@ -4,25 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Domain.Entities.Campaign;
+namespace CleanArc.Application.Models.CampaignSchedule;
 
-public class Campaign
+public class CreateCampaignScheduleDTO
 {
-    public int ID { get; set; }
+    //public int ID { get; set; }
     public string? Title { get; set; }
-    public string? Description { get; set; }
+    //public string? Description { get; set; }
     public string? StartDate { get; set; } // Changed to string
-    public string? EndDate { get; set; }   // Changed to string
+    //public string? EndDate { get; set; }   // Changed to string
     public int? Duration { get; set; }
     public string? DiscountType { get; set; }
     public decimal? DiscountValue { get; set; }
     public string? RecurrenceType { get; set; }
-    public bool? IsActive { get; set; }
-    public bool? IsDeleted { get; set; }
+    //public bool? IsActive { get; set; }
+    //public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }
-    public DateTime? CreatedAt { get; set; }
-    public int? UpdatedBy { get; set; }
-    public DateTime? UpdatedAt { get; set; }
+    //public DateTime? CreatedAt { get; set; }
+    //public int? UpdatedBy { get; set; }
+    //public DateTime? UpdatedAt { get; set; }
     public int? CultureId { get; set; }
     public int? Code { get; set; }
     public string? Message { get; set; }

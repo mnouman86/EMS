@@ -10,10 +10,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Campaign.Queries.GetAllCampaigns;
 
-namespace CleanArc.Application.Features.Campaign.Queries.GetAllCampaigns
+namespace CleanArc.Application.Features.CampaignSchedule.Queries.GetAllCampaignSchedules
 {
-    internal class GetAllCampaignSchedulesQueryHandler : IRequestHandler<GetAllCampaignsQuery, OperationResult<List<GetAllCampaignsQueryResult>>>
+    internal class GetAllCampaignScheduleQueryHandler : IRequestHandler<GetAllCampaignSchedulesQuery, OperationResult<List<GetAllCampaignSchedulesQueryResult>>>
     {
 
         private readonly IUnitOfWork _unitOfWork;
@@ -22,7 +23,7 @@ namespace CleanArc.Application.Features.Campaign.Queries.GetAllCampaigns
         private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
 
 
-        public GetAllCampaignSchedulesQueryHandler(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, ILogger<GetAllCampaignSchedulesQueryHandler> logger)
+        public GetAllCampaignScheduleQueryHandler(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, ILogger<GetAllCampaignSchedulesQueryHandler> logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -31,16 +32,16 @@ namespace CleanArc.Application.Features.Campaign.Queries.GetAllCampaigns
 
         }
 
-        public async ValueTask<OperationResult<List<GetAllCampaignsQueryResult>>> Handle(GetAllCampaignsQuery request, CancellationToken cancellationToken)
+        public async ValueTask<OperationResult<List<GetAllCampaignSchedulesQueryResult>>> Handle(GetAllCampaignSchedulesQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var Campaign = await _unitOfWork.CampaignRepository.GetAllAsync(request.searchRequest);
+                var CampaignSchedule = await _unitOfWork.CampaignScheduleRepository.GetAllAsync(request.searchRequest);
 
                 //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-                var result = _mapper.Map<List<GetAllCampaignsQueryResult>>(Campaign);
+                var result = _mapper.Map<List<GetAllCampaignSchedulesQueryResult>>(CampaignSchedule);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return OperationResult<List<GetAllCampaignsQueryResult>>.SuccessResult(result);
+                return OperationResult<List<GetAllCampaignSchedulesQueryResult>>.SuccessResult(result);
             }
         }
     }
