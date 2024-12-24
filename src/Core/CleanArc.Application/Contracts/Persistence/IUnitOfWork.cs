@@ -4,6 +4,9 @@ public interface IUnitOfWork
 {
     public IUserRefreshTokenRepository UserRefreshTokenRepository { get; }
     public IOrderRepository OrderRepository { get; }
+    public IUserSignUpRewardsRepository UserSignUpRewardsRepository { get; }
+    public IUserAssignRewardsRepository UserAssignRewardsRepository { get; }
+
     public IURLRepository URLRepository { get; }
     public IAgeTypeRepository AgeTypeRepository { get; }
     public IHotelRepository HotelRepository { get; }
@@ -89,6 +92,7 @@ public interface IUnitOfWork
     public IKBWhenToVisitRepository KBWhenToVisitRepository { get; }
     public IKBInterestedRepository KBInterestedRepository { get; }
     public IUserExperienceRepository UserExperienceRepository { get; }
+
     public ICheckProfileStatusRepository CheckProfileStatusRepository { get; }
     public IPopularItemsVisitRepository PopularItemsVisitRepository { get; }
     public ICustomerReviewRepository CustomerReviewRepository { get; }
