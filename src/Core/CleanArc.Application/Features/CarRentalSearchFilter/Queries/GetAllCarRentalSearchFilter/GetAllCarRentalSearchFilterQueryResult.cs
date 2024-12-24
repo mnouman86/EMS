@@ -11,7 +11,7 @@ namespace CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarR
     {
         public int? CarID { get; set; }
         public int BusinessID { get; set; }
-        public string BusinessName { get; set; }
+        public string Name { get; set; }
         public int CityID { get; set; }
         public string CarModel { get; set; }
         public string CarModelYear { get; set; }

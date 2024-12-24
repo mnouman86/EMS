@@ -13,14 +13,14 @@ using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.SearchFilterStay.Commands.CreateSearchFilterStayCommand;
 
-public record CreateSearchFilterStayCommand( int HotelID, int CityID, String HotelName, String CityName, String CityDescription, String RoomTypeName, String RoomTypeDescription, Decimal RoomDetailPrice) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateSearchFilterStayCommand( int HotelID, int CityID, String Name, String CityName, String CityDescription, String RoomTypeName, String RoomTypeDescription, Decimal RoomDetailPrice) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateSearchFilterStayCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<CreateSearchFilterStayCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateSearchFilterStayCommand> validator)
     {
-        validator.RuleFor(c => c.HotelName)
+        validator.RuleFor(c => c.Name)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Name");

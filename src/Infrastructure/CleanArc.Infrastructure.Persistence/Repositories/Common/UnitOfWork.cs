@@ -110,6 +110,8 @@ public class UnitOfWork : IUnitOfWork
     public ICampaignTargetItemsRepository CampaignTargetItemsRepository { get; set; }
 
     public IGroupActivityParticipantsRepository GroupActivityParticipantsRepository { get; set; }
+    public ICampaignScheduleRepository CampaignScheduleRepository { get; set; }
+    public IHomeSliderRepository HomeSliderRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -210,6 +212,8 @@ public class UnitOfWork : IUnitOfWork
            ILogger<CampaignTargetItemsRepository> _loggerCampaignTargetItems,
 
            ILogger<GroupActivityParticipantsRepository> _loggerGroupActivityParticipants,
+           ILogger<CampaignScheduleRepository> _loggerCampaignSchedule,
+           ILogger<HomeSliderRepository> _loggerHomeSlider,
 
 
 
@@ -316,6 +320,8 @@ public class UnitOfWork : IUnitOfWork
         CampaignTargetItemsRepository = new CampaignTargetItemsRepository(configuration, mapper, _loggerCampaignTargetItems, httpContextAccessor);
 
         GroupActivityParticipantsRepository = new GroupActivityParticipantsRepository(configuration, mapper, _loggerGroupActivityParticipants, httpContextAccessor);
+        CampaignScheduleRepository = new CampaignScheduleRepository(configuration, mapper, _loggerCampaignSchedule, httpContextAccessor);
+        HomeSliderRepository = new HomeSliderRepository(configuration, mapper, _loggerHomeSlider, httpContextAccessor);
 
         this.configuration = configuration;
 

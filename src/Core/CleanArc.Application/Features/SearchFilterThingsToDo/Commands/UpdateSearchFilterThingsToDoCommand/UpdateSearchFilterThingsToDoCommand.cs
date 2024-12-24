@@ -14,7 +14,7 @@ namespace CleanArc.Application.Features.SearchFilterThingsToDo.Commands.UpdateSe
 public record UpdateSearchFilterThingsToDoCommand(
    int ID,
     int? CultureId,
-    string? Title,
+    string? Name,
    int? LanguageLookUpID,
    int? ServiceLookUpID,
    int? SubServiceLookUpID,
@@ -53,10 +53,10 @@ public record UpdateSearchFilterThingsToDoCommand(
     public int UserId { get; set; }
     public IValidator<UpdateSearchFilterThingsToDoCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateSearchFilterThingsToDoCommand> validator)
     {
-        validator.RuleFor(c => c.Title)
+        validator.RuleFor(c => c.Name)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please enter a valid Title");
+            .WithMessage("Please enter a valid Name");
         validator.RuleFor(c => c.LanguageLookUpID)
             .NotEmpty()
             .NotNull()
