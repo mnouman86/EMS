@@ -24,7 +24,7 @@ public class AdminGetTokenQueryHandler:IRequestHandler<AdminGetTokenQuery,Operat
     public async ValueTask<OperationResult<AccessToken>> Handle(AdminGetTokenQuery request, CancellationToken cancellationToken)
     {
         string methodName = "AdminGetTokenQueryHandler";
-        _logger.LogInformation("Hander Started: {@methodName}, Query Request: {@request}",methodName,request);
+        _logger.LogInformation("Handler Started: {@methodName}, Query Request: {@request}",methodName,request);
         var user = await _userManager.GetByUserName(request.UserName);
         _logger.LogInformation("GetByUserName from {@methodName}, GetByUserName Response: {@user}", methodName, user);
 

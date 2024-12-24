@@ -60,6 +60,7 @@ public class UpdateHotelDTO
     public DateTime? CheckOutFrom { get; set; }
     public DateTime? CheckOutTo { get; set; }
     public int UpdatedBy { get; set; }
+    public string? About { get; set; }
 
 
 

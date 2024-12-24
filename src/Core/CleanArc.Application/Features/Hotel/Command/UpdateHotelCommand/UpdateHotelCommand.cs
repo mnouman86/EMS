@@ -16,7 +16,7 @@ namespace CleanArc.Application.Features.Hotel.Command.UpdateHotelCommand;
 public record UpdateHotelCommand(int ID,string? Name, int? CountryID, int? StateID, int? CityID, int? ZipCode, string? Address1,
     string? Address2, string? Latitude, string? Longitude, string? MobileNumber, string? PhoneNumber, string? Email,
     string? FocalPersonName, bool? IsChanelManager, bool? IsRating, bool? IsChain, int? ServiceID, string? CheckInFrom, string? CheckInTo,
-    string? CheckOutFrom, string? CheckOutTo, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+    string? CheckOutFrom, string? CheckOutTo, string? About, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateHotelCommand>
 {
     [JsonIgnore]
