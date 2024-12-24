@@ -2,8 +2,8 @@
 using CleanArc.Application.Features.Business.Command.CreateBusinessCommand;
 using CleanArc.Application.Features.Business.Command.DeleteBusinessCommand;
 using CleanArc.Application.Features.Business.Command.UpdateBusinessCommand;
-using CleanArc.Application.Features.Business.Query.GetAllBusiness;
-using CleanArc.Application.Features.Business.Query.GetBusinessById;
+using CleanArc.Application.Features.Business.Queries.GetAllBusiness;
+using CleanArc.Application.Features.Business.Queries.GetBusinessById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
 using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
@@ -49,7 +49,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Business;
 /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles. 
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Business.Command.CreateBusinessCommand.CreateBusinessCommand, CleanArc.Application.Features.Business.Command.UpdateBusinessCommand.UpdateBusinessCommand, CleanArc.Application.Features.Business.Command.DeleteBusinessCommand.DeleteBusinessCommand, System.ResponseEntity, CleanArc.Application.Features.Business.Query.GetAllBusiness.GetAllBusinessQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Business.Query.GetAllBusiness.GetAllBusinessQueryResult&gt;, CleanArc.Application.Features.Business.Query.GetBusinessById.GetBusinessByIdQuery, CleanArc.Application.Features.Business.Query.GetBusinessById.GetBusinessByIdQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.Business.Command.CreateBusinessCommand.CreateBusinessCommand, CleanArc.Application.Features.Business.Command.UpdateBusinessCommand.UpdateBusinessCommand, CleanArc.Application.Features.Business.Command.DeleteBusinessCommand.DeleteBusinessCommand, System.ResponseEntity, CleanArc.Application.Features.Business.Queries.GetAllBusiness.GetAllBusinessQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.Business.Queries.GetAllBusiness.GetAllBusinessQueryResult&gt;, CleanArc.Application.Features.Business.Queries.GetBusinessById.GetBusinessByIdQuery, CleanArc.Application.Features.Business.Queries.GetBusinessById.GetBusinessByIdQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/Business")]

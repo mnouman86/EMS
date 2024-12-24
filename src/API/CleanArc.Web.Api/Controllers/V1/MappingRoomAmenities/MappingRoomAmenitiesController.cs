@@ -2,8 +2,8 @@
 using CleanArc.Application.Features.MappingRoomAmenity.Command.CreateMappingRoomAmenityCommand;
 using CleanArc.Application.Features.MappingRoomAmenity.Command.DeleteMappingRoomAmenityCommand;
 using CleanArc.Application.Features.MappingRoomAmenity.Command.UpdateMappingRoomAmenityCommand;
-using CleanArc.Application.Features.MappingRoomAmenity.Query.GetAllMappingRoomAmenity;
-using CleanArc.Application.Features.MappingRoomAmenity.Query.GetMappingRoomAmenityById;
+using CleanArc.Application.Features.MappingRoomAmenity.Queries.GetAllMappingRoomAmenity;
+using CleanArc.Application.Features.MappingRoomAmenity.Queries.GetMappingRoomAmenityById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
 using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
@@ -36,7 +36,7 @@ namespace CleanArc.Web.Api.Controllers.V1.MappingRoomAmenities;
 /// The controller adheres to Clean Architecture principles, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles.
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.MappingRoomAmenity.Command.CreateMappingRoomAmenityCommand.CreateMappingRoomAmenityCommand, CleanArc.Application.Features.MappingRoomAmenity.Command.UpdateMappingRoomAmenityCommand.UpdateMappingRoomAmenityCommand, CleanArc.Application.Features.MappingRoomAmenity.Command.DeleteMappingRoomAmenityCommand.DeleteMappingRoomAmenityCommand, System.ResponseEntity, CleanArc.Application.Features.MappingRoomAmenity.Query.GetAllMappingRoomAmenity.GetAllMappingRoomAmenityQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.MappingRoomAmenity.Query.GetAllMappingRoomAmenity.GetAllMappingRoomAmenityQueryResult&gt;, CleanArc.Application.Features.MappingRoomAmenity.Query.GetMappingRoomAmenityById.GetMappingRoomAmenityByIdQuery, CleanArc.Application.Features.MappingRoomAmenity.Query.GetMappingRoomAmenityById.GetMappingRoomAmenityByIdQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.MappingRoomAmenity.Command.CreateMappingRoomAmenityCommand.CreateMappingRoomAmenityCommand, CleanArc.Application.Features.MappingRoomAmenity.Command.UpdateMappingRoomAmenityCommand.UpdateMappingRoomAmenityCommand, CleanArc.Application.Features.MappingRoomAmenity.Command.DeleteMappingRoomAmenityCommand.DeleteMappingRoomAmenityCommand, System.ResponseEntity, CleanArc.Application.Features.MappingRoomAmenity.Queries.GetAllMappingRoomAmenity.GetAllMappingRoomAmenityQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.MappingRoomAmenity.Queries.GetAllMappingRoomAmenity.GetAllMappingRoomAmenityQueryResult&gt;, CleanArc.Application.Features.MappingRoomAmenity.Queries.GetMappingRoomAmenityById.GetMappingRoomAmenityByIdQuery, CleanArc.Application.Features.MappingRoomAmenity.Queries.GetMappingRoomAmenityById.GetMappingRoomAmenityByIdQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/MappingRoomAmenities")]
