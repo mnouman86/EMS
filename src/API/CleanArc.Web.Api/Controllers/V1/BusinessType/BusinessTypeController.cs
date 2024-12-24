@@ -2,8 +2,8 @@
 using CleanArc.Application.Features.BusinessType.Command.CreateBusinessTypeCommand;
 using CleanArc.Application.Features.BusinessType.Command.DeleteBusinessTypeCommand;
 using CleanArc.Application.Features.BusinessType.Command.UpdateBusinessTypeCommand;
-using CleanArc.Application.Features.BusinessType.Query.GetAllBusinessType;
-using CleanArc.Application.Features.BusinessType.Query.GetBusinessTypeById;
+using CleanArc.Application.Features.BusinessType.Queries.GetAllBusinessType;
+using CleanArc.Application.Features.BusinessType.Queries.GetBusinessTypeById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
 using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
@@ -49,7 +49,7 @@ namespace CleanArc.Web.Api.Controllers.V1.BusinessType;
 /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles. 
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.BusinessType.Command.CreateBusinessTypeCommand.CreateBusinessTypeCommand, CleanArc.Application.Features.BusinessType.Command.UpdateBusinessTypeCommand.UpdateBusinessTypeCommand, CleanArc.Application.Features.BusinessType.Command.DeleteBusinessTypeCommand.DeleteBusinessTypeCommand, System.ResponseEntity, CleanArc.Application.Features.BusinessType.Query.GetAllBusinessType.GetAllBusinessTypeQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.BusinessType.Query.GetAllBusinessType.GetAllBusinessTypeQueryResult&gt;, CleanArc.Application.Features.BusinessType.Query.GetBusinessTypeById.GetBusinessTypeByIdQuery, CleanArc.Application.Features.BusinessType.Query.GetBusinessTypeById.GetBusinessTypeByIdQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.BusinessType.Command.CreateBusinessTypeCommand.CreateBusinessTypeCommand, CleanArc.Application.Features.BusinessType.Command.UpdateBusinessTypeCommand.UpdateBusinessTypeCommand, CleanArc.Application.Features.BusinessType.Command.DeleteBusinessTypeCommand.DeleteBusinessTypeCommand, System.ResponseEntity, CleanArc.Application.Features.BusinessType.Queries.GetAllBusinessType.GetAllBusinessTypeQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.BusinessType.Queries.GetAllBusinessType.GetAllBusinessTypeQueryResult&gt;, CleanArc.Application.Features.BusinessType.Queries.GetBusinessTypeById.GetBusinessTypeByIdQuery, CleanArc.Application.Features.BusinessType.Queries.GetBusinessTypeById.GetBusinessTypeByIdQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/BusinessType")]

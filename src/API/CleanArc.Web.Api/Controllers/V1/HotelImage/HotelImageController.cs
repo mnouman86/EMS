@@ -2,8 +2,8 @@
 using CleanArc.Application.Features.HotelImage.Command.CreateHotelImageCommand;
 using CleanArc.Application.Features.HotelImage.Command.DeleteHotelImageCommand;
 using CleanArc.Application.Features.HotelImage.Command.UpdateHotelImageCommand;
-using CleanArc.Application.Features.HotelImage.Query.GetAllHotelImage;
-using CleanArc.Application.Features.HotelImage.Query.GetHotelImageById;
+using CleanArc.Application.Features.HotelImage.Queries.GetAllHotelImage;
+using CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
 using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
@@ -49,7 +49,7 @@ namespace CleanArc.Web.Api.Controllers.V1.HotelImage
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles. 
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.HotelImage.Command.CreateHotelImageCommand.CreateHotelImageCommand, CleanArc.Application.Features.HotelImage.Command.UpdateHotelImageCommand.UpdateHotelImageCommand, CleanArc.Application.Features.HotelImage.Command.DeleteHotelImageCommand.DeleteHotelImageCommand, System.ResponseEntity, CleanArc.Application.Features.HotelImage.Query.GetAllHotelImage.GetAllHotelImageQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.HotelImage.Query.GetAllHotelImage.GetAllHotelImageQueryResult&gt;, CleanArc.Application.Features.HotelImage.Query.GetHotelImageById.GetHotelImageByIdQuery, CleanArc.Application.Features.HotelImage.Query.GetHotelImageById.GetHotelImageByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.HotelImage.Command.CreateHotelImageCommand.CreateHotelImageCommand, CleanArc.Application.Features.HotelImage.Command.UpdateHotelImageCommand.UpdateHotelImageCommand, CleanArc.Application.Features.HotelImage.Command.DeleteHotelImageCommand.DeleteHotelImageCommand, System.ResponseEntity, CleanArc.Application.Features.HotelImage.Queries.GetAllHotelImage.GetAllHotelImageQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.HotelImage.Queries.GetAllHotelImage.GetAllHotelImageQueryResult&gt;, CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById.GetHotelImageByIdQuery, CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById.GetHotelImageByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/HotelImage")]
