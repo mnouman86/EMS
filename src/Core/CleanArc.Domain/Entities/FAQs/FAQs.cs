@@ -26,4 +26,7 @@ public  class FAQs
     public int? Code { get; set; }
     public string? Message { get; set; }
 
+    public string CategoryServiceName { get; set; }
+    public string ServiceName { get; set; }
+
 }

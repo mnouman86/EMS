@@ -15,6 +15,9 @@ public class UnitOfWork : IUnitOfWork
     private readonly ApplicationDbContext _db;
        
     public IUserRefreshTokenRepository UserRefreshTokenRepository { get; }
+    public IUserSignUpRewardsRepository  UserSignUpRewardsRepository { get; }
+    public IUserAssignRewardsRepository UserAssignRewardsRepository { get; }
+
     public IOrderRepository OrderRepository { get; }
     public IURLRepository URLRepository { get; set; }
     public IAgeTypeRepository AgeTypeRepository { get; set; }
@@ -142,6 +145,9 @@ public class UnitOfWork : IUnitOfWork
         ILogger<MappingRoomImageRepository> _loggerMappingRoomImage,
         ILogger<BusinessRepository> _loggerBusiness,
         ILogger<BusinessTypeRepository> _loggerBusinessType,
+        ILogger<UserSignUpRewardsRepository> _loggerUserSignUpRewards,
+        ILogger<UserAssignRewardsRepository> _loggerUserAssignRewards,
+
 
         ILogger<BankRepository> _loggerBank,
         ILogger<BusinessBankAccountRepository> _loggerBusinessBankAccount,
@@ -244,6 +250,10 @@ public class UnitOfWork : IUnitOfWork
         MappingRoomImageRepository = new MappingRoomImageRepository(configuration, mapper, _loggerMappingRoomImage, httpContextAccessor);
         BusinessRepository = new BusinessRepository(configuration, mapper, _loggerBusiness, httpContextAccessor);
         BusinessTypeRepository = new BusinessTypeRepository(configuration, mapper, _loggerBusinessType, httpContextAccessor);
+        
+        
+        UserSignUpRewardsRepository = new UserSignUpRewardsRepository(configuration, mapper, _loggerUserSignUpRewards, httpContextAccessor);
+        UserAssignRewardsRepository = new UserAssignRewardsRepository(configuration, mapper, _loggerUserAssignRewards, httpContextAccessor);
 
         BankRepository = new BankRepository(configuration, mapper, _loggerBank, httpContextAccessor);
         BusinessBankAccountRepository = new BusinessBankAccountRepository(configuration, mapper, _loggerBusinessBankAccount, httpContextAccessor);
