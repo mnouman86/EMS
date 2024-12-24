@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.CarDetail.Query.GetAllCarDetail;
+namespace CleanArc.Application.Features.CarDetail.Queries.GetAllCarDetail;
 
 public record GetAllCarDetailQuery(SearchRequest searchRequest) : IRequest<OperationResult<List<GetAllCarDetailQueryResult>>>;
 

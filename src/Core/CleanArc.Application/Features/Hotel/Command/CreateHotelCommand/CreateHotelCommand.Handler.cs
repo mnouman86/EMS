@@ -73,6 +73,7 @@ public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateHotelComman
             CheckInTo = request.CheckInTo,
             CheckOutFrom = request.CheckOutFrom,
             CheckOutTo = request.CheckOutTo,
+            About = request.About,
         });
         await _unitOfWork.CommitAsync();
         (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

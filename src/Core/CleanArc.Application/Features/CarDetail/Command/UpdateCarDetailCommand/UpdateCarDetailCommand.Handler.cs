@@ -65,6 +65,7 @@ internal class UpdateCarDetailCommandHandler : IRequestHandler<UpdateCarDetailCo
                 PlateNumber = request.PlateNumber,
                 NoOfSeat = request.NoOfSeat,
                 RentPrice = request.RentPrice,
+                About = request.About,
                 //IsRefundable = request.IsRefundable,
                 //IsCancelation = request.IsCancelation
             });

@@ -13,7 +13,7 @@ using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.CarDetail.Command.UpdateCarDetailCommand
 {
-    public record UpdateCarDetailCommand(int ID, int? BusinessID, string? Model, string? Year, String? VehicleIdentificationNumber, string? PlateNumber, int? NoOfSeat, int? RentPrice,  int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+    public record UpdateCarDetailCommand(int ID, int? BusinessID, string? Model, string? Year, String? VehicleIdentificationNumber, string? PlateNumber, int? NoOfSeat, int? RentPrice, string? About, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateCarDetailCommand>
     {
         [JsonIgnore]
@@ -44,6 +44,10 @@ namespace CleanArc.Application.Features.CarDetail.Command.UpdateCarDetailCommand
                 .NotEmpty()
                 .NotNull()
                 .WithMessage("Please enter a RentPrice");
+            validator.RuleFor(c => c.About)
+                .NotEmpty()
+                .NotNull()
+                .WithMessage("Please enter About information");
             return validator;
         }
     }
