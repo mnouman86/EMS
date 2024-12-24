@@ -2,8 +2,8 @@
 using CleanArc.Application.Features.BusinessProfile.Command.CreateBusinessProfileCommand;
 using CleanArc.Application.Features.BusinessProfile.Command.DeleteBusinessProfileCommand;
 using CleanArc.Application.Features.BusinessProfile.Command.UpdateBusinessProfileCommand;
-using CleanArc.Application.Features.BusinessProfile.Query.GetAllBusinessProfile;
-using CleanArc.Application.Features.BusinessProfile.Query.GetBusinessProfileById;
+using CleanArc.Application.Features.BusinessProfile.Queries.GetAllBusinessProfile;
+using CleanArc.Application.Features.BusinessProfile.Queries.GetBusinessProfileById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
 using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
@@ -49,7 +49,7 @@ namespace CleanArc.Web.Api.Controllers.V1.BusinessProfile;
 /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
 /// SOLID principles. 
 /// </summary>
-/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.BusinessProfile.Command.CreateBusinessProfileCommand.CreateBusinessProfileCommand, CleanArc.Application.Features.BusinessProfile.Command.UpdateBusinessProfileCommand.UpdateBusinessProfileCommand, CleanArc.Application.Features.BusinessProfile.Command.DeleteBusinessProfileCommand.DeleteBusinessProfileCommand, System.ResponseEntity, CleanArc.Application.Features.BusinessProfile.Query.GetAllBusinessProfile.GetAllBusinessProfileQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.BusinessProfile.Query.GetAllBusinessProfile.GetAllBusinessProfileQueryResult&gt;, CleanArc.Application.Features.BusinessProfile.Query.GetBusinessProfileById.GetBusinessProfileByIdQuery, CleanArc.Application.Features.BusinessProfile.Query.GetBusinessProfileById.GetBusinessProfileByIdQueryResult&gt;" />
+/// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.BusinessProfile.Command.CreateBusinessProfileCommand.CreateBusinessProfileCommand, CleanArc.Application.Features.BusinessProfile.Command.UpdateBusinessProfileCommand.UpdateBusinessProfileCommand, CleanArc.Application.Features.BusinessProfile.Command.DeleteBusinessProfileCommand.DeleteBusinessProfileCommand, System.ResponseEntity, CleanArc.Application.Features.BusinessProfile.Queries.GetAllBusinessProfile.GetAllBusinessProfileQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.BusinessProfile.Queries.GetAllBusinessProfile.GetAllBusinessProfileQueryResult&gt;, CleanArc.Application.Features.BusinessProfile.Queries.GetBusinessProfileById.GetBusinessProfileByIdQuery, CleanArc.Application.Features.BusinessProfile.Queries.GetBusinessProfileById.GetBusinessProfileByIdQueryResult&gt;" />
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/BusinessProfile")]
