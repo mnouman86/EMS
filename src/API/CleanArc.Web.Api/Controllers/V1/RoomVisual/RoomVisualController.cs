@@ -2,8 +2,8 @@
 using CleanArc.Application.Features.RoomVisual.Command.CreateRoomVisualCommand;
 using CleanArc.Application.Features.RoomVisual.Command.DeleteRoomVisualCommand;
 using CleanArc.Application.Features.RoomVisual.Command.UpdateRoomVisualCommand;
-using CleanArc.Application.Features.RoomVisual.Query.GetAllRoomVisual;
-using CleanArc.Application.Features.RoomVisual.Query.GetRoomVisualById;
+using CleanArc.Application.Features.RoomVisual.Queries.GetAllRoomVisual;
+using CleanArc.Application.Features.RoomVisual.Queries.GetRoomVisualById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
 using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
@@ -49,7 +49,7 @@ namespace CleanArc.Web.Api.Controllers.V1.RoomVisual
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles. 
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.RoomVisual.Command.CreateRoomVisualCommand.CreateRoomVisualCommand, CleanArc.Application.Features.RoomVisual.Command.UpdateRoomVisualCommand.UpdateRoomVisualCommand, CleanArc.Application.Features.RoomVisual.Command.DeleteRoomVisualCommand.DeleteRoomVisualCommand, System.ResponseEntity, CleanArc.Application.Features.RoomVisual.Query.GetAllRoomVisual.GetAllRoomVisualQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.RoomVisual.Query.GetAllRoomVisual.GetAllRoomVisualQueryResult&gt;, CleanArc.Application.Features.RoomVisual.Query.GetRoomVisualById.GetRoomVisualByIdQuery, CleanArc.Application.Features.RoomVisual.Query.GetRoomVisualById.GetRoomVisualByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.RoomVisual.Command.CreateRoomVisualCommand.CreateRoomVisualCommand, CleanArc.Application.Features.RoomVisual.Command.UpdateRoomVisualCommand.UpdateRoomVisualCommand, CleanArc.Application.Features.RoomVisual.Command.DeleteRoomVisualCommand.DeleteRoomVisualCommand, System.ResponseEntity, CleanArc.Application.Features.RoomVisual.Queries.GetAllRoomVisual.GetAllRoomVisualQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.RoomVisual.Queries.GetAllRoomVisual.GetAllRoomVisualQueryResult&gt;, CleanArc.Application.Features.RoomVisual.Queries.GetRoomVisualById.GetRoomVisualByIdQuery, CleanArc.Application.Features.RoomVisual.Queries.GetRoomVisualById.GetRoomVisualByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/RoomVisual")]

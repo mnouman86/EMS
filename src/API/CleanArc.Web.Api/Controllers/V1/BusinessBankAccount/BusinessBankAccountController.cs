@@ -2,8 +2,8 @@
 using CleanArc.Application.Features.BusinessBankAccount.Command.BusinessBankAccountCommand;
 using CleanArc.Application.Features.BusinessBankAccount.Command.DeleteBusinessBankAccountCommand;
 using CleanArc.Application.Features.BusinessBankAccount.Command.UpdateBusinessBankAccountCommand;
-using CleanArc.Application.Features.BusinessBankAccount.Query.GetAllBusinessBankAccount;
-using CleanArc.Application.Features.BusinessBankAccount.Query.GetBusinessBankAccountById;
+using CleanArc.Application.Features.BusinessBankAccount.Queries.GetAllBusinessBankAccount;
+using CleanArc.Application.Features.BusinessBankAccount.Queries.GetBusinessBankAccountById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
 using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
@@ -49,7 +49,7 @@ namespace CleanArc.Web.Api.Controllers.V1.BusinessBankAccount
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles.
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.BusinessBankAccount.Command.BusinessBankAccountCommand.CreateBusinessBankAccountCommand, CleanArc.Application.Features.BusinessBankAccount.Command.UpdateBusinessBankAccountCommand.UpdateBusinessBankAccountCommand, CleanArc.Application.Features.BusinessBankAccount.Command.DeleteBusinessBankAccountCommand.DeleteBusinessBankAccountCommand, System.ResponseEntity, CleanArc.Application.Features.BusinessBankAccount.Query.GetAllBusinessBankAccount.GetAllBusinessBankAccountQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.BusinessBankAccount.Query.GetAllBusinessBankAccount.GetAllBusinessBankAccountQueryResult&gt;, CleanArc.Application.Features.BusinessBankAccount.Query.GetBusinessBankAccountById.GetBusinessBankAccountByIdQuery, CleanArc.Application.Features.BusinessBankAccount.Query.GetBusinessBankAccountById.GetBusinessBankAccountByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.BusinessBankAccount.Command.BusinessBankAccountCommand.CreateBusinessBankAccountCommand, CleanArc.Application.Features.BusinessBankAccount.Command.UpdateBusinessBankAccountCommand.UpdateBusinessBankAccountCommand, CleanArc.Application.Features.BusinessBankAccount.Command.DeleteBusinessBankAccountCommand.DeleteBusinessBankAccountCommand, System.ResponseEntity, CleanArc.Application.Features.BusinessBankAccount.Queries.GetAllBusinessBankAccount.GetAllBusinessBankAccountQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.BusinessBankAccount.Queries.GetAllBusinessBankAccount.GetAllBusinessBankAccountQueryResult&gt;, CleanArc.Application.Features.BusinessBankAccount.Queries.GetBusinessBankAccountById.GetBusinessBankAccountByIdQuery, CleanArc.Application.Features.BusinessBankAccount.Queries.GetBusinessBankAccountById.GetBusinessBankAccountByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/BusinessBankAccount")]
