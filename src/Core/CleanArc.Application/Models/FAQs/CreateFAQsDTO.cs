@@ -14,9 +14,7 @@ namespace CleanArc.Application.Models.FAQs
         public int? SubServiceID { get; set; } // Nullable Int for SubServiceID
         public string? Question { get; set; } // NVARCHAR(500) for Question
         public string? Answer { get; set; } // NVARCHAR(MAX) for Answer
-
         public int? CreatedBy { get; set; } // Nullable Int for CreatedBy
-
         public int? CultureId { get; set; }
         public int? Code { get; set; }
         public string? Message { get; set; }

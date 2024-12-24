@@ -13,16 +13,16 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Campaign.Queries.GetAllCampaigns
 {
-    internal class GetAllCampaignsQueryHandler : IRequestHandler<GetAllCampaignsQuery, OperationResult<List<GetAllCampaignsQueryResult>>>
+    internal class GetAllCampaignSchedulesQueryHandler : IRequestHandler<GetAllCampaignsQuery, OperationResult<List<GetAllCampaignsQueryResult>>>
     {
 
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly ILogger<GetAllCampaignsQueryHandler> _logger;
+        private readonly ILogger<GetAllCampaignSchedulesQueryHandler> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
 
 
-        public GetAllCampaignsQueryHandler(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, ILogger<GetAllCampaignsQueryHandler> logger)
+        public GetAllCampaignSchedulesQueryHandler(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, ILogger<GetAllCampaignSchedulesQueryHandler> logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;

@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.Request
 {
     public class SearchRequestStays: SearchRequest
     {
-        public string HotelName { get; set; } // NVARCHAR(MAX), NULL by default
+        public string Name { get; set; } // NVARCHAR(MAX), NULL by default
         public decimal? MaxPrice { get; set; } // DECIMAL(18,2), NULL by default
         public decimal? MinPrice { get; set; } // DECIMAL(18,2), NULL by default
         public string HotelAmenities { get; set; } // NVARCHAR(MAX), Comma-separated IDs, NULL by default

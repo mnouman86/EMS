@@ -11,7 +11,7 @@ namespace CleanArc.Domain.Entities.Activity;
 public  class Activity    
 {
     public int ID { get; set; }
-    public string Title { get; set; }
+    public string Name { get; set; }
     public int? LanguageLookUpID { get; set; }
     public string? LanguageName { get; set; }
     public int? ServiceLookUpID { get; set; }
@@ -39,7 +39,8 @@ public  class Activity
     public string? SeasonLookUpID { get; set; }
     public string? IncludeOptionLookUpID { get; set; }
     public string? DisabilityOptionLookUpID { get; set; }
-    public Decimal? PerPersonPrice { get; set; }
+    //public Decimal? PerPersonPrice { get; set; }
+    public Decimal? ActivityPrice { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }

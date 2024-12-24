@@ -37,7 +37,51 @@ namespace CleanArc.Web.FileUpload.Controllers
                         file.CopyTo(stream);
                     }
                     var fullDbPath = Path.Combine("..\\..\\..\\assets\\", dbPath);
+                    //var fullDbPath = Path.Combine("public\\", dbPath);
                     return Ok(new { dbPath = fullDbPath });
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
+        }
+      
+        [HttpPost("UploadForReact"), DisableRequestSizeLimit]
+        public async Task<IActionResult> UploadForReact()
+        {
+            try
+            {
+                var formCollection = await Request.ReadFormAsync();
+                var file = formCollection.Files.First();
+                var category = formCollection["category"].ToString();
+                if (string.IsNullOrWhiteSpace(category))
+                {
+                    category = "Default";
+                }
+
+                var folderName = Path.Combine("Resources", "Images", category);
+                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+                if (file.Length > 0)
+             {
+                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    var fullPath = Path.Combine(pathToSave, fileName);
+                    var dbPath = Path.Combine(folderName, fileName);
+                    if (!Directory.Exists(pathToSave))
+                    {
+                        Directory.CreateDirectory(pathToSave);
+                    }
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+                    //var fullDbPath = Path.Combine("..\\..\\..\\assets\\", dbPath);
+                    //var fullDbPath = Path.Combine("public\\", dbPath);
+                    return Ok(new { dbPath });
                 }
                 else
                 {

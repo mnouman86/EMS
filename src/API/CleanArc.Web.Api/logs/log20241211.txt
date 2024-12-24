@@ -1,18 +1,18 @@
-2024-12-11 16:30:24.511 +05:00 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+2024-12-11 12:42:51.878 +05:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
 SELECT 1
-2024-12-11 16:30:24.764 +05:00 [INF] Executed DbCommand (71ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+2024-12-11 12:42:51.967 +05:00 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
 SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
-2024-12-11 16:30:24.772 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+2024-12-11 12:42:51.976 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
 SELECT 1
-2024-12-11 16:30:24.778 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+2024-12-11 12:42:51.988 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
 SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
-2024-12-11 16:30:24.814 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+2024-12-11 12:42:52.011 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
 SELECT [MigrationId], [ProductVersion]
 FROM [__EFMigrationsHistory]
 ORDER BY [MigrationId];
-2024-12-11 16:30:24.841 +05:00 [INF] No migrations were applied. The database is already up to date.
-2024-12-11 16:30:24.852 +05:00 [INF] User profile is available. Using 'C:\Users\SHPL\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
-2024-12-11 16:30:25.224 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+2024-12-11 12:42:52.036 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-12-11 12:42:52.057 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-12-11 12:42:52.296 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
 SELECT CASE
     WHEN EXISTS (
         SELECT 1
@@ -20,7 +20,7 @@ SELECT CASE
         WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
     ELSE CAST(0 AS bit)
 END
-2024-12-11 16:30:25.239 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+2024-12-11 12:42:52.310 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
 SELECT CASE
     WHEN EXISTS (
         SELECT 1
@@ -28,26 +28,191 @@ SELECT CASE
         WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
     ELSE CAST(0 AS bit)
 END
-2024-12-11 16:30:25.801 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
-2024-12-11 16:30:26.045 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
-2024-12-11 16:30:26.289 +05:00 [INF] Response StatusCode: 200
-2024-12-11 16:30:26.302 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 501.9481ms
-2024-12-11 16:30:26.332 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
-2024-12-11 16:30:26.345 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 13768 application/javascript;+charset=utf-8 12.9652ms
-2024-12-11 16:30:26.437 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
-2024-12-11 16:30:26.521 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 83.9195ms
-2024-12-11 16:30:26.630 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
-2024-12-11 16:30:26.636 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
-2024-12-11 16:30:27.803 +05:00 [INF] Response StatusCode: 200
-2024-12-11 16:30:27.810 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1179.2642ms
-2024-12-11 16:31:09.845 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/KBDetail/GetAll application/json 172
-2024-12-11 16:31:09.884 +05:00 [INF] CORS policy execution successful.
-2024-12-11 16:31:09.890 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
-2024-12-11 16:31:09.920 +05:00 [INF] Request Body: {
+2024-12-11 12:42:52.857 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-12-11 12:42:53.159 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-12-11 12:42:53.383 +05:00 [INF] Response StatusCode: 200
+2024-12-11 12:42:53.402 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 547.4897ms
+2024-12-11 12:42:53.468 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-12-11 12:42:53.473 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-12-11 12:42:53.486 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 17.0780ms
+2024-12-11 12:42:53.544 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 71.1517ms
+2024-12-11 12:42:53.733 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-12-11 12:42:53.739 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-12-11 12:42:55.701 +05:00 [INF] Response StatusCode: 200
+2024-12-11 12:42:55.709 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1976.3920ms
+2024-12-11 14:54:53.369 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171
+2024-12-11 14:54:53.458 +05:00 [INF] CORS policy execution successful.
+2024-12-11 14:54:53.482 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 14:54:53.510 +05:00 [INF] Request Body: {
   "searchRequest": {
     "pageNumber": 1,
-    "pageSize": 110,
-    "cultureId": 0,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 1,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-12-11 14:54:53.540 +05:00 [WRN] Failed to determine the https port for redirect.
+2024-12-11 14:54:55.653 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 14:54:55.656 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 1,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-12-11 14:54:55.661 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 14:54:55.702 +05:00 [INF] Route matched with {action = "GetAll", controller = "HomeSlider"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQuery) on controller CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController (CleanArc.Web.Api).
+2024-12-11 14:54:55.996 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-11 14:54:56.441 +05:00 [INF] Entering CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":1,"FilterArray":[],"SortingArray":[]}}
+2024-12-11 14:54:56.708 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":1,"FilterArray":[],"SortingArray":[]}
+2024-12-11 14:54:57.487 +05:00 [INF] Exiting null, GetAllAsync
+2024-12-11 14:54:57.520 +05:00 [INF] Exiting null, Handle
+2024-12-11 14:54:57.577 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) in 1868.9983ms
+2024-12-11 14:54:57.582 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 14:54:57.797 +05:00 [ERR] Could not find stored procedure 'GetALL_HomeSlider'.
+System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'GetALL_HomeSlider'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.HomeSliderRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\HomeSliderRepository.cs:line 145
+   at CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSliderSchedulesQueryHandler.Handle(GetAllHomeSlidersQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\HomeSlider\Queries\GetAllHomeSliderSchedules\GetAllHomeSliderQueryHandler.cs:line 38
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:04b19c3a-b996-4612-9c3c-e0fb2f6d5ffd
+Error Number:2812,State:1,Class:16
+2024-12-11 14:54:57.938 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171 - 500 - - 4586.1323ms
+2024-12-11 14:55:42.869 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171
+2024-12-11 14:55:42.872 +05:00 [INF] CORS policy execution successful.
+2024-12-11 14:55:42.876 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 14:55:42.879 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 1,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-12-11 14:55:42.898 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 14:55:42.901 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 1,
+    "filterArray": [
+      
+    ],
+    "sortingArray": [
+     
+    ]
+  }
+}
+2024-12-11 14:55:42.903 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 14:55:42.906 +05:00 [INF] Route matched with {action = "GetAll", controller = "HomeSlider"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQuery) on controller CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController (CleanArc.Web.Api).
+2024-12-11 14:55:42.928 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-11 14:55:42.985 +05:00 [INF] Entering CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":1,"FilterArray":[],"SortingArray":[]}}
+2024-12-11 14:55:54.182 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":1,"FilterArray":[],"SortingArray":[]}
+2024-12-11 14:55:58.617 +05:00 [INF] Exiting null, GetAllAsync
+2024-12-11 14:56:00.156 +05:00 [INF] Exiting null, Handle
+2024-12-11 14:56:01.769 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) in 18860.671ms
+2024-12-11 14:56:01.773 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 14:57:40.777 +05:00 [ERR] Could not find stored procedure 'GetALL_HomeSlider'.
+System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'GetALL_HomeSlider'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.HomeSliderRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\HomeSliderRepository.cs:line 145
+   at CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSliderSchedulesQueryHandler.Handle(GetAllHomeSlidersQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\HomeSlider\Queries\GetAllHomeSliderSchedules\GetAllHomeSliderQueryHandler.cs:line 38
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:04b19c3a-b996-4612-9c3c-e0fb2f6d5ffd
+Error Number:2812,State:1,Class:16
+2024-12-11 14:57:40.870 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171 - 500 - - 118001.5419ms
+2024-12-11 14:57:41.858 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-12-11 14:57:41.998 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-12-11 14:57:42.017 +05:00 [INF] Response StatusCode: 200
+2024-12-11 14:57:42.048 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-12-11 14:57:42.050 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-12-11 14:57:42.050 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 191.8515ms
+2024-12-11 14:57:42.061 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 11.6498ms
+2024-12-11 14:57:42.108 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 60.2160ms
+2024-12-11 14:57:42.283 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-12-11 14:57:42.286 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-12-11 14:57:43.350 +05:00 [INF] Response StatusCode: 200
+2024-12-11 14:57:43.355 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1072.2870ms
+2024-12-11 14:58:29.543 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171
+2024-12-11 14:58:29.548 +05:00 [INF] CORS policy execution successful.
+2024-12-11 14:58:29.550 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 14:58:29.552 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
     "id": 0,
     "filterArray": [
      
@@ -57,13 +222,12 @@ END
     ]
   }
 }
-2024-12-11 16:31:09.941 +05:00 [WRN] Failed to determine the https port for redirect.
-2024-12-11 16:31:11.756 +05:00 [INF] Request Method: POST, Path: /api/v1/KBDetail/GetAll, Content-Type: application/json
-2024-12-11 16:31:11.758 +05:00 [INF] Request Body: {
+2024-12-11 14:58:29.568 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 14:58:29.570 +05:00 [INF] Request Body: {
   "searchRequest": {
     "pageNumber": 1,
-    "pageSize": 110,
-    "cultureId": 0,
+    "pageSize": 10,
+    "cultureId": 1,
     "id": 0,
     "filterArray": [
      
@@ -73,17 +237,985 @@ END
     ]
   }
 }
-2024-12-11 16:31:11.761 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
-2024-12-11 16:31:11.796 +05:00 [INF] Route matched with {action = "GetAll", controller = "KBDetail"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail.GetAllKBDetailQuery) on controller CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController (CleanArc.Web.Api).
-2024-12-11 16:31:11.988 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
-2024-12-11 16:31:12.508 +05:00 [INF] Entering CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":110,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}}
-2024-12-11 16:31:12.872 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":110,"CultureId":0,"Id":0,"FilterArray":[],"SortingArray":[]}
-2024-12-11 16:31:13.748 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":36,"Title":"Consectetur recusan","GenericTitleID":null,"KeyDate":"14-Oct-2011","Cost":"Aut in nobis qui Nam","ServiceID":19,"CoreAreaLookupID":1,"RelatedAreasLookupIDs":"4","Access":"Veritatis rerum volu","Availablity":"Saepe aspernatur iru","WhenToVisitIDs":"3, 4, 5","IsActive":true,"IsDeleted":false,"CreatedBy":3,"CreatedAt":"2024-09-27T05:32:47.533","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":21,"StatelookUpID":11,"PostalCode":"45615","Latitude":"12.000152","Longitude":"12.3456","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"Status":null,"ApprovedBy":null,"Remarks":null,"ApprovedDate":null,"IsContributed":false,"ExistingContentID":null},{"ID":70,"Title":"Cum aut dolore eiusm","GenericTitleID":null,"KeyDate":"16-Dec-1970","Cost":"85","ServiceID":19,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"4, 10","Access":"Suscipit ut officia ","Availablity":"Quaerat quo possimus","WhenToVisitIDs":"3, 6, 7","IsActive":true,"IsDeleted":false,"CreatedBy":3,"CreatedAt":"2024-09-29T13:25:58.123","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":15,"StatelookUpID":8,"PostalCode":"12312","Latitude":"Qui in dignissimos q","Longitude":"Hic ea sit laborios","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"Status":null,"ApprovedBy":null,"Remarks":null,"ApprovedDate":null,"IsContributed":false,"ExistingContentID":null},{"ID":74,"Title":"Sunt hic ut ipsa n","GenericTitleID":null,"KeyDate":"16-Jan-2015","Cost":"50","ServiceID":19,"CoreAreaLookupID":1,"RelatedAreasLookupIDs":"4, 10","Access":"Molestiae cum eu acc","Availablity":"Ea hic et amet tene","WhenToVisitIDs":"4, 5","IsActive":true,"IsDeleted":false,"CreatedBy":3,"CreatedAt":"2024-09-29T15:00:32.473","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":15,"StatelookUpID":8,"PostalCode":"12312","Latitude":"Quisquam commodo fac","Longitude":"Laborum ex sequi fug","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"Status":null,"ApprovedBy":null,"Remarks":null,"ApprovedDate":null,"IsContributed":false,"ExistingContentID":null},{"ID":97,"Title":"Sample Title","GenericTitleID":null,"KeyDate":"2024-11-11","Cost":"Free","ServiceID":19,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Always Open","WhenToVisitIDs":"1","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-11-11T10:37:44.027","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"40.7128","Longitude":"74.0060","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"Status":null,"ApprovedBy":null,"Remarks":null,"ApprovedDate":null,"IsContributed":false,"ExistingContentID":null},{"ID":98,"Title":"Sample Title","GenericTitleID":null,"KeyDate":"2024-11-11","Cost":"Free","ServiceID":19,"CoreAreaLookupID":2,"RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Always Open","WhenToVisitIDs":"1","IsActive":true,"IsDeleted":false,"CreatedBy":1,"CreatedAt":"2024-11-11T10:38:42.593","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"12345","Latitude":"40.7128","Longitude":"74.0060","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"Status":"pending ","ApprovedBy":1,"Remarks":"Sample Remarks","ApprovedDate":"11/11/2024 00:00:00","IsContributed":true,"ExistingContentID":null},{"ID":99,"Title":"string","GenericTitleID":null,"KeyDate":"string","Cost":"string","ServiceID":1,"CoreAreaLookupID":1,"RelatedAreasLookupIDs":"1","Access":"1","Availablity":"string","WhenToVisitIDs":"1","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-11-11T11:50:24.33","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"233","Latitude":"2.3","Longitude":"12.9","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"Status":"Pending","ApprovedBy":1,"Remarks":"string","ApprovedDate":"11/11/2024 11:50:24","IsContributed":true,"ExistingContentID":null},{"ID":100,"Title":"string","GenericTitleID":null,"KeyDate":"string","Cost":"string","ServiceID":1,"CoreAreaLookupID":1,"RelatedAreasLookupIDs":"1","Access":"1","Availablity":"string","WhenToVisitIDs":"1","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-11-11T11:50:36.743","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null,"AddressLine1":null,"AddressLine2":null,"CountryLookUpID":1,"CityLookUpID":19,"StatelookUpID":5,"PostalCode":"AB123","Latitude":"38.8977","Longitude":"-77.0365","KbDetailID":null,"WhenToVisitTitles":null,"CoreAreaName":null,"Status":"Pending","ApprovedBy":1,"Remarks":"string","ApprovedDate":"11/11/2024 11:50:36","IsContributed":true,"ExistingContentID":null}]
-2024-12-11 16:31:13.980 +05:00 [INF] Exiting null, Handle with response: [{"ID":36,"Title":"Consectetur recusan","GenericTitleID":null,"KeyDate":"14-Oct-2011","Cost":"Aut in nobis qui Nam","ServiceID":19,"CoreAreaLookupID":1,"WhenToVisitIDs":"3, 4, 5","RelatedAreasLookupIDs":"4","Access":"Veritatis rerum volu","Availablity":"Saepe aspernatur iru","IsDeleted":false,"IsActive":true,"CreatedBy":3,"CreatedAt":"2024-09-27T05:32:47.533","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":0,"CityLookUpID":21,"CountryLookUpID":1,"Latitude":"12.000152","Longitude":"12.3456","PostalCode":"45615","StatelookUpID":11,"CultureId":null,"Code":null,"Message":null,"Status":null,"ApprovedBy":null,"Remarks":null,"ApprovedDate":null,"IsContributed":false,"ExistingContentID":null},{"ID":70,"Title":"Cum aut dolore eiusm","GenericTitleID":null,"KeyDate":"16-Dec-1970","Cost":"85","ServiceID":19,"CoreAreaLookupID":2,"WhenToVisitIDs":"3, 6, 7","RelatedAreasLookupIDs":"4, 10","Access":"Suscipit ut officia ","Availablity":"Quaerat quo possimus","IsDeleted":false,"IsActive":true,"CreatedBy":3,"CreatedAt":"2024-09-29T13:25:58.123","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":0,"CityLookUpID":15,"CountryLookUpID":1,"Latitude":"Qui in dignissimos q","Longitude":"Hic ea sit laborios","PostalCode":"12312","StatelookUpID":8,"CultureId":null,"Code":null,"Message":null,"Status":null,"ApprovedBy":null,"Remarks":null,"ApprovedDate":null,"IsContributed":false,"ExistingContentID":null},{"ID":74,"Title":"Sunt hic ut ipsa n","GenericTitleID":null,"KeyDate":"16-Jan-2015","Cost":"50","ServiceID":19,"CoreAreaLookupID":1,"WhenToVisitIDs":"4, 5","RelatedAreasLookupIDs":"4, 10","Access":"Molestiae cum eu acc","Availablity":"Ea hic et amet tene","IsDeleted":false,"IsActive":true,"CreatedBy":3,"CreatedAt":"2024-09-29T15:00:32.473","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":0,"CityLookUpID":15,"CountryLookUpID":1,"Latitude":"Quisquam commodo fac","Longitude":"Laborum ex sequi fug","PostalCode":"12312","StatelookUpID":8,"CultureId":null,"Code":null,"Message":null,"Status":null,"ApprovedBy":null,"Remarks":null,"ApprovedDate":null,"IsContributed":false,"ExistingContentID":null},{"ID":97,"Title":"Sample Title","GenericTitleID":null,"KeyDate":"2024-11-11","Cost":"Free","ServiceID":19,"CoreAreaLookupID":2,"WhenToVisitIDs":"1","RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Always Open","IsDeleted":false,"IsActive":true,"CreatedBy":1,"CreatedAt":"2024-11-11T10:37:44.027","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":0,"CityLookUpID":19,"CountryLookUpID":1,"Latitude":"40.7128","Longitude":"74.0060","PostalCode":"12345","StatelookUpID":5,"CultureId":null,"Code":null,"Message":null,"Status":null,"ApprovedBy":null,"Remarks":null,"ApprovedDate":null,"IsContributed":false,"ExistingContentID":null},{"ID":98,"Title":"Sample Title","GenericTitleID":null,"KeyDate":"2024-11-11","Cost":"Free","ServiceID":19,"CoreAreaLookupID":2,"WhenToVisitIDs":"1","RelatedAreasLookupIDs":"1,2,3","Access":"Public","Availablity":"Always Open","IsDeleted":false,"IsActive":true,"CreatedBy":1,"CreatedAt":"2024-11-11T10:38:42.593","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":0,"CityLookUpID":19,"CountryLookUpID":1,"Latitude":"40.7128","Longitude":"74.0060","PostalCode":"12345","StatelookUpID":5,"CultureId":null,"Code":null,"Message":null,"Status":"pending ","ApprovedBy":1,"Remarks":"Sample Remarks","ApprovedDate":"11/11/2024 00:00:00","IsContributed":true,"ExistingContentID":null},{"ID":99,"Title":"string","GenericTitleID":null,"KeyDate":"string","Cost":"string","ServiceID":1,"CoreAreaLookupID":1,"WhenToVisitIDs":"1","RelatedAreasLookupIDs":"1","Access":"1","Availablity":"string","IsDeleted":false,"IsActive":true,"CreatedBy":1006,"CreatedAt":"2024-11-11T11:50:24.33","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":0,"CityLookUpID":19,"CountryLookUpID":1,"Latitude":"2.3","Longitude":"12.9","PostalCode":"233","StatelookUpID":5,"CultureId":null,"Code":null,"Message":null,"Status":"Pending","ApprovedBy":1,"Remarks":"string","ApprovedDate":"11/11/2024 11:50:24","IsContributed":true,"ExistingContentID":null},{"ID":100,"Title":"string","GenericTitleID":null,"KeyDate":"string","Cost":"string","ServiceID":1,"CoreAreaLookupID":1,"WhenToVisitIDs":"1","RelatedAreasLookupIDs":"1","Access":"1","Availablity":"string","IsDeleted":false,"IsActive":true,"CreatedBy":1006,"CreatedAt":"2024-11-11T11:50:36.743","UpdatedBy":0,"UpdatedAt":"0001-01-01T00:00:00","AddressID":0,"CityLookUpID":19,"CountryLookUpID":1,"Latitude":"38.8977","Longitude":"-77.0365","PostalCode":"AB123","StatelookUpID":5,"CultureId":null,"Code":null,"Message":null,"Status":"Pending","ApprovedBy":1,"Remarks":"string","ApprovedDate":"11/11/2024 11:50:36","IsContributed":true,"ExistingContentID":null}]
-2024-12-11 16:31:13.998 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2000.6759ms.
-2024-12-11 16:31:14.014 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2024-12-11 16:31:14.061 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api) in 2255.2021ms
-2024-12-11 16:31:14.066 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetAll (CleanArc.Web.Api)'
-2024-12-11 16:31:14.071 +05:00 [INF] Response StatusCode: 200
-2024-12-11 16:31:14.078 +05:00 [INF] Response StatusCode: 200
-2024-12-11 16:31:14.085 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/KBDetail/GetAll application/json 172 - 200 - application/json;+charset=utf-8 4239.5143ms
+2024-12-11 14:58:29.572 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 14:58:29.577 +05:00 [INF] Route matched with {action = "GetAll", controller = "HomeSlider"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQuery) on controller CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController (CleanArc.Web.Api).
+2024-12-11 14:58:29.601 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-11 14:58:29.611 +05:00 [INF] Entering CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-12-11 14:58:32.343 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-12-11 14:58:33.144 +05:00 [INF] Exiting null, GetAllAsync
+2024-12-11 14:58:33.166 +05:00 [INF] Exiting null, Handle
+2024-12-11 14:58:33.214 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) in 3634.7915ms
+2024-12-11 14:58:33.217 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 14:58:33.412 +05:00 [ERR] Could not find stored procedure 'dbo.GetAll_HomeSlider'.
+System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'dbo.GetAll_HomeSlider'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.HomeSliderRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\HomeSliderRepository.cs:line 145
+   at CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSliderSchedulesQueryHandler.Handle(GetAllHomeSlidersQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\HomeSlider\Queries\GetAllHomeSliderSchedules\GetAllHomeSliderQueryHandler.cs:line 38
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:04b19c3a-b996-4612-9c3c-e0fb2f6d5ffd
+Error Number:2812,State:1,Class:16
+2024-12-11 14:58:33.422 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171 - 500 - - 3879.0189ms
+2024-12-11 14:58:55.329 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171
+2024-12-11 14:58:55.335 +05:00 [INF] CORS policy execution successful.
+2024-12-11 14:58:55.337 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 14:58:55.341 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-11 14:58:55.363 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 14:58:55.367 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-11 14:58:55.370 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 14:58:55.374 +05:00 [INF] Route matched with {action = "GetAll", controller = "HomeSlider"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQuery) on controller CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController (CleanArc.Web.Api).
+2024-12-11 14:58:55.406 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-11 14:58:55.410 +05:00 [INF] Entering CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-12-11 14:58:59.995 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-12-11 14:59:03.124 +05:00 [INF] Exiting null, GetAllAsync
+2024-12-11 14:59:06.782 +05:00 [INF] Exiting null, Handle
+2024-12-11 14:59:09.625 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) in 14248.2986ms
+2024-12-11 14:59:09.629 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 15:04:01.136 +05:00 [ERR] Could not find stored procedure 'dbo.GetAll_HomeSlider'.
+System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'dbo.GetAll_HomeSlider'.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__126_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at CleanArc.Infrastructure.Persistence.Repositories.HomeSliderRepository.GetAllAsync(SearchRequest searchRequest) in D:\Projects\LLP_Core\src\Infrastructure\CleanArc.Infrastructure.Persistence\Repositories\HomeSliderRepository.cs:line 145
+   at CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSliderSchedulesQueryHandler.Handle(GetAllHomeSlidersQuery request, CancellationToken cancellationToken) in D:\Projects\LLP_Core\src\Core\CleanArc.Application\Features\HomeSlider\Queries\GetAllHomeSliderSchedules\GetAllHomeSliderQueryHandler.cs:line 38
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+ClientConnectionId:04b19c3a-b996-4612-9c3c-e0fb2f6d5ffd
+Error Number:2812,State:1,Class:16
+2024-12-11 15:04:01.163 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171 - 500 - - 305833.6072ms
+2024-12-11 15:04:03.143 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171
+2024-12-11 15:04:03.150 +05:00 [INF] CORS policy execution successful.
+2024-12-11 15:04:03.162 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 15:04:03.170 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-11 15:04:03.175 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 15:04:03.183 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-11 15:04:03.189 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 15:04:03.191 +05:00 [INF] Route matched with {action = "GetAll", controller = "HomeSlider"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQuery) on controller CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController (CleanArc.Web.Api).
+2024-12-11 15:04:03.207 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-11 15:04:03.211 +05:00 [INF] Entering CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-12-11 15:04:05.226 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-12-11 15:04:06.672 +05:00 [INF] Exiting null, GetAllAsync with response: []
+2024-12-11 15:04:06.761 +05:00 [INF] Exiting null, Handle with response: []
+2024-12-11 15:04:06.769 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3555.4141ms.
+2024-12-11 15:04:06.778 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-11 15:04:06.803 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) in 3608.9557ms
+2024-12-11 15:04:06.807 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 15:04:06.809 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:04:06.811 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:04:06.815 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171 - 200 - application/json;+charset=utf-8 3671.5984ms
+2024-12-11 15:04:52.058 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 53
+2024-12-11 15:04:52.063 +05:00 [INF] CORS policy execution successful.
+2024-12-11 15:04:52.066 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-12-11 15:04:52.069 +05:00 [INF] Request Body: {
+  "userName": "vendor2",
+  "password": "123@a123"
+}
+2024-12-11 15:04:52.072 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-12-11 15:04:52.075 +05:00 [INF] Request Body: {
+  "userName": "vendor2",
+  "password": "123@a123"
+}
+2024-12-11 15:04:52.078 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-12-11 15:04:52.084 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-12-11 15:04:52.140 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-11 15:04:52.149 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"vendor2","Password":"123@a123"}
+2024-12-11 15:04:52.179 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"vendor2","Password":"123@a123","$type":"AdminGetTokenQuery"}
+2024-12-11 15:04:52.471 +05:00 [INF] Executed DbCommand (78ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-12-11 15:04:52.571 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"192cf2e7-5385-4967-969e-c168de49c092","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":"2024-10-08T05:00:57.8364177+00:00","LockoutEnabled":false,"AccessFailedCount":4,"$type":"User"}
+2024-12-11 15:04:52.581 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-12-11 15:04:52.723 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-12-11 15:04:52.763 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-12-11 15:04:52.775 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-12-11 15:04:52.787 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-12-11 15:04:52.816 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-12-11 15:04:53.140 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-12-11 15:04:53.154 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-12-11 15:04:53.163 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.sJ0qzprvkptewG5FmHk2-bhogMSHhVFtNYhW_cH9HFdoq7bplEx3og.7fOKC3vBADeQIzMvlyZJEQ.O7gK2U2xrNayjglsqzRHlwl-a0nuIiY_BXCdYAXRxFa3jQMGCH2CAzXGKl_IdlVtA3tYf-A4lnW4ISKbFy7YwJbzEKvmawvyfon8nVE7wbUoqu4RkOad-9zyW6Z0vDAwBZa2i-wJKzdyFzYxx4Iw04vOm1gav2Jgeyj79OMv3W0CH6g4GokQOyRxOyy-96PtsFZGBuuf2QSd_hL1-8FqroyR7IBuLaPyqjzQhpNfU3J_lRzxkL8c-T07Oiz-tqlV88sJTr7bH-BaamWACixJs4zYyX51Fh5vr261aMRWYIC52b0iJhI63uOZwNEnfhNrWJKRI3D6poAwbGeTClbeM5t7ERgFR0dbjY_EaMnylwZptNmxwgZRjHvB5cc0vRpopoFRDUe25F13i_LlBUeOnijdmtJ2pUKOtrulWDz2c2RE2RJfht9f7ZKKmZsRJW8Lac_QNhIMx472HBIvSsdAlD-WN8xuETVYp_q1ichxqDfmErZv3k69hPATYnVQUVsBR-aTwWynjMPpnd6Urd_j1y3dTjg-M-2IGhu2Qoa0Hwlk8TO4sv1o15LCsZdDNZupeYmd_9ZbgyFjekpwIDSDb_CeuBedRkBJNiQQcasEA0T_Kx8VloeH0d2NoSbspwpp79zLm5W267-_DsiCxozFP96065sx_kxwRWp2jqEqFk90_hfs4TaCUJMuLyAMZ3xSfHbx0XEbL2tSlOLBL2jvvQ.CTJEqFnxE89GJ9DmAPHBcA","refresh_token":"5dddfea3-c608-4671-a0db-08dd19cb41d3","token_type":"Bearer","expires_in":599998,"userID":1006},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-12-11 15:04:53.166 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1021.6765ms.
+2024-12-11 15:04:53.170 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-11 15:04:53.174 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 1086.7098ms
+2024-12-11 15:04:53.177 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-12-11 15:04:53.180 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:04:53.182 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:04:53.185 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 53 - 200 - application/json;+charset=utf-8 1127.8133ms
+2024-12-11 15:06:06.500 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/Create application/json 120
+2024-12-11 15:06:06.507 +05:00 [INF] CORS policy execution successful.
+2024-12-11 15:06:06.515 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/Create, Content-Type: application/json
+2024-12-11 15:06:06.522 +05:00 [INF] Request Body: {
+  "title": "test",
+  "description": "stsliderImage",
+  "url": "www.img.com",
+  "image": "test.png",
+  "createdBy": 1
+}
+2024-12-11 15:06:06.669 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-12-11 15:06:06.690 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/Create, Content-Type: application/json
+2024-12-11 15:06:06.693 +05:00 [INF] Request Body: {
+  "title": "test",
+  "description": "stsliderImage",
+  "url": "www.img.com",
+  "image": "test.png",
+  "createdBy": 1
+}
+2024-12-11 15:06:06.695 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.Create (CleanArc.Web.Api)'
+2024-12-11 15:06:06.700 +05:00 [INF] Route matched with {action = "Create", controller = "HomeSlider"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(CleanArc.Application.Features.HomeSlider.Command.CreateHomeSliderCommand.CreateHomeSliderCommand) on controller CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController (CleanArc.Web.Api).
+2024-12-11 15:06:06.754 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.Create (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-11 15:06:06.829 +05:00 [INF] Entering CleanArc.Application.Features.HomeSlider.Command.CreateHomeSliderCommand, Handle with parameter: {"Title":"test","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","CreatedBy":1,"UserId":1006}
+2024-12-11 15:06:06.833 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-12-11 15:06:06.845 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"192cf2e7-5385-4967-969e-c168de49c092","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":"2024-10-08T05:00:57.8364177+00:00","LockoutEnabled":false,"AccessFailedCount":4}
+2024-12-11 15:06:06.852 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, AddAsync with parameter: {"ID":0,"Title":"test","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","IsActive":null,"IsDeleted":null,"CreatedBy":1006,"CreatedAt":null,"UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}
+2024-12-11 15:06:06.936 +05:00 [INF] Exiting null, AddAsync
+2024-12-11 15:06:06.941 +05:00 [INF] Exiting null, Handle with response: true
+2024-12-11 15:06:06.943 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.Create (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 186.0662ms.
+2024-12-11 15:06:06.946 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-11 15:06:06.948 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.Create (CleanArc.Web.Api) in 246.4338ms
+2024-12-11 15:06:06.950 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.Create (CleanArc.Web.Api)'
+2024-12-11 15:06:06.952 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:06:06.955 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:06:06.957 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/Create application/json 120 - 200 - application/json;+charset=utf-8 456.7805ms
+2024-12-11 15:06:18.220 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171
+2024-12-11 15:06:18.225 +05:00 [INF] CORS policy execution successful.
+2024-12-11 15:06:18.228 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 15:06:18.232 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-11 15:06:18.235 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 15:06:18.239 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-11 15:06:18.241 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 15:06:18.244 +05:00 [INF] Route matched with {action = "GetAll", controller = "HomeSlider"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQuery) on controller CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController (CleanArc.Web.Api).
+2024-12-11 15:06:18.261 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-11 15:06:18.264 +05:00 [INF] Entering CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-12-11 15:06:22.253 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-12-11 15:06:24.896 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":1,"Title":"test","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-12-11T10:08:17.05","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}]
+2024-12-11 15:06:24.904 +05:00 [INF] Exiting null, Handle with response: [{"ID":1,"Title":"test","Description":"stsliderImage","StartDate":null,"EndDate":null,"Duration":null,"DiscountType":null,"DiscountValue":null,"IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-12-11T10:08:17.05","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}]
+2024-12-11 15:06:24.906 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 6642.5507ms.
+2024-12-11 15:06:24.908 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-11 15:06:24.916 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) in 6669.2875ms
+2024-12-11 15:06:24.918 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 15:06:24.920 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:06:24.922 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:06:24.924 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171 - 200 - application/json;+charset=utf-8 6704.7123ms
+2024-12-11 15:07:45.595 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171
+2024-12-11 15:07:45.599 +05:00 [INF] CORS policy execution successful.
+2024-12-11 15:07:45.602 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 15:07:45.605 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-11 15:07:45.610 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 15:07:45.618 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-11 15:07:45.621 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 15:07:45.627 +05:00 [INF] Route matched with {action = "GetAll", controller = "HomeSlider"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQuery) on controller CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController (CleanArc.Web.Api).
+2024-12-11 15:07:45.679 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-11 15:07:45.690 +05:00 [INF] Entering CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-12-11 15:07:50.241 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-12-11 15:07:55.999 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":1,"Title":"test","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-12-11T10:08:17.05","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}]
+2024-12-11 15:07:56.140 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) in 10504.5461ms
+2024-12-11 15:07:56.143 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 15:07:56.365 +05:00 [ERR] Error getting value from 'StartDate' on 'CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQueryResult'.
+Newtonsoft.Json.JsonSerializationException: Error getting value from 'StartDate' on 'CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQueryResult'.
+ ---> System.MissingMethodException: Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+   at CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQueryResult.get_StartDate()
+   at Newtonsoft.Json.Serialization.ExpressionValueProvider.GetValue(Object target)
+   --- End of inner exception stack trace ---
+   at Newtonsoft.Json.Serialization.ExpressionValueProvider.GetValue(Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.CalculatePropertyValues(JsonWriter writer, Object value, JsonContainerContract contract, JsonProperty member, JsonProperty property, JsonContract& memberContract, Object& memberValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.Serialize(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.SerializeInternal(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Serialize(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonConvert.SerializeObjectInternal(Object value, Type type, JsonSerializer jsonSerializer)
+   at Newtonsoft.Json.JsonConvert.SerializeObject(Object value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.SerializeObject(Object value)
+   at CleanArc.SharedKernel.Extensions.LoggingExtensions.MethodEntryExitLogger.Dispose() in D:\Projects\LLP_Core\src\Shared\CleanArc.SharedKernel\Extensions\LoggingExtensions.cs:line 65
+   at CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSliderSchedulesQueryHandler.Handle(GetAllHomeSlidersQuery request, CancellationToken cancellationToken)
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+2024-12-11 15:07:56.396 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171 - 500 - - 10801.3655ms
+2024-12-11 15:08:00.428 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171
+2024-12-11 15:08:00.434 +05:00 [INF] CORS policy execution successful.
+2024-12-11 15:08:00.438 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 15:08:00.440 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-11 15:08:00.445 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 15:08:00.450 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-11 15:08:00.452 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 15:08:00.456 +05:00 [INF] Route matched with {action = "GetAll", controller = "HomeSlider"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQuery) on controller CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController (CleanArc.Web.Api).
+2024-12-11 15:08:00.476 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-11 15:08:00.481 +05:00 [INF] Entering CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-12-11 15:08:04.608 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-12-11 15:08:05.829 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":1,"Title":"test","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-12-11T10:08:17.05","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}]
+2024-12-11 15:08:05.910 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) in 5452.149ms
+2024-12-11 15:08:05.914 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 15:08:06.082 +05:00 [ERR] Error getting value from 'StartDate' on 'CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQueryResult'.
+Newtonsoft.Json.JsonSerializationException: Error getting value from 'StartDate' on 'CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQueryResult'.
+ ---> System.MissingMethodException: Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+   at CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQueryResult.get_StartDate()
+   at Newtonsoft.Json.Serialization.ExpressionValueProvider.GetValue(Object target)
+   --- End of inner exception stack trace ---
+   at Newtonsoft.Json.Serialization.ExpressionValueProvider.GetValue(Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.CalculatePropertyValues(JsonWriter writer, Object value, JsonContainerContract contract, JsonProperty member, JsonProperty property, JsonContract& memberContract, Object& memberValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.Serialize(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.SerializeInternal(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Serialize(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonConvert.SerializeObjectInternal(Object value, Type type, JsonSerializer jsonSerializer)
+   at Newtonsoft.Json.JsonConvert.SerializeObject(Object value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.SerializeObject(Object value)
+   at CleanArc.SharedKernel.Extensions.LoggingExtensions.MethodEntryExitLogger.Dispose() in D:\Projects\LLP_Core\src\Shared\CleanArc.SharedKernel\Extensions\LoggingExtensions.cs:line 65
+   at CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSliderSchedulesQueryHandler.Handle(GetAllHomeSlidersQuery request, CancellationToken cancellationToken)
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+2024-12-11 15:08:06.094 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171 - 500 - - 5665.1885ms
+2024-12-11 15:08:08.833 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-12-11 15:08:08.873 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-12-11 15:08:08.893 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:08:08.899 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 66.6131ms
+2024-12-11 15:08:08.906 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-12-11 15:08:08.913 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-12-11 15:08:08.936 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 23.1231ms
+2024-12-11 15:08:08.963 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 56.1074ms
+2024-12-11 15:08:08.996 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-12-11 15:08:09.001 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-12-11 15:08:09.485 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:08:09.490 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 493.4549ms
+2024-12-11 15:08:41.868 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171
+2024-12-11 15:08:41.872 +05:00 [INF] CORS policy execution successful.
+2024-12-11 15:08:41.876 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 15:08:41.879 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-11 15:08:41.896 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 15:08:41.900 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-11 15:08:41.902 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 15:08:41.905 +05:00 [INF] Route matched with {action = "GetAll", controller = "HomeSlider"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQuery) on controller CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController (CleanArc.Web.Api).
+2024-12-11 15:08:41.945 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-11 15:08:41.949 +05:00 [INF] Entering CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-12-11 15:08:43.307 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-12-11 15:08:44.298 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":1,"Title":"test","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-12-11T10:08:17.05","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}]
+2024-12-11 15:08:44.378 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) in 2470.659ms
+2024-12-11 15:08:44.382 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 15:08:44.548 +05:00 [ERR] Error getting value from 'StartDate' on 'CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQueryResult'.
+Newtonsoft.Json.JsonSerializationException: Error getting value from 'StartDate' on 'CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQueryResult'.
+ ---> System.MissingMethodException: Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+   at CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQueryResult.get_StartDate()
+   at Newtonsoft.Json.Serialization.ExpressionValueProvider.GetValue(Object target)
+   --- End of inner exception stack trace ---
+   at Newtonsoft.Json.Serialization.ExpressionValueProvider.GetValue(Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.CalculatePropertyValues(JsonWriter writer, Object value, JsonContainerContract contract, JsonProperty member, JsonProperty property, JsonContract& memberContract, Object& memberValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.Serialize(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.SerializeInternal(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonConvert.SerializeObjectInternal(Object value, Type type, JsonSerializer jsonSerializer)
+   at CleanArc.SharedKernel.Extensions.LoggingExtensions.MethodEntryExitLogger.Dispose() in D:\Projects\LLP_Core\src\Shared\CleanArc.SharedKernel\Extensions\LoggingExtensions.cs:line 65
+   at CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSliderSchedulesQueryHandler.Handle(GetAllHomeSlidersQuery request, CancellationToken cancellationToken)
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+2024-12-11 15:08:44.559 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171 - 500 - - 2690.8300ms
+2024-12-11 15:08:50.224 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171
+2024-12-11 15:08:50.229 +05:00 [INF] CORS policy execution successful.
+2024-12-11 15:08:50.237 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 15:08:50.242 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-11 15:08:50.247 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 15:08:50.250 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-11 15:08:50.254 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 15:08:50.257 +05:00 [INF] Route matched with {action = "GetAll", controller = "HomeSlider"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQuery) on controller CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController (CleanArc.Web.Api).
+2024-12-11 15:08:50.288 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-11 15:08:50.293 +05:00 [INF] Entering CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-12-11 15:08:55.835 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-12-11 15:09:02.241 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":1,"Title":"test","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-12-11T10:08:17.05","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}]
+2024-12-11 15:09:10.920 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) in 20660.4149ms
+2024-12-11 15:09:10.924 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 15:09:11.095 +05:00 [ERR] Error getting value from 'StartDate' on 'CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQueryResult'.
+Newtonsoft.Json.JsonSerializationException: Error getting value from 'StartDate' on 'CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQueryResult'.
+ ---> System.MissingMethodException: Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+   at CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQueryResult.get_StartDate()
+   at Newtonsoft.Json.Serialization.ExpressionValueProvider.GetValue(Object target)
+   --- End of inner exception stack trace ---
+   at Newtonsoft.Json.Serialization.ExpressionValueProvider.GetValue(Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.CalculatePropertyValues(JsonWriter writer, Object value, JsonContainerContract contract, JsonProperty member, JsonProperty property, JsonContract& memberContract, Object& memberValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.Serialize(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.SerializeInternal(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonConvert.SerializeObjectInternal(Object value, Type type, JsonSerializer jsonSerializer)
+   at CleanArc.SharedKernel.Extensions.LoggingExtensions.MethodEntryExitLogger.Dispose() in D:\Projects\LLP_Core\src\Shared\CleanArc.SharedKernel\Extensions\LoggingExtensions.cs:line 65
+   at CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSliderSchedulesQueryHandler.Handle(GetAllHomeSlidersQuery request, CancellationToken cancellationToken)
+   at CleanArc.Application.Common.ValidateCommandBehavior`2.Handle(TRequest message, CancellationToken cancellationToken, MessageHandlerDelegate`2 next)
+   at CleanArc.WebFramework.BaseController._BaseController`8.GetAll(TQuery model) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\BaseController\_BaseController.cs:line 83
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.ReDoc.ReDocMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at CleanArc.WebFramework.Middlewares.LoggingMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\LoggingMiddleware.cs:line 55
+   at CleanArc.WebFramework.Middlewares.CustomExceptionHandlerMiddleware.Invoke(HttpContext context) in D:\Projects\LLP_Core\src\API\CleanArc.WebFramework\Middlewares\CustomExceptionHandlerMiddleware.cs:line 42
+2024-12-11 15:09:11.106 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171 - 500 - - 20881.4835ms
+2024-12-11 15:10:38.183 +05:00 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-12-11 15:10:38.454 +05:00 [INF] Executed DbCommand (80ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-12-11 15:10:38.480 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-12-11 15:10:38.497 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-12-11 15:10:38.569 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-12-11 15:10:38.636 +05:00 [INF] No migrations were applied. The database is already up to date.
+2024-12-11 15:10:38.686 +05:00 [INF] User profile is available. Using 'C:\Users\Waqas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-12-11 15:10:39.221 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Roles] AS [r]
+        WHERE [r].[Name] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-12-11 15:10:39.250 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [usr].[Users] AS [u]
+        WHERE [u].[UserName] = N'admin') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-12-11 15:10:40.811 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/index.html - -
+2024-12-11 15:10:41.285 +05:00 [INF] Request Method: GET, Path: /swagger/index.html, Content-Type: null
+2024-12-11 15:10:41.747 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:10:41.763 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/index.html - - - 200 - text/html;charset=utf-8 954.9995ms
+2024-12-11 15:10:42.022 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - -
+2024-12-11 15:10:42.064 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/_vs/browserLink - -
+2024-12-11 15:10:42.081 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_framework/aspnetcore-browser-refresh.js - - - 200 12363 application/javascript;+charset=utf-8 57.4251ms
+2024-12-11 15:10:42.208 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 143.8411ms
+2024-12-11 15:10:42.340 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - -
+2024-12-11 15:10:42.347 +05:00 [INF] Request Method: GET, Path: /swagger/v1/swagger.json, Content-Type: null
+2024-12-11 15:10:45.748 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:10:45.779 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 3439.0296ms
+2024-12-11 15:11:21.457 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171
+2024-12-11 15:11:21.465 +05:00 [INF] CORS policy execution successful.
+2024-12-11 15:11:21.473 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 15:11:21.481 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-11 15:11:21.492 +05:00 [WRN] Failed to determine the https port for redirect.
+2024-12-11 15:11:21.746 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 15:11:21.749 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-11 15:11:21.755 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 15:11:21.789 +05:00 [INF] Route matched with {action = "GetAll", controller = "HomeSlider"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQuery) on controller CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController (CleanArc.Web.Api).
+2024-12-11 15:11:21.947 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-11 15:11:22.191 +05:00 [INF] Entering CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-12-11 15:11:25.540 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-12-11 15:11:28.194 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":1,"Title":"test","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-12-11T10:08:17.05","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}]
+2024-12-11 15:11:28.354 +05:00 [INF] Exiting null, Handle with response: [{"ID":1,"Title":"test","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-12-11T10:08:17.05","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}]
+2024-12-11 15:11:28.367 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 6410.8815ms.
+2024-12-11 15:11:28.388 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-11 15:11:28.451 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) in 6650.9729ms
+2024-12-11 15:11:28.457 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 15:11:28.461 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:11:28.469 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:11:28.474 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171 - 200 - application/json;+charset=utf-8 7016.8676ms
+2024-12-11 15:13:37.732 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/Update application/json 137
+2024-12-11 15:13:37.737 +05:00 [INF] CORS policy execution successful.
+2024-12-11 15:13:37.740 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/Update, Content-Type: application/json
+2024-12-11 15:13:37.744 +05:00 [INF] Request Body: {
+  "id": 0,
+ 
+  "title": "test1",
+  "description": "stsliderImage",
+  "url": "www.img.com",
+  "image": "test.png",
+  
+  "updatedBy": 0
+}
+2024-12-11 15:13:37.785 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-12-11 15:13:37.801 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-12-11 15:13:37.803 +05:00 [INF] Response StatusCode: 401
+2024-12-11 15:13:37.805 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/Update application/json 137 - 401 - application/json;+charset=utf-8 73.2103ms
+2024-12-11 15:14:18.805 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 53
+2024-12-11 15:14:18.809 +05:00 [INF] CORS policy execution successful.
+2024-12-11 15:14:18.812 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-12-11 15:14:18.816 +05:00 [INF] Request Body: {
+  "userName": "Vendor2",
+  "password": "123@a123"
+}
+2024-12-11 15:14:18.821 +05:00 [INF] Request Method: POST, Path: /api/v1/AdminManager/Login, Content-Type: application/json
+2024-12-11 15:14:18.824 +05:00 [INF] Request Body: {
+  "userName": "Vendor2",
+  "password": "123@a123"
+}
+2024-12-11 15:14:18.827 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-12-11 15:14:18.834 +05:00 [INF] Route matched with {action = "AdminLogin", controller = "AdminManager"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminLogin(CleanArc.Application.Features.Admin.Queries.GetToken.AdminGetTokenQuery) on controller CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController (CleanArc.Web.Api).
+2024-12-11 15:14:19.006 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-11 15:14:19.012 +05:00 [INF] Entering CleanArc.Web.Api.Controllers.V1.Admin, AdminLogin with parameter: {"UserName":"Vendor2","Password":"123@a123"}
+2024-12-11 15:14:19.133 +05:00 [INF] Hander Started: AdminGetTokenQueryHandler, Query Request: {"UserName":"Vendor2","Password":"123@a123","$type":"AdminGetTokenQuery"}
+2024-12-11 15:14:19.264 +05:00 [INF] Executed DbCommand (21ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2024-12-11 15:14:19.335 +05:00 [INF] GetByUserName from AdminGetTokenQueryHandler, GetByUserName Response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"192cf2e7-5385-4967-969e-c168de49c092","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":"2024-10-08T05:00:57.8364177+00:00","LockoutEnabled":false,"AccessFailedCount":4,"$type":"User"}
+2024-12-11 15:14:19.343 +05:00 [INF] User locked out checked from AdminGetTokenQueryHandler, Response: false
+2024-12-11 15:14:19.448 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-12-11 15:14:19.475 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [usr].[UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2024-12-11 15:14:19.486 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [usr].[UserRoles] AS [u]
+INNER JOIN [usr].[Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2024-12-11 15:14:19.495 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CreatedDate], [r].[DisplayName], [r].[Name], [r].[NormalizedName]
+FROM [usr].[Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2024-12-11 15:14:19.516 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__role_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [usr].[RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2024-12-11 15:14:19.722 +05:00 [INF] Executed DbCommand (17ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usr].[UserRefreshTokens] ([Id], [CreatedAt], [CreatedTime], [IsValid], [ModifiedDate], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-12-11 15:14:19.742 +05:00 [INF] Token generated from AdminGetTokenQueryHandler, Response: true
+2024-12-11 15:14:19.752 +05:00 [INF] Exiting null, AdminLogin with response: {"Result":{"access_token":"eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIiwiY3R5IjoiSldUIn0.sl9mnD3gHq0kNwAfR_qxPJApx2SmShcDo-40NAwDZ8wXEIaZK5xwOg.LZ9mwa52SCi9v9GxiTkdCg.KLwJ6JNA_RX_5VtTJZx0xHE9Cfuim-gcSUuZDKWAvly2ogBxMXgFqpt-Vbwr4FGlMZfhS9-pUStbE6_IStDawtnauSEWP705zFqRgjyrVIrnSIW-eJX5IQlFF_dJzt1tBX8_AcEAlv8G7TlAlG4M6kKiiR2h8Xy7gansrpD7ilSzMh6BUyS-dx9kIyKhl8sLLxQPpzbp1A77Ru2KZegqFWk5a3itT4xoyoghEbpKv2fjNelxi6ch4_eadZcNHpw4Z8848rxVrVGrGklG74ZO6F6jsZbTK3-FJ-UOm2AuI1vzg2C6EBIWCi9jfnKk9EewCTka97GVT3WNIguRq1UydxNqADM_f-29GWRBPSY4xg8SWmwTWeL-oBvXCNz_bXGl6-qiXY1byVNyw0BX4Kvx_toyALTeWuioxpdpTUU51ApA5vd4NY4PslpCBpTtxWhopTa8ZBAHCt20ZiunUPRwWdpu2jrhgA3YGuUIQFbSwr0DB9Xq-JDN7PSB5UHA37jgEbpOdbWB1YWNLKQEIU4NT3NDx5-7u8xNZ1o4WLG7tzrSOWkYzdaBg7DfzhEb-morlmbr6d6VdjJDW3_3BHKOMLhvunGyx6tS6B3AOkZDjbrHBMkp9oEzS1z6idvtfv5yPGf69A_P_q1VjcwSLrd0YgoWpkJ1EFpvHoUw3-q1wgZXYorTv9nqWiB9FExECb87DW30XccJDvC6rVO9PSnayQ.3svMWfpkTp7WED-4mi7rHQ","refresh_token":"4848f00c-7870-4c2a-14a3-08dd19cc938c","token_type":"Bearer","expires_in":599999,"userID":1006},"IsSuccess":true,"ErrorMessage":null,"IsException":false,"IsNotFound":false}
+2024-12-11 15:14:19.755 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 745.8216ms.
+2024-12-11 15:14:19.758 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-11 15:14:19.762 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api) in 924.8114ms
+2024-12-11 15:14:19.765 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.Admin.AdminManagerController.AdminLogin (CleanArc.Web.Api)'
+2024-12-11 15:14:19.767 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:14:19.770 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:14:19.772 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/AdminManager/Login application/json 53 - 200 - application/json;+charset=utf-8 967.0982ms
+2024-12-11 15:14:53.311 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171
+2024-12-11 15:14:53.315 +05:00 [INF] CORS policy execution successful.
+2024-12-11 15:14:53.319 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 15:14:53.321 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-11 15:14:53.324 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/GetAll, Content-Type: application/json
+2024-12-11 15:14:53.326 +05:00 [INF] Request Body: {
+  "searchRequest": {
+    "pageNumber": 1,
+    "pageSize": 10,
+    "cultureId": 1,
+    "id": 0,
+    "filterArray": [
+     
+    ],
+    "sortingArray": [
+      
+    ]
+  }
+}
+2024-12-11 15:14:53.329 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 15:14:53.332 +05:00 [INF] Route matched with {action = "GetAll", controller = "HomeSlider"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQuery) on controller CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController (CleanArc.Web.Api).
+2024-12-11 15:14:53.371 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-11 15:14:53.375 +05:00 [INF] Entering CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders, Handle with parameter: {"searchRequest":{"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}}
+2024-12-11 15:14:57.884 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetAllAsync with parameter: {"PageNumber":1,"PageSize":10,"CultureId":1,"Id":0,"FilterArray":[],"SortingArray":[]}
+2024-12-11 15:14:58.679 +05:00 [INF] Exiting null, GetAllAsync with response: [{"ID":1,"Title":"test","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-12-11T10:08:17.05","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}]
+2024-12-11 15:14:58.682 +05:00 [INF] Exiting null, Handle with response: [{"ID":1,"Title":"test","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-12-11T10:08:17.05","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}]
+2024-12-11 15:14:58.685 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 5310.5651ms.
+2024-12-11 15:14:58.687 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-11 15:14:58.690 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api) in 5354.4038ms
+2024-12-11 15:14:58.692 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetAll (CleanArc.Web.Api)'
+2024-12-11 15:14:58.694 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:14:58.696 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:14:58.698 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/GetAll application/json 171 - 200 - application/json;+charset=utf-8 5386.5040ms
+2024-12-11 15:15:17.907 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/Update application/json 137
+2024-12-11 15:15:17.910 +05:00 [INF] CORS policy execution successful.
+2024-12-11 15:15:17.913 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/Update, Content-Type: application/json
+2024-12-11 15:15:17.915 +05:00 [INF] Request Body: {
+  "id": 0,
+ 
+  "title": "test1",
+  "description": "stsliderImage",
+  "url": "www.img.com",
+  "image": "test.png",
+  
+  "updatedBy": 0
+}
+2024-12-11 15:15:17.976 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-12-11 15:15:17.988 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/Update, Content-Type: application/json
+2024-12-11 15:15:17.991 +05:00 [INF] Request Body: {
+  "id": 0,
+ 
+  "title": "test1",
+  "description": "stsliderImage",
+  "url": "www.img.com",
+  "image": "test.png",
+  
+  "updatedBy": 0
+}
+2024-12-11 15:15:17.994 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.Update (CleanArc.Web.Api)'
+2024-12-11 15:15:18.000 +05:00 [INF] Route matched with {action = "Update", controller = "HomeSlider"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.HomeSlider.Command.UpdateHomeSliderCommand.UpdateHomeSliderCommand) on controller CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController (CleanArc.Web.Api).
+2024-12-11 15:15:18.097 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-11 15:15:18.176 +05:00 [INF] Entering CleanArc.Application.Features.HomeSlider.Command.UpdateHomeSliderCommand, Handle with parameter: {"ID":0,"Title":"test1","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","UpdatedBy":0,"UserId":1006}
+2024-12-11 15:15:18.179 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-12-11 15:15:18.187 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"192cf2e7-5385-4967-969e-c168de49c092","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":"2024-10-08T05:00:57.8364177+00:00","LockoutEnabled":false,"AccessFailedCount":4}
+2024-12-11 15:15:18.191 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":0,"Title":"test1","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":1006,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}
+2024-12-11 15:15:18.294 +05:00 [INF] Exiting null, UpdateAsync with response: {"IsSuccess":true,"Message":"","RecordID":0}
+2024-12-11 15:15:18.297 +05:00 [INF] Exiting null, Handle with response: true
+2024-12-11 15:15:18.299 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.Update (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 199.7594ms.
+2024-12-11 15:15:18.302 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-11 15:15:18.305 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.Update (CleanArc.Web.Api) in 303.2673ms
+2024-12-11 15:15:18.307 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.Update (CleanArc.Web.Api)'
+2024-12-11 15:15:18.309 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:15:18.311 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:15:18.314 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/Update application/json 137 - 200 - application/json;+charset=utf-8 406.8793ms
+2024-12-11 15:15:31.549 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/api/v1/HomeSlider/GetById/1 - -
+2024-12-11 15:15:31.556 +05:00 [INF] Request Method: GET, Path: /api/v1/HomeSlider/GetById/1, Content-Type: null
+2024-12-11 15:15:31.561 +05:00 [INF] Request Method: GET, Path: /api/v1/HomeSlider/GetById/1, Content-Type: null
+2024-12-11 15:15:31.565 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetById (CleanArc.Web.Api)'
+2024-12-11 15:15:31.573 +05:00 [INF] Route matched with {action = "GetById", controller = "HomeSlider"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController (CleanArc.Web.Api).
+2024-12-11 15:15:31.611 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-11 15:15:31.630 +05:00 [INF] Entering CleanArc.Application.Features.HomeSlider.Queries.GetHomeSliderById, Handle with parameter: {"Id":1}
+2024-12-11 15:15:31.637 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 1
+2024-12-11 15:15:31.713 +05:00 [INF] Exiting null, GetByIdAsync with response: {"ID":1,"Title":"test","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-12-11T10:08:17.05","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}
+2024-12-11 15:15:31.725 +05:00 [INF] Exiting null, Handle with response: {"ID":1,"Title":"test","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-12-11T10:08:17.05","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}
+2024-12-11 15:15:31.733 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetById (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 118.4682ms.
+2024-12-11 15:15:31.737 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-11 15:15:31.743 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetById (CleanArc.Web.Api) in 167.3592ms
+2024-12-11 15:15:31.746 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetById (CleanArc.Web.Api)'
+2024-12-11 15:15:31.748 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:15:31.751 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:15:31.754 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/api/v1/HomeSlider/GetById/1 - - - 200 - application/json;+charset=utf-8 204.8732ms
+2024-12-11 15:16:32.751 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/api/v1/HomeSlider/GetById/1 - -
+2024-12-11 15:16:32.756 +05:00 [INF] Request Method: GET, Path: /api/v1/HomeSlider/GetById/1, Content-Type: null
+2024-12-11 15:16:32.761 +05:00 [INF] Request Method: GET, Path: /api/v1/HomeSlider/GetById/1, Content-Type: null
+2024-12-11 15:16:32.765 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetById (CleanArc.Web.Api)'
+2024-12-11 15:16:32.770 +05:00 [INF] Route matched with {action = "GetById", controller = "HomeSlider"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController (CleanArc.Web.Api).
+2024-12-11 15:16:32.806 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-11 15:16:32.810 +05:00 [INF] Entering CleanArc.Application.Features.HomeSlider.Queries.GetHomeSliderById, Handle with parameter: {"Id":1}
+2024-12-11 15:16:32.815 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 1
+2024-12-11 15:16:32.866 +05:00 [INF] Exiting null, GetByIdAsync with response: {"ID":1,"Title":"test","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-12-11T10:08:17.05","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}
+2024-12-11 15:16:32.869 +05:00 [INF] Exiting null, Handle with response: {"ID":1,"Title":"test","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-12-11T10:08:17.05","UpdatedBy":null,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}
+2024-12-11 15:16:32.872 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetById (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 63.0428ms.
+2024-12-11 15:16:32.874 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-11 15:16:32.877 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetById (CleanArc.Web.Api) in 104.2856ms
+2024-12-11 15:16:32.880 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetById (CleanArc.Web.Api)'
+2024-12-11 15:16:32.882 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:16:32.885 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:16:32.888 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/api/v1/HomeSlider/GetById/1 - - - 200 - application/json;+charset=utf-8 136.9551ms
+2024-12-11 15:24:55.074 +05:00 [INF] Request starting HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/Update application/json 137
+2024-12-11 15:24:55.077 +05:00 [INF] CORS policy execution successful.
+2024-12-11 15:24:55.080 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/Update, Content-Type: application/json
+2024-12-11 15:24:55.081 +05:00 [INF] Request Body: {
+  "id": 1,
+ 
+  "title": "test1",
+  "description": "stsliderImage",
+  "url": "www.img.com",
+  "image": "test.png",
+  
+  "updatedBy": 0
+}
+2024-12-11 15:24:55.149 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FamilyName], [u].[GeneratedCode], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[Name], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [usr].[Users] AS [u]
+WHERE [u].[UserId] = @__p_0
+2024-12-11 15:24:55.155 +05:00 [INF] Request Method: POST, Path: /api/v1/HomeSlider/Update, Content-Type: application/json
+2024-12-11 15:24:55.158 +05:00 [INF] Request Body: {
+  "id": 1,
+ 
+  "title": "test1",
+  "description": "stsliderImage",
+  "url": "www.img.com",
+  "image": "test.png",
+  
+  "updatedBy": 0
+}
+2024-12-11 15:24:55.160 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.Update (CleanArc.Web.Api)'
+2024-12-11 15:24:55.163 +05:00 [INF] Route matched with {action = "Update", controller = "HomeSlider"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(CleanArc.Application.Features.HomeSlider.Command.UpdateHomeSliderCommand.UpdateHomeSliderCommand) on controller CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController (CleanArc.Web.Api).
+2024-12-11 15:24:55.186 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.Update (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-11 15:24:55.189 +05:00 [INF] Entering CleanArc.Application.Features.HomeSlider.Command.UpdateHomeSliderCommand, Handle with parameter: {"ID":1,"Title":"test1","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","UpdatedBy":0,"UserId":1006}
+2024-12-11 15:24:55.191 +05:00 [INF] Entering CleanArc.Infrastructure.Identity.UserManager, GetUserByIdAsync with parameter: 1006
+2024-12-11 15:24:55.197 +05:00 [INF] Exiting null, GetUserByIdAsync with response: {"Name":null,"FamilyName":null,"GeneratedCode":"710d14d5","UserRoles":null,"Logins":null,"Claims":null,"Tokens":null,"UserRefreshTokens":null,"Orders":null,"Id":1006,"UserName":"vendor2","NormalizedUserName":"VENDOR2","Email":"vendor2@mail.com","NormalizedEmail":"VENDOR2@MAIL.COM","EmailConfirmed":false,"PasswordHash":"AQAAAAIAAYagAAAAEMqsr3lOgpUblYwTydvEXhQEz2NjEo/oJhI00dcKPuNcBUWE5XxGfkO4OMM846ouCA==","SecurityStamp":"C2TQTDB32E4JX7Q4QNDLSFOXHVTBGDK3","ConcurrencyStamp":"192cf2e7-5385-4967-969e-c168de49c092","PhoneNumber":null,"PhoneNumberConfirmed":false,"TwoFactorEnabled":false,"LockoutEnd":"2024-10-08T05:00:57.8364177+00:00","LockoutEnabled":false,"AccessFailedCount":4}
+2024-12-11 15:24:55.200 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, UpdateAsync with parameter: {"ID":1,"Title":"test1","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","IsActive":null,"IsDeleted":null,"CreatedBy":null,"CreatedAt":null,"UpdatedBy":1006,"UpdatedAt":null,"CultureId":null,"Code":null,"Message":null}
+2024-12-11 15:24:55.263 +05:00 [INF] Exiting null, UpdateAsync with response: {"IsSuccess":true,"Message":"","RecordID":1}
+2024-12-11 15:24:55.267 +05:00 [INF] Exiting null, Handle with response: true
+2024-12-11 15:24:55.270 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.Update (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 82.1522ms.
+2024-12-11 15:24:55.272 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-11 15:24:55.275 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.Update (CleanArc.Web.Api) in 109.178ms
+2024-12-11 15:24:55.276 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.Update (CleanArc.Web.Api)'
+2024-12-11 15:24:55.278 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:24:55.280 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:24:55.282 +05:00 [INF] Request finished HTTP/1.1 POST http://localhost:8746/api/v1/HomeSlider/Update application/json 137 - 200 - application/json;+charset=utf-8 207.3403ms
+2024-12-11 15:25:02.192 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:8746/api/v1/HomeSlider/GetById/1 - -
+2024-12-11 15:25:02.196 +05:00 [INF] Request Method: GET, Path: /api/v1/HomeSlider/GetById/1, Content-Type: null
+2024-12-11 15:25:02.200 +05:00 [INF] Request Method: GET, Path: /api/v1/HomeSlider/GetById/1, Content-Type: null
+2024-12-11 15:25:02.203 +05:00 [INF] Executing endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetById (CleanArc.Web.Api)'
+2024-12-11 15:25:02.206 +05:00 [INF] Route matched with {action = "GetById", controller = "HomeSlider"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController (CleanArc.Web.Api).
+2024-12-11 15:25:02.229 +05:00 [INF] Executing action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetById (CleanArc.Web.Api) - Validation state: "Valid"
+2024-12-11 15:25:02.239 +05:00 [INF] Entering CleanArc.Application.Features.HomeSlider.Queries.GetHomeSliderById, Handle with parameter: {"Id":1}
+2024-12-11 15:25:02.241 +05:00 [INF] Entering CleanArc.Infrastructure.Persistence.Repositories, GetByIdAsync with parameter: 1
+2024-12-11 15:25:02.275 +05:00 [INF] Exiting null, GetByIdAsync with response: {"ID":1,"Title":"test1","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-12-11T10:08:17.05","UpdatedBy":1006,"UpdatedAt":"2024-12-11T10:27:05.41","CultureId":null,"Code":null,"Message":null}
+2024-12-11 15:25:02.279 +05:00 [INF] Exiting null, Handle with response: {"ID":1,"Title":"test1","Description":"stsliderImage","Url":"www.img.com","Image":"test.png","IsActive":true,"IsDeleted":false,"CreatedBy":1006,"CreatedAt":"2024-12-11T10:08:17.05","UpdatedBy":1006,"UpdatedAt":"2024-12-11T10:27:05.41","CultureId":null,"Code":null,"Message":null}
+2024-12-11 15:25:02.281 +05:00 [INF] Executed action method CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetById (CleanArc.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 49.1009ms.
+2024-12-11 15:25:02.284 +05:00 [INF] Executing JsonResult, writing value of type 'CleanArc.Application.Models.ApiResult.ApiResult`1[[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-11 15:25:02.287 +05:00 [INF] Executed action CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetById (CleanArc.Web.Api) in 79.2719ms
+2024-12-11 15:25:02.289 +05:00 [INF] Executed endpoint 'CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.GetById (CleanArc.Web.Api)'
+2024-12-11 15:25:02.291 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:25:02.293 +05:00 [INF] Response StatusCode: 200
+2024-12-11 15:25:02.295 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:8746/api/v1/HomeSlider/GetById/1 - - - 200 - application/json;+charset=utf-8 103.7761ms

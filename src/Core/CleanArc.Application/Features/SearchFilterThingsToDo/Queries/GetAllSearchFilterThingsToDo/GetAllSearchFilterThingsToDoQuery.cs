@@ -5,5 +5,5 @@ using Mediator;
 
 namespace CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetAllSearchFilterThingsToDo;
 
-public record GetAllSearchFilterThingsToDoQuery(ThingsToDoSearchFilterRequest thingsToDoSearchFilterRequest) : IRequest<OperationResult<List<GetAllSearchFilterThingsToDoQueryResult>>>;
+public record GetAllSearchFilterThingsToDoQuery(ThingsToDoSearchFilterRequest searchRequest) : IRequest<OperationResult<List<GetAllSearchFilterThingsToDoQueryResult>>>;
 
