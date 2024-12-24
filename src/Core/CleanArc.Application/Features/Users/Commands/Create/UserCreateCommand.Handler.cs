@@ -2,19 +2,23 @@
 using CleanArc.Application.Models.Common;
 using CleanArc.Domain.Entities.User;
 using Mediator;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
+using CleanArc.Application.Contracts.Persistence;
+using CleanArc.Application.Models.UserSignUpRewards;
 
 namespace CleanArc.Application.Features.Users.Commands.Create;
 
 internal class UserCreateCommandHandler : IRequestHandler<UserCreateCommand, OperationResult<UserCreateCommandResult>>
 {
-
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly ILogger<UserCreateCommandHandler> _logger;
-    public UserCreateCommandHandler(IAppUserManager userRepository, ILogger<UserCreateCommandHandler> logger)
+    public UserCreateCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userRepository, ILogger<UserCreateCommandHandler> logger)
     {
         _userManager = userRepository;
         _logger = logger;
+        _unitOfWork = unitOfWork;
     }
 
     public async ValueTask<OperationResult<UserCreateCommandResult>> Handle(UserCreateCommand request, CancellationToken cancellationToken)
@@ -37,6 +41,9 @@ internal class UserCreateCommandHandler : IRequestHandler<UserCreateCommand, Ope
         {
             return OperationResult<UserCreateCommandResult>.FailureResult(string.Join(",", createResult.Errors.Select(c => c.Description)));
         }
+        var result = await _unitOfWork.UserSignUpRewardsRepository.AddAsync(new Domain.Entities.UserSignUpRewards.UserSignUpRewards()
+        {  UserID = user.Id,RewardRulesID = 1 });
+        await _unitOfWork.CommitAsync();
 
         var code = await _userManager.GeneratePhoneNumberConfirmationToken(user, user.PhoneNumber);
 
