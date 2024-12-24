@@ -57,18 +57,16 @@ namespace CleanArc.Application.Features.CarDetail.Command.CreateCarDetailCommand
 
                 //return OperationResult<ResponseEntity>.SuccessResult(result);
                 var result = await _unitOfWork.CarDetailRepository.AddAsync(new Domain.Entities.CarDetail.CarDetail()
-                { CreatedBy = user.Id,
+                { 
+                    CreatedBy = user.Id,
                     BusinessID = request.BusinessID,
                     Model = request.Model,
                     Year = request.Year,
-                      VehicleIdentificationNumber = request.VehicleIdentificationNumber,
-                        PlateNumber = request.PlateNumber,
+                    VehicleIdentificationNumber = request.VehicleIdentificationNumber,
+                    PlateNumber = request.PlateNumber,
                     NoOfSeat = request.NoOfSeat,
                     RentPrice = request.RentPrice,
-                    //IsRefundable = request.IsRefundable,
-                    //IsCancelation = request.IsCancelation
-                            
-
+                    About = request.About,
                 });
                 await _unitOfWork.CommitAsync();
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

@@ -16,7 +16,7 @@ namespace CleanArc.Application.Features.Hotel.Command.CreateHotelCommand;
 public record CreateHotelCommand(string? Name,int? CountryID, int? StateID, int? CityID,  int? ZipCode, string? Address1,
     string? Address2, string? Latitude, string? Longitude, string? MobileNumber,string? PhoneNumber, string? Email,
     string? FocalPersonName, bool? IsChanelManager, bool? IsRating, bool? IsChain, int? ServiceID, string? CheckInFrom, string? CheckInTo,
-    string? CheckOutFrom, string? CheckOutTo,int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>
+    string? CheckOutFrom, string? CheckOutTo, string? About, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>
     //,
     //IValidatableModel<CreateHotelCommand>
 {
@@ -112,6 +112,10 @@ public record CreateHotelCommand(string? Name,int? CountryID, int? StateID, int?
     //       .NotEmpty()
     //       .NotNull()
     //       .WithMessage("Please enter a CheckOutTo");
+    //    validator.RuleFor(c => c.About)
+    //       .NotEmpty()
+    //       .NotNull()
+    //       .WithMessage("Please enter About information");
     //    return validator;
     //}
 }

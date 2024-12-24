@@ -24,5 +24,6 @@ namespace CleanArc.Domain.Entities.CarDetail
         public DateTime? UpdatedAt { get; set; }
         //public bool? IsRefundable { get; set; }
         //public bool? IsCancelation { get; set; }
+        public string? About { get; set; }
     }
 }
