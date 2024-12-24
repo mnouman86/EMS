@@ -73,6 +73,7 @@ internal class UpdateHotelCommandHandler : IRequestHandler<UpdateHotelCommand, O
                 CheckInTo = request.CheckInTo,
                 CheckOutFrom = request.CheckOutFrom,
                 CheckOutTo = request.CheckOutTo,
+                About = request.About,
                 //IsDeleted = request.IsDeleted,
                 //IsActive = request.IsActive,
             });

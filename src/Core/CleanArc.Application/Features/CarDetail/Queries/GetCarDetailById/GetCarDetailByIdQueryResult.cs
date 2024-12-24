@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.CarDetail.Query.GetCarDetailById
+namespace CleanArc.Application.Features.CarDetail.Queries.GetCarDetailById
 {
     public class GetCarDetailByIdQueryResult
     {
@@ -25,5 +25,7 @@ namespace CleanArc.Application.Features.CarDetail.Query.GetCarDetailById
         public DateTime UpdatedAt { get; set; }
         //public bool IsRefundable { get; set; }
         //public bool IsCancelation { get; set; }
+        public string? About { get; set; }
+
     }
 }

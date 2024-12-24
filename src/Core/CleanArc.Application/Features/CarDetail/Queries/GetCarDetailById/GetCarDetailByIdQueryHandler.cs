@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.CarDetail.Query.GetCarDetailById
+namespace CleanArc.Application.Features.CarDetail.Queries.GetCarDetailById
 {
     internal class GetCarDetailByIdQueryHandler : IRequestHandler<GetCarDetailByIdQuery, OperationResult<GetCarDetailByIdQueryResult>>
     {

@@ -2,8 +2,8 @@
 using CleanArc.Application.Features.CarDetail.Command.CreateCarDetailCommand;
 using CleanArc.Application.Features.CarDetail.Command.DeleteCarDetailCommand;
 using CleanArc.Application.Features.CarDetail.Command.UpdateCarDetailCommand;
-using CleanArc.Application.Features.CarDetail.Query.GetAllCarDetail;
-using CleanArc.Application.Features.CarDetail.Query.GetCarDetailById;
+using CleanArc.Application.Features.CarDetail.Queries.GetAllCarDetail;
+using CleanArc.Application.Features.CarDetail.Queries.GetCarDetailById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
 using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
