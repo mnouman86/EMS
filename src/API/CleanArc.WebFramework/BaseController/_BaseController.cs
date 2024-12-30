@@ -73,7 +73,7 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
     /// </summary>
     /// <returns>An action result representing the operation result.</returns>
     //[Authorize]
-    [HttpPost("GetAll")]
+    [HttpPost("[controller]GetAll")]
     public async Task<IActionResult> GetAll([FromBody] TQuery model)
     {
         //dynamic query = Activator.CreateInstance(typeof(TQuery));
@@ -92,7 +92,7 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
     /// </summary>
     /// <param name="id">The ID of the entity.</param>
     /// <returns>An action result representing the operation result.</returns>
-    [HttpGet("GetById/{id}")]
+    [HttpGet("[controller]GetById/{id}")]
     public async Task<IActionResult> GetById(int id)
     {
         dynamic query = Activator.CreateInstance(typeof(TByIdQuery));
@@ -108,7 +108,7 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
     /// <returns>An action result representing the operation result.</returns>
     /// 
    [Authorize]
-    [HttpPost("Create")]
+    [HttpPost("[controller]Create")]
     public async Task<IActionResult> Create([FromBody] TCreateCommand model)
     {
         SetUserId(model);
@@ -122,7 +122,7 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
     /// <param name="model">The model for updating the entity.</param>
     /// <returns>An action result representing the operation result.</returns>
     [Authorize]
-    [HttpPost("Update")]
+    [HttpPost("[controller]Update")]
     public async Task<IActionResult> Update([FromBody] TUpdateCommand model)
     {
         SetUserId(model);
@@ -137,7 +137,7 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
     /// <returns>An action result representing the operation result.</returns>
     /// 
     [Authorize]
-    [HttpPost("Delete")]
+    [HttpPost("[controller]Delete")]
     public async Task<IActionResult> Delete([FromBody] TDeleteCommand model)
     {
         SetUserId(model);
