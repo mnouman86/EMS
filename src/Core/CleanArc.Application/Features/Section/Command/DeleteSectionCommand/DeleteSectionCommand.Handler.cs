@@ -1,8 +1,7 @@
 ﻿using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Features.URL.Commands.AddURLCommand;
+using CleanArc.Application.Features.AgeType.Commands.DeleteAgeTypeCommand;
 using CleanArc.Application.Models.Common;
-using CleanArc.Domain.Entities.User;
 using CleanArc.SharedKernel.Extensions;
 using MapsterMapper;
 using Mediator;
@@ -15,21 +14,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.KBDescription.Commands.CreateKBDescriptionCommand;
+namespace CleanArc.Application.Features.Section.Command.DeleteSectionCommand;
 
-internal class CreateKBDescriptionCommandHandler: IRequestHandler<CreateKBDescriptionCommand, OperationResult<ResponseEntity>>
+internal class DeleteSectionCommandHandler : IRequestHandler<DeleteSectionCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<CreateKBDescriptionCommandHandler> _logger;
+    private readonly ILogger<DeleteSectionCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
-    //private readonly IUnitOfWork _unitOfWork;
-    //private readonly IAppUserManager _userManager;
+                                                                //private readonly IUnitOfWork _unitOfWork;
+                                                                //private readonly IAppUserManager _userManager;
 
 
-    public CreateKBDescriptionCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<CreateKBDescriptionCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public DeleteSectionCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<DeleteSectionCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -40,8 +39,7 @@ internal class CreateKBDescriptionCommandHandler: IRequestHandler<CreateKBDescri
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-
-    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateKBDescriptionCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(DeleteSectionCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -57,18 +55,14 @@ internal class CreateKBDescriptionCommandHandler: IRequestHandler<CreateKBDescri
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
-            var result = await _unitOfWork.KBDescriptionRepository.AddAsync(new Domain.Entities.KBDescription.KBDescription()
-            { CreatedBy = user.Id, KBDetailID = request.KBDetailID,SubHeading=request.SubHeading, Content = request.Content,KBContentType=request.KBContentType,
-                MediaType = request.MediaType,
-                ImageTitle = request.ImageTitle,
-                ImagePath = request.ImagePath,
-                IsMain = request.IsMain,
-                CultureId =request.CultureId,
-                SectionID=request.SectionID,
-            });
+            //await _unitOfWork.AgeTypeRepository.DeleteAsync(new Domain.Entities.AgeType.AgeType()
+            // { UpdatedBy = user.Id, ID = request.ID });
+            var result = await _unitOfWork.SectionRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
             await _unitOfWork.CommitAsync();
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
+            //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
+
+  
 }

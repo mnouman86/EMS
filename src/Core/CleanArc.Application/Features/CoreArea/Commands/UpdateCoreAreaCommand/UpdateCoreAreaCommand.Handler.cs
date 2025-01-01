@@ -56,7 +56,7 @@ internal class UpdateCoreAreaCommandHandler:IRequestHandler<UpdateCoreAreaComman
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.CoreAreaRepository.UpdateAsync(new Domain.Entities.CoreArea.CoreArea()
-            { UpdatedBy = user.Id,ID= request.ID,  Description = request.Description, Name = request.Name, Type=request.Type,ImagePath=request.ImagePath,  CultureId = request.CultureId });
+            { UpdatedBy = user.Id,ID= request.ID,  Description = request.Description, Icon=request.Icon, Name = request.Name, Type=request.Type,ImagePath=request.ImagePath,  CultureId = request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
