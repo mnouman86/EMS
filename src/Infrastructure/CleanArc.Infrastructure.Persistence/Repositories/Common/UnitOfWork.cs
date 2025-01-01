@@ -136,6 +136,7 @@ public class UnitOfWork : IUnitOfWork
         ILogger<RoomSizeUnitReposirory> _loggerRoomSizeUnit,
         ILogger<ServiceRepository> _loggerService,
         ILogger<ServiceCategoryRepository> _loggerServiceCategory,
+        ILogger<SectionRepository> _loggerSection,
         ILogger<CountryRepository> _loggerCountry,
         ILogger<StateRepository> _loggerState,
         ILogger<CityRepository> _loggerCity,
@@ -242,6 +243,7 @@ public class UnitOfWork : IUnitOfWork
         RoomSizeUnitReposirory = new RoomSizeUnitReposirory(configuration, mapper, _loggerRoomSizeUnit, httpContextAccessor);
         ServiceRepository= new ServiceRepository(configuration, mapper, _loggerService, httpContextAccessor);
         ServiceCategoryRepository=new ServiceCategoryRepository(configuration, mapper, _loggerServiceCategory, httpContextAccessor);
+        SectionRepository=new SectionRepository(configuration, mapper, _loggerSection, httpContextAccessor);
         CountryRepository=new CountryRepository(configuration, mapper, _loggerCountry, httpContextAccessor);
         StateRepository = new StateRepository(configuration, mapper, _loggerState, httpContextAccessor);
         CityRepository = new CityRepository(configuration, mapper, _loggerCity, httpContextAccessor);
