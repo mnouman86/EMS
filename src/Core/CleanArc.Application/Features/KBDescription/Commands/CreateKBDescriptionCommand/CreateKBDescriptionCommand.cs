@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 namespace CleanArc.Application.Features.KBDescription.Commands.CreateKBDescriptionCommand;
 public record CreateKBDescriptionCommand(
     int? KBDetailID,
+    int? SectionID,
     string SubHeading,
     string Content,
     string? KBContentType,

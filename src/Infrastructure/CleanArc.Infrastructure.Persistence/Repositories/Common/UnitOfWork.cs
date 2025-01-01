@@ -36,6 +36,7 @@ public class UnitOfWork : IUnitOfWork
     public IRoomSizeUnitReposirory RoomSizeUnitReposirory { get; set; }
     public IServiceRepository ServiceRepository { get; set; }
     public IServiceCategoryRepository ServiceCategoryRepository { get; set; }
+    public ISectionRepository SectionRepository { get; set; }
     public ICountryRepository CountryRepository { get; set; }
     public IStateRepository StateRepository { get; set; }
     public ICityRepository CityRepository { get; set; }

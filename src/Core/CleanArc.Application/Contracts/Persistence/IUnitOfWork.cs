@@ -24,6 +24,7 @@ public interface IUnitOfWork
     public IRoomSizeUnitReposirory RoomSizeUnitReposirory { get; }
     public IServiceRepository ServiceRepository { get; }
     public IServiceCategoryRepository ServiceCategoryRepository { get; }
+    public ISectionRepository SectionRepository { get; }
     public ICountryRepository CountryRepository { get; }
     public IStateRepository StateRepository { get; }
     public ICityRepository CityRepository { get; }

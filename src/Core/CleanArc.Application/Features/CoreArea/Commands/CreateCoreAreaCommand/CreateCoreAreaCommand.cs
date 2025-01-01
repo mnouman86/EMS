@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.CoreArea.Commands.CreateCoreAreaCommand;
-public record CreateCoreAreaCommand(string? Name, string? Description, int? Type, string? ImagePath, int? CreatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateCoreAreaCommand(string? Name, string? Description, string? Icon, int? Type, string? ImagePath, int? CreatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateCoreAreaCommand>
 {
     [JsonIgnore]

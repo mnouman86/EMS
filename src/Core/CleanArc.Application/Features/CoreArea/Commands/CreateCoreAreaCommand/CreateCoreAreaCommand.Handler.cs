@@ -58,7 +58,7 @@ internal class CreateCoreAreaCommandHandler: IRequestHandler<CreateCoreAreaComma
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.CoreAreaRepository.AddAsync(new Domain.Entities.CoreArea.CoreArea()
-            { CreatedBy = user.Id,  Description = request.Description, Name = request.Name, Type=request.Type, ImagePath=request.ImagePath, CultureId =request.CultureId  });
+            { CreatedBy = user.Id,  Description = request.Description, Name = request.Name, Type=request.Type, Icon=request.Icon, ImagePath=request.ImagePath, CultureId =request.CultureId  });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

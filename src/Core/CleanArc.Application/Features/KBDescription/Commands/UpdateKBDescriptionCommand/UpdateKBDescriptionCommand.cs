@@ -12,6 +12,7 @@ using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.KBDescription.Commands.UpdateKBDescriptionCommand;
 public record UpdateKBDescriptionCommand(int ID, int? KBDetailID,
+        int? SectionID,
 string SubHeading,
 string Content,
 string? KBContentType,
