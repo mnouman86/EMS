@@ -13,6 +13,8 @@ namespace CleanArc.Application.Features.KBDescription.Queries.GetKBDescriptionBy
         public int? MediaID { get; set; }
 
         public int? KBDetailID { get; set; }
+        public int? SectionID { get; set; }
+
         public string? SubHeading { get; set; }
         public string? Content { get; set; }
         public string? KBContentType { get; set; }
