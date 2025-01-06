@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Domain.Entities.KBDetail;
 
-public  class KBDetail
-
-    
+public  class KBDetail   
 {
     public int ID { get; set; }
     public string? Title { get; set; }
@@ -52,5 +50,16 @@ public  class KBDetail
     public string ApprovedDate { get; set; }
     public bool IsContributed { get; set; }
     public int? ExistingContentID { get; set; }
+
+}
+public class KBAddress
+{    
+    public string? AddressID { get; set; }
+    public int? CountryLookUpID { get; set; }
+    public int? CityLookUpID { get; set; }
+    public int? StatelookUpID { get; set; }
+    public string? PostalCode { get; set; }
+    public string? Latitude { get; set; }
+    public string? Longitude { get; set; }
 
 }

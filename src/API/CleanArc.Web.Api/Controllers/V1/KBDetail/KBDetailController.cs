@@ -6,7 +6,9 @@ using CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById;
 using CleanArc.Application.Features.KBDetail.Queries.GetAllKBDetail;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
+using Microsoft.AspNetCore.Mvc; 
+using CleanArc.Domain.Common;
+using CleanArc.Application.Features.KBDetail.Queries.GetKBMinimalView;
 
 namespace CleanArc.Web.Api.Controllers.V1.KBDetail
 {
@@ -95,6 +97,9 @@ namespace CleanArc.Web.Api.Controllers.V1.KBDetail
 
         //    return base.OperationResult(queryResult);
         //}
+
+        private readonly ISender _sender;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="KBDetailController"/> class.
         /// </summary>
@@ -104,8 +109,15 @@ namespace CleanArc.Web.Api.Controllers.V1.KBDetail
         public KBDetailController(ISender sender, ILogger<_BaseController<CreateKBDetailCommand, UpdateKBDetailCommand, DeleteKBDetailCommand, ResponseEntity, GetAllKBDetailQuery,
    List<GetAllKBDetailQueryResult>, GetKBDetailByIdQuery, GetKBDetailByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
-
+            _sender = sender;
         }
 
+        [HttpPost("GetKBMinimalView")]
+        public async Task<IActionResult> GetKBMinimalView(GetKBMinimalViewQuery query)
+        {
+            var result = await _sender.Send(query);
+
+            return base.OperationResult(result);
+        }
     }
 }
