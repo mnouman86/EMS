@@ -40,17 +40,17 @@ namespace CleanArc.Web.Api.Controllers.V1.MappingHotelAmenities
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/MappingHotelAmenities")]
-    public class MappingCarAmenitiesController : _BaseController<CreateMappingHotelAmenityCommand, UpdateMappingHotelAmenityCommand, DeleteMappingHotelAmenityCommand, ResponseEntity, GetAllMappingHotelAmenityQuery,
+    public class MappingHotelAmenitiesController : _BaseController<CreateMappingHotelAmenityCommand, UpdateMappingHotelAmenityCommand, DeleteMappingHotelAmenityCommand, ResponseEntity, GetAllMappingHotelAmenityQuery,
     List<GetAllMappingHotelAmenityQueryResult>, GetMappingHotelAmenityByIDQuery, GetMappingHotelAmenityByIDQueryResult>
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MappingCarAmenitiesController"/> class.
+        /// Initializes a new instance of the <see cref="MappingHotelAmenitiesController"/> class.
         /// </summary>
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public MappingCarAmenitiesController(ISender sender, ILogger<_BaseController<CreateMappingHotelAmenityCommand, UpdateMappingHotelAmenityCommand, DeleteMappingHotelAmenityCommand, ResponseEntity, GetAllMappingHotelAmenityQuery,
+        public MappingHotelAmenitiesController(ISender sender, ILogger<_BaseController<CreateMappingHotelAmenityCommand, UpdateMappingHotelAmenityCommand, DeleteMappingHotelAmenityCommand, ResponseEntity, GetAllMappingHotelAmenityQuery,
    List<GetAllMappingHotelAmenityQueryResult>, GetMappingHotelAmenityByIDQuery, GetMappingHotelAmenityByIDQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
 

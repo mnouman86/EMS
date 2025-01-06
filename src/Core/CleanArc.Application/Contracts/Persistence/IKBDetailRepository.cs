@@ -1,4 +1,5 @@
-﻿using CleanArc.Domain.Entities.KBDetail;
+﻿using CleanArc.Application.Models.Request;
+using CleanArc.Domain.Entities.KBDetail;
 using CleanArc.Domain.Entities.Order;
 using System;
 using System.Collections.Generic;
@@ -10,5 +11,6 @@ namespace CleanArc.Application.Contracts.Persistence;
 
 public  interface IKBDetailRepository:IRepository<KBDetail>
 {
+    Task<IReadOnlyList<KBMinimalDetail>> GetKBMinimalViewAsync(SearchRequest searchRequest);
    // Task CreateAgeType(AgeType ageType);
 }

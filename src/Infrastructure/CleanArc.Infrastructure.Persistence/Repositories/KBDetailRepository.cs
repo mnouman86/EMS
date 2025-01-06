@@ -73,7 +73,7 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
     {
         using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
         {
-            connection.Open();
+                connection.Open();
                 CreateKBDetailDTO createKBDetailDTO = _mapper.Map<CreateKBDetailDTO>(KBDetail);
                 var parameters = new DynamicParameters(createKBDetailDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
@@ -147,6 +147,29 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
             }
         }
     }
+
+    public async Task<IReadOnlyList<KBMinimalDetail>> GetKBMinimalViewAsync(SearchRequest searchRequest)
+    {
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
+        {
+            using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+            {
+                connection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+                parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+                parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                
+                var result = await connection.QueryAsync<KBMinimalDetail>(KBDetailQueries.GetAll_KBMinimalDetail, parameters, commandType: CommandType.StoredProcedure);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                return result.ToList();
+            }
+        }
+    }
     public async Task<KBDetail> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
@@ -160,6 +183,12 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
+                var resultKBDetail = await connection.QueryMultipleAsync(KBDetailQueries.GetByID_KBDetail, parameters, commandType: CommandType.StoredProcedure);
+                // var kbDetailAll = resultKBDetail.ReadFirst<KBDetail>();
+                var kbDetailSingle = resultKBDetail.Read<KBDetail>().ToList();
+                var kbDetailAddress = resultKBDetail.Read<KBAddress>().ToList();
+
+                
                 var result = await connection.QuerySingleOrDefaultAsync<KBDetail>(KBDetailQueries.GetByID_KBDetail, parameters , commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
@@ -186,6 +215,11 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
             }
         }
     }
+
+    //public async Task<IReadOnlyList<KBDetail>> IKBDetailRepository.GetKBMinimalViewAsync(SearchRequest searchRequest)
+    //{
+    //    throw new NotImplementedException();
+    //}
 }
 
 /// <inheritdoc/>
