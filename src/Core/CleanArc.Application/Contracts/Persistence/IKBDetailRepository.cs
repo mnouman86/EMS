@@ -12,5 +12,6 @@ namespace CleanArc.Application.Contracts.Persistence;
 public  interface IKBDetailRepository:IRepository<KBDetail>
 {
     Task<IReadOnlyList<KBMinimalDetail>> GetKBMinimalViewAsync(SearchRequest searchRequest);
+    Task<IReadOnlyList<CoreAreas>> GetKBCoreAreasMinimalViewAsync(SearchRequest searchRequest);
    // Task CreateAgeType(AgeType ageType);
 }
