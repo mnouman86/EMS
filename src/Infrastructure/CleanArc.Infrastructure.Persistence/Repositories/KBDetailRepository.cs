@@ -182,21 +182,37 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
                 parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
                 parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
                 parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
-                parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
-                parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+                parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object);
+                parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                //var result = await connection.QueryAsync<KBMinimalDetail>(KBDetailQueries.GetAll_KBCoreAreasMinimalDetail, parameters, commandType: CommandType.StoredProcedure);
-                var result = await connection.QueryMultipleAsync(KBDetailQueries.GetAll_KBCoreAreasMinimalDetail, parameters, commandType: CommandType.StoredProcedure);
-                var coreAreas = result.Read<CoreAreas>().ToList();
-                var kbMinimalDetail = result.Read<KBMinimalDetail>().ToList();
-                foreach (var coreArea in coreAreas)
-                {
-                    coreArea.KBMinimalDetails= kbMinimalDetail.Where(x=>x.CoreAreaLookupID==coreArea.ID).ToList();
-                }
+                var result = await connection.QueryAsync<CoreAreas, KBMinimalDetail, CoreAreas>(
+                    KBDetailQueries.GetAll_KBCoreAreasMinimalDetail,
+                    (coreArea, detail) =>
+                    {
+                        coreArea.KBMinimalDetails ??= new List<KBMinimalDetail>();
+                        if (detail != null)
+                        {
+                            ((List<KBMinimalDetail>)coreArea.KBMinimalDetails).Add(detail);
+                        }
+                        return coreArea;
+                    },
+                    parameters,
+                    splitOn: "CoreAreaLookupID",
+                    commandType: CommandType.StoredProcedure
+                );
+
+                var groupedResults = result.GroupBy(ca => ca.CoreAreaLookupID)
+                    .Select(g =>
+                    {
+                        var coreArea = g.First();
+                        coreArea.KBMinimalDetails = g.SelectMany(x => x.KBMinimalDetails ?? Enumerable.Empty<KBMinimalDetail>()).ToList();
+                        return coreArea;
+                    });
+
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return coreAreas.ToList();
+                return groupedResults.ToList();
             }
         }
     }
@@ -213,10 +229,10 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var resultKBDetail = await connection.QueryMultipleAsync(KBDetailQueries.GetByID_KBDetail, parameters, commandType: CommandType.StoredProcedure);
-                // var kbDetailAll = resultKBDetail.ReadFirst<KBDetail>();
-                var kbDetailSingle = resultKBDetail.Read<KBDetail>().ToList();
-                var kbDetailAddress = resultKBDetail.Read<KBAddress>().ToList();
+                //var resultKBDetail = await connection.QueryMultipleAsync(KBDetailQueries.GetByID_KBDetail, parameters, commandType: CommandType.StoredProcedure);
+                //// var kbDetailAll = resultKBDetail.ReadFirst<KBDetail>();
+                //var kbDetailSingle = resultKBDetail.Read<KBDetail>().ToList();
+                //var kbDetailAddress = resultKBDetail.Read<KBAddress>().ToList();
 
                 
                 var result = await connection.QuerySingleOrDefaultAsync<KBDetail>(KBDetailQueries.GetByID_KBDetail, parameters , commandType: CommandType.StoredProcedure);
