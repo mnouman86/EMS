@@ -562,6 +562,20 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <member name="M:CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetKBMinimalView(CleanArc.Application.Features.KBDetail.Queries.GetKBMinimalView.GetKBMinimalViewQuery)">
+            <summary>
+            Get the Details for Landing Page of Knowledgebase
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CleanArc.Web.Api.Controllers.V1.KBDetail.KBDetailController.GetKBCoreAreasMinimalView(CleanArc.Application.Features.KBDetail.Queries.GetKBCoreAreasWiseMinimalView.GetKBCoreAreasWiseMinimalViewQuery)">
+            <summary>
+            Get Core Area Wise Details for Landing Page of Knowledgebase
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.KBInterested.KBInterestedController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.KBInterested.KBInterestedController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.KBInterested.Commands.CreateKBInterestedCommand.CreateKBInterestedCommand,CleanArc.Application.Features.KBInterested.Commands.UpdateKBInterestedCommand.UpdateKBInterestedCommand,CleanArc.Application.Features.KBInterested.Commands.DeleteKBInterestedCommand.DeleteKBInterestedCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.KBInterested.Queries.GetAllKBInterested.GetAllKBInterestedQuery,System.Collections.Generic.List{CleanArc.Application.Features.KBInterested.Queries.GetAllKBInterested.GetAllKBInterestedQueryResult},CleanArc.Application.Features.KBInterested.Queries.GetKBInterestedById.GetKBInterestedByIdQuery,CleanArc.Application.Features.KBInterested.Queries.GetKBInterestedById.GetKBInterestedByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>

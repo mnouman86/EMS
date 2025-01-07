@@ -9,6 +9,7 @@ using Mediator;
 using Microsoft.AspNetCore.Mvc; 
 using CleanArc.Domain.Common;
 using CleanArc.Application.Features.KBDetail.Queries.GetKBMinimalView;
+using CleanArc.Application.Features.KBDetail.Queries.GetKBCoreAreasWiseMinimalView;
 
 namespace CleanArc.Web.Api.Controllers.V1.KBDetail
 {
@@ -112,8 +113,26 @@ namespace CleanArc.Web.Api.Controllers.V1.KBDetail
             _sender = sender;
         }
 
+        /// <summary>
+        /// Get the Details for Landing Page of Knowledgebase
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         [HttpPost("GetKBMinimalView")]
         public async Task<IActionResult> GetKBMinimalView(GetKBMinimalViewQuery query)
+        {
+            var result = await _sender.Send(query);
+
+            return base.OperationResult(result);
+        }
+
+        /// <summary>
+        /// Get Core Area Wise Details for Landing Page of Knowledgebase
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpPost("GetKBCoreAreasMinimalView")]
+        public async Task<IActionResult> GetKBCoreAreasMinimalView(GetKBCoreAreasWiseMinimalViewQuery query)
         {
             var result = await _sender.Send(query);
 
