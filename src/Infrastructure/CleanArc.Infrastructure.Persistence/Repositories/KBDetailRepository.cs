@@ -170,6 +170,36 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
             }
         }
     }
+
+    public async Task<IReadOnlyList<CoreAreas>> GetKBCoreAreasMinimalViewAsync(SearchRequest searchRequest)
+    {
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
+        {
+            using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+            {
+                connection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+                parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+                parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                //var result = await connection.QueryAsync<KBMinimalDetail>(KBDetailQueries.GetAll_KBCoreAreasMinimalDetail, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryMultipleAsync(KBDetailQueries.GetAll_KBCoreAreasMinimalDetail, parameters, commandType: CommandType.StoredProcedure);
+                var coreAreas = result.Read<CoreAreas>().ToList();
+                var kbMinimalDetail = result.Read<KBMinimalDetail>().ToList();
+                foreach (var coreArea in coreAreas)
+                {
+                    coreArea.KBMinimalDetails= kbMinimalDetail.Where(x=>x.CoreAreaLookupID==coreArea.ID).ToList();
+                }
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                return coreAreas.ToList();
+            }
+        }
+    }
     public async Task<KBDetail> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
