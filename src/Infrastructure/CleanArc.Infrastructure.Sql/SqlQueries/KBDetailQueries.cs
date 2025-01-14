@@ -14,7 +14,8 @@ public static class KBDetailQueries
     public static string GetAll_KBDetail => "GetAll_KBDetail";
     public static string GetAll_KBMinimalDetail => "GetAll_KBMinimalDetail";
     public static string GetAll_KBCoreAreasMinimalDetail => "GetAllCoreAreas_KBMinimalDetail";
-    public static string GetByID_KBDetail => "GetByID_KBDetail";
+    public static string GetByID_KBDetail => "GetByID_KBDetails";
+    public static string GetByID_KBAllDetails => "GetByID_KBAllDetails";
 
 
 }

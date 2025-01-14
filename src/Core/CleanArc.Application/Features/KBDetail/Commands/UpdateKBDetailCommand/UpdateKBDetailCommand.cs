@@ -17,27 +17,26 @@ public record UpdateKBDetailCommand(int ID,
     string? KeyDate,
     string? Cost,
     int? ServiceID,
-    int? CoreAreaLookupID,
+        int? SectionID,
+int? CoreAreaLookupID,
     //int? RelatedUrlLinkLookupID,
     string? RelatedAreasLookupIDs,
     string? Access,
     string? Availablity,
     string? WhenToVisitIDs,
-    string? AddressLine1,
-    string? AddressLine2,
-    int? CountryLookUpID,
-    int? CityLookUpID,
-    int? StatelookUpID,
-    string? PostalCode,
-    string? Longitude,
-    string? Latitude,
+    //string? AddressLine1,
+    //string? AddressLine2,
+    //int? CountryLookUpID,
+    //int? CityLookUpID,
+    //int? StatelookUpID,
+    //string? PostalCode,
+    //string? Longitude,
+    //string? Latitude,
        //string? Description,
        string Status,
    int? ApprovedBy,
    string Remarks,
    //string ApprovedDate,
-   int? ExistingContentID,
-   bool IsContributed,
    string ApprovedDate,
     int? UpdatedBy, 
     int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
@@ -51,14 +50,14 @@ public record UpdateKBDetailCommand(int ID,
      .NotEmpty()
      .NotNull()
      .WithMessage("Please enter a valid Title");
-        validator.RuleFor(c => c.KeyDate)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a KeyDate");
-        validator.RuleFor(c => c.Cost)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a Cost");
+        //validator.RuleFor(c => c.KeyDate)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a KeyDate");
+        //validator.RuleFor(c => c.Cost)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a Cost");
         validator.RuleFor(c => c.ServiceID)
             .NotEmpty()
             .NotNull()
@@ -71,19 +70,19 @@ public record UpdateKBDetailCommand(int ID,
         //    .NotEmpty()
         //    .NotNull()
         //    .WithMessage("Please enter a RelatedUrlLinkLookupID");
-        validator.RuleFor(c => c.Access)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a Access");
-        validator.RuleFor(c => c.Availablity)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a Availablity");
+        //validator.RuleFor(c => c.Access)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a Access");
+        //validator.RuleFor(c => c.Availablity)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a Availablity");
 
-        validator.RuleFor(c => c.WhenToVisitIDs)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a WhenToVisitIDs");
+        //validator.RuleFor(c => c.WhenToVisitIDs)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a WhenToVisitIDs");
         return validator;
     }
 }
