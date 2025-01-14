@@ -9,16 +9,18 @@ namespace CleanArc.Application.Features.KBDescription.Queries.GetAllKBDescriptio
 public class GetAllKBDescriptionQueryResult
 {
     public int ID { get; set; }
-    public int? MediaID { get; set; }
-    public int? KBDetailID { get; set; }
-    public int? SectionID { get; set; }
+    /// <summary>
+    /// public int? MediaID { get; set; }
+    /// </summary>
+    public int? GenericTitleID { get; set; }
+    //public int? SectionID { get; set; }
     public string? SubHeading { get; set; }
     public string? Content { get; set; }
     public string? KBContentType { get; set; }
-    public string? MediaType { get; set; }
-    public string? ImagePath { get; set; }
-    public string? ImageTitle { get; set; }
-    public bool? IsMain { get; set; }
+    //public string? MediaType { get; set; }
+    //public string? ImagePath { get; set; }
+    //public string? ImageTitle { get; set; }
+    //public bool? IsMain { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }
