@@ -8,19 +8,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization; using CleanArc.Domain.Common;
+using System.Text.Json.Serialization; 
+using CleanArc.Domain.Common;
+using CleanArc.Domain.Entities.KBMedia;
 
 namespace CleanArc.Application.Features.KBDescription.Commands.UpdateKBDescriptionCommand;
-public record UpdateKBDescriptionCommand(int ID, int? KBDetailID,
-        int? SectionID,
+public record UpdateKBDescriptionCommand(int ID, 
+    //int? GenericTitleID,
 string SubHeading,
 string Content,
 string? KBContentType,
-string MediaType,
- string ImagePath,
-string ImageTitle,
-bool? IsMain,
-int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+//string MediaType,
+// string ImagePath,
+//string ImageTitle,
+List<GenericMedia> Medias,
+//bool? IsMain,
+//int? UpdatedBy, 
+int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateKBDescriptionCommand>
 {
     [JsonIgnore]
@@ -31,22 +35,22 @@ int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     .NotEmpty()
     .NotNull()
     .WithMessage("Please enter a KBContentType");
-        validator.RuleFor(c => c.KBDetailID)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a KBDetailID");
-        validator.RuleFor(c => c.MediaType)
-    .NotEmpty()
-    .NotNull()
-    .WithMessage("Please enter a MediaType");
-        validator.RuleFor(c => c.ImagePath)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a ImagePath");
-        validator.RuleFor(c => c.ImageTitle)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a ImageTitle");
+        //validator.RuleFor(c => c.KBDetailID)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a KBDetailID");
+    //    validator.RuleFor(c => c.MediaType)
+    //.NotEmpty()
+    //.NotNull()
+    //.WithMessage("Please enter a MediaType");
+        //validator.RuleFor(c => c.ImagePath)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a ImagePath");
+        //validator.RuleFor(c => c.ImageTitle)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a ImageTitle");
         //validator.RuleFor(c => c.SubHeading)
         //    .NotEmpty()
         //    .NotNull()

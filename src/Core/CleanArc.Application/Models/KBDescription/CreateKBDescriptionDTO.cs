@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CleanArc.Domain.Entities.KBMedia;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,20 +11,22 @@ namespace CleanArc.Application.Models.KBDescription
     public class CreateKBDescriptionDTO
     {
         // public int ID { get; set; }
-        public int? KBDetailID { get; set; }
+        public int? GenericTitleID { get; set; }
         public string? SubHeading { get; set; }
         public string? Content { get; set; }
         public string? KBContentType { get; set; }
-        public string? MediaType { get; set; }
-        public string? ImagePath { get; set; }
-        public string? ImageTitle { get; set; }
-        public bool? IsMain { get; set; }
+        //public string? MediaType { get; set; }
+        //public string? ImagePath { get; set; }
+        //public string? ImageTitle { get; set; }
+        
+        //public List<GenericMedia> Medias { get; set; }
+        //public bool? IsMain { get; set; }
         //public bool? IsActive { get; set; }
         //public bool? IsDeleted { get; set; }
         public int? CreatedBy { get; set; }
         public int? CultureId { get; set; }
-        public int? Code { get; set; }
-        public string? Message { get; set; }
+        //public int? Code { get; set; }
+        //public string? Message { get; set; }
         //public DateTime? CreatedAt { get; set; }
         //public int? UpdatedBy { get; set; }
         //public DateTime? UpdatedAt { get; set; }

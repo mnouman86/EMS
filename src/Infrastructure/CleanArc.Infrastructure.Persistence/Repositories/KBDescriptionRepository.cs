@@ -74,8 +74,19 @@ public async Task<ResponseEntity> AddAsync(KBDescription KBDescription)
         using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
         {
             connection.Open();
+
                 CreateKBDescriptionDTO createKBDescriptionDTO = _mapper.Map<CreateKBDescriptionDTO>(KBDescription);
+                var mediaTable = new DataTable();
+                mediaTable.Columns.Add("MediaType", typeof(string));
+                mediaTable.Columns.Add("ImagePath", typeof(string));
+                mediaTable.Columns.Add("ImageTitle", typeof(string));
+
+                foreach (var media in KBDescription.Medias)
+                {
+                    mediaTable.Rows.Add(media.MediaType, media.ImagePath, media.ImageTitle);
+                }
                 var parameters = new DynamicParameters(createKBDescriptionDTO);
+                parameters.Add("@MediaTable", mediaTable.AsTableValuedParameter("GenericMediaTableType"));
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
@@ -173,7 +184,17 @@ public async Task<ResponseEntity> AddAsync(KBDescription KBDescription)
             {
                 connection.Open();
                 UpdateKBDescriptionDTO updateKBDescriptionDTO = _mapper.Map<UpdateKBDescriptionDTO>(entity);
+                var mediaTable = new DataTable();
+                mediaTable.Columns.Add("MediaType", typeof(string));
+                mediaTable.Columns.Add("ImagePath", typeof(string));
+                mediaTable.Columns.Add("ImageTitle", typeof(string));
+
+                foreach (var media in entity.Medias)
+                {
+                    mediaTable.Rows.Add(media.MediaType, media.ImagePath, media.ImageTitle);
+                }
                 var parameters = new DynamicParameters(updateKBDescriptionDTO);
+                parameters.Add("@MediaTable", mediaTable.AsTableValuedParameter("GenericMediaTableType"));
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBDescriptionQueries.Update_KBDescription, parameters, commandType: CommandType.StoredProcedure);
