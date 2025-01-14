@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using CleanArc.Domain.Common;
 using CleanArc.Application.Features.KBDetail.Queries.GetKBMinimalView;
 using CleanArc.Application.Features.KBDetail.Queries.GetKBCoreAreasWiseMinimalView;
+using CleanArc.Application.Features.KBDetail.Queries.GetKBDetailByIdAll;
 
 namespace CleanArc.Web.Api.Controllers.V1.KBDetail
 {
@@ -134,6 +135,15 @@ namespace CleanArc.Web.Api.Controllers.V1.KBDetail
         [HttpPost("GetKBCoreAreasMinimalView")]
         public async Task<IActionResult> GetKBCoreAreasMinimalView(GetKBCoreAreasWiseMinimalViewQuery query)
         {
+            var result = await _sender.Send(query);
+
+            return base.OperationResult(result);
+        }
+
+        [HttpGet("GetKBDetailByIdAll/{id}")]
+        public async Task<IActionResult> GetKBDetailByIdAll(int id)
+        {
+            GetKBDetailByIdAllQuery query = new GetKBDetailByIdAllQuery { Id = id };
             var result = await _sender.Send(query);
 
             return base.OperationResult(result);

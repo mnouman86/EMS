@@ -14,7 +14,8 @@ using Dapper;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging;
+using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -23,6 +24,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using CleanArc.Domain.Entities.KBDescription;
+using CleanArc.Domain.Entities.KBMedia;
+using CleanArc.Domain.Entities.KBTiming;
+using CleanArc.Domain.Entities.KBWhenToVisit;
+using Mapster;
+//using CleanArc.Application.Features.KBDetail.Queries.GetKBDetailByIdAll;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -78,7 +85,7 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
                 var parameters = new DynamicParameters(createKBDetailDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                parameters.Add("@KbDetailID", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@GenericTitleID", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBDetailQueries.Create_KBDetail, parameters, commandType: CommandType.StoredProcedure);
                 //var result = await connection.QuerySingleOrDefaultAsync<int>(KBDetailQueries.Create_KBDetail, parameters, commandType: CommandType.StoredProcedure);
 
@@ -187,19 +194,25 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.QueryAsync<CoreAreas, KBMinimalDetail, CoreAreas>(
+                var result = await connection.QueryAsync<CoreAreas, KBMinimalDetail,KBAddress, CoreAreas>(
                     KBDetailQueries.GetAll_KBCoreAreasMinimalDetail,
-                    (coreArea, detail) =>
+                    (coreArea, detail, address) =>
                     {
                         coreArea.KBMinimalDetails ??= new List<KBMinimalDetail>();
                         if (detail != null)
                         {
                             ((List<KBMinimalDetail>)coreArea.KBMinimalDetails).Add(detail);
                         }
+
+                        coreArea.KBAddresses ??= new List<KBAddress>();
+                        if (address != null)
+                        {
+                            ((List<KBAddress>)coreArea.KBAddresses).Add(address);
+                        }
                         return coreArea;
                     },
                     parameters,
-                    splitOn: "CoreAreaLookupID",
+                    splitOn: "CoreAreaLookupID,KBDetailID",
                     commandType: CommandType.StoredProcedure
                 );
 
@@ -208,6 +221,7 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
                     {
                         var coreArea = g.First();
                         coreArea.KBMinimalDetails = g.SelectMany(x => x.KBMinimalDetails ?? Enumerable.Empty<KBMinimalDetail>()).ToList();
+                        coreArea.KBAddresses = g.SelectMany(x => x.KBAddresses ?? Enumerable.Empty<KBAddress>()).ToList();
                         return coreArea;
                     });
 
@@ -236,13 +250,85 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
 
                 
                 var result = await connection.QuerySingleOrDefaultAsync<KBDetail>(KBDetailQueries.GetByID_KBDetail, parameters , commandType: CommandType.StoredProcedure);
+                //var result = await connection.QueryAsync<KBDetail, KBDescription, KBAddress,KBMedia, KBDetail>(
+                //    KBDetailQueries.GetByID_KBDetail,
+                //    (detail, description, address,media) =>
+                //    {
+                //        detail.KBDescriptions ??= new List<KBDescription>();
+                //        if (description != null)
+                //        {
+                //            ((List<KBDescription>)detail.KBDescriptions).Add(description);
+                //        }
+                //        detail.KBAddresses ??= new List<KBAddress>();
+                //        if (address != null)
+                //        {
+                //            ((List<KBAddress>)detail.KBAddresses).Add(address);
+                //        }
+                //        detail.KBMedias ??= new List<KBMedia>();
+                //        if (media != null)
+                //        {
+                //            ((List<KBMedia>)detail.KBMedias).Add(media);
+                //        }
+                //        //detail.KBTimings ??= new List<KBTiming>();
+                //        //if (timing != null)
+                //        //{
+                //        //    ((List<KBTiming>)detail.KBTimings).Add(timing);
+                //        //}
+                //        //detail.KBWhenToVisits ??= new List<KBWhenToVisit>();
+                //        //if (whenToVisit != null)
+                //        //{
+                //        //    ((List<KBWhenToVisit>)detail.KBWhenToVisits).Add(whenToVisit);
+                //        //}
+                //        return detail;
+                //    },
+                //    parameters,
+                //    splitOn: "KBDetailID,KBDescriptionID,AddressID,MediaID",
+                //    commandType: CommandType.StoredProcedure
+                //);
+
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
     }
 
+    public async Task<KnowledgeBaseByID> GetByIdAllAsync(long id)
+    {
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
+        {
+            using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+            {
+                connection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                parameters.Add("@CultureId", 1, DbType.Int32);
+                parameters.Add("@ID", id, DbType.Int32);
 
+                var result = await connection.QueryMultipleAsync(KBDetailQueries.GetByID_KBAllDetails, parameters, commandType: CommandType.StoredProcedure);
+                // var kbDetailAll = resultKBDetail.ReadFirst<KBDetail>();
+                var kbGenericTitle = result.Read<KnowledgeBaseByID>().FirstOrDefault();
+                if (kbGenericTitle != null)
+                {
+                    var kbDetail = result.Read<KnowledgeBaseDetail>().FirstOrDefault();
+                    kbGenericTitle.Detail=kbDetail;
+                    var kbDescription = result.Read<KnowledgeBaseDescription>().ToList();
+                    kbGenericTitle.Description = kbDescription;
+                    var kbAddress = result.Read<KnowledgeBaseAddress>().ToList();
+                    kbGenericTitle.Address = kbAddress;
+                    var kbMedia = result.Read<KnowledgeBaseMedia>().ToList();
+                    kbGenericTitle.Media = kbMedia;
+                    var kbTiming = result.Read<KnowledgeBaseTiming>().ToList();
+                    kbGenericTitle.Timing = kbTiming;
+                }
+
+                //var result = await connection.QuerySingleOrDefaultAsync<KBDetail>(KBDetailQueries.GetByID_KBAllDetails, parameters, commandType: CommandType.StoredProcedure);
+
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                return kbGenericTitle;
+            }
+        }
+    }
 
     public async Task<ResponseEntity> UpdateAsync(KBDetail entity)
     {

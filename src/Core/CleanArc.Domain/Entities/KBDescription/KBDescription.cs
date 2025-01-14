@@ -10,8 +10,11 @@ namespace CleanArc.Domain.Entities.KBDescription;
 public  class KBDescription
     
 {
-    public int ID { get; set; }
+    public int? ID { get; set; }
     public int? KBDetailID { get; set; }
+    public int? KBDescriptionID { get; set; }
+    public int? AddressID { get; set; }
+    public int? MediaID { get; set; }
     public int? SectionID { get; set; }
     public string? SubHeading { get; set; }
     public string? Content { get; set; }
@@ -20,7 +23,6 @@ public  class KBDescription
     public string? ImagePath { get; set; }
     public string? ImageTitle { get; set; }
     public bool? IsMain { get; set; }
-    public int? MediaID { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }
