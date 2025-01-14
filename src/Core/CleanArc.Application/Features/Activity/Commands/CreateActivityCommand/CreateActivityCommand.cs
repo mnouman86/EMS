@@ -15,7 +15,7 @@ using CleanArc.Domain.Common;
 namespace CleanArc.Application.Features.Activity.Commands.CreateActivityCommand;
 public record CreateActivityCommand(
    int? CultureId,
-    string? Name,
+    string? Title,
    int? LanguageLookUpID,
    int? ServiceLookUpID,
    int? SubServiceLookUpID,
@@ -57,10 +57,10 @@ public record CreateActivityCommand(
     public int UserId { get; set; }
     public IValidator<CreateActivityCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateActivityCommand> validator)
     {
-        validator.RuleFor(c => c.Name)
+        validator.RuleFor(c => c.Title)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please enter a valid Name");
+            .WithMessage("Please enter a valid Ttile");
         validator.RuleFor(c => c.LanguageLookUpID)
             .NotEmpty()
             .NotNull()
