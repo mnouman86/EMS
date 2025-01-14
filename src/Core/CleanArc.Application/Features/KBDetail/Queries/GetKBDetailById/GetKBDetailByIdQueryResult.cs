@@ -11,10 +11,11 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById
     {
         public int ID { get; set; }
         public string? Title { get; set; }
-        public int? GenericTitleID { get; set; }  // Maps to GenericTitleID
+        //public int? GenericTitleID { get; set; }  // Maps to GenericTitleID
         public string? KeyDate { get; set; }
         public string? Cost { get; set; }
         public int? ServiceID { get; set; }
+        public int? SectionID { get; set; }
         public int? CoreAreaLookupID { get; set; }
         public string? WhenToVisitIDs { get; set; }
         //public int? RelatedUrlLinkLookupID { get; set; }
@@ -31,13 +32,13 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById
         public int UpdatedBy { get; set; }
         public DateTime UpdatedAt { get; set; }
 
-        public int AddressID { get; set; }  // ID renamed as AddressID
-        public int? CityLookUpID { get; set; }
-        public int? CountryLookUpID { get; set; }
-        public string Latitude { get; set; }
-        public string Longitude { get; set; }
-        public string PostalCode { get; set; }
-        public int? StatelookUpID { get; set; }
+        //public int AddressID { get; set; }  // ID renamed as AddressID
+        //public int? CityLookUpID { get; set; }
+        //public int? CountryLookUpID { get; set; }
+        //public string Latitude { get; set; }
+        //public string Longitude { get; set; }
+        //public string PostalCode { get; set; }
+        //public int? StatelookUpID { get; set; }
         public int? CultureId { get; set; }
         public int? Code { get; set; }
         public string? Message { get; set; }

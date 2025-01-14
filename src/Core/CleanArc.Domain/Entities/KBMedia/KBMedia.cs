@@ -11,7 +11,10 @@ public  class KBMedia
     
 {
     public int ID { get; set; }
+    public int? KBDetailID { get; set; }
     public int? KBDescriptionID { get; set; }
+    public int? AddressID { get; set; }
+    public int? MediaID { get; set; }
     public int? GenericTitleID { get; set; }
     public string? MediaType { get; set; }
     public string? ImagePath { get; set; }

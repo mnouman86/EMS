@@ -10,11 +10,13 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBCoreAreasWiseMinim
 
 public class GetKBCoreAreasWiseMinimalViewQueryResult
 {
-    public int? ID { get; set; }
+    public int? CoreAreaLookupID { get; set; }
     public string? Name { get; set; }
     public string? Description { get; set; }
     public string? Icon { get; set; }
     public int? Type { get; set; }
     public string? ImagePathCore { get; set; }
     public List<GetKBMinimalViewQueryResult> KBMinimalDetails { get; set; }
+    public List<KBAddress> KBAddresses { get; set; }
+
 }
