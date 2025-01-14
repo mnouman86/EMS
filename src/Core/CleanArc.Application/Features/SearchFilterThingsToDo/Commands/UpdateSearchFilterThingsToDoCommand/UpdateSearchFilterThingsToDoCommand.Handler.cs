@@ -58,7 +58,7 @@ internal class UpdateSearchFilterThingsToDoCommandHandler:IRequestHandler<Update
             var result = await _unitOfWork.ActivityRepository.UpdateAsync(new Domain.Entities.Activity.Activity()
             { UpdatedBy = user.Id,ID= request.ID,
                 CultureId=request.CultureId,
-                Name = request.Name,
+                Title = request.Name,
                 LanguageLookUpID = request.LanguageLookUpID,
                 ServiceLookUpID = request.ServiceLookUpID,
                 SubServiceLookUpID = request.SubServiceLookUpID,

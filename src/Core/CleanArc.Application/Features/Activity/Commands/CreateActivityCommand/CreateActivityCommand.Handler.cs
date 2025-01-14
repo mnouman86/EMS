@@ -60,7 +60,7 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
            var result= await _unitOfWork.ActivityRepository.AddAsync(new Domain.Entities.Activity.Activity()
             {
                 CultureId = request.CultureId,
-                Name=request.Name,
+                Title=request.Title,
                 LanguageLookUpID = request.LanguageLookUpID,
                 ServiceLookUpID = request.ServiceLookUpID,
                 SubServiceLookUpID = request.SubServiceLookUpID,
