@@ -56,15 +56,17 @@ internal class UpdateKBDescriptionCommandHandler:IRequestHandler<UpdateKBDescrip
 
             //return OperationResult<bool>.SuccessResult(true);
             var result = await _unitOfWork.KBDescriptionRepository.UpdateAsync(new Domain.Entities.KBDescription.KBDescription()
-            { UpdatedBy = user.Id,ID= request.ID, KBDetailID = request.KBDetailID,
-            SectionID= request.SectionID,
+            { UpdatedBy = user.Id,ID= request.ID, 
+                //GenericTitleID = request.GenericTitleID,
+            //SectionID= request.SectionID,
                 SubHeading = request.SubHeading,
                 Content = request.Content, 
                 KBContentType = request.KBContentType,
-                MediaType = request.MediaType,
-                ImageTitle = request.ImageTitle,
-                ImagePath = request.ImagePath,
-                IsMain = request.IsMain,
+                //MediaType = request.MediaType,
+                //ImageTitle = request.ImageTitle,
+                //ImagePath = request.ImagePath,
+                Medias = request.Medias,
+                //IsMain = request.IsMain,
                 CultureId = request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
