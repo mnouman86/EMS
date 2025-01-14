@@ -58,13 +58,14 @@ internal class CreateKBDescriptionCommandHandler: IRequestHandler<CreateKBDescri
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.KBDescriptionRepository.AddAsync(new Domain.Entities.KBDescription.KBDescription()
-            { CreatedBy = user.Id, KBDetailID = request.KBDetailID,SubHeading=request.SubHeading, Content = request.Content,KBContentType=request.KBContentType,
-                MediaType = request.MediaType,
-                ImageTitle = request.ImageTitle,
-                ImagePath = request.ImagePath,
-                IsMain = request.IsMain,
+            { CreatedBy = user.Id, GenericTitleID = request.GenericTitleID,SubHeading=request.SubHeading, Content = request.Content,KBContentType=request.KBContentType,
+                //MediaType = request.MediaType,
+                //ImageTitle = request.ImageTitle,
+                //ImagePath = request.ImagePath,
+                Medias = request.Medias,
+                //IsMain = request.IsMain,
                 CultureId =request.CultureId,
-                SectionID=request.SectionID,
+                //SectionID=request.SectionID,
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

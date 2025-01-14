@@ -1,4 +1,5 @@
 ﻿using CleanArc.Domain.Common;
+using CleanArc.Domain.Entities.KBMedia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,18 +12,19 @@ public  class KBDescription
     
 {
     public int? ID { get; set; }
-    public int? KBDetailID { get; set; }
+    public int? GenericTitleID { get; set; }
     public int? KBDescriptionID { get; set; }
     public int? AddressID { get; set; }
     public int? MediaID { get; set; }
-    public int? SectionID { get; set; }
+    //public int? SectionID { get; set; }
     public string? SubHeading { get; set; }
     public string? Content { get; set; }
     public string? KBContentType { get; set; }
     public string? MediaType { get; set; }
-    public string? ImagePath { get; set; }
-    public string? ImageTitle { get; set; }
-    public bool? IsMain { get; set; }
+    //public string? ImagePath { get; set; }
+    //public string? ImageTitle { get; set; }
+    public List<GenericMedia> Medias { get; set; }
+    //public bool? IsMain { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }
