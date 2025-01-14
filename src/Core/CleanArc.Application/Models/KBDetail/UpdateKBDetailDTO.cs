@@ -15,15 +15,16 @@ namespace CleanArc.Application.Models.KBDetail
         public string? KeyDate { get; set; }
         public string? Cost { get; set; }
         public int? ServiceID { get; set; }
+        public int? SectionID { get; set; }
 
-        public string? AddressLine1 { get; set; }
-        public string? AddressLine2 { get; set; }
-        public int? CountryLookUpID { get; set; }
-        public int? CityLookUpID { get; set; }
-        public int? StatelookUpID { get; set; }
-        public string? PostalCode { get; set; }
-        public string? Latitude { get; set; }
-        public string? Longitude { get; set; }
+        //public string? AddressLine1 { get; set; }
+        //public string? AddressLine2 { get; set; }
+        //public int? CountryLookUpID { get; set; }
+        //public int? CityLookUpID { get; set; }
+        //public int? StatelookUpID { get; set; }
+        //public string? PostalCode { get; set; }
+        //public string? Latitude { get; set; }
+        //public string? Longitude { get; set; }
         public int? CoreAreaLookupID { get; set; }
        // public int? RelatedUrlLinkLookupID { get; set; }
         public string? RelatedAreasLookupIDs { get; set; }
@@ -37,15 +38,13 @@ namespace CleanArc.Application.Models.KBDetail
         //public DateTime? CreatedAt { get; set; }
         public int? UpdatedBy { get; set; }
         public int? CultureId { get; set; }
-        public int? Code { get; set; }
-        public string? Message { get; set; }
+        //public int? Code { get; set; }
+        //public string? Message { get; set; }
         //public DateTime? UpdatedAt { get; set; }
         public string Status { get; set; }
         public int? ApprovedBy { get; set; }
         public string Remarks { get; set; }
-         public string ApprovedDate { get; set; }
-        public bool IsContributed { get; set; }
-        public int? ExistingContentID { get; set; }
+        public string ApprovedDate { get; set; }
 
     }
 }

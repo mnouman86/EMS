@@ -14,6 +14,7 @@ public class GetAllKBDetailQueryResult
     public string? KeyDate { get; set; }
     public string? Cost { get; set; }
     public int? ServiceID { get; set; }
+    public int? SectionID { get; set; }
     public int? CoreAreaLookupID { get; set; }
     public string? WhenToVisitIDs { get; set; }
     //public int? RelatedUrlLinkLookupID { get; set; }

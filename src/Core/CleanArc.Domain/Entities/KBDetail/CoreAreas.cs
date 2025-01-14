@@ -15,5 +15,6 @@ namespace CleanArc.Domain.Entities.KBDetail
         public int? Type { get; set; }
         public string? ImagePathCore { get; set; }
         public IEnumerable<KBMinimalDetail> KBMinimalDetails { get; set; }
+        public IEnumerable<KBAddress> KBAddresses { get; set; }
     }
 }
