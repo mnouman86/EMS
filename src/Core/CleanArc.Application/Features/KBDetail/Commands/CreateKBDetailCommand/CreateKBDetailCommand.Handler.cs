@@ -62,15 +62,16 @@ internal class CreateKBDetailCommandHandler: IRequestHandler<CreateKBDetailComma
                 Title = request.Title,
 
                 KeyDate = request.KeyDate,
-                Cost = request.Cost,
+                //Cost = request.Cost,
                 ServiceID = request.ServiceID,
                 SectionID = request.SectionID,
                 CoreAreaLookupID = request.CoreAreaLookupID,
                // RelatedUrlLinkLookupID = request.RelatedUrlLinkLookupID,
                 RelatedAreasLookupIDs = request.RelatedAreasLookupIDs,
-                Access = request.Access,
-                Availablity = request.Availablity,
-                WhenToVisitIDs = request.WhenToVisitIDs,
+                //Access = request.Access,
+                //Availablity = request.Availablity,
+                //Timings = request.Timings,
+                //WhenToVisitIDs = request.WhenToVisitIDs,
                 //AddressLine1 = request.AddressLine1,
                 //AddressLine2 = request.AddressLine2,
                 //CountryLookUpID = request.CountryLookUpID,
@@ -80,10 +81,10 @@ internal class CreateKBDetailCommandHandler: IRequestHandler<CreateKBDetailComma
                 //Latitude = request.Latitude,
                 //Longitude = request.Longitude,
 
-                Status = request.Status,
-                ApprovedBy = request.ApprovedBy,
-                Remarks = request.Remarks,
-                IsContributed = request.IsContributed,
+                //Status = request.Status,
+                //ApprovedBy = request.ApprovedBy,
+                //Remarks = request.Remarks,
+                //IsContributed = request.IsContributed,
                 
 
                 CultureId = request.CultureId  });

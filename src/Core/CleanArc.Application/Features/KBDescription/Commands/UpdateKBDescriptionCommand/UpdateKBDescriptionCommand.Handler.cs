@@ -66,6 +66,7 @@ internal class UpdateKBDescriptionCommandHandler:IRequestHandler<UpdateKBDescrip
                 //ImageTitle = request.ImageTitle,
                 //ImagePath = request.ImagePath,
                 Medias = request.Medias,
+                //Timings=request.Timings,
                 //IsMain = request.IsMain,
                 CultureId = request.CultureId });
             await _unitOfWork.CommitAsync();

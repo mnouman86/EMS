@@ -85,6 +85,8 @@ public async Task<ResponseEntity> AddAsync(KBDescription KBDescription)
                 {
                     mediaTable.Rows.Add(media.MediaType, media.ImagePath, media.ImageTitle);
                 }
+
+                
                 var parameters = new DynamicParameters(createKBDescriptionDTO);
                 parameters.Add("@MediaTable", mediaTable.AsTableValuedParameter("GenericMediaTableType"));
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);

@@ -63,6 +63,7 @@ internal class CreateKBDescriptionCommandHandler: IRequestHandler<CreateKBDescri
                 //ImageTitle = request.ImageTitle,
                 //ImagePath = request.ImagePath,
                 Medias = request.Medias,
+                //Timings=request.Timings,
                 //IsMain = request.IsMain,
                 CultureId =request.CultureId,
                 //SectionID=request.SectionID,
