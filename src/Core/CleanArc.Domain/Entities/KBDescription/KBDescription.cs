@@ -1,5 +1,6 @@
 ﻿using CleanArc.Domain.Common;
 using CleanArc.Domain.Entities.KBMedia;
+using CleanArc.Domain.Entities.KBTiming;
 using System;
 using System.Collections.Generic;
 using System.Linq;

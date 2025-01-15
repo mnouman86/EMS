@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Text.Json.Serialization; 
 using CleanArc.Domain.Common;
 using CleanArc.Domain.Entities.KBMedia;
+using CleanArc.Domain.Entities.KBTiming;
 
 namespace CleanArc.Application.Features.KBDescription.Commands.UpdateKBDescriptionCommand;
 public record UpdateKBDescriptionCommand(int ID, 

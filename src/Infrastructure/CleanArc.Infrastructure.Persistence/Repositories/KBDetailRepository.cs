@@ -82,7 +82,19 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
         {
                 connection.Open();
                 CreateKBDetailDTO createKBDetailDTO = _mapper.Map<CreateKBDetailDTO>(KBDetail);
-                var parameters = new DynamicParameters(createKBDetailDTO);
+                //var timingsTable = new DataTable();
+                //timingsTable.Columns.Add("GenericTitleID", typeof(string));
+                //timingsTable.Columns.Add("Day", typeof(string));
+                //timingsTable.Columns.Add("TimeFrom", typeof(string));
+                //timingsTable.Columns.Add("TimeTo", typeof(string));
+                //timingsTable.Columns.Add("IsAlwaysOpen", typeof(bool));
+
+                //foreach (var timing in KBDetail.Timings)
+                //{
+                //    timingsTable.Rows.Add(timing.GenericTitleID, timing.Day, timing.TimeFrom, timing.TimeTo, timing.IsAlwaysOpen);
+                //}
+                var parameters = new DynamicParameters(createKBDetailDTO); 
+                //parameters.Add("@TimingsTable", timingsTable.AsTableValuedParameter("AvailabilityTableType"));
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 parameters.Add("@GenericTitleID", dbType: DbType.Int32, direction: ParameterDirection.Output);
@@ -338,7 +350,19 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
             {
                 connection.Open();
                 UpdateKBDetailDTO updateKBDetailDTO = _mapper.Map<UpdateKBDetailDTO>(entity);
+                //var timingsTable = new DataTable();
+                //timingsTable.Columns.Add("GenericTitleID", typeof(string));
+                //timingsTable.Columns.Add("Day", typeof(string));
+                //timingsTable.Columns.Add("TimeFrom", typeof(string));
+                //timingsTable.Columns.Add("TimeTo", typeof(string));
+                //timingsTable.Columns.Add("IsAlwaysOpen", typeof(bool));
+
+                //foreach (var timing in entity.Timings)
+                //{
+                //    timingsTable.Rows.Add(timing.GenericTitleID, timing.Day, timing.TimeFrom, timing.TimeTo, timing.IsAlwaysOpen);
+                //}
                 var parameters = new DynamicParameters(updateKBDetailDTO);
+                //parameters.Add("@TimingsTable", timingsTable.AsTableValuedParameter("AvailabilityTableType"));
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBDetailQueries.Update_KBDetail, parameters, commandType: CommandType.StoredProcedure);
