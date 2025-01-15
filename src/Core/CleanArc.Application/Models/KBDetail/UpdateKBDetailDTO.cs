@@ -13,7 +13,7 @@ namespace CleanArc.Application.Models.KBDetail
         public string? Title { get; set; }
        // public int? GenericTitleID { get; set; }  // Maps to GenericTitleID
         public string? KeyDate { get; set; }
-        public string? Cost { get; set; }
+        //public string? Cost { get; set; }
         public int? ServiceID { get; set; }
         public int? SectionID { get; set; }
 
@@ -29,9 +29,9 @@ namespace CleanArc.Application.Models.KBDetail
        // public int? RelatedUrlLinkLookupID { get; set; }
         public string? RelatedAreasLookupIDs { get; set; }
 
-        public string? Access { get; set; }
-        public string? Availablity { get; set; }
-        public string? WhenToVisitIDs { get; set; }
+        //public string? Access { get; set; }
+        //public string? Availablity { get; set; }
+        //public string? WhenToVisitIDs { get; set; }
         //public bool? IsActive { get; set; }
         //public bool? IsDeleted { get; set; }
         // public int? CreatedBy { get; set; }

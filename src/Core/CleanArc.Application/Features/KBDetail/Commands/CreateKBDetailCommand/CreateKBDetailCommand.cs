@@ -2,28 +2,31 @@
 using CleanArc.SharedKernel.ValidationBase.Contracts;
 using CleanArc.SharedKernel.ValidationBase;
 using FluentValidation;
-using System.Text.Json.Serialization; using CleanArc.Domain.Common;
+using System.Text.Json.Serialization; 
+using CleanArc.Domain.Common;
 using Mediator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Domain.Entities.KBTiming;
 
 namespace CleanArc.Application.Features.KBDetail.Commands.CreateKBDetailCommand;
 public record CreateKBDetailCommand(
     string? Title,
    // int? GenericTitleID,
     string? KeyDate,
-    string? Cost,
+    //string? Cost,
     int? ServiceID,
             int? SectionID,
     int? CoreAreaLookupID,
    // int? RelatedUrlLinkLookupID,
     string? RelatedAreasLookupIDs,
-    string? Access,
-    string? Availablity,
-    string? WhenToVisitIDs,
+    //string? Access,
+    //string? Availablity,
+//List<Availability> Timings,
+    //string? WhenToVisitIDs,
     //string? AddressLine1,
     //string? AddressLine2,
     //int? CountryLookUpID,
@@ -33,13 +36,13 @@ public record CreateKBDetailCommand(
     //string? Longitude,
     //string? Latitude,
    // string? Description,
-   string Status,
-   int? ApprovedBy,
-   string Remarks,
+   //string Status,
+   //int? ApprovedBy,
+   //string Remarks,
    //string ApprovedDate,
    //int? ExistingContentID,
-   bool IsContributed,
-    int? CreatedBy,
+   //bool IsContributed,
+    //int? CreatedBy,
     int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateKBDetailCommand>
 {
