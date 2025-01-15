@@ -6,6 +6,7 @@ using System.Text.Json.Serialization;
 using CleanArc.Domain.Common;
 using Mediator;
 using CleanArc.Domain.Entities.KBMedia;
+using CleanArc.Domain.Entities.KBTiming;
 
 namespace CleanArc.Application.Features.KBDescription.Commands.CreateKBDescriptionCommand;
 public record CreateKBDescriptionCommand(

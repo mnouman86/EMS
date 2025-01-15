@@ -12,16 +12,16 @@ namespace CleanArc.Application.Models.KBDetail
         public string? Title { get; set; }
         public string? KeyDate { get; set; }
         //public int? GenericTitleID { get; set; }  // Maps to GenericTitleID
-        public string? Cost { get; set; }
+        //public string? Cost { get; set; }
         public int? ServiceID { get; set; }
         public int? SectionID { get; set; }
         public int? CoreAreaLookupID { get; set; }
        // public int? RelatedUrlLinkLookupID { get; set; }
         public string? RelatedAreasLookupIDs { get; set; }
 
-        public string? Access { get; set; }
-        public string? Availablity { get; set; }
-        public string? WhenToVisitIDs { get; set; }
+        //public string? Access { get; set; }
+        //public string? Availablity { get; set; }
+        //public string? WhenToVisitIDs { get; set; }
         //public bool? IsActive { get; set; }
         //public bool? IsDeleted { get; set; }
         public int? CreatedBy { get; set; }
@@ -41,11 +41,11 @@ namespace CleanArc.Application.Models.KBDetail
         //public string? Longitude { get; set; }
         //public int? KbDetailID { get; set; }
         // public int AddressID { get; set; }
-        public string Status { get; set; }
-        public int? ApprovedBy { get; set; }
-        public string Remarks { get; set; }
+        //public string Status { get; set; }
+        //public int? ApprovedBy { get; set; }
+        //public string Remarks { get; set; }
        // public string ApprovedDate { get; set; }
-        public bool IsContributed { get; set; }
+        //public bool IsContributed { get; set; }
        // public int? ExistingContentID { get; set; }
 
     }

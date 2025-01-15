@@ -8,22 +8,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization; using CleanArc.Domain.Common;
+using System.Text.Json.Serialization; 
+using CleanArc.Domain.Common;
+using CleanArc.Domain.Entities.KBTiming;
 
 namespace CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand;
 public record UpdateKBDetailCommand(int ID,
     string? Title,
     //int? GenericTitleID,
     string? KeyDate,
-    string? Cost,
+    //string? Cost,
     int? ServiceID,
         int? SectionID,
 int? CoreAreaLookupID,
     //int? RelatedUrlLinkLookupID,
     string? RelatedAreasLookupIDs,
-    string? Access,
-    string? Availablity,
-    string? WhenToVisitIDs,
+    //string? Access,
+ //string? Availablity,
+
+ //List<Availability> Timings,
+   // string? WhenToVisitIDs,
     //string? AddressLine1,
     //string? AddressLine2,
     //int? CountryLookUpID,
@@ -38,7 +42,7 @@ int? CoreAreaLookupID,
    string Remarks,
    //string ApprovedDate,
    string ApprovedDate,
-    int? UpdatedBy, 
+    //int? UpdatedBy, 
     int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateKBDetailCommand>
 {

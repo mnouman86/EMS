@@ -25,7 +25,8 @@ public  class KBDetail
    // public int? RelatedUrlLinkLookupID { get; set; }
     public string? RelatedAreasLookupIDs { get; set; }
     public string? Access { get; set; }
-    public string? Availablity { get; set; }
+    //public string? Availablity { get; set; }
+    public List<Availability> Timings { get; set; }
     public string? WhenToVisitIDs { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
