@@ -114,6 +114,8 @@ public class UnitOfWork : IUnitOfWork
     public ICampaignScheduleRepository CampaignScheduleRepository { get; set; }
     public IHomeSliderRepository HomeSliderRepository { get; set; }
 
+    public IKBAddressRepository KBAddressRepository { get; set; }
+
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
 
@@ -202,6 +204,7 @@ public class UnitOfWork : IUnitOfWork
            ILogger<KBMediaRepository> _loggerKBMedia,
            ILogger<KBTimingRepository> _loggerKBTiming,
            ILogger<CoreAreaRepository> _loggerCoreArea,
+           ILogger<KBAddressRepository> _loggerKBAddress,
            ILogger<KBWhenToVisitRepository> _loggerKBWhenToVisit,
            ILogger<KBInterestedRepository> _loggerKBInterested,
            ILogger<UserExperienceRepository> _loggerUserExperience,
@@ -311,6 +314,7 @@ public class UnitOfWork : IUnitOfWork
         KBMediaRepository = new KBMediaRepository(configuration, mapper, _loggerKBMedia, httpContextAccessor);
         KBTimingRepository = new KBTimingRepository(configuration, mapper, _loggerKBTiming, httpContextAccessor);
         CoreAreaRepository = new CoreAreaRepository(configuration, mapper, _loggerCoreArea, httpContextAccessor);
+        KBAddressRepository = new KBAddressRepository(configuration, mapper, _loggerKBAddress, httpContextAccessor);
         KBWhenToVisitRepository = new KBWhenToVisitRepository(configuration, mapper, _loggerKBWhenToVisit, httpContextAccessor);
         KBInterestedRepository = new KBInterestedRepository(configuration, mapper, _loggerKBInterested, httpContextAccessor);
         UserExperienceRepository = new UserExperienceRepository(configuration, mapper, _loggerUserExperience, httpContextAccessor);

@@ -9,7 +9,7 @@ namespace CleanArc.Domain.Entities.KBTiming;
 
 public  class Availability
 {
-    public int? GenericTitleID { get; set; }
+    //public int? GenericTitleID { get; set; }
     public string? Day { get; set; }
     public string? TimeFrom { get; set; }
     public string? TimeTo { get; set; }
