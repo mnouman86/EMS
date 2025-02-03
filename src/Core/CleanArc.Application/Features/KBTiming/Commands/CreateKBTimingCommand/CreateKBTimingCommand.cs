@@ -11,14 +11,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.KBTiming.Commands.CreateKBTimingCommand;
-public record CreateKBTimingCommand(int? KBDetailID, string? Day, string? TimeFrom, string? TimeTo, bool? IsAlwaysOpen, int? CreatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateKBTimingCommand(int? GenericTitleID, string? Day, string? TimeFrom, string? TimeTo, bool? IsAlwaysOpen, bool? IsClosed, int? CreatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateKBTimingCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<CreateKBTimingCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateKBTimingCommand> validator)
     {
-        validator.RuleFor(c => c.KBDetailID)
+        validator.RuleFor(c => c.GenericTitleID)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid KBDetailID");

@@ -9,11 +9,12 @@ namespace CleanArc.Application.Features.KBTiming.Queries.GetAllKBTiming;
 public class GetAllKBTimingQueryResult
 {
     public int ID { get; set; }
-    public int? KBDetailID { get; set; }
+    public int? GenericTitleID { get; set; }
     public string? Day { get; set; }
     public string? TimeFrom { get; set; }
     public string? TimeTo { get; set; }
     public bool? IsAlwaysOpen { get; set; }
+    public bool? IsClosed { get; set; }
     public bool IsDeleted { get; set; }
     public bool IsActive { get; set; }
     public int CreatedBy { get; set; }
