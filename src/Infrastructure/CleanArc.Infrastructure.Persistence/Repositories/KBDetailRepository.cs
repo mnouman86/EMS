@@ -328,6 +328,8 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
                     kbGenericTitle.Description = kbDescription;
                     var kbAddress = result.Read<KnowledgeBaseAddress>().ToList();
                     kbGenericTitle.Address = kbAddress;
+                    var kbLocation = result.Read<KnowledgebaseLocation>().ToList();
+                    kbGenericTitle.Location = kbLocation;
                     var kbMedia = result.Read<KnowledgeBaseMedia>().ToList();
                     kbGenericTitle.Media = kbMedia;
                     var kbTiming = result.Read<KnowledgeBaseTiming>().ToList();
