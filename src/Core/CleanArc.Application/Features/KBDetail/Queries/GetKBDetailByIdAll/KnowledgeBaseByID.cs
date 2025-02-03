@@ -15,6 +15,7 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailByIdAll
         public KnowledgeBaseDetail Detail { get; set; }
         public IEnumerable<KnowledgeBaseDescription> Description { get; set; }
         public IEnumerable<KnowledgeBaseAddress> Address { get; set; }
+        public IEnumerable<KnowledgebaseLocation> Location { get; set; }
         public IEnumerable<KnowledgeBaseMedia> Media { get; set; }
         public IEnumerable<KnowledgeBaseTiming> Timing { get; set; }
     }
@@ -70,12 +71,21 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailByIdAll
         public string City { get; set; }
         public string PostalCode { get; set; }
         public string? PhoneNo { get; set; }
-        public string? WhenToVisitIDs { get; set; }
-        public string? WhenToVisit { get; set; }
+        //public string? WhenToVisitIDs { get; set; }
+        //public string? WhenToVisit { get; set; }
         public string Latitude { get; set; }
         public string Longitude { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
+    }
+    public class KnowledgebaseLocation
+    {
+        public int? GenericTitleID { get; set; }
+        public string? WhenToVisitIDs { get; set; }
+        public string? WhenToVisit { get; set; }
+        public string? Access { get; set; }
+        public string? Availablity { get; set; }
+        public string? Cost { get; set; }
     }
     public class KnowledgeBaseMedia
     {
