@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.KBTiming.Commands.UpdateKBTimingCommand;
-public record UpdateKBTimingCommand(int ID,int? KBDetailID, string? Day, string? TimeFrom, string? TimeTo, bool? IsAlwaysOpen, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateKBTimingCommand(int ID,int? GenericTitleID, string? Day, string? TimeFrom, string? TimeTo, bool? IsAlwaysOpen,bool? IsClosed, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateKBTimingCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<UpdateKBTimingCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateKBTimingCommand> validator)
     {
-        validator.RuleFor(c => c.KBDetailID)
+        validator.RuleFor(c => c.GenericTitleID)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid KBDetailID");

@@ -13,6 +13,7 @@ namespace CleanArc.Application.Models.KBTiming
         public string? TimeFrom { get; set; }
         public string? TimeTo { get; set; }
         public bool? IsAlwaysOpen { get; set; }
+        public bool? IsClosed { get; set; }
         public int? CultureId { get; set; }
 
     }

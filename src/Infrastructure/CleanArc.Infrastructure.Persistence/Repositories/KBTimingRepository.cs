@@ -79,7 +79,7 @@ public async Task<ResponseEntity> AddAsync(KBTiming KBTiming)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBTimingQueries.Create_KB_RelatedUrlLink, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBTimingQueries.Create_KBTiming, parameters, commandType: CommandType.StoredProcedure);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result;
         }
@@ -100,7 +100,7 @@ public async Task<ResponseEntity> AddAsync(KBTiming KBTiming)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBTimingQueries.Delete_KB_RelatedUrlLink, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBTimingQueries.Delete_KBTiming, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -137,7 +137,7 @@ public async Task<ResponseEntity> AddAsync(KBTiming KBTiming)
                 //        Message = ("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output)
 
                 //};
-                var result = await connection.QueryAsync<KBTiming>(KBTimingQueries.usp_GetAll_KB_RelatedUrlLink, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<KBTiming>(KBTimingQueries.GetAll_KBtiming, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result.ToList();
             }
@@ -156,7 +156,7 @@ public async Task<ResponseEntity> AddAsync(KBTiming KBTiming)
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<KBTiming>(KBTimingQueries.usp_GetByID_KB_RelatedUrlLink, parameters , commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<KBTiming>(KBTimingQueries.GetByID_KBtiming, parameters , commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -176,7 +176,7 @@ public async Task<ResponseEntity> AddAsync(KBTiming KBTiming)
                 var parameters = new DynamicParameters(updateKBTimingDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBTimingQueries.update_KB_RelatedUrlLink, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBTimingQueries.update_KBTiming, parameters, commandType: CommandType.StoredProcedure);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
