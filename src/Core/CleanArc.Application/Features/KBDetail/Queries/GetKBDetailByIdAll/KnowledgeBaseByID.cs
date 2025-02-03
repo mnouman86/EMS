@@ -63,7 +63,7 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailByIdAll
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
         public int? CountryLookUpID { get; set; }
-        public int? Country { get; set; }
+        public string? Country { get; set; }
         public int? StatelookUpID { get; set; }
         public string State { get; set; }
         public int? CityLookUpID { get; set; }
