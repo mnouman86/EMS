@@ -89,10 +89,11 @@ public async Task<ResponseEntity> AddAsync(KBAddress KBAddress)
                 timingsTable.Columns.Add("TimeFrom", typeof(string));
                 timingsTable.Columns.Add("TimeTo", typeof(string));
                 timingsTable.Columns.Add("IsAlwaysOpen", typeof(bool));
+                timingsTable.Columns.Add("IsClosed", typeof(bool));
 
                 foreach (var timing in KBAddress.Timings)
                 {
-                    timingsTable.Rows.Add(timing.Day, timing.TimeFrom, timing.TimeTo, timing.IsAlwaysOpen);
+                    timingsTable.Rows.Add(timing.Day, timing.TimeFrom, timing.TimeTo, timing.IsAlwaysOpen,timing.IsClosed);
                 }
                 var parameters = new DynamicParameters(createKBAddressDTO); 
                 parameters.Add("@TimingsTable", timingsTable.AsTableValuedParameter("AvailabilityTableType"));
@@ -244,10 +245,11 @@ public async Task<ResponseEntity> AddAsync(KBAddress KBAddress)
                 timingsTable.Columns.Add("TimeFrom", typeof(string));
                 timingsTable.Columns.Add("TimeTo", typeof(string));
                 timingsTable.Columns.Add("IsAlwaysOpen", typeof(bool));
+                timingsTable.Columns.Add("IsClosed", typeof(bool));
 
                 foreach (var timing in entity.Timings)
                 {
-                    timingsTable.Rows.Add(timing.Day, timing.TimeFrom, timing.TimeTo, timing.IsAlwaysOpen);
+                    timingsTable.Rows.Add(timing.Day, timing.TimeFrom, timing.TimeTo, timing.IsAlwaysOpen,timing.IsClosed);
                 }
                 var parameters = new DynamicParameters(updateKBAddressDTO);
                 parameters.Add("@TimingsTable", timingsTable.AsTableValuedParameter("AvailabilityTableType"));
