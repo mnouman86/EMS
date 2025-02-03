@@ -16,6 +16,7 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailByIdAll
         public KnowledgeBaseDetail Detail { get; set; }
         public IEnumerable<KnowledgeBaseDescription> Description { get; set; }
         public IEnumerable<KnowledgeBaseAddress> Address { get; set; }
+        public IEnumerable<KnowledgebaseLocation> Location { get; set; }
         public IEnumerable<KnowledgeBaseMedia> Media { get; set; }
         public IEnumerable<KnowledgeBaseTiming> Timing { get; set; }
     }

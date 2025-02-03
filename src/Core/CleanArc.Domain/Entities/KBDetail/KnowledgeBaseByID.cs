@@ -15,6 +15,7 @@ namespace CleanArc.Domain.Entities.KBDetail
         public KnowledgeBaseDetail? Detail { get; set; }
         public IEnumerable<KnowledgeBaseDescription> Description { get; set; }
         public IEnumerable<KnowledgeBaseAddress> Address { get; set; }
+        public IEnumerable<KnowledgebaseLocation> Location { get; set; }
         public IEnumerable<KnowledgeBaseMedia> Media { get; set; }
         public IEnumerable<KnowledgeBaseTiming> Timing { get; set; }
     }
@@ -23,6 +24,9 @@ namespace CleanArc.Domain.Entities.KBDetail
         public int? ID { get; set; }
         public int? GenericTitleID { get; set; }
         public string? KeyDate { get; set; }
+        public string? Access { get; set; }
+        public string? Availablity { get; set; }
+
         public string? Cost { get; set; }
         public string? CoreArea { get; set; }
         public int? CoreAreaLookupID { get; set; }
@@ -30,8 +34,7 @@ namespace CleanArc.Domain.Entities.KBDetail
         public string? Icon { get; set; }
         public string? RelatedAreasLookupIDs { get; set; }
         public string? RelatedAreas { get; set; }
-        public string? Access { get; set; }
-        public string? Availablity { get; set; }
+        
         public string? WhenToVisitIDs { get; set; }
         public string? WhenToVisit { get; set; }
         public string? Status { get; set; }
@@ -68,12 +71,20 @@ namespace CleanArc.Domain.Entities.KBDetail
         public string? City { get; set; }
         public string? PostalCode { get; set; }
         public string? PhoneNo { get; set; }
-        public string? WhenToVisitIDs { get; set; }
-        public string? WhenToVisit { get; set; }
+        
         public string? Latitude { get; set; }
         public string? Longitude { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
+    }
+    public class KnowledgebaseLocation
+    {
+        public int? GenericTitleID { get; set; }
+        public string? WhenToVisitIDs { get; set; }
+        public string? WhenToVisit { get; set; }
+        public string? Access { get; set; }
+        public string? Availablity { get; set; }
+        public string? Cost { get; set; }
     }
     public class KnowledgeBaseMedia
     {
@@ -94,6 +105,7 @@ namespace CleanArc.Domain.Entities.KBDetail
         public string? TimeFrom { get; set; }
         public string? TimeTo { get; set; }
         public bool? IsAlwaysOpen { get; set; }
+        public bool? IsClosed { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
     }
