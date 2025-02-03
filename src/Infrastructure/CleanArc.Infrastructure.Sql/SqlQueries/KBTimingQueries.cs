@@ -8,11 +8,11 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
 public static class KBTimingQueries
 {
-    public static string Create_KB_RelatedUrlLink => "KnowledgeBase.Create_KBtiming";
-    public static string update_KB_RelatedUrlLink => "KnowledgeBase.update_KBtiming";
-    public static string Delete_KB_RelatedUrlLink => "KnowledgeBase.Delete_KBtiming";
-    public static string usp_GetAll_KB_RelatedUrlLink => "KnowledgeBase.GetAll_KBtiming";
-    public static string usp_GetByID_KB_RelatedUrlLink => "KnowledgeBase.GetByID_KBtiming";
+    public static string Create_KBTiming => "KnowledgeBase.Create_KBtiming";
+    public static string update_KBTiming => "KnowledgeBase.update_KBtiming";
+    public static string Delete_KBTiming => "KnowledgeBase.Delete_KBtiming";
+    public static string GetAll_KBtiming => "KnowledgeBase.GetAll_KBtiming";
+    public static string GetByID_KBtiming => "KnowledgeBase.GetByID_KBtiming";
 
 
 }

@@ -58,7 +58,7 @@ internal class CreateKBTimingCommandHandler: IRequestHandler<CreateKBTimingComma
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.KBTimingRepository.AddAsync(new Domain.Entities.KBTiming.KBTiming()
-            { CreatedBy = user.Id, GenericTitleID = request.KBDetailID, Day = request.Day,TimeFrom=request.TimeFrom, TimeTo = request.TimeTo, IsAlwaysOpen = request.IsAlwaysOpen, CultureId =request.CultureId  });
+            { CreatedBy = user.Id, GenericTitleID = request.GenericTitleID, Day = request.Day,TimeFrom=request.TimeFrom, TimeTo = request.TimeTo, IsAlwaysOpen = request.IsAlwaysOpen, CultureId =request.CultureId  });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
