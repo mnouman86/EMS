@@ -61,12 +61,15 @@ namespace CleanArc.Domain.Entities.KBDetail
         public string? AddressLine1 { get; set; }
         public string? AddressLine2 { get; set; }
         public int? CountryLookUpID { get; set; }
-        public int? Country { get; set; }
+        public string? Country { get; set; }
         public int? StatelookUpID { get; set; }
         public string? State { get; set; }
         public int? CityLookUpID { get; set; }
         public string? City { get; set; }
         public string? PostalCode { get; set; }
+        public string? PhoneNo { get; set; }
+        public string? WhenToVisitIDs { get; set; }
+        public string? WhenToVisit { get; set; }
         public string? Latitude { get; set; }
         public string? Longitude { get; set; }
         public DateTime? CreatedAt { get; set; }
