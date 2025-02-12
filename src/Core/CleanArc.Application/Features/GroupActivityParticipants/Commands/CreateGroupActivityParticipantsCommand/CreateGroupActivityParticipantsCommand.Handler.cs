@@ -61,6 +61,7 @@ internal class CreateGroupActivityParticipantsCommandHandler: IRequestHandler<Cr
             { CreatedBy = user.Id,
                 //GenericTitleID=request.GenericTitleID,
                 GroupActivityID=request.GroupActivityID,
+                GroupTypeID=request.GroupTypeID,
                 MobileNumber = request.MobileNumber,
                 Email = request.Email,
                 FirstName=request.FirstName,

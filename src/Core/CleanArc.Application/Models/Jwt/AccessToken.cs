@@ -10,13 +10,15 @@ public class AccessToken
     public string token_type { get; set; }
     public int expires_in { get; set; }
     public int userID { get; set; }
+    public int roleID { get; set; }
 
-    public AccessToken(JwtSecurityToken securityToken,string refreshToken="",int loginuserID=0)
+    public AccessToken(JwtSecurityToken securityToken,string refreshToken="",int loginuserID=0,int loginRoleID=0)
     {
         access_token = new JwtSecurityTokenHandler().WriteToken(securityToken);
         token_type = "Bearer";
         expires_in = (int)(securityToken.ValidTo - DateTime.UtcNow).TotalSeconds;
         refresh_token = refreshToken;
         userID = loginuserID;
+		roleID = loginRoleID;
     }
 }
