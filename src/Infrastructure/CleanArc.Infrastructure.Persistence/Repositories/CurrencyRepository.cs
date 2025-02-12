@@ -23,7 +23,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -81,7 +81,7 @@ public async Task<ResponseEntity> AddAsync(Currency Currency)
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CurrencyQueries.Create_Currency, createCurrencyDTO, commandType: CommandType.StoredProcedure);
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
         }
     }
@@ -102,13 +102,13 @@ public async Task<ResponseEntity> AddAsync(Currency Currency)
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CurrencyQueries.Delete_Currency, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
     }
 
-    public async Task<IReadOnlyList<Currency>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<Currency>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -136,12 +136,12 @@ public async Task<ResponseEntity> AddAsync(Currency Currency)
                 //    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 //};
                 var result = await connection.QueryAsync<Currency>(CurrencyQueries.GetAll_Currency, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToList();
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new ListResponseWrapper<Currency> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
             }
         }
     }
-    public async Task<Currency> GetByIdAsync(long id)
+    public async Task<SingleResponseWrapper<Currency>> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
         {
@@ -156,8 +156,14 @@ public async Task<ResponseEntity> AddAsync(Currency Currency)
                 parameters.Add("@ID", id, DbType.Int32);
 
                 var result = await connection.QuerySingleOrDefaultAsync<Currency>(CurrencyQueries.GetByID_Currency, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result;
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                var response = new SingleResponseWrapper<Currency>
+                {
+                    Data = result,
+                    Code = parameters.Get<int>("@Code"),
+                    Message = parameters.Get<string>("@Message")
+                };
+                return response;
             }
         }
     }
@@ -177,7 +183,7 @@ public async Task<ResponseEntity> AddAsync(Currency Currency)
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CurrencyQueries.update_Currency, updateCurrencyDTO, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }

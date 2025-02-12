@@ -14,10 +14,12 @@ using Mediator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System.Data;
 using System.Data.SqlClient;
 using System.Reflection;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -76,7 +78,7 @@ public class URLRepository:IURLRepository
     #region ===[ IContactRepository Methods ]==================================================
 
     /// <inheritdoc/>
-    public async Task<IReadOnlyList<URL>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<URL>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -95,14 +97,14 @@ public class URLRepository:IURLRepository
                     FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 };
                 var result = await connection.QueryAsync<URL>(UrlQueries.AllUrls, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToList();
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new ListResponseWrapper<URL> { Data = result.ToList() };return response;
             }
         }
     }
 
     /// <inheritdoc/>
-    public async Task<URL> GetByIdAsync(long id)
+    public async Task<SingleResponseWrapper<URL>> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
         {
@@ -110,8 +112,14 @@ public class URLRepository:IURLRepository
             {
                 connection.Open();
                 var result = await connection.QuerySingleOrDefaultAsync<URL>(UrlQueries.UrlById, new { ID = id }, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result;
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new SingleResponseWrapper<URL>
+                {
+                    Data = result,
+                    //Code = parameters.Get<int>("@Code"),
+                    //Message = parameters.Get<string>("@Message")
+                };
+                return response;
             }
         }
     }
@@ -126,7 +134,7 @@ public class URLRepository:IURLRepository
                 connection.Open();
                 AddUrlDto addUrlDto = _mapper.Map<AddUrlDto>(entity);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(UrlQueries.AddUrl, addUrlDto, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -143,7 +151,7 @@ public class URLRepository:IURLRepository
                 UpdateUrlDto updateUrlDto = _mapper.Map<UpdateUrlDto>(entity);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(UrlQueries.UpdateUrl, updateUrlDto, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
@@ -164,7 +172,7 @@ public class URLRepository:IURLRepository
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(UrlQueries.DeleteURL, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }

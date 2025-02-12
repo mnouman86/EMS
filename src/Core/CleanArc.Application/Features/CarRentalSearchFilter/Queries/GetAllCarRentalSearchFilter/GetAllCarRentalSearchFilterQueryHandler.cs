@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
 namespace CleanArc.Application.Features.CarRentalSearchFilter.Queries.GetAllCarRentalSearchFilter;
 
@@ -35,13 +36,32 @@ public async ValueTask<OperationResult<List<GetAllCarRentalSearchFilterQueryResu
 {
     using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
     {
-        var searchcar = await _unitOfWork.CarRentalSearchFilterRepository.GetAllWithParamAsync(request.searchRequest);
+        //var searchcar = await _unitOfWork.CarRentalSearchFilterRepository.GetAllWithParamAsync(request.searchRequest);
 
-        //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-        var result = _mapper.Map<List<GetAllCarRentalSearchFilterQueryResult>>(searchcar);
-        (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-        return OperationResult<List<GetAllCarRentalSearchFilterQueryResult>>.SuccessResult(result);
-    }
+        ////var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
+        //var result = _mapper.Map<List<GetAllCarRentalSearchFilterQueryResult>>(searchcar);
+        //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+        //return OperationResult<List<GetAllCarRentalSearchFilterQueryResult>>.SuccessResult(result);
+
+            var response = await _unitOfWork.CarRentalSearchFilterRepository.GetAllWithParamAsync(request.searchRequest);
+
+            if (response.Code != 200)
+            {
+                return OperationResult<List<GetAllCarRentalSearchFilterQueryResult>>.FailureResult(
+                    response.Message,
+                response.Code
+                );
+            }
+
+            var mappedResult = _mapper.Map<List<GetAllCarRentalSearchFilterQueryResult>>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+            return OperationResult<List<GetAllCarRentalSearchFilterQueryResult>>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
+        }
 }
 }
 

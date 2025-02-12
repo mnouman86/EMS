@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
 namespace CleanArc.Application.Features.RoomImage.Queries.GetAllRoomImagesQuery;
 
@@ -34,12 +35,31 @@ internal class GetAllRoomImagesQueryHandler : IRequestHandler<GetAllRoomImagesQu
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var roomImage = await _unitOfWork.RoomImagesRepository.GetAllAsync(request.searchRequest);
+            //var roomImage = await _unitOfWork.RoomImagesRepository.GetAllAsync(request.searchRequest);
 
-            //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-            var result = _mapper.Map<List<GetAllRoomImagesQueryResult>>(roomImage);
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-            return OperationResult<List<GetAllRoomImagesQueryResult>>.SuccessResult(result);
+            ////var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
+            //var result = _mapper.Map<List<GetAllRoomImagesQueryResult>>(roomImage);
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+            //return OperationResult<List<GetAllRoomImagesQueryResult>>.SuccessResult(result);
+
+            var response = await _unitOfWork.RoomImagesRepository.GetAllAsync(request.searchRequest);
+
+            if (response.Code != 200)
+            {
+                return OperationResult<List<GetAllRoomImagesQueryResult>>.FailureResult(
+                    response.Message,
+                response.Code
+                );
+            }
+
+            var mappedResult = _mapper.Map<List<GetAllRoomImagesQueryResult>>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+            return OperationResult<List<GetAllRoomImagesQueryResult>>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
         }
     }
 }

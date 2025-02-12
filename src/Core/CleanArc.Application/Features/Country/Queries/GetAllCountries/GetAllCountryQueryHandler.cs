@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
 namespace CleanArc.Application.Features.Country.Queries.GetAllCountries
 {
@@ -35,12 +36,31 @@ namespace CleanArc.Application.Features.Country.Queries.GetAllCountries
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var country = await _unitOfWork.CountryRepository.GetAllAsync(request.searchRequest);
+                //var country = await _unitOfWork.CountryRepository.GetAllAsync(request.searchRequest);
 
-                //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-                var result = _mapper.Map<List<GetAllCountryQueryResult>>(country);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return OperationResult<List<GetAllCountryQueryResult>>.SuccessResult(result);
+                ////var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
+                //var result = _mapper.Map<List<GetAllCountryQueryResult>>(country);
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                //return OperationResult<List<GetAllCountryQueryResult>>.SuccessResult(result);
+
+                var response = await _unitOfWork.CountryRepository.GetAllAsync(request.searchRequest);
+
+                if (response.Code != 200)
+                {
+                    return OperationResult<List<GetAllCountryQueryResult>>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
+                }
+
+                var mappedResult = _mapper.Map<List<GetAllCountryQueryResult>>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+                return OperationResult<List<GetAllCountryQueryResult>>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
     }

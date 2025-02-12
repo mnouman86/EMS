@@ -10,13 +10,15 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -65,7 +67,7 @@ public class CityRepository : ICityRepository
                 connection.Open();
                 CreateCityDTO createCityDTO = _mapper.Map<CreateCityDTO>(city);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CityQueries.Create_City, createCityDTO, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
@@ -85,13 +87,13 @@ public class CityRepository : ICityRepository
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CityQueries.Delete_City, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
     }
 
-    public async Task<IReadOnlyList<City>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<City>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -110,12 +112,12 @@ public class CityRepository : ICityRepository
                     FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 };
                 var result = await connection.QueryAsync<City>(CityQueries.usp_GetAll_City, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToList();
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new ListResponseWrapper<City> {Data = result.ToList() };return response;
             }
         }
     }
-    public async Task<City> GetByIdAsync(long id)
+    public async Task<SingleResponseWrapper<City>> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
         {
@@ -123,8 +125,14 @@ public class CityRepository : ICityRepository
             {
                 connection.Open();
                 var result = await connection.QuerySingleOrDefaultAsync<City>(CityQueries.usp_GetByID_City, new { ID = id }, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result;
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new SingleResponseWrapper<City>
+                {
+                    Data = result,
+                    //Code = parameters.Get<int>("@Code"),
+                    //Message = parameters.Get<string>("@Message")
+                };
+                return response;
             }
         }
     }
@@ -141,7 +149,7 @@ public class CityRepository : ICityRepository
                 UpdateCityDTO updateCityDTO = _mapper.Map<UpdateCityDTO>(city);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CityQueries.Update_City, updateCityDTO, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }

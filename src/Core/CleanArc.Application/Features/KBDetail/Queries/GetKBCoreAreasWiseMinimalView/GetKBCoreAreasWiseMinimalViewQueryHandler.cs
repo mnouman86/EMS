@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
 namespace CleanArc.Application.Features.KBDetail.Queries.GetKBCoreAreasWiseMinimalView
 {
@@ -36,12 +37,31 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBCoreAreasWiseMinim
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var Product = await _unitOfWork.KBDetailRepository.GetKBCoreAreasMinimalViewAsync(request.searchRequest);
+                //var Product = await _unitOfWork.KBDetailRepository.GetKBCoreAreasMinimalViewAsync(request.searchRequest);
 
-                //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-                var result = _mapper.Map<List<GetKBCoreAreasWiseMinimalViewQueryResult>>(Product);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return OperationResult<List<GetKBCoreAreasWiseMinimalViewQueryResult>>.SuccessResult(result);
+                ////var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
+                //var result = _mapper.Map<List<GetKBCoreAreasWiseMinimalViewQueryResult>>(Product);
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                //return OperationResult<List<GetKBCoreAreasWiseMinimalViewQueryResult>>.SuccessResult(result);
+
+                var response = await _unitOfWork.KBDetailRepository.GetKBCoreAreasMinimalViewAsync(request.searchRequest);
+
+                if (response.Code != 200)
+                {
+                    return OperationResult<List<GetKBCoreAreasWiseMinimalViewQueryResult>>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
+                }
+
+                var mappedResult = _mapper.Map<List<GetKBCoreAreasWiseMinimalViewQueryResult>>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+                return OperationResult<List<GetKBCoreAreasWiseMinimalViewQueryResult>>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
     }

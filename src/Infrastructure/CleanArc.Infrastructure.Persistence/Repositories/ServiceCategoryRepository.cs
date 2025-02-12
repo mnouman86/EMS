@@ -10,13 +10,15 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -66,7 +68,7 @@ public class ServiceCategoryRepository : IServiceCategoryRepository
                 connection.Open();
                 CreateServiceCategoryDTO createServiceCategoryDTO = _mapper.Map<CreateServiceCategoryDTO>(serviceCategory);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ServiceCategoryQueries.Create_ServiceCategory, createServiceCategoryDTO, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
@@ -86,13 +88,13 @@ public class ServiceCategoryRepository : IServiceCategoryRepository
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ServiceCategoryQueries.Delete_ServiceCategory, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
     }
 
-    public async Task<IReadOnlyList<ServiceCategory>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<ServiceCategory>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -111,12 +113,12 @@ public class ServiceCategoryRepository : IServiceCategoryRepository
                     FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 };
                 var result = await connection.QueryAsync<ServiceCategory>(ServiceCategoryQueries.usp_GetALL_ServiceCategory, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToList();
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new ListResponseWrapper<ServiceCategory> { Data = result.ToList() };return response;
             }
         }
     }
-    public async Task<ServiceCategory> GetByIdAsync(long id)
+    public async Task<SingleResponseWrapper<ServiceCategory>> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
         {
@@ -124,8 +126,14 @@ public class ServiceCategoryRepository : IServiceCategoryRepository
             {
                 connection.Open();
                 var result = await connection.QuerySingleOrDefaultAsync<ServiceCategory>(ServiceCategoryQueries.usp_GetByID_ServiceCategory, new { ID = id }, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result;
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new SingleResponseWrapper<ServiceCategory>
+                {
+                    Data = result,
+                    //Code = parameters.Get<int>("@Code"),
+                    //Message = parameters.Get<string>("@Message")
+                };
+                return response;
             }
         }
     }
@@ -142,7 +150,8 @@ public class ServiceCategoryRepository : IServiceCategoryRepository
                 UpdateServiceCategoryDTO updateServiceCategoryDTO = _mapper.Map<UpdateServiceCategoryDTO>(serviceCategory);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ServiceCategoryQueries.Update_ServiceCategory, updateServiceCategoryDTO, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+
                 return result;
             }
         }

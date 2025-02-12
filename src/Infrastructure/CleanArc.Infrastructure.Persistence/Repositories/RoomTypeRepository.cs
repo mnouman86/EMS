@@ -10,13 +10,15 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -66,7 +68,7 @@ public class RoomTypeRepository : IRoomTypeRepository
                 connection.Open();
                 CreateRoomTypeDTO createRoomTypeDTO = _mapper.Map<CreateRoomTypeDTO>(roomType);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomTypeQueries.Create_RoomType, createRoomTypeDTO, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
@@ -86,13 +88,13 @@ public class RoomTypeRepository : IRoomTypeRepository
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomTypeQueries.Delete_RoomType, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
     }
 
-    public async Task<IReadOnlyList<RoomType>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<RoomType>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -111,12 +113,12 @@ public class RoomTypeRepository : IRoomTypeRepository
                     FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 };
                 var result = await connection.QueryAsync<RoomType>(RoomTypeQueries.usp_GetALL_RoomType, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToList();
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new ListResponseWrapper<RoomType> { Data = result.ToList() };return response;
             }
         }
     }
-    public async Task<RoomType> GetByIdAsync(long id)
+    public async Task<SingleResponseWrapper<RoomType>> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
         {
@@ -124,8 +126,14 @@ public class RoomTypeRepository : IRoomTypeRepository
             {
                 connection.Open();
                 var result = await connection.QuerySingleOrDefaultAsync<RoomType>(RoomTypeQueries.usp_GetByID_RoomType, new { ID = id }, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result;
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new SingleResponseWrapper<RoomType>
+                {
+                    Data = result,
+                    //Code = parameters.Get<int>("@Code"),
+                    //Message = parameters.Get<string>("@Message")
+                };
+                return response;
             }
         }
     }
@@ -142,7 +150,7 @@ public class RoomTypeRepository : IRoomTypeRepository
                 UpdateRoomTypeDTO updateRoomTypeDTO = _mapper.Map<UpdateRoomTypeDTO>(roomType);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomTypeQueries.Update_RoomType, updateRoomTypeDTO, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }

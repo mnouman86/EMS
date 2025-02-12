@@ -22,7 +22,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;using CleanArc.Application.Common;
 using CleanArc.Domain.Entities.UserSignUpRewards;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
@@ -81,7 +81,7 @@ public async Task<ResponseEntity> AddAsync(UserAssignRewards UserAssignRewards)
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(UserSignUpRewardsQueries.Create_UserSignUpRewards, parameters, commandType: CommandType.StoredProcedure);
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
         }
     }
@@ -103,12 +103,12 @@ public async Task<ResponseEntity> AddAsync(UserAssignRewards UserAssignRewards)
         throw new NotImplementedException();
     }
 
-    Task<IReadOnlyList<UserAssignRewards>> IRepository<UserAssignRewards>.GetAllAsync(SearchRequest request)
+    Task<ListResponseWrapper<UserAssignRewards>> IRepository<UserAssignRewards>.GetAllAsync(SearchRequest request)
     {
         throw new NotImplementedException();
     }
 
-    Task<UserAssignRewards> IRepository<UserAssignRewards>.GetByIdAsync(long id)
+    Task<SingleResponseWrapper<UserAssignRewards>> IRepository<UserAssignRewards>.GetByIdAsync(long id)
     {
         throw new NotImplementedException();
     }

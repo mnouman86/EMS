@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Azure;
+using CleanArc.Application.Features.KBDetail.Queries.GetKBMinimalView;
 
 namespace CleanArc.Application.Features.Activity.Queries.GetAllActivity
 {
@@ -36,12 +38,24 @@ namespace CleanArc.Application.Features.Activity.Queries.GetAllActivity
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var Product = await _unitOfWork.ActivityRepository.GetAllAsync(request.searchRequest);
+                var response = await _unitOfWork.ActivityRepository.GetAllAsync(request.searchRequest);
 
-                //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-                var result = _mapper.Map<List<GetAllActivityQueryResult>>(Product);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return OperationResult<List<GetAllActivityQueryResult>>.SuccessResult(result);
+                if (response.Code != 200)
+                {
+                    return OperationResult<List<GetAllActivityQueryResult>>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
+                }
+
+                var mappedResult = _mapper.Map<List<GetAllActivityQueryResult>>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+                return OperationResult<List<GetAllActivityQueryResult>>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
     }

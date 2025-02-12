@@ -1,4 +1,5 @@
 ﻿//using CleanArc.Application.Features.KBDetail.Queries.GetKBDetailByIdAll;
+using CleanArc.Application.Common;
 using CleanArc.Application.Models.Request;
 using CleanArc.Domain.Entities.KBDetail;
 using CleanArc.Domain.Entities.Order;
@@ -12,8 +13,8 @@ namespace CleanArc.Application.Contracts.Persistence;
 
 public  interface IKBDetailRepository:IRepository<KBDetail>
 {
-    Task<IReadOnlyList<KBMinimalDetail>> GetKBMinimalViewAsync(SearchRequest searchRequest);
-    Task<IReadOnlyList<CoreAreas>> GetKBCoreAreasMinimalViewAsync(SearchRequest searchRequest);
-    Task<KnowledgeBaseByID> GetByIdAllAsync(long id);
+    Task<ListResponseWrapper<KBMinimalDetail>> GetKBMinimalViewAsync(SearchRequest searchRequest);
+    Task<ListResponseWrapper<CoreAreas>> GetKBCoreAreasMinimalViewAsync(SearchRequest searchRequest);
+    Task<SingleResponseWrapper<KnowledgeBaseByID>> GetByIdAllAsync(long id);
    // Task CreateAgeType(AgeType ageType);
 }

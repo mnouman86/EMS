@@ -11,13 +11,15 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -72,7 +74,7 @@ public class BusinessTypeRepository : IBusinessTypeRepository
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(BusinessTypeQueries.Create_BusinessType, createBusinessTypeDTO, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
@@ -92,14 +94,14 @@ public class BusinessTypeRepository : IBusinessTypeRepository
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(BusinessTypeQueries.Delete_BusinessType, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
     }
 
     
-    public async Task<IReadOnlyList<BusinessType>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<BusinessType>> GetAllAsync(SearchRequest searchRequest)
 
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
@@ -132,12 +134,13 @@ public class BusinessTypeRepository : IBusinessTypeRepository
 
                 //};
                 var result = await connection.QueryAsync<BusinessType>(BusinessTypeQueries.usp_GetAll_BusinessType, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToList();
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                
+                var response = new ListResponseWrapper<BusinessType> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
             }
         }
     }
-    public async Task<BusinessType> GetByIdAsync(long id)
+    public async Task<SingleResponseWrapper<BusinessType>> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
         {
@@ -150,8 +153,14 @@ public class BusinessTypeRepository : IBusinessTypeRepository
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
                 var result = await connection.QuerySingleOrDefaultAsync<BusinessType>(BusinessTypeQueries.usp_GetByID_BusinessType, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result;
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                var response = new SingleResponseWrapper<BusinessType>
+                {
+                    Data = result,
+                    Code = parameters.Get<int>("@Code"),
+                    Message = parameters.Get<string>("@Message")
+                };
+                return response;
             }
         }
     }
@@ -171,7 +180,7 @@ public class BusinessTypeRepository : IBusinessTypeRepository
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(BusinessTypeQueries.Update_BusinessType, updateBusinessTypeDTO, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }

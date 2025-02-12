@@ -10,8 +10,10 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System.Data;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
@@ -62,7 +64,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     connection.Open();
                     CreateRoomVisualDTO createRoomVisualDTO = _mapper.Map<CreateRoomVisualDTO>(RoomVisual);
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomVisualQueries.Creat_RoomImage, createRoomVisualDTO, commandType: CommandType.StoredProcedure);
-                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
                 }
             }
@@ -73,12 +75,12 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
         //    throw new NotImplementedException();
         //}
 
-        public Task<IReadOnlyList<RoomVisual>> GetAllAsync(SearchRequest request)
+        public Task<ListResponseWrapper<RoomVisual>> GetAllAsync(SearchRequest request)
         {
             throw new NotImplementedException();
         }
 
-        //public async Task<IReadOnlyList<CarDetail>> GetAllAsync(SearchRequest searchRequest)
+        //public async Task<ListResponseWrapper<CarDetail>> GetAllAsync(SearchRequest searchRequest)
         //{
         //    using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         //    {
@@ -97,12 +99,12 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
         //                FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
         //            };
         //            var result = await connection.QueryAsync<CarDetail>(CarDetailQueries.usp_GetALL_CarDetail, parameters, commandType: CommandType.StoredProcedure);
-        //            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-        //            return result.ToList();
+        //             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+        //            var response = new ListResponseWrapper<ActivityAddressMapping> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
         //        }
         //    }
         //}
-        public async Task<RoomVisual> GetByIdAsync(long id)
+        public async Task<SingleResponseWrapper<RoomVisual>> GetByIdAsync(long id)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
             {
@@ -110,8 +112,15 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 {
                     connection.Open();
                     var result = await connection.QuerySingleOrDefaultAsync<RoomVisual>(RoomVisualQueries.usp_GetByID_RoomImage, new { ID = id }, commandType: CommandType.StoredProcedure);
-                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    return result;
+                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                    var response = new SingleResponseWrapper<RoomVisual>
+                    {
+                        Data = result,
+                        //Code = parameters.Get<int>("@Code"),
+                        //Message = parameters.Get<string>("@Message")
+                    };
+                    return response;
                 }
             }
         }
@@ -126,7 +135,8 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     UpdateRoomVisualDTO updateRoomVisualDTO = _mapper.Map<UpdateRoomVisualDTO>(RoomVisual);
 
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomVisualQueries.Update_RoomImage, updateRoomVisualDTO, commandType: CommandType.StoredProcedure);
-                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                    
                     return result;
                 }
             }
@@ -144,7 +154,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomVisualQueries.Delete_RoomImage, parameters, commandType: CommandType.StoredProcedure);
-                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                     return result;
                 }
             }
