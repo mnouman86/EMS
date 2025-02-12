@@ -12,6 +12,7 @@ public class GetAllGroupActivityParticipantsQueryResult
     public string Email { get; set; }
     public string MobileNumber { get; set; }
     public int? GroupActivityID { get; set; }
+    public int? GroupTypeID { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public bool? Lead { get; set; }

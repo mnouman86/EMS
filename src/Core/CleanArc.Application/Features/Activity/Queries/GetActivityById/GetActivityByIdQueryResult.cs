@@ -47,6 +47,7 @@ namespace CleanArc.Application.Features.Activity.Queries.GetActivityById
         public string? Message { get; set; }
         public int? ActivityID { get; set; }
         public Decimal? PerPersonPrice { get; set; }
+        public Decimal? Price { get; set; }
         // public int? PerGroupPrice { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsDeleted { get; set; }
