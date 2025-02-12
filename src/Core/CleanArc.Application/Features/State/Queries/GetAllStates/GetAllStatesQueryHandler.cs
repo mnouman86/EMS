@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
 namespace CleanArc.Application.Features.State.Queries.GetAllStates;
 
@@ -35,12 +36,31 @@ internal class GetAllStatesQueryHandler : IRequestHandler<GetAllStatesQuery, Ope
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var state = await _unitOfWork.StateRepository.GetAllAsync(request.searchRequest);
+            //var state = 
 
             //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-            var result = _mapper.Map<List<GetAllStatesQueryResult>>(state);
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-            return OperationResult<List<GetAllStatesQueryResult>>.SuccessResult(result);
+            //var result = _mapper.Map<List<GetAllStatesQueryResult>>(state);
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+            //return OperationResult<List<GetAllStatesQueryResult>>.SuccessResult(result);
+
+            var response = await _unitOfWork.StateRepository.GetAllAsync(request.searchRequest);
+
+            if (response.Code != 200)
+            {
+                return OperationResult<List<GetAllStatesQueryResult>>.FailureResult(
+                    response.Message,
+                response.Code
+                );
+            }
+
+            var mappedResult = _mapper.Map<List<GetAllStatesQueryResult>>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+            return OperationResult<List<GetAllStatesQueryResult>>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
         }
     }
 }

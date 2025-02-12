@@ -17,6 +17,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -66,7 +67,7 @@ public class CountryRepository : ICountryRepository
                 connection.Open();
                 CreateCountryDTO createCountryDTO = _mapper.Map<CreateCountryDTO>(country);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CountryQueries.Create_Country, createCountryDTO, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
@@ -86,13 +87,13 @@ public class CountryRepository : ICountryRepository
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CountryQueries.Delete_Country, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
     }
 
-    public async Task<IReadOnlyList<Country>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<Country>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -111,12 +112,12 @@ public class CountryRepository : ICountryRepository
                     FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 };
                 var result = await connection.QueryAsync<Country>(CountryQueries.usp_GetALL_Country, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToList();
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new ListResponseWrapper<Country> { Data = result.ToList()};return response;
             }
         }
     }
-    public async Task<Country> GetByIdAsync(long id)
+    public async Task<SingleResponseWrapper<Country>> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
         {
@@ -124,8 +125,15 @@ public class CountryRepository : ICountryRepository
             {
                 connection.Open();
                 var result = await connection.QuerySingleOrDefaultAsync<Country>(CountryQueries.usp_GetByID_Country, new { ID = id }, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result;
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                var response = new SingleResponseWrapper<Country>
+                {
+                    Data = result,
+                    //Code = parameters.Get<int>("@Code"),
+                    //Message = parameters.Get<string>("@Message")
+                };
+                return response;
             }
         }
     }
@@ -142,7 +150,8 @@ public class CountryRepository : ICountryRepository
                 UpdateCountryDTO updateCountryDTO = _mapper.Map<UpdateCountryDTO>(country);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CountryQueries.Update_Country, updateCountryDTO, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                
                 return result;
             }
         }

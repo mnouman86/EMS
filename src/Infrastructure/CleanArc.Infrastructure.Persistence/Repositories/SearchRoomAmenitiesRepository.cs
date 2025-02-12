@@ -10,13 +10,15 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -65,7 +67,7 @@ public class SearchRoomAmenitiesRepository : ISearchRoomAmenitiesRepository
         throw new NotImplementedException();
     }
 
-    public async Task<IReadOnlyList<SearchRoomAmenities>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<SearchRoomAmenities>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -95,14 +97,14 @@ public class SearchRoomAmenitiesRepository : ISearchRoomAmenitiesRepository
 
 
 				var result = await connection.QueryAsync<SearchRoomAmenities>(SearchRoomAmenitiesQueries.usp_GetByHotelID_RoomAmenities, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToList();
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new ListResponseWrapper<SearchRoomAmenities> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
             }
         }
     }
 
 
-    public Task<SearchRoomAmenities> GetByIdAsync(long id)
+    public Task<SingleResponseWrapper<SearchRoomAmenities>> GetByIdAsync(long id)
     {
         throw new NotImplementedException();
     }

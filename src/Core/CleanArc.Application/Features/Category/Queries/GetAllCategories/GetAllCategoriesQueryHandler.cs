@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
 namespace CleanArc.Application.Features.Category.Queries.GetAllCategories;
 
@@ -35,12 +36,31 @@ internal class GetAllCategoriesQueryHandler : IRequestHandler<GetAllCategoriesQu
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var category = await _unitOfWork.CategoryRepository.GetAllAsync(request.searchRequest);
+            //var category = await _unitOfWork.CategoryRepository.GetAllAsync(request.searchRequest);
 
-            //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-            var result = _mapper.Map<List<GetAllCategoriesQueryResult>>(category);
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-            return OperationResult<List<GetAllCategoriesQueryResult>>.SuccessResult(result);
+            ////var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
+            //var result = _mapper.Map<List<GetAllCategoriesQueryResult>>(category);
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+            //return OperationResult<List<GetAllCategoriesQueryResult>>.SuccessResult(result);
+
+            var response = await _unitOfWork.CategoryRepository.GetAllAsync(request.searchRequest);
+
+            if (response.Code != 200)
+            {
+                return OperationResult<List<GetAllCategoriesQueryResult>>.FailureResult(
+                    response.Message,
+                response.Code
+                );
+            }
+
+            var mappedResult = _mapper.Map<List<GetAllCategoriesQueryResult>>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+            return OperationResult<List<GetAllCategoriesQueryResult>>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
         }
     }
 }

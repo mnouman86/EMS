@@ -21,7 +21,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -75,7 +75,7 @@ public async Task<ResponseEntity> AddAsync(AdvertisementPlace AdvertisementPlace
             connection.Open();
                 CreateAdvertisementPlaceDTO createAdvertisementPlaceDTO = _mapper.Map<CreateAdvertisementPlaceDTO>(AdvertisementPlace);
             var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementPlaceQueries.Create_Place, createAdvertisementPlaceDTO, commandType: CommandType.StoredProcedure);
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result;
         }
     }
@@ -95,13 +95,13 @@ public async Task<ResponseEntity> AddAsync(AdvertisementPlace AdvertisementPlace
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementPlaceQueries.Delete_Place, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
     }
 
-    public async Task<IReadOnlyList<AdvertisementPlace>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<AdvertisementPlace>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -120,12 +120,12 @@ public async Task<ResponseEntity> AddAsync(AdvertisementPlace AdvertisementPlace
                     FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 };
                 var result = await connection.QueryAsync<AdvertisementPlace>(AdvertisementPlaceQueries.usp_GetALL_Place, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToList();
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new ListResponseWrapper<AdvertisementPlace> { Data = result.ToList() };return response;
             }
         }
     }
-    public async Task<AdvertisementPlace> GetByIdAsync(long id)
+    public async Task<SingleResponseWrapper<AdvertisementPlace>> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
         {
@@ -133,8 +133,14 @@ public async Task<ResponseEntity> AddAsync(AdvertisementPlace AdvertisementPlace
             {
                 connection.Open();
                 var result = await connection.QuerySingleOrDefaultAsync<AdvertisementPlace>(AdvertisementPlaceQueries.usp_GetByID_Place, new { ID = id }, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result;
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new SingleResponseWrapper<AdvertisementPlace>
+                {
+                    Data = result,
+                    //Code = parameters.Get<int>("@Code"),
+                    //Message = parameters.Get<string>("@Message")
+                };
+                return response;
             }
         }
     }
@@ -151,7 +157,8 @@ public async Task<ResponseEntity> AddAsync(AdvertisementPlace AdvertisementPlace
                 UpdateAdvertisementPlaceDTO updateAdvertisementPlaceDTO = _mapper.Map<UpdateAdvertisementPlaceDTO>(entity);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementPlaceQueries.Update_Place, updateAdvertisementPlaceDTO, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                
                 return result;
             }
         }

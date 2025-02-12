@@ -11,13 +11,15 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
@@ -67,7 +69,8 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     connection.Open();
                     CreateMappingRoomAmenities createMappingRoomAmenities = _mapper.Map<CreateMappingRoomAmenities>(mappingRoomAmenities);
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(MappingRoomAmenitiesQueries.Create_Mapping_RoomAmenities, createMappingRoomAmenities, commandType: CommandType.StoredProcedure);
-                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                    
                     return result;
                 }
             }
@@ -78,12 +81,12 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IReadOnlyList<MappingRoomAmenities>> GetAllAsync(SearchRequest request)
+        public Task<ListResponseWrapper<MappingRoomAmenities>> GetAllAsync(SearchRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public Task<MappingRoomAmenities> GetByIdAsync(long id)
+        public Task<SingleResponseWrapper<MappingRoomAmenities>> GetByIdAsync(long id)
         {
             throw new NotImplementedException();
         }

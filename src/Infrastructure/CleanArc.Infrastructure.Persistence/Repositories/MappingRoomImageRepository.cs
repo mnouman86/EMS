@@ -4,12 +4,14 @@ using CleanArc.Domain.Entities.MappingRoomImage;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
@@ -61,12 +63,12 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IReadOnlyList<MappingRoomImage>> GetAllAsync(SearchRequest request)
+        public Task<ListResponseWrapper<MappingRoomImage>> GetAllAsync(SearchRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public Task<MappingRoomImage> GetByIdAsync(long id)
+        public Task<SingleResponseWrapper<MappingRoomImage>> GetByIdAsync(long id)
         {
             throw new NotImplementedException();
         }

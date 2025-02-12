@@ -21,7 +21,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -75,7 +75,7 @@ public async Task<ResponseEntity> AddAsync(AdvertisementPage AdvertisementPage)
             connection.Open();
                 CreateAdvertisementPageDTO createAdvertisementPageDTO = _mapper.Map<CreateAdvertisementPageDTO>(AdvertisementPage);
             var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementPageQueries.Create_Page, createAdvertisementPageDTO, commandType: CommandType.StoredProcedure);
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result;
         }
     }
@@ -95,13 +95,13 @@ public async Task<ResponseEntity> AddAsync(AdvertisementPage AdvertisementPage)
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementPageQueries.Delete_Page, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
     }
 
-    public async Task<IReadOnlyList<AdvertisementPage>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<AdvertisementPage>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -120,12 +120,12 @@ public async Task<ResponseEntity> AddAsync(AdvertisementPage AdvertisementPage)
                     FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 };
                 var result = await connection.QueryAsync<AdvertisementPage>(AdvertisementPageQueries.usp_GetALL_Page, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToList();
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new ListResponseWrapper<AdvertisementPage> { Data = result.ToList() };return response;
             }
         }
     }
-    public async Task<AdvertisementPage> GetByIdAsync(long id)
+    public async Task<SingleResponseWrapper<AdvertisementPage>> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
         {
@@ -133,8 +133,14 @@ public async Task<ResponseEntity> AddAsync(AdvertisementPage AdvertisementPage)
             {
                 connection.Open();
                 var result = await connection.QuerySingleOrDefaultAsync<AdvertisementPage>(AdvertisementPageQueries.usp_GetByID_Page, new { ID = id }, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result;
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new SingleResponseWrapper<AdvertisementPage>
+                {
+                    Data = result,
+                    //Code = parameters.Get<int>("@Code"),
+                    //Message = parameters.Get<string>("@Message")
+                };
+                return response;
             }
         }
     }
@@ -151,7 +157,8 @@ public async Task<ResponseEntity> AddAsync(AdvertisementPage AdvertisementPage)
                 UpdateAdvertisementPageDTO updateAdvertisementPageDTO = _mapper.Map<UpdateAdvertisementPageDTO>(entity);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementPageQueries.Update_Page, updateAdvertisementPageDTO, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                
                 return result;
             }
         }

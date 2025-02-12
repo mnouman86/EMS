@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Azure;
 
 namespace CleanArc.Application.Features.KBDetail.Queries.GetKBMinimalView
 {
@@ -36,12 +37,28 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBMinimalView
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var Product = await _unitOfWork.KBDetailRepository.GetKBMinimalViewAsync(request.searchRequest);
+                var response = await _unitOfWork.KBDetailRepository.GetKBMinimalViewAsync(request.searchRequest);
 
+                if (response.Code != 200)
+                {
+                    return OperationResult<List<GetKBMinimalViewQueryResult>>.FailureResult(
+                        response.Message,
+                        response.Code
+                    );
+                }
+
+                var mappedResult = _mapper.Map<List<GetKBMinimalViewQueryResult>>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+                return OperationResult<List<GetKBMinimalViewQueryResult>>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
                 //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-                var result = _mapper.Map<List<GetKBMinimalViewQueryResult>>(Product);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return OperationResult<List<GetKBMinimalViewQueryResult>>.SuccessResult(result);
+                //var result = _mapper.Map<List<GetKBMinimalViewQueryResult>>(Product);
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                //return OperationResult<List<GetKBMinimalViewQueryResult>>.SuccessResult(result);
             }
         }
     }

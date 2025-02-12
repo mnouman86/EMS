@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
 namespace CleanArc.Application.Features.Business.Queries.GetAllBusiness;
 
@@ -43,12 +44,31 @@ internal class GetAllBusinessQueryHandler : IRequestHandler<GetAllBusinessQuery,
             //    request.searchRequest.FilterArray = new List<FilterParameter>();
             //}
            // request.searchRequest.FilterArray.Add(new FilterParameter { ParameterName = "CreatedBy", ParameterValue = Convert.ToString(userId) });
-            var businesses = await _unitOfWork.BusinessRepository.GetAllAsync(request.searchRequest);
+            //var businesses = await _unitOfWork.BusinessRepository.GetAllAsync(request.searchRequest);
 
-            //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-            var result = _mapper.Map<List<GetAllBusinessQueryResult>>(businesses);
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-            return OperationResult<List<GetAllBusinessQueryResult>>.SuccessResult(result);
+            ////var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
+            //var result = _mapper.Map<List<GetAllBusinessQueryResult>>(businesses);
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+            //return OperationResult<List<GetAllBusinessQueryResult>>.SuccessResult(result);
+
+            var response = await _unitOfWork.BusinessRepository.GetAllAsync(request.searchRequest);
+
+            if (response.Code != 200)
+            {
+                return OperationResult<List<GetAllBusinessQueryResult>>.FailureResult(
+                    response.Message,
+                response.Code
+                );
+            }
+
+            var mappedResult = _mapper.Map<List<GetAllBusinessQueryResult>>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+            return OperationResult<List<GetAllBusinessQueryResult>>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
         }
     }
 }

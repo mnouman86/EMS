@@ -23,7 +23,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;using CleanArc.Application.Common;
 using CleanArc.Domain.Entities.KBDescription;
 using CleanArc.Domain.Entities.KBMedia;
 using CleanArc.Domain.Entities.KBTiming;
@@ -104,7 +104,7 @@ public async Task<ResponseEntity> AddAsync(KBAddress KBAddress)
                 //var result = await connection.QuerySingleOrDefaultAsync<int>(KBDetailQueries.Create_KBDetail, parameters, commandType: CommandType.StoredProcedure);
 
                // var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBDetailQueries.Create_KBDetail, parameters, commandType: CommandType.StoredProcedure);
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
         }
     }
@@ -125,13 +125,13 @@ public async Task<ResponseEntity> AddAsync(KBAddress KBAddress)
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBAddressQueries.Delete_KBAddress, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
     }
 
-    public async Task<IReadOnlyList<KBAddress>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<KBAddress>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -163,13 +163,13 @@ public async Task<ResponseEntity> AddAsync(KBAddress KBAddress)
 
                 //};
                 var result = await connection.QueryAsync<KBAddress>(KBAddressQueries.GetAll_KBAddresses, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToList();
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new ListResponseWrapper<KBAddress> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
             }
         }
     }
 
-     public async Task<KBAddress> GetByIdAsync(long id)
+     public async Task<SingleResponseWrapper<KBAddress>> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
         {
@@ -225,8 +225,15 @@ public async Task<ResponseEntity> AddAsync(KBAddress KBAddress)
                 //    commandType: CommandType.StoredProcedure
                 //);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result;
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                var response = new SingleResponseWrapper<KBAddress>
+                {
+                    Data = result,
+                    Code = parameters.Get<int>("@Code"),
+                    Message = parameters.Get<string>("@Message")
+                };
+                return response;
             }
         }
     }
@@ -256,13 +263,13 @@ public async Task<ResponseEntity> AddAsync(KBAddress KBAddress)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBAddressQueries.Update_KBAddress, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
     }
 
-    //public async Task<IReadOnlyList<KBDetail>> IKBDetailRepository.GetKBMinimalViewAsync(SearchRequest searchRequest)
+    //public async Task<ListResponseWrapper<KBDetail>> IKBDetailRepository.GetKBMinimalViewAsync(SearchRequest searchRequest)
     //{
     //    throw new NotImplementedException();
     //}

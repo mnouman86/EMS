@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
 namespace CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay
 {
@@ -35,13 +36,32 @@ namespace CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFil
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var SearchFilterStay = await _unitOfWork.SearchFilterStayRepository.GetAllWithParamAsync(request.searchRequest);
+            //var SearchFilterStay = await _unitOfWork.SearchFilterStayRepository.GetAllWithParamAsync(request.searchRequest);
 
-            //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-            var result = _mapper.Map<List<GetAllSearchFilterStayQueryResult>>(SearchFilterStay);
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-            return OperationResult<List<GetAllSearchFilterStayQueryResult>>.SuccessResult(result);
-        }
+            ////var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
+            //var result = _mapper.Map<List<GetAllSearchFilterStayQueryResult>>(SearchFilterStay);
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+            //return OperationResult<List<GetAllSearchFilterStayQueryResult>>.SuccessResult(result);
+
+                var response = await _unitOfWork.SearchFilterStayRepository.GetAllWithParamAsync(request.searchRequest);
+
+                if (response.Code != 200)
+                {
+                    return OperationResult<List<GetAllSearchFilterStayQueryResult>>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
+                }
+
+                var mappedResult = _mapper.Map<List<GetAllSearchFilterStayQueryResult>>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+                return OperationResult<List<GetAllSearchFilterStayQueryResult>>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
+            }
     }
 }
 
