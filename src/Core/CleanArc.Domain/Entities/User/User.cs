@@ -13,6 +13,7 @@ public class User:IdentityUser<int>,IEntity
     public string Name { get; set; }
     public string FamilyName { get; set; }
     public string GeneratedCode { get; set; }
+    public int RoleId { get; set; }
        
     public ICollection<UserRole> UserRoles { get; set; }
     public ICollection<UserLogin> Logins { get; set; }

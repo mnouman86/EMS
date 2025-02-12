@@ -66,6 +66,7 @@ public class AdminGetTokenQueryHandler : IRequestHandler<AdminGetTokenQuery, Ope
         var result = await _unitOfWork.UserAssignRewardsRepository.AddAsync(new Domain.Entities.UserAssignRewards.UserAssignRewards
         {
             UserID = user.Id,
+            RoleID = user.RoleId,
             RewardRulesID = 2
         });
 

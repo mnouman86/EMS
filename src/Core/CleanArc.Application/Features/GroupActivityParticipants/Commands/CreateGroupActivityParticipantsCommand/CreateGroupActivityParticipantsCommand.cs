@@ -14,6 +14,7 @@ namespace CleanArc.Application.Features.GroupActivityParticipants.Commands.Creat
 public record CreateGroupActivityParticipantsCommand(
  //int? GenericTitleID,
  int? GroupActivityID,
+ int? GroupTypeID,
  string? MobileNumber,
  string? Email,
  string FirstName,
