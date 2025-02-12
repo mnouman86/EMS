@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
 namespace CleanArc.Application.Features.Currency.Queries.GetAllCurrency
 {
@@ -36,12 +37,31 @@ namespace CleanArc.Application.Features.Currency.Queries.GetAllCurrency
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var Product = await _unitOfWork.CurrencyRepository.GetAllAsync(request.searchRequest);
+                //var Product = await _unitOfWork.CurrencyRepository.GetAllAsync(request.searchRequest);
 
-                //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-                var result = _mapper.Map<List<GetAllCurrencyQueryResult>>(Product);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return OperationResult<List<GetAllCurrencyQueryResult>>.SuccessResult(result);
+                ////var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
+                //var result = _mapper.Map<List<GetAllCurrencyQueryResult>>(Product);
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                //return OperationResult<List<GetAllCurrencyQueryResult>>.SuccessResult(result);
+
+                var response = await _unitOfWork.CurrencyRepository.GetAllAsync(request.searchRequest);
+
+                if (response.Code != 200)
+                {
+                    return OperationResult<List<GetAllCurrencyQueryResult>>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
+                }
+
+                var mappedResult = _mapper.Map<List<GetAllCurrencyQueryResult>>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+                return OperationResult<List<GetAllCurrencyQueryResult>>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
     }

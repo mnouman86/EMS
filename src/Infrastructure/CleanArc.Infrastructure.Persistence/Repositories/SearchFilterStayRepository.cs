@@ -19,6 +19,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -60,7 +61,7 @@ public class SearchFilterStayRepository : ISearchFilterStayRepository
 		_httpContextAccessor = httpContextAccessor;
 	}
 
-	public async Task<IReadOnlyList<SearchHotelDetail>> GetAllWithParamAsync(SearchRequestStays searchRequest)
+	public async Task<ListResponseWrapper<SearchHotelDetail>> GetAllWithParamAsync(SearchRequestStays searchRequest)
 	{
 		using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
 		{
@@ -117,8 +118,8 @@ public class SearchFilterStayRepository : ISearchFilterStayRepository
 					item.HotelImages = new List<HotelImage>();
 					item.HotelImages.AddRange(imageList);
 				}
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-				return result.ToList();
+				 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+				var response = new ListResponseWrapper<SearchHotelDetail> { Data = result.ToList() };return response;
 			}
 		}
 	}

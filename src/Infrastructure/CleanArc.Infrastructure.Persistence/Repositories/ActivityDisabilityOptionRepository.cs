@@ -22,7 +22,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -80,7 +80,7 @@ public async Task<ResponseEntity> AddAsync(ActivityDisabilityOption ActivityDisa
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityDisabilityOptionQueries.Create_ActivityDisabilityOption, parameters, commandType: CommandType.StoredProcedure);
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
         }
     }
@@ -101,13 +101,13 @@ public async Task<ResponseEntity> AddAsync(ActivityDisabilityOption ActivityDisa
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityDisabilityOptionQueries.Delete_ActivityDisabilityOption, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
     }
 
-    public async Task<IReadOnlyList<ActivityDisabilityOption>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<ActivityDisabilityOption>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -138,12 +138,12 @@ public async Task<ResponseEntity> AddAsync(ActivityDisabilityOption ActivityDisa
 
                 //};
                 var result = await connection.QueryAsync<ActivityDisabilityOption>(ActivityDisabilityOptionQueries.GetAll_DisabilityOptions, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToList();
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                var response = new ListResponseWrapper<ActivityDisabilityOption> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
             }
         }
     }
-    public async Task<ActivityDisabilityOption> GetByIdAsync(long id)
+    public async Task<SingleResponseWrapper<ActivityDisabilityOption>> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
         {
@@ -157,8 +157,15 @@ public async Task<ResponseEntity> AddAsync(ActivityDisabilityOption ActivityDisa
                 parameters.Add("@ID", id, DbType.Int32);
 
                 var result = await connection.QuerySingleOrDefaultAsync<ActivityDisabilityOption>(ActivityDisabilityOptionQueries.GetByID_DisabilityOptions, parameters , commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result;
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                
+                var response = new SingleResponseWrapper<ActivityDisabilityOption>
+                {
+                    Data = result,
+                    Code = parameters.Get<int>("@Code"),
+                    Message = parameters.Get<string>("@Message")
+                };
+                return response;
             }
         }
     }
@@ -177,7 +184,7 @@ public async Task<ResponseEntity> AddAsync(ActivityDisabilityOption ActivityDisa
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityDisabilityOptionQueries.update_ActivityDisabilityOption, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
 namespace CleanArc.Application.Features.SearchBusinessDetail.Queries.GetAllSearchBusinessDetails
 {
@@ -34,13 +35,32 @@ namespace CleanArc.Application.Features.SearchBusinessDetail.Queries.GetAllSearc
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var SearchBusinessDetail = await _unitOfWork.SearchBusinessDetailRepository.GetAllAsync(request.searchRequest);
+            //var SearchBusinessDetail = await _unitOfWork.SearchBusinessDetailRepository.GetAllAsync(request.searchRequest);
 
-            //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-            var result = _mapper.Map<List<GetAllSearchBusinessDetailsQueryResult>>(SearchBusinessDetail);
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-            return OperationResult<List<GetAllSearchBusinessDetailsQueryResult>>.SuccessResult(result);
-        }
+            ////var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
+            //var result = _mapper.Map<List<GetAllSearchBusinessDetailsQueryResult>>(SearchBusinessDetail);
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+            //return OperationResult<List<GetAllSearchBusinessDetailsQueryResult>>.SuccessResult(result);
+
+                var response = await _unitOfWork.SearchBusinessDetailRepository.GetAllAsync(request.searchRequest);
+
+                if (response.Code != 200)
+                {
+                    return OperationResult<List<GetAllSearchBusinessDetailsQueryResult>>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
+                }
+
+                var mappedResult = _mapper.Map<List<GetAllSearchBusinessDetailsQueryResult>>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+                return OperationResult<List<GetAllSearchBusinessDetailsQueryResult>>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
+            }
     }
 }
 

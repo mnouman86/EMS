@@ -11,13 +11,15 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -67,7 +69,7 @@ public class ServiceRepository : IServiceRepository
                 connection.Open();
                 CreateServiceDTO createServiceDTO = _mapper.Map<CreateServiceDTO>(service);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ServiceQueries.Create_Service, createServiceDTO, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
@@ -87,13 +89,13 @@ public class ServiceRepository : IServiceRepository
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ServiceQueries.Delete_Service, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
     }
 
-    public async Task<IReadOnlyList<Service>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<Service>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -112,12 +114,12 @@ public class ServiceRepository : IServiceRepository
                     FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 };
                 var result = await connection.QueryAsync<Service>(ServiceQueries.usp_GetALL_Service, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToList();
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new ListResponseWrapper<Service> { Data = result.ToList() };return response;
             }
         }
     }
-    public async Task<Service> GetByIdAsync(long id)
+    public async Task<SingleResponseWrapper<Service>> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
         {
@@ -125,8 +127,14 @@ public class ServiceRepository : IServiceRepository
             {
                 connection.Open();
                 var result = await connection.QuerySingleOrDefaultAsync<Service>(ServiceQueries.usp_GetByID_Service, new { ID = id }, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result;
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new SingleResponseWrapper<Service>
+                {
+                    Data = result,
+                    //Code = parameters.Get<int>("@Code"),
+                    //Message = parameters.Get<string>("@Message")
+                };
+                return response;
             }
         }
     }
@@ -143,7 +151,7 @@ public class ServiceRepository : IServiceRepository
                 UpdateServiceDTO updateServiceDTO = _mapper.Map<UpdateServiceDTO>(service);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ServiceQueries.Update_Service, updateServiceDTO, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }

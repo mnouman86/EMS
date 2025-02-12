@@ -14,10 +14,12 @@ using Mediator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System.Data;
 using System.Data.SqlClient;
 using System.Reflection;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -63,7 +65,7 @@ public class MenuRepository : IMenuRepository
     }
 
     /// <inheritdoc/>
-    public async Task<IReadOnlyList<Menu>> GetAllAsync(SearchRequest request)
+    public async Task<ListResponseWrapper<Menu>> GetAllAsync(SearchRequest request)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -78,14 +80,15 @@ public class MenuRepository : IMenuRepository
                     FilterArray = DataTableHelper.ToDataTable(request.FilterArray)
                 };
                 var result = await connection.QueryAsync<Menu>(UrlQueries.AllUrls, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToList();
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+             
+                var response = new ListResponseWrapper<Menu> { Data = result.ToList() };return response;
             }
         }
     }
 
     /// <inheritdoc/>
-    public async Task<Menu> GetByIdAsync(long id)
+    public async Task<SingleResponseWrapper<Menu>> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
         {
@@ -93,8 +96,15 @@ public class MenuRepository : IMenuRepository
             {
                 connection.Open();
                 var result = await connection.QuerySingleOrDefaultAsync<Menu>(UrlQueries.UrlById, new { ID = id }, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result;
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                var response = new SingleResponseWrapper<Menu>
+                {
+                    Data = result,
+                    //Code = parameters.Get<int>("@Code"),
+                    //Message = parameters.Get<string>("@Message")
+                };
+                return response;
             }
         }
     }
@@ -109,7 +119,8 @@ public class MenuRepository : IMenuRepository
                 connection.Open();
                 AddUrlDto addUrlDto = _mapper.Map<AddUrlDto>(entity);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(UrlQueries.AddUrl, addUrlDto, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                
                 return result;
             }
         }
@@ -126,7 +137,7 @@ public class MenuRepository : IMenuRepository
                 UpdateUrlDto updateUrlDto = _mapper.Map<UpdateUrlDto>(entity);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(UrlQueries.UpdateUrl, updateUrlDto, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
@@ -147,7 +158,7 @@ public class MenuRepository : IMenuRepository
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(UrlQueries.DeleteURL, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }

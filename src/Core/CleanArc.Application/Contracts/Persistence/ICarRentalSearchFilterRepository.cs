@@ -1,4 +1,5 @@
-﻿using CleanArc.Application.Models.Request;
+﻿using CleanArc.Application.Common;
+using CleanArc.Application.Models.Request;
 using CleanArc.Domain.Entities.CarRentalSearchFilter;
 using CleanArc.Domain.Entities.SearchHotelDetail;
 using System;
@@ -11,6 +12,6 @@ namespace CleanArc.Application.Contracts.Persistence;
 
 public interface ICarRentalSearchFilterRepository
 {
-    Task<IReadOnlyList<CarRentalSearchFilter>> GetAllWithParamAsync(CarRentalSearchFilterRequest request);
+    Task<ListResponseWrapper<CarRentalSearchFilter>> GetAllWithParamAsync(CarRentalSearchFilterRequest request);
 
 }

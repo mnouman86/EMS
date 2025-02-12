@@ -21,7 +21,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -75,7 +75,8 @@ public async Task<ResponseEntity> AddAsync(AgeType ageType)
             connection.Open();
                 CreateAgeTypeDTO createAgeTypeDTO = _mapper.Map<CreateAgeTypeDTO>(ageType);
             var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AgeTypeQueries.Create_AgeType, createAgeTypeDTO, commandType: CommandType.StoredProcedure);
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                
             return result;
         }
     }
@@ -95,13 +96,13 @@ public async Task<ResponseEntity> AddAsync(AgeType ageType)
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AgeTypeQueries.Delete_AgeType, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
     }
 
-    public async Task<IReadOnlyList<AgeType>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<AgeType>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -120,12 +121,12 @@ public async Task<ResponseEntity> AddAsync(AgeType ageType)
                     FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 };
                 var result = await connection.QueryAsync<AgeType>(AgeTypeQueries.usp_GetAll_AgeType, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToList();
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new ListResponseWrapper<AgeType> { Data = result.ToList() };return response;
             }
         }
     }
-    public async Task<AgeType> GetByIdAsync(long id)
+    public async Task<SingleResponseWrapper<AgeType>> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
         {
@@ -133,8 +134,14 @@ public async Task<ResponseEntity> AddAsync(AgeType ageType)
             {
                 connection.Open();
                 var result = await connection.QuerySingleOrDefaultAsync<AgeType>(AgeTypeQueries.usp_GetByID_AgeType, new { ID = id }, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result;
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new SingleResponseWrapper<AgeType>
+                {
+                    Data = result,
+                    //Code = parameters.Get<int>("@Code"),
+                    //Message = parameters.Get<string>("@Message")
+                };
+                return response;
             }
         }
     }
@@ -151,7 +158,7 @@ public async Task<ResponseEntity> AddAsync(AgeType ageType)
                 UpdateAgeTypeDTO updateAgeTypeDTO = _mapper.Map<UpdateAgeTypeDTO>(entity);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AgeTypeQueries.update_AgeType, updateAgeTypeDTO, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }

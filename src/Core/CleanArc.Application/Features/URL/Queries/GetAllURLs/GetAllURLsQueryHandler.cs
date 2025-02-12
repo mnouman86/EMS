@@ -29,12 +29,31 @@ namespace CleanArc.Application.Features.URL.Queries.GetAllURLs
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var uRLs = await _unitOfWork.URLRepository.GetAllAsync(request.searchRequest);
+                //var uRLs = 
 
                 //var resultCheck = uRLs.Select(c => new GetAllURLsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-                var result = _mapper.Map<List<GetAllURLsQueryResult>>(uRLs);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return OperationResult<List<GetAllURLsQueryResult>>.SuccessResult(result);
+                //var result = _mapper.Map<List<GetAllURLsQueryResult>>(uRLs);
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                //return OperationResult<List<GetAllURLsQueryResult>>.SuccessResult(result);
+
+                var response = await _unitOfWork.URLRepository.GetAllAsync(request.searchRequest);
+
+                if (response.Code != 200)
+                {
+                    return OperationResult<List<GetAllURLsQueryResult>>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
+                }
+
+                var mappedResult = _mapper.Map<List<GetAllURLsQueryResult>>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+                return OperationResult<List<GetAllURLsQueryResult>>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
     }

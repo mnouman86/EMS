@@ -12,13 +12,15 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
@@ -69,7 +71,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<IReadOnlyList<SearchBusinessCarDetail>> GetAllAsync(SearchRequest searchRequest)
+        public async Task<ListResponseWrapper<SearchBusinessCarDetail>> GetAllAsync(SearchRequest searchRequest)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
             {
@@ -107,13 +109,13 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                         item.SearchCarAmenities = new List<SearchCarAmenities>();
                         item.SearchCarAmenities.AddRange(amenitiesList);
                     }
-                        (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    return result.ToList();
+                         (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                    var response = new ListResponseWrapper<SearchBusinessCarDetail> { Data = result.ToList()                        };return response;
                 }
             }
         }
 
-        public Task<SearchBusinessCarDetail> GetByIdAsync(long id)
+        public Task<SingleResponseWrapper<SearchBusinessCarDetail>> GetByIdAsync(long id)
         {
             throw new NotImplementedException();
         }

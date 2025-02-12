@@ -9,7 +9,8 @@ using Dapper;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,6 +18,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -66,7 +68,7 @@ public class SearchHotelImageRepository : ISearchHotelImageRepository
         throw new NotImplementedException();
     }
 
-    public async Task<IReadOnlyList<SearchHotelImage>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<SearchHotelImage>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -96,13 +98,14 @@ public class SearchHotelImageRepository : ISearchHotelImageRepository
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
 				var result = await connection.QueryAsync<SearchHotelImage>(SearchHotelImageQueries.usp_GetByHotelID_HotelImage, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToList();
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                
+                var response = new ListResponseWrapper<SearchHotelImage> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
             }
         }
     }
 
-    public Task<SearchHotelImage> GetByIdAsync(long id)
+    public Task<SingleResponseWrapper<SearchHotelImage>> GetByIdAsync(long id)
     {
         throw new NotImplementedException();
     }

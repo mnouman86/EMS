@@ -1,5 +1,7 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
+using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 using CleanArc.Application.Models.Common;
+using CleanArc.SharedKernel.Extensions;
 using Mediator;
 
 namespace CleanArc.Application.Features.Order.Queries.GetAllOrders
