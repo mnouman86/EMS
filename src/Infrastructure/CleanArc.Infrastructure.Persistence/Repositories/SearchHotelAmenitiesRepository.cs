@@ -10,13 +10,15 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
@@ -66,7 +68,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<IReadOnlyList<SearchHotelAmenities>> GetAllAsync(SearchRequest searchRequest)
+        public async Task<ListResponseWrapper<SearchHotelAmenities>> GetAllAsync(SearchRequest searchRequest)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
             {
@@ -85,13 +87,13 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                         FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                     };
                     var result = await connection.QueryAsync<SearchHotelAmenities>(SearchHotelAmenitiesQuery.usp_GetByHotelID_HotelAmenities, parameters, commandType: CommandType.StoredProcedure);
-                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    return result.ToList();
+                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                    var response = new ListResponseWrapper<SearchHotelAmenities> { Data = result.ToList() };return response;
                 }
             }
         }
 
-        public Task<SearchHotelAmenities> GetByIdAsync(long id)
+        public Task<SingleResponseWrapper<SearchHotelAmenities>> GetByIdAsync(long id)
         {
             throw new NotImplementedException();
         }

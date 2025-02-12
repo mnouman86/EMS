@@ -174,27 +174,49 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
     /// <returns>An action result representing the operation result.</returns>
     protected IActionResult OperationResult<TModel>(OperationResult<TModel> result)
     {
+        //if (result is null)
+        //    return new ServerErrorResult("Server Error");
         if (result is null)
-            return new ServerErrorResult("Server Error");
+            return StatusCode(500, new { Message = "Server Error" });
 
-
-        if (result.IsSuccess) return result.Result is bool ? Ok() : Ok(result.Result);
-
-        if (result.IsNotFound)
+        //if (result.IsSuccess) return result.Result is bool ? Ok() : Ok(result);
+        if (result.IsSuccess)
         {
+            var successResponse = new
+            {
+                Data = result.Result,
+                Message=result.Message, // Use custom success message
+                StatusCode=result.StatusCode,
+                IsSuccess=result.IsSuccess
+            };
 
-            ModelState.AddModelError("GeneralError", result.ErrorMessage);
-
-            var notFoundErrors = new ValidationProblemDetails(ModelState);
-
-            return NotFound(notFoundErrors.Errors);
+            return result.Result is bool ? Ok() : StatusCode(result.StatusCode, successResponse);
         }
+        //if (result.IsNotFound || result.Result==null)
+        //{
 
-        ModelState.AddModelError("GeneralError", result.ErrorMessage);
+        //   // ModelState.AddModelError("404 Not Found", result.ErrorMessage);
 
-        var badRequestErrors = new ValidationProblemDetails(ModelState);
+        //    //var notFoundErrors = new ValidationProblemDetails(ModelState);
 
-        return BadRequest(badRequestErrors.Errors);
+        //    //return NotFound(notFoundErrors.Errors);
+        //    return Ok(result);
+        //}
+        if (result.IsNotFound || result.Result == null)
+        {
+            var failResponse = new
+            {
+                Message = result.ErrorMessage, // Use custom success message
+                StatusCode = result.StatusCode,
+                IsSuccess = false
+            };
+            return StatusCode(result.StatusCode,failResponse);
+        }
+        //ModelState.AddModelError("GeneralError", result.ErrorMessage);
+
+        //var badRequestErrors = new ValidationProblemDetails(ModelState);
+
+        return BadRequest(new { Message = result.ErrorMessage, StatusCode = result.StatusCode });
 
     }
     /// <summary>

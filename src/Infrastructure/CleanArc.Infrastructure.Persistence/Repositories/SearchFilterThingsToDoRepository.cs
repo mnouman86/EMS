@@ -24,7 +24,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;using CleanArc.Application.Common;
 using CleanArc.Application.Models.SearchFilterThingsToDo;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
@@ -87,7 +87,7 @@ public class SearchFilterThingsToDoRepository:ISearchFilterThingsToDoRepository
 //                // var result = await connection.ExecuteScalarAsync(SearchFilterThingsToDoQueries.Create_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
 //                var result = await connection.QuerySingleOrDefaultAsync<int>(SearchFilterThingsToDoQueries.Create_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
 
-//                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+//                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
 //            return result;
 //        }
 //    }
@@ -109,13 +109,13 @@ public class SearchFilterThingsToDoRepository:ISearchFilterThingsToDoRepository
 //                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SearchFilterThingsToDoQueries.Delete_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
 //               // var result = await connection.QuerySingleOrDefaultAsync<int>(SearchFilterThingsToDoQueries.Delete_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
 
-//                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+//                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
 //                return result;
 //            }
 //        }
 //    }
 
-    public async Task<IReadOnlyList<SearchFilterThingsToDo>> GetAllWithParamAsync(ThingsToDoSearchFilterRequest searchRequest)
+    public async Task<ListResponseWrapper<SearchFilterThingsToDo>> GetAllWithParamAsync(ThingsToDoSearchFilterRequest searchRequest)
 
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
@@ -182,8 +182,8 @@ public class SearchFilterThingsToDoRepository:ISearchFilterThingsToDoRepository
                 //    item.ActivityImages.AddRange(imageList);
 
                 //}
-                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToList();
+                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                var response = new ListResponseWrapper<SearchFilterThingsToDo> { Data = result.ToList() };return response;
             }
         }
   
@@ -203,7 +203,7 @@ public class SearchFilterThingsToDoRepository:ISearchFilterThingsToDoRepository
     //            parameters.Add("@ID", id, DbType.Int32);
 
     //            var result = await connection.QuerySingleOrDefaultAsync<SearchFilterThingsToDo>(SearchFilterThingsToDoQueries.GetByID_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
-    //            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+    //             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
     //            return result;
     //        }
     //    }
@@ -229,7 +229,7 @@ public class SearchFilterThingsToDoRepository:ISearchFilterThingsToDoRepository
     //           // parameters.Add("@SearchFilterThingsToDoID ", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
     //            var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SearchFilterThingsToDoQueries.update_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
-    //            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+    //             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
     //            return result;
     //        }
     //    }

@@ -18,6 +18,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
@@ -67,7 +68,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     connection.Open();
                     CreateSectionDTO createSectionDTO = _mapper.Map<CreateSectionDTO>(section);
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SectionQueries.Create_Section, createSectionDTO, commandType: CommandType.StoredProcedure);
-                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
                 }
             }
@@ -87,13 +88,13 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SectionQueries.Delete_Section, parameters, commandType: CommandType.StoredProcedure);
-                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                     return result;
                 }
             }
         }
 
-        public async Task<IReadOnlyList<Section>> GetAllAsync(SearchRequest searchRequest)
+        public async Task<ListResponseWrapper<Section>> GetAllAsync(SearchRequest searchRequest)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
             {
@@ -112,12 +113,12 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                         FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                     };
                     var result = await connection.QueryAsync<Section>(SectionQueries.usp_GetALL_Sections, parameters, commandType: CommandType.StoredProcedure);
-                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    return result.ToList();
+                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                    var response = new ListResponseWrapper<Section> { Data = result.ToList() };return response;
                 }
             }
         }
-        public async Task<Section> GetByIdAsync(long id)
+        public async Task<SingleResponseWrapper<Section>> GetByIdAsync(long id)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
             {
@@ -125,8 +126,14 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 {
                     connection.Open();
                     var result = await connection.QuerySingleOrDefaultAsync<Section>(SectionQueries.usp_GetByID_Section, new { ID = id }, commandType: CommandType.StoredProcedure);
-                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    return result;
+                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                    var response = new SingleResponseWrapper<Section>
+                    {
+                        Data = result,
+                        //Code = parameters.Get<int>("@Code"),
+                        //Message = parameters.Get<string>("@Message")
+                    };
+                    return response;
                 }
             }
         }
@@ -143,7 +150,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     UpdateSectionDTO updateSectionDTO = _mapper.Map<UpdateSectionDTO>(section);
 
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SectionQueries.Update_Section, updateSectionDTO, commandType: CommandType.StoredProcedure);
-                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
                 }
             }

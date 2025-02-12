@@ -10,13 +10,15 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -68,7 +70,7 @@ public class RoomImagesRepository : IRoomImagesRepository
         throw new NotImplementedException();
     }
 
-    public async Task<IReadOnlyList<RoomImages>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<RoomImages>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -87,14 +89,15 @@ public class RoomImagesRepository : IRoomImagesRepository
                     FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 };
                 var result = await connection.QueryAsync<RoomImages>(RoomImagesQueries.usp_GetByHotelID_RoomImages, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToList();
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                
+                var response = new ListResponseWrapper<RoomImages> { Data = result.ToList() };return response;
             }
         }
     }
 
 
-    public Task<RoomImages> GetByIdAsync(long id)
+    public Task<SingleResponseWrapper<RoomImages>> GetByIdAsync(long id)
     {
         throw new NotImplementedException();
     }

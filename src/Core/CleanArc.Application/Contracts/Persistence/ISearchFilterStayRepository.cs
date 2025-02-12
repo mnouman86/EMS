@@ -1,4 +1,5 @@
-﻿using CleanArc.Application.Models.Request;
+﻿using CleanArc.Application.Common;
+using CleanArc.Application.Models.Request;
 using CleanArc.Domain.Entities.AgeType;
 using CleanArc.Domain.Entities.SearchFilterStay;
 using CleanArc.Domain.Entities.SearchHotelDetail;
@@ -14,7 +15,7 @@ namespace CleanArc.Application.Contracts.Persistence
     {
         // Task CreateAgeType(AgeType ageType);
 
-        Task<IReadOnlyList<SearchHotelDetail>> GetAllWithParamAsync(SearchRequestStays request);
+        Task<ListResponseWrapper<SearchHotelDetail>> GetAllWithParamAsync(SearchRequestStays request);
 
     }
 }

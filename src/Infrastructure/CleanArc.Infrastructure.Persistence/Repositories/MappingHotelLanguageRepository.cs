@@ -9,13 +9,15 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
@@ -65,7 +67,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     connection.Open();
                     CreateMappingHotelLanguageDTO createMappingHotelLanguageDTO = _mapper.Map<CreateMappingHotelLanguageDTO>(mappingHotelLanguage);
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(MappingHotelLanguageQueries.Create_Mapping_HotelLanguages, createMappingHotelLanguageDTO, commandType: CommandType.StoredProcedure);
-                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
                 }
             }
@@ -76,12 +78,12 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IReadOnlyList<MappingHotelLanguage>> GetAllAsync(SearchRequest request)
+        public Task<ListResponseWrapper<MappingHotelLanguage>> GetAllAsync(SearchRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public Task<MappingHotelLanguage> GetByIdAsync(long id)
+        public Task<SingleResponseWrapper<MappingHotelLanguage>> GetByIdAsync(long id)
         {
             throw new NotImplementedException();
         }

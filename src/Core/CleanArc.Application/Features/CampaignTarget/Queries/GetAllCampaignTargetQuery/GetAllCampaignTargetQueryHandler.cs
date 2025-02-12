@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Features.CampaignTarget.Queries.GetAllCampaignTarget;
+using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
 namespace CleanArc.Application.Features.CampaignTarget.Queries.GetAllCampaignTarget
 {
@@ -36,10 +37,29 @@ namespace CleanArc.Application.Features.CampaignTarget.Queries.GetAllCampaignTar
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var CampaignTarget = await _unitOfWork.CampaignTargetRepository.GetAllAsync(request.searchRequest);
-                var result = _mapper.Map<List<GetAllCampaignTargetQueryResult>>(CampaignTarget);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return OperationResult<List<GetAllCampaignTargetQueryResult>>.SuccessResult(result);
+                //var CampaignTarget = await _unitOfWork.CampaignTargetRepository.GetAllAsync(request.searchRequest);
+                //var result = _mapper.Map<List<GetAllCampaignTargetQueryResult>>(CampaignTarget);
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                //return OperationResult<List<GetAllCampaignTargetQueryResult>>.SuccessResult(result);
+
+                var response = await _unitOfWork.CampaignTargetRepository.GetAllAsync(request.searchRequest);
+
+                if (response.Code != 200)
+                {
+                    return OperationResult<List<GetAllCampaignTargetQueryResult>>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
+                }
+
+                var mappedResult = _mapper.Map<List<GetAllCampaignTargetQueryResult>>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+                return OperationResult<List<GetAllCampaignTargetQueryResult>>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
     }

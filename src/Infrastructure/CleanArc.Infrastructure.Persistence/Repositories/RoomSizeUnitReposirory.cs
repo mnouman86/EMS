@@ -12,13 +12,15 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -67,7 +69,7 @@ public class RoomSizeUnitReposirory : IRoomSizeUnitReposirory
                 connection.Open();
                 CreateRoomSizeUnitDTO createRoomSizeUnit = _mapper.Map<CreateRoomSizeUnitDTO>(roomSizeUnit);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomSizeUnitQueries.Create_RoomSizeUnit, createRoomSizeUnit, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
@@ -87,13 +89,13 @@ public class RoomSizeUnitReposirory : IRoomSizeUnitReposirory
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomSizeUnitQueries.Delete_RoomSizeUnit, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
     }
 
-    public async Task<IReadOnlyList<RoomSizeUnit>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<RoomSizeUnit>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -112,12 +114,12 @@ public class RoomSizeUnitReposirory : IRoomSizeUnitReposirory
                     FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 };
                 var result = await connection.QueryAsync<RoomSizeUnit>(RoomSizeUnitQueries.usp_GetALL_RoomSizeUnit, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToList();
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new ListResponseWrapper<RoomSizeUnit> { Data = result.ToList() };return response;
             }
         }
     }
-    public async Task<RoomSizeUnit> GetByIdAsync(long id)
+    public async Task<SingleResponseWrapper<RoomSizeUnit>> GetByIdAsync(long id)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
         {
@@ -125,8 +127,14 @@ public class RoomSizeUnitReposirory : IRoomSizeUnitReposirory
             {
                 connection.Open();
                 var result = await connection.QuerySingleOrDefaultAsync<RoomSizeUnit>(RoomSizeUnitQueries.usp_GetByID_RoomSizeUnit, new { ID = id }, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result;
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new SingleResponseWrapper<RoomSizeUnit>
+                {
+                    Data = result,
+                    //Code = parameters.Get<int>("@Code"),
+                    //Message = parameters.Get<string>("@Message")
+                };
+                return response;
             }
         }
     }
@@ -143,7 +151,8 @@ public class RoomSizeUnitReposirory : IRoomSizeUnitReposirory
                 UpdateRoomSizeUnitDTO updateRoomSizeUnitDTO = _mapper.Map<UpdateRoomSizeUnitDTO>(roomSizeUnit);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomSizeUnitQueries.Update_RoomSizeUnit, updateRoomSizeUnitDTO, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                
                 return result;
             }
         }

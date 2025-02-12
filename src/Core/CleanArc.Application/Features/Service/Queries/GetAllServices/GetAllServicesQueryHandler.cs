@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
 namespace CleanArc.Application.Features.Service.Queries.GetAllServices;
 
@@ -36,12 +37,31 @@ internal class GetAllServicesQueryHandler : IRequestHandler<GetAllServicesQuery,
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var services = await _unitOfWork.ServiceRepository.GetAllAsync(request.searchRequest);
+            //var services = 
 
             //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-            var result = _mapper.Map<List<GetAllServicesQueryResult>>(services);
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-            return OperationResult<List<GetAllServicesQueryResult>>.SuccessResult(result);
+            //var result = _mapper.Map<List<GetAllServicesQueryResult>>(services);
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+            //return OperationResult<List<GetAllServicesQueryResult>>.SuccessResult(result);
+
+            var response = await _unitOfWork.ServiceRepository.GetAllAsync(request.searchRequest);
+
+            if (response.Code != 200)
+            {
+                return OperationResult<List<GetAllServicesQueryResult>>.FailureResult(
+                    response.Message,
+                response.Code
+                );
+            }
+
+            var mappedResult = _mapper.Map<List<GetAllServicesQueryResult>>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+            return OperationResult<List<GetAllServicesQueryResult>>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
         }
     }
 

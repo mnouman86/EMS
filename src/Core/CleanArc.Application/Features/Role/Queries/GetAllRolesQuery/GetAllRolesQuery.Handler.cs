@@ -1,5 +1,8 @@
 ﻿using CleanArc.Application.Contracts.Identity;
+using CleanArc.Application.Contracts.Persistence;
+using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 using CleanArc.Application.Models.Common;
+using CleanArc.SharedKernel.Extensions;
 using Mediator;
 
 namespace CleanArc.Application.Features.Role.Queries.GetAllRolesQuery
@@ -23,6 +26,7 @@ namespace CleanArc.Application.Features.Role.Queries.GetAllRolesQuery
             var result = roles.Select(c => new GetAllRolesQueryResponse(int.Parse(c.Id), c.Name)).ToList();
 
             return OperationResult<List<GetAllRolesQueryResponse>>.SuccessResult(result);
+
         }
     }
 }

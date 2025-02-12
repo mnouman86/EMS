@@ -12,6 +12,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Features.KBDetail.Queries.GetKBDetailByIdAll;
+using Azure;
+using CleanArc.Application.Features.KBDetail.Queries.GetKBMinimalView;
 
 namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailByAllId
 {
@@ -35,19 +37,26 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailByAllId
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var KBDetail = await _unitOfWork.KBDetailRepository.GetByIdAllAsync(request.Id);
+                var response = await _unitOfWork.KBDetailRepository.GetByIdAllAsync(request.Id);
 
-                if (KBDetail == null)
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetKBDetailByIdAllQueryResult>.NotFoundResult("KBDetail not found");
+                    return OperationResult<GetKBDetailByIdAllQueryResult>.FailureResult(
+                        response.Message,
+                        response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetKBDetailByIdAllQueryResult>(KBDetail);
+                var mappedResult = _mapper.Map<GetKBDetailByIdAllQueryResult>(response.Data);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                return OperationResult<GetKBDetailByIdAllQueryResult>.SuccessResult(result);
+                //return OperationResult<GetKBDetailByIdAllQueryResult>.SuccessResult(result);
+                return OperationResult<GetKBDetailByIdAllQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

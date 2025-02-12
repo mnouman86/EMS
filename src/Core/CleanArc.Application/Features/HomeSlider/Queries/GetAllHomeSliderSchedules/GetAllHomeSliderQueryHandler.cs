@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
 namespace CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders
 {
@@ -35,12 +36,31 @@ namespace CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var HomeSlider = await _unitOfWork.HomeSliderRepository.GetAllAsync(request.searchRequest);
+                //var HomeSlider = await _unitOfWork.HomeSliderRepository.GetAllAsync(request.searchRequest);
 
-                //var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-                var result = _mapper.Map<List<GetAllHomeSlidersQueryResult>>(HomeSlider);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return OperationResult<List<GetAllHomeSlidersQueryResult>>.SuccessResult(result);
+                ////var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
+                //var result = _mapper.Map<List<GetAllHomeSlidersQueryResult>>(HomeSlider);
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                //return OperationResult<List<GetAllHomeSlidersQueryResult>>.SuccessResult(result);
+
+                var response = await _unitOfWork.HomeSliderRepository.GetAllAsync(request.searchRequest);
+
+                if (response.Code != 200)
+                {
+                    return OperationResult<List<GetAllHomeSlidersQueryResult>>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
+                }
+
+                var mappedResult = _mapper.Map<List<GetAllHomeSlidersQueryResult>>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+                return OperationResult<List<GetAllHomeSlidersQueryResult>>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
     }

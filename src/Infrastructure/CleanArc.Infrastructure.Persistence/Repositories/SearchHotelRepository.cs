@@ -10,13 +10,15 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -67,7 +69,7 @@ public class SearchHotelRepository : ISearchHotelRepository
         throw new NotImplementedException();
     }
 
-    public async Task<IReadOnlyList<SearchHotelDetail>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<SearchHotelDetail>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -115,13 +117,13 @@ public class SearchHotelRepository : ISearchHotelRepository
                     item.HotelImages = new List<HotelImage>();
                     item.HotelImages.AddRange(imageList);
                 }
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                return result.ToList();
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                var response = new ListResponseWrapper<SearchHotelDetail> { Data = result.ToList() };return response;
             }
         }
     }
 
-    public Task<SearchHotelDetail> GetByIdAsync(long id)
+    public Task<SingleResponseWrapper<SearchHotelDetail>> GetByIdAsync(long id)
     {
         throw new NotImplementedException();
     }
