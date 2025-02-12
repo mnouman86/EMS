@@ -39,7 +39,7 @@ public  class Activity
     public string? SeasonLookUpID { get; set; }
     public string? IncludeOptionLookUpID { get; set; }
     public string? DisabilityOptionLookUpID { get; set; }
-    //public Decimal? PerPersonPrice { get; set; }
+    public Decimal? Price { get; set; }
     public Decimal? ActivityPrice { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
@@ -75,6 +75,7 @@ public class ActivityAddressMapping
     public int? ActivityID { get; set; }
     public int? CountryLookUpID { get; set; }
     public int? CityLookUpID { get; set; }
+    public string? CityName { get; set; }
     public int? StateLookUpID { get; set; }
     public string? AddressLine1 { get; set; }
     public string? AddressLine2 { get; set; }

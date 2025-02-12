@@ -20,10 +20,10 @@ namespace CleanArc.Application.Features.CarDetail.Command.UpdateCarDetailCommand
         public int UserId { get; set; }
         public IValidator<UpdateCarDetailCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateCarDetailCommand> validator)
         {
-            validator.RuleFor(c => c.BusinessID)
-             .NotEmpty()
-             .NotNull()
-             .WithMessage("Please enter a valid BusinessID");
+            //validator.RuleFor(c => c.BusinessID)
+            // .NotEmpty()
+            // .NotNull()
+            // .WithMessage("Please enter a valid BusinessID");
             validator.RuleFor(c => c.Model)
                 .NotEmpty()
                 .NotNull()
@@ -44,10 +44,10 @@ namespace CleanArc.Application.Features.CarDetail.Command.UpdateCarDetailCommand
                 .NotEmpty()
                 .NotNull()
                 .WithMessage("Please enter a RentPrice");
-            validator.RuleFor(c => c.About)
-                .NotEmpty()
-                .NotNull()
-                .WithMessage("Please enter About information");
+            //validator.RuleFor(c => c.About)
+            //    .NotEmpty()
+            //    .NotNull()
+            //    .WithMessage("Please enter About information");
             return validator;
         }
     }

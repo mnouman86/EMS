@@ -20,10 +20,10 @@ public record CreateCarDetailCommand(int? BusinessID, string? Model, string? Yea
     public int UserId { get; set; }
     public IValidator<CreateCarDetailCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateCarDetailCommand> validator)
     {
-        validator.RuleFor(c => c.BusinessID)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a valid BusinessID");
+        //validator.RuleFor(c => c.BusinessID)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a valid BusinessID");
         validator.RuleFor(c => c.Model)
             .NotEmpty()
             .NotNull()
@@ -44,10 +44,10 @@ public record CreateCarDetailCommand(int? BusinessID, string? Model, string? Yea
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a RentPrice");
-        validator.RuleFor(c => c.About)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter About information");
+        //validator.RuleFor(c => c.About)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter About information");
         return validator;
     }
 }

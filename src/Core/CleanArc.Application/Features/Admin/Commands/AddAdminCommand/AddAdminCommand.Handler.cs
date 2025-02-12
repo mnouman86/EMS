@@ -24,7 +24,7 @@ namespace CleanArc.Application.Features.Admin.Commands.AddAdminCommand
             if(role is null)
                 return OperationResult<bool>.NotFoundResult("Specified role not found");
 
-            var newAdmin = new User { UserName = request.UserName, Email = request.Email };
+            var newAdmin = new User { UserName = request.UserName, Email = request.Email,RoleId=request.RoleId };
 
             var adminCreateResult =
                 await _userManager.CreateUserWithPasswordAsync(
