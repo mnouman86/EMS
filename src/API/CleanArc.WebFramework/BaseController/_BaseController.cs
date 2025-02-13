@@ -182,9 +182,17 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
         //if (result.IsSuccess) return result.Result is bool ? Ok() : Ok(result);
         if (result.IsSuccess)
         {
+            object data = result.Result;
+
+            // Check if result.Result is not null and is of type CleanArc.Domain.Common.ResponseEntity
+            if (result.Result is CleanArc.Domain.Common.ResponseEntity responseEntity && responseEntity != null)
+            {
+                data =new { RecordID = responseEntity.RecordID }; // Assign RecordID instead of the whole object
+            }
             var successResponse = new
             {
-                Data = result.Result,
+                //Data = result.Result,
+                Data = data,
                 Message=result.Message, // Use custom success message
                 StatusCode=result.StatusCode,
                 IsSuccess=result.IsSuccess
@@ -216,7 +224,7 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
 
         //var badRequestErrors = new ValidationProblemDetails(ModelState);
 
-        return BadRequest(new { Message = result.ErrorMessage, StatusCode = result.StatusCode });
+        return StatusCode(result.StatusCode,new { Message = result.ErrorMessage, StatusCode = result.StatusCode });
 
     }
     /// <summary>
