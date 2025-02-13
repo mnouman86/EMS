@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.UserExperience.Queries.GetAllUserExperience;
 
 namespace CleanArc.Application.Features.UserExperience.Queries.GetUserExperienceById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.UserExperience.Queries.GetUserExperience
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var UserExperience = await _unitOfWork.UserExperienceRepository.GetByIdAsync(request.Id);
+                //var UserExperience = await _unitOfWork.UserExperienceRepository.GetByIdAsync(request.Id);
 
-                if (UserExperience == null)
+                //if (UserExperience == null)
+                //{
+                //    return OperationResult<GetUserExperienceByIdQueryResult>.NotFoundResult("UserExperience not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetUserExperienceByIdQueryResult>(UserExperience);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetUserExperienceByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.UserExperienceRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetUserExperienceByIdQueryResult>.NotFoundResult("UserExperience not found");
+                    return OperationResult<GetUserExperienceByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetUserExperienceByIdQueryResult>(UserExperience);
+                var mappedResult = _mapper.Map<GetUserExperienceByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetUserExperienceByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetUserExperienceByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 
