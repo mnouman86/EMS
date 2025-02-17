@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.BusinessType.Queries.GetBusinessTypeById;
 
 namespace CleanArc.Application.Features.BusinessProfile.Queries.GetBusinessProfileById;
 
@@ -33,19 +34,38 @@ internal class GetBusinessProfileByIdQueryHandler : IRequestHandler<GetBusinessP
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var BusinessProfile= await _unitOfWork.BusinessProfileRepository.GetByIdAsync(request.Id);
+            //var BusinessProfile= await _unitOfWork.BusinessProfileRepository.GetByIdAsync(request.Id);
 
-            if (BusinessProfile == null)
+            //if (BusinessProfile == null)
+            //{
+            //    return OperationResult<GetBusinessProfileByIdQueryResult>.NotFoundResult("BusinessProfile not found");
+            //}
+
+            ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+            //var result = _mapper.Map<GetBusinessProfileByIdQueryResult>(BusinessProfile);
+
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+            //return OperationResult<GetBusinessProfileByIdQueryResult>.SuccessResult(result);
+
+            var response = await _unitOfWork.BusinessProfileRepository.GetByIdAsync(request.Id);
+
+            if (response.Code != 200)
             {
-                return OperationResult<GetBusinessProfileByIdQueryResult>.NotFoundResult("BusinessProfile not found");
+                return OperationResult<GetBusinessProfileByIdQueryResult>.FailureResult(
+                    response.Message,
+                response.Code
+                );
             }
 
-            //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-            var result = _mapper.Map<GetBusinessProfileByIdQueryResult>(BusinessProfile);
+            var mappedResult = _mapper.Map<GetBusinessProfileByIdQueryResult>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-            return OperationResult<GetBusinessProfileByIdQueryResult>.SuccessResult(result);
+            return OperationResult<GetBusinessProfileByIdQueryResult>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
         }
     }
 

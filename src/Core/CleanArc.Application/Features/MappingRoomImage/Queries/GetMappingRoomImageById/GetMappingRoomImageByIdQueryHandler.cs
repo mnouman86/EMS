@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArc.SharedKernel.Extensions;
+using CleanArc.Application.Features.PackageDetail.Queries.GetPackageDetailById;
 
 namespace CleanArc.Application.Features.MappingRoomImage.Queries.GetMappingRoomImageById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.MappingRoomImage.Queries.GetMappingRoomI
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var ageType = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.Id);
+                //var ageType = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.Id);
 
-                if (ageType == null)
+                //if (ageType == null)
+                //{
+                //    return OperationResult<GetMappingRoomImageByIdQueryResult>.NotFoundResult("ageType not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetMappingRoomImageByIdQueryResult>(ageType);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetMappingRoomImageByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.MappingRoomImageRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetMappingRoomImageByIdQueryResult>.NotFoundResult("ageType not found");
+                    return OperationResult<GetMappingRoomImageByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetMappingRoomImageByIdQueryResult>(ageType);
+                var mappedResult = _mapper.Map<GetMappingRoomImageByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetMappingRoomImageByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetMappingRoomImageByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

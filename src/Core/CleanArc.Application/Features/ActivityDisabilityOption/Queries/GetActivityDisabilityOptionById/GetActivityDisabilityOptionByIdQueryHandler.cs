@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.ActivityGroup.Queries.GetActivityGroupById;
 
 namespace CleanArc.Application.Features.ActivityDisabilityOption.Queries.GetActivityDisabilityOptionById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.ActivityDisabilityOption.Queries.GetActi
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var ActivityDisabilityOption = await _unitOfWork.ActivityDisabilityOptionRepository.GetByIdAsync(request.Id);
+                //var ActivityDisabilityOption = await _unitOfWork.ActivityDisabilityOptionRepository.GetByIdAsync(request.Id);
 
-                if (ActivityDisabilityOption == null)
+                //if (ActivityDisabilityOption == null)
+                //{
+                //    return OperationResult<GetActivityDisabilityOptionByIdQueryResult>.NotFoundResult("ActivityDisabilityOption not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetActivityDisabilityOptionByIdQueryResult>(ActivityDisabilityOption);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetActivityDisabilityOptionByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.ActivityDisabilityOptionRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetActivityDisabilityOptionByIdQueryResult>.NotFoundResult("ActivityDisabilityOption not found");
+                    return OperationResult<GetActivityDisabilityOptionByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetActivityDisabilityOptionByIdQueryResult>(ActivityDisabilityOption);
+                var mappedResult = _mapper.Map<GetActivityDisabilityOptionByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetActivityDisabilityOptionByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetActivityDisabilityOptionByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

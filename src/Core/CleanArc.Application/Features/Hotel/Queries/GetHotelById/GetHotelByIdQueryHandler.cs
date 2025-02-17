@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById;
 
 namespace CleanArc.Application.Features.Hotel.Queries.GetHotelById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.Hotel.Queries.GetHotelById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var hotel = await _unitOfWork.HotelRepository.GetByIdAsync(request.Id);
+                //var hotel = await _unitOfWork.HotelRepository.GetByIdAsync(request.Id);
 
-                if (hotel == null)
+                //if (hotel == null)
+                //{
+                //    return OperationResult<GetHotelByIdQueryResult>.NotFoundResult("URL not found");
+                //}
+
+                ////var result = new GetHotelByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetHotelByIdQueryResult>(hotel);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetHotelByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.HotelRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetHotelByIdQueryResult>.NotFoundResult("URL not found");
+                    return OperationResult<GetHotelByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetHotelByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetHotelByIdQueryResult>(hotel);
+                var mappedResult = _mapper.Map<GetHotelByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetHotelByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetHotelByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

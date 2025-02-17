@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.CustomerAwareness.Queries.GetCustomerAwarenessById;
 
 namespace CleanArc.Application.Features.FAQs.Queries.GetFAQsById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.FAQs.Queries.GetFAQsById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var FAQs = await _unitOfWork.FAQsRepository.GetByIdAsync(request.Id);
+                //var FAQs = await _unitOfWork.FAQsRepository.GetByIdAsync(request.Id);
 
-                if (FAQs == null)
+                //if (FAQs == null)
+                //{
+                //    return OperationResult<GetFAQsByIdQueryResult>.NotFoundResult("FAQs not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetFAQsByIdQueryResult>(FAQs);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetFAQsByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.FAQsRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetFAQsByIdQueryResult>.NotFoundResult("FAQs not found");
+                    return OperationResult<GetFAQsByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetFAQsByIdQueryResult>(FAQs);
+                var mappedResult = _mapper.Map<GetFAQsByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetFAQsByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetFAQsByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

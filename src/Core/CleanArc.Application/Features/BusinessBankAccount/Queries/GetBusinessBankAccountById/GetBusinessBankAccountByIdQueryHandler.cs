@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.BusinessProfile.Queries.GetBusinessProfileById;
 
 namespace CleanArc.Application.Features.BusinessBankAccount.Queries.GetBusinessBankAccountById;
 
@@ -33,19 +34,39 @@ internal class GetBusinessBankAccountByIdQueryHandler : IRequestHandler<GetBusin
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var businessBankAccount = await _unitOfWork.BusinessBankAccountRepository.GetByIdAsync(request.Id);
+            //var businessBankAccount = await _unitOfWork.BusinessBankAccountRepository.GetByIdAsync(request.Id);
 
-            if (businessBankAccount == null)
+            //if (businessBankAccount == null)
+            //{
+            //    return OperationResult<GetBusinessBankAccountByIdQueryResult>.NotFoundResult("businessBankAccount not found");
+            //}
+
+            ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+            //var result = _mapper.Map<GetBusinessBankAccountByIdQueryResult>(businessBankAccount);
+
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+            //return OperationResult<GetBusinessBankAccountByIdQueryResult>.SuccessResult(result);
+
+
+            var response = await _unitOfWork.BusinessBankAccountRepository.GetByIdAsync(request.Id);
+
+            if (response.Code != 200)
             {
-                return OperationResult<GetBusinessBankAccountByIdQueryResult>.NotFoundResult("businessBankAccount not found");
+                return OperationResult<GetBusinessBankAccountByIdQueryResult>.FailureResult(
+                    response.Message,
+                response.Code
+                );
             }
 
-            //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-            var result = _mapper.Map<GetBusinessBankAccountByIdQueryResult>(businessBankAccount);
+            var mappedResult = _mapper.Map<GetBusinessBankAccountByIdQueryResult>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-            return OperationResult<GetBusinessBankAccountByIdQueryResult>.SuccessResult(result);
+            return OperationResult<GetBusinessBankAccountByIdQueryResult>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
         }
     }
 

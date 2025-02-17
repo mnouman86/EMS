@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.CampaignTarget.Queries.GetCampaignTargetById;
 
 namespace CleanArc.Application.Features.CampaignSchedule.Queries.GetCampaignScheduleById;
 
@@ -33,19 +34,39 @@ internal class GetCampaignScheduleByIdQueryHandler : IRequestHandler<GetCampaign
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var CampaignSchedule = await _unitOfWork.CampaignScheduleRepository.GetByIdAsync(request.Id);
+            //var CampaignSchedule = await _unitOfWork.CampaignScheduleRepository.GetByIdAsync(request.Id);
 
-            if (CampaignSchedule == null)
+            //if (CampaignSchedule == null)
+            //{
+            //    return OperationResult<GetCampaignScheduleByIdQueryResult>.NotFoundResult("CampaignSchedule not found");
+            //}
+
+            ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+            //var result = _mapper.Map<GetCampaignScheduleByIdQueryResult>(CampaignSchedule);
+
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+            //return OperationResult<GetCampaignScheduleByIdQueryResult>.SuccessResult(result);
+
+
+            var response = await _unitOfWork.CampaignScheduleRepository.GetByIdAsync(request.Id);
+
+            if (response.Code != 200)
             {
-                return OperationResult<GetCampaignScheduleByIdQueryResult>.NotFoundResult("CampaignSchedule not found");
+                return OperationResult<GetCampaignScheduleByIdQueryResult>.FailureResult(
+                    response.Message,
+                response.Code
+                );
             }
 
-            //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-            var result = _mapper.Map<GetCampaignScheduleByIdQueryResult>(CampaignSchedule);
+            var mappedResult = _mapper.Map<GetCampaignScheduleByIdQueryResult>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-            return OperationResult<GetCampaignScheduleByIdQueryResult>.SuccessResult(result);
+            return OperationResult<GetCampaignScheduleByIdQueryResult>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
         }
     }
 
