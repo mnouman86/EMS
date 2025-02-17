@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.RoomType.Queries.GetRoomTypeById;
 
 namespace CleanArc.Application.Features.RoomSizeUnit.Queries.GetRoomSizeUnitById;
 
@@ -34,19 +35,38 @@ internal class GetRoomSizeUnitByIdQueryHandler : IRequestHandler<GetRoomSizeUnit
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var roomSizeUnit = await _unitOfWork.RoomSizeUnitReposirory.GetByIdAsync(request.Id);
+            //var roomSizeUnit = await _unitOfWork.RoomSizeUnitReposirory.GetByIdAsync(request.Id);
 
-            if (roomSizeUnit == null)
+            //if (roomSizeUnit == null)
+            //{
+            //    return OperationResult<GetRoomSizeUnitByIdQueryResult>.NotFoundResult("roomSizeUnit not found");
+            //}
+
+            ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+            //var result = _mapper.Map<GetRoomSizeUnitByIdQueryResult>(roomSizeUnit);
+
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+            //return OperationResult<GetRoomSizeUnitByIdQueryResult>.SuccessResult(result);
+
+            var response = await _unitOfWork.RoomSizeUnitReposirory.GetByIdAsync(request.Id);
+
+            if (response.Code != 200)
             {
-                return OperationResult<GetRoomSizeUnitByIdQueryResult>.NotFoundResult("roomSizeUnit not found");
+                return OperationResult<GetRoomSizeUnitByIdQueryResult>.FailureResult(
+                    response.Message,
+                response.Code
+                );
             }
 
-            //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-            var result = _mapper.Map<GetRoomSizeUnitByIdQueryResult>(roomSizeUnit);
+            var mappedResult = _mapper.Map<GetRoomSizeUnitByIdQueryResult>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-            return OperationResult<GetRoomSizeUnitByIdQueryResult>.SuccessResult(result);
+            return OperationResult<GetRoomSizeUnitByIdQueryResult>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
         }
     }
 

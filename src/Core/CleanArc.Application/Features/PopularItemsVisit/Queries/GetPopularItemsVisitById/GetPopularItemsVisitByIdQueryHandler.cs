@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById;
 
 namespace CleanArc.Application.Features.PopularItemsVisit.Queries.GetPopularItemsVisitById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.PopularItemsVisit.Queries.GetPopularItem
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var PopularItemsVisit = await _unitOfWork.PopularItemsVisitRepository.GetByIdAsync(request.Id);
+                //var PopularItemsVisit = await _unitOfWork.PopularItemsVisitRepository.GetByIdAsync(request.Id);
 
-                if (PopularItemsVisit == null)
+                //if (PopularItemsVisit == null)
+                //{
+                //    return OperationResult<GetPopularItemsVisitByIdQueryResult>.NotFoundResult("PopularItemsVisit not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetPopularItemsVisitByIdQueryResult>(PopularItemsVisit);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetPopularItemsVisitByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.PopularItemsVisitRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetPopularItemsVisitByIdQueryResult>.NotFoundResult("PopularItemsVisit not found");
+                    return OperationResult<GetPopularItemsVisitByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetPopularItemsVisitByIdQueryResult>(PopularItemsVisit);
+                var mappedResult = _mapper.Map<GetPopularItemsVisitByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetPopularItemsVisitByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetPopularItemsVisitByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

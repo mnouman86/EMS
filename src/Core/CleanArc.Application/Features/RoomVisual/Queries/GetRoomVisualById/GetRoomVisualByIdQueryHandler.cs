@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Section.Queries.GetSectionById;
 
 namespace CleanArc.Application.Features.RoomVisual.Queries.GetRoomVisualById
 {
@@ -33,19 +34,38 @@ namespace CleanArc.Application.Features.RoomVisual.Queries.GetRoomVisualById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var RoomVisual = await _unitOfWork.RoomVisualRepository.GetByIdAsync(request.Id);
+                //var RoomVisual = await _unitOfWork.RoomVisualRepository.GetByIdAsync(request.Id);
 
-                if (RoomVisual == null)
+                //if (RoomVisual == null)
+                //{
+                //    return OperationResult<GetRoomVisualByIdQueryResult>.NotFoundResult("RoomVisual not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetRoomVisualByIdQueryResult>(RoomVisual);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetRoomVisualByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.RoomVisualRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetRoomVisualByIdQueryResult>.NotFoundResult("RoomVisual not found");
+                    return OperationResult<GetRoomVisualByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetRoomVisualByIdQueryResult>(RoomVisual);
+                var mappedResult = _mapper.Map<GetRoomVisualByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetRoomVisualByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetRoomVisualByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

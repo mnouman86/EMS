@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Language.Queries.GetLanguageById;
 
 namespace CleanArc.Application.Features.KBWhenToVisit.Queries.GetKBWhenToVisitById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.KBWhenToVisit.Queries.GetKBWhenToVisitBy
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var KBWhenToVisit = await _unitOfWork.KBWhenToVisitRepository.GetByIdAsync(request.Id);
+                //var KBWhenToVisit = await _unitOfWork.KBWhenToVisitRepository.GetByIdAsync(request.Id);
 
-                if (KBWhenToVisit == null)
+                //if (KBWhenToVisit == null)
+                //{
+                //    return OperationResult<GetKBWhenToVisitByIdQueryResult>.NotFoundResult("KBWhenToVisit not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetKBWhenToVisitByIdQueryResult>(KBWhenToVisit);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetKBWhenToVisitByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.KBWhenToVisitRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetKBWhenToVisitByIdQueryResult>.NotFoundResult("KBWhenToVisit not found");
+                    return OperationResult<GetKBWhenToVisitByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetKBWhenToVisitByIdQueryResult>(KBWhenToVisit);
+                var mappedResult = _mapper.Map<GetKBWhenToVisitByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetKBWhenToVisitByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetKBWhenToVisitByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

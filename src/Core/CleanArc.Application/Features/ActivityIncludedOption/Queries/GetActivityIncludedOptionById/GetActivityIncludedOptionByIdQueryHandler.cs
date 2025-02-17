@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetActivityIncludeOptionMappingById;
 
 namespace CleanArc.Application.Features.ActivityIncludedOption.Queries.GetActivityIncludedOptionById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.ActivityIncludedOption.Queries.GetActivi
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var ActivityIncludedOption = await _unitOfWork.ActivityIncludedOptionRepository.GetByIdAsync(request.Id);
+                //var ActivityIncludedOption = await _unitOfWork.ActivityIncludedOptionRepository.GetByIdAsync(request.Id);
 
-                if (ActivityIncludedOption == null)
+                //if (ActivityIncludedOption == null)
+                //{
+                //    return OperationResult<GetActivityIncludedOptionByIdQueryResult>.NotFoundResult("ActivityIncludedOption not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetActivityIncludedOptionByIdQueryResult>(ActivityIncludedOption);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetActivityIncludedOptionByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.ActivityIncludedOptionRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetActivityIncludedOptionByIdQueryResult>.NotFoundResult("ActivityIncludedOption not found");
+                    return OperationResult<GetActivityIncludedOptionByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetActivityIncludedOptionByIdQueryResult>(ActivityIncludedOption);
+                var mappedResult = _mapper.Map<GetActivityIncludedOptionByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetActivityIncludedOptionByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetActivityIncludedOptionByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

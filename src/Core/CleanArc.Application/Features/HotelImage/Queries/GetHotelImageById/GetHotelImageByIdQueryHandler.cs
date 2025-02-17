@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.KBAddress.Queries.GetKBAddressById;
 
 namespace CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById
 {
@@ -33,19 +34,38 @@ namespace CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var HotelImage = await _unitOfWork.HotelImageRepository.GetByIdAsync(request.Id);
+                //var HotelImage = await _unitOfWork.HotelImageRepository.GetByIdAsync(request.Id);
 
-                if (HotelImage == null)
+                //if (HotelImage == null)
+                //{
+                //    return OperationResult<GetHotelImageByIdQueryResult>.NotFoundResult("HotelImage not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetHotelImageByIdQueryResult>(HotelImage);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetHotelImageByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.HotelImageRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetHotelImageByIdQueryResult>.NotFoundResult("HotelImage not found");
+                    return OperationResult<GetHotelImageByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetHotelImageByIdQueryResult>(HotelImage);
+                var mappedResult = _mapper.Map<GetHotelImageByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetHotelImageByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetHotelImageByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 
