@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetKBRelatedUrlLinkById;
 
 namespace CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById
 {
@@ -34,19 +35,39 @@ namespace CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var KBMedia = await _unitOfWork.KBMediaRepository.GetByIdAsync(request.Id);
+                //var KBMedia = await _unitOfWork.KBMediaRepository.GetByIdAsync(request.Id);
 
-                if (KBMedia == null)
+                //if (KBMedia == null)
+                //{
+                //    return OperationResult<GetKBMediaByIdQueryResult>.NotFoundResult("KBMedia not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetKBMediaByIdQueryResult>(KBMedia);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetKBMediaByIdQueryResult>.SuccessResult(result);
+
+
+                var response = await _unitOfWork.KBMediaRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetKBMediaByIdQueryResult>.NotFoundResult("KBMedia not found");
+                    return OperationResult<GetKBMediaByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetKBMediaByIdQueryResult>(KBMedia);
+                var mappedResult = _mapper.Map<GetKBMediaByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetKBMediaByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetKBMediaByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

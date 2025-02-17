@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.RoomDetails.Queries.GetRoomDetailById;
 
 namespace CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var ProcessOrder = await _unitOfWork.ProcessOrderRepository.GetByIdAsync(request.Id);
+                //var ProcessOrder = await _unitOfWork.ProcessOrderRepository.GetByIdAsync(request.Id);
 
-                if (ProcessOrder == null)
+                //if (ProcessOrder == null)
+                //{
+                //    return OperationResult<GetProcessOrderByIdQueryResult>.NotFoundResult("ProcessOrder not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetProcessOrderByIdQueryResult>(ProcessOrder);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetProcessOrderByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.ProcessOrderRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetProcessOrderByIdQueryResult>.NotFoundResult("ProcessOrder not found");
+                    return OperationResult<GetProcessOrderByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetProcessOrderByIdQueryResult>(ProcessOrder);
+                var mappedResult = _mapper.Map<GetProcessOrderByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetProcessOrderByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetProcessOrderByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.State.Queries.GetStateById;
 
 namespace CleanArc.Application.Features.ServiceCategory.Queries.GetServiceCategoryById;
 
@@ -34,19 +35,38 @@ internal class GetServiceCategoryByIdQueryHandler : IRequestHandler<GetServiceCa
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var serviceCategory = await _unitOfWork.ServiceCategoryRepository.GetByIdAsync(request.Id);
+            //var serviceCategory = await _unitOfWork.ServiceCategoryRepository.GetByIdAsync(request.Id);
 
-            if (serviceCategory == null)
+            //if (serviceCategory == null)
+            //{
+            //    return OperationResult<GetServiceCategoryByIdQueryResult>.NotFoundResult("serviceCategory not found");
+            //}
+
+            ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+            //var result = _mapper.Map<GetServiceCategoryByIdQueryResult>(serviceCategory);
+
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+            //return OperationResult<GetServiceCategoryByIdQueryResult>.SuccessResult(result);
+
+            var response = await _unitOfWork.ServiceCategoryRepository.GetByIdAsync(request.Id);
+
+            if (response.Code != 200)
             {
-                return OperationResult<GetServiceCategoryByIdQueryResult>.NotFoundResult("serviceCategory not found");
+                return OperationResult<GetServiceCategoryByIdQueryResult>.FailureResult(
+                    response.Message,
+                response.Code
+                );
             }
 
-            //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-            var result = _mapper.Map<GetServiceCategoryByIdQueryResult>(serviceCategory);
+            var mappedResult = _mapper.Map<GetServiceCategoryByIdQueryResult>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-            return OperationResult<GetServiceCategoryByIdQueryResult>.SuccessResult(result);
+            return OperationResult<GetServiceCategoryByIdQueryResult>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
         }
     }
 

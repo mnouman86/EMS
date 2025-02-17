@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.MappingRoomAmenity.Queries.GetMappingRoomAmenityById;
 
 namespace CleanArc.Application.Features.MappingHotelLanguage.Queries.GetMappingHotelLanguageById;
 
@@ -34,19 +35,38 @@ internal class GetMappingHotelLanguageByIdQueryHandler : IRequestHandler<GetMapp
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var ageType = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.Id);
+            //var ageType = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.Id);
 
-            if (ageType == null)
-            {
-                return OperationResult<GetMappingHotelLanguageByIdQueryResult>.NotFoundResult("ageType not found");
-            }
+            //if (ageType == null)
+            //{
+            //    return OperationResult<GetMappingHotelLanguageByIdQueryResult>.NotFoundResult("ageType not found");
+            //}
 
             //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-            var result = _mapper.Map<GetMappingHotelLanguageByIdQueryResult>(ageType);
+            //var result = _mapper.Map<GetMappingHotelLanguageByIdQueryResult>(ageType);
 
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-            return OperationResult<GetMappingHotelLanguageByIdQueryResult>.SuccessResult(result);
+            //return OperationResult<GetMappingHotelLanguageByIdQueryResult>.SuccessResult(result);
+
+            var response = await _unitOfWork.MappingHotelLanguageRepository.GetByIdAsync(request.Id);
+
+            if (response.Code != 200)
+            {
+                return OperationResult<GetMappingHotelLanguageByIdQueryResult>.FailureResult(
+                    response.Message,
+                response.Code
+                );
+            }
+
+            var mappedResult = _mapper.Map<GetMappingHotelLanguageByIdQueryResult>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+            return OperationResult<GetMappingHotelLanguageByIdQueryResult>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
         }
     }
 

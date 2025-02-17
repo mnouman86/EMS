@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Category.Queries.GetCategoryById;
 
 namespace CleanArc.Application.Features.CarImage.Queries.GetCarImageById
 {
@@ -33,19 +34,39 @@ namespace CleanArc.Application.Features.CarImage.Queries.GetCarImageById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var CarImage = await _unitOfWork.CarImageRepository.GetByIdAsync(request.Id);
+                //var CarImage = await _unitOfWork.CarImageRepository.GetByIdAsync(request.Id);
 
-                if (CarImage == null)
+                //if (CarImage == null)
+                //{
+                //    return OperationResult<GetCarImageByIdQueryResult>.NotFoundResult("CarImage not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetCarImageByIdQueryResult>(CarImage);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetCarImageByIdQueryResult>.SuccessResult(result);
+
+
+                var response = await _unitOfWork.CarImageRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetCarImageByIdQueryResult>.NotFoundResult("CarImage not found");
+                    return OperationResult<GetCarImageByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetCarImageByIdQueryResult>(CarImage);
+                var mappedResult = _mapper.Map<GetCarImageByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetCarImageByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetCarImageByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

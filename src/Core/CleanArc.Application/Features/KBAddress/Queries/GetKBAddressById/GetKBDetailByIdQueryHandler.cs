@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.KBDescription.Queries.GetKBDescriptionById;
 
 namespace CleanArc.Application.Features.KBAddress.Queries.GetKBAddressById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.KBAddress.Queries.GetKBAddressById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var KBAddress = await _unitOfWork.KBAddressRepository.GetByIdAsync(request.Id);
+                //var KBAddress = await _unitOfWork.KBAddressRepository.GetByIdAsync(request.Id);
 
-                if (KBAddress == null)
+                //if (KBAddress == null)
+                //{
+                //    return OperationResult<GetKBAddressByIdQueryResult>.NotFoundResult("KBAddress not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetKBAddressByIdQueryResult>(KBAddress);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetKBAddressByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.KBAddressRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetKBAddressByIdQueryResult>.NotFoundResult("KBAddress not found");
+                    return OperationResult<GetKBAddressByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetKBAddressByIdQueryResult>(KBAddress);
+                var mappedResult = _mapper.Map<GetKBAddressByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetKBAddressByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetKBAddressByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

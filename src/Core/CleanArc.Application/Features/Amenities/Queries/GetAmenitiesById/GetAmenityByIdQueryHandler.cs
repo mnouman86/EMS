@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Bank.Queries.GetBankById;
 
 namespace CleanArc.Application.Features.Amenities.Queries.GetAmenitiesById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.Amenities.Queries.GetAmenitiesById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var amenity = await _unitOfWork.AmenityRepository.GetByIdAsync(request.Id);
+                //var amenity = await _unitOfWork.AmenityRepository.GetByIdAsync(request.Id);
 
-                if (amenity == null)
+                //if (amenity == null)
+                //{
+                //    return OperationResult<GetAmenityByIdQueryResult>.NotFoundResult("URL not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetAmenityByIdQueryResult>(amenity);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetAmenityByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.AmenityRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetAmenityByIdQueryResult>.NotFoundResult("URL not found");
+                    return OperationResult<GetAmenityByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetAmenityByIdQueryResult>(amenity);
+                var mappedResult = _mapper.Map<GetAmenityByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetAmenityByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetAmenityByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.FAQs.Queries.GetFAQsById;
 
 namespace CleanArc.Application.Features.DisabilityOption.Queries.GetDisabilityOptionById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.DisabilityOption.Queries.GetDisabilityOp
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var DisabilityOption = await _unitOfWork.DisabilityOptionRepository.GetByIdAsync(request.Id);
+                //var DisabilityOption = await _unitOfWork.DisabilityOptionRepository.GetByIdAsync(request.Id);
 
-                if (DisabilityOption == null)
+                //if (DisabilityOption == null)
+                //{
+                //    return OperationResult<GetDisabilityOptionByIdQueryResult>.NotFoundResult("DisabilityOption not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetDisabilityOptionByIdQueryResult>(DisabilityOption);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetDisabilityOptionByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.DisabilityOptionRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetDisabilityOptionByIdQueryResult>.NotFoundResult("DisabilityOption not found");
+                    return OperationResult<GetDisabilityOptionByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetDisabilityOptionByIdQueryResult>(DisabilityOption);
+                var mappedResult = _mapper.Map<GetDisabilityOptionByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetDisabilityOptionByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetDisabilityOptionByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

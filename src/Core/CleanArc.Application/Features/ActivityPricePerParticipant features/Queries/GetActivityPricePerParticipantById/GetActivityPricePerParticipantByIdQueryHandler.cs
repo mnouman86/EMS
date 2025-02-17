@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.ActivityPrivateParticipant.Queries.GetActivityPrivateParticipantById;
 
 namespace CleanArc.Application.Features.ActivityPricePerParticipant.Queries.GetActivityPricePerParticipantById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.ActivityPricePerParticipant.Queries.GetA
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var ActivityPricePerParticipant = await _unitOfWork.ActivityPricePerParticipantRepository.GetByIdAsync(request.Id);
+                //var ActivityPricePerParticipant = await _unitOfWork.ActivityPricePerParticipantRepository.GetByIdAsync(request.Id);
 
-                if (ActivityPricePerParticipant == null)
+                //if (ActivityPricePerParticipant == null)
+                //{
+                //    return OperationResult<GetActivityPricePerParticipantByIdQueryResult>.NotFoundResult("ActivityPricePerParticipant not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetActivityPricePerParticipantByIdQueryResult>(ActivityPricePerParticipant);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetActivityPricePerParticipantByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.ActivityPricePerParticipantRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetActivityPricePerParticipantByIdQueryResult>.NotFoundResult("ActivityPricePerParticipant not found");
+                    return OperationResult<GetActivityPricePerParticipantByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetActivityPricePerParticipantByIdQueryResult>(ActivityPricePerParticipant);
+                var mappedResult = _mapper.Map<GetActivityPricePerParticipantByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetActivityPricePerParticipantByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetActivityPricePerParticipantByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

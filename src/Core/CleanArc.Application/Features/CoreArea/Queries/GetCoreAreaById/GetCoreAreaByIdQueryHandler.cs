@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Country.Queries.GetCountryById;
 
 namespace CleanArc.Application.Features.CoreArea.Queries.GetCoreAreaById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.CoreArea.Queries.GetCoreAreaById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var CoreArea = await _unitOfWork.CoreAreaRepository.GetByIdAsync(request.Id);
+                //var CoreArea = await _unitOfWork.CoreAreaRepository.GetByIdAsync(request.Id);
 
-                if (CoreArea == null)
+                //if (CoreArea == null)
+                //{
+                //    return OperationResult<GetCoreAreaByIdQueryResult>.NotFoundResult("CoreArea not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetCoreAreaByIdQueryResult>(CoreArea);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetCoreAreaByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.CoreAreaRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetCoreAreaByIdQueryResult>.NotFoundResult("CoreArea not found");
+                    return OperationResult<GetCoreAreaByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetCoreAreaByIdQueryResult>(CoreArea);
+                var mappedResult = _mapper.Map<GetCoreAreaByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetCoreAreaByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetCoreAreaByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 
