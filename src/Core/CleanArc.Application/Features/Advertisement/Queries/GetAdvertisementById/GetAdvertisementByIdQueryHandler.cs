@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.AdvertisementPage.Queries.GetAdvertisementPageById;
 
 namespace CleanArc.Application.Features.Advertisement.Queries.GetAdvertisementById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.Advertisement.Queries.GetAdvertisementBy
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var Advertisement = await _unitOfWork.AdvertisementRepository.GetByIdAsync(request.Id);
+                //var Advertisement = await _unitOfWork.AdvertisementRepository.GetByIdAsync(request.Id);
 
-                if (Advertisement == null)
+                //if (Advertisement == null)
+                //{
+                //    return OperationResult<GetAdvertisementByIdQueryResult>.NotFoundResult("Advertisement not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetAdvertisementByIdQueryResult>(Advertisement);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetAdvertisementByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.AdvertisementRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetAdvertisementByIdQueryResult>.NotFoundResult("Advertisement not found");
+                    return OperationResult<GetAdvertisementByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetAdvertisementByIdQueryResult>(Advertisement);
+                var mappedResult = _mapper.Map<GetAdvertisementByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetAdvertisementByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetAdvertisementByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

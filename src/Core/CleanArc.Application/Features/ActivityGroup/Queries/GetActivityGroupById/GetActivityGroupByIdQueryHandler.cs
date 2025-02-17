@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.ActivityIDImageMapping.Queries.GetActivityIDImageMappingById;
 
 namespace CleanArc.Application.Features.ActivityGroup.Queries.GetActivityGroupById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.ActivityGroup.Queries.GetActivityGroupBy
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var ActivityGroup = await _unitOfWork.ActivityGroupRepository.GetByIdAsync(request.Id);
+                //var ActivityGroup = await _unitOfWork.ActivityGroupRepository.GetByIdAsync(request.Id);
 
-                if (ActivityGroup == null)
+                //if (ActivityGroup == null)
+                //{
+                //    return OperationResult<GetActivityGroupByIdQueryResult>.NotFoundResult("ActivityGroup not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetActivityGroupByIdQueryResult>(ActivityGroup);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetActivityGroupByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.ActivityGroupRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetActivityGroupByIdQueryResult>.NotFoundResult("ActivityGroup not found");
+                    return OperationResult<GetActivityGroupByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetActivityGroupByIdQueryResult>(ActivityGroup);
+                var mappedResult = _mapper.Map<GetActivityGroupByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetActivityGroupByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetActivityGroupByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

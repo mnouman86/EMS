@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.DisabilityOption.Queries.GetDisabilityOptionById;
 
 namespace CleanArc.Application.Features.CustomerReview.Queries.GetCustomerReviewById;
 
@@ -34,19 +35,39 @@ internal class GetCustomerReviewByIdQueryHandler : IRequestHandler<GetCustomerRe
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var CustomerReview = await _unitOfWork.CustomerReviewRepository.GetByIdAsync(request.Id);
+            //var CustomerReview = await _unitOfWork.CustomerReviewRepository.GetByIdAsync(request.Id);
 
-            if (CustomerReview == null)
+            //if (CustomerReview == null)
+            //{
+            //    return OperationResult<GetCustomerReviewByIdQueryResult>.NotFoundResult("CustomerReview not found");
+            //}
+
+            ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+            //var result = _mapper.Map<GetCustomerReviewByIdQueryResult>(CustomerReview);
+
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+            //return OperationResult<GetCustomerReviewByIdQueryResult>.SuccessResult(result);
+
+
+            var response = await _unitOfWork.CustomerReviewRepository.GetByIdAsync(request.Id);
+
+            if (response.Code != 200)
             {
-                return OperationResult<GetCustomerReviewByIdQueryResult>.NotFoundResult("CustomerReview not found");
+                return OperationResult<GetCustomerReviewByIdQueryResult>.FailureResult(
+                    response.Message,
+                response.Code
+                );
             }
 
-            //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-            var result = _mapper.Map<GetCustomerReviewByIdQueryResult>(CustomerReview);
+            var mappedResult = _mapper.Map<GetCustomerReviewByIdQueryResult>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-            return OperationResult<GetCustomerReviewByIdQueryResult>.SuccessResult(result);
+            return OperationResult<GetCustomerReviewByIdQueryResult>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
         }
     }
 

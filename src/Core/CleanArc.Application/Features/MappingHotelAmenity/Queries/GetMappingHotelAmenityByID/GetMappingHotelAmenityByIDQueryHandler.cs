@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArc.SharedKernel.Extensions;
+using CleanArc.Application.Features.MappingHotelLanguage.Queries.GetMappingHotelLanguageById;
 
 
 
@@ -35,19 +36,38 @@ internal class GetMappingHotelAmenityByIDQueryHandler : IRequestHandler<GetMappi
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var ageType = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.Id);
+            //var ageType = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.Id);
 
-            if (ageType == null)
+            //if (ageType == null)
+            //{
+            //    return OperationResult<GetMappingHotelAmenityByIDQueryResult>.NotFoundResult("ageType not found");
+            //}
+
+            ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+            //var result = _mapper.Map<GetMappingHotelAmenityByIDQueryResult>(ageType);
+
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+            //return OperationResult<GetMappingHotelAmenityByIDQueryResult>.SuccessResult(result);
+
+            var response = await _unitOfWork.MappingHotelAmenityRepository.GetByIdAsync(request.Id);
+
+            if (response.Code != 200)
             {
-                return OperationResult<GetMappingHotelAmenityByIDQueryResult>.NotFoundResult("ageType not found");
+                return OperationResult<GetMappingHotelAmenityByIDQueryResult>.FailureResult(
+                    response.Message,
+                response.Code
+                );
             }
 
-            //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-            var result = _mapper.Map<GetMappingHotelAmenityByIDQueryResult>(ageType);
+            var mappedResult = _mapper.Map<GetMappingHotelAmenityByIDQueryResult>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-            return OperationResult<GetMappingHotelAmenityByIDQueryResult>.SuccessResult(result);
+            return OperationResult<GetMappingHotelAmenityByIDQueryResult>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
         }
     }
 

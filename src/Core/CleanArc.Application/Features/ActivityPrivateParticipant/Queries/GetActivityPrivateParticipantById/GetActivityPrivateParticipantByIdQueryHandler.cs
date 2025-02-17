@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.ActivitySchedule.Queries.GetActivityScheduleById;
 
 namespace CleanArc.Application.Features.ActivityPrivateParticipant.Queries.GetActivityPrivateParticipantById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.ActivityPrivateParticipant.Queries.GetAc
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var ActivityPrivateParticipant = await _unitOfWork.ActivityPrivateParticipantRepository.GetByIdAsync(request.Id);
+                //var ActivityPrivateParticipant = await _unitOfWork.ActivityPrivateParticipantRepository.GetByIdAsync(request.Id);
 
-                if (ActivityPrivateParticipant == null)
+                //if (ActivityPrivateParticipant == null)
+                //{
+                //    return OperationResult<GetActivityPrivateParticipantByIdQueryResult>.NotFoundResult("ActivityPrivateParticipant not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetActivityPrivateParticipantByIdQueryResult>(ActivityPrivateParticipant);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetActivityPrivateParticipantByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.ActivityPrivateParticipantRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetActivityPrivateParticipantByIdQueryResult>.NotFoundResult("ActivityPrivateParticipant not found");
+                    return OperationResult<GetActivityPrivateParticipantByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetActivityPrivateParticipantByIdQueryResult>(ActivityPrivateParticipant);
+                var mappedResult = _mapper.Map<GetActivityPrivateParticipantByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetActivityPrivateParticipantByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetActivityPrivateParticipantByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

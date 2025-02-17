@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.SubService.Queries.GetSubServiceById;
 
 namespace CleanArc.Application.Features.State.Queries.GetStateById;
 
@@ -34,19 +35,37 @@ internal class GetStateByIdQueryHandler : IRequestHandler<GetStateByIdQuery, Ope
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var state = await _unitOfWork.StateRepository.GetByIdAsync(request.Id);
+            //var state = await _unitOfWork.StateRepository.GetByIdAsync(request.Id);
 
-            if (state == null)
+            //if (state == null)
+            //{
+            //    return OperationResult<GetStateByIdQueryResult>.NotFoundResult("state not found");
+            //}
+
+            ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+            //var result = _mapper.Map<GetStateByIdQueryResult>(state);
+
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+            //return OperationResult<GetStateByIdQueryResult>.SuccessResult(result);
+            var response = await _unitOfWork.StateRepository.GetByIdAsync(request.Id);
+
+            if (response.Code != 200)
             {
-                return OperationResult<GetStateByIdQueryResult>.NotFoundResult("state not found");
+                return OperationResult<GetStateByIdQueryResult>.FailureResult(
+                    response.Message,
+                response.Code
+                );
             }
 
-            //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-            var result = _mapper.Map<GetStateByIdQueryResult>(state);
+            var mappedResult = _mapper.Map<GetStateByIdQueryResult>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-            return OperationResult<GetStateByIdQueryResult>.SuccessResult(result);
+            return OperationResult<GetStateByIdQueryResult>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
         }
     }
 
