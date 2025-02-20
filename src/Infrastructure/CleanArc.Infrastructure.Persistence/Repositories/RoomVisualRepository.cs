@@ -55,16 +55,50 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             _httpContextAccessor = httpContextAccessor;
         }
         /// <inheritdoc/>
-        public async Task<ResponseEntity> AddAsync(RoomVisual RoomVisual)
+        public async Task<ResponseEntity> AddAsync(RoomVisual roomVisual)
         {
-            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, RoomVisual))
+            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, roomVisual))
             {
                 using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
                 {
                     connection.Open();
-                    CreateRoomVisualDTO createRoomVisualDTO = _mapper.Map<CreateRoomVisualDTO>(RoomVisual);
-                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomVisualQueries.Creat_RoomImage, createRoomVisualDTO, commandType: CommandType.StoredProcedure);
-                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                    // Create DataTable for image paths
+                    var imagePathsTable = new DataTable();
+                    imagePathsTable.Columns.Add("ImagePath", typeof(string));
+                    
+                    if (roomVisual.ImagePaths != null)
+                    {
+                        foreach (var path in roomVisual.ImagePaths)
+                        {
+                            imagePathsTable.Rows.Add(path);
+                        }
+                    }
+
+                    var parameters = new DynamicParameters();
+                    parameters.Add("@HotelID", roomVisual.HotelID);
+                    parameters.Add("@RoomID", roomVisual.RoomID);
+                    parameters.Add("@CategoryID", roomVisual.CategoryID);
+                    parameters.Add("@ImageTitle", roomVisual.ImageTitle);
+                    parameters.Add("@ImagePaths", imagePathsTable.AsTableValuedParameter("ImagePathTableType"));
+                    parameters.Add("@IsMain", roomVisual.IsMain);
+                    parameters.Add("@CreatedBy", roomVisual.CreatedBy);
+                    parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(
+                        RoomVisualQueries.Creat_RoomImage,
+                        parameters,
+                        commandType: CommandType.StoredProcedure
+                    );
+
+                    if (result != null)
+                    {
+                        result.Code = parameters.Get<int>("@Code");
+                        result.Message = parameters.Get<string>("@Message");
+                    }
+
+                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
                 }
             }
