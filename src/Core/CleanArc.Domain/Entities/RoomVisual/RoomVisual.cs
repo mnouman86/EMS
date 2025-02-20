@@ -15,6 +15,7 @@ namespace CleanArc.Domain.Entities.RoomVisual
         public int? CategoryID { get; set; }
         public string? ImageTitle { get; set; } // NVARCHAR(MAX)
         public string? ImagePath { get; set; } // NVARCHAR(MAX)
+        public List<string>? ImagePaths { get; set; }  // Changed from string? to List<string>?
         public bool? IsMain { get; set; } // BIT
         public bool? IsActive { get; set; } // BIT
         public bool? IsDeleted { get; set; } // BIT

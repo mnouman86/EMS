@@ -61,7 +61,7 @@ namespace CleanArc.Application.Features.RoomVisual.Command.CreateRoomVisualComma
                     HotelID= request.HotelID,
                    RoomID= request.RoomID,
                     CategoryID= request.CategoryID,
-                    ImagePath = request.ImagePath,
+                    ImagePaths = request.ImagePaths,
                     ImageTitle = request.ImageTitle,
                     IsMain = (bool)request.IsMain
                    
