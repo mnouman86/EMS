@@ -14,36 +14,47 @@ namespace CleanArc.Web.FileUpload.Controllers
             try
             {
                 var formCollection = await Request.ReadFormAsync();
-                var file = formCollection.Files.First();
+                var files = formCollection.Files;
                 var category = formCollection["category"].ToString();
+
                 if (string.IsNullOrWhiteSpace(category))
                 {
                     category = "Default";
                 }
 
+                if (files.Count == 0)
+                {
+                    return BadRequest("No files were uploaded.");
+                }
+
                 var folderName = Path.Combine("Resources", "Images", category);
                 var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
-                if (file.Length > 0)
+                var uploadedFiles = new List<string>();
+
+                foreach (var file in files)
                 {
-                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                    var fullPath = Path.Combine(pathToSave, fileName);
-                    var dbPath = Path.Combine(folderName, fileName);
-                    if (!Directory.Exists(pathToSave))
+                    if (file.Length > 0)
                     {
-                        Directory.CreateDirectory(pathToSave);
+                        var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                        var fullPath = Path.Combine(pathToSave, fileName);
+                        var dbPath = Path.Combine(folderName, fileName);
+
+                        if (!Directory.Exists(pathToSave))
+                        {
+                            Directory.CreateDirectory(pathToSave);
+                        }
+
+                        using (var stream = new FileStream(fullPath, FileMode.Create))
+                        {
+                            await file.CopyToAsync(stream);
+                        }
+
+                        var fullDbPath = Path.Combine("..\\..\\..\\assets\\", dbPath);
+                        uploadedFiles.Add(fullDbPath);
                     }
-                    using (var stream = new FileStream(fullPath, FileMode.Create))
-                    {
-                        file.CopyTo(stream);
-                    }
-                    var fullDbPath = Path.Combine("..\\..\\..\\assets\\", dbPath);
-                    //var fullDbPath = Path.Combine("public\\", dbPath);
-                    return Ok(new { dbPath = fullDbPath });
                 }
-                else
-                {
-                    return BadRequest();
-                }
+
+                return Ok(new { files = uploadedFiles });
             }
             catch (Exception ex)
             {
