@@ -21,6 +21,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Common;
+using CleanArc.Domain.Entities.Country;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
@@ -78,31 +79,32 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
                 {
                     connection.Open();
-                     var parameters = new
-                    {
-                        PageNumber = searchRequest.PageNumber,
-                        PageSize = searchRequest.PageSize,
-                        //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-                        //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-                        //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-                        //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-                        SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
-                        FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
-                    };
-                    var result = await connection.QueryAsync<SearchBusinessCarDetail>(SearchBusinessCarDetailQueries.usp_GetALLByBusinessID_Cars, parameters, commandType: CommandType.StoredProcedure);
+					var parameters = new DynamicParameters();
+					parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+					parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+					parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+					parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+					parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+					var result = await connection.QueryAsync<SearchBusinessCarDetail>(SearchBusinessCarDetailQueries.usp_GetALLByBusinessID_Cars, parameters, commandType: CommandType.StoredProcedure);
                     foreach (var item in result)
                     {
                         List<FilterParameter> FilterArray = new List<FilterParameter>();
                         List<SortingParameter> SortingArray = new List<SortingParameter>();
                         FilterArray.Add(new FilterParameter { ParameterName = "CarId", ParameterValue = item.ID.ToString() });
-                        var parameter = new
-                        {
-                            PageNumber = searchRequest.PageNumber,
-                            PageSize = searchRequest.PageSize,
-                            SortingArray = DataTableHelper.ToDataTable(SortingArray), // Convert list to DataTable
-                            FilterArray = DataTableHelper.ToDataTable(FilterArray) // Convert list to DataTable
-                        };
-                        var imageList = await connection.QueryAsync<SearchCarImage>(SearchCarImageQueries.usp_GetByCarID_CarImage, parameter, commandType: CommandType.StoredProcedure);
+
+						var parameter = new DynamicParameters();
+						parameter.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+						parameter.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+						parameter.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+						parameter.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+						parameter.Add("@FilterArray", DataTableHelper.ToDataTable(FilterArray), DbType.Object); // Ensure proper type
+						parameter.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+						parameter.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+						var imageList = await connection.QueryAsync<SearchCarImage>(SearchCarImageQueries.usp_GetByCarID_CarImage, parameter, commandType: CommandType.StoredProcedure);
                         var amenitiesList = await connection.QueryAsync<SearchCarAmenities>(SearchCarAmenitiesQuery.usp_GetByCarID_CarAmenities, parameter, commandType: CommandType.StoredProcedure);
                         item.SearchCarImage = new List<SearchCarImage>();
                         item.SearchCarImage.AddRange(imageList);
@@ -110,9 +112,10 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                         item.SearchCarAmenities.AddRange(amenitiesList);
                     }
                          (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    var response = new ListResponseWrapper<SearchBusinessCarDetail> { Data = result.ToList()                        };return response;
-                }
-            }
+					var response = new ListResponseWrapper<SearchBusinessCarDetail> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
+
+				}
+			}
         }
 
         public Task<SingleResponseWrapper<SearchBusinessCarDetail>> GetByIdAsync(long id)

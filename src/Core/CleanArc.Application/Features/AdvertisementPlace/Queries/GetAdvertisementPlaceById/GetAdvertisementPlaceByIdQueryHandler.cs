@@ -71,9 +71,6 @@ namespace CleanArc.Application.Features.AdvertisementPlace.Queries.GetAdvertisem
             }
         }
 
-        //public ValueTask<OperationResult<GetAdvertisementPlaceByIdQueryResult>> Handle(GetAdvertisementPlaceByIdQuery request, CancellationToken cancellationToken)
-        //{
-        //    throw new NotImplementedException();
-        //}
+       
     }
 }

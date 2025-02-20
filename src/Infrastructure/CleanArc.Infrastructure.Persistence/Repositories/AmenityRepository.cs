@@ -23,6 +23,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Common;
+using CleanArc.Domain.Entities.PopularItemsVisit;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -105,20 +106,19 @@ public class AmenityRepository : IAmenityRepository
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                var parameters = new
-                {
-                    PageNumber = searchRequest.PageNumber,
-                    PageSize = searchRequest.PageSize,
-                    //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-                    //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-                    //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-                    //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-                    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
-                    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
-                };
+				
 
-                // Call
-                List<FilterParameter> FilterArray = new List<FilterParameter>(); 
+				var parameters = new DynamicParameters();
+				parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+				parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+				parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+				parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+				parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+				// Call
+				List<FilterParameter> FilterArray = new List<FilterParameter>(); 
                 List<SortingParameter> SortingArray = new List<SortingParameter>();
                 FilterArray.Add(new FilterParameter { ParameterName = "PlaceID", ParameterValue = "4" });
                 var Adparameter = new
@@ -132,10 +132,12 @@ public class AmenityRepository : IAmenityRepository
 
                 //var advertisements = await connection.QueryAsync<Advertisement>(AdvertisementQueries.usp_GetALL_Ads, Adparameter, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                
-                var response = new ListResponseWrapper<Amenity> { Data = result.ToList() };return response;
-            }
-        }
+
+				//var response = new ListResponseWrapper<Amenity> { Data = result.ToList() };return response;
+				var response = new ListResponseWrapper<Amenity> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
+
+			}
+		}
     }
     public async Task<SingleResponseWrapper<Amenity>> GetByIdAsync(long id)
     {
@@ -144,13 +146,18 @@ public class AmenityRepository : IAmenityRepository
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                var result = await connection.QuerySingleOrDefaultAsync<Amenity>(AmenityQueries.usp_GetByID_Amenity, new { ID = id }, commandType: CommandType.StoredProcedure);
+				var parameters = new DynamicParameters();
+				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+				parameters.Add("@CultureId", 1, DbType.Int32);
+				parameters.Add("@ID", id, DbType.Int32);
+				var result = await connection.QuerySingleOrDefaultAsync<Amenity>(AmenityQueries.usp_GetByID_Amenity, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new SingleResponseWrapper<Amenity>
                 {
                     Data = result,
-                    //Code = parameters.Get<int>("@Code"),
-                    //Message = parameters.Get<string>("@Message")
+                    Code = parameters.Get<int>("@Code"),
+                    Message = parameters.Get<string>("@Message")
                 };
                 return response;
             }

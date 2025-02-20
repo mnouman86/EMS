@@ -69,10 +69,7 @@ namespace CleanArc.Application.Features.City.Queries.GetCityById
             }
         }
 
-        //public ValueTask<OperationResult<GetAgeTypeByIdQueryResult>> Handle(GetAgeTypeByIdQuery request, CancellationToken cancellationToken)
-        //{
-        //    throw new NotImplementedException();
-        //}
+      
     }
 }
 

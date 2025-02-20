@@ -63,6 +63,7 @@ namespace CleanArc.Application.Features.AdvertisementPage.Queries.GetAllAdvertis
                     response.Message
                 );
             }
+
         }
     }
 

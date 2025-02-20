@@ -69,10 +69,7 @@ namespace CleanArc.Application.Features.Bank.Queries.GetBankById
             }
         }
 
-        //public ValueTask<OperationResult<GetAgeTypeByIdQueryResult>> Handle(GetAgeTypeByIdQuery request, CancellationToken cancellationToken)
-        //{
-        //    throw new NotImplementedException();
-        //}
+      
     }
 }
 

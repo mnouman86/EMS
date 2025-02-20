@@ -70,10 +70,7 @@ internal class GetServiceCategoryByIdQueryHandler : IRequestHandler<GetServiceCa
         }
     }
 
-    //public ValueTask<OperationResult<GetAgeTypeByIdQueryResult>> Handle(GetAgeTypeByIdQuery request, CancellationToken cancellationToken)
-    //{
-    //    throw new NotImplementedException();
-    //}
+    
 }
 
 

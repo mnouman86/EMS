@@ -70,9 +70,6 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById
             }
         }
 
-        //public ValueTask<OperationResult<GetKBDetailByIdQueryResult>> Handle(GetKBDetailByIdQuery request, CancellationToken cancellationToken)
-        //{
-        //    throw new NotImplementedException();
-        //}
+      
     }
 }

@@ -70,9 +70,6 @@ namespace CleanArc.Application.Features.AgeType.Queries.GetAgeTypeById
             }
         }
 
-        //public ValueTask<OperationResult<GetAgeTypeByIdQueryResult>> Handle(GetAgeTypeByIdQuery request, CancellationToken cancellationToken)
-        //{
-        //    throw new NotImplementedException();
-        //}
+       
     }
 }

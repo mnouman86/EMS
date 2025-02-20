@@ -69,10 +69,7 @@ internal class GetStateByIdQueryHandler : IRequestHandler<GetStateByIdQuery, Ope
         }
     }
 
-    //public ValueTask<OperationResult<GetAgeTypeByIdQueryResult>> Handle(GetAgeTypeByIdQuery request, CancellationToken cancellationToken)
-    //{
-    //    throw new NotImplementedException();
-    //}
+   
 }
 
 

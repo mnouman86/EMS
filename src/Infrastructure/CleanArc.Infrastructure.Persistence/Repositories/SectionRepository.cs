@@ -19,142 +19,149 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Common;
+using CleanArc.Domain.Entities.RoomSizeUnit;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
-    public class SectionRepository : ISectionRepository
-    {
-        /// <summary>
-        /// The configuration for accessing application settings.
-        /// </summary>
-        private readonly IConfiguration configuration;
+	public class SectionRepository : ISectionRepository
+	{
+		/// <summary>
+		/// The configuration for accessing application settings.
+		/// </summary>
+		private readonly IConfiguration configuration;
 
-        /// <summary>
-        /// The mapper for mapping between different object types.
-        /// </summary>
-        private readonly IMapper _mapper;
+		/// <summary>
+		/// The mapper for mapping between different object types.
+		/// </summary>
+		private readonly IMapper _mapper;
 
-        /// <summary>
-        /// The logger for logging repository-related information.
-        /// </summary>
-        private readonly ILogger<SectionRepository> _logger;
+		/// <summary>
+		/// The logger for logging repository-related information.
+		/// </summary>
+		private readonly ILogger<SectionRepository> _logger;
 
-        /// <summary>
-        /// The HTTP context accessor for accessing HTTP context information.
-        /// </summary>
-        private readonly IHttpContextAccessor _httpContextAccessor;
+		/// <summary>
+		/// The HTTP context accessor for accessing HTTP context information.
+		/// </summary>
+		private readonly IHttpContextAccessor _httpContextAccessor;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MenuRepository"/> class.
-        /// </summary>
-        /// <param name="configuration">The configuration for accessing application settings.</param>
-        /// <param name="mapper">The mapper for mapping between different object types.</param>
-        /// <param name="logger">The logger for logging repository-related information.</param>
-        /// <param name="httpContextAccessor">The HTTP context accessor for accessing HTTP context information.</param>
-        public SectionRepository(IConfiguration configuration, IMapper mapper, ILogger<SectionRepository> logger, IHttpContextAccessor httpContextAccessor)
-        {
-            this.configuration = configuration;
-            _mapper = mapper;
-            _logger = logger;
-            _httpContextAccessor = httpContextAccessor;
-        }
-        /// <inheritdoc/>
-        public async Task<ResponseEntity> AddAsync(Section section)
-        {
-            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, section))
-            {
-                using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
-                {
-                    connection.Open();
-                    CreateSectionDTO createSectionDTO = _mapper.Map<CreateSectionDTO>(section);
-                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SectionQueries.Create_Section, createSectionDTO, commandType: CommandType.StoredProcedure);
-                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    return result;
-                }
-            }
-        }
+		/// <summary>
+		/// Initializes a new instance of the <see cref="MenuRepository"/> class.
+		/// </summary>
+		/// <param name="configuration">The configuration for accessing application settings.</param>
+		/// <param name="mapper">The mapper for mapping between different object types.</param>
+		/// <param name="logger">The logger for logging repository-related information.</param>
+		/// <param name="httpContextAccessor">The HTTP context accessor for accessing HTTP context information.</param>
+		public SectionRepository(IConfiguration configuration, IMapper mapper, ILogger<SectionRepository> logger, IHttpContextAccessor httpContextAccessor)
+		{
+			this.configuration = configuration;
+			_mapper = mapper;
+			_logger = logger;
+			_httpContextAccessor = httpContextAccessor;
+		}
+		/// <inheritdoc/>
+		public async Task<ResponseEntity> AddAsync(Section section)
+		{
+			using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, section))
+			{
+				using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+				{
+					connection.Open();
+					CreateSectionDTO createSectionDTO = _mapper.Map<CreateSectionDTO>(section);
+					var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SectionQueries.Create_Section, createSectionDTO, commandType: CommandType.StoredProcedure);
+					(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+					return result;
+				}
+			}
+		}
 
-        public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
-        {
-            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
-            {
-                using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
-                {
-                    connection.Open();
-                    var parameters = new DynamicParameters();
-                    parameters.Add("@ID", selectedIds);
-                    parameters.Add("@UpdatedBy", updatedBy);
-                    parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                    parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+		public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+		{
+			using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
+			{
+				using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+				{
+					connection.Open();
+					var parameters = new DynamicParameters();
+					parameters.Add("@ID", selectedIds);
+					parameters.Add("@UpdatedBy", updatedBy);
+					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SectionQueries.Delete_Section, parameters, commandType: CommandType.StoredProcedure);
-                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
-                    return result;
-                }
-            }
-        }
+					var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SectionQueries.Delete_Section, parameters, commandType: CommandType.StoredProcedure);
+					(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+					return result;
+				}
+			}
+		}
 
-        public async Task<ListResponseWrapper<Section>> GetAllAsync(SearchRequest searchRequest)
-        {
-            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
-            {
-                using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
-                {
-                    connection.Open();
-                    var parameters = new
-                    {
-                        PageNumber = searchRequest.PageNumber,
-                        PageSize = searchRequest.PageSize,
-                        //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-                        //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-                        //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-                        //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-                        SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
-                        FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
-                    };
-                    var result = await connection.QueryAsync<Section>(SectionQueries.usp_GetALL_Sections, parameters, commandType: CommandType.StoredProcedure);
-                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-                    var response = new ListResponseWrapper<Section> { Data = result.ToList() };return response;
-                }
-            }
-        }
-        public async Task<SingleResponseWrapper<Section>> GetByIdAsync(long id)
-        {
-            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
-            {
-                using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
-                {
-                    connection.Open();
-                    var result = await connection.QuerySingleOrDefaultAsync<Section>(SectionQueries.usp_GetByID_Section, new { ID = id }, commandType: CommandType.StoredProcedure);
-                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    var response = new SingleResponseWrapper<Section>
-                    {
-                        Data = result,
-                        //Code = parameters.Get<int>("@Code"),
-                        //Message = parameters.Get<string>("@Message")
-                    };
-                    return response;
-                }
-            }
-        }
+		public async Task<ListResponseWrapper<Section>> GetAllAsync(SearchRequest searchRequest)
+		{
+			using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
+			{
+				using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+				{
+					connection.Open();
+					var parameters = new DynamicParameters();
+					parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+					parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+					parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+					parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+					parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+					var result = await connection.QueryAsync<Section>(SectionQueries.usp_GetALL_Sections, parameters, commandType: CommandType.StoredProcedure);
 
 
+					(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+					var response = new ListResponseWrapper<Section> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };
+					return response;
+				}
+			}
+		}
+		public async Task<SingleResponseWrapper<Section>> GetByIdAsync(long id)
+		{
+			using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
+			{
+				using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+				{
+					connection.Open();
+					var parameters = new DynamicParameters();
+					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+					parameters.Add("@CultureId", 1, DbType.Int32);
+					parameters.Add("@ID", id, DbType.Int32);
+					var result = await connection.QuerySingleOrDefaultAsync<Section>(SectionQueries.usp_GetByID_Section, parameters, commandType: CommandType.StoredProcedure);
+					(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+					var response = new SingleResponseWrapper<Section>
+					{
+						Data = result,
+						Code = parameters.Get<int>("@Code"),
+						Message = parameters.Get<string>("@Message")
+					};
+					return response;
+				}
+			}
+		}
 
-        public async Task<ResponseEntity> UpdateAsync(Section section)
-        {
-            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, section))
-            {
-                using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
-                {
-                    connection.Open();
-                    UpdateSectionDTO updateSectionDTO = _mapper.Map<UpdateSectionDTO>(section);
 
-                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SectionQueries.Update_Section, updateSectionDTO, commandType: CommandType.StoredProcedure);
-                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    return result;
-                }
-            }
-        }
-    }
+
+		public async Task<ResponseEntity> UpdateAsync(Section section)
+		{
+			using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, section))
+			{
+				using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+				{
+					connection.Open();
+					UpdateSectionDTO updateSectionDTO = _mapper.Map<UpdateSectionDTO>(section);
+
+					var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SectionQueries.Update_Section, updateSectionDTO, commandType: CommandType.StoredProcedure);
+					(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+					return result;
+				}
+			}
+		}
+	}
 
 }

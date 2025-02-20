@@ -22,5 +22,9 @@ namespace CleanArc.Domain.Entities.City
         public int? UpdatedBy { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public bool? IsMain { get; set; }
-    }
+
+		public int? CultureId { get; set; }
+		public int? Code { get; set; }
+		public string? Message { get; set; }
+	}
 }

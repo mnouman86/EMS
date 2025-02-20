@@ -117,11 +117,11 @@ public async Task<ResponseEntity> AddAsync(ActivitySchedule ActivitySchedule)
                 var parameters = new DynamicParameters();
                 parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
                 parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
-               // parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
                 parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
                 parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
-                //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+               parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+               parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 //var parameters = new
                 //{

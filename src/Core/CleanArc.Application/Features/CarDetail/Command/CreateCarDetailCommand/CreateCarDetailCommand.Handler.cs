@@ -59,7 +59,7 @@ namespace CleanArc.Application.Features.CarDetail.Command.CreateCarDetailCommand
                 var result = await _unitOfWork.CarDetailRepository.AddAsync(new Domain.Entities.CarDetail.CarDetail()
                 { 
                     CreatedBy = user.Id,
-                    //BusinessID = request.BusinessID,
+                   BusinessID = request.BusinessID,
                     Model = request.Model,
                     Year = request.Year,
                     VehicleIdentificationNumber = request.VehicleIdentificationNumber,
