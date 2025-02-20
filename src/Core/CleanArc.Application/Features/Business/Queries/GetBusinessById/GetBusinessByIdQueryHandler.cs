@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById;
+using Serilog.Core;
 
 namespace CleanArc.Application.Features.Business.Queries.GetBusinessById;
 
@@ -32,22 +34,35 @@ internal class GetBusinessByIdQueryHandler : IRequestHandler<GetBusinessByIdQuer
     public async ValueTask<OperationResult<GetBusinessByIdQueryResult>> Handle(GetBusinessByIdQuery request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-        {
-            var business= await _unitOfWork.BusinessRepository.GetByIdAsync(request.Id);
+       
 
-            if (business == null)
-            {
-                return OperationResult<GetBusinessByIdQueryResult>.NotFoundResult("business not found");
-            }
+		{
+			var response = await _unitOfWork.BusinessRepository.GetByIdAsync(request.Id);
 
-            //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-            var result = _mapper.Map<GetBusinessByIdQueryResult>(business);
+			if (response.Code != 200)
+			{
+				return OperationResult<GetBusinessByIdQueryResult>.FailureResult(
+				response.Message,
+					response.Code
+				);
+			}
 
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+			var mappedResult = _mapper.Map<GetBusinessByIdQueryResult>(response.Data);
+			(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-            return OperationResult<GetBusinessByIdQueryResult>.SuccessResult(result);
-        }
-    }
+			return OperationResult<GetBusinessByIdQueryResult>.SuccessResult(
+				mappedResult,
+				response.Code,
+				response.Message
+			);
+
+			if (mappedResult == null)
+			{
+				return OperationResult<GetBusinessByIdQueryResult>.NotFoundResult("Business not found");
+			}
+
+		}
+	}
 
   
 }

@@ -18,9 +18,6 @@ namespace CleanArc.Application.Models.Advertisement
         public bool ?IsShow { get; set; }
         public int? CreatedBy { get; set; }
 
-        public int Code { get; set; }
-        public string Message { get; set; }
-
 
 
     }

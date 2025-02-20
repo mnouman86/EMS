@@ -40,6 +40,8 @@ public  class Activity
     public string? IncludeOptionLookUpID { get; set; }
     public string? DisabilityOptionLookUpID { get; set; }
     public Decimal? Price { get; set; }
+    public Decimal? PerPersonPrice { get; set; }
+    public int? TotalParticipant { get; set; }
     public Decimal? ActivityPrice { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }

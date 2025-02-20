@@ -32,27 +32,35 @@ namespace CleanArc.Application.Features.CarDetail.Queries.GetCarDetailById
         public async ValueTask<OperationResult<GetCarDetailByIdQueryResult>> Handle(GetCarDetailByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-            {
-                var carDetail = await _unitOfWork.CarDetailRepository.GetByIdAsync(request.Id);
+          
 
-                if (carDetail == null)
-                {
-                    return OperationResult<GetCarDetailByIdQueryResult>.NotFoundResult("carDetail not found");
-                }
+			{
+				var response = await _unitOfWork.CarDetailRepository.GetByIdAsync(request.Id);
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetCarDetailByIdQueryResult>(carDetail);
+				if (response.Code != 200)
+				{
+					return OperationResult<GetCarDetailByIdQueryResult>.FailureResult(
+					response.Message,
+						response.Code
+					);
+				}
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+				var mappedResult = _mapper.Map<GetCarDetailByIdQueryResult>(response.Data);
+				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                return OperationResult<GetCarDetailByIdQueryResult>.SuccessResult(result);
-            }
-        }
+				return OperationResult<GetCarDetailByIdQueryResult>.SuccessResult(
+					mappedResult,
+					response.Code,
+					response.Message
+				);
 
-        //public ValueTask<OperationResult<GetAgeTypeByIdQueryResult>> Handle(GetAgeTypeByIdQuery request, CancellationToken cancellationToken)
-        //{
-        //    throw new NotImplementedException();
-        //}
+				if (mappedResult == null)
+				{
+					return OperationResult<GetCarDetailByIdQueryResult>.NotFoundResult("carDetail not found");
+				}
+
+			}
+		}
     }
 }
 

@@ -79,7 +79,7 @@ public async Task<ResponseEntity> AddAsync(Advertisement Advertisement)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementQueries.Create_Ads, createAdvertisementDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementQueries.Create_Ads, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
         }
@@ -114,30 +114,22 @@ public async Task<ResponseEntity> AddAsync(Advertisement Advertisement)
             {
                 connection.Open();
 
-                //var parameters = new DynamicParameters();
+                var parameters = new DynamicParameters();
 
-                //parameters.Add("@PageNumber", searchRequest.PageNumber);
-                //parameters.Add("@PageSize", searchRequest.PageSize);
-                //parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), dbType: DbType.Object);
-                //parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), dbType: DbType.Object);
-                //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var parameters = new
-                {
-                    PageNumber = searchRequest.PageNumber,
-                    PageSize = searchRequest.PageSize,
-                    //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-                    //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-                    //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-                    //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-                SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
-                    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
-                };
+                parameters.Add("@PageNumber", searchRequest.PageNumber);
+                parameters.Add("@PageSize", searchRequest.PageSize);
+                parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), dbType: DbType.Object);
+                parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), dbType: DbType.Object);
+				parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+               
                 var result = await connection.QueryAsync<Advertisement>(AdvertisementQueries.usp_GetALL_Ads, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                var response = new ListResponseWrapper<Advertisement> { Data = result.ToList() };return response;
-            }
-        }
+				var response = new ListResponseWrapper<Advertisement> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
+
+			}
+		}
     }
     public async Task<SingleResponseWrapper<Advertisement>> GetByIdAsync(long id)
     {
@@ -146,13 +138,19 @@ public async Task<ResponseEntity> AddAsync(Advertisement Advertisement)
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                var result = await connection.QuerySingleOrDefaultAsync<Advertisement>(AdvertisementQueries.usp_GetByID_Ads, new { ID = id }, commandType: CommandType.StoredProcedure);
+				var parameters = new DynamicParameters();
+				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+				parameters.Add("@CultureId", 1, DbType.Int32);
+				parameters.Add("@ID", id, DbType.Int32);
+
+				var result = await connection.QuerySingleOrDefaultAsync<Advertisement>(AdvertisementQueries.usp_GetByID_Ads, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new SingleResponseWrapper<Advertisement>
                 {
                     Data = result,
-                    //Code = parameters.Get<int>("@Code"),
-                    //Message = parameters.Get<string>("@Message")
+                    Code = parameters.Get<int>("@Code"),
+                    Message = parameters.Get<string>("@Message")
                 };
                 return response;
             }
@@ -173,7 +171,7 @@ public async Task<ResponseEntity> AddAsync(Advertisement Advertisement)
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementQueries.Update_Ads, updateAdvertisementDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementQueries.Update_Ads, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }

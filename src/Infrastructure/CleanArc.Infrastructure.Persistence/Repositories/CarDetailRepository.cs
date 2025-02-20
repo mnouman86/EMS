@@ -14,6 +14,7 @@ using Microsoft.Extensions.Logging;
 using CleanArc.Domain.Common;
 using System.Data;
 using CleanArc.Application.Common;
+using CleanArc.Domain.Entities.KBDetail;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
@@ -80,6 +81,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     var parameters = new DynamicParameters();
                     parameters.Add("@ID", selectedIds);
                     parameters.Add("@UpdatedBy", updatedBy);
+                    parameters.Add("@CultureId", 1);
                     parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
@@ -97,21 +99,19 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
                 {
                     connection.Open();
-                    var parameters = new
-                    {
-                        PageNumber = searchRequest.PageNumber,
-                        PageSize = searchRequest.PageSize,
-                        //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-                        //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-                        //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-                        //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-                        SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
-                        FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
-                    };
-                    var result = await connection.QueryAsync<CarDetail>(CarDetailQueries.usp_GetALL_CarDetail, parameters, commandType: CommandType.StoredProcedure);
-                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    var response = new ListResponseWrapper<CarDetail> { Data = result.ToList() };return response;
-                }
+					var parameters = new DynamicParameters();
+					parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+					parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+					parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+					parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+					parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+					var result = await connection.QueryAsync<CarDetail>(CarDetailQueries.usp_GetALL_CarDetail, parameters, commandType: CommandType.StoredProcedure);
+
+					(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+					var response = new ListResponseWrapper<CarDetail> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
+				}
             }
         }
         public async Task<SingleResponseWrapper<CarDetail>> GetByIdAsync(long id)
@@ -121,13 +121,18 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
                 {
                     connection.Open();
-                    var result = await connection.QuerySingleOrDefaultAsync<CarDetail>(CarDetailQueries.usp_GetByID_CarDetail, new { ID = id }, commandType: CommandType.StoredProcedure);
+					var parameters = new DynamicParameters();
+					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+					parameters.Add("@CultureId", 1, DbType.Int32);
+					parameters.Add("@ID", id, DbType.Int32);
+					var result = await connection.QuerySingleOrDefaultAsync<CarDetail>(CarDetailQueries.usp_GetByID_CarDetail, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     var response = new SingleResponseWrapper<CarDetail>
                     {
                         Data = result,
-                        //Code = parameters.Get<int>("@Code"),
-                        //Message = parameters.Get<string>("@Message")
+                        Code = parameters.Get<int>("@Code"),
+                        Message = parameters.Get<string>("@Message")
                     };
                     return response;
                 }

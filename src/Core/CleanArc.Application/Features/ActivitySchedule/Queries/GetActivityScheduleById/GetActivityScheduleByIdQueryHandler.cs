@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Bank.Queries.GetBankById;
+using Serilog.Core;
 
 namespace CleanArc.Application.Features.ActivitySchedule.Queries.GetActivityScheduleById
 {
@@ -33,22 +35,33 @@ namespace CleanArc.Application.Features.ActivitySchedule.Queries.GetActivitySche
         public async ValueTask<OperationResult<GetActivityScheduleByIdQueryResult>> Handle(GetActivityScheduleByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-            {
-                var ActivitySchedule = await _unitOfWork.ActivityScheduleRepository.GetByIdAsync(request.Id);
+			{
+				var response = await _unitOfWork.ActivityScheduleRepository.GetByIdAsync(request.Id);
 
-                if (ActivitySchedule == null)
-                {
-                    return OperationResult<GetActivityScheduleByIdQueryResult>.NotFoundResult("ActivitySchedule not found");
-                }
+				if (response.Code != 200)
+				{
+					return OperationResult<GetActivityScheduleByIdQueryResult>.FailureResult(
+					response.Message,
+						response.Code
+					);
+				}
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetActivityScheduleByIdQueryResult>(ActivitySchedule);
+				var mappedResult = _mapper.Map<GetActivityScheduleByIdQueryResult>(response.Data);
+				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+				return OperationResult<GetActivityScheduleByIdQueryResult>.SuccessResult(
+					mappedResult,
+					response.Code,
+					response.Message
+				);
 
-                return OperationResult<GetActivityScheduleByIdQueryResult>.SuccessResult(result);
-            }
-        }
+				if (mappedResult == null)
+				{
+					return OperationResult<GetActivityScheduleByIdQueryResult>.NotFoundResult("Schedule not found");
+				}
+
+			}
+		}
 
         //public ValueTask<OperationResult<GetActivityScheduleByIdQueryResult>> Handle(GetActivityScheduleByIdQuery request, CancellationToken cancellationToken)
         //{

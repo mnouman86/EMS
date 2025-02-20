@@ -11,13 +11,13 @@ public class RoomDetails
     public int ID { get; set; }
     public int? HotelID { get; set; }
 
-    public string HotelName { get; set; }
+    public string? HotelName { get; set; }
     public int? RoomTypeID { get; set; }
 
-    public string RoomTypeName { get; set; }
+    public string? RoomTypeName { get; set; }
     public int? RoomSizeUnitID { get; set; }
 
-    public string RoomSizeUnitName { get; set; }
+    public string? RoomSizeUnitName { get; set; }
     public string? RoomSize { get; set; }
     public bool? IsBathroomPrivate { get; set; }
     public decimal? Price { get; set; }
@@ -32,4 +32,8 @@ public class RoomDetails
     public DateTime? UpdatedAt { get; set; }
     public bool? IsCancelation { get; set; }
     public bool? IsRefundable { get; set; }
+
+	public int? CultureId { get; set; }
+	public int? Code { get; set; }
+	public string? Message { get; set; }
 }
