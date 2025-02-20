@@ -70,9 +70,6 @@ internal class GetLanguageByIdQueryHandler : IRequestHandler<GetLanguageByIdQuer
         }
     }
 
-    //public ValueTask<OperationResult<GetAgeTypeByIdQueryResult>> Handle(GetAgeTypeByIdQuery request, CancellationToken cancellationToken)
-    //{
-    //    throw new NotImplementedException();
-    //}
+    
 }
 

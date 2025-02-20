@@ -37,13 +37,6 @@ namespace CleanArc.Application.Features.AgeType.Queries.GetAllAgeType
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var Product = await _unitOfWork.AgeTypeRepository.GetAllAsync(request.searchRequest);
-
-                ////var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-                //var result = _mapper.Map<List<GetAllAgeTypeQueryResult>>(Product);
-                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                //return OperationResult<List<GetAllAgeTypeQueryResult>>.SuccessResult(result);
-
                 var response = await _unitOfWork.AgeTypeRepository.GetAllAsync(request.searchRequest);
 
                 if (response.Code != 200)
@@ -63,6 +56,8 @@ namespace CleanArc.Application.Features.AgeType.Queries.GetAllAgeType
                     response.Message
                 );
             }
+
+
         }
     }
 

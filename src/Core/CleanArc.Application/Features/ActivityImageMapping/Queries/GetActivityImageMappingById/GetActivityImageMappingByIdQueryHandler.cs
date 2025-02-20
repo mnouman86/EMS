@@ -70,9 +70,6 @@ namespace CleanArc.Application.Features.ActivityImageMapping.Queries.GetActivity
             }
         }
 
-        //public ValueTask<OperationResult<GetActivityImageMappingByIdQueryResult>> Handle(GetActivityImageMappingByIdQuery request, CancellationToken cancellationToken)
-        //{
-        //    throw new NotImplementedException();
-        //}
+       
     }
 }

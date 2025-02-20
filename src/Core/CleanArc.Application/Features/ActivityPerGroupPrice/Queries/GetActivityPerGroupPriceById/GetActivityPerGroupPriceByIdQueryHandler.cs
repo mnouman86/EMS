@@ -70,9 +70,6 @@ namespace CleanArc.Application.Features.ActivityPerGroupPrice.Queries.GetActivit
             }
         }
 
-        //public ValueTask<OperationResult<GetActivityPerGroupPriceByIdQueryResult>> Handle(GetActivityPerGroupPriceByIdQuery request, CancellationToken cancellationToken)
-        //{
-        //    throw new NotImplementedException();
-        //}
+       
     }
 }

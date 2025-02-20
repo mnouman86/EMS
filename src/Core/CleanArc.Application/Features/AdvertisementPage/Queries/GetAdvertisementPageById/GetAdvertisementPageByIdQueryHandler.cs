@@ -70,9 +70,7 @@ namespace CleanArc.Application.Features.AdvertisementPage.Queries.GetAdvertiseme
             }
         }
 
-        //public ValueTask<OperationResult<GetAdvertisementPageByIdQueryResult>> Handle(GetAdvertisementPageByIdQuery request, CancellationToken cancellationToken)
-        //{
-        //    throw new NotImplementedException();
-        //}
+
+
     }
 }

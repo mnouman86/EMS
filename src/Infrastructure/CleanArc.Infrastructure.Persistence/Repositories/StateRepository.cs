@@ -19,6 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Common;
+using CleanArc.Domain.Entities.AgeType;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -83,6 +84,7 @@ public class StateRepository : IStateRepository
                 var parameters = new DynamicParameters();
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@UpdatedBy", updatedBy);
+                parameters.Add("@CultureId", CultureId);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
@@ -100,22 +102,21 @@ public class StateRepository : IStateRepository
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                var parameters = new
-                {
-                    PageNumber = searchRequest.PageNumber,
-                    PageSize = searchRequest.PageSize,
-                    //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-                    //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-                    //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-                    //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-                    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
-                    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
-                };
-                var result = await connection.QueryAsync<State>(StateQueries.usp_GetALL_State, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-                var response = new ListResponseWrapper<State> { Data = result.ToList() };return response;
-            }
-        }
+				var parameters = new DynamicParameters();
+				parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+				parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+				parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+				parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+				parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+				var result = await connection.QueryAsync<State>(StateQueries.usp_GetALL_State, parameters, commandType: CommandType.StoredProcedure);
+                
+				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+				var response = new ListResponseWrapper<State> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
+
+			}
+		}
     }
     public async Task<SingleResponseWrapper<State>> GetByIdAsync(long id)
     {
@@ -124,13 +125,18 @@ public class StateRepository : IStateRepository
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                var result = await connection.QuerySingleOrDefaultAsync<State>(StateQueries.usp_GetByID_State, new { ID = id }, commandType: CommandType.StoredProcedure);
+				var parameters = new DynamicParameters();
+				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+				parameters.Add("@CultureId", 1, DbType.Int32);
+				parameters.Add("@ID", id, DbType.Int32);
+				var result = await connection.QuerySingleOrDefaultAsync<State>(StateQueries.usp_GetByID_State, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new SingleResponseWrapper<State>
                 {
                     Data = result,
-                    //Code = parameters.Get<int>("@Code"),
-                    //Message = parameters.Get<string>("@Message")
+                    Code = parameters.Get<int>("@Code"),
+                    Message = parameters.Get<string>("@Message")
                 };
                 return response;
             }

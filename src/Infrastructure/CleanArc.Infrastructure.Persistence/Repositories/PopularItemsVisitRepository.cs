@@ -80,7 +80,8 @@ public async Task<ResponseEntity> AddAsync(PopularItemsVisit PopularItemsVisit)
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(PopularItemsVisitQueries.Create_PopularItemsVisit, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
         }
     }
@@ -117,13 +118,13 @@ public async Task<ResponseEntity> AddAsync(PopularItemsVisit PopularItemsVisit)
                 var parameters = new DynamicParameters();
                 parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
                 parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
-                //parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
                 parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
                 parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
-               // parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-               // parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-               
+
 
 
                 //    var parameters = new
@@ -140,7 +141,7 @@ public async Task<ResponseEntity> AddAsync(PopularItemsVisit PopularItemsVisit)
                 //        Message = ("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output)
 
                 //};
-               var result = await connection.QueryAsync<PopularItemsVisit>(PopularItemsVisitQueries.GetAll_PopularItemsVisit, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<PopularItemsVisit>(PopularItemsVisitQueries.GetAll_PopularItemsVisit, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
                 //List<PopularItemsVisit> popularItemsVisit = new List<PopularItemsVisit>()

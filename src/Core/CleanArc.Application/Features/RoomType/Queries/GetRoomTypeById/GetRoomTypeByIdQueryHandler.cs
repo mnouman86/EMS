@@ -69,9 +69,6 @@ internal class GetRoomTypeByIdQueryHandler : IRequestHandler<GetRoomTypeByIdQuer
         }
     }
 
-    //public ValueTask<OperationResult<GetAgeTypeByIdQueryResult>> Handle(GetAgeTypeByIdQuery request, CancellationToken cancellationToken)
-    //{
-    //    throw new NotImplementedException();
-    //}
+   
 }
 

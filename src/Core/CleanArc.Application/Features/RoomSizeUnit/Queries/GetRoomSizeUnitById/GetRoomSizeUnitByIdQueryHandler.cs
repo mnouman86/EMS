@@ -5,7 +5,8 @@ using CleanArc.SharedKernel.Extensions;
 using MapsterMapper;
 using Mediator;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging;
+using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +18,10 @@ namespace CleanArc.Application.Features.RoomSizeUnit.Queries.GetRoomSizeUnitById
 
 internal class GetRoomSizeUnitByIdQueryHandler : IRequestHandler<GetRoomSizeUnitByIdQuery, OperationResult<GetRoomSizeUnitByIdQueryResult>>
 {
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly ILogger<GetRoomSizeUnitByIdQueryHandler> _logger;
-    private readonly IMapper _mapper;
-    private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
+	private readonly IUnitOfWork _unitOfWork;
+	private readonly ILogger<GetRoomSizeUnitByIdQueryHandler> _logger;
+	private readonly IMapper _mapper;
+	private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
 
 
 
@@ -70,10 +71,7 @@ internal class GetRoomSizeUnitByIdQueryHandler : IRequestHandler<GetRoomSizeUnit
         }
     }
 
-    //public ValueTask<OperationResult<GetAgeTypeByIdQueryResult>> Handle(GetAgeTypeByIdQuery request, CancellationToken cancellationToken)
-    //{
-    //    throw new NotImplementedException();
-    //}
+
 }
 
 
