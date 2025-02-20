@@ -10,6 +10,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.CoreArea.Queries.GetCoreAreaById;
+using Azure;
+using CleanArc.Application.Features.Activity.Queries.GetActivityCheckoutDetail;
 
 namespace CleanArc.Application.Features.RoomDetails.Queries.GetRoomDetailById;
 
@@ -32,22 +35,35 @@ internal class GetRoomDetailByIdQueryHandler : IRequestHandler<GetRoomDetailById
     public async ValueTask<OperationResult<GetRoomDetailByIdQueryResult>> Handle(GetRoomDetailByIdQuery request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-        {
-            var roomDetails = await _unitOfWork.RoomDetailsRepository.GetByIdAsync(request.Id);
+	
 
-            if (roomDetails == null)
-            {
-                return OperationResult<GetRoomDetailByIdQueryResult>.NotFoundResult("roomDetails not found");
-            }
+		{
+			var response = await _unitOfWork.RoomDetailsRepository.GetByIdAsync(request.Id);
 
-            //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-            var result = _mapper.Map<GetRoomDetailByIdQueryResult>(roomDetails);
+			if (response.Code != 200)
+			{
+				return OperationResult<GetRoomDetailByIdQueryResult>.FailureResult(
+				response.Message,
+					response.Code
+				);
+			}
 
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+			var mappedResult = _mapper.Map<GetRoomDetailByIdQueryResult>(response.Data);
+			(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-            return OperationResult<GetRoomDetailByIdQueryResult>.SuccessResult(result);
-        }
-    }
+			return OperationResult<GetRoomDetailByIdQueryResult>.SuccessResult(
+				mappedResult,
+				response.Code,
+				response.Message
+			);
+
+			if (mappedResult == null)
+			{
+				return OperationResult<GetRoomDetailByIdQueryResult>.NotFoundResult("CoreArea not found");
+			}
+
+		}
+	}
 
    
 }

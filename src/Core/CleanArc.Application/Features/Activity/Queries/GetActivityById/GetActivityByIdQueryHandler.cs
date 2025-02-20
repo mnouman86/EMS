@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.CarDetail.Queries.GetCarDetailById;
 
 namespace CleanArc.Application.Features.Activity.Queries.GetActivityById
 {
@@ -33,26 +34,33 @@ namespace CleanArc.Application.Features.Activity.Queries.GetActivityById
         public async ValueTask<OperationResult<GetActivityByIdQueryResult>> Handle(GetActivityByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-            {
-                var Activity = await _unitOfWork.ActivityRepository.GetByIdAsync(request.Id);
+		
+			{
+				var response = await _unitOfWork.ActivityRepository.GetByIdAsync(request.Id);
 
-                if (Activity == null)
-                {
-                    return OperationResult<GetActivityByIdQueryResult>.NotFoundResult("Activity not found");
-                }
+				if (response.Code != 200)
+				{
+					return OperationResult<GetActivityByIdQueryResult>.FailureResult(
+					response.Message,
+						response.Code
+					);
+				}
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetActivityByIdQueryResult>(Activity);
+				var mappedResult = _mapper.Map<GetActivityByIdQueryResult>(response.Data);
+				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+				return OperationResult<GetActivityByIdQueryResult>.SuccessResult(
+					mappedResult,
+					response.Code,
+					response.Message
+				);
 
-                return OperationResult<GetActivityByIdQueryResult>.SuccessResult(result);
-            }
-        }
+				if (mappedResult == null)
+				{
+					return OperationResult<GetActivityByIdQueryResult>.NotFoundResult("Activity not found");
+				}
 
-        //public ValueTask<OperationResult<GetActivityByIdQueryResult>> Handle(GetActivityByIdQuery request, CancellationToken cancellationToken)
-        //{
-        //    throw new NotImplementedException();
-        //}
+			}
+		}
     }
 }

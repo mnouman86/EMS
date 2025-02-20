@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById;
+using Serilog.Core;
 
 namespace CleanArc.Application.Features.Bank.Queries.GetBankById
 {
@@ -32,27 +34,36 @@ namespace CleanArc.Application.Features.Bank.Queries.GetBankById
         public async ValueTask<OperationResult<GetBankByIdQueryResult>> Handle(GetBankByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-            {
-                var bank = await _unitOfWork.BankRepository.GetByIdAsync(request.Id);
 
-                if (bank == null)
-                {
-                    return OperationResult<GetBankByIdQueryResult>.NotFoundResult("bank not found");
-                }
+			{
+				var response = await _unitOfWork.BankRepository.GetByIdAsync(request.Id);
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetBankByIdQueryResult>(bank);
+				if (response.Code != 200)
+				{
+					return OperationResult<GetBankByIdQueryResult>.FailureResult(
+					response.Message,
+						response.Code
+					);
+				}
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+				var mappedResult = _mapper.Map<GetBankByIdQueryResult>(response.Data);
+				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                return OperationResult<GetBankByIdQueryResult>.SuccessResult(result);
-            }
-        }
+				return OperationResult<GetBankByIdQueryResult>.SuccessResult(
+					mappedResult,
+					response.Code,
+					response.Message
+				);
 
-        //public ValueTask<OperationResult<GetAgeTypeByIdQueryResult>> Handle(GetAgeTypeByIdQuery request, CancellationToken cancellationToken)
-        //{
-        //    throw new NotImplementedException();
-        //}
+				if (mappedResult == null)
+				{
+					return OperationResult<GetBankByIdQueryResult>.NotFoundResult("Bank not found");
+				}
+
+			}
+		}
+
+      
     }
 }
 

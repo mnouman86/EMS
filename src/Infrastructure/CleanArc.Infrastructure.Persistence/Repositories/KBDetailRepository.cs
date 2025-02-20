@@ -145,22 +145,7 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
                 parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                //parameters.Add("@KbDetailID", dbType: DbType.Int32, direction: ParameterDirection.Output);
-
-                //    var parameters = new
-                //    {
-                //        PageNumber = searchRequest.PageNumber,
-                //        PageSize = searchRequest.PageSize,
-                //        //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-                //        //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-                //        //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-                //        //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-                //        SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
-                //        FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray), // Convert list to DataTable
-                //        Code = ("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output),
-                //        Message = ("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output)
-
-                //};
+                
                 var result = await connection.QueryAsync<KBDetail>(KBDetailQueries.GetAll_KBDetail, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new ListResponseWrapper<KBDetail> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
@@ -260,10 +245,7 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                //var resultKBDetail = await connection.QueryMultipleAsync(KBDetailQueries.GetByID_KBDetail, parameters, commandType: CommandType.StoredProcedure);
-                //// var kbDetailAll = resultKBDetail.ReadFirst<KBDetail>();
-                //var kbDetailSingle = resultKBDetail.Read<KBDetail>().ToList();
-                //var kbDetailAddress = resultKBDetail.Read<KBAddress>().ToList();
+               
 
                 
                 var result = await connection.QuerySingleOrDefaultAsync<KBDetail>(KBDetailQueries.GetByID_KBDetail, parameters , commandType: CommandType.StoredProcedure);

@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.ServiceCategory.Queries.GetServiceCategoryById;
+using Serilog.Core;
 
 namespace CleanArc.Application.Features.Amenities.Queries.GetAmenitiesById
 {
@@ -33,22 +35,34 @@ namespace CleanArc.Application.Features.Amenities.Queries.GetAmenitiesById
         public async ValueTask<OperationResult<GetAmenityByIdQueryResult>> Handle(GetAmenityByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-            {
-                var amenity = await _unitOfWork.AmenityRepository.GetByIdAsync(request.Id);
+          
+			{
+				var response = await _unitOfWork.AmenityRepository.GetByIdAsync(request.Id);
 
-                if (amenity == null)
-                {
-                    return OperationResult<GetAmenityByIdQueryResult>.NotFoundResult("URL not found");
-                }
+				if (response.Code != 200)
+				{
+					return OperationResult<GetAmenityByIdQueryResult>.FailureResult(
+					response.Message,
+						response.Code
+					);
+				}
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetAmenityByIdQueryResult>(amenity);
+				var mappedResult = _mapper.Map<GetAmenityByIdQueryResult>(response.Data);
+				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+				return OperationResult<GetAmenityByIdQueryResult>.SuccessResult(
+					mappedResult,
+					response.Code,
+					response.Message
+				);
 
-                return OperationResult<GetAmenityByIdQueryResult>.SuccessResult(result);
-            }
-        }
+				if (mappedResult == null)
+				{
+					return OperationResult<GetAmenityByIdQueryResult>.NotFoundResult("Service Category not found");
+				}
+
+			}
+		}
 
        
     }

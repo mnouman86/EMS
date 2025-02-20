@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.RoomType.Queries.GetRoomTypeById;
+using Serilog.Core;
 
 namespace CleanArc.Application.Features.RoomVisual.Queries.GetRoomVisualById
 {
@@ -32,22 +34,35 @@ namespace CleanArc.Application.Features.RoomVisual.Queries.GetRoomVisualById
         public async ValueTask<OperationResult<GetRoomVisualByIdQueryResult>> Handle(GetRoomVisualByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-            {
-                var RoomVisual = await _unitOfWork.RoomVisualRepository.GetByIdAsync(request.Id);
+           
 
-                if (RoomVisual == null)
-                {
-                    return OperationResult<GetRoomVisualByIdQueryResult>.NotFoundResult("RoomVisual not found");
-                }
+			{
+				var response = await _unitOfWork.RoomVisualRepository.GetByIdAsync(request.Id);
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetRoomVisualByIdQueryResult>(RoomVisual);
+				if (response.Code != 200)
+				{
+					return OperationResult<GetRoomVisualByIdQueryResult>.FailureResult(
+					response.Message,
+						response.Code
+					);
+				}
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+				var mappedResult = _mapper.Map<GetRoomVisualByIdQueryResult>(response.Data);
+				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                return OperationResult<GetRoomVisualByIdQueryResult>.SuccessResult(result);
-            }
-        }
+				return OperationResult<GetRoomVisualByIdQueryResult>.SuccessResult(
+					mappedResult,
+					response.Code,
+					response.Message
+				);
+
+				if (mappedResult == null)
+				{
+					return OperationResult<GetRoomVisualByIdQueryResult>.NotFoundResult("Room image not found");
+				}
+
+			}
+		}
 
         //public ValueTask<OperationResult<GetAgeTypeByIdQueryResult>> Handle(GetAgeTypeByIdQuery request, CancellationToken cancellationToken)
         //{

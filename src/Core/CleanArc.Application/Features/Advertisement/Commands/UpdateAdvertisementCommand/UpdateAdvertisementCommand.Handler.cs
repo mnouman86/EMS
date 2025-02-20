@@ -65,8 +65,6 @@ internal class UpdateAdvertisementCommandHandler:IRequestHandler<UpdateAdvertise
                 StartDate = request.StartDate,
                 EndDate = request.EndDate,
                 Url = request.Url,  
-                Code = request.Code,
-                Message = request.Message
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

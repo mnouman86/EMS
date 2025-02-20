@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Country.Queries.GetCountryById;
+using Serilog.Core;
 
 namespace CleanArc.Application.Features.Advertisement.Queries.GetAdvertisementById
 {
@@ -33,26 +35,36 @@ namespace CleanArc.Application.Features.Advertisement.Queries.GetAdvertisementBy
         public async ValueTask<OperationResult<GetAdvertisementByIdQueryResult>> Handle(GetAdvertisementByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-            {
-                var Advertisement = await _unitOfWork.AdvertisementRepository.GetByIdAsync(request.Id);
+           
 
-                if (Advertisement == null)
-                {
-                    return OperationResult<GetAdvertisementByIdQueryResult>.NotFoundResult("Advertisement not found");
-                }
+			{
+				var response = await _unitOfWork.AdvertisementRepository.GetByIdAsync(request.Id);
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetAdvertisementByIdQueryResult>(Advertisement);
+				if (response.Code != 200)
+				{
+					return OperationResult<GetAdvertisementByIdQueryResult>.FailureResult(
+					response.Message,
+						response.Code
+					);
+				}
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+				var mappedResult = _mapper.Map<GetAdvertisementByIdQueryResult>(response.Data);
+				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                return OperationResult<GetAdvertisementByIdQueryResult>.SuccessResult(result);
-            }
-        }
+				return OperationResult<GetAdvertisementByIdQueryResult>.SuccessResult(
+					mappedResult,
+					response.Code,
+					response.Message
+				);
 
-        //public ValueTask<OperationResult<GetAdvertisementByIdQueryResult>> Handle(GetAdvertisementByIdQuery request, CancellationToken cancellationToken)
-        //{
-        //    throw new NotImplementedException();
-        //}
+				if (mappedResult == null)
+				{
+					return OperationResult<GetAdvertisementByIdQueryResult>.NotFoundResult("Ad not found");
+				}
+
+			}
+		}
+
+       
     }
 }

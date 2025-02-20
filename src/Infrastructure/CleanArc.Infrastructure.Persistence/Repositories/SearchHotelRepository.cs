@@ -19,6 +19,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Common;
+using System.Reflection.Metadata;
+using CleanArc.Domain.Entities.PopularItemsVisit;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -76,34 +78,24 @@ public class SearchHotelRepository : ISearchHotelRepository
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                var parameters = new
-                {
-                    PageNumber = searchRequest.PageNumber,
-                    PageSize = searchRequest.PageSize,
-                    //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-                    //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-                    //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-                    //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-                    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
-                    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
-                };
-                var result = await connection.QueryAsync<SearchHotelDetail>(SearchHotelDetailQueries.GetAll_SearchDetail, parameters, commandType: CommandType.StoredProcedure);
+				
+				var parameters = new DynamicParameters();
+				parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+				parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+				parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+				parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+				parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+
+				var result = await connection.QueryAsync<SearchHotelDetail>(SearchHotelDetailQueries.GetAll_SearchDetail, parameters, commandType: CommandType.StoredProcedure);
                 foreach (var item in result) {
                     List<FilterParameter> ImagesFilterArray = new List<FilterParameter>();
                     List<SortingParameter> ImagesSortingArray = new List<SortingParameter>();
 
                     ImagesFilterArray.Add(new FilterParameter { ParameterName = "genericTitleID", ParameterValue = item.HotelID.ToString() });
-					//var parameter = new
-					//                {
-					//                    PageNumber = searchRequest.PageNumber,
-					//                    PageSize = searchRequest.PageSize,
-					//                    //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-					//                    //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-					//                    //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-					//                    //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-					//                    SortingArray = DataTableHelper.ToDataTable(ImagesSortingArray), // Convert list to DataTable
-					//                    FilterArray = DataTableHelper.ToDataTable(ImagesFilterArray) // Convert list to DataTable
-					//                };
+					
 
 					var parameter = new DynamicParameters();
 					parameter.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
@@ -118,9 +110,10 @@ public class SearchHotelRepository : ISearchHotelRepository
                     item.HotelImages.AddRange(imageList);
                 }
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-                var response = new ListResponseWrapper<SearchHotelDetail> { Data = result.ToList() };return response;
-            }
-        }
+				var response = new ListResponseWrapper<SearchHotelDetail> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
+
+			}
+		}
     }
 
     public Task<SingleResponseWrapper<SearchHotelDetail>> GetByIdAsync(long id)

@@ -32,27 +32,36 @@ namespace CleanArc.Application.Features.City.Queries.GetCityById
         public async ValueTask<OperationResult<GetCityByIdQueryResult>> Handle(GetCityByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-            {
-                var city = await _unitOfWork.CityRepository.GetByIdAsync(request.Id);
 
-                if (city == null)
-                {
-                    return OperationResult<GetCityByIdQueryResult>.NotFoundResult("city not found");
-                }
+			{
+				var response = await _unitOfWork.CityRepository.GetByIdAsync(request.Id);
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetCityByIdQueryResult>(city);
+				if (response.Code != 200)
+				{
+					return OperationResult<GetCityByIdQueryResult>.FailureResult(
+					response.Message,
+						response.Code
+					);
+				}
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+				var mappedResult = _mapper.Map<GetCityByIdQueryResult>(response.Data);
+				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                return OperationResult<GetCityByIdQueryResult>.SuccessResult(result);
-            }
-        }
+				return OperationResult<GetCityByIdQueryResult>.SuccessResult(
+					mappedResult,
+					response.Code,
+					response.Message
+				);
 
-        //public ValueTask<OperationResult<GetAgeTypeByIdQueryResult>> Handle(GetAgeTypeByIdQuery request, CancellationToken cancellationToken)
-        //{
-        //    throw new NotImplementedException();
-        //}
+				if (mappedResult == null)
+				{
+					return OperationResult<GetCityByIdQueryResult>.NotFoundResult("City not found");
+				}
+
+			}
+		}
+
+      
     }
 }
 

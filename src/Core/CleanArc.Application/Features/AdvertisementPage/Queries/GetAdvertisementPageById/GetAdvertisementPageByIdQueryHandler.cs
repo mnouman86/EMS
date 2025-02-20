@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Country.Queries.GetCountryById;
+using Serilog.Core;
 
 namespace CleanArc.Application.Features.AdvertisementPage.Queries.GetAdvertisementPageById
 {
@@ -33,26 +35,37 @@ namespace CleanArc.Application.Features.AdvertisementPage.Queries.GetAdvertiseme
         public async ValueTask<OperationResult<GetAdvertisementPageByIdQueryResult>> Handle(GetAdvertisementPageByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-            {
-                var AdvertisementPage = await _unitOfWork.AdvertisementPageRepository.GetByIdAsync(request.Id);
+          
 
-                if (AdvertisementPage == null)
-                {
-                    return OperationResult<GetAdvertisementPageByIdQueryResult>.NotFoundResult("AdvertisementPage not found");
-                }
+			{
+				var response = await _unitOfWork.AdvertisementPageRepository.GetByIdAsync(request.Id);
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetAdvertisementPageByIdQueryResult>(AdvertisementPage);
+				if (response.Code != 200)
+				{
+					return OperationResult<GetAdvertisementPageByIdQueryResult>.FailureResult(
+					response.Message,
+						response.Code
+					);
+				}
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+				var mappedResult = _mapper.Map<GetAdvertisementPageByIdQueryResult>(response.Data);
+				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                return OperationResult<GetAdvertisementPageByIdQueryResult>.SuccessResult(result);
-            }
-        }
+				return OperationResult<GetAdvertisementPageByIdQueryResult>.SuccessResult(
+					mappedResult,
+					response.Code,
+					response.Message
+				);
 
-        //public ValueTask<OperationResult<GetAdvertisementPageByIdQueryResult>> Handle(GetAdvertisementPageByIdQuery request, CancellationToken cancellationToken)
-        //{
-        //    throw new NotImplementedException();
-        //}
+				if (mappedResult == null)
+				{
+					return OperationResult<GetAdvertisementPageByIdQueryResult>.NotFoundResult("Page not found");
+				}
+
+			}
+		}
+
+
+
     }
 }
