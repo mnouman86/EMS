@@ -10,8 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById;
-using Serilog.Core;
+using CleanArc.Application.Features.BusinessBankAccount.Queries.GetBusinessBankAccountById;
 
 namespace CleanArc.Application.Features.Business.Queries.GetBusinessById;
 
@@ -34,35 +33,41 @@ internal class GetBusinessByIdQueryHandler : IRequestHandler<GetBusinessByIdQuer
     public async ValueTask<OperationResult<GetBusinessByIdQueryResult>> Handle(GetBusinessByIdQuery request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-       
+        {
+            //var business= await _unitOfWork.BusinessRepository.GetByIdAsync(request.Id);
 
-		{
-			var response = await _unitOfWork.BusinessRepository.GetByIdAsync(request.Id);
+            //if (business == null)
+            //{
+            //    return OperationResult<GetBusinessByIdQueryResult>.NotFoundResult("business not found");
+            //}
 
-			if (response.Code != 200)
-			{
-				return OperationResult<GetBusinessByIdQueryResult>.FailureResult(
-				response.Message,
-					response.Code
-				);
-			}
+            ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+            //var result = _mapper.Map<GetBusinessByIdQueryResult>(business);
 
-			var mappedResult = _mapper.Map<GetBusinessByIdQueryResult>(response.Data);
-			(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-			return OperationResult<GetBusinessByIdQueryResult>.SuccessResult(
-				mappedResult,
-				response.Code,
-				response.Message
-			);
+            //return OperationResult<GetBusinessByIdQueryResult>.SuccessResult(result);
 
-			if (mappedResult == null)
-			{
-				return OperationResult<GetBusinessByIdQueryResult>.NotFoundResult("Business not found");
-			}
+            var response = await _unitOfWork.BusinessRepository.GetByIdAsync(request.Id);
 
-		}
-	}
+            if (response.Code != 200)
+            {
+                return OperationResult<GetBusinessByIdQueryResult>.FailureResult(
+                    response.Message,
+                response.Code
+                );
+            }
+
+            var mappedResult = _mapper.Map<GetBusinessByIdQueryResult>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+            return OperationResult<GetBusinessByIdQueryResult>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
+        }
+    }
 
   
 }

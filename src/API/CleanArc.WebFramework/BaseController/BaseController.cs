@@ -43,11 +43,12 @@ public class BaseController : ControllerBase
             return NotFound(notFoundErrors.Errors);
         }
 
-        ModelState.AddModelError("GeneralError", result.ErrorMessage);
+        //ModelState.AddModelError("GeneralError", result.ErrorMessage);
 
-        var badRequestErrors = new ValidationProblemDetails(ModelState);
+        //var badRequestErrors = new ValidationProblemDetails(ModelState);
 
-        return BadRequest(badRequestErrors.Errors);
+        //return BadRequest(badRequestErrors.Errors);
+        return StatusCode(result.StatusCode, new { Message = result.ErrorMessage, StatusCode = result.StatusCode });
 
     }
 }

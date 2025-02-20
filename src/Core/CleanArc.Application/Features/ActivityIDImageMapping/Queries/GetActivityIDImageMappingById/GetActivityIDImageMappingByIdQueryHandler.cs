@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.ActivityImageMapping.Queries.GetActivityImageMappingById;
 
 namespace CleanArc.Application.Features.ActivityIDImageMapping.Queries.GetActivityIDImageMappingById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.ActivityIDImageMapping.Queries.GetActivi
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var ActivityIDImageMapping = await _unitOfWork.ActivityIDImageMappingRepository.GetByIdAsync(request.Id);
+                //var ActivityIDImageMapping = await _unitOfWork.ActivityIDImageMappingRepository.GetByIdAsync(request.Id);
 
-                if (ActivityIDImageMapping == null)
+                //if (ActivityIDImageMapping == null)
+                //{
+                //    return OperationResult<GetActivityIDImageMappingByIdQueryResult>.NotFoundResult("ActivityIDImageMapping not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetActivityIDImageMappingByIdQueryResult>(ActivityIDImageMapping);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetActivityIDImageMappingByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.ActivityIDImageMappingRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetActivityIDImageMappingByIdQueryResult>.NotFoundResult("ActivityIDImageMapping not found");
+                    return OperationResult<GetActivityIDImageMappingByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetActivityIDImageMappingByIdQueryResult>(ActivityIDImageMapping);
+                var mappedResult = _mapper.Map<GetActivityIDImageMappingByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetActivityIDImageMappingByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetActivityIDImageMappingByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

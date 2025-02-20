@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Advertisement.Queries.GetAdvertisementById;
 
 namespace CleanArc.Application.Features.ActivityType.Queries.GetActivityTypeById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.ActivityType.Queries.GetActivityTypeById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var ActivityType = await _unitOfWork.ActivityTypeRepository.GetByIdAsync(request.Id);
+                //var ActivityType = await _unitOfWork.ActivityTypeRepository.GetByIdAsync(request.Id);
 
-                if (ActivityType == null)
+                //if (ActivityType == null)
+                //{
+                //    return OperationResult<GetActivityTypeByIdQueryResult>.NotFoundResult("ActivityType not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetActivityTypeByIdQueryResult>(ActivityType);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetActivityTypeByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.ActivityTypeRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetActivityTypeByIdQueryResult>.NotFoundResult("ActivityType not found");
+                    return OperationResult<GetActivityTypeByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetActivityTypeByIdQueryResult>(ActivityType);
+                var mappedResult = _mapper.Map<GetActivityTypeByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetActivityTypeByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetActivityTypeByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

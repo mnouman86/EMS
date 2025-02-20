@@ -11,8 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.Activity.Queries.GetActivityById;
-using Serilog.Core;
+using CleanArc.Application.Features.State.Queries.GetStateById;
 
 namespace CleanArc.Application.Features.ServiceCategory.Queries.GetServiceCategoryById;
 
@@ -35,33 +34,41 @@ internal class GetServiceCategoryByIdQueryHandler : IRequestHandler<GetServiceCa
     public async ValueTask<OperationResult<GetServiceCategoryByIdQueryResult>> Handle(GetServiceCategoryByIdQuery request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-		{
-			var response = await _unitOfWork.ServiceCategoryRepository.GetByIdAsync(request.Id);
+        {
+            //var serviceCategory = await _unitOfWork.ServiceCategoryRepository.GetByIdAsync(request.Id);
 
-			if (response.Code != 200)
-			{
-				return OperationResult<GetServiceCategoryByIdQueryResult>.FailureResult(
-				response.Message,
-					response.Code
-				);
-			}
+            //if (serviceCategory == null)
+            //{
+            //    return OperationResult<GetServiceCategoryByIdQueryResult>.NotFoundResult("serviceCategory not found");
+            //}
 
-			var mappedResult = _mapper.Map<GetServiceCategoryByIdQueryResult>(response.Data);
-			(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+            ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+            //var result = _mapper.Map<GetServiceCategoryByIdQueryResult>(serviceCategory);
 
-			return OperationResult<GetServiceCategoryByIdQueryResult>.SuccessResult(
-				mappedResult,
-				response.Code,
-				response.Message
-			);
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-			if (mappedResult == null)
-			{
-				return OperationResult<GetServiceCategoryByIdQueryResult>.NotFoundResult("Service Category not found");
-			}
+            //return OperationResult<GetServiceCategoryByIdQueryResult>.SuccessResult(result);
 
-		}
-	}
+            var response = await _unitOfWork.ServiceCategoryRepository.GetByIdAsync(request.Id);
+
+            if (response.Code != 200)
+            {
+                return OperationResult<GetServiceCategoryByIdQueryResult>.FailureResult(
+                    response.Message,
+                response.Code
+                );
+            }
+
+            var mappedResult = _mapper.Map<GetServiceCategoryByIdQueryResult>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+            return OperationResult<GetServiceCategoryByIdQueryResult>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
+        }
+    }
 
     
 }

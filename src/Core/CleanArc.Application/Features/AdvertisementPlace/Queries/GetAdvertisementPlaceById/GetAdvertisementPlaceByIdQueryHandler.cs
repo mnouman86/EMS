@@ -11,8 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.Country.Queries.GetCountryById;
-using Serilog.Core;
+using CleanArc.Application.Features.AgeType.Queries.GetAgeTypeById;
 
 namespace CleanArc.Application.Features.AdvertisementPlace.Queries.GetAdvertisementPlaceById
 {
@@ -35,35 +34,42 @@ namespace CleanArc.Application.Features.AdvertisementPlace.Queries.GetAdvertisem
         public async ValueTask<OperationResult<GetAdvertisementPlaceByIdQueryResult>> Handle(GetAdvertisementPlaceByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
+            {
+                //var AdvertisementPlace = await _unitOfWork.AdvertisementPlaceRepository.GetByIdAsync(request.Id);
+
+                //if (AdvertisementPlace == null)
+                //{
+                //    return OperationResult<GetAdvertisementPlaceByIdQueryResult>.NotFoundResult("AdvertisementPlace not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetAdvertisementPlaceByIdQueryResult>(AdvertisementPlace);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetAdvertisementPlaceByIdQueryResult>.SuccessResult(result);
 
 
-			{
-				var response = await _unitOfWork.AdvertisementPlaceRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.AdvertisementPlaceRepository.GetByIdAsync(request.Id);
 
-				if (response.Code != 200)
-				{
-					return OperationResult<GetAdvertisementPlaceByIdQueryResult>.FailureResult(
-					response.Message,
-						response.Code
-					);
-				}
+                if (response.Code != 200)
+                {
+                    return OperationResult<GetAdvertisementPlaceByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
+                }
 
-				var mappedResult = _mapper.Map<GetAdvertisementPlaceByIdQueryResult>(response.Data);
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+                var mappedResult = _mapper.Map<GetAdvertisementPlaceByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-				return OperationResult<GetAdvertisementPlaceByIdQueryResult>.SuccessResult(
-					mappedResult,
-					response.Code,
-					response.Message
-				);
-
-				if (mappedResult == null)
-				{
-					return OperationResult<GetAdvertisementPlaceByIdQueryResult>.NotFoundResult("Advertisement Place not found");
-				}
-
-			}
-		}
+                return OperationResult<GetAdvertisementPlaceByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
+            }
+        }
 
        
     }

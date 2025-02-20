@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.KBWhenToVisit.Queries.GetKBWhenToVisitById;
 
 namespace CleanArc.Application.Features.KBTiming.Queries.GetKBTimingById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.KBTiming.Queries.GetKBTimingById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var KBTiming = await _unitOfWork.KBTimingRepository.GetByIdAsync(request.Id);
+                //var KBTiming = await _unitOfWork.KBTimingRepository.GetByIdAsync(request.Id);
 
-                if (KBTiming == null)
+                //if (KBTiming == null)
+                //{
+                //    return OperationResult<GetKBTimingByIdQueryResult>.NotFoundResult("KBTiming not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetKBTimingByIdQueryResult>(KBTiming);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetKBTimingByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.KBTimingRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetKBTimingByIdQueryResult>.NotFoundResult("KBTiming not found");
+                    return OperationResult<GetKBTimingByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetKBTimingByIdQueryResult>(KBTiming);
+                var mappedResult = _mapper.Map<GetKBTimingByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetKBTimingByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetKBTimingByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

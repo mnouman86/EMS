@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.HomeSlider.Queries.GetHomeSliderById;
 
 namespace CleanArc.Application.Features.GroupActivityParticipants.Queries.GetGroupActivityParticipantsById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.GroupActivityParticipants.Queries.GetGro
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var GroupActivityParticipants = await _unitOfWork.GroupActivityParticipantsRepository.GetByIdAsync(request.Id);
+                //var GroupActivityParticipants = await _unitOfWork.GroupActivityParticipantsRepository.GetByIdAsync(request.Id);
 
-                if (GroupActivityParticipants == null)
+                //if (GroupActivityParticipants == null)
+                //{
+                //    return OperationResult<GetGroupActivityParticipantsByIdQueryResult>.NotFoundResult("GroupActivityParticipants not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetGroupActivityParticipantsByIdQueryResult>(GroupActivityParticipants);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetGroupActivityParticipantsByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.GroupActivityParticipantsRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetGroupActivityParticipantsByIdQueryResult>.NotFoundResult("GroupActivityParticipants not found");
+                    return OperationResult<GetGroupActivityParticipantsByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetGroupActivityParticipantsByIdQueryResult>(GroupActivityParticipants);
+                var mappedResult = _mapper.Map<GetGroupActivityParticipantsByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetGroupActivityParticipantsByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetGroupActivityParticipantsByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

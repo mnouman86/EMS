@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.City.Queries.GetCityById;
 
 namespace CleanArc.Application.Features.CheckProfileStatus.Queries.GetCheckProfileStatusById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.CheckProfileStatus.Queries.GetCheckProfi
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var CheckProfileStatus = await _unitOfWork.CheckProfileStatusRepository.GetByIdAsync(request.Id);
+                //var CheckProfileStatus = await _unitOfWork.CheckProfileStatusRepository.GetByIdAsync(request.Id);
 
-                if (CheckProfileStatus == null)
+                //if (CheckProfileStatus == null)
+                //{
+                //    return OperationResult<GetCheckProfileStatusByIdQueryResult>.NotFoundResult("CheckProfileStatus not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetCheckProfileStatusByIdQueryResult>(CheckProfileStatus);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetCheckProfileStatusByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.CheckProfileStatusRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetCheckProfileStatusByIdQueryResult>.NotFoundResult("CheckProfileStatus not found");
+                    return OperationResult<GetCheckProfileStatusByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetCheckProfileStatusByIdQueryResult>(CheckProfileStatus);
+                var mappedResult = _mapper.Map<GetCheckProfileStatusByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetCheckProfileStatusByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetCheckProfileStatusByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

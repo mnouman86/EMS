@@ -11,8 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.Bank.Queries.GetBankById;
-using Serilog.Core;
+using CleanArc.Application.Features.ActivityIncludedOption.Queries.GetActivityIncludedOptionById;
 
 namespace CleanArc.Application.Features.ActivityImageMapping.Queries.GetActivityImageMappingById
 {
@@ -35,35 +34,41 @@ namespace CleanArc.Application.Features.ActivityImageMapping.Queries.GetActivity
         public async ValueTask<OperationResult<GetActivityImageMappingByIdQueryResult>> Handle(GetActivityImageMappingByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-            
+            {
+                //var ActivityImageMapping = await _unitOfWork.ActivityImageMappingRepository.GetByIdAsync(request.Id);
 
-			{
-				var response = await _unitOfWork.ActivityImageMappingRepository.GetByIdAsync(request.Id);
+                //if (ActivityImageMapping == null)
+                //{
+                //    return OperationResult<GetActivityImageMappingByIdQueryResult>.NotFoundResult("ActivityImageMapping not found");
+                //}
 
-				if (response.Code != 200)
-				{
-					return OperationResult<GetActivityImageMappingByIdQueryResult>.FailureResult(
-					response.Message,
-						response.Code
-					);
-				}
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetActivityImageMappingByIdQueryResult>(ActivityImageMapping);
 
-				var mappedResult = _mapper.Map<GetActivityImageMappingByIdQueryResult>(response.Data);
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-				return OperationResult<GetActivityImageMappingByIdQueryResult>.SuccessResult(
-					mappedResult,
-					response.Code,
-					response.Message
-				);
+                //return OperationResult<GetActivityImageMappingByIdQueryResult>.SuccessResult(result);
 
-				if (mappedResult == null)
-				{
-					return OperationResult<GetActivityImageMappingByIdQueryResult>.NotFoundResult("Image  not found");
-				}
+                var response = await _unitOfWork.ActivityImageMappingRepository.GetByIdAsync(request.Id);
 
-			}
-		}
+                if (response.Code != 200)
+                {
+                    return OperationResult<GetActivityImageMappingByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
+                }
+
+                var mappedResult = _mapper.Map<GetActivityImageMappingByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+                return OperationResult<GetActivityImageMappingByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
+            }
+        }
 
        
     }

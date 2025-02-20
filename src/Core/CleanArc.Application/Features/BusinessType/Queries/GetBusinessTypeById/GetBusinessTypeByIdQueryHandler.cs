@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.Campaign.Queries.GetCampaignById;
 
 namespace CleanArc.Application.Features.BusinessType.Queries.GetBusinessTypeById;
 
@@ -33,19 +34,38 @@ internal class GetBusinessTypeByIdQueryHandler : IRequestHandler<GetBusinessType
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var BusinessType= await _unitOfWork.BusinessTypeRepository.GetByIdAsync(request.Id);
+            //var BusinessType= await _unitOfWork.BusinessTypeRepository.GetByIdAsync(request.Id);
 
-            if (BusinessType == null)
+            //if (BusinessType == null)
+            //{
+            //    return OperationResult<GetBusinessTypeByIdQueryResult>.NotFoundResult("BusinessType not found");
+            //}
+
+            ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+            //var result = _mapper.Map<GetBusinessTypeByIdQueryResult>(BusinessType);
+
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+            //return OperationResult<GetBusinessTypeByIdQueryResult>.SuccessResult(result);
+
+            var response = await _unitOfWork.BusinessTypeRepository.GetByIdAsync(request.Id);
+
+            if (response.Code != 200)
             {
-                return OperationResult<GetBusinessTypeByIdQueryResult>.NotFoundResult("BusinessType not found");
+                return OperationResult<GetBusinessTypeByIdQueryResult>.FailureResult(
+                    response.Message,
+                response.Code
+                );
             }
 
-            //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-            var result = _mapper.Map<GetBusinessTypeByIdQueryResult>(BusinessType);
+            var mappedResult = _mapper.Map<GetBusinessTypeByIdQueryResult>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-            return OperationResult<GetBusinessTypeByIdQueryResult>.SuccessResult(result);
+            return OperationResult<GetBusinessTypeByIdQueryResult>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
         }
     }
 

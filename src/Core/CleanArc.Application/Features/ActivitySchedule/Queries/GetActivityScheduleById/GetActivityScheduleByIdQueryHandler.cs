@@ -11,8 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.Bank.Queries.GetBankById;
-using Serilog.Core;
+using CleanArc.Application.Features.ActivitySeason.Queries.GetActivitySeasonById;
 
 namespace CleanArc.Application.Features.ActivitySchedule.Queries.GetActivityScheduleById
 {
@@ -35,33 +34,41 @@ namespace CleanArc.Application.Features.ActivitySchedule.Queries.GetActivitySche
         public async ValueTask<OperationResult<GetActivityScheduleByIdQueryResult>> Handle(GetActivityScheduleByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-			{
-				var response = await _unitOfWork.ActivityScheduleRepository.GetByIdAsync(request.Id);
+            {
+                //var ActivitySchedule = await _unitOfWork.ActivityScheduleRepository.GetByIdAsync(request.Id);
 
-				if (response.Code != 200)
-				{
-					return OperationResult<GetActivityScheduleByIdQueryResult>.FailureResult(
-					response.Message,
-						response.Code
-					);
-				}
+                //if (ActivitySchedule == null)
+                //{
+                //    return OperationResult<GetActivityScheduleByIdQueryResult>.NotFoundResult("ActivitySchedule not found");
+                //}
 
-				var mappedResult = _mapper.Map<GetActivityScheduleByIdQueryResult>(response.Data);
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetActivityScheduleByIdQueryResult>(ActivitySchedule);
 
-				return OperationResult<GetActivityScheduleByIdQueryResult>.SuccessResult(
-					mappedResult,
-					response.Code,
-					response.Message
-				);
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-				if (mappedResult == null)
-				{
-					return OperationResult<GetActivityScheduleByIdQueryResult>.NotFoundResult("Schedule not found");
-				}
+                //return OperationResult<GetActivityScheduleByIdQueryResult>.SuccessResult(result);
 
-			}
-		}
+                var response = await _unitOfWork.ActivityScheduleRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
+                {
+                    return OperationResult<GetActivityScheduleByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
+                }
+
+                var mappedResult = _mapper.Map<GetActivityScheduleByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+                return OperationResult<GetActivityScheduleByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
+            }
+        }
 
         //public ValueTask<OperationResult<GetActivityScheduleByIdQueryResult>> Handle(GetActivityScheduleByIdQuery request, CancellationToken cancellationToken)
         //{

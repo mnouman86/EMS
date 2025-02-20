@@ -11,8 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.Bank.Queries.GetBankById;
-using Serilog.Core;
+using CleanArc.Application.Features.ActivityPricePerParticipant.Queries.GetActivityPricePerParticipantById;
 
 namespace CleanArc.Application.Features.ActivityPerGroupPrice.Queries.GetActivityPerGroupPriceById
 {
@@ -35,34 +34,41 @@ namespace CleanArc.Application.Features.ActivityPerGroupPrice.Queries.GetActivit
         public async ValueTask<OperationResult<GetActivityPerGroupPriceByIdQueryResult>> Handle(GetActivityPerGroupPriceByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-            
-			{
-				var response = await _unitOfWork.ActivityPerGroupPriceRepository.GetByIdAsync(request.Id);
+            {
+                //var ActivityPerGroupPrice = await _unitOfWork.ActivityPerGroupPriceRepository.GetByIdAsync(request.Id);
 
-				if (response.Code != 200)
-				{
-					return OperationResult<GetActivityPerGroupPriceByIdQueryResult>.FailureResult(
-					response.Message,
-						response.Code
-					);
-				}
+                //if (ActivityPerGroupPrice == null)
+                //{
+                //    return OperationResult<GetActivityPerGroupPriceByIdQueryResult>.NotFoundResult("ActivityPerGroupPrice not found");
+                //}
 
-				var mappedResult = _mapper.Map<GetActivityPerGroupPriceByIdQueryResult>(response.Data);
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetActivityPerGroupPriceByIdQueryResult>(ActivityPerGroupPrice);
 
-				return OperationResult<GetActivityPerGroupPriceByIdQueryResult>.SuccessResult(
-					mappedResult,
-					response.Code,
-					response.Message
-				);
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-				if (mappedResult == null)
-				{
-					return OperationResult<GetActivityPerGroupPriceByIdQueryResult>.NotFoundResult("Group price not found");
-				}
+                //return OperationResult<GetActivityPerGroupPriceByIdQueryResult>.SuccessResult(result);
 
-			}
-		}
+                var response = await _unitOfWork.ActivityPerGroupPriceRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
+                {
+                    return OperationResult<GetActivityPerGroupPriceByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
+                }
+
+                var mappedResult = _mapper.Map<GetActivityPerGroupPriceByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+                return OperationResult<GetActivityPerGroupPriceByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
+            }
+        }
 
        
     }
