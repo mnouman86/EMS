@@ -10,8 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.Amenities.Queries.GetAmenitiesById;
-using Serilog.Core;
+using CleanArc.Application.Features.RoomVisual.Queries.GetRoomVisualById;
 
 namespace CleanArc.Application.Features.RoomType.Queries.GetRoomTypeById;
 
@@ -34,33 +33,41 @@ internal class GetRoomTypeByIdQueryHandler : IRequestHandler<GetRoomTypeByIdQuer
     public async ValueTask<OperationResult<GetRoomTypeByIdQueryResult>> Handle(GetRoomTypeByIdQuery request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-		{
-			var response = await _unitOfWork.RoomTypeRepository.GetByIdAsync(request.Id);
+        {
+            //var roomType = await _unitOfWork.RoomTypeRepository.GetByIdAsync(request.Id);
 
-			if (response.Code != 200)
-			{
-				return OperationResult<GetRoomTypeByIdQueryResult>.FailureResult(
-				response.Message,
-					response.Code
-				);
-			}
+            //if (roomType == null)
+            //{
+            //    return OperationResult<GetRoomTypeByIdQueryResult>.NotFoundResult("roomType not found");
+            //}
 
-			var mappedResult = _mapper.Map<GetRoomTypeByIdQueryResult>(response.Data);
-			(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+            ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+            //var result = _mapper.Map<GetRoomTypeByIdQueryResult>(roomType);
 
-			return OperationResult<GetRoomTypeByIdQueryResult>.SuccessResult(
-				mappedResult,
-				response.Code,
-				response.Message
-			);
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-			if (mappedResult == null)
-			{
-				return OperationResult<GetRoomTypeByIdQueryResult>.NotFoundResult("Room Type not found");
-			}
+            //return OperationResult<GetRoomTypeByIdQueryResult>.SuccessResult(result);
 
-		}
-	}
+            var response = await _unitOfWork.RoomTypeRepository.GetByIdAsync(request.Id);
+
+            if (response.Code != 200)
+            {
+                return OperationResult<GetRoomTypeByIdQueryResult>.FailureResult(
+                    response.Message,
+                response.Code
+                );
+            }
+
+            var mappedResult = _mapper.Map<GetRoomTypeByIdQueryResult>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+            return OperationResult<GetRoomTypeByIdQueryResult>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
+        }
+    }
 
    
 }

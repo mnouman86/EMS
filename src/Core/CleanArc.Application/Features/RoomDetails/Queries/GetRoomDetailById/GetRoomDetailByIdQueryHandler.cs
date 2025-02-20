@@ -10,9 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.CoreArea.Queries.GetCoreAreaById;
-using Azure;
-using CleanArc.Application.Features.Activity.Queries.GetActivityCheckoutDetail;
+using CleanArc.Application.Features.RoomSizeUnit.Queries.GetRoomSizeUnitById;
 
 namespace CleanArc.Application.Features.RoomDetails.Queries.GetRoomDetailById;
 
@@ -35,35 +33,41 @@ internal class GetRoomDetailByIdQueryHandler : IRequestHandler<GetRoomDetailById
     public async ValueTask<OperationResult<GetRoomDetailByIdQueryResult>> Handle(GetRoomDetailByIdQuery request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-	
+        {
+            //var roomDetails = await _unitOfWork.RoomDetailsRepository.GetByIdAsync(request.Id);
 
-		{
-			var response = await _unitOfWork.RoomDetailsRepository.GetByIdAsync(request.Id);
+            //if (roomDetails == null)
+            //{
+            //    return OperationResult<GetRoomDetailByIdQueryResult>.NotFoundResult("roomDetails not found");
+            //}
 
-			if (response.Code != 200)
-			{
-				return OperationResult<GetRoomDetailByIdQueryResult>.FailureResult(
-				response.Message,
-					response.Code
-				);
-			}
+            ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+            //var result = _mapper.Map<GetRoomDetailByIdQueryResult>(roomDetails);
 
-			var mappedResult = _mapper.Map<GetRoomDetailByIdQueryResult>(response.Data);
-			(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-			return OperationResult<GetRoomDetailByIdQueryResult>.SuccessResult(
-				mappedResult,
-				response.Code,
-				response.Message
-			);
+            //return OperationResult<GetRoomDetailByIdQueryResult>.SuccessResult(result);
 
-			if (mappedResult == null)
-			{
-				return OperationResult<GetRoomDetailByIdQueryResult>.NotFoundResult("CoreArea not found");
-			}
+            var response = await _unitOfWork.RoomDetailsRepository.GetByIdAsync(request.Id);
 
-		}
-	}
+            if (response.Code != 200)
+            {
+                return OperationResult<GetRoomDetailByIdQueryResult>.FailureResult(
+                    response.Message,
+                response.Code
+                );
+            }
+
+            var mappedResult = _mapper.Map<GetRoomDetailByIdQueryResult>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+            return OperationResult<GetRoomDetailByIdQueryResult>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
+        }
+    }
 
    
 }

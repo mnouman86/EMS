@@ -34,19 +34,38 @@ namespace CleanArc.Application.Features.SubService.Queries.GetSubServiceById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var SubService = await _unitOfWork.SubServiceRepository.GetByIdAsync(request.Id);
+                //var SubService = await _unitOfWork.SubServiceRepository.GetByIdAsync(request.Id);
 
-                if (SubService == null)
+                //if (SubService == null)
+                //{
+                //    return OperationResult<GetSubServiceByIdQueryResult>.NotFoundResult("SubService not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetSubServiceByIdQueryResult>(SubService);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetSubServiceByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.SubServiceRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetSubServiceByIdQueryResult>.NotFoundResult("SubService not found");
+                    return OperationResult<GetSubServiceByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetSubServiceByIdQueryResult>(SubService);
+                var mappedResult = _mapper.Map<GetSubServiceByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetSubServiceByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetSubServiceByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

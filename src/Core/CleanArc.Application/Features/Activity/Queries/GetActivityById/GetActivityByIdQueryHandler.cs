@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.CarDetail.Queries.GetCarDetailById;
+using CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddressById;
 
 namespace CleanArc.Application.Features.Activity.Queries.GetActivityById
 {
@@ -34,33 +34,45 @@ namespace CleanArc.Application.Features.Activity.Queries.GetActivityById
         public async ValueTask<OperationResult<GetActivityByIdQueryResult>> Handle(GetActivityByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-		
-			{
-				var response = await _unitOfWork.ActivityRepository.GetByIdAsync(request.Id);
+            {
+                //var Activity = await _unitOfWork.ActivityRepository.GetByIdAsync(request.Id);
 
-				if (response.Code != 200)
-				{
-					return OperationResult<GetActivityByIdQueryResult>.FailureResult(
-					response.Message,
-						response.Code
-					);
-				}
+                //if (Activity == null)
+                //{
+                //    return OperationResult<GetActivityByIdQueryResult>.NotFoundResult("Activity not found");
+                //}
 
-				var mappedResult = _mapper.Map<GetActivityByIdQueryResult>(response.Data);
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetActivityByIdQueryResult>(Activity);
 
-				return OperationResult<GetActivityByIdQueryResult>.SuccessResult(
-					mappedResult,
-					response.Code,
-					response.Message
-				);
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-				if (mappedResult == null)
-				{
-					return OperationResult<GetActivityByIdQueryResult>.NotFoundResult("Activity not found");
-				}
+                //return OperationResult<GetActivityByIdQueryResult>.SuccessResult(result);
 
-			}
-		}
+                var response = await _unitOfWork.ActivityRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
+                {
+                    return OperationResult<GetActivityByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
+                }
+
+                var mappedResult = _mapper.Map<GetActivityByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+                return OperationResult<GetActivityByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
+            }
+        }
+
+        //public ValueTask<OperationResult<GetActivityByIdQueryResult>> Handle(GetActivityByIdQuery request, CancellationToken cancellationToken)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

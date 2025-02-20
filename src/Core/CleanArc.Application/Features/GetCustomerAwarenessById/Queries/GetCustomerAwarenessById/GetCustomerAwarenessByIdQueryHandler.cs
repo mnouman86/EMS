@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.GroupActivityParticipants.Queries.GetGroupActivityParticipantsById;
 
 namespace CleanArc.Application.Features.CustomerAwareness.Queries.GetCustomerAwarenessById;
 
@@ -33,19 +34,39 @@ internal class GetCustomerAwarenessByIdQueryHandler : IRequestHandler<GetCustome
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var CustomerAwareness = await _unitOfWork.CustomerAwarenessRepository.GetByIdAsync(request.Id);
+            //var CustomerAwareness = await _unitOfWork.CustomerAwarenessRepository.GetByIdAsync(request.Id);
 
-            if (CustomerAwareness == null)
+            //if (CustomerAwareness == null)
+            //{
+            //    return OperationResult<GetCustomerAwarenessByIdQueryResult>.NotFoundResult("CustomerAwareness not found");
+            //}
+
+            ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+            //var result = _mapper.Map<GetCustomerAwarenessByIdQueryResult>(CustomerAwareness);
+
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+            //return OperationResult<GetCustomerAwarenessByIdQueryResult>.SuccessResult(result);
+
+
+            var response = await _unitOfWork.CustomerAwarenessRepository.GetByIdAsync(request.Id);
+
+            if (response.Code != 200)
             {
-                return OperationResult<GetCustomerAwarenessByIdQueryResult>.NotFoundResult("CustomerAwareness not found");
+                return OperationResult<GetCustomerAwarenessByIdQueryResult>.FailureResult(
+                    response.Message,
+                response.Code
+                );
             }
 
-            //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-            var result = _mapper.Map<GetCustomerAwarenessByIdQueryResult>(CustomerAwareness);
+            var mappedResult = _mapper.Map<GetCustomerAwarenessByIdQueryResult>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-            return OperationResult<GetCustomerAwarenessByIdQueryResult>.SuccessResult(result);
+            return OperationResult<GetCustomerAwarenessByIdQueryResult>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
         }
     }
 

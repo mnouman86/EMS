@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.ActivityDisabilityMapping.Queries.GetActivityDisabilityMappingById;
 
 namespace CleanArc.Application.Features.ActivityAddressMapping.Queries.GetActivityAddressMappingById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.ActivityAddressMapping.Queries.GetActivi
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var ActivityAddressMapping = await _unitOfWork.ActivityAddressMappingRepository.GetByIdAsync(request.Id);
+                //var ActivityAddressMapping = await _unitOfWork.ActivityAddressMappingRepository.GetByIdAsync(request.Id);
 
-                if (ActivityAddressMapping == null)
+                //if (ActivityAddressMapping == null)
+                //{
+                //    return OperationResult<GetActivityAddressMappingByIdQueryResult>.NotFoundResult("ActivityAddressMapping not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetActivityAddressMappingByIdQueryResult>(ActivityAddressMapping);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetActivityAddressMappingByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.ActivityAddressMappingRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetActivityAddressMappingByIdQueryResult>.NotFoundResult("ActivityAddressMapping not found");
+                    return OperationResult<GetActivityAddressMappingByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetActivityAddressMappingByIdQueryResult>(ActivityAddressMapping);
+                var mappedResult = _mapper.Map<GetActivityAddressMappingByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetActivityAddressMappingByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetActivityAddressMappingByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

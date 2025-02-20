@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.ActivityType.Queries.GetActivityTypeById;
 
 namespace CleanArc.Application.Features.ActivityTransportation.Queries.GetActivityTransportationById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.ActivityTransportation.Queries.GetActivi
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var ActivityTransportation = await _unitOfWork.ActivityTransportationRepository.GetByIdAsync(request.Id);
+                //var ActivityTransportation = await _unitOfWork.ActivityTransportationRepository.GetByIdAsync(request.Id);
 
-                if (ActivityTransportation == null)
+                //if (ActivityTransportation == null)
+                //{
+                //    return OperationResult<GetActivityTransportationByIdQueryResult>.NotFoundResult("ActivityTransportation not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetActivityTransportationByIdQueryResult>(ActivityTransportation);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetActivityTransportationByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.ActivityTransportationRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetActivityTransportationByIdQueryResult>.NotFoundResult("ActivityTransportation not found");
+                    return OperationResult<GetActivityTransportationByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetActivityTransportationByIdQueryResult>(ActivityTransportation);
+                var mappedResult = _mapper.Map<GetActivityTransportationByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetActivityTransportationByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetActivityTransportationByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

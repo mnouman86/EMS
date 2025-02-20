@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.RoomType.Queries.GetRoomTypeById;
 
 namespace CleanArc.Application.Features.RoomSizeUnit.Queries.GetRoomSizeUnitById;
 
@@ -24,43 +25,51 @@ internal class GetRoomSizeUnitByIdQueryHandler : IRequestHandler<GetRoomSizeUnit
 
 
 
-	public GetRoomSizeUnitByIdQueryHandler(IUnitOfWork unitOfWork, ILogger<GetRoomSizeUnitByIdQueryHandler> logger, IMapper mapper, IHttpContextAccessor httpContextAccessor)
-	{
-		_unitOfWork = unitOfWork;
-		_mapper = mapper;
-		_httpContextAccessor = httpContextAccessor;
-		_logger = logger;
-	}
-	public async ValueTask<OperationResult<GetRoomSizeUnitByIdQueryResult>> Handle(GetRoomSizeUnitByIdQuery request, CancellationToken cancellationToken)
-	{
-		using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-		{
-			var response = await _unitOfWork.RoomSizeUnitReposirory.GetByIdAsync(request.Id);
+    public GetRoomSizeUnitByIdQueryHandler(IUnitOfWork unitOfWork, ILogger<GetRoomSizeUnitByIdQueryHandler> logger, IMapper mapper, IHttpContextAccessor httpContextAccessor)
+    {
+        _unitOfWork = unitOfWork;
+        _mapper = mapper;
+        _httpContextAccessor = httpContextAccessor;
+        _logger = logger;
+    }
+    public async ValueTask<OperationResult<GetRoomSizeUnitByIdQueryResult>> Handle(GetRoomSizeUnitByIdQuery request, CancellationToken cancellationToken)
+    {
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
+        {
+            //var roomSizeUnit = await _unitOfWork.RoomSizeUnitReposirory.GetByIdAsync(request.Id);
 
-			if (response.Code != 200)
-			{
-				return OperationResult<GetRoomSizeUnitByIdQueryResult>.FailureResult(
-				response.Message,
-					response.Code
-				);
-			}
+            //if (roomSizeUnit == null)
+            //{
+            //    return OperationResult<GetRoomSizeUnitByIdQueryResult>.NotFoundResult("roomSizeUnit not found");
+            //}
 
-			var mappedResult = _mapper.Map<GetRoomSizeUnitByIdQueryResult>(response.Data);
-			(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+            ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+            //var result = _mapper.Map<GetRoomSizeUnitByIdQueryResult>(roomSizeUnit);
 
-			return OperationResult<GetRoomSizeUnitByIdQueryResult>.SuccessResult(
-				mappedResult,
-				response.Code,
-				response.Message
-			);
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-			if (mappedResult == null)
-			{
-				return OperationResult<GetRoomSizeUnitByIdQueryResult>.NotFoundResult("Room Type not found");
-			}
+            //return OperationResult<GetRoomSizeUnitByIdQueryResult>.SuccessResult(result);
 
-		}
-	}
+            var response = await _unitOfWork.RoomSizeUnitReposirory.GetByIdAsync(request.Id);
+
+            if (response.Code != 200)
+            {
+                return OperationResult<GetRoomSizeUnitByIdQueryResult>.FailureResult(
+                    response.Message,
+                response.Code
+                );
+            }
+
+            var mappedResult = _mapper.Map<GetRoomSizeUnitByIdQueryResult>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+            return OperationResult<GetRoomSizeUnitByIdQueryResult>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
+        }
+    }
 
 
 }

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.ActivityNature.Queries.GetActivityNatureById;
 
 namespace CleanArc.Application.Features.ActivityManager.Queries.GetActivityManagerById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.ActivityManager.Queries.GetActivityManag
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var ActivityManager = await _unitOfWork.ActivityManagerRepository.GetByIdAsync(request.Id);
+                //var ActivityManager = await _unitOfWork.ActivityManagerRepository.GetByIdAsync(request.Id);
 
-                if (ActivityManager == null)
+                //if (ActivityManager == null)
+                //{
+                //    return OperationResult<GetActivityManagerByIdQueryResult>.NotFoundResult("ActivityManager not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetActivityManagerByIdQueryResult>(ActivityManager);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetActivityManagerByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.ActivityManagerRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetActivityManagerByIdQueryResult>.NotFoundResult("ActivityManager not found");
+                    return OperationResult<GetActivityManagerByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetActivityManagerByIdQueryResult>(ActivityManager);
+                var mappedResult = _mapper.Map<GetActivityManagerByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetActivityManagerByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetActivityManagerByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

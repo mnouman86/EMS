@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.CheckProfileStatus.Queries.GetCheckProfileStatusById;
 
 namespace CleanArc.Application.Features.Category.Queries.GetCategoryById;
 
@@ -34,19 +35,38 @@ internal class GetCategoryByIdQueryHandler : IRequestHandler<GetCategoryByIdQuer
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var url = await _unitOfWork.CategoryRepository.GetByIdAsync(request.Id);
+            //var url = await _unitOfWork.CategoryRepository.GetByIdAsync(request.Id);
 
-            if (url == null)
+            //if (url == null)
+            //{
+            //    return OperationResult<GetCategoryByIdQueryResult>.NotFoundResult("URL not found");
+            //}
+
+            ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+            //var result = _mapper.Map<GetCategoryByIdQueryResult>(url);
+
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+            //return OperationResult<GetCategoryByIdQueryResult>.SuccessResult(result);
+
+            var response = await _unitOfWork.CategoryRepository.GetByIdAsync(request.Id);
+
+            if (response.Code != 200)
             {
-                return OperationResult<GetCategoryByIdQueryResult>.NotFoundResult("URL not found");
+                return OperationResult<GetCategoryByIdQueryResult>.FailureResult(
+                    response.Message,
+                response.Code
+                );
             }
 
-            //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-            var result = _mapper.Map<GetCategoryByIdQueryResult>(url);
+            var mappedResult = _mapper.Map<GetCategoryByIdQueryResult>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-            return OperationResult<GetCategoryByIdQueryResult>.SuccessResult(result);
+            return OperationResult<GetCategoryByIdQueryResult>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
         }
     }
 

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.CustomerReview.Queries.GetCustomerReviewById;
 
 namespace CleanArc.Application.Features.Currency.Queries.GetCurrencyById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.Currency.Queries.GetCurrencyById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var Currency = await _unitOfWork.CurrencyRepository.GetByIdAsync(request.Id);
+                //var Currency = await _unitOfWork.CurrencyRepository.GetByIdAsync(request.Id);
 
-                if (Currency == null)
+                //if (Currency == null)
+                //{
+                //    return OperationResult<GetCurrencyByIdQueryResult>.NotFoundResult("Currency not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetCurrencyByIdQueryResult>(Currency);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetCurrencyByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.CurrencyRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetCurrencyByIdQueryResult>.NotFoundResult("Currency not found");
+                    return OperationResult<GetCurrencyByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetCurrencyByIdQueryResult>(Currency);
+                var mappedResult = _mapper.Map<GetCurrencyByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetCurrencyByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetCurrencyByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

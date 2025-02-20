@@ -90,7 +90,7 @@ internal class CreateKBDetailCommandHandler: IRequestHandler<CreateKBDetailComma
                 CultureId = request.CultureId  });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<ResponseEntity>.SuccessResult(result);
+            return OperationResult<ResponseEntity>.SuccessResult(result,result.Code,result.Message);
         }
     }
 }

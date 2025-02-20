@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Features.CampaignTarget.Queries.GetCampaignTargetById;
+using CleanArc.Application.Features.CampaignTargetItems.Queries.GetCampaignTargetItemsById;
 
 namespace CleanArc.Application.Features.CampaignTarget.Queries.GetCampaignTargetById;
 
@@ -34,19 +35,39 @@ internal class GetCampaignTargetByIdQueryHandler : IRequestHandler<GetCampaignTa
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var CampaignTarget = await _unitOfWork.CampaignTargetRepository.GetByIdAsync(request.Id);
+            //var CampaignTarget = await _unitOfWork.CampaignTargetRepository.GetByIdAsync(request.Id);
 
-            if (CampaignTarget == null)
+            //if (CampaignTarget == null)
+            //{
+            //    return OperationResult<GetCampaignTargetByIdQueryResult>.NotFoundResult("CampaignTarget not found");
+            //}
+
+            ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+            //var result = _mapper.Map<GetCampaignTargetByIdQueryResult>(CampaignTarget);
+
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+            //return OperationResult<GetCampaignTargetByIdQueryResult>.SuccessResult(result);
+
+
+            var response = await _unitOfWork.CampaignTargetRepository.GetByIdAsync(request.Id);
+
+            if (response.Code != 200)
             {
-                return OperationResult<GetCampaignTargetByIdQueryResult>.NotFoundResult("CampaignTarget not found");
+                return OperationResult<GetCampaignTargetByIdQueryResult>.FailureResult(
+                    response.Message,
+                response.Code
+                );
             }
 
-            //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-            var result = _mapper.Map<GetCampaignTargetByIdQueryResult>(CampaignTarget);
+            var mappedResult = _mapper.Map<GetCampaignTargetByIdQueryResult>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-            return OperationResult<GetCampaignTargetByIdQueryResult>.SuccessResult(result);
+            return OperationResult<GetCampaignTargetByIdQueryResult>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
         }
     }
 

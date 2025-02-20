@@ -11,8 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.RoomType.Queries.GetRoomTypeById;
-using Serilog.Core;
+using CleanArc.Application.Features.ServiceCategory.Queries.GetServiceCategoryById;
 
 namespace CleanArc.Application.Features.Service.Queries.GetServiceById;
 
@@ -35,34 +34,41 @@ internal class GetServiceByIdQueryHandler : IRequestHandler<GetServiceByIdQuery,
     public async ValueTask<OperationResult<GetServiceByIdQueryResult>> Handle(GetServiceByIdQuery request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
+        {
+            //var service = await _unitOfWork.ServiceRepository.GetByIdAsync(request.Id);
 
-		{
-			var response = await _unitOfWork.ServiceRepository.GetByIdAsync(request.Id);
+            //if (service == null)
+            //{
+            //    return OperationResult<GetServiceByIdQueryResult>.NotFoundResult("service not found");
+            //}
 
-			if (response.Code != 200)
-			{
-				return OperationResult<GetServiceByIdQueryResult>.FailureResult(
-				response.Message,
-					response.Code
-				);
-			}
+            ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+            //var result = _mapper.Map<GetServiceByIdQueryResult>(service);
 
-			var mappedResult = _mapper.Map<GetServiceByIdQueryResult>(response.Data);
-			(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-			return OperationResult<GetServiceByIdQueryResult>.SuccessResult(
-				mappedResult,
-				response.Code,
-				response.Message
-			);
+            //return OperationResult<GetServiceByIdQueryResult>.SuccessResult(result);
 
-			if (mappedResult == null)
-			{
-				return OperationResult<GetServiceByIdQueryResult>.NotFoundResult("Service not found");
-			}
+            var response = await _unitOfWork.ServiceRepository.GetByIdAsync(request.Id);
 
-		}
-	}
+            if (response.Code != 200)
+            {
+                return OperationResult<GetServiceByIdQueryResult>.FailureResult(
+                    response.Message,
+                response.Code
+                );
+            }
+
+            var mappedResult = _mapper.Map<GetServiceByIdQueryResult>(response.Data);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+            return OperationResult<GetServiceByIdQueryResult>.SuccessResult(
+                mappedResult,
+                response.Code,
+                response.Message
+            );
+        }
+    }
 
    
 }

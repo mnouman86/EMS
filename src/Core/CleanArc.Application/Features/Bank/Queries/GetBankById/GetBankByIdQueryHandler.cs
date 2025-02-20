@@ -10,8 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById;
-using Serilog.Core;
+using CleanArc.Application.Features.Business.Queries.GetBusinessById;
 
 namespace CleanArc.Application.Features.Bank.Queries.GetBankById
 {
@@ -34,34 +33,41 @@ namespace CleanArc.Application.Features.Bank.Queries.GetBankById
         public async ValueTask<OperationResult<GetBankByIdQueryResult>> Handle(GetBankByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
+            {
+                //var bank = await _unitOfWork.BankRepository.GetByIdAsync(request.Id);
 
-			{
-				var response = await _unitOfWork.BankRepository.GetByIdAsync(request.Id);
+                //if (bank == null)
+                //{
+                //    return OperationResult<GetBankByIdQueryResult>.NotFoundResult("bank not found");
+                //}
 
-				if (response.Code != 200)
-				{
-					return OperationResult<GetBankByIdQueryResult>.FailureResult(
-					response.Message,
-						response.Code
-					);
-				}
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetBankByIdQueryResult>(bank);
 
-				var mappedResult = _mapper.Map<GetBankByIdQueryResult>(response.Data);
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-				return OperationResult<GetBankByIdQueryResult>.SuccessResult(
-					mappedResult,
-					response.Code,
-					response.Message
-				);
+                //return OperationResult<GetBankByIdQueryResult>.SuccessResult(result);
 
-				if (mappedResult == null)
-				{
-					return OperationResult<GetBankByIdQueryResult>.NotFoundResult("Bank not found");
-				}
+                var response = await _unitOfWork.BankRepository.GetByIdAsync(request.Id);
 
-			}
-		}
+                if (response.Code != 200)
+                {
+                    return OperationResult<GetBankByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
+                }
+
+                var mappedResult = _mapper.Map<GetBankByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+                return OperationResult<GetBankByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
+            }
+        }
 
       
     }

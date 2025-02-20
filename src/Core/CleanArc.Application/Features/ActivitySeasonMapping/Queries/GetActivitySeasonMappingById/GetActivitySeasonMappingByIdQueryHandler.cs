@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.ActivityTransportation.Queries.GetActivityTransportationById;
 
 namespace CleanArc.Application.Features.ActivitySeasonMapping.Queries.GetActivitySeasonMappingById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.ActivitySeasonMapping.Queries.GetActivit
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var ActivitySeasonMapping = await _unitOfWork.ActivitySeasonMappingRepository.GetByIdAsync(request.Id);
+                //var ActivitySeasonMapping = await _unitOfWork.ActivitySeasonMappingRepository.GetByIdAsync(request.Id);
 
-                if (ActivitySeasonMapping == null)
+                //if (ActivitySeasonMapping == null)
+                //{
+                //    return OperationResult<GetActivitySeasonMappingByIdQueryResult>.NotFoundResult("ActivitySeasonMapping not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetActivitySeasonMappingByIdQueryResult>(ActivitySeasonMapping);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetActivitySeasonMappingByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.ActivitySeasonMappingRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetActivitySeasonMappingByIdQueryResult>.NotFoundResult("ActivitySeasonMapping not found");
+                    return OperationResult<GetActivitySeasonMappingByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetActivitySeasonMappingByIdQueryResult>(ActivitySeasonMapping);
+                var mappedResult = _mapper.Map<GetActivitySeasonMappingByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetActivitySeasonMappingByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetActivitySeasonMappingByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

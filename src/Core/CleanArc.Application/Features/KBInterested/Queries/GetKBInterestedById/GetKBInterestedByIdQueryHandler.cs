@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById;
 
 namespace CleanArc.Application.Features.KBInterested.Queries.GetKBInterestedById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.KBInterested.Queries.GetKBInterestedById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var KBInterested = await _unitOfWork.KBInterestedRepository.GetByIdAsync(request.Id);
+                //var KBInterested = await _unitOfWork.KBInterestedRepository.GetByIdAsync(request.Id);
 
-                if (KBInterested == null)
+                //if (KBInterested == null)
+                //{
+                //    return OperationResult<GetKBInterestedByIdQueryResult>.NotFoundResult("KBInterested not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetKBInterestedByIdQueryResult>(KBInterested);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetKBInterestedByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.KBInterestedRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetKBInterestedByIdQueryResult>.NotFoundResult("KBInterested not found");
+                    return OperationResult<GetKBInterestedByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetKBInterestedByIdQueryResult>(KBInterested);
+                var mappedResult = _mapper.Map<GetKBInterestedByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetKBInterestedByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetKBInterestedByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

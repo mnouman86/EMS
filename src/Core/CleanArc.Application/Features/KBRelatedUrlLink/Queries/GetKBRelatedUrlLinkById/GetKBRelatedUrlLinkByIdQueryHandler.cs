@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.KBTiming.Queries.GetKBTimingById;
 
 namespace CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetKBRelatedUrlLinkById
 {
@@ -34,19 +35,37 @@ namespace CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetKBRelatedUrl
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var KBRelatedUrlLink = await _unitOfWork.KBRelatedUrlLinkRepository.GetByIdAsync(request.Id);
+                //var KBRelatedUrlLink = await _unitOfWork.KBRelatedUrlLinkRepository.GetByIdAsync(request.Id);
 
-                if (KBRelatedUrlLink == null)
+                //if (KBRelatedUrlLink == null)
+                //{
+                //    return OperationResult<GetKBRelatedUrlLinkByIdQueryResult>.NotFoundResult("KBRelatedUrlLink not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetKBRelatedUrlLinkByIdQueryResult>(KBRelatedUrlLink);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetKBRelatedUrlLinkByIdQueryResult>.SuccessResult(result);
+                var response = await _unitOfWork.KBRelatedUrlLinkRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetKBRelatedUrlLinkByIdQueryResult>.NotFoundResult("KBRelatedUrlLink not found");
+                    return OperationResult<GetKBRelatedUrlLinkByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetKBRelatedUrlLinkByIdQueryResult>(KBRelatedUrlLink);
+                var mappedResult = _mapper.Map<GetKBRelatedUrlLinkByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetKBRelatedUrlLinkByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetKBRelatedUrlLinkByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

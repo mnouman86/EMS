@@ -11,8 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById;
-using Serilog.Core;
+using CleanArc.Application.Features.ActivityAddressMapping.Queries.GetActivityAddressMappingById;
 
 namespace CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddressById
 {
@@ -35,34 +34,42 @@ namespace CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddre
         public async ValueTask<OperationResult<GetActivityAddressByIdQueryResult>> Handle(GetActivityAddressByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
+            {
+                //var ActivityAddress = await _unitOfWork.ActivityAddressRepository.GetByIdAsync(request.Id);
 
-			{
-				var response = await _unitOfWork.ActivityAddressRepository.GetByIdAsync(request.Id);
+                //if (ActivityAddress == null)
+                //{
+                //    return OperationResult<GetActivityAddressByIdQueryResult>.NotFoundResult("ActivityAddress not found");
+                //}
 
-				if (response.Code != 200)
-				{
-					return OperationResult<GetActivityAddressByIdQueryResult>.FailureResult(
-					response.Message,
-						response.Code
-					);
-				}
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetActivityAddressByIdQueryResult>(ActivityAddress);
 
-				var mappedResult = _mapper.Map<GetActivityAddressByIdQueryResult>(response.Data);
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-				return OperationResult<GetActivityAddressByIdQueryResult>.SuccessResult(
-					mappedResult,
-					response.Code,
-					response.Message
-				);
+                //return OperationResult<GetActivityAddressByIdQueryResult>.SuccessResult(result);
 
-				if (mappedResult == null)
-				{
-					return OperationResult<GetActivityAddressByIdQueryResult>.NotFoundResult("Activity address not found");
-				}
 
-			}
-		}
+                var response = await _unitOfWork.ActivityAddressRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
+                {
+                    return OperationResult<GetActivityAddressByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
+                }
+
+                var mappedResult = _mapper.Map<GetActivityAddressByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+                return OperationResult<GetActivityAddressByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
+            }
+        }
 
         //public ValueTask<OperationResult<GetActivityAddressByIdQueryResult>> Handle(GetActivityAddressByIdQuery request, CancellationToken cancellationToken)
         //{

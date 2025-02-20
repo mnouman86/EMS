@@ -11,8 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.RoomDetails.Queries.GetRoomDetailById;
-using Serilog.Core;
+using CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById;
 
 namespace CleanArc.Application.Features.Hotel.Queries.GetHotelById
 {
@@ -35,33 +34,45 @@ namespace CleanArc.Application.Features.Hotel.Queries.GetHotelById
         public async ValueTask<OperationResult<GetHotelByIdQueryResult>> Handle(GetHotelByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
+            {
+                //var hotel = await _unitOfWork.HotelRepository.GetByIdAsync(request.Id);
 
-			{
-				var response = await _unitOfWork.HotelRepository.GetByIdAsync(request.Id);
+                //if (hotel == null)
+                //{
+                //    return OperationResult<GetHotelByIdQueryResult>.NotFoundResult("URL not found");
+                //}
 
-				if (response.Code != 200)
-				{
-					return OperationResult<GetHotelByIdQueryResult>.FailureResult(
-					response.Message,
-						response.Code
-					);
-				}
+                ////var result = new GetHotelByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetHotelByIdQueryResult>(hotel);
 
-				var mappedResult = _mapper.Map<GetHotelByIdQueryResult>(response.Data);
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-				return OperationResult<GetHotelByIdQueryResult>.SuccessResult(
-					mappedResult,
-					response.Code,
-					response.Message
-				);
+                //return OperationResult<GetHotelByIdQueryResult>.SuccessResult(result);
 
-				if (mappedResult == null)
-				{
-					return OperationResult<GetHotelByIdQueryResult>.NotFoundResult("CoreArea not found");
-				}
+                var response = await _unitOfWork.HotelRepository.GetByIdAsync(request.Id);
 
-			}
-		}
+                if (response.Code != 200)
+                {
+                    return OperationResult<GetHotelByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
+                }
+
+                var mappedResult = _mapper.Map<GetHotelByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+                return OperationResult<GetHotelByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
+            }
+        }
+
+        //public ValueTask<OperationResult<GetHotelByIdQueryResult>> Handle(GetHotelByIdQuery request, CancellationToken cancellationToken)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

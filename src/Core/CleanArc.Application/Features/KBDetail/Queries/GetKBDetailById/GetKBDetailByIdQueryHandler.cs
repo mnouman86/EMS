@@ -11,8 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.Country.Queries.GetCountryById;
-using Serilog.Core;
+using CleanArc.Application.Features.KBInterested.Queries.GetKBInterestedById;
 
 namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById
 {
@@ -35,36 +34,41 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById
         public async ValueTask<OperationResult<GetKBDetailByIdQueryResult>> Handle(GetKBDetailByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
+            {
+                //var KBDetail = await _unitOfWork.KBDetailRepository.GetByIdAsync(request.Id);
 
-			{
-				var response = await _unitOfWork.KBDetailRepository.GetByIdAsync(request.Id);
+                //if (KBDetail == null)
+                //{
+                //    return OperationResult<GetKBDetailByIdQueryResult>.NotFoundResult("KBDetail not found");
+                //}
 
-				if (response.Code != 200)
-				{
-					return OperationResult<GetKBDetailByIdQueryResult>.FailureResult(
-					response.Message,
-						response.Code
-					);
-				}
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetKBDetailByIdQueryResult>(KBDetail);
 
-				var mappedResult = _mapper.Map<GetKBDetailByIdQueryResult>(response.Data);
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-				return OperationResult<GetKBDetailByIdQueryResult>.SuccessResult(
-					mappedResult,
-					response.Code,
-					response.Message
-				);
+                //return OperationResult<GetKBDetailByIdQueryResult>.SuccessResult(result);
 
-				if (mappedResult == null)
-				{
-					return OperationResult<GetKBDetailByIdQueryResult>.NotFoundResult("KB detail not found");
-				}
+                var response = await _unitOfWork.KBDetailRepository.GetByIdAsync(request.Id);
 
-			}
+                if (response.Code != 200)
+                {
+                    return OperationResult<GetKBDetailByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
+                }
 
+                var mappedResult = _mapper.Map<GetKBDetailByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-		}
+                return OperationResult<GetKBDetailByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
+            }
+        }
 
       
     }

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.PackageType.Queries.GetPackageTypeById;
 
 namespace CleanArc.Application.Features.PackageDetail.Queries.GetPackageDetailById
 {
@@ -34,19 +35,38 @@ namespace CleanArc.Application.Features.PackageDetail.Queries.GetPackageDetailBy
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var PackageDetail = await _unitOfWork.PackageDetailRepository.GetByIdAsync(request.Id);
+                //var PackageDetail = await _unitOfWork.PackageDetailRepository.GetByIdAsync(request.Id);
 
-                if (PackageDetail == null)
+                //if (PackageDetail == null)
+                //{
+                //    return OperationResult<GetPackageDetailByIdQueryResult>.NotFoundResult("PackageDetail not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetPackageDetailByIdQueryResult>(PackageDetail);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetPackageDetailByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.PackageDetailRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetPackageDetailByIdQueryResult>.NotFoundResult("PackageDetail not found");
+                    return OperationResult<GetPackageDetailByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetPackageDetailByIdQueryResult>(PackageDetail);
+                var mappedResult = _mapper.Map<GetPackageDetailByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetPackageDetailByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetPackageDetailByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
 

@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Features.UserExperience.Queries.GetUserExperienceById;
 
 namespace CleanArc.Application.Features.URL.Queries.GetURLById
 {
@@ -38,19 +39,38 @@ namespace CleanArc.Application.Features.URL.Queries.GetURLById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var url = await _unitOfWork.URLRepository.GetByIdAsync(request.Id);
+                //var url = await _unitOfWork.URLRepository.GetByIdAsync(request.Id);
 
-                if (url == null)
+                //if (url == null)
+                //{
+                //    return OperationResult<GetURLByIdQueryResult>.NotFoundResult("URL not found");
+                //}
+
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetURLByIdQueryResult>(url);
+
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                //return OperationResult<GetURLByIdQueryResult>.SuccessResult(result);
+
+                var response = await _unitOfWork.URLRepository.GetByIdAsync(request.Id);
+
+                if (response.Code != 200)
                 {
-                    return OperationResult<GetURLByIdQueryResult>.NotFoundResult("URL not found");
+                    return OperationResult<GetURLByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
                 }
 
-                //var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                var result = _mapper.Map<GetURLByIdQueryResult>(url);
+                var mappedResult = _mapper.Map<GetURLByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                return OperationResult<GetURLByIdQueryResult>.SuccessResult(result);
+                return OperationResult<GetURLByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
             }
         }
     }

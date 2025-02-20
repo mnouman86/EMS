@@ -11,8 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.RoomType.Queries.GetRoomTypeById;
-using Serilog.Core;
+using CleanArc.Application.Features.Amenities.Queries.GetAmenitiesById;
 
 namespace CleanArc.Application.Features.AgeType.Queries.GetAgeTypeById
 {
@@ -35,35 +34,41 @@ namespace CleanArc.Application.Features.AgeType.Queries.GetAgeTypeById
         public async ValueTask<OperationResult<GetAgeTypeByIdQueryResult>> Handle(GetAgeTypeByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
-       
+            {
+                //var ageType = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.Id);
 
-			{
-				var response = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.Id);
+                //if (ageType == null)
+                //{
+                //    return OperationResult<GetAgeTypeByIdQueryResult>.NotFoundResult("ageType not found");
+                //}
 
-				if (response.Code != 200)
-				{
-					return OperationResult<GetAgeTypeByIdQueryResult>.FailureResult(
-					response.Message,
-						response.Code
-					);
-				}
+                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
+                //var result = _mapper.Map<GetAgeTypeByIdQueryResult>(ageType);
 
-				var mappedResult = _mapper.Map<GetAgeTypeByIdQueryResult>(response.Data);
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-				return OperationResult<GetAgeTypeByIdQueryResult>.SuccessResult(
-					mappedResult,
-					response.Code,
-					response.Message
-				);
+                //return OperationResult<GetAgeTypeByIdQueryResult>.SuccessResult(result);
 
-				if (mappedResult == null)
-				{
-					return OperationResult<GetAgeTypeByIdQueryResult>.NotFoundResult("Age Type not found");
-				}
+                var response = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.Id);
 
-			}
-		}
+                if (response.Code != 200)
+                {
+                    return OperationResult<GetAgeTypeByIdQueryResult>.FailureResult(
+                        response.Message,
+                    response.Code
+                    );
+                }
+
+                var mappedResult = _mapper.Map<GetAgeTypeByIdQueryResult>(response.Data);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
+
+                return OperationResult<GetAgeTypeByIdQueryResult>.SuccessResult(
+                    mappedResult,
+                    response.Code,
+                    response.Message
+                );
+            }
+        }
 
        
     }
