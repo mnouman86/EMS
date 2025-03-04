@@ -13,8 +13,8 @@ using System.Threading.Tasks;
 namespace CleanArc.Application.Features.Currency.Commands.CreateCurrencyCommand;
 public record CreateCurrencyCommand(
    string? Name,
-   int? CurrencyCode,
-   int? Rate,
+   string? CurrencyCode,
+   decimal? Rate,
      int? CreatedBy,
     int? CultureId,
     int? Code,

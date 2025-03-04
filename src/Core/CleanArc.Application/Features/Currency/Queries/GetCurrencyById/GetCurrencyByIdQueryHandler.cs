@@ -35,19 +35,7 @@ namespace CleanArc.Application.Features.Currency.Queries.GetCurrencyById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var Currency = await _unitOfWork.CurrencyRepository.GetByIdAsync(request.Id);
-
-                //if (Currency == null)
-                //{
-                //    return OperationResult<GetCurrencyByIdQueryResult>.NotFoundResult("Currency not found");
-                //}
-
-                ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-                //var result = _mapper.Map<GetCurrencyByIdQueryResult>(Currency);
-
-                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-
-                //return OperationResult<GetCurrencyByIdQueryResult>.SuccessResult(result);
+               
 
                 var response = await _unitOfWork.CurrencyRepository.GetByIdAsync(request.Id);
 
@@ -70,9 +58,5 @@ namespace CleanArc.Application.Features.Currency.Queries.GetCurrencyById
             }
         }
 
-        //public ValueTask<OperationResult<GetCurrencyByIdQueryResult>> Handle(GetCurrencyByIdQuery request, CancellationToken cancellationToken)
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }

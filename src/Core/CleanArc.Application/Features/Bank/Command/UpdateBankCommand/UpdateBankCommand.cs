@@ -13,7 +13,7 @@ using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.Bank.Command.UpdateBankCommand
 {
-    public record UpdateBankCommand(int ID, String? Name, string? Description, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+    public record UpdateBankCommand(int ID, String? Name, string? Description, int? CountryLookUpID, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateBankCommand>
     {
         [JsonIgnore]

@@ -18,7 +18,7 @@ public record UpdateBusinessCommand(int ID, int? BusinessTypeID, string? Name,
     string? Longitude, int? CountryID, int? StateID,
     int? CityID, string? TaxIdentificationNumber, string? License,
     string? ProofOfInsurance, int? BankAccountDetailID,
-    bool? IsCancelation, bool? IsRefundable, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+     int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateBusinessCommand>
 {
     [JsonIgnore]
@@ -85,10 +85,7 @@ public record UpdateBusinessCommand(int ID, int? BusinessTypeID, string? Name,
         //   .NotEmpty()
         //   .NotNull()
         //   .WithMessage("Please enter a BankAccountDetailID");
-        validator.RuleFor(c => c.IsCancelation)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a IsCancelation");
+ 
         return validator;
     }
 }

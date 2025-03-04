@@ -55,6 +55,7 @@ public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateHotelComman
             CountryID = request.CountryID,
             StateID = request.StateID,
             CityID = request.CityID,
+            BusinessID = request.BusinessID,
             ZipCode = request.ZipCode,
             Address1 = request.Address1,
             Address2 = request.Address2,

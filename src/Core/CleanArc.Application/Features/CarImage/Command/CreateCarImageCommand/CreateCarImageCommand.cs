@@ -13,7 +13,7 @@ using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.CarImage.Command.CreateCarImageCommand;
 
-public record CreateCarImageCommand(int? CarID,  String? ImagePath, string? ImageTitle, bool? IsMain, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateCarImageCommand(int? CarID, List<string>? ImagePaths, string? ImageTitle, bool? IsMain, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateCarImageCommand>
 {
     [JsonIgnore]
@@ -28,7 +28,7 @@ public record CreateCarImageCommand(int? CarID,  String? ImagePath, string? Imag
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a CarID");
-        validator.RuleFor(c => c.ImagePath)
+        validator.RuleFor(c => c.ImagePaths)
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a valid ImagePath");
