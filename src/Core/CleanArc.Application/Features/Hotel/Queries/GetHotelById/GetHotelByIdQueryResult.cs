@@ -13,6 +13,7 @@ public class GetHotelByIdQueryResult
     public int CountryID { get; set; }
     public int StateID { get; set; }
     public int CityID { get; set; }
+    public int BusinessID { get; set; }
     public int ZipCode { get; set; }
     public string Address1 { get; set; }
     public string Address2 { get; set; }

@@ -74,19 +74,7 @@ public class SearchHotelImageRepository : ISearchHotelImageRepository
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
-                connection.Open();
-				//var parameters = new
-				//{
-				//    PageNumber = searchRequest.PageNumber,
-				//    PageSize = searchRequest.PageSize,
-				//    cultureId = searchRequest.CultureId,
-				//    //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-				//    //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-				//    //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-				//    //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-				//    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
-				//    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
-				//};
+                connection.Open();  
 
 				var parameters = new DynamicParameters();
 				parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);

@@ -73,8 +73,8 @@ namespace CleanArc.Application.Features.Business.Command.CreateBusinessCommand
                   License= request.License,
                     ProofOfInsurance= request.ProofOfInsurance,
                     //BankAccountDetailID= request.BankAccountDetailID,
-                    IsCancelation= request.IsCancelation,
-                    IsRefundable= request.IsRefundable,
+                    //IsCancelation= request.IsCancelation,
+                    //IsRefundable= request.IsRefundable,
                     
                 });
                 await _unitOfWork.CommitAsync();

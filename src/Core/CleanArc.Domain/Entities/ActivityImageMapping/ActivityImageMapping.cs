@@ -13,7 +13,8 @@ public  class ActivityImageMapping
     public int ID { get; set; }
     public int? ActivityID { get; set; }
     public string? ImagePath { get; set; }
-    public string? ImageTitle { get; set; }
+	public List<string>? ImagePaths { get; set; }  // Changed from string? to List<string>?
+	public string? ImageTitle { get; set; }
     public bool? IsMain { get; set; }
     public int? CategoryID { get; set; }
     public int? BusinessID { get; set; }

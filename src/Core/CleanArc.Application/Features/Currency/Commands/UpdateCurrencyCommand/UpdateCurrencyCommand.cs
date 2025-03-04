@@ -14,8 +14,8 @@ namespace CleanArc.Application.Features.Currency.Commands.UpdateCurrencyCommand;
 public record UpdateCurrencyCommand(
    int ID,
   string? Name,
-  int? CurrencyCode,
-   int? Rate,
+  string? CurrencyCode,
+   decimal? Rate,
   int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateCurrencyCommand>
 {

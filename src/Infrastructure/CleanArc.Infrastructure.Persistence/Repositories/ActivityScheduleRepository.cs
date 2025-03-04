@@ -123,17 +123,6 @@ public async Task<ResponseEntity> AddAsync(ActivitySchedule ActivitySchedule)
                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                //var parameters = new
-                //{
-                //    PageNumber = searchRequest.PageNumber,
-                //    PageSize = searchRequest.PageSize,
-                //    //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-                //    //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-                //    //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-                //    //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-                //    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
-                //    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
-                //};
                 var result = await connection.QueryAsync<ActivitySchedule>(ActivityScheduleQueries.usp_GetAll_ActivitySchedule, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 var response = new ListResponseWrapper<ActivitySchedule> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;

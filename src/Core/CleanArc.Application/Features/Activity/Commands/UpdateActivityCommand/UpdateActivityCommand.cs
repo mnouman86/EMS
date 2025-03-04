@@ -14,6 +14,7 @@ namespace CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand;
 public record UpdateActivityCommand(
    int ID,
     int? CultureId,
+    int? BusinessID,
     string? Title,
    int? LanguageLookUpID,
    int? ServiceLookUpID,
