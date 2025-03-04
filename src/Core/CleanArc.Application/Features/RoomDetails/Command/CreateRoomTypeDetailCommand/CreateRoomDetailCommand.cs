@@ -12,7 +12,8 @@ using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.RoomDetails.Command.CreateRoomDetailCommand;
 
-public record CreateRoomDetailCommand(int? HotelID, int? RoomTypeID, int? RoomSizeUnitID, string? RoomSize, bool? IsBathroomPrivate,
+public record 
+    CreateRoomDetailCommand(int? HotelID, int? RoomTypeID, int? RoomSizeUnitID, string? RoomSize, bool? IsBathroomPrivate,
     decimal? Price, decimal? AdditionalMatricCharges, string? RoomNumber, bool? IsAvailable, int? CreatedBy, bool? IsRefundable, bool? IsCancelation) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateRoomDetailCommand>
 {

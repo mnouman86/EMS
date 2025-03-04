@@ -13,7 +13,7 @@ using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.Hotel.Command.UpdateHotelCommand;
 
-public record UpdateHotelCommand(int ID,string? Name, int? CountryID, int? StateID, int? CityID, int? ZipCode, string? Address1,
+public record UpdateHotelCommand(int ID,string? Name, int? CountryID, int? StateID, int? CityID, int? BusinessID ,int? ZipCode, string? Address1,
     string? Address2, string? Latitude, string? Longitude, string? MobileNumber, string? PhoneNumber, string? Email,
     string? FocalPersonName, bool? IsChanelManager, bool? IsRating, bool? IsChain, int? ServiceID, string? CheckInFrom, string? CheckInTo,
     string? CheckOutFrom, string? CheckOutTo, string? About, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
@@ -39,6 +39,10 @@ public record UpdateHotelCommand(int ID,string? Name, int? CountryID, int? State
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a CityID");
+        validator.RuleFor(c => c.BusinessID)
+           .NotEmpty()
+           .NotNull()
+           .WithMessage("Please select a business");
         validator.RuleFor(c => c.ZipCode)
            .NotEmpty()
            .NotNull()

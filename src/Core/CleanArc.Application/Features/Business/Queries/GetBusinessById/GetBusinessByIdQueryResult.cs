@@ -26,8 +26,8 @@ namespace CleanArc.Application.Features.Business.Queries.GetBusinessById
         public string? License { get; set; }
         public string? ProofOfInsurance { get; set; }
         public int? BankAccountDetailID { get; set; }
-        public bool? IsCancelation { get; set; }
-        public bool? IsRefundable { get; set; }
+        //public bool? IsCancelation { get; set; }
+        //public bool? IsRefundable { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsDeleted { get; set; }
         public int? CreatedBy { get; set; }

@@ -12,9 +12,9 @@ namespace CleanArc.Application.Models.RoomVisual
         public int? HotelID { get; set; }
         public int? RoomID { get; set; }
         public int? CategoryID { get; set; }
-        public string? ImageTitle { get; set; } // NVARCHAR(MAX)
-        public string? ImagePath { get; set; } // NVARCHAR(MAX)
-        public bool? IsMain { get; set; } // BIT
+        public string? ImageTitle { get; set; } 
+        public string? ImagePath { get; set; } 
+        public bool? IsMain { get; set; } 
         public int? UpdatedBy { get; set; }
      
     }

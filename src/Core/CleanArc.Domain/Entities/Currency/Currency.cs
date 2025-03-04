@@ -12,8 +12,8 @@ public  class Currency
 {
     public int ID { get; set; }
     public string? Name { get; set; }
-    public int? CurrencyCode { get; set; }
-    public int? Rate { get; set; }
+    public string? CurrencyCode { get; set; }
+    public decimal? Rate { get; set; }
     public int? CultureId { get; set; }
     public int? Code { get; set; }
     public string? Message { get; set; }

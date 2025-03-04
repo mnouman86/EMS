@@ -141,6 +141,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     connection.Open();
                     UpdateHotelImageDTO updateHotelImageDTO = _mapper.Map<UpdateHotelImageDTO>(HotelImage);
 					var parameters = new DynamicParameters(updateHotelImageDTO);
+                    parameters.Add("@CultureID", 1);
 					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 					var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelImageQueries.Update_HotelImage, parameters, commandType: CommandType.StoredProcedure);

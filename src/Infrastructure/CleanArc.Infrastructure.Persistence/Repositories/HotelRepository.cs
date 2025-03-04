@@ -81,7 +81,8 @@ public class HotelRepository : IHotelRepository
                 var parameters = new DynamicParameters();
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+				parameters.Add("@CultureId", 1);
+				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelQueries.Delete_Hotel, parameters, commandType: CommandType.StoredProcedure);

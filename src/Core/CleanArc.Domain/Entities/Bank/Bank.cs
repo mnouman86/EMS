@@ -11,6 +11,8 @@ namespace CleanArc.Domain.Entities.Bank
         public int? ID { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
+        public int? CountryLookUpID { get; set; }
+        public string? CountryName { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsDeleted { get; set; }
         public int? CreatedBy { get; set; }

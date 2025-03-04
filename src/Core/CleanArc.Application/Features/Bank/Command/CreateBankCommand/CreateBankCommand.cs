@@ -13,7 +13,7 @@ using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.Bank.Command.CreateBankCommand;
 
-public record CreateBankCommand(string? Name, string? Description, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateBankCommand(string? Name, string? Description,int? CountryLookUpID, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<CreateBankCommand>
 {
     [JsonIgnore]
