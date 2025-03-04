@@ -58,7 +58,7 @@ internal class CreateActivityImageMappingCommandHandler: IRequestHandler<CreateA
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.ActivityImageMappingRepository.AddAsync(new Domain.Entities.ActivityImageMapping.ActivityImageMapping()
-            { CreatedBy = user.Id, ActivityID = request.ActivityID,ImagePath=request.ImagePath,ImageTitle=request.ImageTitle ,IsMain=request.IsMain, CultureId = request.CultureId });
+            { CreatedBy = user.Id, ActivityID = request.ActivityID,ImagePaths=request.ImagePaths,ImageTitle=request.ImageTitle ,IsMain=request.IsMain, CultureId = request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

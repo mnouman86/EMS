@@ -60,7 +60,7 @@ namespace CleanArc.Application.Features.CarImage.Command.CreateCarImageCommand
                 { CreatedBy = user.Id,
                     //BusinessID = request.BusinessID,
                     CarID = request.CarID,
-                    ImagePath = request.ImagePath,
+                    ImagePaths = request.ImagePaths,
                     ImageTitle = request.ImageTitle,
                     IsMain = request.IsMain,
                    

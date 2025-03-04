@@ -18,7 +18,7 @@ public record CreateBusinessCommand(string? Name,
     string? Longitude, int? CountryID, int? StateID,
     int? CityID, string? TaxIdentificationNumber, string? License, 
     string? ProofOfInsurance, int? BankAccountDetailID,
-    bool? IsCancelation, bool? IsRefundable, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+   int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateBusinessCommand>
 {
     [JsonIgnore]
@@ -85,10 +85,10 @@ public record CreateBusinessCommand(string? Name,
         //   .NotEmpty()
         //   .NotNull()
         //   .WithMessage("Please enter a BankAccountDetailID");
-        validator.RuleFor(c => c.IsCancelation)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a IsCancelation");
+        //validator.RuleFor(c => c.IsCancelation)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a IsCancelation");
         //validator.RuleFor(c => c.Description)
         //   .NotEmpty()
         //   .NotNull()

@@ -55,7 +55,7 @@ namespace CleanArc.Application.Features.Bank.Command.UpdateBankCommand
 
                 //return OperationResult<ResponseEntity>.SuccessResult(result);
                 var result = await _unitOfWork.BankRepository.UpdateAsync(new Domain.Entities.Bank.Bank()
-                { UpdatedBy = user.Id, ID = request.ID, Description = request.Description, Name = request.Name });
+                { UpdatedBy = user.Id, ID = request.ID, Description = request.Description, CountryLookUpID=request.CountryLookUpID, Name = request.Name });
                 await _unitOfWork.CommitAsync();
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
                 return OperationResult<ResponseEntity>.SuccessResult(result);

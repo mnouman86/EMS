@@ -66,7 +66,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     // Create DataTable for image paths
                     var imagePathsTable = new DataTable();
                     imagePathsTable.Columns.Add("ImagePath", typeof(string));
-                    
+
                     if (roomVisual.ImagePaths != null)
                     {
                         foreach (var path in roomVisual.ImagePaths)

@@ -67,19 +67,39 @@ public class ActivityImageMappingRepository:IActivityImageMappingRepository
         _httpContextAccessor = httpContextAccessor;
     }
 /// <inheritdoc/>
-public async Task<ResponseEntity> AddAsync(ActivityImageMapping ActivityImageMapping)
+public async Task<ResponseEntity> AddAsync(ActivityImageMapping activityImageMapping)
 {
-    using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, ActivityImageMapping))
+    using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, activityImageMapping))
     {
         using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
         {
             connection.Open();
-                CreateActivityImageMappingDTO createActivityImageMappingDTO = _mapper.Map<CreateActivityImageMappingDTO>(ActivityImageMapping);
-                var parameters = new DynamicParameters(createActivityImageMappingDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+				// Create DataTable for image paths
+				var imagePathsTable = new DataTable();
+				imagePathsTable.Columns.Add("ImagePath", typeof(string));
 
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityImageMappingQueries.Mapping_Create_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
+				if (activityImageMapping.ImagePaths != null)
+				{
+					foreach (var path in activityImageMapping.ImagePaths)
+					{
+						imagePathsTable.Rows.Add(path);
+					}
+				}
+				CreateActivityImageMappingDTO createActivityImageMappingDTO = _mapper.Map<CreateActivityImageMappingDTO>(activityImageMapping);
+				
+
+				var parameters = new DynamicParameters();
+				parameters.Add("@ActivityID", activityImageMapping.ActivityID);
+				parameters.Add("@ImageTitle", activityImageMapping.ImageTitle);
+				parameters.Add("@ImagePaths", imagePathsTable.AsTableValuedParameter("ImagePathTableType"));
+				parameters.Add("@IsMain", activityImageMapping.IsMain);
+				parameters.Add("@CreatedBy", activityImageMapping.CreatedBy);
+				parameters.Add("@CultureId", 1, DbType.Int32);
+				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+
+				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityImageMappingQueries.Mapping_Create_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
         }
@@ -123,17 +143,7 @@ public async Task<ResponseEntity> AddAsync(ActivityImageMapping ActivityImageMap
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                //var parameters = new
-                //{
-                //    PageNumber = searchRequest.PageNumber,
-                //    PageSize = searchRequest.PageSize,
-                //    //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-                //    //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-                //    //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-                //    //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-                //    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
-                //    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
-                //};
+               
                 var result = await connection.QueryAsync<ActivityImageMapping>(ActivityImageMappingQueries.Mapping_GetAll_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new ListResponseWrapper<ActivityImageMapping> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
@@ -178,6 +188,7 @@ public async Task<ResponseEntity> AddAsync(ActivityImageMapping ActivityImageMap
                 UpdateActivityImageMappingDTO updateActivityImageMappingDTO = _mapper.Map<UpdateActivityImageMappingDTO>(entity);
                 var parameters = new DynamicParameters(updateActivityImageMappingDTO);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityImageMappingQueries.Mapping_Update_ActivityImage, parameters, commandType: CommandType.StoredProcedure);
