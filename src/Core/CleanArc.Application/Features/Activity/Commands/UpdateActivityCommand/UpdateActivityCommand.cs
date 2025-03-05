@@ -132,18 +132,18 @@ public record UpdateActivityCommand(
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a Description");
-        validator.RuleFor(c => c.TransportationLookUpID)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a TransportationLookUpID ");
+        //validator.RuleFor(c => c.TransportationLookUpID)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a TransportationLookUpID ");
         //validator.RuleFor(c => c.OtherSubService)
         //   .NotEmpty()
         //   .NotNull()
         //   .WithMessage("Please enter a OtherSubService");
-        validator.RuleFor(c => c.IsDisability)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a IsDisability");
+        //validator.RuleFor(c => c.IsDisability)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a IsDisability");
         //validator.RuleFor(c => c.DisabilitiesID)
         //   .NotEmpty()
         //   .NotNull()
