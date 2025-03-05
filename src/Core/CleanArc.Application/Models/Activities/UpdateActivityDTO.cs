@@ -10,6 +10,7 @@ namespace CleanArc.Application.Models.Activities
     {
 
         public int ID { get; set; }
+        public int? BusinessID { get; set; }
         public int? CultureId { get; set; }
         public string Title { get; set; }
         public int? LanguageLookUpID { get; set; }

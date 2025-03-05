@@ -86,6 +86,7 @@ public class CategoryRepository : ICategoryRepository
                 connection.Open();
                 var parameters = new DynamicParameters();
                 parameters.Add("@ID", selectedIds);
+                parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
@@ -128,13 +129,18 @@ public class CategoryRepository : ICategoryRepository
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                var result = await connection.QuerySingleOrDefaultAsync<Category>(CategoryQueries.usp_GetByID_Category, new { ID = id }, commandType: CommandType.StoredProcedure);
+				var parameters = new DynamicParameters();
+				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+				parameters.Add("@CultureId", 1, DbType.Int32);
+				parameters.Add("@ID", id, DbType.Int32);
+				var result = await connection.QuerySingleOrDefaultAsync<Category>(CategoryQueries.usp_GetByID_Category, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new SingleResponseWrapper<Category>
                 {
                     Data = result,
-                    //Code = parameters.Get<int>("@Code"),
-                    //Message = parameters.Get<string>("@Message")
+                    Code = parameters.Get<int>("@Code"),
+                    Message = parameters.Get<string>("@Message")
                 };
                 return response;
             }

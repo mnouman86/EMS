@@ -48,7 +48,7 @@ internal class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryComm
             if (user == null)
                 return OperationResult<ResponseEntity>.FailureResult("User Not Found");
             var result = await _unitOfWork.CategoryRepository.AddAsync(new Domain.Entities.Category.Category()
-            { CreatedBy = user.Id, Description = request.Description, Name = request.Name });
+            { CreatedBy = user.Id, ServiceCategoryID=request.ServiceCategoryID, Description = request.Description, Name = request.Name });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

@@ -8,6 +8,7 @@ namespace CleanArc.Application.Features.SearchCarImage.Queries.GetAllSearchCarIm
 
 public class GetAllSearchCarImageQueryResult
 {
+    public int ID { get; set; }
     public bool IsMain { get; set; }
     public int CarID { get; set; }
     public string ImagePath { get; set; }

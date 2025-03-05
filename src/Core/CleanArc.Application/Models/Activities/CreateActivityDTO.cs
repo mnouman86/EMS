@@ -9,6 +9,7 @@ namespace CleanArc.Application.Models.Activities
     public class CreateActivityDTO
     {
         public int? CultureId { get; set; }
+        public int? BusinessID { get; set; }
         public string Title { get; set; }
         public int? LanguageLookUpID { get; set; }
         public int? ServiceLookUpID { get; set; }

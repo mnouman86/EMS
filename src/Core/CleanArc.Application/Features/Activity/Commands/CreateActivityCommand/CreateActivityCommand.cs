@@ -126,10 +126,10 @@ public record CreateActivityCommand(
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a SeasonLookUpID");
-        validator.RuleFor(c => c.DisabilityOptionLookUpID)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a DisabilityOptionLookUpID");
+        //validator.RuleFor(c => c.DisabilityOptionLookUpID)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a DisabilityOptionLookUpID");
         validator.RuleFor(c => c.IncludeOptionLookUpID)
            .NotEmpty()
            .NotNull()
@@ -146,10 +146,10 @@ public record CreateActivityCommand(
         //   .NotEmpty()
         //   .NotNull()
         //   .WithMessage("Please enter a Description");
-        validator.RuleFor(c => c.TransportationLookUpID)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a TransportationLookUpID ");
+        //validator.RuleFor(c => c.TransportationLookUpID)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a TransportationLookUpID ");
         //validator.RuleFor(c => c.OtherManageActivity)
         //   .NotEmpty()
         //   .NotNull()
