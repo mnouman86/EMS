@@ -12,7 +12,7 @@ using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.Category.Command.CreateCategoryCommand
 {
-    public record CreateCategoryCommand(string? Name, string? Description, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+    public record CreateCategoryCommand(int? ServiceCategoryID, string? Name, string? Description, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateCategoryCommand>
     {
         [JsonIgnore]

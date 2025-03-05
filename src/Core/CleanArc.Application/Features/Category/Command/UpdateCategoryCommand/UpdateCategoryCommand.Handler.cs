@@ -49,7 +49,7 @@ internal class UpdateCategoryCommandHandler:IRequestHandler<UpdateCategoryComman
 
 
             var result = await _unitOfWork.CategoryRepository.UpdateAsync(new Domain.Entities.Category.Category()
-            { UpdatedBy = user.Id, ID = request.ID, Description = request.Description, Name = request.Name });
+            { UpdatedBy = user.Id, ID = request.ID, ServiceCategoryID=request.ServiceCategoryID, Description = request.Description, Name = request.Name });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

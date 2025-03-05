@@ -12,7 +12,6 @@ public  class Activity
 {
     public int ID { get; set; }
     public int? BusinessID { get; set; }
-
     public string Title { get; set; }
     public int? LanguageLookUpID { get; set; }
     public string? LanguageName { get; set; }
