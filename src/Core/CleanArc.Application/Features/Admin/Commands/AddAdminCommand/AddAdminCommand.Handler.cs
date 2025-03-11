@@ -1,5 +1,6 @@
 ﻿using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Models.Common;
+using CleanArc.Domain.Common;
 using CleanArc.Domain.Entities.User;
 using CleanArc.SharedKernel.Extensions;
 using Mediator;
@@ -31,14 +32,14 @@ namespace CleanArc.Application.Features.Admin.Commands.AddAdminCommand
                     newAdmin, request.Password);
 
             if(!adminCreateResult.Succeeded)
-                return OperationResult<bool>.FailureResult(adminCreateResult.Errors.StringifyIdentityResultErrors());
+                return OperationResult<bool>.SuccessResult(true, 200, adminCreateResult.Errors.StringifyIdentityResultErrors());
 
             var addAdminToRoleResult = await _userManager.AddUserToRoleAsync(newAdmin, role);
 
             if(addAdminToRoleResult.Succeeded)
-                return OperationResult<bool>.SuccessResult(true);
+                return OperationResult<bool>.SuccessResult(true,200,"User Created Successfully");
 
-            return OperationResult<bool>.FailureResult(addAdminToRoleResult.Errors.StringifyIdentityResultErrors());
+            return OperationResult<bool>.SuccessResult(true, 200, addAdminToRoleResult.Errors.StringifyIdentityResultErrors());
         }
     }
 }

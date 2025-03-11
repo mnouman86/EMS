@@ -9,9 +9,10 @@ namespace CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetAllSea
 
 public class GetAllSearchFilterThingsToDoQueryResult
 {
+    public int ID { get; set; }
     public int? CityID { get; set; }                 // Maps to C.ID AS CityID
     public string? CityName { get; set; }            // ISNULL(C.Name, '''') AS CityName
-    public string? Name { get; set; }        // ISNULL(A.Title, '''') AS ActivityName
+    public string? Title { get; set; }        // ISNULL(A.Title, '''') AS ActivityName
     public string? SeasonName { get; set; }          // ISNULL(LS.Name, '''') AS SeasonName
     public decimal? ActivityPrice { get; set; }      // ISNULL(A.PerPersonPrice, 0) AS ActivityPrice
     public decimal? DiscountPercentage { get; set; } // Maps to DiscountPercentage
@@ -33,7 +34,10 @@ public class GetAllSearchFilterThingsToDoQueryResult
     public int? Code { get; set; }
     public string? Message { get; set; }
 
-    public List<CleanArc.Domain.Entities.Activity.ActivityIDImageMapping> ActivityImages { get; set; }
+	public string? StartTime { get; set; } // Nullable TimeSpan for StartTime
+	public string? EndTime { get; set; }   // Nullable TimeSpan for EndTime
+
+	public List<CleanArc.Domain.Entities.Activity.ActivityIDImageMapping> ActivityImages { get; set; }
 
 public List<CleanArc.Domain.Entities.Activity.ActivityAddressMapping> ActivityAddress { get; set; }
 

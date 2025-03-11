@@ -13,7 +13,7 @@ public  class SearchFilterThingsToDo
     public int ID { get; set; }
     public int? CityID { get; set; }                 // Maps to C.ID AS CityID
     public string? CityName { get; set; }            // ISNULL(C.Name, '''') AS CityName
-    public string? Name { get; set; }        // ISNULL(A.Title, '''') AS ActivityName
+    public string? Title { get; set; }        // ISNULL(A.Title, '''') AS ActivityName
     public string? SeasonName { get; set; }          // ISNULL(LS.Name, '''') AS SeasonName
     public decimal? ActivityPrice { get; set; }      // ISNULL(A.PerPersonPrice, 0) AS ActivityPrice
     public decimal? DiscountPercentage { get; set; } // Maps to DiscountPercentage
@@ -39,6 +39,9 @@ public  class SearchFilterThingsToDo
     public List<ActivityIDImageMapping> ActivityImages { get; set; }
     public List<ActivityAddressMapping> ActivityAddress { get; set; }
 
+	public string? StartTime { get; set; } // Nullable TimeSpan for StartTime
+	public string? EndTime { get; set; }   // Nullable TimeSpan for EndTime
+
 
 
 }
@@ -54,6 +57,7 @@ public class ActivityAddressMapping
     public int? ActivityID { get; set; }
     public int? CountryLookUpID { get; set; }
     public int? CityLookUpID { get; set; }
+    public string? CityName { get; set; }
     public int? StateLookUpID { get; set; }
     public string? AddressLine1 { get; set; }
     public string? AddressLine2 { get; set; }

@@ -80,10 +80,6 @@ public class SearchFilterStayRepository : ISearchFilterStayRepository
 					BathroomAmenities = searchRequest.BathroomAmenities,
 					RoomFeature = searchRequest.RoomFeature,
 					RoomView = searchRequest.RoomView,
-					//SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-					//SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-					//FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-					//FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
 					SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
 					FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
 
@@ -103,17 +99,7 @@ public class SearchFilterStayRepository : ISearchFilterStayRepository
 					parameter.Add("@FilterArray", DataTableHelper.ToDataTable(ImagesFilterArray), DbType.Object); // Ensure proper type
 					parameter.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 					parameter.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-					//var parameter = new
-					//                {
-					//                    PageNumber = searchRequest.PageNumber,
-					//                    PageSize = searchRequest.PageSize,
-					//                    //SortingColumnName = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnName,
-					//                    //SortingColumnDirection = searchRequest.SortingArray?.FirstOrDefault()?.SortingColumnDirection,
-					//                    //FilterParameterName = searchRequest.FilterArray?.FirstOrDefault()?.ParameterName,
-					//                    //FilterParameterValue = searchRequest.FilterArray?.FirstOrDefault()?.ParameterValue
-					//                    SortingArray = DataTableHelper.ToDataTable(ImagesSortingArray), // Convert list to DataTable
-					//                    FilterArray = DataTableHelper.ToDataTable(ImagesFilterArray) // Convert list to DataTable
-					//                };
+					
 					var imageList = await connection.QueryAsync<HotelImage>(SearchHotelImageQueries.usp_GetByHotelID_HotelImage, parameter, commandType: CommandType.StoredProcedure);
 					item.HotelImages = new List<HotelImage>();
 					item.HotelImages.AddRange(imageList);
