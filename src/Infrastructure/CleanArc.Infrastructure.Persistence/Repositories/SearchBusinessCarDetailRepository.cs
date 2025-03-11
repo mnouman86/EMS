@@ -101,8 +101,8 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 						parameter.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
 						parameter.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
 						parameter.Add("@FilterArray", DataTableHelper.ToDataTable(FilterArray), DbType.Object); // Ensure proper type
-						parameter.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-						parameter.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+						//parameter.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+						//parameter.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
 						var imageList = await connection.QueryAsync<SearchCarImage>(SearchCarImageQueries.usp_GetByCarID_CarImage, parameter, commandType: CommandType.StoredProcedure);
                         var amenitiesList = await connection.QueryAsync<SearchCarAmenities>(SearchCarAmenitiesQuery.usp_GetByCarID_CarAmenities, parameter, commandType: CommandType.StoredProcedure);

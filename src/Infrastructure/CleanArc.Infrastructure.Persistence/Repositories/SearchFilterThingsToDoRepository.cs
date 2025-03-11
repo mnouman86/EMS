@@ -127,7 +127,7 @@ public class SearchFilterThingsToDoRepository:ISearchFilterThingsToDoRepository
                 {
                     PageNumber = searchRequest.PageNumber,
                     PageSize = searchRequest.PageSize,
-                    Name = searchRequest.Name,
+                    Title = searchRequest.Title,
                     CityName= searchRequest.CityName,
                     MaxPrice = searchRequest.MaxPrice,
                     MinPrice = searchRequest.MinPrice,
@@ -137,15 +137,7 @@ public class SearchFilterThingsToDoRepository:ISearchFilterThingsToDoRepository
                     FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
 
 
-                };
-                    //DynamicParameters();
-                //parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
-                //parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
-                //parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
-                //parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
-                //parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
-                //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+			};
 
                
                 var result = await connection.QueryAsync<SearchFilterThingsToDo>(SearchFilterThingsToDoQueries.GetAll_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);

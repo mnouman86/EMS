@@ -45,13 +45,13 @@ namespace CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFil
 
                 var response = await _unitOfWork.SearchFilterStayRepository.GetAllWithParamAsync(request.searchRequest);
 
-                if (response.Code != 200)
-                {
-                    return OperationResult<List<GetAllSearchFilterStayQueryResult>>.FailureResult(
-                        response.Message,
-                    response.Code
-                    );
-                }
+                //if (response.Code != 200)
+                //{
+                //    return OperationResult<List<GetAllSearchFilterStayQueryResult>>.FailureResult(
+                //        response.Message,
+                //    response.Code
+                //    );
+                //}
 
                 var mappedResult = _mapper.Map<List<GetAllSearchFilterStayQueryResult>>(response.Data);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);

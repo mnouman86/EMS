@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.Request
 {
     public class ThingsToDoSearchFilterRequest: SearchRequest
     {
-        public string? Name { get; set; }  // Nullable, NVARCHAR(MAX)
+        public string? Title { get; set; }  // Nullable, NVARCHAR(MAX)
         public string? CityName { get; set; }      // Nullable, NVARCHAR(MAX)
         public decimal? MaxPrice { get; set; } // DECIMAL(18,2), NULL by default
         public decimal? MinPrice { get; set; } // DECIMAL(18,2), NULL by default
