@@ -46,13 +46,13 @@ namespace CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetAllSea
 
                 var response = await _unitOfWork.SearchFilterThingsToDoRepository.GetAllWithParamAsync(request.searchRequest);
 
-                if (response.Code != 200)
-                {
-                    return OperationResult<List<GetAllSearchFilterThingsToDoQueryResult>>.FailureResult(
-                        response.Message,
-                    response.Code
-                    );
-                }
+                //if (response.Code != 200)
+                //{
+                //    return OperationResult<List<GetAllSearchFilterThingsToDoQueryResult>>.FailureResult(
+                //        response.Message,
+                //    response.Code
+                //    );
+                //}
 
                 var mappedResult = _mapper.Map<List<GetAllSearchFilterThingsToDoQueryResult>>(response.Data);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);

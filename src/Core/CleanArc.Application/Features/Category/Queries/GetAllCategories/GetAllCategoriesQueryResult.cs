@@ -13,7 +13,7 @@ public  class GetAllCategoriesQueryResult
 public string Name { get; set; }
 public string Description { get; set; }
 public int? ServiceCategoryID { get; set; } // Maps to A.[ServiceCategoryID]
-public string? ServiceCategoryName { get; set; } // Maps to A.[ServiceCategoryID]
+public string? ServiceName { get; set; } // Maps to A.[ServiceCategoryID]
 
 public bool IsDeleted { get; set; }
 public bool IsActive { get; set; }
