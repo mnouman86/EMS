@@ -44,13 +44,13 @@ internal class GetAllSearchCarImageQueryHandler : IRequestHandler<GetAllSearchCa
 
             var response = await _unitOfWork.SearchCarImageRepository.GetAllAsync(request.searchRequest);
 
-            if (response.Code != 200)
-            {
-                return OperationResult<List<GetAllSearchCarImageQueryResult>>.FailureResult(
-                    response.Message,
-                response.Code
-                );
-            }
+            //if (response.Code != 200)
+            //{
+            //    return OperationResult<List<GetAllSearchCarImageQueryResult>>.FailureResult(
+            //        response.Message,
+            //    response.Code
+            //    );
+            //}
 
             var mappedResult = _mapper.Map<List<GetAllSearchCarImageQueryResult>>(response.Data);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);

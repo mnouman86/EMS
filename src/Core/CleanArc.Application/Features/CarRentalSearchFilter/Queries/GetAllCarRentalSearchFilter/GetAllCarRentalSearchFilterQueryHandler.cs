@@ -45,13 +45,13 @@ public async ValueTask<OperationResult<List<GetAllCarRentalSearchFilterQueryResu
 
             var response = await _unitOfWork.CarRentalSearchFilterRepository.GetAllWithParamAsync(request.searchRequest);
 
-            if (response.Code != 200)
-            {
-                return OperationResult<List<GetAllCarRentalSearchFilterQueryResult>>.FailureResult(
-                    response.Message,
-                response.Code
-                );
-            }
+            //if (response.Code != 200)
+            //{
+            //    return OperationResult<List<GetAllCarRentalSearchFilterQueryResult>>.FailureResult(
+            //        response.Message,
+            //    response.Code
+            //    );
+            //}
 
             var mappedResult = _mapper.Map<List<GetAllCarRentalSearchFilterQueryResult>>(response.Data);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);

@@ -100,6 +100,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                         {
                             PageNumber = searchRequest.PageNumber,
                             PageSize = searchRequest.PageSize,
+                            CultureId = 1,
                             SortingArray = DataTableHelper.ToDataTable(SortingArray), // Convert list to DataTable
                             FilterArray = DataTableHelper.ToDataTable(FilterArray) // Convert list to DataTable
                         };
