@@ -88,7 +88,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-					var result = await connection.QueryAsync<SearchBusinessCarDetail>(SearchBusinessCarDetailQueries.usp_GetALLByBusinessID_Cars, parameters, commandType: CommandType.StoredProcedure);
+					var result = await connection.QueryAsync<SearchBusinessCarDetail>(SearchBusinessCarDetailQueries.GetALLByBusinessID_Cars, parameters, commandType: CommandType.StoredProcedure);
                     foreach (var item in result)
                     {
                         List<FilterParameter> FilterArray = new List<FilterParameter>();
@@ -104,8 +104,8 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 						//parameter.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 						//parameter.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-						var imageList = await connection.QueryAsync<SearchCarImage>(SearchCarImageQueries.usp_GetByCarID_CarImage, parameter, commandType: CommandType.StoredProcedure);
-                        var amenitiesList = await connection.QueryAsync<SearchCarAmenities>(SearchCarAmenitiesQuery.usp_GetByCarID_CarAmenities, parameter, commandType: CommandType.StoredProcedure);
+						var imageList = await connection.QueryAsync<SearchCarImage>(SearchCarImageQueries.GetByCarID_CarImage, parameter, commandType: CommandType.StoredProcedure);
+                        var amenitiesList = await connection.QueryAsync<SearchCarAmenities>(SearchCarAmenitiesQuery.GetByCarID_CarAmenities, parameter, commandType: CommandType.StoredProcedure);
                         item.SearchCarImage = new List<SearchCarImage>();
                         item.SearchCarImage.AddRange(imageList);
                         item.SearchCarAmenities = new List<SearchCarAmenities>();

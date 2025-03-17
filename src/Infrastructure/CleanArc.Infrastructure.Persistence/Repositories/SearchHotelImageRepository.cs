@@ -85,7 +85,7 @@ public class SearchHotelImageRepository : ISearchHotelImageRepository
 				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-				var result = await connection.QueryAsync<SearchHotelImage>(SearchHotelImageQueries.usp_GetByHotelID_HotelImage, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QueryAsync<SearchHotelImage>(SearchHotelImageQueries.GetByHotelID_HotelImage, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 
                 var response = new ListResponseWrapper<SearchHotelImage> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;

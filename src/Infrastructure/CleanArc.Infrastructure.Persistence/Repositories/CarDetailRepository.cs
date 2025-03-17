@@ -82,9 +82,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     parameters.Add("@ID", selectedIds);
                     parameters.Add("@UpdatedBy", updatedBy);
                     parameters.Add("@CultureId", 1);
-                    parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                    parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                    
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CarDetailQueries.Delete_CarDetail, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                     return result;
@@ -107,7 +105,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 					parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
 					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-					var result = await connection.QueryAsync<CarDetail>(CarDetailQueries.usp_GetALL_CarDetail, parameters, commandType: CommandType.StoredProcedure);
+					var result = await connection.QueryAsync<CarDetail>(CarDetailQueries.GetALL_CarDetail, parameters, commandType: CommandType.StoredProcedure);
 
 					(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 					var response = new ListResponseWrapper<CarDetail> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
@@ -126,7 +124,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 					parameters.Add("@CultureId", 1, DbType.Int32);
 					parameters.Add("@ID", id, DbType.Int32);
-					var result = await connection.QuerySingleOrDefaultAsync<CarDetail>(CarDetailQueries.usp_GetByID_CarDetail, parameters, commandType: CommandType.StoredProcedure);
+					var result = await connection.QuerySingleOrDefaultAsync<CarDetail>(CarDetailQueries.GetByID_CarDetail, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     var response = new SingleResponseWrapper<CarDetail>
                     {

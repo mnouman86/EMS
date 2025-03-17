@@ -85,11 +85,9 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 					var parameters = new DynamicParameters();
 					parameters.Add("@ID", selectedIds);
 					parameters.Add("@UpdatedBy", updatedBy);
-					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
-					var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SectionQueries.Delete_Section, parameters, commandType: CommandType.StoredProcedure);
-					(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                    parameters.Add("@CultureId", CultureId);
+                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SectionQueries.Delete_Section, parameters, commandType: CommandType.StoredProcedure);
+					(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 					return result;
 				}
 			}
@@ -111,7 +109,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-					var result = await connection.QueryAsync<Section>(SectionQueries.usp_GetALL_Sections, parameters, commandType: CommandType.StoredProcedure);
+					var result = await connection.QueryAsync<Section>(SectionQueries.GetALL_Sections, parameters, commandType: CommandType.StoredProcedure);
 
 
 					(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
@@ -132,7 +130,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 					parameters.Add("@CultureId", 1, DbType.Int32);
 					parameters.Add("@ID", id, DbType.Int32);
-					var result = await connection.QuerySingleOrDefaultAsync<Section>(SectionQueries.usp_GetByID_Section, parameters, commandType: CommandType.StoredProcedure);
+					var result = await connection.QuerySingleOrDefaultAsync<Section>(SectionQueries.GetByID_Section, parameters, commandType: CommandType.StoredProcedure);
 					(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 					var response = new SingleResponseWrapper<Section>
 					{

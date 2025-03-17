@@ -8,11 +8,11 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
 public static class UserExperienceQueries
 {
-    public static string Create_UserExperience => "MappingKB.Create_UserExperience";
-    public static string update_UserExperience => "MappingKB.Update_UserExperience";
-    public static string Delete_UserExperience => "MappingKB.Delete_UserExperience";
-    public static string GetAll_UserExperience => "MappingKB.GetAll_UserExperience";
-    public static string GetByID_UserExperience => "MappingKB.GetByID_UserExperience";
+    public static string Create_UserExperience => "usp_Create_UserExperienceMapping";
+    public static string Update_UserExperience => "usp_Update_UserExperienceMapping";
+    public static string Delete_UserExperience => "usp_Delete_UserExperienceMapping";
+    public static string GetAll_UserExperience => "Usp_GetAll_UserExperienceMapping";
+    public static string GetByID_UserExperience => "usp_GetByID_UserExperienceMapping";
 
 
 }

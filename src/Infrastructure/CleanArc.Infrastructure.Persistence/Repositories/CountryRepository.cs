@@ -67,8 +67,16 @@ public class CountryRepository : ICountryRepository
             {
                 connection.Open();
                 CreateCountryDTO createCountryDTO = _mapper.Map<CreateCountryDTO>(country);
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CountryQueries.Create_Country, createCountryDTO, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var parameters = new DynamicParameters(createCountryDTO);
+                //parameters.Add("@RecordId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CountryQueries.Create_Country, parameters, commandType: CommandType.StoredProcedure);
+                //if (result == null)
+                //{
+                //    result = parameters.MapToResponseEntity();
+                //}
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
@@ -85,11 +93,16 @@ public class CountryRepository : ICountryRepository
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CountryQueries.Delete_Country, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                //if (result == null)
+                //{
+                //    result = parameters.MapToResponseEntity();
+                //}
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
@@ -113,7 +126,7 @@ public class CountryRepository : ICountryRepository
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
 
-				var result = await connection.QueryAsync<Country>(CountryQueries.usp_GetALL_Country, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QueryAsync<Country>(CountryQueries.GetALL_Country, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
 				var response = new ListResponseWrapper<Country> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
@@ -134,7 +147,7 @@ public class CountryRepository : ICountryRepository
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 				parameters.Add("@CultureId", 1, DbType.Int32);
 				parameters.Add("@ID", id, DbType.Int32);
-				var result = await connection.QuerySingleOrDefaultAsync<Country>(CountryQueries.usp_GetByID_Country, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QuerySingleOrDefaultAsync<Country>(CountryQueries.GetByID_Country, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
                 var response = new SingleResponseWrapper<Country>
@@ -158,10 +171,11 @@ public class CountryRepository : ICountryRepository
             {
                 connection.Open();
                 UpdateCountryDTO updateCountryDTO = _mapper.Map<UpdateCountryDTO>(country);
-
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CountryQueries.Update_Country, updateCountryDTO, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-                
+                var parameters = new DynamicParameters(updateCountryDTO);
+                //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CountryQueries.Update_Country, parameters, commandType: CommandType.StoredProcedure);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }

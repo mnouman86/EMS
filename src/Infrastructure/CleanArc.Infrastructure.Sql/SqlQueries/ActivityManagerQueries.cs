@@ -8,11 +8,11 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
 public static class ActivityManagerQueries
 {
-    public static string Create_ActivityManager => "Create_Manager";
-    public static string update_ActivityManager => "update_Manager";
-    public static string Delete_ActivityManager => "Delete_Manager";
-    public static string GetAll_Manager => "GetAll_Manager";
-    public static string GetByID_Manager => "GetByID_Manager";
+    public static string Create_ActivityManager => "usp_Create_ActivitySupervisor";
+    public static string Update_ActivityManager => "usp_Update_ActivitySupervisor";
+    public static string Delete_ActivityManager => "usp_Delete_ActivitySupervisor";
+    public static string GetAll_Manager => "usp_GetAll_ActivitySupervisor";
+    public static string GetByID_Manager => "usp_GetByID_ActivitySupervisor";
 
 
 }

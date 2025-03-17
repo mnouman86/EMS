@@ -76,9 +76,7 @@ public async Task<ResponseEntity> AddAsync(ProcessOrder ProcessOrder)
             connection.Open();
                 CreateProcessOrderDTO createProcessOrderDTO = _mapper.Map<CreateProcessOrderDTO>(ProcessOrder);
                 var parameters = new DynamicParameters(createProcessOrderDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Create_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
@@ -97,9 +95,7 @@ public async Task<ResponseEntity> AddAsync(ProcessOrder ProcessOrder)
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Delete_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
@@ -177,10 +173,8 @@ public async Task<ResponseEntity> AddAsync(ProcessOrder ProcessOrder)
                 connection.Open();
                 UpdateProcessOrderDTO updateProcessOrderDTO = _mapper.Map<UpdateProcessOrderDTO>(entity);
                 var parameters = new DynamicParameters(updateProcessOrderDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.update_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
+                
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Update_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }

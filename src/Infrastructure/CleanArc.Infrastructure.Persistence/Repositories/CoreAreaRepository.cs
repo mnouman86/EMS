@@ -76,9 +76,7 @@ public async Task<ResponseEntity> AddAsync(CoreArea CoreArea)
             connection.Open();
                 CreateCoreAreaDTO createCoreAreaDTO = _mapper.Map<CreateCoreAreaDTO>(CoreArea);
                 var parameters = new DynamicParameters(createCoreAreaDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CoreAreaQueries.Create_CoreArea, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
@@ -98,9 +96,7 @@ public async Task<ResponseEntity> AddAsync(CoreArea CoreArea)
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CoreAreaQueries.Delete_CoreArea, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
@@ -170,9 +166,7 @@ public async Task<ResponseEntity> AddAsync(CoreArea CoreArea)
                 connection.Open();
                 UpdateCoreAreaDTO updateCoreAreaDTO = _mapper.Map<UpdateCoreAreaDTO>(entity);
                 var parameters = new DynamicParameters(updateCoreAreaDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CoreAreaQueries.Update_CoreArea, parameters, commandType: CommandType.StoredProcedure);
+                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CoreAreaQueries.Update_CoreArea, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }

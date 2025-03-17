@@ -19,7 +19,7 @@ public class ModelStateValidationAttribute : ActionFilterAttribute
 
             if (viewModelValidator is IValidator validator)
             {
-                var validationResult =await validator.ValidateAsync(new ValidationContext<object>(contextActionArgument));
+                var validationResult = await validator.ValidateAsync(new ValidationContext<object>(contextActionArgument));
 
                 if (!validationResult.IsValid)
                 {
@@ -35,23 +35,46 @@ public class ModelStateValidationAttribute : ActionFilterAttribute
 
         if (!modelState.IsValid)
         {
-
             var model = context.ActionArguments.FirstOrDefault().Value;
 
             if (model != null)
             {
-                var errors = new ValidationProblemDetails(modelState);
-
+                // Original code (commented out)
+                /*var errors = new ValidationProblemDetails(modelState);
                 var message = ApiResultStatusCode.BadRequest.ToDisplay();
-
                 var apiResult = new ApiResult<IDictionary<string, string[]>>(false, ApiResultStatusCode.BadRequest, errors.Errors, message);
+                context.Result = new JsonResult(apiResult) { StatusCode = StatusCodes.Status400BadRequest };
+                context.HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;*/
+
+                // New implementation
+                var errorMessages = modelState.Values
+                    .SelectMany(v => v.Errors)
+                    .Select(e => e.ErrorMessage)
+                    .ToList();
+
+                var combinedMessage = string.Join(" | ", errorMessages);
+
+                var apiResult = new ApiResult(
+                    isSuccess: false,
+                    statusCode: ApiResultStatusCode.BadRequest,
+                    message: combinedMessage);
+
                 context.Result = new JsonResult(apiResult) { StatusCode = StatusCodes.Status400BadRequest };
                 context.HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
             }
-
             else
             {
-                var apiResult = new ApiResult(false, ApiResultStatusCode.BadRequest);
+                // Original code (commented out)
+                /*var apiResult = new ApiResult(false, ApiResultStatusCode.BadRequest);
+                context.Result = new JsonResult(apiResult) { StatusCode = 400 };
+                context.HttpContext.Response.StatusCode = 400;*/
+
+                // New implementation
+                var apiResult = new ApiResult(
+                    isSuccess: false,
+                    statusCode: ApiResultStatusCode.BadRequest,
+                    message: ApiResultStatusCode.BadRequest.ToDisplay());
+
                 context.Result = new JsonResult(apiResult) { StatusCode = 400 };
                 context.HttpContext.Response.StatusCode = 400;
             }

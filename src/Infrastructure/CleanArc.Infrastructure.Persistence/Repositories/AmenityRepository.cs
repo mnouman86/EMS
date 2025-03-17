@@ -90,8 +90,8 @@ public class AmenityRepository : IAmenityRepository
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", 1);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AmenityQueries.Delete_Amenity, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
@@ -129,9 +129,9 @@ public class AmenityRepository : IAmenityRepository
                     SortingArray = DataTableHelper.ToDataTable(SortingArray), // Convert list to DataTable
                     FilterArray = DataTableHelper.ToDataTable(FilterArray) // Convert list to DataTable
                 };
-                var result = await connection.QueryAsync<Amenity>(AmenityQueries.usp_GetALL_Amenity, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<Amenity>(AmenityQueries.GetALL_Amenity, parameters, commandType: CommandType.StoredProcedure);
 
-                //var advertisements = await connection.QueryAsync<Advertisement>(AdvertisementQueries.usp_GetALL_Ads, Adparameter, commandType: CommandType.StoredProcedure);
+                //var advertisements = await connection.QueryAsync<Advertisement>(AdvertisementQueries.GetALL_Ads, Adparameter, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
 				//var response = new ListResponseWrapper<Amenity> { Data = result.ToList() };return response;
@@ -152,7 +152,7 @@ public class AmenityRepository : IAmenityRepository
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 				parameters.Add("@CultureId", 1, DbType.Int32);
 				parameters.Add("@ID", id, DbType.Int32);
-				var result = await connection.QuerySingleOrDefaultAsync<Amenity>(AmenityQueries.usp_GetByID_Amenity, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QuerySingleOrDefaultAsync<Amenity>(AmenityQueries.GetByID_Amenity, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new SingleResponseWrapper<Amenity>
                 {

@@ -8,10 +8,10 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries
 {
     public static class CarDetailQueries
     {
-        public static string Create_CarDetail => "Create_CarDetail";
-        public static string Update_CarDetail => "Update_CarDetail";
-        public static string Delete_CarDetail => "Delete_CarDetail";
-        public static string usp_GetALL_CarDetail => "usp_GetALL_CarDetail";
-        public static string usp_GetByID_CarDetail => "usp_GetByID_CarDetail";
+        public static string Create_CarDetail => "usp_Create_CarDetail";
+        public static string Update_CarDetail => "usp_Update_CarDetail";
+        public static string Delete_CarDetail => "usp_Delete_CarDetail";
+        public static string GetALL_CarDetail => "usp_GetALL_CarDetail";
+        public static string GetByID_CarDetail => "usp_GetByID_CarDetail";
     }
 }

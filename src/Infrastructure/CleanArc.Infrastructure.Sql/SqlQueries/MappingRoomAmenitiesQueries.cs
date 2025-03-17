@@ -8,10 +8,7 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries
 {
     public static class MappingRoomAmenitiesQueries
     {
-        public static string Create_Mapping_RoomAmenities => "Create_Mapping_RoomAmenities";
-        //public static string Update_City => "Update_City";
-        //public static string Delete_City => "Delete_City";
-        //public static string usp_GetAll_City => "usp_GetAll_City";
-        //public static string usp_GetByID_City => "usp_GetByID_City";
+        public static string Create_Mapping_RoomAmenities => "usp_Create_RoomAmenityMapping";
+        public static string Update_Mapping_RoomAmenities => "usp_Update_RoomAmenityMapping";
     }
 }

@@ -77,8 +77,6 @@ public class CustomerReviewRepository : ICustomerReviewRepository
                 connection.Open();
                 CreateCustomerReviewDTO createCustomerReviewDTO = _mapper.Map<CreateCustomerReviewDTO>(CustomerReview);
                 var parameters = new DynamicParameters(createCustomerReviewDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 //parameters.Add("@", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CustomerReviewQueries.Create_CustomerReview, parameters, commandType: CommandType.StoredProcedure);
                 //var result = await connection.QuerySingleOrDefaultAsync<int>(CustomerReviewQueries.Create_CustomerReview, parameters, commandType: CommandType.StoredProcedure);
@@ -101,9 +99,7 @@ public class CustomerReviewRepository : ICustomerReviewRepository
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CustomerReviewQueries.Delete_CustomerReview, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
@@ -142,7 +138,7 @@ public class CustomerReviewRepository : ICustomerReviewRepository
                 //        Message = ("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output)
 
                 //};
-                var result = await connection.QueryAsync<CustomerReview>(CustomerReviewQueries.usp_GetALL_CustomerReview, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<CustomerReview>(CustomerReviewQueries.GetALL_CustomerReview, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
              
                 var response = new ListResponseWrapper<CustomerReview> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
@@ -162,7 +158,7 @@ public class CustomerReviewRepository : ICustomerReviewRepository
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<CustomerReview>(CustomerReviewQueries.usp_GetByID_CustomerReview, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<CustomerReview>(CustomerReviewQueries.GetByID_CustomerReview, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 var response = new SingleResponseWrapper<CustomerReview>
                 {
@@ -186,10 +182,8 @@ public class CustomerReviewRepository : ICustomerReviewRepository
                 connection.Open();
                 UpdateCustomerReviewDTO updateCustomerReviewDTO = _mapper.Map<UpdateCustomerReviewDTO>(entity);
                 var parameters = new DynamicParameters(updateCustomerReviewDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CustomerReviewQueries.Update_CustomerReview, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }

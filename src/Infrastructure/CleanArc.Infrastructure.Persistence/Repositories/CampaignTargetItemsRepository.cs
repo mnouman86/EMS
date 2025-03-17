@@ -77,8 +77,6 @@ public class CampaignTargetItemsRepository : ICampaignTargetItemsRepository
                 connection.Open();
                 CreateCampaignTargetItemsDTO createCampaignTargetItemsDTO = _mapper.Map<CreateCampaignTargetItemsDTO>(CampaignTargetItems);
                 var parameters = new DynamicParameters(createCampaignTargetItemsDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignTargetItemsQueries.Create_CampaignTargetItems, parameters, commandType: CommandType.StoredProcedure);
                
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
@@ -98,9 +96,7 @@ public class CampaignTargetItemsRepository : ICampaignTargetItemsRepository
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignTargetItemsQueries.Delete_CampaignTargetItems, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
@@ -139,7 +135,7 @@ public class CampaignTargetItemsRepository : ICampaignTargetItemsRepository
                 //        Message = ("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output)
 
                 //};
-                var result = await connection.QueryAsync<CampaignTargetItems>(CampaignTargetItemsQueries.usp_GetALL_CampaignTargetItems, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<CampaignTargetItems>(CampaignTargetItemsQueries.GetALL_CampaignTargetItems, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new ListResponseWrapper<CampaignTargetItems> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
             }
@@ -158,7 +154,7 @@ public class CampaignTargetItemsRepository : ICampaignTargetItemsRepository
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<CampaignTargetItems>(CampaignTargetItemsQueries.usp_GetByID_CampaignTargetItems, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<CampaignTargetItems>(CampaignTargetItemsQueries.GetByID_CampaignTargetItems, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
                 var response = new SingleResponseWrapper<CampaignTargetItems>
@@ -183,8 +179,6 @@ public class CampaignTargetItemsRepository : ICampaignTargetItemsRepository
                 connection.Open();
                 UpdateCampaignTargetItemsDTO updateCampaignTargetItemsDTO = _mapper.Map<UpdateCampaignTargetItemsDTO>(entity);
                 var parameters = new DynamicParameters(updateCampaignTargetItemsDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignTargetItemsQueries.Update_CampaignTargetItems, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;

@@ -76,11 +76,9 @@ public async Task<ResponseEntity> AddAsync(KBTiming KBTiming)
             connection.Open();
                 CreateKBTimingDTO createKBTimingDTO = _mapper.Map<CreateKBTimingDTO>(KBTiming);
                 var parameters = new DynamicParameters(createKBTimingDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBTimingQueries.Create_KBTiming, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result;
         }
     }
@@ -97,11 +95,9 @@ public async Task<ResponseEntity> AddAsync(KBTiming KBTiming)
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBTimingQueries.Delete_KBTiming, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
@@ -180,10 +176,8 @@ public async Task<ResponseEntity> AddAsync(KBTiming KBTiming)
                 connection.Open();
                 UpdateKBTimingDTO updateKBTimingDTO = _mapper.Map<UpdateKBTimingDTO>(entity);
                 var parameters = new DynamicParameters(updateKBTimingDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBTimingQueries.update_KBTiming, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBTimingQueries.Update_KBTiming, parameters, commandType: CommandType.StoredProcedure);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }

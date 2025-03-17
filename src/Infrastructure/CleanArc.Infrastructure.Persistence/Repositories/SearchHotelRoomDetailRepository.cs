@@ -99,7 +99,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 					parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
 					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-					var result = await connection.QueryAsync<SearchHotelRoomDetail>(SearchHotelRoomDetailQueries.usp_GetALLByHotelID_Rooms, parameters, commandType: CommandType.StoredProcedure);
+					var result = await connection.QueryAsync<SearchHotelRoomDetail>(SearchHotelRoomDetailQueries.GetALLByHotelID_Rooms, parameters, commandType: CommandType.StoredProcedure);
 					foreach (var item in result)
 					{
 						List<FilterParameter> FilterArray = new List<FilterParameter>();
@@ -113,8 +113,8 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 						parameter.Add("@FilterArray", DataTableHelper.ToDataTable(FilterArray), DbType.Object); // Ensure proper type
 						parameter.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 						parameter.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-						var imageList = await connection.QueryAsync<RoomImage>(RoomImagesQueries.usp_GetByHotelID_RoomImages, parameter, commandType: CommandType.StoredProcedure);
-						var amenitiesList = await connection.QueryAsync<RoomAmenities>(SearchRoomAmenitiesQueries.usp_GetByHotelID_RoomAmenities, parameter, commandType: CommandType.StoredProcedure);
+						var imageList = await connection.QueryAsync<RoomImage>(RoomImagesQueries.GetByHotelID_RoomImages, parameter, commandType: CommandType.StoredProcedure);
+						var amenitiesList = await connection.QueryAsync<RoomAmenities>(SearchRoomAmenitiesQueries.GetByHotelID_RoomAmenities, parameter, commandType: CommandType.StoredProcedure);
 						item.RoomImages = new List<RoomImage>();
 						item.RoomImages.AddRange(imageList);
 						item.RoomAmenities = new List<RoomAmenities>();

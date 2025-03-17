@@ -12,7 +12,7 @@ public static class ActivityAddressMappingQueries
     public static string Mapping_Update_ActivityAddress => "Mapping_Update_ActivityAddress";
     public static string Mapping_Delete_Activity_Image => "Mapping_Delete_Activity_Image";
     public static string Mapping_GetAll_Activity_Image => "Mapping_GetAll_Activity_Image";
-    public static string GetByActivityID_ActivityAddress => "GetByGenericID_GenericAddress";
+    public static string GetByActivityID_ActivityAddress => "usp_GetByGenericID_GenericAddress";
 
 
 }

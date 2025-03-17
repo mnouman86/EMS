@@ -96,14 +96,11 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
                 //}
                 var parameters = new DynamicParameters(createKBDetailDTO); 
                 //parameters.Add("@TimingsTable", timingsTable.AsTableValuedParameter("AvailabilityTableType"));
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                parameters.Add("@GenericTitleID", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBDetailQueries.Create_KBDetail, parameters, commandType: CommandType.StoredProcedure);
                 //var result = await connection.QuerySingleOrDefaultAsync<int>(KBDetailQueries.Create_KBDetail, parameters, commandType: CommandType.StoredProcedure);
 
                // var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBDetailQueries.Create_KBDetail, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result;
         }
     }
@@ -120,11 +117,9 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBDetailQueries.Delete_KBDetail, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
@@ -331,11 +326,8 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
                 //}
                 var parameters = new DynamicParameters(updateKBDetailDTO);
                 //parameters.Add("@TimingsTable", timingsTable.AsTableValuedParameter("AvailabilityTableType"));
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBDetailQueries.Update_KBDetail, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-                if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }

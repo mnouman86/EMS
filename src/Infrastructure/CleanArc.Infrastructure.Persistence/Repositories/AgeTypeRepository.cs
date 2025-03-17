@@ -93,8 +93,7 @@ public async Task<ResponseEntity> AddAsync(AgeType ageType)
 				parameters.Add("@ID", selectedIds);
 				parameters.Add("@CultureId", CultureId);
 				parameters.Add("@UpdatedBy", updatedBy);
-				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+				
 
 				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AgeTypeQueries.Delete_AgeType, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
@@ -118,7 +117,7 @@ public async Task<ResponseEntity> AddAsync(AgeType ageType)
 				parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
 				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-				var result = await connection.QueryAsync<AgeType>(AgeTypeQueries.usp_GetAll_AgeType, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QueryAsync<AgeType>(AgeTypeQueries.GetAll_AgeType, parameters, commandType: CommandType.StoredProcedure);
 
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 				var response = new ListResponseWrapper<AgeType> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
@@ -137,7 +136,7 @@ public async Task<ResponseEntity> AddAsync(AgeType ageType)
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 				parameters.Add("@CultureId", 1, DbType.Int32);
 				parameters.Add("@ID", id, DbType.Int32);
-				var result = await connection.QuerySingleOrDefaultAsync<AgeType>(AgeTypeQueries.usp_GetByID_AgeType, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QuerySingleOrDefaultAsync<AgeType>(AgeTypeQueries.GetByID_AgeType, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new SingleResponseWrapper<AgeType>
                 {
@@ -161,7 +160,7 @@ public async Task<ResponseEntity> AddAsync(AgeType ageType)
                 connection.Open();
                 UpdateAgeTypeDTO updateAgeTypeDTO = _mapper.Map<UpdateAgeTypeDTO>(entity);
 
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AgeTypeQueries.update_AgeType, updateAgeTypeDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AgeTypeQueries.Update_AgeType, updateAgeTypeDTO, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }

@@ -76,9 +76,7 @@ public async Task<ResponseEntity> AddAsync(PackageType PackageType)
             connection.Open();
                 CreatePackageTypeDTO createPackageTypeDTO = _mapper.Map<CreatePackageTypeDTO>(PackageType);
                 var parameters = new DynamicParameters(createPackageTypeDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+               
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(PackageTypeQueries.Create_PackageType, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
@@ -97,11 +95,9 @@ public async Task<ResponseEntity> AddAsync(PackageType PackageType)
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(PackageTypeQueries.Delete_PackageType, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
@@ -176,11 +172,9 @@ public async Task<ResponseEntity> AddAsync(PackageType PackageType)
                 connection.Open();
                 UpdatePackageTypeDTO updatePackageTypeDTO = _mapper.Map<UpdatePackageTypeDTO>(entity);
                 var parameters = new DynamicParameters(updatePackageTypeDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(PackageTypeQueries.Update_PackageType, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }

@@ -8,10 +8,9 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries
 {
     public static class RoomVisualQueries
     {
-        public static string Creat_RoomImage => "Creat_RoomImage";
-        public static string Delete_RoomImage => "Delete_RoomImage";
-        public static string usp_GetByID_RoomImage => "usp_GetByID_RoomImage";
-        //public static string usp_GetALL_CarDetail => "usp_GetALL_CarDetail";
-        public static string Update_RoomImage => "Update_RoomImage";
+        public static string Creat_RoomImage => "usp_Create_RoomImage";
+        public static string Delete_RoomImage => "usp_Delete_RoomImage";
+        public static string GetByID_RoomImage => "usp_GetByID_RoomImage";
+        public static string Update_RoomImage => "usp_Update_RoomImage";
     }
 }

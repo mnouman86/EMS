@@ -8,11 +8,11 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
 public static class ActivityTypeQueries
 {
-    public static string Create_ActivityType => "Create_ActivityType";
-    public static string update_ActivityType => "update_ActivityType";
-    public static string Delete_ActivityType => "Delete_ActivityType";
-    public static string usp_GetAll_ActivityType => "usp_GetAll_ActivityType";
-    public static string usp_GetByID_ActivityType => "usp_GetByID_ActivityType";
+    public static string Create_ActivityType => "usp_Create_ActivityType";
+    public static string Update_ActivityType => "usp_update_ActivityType";
+    public static string Delete_ActivityType => "usp_Delete_ActivityType";
+    public static string GetAll_ActivityType => "usp_GetAll_ActivityType";
+    public static string GetByID_ActivityType => "usp_GetByID_ActivityType";
 
 
 }

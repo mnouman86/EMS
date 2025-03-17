@@ -8,11 +8,11 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
 public static class ActivitySeasonMappingQueries
 {
-    public static string Mapping_Create_Seasons => "Create_Mapping_Seasons";
-    public static string Mapping_Update_Seasons => "Mapping_Update_Seasons";
-    public static string Mapping_Delete_Seasons => "Mapping_Delete_Seasons";
-    public static string Mapping_GetAll_Seasons => "Mapping_GetAll_Seasons";
-    public static string Mapping_GetByID_Seasons => "Mapping_GetByID_Seasons";
+    public static string Mapping_Create_Seasons => "usp_Create_SeasonMapping";
+    public static string Mapping_Update_Seasons => "usp_Update_SeasonMapping";
+    public static string Mapping_Delete_Seasons => "usp_Delete_SeasonMapping";
+    public static string Mapping_GetAll_Seasons => "usp_GetAll_SeasonMapping";
+    public static string Mapping_GetByID_Seasons => "usp_GetByID_SeasonMapping";
 
 
 }

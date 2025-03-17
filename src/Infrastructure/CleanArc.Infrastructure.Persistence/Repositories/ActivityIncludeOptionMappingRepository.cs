@@ -76,9 +76,7 @@ public async Task<ResponseEntity> AddAsync(ActivityIncludeOptionMapping Activity
             connection.Open();
                 CreateActivityIncludeOptionMappingDTO createActivityIncludeOptionMappingDTO = _mapper.Map<CreateActivityIncludeOptionMappingDTO>(ActivityIncludeOptionMapping);
                 var parameters = new DynamicParameters(createActivityIncludeOptionMappingDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityIncludeOptionMappingQueries.Mapping_Create_Seasons, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
@@ -97,9 +95,7 @@ public async Task<ResponseEntity> AddAsync(ActivityIncludeOptionMapping Activity
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityIncludeOptionMappingQueries.Mapping_Delete_Seasons, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
@@ -178,9 +174,7 @@ public async Task<ResponseEntity> AddAsync(ActivityIncludeOptionMapping Activity
                 connection.Open();
                 UpdateActivityIncludeOptionMappingDTO updateActivityIncludeOptionMappingDTO = _mapper.Map<UpdateActivityIncludeOptionMappingDTO>(entity);
                 var parameters = new DynamicParameters(updateActivityIncludeOptionMappingDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityIncludeOptionMappingQueries.Mapping_Update_Seasons, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;

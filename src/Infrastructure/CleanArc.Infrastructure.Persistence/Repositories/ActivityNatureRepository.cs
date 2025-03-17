@@ -76,9 +76,7 @@ public async Task<ResponseEntity> AddAsync(ActivityNature ActivityNature)
             connection.Open();
                 CreateActivityNatureDTO createActivityNatureDTO = _mapper.Map<CreateActivityNatureDTO>(ActivityNature);
                 var parameters = new DynamicParameters(createActivityNatureDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityNatureQueries.Create_ActivityNature, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
@@ -97,9 +95,7 @@ public async Task<ResponseEntity> AddAsync(ActivityNature ActivityNature)
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityNatureQueries.Delete_ActivityNature, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
@@ -177,10 +173,8 @@ public async Task<ResponseEntity> AddAsync(ActivityNature ActivityNature)
                 connection.Open();
                 UpdateActivityNatureDTO updateActivityNatureDTO = _mapper.Map<UpdateActivityNatureDTO>(entity);
                 var parameters = new DynamicParameters(updateActivityNatureDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityNatureQueries.update_ActivityNature, parameters, commandType: CommandType.StoredProcedure);
+                
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityNatureQueries.Update_ActivityNature, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }

@@ -76,9 +76,7 @@ public async Task<ResponseEntity> AddAsync(ActivityPerGroupPrice ActivityPerGrou
             connection.Open();
                 CreateActivityPerGroupPriceDTO createActivityPerGroupPriceDTO = _mapper.Map<CreateActivityPerGroupPriceDTO>(ActivityPerGroupPrice);
                 var parameters = new DynamicParameters(createActivityPerGroupPriceDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityPerGroupPriceQueries.Create_ActivityPerGroupPrice, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
@@ -97,9 +95,7 @@ public async Task<ResponseEntity> AddAsync(ActivityPerGroupPrice ActivityPerGrou
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityPerGroupPriceQueries.Delete_ActivityPerGroupPrice, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
@@ -177,9 +173,7 @@ public async Task<ResponseEntity> AddAsync(ActivityPerGroupPrice ActivityPerGrou
                 connection.Open();
                 UpdateActivityPerGroupPriceDTO updateActivityPerGroupPriceDTO = _mapper.Map<UpdateActivityPerGroupPriceDTO>(entity);
                 var parameters = new DynamicParameters(updateActivityPerGroupPriceDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityPerGroupPriceQueries.Update_ActivityPerGroupPrice, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;

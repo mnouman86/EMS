@@ -8,9 +8,9 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
 public static class HotelQueries
 {
-    public static string Create_Hotel => "Create_Hotel";
-    public static string update_Hotel => "update_Hotel";
-    public static string Delete_Hotel => "Delete_Hotel";
-    public static string usp_GetALL_Hotel => "usp_GetALL_Hotel";
-    public static string usp_GetByID_Hotel => "usp_GetByID_Hotel";
+    public static string Create_Hotel => "usp_Create_Hotel";
+    public static string Update_Hotel => "usp_update_Hotel";
+    public static string Delete_Hotel => "usp_Delete_Hotel";
+    public static string GetALL_Hotel => "usp_GetALL_Hotel";
+    public static string GetByID_Hotel => "usp_GetByID_Hotel";
 }

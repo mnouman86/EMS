@@ -63,14 +63,9 @@ public class RoomDetailsRepository : IRoomDetailsRepository
 				connection.Open();
 				CreateRoomDetailsDTO createRoomDetailsDTO = _mapper.Map<CreateRoomDetailsDTO>(roomDetails);
 				var parameters = new DynamicParameters(createRoomDetailsDTO);
-
-				parameters.Add("@cultureId", 1);
-				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-			
-
 				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomDetailQueries.Create_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+				//if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
 				return result;
 			}
 		}
@@ -87,11 +82,9 @@ public class RoomDetailsRepository : IRoomDetailsRepository
 				parameters.Add("@ID", selectedIds);
 				parameters.Add("@CultureId", CultureId);
 				parameters.Add("@UpdatedBy", updatedBy);
-				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+				
 				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomDetailQueries.Delete_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 				return result;
 			}
 		}
@@ -112,7 +105,7 @@ public class RoomDetailsRepository : IRoomDetailsRepository
 				parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
 				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-				var result = await connection.QueryAsync<RoomDetails>(RoomDetailQueries.usp_GetALL_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QueryAsync<RoomDetails>(RoomDetailQueries.GetALL_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
 
 
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
@@ -136,7 +129,7 @@ public class RoomDetailsRepository : IRoomDetailsRepository
 
 
 
-				var result = await connection.QuerySingleOrDefaultAsync<RoomDetails>(RoomDetailQueries.usp_GetByID_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QuerySingleOrDefaultAsync<RoomDetails>(RoomDetailQueries.GetByID_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 				//if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
 				var response = new SingleResponseWrapper<RoomDetails>
@@ -161,10 +154,7 @@ public class RoomDetailsRepository : IRoomDetailsRepository
 				connection.Open();
 				UpdateRoomDetailsDTO updateRoomDetailsDTO = _mapper.Map<UpdateRoomDetailsDTO>(roomDetails);
 				var parameters = new DynamicParameters(updateRoomDetailsDTO);
-				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-				parameters.Add("@CultureId", 1, DbType.Int32);
-
+				
 				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomDetailQueries.Update_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 				return result;

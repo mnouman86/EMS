@@ -63,22 +63,22 @@ public class AdminGetTokenQueryHandler : IRequestHandler<AdminGetTokenQuery, Ope
         _logger.LogInformation("Token generated from {@methodName}, Response: {@token}", methodName, token != null);
 
         // Add reward for successful login
-        var result = await _unitOfWork.UserAssignRewardsRepository.AddAsync(new Domain.Entities.UserAssignRewards.UserAssignRewards
-        {
-            UserID = user.Id,
-            RoleID = user.RoleId,
-            RewardRulesID = 2
-        });
+        //var result = await _unitOfWork.UserAssignRewardsRepository.AddAsync(new Domain.Entities.UserAssignRewards.UserAssignRewards
+        //{
+        //    UserID = user.Id,
+        //    RoleID = user.RoleId,
+        //    RewardRulesID = 2
+        //});
 
-        if (result != null) // Assuming AddAsync returns the entity or a success indicator
-        {
+        //if (result != null) // Assuming AddAsync returns the entity or a success indicator
+        //{
             await _unitOfWork.CommitAsync();
             _logger.LogInformation("User signup reward added for user: {UserID}", user.Id);
-        }
-        else
-        {
-            _logger.LogWarning("Failed to add signup reward for user: {UserID}", user.Id);
-        }
+        //}
+        //else
+        //{
+        //    _logger.LogWarning("Failed to add signup reward for user: {UserID}", user.Id);
+        //}
 
         return OperationResult<AccessToken>.SuccessResult(token);
     }

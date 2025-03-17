@@ -8,10 +8,10 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
 public static class CustomerAwarenessQueries
 {
-    public static string Create_CustomerAwareness => "Create_CustomerAwareness";
-    public static string Update_CustomerAwareness => "Update_CustomerAwareness";
-    public static string Delete_CustomerAwareness => "Delete_CustomerAwareness";
-    public static string usp_GetALL_CustomerAwareness => "GetALL_CustomerAwareness";
-    public static string usp_GetByID_CustomerAwareness => "GetByID_CustomerAwareness";
+    public static string Create_CustomerAwareness => "usp_Create_CustomerAwareness";
+    public static string Update_CustomerAwareness => "usp_Update_CustomerAwareness";
+    public static string Delete_CustomerAwareness => "usp_Delete_CustomerAwareness";
+    public static string GetALL_CustomerAwareness => "usp_GetALL_CustomerAwareness";
+    public static string GetByID_CustomerAwareness => "usp_GetByID_CustomerAwareness";
 
 }

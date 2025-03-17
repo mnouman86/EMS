@@ -81,15 +81,12 @@ public class ActivityRepository : IActivityRepository
 				CreateActivityDTO createActivityDTO = _mapper.Map<CreateActivityDTO>(Activity);
 				var parameters = new DynamicParameters(createActivityDTO);
 				//parameters.AddDynamicParams(createActivityDTO);
-				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-				parameters.Add("@ActivityID ", dbType: DbType.Int32, direction: ParameterDirection.Output);
-
+				
 				// var result = await connection.ExecuteScalarAsync(ActivityQueries.Create_Activity, parameters, commandType: CommandType.StoredProcedure);
 				//var result = await connection.QuerySingleOrDefaultAsync<int>(ActivityQueries.Create_Activity, parameters, commandType: CommandType.StoredProcedure);
 				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityQueries.Create_Activity, parameters, commandType: CommandType.StoredProcedure);
 
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
 				return result;
 			}
 		}
@@ -106,13 +103,12 @@ public class ActivityRepository : IActivityRepository
 				parameters.Add("@ID", selectedIds);
 				parameters.Add("@CultureId", CultureId);
 				parameters.Add("@UpdatedBy", updatedBy);
-				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+				
 				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityQueries.Delete_Activity, parameters, commandType: CommandType.StoredProcedure);
 				// var result = await connection.QuerySingleOrDefaultAsync<int>(ActivityQueries.Delete_Activity, parameters, commandType: CommandType.StoredProcedure);
 
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+				//if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
 				return result;
 			}
 		}
@@ -227,10 +223,10 @@ public class ActivityRepository : IActivityRepository
 				connection.Open();
 				UpdateActivityDTO updateActivityDTO = _mapper.Map<UpdateActivityDTO>(entity);
 				var parameters = new DynamicParameters(updateActivityDTO);
-				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+				//parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+				//parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityQueries.update_Activity, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityQueries.Update_Activity, parameters, commandType: CommandType.StoredProcedure);
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 				if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
 				return result;

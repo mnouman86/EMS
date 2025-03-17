@@ -70,11 +70,12 @@ public class BusinessTypeRepository : IBusinessTypeRepository
                 connection.Open();
                 CreateBusinessTypeDTO createBusinessTypeDTO = _mapper.Map<CreateBusinessTypeDTO>(BusinessType);
                 var parameters = new DynamicParameters(createBusinessTypeDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(BusinessTypeQueries.Create_BusinessType, createBusinessTypeDTO, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
@@ -90,11 +91,13 @@ public class BusinessTypeRepository : IBusinessTypeRepository
                 var parameters = new DynamicParameters();
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                parameters.Add("@CultureId", CultureId);
+                //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(BusinessTypeQueries.Delete_BusinessType, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
@@ -133,7 +136,7 @@ public class BusinessTypeRepository : IBusinessTypeRepository
                 //    Message = ("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output)
 
                 //};
-                var result = await connection.QueryAsync<BusinessType>(BusinessTypeQueries.usp_GetAll_BusinessType, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<BusinessType>(BusinessTypeQueries.GetAll_BusinessType, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 
                 var response = new ListResponseWrapper<BusinessType> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
@@ -152,7 +155,7 @@ public class BusinessTypeRepository : IBusinessTypeRepository
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
-                var result = await connection.QuerySingleOrDefaultAsync<BusinessType>(BusinessTypeQueries.usp_GetByID_BusinessType, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<BusinessType>(BusinessTypeQueries.GetByID_BusinessType, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 var response = new SingleResponseWrapper<BusinessType>
                 {
@@ -176,11 +179,11 @@ public class BusinessTypeRepository : IBusinessTypeRepository
                 connection.Open();
                 UpdateBusinessTypeDTO updateBusinessTypeDTO = _mapper.Map<UpdateBusinessTypeDTO>(BusinessType);
                 var parameters = new DynamicParameters(updateBusinessTypeDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(BusinessTypeQueries.Update_BusinessType, updateBusinessTypeDTO, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }

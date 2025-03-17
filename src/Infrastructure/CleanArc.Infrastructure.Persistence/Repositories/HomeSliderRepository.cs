@@ -77,9 +77,6 @@ public class HomeSliderRepository : IHomeSliderRepository
                 connection.Open();
                 CreateHomeSliderDTO createHomeSliderDTO = _mapper.Map<CreateHomeSliderDTO>(HomeSlider);
                 var parameters = new DynamicParameters(createHomeSliderDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-               // parameters.Add("@HomeSliderID", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HomeSliderQueries.Create_HomeSlider, parameters, commandType: CommandType.StoredProcedure);
                 //var result = await connection.QuerySingleOrDefaultAsync<int>(HomeSliderQueries.Create_HomeSlider, parameters, commandType: CommandType.StoredProcedure);
 
@@ -101,9 +98,7 @@ public class HomeSliderRepository : IHomeSliderRepository
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HomeSliderQueries.Delete_HomeSlider, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
@@ -142,7 +137,7 @@ public class HomeSliderRepository : IHomeSliderRepository
                 //        Message = ("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output)
 
                 //};
-                var result = await connection.QueryAsync<HomeSlider>(HomeSliderQueries.usp_GetALL_HomeSlider, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<HomeSlider>(HomeSliderQueries.GetALL_HomeSlider, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 
                 var response = new ListResponseWrapper<HomeSlider> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
@@ -162,7 +157,7 @@ public class HomeSliderRepository : IHomeSliderRepository
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<HomeSlider>(HomeSliderQueries.usp_GetByID_HomeSlider, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<HomeSlider>(HomeSliderQueries.GetByID_HomeSlider, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 var response = new SingleResponseWrapper<HomeSlider>
                 {
@@ -186,8 +181,6 @@ public class HomeSliderRepository : IHomeSliderRepository
                 connection.Open();
                 UpdateHomeSliderDTO updateHomeSliderDTO = _mapper.Map<UpdateHomeSliderDTO>(entity);
                 var parameters = new DynamicParameters(updateHomeSliderDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HomeSliderQueries.Update_HomeSlider, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;

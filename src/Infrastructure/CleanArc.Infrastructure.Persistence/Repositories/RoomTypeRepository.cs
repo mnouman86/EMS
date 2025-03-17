@@ -87,13 +87,12 @@ public class RoomTypeRepository : IRoomTypeRepository
 				parameters.Add("@ID", selectedIds);
 				parameters.Add("@CultureId", CultureId);
 				parameters.Add("@UpdatedBy", updatedBy);
-				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+				
 				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomTypeQueries.Delete_RoomType, parameters, commandType: CommandType.StoredProcedure);
                
 
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
 				return result;
 			}
         }
@@ -114,7 +113,7 @@ public class RoomTypeRepository : IRoomTypeRepository
 				parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
 				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-				var result = await connection.QueryAsync<RoomType>(RoomTypeQueries.usp_GetALL_RoomType, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QueryAsync<RoomType>(RoomTypeQueries.GetALL_RoomType, parameters, commandType: CommandType.StoredProcedure);
 
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 				var response = new ListResponseWrapper<RoomType> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
@@ -133,7 +132,7 @@ public class RoomTypeRepository : IRoomTypeRepository
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 				parameters.Add("@CultureId", 1, DbType.Int32);
 				parameters.Add("@ID", id, DbType.Int32);
-				var result = await connection.QuerySingleOrDefaultAsync<RoomType>(RoomTypeQueries.usp_GetByID_RoomType, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QuerySingleOrDefaultAsync<RoomType>(RoomTypeQueries.GetByID_RoomType, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new SingleResponseWrapper<RoomType>
                 {
@@ -157,11 +156,10 @@ public class RoomTypeRepository : IRoomTypeRepository
                 connection.Open();
                 UpdateRoomTypeDTO updateRoomTypeDTO = _mapper.Map<UpdateRoomTypeDTO>(roomType);
 				var parameters = new DynamicParameters(updateRoomTypeDTO);
-				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomTypeQueries.Update_RoomType, parameters, commandType: CommandType.StoredProcedure);
 
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
 				return result;
 			}
         }

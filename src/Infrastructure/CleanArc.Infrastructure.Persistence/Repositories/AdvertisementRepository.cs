@@ -76,8 +76,8 @@ public async Task<ResponseEntity> AddAsync(Advertisement Advertisement)
                 CreateAdvertisementDTO createAdvertisementDTO = _mapper.Map<CreateAdvertisementDTO>(Advertisement);
 
                 var parameters = new DynamicParameters(createAdvertisementDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementQueries.Create_Ads, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
@@ -96,11 +96,13 @@ public async Task<ResponseEntity> AddAsync(Advertisement Advertisement)
                 var parameters = new DynamicParameters();
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                parameters.Add("@CultureId", CultureId);
+                //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementQueries.Delete_Ads, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
@@ -124,7 +126,7 @@ public async Task<ResponseEntity> AddAsync(Advertisement Advertisement)
 				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                
-                var result = await connection.QueryAsync<Advertisement>(AdvertisementQueries.usp_GetALL_Ads, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<Advertisement>(AdvertisementQueries.GetALL_Ads, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 				var response = new ListResponseWrapper<Advertisement> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
 
@@ -144,7 +146,7 @@ public async Task<ResponseEntity> AddAsync(Advertisement Advertisement)
 				parameters.Add("@CultureId", 1, DbType.Int32);
 				parameters.Add("@ID", id, DbType.Int32);
 
-				var result = await connection.QuerySingleOrDefaultAsync<Advertisement>(AdvertisementQueries.usp_GetByID_Ads, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QuerySingleOrDefaultAsync<Advertisement>(AdvertisementQueries.GetByID_Ads, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new SingleResponseWrapper<Advertisement>
                 {
@@ -168,11 +170,9 @@ public async Task<ResponseEntity> AddAsync(Advertisement Advertisement)
                 connection.Open();
                 UpdateAdvertisementDTO updateAdvertisementDTO = _mapper.Map<UpdateAdvertisementDTO>(entity);
                 var parameters = new DynamicParameters(updateAdvertisementDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementQueries.Update_Ads, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }

@@ -76,9 +76,7 @@ public async Task<ResponseEntity> AddAsync(ActivitySeasonMapping ActivitySeasonM
             connection.Open();
                 CreateActivitySeasonMappingDTO createActivitySeasonMappingDTO = _mapper.Map<CreateActivitySeasonMappingDTO>(ActivitySeasonMapping);
                 var parameters = new DynamicParameters(createActivitySeasonMappingDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivitySeasonMappingQueries.Mapping_Create_Seasons, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
@@ -97,9 +95,7 @@ public async Task<ResponseEntity> AddAsync(ActivitySeasonMapping ActivitySeasonM
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivitySeasonMappingQueries.Mapping_Delete_Seasons, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
@@ -179,9 +175,7 @@ public async Task<ResponseEntity> AddAsync(ActivitySeasonMapping ActivitySeasonM
                 connection.Open();
                 UpdateActivitySeasonMappingDTO updateActivitySeasonMappingDTO = _mapper.Map<UpdateActivitySeasonMappingDTO>(entity);
                 var parameters = new DynamicParameters(updateActivitySeasonMappingDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivitySeasonMappingQueries.Mapping_Update_Seasons, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;

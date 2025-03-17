@@ -76,12 +76,10 @@ public async Task<ResponseEntity> AddAsync(UserExperience UserExperience)
             connection.Open();
                 CreateUserExperienceDTO createUserExperienceDTO = _mapper.Map<CreateUserExperienceDTO>(UserExperience);
                 var parameters = new DynamicParameters(createUserExperienceDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(UserExperienceQueries.Create_UserExperience, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
-            return result;
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                return result;
         }
     }
 }
@@ -97,11 +95,9 @@ public async Task<ResponseEntity> AddAsync(UserExperience UserExperience)
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(UserExperienceQueries.Delete_UserExperience, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
@@ -180,10 +176,8 @@ public async Task<ResponseEntity> AddAsync(UserExperience UserExperience)
                 connection.Open();
                 UpdateUserExperienceDTO updateUserExperienceDTO = _mapper.Map<UpdateUserExperienceDTO>(entity);
                 var parameters = new DynamicParameters(updateUserExperienceDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(UserExperienceQueries.update_UserExperience, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(UserExperienceQueries.Update_UserExperience, parameters, commandType: CommandType.StoredProcedure);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }

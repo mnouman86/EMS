@@ -81,10 +81,8 @@ public class HotelRepository : IHotelRepository
                 var parameters = new DynamicParameters();
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@UpdatedBy", updatedBy);
-				parameters.Add("@CultureId", 1);
-				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+				parameters.Add("@CultureId", CultureId);
+				
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelQueries.Delete_Hotel, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
@@ -108,7 +106,7 @@ public class HotelRepository : IHotelRepository
 				parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
 				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-				var result = await connection.QueryAsync<Hotel>(HotelQueries.usp_GetALL_Hotel, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QueryAsync<Hotel>(HotelQueries.GetALL_Hotel, parameters, commandType: CommandType.StoredProcedure);
 
 
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
@@ -130,7 +128,7 @@ public class HotelRepository : IHotelRepository
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 				parameters.Add("@CultureId", 1, DbType.Int32);
 				parameters.Add("@ID", id, DbType.Int32);
-				var result = await connection.QuerySingleOrDefaultAsync<Hotel>(HotelQueries.usp_GetByID_Hotel, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QuerySingleOrDefaultAsync<Hotel>(HotelQueries.GetByID_Hotel, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new SingleResponseWrapper<Hotel>
                 {
@@ -153,7 +151,7 @@ public class HotelRepository : IHotelRepository
                 connection.Open();
                 UpdateHotelDTO updateHotelDTO = _mapper.Map<UpdateHotelDTO>(hotel);
 
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelQueries.update_Hotel, updateHotelDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelQueries.Update_Hotel, updateHotelDTO, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }

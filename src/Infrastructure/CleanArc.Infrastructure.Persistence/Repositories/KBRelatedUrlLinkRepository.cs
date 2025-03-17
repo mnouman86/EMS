@@ -76,11 +76,9 @@ public async Task<ResponseEntity> AddAsync(KBRelatedUrlLink KBRelatedUrlLink)
             connection.Open();
                 CreateKBRelatedUrlLinkDTO createKBRelatedUrlLinkDTO = _mapper.Map<CreateKBRelatedUrlLinkDTO>(KBRelatedUrlLink);
                 var parameters = new DynamicParameters(createKBRelatedUrlLinkDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBRelatedUrlLinkQueries.Create_KB_RelatedUrlLink, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result;
         }
     }
@@ -97,11 +95,9 @@ public async Task<ResponseEntity> AddAsync(KBRelatedUrlLink KBRelatedUrlLink)
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBRelatedUrlLinkQueries.Delete_KB_RelatedUrlLink, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
@@ -137,7 +133,7 @@ public async Task<ResponseEntity> AddAsync(KBRelatedUrlLink KBRelatedUrlLink)
                 //        Message = ("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output)
 
                 //};
-                var result = await connection.QueryAsync<KBRelatedUrlLink>(KBRelatedUrlLinkQueries.usp_GetAll_KB_RelatedUrlLink, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<KBRelatedUrlLink>(KBRelatedUrlLinkQueries.GetAll_KB_RelatedUrlLink, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new ListResponseWrapper<KBRelatedUrlLink> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
             }
@@ -156,7 +152,7 @@ public async Task<ResponseEntity> AddAsync(KBRelatedUrlLink KBRelatedUrlLink)
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<KBRelatedUrlLink>(KBRelatedUrlLinkQueries.usp_GetByID_KB_RelatedUrlLink, parameters , commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<KBRelatedUrlLink>(KBRelatedUrlLinkQueries.GetByID_KB_RelatedUrlLink, parameters , commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 var response = new SingleResponseWrapper<KBRelatedUrlLink>
                 {
@@ -180,10 +176,8 @@ public async Task<ResponseEntity> AddAsync(KBRelatedUrlLink KBRelatedUrlLink)
                 connection.Open();
                 UpdateKBRelatedUrlLinkDTO updateKBRelatedUrlLinkDTO = _mapper.Map<UpdateKBRelatedUrlLinkDTO>(entity);
                 var parameters = new DynamicParameters(updateKBRelatedUrlLinkDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBRelatedUrlLinkQueries.update_KB_RelatedUrlLink, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBRelatedUrlLinkQueries.Update_KB_RelatedUrlLink, parameters, commandType: CommandType.StoredProcedure);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }

@@ -8,11 +8,11 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
 public static class AdvertisementPageQueries
 {
-    public static string Create_Page => "Create_Page";
-    public static string Update_Page => "Update_Page";
-    public static string Delete_Page => "Delete_Page";
-    public static string usp_GetALL_Page => "usp_GetALL_Page";
-    public static string usp_GetByID_Page => "usp_GetByID_Page";
+    public static string Create_Page => "usp_Create_AdsPage";
+    public static string Update_Page => "usp_Update_AdsPage";
+    public static string Delete_Page => "usp_Delete_AdsPage";
+    public static string GetALL_Page => "usp_GetAll_AdsPage";
+    public static string GetByID_Page => "usp_GetByID_AdsPage";
 
 
 }

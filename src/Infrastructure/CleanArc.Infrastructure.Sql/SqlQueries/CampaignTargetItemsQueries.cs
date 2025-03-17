@@ -11,7 +11,7 @@ public static class CampaignTargetItemsQueries
     public static string Create_CampaignTargetItems => "Create_CampaignTargetItems";
     public static string Update_CampaignTargetItems => "Update_CampaignTargetItem";
     public static string Delete_CampaignTargetItems => "Delete_CampaignTargetItem";
-    public static string usp_GetALL_CampaignTargetItems => "GetAll_CampaignTargetItem";
-    public static string usp_GetByID_CampaignTargetItems => "GetByID_CampaignTargetItem";
+    public static string GetALL_CampaignTargetItems => "GetAll_CampaignTargetItem";
+    public static string GetByID_CampaignTargetItems => "GetByID_CampaignTargetItem";
 
 }

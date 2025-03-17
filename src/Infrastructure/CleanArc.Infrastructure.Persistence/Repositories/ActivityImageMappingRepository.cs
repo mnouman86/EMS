@@ -95,10 +95,7 @@ public async Task<ResponseEntity> AddAsync(ActivityImageMapping activityImageMap
 				parameters.Add("@IsMain", activityImageMapping.IsMain);
 				parameters.Add("@CreatedBy", activityImageMapping.CreatedBy);
 				parameters.Add("@CultureId", 1, DbType.Int32);
-				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
-
+				
 				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityImageMappingQueries.Mapping_Create_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
@@ -117,9 +114,7 @@ public async Task<ResponseEntity> AddAsync(ActivityImageMapping activityImageMap
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityImageMappingQueries.Mapping_Delete_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
@@ -187,10 +182,7 @@ public async Task<ResponseEntity> AddAsync(ActivityImageMapping activityImageMap
                 connection.Open();
                 UpdateActivityImageMappingDTO updateActivityImageMappingDTO = _mapper.Map<UpdateActivityImageMappingDTO>(entity);
                 var parameters = new DynamicParameters(updateActivityImageMappingDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@CultureId", 1, DbType.Int32);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityImageMappingQueries.Mapping_Update_ActivityImage, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;

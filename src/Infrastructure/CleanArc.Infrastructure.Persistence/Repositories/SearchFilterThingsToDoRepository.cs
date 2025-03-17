@@ -220,7 +220,7 @@ public class SearchFilterThingsToDoRepository:ISearchFilterThingsToDoRepository
     //            parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
     //           // parameters.Add("@SearchFilterThingsToDoID ", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-    //            var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SearchFilterThingsToDoQueries.update_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
+    //            var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SearchFilterThingsToDoQueries.Update_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
     //             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
     //            return result;
     //        }

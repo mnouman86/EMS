@@ -84,7 +84,7 @@ public class SearchCarImageRepository : ISearchCarImageRepository
 				//parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				//parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-				var result = await connection.QueryAsync<SearchCarImage>(SearchCarImageQueries.usp_GetByCarID_CarImage, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QueryAsync<SearchCarImage>(SearchCarImageQueries.GetByCarID_CarImage, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new ListResponseWrapper<SearchCarImage> { Data = result.ToList() };
                 //var response = new ListResponseWrapper<SearchCarImage> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };

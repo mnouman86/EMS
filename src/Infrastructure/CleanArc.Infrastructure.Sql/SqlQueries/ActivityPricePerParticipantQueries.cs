@@ -9,10 +9,10 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 public static class ActivityPricePerParticipantQueries
 {
     public static string Create_ActivityPricePerParticipant => "Create_ActivityPricePerParticipant";
-    public static string Activity_Update_ActivityIDPerParticiption => "Activity_Update_ActivityIDPerParticiption";
+    public static string Activity_Update_ActivityIDPerParticiption => "usp_Update_ActivityIDPerParticiption";
     public static string Delete_ActivityPricePerParticipant => "Delete_ActivityPricePerParticipant";
-    public static string usp_GetAll_ActivityPricePerParticipant => "usp_GetAll_ActivityPricePerParticipant";
-    public static string usp_GetByID_ActivityPricePerParticipant => "usp_GetByID_ActivityPricePerParticipant";
+    public static string GetAll_ActivityPricePerParticipant => "usp_GetAll_ActivityPricePerParticipant";
+    public static string GetByID_ActivityPricePerParticipant => "usp_GetByID_ActivityPricePerParticipant";
 
 
 }

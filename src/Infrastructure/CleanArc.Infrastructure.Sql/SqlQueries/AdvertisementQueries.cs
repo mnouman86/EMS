@@ -8,11 +8,9 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
 public static class AdvertisementQueries
 {
-    public static string Create_Ads => "Create_Ads";
-    public static string Delete_Ads => "Delete_Ads";
-    public static string Update_Ads => "Update_Ads";
-    public static string usp_GetALL_Ads => "usp_GetALL_Ads";
-    public static string usp_GetByID_Ads => "usp_GetByID_Ads";
-
-
+    public static string Create_Ads => "usp_Create_Advertisement";
+    public static string Delete_Ads => "usp_Delete_Advertisement";
+    public static string Update_Ads => "usp_Update_Advertisement";
+    public static string GetALL_Ads => "usp_GetAll_Advertisement";
+    public static string GetByID_Ads => "usp_GetByID_Advertisement";
 }
