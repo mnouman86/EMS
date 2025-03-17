@@ -77,9 +77,7 @@ public async Task<ResponseEntity> AddAsync(ActivityAddress ActivityAddress)
             connection.Open();
                 CreateActivityAddressDTO createActivityAddressDTO = _mapper.Map<CreateActivityAddressDTO>(ActivityAddress);
                 var parameters = new DynamicParameters(createActivityAddressDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityAddressQueries.Create_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
@@ -98,9 +96,7 @@ public async Task<ResponseEntity> AddAsync(ActivityAddress ActivityAddress)
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityAddressQueries.Delete_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
@@ -170,10 +166,8 @@ public async Task<ResponseEntity> AddAsync(ActivityAddress ActivityAddress)
                 connection.Open();
                 UpdateActivityAddressDTO updateActivityAddressDTO = _mapper.Map<UpdateActivityAddressDTO>(entity);
                 var parameters = new DynamicParameters(updateActivityAddressDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityAddressQueries.update_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
+                
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityAddressQueries.Update_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }

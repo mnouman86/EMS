@@ -12,7 +12,31 @@ public class OperationResult<TResult>
     public bool IsNotFound { get; private set; }
     public static OperationResult<TResult> SuccessResult(TResult result, int statusCode=200, string message="Success")
     {
-        return new OperationResult<TResult>{Result = result,IsSuccess = true, StatusCode=statusCode,Message=message};
+        // return new OperationResult<TResult>{Result = result,IsSuccess = true, StatusCode=statusCode,Message=message};
+        if (result != null &&
+         result.GetType().GetProperty("Code")?.GetValue(result) != null &&
+         result.GetType().GetProperty("Message")?.GetValue(result) != null)
+        {
+            var code = (int)result.GetType().GetProperty("Code").GetValue(result);
+            var msg = result.GetType().GetProperty("Message").GetValue(result)?.ToString();
+
+            return new OperationResult<TResult>
+            {
+                Result = result,
+                IsSuccess = true,
+                StatusCode = code,
+                Message = msg
+            };
+        }
+
+        // Default behavior if result doesn't have Code and Message properties
+        return new OperationResult<TResult>
+        {
+            Result = result,
+            IsSuccess = true,
+            StatusCode = statusCode,
+            Message = message
+        };
     }
 
     //public static OperationResult<TResult> FailureResult(string message,TResult result=default, int statusCode=400)

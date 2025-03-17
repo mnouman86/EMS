@@ -86,7 +86,7 @@ public class SearchRoomAmenitiesRepository : ISearchRoomAmenitiesRepository
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
 
-				var result = await connection.QueryAsync<SearchRoomAmenities>(SearchRoomAmenitiesQueries.usp_GetByHotelID_RoomAmenities, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QueryAsync<SearchRoomAmenities>(SearchRoomAmenitiesQueries.GetByHotelID_RoomAmenities, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new ListResponseWrapper<SearchRoomAmenities> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };
                 return response;

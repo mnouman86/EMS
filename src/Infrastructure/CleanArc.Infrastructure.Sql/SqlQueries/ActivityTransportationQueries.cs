@@ -8,11 +8,11 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
 public static class ActivityTransportationQueries
 {
-    public static string Create_ActivityTransportation => "Create_Transportation";
-    public static string update_ActivityTransportation => "update_Transportation";
-    public static string Delete_ActivityTransportation => "Delete_Transportation";
-    public static string GetAll_Transportation => "GetAll_Transportation";
-    public static string GetByID_Transportation => "GetByID_Transportation";
+    public static string Create_ActivityTransportation => "usp_Create_Transportation";
+    public static string Update_ActivityTransportation => "usp_update_Transportation";
+    public static string Delete_ActivityTransportation => "usp_Delete_Transportation";
+    public static string GetAll_Transportation => "usp_GetAll_Transportation";
+    public static string GetByID_Transportation => "usp_GetByID_Transportation";
 
 
 }

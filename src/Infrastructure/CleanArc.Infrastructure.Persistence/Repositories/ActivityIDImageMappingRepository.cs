@@ -76,9 +76,7 @@ public async Task<ResponseEntity> AddAsync(ActivityIDImageMapping ActivityIDImag
             connection.Open();
                 CreateActivityIDImageMappingDTO createActivityIDImageMappingDTO = _mapper.Map<CreateActivityIDImageMappingDTO>(ActivityIDImageMapping);
                 var parameters = new DynamicParameters(createActivityIDImageMappingDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityIDImageMappingQueries.Mapping_Create_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
@@ -97,9 +95,7 @@ public async Task<ResponseEntity> AddAsync(ActivityIDImageMapping ActivityIDImag
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityIDImageMappingQueries.Mapping_Delete_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
@@ -139,9 +135,7 @@ public async Task<ResponseEntity> AddAsync(ActivityIDImageMapping ActivityIDImag
                 connection.Open();
                 UpdateActivityIDImageMappingDTO updateActivityIDImageMappingDTO = _mapper.Map<UpdateActivityIDImageMappingDTO>(entity);
                 var parameters = new DynamicParameters(updateActivityIDImageMappingDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityIDImageMappingQueries.Mapping_Update_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;

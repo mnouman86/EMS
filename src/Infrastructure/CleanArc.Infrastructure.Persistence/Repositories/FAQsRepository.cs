@@ -76,11 +76,9 @@ public async Task<ResponseEntity> AddAsync(FAQs FAQs)
             connection.Open();
                 CreateFAQsDTO createFAQsDTO = _mapper.Map<CreateFAQsDTO>(FAQs);
                 var parameters = new DynamicParameters(createFAQsDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(FAQsQueries.Create_FAQs, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result;
         }
     }
@@ -97,11 +95,9 @@ public async Task<ResponseEntity> AddAsync(FAQs FAQs)
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(FAQsQueries.Delete_FAQs, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
@@ -181,10 +177,8 @@ public async Task<ResponseEntity> AddAsync(FAQs FAQs)
                 connection.Open();
                 UpdateFAQsDTO updateFAQsDTO = _mapper.Map<UpdateFAQsDTO>(entity);
                 var parameters = new DynamicParameters(updateFAQsDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(FAQsQueries.update_FAQs, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(FAQsQueries.Update_FAQs, parameters, commandType: CommandType.StoredProcedure);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }

@@ -8,11 +8,11 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
 public static class ActivityAddressQueries
 {
-    public static string Create_ActivityAddress => "Create_GenericAddress";
-    public static string update_ActivityAddress => "Update_GenericAddress";
-    public static string Delete_ActivityAddress => "Delete_GenericAddress";
-    public static string GetAll_ActivityAddress => "GetAll_GenericAddress";
-    public static string GetByID_ActivityAddress => "GetByID_GenericAddress";
+    public static string Create_ActivityAddress => "usp_Create_GenericAddress";
+    public static string Update_ActivityAddress => "usp_Update_GenericAddress";
+    public static string Delete_ActivityAddress => "usp_Delete_GenericAddress";
+    public static string GetAll_ActivityAddress => "usp_GetAll_GenericAddress";
+    public static string GetByID_ActivityAddress => "usp_GetByID_GenericAddress";
 
 
 }

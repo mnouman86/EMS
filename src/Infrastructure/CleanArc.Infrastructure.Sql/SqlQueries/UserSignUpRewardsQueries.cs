@@ -8,7 +8,7 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
 public static class UserSignUpRewardsQueries
 {
-    public static string Create_UserSignUpRewards => "Create_UserAssignRewards";
+    public static string Create_UserSignUpRewards => "usp_Create_UserAssignRewards";
     
 
 }

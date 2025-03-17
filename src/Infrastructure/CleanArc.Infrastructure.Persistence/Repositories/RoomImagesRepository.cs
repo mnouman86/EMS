@@ -86,7 +86,7 @@ public class RoomImagesRepository : IRoomImagesRepository
 				parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
 				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-				var result = await connection.QueryAsync<RoomImages>(RoomImagesQueries.usp_GetByHotelID_RoomImages, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QueryAsync<RoomImages>(RoomImagesQueries.GetByHotelID_RoomImages, parameters, commandType: CommandType.StoredProcedure);
 
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 				var response = new ListResponseWrapper<RoomImages> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;

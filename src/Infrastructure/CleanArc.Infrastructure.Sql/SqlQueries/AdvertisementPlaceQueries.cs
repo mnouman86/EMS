@@ -8,11 +8,11 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
 public static class AdvertisementPlaceQueries
 {
-    public static string Create_Place => "Create_Place";
-    public static string Update_Place => "Update_Place";
-    public static string Delete_Place => "Delete_Place";
-    public static string usp_GetALL_Place => "usp_GetALL_Place";
-    public static string usp_GetByID_Place => "usp_GetByID_Place";
+    public static string Create_Place => "usp_Create_AdsPlace";
+    public static string Update_Place => "usp_Update_AdsPlace";
+    public static string Delete_Place => "usp_Delete_AdsPlace";
+    public static string GetALL_Place => "usp_GetAll_AdsPlace";
+    public static string GetByID_Place => "usp_GetByID_AdsPlace";
 
 
 }

@@ -76,9 +76,7 @@ public async Task<ResponseEntity> AddAsync(ActivitySchedule ActivitySchedule)
             connection.Open();
                 CreateActivityScheduleDTO createActivityScheduleDTO = _mapper.Map<CreateActivityScheduleDTO>(ActivitySchedule);
                 var parameters = new DynamicParameters(createActivityScheduleDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityScheduleQueries.Create_ActivitySchedule, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
@@ -97,9 +95,7 @@ public async Task<ResponseEntity> AddAsync(ActivitySchedule ActivitySchedule)
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityScheduleQueries.Delete_ActivitySchedule, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
@@ -123,7 +119,7 @@ public async Task<ResponseEntity> AddAsync(ActivitySchedule ActivitySchedule)
                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.QueryAsync<ActivitySchedule>(ActivityScheduleQueries.usp_GetAll_ActivitySchedule, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<ActivitySchedule>(ActivityScheduleQueries.GetAll_ActivitySchedule, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 var response = new ListResponseWrapper<ActivitySchedule> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
             }
@@ -142,7 +138,7 @@ public async Task<ResponseEntity> AddAsync(ActivitySchedule ActivitySchedule)
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<ActivitySchedule>(ActivityScheduleQueries.usp_GetByID_ActivitySchedule, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<ActivitySchedule>(ActivityScheduleQueries.GetByID_ActivitySchedule, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 
                 var response = new SingleResponseWrapper<ActivitySchedule>
@@ -167,10 +163,8 @@ public async Task<ResponseEntity> AddAsync(ActivitySchedule ActivitySchedule)
                 connection.Open();
                 UpdateActivityScheduleDTO updateActivityScheduleDTO = _mapper.Map<UpdateActivityScheduleDTO>(entity);
                 var parameters = new DynamicParameters(updateActivityScheduleDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityScheduleQueries.update_ActivitySchedule, parameters, commandType: CommandType.StoredProcedure);
+                
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityScheduleQueries.Update_ActivitySchedule, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }

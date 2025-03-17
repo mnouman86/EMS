@@ -8,11 +8,11 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
 public static class ActivityDisabilityOptionQueries
 {
-    public static string Create_ActivityDisabilityOption => "Create_DisabilityOptions";
-    public static string update_ActivityDisabilityOption => "update_DisabilityOptions";
-    public static string Delete_ActivityDisabilityOption => "Delete_DisabilityOptions";
-    public static string GetAll_DisabilityOptions => "GetAll_DisabilityOptions";
-    public static string GetByID_DisabilityOptions => "GetByID_DisabilityOptions";
+    public static string Create_ActivityDisabilityOption => "usp_Create_DisabilityOptions";
+    public static string Update_ActivityDisabilityOption => "usp_update_DisabilityOptions";
+    public static string Delete_ActivityDisabilityOption => "usp_Delete_DisabilityOptions";
+    public static string GetAll_DisabilityOptions => "usp_GetAll_DisabilityOptions";
+    public static string GetByID_DisabilityOptions => "usp_GetByID_DisabilityOptions";
 
 
 }

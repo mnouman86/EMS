@@ -77,9 +77,6 @@ public class CustomerAwarenessRepository : ICustomerAwarenessRepository
                 connection.Open();
                 CreateCustomerAwarenessDTO createCustomerAwarenessDTO = _mapper.Map<CreateCustomerAwarenessDTO>(CustomerAwareness);
                 var parameters = new DynamicParameters(createCustomerAwarenessDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                parameters.Add("@CustomerAwarenessID", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CustomerAwarenessQueries.Create_CustomerAwareness, parameters, commandType: CommandType.StoredProcedure);
                 //var result = await connection.QuerySingleOrDefaultAsync<int>(CustomerAwarenessQueries.Create_CustomerAwareness, parameters, commandType: CommandType.StoredProcedure);
 
@@ -101,11 +98,9 @@ public class CustomerAwarenessRepository : ICustomerAwarenessRepository
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CustomerAwarenessQueries.Delete_CustomerAwareness, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -142,7 +137,7 @@ public class CustomerAwarenessRepository : ICustomerAwarenessRepository
                 //        Message = ("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output)
 
                 //};
-                var result = await connection.QueryAsync<CustomerAwareness>(CustomerAwarenessQueries.usp_GetALL_CustomerAwareness, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<CustomerAwareness>(CustomerAwarenessQueries.GetALL_CustomerAwareness, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new ListResponseWrapper<CustomerAwareness> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
             }
@@ -161,7 +156,7 @@ public class CustomerAwarenessRepository : ICustomerAwarenessRepository
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<CustomerAwareness>(CustomerAwarenessQueries.usp_GetByID_CustomerAwareness, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<CustomerAwareness>(CustomerAwarenessQueries.GetByID_CustomerAwareness, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new SingleResponseWrapper<CustomerAwareness>
                 {
@@ -185,9 +180,7 @@ public class CustomerAwarenessRepository : ICustomerAwarenessRepository
                 connection.Open();
                 UpdateCustomerAwarenessDTO updateCustomerAwarenessDTO = _mapper.Map<UpdateCustomerAwarenessDTO>(entity);
                 var parameters = new DynamicParameters(updateCustomerAwarenessDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CustomerAwarenessQueries.Update_CustomerAwareness, parameters, commandType: CommandType.StoredProcedure);
+               var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CustomerAwarenessQueries.Update_CustomerAwareness, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }

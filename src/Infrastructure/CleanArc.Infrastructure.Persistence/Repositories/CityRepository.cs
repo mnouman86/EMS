@@ -85,9 +85,7 @@ public class CityRepository : ICityRepository
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@UpdatedBy", updatedBy);
                 parameters.Add("@CultureId", CultureId);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CityQueries.Delete_City, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
@@ -110,7 +108,7 @@ public class CityRepository : ICityRepository
 				parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
 				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-				var result = await connection.QueryAsync<City>(CityQueries.usp_GetAll_City, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QueryAsync<City>(CityQueries.GetAll_City, parameters, commandType: CommandType.StoredProcedure);
        
 
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
@@ -131,7 +129,7 @@ public class CityRepository : ICityRepository
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 				parameters.Add("@CultureId", 1, DbType.Int32);
 				parameters.Add("@ID", id, DbType.Int32);
-				var result = await connection.QuerySingleOrDefaultAsync<City>(CityQueries.usp_GetByID_City, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QuerySingleOrDefaultAsync<City>(CityQueries.GetByID_City, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new SingleResponseWrapper<City>
                 {

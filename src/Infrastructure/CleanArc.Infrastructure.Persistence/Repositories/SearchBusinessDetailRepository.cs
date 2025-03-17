@@ -104,7 +104,7 @@ public class SearchBusinessDetailRepository : ISearchBusinessDetailRepository
                         SortingArray = DataTableHelper.ToDataTable(ImagesSortingArray), // Convert list to DataTable
                         FilterArray = DataTableHelper.ToDataTable(ImagesFilterArray) // Convert list to DataTable
                     };
-                    var imageList = await connection.QueryAsync<SearchCarImage>(SearchCarImageQueries.usp_GetByCarID_CarImage, parameter, commandType: CommandType.StoredProcedure);
+                    var imageList = await connection.QueryAsync<SearchCarImage>(SearchCarImageQueries.GetByCarID_CarImage, parameter, commandType: CommandType.StoredProcedure);
                     item.CarImages = new List<SearchCarImage>();
                     item.CarImages.AddRange(imageList);
                 }

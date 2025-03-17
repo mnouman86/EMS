@@ -8,10 +8,10 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries
 {
     public static class ServiceCategoryQueries
     {
-        public static string Create_ServiceCategory => "Create_ServiceCategory";
-        public static string Update_ServiceCategory => "Update_ServiceCategory";
-        public static string Delete_ServiceCategory => "Delete_ServiceCategory";
-        public static string usp_GetALL_ServiceCategory => "usp_GetALL_ServiceCategory";
-        public static string usp_GetByID_ServiceCategory => "usp_GetByID_ServiceCategory";
+        public static string Create_ServiceCategory => "usp_Create_ServiceCategory";
+        public static string Update_ServiceCategory => "usp_Update_ServiceCategory";
+        public static string Delete_ServiceCategory => "usp_Delete_ServiceCategory";
+        public static string GetALL_ServiceCategory => "usp_GetALL_ServiceCategory";
+        public static string GetByID_ServiceCategory => "usp_GetByID_ServiceCategory";
     }
 }

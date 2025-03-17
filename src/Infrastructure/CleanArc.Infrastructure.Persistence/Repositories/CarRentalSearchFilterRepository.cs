@@ -104,8 +104,8 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                             SortingArray = DataTableHelper.ToDataTable(SortingArray), // Convert list to DataTable
                             FilterArray = DataTableHelper.ToDataTable(FilterArray) // Convert list to DataTable
                         };
-                        var imageList = await connection.QueryAsync<SearchCarImage>(SearchCarImageQueries.usp_GetByCarID_CarImage, parameter, commandType: CommandType.StoredProcedure);
-                        var amenitiesList = await connection.QueryAsync<SearchCarAmenities>(SearchCarAmenitiesQuery.usp_GetByCarID_CarAmenities, parameter, commandType: CommandType.StoredProcedure);
+                        var imageList = await connection.QueryAsync<SearchCarImage>(SearchCarImageQueries.GetByCarID_CarImage, parameter, commandType: CommandType.StoredProcedure);
+                        var amenitiesList = await connection.QueryAsync<SearchCarAmenities>(SearchCarAmenitiesQuery.GetByCarID_CarAmenities, parameter, commandType: CommandType.StoredProcedure);
                         item.SearchCarImage = new List<SearchCarImage>();
                         item.SearchCarImage.AddRange(imageList);
                         item.SearchCarAmenities = new List<SearchCarAmenities>();

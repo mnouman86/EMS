@@ -76,8 +76,6 @@ public async Task<ResponseEntity> AddAsync(ActivityIncludedOption ActivityInclud
             connection.Open();
                 CreateActivityIncludedOptionDTO createActivityIncludedOptionDTO = _mapper.Map<CreateActivityIncludedOptionDTO>(ActivityIncludedOption);
                 var parameters = new DynamicParameters(createActivityIncludedOptionDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityIncludedOptionQueries.Create_ActivityIncludedOption, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
@@ -96,9 +94,7 @@ public async Task<ResponseEntity> AddAsync(ActivityIncludedOption ActivityInclud
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@UpdatedBy", updatedBy);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityIncludedOptionQueries.Delete_ActivityIncludedOption, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
@@ -175,9 +171,9 @@ public async Task<ResponseEntity> AddAsync(ActivityIncludedOption ActivityInclud
                 connection.Open();
                 UpdateActivityIncludedOptionDTO updateActivityIncludedOptionDTO = _mapper.Map<UpdateActivityIncludedOptionDTO>(entity);
                 var parameters = new DynamicParameters(updateActivityIncludedOptionDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityIncludedOptionQueries.update_ActivityIncludedOption, parameters, commandType: CommandType.StoredProcedure);
+                //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityIncludedOptionQueries.Update_ActivityIncludedOption, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }

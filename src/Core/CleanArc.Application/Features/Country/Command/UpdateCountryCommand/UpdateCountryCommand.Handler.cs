@@ -56,7 +56,7 @@ namespace CleanArc.Application.Features.Country.Command.UpdateCountryCommand
 
                 //return OperationResult<ResponseEntity>.SuccessResult(result);
                 var result = await _unitOfWork.CountryRepository.UpdateAsync(new Domain.Entities.Country.Country()
-                { UpdatedBy = user.Id, ID = request.ID, Description = request.Description, Name = request.Name });
+                { UpdatedBy = user.Id, ID = request.ID, Description = request.Description, Name = request.Name,CultureId=request.CultureId });
                 await _unitOfWork.CommitAsync();
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
                 return OperationResult<ResponseEntity>.SuccessResult(result);

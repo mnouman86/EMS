@@ -76,11 +76,9 @@ public async Task<ResponseEntity> AddAsync(SubService SubService)
             connection.Open();
                 CreateSubServiceDTO createSubServiceDTO = _mapper.Map<CreateSubServiceDTO>(SubService);
                 var parameters = new DynamicParameters(createSubServiceDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SubServiceQueries.Create_SubService, createSubServiceDTO, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result;
         }
     }
@@ -97,11 +95,9 @@ public async Task<ResponseEntity> AddAsync(SubService SubService)
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SubServiceQueries.Delete_SubService, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
@@ -178,11 +174,9 @@ public async Task<ResponseEntity> AddAsync(SubService SubService)
                 connection.Open();
                 UpdateSubServiceDTO updateSubServiceDTO = _mapper.Map<UpdateSubServiceDTO>(entity);
                 var parameters = new DynamicParameters(updateSubServiceDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SubServiceQueries.update_SubService, updateSubServiceDTO, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SubServiceQueries.Update_SubService, updateSubServiceDTO, commandType: CommandType.StoredProcedure);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }

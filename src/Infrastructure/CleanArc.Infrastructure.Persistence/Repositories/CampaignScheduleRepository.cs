@@ -77,14 +77,12 @@ public class CampaignScheduleRepository : ICampaignScheduleRepository
                 connection.Open();
                 CreateCampaignScheduleDTO createCampaignScheduleDTO = _mapper.Map<CreateCampaignScheduleDTO>(CampaignSchedule);
                 var parameters = new DynamicParameters(createCampaignScheduleDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-               // parameters.Add("@CampaignScheduleID", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                // parameters.Add("@CampaignScheduleID", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignScheduleQueries.Create_CampaignSchedule, parameters, commandType: CommandType.StoredProcedure);
                 //var result = await connection.QuerySingleOrDefaultAsync<int>(CampaignScheduleQueries.Create_CampaignSchedule, parameters, commandType: CommandType.StoredProcedure);
 
                 // var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignScheduleQueries.Create_CampaignSchedule, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
@@ -101,11 +99,9 @@ public class CampaignScheduleRepository : ICampaignScheduleRepository
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignScheduleQueries.Delete_CampaignSchedule, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
@@ -142,7 +138,7 @@ public class CampaignScheduleRepository : ICampaignScheduleRepository
                 //        Message = ("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output)
 
                 //};
-                var result = await connection.QueryAsync<CampaignSchedule>(CampaignScheduleQueries.usp_GetALL_CampaignSchedule, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<CampaignSchedule>(CampaignScheduleQueries.GetALL_CampaignSchedule, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 
                 var response = new ListResponseWrapper<CampaignSchedule> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
@@ -162,7 +158,7 @@ public class CampaignScheduleRepository : ICampaignScheduleRepository
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<CampaignSchedule>(CampaignScheduleQueries.usp_GetByID_CampaignSchedule, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<CampaignSchedule>(CampaignScheduleQueries.GetByID_CampaignSchedule, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 var response = new SingleResponseWrapper<CampaignSchedule>
                 {
@@ -186,10 +182,8 @@ public class CampaignScheduleRepository : ICampaignScheduleRepository
                 connection.Open();
                 UpdateCampaignScheduleDTO updateCampaignScheduleDTO = _mapper.Map<UpdateCampaignScheduleDTO>(entity);
                 var parameters = new DynamicParameters(updateCampaignScheduleDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignScheduleQueries.Update_CampaignSchedule, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }

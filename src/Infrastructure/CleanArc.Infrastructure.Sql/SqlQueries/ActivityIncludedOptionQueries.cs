@@ -8,11 +8,11 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
 public static class ActivityIncludedOptionQueries
 {
-    public static string Create_ActivityIncludedOption => "Create_ActivityIncludedOption";
-    public static string update_ActivityIncludedOption => "update_ActivityIncludedOption";
-    public static string Delete_ActivityIncludedOption => "Delete_ActivityIncludedOption";
-    public static string LookUp_GetAll_IncludeOptions => "LookUp_GetAll_IncludeOptions";
-    public static string Mapping_GetByID_IncludeOptions => "Mapping_GetByID_IncludeOptions";
+    public static string Create_ActivityIncludedOption => "usp_Create_IncludeOption";
+    public static string Update_ActivityIncludedOption => "usp_Update_IncludeOption";
+    public static string Delete_ActivityIncludedOption => "usp_Delete_IncludeOption";
+    public static string LookUp_GetAll_IncludeOptions => "usp_GetALL_IncludeOption";
+    public static string Mapping_GetByID_IncludeOptions => "usp_GetByID_IncludeOption";
 
 
 }

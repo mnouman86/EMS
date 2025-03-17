@@ -76,11 +76,9 @@ public async Task<ResponseEntity> AddAsync(KBInterested KBInterested)
             connection.Open();
                 CreateKBInterestedDTO createKBInterestedDTO = _mapper.Map<CreateKBInterestedDTO>(KBInterested);
                 var parameters = new DynamicParameters(createKBInterestedDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBInterestedQueries.Create_Interested, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return result;
         }
     }
@@ -97,11 +95,9 @@ public async Task<ResponseEntity> AddAsync(KBInterested KBInterested)
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBInterestedQueries.Delete_Interested, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
@@ -181,10 +177,8 @@ public async Task<ResponseEntity> AddAsync(KBInterested KBInterested)
                 connection.Open();
                 UpdateKBInterestedDTO updateKBInterestedDTO = _mapper.Map<UpdateKBInterestedDTO>(entity);
                 var parameters = new DynamicParameters(updateKBInterestedDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBInterestedQueries.update_Interested, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBInterestedQueries.Update_Interested, parameters, commandType: CommandType.StoredProcedure);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }

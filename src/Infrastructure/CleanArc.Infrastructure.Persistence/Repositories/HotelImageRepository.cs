@@ -100,7 +100,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
         //                SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
         //                FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
         //            };
-        //            var result = await connection.QueryAsync<CarDetail>(CarDetailQueries.usp_GetALL_CarDetail, parameters, commandType: CommandType.StoredProcedure);
+        //            var result = await connection.QueryAsync<CarDetail>(CarDetailQueries.GetALL_CarDetail, parameters, commandType: CommandType.StoredProcedure);
         //             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
         //            var response = new ListResponseWrapper<ActivityAddressMapping> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
         //        }
@@ -119,7 +119,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 					parameters.Add("@ID", id);
 					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-					var result = await connection.QuerySingleOrDefaultAsync<Hotel_Image>(HotelImageQueries.usp_GetByID_HotelImage, parameters, commandType: CommandType.StoredProcedure);
+					var result = await connection.QuerySingleOrDefaultAsync<Hotel_Image>(HotelImageQueries.GetByID_HotelImage, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     var response = new SingleResponseWrapper<Hotel_Image>
                     {
@@ -141,10 +141,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     connection.Open();
                     UpdateHotelImageDTO updateHotelImageDTO = _mapper.Map<UpdateHotelImageDTO>(HotelImage);
 					var parameters = new DynamicParameters(updateHotelImageDTO);
-                    parameters.Add("@CultureID", 1);
-					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-					var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelImageQueries.Update_HotelImage, parameters, commandType: CommandType.StoredProcedure);
+                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelImageQueries.Update_HotelImage, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                     return result;
                 }
@@ -161,8 +158,6 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     parameters.Add("@ID", selectedIds);
 					parameters.Add("@CultureID", 1);
 					parameters.Add("@UpdatedBy", updatedBy);
-                    parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                    parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelImageQueries.Delete_HotelImage, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                     return result;

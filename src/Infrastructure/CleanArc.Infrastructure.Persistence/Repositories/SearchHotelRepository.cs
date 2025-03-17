@@ -105,7 +105,7 @@ public class SearchHotelRepository : ISearchHotelRepository
 					parameter.Add("@FilterArray", DataTableHelper.ToDataTable(ImagesFilterArray), DbType.Object); // Ensure proper type
 					parameter.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 					parameter.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-					var imageList = await connection.QueryAsync<HotelImage>(SearchHotelImageQueries.usp_GetByHotelID_HotelImage, parameter, commandType: CommandType.StoredProcedure);
+					var imageList = await connection.QueryAsync<HotelImage>(SearchHotelImageQueries.GetByHotelID_HotelImage, parameter, commandType: CommandType.StoredProcedure);
                     item.HotelImages = new List<HotelImage>();
                     item.HotelImages.AddRange(imageList);
                 }

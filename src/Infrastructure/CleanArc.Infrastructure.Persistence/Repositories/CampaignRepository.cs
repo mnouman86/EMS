@@ -77,14 +77,12 @@ public class CampaignRepository : ICampaignRepository
                 connection.Open();
                 CreateCampaignDTO createCampaignDTO = _mapper.Map<CreateCampaignDTO>(Campaign);
                 var parameters = new DynamicParameters(createCampaignDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-               // parameters.Add("@CampaignID", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                // parameters.Add("@CampaignID", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignQueries.Create_Campaign, parameters, commandType: CommandType.StoredProcedure);
                 //var result = await connection.QuerySingleOrDefaultAsync<int>(CampaignQueries.Create_Campaign, parameters, commandType: CommandType.StoredProcedure);
 
                 // var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignQueries.Create_Campaign, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
@@ -101,11 +99,9 @@ public class CampaignRepository : ICampaignRepository
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignQueries.Delete_Campaign, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
@@ -142,7 +138,7 @@ public class CampaignRepository : ICampaignRepository
                 //        Message = ("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output)
 
                 //};
-                var result = await connection.QueryAsync<Campaign>(CampaignQueries.usp_GetALL_Campaign, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<Campaign>(CampaignQueries.GetALL_Campaign, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 
                 var response = new ListResponseWrapper<Campaign> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
@@ -162,7 +158,7 @@ public class CampaignRepository : ICampaignRepository
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<Campaign>(CampaignQueries.usp_GetByID_Campaign, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<Campaign>(CampaignQueries.GetByID_Campaign, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 var response = new SingleResponseWrapper<Campaign>
                 {
@@ -186,10 +182,8 @@ public class CampaignRepository : ICampaignRepository
                 connection.Open();
                 UpdateCampaignDTO updateCampaignDTO = _mapper.Map<UpdateCampaignDTO>(entity);
                 var parameters = new DynamicParameters(updateCampaignDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignQueries.Update_Campaign, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }

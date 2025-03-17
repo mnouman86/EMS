@@ -76,8 +76,8 @@ public async Task<ResponseEntity> AddAsync(ActivityPricePerParticipant ActivityP
             connection.Open();
                 CreateActivityPricePerParticipantDTO createActivityPricePerParticipantDTO = _mapper.Map<CreateActivityPricePerParticipantDTO>(ActivityPricePerParticipant);
                 var parameters = new DynamicParameters(createActivityPricePerParticipantDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityPricePerParticipantQueries.Create_ActivityPricePerParticipant, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
@@ -97,9 +97,7 @@ public async Task<ResponseEntity> AddAsync(ActivityPricePerParticipant ActivityP
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityPricePerParticipantQueries.Delete_ActivityPricePerParticipant, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
@@ -137,7 +135,7 @@ public async Task<ResponseEntity> AddAsync(ActivityPricePerParticipant ActivityP
                 //        Message = ("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output)
 
                 //};
-                var result = await connection.QueryAsync<ActivityPricePerParticipant>(ActivityPricePerParticipantQueries.usp_GetAll_ActivityPricePerParticipant, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<ActivityPricePerParticipant>(ActivityPricePerParticipantQueries.GetAll_ActivityPricePerParticipant, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new ListResponseWrapper<ActivityPricePerParticipant> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
             }
@@ -156,7 +154,7 @@ public async Task<ResponseEntity> AddAsync(ActivityPricePerParticipant ActivityP
                 parameters.Add("@CultureId", 1, DbType.Int32);
                 parameters.Add("@ID", id, DbType.Int32);
 
-                var result = await connection.QuerySingleOrDefaultAsync<ActivityPricePerParticipant>(ActivityPricePerParticipantQueries.usp_GetByID_ActivityPricePerParticipant, parameters , commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<ActivityPricePerParticipant>(ActivityPricePerParticipantQueries.GetByID_ActivityPricePerParticipant, parameters , commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new SingleResponseWrapper<ActivityPricePerParticipant>
                 {
@@ -180,8 +178,6 @@ public async Task<ResponseEntity> AddAsync(ActivityPricePerParticipant ActivityP
                 connection.Open();
                 UpdateActivityPricePerParticipantDTO updateActivityPricePerParticipantDTO = _mapper.Map<UpdateActivityPricePerParticipantDTO>(entity);
                 var parameters = new DynamicParameters(updateActivityPricePerParticipantDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityPricePerParticipantQueries.Activity_Update_ActivityIDPerParticiption, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;

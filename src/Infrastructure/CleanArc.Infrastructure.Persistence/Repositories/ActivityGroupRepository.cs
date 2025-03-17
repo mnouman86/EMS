@@ -76,11 +76,9 @@ public async Task<ResponseEntity> AddAsync(ActivityGroup ActivityGroup)
             connection.Open();
                 CreateActivityGroupDTO createActivityGroupDTO = _mapper.Map<CreateActivityGroupDTO>(ActivityGroup);
                 var parameters = new DynamicParameters(createActivityGroupDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityGroupQueries.Create_Group, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
         }
     }
@@ -97,11 +95,9 @@ public async Task<ResponseEntity> AddAsync(ActivityGroup ActivityGroup)
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityGroupQueries.Delete_Group, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
@@ -177,11 +173,11 @@ public async Task<ResponseEntity> AddAsync(ActivityGroup ActivityGroup)
                 connection.Open();
                 UpdateActivityGroupDTO updateActivityGroupDTO = _mapper.Map<UpdateActivityGroupDTO>(entity);
                 var parameters = new DynamicParameters(updateActivityGroupDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityGroupQueries.update_Group, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityGroupQueries.Update_Group, parameters, commandType: CommandType.StoredProcedure);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }

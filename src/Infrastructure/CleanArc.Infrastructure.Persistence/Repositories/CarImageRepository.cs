@@ -85,10 +85,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 					parameters.Add("@IsMain", createCarImageDTO.IsMain);
 					parameters.Add("@CreatedBy", createCarImageDTO.CreatedBy);
 					parameters.Add("@CultureId", 1, DbType.Int32);
-					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
-
+					
 					var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CarImageQueries.Create_CarImage, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                     
@@ -125,7 +122,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
         //                SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
         //                FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
         //            };
-        //            var result = await connection.QueryAsync<CarDetail>(CarDetailQueries.usp_GetALL_CarDetail, parameters, commandType: CommandType.StoredProcedure);
+        //            var result = await connection.QueryAsync<CarDetail>(CarDetailQueries.GetALL_CarDetail, parameters, commandType: CommandType.StoredProcedure);
         //             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
         //            var response = new ListResponseWrapper<ActivityAddressMapping> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
         //        }
@@ -144,7 +141,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 					parameters.Add("@CultureId", 1, DbType.Int32);
 					parameters.Add("@ID", id, DbType.Int32);
-					var result = await connection.QuerySingleOrDefaultAsync<CarImage>(CarImageQueries.usp_GetByID_CarImage, parameters, commandType: CommandType.StoredProcedure);
+					var result = await connection.QuerySingleOrDefaultAsync<CarImage>(CarImageQueries.GetByID_CarImage, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     var response = new SingleResponseWrapper<CarImage>
                     {
@@ -182,8 +179,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     var parameters = new DynamicParameters();
                     parameters.Add("@ID", selectedIds);
                     parameters.Add("@UpdatedBy", updatedBy);
-                    parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                    parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                    parameters.Add("@CultureId", CultureId);
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CarImageQueries.Delete_CarImage, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                     return result;

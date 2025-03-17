@@ -76,9 +76,6 @@ public async Task<ResponseEntity> AddAsync(ActivityPrivateParticipant ActivityPr
             connection.Open();
                 CreateActivityPrivateParticipantDTO createActivityPrivateParticipantDTO = _mapper.Map<CreateActivityPrivateParticipantDTO>(ActivityPrivateParticipant);
                 var parameters = new DynamicParameters(createActivityPrivateParticipantDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityPrivateParticipantQueries.Create_ActivityPrivateParticipant, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
@@ -97,11 +94,10 @@ public async Task<ResponseEntity> AddAsync(ActivityPrivateParticipant ActivityPr
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityPrivateParticipantQueries.Delete_ActivityPrivateParticipant, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
             }
         }
@@ -177,11 +173,9 @@ public async Task<ResponseEntity> AddAsync(ActivityPrivateParticipant ActivityPr
                 connection.Open();
                 UpdateActivityPrivateParticipantDTO updateActivityPrivateParticipantDTO = _mapper.Map<UpdateActivityPrivateParticipantDTO>(entity);
                 var parameters = new DynamicParameters(updateActivityPrivateParticipantDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityPrivateParticipantQueries.update_ActivityPrivateParticipant, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityPrivateParticipantQueries.Update_ActivityPrivateParticipant, parameters, commandType: CommandType.StoredProcedure);
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }

@@ -92,7 +92,7 @@ public class SearchCountryCitiesRepository : ISearchCountryCitiesRepository
                     SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
                     FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 };
-                var result = await connection.QueryAsync<SearchCountryCities>(SearchCountryCitiesQueries.usp_GetALL_Cities, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<SearchCountryCities>(SearchCountryCitiesQueries.GetALL_Cities, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new ListResponseWrapper<SearchCountryCities> { Data = result.ToList() };return response;
             }

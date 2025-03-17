@@ -91,9 +91,7 @@ public async Task<ResponseEntity> AddAsync(AdvertisementPlace AdvertisementPlace
                 var parameters = new DynamicParameters();
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                parameters.Add("@CultureId", CultureId);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementPlaceQueries.Delete_Place, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
@@ -117,7 +115,7 @@ public async Task<ResponseEntity> AddAsync(AdvertisementPlace AdvertisementPlace
 				parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
 				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-				var result = await connection.QueryAsync<AdvertisementPlace>(AdvertisementPlaceQueries.usp_GetALL_Place, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QueryAsync<AdvertisementPlace>(AdvertisementPlaceQueries.GetALL_Place, parameters, commandType: CommandType.StoredProcedure);
               
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 				var response = new ListResponseWrapper<AdvertisementPlace> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
@@ -138,7 +136,7 @@ public async Task<ResponseEntity> AddAsync(AdvertisementPlace AdvertisementPlace
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 				parameters.Add("@CultureId", 1, DbType.Int32);
 				parameters.Add("@ID", id, DbType.Int32);
-				var result = await connection.QuerySingleOrDefaultAsync<AdvertisementPlace>(AdvertisementPlaceQueries.usp_GetByID_Place, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QuerySingleOrDefaultAsync<AdvertisementPlace>(AdvertisementPlaceQueries.GetByID_Place, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new SingleResponseWrapper<AdvertisementPlace>
                 {

@@ -88,11 +88,11 @@ public class BankRepository : IBankRepository
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(BankQueries.Delete_Bank, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
@@ -114,7 +114,7 @@ public class BankRepository : IBankRepository
 				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-				var result = await connection.QueryAsync<Bank>(BankQueries.usp_GetAll_Bank, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QueryAsync<Bank>(BankQueries.GetAll_Bank, parameters, commandType: CommandType.StoredProcedure);
 
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 				var response = new ListResponseWrapper<Bank> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
@@ -134,7 +134,7 @@ public class BankRepository : IBankRepository
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 				parameters.Add("@CultureId", 1, DbType.Int32);
 				parameters.Add("@ID", id, DbType.Int32);
-				var result = await connection.QuerySingleOrDefaultAsync<Bank>(BankQueries.usp_GetByID_Bank, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QuerySingleOrDefaultAsync<Bank>(BankQueries.GetByID_Bank, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new SingleResponseWrapper<Bank>
                 {

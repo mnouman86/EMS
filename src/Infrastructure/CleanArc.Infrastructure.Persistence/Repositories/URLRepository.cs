@@ -168,11 +168,9 @@ public class URLRepository:IURLRepository
                 var parameters = new DynamicParameters();
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                parameters.Add("@CultureId", CultureId);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(UrlQueries.DeleteURL, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }

@@ -8,12 +8,11 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
 public static class ActivityQueries
 {
-    public static string Create_Activity => "Create_Activity";
-    public static string update_Activity => "update_Activity";
-    public static string Delete_Activity => "Delete_Activity";
-    public static string GetAll_Activity => "GetAll_Activity";
-    //public static string GetAll_ActivitySearchDetail => "GetAll_ActivitySearchDetail";
-    public static string GetByID_Activity => "GetByID_Activity";
+    public static string Create_Activity => "[dbo].[usp_Create_Activity]";
+    public static string Update_Activity => "[dbo].[usp_Update_Activity]";
+    public static string Delete_Activity => "[dbo].[usp_Delete_Activity]";
+    public static string GetAll_Activity => "[dbo].[usp_GetAll_Activity]";
+    public static string GetByID_Activity => "[dbo].[usp_GetByID_Activity]";
 
 
 }

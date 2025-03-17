@@ -76,9 +76,7 @@ public async Task<ResponseEntity> AddAsync(ActivityDisabilityMapping ActivityDis
             connection.Open();
                 CreateActivityDisabilityMappingDTO createActivityDisabilityMappingDTO = _mapper.Map<CreateActivityDisabilityMappingDTO>(ActivityDisabilityMapping);
                 var parameters = new DynamicParameters(createActivityDisabilityMappingDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityDisabilityMappingQueries.Mapping_Create_Disability, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;
@@ -97,9 +95,7 @@ public async Task<ResponseEntity> AddAsync(ActivityDisabilityMapping ActivityDis
                 parameters.Add("@ID", selectedIds);
                 parameters.Add("@CultureId", CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
+                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityDisabilityMappingQueries.Mapping_Delete_Disability, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
                 return result;
@@ -180,8 +176,8 @@ public async Task<ResponseEntity> AddAsync(ActivityDisabilityMapping ActivityDis
                 connection.Open();
                 UpdateActivityDisabilityMappingDTO updateActivityDisabilityMappingDTO = _mapper.Map<UpdateActivityDisabilityMappingDTO>(entity);
                 var parameters = new DynamicParameters(updateActivityDisabilityMappingDTO);
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityDisabilityMappingQueries.Mapping_Update_Disability, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
