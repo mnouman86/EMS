@@ -20,6 +20,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Common;
+using System.Reflection.Metadata;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -68,24 +69,30 @@ public class SearchFilterStayRepository : ISearchFilterStayRepository
 			using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
 			{
 				connection.Open();
-				var parameters = new
-				{
-					PageNumber = searchRequest.PageNumber,
-					PageSize = searchRequest.PageSize,
-					Name = searchRequest.Name,
-					MaxPrice = searchRequest.MaxPrice,
-					MinPrice = searchRequest.MinPrice,
-					HotelAmenities = searchRequest.HotelAmenities,
-					RoomAmenities = searchRequest.RoomAmenities,
-					BathroomAmenities = searchRequest.BathroomAmenities,
-					RoomFeature = searchRequest.RoomFeature,
-					RoomView = searchRequest.RoomView,
-                    cultureId=searchRequest.CultureId,
-                    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
-					FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
+                var parameters = new DynamicParameters();
 
-				};
-				var result = await connection.QueryAsync<SearchHotelDetail>(SearchFilterStayQueries.GetAll_SearchDetail, parameters, commandType: CommandType.StoredProcedure);
+                // Add input parameters
+                parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+                parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                parameters.Add("@Name", searchRequest.Name, DbType.String);
+                parameters.Add("@MaxPrice", searchRequest.MaxPrice, DbType.Decimal);
+                parameters.Add("@MinPrice", searchRequest.MinPrice, DbType.Decimal);
+                parameters.Add("@HotelAmenities", searchRequest.HotelAmenities, DbType.String);
+                parameters.Add("@RoomAmenities", searchRequest.RoomAmenities, DbType.String);
+                parameters.Add("@BathroomAmenities", searchRequest.BathroomAmenities, DbType.String);
+                parameters.Add("@RoomFeature", searchRequest.RoomFeature, DbType.String);
+                parameters.Add("@RoomView", searchRequest.RoomView, DbType.String);
+                parameters.Add("@CultureId", searchRequest.CultureId, DbType.Int32);
+
+                // Convert List to DataTable and Add as Table-Valued Parameter (TVP)
+                parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object);
+                parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object);
+
+                // Add output parameters
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                var result = await connection.QueryAsync<SearchHotelDetail>(SearchFilterStayQueries.GetAll_SearchDetail, parameters, commandType: CommandType.StoredProcedure);
 				foreach (var item in result)
 				{
 					List<FilterParameter> ImagesFilterArray = new List<FilterParameter>();
