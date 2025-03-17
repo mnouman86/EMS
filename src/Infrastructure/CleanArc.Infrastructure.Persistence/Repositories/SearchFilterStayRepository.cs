@@ -80,7 +80,8 @@ public class SearchFilterStayRepository : ISearchFilterStayRepository
 					BathroomAmenities = searchRequest.BathroomAmenities,
 					RoomFeature = searchRequest.RoomFeature,
 					RoomView = searchRequest.RoomView,
-					SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
+                    cultureId=searchRequest.CultureId,
+                    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
 					FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
 
 				};
