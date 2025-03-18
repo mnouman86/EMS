@@ -74,13 +74,13 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
     /// <returns>An action result representing the operation result.</returns>
     //[Authorize]
     [HttpPost("[controller]GetAll")]
-    public async Task<IActionResult> GetAll([FromBody] TQuery model)
+    public async Task<IActionResult> GetAll([FromBody] TQuery query)
     {
         //dynamic query = Activator.CreateInstance(typeof(TQuery));
         ////var query = Activator.CreateInstance(typeof(TQuery)) as IQuery<OperationResult<List<TQueryResult>>>;
         ////string actionName = "GetAll";
         ////_logger.LogInformation("Executing generic implementation of {@actionName} action in {@controllerName} with query {@query}", actionName, controllerName, Activator.CreateInstance(typeof(TQuery)));
-        var result = await _sender.Send(model);
+        var result = await _sender.Send(query);
         ////_logger.LogInformation("Executed generic implementation of {@actionName} action in {@controllerName}", actionName, controllerName);
 
         
@@ -92,11 +92,11 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
     /// </summary>
     /// <param name="id">The ID of the entity.</param>
     /// <returns>An action result representing the operation result.</returns>
-    [HttpGet("[controller]GetById/{id}")]
-    public async Task<IActionResult> GetById(int id)
+    [HttpGet("[controller]GetById")]
+    public async Task<IActionResult> GetById([FromBody] TByIdQuery query)
     {
-        dynamic query = Activator.CreateInstance(typeof(TByIdQuery));
-        query.Id = id;
+        //dynamic query = Activator.CreateInstance(typeof(TByIdQuery));
+        //query.Id = id;
         var result = await _sender.Send(query);
         return OperationResult(result);
     }
@@ -109,10 +109,10 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
     /// 
    [Authorize]
     [HttpPost("[controller]Create")]
-    public async Task<IActionResult> Create([FromBody] TCreateCommand model)
+    public async Task<IActionResult> Create([FromBody] TCreateCommand command)
     {
-        SetUserId(model);
-        var commandResult = await _sender.Send(model);
+        SetUserId(command);
+        var commandResult = await _sender.Send(command);
         return OperationResult(commandResult);
     }
 
@@ -123,10 +123,10 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
     /// <returns>An action result representing the operation result.</returns>
     [Authorize]
     [HttpPost("[controller]Update")]
-    public async Task<IActionResult> Update([FromBody] TUpdateCommand model)
+    public async Task<IActionResult> Update([FromBody] TUpdateCommand command)
     {
-        SetUserId(model);
-        var commandResult = await _sender.Send(model);
+        SetUserId(command);
+        var commandResult = await _sender.Send(command);
         return OperationResult(commandResult);
     }
 
@@ -138,10 +138,10 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
     /// 
     [Authorize]
     [HttpPost("[controller]Delete")]
-    public async Task<IActionResult> Delete([FromBody] TDeleteCommand model)
+    public async Task<IActionResult> Delete([FromBody] TDeleteCommand command)
     {
-        SetUserId(model);
-        var commandResult = await _sender.Send(model);
+        SetUserId(command);
+        var commandResult = await _sender.Send(command);
         return OperationResult(commandResult);
     }
     /// <summary>
