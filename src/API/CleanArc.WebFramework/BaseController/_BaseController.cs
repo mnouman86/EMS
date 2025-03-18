@@ -92,7 +92,7 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
     /// </summary>
     /// <param name="id">The ID of the entity.</param>
     /// <returns>An action result representing the operation result.</returns>
-    [HttpGet("[controller]GetById")]
+    [HttpPost("[controller]GetById")]
     public async Task<IActionResult> GetById([FromBody] TByIdQuery query)
     {
         //dynamic query = Activator.CreateInstance(typeof(TByIdQuery));
