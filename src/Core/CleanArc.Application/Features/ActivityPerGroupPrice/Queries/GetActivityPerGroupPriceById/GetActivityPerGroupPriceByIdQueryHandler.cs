@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.ActivityPerGroupPrice.Queries.GetActivit
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var ActivityPerGroupPrice = await _unitOfWork.ActivityPerGroupPriceRepository.GetByIdAsync(request.Id);
+                //var ActivityPerGroupPrice = await _unitOfWork.ActivityPerGroupPriceRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (ActivityPerGroupPrice == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.ActivityPerGroupPrice.Queries.GetActivit
 
                 //return OperationResult<GetActivityPerGroupPriceByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.ActivityPerGroupPriceRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.ActivityPerGroupPriceRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

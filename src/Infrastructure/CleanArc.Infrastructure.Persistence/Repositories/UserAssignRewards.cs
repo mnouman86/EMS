@@ -106,7 +106,7 @@ public async Task<ResponseEntity> AddAsync(UserAssignRewards UserAssignRewards)
         throw new NotImplementedException();
     }
 
-    Task<SingleResponseWrapper<UserAssignRewards>> IRepository<UserAssignRewards>.GetByIdAsync(long id)
+    Task<SingleResponseWrapper<UserAssignRewards>> IRepository<UserAssignRewards>.GetByIdAsync(SearchRequestById searchRequestById)
     {
         throw new NotImplementedException();
     }

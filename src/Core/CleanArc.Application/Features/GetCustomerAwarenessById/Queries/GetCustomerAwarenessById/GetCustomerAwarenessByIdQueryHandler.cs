@@ -34,7 +34,7 @@ internal class GetCustomerAwarenessByIdQueryHandler : IRequestHandler<GetCustome
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            //var CustomerAwareness = await _unitOfWork.CustomerAwarenessRepository.GetByIdAsync(request.Id);
+            //var CustomerAwareness = await _unitOfWork.CustomerAwarenessRepository.GetByIdAsync(request.searchRequestById);
 
             //if (CustomerAwareness == null)
             //{
@@ -49,7 +49,7 @@ internal class GetCustomerAwarenessByIdQueryHandler : IRequestHandler<GetCustome
             //return OperationResult<GetCustomerAwarenessByIdQueryResult>.SuccessResult(result);
 
 
-            var response = await _unitOfWork.CustomerAwarenessRepository.GetByIdAsync(request.Id);
+            var response = await _unitOfWork.CustomerAwarenessRepository.GetByIdAsync(request.searchRequestById);
 
             if (response.Code != 200)
             {

@@ -11,8 +11,8 @@ public class GetAllServicesQueryResult
     public int ID { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
-    public int ServiceCategoryID { get; set; }
-    public string? ServiceCategoryName { get; set; }
+    //public int ServiceCategoryID { get; set; }
+    //public string? ServiceCategoryName { get; set; }
     public string Icon { get; set; }
     public bool IsActive { get; set; }
     public bool IsDeleted { get; set; }

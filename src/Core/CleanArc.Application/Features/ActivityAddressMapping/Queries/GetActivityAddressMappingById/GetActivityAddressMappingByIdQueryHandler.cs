@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.ActivityAddressMapping.Queries.GetActivi
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var ActivityAddressMapping = await _unitOfWork.ActivityAddressMappingRepository.GetByIdAsync(request.Id);
+                //var ActivityAddressMapping = await _unitOfWork.ActivityAddressMappingRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (ActivityAddressMapping == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.ActivityAddressMapping.Queries.GetActivi
 
                 //return OperationResult<GetActivityAddressMappingByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.ActivityAddressMappingRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.ActivityAddressMappingRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

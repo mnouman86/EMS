@@ -35,7 +35,7 @@ internal class GetCategoryByIdQueryHandler : IRequestHandler<GetCategoryByIdQuer
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            //var url = await _unitOfWork.CategoryRepository.GetByIdAsync(request.Id);
+            //var url = await _unitOfWork.CategoryRepository.GetByIdAsync(request.searchRequestById);
 
             //if (url == null)
             //{
@@ -49,7 +49,7 @@ internal class GetCategoryByIdQueryHandler : IRequestHandler<GetCategoryByIdQuer
 
             //return OperationResult<GetCategoryByIdQueryResult>.SuccessResult(result);
 
-            var response = await _unitOfWork.CategoryRepository.GetByIdAsync(request.Id);
+            var response = await _unitOfWork.CategoryRepository.GetByIdAsync(request.searchRequestById);
 
             if (response.Code != 200)
             {

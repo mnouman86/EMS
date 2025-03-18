@@ -14,7 +14,7 @@ using Azure.Core;
 
 namespace CleanArc.Application.Features.Service.Command.UpdateServiceCommand
 {
-    public record UpdateServiceCommand(int ID, String? Name, int? ServiceCategoryID, string? Description, string? Icon, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+    public record UpdateServiceCommand(int ID, string? Name, string? Description, int? CultureId, string? Icon) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateServiceCommand>
     {
         [JsonIgnore]
@@ -22,13 +22,13 @@ namespace CleanArc.Application.Features.Service.Command.UpdateServiceCommand
         public IValidator<UpdateServiceCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateServiceCommand> validator)
         {
             validator.RuleFor(c => c.Name)
+            .NotEmpty()
+            .NotNull()
+            .WithMessage("Please enter a valid Service Name");
+            validator.RuleFor(c => c.Icon)
                 .NotEmpty()
                 .NotNull()
-                .WithMessage("Please enter a valid Name");
-            validator.RuleFor(c => c.Description)
-                .NotEmpty()
-                .NotNull()
-                .WithMessage("Please enter a Description");
+                .WithMessage("Please enter a valid Google Icon code from https://fonts.google.com/icons");
             return validator;
         }
     }

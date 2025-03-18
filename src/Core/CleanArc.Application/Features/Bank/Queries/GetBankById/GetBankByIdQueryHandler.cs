@@ -34,7 +34,7 @@ namespace CleanArc.Application.Features.Bank.Queries.GetBankById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var bank = await _unitOfWork.BankRepository.GetByIdAsync(request.Id);
+                //var bank = await _unitOfWork.BankRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (bank == null)
                 //{
@@ -48,7 +48,7 @@ namespace CleanArc.Application.Features.Bank.Queries.GetBankById
 
                 //return OperationResult<GetBankByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.BankRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.BankRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

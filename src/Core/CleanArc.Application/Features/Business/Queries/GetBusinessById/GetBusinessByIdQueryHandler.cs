@@ -34,7 +34,7 @@ internal class GetBusinessByIdQueryHandler : IRequestHandler<GetBusinessByIdQuer
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            //var business= await _unitOfWork.BusinessRepository.GetByIdAsync(request.Id);
+            //var business= await _unitOfWork.BusinessRepository.GetByIdAsync(request.searchRequestById);
 
             //if (business == null)
             //{
@@ -48,7 +48,7 @@ internal class GetBusinessByIdQueryHandler : IRequestHandler<GetBusinessByIdQuer
 
             //return OperationResult<GetBusinessByIdQueryResult>.SuccessResult(result);
 
-            var response = await _unitOfWork.BusinessRepository.GetByIdAsync(request.Id);
+            var response = await _unitOfWork.BusinessRepository.GetByIdAsync(request.searchRequestById);
 
             if (response.Code != 200)
             {

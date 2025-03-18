@@ -34,7 +34,7 @@ internal class GetHomeSliderByIdQueryHandler : IRequestHandler<GetHomeSliderById
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            //var HomeSlider = await _unitOfWork.HomeSliderRepository.GetByIdAsync(request.Id);
+            //var HomeSlider = await _unitOfWork.HomeSliderRepository.GetByIdAsync(request.searchRequestById);
 
             //if (HomeSlider == null)
             //{
@@ -49,7 +49,7 @@ internal class GetHomeSliderByIdQueryHandler : IRequestHandler<GetHomeSliderById
             //return OperationResult<GetHomeSliderByIdQueryResult>.SuccessResult(result);
 
 
-            var response = await _unitOfWork.HomeSliderRepository.GetByIdAsync(request.Id);
+            var response = await _unitOfWork.HomeSliderRepository.GetByIdAsync(request.searchRequestById);
 
             if (response.Code != 200)
             {

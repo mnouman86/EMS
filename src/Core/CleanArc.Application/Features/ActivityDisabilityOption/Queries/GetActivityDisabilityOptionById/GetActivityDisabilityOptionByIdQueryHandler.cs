@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.ActivityDisabilityOption.Queries.GetActi
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var ActivityDisabilityOption = await _unitOfWork.ActivityDisabilityOptionRepository.GetByIdAsync(request.Id);
+                //var ActivityDisabilityOption = await _unitOfWork.ActivityDisabilityOptionRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (ActivityDisabilityOption == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.ActivityDisabilityOption.Queries.GetActi
 
                 //return OperationResult<GetActivityDisabilityOptionByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.ActivityDisabilityOptionRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.ActivityDisabilityOptionRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

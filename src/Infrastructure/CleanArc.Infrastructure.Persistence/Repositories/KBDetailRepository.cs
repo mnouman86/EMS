@@ -227,9 +227,9 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
             }
         }
     }
-    public async Task<SingleResponseWrapper<KBDetail>> GetByIdAsync(long id)
+    public async Task<SingleResponseWrapper<KBDetail>> GetByIdAsync(SearchRequestById searchRequestById)
     {
-        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequestById))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
@@ -237,8 +237,8 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
                 var parameters = new DynamicParameters();
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                parameters.Add("@CultureId", 1, DbType.Int32);
-                parameters.Add("@ID", id, DbType.Int32);
+                parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
+                parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
 
                
 
@@ -259,9 +259,9 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
         }
     }
 
-    public async Task<SingleResponseWrapper<KnowledgeBaseByID>> GetByIdAllAsync(long id)
+    public async Task<SingleResponseWrapper<KnowledgeBaseByID>> GetByIdAllAsync(SearchRequestById searchRequestById)
     {
-        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequestById))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
@@ -269,8 +269,8 @@ public async Task<ResponseEntity> AddAsync(KBDetail KBDetail)
                 var parameters = new DynamicParameters();
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                parameters.Add("@CultureId", 1, DbType.Int32);
-                parameters.Add("@ID", id, DbType.Int32);
+                parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
+                parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
 
                 var result = await connection.QueryMultipleAsync(KBDetailQueries.GetByID_KBAllDetails, parameters, commandType: CommandType.StoredProcedure);
                 // var kbDetailAll = resultKBDetail.ReadFirst<KBDetail>();

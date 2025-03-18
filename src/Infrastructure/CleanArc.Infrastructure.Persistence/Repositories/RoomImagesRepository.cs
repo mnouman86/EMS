@@ -96,7 +96,7 @@ public class RoomImagesRepository : IRoomImagesRepository
     }
 
 
-    public Task<SingleResponseWrapper<RoomImages>> GetByIdAsync(long id)
+    public Task<SingleResponseWrapper<RoomImages>> GetByIdAsync(SearchRequestById searchRequestById)
     {
         throw new NotImplementedException();
     }

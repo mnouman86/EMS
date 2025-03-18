@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.UserExperience.Queries.GetUserExperience
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var UserExperience = await _unitOfWork.UserExperienceRepository.GetByIdAsync(request.Id);
+                //var UserExperience = await _unitOfWork.UserExperienceRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (UserExperience == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.UserExperience.Queries.GetUserExperience
 
                 //return OperationResult<GetUserExperienceByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.UserExperienceRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.UserExperienceRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

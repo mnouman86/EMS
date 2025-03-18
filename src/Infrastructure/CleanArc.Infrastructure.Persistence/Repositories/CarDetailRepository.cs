@@ -112,9 +112,9 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 				}
             }
         }
-        public async Task<SingleResponseWrapper<CarDetail>> GetByIdAsync(long id)
+        public async Task<SingleResponseWrapper<CarDetail>> GetByIdAsync(SearchRequestById searchRequestById)
         {
-            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
+            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequestById))
             {
                 using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
                 {
@@ -122,8 +122,8 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 					var parameters = new DynamicParameters();
 					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-					parameters.Add("@CultureId", 1, DbType.Int32);
-					parameters.Add("@ID", id, DbType.Int32);
+					parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
+					parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
 					var result = await connection.QuerySingleOrDefaultAsync<CarDetail>(CarDetailQueries.GetByID_CarDetail, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     var response = new SingleResponseWrapper<CarDetail>

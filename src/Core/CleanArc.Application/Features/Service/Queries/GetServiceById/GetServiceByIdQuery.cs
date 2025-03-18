@@ -11,8 +11,4 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Service.Queries.GetServiceById;
 
-public class GetServiceByIdQuery : IRequest<OperationResult<GetServiceByIdQueryResult>>
-{
-    public int Id { get; set; }
-
-}
+public record GetServiceByIdQuery(SearchRequestById searchRequestById) : IRequest<OperationResult<GetServiceByIdQueryResult>>;

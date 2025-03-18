@@ -1,4 +1,5 @@
 ﻿using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.Request;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,5 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.GroupActivityParticipants.Queries.GetGroupActivityParticipantsById
 {
-    public class GetGroupActivityParticipantsByIdQuery:IRequest<OperationResult<GetGroupActivityParticipantsByIdQueryResult>>
-    {
-                public int Id { get; set; }
-
-}
+    public record GetGroupActivityParticipantsByIdQuery(SearchRequestById searchRequestById):IRequest<OperationResult<GetGroupActivityParticipantsByIdQueryResult>>;
 }

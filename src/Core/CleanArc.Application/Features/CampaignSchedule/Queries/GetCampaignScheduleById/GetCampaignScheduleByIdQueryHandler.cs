@@ -34,7 +34,7 @@ internal class GetCampaignScheduleByIdQueryHandler : IRequestHandler<GetCampaign
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            //var CampaignSchedule = await _unitOfWork.CampaignScheduleRepository.GetByIdAsync(request.Id);
+            //var CampaignSchedule = await _unitOfWork.CampaignScheduleRepository.GetByIdAsync(request.searchRequestById);
 
             //if (CampaignSchedule == null)
             //{
@@ -49,7 +49,7 @@ internal class GetCampaignScheduleByIdQueryHandler : IRequestHandler<GetCampaign
             //return OperationResult<GetCampaignScheduleByIdQueryResult>.SuccessResult(result);
 
 
-            var response = await _unitOfWork.CampaignScheduleRepository.GetByIdAsync(request.Id);
+            var response = await _unitOfWork.CampaignScheduleRepository.GetByIdAsync(request.searchRequestById);
 
             if (response.Code != 200)
             {

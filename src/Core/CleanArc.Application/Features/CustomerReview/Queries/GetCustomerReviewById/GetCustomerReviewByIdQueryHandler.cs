@@ -35,7 +35,7 @@ internal class GetCustomerReviewByIdQueryHandler : IRequestHandler<GetCustomerRe
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            //var CustomerReview = await _unitOfWork.CustomerReviewRepository.GetByIdAsync(request.Id);
+            //var CustomerReview = await _unitOfWork.CustomerReviewRepository.GetByIdAsync(request.searchRequestById);
 
             //if (CustomerReview == null)
             //{
@@ -50,7 +50,7 @@ internal class GetCustomerReviewByIdQueryHandler : IRequestHandler<GetCustomerRe
             //return OperationResult<GetCustomerReviewByIdQueryResult>.SuccessResult(result);
 
 
-            var response = await _unitOfWork.CustomerReviewRepository.GetByIdAsync(request.Id);
+            var response = await _unitOfWork.CustomerReviewRepository.GetByIdAsync(request.searchRequestById);
 
             if (response.Code != 200)
             {

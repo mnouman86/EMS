@@ -104,14 +104,14 @@ public class URLRepository:IURLRepository
     }
 
     /// <inheritdoc/>
-    public async Task<SingleResponseWrapper<URL>> GetByIdAsync(long id)
+    public async Task<SingleResponseWrapper<URL>> GetByIdAsync(SearchRequestById searchRequestById)
     {
-        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequestById))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection")))
             {
                 connection.Open();
-                var result = await connection.QuerySingleOrDefaultAsync<URL>(UrlQueries.UrlById, new { ID = id }, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<URL>(UrlQueries.UrlById, new { searchRequestById.Id,searchRequestById.CultureId }, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new SingleResponseWrapper<URL>
                 {

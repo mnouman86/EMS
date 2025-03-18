@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var ProcessOrder = await _unitOfWork.ProcessOrderRepository.GetByIdAsync(request.Id);
+                //var ProcessOrder = await _unitOfWork.ProcessOrderRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (ProcessOrder == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById
 
                 //return OperationResult<GetProcessOrderByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.ProcessOrderRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.ProcessOrderRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

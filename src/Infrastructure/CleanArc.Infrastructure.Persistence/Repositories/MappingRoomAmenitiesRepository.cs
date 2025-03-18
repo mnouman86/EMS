@@ -86,7 +86,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<SingleResponseWrapper<MappingRoomAmenities>> GetByIdAsync(long id)
+        public Task<SingleResponseWrapper<MappingRoomAmenities>> GetByIdAsync(SearchRequestById searchRequestById)
         {
             throw new NotImplementedException();
         }

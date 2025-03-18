@@ -1,4 +1,5 @@
 ﻿using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.Request;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,6 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.URL.Queries.GetURLById
 {
-    public class GetURLByIdQuery : IRequest<OperationResult<GetURLByIdQueryResult>>
-    {
-        public int Id { get; set; }
-    }
+    public record GetURLByIdQuery(SearchRequestById searchRequestById):
+        IRequest<OperationResult<GetURLByIdQueryResult>>;
 }

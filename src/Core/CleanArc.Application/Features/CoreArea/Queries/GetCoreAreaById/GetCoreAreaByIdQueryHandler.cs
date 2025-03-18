@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.CoreArea.Queries.GetCoreAreaById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var CoreArea = await _unitOfWork.CoreAreaRepository.GetByIdAsync(request.Id);
+                //var CoreArea = await _unitOfWork.CoreAreaRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (CoreArea == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.CoreArea.Queries.GetCoreAreaById
 
                 //return OperationResult<GetCoreAreaByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.CoreAreaRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.CoreAreaRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

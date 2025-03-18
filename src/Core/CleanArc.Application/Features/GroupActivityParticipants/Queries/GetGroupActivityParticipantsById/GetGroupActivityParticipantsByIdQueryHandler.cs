@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.GroupActivityParticipants.Queries.GetGro
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var GroupActivityParticipants = await _unitOfWork.GroupActivityParticipantsRepository.GetByIdAsync(request.Id);
+                //var GroupActivityParticipants = await _unitOfWork.GroupActivityParticipantsRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (GroupActivityParticipants == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.GroupActivityParticipants.Queries.GetGro
 
                 //return OperationResult<GetGroupActivityParticipantsByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.GroupActivityParticipantsRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.GroupActivityParticipantsRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

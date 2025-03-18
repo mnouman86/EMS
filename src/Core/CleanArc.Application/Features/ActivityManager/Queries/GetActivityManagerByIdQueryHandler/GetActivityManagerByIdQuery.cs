@@ -1,4 +1,5 @@
 ﻿using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.Request;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,6 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityManager.Queries.GetActivityManagerById
 {
-    public class GetActivityManagerByIdQuery:IRequest<OperationResult<GetActivityManagerByIdQueryResult>>
-    {
-                public int Id { get; set; }
-
-}
+    public record GetActivityManagerByIdQuery(SearchRequestById searchRequestById):IRequest<OperationResult<GetActivityManagerByIdQueryResult>>;
+   
 }

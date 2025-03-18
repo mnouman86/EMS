@@ -1,4 +1,5 @@
 ﻿using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.Request;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,6 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityImageMapping.Queries.GetActivityImageMappingById
 {
-    public class GetActivityImageMappingByIdQuery:IRequest<OperationResult<GetActivityImageMappingByIdQueryResult>>
-    {
-                public int Id { get; set; }
-
-}
+    public record GetActivityImageMappingByIdQuery(SearchRequestById searchRequestById):IRequest<OperationResult<GetActivityImageMappingByIdQueryResult>>;
+    
 }

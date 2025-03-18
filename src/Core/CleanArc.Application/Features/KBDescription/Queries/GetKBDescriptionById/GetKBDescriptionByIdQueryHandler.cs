@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.KBDescription.Queries.GetKBDescriptionBy
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var KBDescription = await _unitOfWork.KBDescriptionRepository.GetByIdAsync(request.Id);
+                //var KBDescription = await _unitOfWork.KBDescriptionRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (KBDescription == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.KBDescription.Queries.GetKBDescriptionBy
 
                 //return OperationResult<GetKBDescriptionByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.KBDescriptionRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.KBDescriptionRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

@@ -34,7 +34,7 @@ namespace CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var HotelImage = await _unitOfWork.HotelImageRepository.GetByIdAsync(request.Id);
+                //var HotelImage = await _unitOfWork.HotelImageRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (HotelImage == null)
                 //{
@@ -48,7 +48,7 @@ namespace CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById
 
                 //return OperationResult<GetHotelImageByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.HotelImageRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.HotelImageRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

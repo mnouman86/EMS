@@ -1,4 +1,5 @@
 ﻿using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.Request;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,6 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetKBRelatedUrlLinkById
 {
-    public class GetKBRelatedUrlLinkByIdQuery:IRequest<OperationResult<GetKBRelatedUrlLinkByIdQueryResult>>
-    {
-                public int Id { get; set; }
+    public record GetKBRelatedUrlLinkByIdQuery(SearchRequestById searchRequestById):IRequest<OperationResult<GetKBRelatedUrlLinkByIdQueryResult>>;
 
-}
 }

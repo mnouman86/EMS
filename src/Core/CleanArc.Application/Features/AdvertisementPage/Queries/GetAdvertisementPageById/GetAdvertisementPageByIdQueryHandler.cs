@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.AdvertisementPage.Queries.GetAdvertiseme
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var AdvertisementPage = await _unitOfWork.AdvertisementPageRepository.GetByIdAsync(request.Id);
+                //var AdvertisementPage = await _unitOfWork.AdvertisementPageRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (AdvertisementPage == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.AdvertisementPage.Queries.GetAdvertiseme
 
                 //return OperationResult<GetAdvertisementPageByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.AdvertisementPageRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.AdvertisementPageRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

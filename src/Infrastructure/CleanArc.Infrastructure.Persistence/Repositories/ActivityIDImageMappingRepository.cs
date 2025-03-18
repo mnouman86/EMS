@@ -113,15 +113,14 @@ public async Task<ResponseEntity> AddAsync(ActivityIDImageMapping ActivityIDImag
                 var parameters = new DynamicParameters();
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                parameters.Add("@CultureId", 1, DbType.Int32);
-                parameters.Add("@ID", searchRequest.Id, DbType.Int32);
+                parameters.Add("@CultureId", searchRequest.CultureId, DbType.Int32);
                 var result = await connection.QueryAsync<ActivityIDImageMapping>(ActivityIDImageMappingQueries.Mapping_GetByActivityID_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 var response = new ListResponseWrapper<ActivityIDImageMapping> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
             }
         }
     }
-    public Task<SingleResponseWrapper<ActivityIDImageMapping>> GetByIdAsync(long id)
+    public Task<SingleResponseWrapper<ActivityIDImageMapping>> GetByIdAsync(SearchRequestById searchRequestById)
     {
         throw new NotImplementedException();
     }

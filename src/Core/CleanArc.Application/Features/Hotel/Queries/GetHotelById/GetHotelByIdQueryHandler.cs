@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.Hotel.Queries.GetHotelById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var hotel = await _unitOfWork.HotelRepository.GetByIdAsync(request.Id);
+                //var hotel = await _unitOfWork.HotelRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (hotel == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.Hotel.Queries.GetHotelById
 
                 //return OperationResult<GetHotelByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.HotelRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.HotelRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

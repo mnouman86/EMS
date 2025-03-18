@@ -95,7 +95,7 @@ public async Task<ResponseEntity> AddAsync(UserSignUpRewards UserSignUpRewards)
         throw new NotImplementedException();
     }
 
-    public Task<SingleResponseWrapper<UserSignUpRewards>> GetByIdAsync(long id)
+    public Task<SingleResponseWrapper<UserSignUpRewards>> GetByIdAsync(SearchRequestById searchRequestById)
     {
         throw new NotImplementedException();
     }

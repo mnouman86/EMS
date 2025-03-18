@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.KBWhenToVisit.Queries.GetKBWhenToVisitBy
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var KBWhenToVisit = await _unitOfWork.KBWhenToVisitRepository.GetByIdAsync(request.Id);
+                //var KBWhenToVisit = await _unitOfWork.KBWhenToVisitRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (KBWhenToVisit == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.KBWhenToVisit.Queries.GetKBWhenToVisitBy
 
                 //return OperationResult<GetKBWhenToVisitByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.KBWhenToVisitRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.KBWhenToVisitRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

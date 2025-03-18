@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.ActivitySchedule.Queries.GetActivitySche
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var ActivitySchedule = await _unitOfWork.ActivityScheduleRepository.GetByIdAsync(request.Id);
+                //var ActivitySchedule = await _unitOfWork.ActivityScheduleRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (ActivitySchedule == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.ActivitySchedule.Queries.GetActivitySche
 
                 //return OperationResult<GetActivityScheduleByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.ActivityScheduleRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.ActivityScheduleRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

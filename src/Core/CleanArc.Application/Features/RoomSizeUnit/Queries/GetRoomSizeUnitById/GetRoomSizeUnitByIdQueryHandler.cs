@@ -36,7 +36,7 @@ internal class GetRoomSizeUnitByIdQueryHandler : IRequestHandler<GetRoomSizeUnit
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            //var roomSizeUnit = await _unitOfWork.RoomSizeUnitReposirory.GetByIdAsync(request.Id);
+            //var roomSizeUnit = await _unitOfWork.RoomSizeUnitReposirory.GetByIdAsync(request.searchRequestById);
 
             //if (roomSizeUnit == null)
             //{
@@ -50,7 +50,7 @@ internal class GetRoomSizeUnitByIdQueryHandler : IRequestHandler<GetRoomSizeUnit
 
             //return OperationResult<GetRoomSizeUnitByIdQueryResult>.SuccessResult(result);
 
-            var response = await _unitOfWork.RoomSizeUnitReposirory.GetByIdAsync(request.Id);
+            var response = await _unitOfWork.RoomSizeUnitReposirory.GetByIdAsync(request.searchRequestById);
 
             if (response.Code != 200)
             {

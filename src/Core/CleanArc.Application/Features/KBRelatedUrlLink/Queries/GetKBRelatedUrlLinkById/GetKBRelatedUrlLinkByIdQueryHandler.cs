@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetKBRelatedUrl
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var KBRelatedUrlLink = await _unitOfWork.KBRelatedUrlLinkRepository.GetByIdAsync(request.Id);
+                //var KBRelatedUrlLink = await _unitOfWork.KBRelatedUrlLinkRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (KBRelatedUrlLink == null)
                 //{
@@ -48,7 +48,7 @@ namespace CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetKBRelatedUrl
                 //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
                 //return OperationResult<GetKBRelatedUrlLinkByIdQueryResult>.SuccessResult(result);
-                var response = await _unitOfWork.KBRelatedUrlLinkRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.KBRelatedUrlLinkRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

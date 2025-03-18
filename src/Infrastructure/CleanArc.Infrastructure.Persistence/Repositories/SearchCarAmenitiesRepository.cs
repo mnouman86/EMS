@@ -92,7 +92,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             }
         }
 
-        public Task<SingleResponseWrapper<SearchCarAmenities>> GetByIdAsync(long id)
+        public Task<SingleResponseWrapper<SearchCarAmenities>> GetByIdAsync(SearchRequestById searchRequestById)
         {
             throw new NotImplementedException();
         }

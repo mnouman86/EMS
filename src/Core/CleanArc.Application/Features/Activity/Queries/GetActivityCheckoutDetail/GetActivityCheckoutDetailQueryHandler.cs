@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.Activity.Queries.GetActivityCheckoutDeta
 
                 //return OperationResult<GetActivityCheckoutDetailQueryResult>.SuccessResult(result);
 
-				var response = await _unitOfWork.ActivityRepository.GetActivityCheckoutDetailAsync(request.Id, request.UserId);
+				var response = await _unitOfWork.ActivityRepository.GetActivityCheckoutDetailAsync(request);
 
 				if (response.Code != 200)
 				{

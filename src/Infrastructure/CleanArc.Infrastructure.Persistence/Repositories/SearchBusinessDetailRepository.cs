@@ -114,7 +114,7 @@ public class SearchBusinessDetailRepository : ISearchBusinessDetailRepository
         }
     }
 
-    public Task<SingleResponseWrapper<SearchBusinessDetail>> GetByIdAsync(long id)
+    public Task<SingleResponseWrapper<SearchBusinessDetail>> GetByIdAsync(SearchRequestById searchRequestById)
     {
         throw new NotImplementedException();
     }

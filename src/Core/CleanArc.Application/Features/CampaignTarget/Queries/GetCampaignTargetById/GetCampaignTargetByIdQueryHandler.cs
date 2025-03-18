@@ -35,7 +35,7 @@ internal class GetCampaignTargetByIdQueryHandler : IRequestHandler<GetCampaignTa
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            //var CampaignTarget = await _unitOfWork.CampaignTargetRepository.GetByIdAsync(request.Id);
+            //var CampaignTarget = await _unitOfWork.CampaignTargetRepository.GetByIdAsync(request.searchRequestById);
 
             //if (CampaignTarget == null)
             //{
@@ -50,7 +50,7 @@ internal class GetCampaignTargetByIdQueryHandler : IRequestHandler<GetCampaignTa
             //return OperationResult<GetCampaignTargetByIdQueryResult>.SuccessResult(result);
 
 
-            var response = await _unitOfWork.CampaignTargetRepository.GetByIdAsync(request.Id);
+            var response = await _unitOfWork.CampaignTargetRepository.GetByIdAsync(request.searchRequestById);
 
             if (response.Code != 200)
             {

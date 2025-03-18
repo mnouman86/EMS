@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.KBTiming.Queries.GetKBTimingById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var KBTiming = await _unitOfWork.KBTimingRepository.GetByIdAsync(request.Id);
+                //var KBTiming = await _unitOfWork.KBTimingRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (KBTiming == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.KBTiming.Queries.GetKBTimingById
 
                 //return OperationResult<GetKBTimingByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.KBTimingRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.KBTimingRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

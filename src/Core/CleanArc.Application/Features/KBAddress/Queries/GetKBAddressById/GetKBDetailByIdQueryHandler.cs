@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.KBAddress.Queries.GetKBAddressById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var KBAddress = await _unitOfWork.KBAddressRepository.GetByIdAsync(request.Id);
+                //var KBAddress = await _unitOfWork.KBAddressRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (KBAddress == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.KBAddress.Queries.GetKBAddressById
 
                 //return OperationResult<GetKBAddressByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.KBAddressRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.KBAddressRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

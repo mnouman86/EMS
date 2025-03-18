@@ -34,7 +34,7 @@ internal class GetBusinessBankAccountByIdQueryHandler : IRequestHandler<GetBusin
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            //var businessBankAccount = await _unitOfWork.BusinessBankAccountRepository.GetByIdAsync(request.Id);
+            //var businessBankAccount = await _unitOfWork.BusinessBankAccountRepository.GetByIdAsync(request.searchRequestById);
 
             //if (businessBankAccount == null)
             //{
@@ -49,7 +49,7 @@ internal class GetBusinessBankAccountByIdQueryHandler : IRequestHandler<GetBusin
             //return OperationResult<GetBusinessBankAccountByIdQueryResult>.SuccessResult(result);
 
 
-            var response = await _unitOfWork.BusinessBankAccountRepository.GetByIdAsync(request.Id);
+            var response = await _unitOfWork.BusinessBankAccountRepository.GetByIdAsync(request.searchRequestById);
 
             if (response.Code != 200)
             {

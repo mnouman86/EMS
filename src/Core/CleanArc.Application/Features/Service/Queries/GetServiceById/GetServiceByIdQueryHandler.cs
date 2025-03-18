@@ -35,7 +35,7 @@ internal class GetServiceByIdQueryHandler : IRequestHandler<GetServiceByIdQuery,
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            //var service = await _unitOfWork.ServiceRepository.GetByIdAsync(request.Id);
+            //var service = await _unitOfWork.ServiceRepository.GetByIdAsync(request.searchRequestById);
 
             //if (service == null)
             //{
@@ -49,7 +49,7 @@ internal class GetServiceByIdQueryHandler : IRequestHandler<GetServiceByIdQuery,
 
             //return OperationResult<GetServiceByIdQueryResult>.SuccessResult(result);
 
-            var response = await _unitOfWork.ServiceRepository.GetByIdAsync(request.Id);
+            var response = await _unitOfWork.ServiceRepository.GetByIdAsync(request.searchRequestById);
 
             if (response.Code != 200)
             {

@@ -56,7 +56,13 @@ internal class CreateServiceCommandHandler : IRequestHandler<CreateServiceComman
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.ServiceRepository.AddAsync(new Domain.Entities.Service.Service()
-            { CreatedBy = user.Id, Description = request.Description, ServiceCategoryID = request.ServiceCategoryID, Name = request.Name,Icon=request.Icon });
+            {
+                Name = request.Name,
+                Description = request.Description,
+                Icon = request.Icon,
+                CultureId = request.CultureId,
+                CreatedBy = user.Id,
+            });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

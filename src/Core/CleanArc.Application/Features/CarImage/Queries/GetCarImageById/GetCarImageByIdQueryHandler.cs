@@ -34,7 +34,7 @@ namespace CleanArc.Application.Features.CarImage.Queries.GetCarImageById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var CarImage = await _unitOfWork.CarImageRepository.GetByIdAsync(request.Id);
+                //var CarImage = await _unitOfWork.CarImageRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (CarImage == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.CarImage.Queries.GetCarImageById
                 //return OperationResult<GetCarImageByIdQueryResult>.SuccessResult(result);
 
 
-                var response = await _unitOfWork.CarImageRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.CarImageRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

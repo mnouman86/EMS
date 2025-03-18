@@ -106,18 +106,18 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
         //        }
         //    }
         //}
-        public async Task<SingleResponseWrapper<Hotel_Image>> GetByIdAsync(long id)
+        public async Task<SingleResponseWrapper<Hotel_Image>> GetByIdAsync(SearchRequestById searchRequestById)
         {
-            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
+            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequestById))
             {
                 using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
                 {
 
                     connection.Open();
 					var parameters = new DynamicParameters();
-					parameters.Add("@CultureID", 1);
-					parameters.Add("@ID", id);
-					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
+                    parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
+                    parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 					var result = await connection.QuerySingleOrDefaultAsync<Hotel_Image>(HotelImageQueries.GetByID_HotelImage, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
