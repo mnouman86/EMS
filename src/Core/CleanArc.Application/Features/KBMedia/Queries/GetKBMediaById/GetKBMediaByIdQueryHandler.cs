@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var KBMedia = await _unitOfWork.KBMediaRepository.GetByIdAsync(request.Id);
+                //var KBMedia = await _unitOfWork.KBMediaRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (KBMedia == null)
                 //{
@@ -50,7 +50,7 @@ namespace CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById
                 //return OperationResult<GetKBMediaByIdQueryResult>.SuccessResult(result);
 
 
-                var response = await _unitOfWork.KBMediaRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.KBMediaRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

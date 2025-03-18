@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.ActivityIncludedOption.Queries.GetActivi
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var ActivityIncludedOption = await _unitOfWork.ActivityIncludedOptionRepository.GetByIdAsync(request.Id);
+                //var ActivityIncludedOption = await _unitOfWork.ActivityIncludedOptionRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (ActivityIncludedOption == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.ActivityIncludedOption.Queries.GetActivi
 
                 //return OperationResult<GetActivityIncludedOptionByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.ActivityIncludedOptionRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.ActivityIncludedOptionRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

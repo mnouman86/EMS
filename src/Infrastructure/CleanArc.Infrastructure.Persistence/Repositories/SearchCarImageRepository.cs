@@ -93,7 +93,7 @@ public class SearchCarImageRepository : ISearchCarImageRepository
         }
     }
 
-    public Task<SingleResponseWrapper<SearchCarImage>> GetByIdAsync(long id)
+    public Task<SingleResponseWrapper<SearchCarImage>> GetByIdAsync(SearchRequestById searchRequestById)
     {
         throw new NotImplementedException();
     }

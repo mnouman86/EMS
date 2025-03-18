@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.ActivityTransportation.Queries.GetActivi
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var ActivityTransportation = await _unitOfWork.ActivityTransportationRepository.GetByIdAsync(request.Id);
+                //var ActivityTransportation = await _unitOfWork.ActivityTransportationRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (ActivityTransportation == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.ActivityTransportation.Queries.GetActivi
 
                 //return OperationResult<GetActivityTransportationByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.ActivityTransportationRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.ActivityTransportationRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

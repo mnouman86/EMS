@@ -118,7 +118,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 			}
         }
 
-        public Task<SingleResponseWrapper<SearchBusinessCarDetail>> GetByIdAsync(long id)
+        public Task<SingleResponseWrapper<SearchBusinessCarDetail>> GetByIdAsync(SearchRequestById searchRequestById)
         {
             throw new NotImplementedException();
         }

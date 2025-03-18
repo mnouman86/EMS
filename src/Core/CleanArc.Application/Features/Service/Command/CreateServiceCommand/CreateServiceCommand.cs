@@ -13,7 +13,7 @@ using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.Service.Command.CreateServiceCommand;
 
-public  record CreateServiceCommand(string? Name, string? Description,int? ServiceCategoryID, string? Icon, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public  record CreateServiceCommand(string? Name, string? Description, int? CultureId, string? Icon) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateServiceCommand>
 {
     [JsonIgnore]
@@ -23,11 +23,11 @@ public  record CreateServiceCommand(string? Name, string? Description,int? Servi
         validator.RuleFor(c => c.Name)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please enter a valid Name");
-        validator.RuleFor(c => c.Description)
+            .WithMessage("Please enter a valid Service Name");
+        validator.RuleFor(c => c.Icon)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please enter a Description");
+            .WithMessage("Please enter a valid Google Icon code from https://fonts.google.com/icons");
         return validator;
     }
 }

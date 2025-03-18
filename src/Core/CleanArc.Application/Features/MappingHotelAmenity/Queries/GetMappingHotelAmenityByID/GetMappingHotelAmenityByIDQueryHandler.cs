@@ -36,7 +36,7 @@ internal class GetMappingHotelAmenityByIDQueryHandler : IRequestHandler<GetMappi
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            //var ageType = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.Id);
+            //var ageType = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.searchRequestById);
 
             //if (ageType == null)
             //{
@@ -50,7 +50,7 @@ internal class GetMappingHotelAmenityByIDQueryHandler : IRequestHandler<GetMappi
 
             //return OperationResult<GetMappingHotelAmenityByIDQueryResult>.SuccessResult(result);
 
-            var response = await _unitOfWork.MappingHotelAmenityRepository.GetByIdAsync(request.Id);
+            var response = await _unitOfWork.MappingHotelAmenityRepository.GetByIdAsync(request.searchRequestById);
 
             if (response.Code != 200)
             {

@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.PackageDetail.Queries.GetPackageDetailBy
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var PackageDetail = await _unitOfWork.PackageDetailRepository.GetByIdAsync(request.Id);
+                //var PackageDetail = await _unitOfWork.PackageDetailRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (PackageDetail == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.PackageDetail.Queries.GetPackageDetailBy
 
                 //return OperationResult<GetPackageDetailByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.PackageDetailRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.PackageDetailRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

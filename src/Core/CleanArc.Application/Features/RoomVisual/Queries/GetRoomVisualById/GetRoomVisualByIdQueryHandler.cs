@@ -34,7 +34,7 @@ namespace CleanArc.Application.Features.RoomVisual.Queries.GetRoomVisualById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var RoomVisual = await _unitOfWork.RoomVisualRepository.GetByIdAsync(request.Id);
+                //var RoomVisual = await _unitOfWork.RoomVisualRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (RoomVisual == null)
                 //{
@@ -48,7 +48,7 @@ namespace CleanArc.Application.Features.RoomVisual.Queries.GetRoomVisualById
 
                 //return OperationResult<GetRoomVisualByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.RoomVisualRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.RoomVisualRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

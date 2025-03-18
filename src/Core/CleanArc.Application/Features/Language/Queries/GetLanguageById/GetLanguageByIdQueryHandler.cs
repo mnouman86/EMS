@@ -35,7 +35,7 @@ internal class GetLanguageByIdQueryHandler : IRequestHandler<GetLanguageByIdQuer
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            //var language = await _unitOfWork.LanguageRepository.GetByIdAsync(request.Id);
+            //var language = await _unitOfWork.LanguageRepository.GetByIdAsync(request.searchRequestById);
 
             //if (language == null)
             //{
@@ -49,7 +49,7 @@ internal class GetLanguageByIdQueryHandler : IRequestHandler<GetLanguageByIdQuer
 
             //return OperationResult<GetLanguageByIdQueryResult>.SuccessResult(result);
 
-            var response = await _unitOfWork.LanguageRepository.GetByIdAsync(request.Id);
+            var response = await _unitOfWork.LanguageRepository.GetByIdAsync(request.searchRequestById);
 
             if (response.Code != 200)
             {

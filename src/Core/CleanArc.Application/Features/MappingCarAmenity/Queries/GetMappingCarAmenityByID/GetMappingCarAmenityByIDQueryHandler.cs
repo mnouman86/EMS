@@ -36,7 +36,7 @@ internal class GetMappingCarAmenityByIDQueryHandler : IRequestHandler<GetMapping
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            //var ageType = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.Id);
+            //var ageType = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.searchRequestById);
 
             //if (ageType == null)
             //{
@@ -50,7 +50,7 @@ internal class GetMappingCarAmenityByIDQueryHandler : IRequestHandler<GetMapping
 
             //return OperationResult<GetMappingCarAmenityByIDQueryResult>.SuccessResult(result);
 
-            var response = await _unitOfWork.MappingCarAmenityRepository.GetByIdAsync(request.Id);
+            var response = await _unitOfWork.MappingCarAmenityRepository.GetByIdAsync(request.searchRequestById);
 
             if (response.Code != 200)
             {

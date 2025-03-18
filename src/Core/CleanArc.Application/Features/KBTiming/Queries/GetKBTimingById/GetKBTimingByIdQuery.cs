@@ -1,4 +1,5 @@
 ﻿using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.Request;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,6 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.KBTiming.Queries.GetKBTimingById
 {
-    public class GetKBTimingByIdQuery:IRequest<OperationResult<GetKBTimingByIdQueryResult>>
-    {
-                public int Id { get; set; }
-
-}
+    public record GetKBTimingByIdQuery(SearchRequestById searchRequestById):IRequest<OperationResult<GetKBTimingByIdQueryResult>>;
+   
 }

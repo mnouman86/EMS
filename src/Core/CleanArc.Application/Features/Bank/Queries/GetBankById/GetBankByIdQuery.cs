@@ -1,4 +1,5 @@
 ﻿using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.Request;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,6 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Bank.Queries.GetBankById
 {
-    public class GetBankByIdQuery : IRequest<OperationResult<GetBankByIdQueryResult>>
-    {
-        public int Id { get; set; }
-
-    }
+    public record GetBankByIdQuery(SearchRequestById searchRequestById):IRequest<OperationResult<GetBankByIdQueryResult>>;
+    
 }

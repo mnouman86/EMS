@@ -1,5 +1,6 @@
 ﻿using CleanArc.Application.Features.Campaign.Queries.GetCampaignById;
 using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.Request;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -9,9 +10,6 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.CampaignTargetItems.Queries.GetCampaignTargetItemsById;
 
-public class GetCampaignTargetItemsByIdQuery: IRequest<OperationResult<GetCampaignTargetItemsByIdQueryResult>>
-{
-    public int Id { get; set; }
-
-}
+public record GetCampaignTargetItemsByIdQuery(SearchRequestById searchRequestById):
+    IRequest<OperationResult<GetCampaignTargetItemsByIdQueryResult>>;
 

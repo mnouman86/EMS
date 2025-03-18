@@ -13,7 +13,7 @@ using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.Service.Command.DeleteServiceCommand;
 
-public record DeleteServiceCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record DeleteServiceCommand(string SelectedIds, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<DeleteServiceCommand>
 {
     [JsonIgnore]
@@ -23,7 +23,7 @@ public record DeleteServiceCommand(string SelectedIds, int? UpdatedBy, int? Cult
         validator.RuleFor(c => c.SelectedIds)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please select Record");
+            .WithMessage("Please enter a valid record ID.");
 
         return validator;
     }

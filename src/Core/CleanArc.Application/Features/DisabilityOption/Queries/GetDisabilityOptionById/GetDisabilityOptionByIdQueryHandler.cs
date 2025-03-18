@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.DisabilityOption.Queries.GetDisabilityOp
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var DisabilityOption = await _unitOfWork.DisabilityOptionRepository.GetByIdAsync(request.Id);
+                //var DisabilityOption = await _unitOfWork.DisabilityOptionRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (DisabilityOption == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.DisabilityOption.Queries.GetDisabilityOp
 
                 //return OperationResult<GetDisabilityOptionByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.DisabilityOptionRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.DisabilityOptionRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

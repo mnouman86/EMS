@@ -83,7 +83,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<SingleResponseWrapper<MappingHotelLanguage>> GetByIdAsync(long id)
+        public Task<SingleResponseWrapper<MappingHotelLanguage>> GetByIdAsync(SearchRequestById searchRequestById)
         {
             throw new NotImplementedException();
         }

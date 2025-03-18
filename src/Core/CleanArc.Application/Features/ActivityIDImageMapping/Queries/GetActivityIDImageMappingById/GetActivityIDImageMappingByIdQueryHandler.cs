@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.ActivityIDImageMapping.Queries.GetActivi
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var ActivityIDImageMapping = await _unitOfWork.ActivityIDImageMappingRepository.GetByIdAsync(request.Id);
+                //var ActivityIDImageMapping = await _unitOfWork.ActivityIDImageMappingRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (ActivityIDImageMapping == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.ActivityIDImageMapping.Queries.GetActivi
 
                 //return OperationResult<GetActivityIDImageMappingByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.ActivityIDImageMappingRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.ActivityIDImageMappingRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.Amenities.Queries.GetAmenitiesById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var amenity = await _unitOfWork.AmenityRepository.GetByIdAsync(request.Id);
+                //var amenity = await _unitOfWork.AmenityRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (amenity == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.Amenities.Queries.GetAmenitiesById
 
                 //return OperationResult<GetAmenityByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.AmenityRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.AmenityRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.CheckProfileStatus.Queries.GetCheckProfi
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var CheckProfileStatus = await _unitOfWork.CheckProfileStatusRepository.GetByIdAsync(request.Id);
+                //var CheckProfileStatus = await _unitOfWork.CheckProfileStatusRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (CheckProfileStatus == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.CheckProfileStatus.Queries.GetCheckProfi
 
                 //return OperationResult<GetCheckProfileStatusByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.CheckProfileStatusRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.CheckProfileStatusRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

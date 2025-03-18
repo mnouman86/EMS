@@ -34,7 +34,7 @@ namespace CleanArc.Application.Features.CarDetail.Queries.GetCarDetailById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var carDetail = await _unitOfWork.CarDetailRepository.GetByIdAsync(request.Id);
+                //var carDetail = await _unitOfWork.CarDetailRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (carDetail == null)
                 //{
@@ -48,7 +48,7 @@ namespace CleanArc.Application.Features.CarDetail.Queries.GetCarDetailById
 
                 //return OperationResult<GetCarDetailByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.CarDetailRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.CarDetailRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

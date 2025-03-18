@@ -116,7 +116,7 @@ public class SearchHotelRepository : ISearchHotelRepository
 		}
     }
 
-    public Task<SingleResponseWrapper<SearchHotelDetail>> GetByIdAsync(long id)
+    public Task<SingleResponseWrapper<SearchHotelDetail>> GetByIdAsync(SearchRequestById searchRequestById)
     {
         throw new NotImplementedException();
     }

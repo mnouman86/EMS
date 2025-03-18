@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.ActivitySeason.Queries.GetActivitySeason
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var ActivitySeason = await _unitOfWork.ActivitySeasonRepository.GetByIdAsync(request.Id);
+                //var ActivitySeason = await _unitOfWork.ActivitySeasonRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (ActivitySeason == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.ActivitySeason.Queries.GetActivitySeason
 
                 //return OperationResult<GetActivitySeasonByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.ActivitySeasonRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.ActivitySeasonRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

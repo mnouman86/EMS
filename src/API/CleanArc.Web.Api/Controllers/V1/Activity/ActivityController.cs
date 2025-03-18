@@ -10,6 +10,7 @@ using Mediator;
 using Microsoft.AspNetCore.Mvc; 
 using CleanArc.Domain.Common;
 using CleanArc.Application.Features.Activity.Queries.GetActivityCheckoutDetail;
+using CleanArc.Application.Models.Request;
 namespace CleanArc.Web.Api.Controllers.V1.Activity
 {
 	/// <summary>
@@ -75,9 +76,9 @@ namespace CleanArc.Web.Api.Controllers.V1.Activity
 		}
 
 		[HttpGet("GetActivityCheckoutDetail/{id}/{userid}")]
-		public async Task<IActionResult> GetActivityCheckoutDetail(int id,int userid)
+		public async Task<IActionResult> GetActivityCheckoutDetail(GetActivityCheckoutDetailQuery query)
 		{
-			GetActivityCheckoutDetailQuery query = new GetActivityCheckoutDetailQuery { Id = id,UserId=userid };
+			//GetActivityCheckoutDetailQuery query = new GetActivityCheckoutDetailQuery { searchRequestById = searchRequestById,UserId=userid };
 			var result = await _sender.Send(query);
 
 			return base.OperationResult(result);

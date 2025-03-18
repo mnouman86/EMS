@@ -34,7 +34,7 @@ internal class GetRoomTypeByIdQueryHandler : IRequestHandler<GetRoomTypeByIdQuer
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            //var roomType = await _unitOfWork.RoomTypeRepository.GetByIdAsync(request.Id);
+            //var roomType = await _unitOfWork.RoomTypeRepository.GetByIdAsync(request.searchRequestById);
 
             //if (roomType == null)
             //{
@@ -48,7 +48,7 @@ internal class GetRoomTypeByIdQueryHandler : IRequestHandler<GetRoomTypeByIdQuer
 
             //return OperationResult<GetRoomTypeByIdQueryResult>.SuccessResult(result);
 
-            var response = await _unitOfWork.RoomTypeRepository.GetByIdAsync(request.Id);
+            var response = await _unitOfWork.RoomTypeRepository.GetByIdAsync(request.searchRequestById);
 
             if (response.Code != 200)
             {

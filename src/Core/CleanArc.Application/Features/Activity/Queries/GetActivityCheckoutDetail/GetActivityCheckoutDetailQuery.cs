@@ -1,4 +1,5 @@
 ﻿using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.Request;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -8,10 +9,6 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Activity.Queries.GetActivityCheckoutDetail
 {
-    public class GetActivityCheckoutDetailQuery:IRequest<OperationResult<GetActivityCheckoutDetailQueryResult>>
-    {
-                public int Id { get; set; }
-		        public int UserId { get; set; }
-
-	}
+    public record GetActivityCheckoutDetailQuery(SearchRequestById searchRequestById,int UserId) :
+        IRequest<OperationResult<GetActivityCheckoutDetailQueryResult>>;
 }

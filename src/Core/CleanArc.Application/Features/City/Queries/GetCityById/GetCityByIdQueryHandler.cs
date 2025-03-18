@@ -34,7 +34,7 @@ namespace CleanArc.Application.Features.City.Queries.GetCityById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var city = await _unitOfWork.CityRepository.GetByIdAsync(request.Id);
+                //var city = await _unitOfWork.CityRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (city == null)
                 //{
@@ -48,7 +48,7 @@ namespace CleanArc.Application.Features.City.Queries.GetCityById
 
                 //return OperationResult<GetCityByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.CityRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.CityRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

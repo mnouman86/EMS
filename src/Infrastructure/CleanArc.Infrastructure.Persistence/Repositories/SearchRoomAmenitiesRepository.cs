@@ -95,7 +95,7 @@ public class SearchRoomAmenitiesRepository : ISearchRoomAmenitiesRepository
     }
 
 
-    public Task<SingleResponseWrapper<SearchRoomAmenities>> GetByIdAsync(long id)
+    public Task<SingleResponseWrapper<SearchRoomAmenities>> GetByIdAsync(SearchRequestById searchRequestById)
     {
         throw new NotImplementedException();
     }

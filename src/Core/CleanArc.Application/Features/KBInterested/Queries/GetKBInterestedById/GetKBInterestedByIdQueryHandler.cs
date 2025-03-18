@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.KBInterested.Queries.GetKBInterestedById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var KBInterested = await _unitOfWork.KBInterestedRepository.GetByIdAsync(request.Id);
+                //var KBInterested = await _unitOfWork.KBInterestedRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (KBInterested == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.KBInterested.Queries.GetKBInterestedById
 
                 //return OperationResult<GetKBInterestedByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.KBInterestedRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.KBInterestedRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

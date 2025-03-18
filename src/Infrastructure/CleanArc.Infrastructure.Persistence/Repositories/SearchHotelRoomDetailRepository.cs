@@ -129,7 +129,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 			}
 		}
 
-		public Task<SingleResponseWrapper<SearchHotelRoomDetail>> GetByIdAsync(long id)
+		public Task<SingleResponseWrapper<SearchHotelRoomDetail>> GetByIdAsync(SearchRequestById searchRequestById)
 		{
 			throw new NotImplementedException();
 		}

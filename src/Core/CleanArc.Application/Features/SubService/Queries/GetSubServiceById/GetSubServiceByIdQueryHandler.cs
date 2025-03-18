@@ -34,7 +34,7 @@ namespace CleanArc.Application.Features.SubService.Queries.GetSubServiceById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var SubService = await _unitOfWork.SubServiceRepository.GetByIdAsync(request.Id);
+                //var SubService = await _unitOfWork.SubServiceRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (SubService == null)
                 //{
@@ -48,7 +48,7 @@ namespace CleanArc.Application.Features.SubService.Queries.GetSubServiceById
 
                 //return OperationResult<GetSubServiceByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.SubServiceRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.SubServiceRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

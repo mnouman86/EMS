@@ -27,6 +27,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using CleanArc.Application.Common;
+using CleanArc.Application.Features.Activity.Queries.GetActivityCheckoutDetail;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -114,9 +115,9 @@ public class ActivityRepository : IActivityRepository
 		}
 	}
 
-	public async Task<SingleResponseWrapper<Activity>> GetActivityCheckoutDetailAsync(int id, int userid)
+	public async Task<SingleResponseWrapper<Activity>> GetActivityCheckoutDetailAsync(GetActivityCheckoutDetailQuery searchRequestById)
 	{
-		using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
+		using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequestById))
 		{
 			using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
 			{
@@ -125,10 +126,10 @@ public class ActivityRepository : IActivityRepository
 				var parameters = new DynamicParameters();
 				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-				parameters.Add("@CultureId", 1, DbType.Int32);
-				parameters.Add("@ID", id, DbType.Int32);
+				parameters.Add("@CultureId", searchRequestById.searchRequestById.CultureId, DbType.Int32);
+				parameters.Add("@ID", searchRequestById.searchRequestById.Id, DbType.Int32);
 				parameters.Add("@isCheckOut", true, DbType.Boolean);
-				parameters.Add("@userID", userid, DbType.Int32);
+				parameters.Add("@userID", searchRequestById.UserId, DbType.Int32);
 
 				var result = await connection.QuerySingleOrDefaultAsync<Activity>(ActivityQueries.GetByID_Activity, parameters, commandType: CommandType.StoredProcedure);
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
@@ -183,9 +184,9 @@ public class ActivityRepository : IActivityRepository
 		}
 
 	}
-	public async Task<SingleResponseWrapper<Activity>> GetByIdAsync(long id)
+	public async Task<SingleResponseWrapper<Activity>> GetByIdAsync(SearchRequestById searchRequestById)
 	{
-		using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
+		using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequestById))
 		{
 			using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
 			{
@@ -194,8 +195,8 @@ public class ActivityRepository : IActivityRepository
 				var parameters = new DynamicParameters();
 				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-				parameters.Add("@CultureId", 1, DbType.Int32);
-				parameters.Add("@ID", id, DbType.Int32);
+				parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
+				parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
 
 				var result = await connection.QuerySingleOrDefaultAsync<Activity>(ActivityQueries.GetByID_Activity, parameters, commandType: CommandType.StoredProcedure);
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);

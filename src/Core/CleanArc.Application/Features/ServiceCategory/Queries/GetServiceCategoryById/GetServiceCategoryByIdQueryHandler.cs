@@ -35,7 +35,7 @@ internal class GetServiceCategoryByIdQueryHandler : IRequestHandler<GetServiceCa
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            //var serviceCategory = await _unitOfWork.ServiceCategoryRepository.GetByIdAsync(request.Id);
+            //var serviceCategory = await _unitOfWork.ServiceCategoryRepository.GetByIdAsync(request.searchRequestById);
 
             //if (serviceCategory == null)
             //{
@@ -49,7 +49,7 @@ internal class GetServiceCategoryByIdQueryHandler : IRequestHandler<GetServiceCa
 
             //return OperationResult<GetServiceCategoryByIdQueryResult>.SuccessResult(result);
 
-            var response = await _unitOfWork.ServiceCategoryRepository.GetByIdAsync(request.Id);
+            var response = await _unitOfWork.ServiceCategoryRepository.GetByIdAsync(request.searchRequestById);
 
             if (response.Code != 200)
             {

@@ -1,5 +1,6 @@
 ﻿using CleanArc.Application.Features.AgeType.Queries.GetAgeTypeById;
 using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.Request;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -9,9 +10,6 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.BusinessType.Queries.GetBusinessTypeById
 {
-    public class GetBusinessTypeByIdQuery : IRequest<OperationResult<GetBusinessTypeByIdQueryResult>>
-    {
-        public int Id { get; set; }
-
-    }
+    public record GetBusinessTypeByIdQuery(SearchRequestById searchRequestById):
+        IRequest<OperationResult<GetBusinessTypeByIdQueryResult>>;
 }

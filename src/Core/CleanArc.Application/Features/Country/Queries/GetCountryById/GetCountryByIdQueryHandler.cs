@@ -35,7 +35,7 @@ internal class GetCountryByIdQueryHandler : IRequestHandler<GetCountryByIdQuery,
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
             //var country
-            //    = await _unitOfWork.CountryRepository.GetByIdAsync(request.Id);
+            //    = await _unitOfWork.CountryRepository.GetByIdAsync(request.searchRequestById);
 
             //if (country == null)
             //{
@@ -49,7 +49,7 @@ internal class GetCountryByIdQueryHandler : IRequestHandler<GetCountryByIdQuery,
 
             //return OperationResult<GetCountryByIdQueryResult>.SuccessResult(result);
 
-            var response = await _unitOfWork.CountryRepository.GetByIdAsync(request.Id);
+            var response = await _unitOfWork.CountryRepository.GetByIdAsync(request.searchRequestById);
 
             if (response.Code != 200)
             {

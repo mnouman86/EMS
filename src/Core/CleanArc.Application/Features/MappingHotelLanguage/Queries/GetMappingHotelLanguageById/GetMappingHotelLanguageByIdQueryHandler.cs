@@ -35,7 +35,7 @@ internal class GetMappingHotelLanguageByIdQueryHandler : IRequestHandler<GetMapp
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            //var ageType = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.Id);
+            //var ageType = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.searchRequestById);
 
             //if (ageType == null)
             //{
@@ -49,7 +49,7 @@ internal class GetMappingHotelLanguageByIdQueryHandler : IRequestHandler<GetMapp
 
             //return OperationResult<GetMappingHotelLanguageByIdQueryResult>.SuccessResult(result);
 
-            var response = await _unitOfWork.MappingHotelLanguageRepository.GetByIdAsync(request.Id);
+            var response = await _unitOfWork.MappingHotelLanguageRepository.GetByIdAsync(request.searchRequestById);
 
             if (response.Code != 200)
             {

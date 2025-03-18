@@ -1,4 +1,5 @@
 ﻿using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.Request;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,6 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailByIdAll
 {
-    public class GetKBDetailByIdAllQuery:IRequest<OperationResult<GetKBDetailByIdAllQueryResult>>
-    {
-                public int Id { get; set; }
-
-}
+    public record GetKBDetailByIdAllQuery(SearchRequestById searchRequestById):IRequest<OperationResult<GetKBDetailByIdAllQueryResult>>;
+    
 }

@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddre
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var ActivityAddress = await _unitOfWork.ActivityAddressRepository.GetByIdAsync(request.Id);
+                //var ActivityAddress = await _unitOfWork.ActivityAddressRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (ActivityAddress == null)
                 //{
@@ -50,7 +50,7 @@ namespace CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddre
                 //return OperationResult<GetActivityAddressByIdQueryResult>.SuccessResult(result);
 
 
-                var response = await _unitOfWork.ActivityAddressRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.ActivityAddressRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

@@ -1,5 +1,6 @@
 ﻿using CleanArc.Application.Features.SearchHotel.Queries.GetSearchHotelById;
 using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.Request;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -9,8 +10,4 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.SearchHotelImage.Queries.GetByIdSearchHotelImage;
 
-public record GetByIdSearchHotelImageQuery : IRequest<OperationResult<GetByIdSearchHotelImageQueryResult>>
-{
-    public int Id { get; set; }
-
-}
+public record GetByIdSearchHotelImageQuery(SearchRequestById searchRequestById) : IRequest<OperationResult<GetByIdSearchHotelImageQueryResult>>;

@@ -11,8 +11,4 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.CustomerReview.Queries.GetCustomerReviewById;
 
-public class GetCustomerReviewByIdQuery : IRequest<OperationResult<GetCustomerReviewByIdQueryResult>>
-{
-    public int Id { get; set; }
-
-}
+public record GetCustomerReviewByIdQuery(SearchRequestById searchRequestById):IRequest<OperationResult<GetCustomerReviewByIdQueryResult>>;

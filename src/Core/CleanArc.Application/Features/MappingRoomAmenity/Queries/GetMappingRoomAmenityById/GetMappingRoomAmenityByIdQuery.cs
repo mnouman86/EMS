@@ -1,5 +1,6 @@
 ﻿using CleanArc.Application.Features.MappingHotelAmenity.Queries.GetMappingHotelAmenityByID;
 using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.Request;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -9,8 +10,4 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.MappingRoomAmenity.Queries.GetMappingRoomAmenityById;
 
-public class GetMappingRoomAmenityByIdQuery : IRequest<OperationResult<GetMappingRoomAmenityByIdQueryResult>>
-{
-    public int Id { get; set; }
-
-}
+public record GetMappingRoomAmenityByIdQuery(SearchRequestById searchRequestById):IRequest<OperationResult<GetMappingRoomAmenityByIdQueryResult>>;

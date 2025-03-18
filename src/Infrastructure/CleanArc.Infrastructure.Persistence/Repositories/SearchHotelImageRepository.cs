@@ -93,7 +93,7 @@ public class SearchHotelImageRepository : ISearchHotelImageRepository
         }
     }
 
-    public Task<SingleResponseWrapper<SearchHotelImage>> GetByIdAsync(long id)
+    public Task<SingleResponseWrapper<SearchHotelImage>> GetByIdAsync(SearchRequestById searchRequestById)
     {
         throw new NotImplementedException();
     }

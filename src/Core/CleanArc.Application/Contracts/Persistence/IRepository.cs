@@ -14,7 +14,7 @@ public interface IRepository<T> where T : class
     /// </summary>
     /// <param name="request">The search criteria.</param>
     /// <returns>A task representing the asynchronous operation, returning a list of entities.</returns>
-    Task<ListResponseWrapper<T>> GetAllAsync(SearchRequest request);
+    Task<ListResponseWrapper<T>> GetAllAsync(SearchRequest searchRequest);
 
     /// <summary>
     /// Retrieves an entity by its unique identifier asynchronously.
@@ -23,7 +23,7 @@ public interface IRepository<T> where T : class
     /// <returns>A task representing the asynchronous operation, returning the entity.</returns>
     /// 
     //Task<IReadOnlyList<T>> GetAllSearchDetailAsync(String SearchText,DateTime DateFrom,DateTime DateTo,int Adult,int Children);
-    Task<SingleResponseWrapper<T>> GetByIdAsync(long id);
+    Task<SingleResponseWrapper<T>> GetByIdAsync(SearchRequestById searchRequestById);
 
     /// <summary>
     /// Adds a new entity asynchronously.

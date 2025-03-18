@@ -1,4 +1,5 @@
 ﻿using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.Request;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.CampaignSchedule.Queries.GetCampaignScheduleById;
 
-public class GetCampaignScheduleByIdQuery: IRequest<OperationResult<GetCampaignScheduleByIdQueryResult>>
-{
-    public int Id { get; set; }
+public record GetCampaignScheduleByIdQuery(SearchRequestById searchRequestById):
+    IRequest<OperationResult<GetCampaignScheduleByIdQueryResult>>;
 
-}
 

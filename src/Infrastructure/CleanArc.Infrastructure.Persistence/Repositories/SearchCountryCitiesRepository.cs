@@ -100,7 +100,7 @@ public class SearchCountryCitiesRepository : ISearchCountryCitiesRepository
     }
 
 
-    public Task<SingleResponseWrapper<SearchCountryCities>> GetByIdAsync(long id)
+    public Task<SingleResponseWrapper<SearchCountryCities>> GetByIdAsync(SearchRequestById searchRequestById)
     {
         throw new NotImplementedException();
     }

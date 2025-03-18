@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.MappingRoomAmenity.Queries.GetMappingRoo
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var ageType = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.Id);
+                //var ageType = await _unitOfWork.AgeTypeRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (ageType == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.MappingRoomAmenity.Queries.GetMappingRoo
 
                 //return OperationResult<GetMappingRoomAmenityByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.MappingRoomAmenitiesRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.MappingRoomAmenitiesRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

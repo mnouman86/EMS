@@ -1,4 +1,5 @@
 ﻿using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.Request;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,6 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityTransportation.Queries.GetActivityTransportationById
 {
-    public class GetActivityTransportationByIdQuery:IRequest<OperationResult<GetActivityTransportationByIdQueryResult>>
-    {
-                public int Id { get; set; }
-
-}
+    public record GetActivityTransportationByIdQuery(SearchRequestById searchRequestById):IRequest<OperationResult<GetActivityTransportationByIdQueryResult>>;
+   
 }

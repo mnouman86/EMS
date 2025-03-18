@@ -37,7 +37,7 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailByAllId
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var response = await _unitOfWork.KBDetailRepository.GetByIdAllAsync(request.Id);
+                var response = await _unitOfWork.KBDetailRepository.GetByIdAllAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

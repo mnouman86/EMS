@@ -37,7 +37,7 @@ namespace CleanArc.Application.Features.Currency.Queries.GetCurrencyById
             {
                
 
-                var response = await _unitOfWork.CurrencyRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.CurrencyRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

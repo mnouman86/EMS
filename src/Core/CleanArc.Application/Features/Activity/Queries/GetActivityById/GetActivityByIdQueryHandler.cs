@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.Activity.Queries.GetActivityById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var Activity = await _unitOfWork.ActivityRepository.GetByIdAsync(request.Id);
+                //var Activity = await _unitOfWork.ActivityRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (Activity == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.Activity.Queries.GetActivityById
 
                 //return OperationResult<GetActivityByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.ActivityRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.ActivityRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

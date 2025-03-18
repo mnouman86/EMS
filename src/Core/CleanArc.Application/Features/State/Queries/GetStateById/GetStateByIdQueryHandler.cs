@@ -35,7 +35,7 @@ internal class GetStateByIdQueryHandler : IRequestHandler<GetStateByIdQuery, Ope
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            //var state = await _unitOfWork.StateRepository.GetByIdAsync(request.Id);
+            //var state = await _unitOfWork.StateRepository.GetByIdAsync(request.searchRequestById);
 
             //if (state == null)
             //{
@@ -48,7 +48,7 @@ internal class GetStateByIdQueryHandler : IRequestHandler<GetStateByIdQuery, Ope
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
             //return OperationResult<GetStateByIdQueryResult>.SuccessResult(result);
-            var response = await _unitOfWork.StateRepository.GetByIdAsync(request.Id);
+            var response = await _unitOfWork.StateRepository.GetByIdAsync(request.searchRequestById);
 
             if (response.Code != 200)
             {

@@ -35,7 +35,7 @@ internal class GetSectionByIdQueryHandler : IRequestHandler<GetSectionByIdQuery,
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
             //var Section
-            //    = await _unitOfWork.SectionRepository.GetByIdAsync(request.Id);
+            //    = await _unitOfWork.SectionRepository.GetByIdAsync(request.searchRequestById);
 
             //if (Section == null)
             //{
@@ -49,7 +49,7 @@ internal class GetSectionByIdQueryHandler : IRequestHandler<GetSectionByIdQuery,
 
             //return OperationResult<GetSectionByIdQueryResult>.SuccessResult(result);
 
-            var response = await _unitOfWork.SectionRepository.GetByIdAsync(request.Id);
+            var response = await _unitOfWork.SectionRepository.GetByIdAsync(request.searchRequestById);
 
             if (response.Code != 200)
             {

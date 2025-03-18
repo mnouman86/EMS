@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.PopularItemsVisit.Queries.GetPopularItem
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var PopularItemsVisit = await _unitOfWork.PopularItemsVisitRepository.GetByIdAsync(request.Id);
+                //var PopularItemsVisit = await _unitOfWork.PopularItemsVisitRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (PopularItemsVisit == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.PopularItemsVisit.Queries.GetPopularItem
 
                 //return OperationResult<GetPopularItemsVisitByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.PopularItemsVisitRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.PopularItemsVisitRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

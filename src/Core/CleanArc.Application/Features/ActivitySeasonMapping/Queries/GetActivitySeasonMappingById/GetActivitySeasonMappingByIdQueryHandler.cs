@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.ActivitySeasonMapping.Queries.GetActivit
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var ActivitySeasonMapping = await _unitOfWork.ActivitySeasonMappingRepository.GetByIdAsync(request.Id);
+                //var ActivitySeasonMapping = await _unitOfWork.ActivitySeasonMappingRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (ActivitySeasonMapping == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.ActivitySeasonMapping.Queries.GetActivit
 
                 //return OperationResult<GetActivitySeasonMappingByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.ActivitySeasonMappingRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.ActivitySeasonMappingRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

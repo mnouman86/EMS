@@ -15,6 +15,6 @@ public  interface IKBDetailRepository:IRepository<KBDetail>
 {
     Task<ListResponseWrapper<KBMinimalDetail>> GetKBMinimalViewAsync(SearchRequest searchRequest);
     Task<ListResponseWrapper<CoreAreas>> GetKBCoreAreasMinimalViewAsync(SearchRequest searchRequest);
-    Task<SingleResponseWrapper<KnowledgeBaseByID>> GetByIdAllAsync(long id);
+    Task<SingleResponseWrapper<KnowledgeBaseByID>> GetByIdAllAsync(SearchRequestById searchRequestById);
    // Task CreateAgeType(AgeType ageType);
 }

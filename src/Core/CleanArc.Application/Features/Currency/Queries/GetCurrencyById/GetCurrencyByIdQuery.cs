@@ -1,4 +1,5 @@
 ﻿using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.Request;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,5 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Currency.Queries.GetCurrencyById
 {
-    public class GetCurrencyByIdQuery:IRequest<OperationResult<GetCurrencyByIdQueryResult>>
-    {
-                public int Id { get; set; }
-
-}
+    public record GetCurrencyByIdQuery(SearchRequestById searchRequestById):IRequest<OperationResult<GetCurrencyByIdQueryResult>>;
 }

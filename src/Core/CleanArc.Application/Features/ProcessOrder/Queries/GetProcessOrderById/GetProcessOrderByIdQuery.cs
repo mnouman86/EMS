@@ -1,4 +1,5 @@
 ﻿using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.Request;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,6 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById
 {
-    public class GetProcessOrderByIdQuery:IRequest<OperationResult<GetProcessOrderByIdQueryResult>>
-    {
-                public int Id { get; set; }
+    public record GetProcessOrderByIdQuery(SearchRequestById searchRequestById):IRequest<OperationResult<GetProcessOrderByIdQueryResult>>;
 
-}
 }

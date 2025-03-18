@@ -94,7 +94,7 @@ public async Task<ResponseEntity> AddAsync(ActivityImageMapping activityImageMap
 				parameters.Add("@ImagePaths", imagePathsTable.AsTableValuedParameter("ImagePathTableType"));
 				parameters.Add("@IsMain", activityImageMapping.IsMain);
 				parameters.Add("@CreatedBy", activityImageMapping.CreatedBy);
-				parameters.Add("@CultureId", 1, DbType.Int32);
+				parameters.Add("@CultureId", activityImageMapping.CultureId, DbType.Int32);
 				
 				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityImageMappingQueries.Mapping_Create_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
@@ -145,9 +145,9 @@ public async Task<ResponseEntity> AddAsync(ActivityImageMapping activityImageMap
             }
         }
     }
-    public async Task<SingleResponseWrapper<ActivityImageMapping>> GetByIdAsync(long id)
+    public async Task<SingleResponseWrapper<ActivityImageMapping>> GetByIdAsync(SearchRequestById searchRequestById)
     {
-        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequestById))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
@@ -155,8 +155,8 @@ public async Task<ResponseEntity> AddAsync(ActivityImageMapping activityImageMap
                 var parameters = new DynamicParameters();
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                parameters.Add("@CultureId", 1, DbType.Int32);
-                parameters.Add("@ID", id, DbType.Int32);
+                parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
+                parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
 
                 var result = await connection.QuerySingleOrDefaultAsync<ActivityImageMapping>(ActivityImageMappingQueries.Mapping_GetByID_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);

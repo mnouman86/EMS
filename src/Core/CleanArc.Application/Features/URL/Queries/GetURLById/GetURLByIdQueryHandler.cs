@@ -39,7 +39,7 @@ namespace CleanArc.Application.Features.URL.Queries.GetURLById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var url = await _unitOfWork.URLRepository.GetByIdAsync(request.Id);
+                //var url = await _unitOfWork.URLRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (url == null)
                 //{
@@ -53,7 +53,7 @@ namespace CleanArc.Application.Features.URL.Queries.GetURLById
 
                 //return OperationResult<GetURLByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.URLRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.URLRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

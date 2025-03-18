@@ -114,9 +114,9 @@ public class RoomDetailsRepository : IRoomDetailsRepository
 			}
 		}
 	}
-	public async Task<SingleResponseWrapper<RoomDetails>> GetByIdAsync(long id)
+	public async Task<SingleResponseWrapper<RoomDetails>> GetByIdAsync(SearchRequestById searchRequestById)
 	{
-		using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, id))
+		using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequestById))
 		{
 			using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
 			{
@@ -124,8 +124,8 @@ public class RoomDetailsRepository : IRoomDetailsRepository
 				var parameters = new DynamicParameters();
 				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-				parameters.Add("@CultureId", 1, DbType.Int32);
-				parameters.Add("@ID", id, DbType.Int32);
+				parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
+				parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
 
 
 

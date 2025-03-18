@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetSearch
     //    {
     //        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
     //        {
-    //            var SearchFilterThingsToDo = await _unitOfWork.SearchFilterThingsToDoRepository.GetByIdAsync(request.Id);
+    //            var SearchFilterThingsToDo = await _unitOfWork.SearchFilterThingsToDoRepository.GetByIdAsync(request.searchRequestById);
 
     //            if (SearchFilterThingsToDo == null)
     //            {

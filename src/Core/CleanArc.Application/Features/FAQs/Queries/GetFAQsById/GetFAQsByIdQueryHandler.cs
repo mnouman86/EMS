@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.FAQs.Queries.GetFAQsById
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var FAQs = await _unitOfWork.FAQsRepository.GetByIdAsync(request.Id);
+                //var FAQs = await _unitOfWork.FAQsRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (FAQs == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.FAQs.Queries.GetFAQsById
 
                 //return OperationResult<GetFAQsByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.FAQsRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.FAQsRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {

@@ -35,7 +35,7 @@ namespace CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.Get
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var ActivityIncludeOptionMapping = await _unitOfWork.ActivityIncludeOptionMappingRepository.GetByIdAsync(request.Id);
+                //var ActivityIncludeOptionMapping = await _unitOfWork.ActivityIncludeOptionMappingRepository.GetByIdAsync(request.searchRequestById);
 
                 //if (ActivityIncludeOptionMapping == null)
                 //{
@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.Get
 
                 //return OperationResult<GetActivityIncludeOptionMappingByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.ActivityIncludeOptionMappingRepository.GetByIdAsync(request.Id);
+                var response = await _unitOfWork.ActivityIncludeOptionMappingRepository.GetByIdAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {
