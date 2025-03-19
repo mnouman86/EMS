@@ -58,7 +58,7 @@ internal class CreateSubServiceCommandHandler: IRequestHandler<CreateSubServiceC
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.SubServiceRepository.AddAsync(new Domain.Entities.SubService.SubService()
-            { CreatedBy = user.Id,ServiceID=request.ServiceID, Description = request.Description,Name=request.Name  });
+            { CreatedBy = user.Id,ServiceCategoryId=request.ServiceCategoryId, CultureId=request.CultureID, Description = request.Description,Name=request.Name  });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

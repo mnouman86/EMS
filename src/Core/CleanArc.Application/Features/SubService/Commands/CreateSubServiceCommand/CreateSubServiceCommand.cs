@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.SubService.Commands.CreateSubServiceCommand;
-public record CreateSubServiceCommand(string? Name, int? ServiceID, string? Description,int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateSubServiceCommand(string? Name, int? ServiceCategoryId, string? Description,int? CultureID) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateSubServiceCommand>
 {
     [JsonIgnore]
@@ -22,14 +22,14 @@ public record CreateSubServiceCommand(string? Name, int? ServiceID, string? Desc
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Name");
-        validator.RuleFor(c => c.Description)
+        //validator.RuleFor(c => c.Description)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter Description");
+        validator.RuleFor(c => c.ServiceCategoryId)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please enter a Description");
-        validator.RuleFor(c => c.ServiceID)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a ServiceID");
+            .WithMessage("Please enter a Service Category");
         return validator;
     }
 }

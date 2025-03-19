@@ -23,18 +23,18 @@ IValidatableModel<CreateServiceCategoryCommand>
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Name");
-        validator.RuleFor(c => c.Description)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter Description");
+        //validator.RuleFor(c => c.Description)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter Description");
         validator.RuleFor(c => c.ServiceId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please select a Service");
-        validator.RuleFor(c => c.Icon)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a valid Google Icon code from https://fonts.google.com/icons");
+        //validator.RuleFor(c => c.Icon)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a valid Google Icon code from https://fonts.google.com/icons");
         return validator;
     }
 }
