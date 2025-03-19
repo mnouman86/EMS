@@ -90,7 +90,7 @@ public async Task<ResponseEntity> AddAsync(DisabilityOption DisabilityOption)
             {
                 connection.Open();
                 var parameters = new DynamicParameters();
-                parameters.Add("@ID", deleteRequest.SelectedIds);
+                parameters.Add("@Ids", deleteRequest.SelectedIds);
                 parameters.Add("@UpdatedBy", updatedBy);
                 parameters.Add("@CultureId", deleteRequest.CultureId);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(DisabilityOptionQueries.Delete_DisabilityOption, parameters, commandType: CommandType.StoredProcedure);

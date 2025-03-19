@@ -87,7 +87,7 @@ public class AmenityRepository : IAmenityRepository
             {
                 connection.Open();
                 var parameters = new DynamicParameters();
-                parameters.Add("@ID", deleteRequest.SelectedIds);
+                parameters.Add("@Ids", deleteRequest.SelectedIds);
                 parameters.Add("@CultureId", 1);
                 parameters.Add("@UpdatedBy", updatedBy);
                 //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);

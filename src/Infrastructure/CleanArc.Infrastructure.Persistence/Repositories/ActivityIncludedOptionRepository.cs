@@ -91,7 +91,7 @@ public async Task<ResponseEntity> AddAsync(ActivityIncludedOption ActivityInclud
             {
                 connection.Open();
                 var parameters = new DynamicParameters();
-                parameters.Add("@ID", deleteRequest.SelectedIds);
+                parameters.Add("@Ids", deleteRequest.SelectedIds);
                 parameters.Add("@UpdatedBy", updatedBy);
                 parameters.Add("@UpdatedBy", updatedBy);
                 

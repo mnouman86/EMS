@@ -84,7 +84,7 @@ public class RoomSizeUnitReposirory : IRoomSizeUnitReposirory
             {
                 connection.Open();
                 var parameters = new DynamicParameters();
-                parameters.Add("@ID", deleteRequest.SelectedIds);
+                parameters.Add("@Ids", deleteRequest.SelectedIds);
                 parameters.Add("@UpdatedBy", updatedBy);
 
 				parameters.Add("@CultureId", deleteRequest.CultureId);
