@@ -158,17 +158,17 @@ public class URLRepository:IURLRepository
     }
 
     /// <inheritdoc/>
-    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(DeleteRequest deleteRequest, int? updatedBy)
     {
-        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, deleteRequest))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection")))
             {
                 connection.Open();
                 var parameters = new DynamicParameters();
-                parameters.Add("@ID", selectedIds);
+                parameters.Add("@ID", deleteRequest.SelectedIds);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@CultureId", CultureId);
+                parameters.Add("@CultureId", deleteRequest.CultureId);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(UrlQueries.DeleteURL, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;

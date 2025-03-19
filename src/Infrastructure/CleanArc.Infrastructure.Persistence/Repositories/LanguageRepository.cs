@@ -77,17 +77,17 @@ public class LanguageRepository : ILanguageRepository
         }
     }
 
-    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(DeleteRequest deleteRequest, int? updatedBy)
     {
-        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, deleteRequest))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
                 var parameters = new DynamicParameters();
-                parameters.Add("@ID", selectedIds);
+                parameters.Add("@ID", deleteRequest.SelectedIds);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@CultureId", CultureId);
+                parameters.Add("@CultureId", deleteRequest.CultureId);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(LanguageQueries.Delete_Language, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }

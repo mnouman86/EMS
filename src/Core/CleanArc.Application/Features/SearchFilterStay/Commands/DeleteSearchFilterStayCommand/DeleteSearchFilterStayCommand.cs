@@ -9,18 +9,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization; using CleanArc.Domain.Common;
+using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.SearchFilterStay.Commands.DeleteSearchFilterStayCommand;
 
-public record DeleteSearchFilterStayCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record DeleteSearchFilterStayCommand(DeleteRequest deleteRequest) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<DeleteSearchFilterStayCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<DeleteSearchFilterStayCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteSearchFilterStayCommand> validator)
     {
-        validator.RuleFor(c => c.SelectedIds)
+        validator.RuleFor(c => c.deleteRequest.SelectedIds)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please select Record");

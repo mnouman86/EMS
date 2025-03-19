@@ -14,6 +14,11 @@ namespace CleanArc.Application.Models.Request
         public List<FilterParameter> FilterArray { get; set; }
         public List<SortingParameter> SortingArray { get; set; }
     }
+    public class DeleteRequest
+    {
+        public string SelectedIds { get; set; }
+        public int? CultureId { get; set; }
+    }
     public class SearchRequestById
     {
         public int Id { get; set; }

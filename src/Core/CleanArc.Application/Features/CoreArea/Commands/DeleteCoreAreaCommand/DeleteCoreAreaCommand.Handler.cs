@@ -57,7 +57,7 @@ internal class DeleteCoreAreaCommandHandler: IRequestHandler<DeleteCoreAreaComma
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             //await _unitOfWork.CoreAreaRepository.DeleteAsync(new Domain.Entities.CoreArea.CoreArea()
             // { UpdatedBy = user.Id, ID = request.ID });
-            var result = await _unitOfWork.CoreAreaRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.CoreAreaRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

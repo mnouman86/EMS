@@ -57,7 +57,7 @@ internal class DeleteKBWhenToVisitCommandHandler: IRequestHandler<DeleteKBWhenTo
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             //await _unitOfWork.KBWhenToVisitRepository.DeleteAsync(new Domain.Entities.KBWhenToVisit.KBWhenToVisit()
             // { UpdatedBy = user.Id, ID = request.ID });
-            var result = await _unitOfWork.KBWhenToVisitRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.KBWhenToVisitRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization; using CleanArc.Domain.Common;
+using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ActivityPricePerParticipant.Commands.UpdateActivityPricePerParticipantCommand;
 public record UpdateActivityPricePerParticipantCommand( int? ActivityID, Decimal? PerParticipationPrice, int? UpdatedBy,int? CultureId) : IRequest<OperationResult<ResponseEntity>>,

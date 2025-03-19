@@ -57,7 +57,7 @@ internal class DeleteKBRelatedUrlLinkCommandHandler: IRequestHandler<DeleteKBRel
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             //await _unitOfWork.KBRelatedUrlLinkRepository.DeleteAsync(new Domain.Entities.KBRelatedUrlLink.KBRelatedUrlLink()
             // { UpdatedBy = user.Id, ID = request.ID });
-            var result = await _unitOfWork.KBRelatedUrlLinkRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.KBRelatedUrlLinkRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

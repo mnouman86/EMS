@@ -36,7 +36,7 @@ internal class DeleteURLCommandHandler : IRequestHandler<DeleteURLCommand, Opera
             if (user == null)
                 return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
-            var result = await _unitOfWork.URLRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.URLRepository.DeleteAsync(request.deleteRequest, user.Id);
 
             await _unitOfWork.CommitAsync();
 

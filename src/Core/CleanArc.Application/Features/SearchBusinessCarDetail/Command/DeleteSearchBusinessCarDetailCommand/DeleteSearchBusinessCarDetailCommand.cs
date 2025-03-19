@@ -8,19 +8,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization; using CleanArc.Domain.Common;
+using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.SearchBusinessCarDetail.Command.DeleteSearchBusinessCarDetail;
 
-public record DeleteSearchBusinessCarDetailCommand(string SelectedIds, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record DeleteSearchBusinessCarDetailCommand(DeleteRequest deleteRequest) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<DeleteSearchBusinessCarDetailCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<DeleteSearchBusinessCarDetailCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteSearchBusinessCarDetailCommand> validator)
     {
-        validator.RuleFor(c => c.SelectedIds)
+        validator.RuleFor(c => c.deleteRequest.SelectedIds)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please select Record");

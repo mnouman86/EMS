@@ -57,7 +57,7 @@ internal class DeleteKBDescriptionCommandHandler: IRequestHandler<DeleteKBDescri
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             //await _unitOfWork.KBDescriptionRepository.DeleteAsync(new Domain.Entities.KBDescription.KBDescription()
             // { UpdatedBy = user.Id, ID = request.ID });
-            var result = await _unitOfWork.KBDescriptionRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.KBDescriptionRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

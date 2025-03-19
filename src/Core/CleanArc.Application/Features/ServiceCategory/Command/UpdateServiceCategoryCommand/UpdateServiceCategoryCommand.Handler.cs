@@ -55,7 +55,15 @@ internal class UpdateServiceCategoryCommandHandler : IRequestHandler<UpdateServi
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.ServiceCategoryRepository.UpdateAsync(new Domain.Entities.ServiceCategory.ServiceCategory()
-            { UpdatedBy = user.Id, ID = request.ID, Description = request.Description, Name = request.Name, ServiceId=request.ServiceId, Icon=request.Icon });
+            {
+                UpdatedBy = user.Id,
+                ID = request.ID,
+                Description = request.Description,
+                Name = request.Name,
+                ServiceId = request.ServiceId,
+                Icon = request.Icon,
+                CultureId=request.CultureId
+            });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

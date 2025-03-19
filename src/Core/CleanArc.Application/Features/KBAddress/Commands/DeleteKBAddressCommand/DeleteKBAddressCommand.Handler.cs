@@ -57,7 +57,7 @@ internal class DeleteKBAddressCommandHandler: IRequestHandler<DeleteKBAddressCom
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             //await _unitOfWork.KBAddressRepository.DeleteAsync(new Domain.Entities.KBAddress.KBAddress()
             // { UpdatedBy = user.Id, ID = request.ID });
-            var result = await _unitOfWork.KBAddressRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.KBAddressRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

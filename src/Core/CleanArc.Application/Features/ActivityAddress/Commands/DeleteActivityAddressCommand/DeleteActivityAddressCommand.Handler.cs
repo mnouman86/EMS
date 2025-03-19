@@ -57,7 +57,7 @@ internal class DeleteActivityAddressCommandHandler: IRequestHandler<DeleteActivi
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             //await _unitOfWork.ActivityAddressRepository.DeleteAsync(new Domain.Entities.ActivityAddress.ActivityAddress()
             // { UpdatedBy = user.Id, ID = request.ID });
-            var result = await _unitOfWork.ActivityAddressRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.ActivityAddressRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

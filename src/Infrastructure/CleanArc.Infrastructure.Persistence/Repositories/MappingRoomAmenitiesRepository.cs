@@ -76,7 +76,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             }
         }
 
-        public Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+        public Task<ResponseEntity> DeleteAsync(DeleteRequest deleteRequest, int? updatedBy)
         {
             throw new NotImplementedException();
         }

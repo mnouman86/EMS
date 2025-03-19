@@ -57,7 +57,7 @@ internal class DeleteKBMediaCommandHandler: IRequestHandler<DeleteKBMediaCommand
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             //await _unitOfWork.KBMediaRepository.DeleteAsync(new Domain.Entities.KBMedia.KBMedia()
             // { UpdatedBy = user.Id, ID = request.ID });
-            var result = await _unitOfWork.KBMediaRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.KBMediaRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

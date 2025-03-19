@@ -57,7 +57,7 @@ internal class DeleteActivityTransportationCommandHandler: IRequestHandler<Delet
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             //await _unitOfWork.ActivityTransportationRepository.DeleteAsync(new Domain.Entities.ActivityTransportation.ActivityTransportation()
             // { UpdatedBy = user.Id, ID = request.ID });
-            var result = await _unitOfWork.ActivityTransportationRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.ActivityTransportationRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

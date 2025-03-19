@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization; using CleanArc.Domain.Common;
+using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ActivityDisabilityMapping.Commands.UpdateActivityDisabilityMappingCommand;
 public record UpdateActivityDisabilityMappingCommand(int ID, String? DisabilityOptionIDs, int? ActivityID ,int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,

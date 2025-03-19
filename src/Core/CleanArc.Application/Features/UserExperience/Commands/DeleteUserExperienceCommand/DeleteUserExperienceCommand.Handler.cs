@@ -57,7 +57,7 @@ internal class DeleteUserExperienceCommandHandler: IRequestHandler<DeleteUserExp
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             //await _unitOfWork.UserExperienceRepository.DeleteAsync(new Domain.Entities.UserExperience.UserExperience()
             // { UpdatedBy = user.Id, ID = request.ID });
-            var result = await _unitOfWork.UserExperienceRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.UserExperienceRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
