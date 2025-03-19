@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ServiceCategory.Command.CreateServiceCategoryCommand;
 
-public record CreateServiceCategoryCommand(string? Name, string? Description, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateServiceCategoryCommand(string? Name, string? Description, string? Icon, int? ServiceId) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<CreateServiceCategoryCommand>
 {
     [JsonIgnore]
@@ -26,7 +26,15 @@ IValidatableModel<CreateServiceCategoryCommand>
         validator.RuleFor(c => c.Description)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please enter a Description");
+            .WithMessage("Please enter Description");
+        validator.RuleFor(c => c.ServiceId)
+            .NotEmpty()
+            .NotNull()
+            .WithMessage("Please select a Service");
+        validator.RuleFor(c => c.Icon)
+            .NotEmpty()
+            .NotNull()
+            .WithMessage("Please enter a valid Google Icon code from https://fonts.google.com/icons");
         return validator;
     }
 }
