@@ -155,7 +155,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 {
                     connection.Open();
                     var parameters = new DynamicParameters();
-                    parameters.Add("@ID", deleteRequest.SelectedIds);
+                    parameters.Add("@Ids", deleteRequest.SelectedIds);
 					parameters.Add("@CultureID", 1);
 					parameters.Add("@UpdatedBy", updatedBy);
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelImageQueries.Delete_HotelImage, parameters, commandType: CommandType.StoredProcedure);

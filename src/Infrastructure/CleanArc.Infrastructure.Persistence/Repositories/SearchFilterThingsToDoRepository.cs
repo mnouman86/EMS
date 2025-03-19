@@ -100,7 +100,7 @@ public class SearchFilterThingsToDoRepository:ISearchFilterThingsToDoRepository
 //            {
 //                connection.Open();
 //                var parameters = new DynamicParameters();
-//                parameters.Add("@ID", deleteRequest.SelectedIds);
+//                parameters.Add("@Ids", deleteRequest.SelectedIds);
 //                parameters.Add("@CultureId", deleteRequest.CultureId);
 //                parameters.Add("@UpdatedBy", updatedBy);
 //                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);

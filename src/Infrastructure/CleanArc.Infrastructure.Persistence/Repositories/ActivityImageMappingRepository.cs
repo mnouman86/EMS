@@ -111,7 +111,7 @@ public async Task<ResponseEntity> AddAsync(ActivityImageMapping activityImageMap
             {
                 connection.Open();
                 var parameters = new DynamicParameters();
-                parameters.Add("@ID", deleteRequest.SelectedIds);
+                parameters.Add("@Ids", deleteRequest.SelectedIds);
                 parameters.Add("@CultureId", deleteRequest.CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
                 

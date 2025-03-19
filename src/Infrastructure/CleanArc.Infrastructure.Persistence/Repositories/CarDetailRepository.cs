@@ -79,7 +79,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 {
                     connection.Open();
                     var parameters = new DynamicParameters();
-                    parameters.Add("@ID", deleteRequest.SelectedIds);
+                    parameters.Add("@Ids", deleteRequest.SelectedIds);
                     parameters.Add("@UpdatedBy", updatedBy);
                     parameters.Add("@CultureId", 1);
                     

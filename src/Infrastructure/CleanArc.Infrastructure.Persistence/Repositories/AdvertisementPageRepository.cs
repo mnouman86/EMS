@@ -89,7 +89,7 @@ public async Task<ResponseEntity> AddAsync(AdvertisementPage AdvertisementPage)
             {
                 connection.Open();
                 var parameters = new DynamicParameters();
-                parameters.Add("@ID", deleteRequest.SelectedIds);
+                parameters.Add("@Ids", deleteRequest.SelectedIds);
                 parameters.Add("@UpdatedBy", updatedBy);
                 parameters.Add("@CultureId", deleteRequest.CultureId);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementPageQueries.Delete_Page, parameters, commandType: CommandType.StoredProcedure);

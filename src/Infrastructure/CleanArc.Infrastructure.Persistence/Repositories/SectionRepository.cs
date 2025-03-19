@@ -83,7 +83,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 				{
 					connection.Open();
 					var parameters = new DynamicParameters();
-					parameters.Add("@ID", deleteRequest.SelectedIds);
+					parameters.Add("@Ids", deleteRequest.SelectedIds);
 					parameters.Add("@UpdatedBy", updatedBy);
                     parameters.Add("@CultureId", deleteRequest.CultureId);
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SectionQueries.Delete_Section, parameters, commandType: CommandType.StoredProcedure);
