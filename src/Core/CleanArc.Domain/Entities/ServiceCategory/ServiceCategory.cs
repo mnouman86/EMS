@@ -12,6 +12,7 @@ namespace CleanArc.Domain.Entities.ServiceCategory
         public string? Name { get; set; }
         public string? Description { get; set; }
         public string? Icon { get; set; }
+        public int? ServiceId { get; set; }
         public string? ServiceName { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsDeleted { get; set; }
