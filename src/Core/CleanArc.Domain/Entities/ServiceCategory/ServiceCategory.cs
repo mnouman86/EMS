@@ -11,6 +11,9 @@ namespace CleanArc.Domain.Entities.ServiceCategory
         public int ID { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
+        public string? Icon { get; set; }
+        public int? ServiceId { get; set; }
+        public string? ServiceName { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsDeleted { get; set; }
         public DateTime? CreatedAt { get; set; }
@@ -18,7 +21,5 @@ namespace CleanArc.Domain.Entities.ServiceCategory
         public int? UpdatedBy { get; set; }
         public DateTime? UpdatedAt { get; set; }
 		public int? CultureId { get; set; }
-		public int? Code { get; set; }
-		public string? Message { get; set; }
 	}
 }
