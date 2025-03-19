@@ -75,9 +75,9 @@ public class ServiceCategoryRepository : IServiceCategoryRepository
         }
     }
 
-    public async Task<ResponseEntity> DeleteAsync(DeleteRequest deleteRequest)
+    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
     {
-        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, deleteRequest))
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
