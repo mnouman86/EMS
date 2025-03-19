@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization; using CleanArc.Domain.Common;
+using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.SubService.Commands.UpdateSubServiceCommand;
 public record UpdateSubServiceCommand(int ID,String? Name, int? ServiceID, string? Description, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,

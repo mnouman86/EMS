@@ -57,7 +57,7 @@ internal class DeleteActivityDisabilityOptionCommandHandler: IRequestHandler<Del
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             //await _unitOfWork.ActivityDisabilityOptionRepository.DeleteAsync(new Domain.Entities.ActivityDisabilityOption.ActivityDisabilityOption()
             // { UpdatedBy = user.Id, ID = request.ID });
-            var result = await _unitOfWork.ActivityDisabilityOptionRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.ActivityDisabilityOptionRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

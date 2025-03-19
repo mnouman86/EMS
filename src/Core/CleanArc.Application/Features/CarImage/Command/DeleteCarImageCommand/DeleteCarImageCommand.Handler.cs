@@ -49,7 +49,7 @@ namespace CleanArc.Application.Features.CarImage.Command.DeleteCarImageCommand
                     return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
 
-                var result = await _unitOfWork.CarImageRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+                var result = await _unitOfWork.CarImageRepository.DeleteAsync(request.deleteRequest, user.Id);
                 await _unitOfWork.CommitAsync();
                 //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
                 return OperationResult<ResponseEntity>.SuccessResult(result);

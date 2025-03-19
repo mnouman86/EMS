@@ -8,18 +8,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization; using CleanArc.Domain.Common;
+using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ActivityAddressMapping.Commands.DeleteActivityAddressMappingCommand;
 
-public record DeleteActivityAddressMappingCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record DeleteActivityAddressMappingCommand(DeleteRequest deleteRequest) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<DeleteActivityAddressMappingCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<DeleteActivityAddressMappingCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteActivityAddressMappingCommand> validator)
     {
-        validator.RuleFor(c => c.SelectedIds)
+        validator.RuleFor(c => c.deleteRequest.SelectedIds)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please select Record");

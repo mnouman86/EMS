@@ -57,7 +57,7 @@ internal class DeleteActivityScheduleCommandHandler: IRequestHandler<DeleteActiv
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             //await _unitOfWork.ActivityScheduleRepository.DeleteAsync(new Domain.Entities.ActivitySchedule.ActivitySchedule()
             // { UpdatedBy = user.Id, ID = request.ID });
-            var result = await _unitOfWork.ActivityScheduleRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.ActivityScheduleRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

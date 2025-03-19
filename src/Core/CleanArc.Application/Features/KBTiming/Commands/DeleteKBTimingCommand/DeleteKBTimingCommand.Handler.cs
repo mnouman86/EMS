@@ -57,7 +57,7 @@ internal class DeleteKBTimingCommandHandler: IRequestHandler<DeleteKBTimingComma
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             //await _unitOfWork.KBTimingRepository.DeleteAsync(new Domain.Entities.KBTiming.KBTiming()
             // { UpdatedBy = user.Id, ID = request.ID });
-            var result = await _unitOfWork.KBTimingRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.KBTimingRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

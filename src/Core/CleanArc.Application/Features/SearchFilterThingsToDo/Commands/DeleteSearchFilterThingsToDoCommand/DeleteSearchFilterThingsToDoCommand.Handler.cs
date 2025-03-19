@@ -57,7 +57,7 @@ internal class DeleteSearchFilterThingsToDoCommandHandler: IRequestHandler<Delet
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             //await _unitOfWork.SearchFilterThingsToDoRepository.DeleteAsync(new Domain.Entities.SearchFilterThingsToDo.SearchFilterThingsToDo()
             // { UpdatedBy = user.Id, ID = request.ID });
-           // await _unitOfWork.SearchFilterThingsToDoRepository.DeleteAsync(request.SelectedIds,request.UserId, request.CultureId);
+           // await _unitOfWork.SearchFilterThingsToDoRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(null);

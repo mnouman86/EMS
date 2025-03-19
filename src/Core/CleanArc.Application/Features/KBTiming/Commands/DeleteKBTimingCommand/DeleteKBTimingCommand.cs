@@ -8,18 +8,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization; using CleanArc.Domain.Common;
+using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.KBTiming.Commands.DeleteKBTimingCommand;
 
-public record DeleteKBTimingCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record DeleteKBTimingCommand(DeleteRequest deleteRequest) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<DeleteKBTimingCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<DeleteKBTimingCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteKBTimingCommand> validator)
     {
-        validator.RuleFor(c => c.SelectedIds)
+        validator.RuleFor(c => c.deleteRequest.SelectedIds)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please select Record");

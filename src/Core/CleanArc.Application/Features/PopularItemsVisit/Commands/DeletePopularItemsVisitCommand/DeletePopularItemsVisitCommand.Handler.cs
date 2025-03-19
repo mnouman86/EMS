@@ -57,7 +57,7 @@ internal class DeletePopularItemsVisitCommandHandler: IRequestHandler<DeletePopu
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             //await _unitOfWork.PopularItemsVisitRepository.DeleteAsync(new Domain.Entities.PopularItemsVisit.PopularItemsVisit()
             // { UpdatedBy = user.Id, ID = request.ID });
-            var result = await _unitOfWork.PopularItemsVisitRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.PopularItemsVisitRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

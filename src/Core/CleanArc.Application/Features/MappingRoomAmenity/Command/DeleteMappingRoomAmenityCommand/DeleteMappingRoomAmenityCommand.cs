@@ -9,18 +9,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization; using CleanArc.Domain.Common;
+using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.MappingRoomAmenity.Command.DeleteMappingRoomAmenityCommand;
 
-public  record DeleteMappingRoomAmenityCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public  record DeleteMappingRoomAmenityCommand(DeleteRequest deleteRequest) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<DeleteMappingRoomAmenityCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<DeleteMappingRoomAmenityCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteMappingRoomAmenityCommand> validator)
     {
-        validator.RuleFor(c => c.SelectedIds)
+        validator.RuleFor(c => c.deleteRequest.SelectedIds)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please select Record");

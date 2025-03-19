@@ -7,12 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization; using CleanArc.Domain.Common;
+using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ServiceCategory.Command.CreateServiceCategoryCommand;
 
-public record CreateServiceCategoryCommand(string? Name, string? Description, string? Icon, int? ServiceId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateServiceCategoryCommand(string? Name, string? Description, string? Icon, int? ServiceId, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<CreateServiceCategoryCommand>
 {
     [JsonIgnore]

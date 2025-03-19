@@ -48,7 +48,7 @@ internal class DeleteAmenityCommandHandler : IRequestHandler<DeleteAmenityComman
             if (user == null)
                 return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
-            var result = await _unitOfWork.AmenityRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.AmenityRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
             //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

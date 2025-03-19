@@ -63,7 +63,7 @@ public class SearchCarImageRepository : ISearchCarImageRepository
         throw new NotImplementedException();
     }
 
-    public Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public Task<ResponseEntity> DeleteAsync(DeleteRequest deleteRequest, int? updatedBy)
     {
         throw new NotImplementedException();
     }

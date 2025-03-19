@@ -57,7 +57,7 @@ internal class DeleteActivityPerGroupPriceCommandHandler: IRequestHandler<Delete
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             //await _unitOfWork.ActivityPerGroupPriceRepository.DeleteAsync(new Domain.Entities.ActivityPerGroupPrice.ActivityPerGroupPrice()
             // { UpdatedBy = user.Id, ID = request.ID });
-            var result = await _unitOfWork.ActivityPerGroupPriceRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.ActivityPerGroupPriceRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

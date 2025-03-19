@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization; using CleanArc.Domain.Common;
+using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.KBTiming.Commands.UpdateKBTimingCommand;
 public record UpdateKBTimingCommand(int ID,int? GenericTitleID, string? Day, string? TimeFrom, string? TimeTo, bool? IsAlwaysOpen,bool? IsClosed, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,

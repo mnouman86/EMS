@@ -48,7 +48,7 @@ internal class DeleteCustomerAwarenessCommandHandler : IRequestHandler<DeleteCus
                 return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
 
-            var result = await _unitOfWork.CustomerAwarenessRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.CustomerAwarenessRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
             //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

@@ -85,7 +85,7 @@ public async Task<ResponseEntity> AddAsync(UserSignUpRewards UserSignUpRewards)
     }
 }
 
-    public Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public Task<ResponseEntity> DeleteAsync(DeleteRequest deleteRequest, int? updatedBy)
     {
         throw new NotImplementedException();
     }

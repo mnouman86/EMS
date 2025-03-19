@@ -84,16 +84,16 @@ public async Task<ResponseEntity> AddAsync(ActivityType ActivityType)
     }
 }
 
-    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(DeleteRequest deleteRequest, int? updatedBy)
     {
-        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, deleteRequest))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
                 var parameters = new DynamicParameters();
-                parameters.Add("@ID", selectedIds);
-                parameters.Add("@CultureId", CultureId);
+                parameters.Add("@ID", deleteRequest.SelectedIds);
+                parameters.Add("@CultureId", deleteRequest.CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityTypeQueries.Delete_ActivityType, parameters, commandType: CommandType.StoredProcedure);

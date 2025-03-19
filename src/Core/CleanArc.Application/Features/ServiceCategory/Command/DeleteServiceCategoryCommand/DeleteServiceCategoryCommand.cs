@@ -9,18 +9,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization; using CleanArc.Domain.Common;
+using System.Text.Json.Serialization; 
+using CleanArc.Domain.Common;
+using CleanArc.Application.Models.Request;
 
 namespace CleanArc.Application.Features.ServiceCategory.Command.DeleteServiceCategoryCommand;
 
-public  record DeleteServiceCategoryCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public  record DeleteServiceCategoryCommand(DeleteRequest deleteRequest) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<DeleteServiceCategoryCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<DeleteServiceCategoryCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteServiceCategoryCommand> validator)
     {
-        validator.RuleFor(c => c.SelectedIds)
+        validator.RuleFor(c => c.deleteRequest.SelectedIds)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please select Record");

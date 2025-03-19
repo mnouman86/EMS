@@ -57,7 +57,7 @@ internal class DeleteActivitySeasonMappingCommandHandler: IRequestHandler<Delete
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             //await _unitOfWork.ActivitySeasonMappingRepository.DeleteAsync(new Domain.Entities.ActivitySeasonMapping.ActivitySeasonMapping()
             // { UpdatedBy = user.Id, ID = request.ID });
-            var result = await _unitOfWork.ActivitySeasonMappingRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.ActivitySeasonMappingRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

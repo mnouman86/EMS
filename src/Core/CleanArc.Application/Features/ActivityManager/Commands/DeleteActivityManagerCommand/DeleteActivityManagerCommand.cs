@@ -8,18 +8,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization; using CleanArc.Domain.Common;
+using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ActivityManager.Commands.DeleteActivityManagerCommand;
 
-public record DeleteActivityManagerCommand(string SelectedIds, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record DeleteActivityManagerCommand(DeleteRequest deleteRequest) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<DeleteActivityManagerCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<DeleteActivityManagerCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteActivityManagerCommand> validator)
     {
-        validator.RuleFor(c => c.SelectedIds)
+        validator.RuleFor(c => c.deleteRequest.SelectedIds)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please select Record");

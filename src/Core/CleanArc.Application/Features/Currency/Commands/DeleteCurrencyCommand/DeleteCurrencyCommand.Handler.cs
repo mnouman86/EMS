@@ -57,7 +57,7 @@ internal class DeleteCurrencyCommandHandler: IRequestHandler<DeleteCurrencyComma
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             //await _unitOfWork.CurrencyRepository.DeleteAsync(new Domain.Entities.Currency.Currency()
             // { UpdatedBy = user.Id, ID = request.ID });
-            var result = await _unitOfWork.CurrencyRepository.DeleteAsync(request.SelectedIds, user.Id, request.CultureId);
+            var result = await _unitOfWork.CurrencyRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

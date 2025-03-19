@@ -88,16 +88,16 @@ public async Task<ResponseEntity> AddAsync(ActivityAddressMapping ActivityAddres
     }
 }
 
-    public async Task<ResponseEntity> DeleteAsync(string selectedIds, int updatedBy, int? CultureId)
+    public async Task<ResponseEntity> DeleteAsync(DeleteRequest deleteRequest, int? updatedBy)
     {
-        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, new { selectedIds, updatedBy }))
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, deleteRequest))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
                 var parameters = new DynamicParameters();
-                parameters.Add("@ID", selectedIds);
-                parameters.Add("@CultureId", CultureId);
+                parameters.Add("@ID", deleteRequest.SelectedIds);
+                parameters.Add("@CultureId", deleteRequest.CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
