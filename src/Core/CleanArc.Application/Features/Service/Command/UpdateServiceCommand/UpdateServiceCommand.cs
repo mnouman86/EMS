@@ -25,10 +25,10 @@ namespace CleanArc.Application.Features.Service.Command.UpdateServiceCommand
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Service Name");
-            validator.RuleFor(c => c.Icon)
-                .NotEmpty()
-                .NotNull()
-                .WithMessage("Please enter a valid Google Icon code from https://fonts.google.com/icons");
+            //validator.RuleFor(c => c.Icon)
+            //    .NotEmpty()
+            //    .NotNull()
+            //    .WithMessage("Please enter a valid Google Icon code from https://fonts.google.com/icons");
             return validator;
         }
     }

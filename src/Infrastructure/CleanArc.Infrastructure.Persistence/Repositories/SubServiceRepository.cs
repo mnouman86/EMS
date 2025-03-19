@@ -151,7 +151,8 @@ public async Task<ResponseEntity> AddAsync(SubService SubService)
                 parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
 
                 var result = await connection.QuerySingleOrDefaultAsync<SubService>(SubServiceQueries.GetByID_SubServices, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                
                 var response = new SingleResponseWrapper<SubService>
                 {
                     Data = result,
