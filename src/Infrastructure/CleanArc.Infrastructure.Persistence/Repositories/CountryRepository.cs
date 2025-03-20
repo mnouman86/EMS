@@ -146,7 +146,7 @@ public class CountryRepository : ICountryRepository
 				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 				parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
-				parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
+				parameters.Add("@Id", searchRequestById.Id, DbType.Int32);
 				var result = await connection.QuerySingleOrDefaultAsync<Country>(CountryQueries.GetByID_Country, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 

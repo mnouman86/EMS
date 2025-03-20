@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.Country.Command.UpdateCountryCommand
 {
-    public  record UpdateCountryCommand(int ID, String? Name, string? Description, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+    public  record UpdateCountryCommand(int Id, String? Name, string? Description, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateCountryCommand>
     {
         [JsonIgnore]
@@ -24,10 +24,6 @@ namespace CleanArc.Application.Features.Country.Command.UpdateCountryCommand
                 .NotEmpty()
                 .NotNull()
                 .WithMessage("Please enter a valid Name");
-            validator.RuleFor(c => c.Description)
-                .NotEmpty()
-                .NotNull()
-                .WithMessage("Please enter a Description");
             return validator;
         }
     }
