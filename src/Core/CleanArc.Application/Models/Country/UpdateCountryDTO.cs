@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.Country
 {
     public class UpdateCountryDTO
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
         public int? UpdatedBy { get; set; }
