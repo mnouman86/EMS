@@ -8,12 +8,12 @@ namespace CleanArc.Application.Features.State.Queries.GetAllStates
 {
     public class GetAllStatesQueryResult
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string countryName { get; set; }
+        public string CountryName { get; set; }
 
-        public int CountryID { get; set; }
+        public int CountryLookUpId { get; set; }
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
         public int CreatedBy { get; set; }
