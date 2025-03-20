@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.MappingRoomAmenity.Command.UpdateMappingRoomAmenityCommand;
 
-public record UpdateMappingRoomAmenityCommand(int ID, String? Name, string? Description, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateMappingRoomAmenityCommand(int Id, String? Name, string? Description, int? CultureID) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<UpdateMappingRoomAmenityCommand>
 {
     [JsonIgnore]
