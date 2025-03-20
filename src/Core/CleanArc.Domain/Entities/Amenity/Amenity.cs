@@ -8,14 +8,13 @@ namespace CleanArc.Domain.Entities.Amenity;
 
 public class Amenity
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public string? Name { get; set; }
-    public string? CategoryName { get; set; }
-    public string? AmenityName { get; set; }
-    public int? ServiceCategoryID { get; set; }
+    public string? ServiceName { get; set; }
+    public int? ServiceCategoryId { get; set; }
     public string? ServiceCategoryName { get; set; }
     public string? Description { get; set; }
-    public int? CategoryID { get; set; }
+    public int? ServiceId { get; set; }
     public string? Icon { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
@@ -25,7 +24,5 @@ public class Amenity
     public DateTime? UpdatedAt { get; set; }
 
     public int? CultureId { get; set; }
-    public int? Code { get; set; }
-    public string? Message { get; set; }
 
 }

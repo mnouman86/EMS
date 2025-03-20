@@ -12,8 +12,8 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.Amenities.Command.CreateAmenitiesCommand;
-
-public record CreateAmenityCommand(string? Name, string? Description, int? CategoryID,int? ServiceCategoryID, string? Icon, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+//serviceID, ServiceCategoryID, Name, Desc, Icon
+public record CreateAmenityCommand(string? Name, string? Description, int? ServiceId,int? ServiceCategoryId, string? Icon, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateAmenityCommand>
 {
     [JsonIgnore]
@@ -24,18 +24,14 @@ public record CreateAmenityCommand(string? Name, string? Description, int? Categ
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Name");
-        validator.RuleFor(c => c.Description)
+        validator.RuleFor(c => c.ServiceId)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please enter a Description");
-        validator.RuleFor(c => c.CategoryID)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a CategoryID");
-        validator.RuleFor(c => c.ServiceCategoryID)
+            .WithMessage("Please select a Service");
+        validator.RuleFor(c => c.ServiceCategoryId)
           .NotEmpty()
           .NotNull()
-          .WithMessage("Please enter a ServiceCategoryID");
+          .WithMessage("Please select a Service Category");
         return validator;
     }
 }
