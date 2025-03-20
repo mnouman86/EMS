@@ -129,7 +129,8 @@ public class CountryRepository : ICountryRepository
 				var result = await connection.QueryAsync<Country>(CountryQueries.GetALL_Country, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-				var response = new ListResponseWrapper<Country> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
+				var response = new ListResponseWrapper<Country> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; 
+                return response;
 
 
 			}
