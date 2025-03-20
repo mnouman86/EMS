@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.SearchCountryCities.Command.CreateSearchCountryCities;
 
-public record CreateSearchCountryCitiesCommand( String CityName ) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateSearchCountryCitiesCommand( string CityName ) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateSearchCountryCitiesCommand>
 {
     [JsonIgnore]

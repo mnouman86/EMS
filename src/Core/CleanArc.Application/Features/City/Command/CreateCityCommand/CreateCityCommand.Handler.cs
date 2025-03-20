@@ -57,7 +57,15 @@ internal class CreateCityCommandHandler : IRequestHandler<CreateCityCommand, Ope
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.CityRepository.AddAsync(new Domain.Entities.City.City()
-            { CreatedBy = user.Id, Description = request.Description, Name = request.Name, StateID=request.StateID , ImagePath=request.ImagePath, IsMain=request.IsMain});
+            {
+                CreatedBy = user.Id,
+                Description = request.Description,
+                Name = request.Name,
+                StateLookUpId = request.StateLookUpId,
+                ImagePath = request.ImagePath,
+                IsMain = request.IsMain,
+                CultureId=request.CultureId,
+            });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
