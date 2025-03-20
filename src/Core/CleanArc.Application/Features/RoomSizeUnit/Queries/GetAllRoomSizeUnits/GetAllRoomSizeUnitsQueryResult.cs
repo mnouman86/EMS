@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.RoomSizeUnit.Queries.GetAllRoomSizeUnits
 
 public class GetAllRoomSizeUnitsQueryResult
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
     public bool IsActive { get; set; }

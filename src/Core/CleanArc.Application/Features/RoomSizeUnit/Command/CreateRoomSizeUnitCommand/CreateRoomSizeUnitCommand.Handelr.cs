@@ -56,7 +56,12 @@ internal class CreateRoomSizeUnitCommandHandler : IRequestHandler<CreateRoomSize
 
             //return OperationResult<bool>.SuccessResult(true);
             var result = await _unitOfWork.RoomSizeUnitReposirory.AddAsync(new Domain.Entities.RoomSizeUnit.RoomSizeUnit()
-            { CreatedBy = user.Id, Description = request.Description, Name = request.Name });
+            {
+                CreatedBy = user.Id,
+                Description = request.Description,
+                Name = request.Name,
+                CultureId = request.CultureId,
+            });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
