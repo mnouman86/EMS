@@ -50,7 +50,12 @@ internal class CreateRoomTypeCommandHandler : IRequestHandler<CreateRoomTypeComm
 
 
             var result = await _unitOfWork.RoomTypeRepository.AddAsync(new Domain.Entities.RoomType.RoomType()
-            { CreatedBy = user.Id, Description = request.Description, Name = request.Name });
+            {
+                CreatedBy = user.Id,
+                Description = request.Description,
+                Name = request.Name,
+                CultureId = request.CultureId,
+            });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

@@ -12,7 +12,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.RoomType.Command.UpdateRoomTypeCommand;
 
-public record UpdateRoomTypeCommand(int ID, String? Name, string? Description, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateRoomTypeCommand(int Id, String? Name, string? Description, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateRoomTypeCommand>
 {
     [JsonIgnore]
@@ -23,10 +23,6 @@ public record UpdateRoomTypeCommand(int ID, String? Name, string? Description, i
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Name");
-        validator.RuleFor(c => c.Description)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a Description");
         return validator;
     }
 }
