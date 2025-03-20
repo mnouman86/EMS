@@ -11,10 +11,9 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.PackageType.Commands.UpdatePackageTypeCommand;
-public record UpdatePackageTypeCommand(int ID,
+public record UpdatePackageTypeCommand(int Id,
     string? Title,
-    int? CultureId,
-     int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+    int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdatePackageTypeCommand>
 {
     [JsonIgnore]

@@ -10,7 +10,7 @@ namespace CleanArc.Domain.Entities.AgeType;
 public  class AgeType
     
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public string? Name { get; set; }
     public string? Description { get; set; }
     public bool? IsActive { get; set; }
@@ -20,7 +20,5 @@ public  class AgeType
     public int? UpdatedBy { get; set; }
     public DateTime? UpdatedAt { get; set; }
 	public int? CultureId { get; set; }
-	public int? Code { get; set; }
-	public string? Message { get; set; }
 
 }
