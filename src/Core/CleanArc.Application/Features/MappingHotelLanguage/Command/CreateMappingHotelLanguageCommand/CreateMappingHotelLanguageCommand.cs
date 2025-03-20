@@ -13,18 +13,18 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.MappingHotelLanguage.Command.CreateMappingHotelLanguageCommand;
 
-public record CreateMappingHotelLanguageCommand(string? HotelIDs, string? LanguageIDs, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateMappingHotelLanguageCommand(string? HotelIds, string? LanguageIds, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateMappingHotelLanguageCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<CreateMappingHotelLanguageCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateMappingHotelLanguageCommand> validator)
     {
-        validator.RuleFor(c => c.HotelIDs)
+        validator.RuleFor(c => c.HotelIds)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid HotelIDs");
-        validator.RuleFor(c => c.LanguageIDs)
+        validator.RuleFor(c => c.LanguageIds)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a LanguageIDs");
