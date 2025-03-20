@@ -59,7 +59,8 @@ internal class UpdateRoomSizeUnitCommandHandler : IRequestHandler<UpdateRoomSize
                 UpdatedBy = user.Id,
                 Id = request.Id,
                 Description = request.Description,
-                Name = request.Name
+                Name = request.Name,
+                CultureId = request.CultureId,
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

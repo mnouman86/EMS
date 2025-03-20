@@ -56,7 +56,13 @@ internal class CreateBankCommandHandler : IRequestHandler<CreateBankCommand, Ope
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.BankRepository.AddAsync(new Domain.Entities.Bank.Bank()
-            { CreatedBy = user.Id, Description = request.Description, CountryLookUpID=request.CountryLookUpID, Name = request.Name });
+            {
+                CreatedBy = user.Id,
+                Description = request.Description,
+                CountryLookUpId = request.CountryLookUpId,
+                Name = request.Name,
+                CultureId = request.CultureId,
+            });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
