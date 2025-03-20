@@ -10,7 +10,7 @@ public record GetAllAmenitiesQueryResult
 //(int Id,string Name, string Description, int CategoryID,bool IsActive,bool IsDeleted, 
 //int CreatedBy, DateTime CreatedAt,int UpdatedBy, DateTime UpdatedAt);
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public string Name { get; set; }
     public string ServiceName { get; set; }
     public int ServiceId { get; set; }
