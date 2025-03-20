@@ -49,7 +49,16 @@ internal class UpdateAmenityCommandHandler : IRequestHandler<UpdateAmenityComman
                 return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             var result = await _unitOfWork.AmenityRepository.UpdateAsync(new Domain.Entities.Amenity.Amenity()
-            { UpdatedBy = user.Id, ID = request.ID, Description = request.Description, Name = request.Name,CategoryID=request.CategoryID ,Icon=request.Icon,ServiceCategoryID=request.ServiceCategoryID});
+            {
+                UpdatedBy = user.Id,
+                Id = request.Id,
+                Description = request.Description,
+                Name = request.Name,
+                ServiceId = request.ServiceId,
+                Icon = request.Icon,
+                ServiceCategoryId = request.ServiceCategoryId,
+                CultureId=request.CultureId
+            });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
