@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.RoomSizeUnit.Command.UpdateRoomSizeUnitCommand;
 
-public record UpdateRoomSizeUnitCommand(int ID, String? Name, string? Description, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateRoomSizeUnitCommand(int Id, String? Name, string? Description, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateRoomSizeUnitCommand>
 {
     [JsonIgnore]
@@ -24,10 +24,6 @@ public record UpdateRoomSizeUnitCommand(int ID, String? Name, string? Descriptio
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Name");
-        validator.RuleFor(c => c.Description)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a Description");
         return validator;
     }
 }
