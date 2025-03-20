@@ -9,7 +9,7 @@ namespace CleanArc.Application.Features.AgeType.Queries.GetAgeTypeById
     public class GetAgeTypeByIdQueryResult
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public bool IsDeleted { get; set; }

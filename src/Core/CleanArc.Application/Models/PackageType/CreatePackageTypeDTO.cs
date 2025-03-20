@@ -15,8 +15,6 @@ namespace CleanArc.Application.Models.PackageType
         //public bool? IsDeleted { get; set; }     // Corresponds to [IsDeleted] [bit] NULL
         public int? CreatedBy { get; set; } // int NULL
         public int? CultureId { get; set; }
-        public int? Code { get; set; }
-        public string? Message { get; set; }
 
        
 

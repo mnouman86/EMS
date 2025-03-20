@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.AgeType.Commands.UpdateAgeTypeCommand;
-public record UpdateAgeTypeCommand(int ID,String? Name, string? Description, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateAgeTypeCommand(int Id,String? Name, string? Description, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateAgeTypeCommand>
 {
     [JsonIgnore]
@@ -22,10 +22,6 @@ public record UpdateAgeTypeCommand(int ID,String? Name, string? Description, int
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Name");
-        validator.RuleFor(c => c.Description)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a Description");
         return validator;
     }
 }

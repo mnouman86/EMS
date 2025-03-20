@@ -12,8 +12,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.PackageType.Commands.CreatePackageTypeCommand;
 public record CreatePackageTypeCommand(string? Title,
-    int? CultureId,
-    int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+    int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreatePackageTypeCommand>
 {
     [JsonIgnore]

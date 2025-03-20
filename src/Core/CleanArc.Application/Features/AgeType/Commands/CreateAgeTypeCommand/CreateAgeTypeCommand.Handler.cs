@@ -58,7 +58,7 @@ internal class CreateAgeTypeCommandHandler: IRequestHandler<CreateAgeTypeCommand
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.AgeTypeRepository.AddAsync(new Domain.Entities.AgeType.AgeType()
-            { CreatedBy = user.Id, Description = request.Description,Name=request.Name  });
+            { CreatedBy = user.Id, Description = request.Description,Name=request.Name,CultureId=request.CultureId  });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

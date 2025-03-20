@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.AgeType.Commands.CreateAgeTypeCommand;
-public record CreateAgeTypeCommand(string? Name, string? Description,int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateAgeTypeCommand(string? Name, string? Description,int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateAgeTypeCommand>
 {
     [JsonIgnore]
@@ -22,10 +22,6 @@ public record CreateAgeTypeCommand(string? Name, string? Description,int? Create
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Name");
-        validator.RuleFor(c => c.Description)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a Description");
         return validator;
     }
 }
