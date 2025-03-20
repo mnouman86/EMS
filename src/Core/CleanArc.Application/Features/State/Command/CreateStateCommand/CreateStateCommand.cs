@@ -15,7 +15,7 @@ using CleanArc.Domain.Entities.Country;
 
 namespace CleanArc.Application.Features.State.Command.CreateStateCommand;
 
-public record CreateStateCommand(string? Name, string? Description, int? CountryID , int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateStateCommand(string? Name, string? Description, int? CountryLookUpId , int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateStateCommand>
 {
     [JsonIgnore]
@@ -26,10 +26,6 @@ public record CreateStateCommand(string? Name, string? Description, int? Country
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Name");
-        validator.RuleFor(c => c.Description)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a Description");
         return validator;
     }
 }

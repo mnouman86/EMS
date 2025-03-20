@@ -11,10 +11,11 @@ namespace CleanArc.Application.Models.State
         //public int ID { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
-        public int? CountryID { get; set; }
+        public int? CountryLookUpId { get; set; }
        // public bool IsActive { get; set; }
         //public bool IsDeleted { get; set; }
         public int? CreatedBy { get; set; }
+        public int? CultureId { get; set; }
         // public DateTime CreatedAt { get; set; }
         // public int UpdatedBy { get; set; }
         //public DateTime UpdatedAt { get; set; }
