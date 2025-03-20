@@ -56,7 +56,7 @@ internal class CreateMappingHotelLanguageCommandHandler : IRequestHandler<Create
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.MappingHotelLanguageRepository.AddAsync(new Domain.Entities.MappingHotelLanguage.MappingHotelLanguage()
-            { CreatedBy = user.Id, HotelIDs = request.HotelIDs, LanguageIDs = request.LanguageIDs });
+            { CreatedBy = user.Id, HotelIds = request.HotelIds, LanguageIds = request.LanguageIds,CultureId=request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

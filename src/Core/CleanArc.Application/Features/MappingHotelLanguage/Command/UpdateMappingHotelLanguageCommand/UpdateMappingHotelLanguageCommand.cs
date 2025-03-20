@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.MappingHotelLanguage.Command.UpdateMappingHotelLanguageCommand
 {
-    public record UpdateMappingHotelLanguageCommand(int Id, String? Name, string? Description, int? CultureID) : IRequest<OperationResult<ResponseEntity>>,
+    public record UpdateMappingHotelLanguageCommand(int Id, string? Name, string? Description, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateMappingHotelLanguageCommand>
     {
         [JsonIgnore]
