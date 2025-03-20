@@ -56,7 +56,7 @@ namespace CleanArc.Application.Features.MappingRoomImage.Command.UpdateMappingRo
 
                 //return OperationResult<ResponseEntity>.SuccessResult(result);
                 var result = await _unitOfWork.AgeTypeRepository.UpdateAsync(new Domain.Entities.AgeType.AgeType()
-                { UpdatedBy = user.Id, ID = request.ID, Description = request.Description, Name = request.Name });
+                { UpdatedBy = user.Id, Id = request.Id, Description = request.Description, Name = request.Name });
                 await _unitOfWork.CommitAsync();
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
                 return OperationResult<ResponseEntity>.SuccessResult(result);

@@ -57,7 +57,7 @@ internal class UpdatePackageTypeCommandHandler:IRequestHandler<UpdatePackageType
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.PackageTypeRepository.UpdateAsync(new Domain.Entities.PackageType.PackageType()
             { UpdatedBy = user.Id,
-                ID= request.ID,
+                Id= request.Id,
                 CultureId = request.CultureId,
                 
                 Title = request.Title

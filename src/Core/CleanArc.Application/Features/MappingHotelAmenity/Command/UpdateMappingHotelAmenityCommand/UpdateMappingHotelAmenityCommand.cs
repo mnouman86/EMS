@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.MappingHotelAmenity.Command.UpdateMappingHotelAmenityCommand;
 
-public record UpdateMappingHotelAmenityCommand(int ID, String? Name, string? Description, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateMappingHotelAmenityCommand(int Id, String? Name, string? Description, int? CultureID) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateMappingHotelAmenityCommand>
 {
     [JsonIgnore]
@@ -24,10 +24,6 @@ public record UpdateMappingHotelAmenityCommand(int ID, String? Name, string? Des
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Name");
-        validator.RuleFor(c => c.Description)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a Description");
         return validator;
     }
 }

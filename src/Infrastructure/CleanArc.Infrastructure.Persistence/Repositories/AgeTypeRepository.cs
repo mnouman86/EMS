@@ -96,8 +96,8 @@ public async Task<ResponseEntity> AddAsync(AgeType ageType)
 				
 
 				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AgeTypeQueries.Delete_AgeType, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
-                return result;
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                 return result;
             }
         }
     }
@@ -148,9 +148,6 @@ public async Task<ResponseEntity> AddAsync(AgeType ageType)
             }
         }
     }
-
-
-
     public async Task<ResponseEntity> UpdateAsync(AgeType entity)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
