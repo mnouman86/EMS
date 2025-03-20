@@ -55,7 +55,15 @@ internal class UpdateCityCommandHandler : IRequestHandler<UpdateCityCommand, Ope
 
             //return OperationResult<bool>.SuccessResult(true);
            var result = await _unitOfWork.CityRepository.UpdateAsync(new Domain.Entities.City.City()
-            { UpdatedBy = user.Id, ID = request.ID, Description = request.Description, Name = request.Name, StateID = request.StateID, IsMain = request.IsMain  });
+           {
+               UpdatedBy = user.Id,
+               Id = request.Id,
+               Description = request.Description,
+               Name = request.Name,
+               StateLookUpId = request.StateLookUpId,
+               IsMain = request.IsMain,
+               CultureId = request.CultureId
+           });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

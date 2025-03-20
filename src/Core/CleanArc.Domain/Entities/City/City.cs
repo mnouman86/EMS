@@ -8,11 +8,11 @@ namespace CleanArc.Domain.Entities.City
 {
     public class City
     {
-        public int? ID { get; set; }
+        public int? Id { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
         public string? StateName {  get; set; } 
-        public int? StateID { get; set; }
+        public int? StateLookUpId { get; set; }
         public string? ImagePath { get; set; } 
         public string? ImageTitle { get; set; } 
         public bool? IsActive { get; set; }
@@ -24,7 +24,5 @@ namespace CleanArc.Domain.Entities.City
         public bool? IsMain { get; set; }
 
 		public int? CultureId { get; set; }
-		public int? Code { get; set; }
-		public string? Message { get; set; }
 	}
 }
