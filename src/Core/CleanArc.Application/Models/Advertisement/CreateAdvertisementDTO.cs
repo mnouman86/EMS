@@ -8,15 +8,13 @@ namespace CleanArc.Application.Models.Advertisement
 {
     public class CreateAdvertisementDTO
     {
-        public int? PageId { get; set; }
-        public int? PlaceId { get; set; }
+        public int? AdsPageLookUpId { get; set; }
+        public int? AdsPlaceLookUpId { get; set; }
         public string? ImageTitle { get; set; }
-        public string? ImagePath { get; set; }
-        public List<string>? ImagePaths { get; set; }
+        //public List<string>? ImagePaths { get; set; }
         public string? Url { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-        public bool ?IsShow { get; set; }
         public int? CreatedBy { get; set; }
         public int? CultureId { get; set; }
 
