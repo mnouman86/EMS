@@ -9,14 +9,13 @@ namespace CleanArc.Application.Models.Advertisement
     public class UpdateAdvertisementDTO
     {
         public int Id { get; set; }
-        public int? PageId { get; set; }
-        public int? PlaceId { get; set; }
+        public int? AdsPageLookUpId { get; set; }
+        public int? AdsPlaceLookUpId { get; set; }
         public string? ImageTitle { get; set; }
         public string? ImagePath { get; set; }
         public string? Url { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-        public bool? IsShow { get; set; }
         public int? UpdatedBy { get; set; }
         public int? CultureId { get; set; }
 
