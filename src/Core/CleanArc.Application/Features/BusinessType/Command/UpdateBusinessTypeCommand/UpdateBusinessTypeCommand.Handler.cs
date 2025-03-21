@@ -55,7 +55,7 @@ namespace CleanArc.Application.Features.BusinessType.Command.UpdateBusinessTypeC
 
                 //return OperationResult<ResponseEntity>.SuccessResult(result);
                 var result = await _unitOfWork.BusinessTypeRepository.UpdateAsync(new Domain.Entities.BusinessType.BusinessType()
-                {  UpdatedBy = user.Id, ID = request.ID,
+                {  UpdatedBy = user.Id, Id= request.Id,
                     //Company = request.Company,
                     BusinessTypeName = request.BusinessTypeName,
                     //CultureId = request.CultureId,

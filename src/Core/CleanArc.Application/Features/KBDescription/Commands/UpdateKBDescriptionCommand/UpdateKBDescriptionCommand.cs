@@ -14,7 +14,7 @@ using CleanArc.Domain.Entities.KBMedia;
 using CleanArc.Domain.Entities.KBTiming;
 
 namespace CleanArc.Application.Features.KBDescription.Commands.UpdateKBDescriptionCommand;
-public record UpdateKBDescriptionCommand(int ID, 
+public record UpdateKBDescriptionCommand(int Id, 
     //int? GenericTitleID,
 string SubHeading,
 string Content,

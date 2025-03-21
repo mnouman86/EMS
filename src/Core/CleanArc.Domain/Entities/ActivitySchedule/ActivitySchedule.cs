@@ -10,7 +10,7 @@ namespace CleanArc.Domain.Entities.ActivitySchedule;
 public  class ActivitySchedule
     
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? ActivityID { get; set; }
     public string Title { get; set; }
     public string? ActivityTitle { get; set; }

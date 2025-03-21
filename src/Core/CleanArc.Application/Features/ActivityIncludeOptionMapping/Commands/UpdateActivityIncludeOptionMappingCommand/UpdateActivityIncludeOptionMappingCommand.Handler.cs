@@ -56,7 +56,7 @@ internal class UpdateActivityIncludeOptionMappingCommandHandler:IRequestHandler<
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.ActivityIncludeOptionMappingRepository.UpdateAsync(new Domain.Entities.ActivityIncludeOptionMapping.ActivityIncludeOptionMapping()
-            { UpdatedBy = user.Id,ID= request.ID, IncludeOptionsLookUpID = request.IncludeOptionsLookUpID, ActivityID = request.ActivityID });
+            { UpdatedBy = user.Id,Id= request.Id, IncludeOptionsLookUpID = request.IncludeOptionsLookUpID, ActivityID = request.ActivityID });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

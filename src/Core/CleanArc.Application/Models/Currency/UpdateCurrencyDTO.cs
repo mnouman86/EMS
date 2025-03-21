@@ -9,12 +9,10 @@ namespace CleanArc.Application.Models.Activities
     public class UpdateCurrencyDTO
     {
 
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string? Name { get; set; }
         public string? CurrencyCode { get; set; }
         public decimal? Rate { get; set; }
-        public int? Code { get; set; }
-        public string? Message { get; set; }
         public int? CultureId { get; set; }
         public int? UpdatedBy { get; set; }
         //public DateTime? UpdatedAt { get; set; }

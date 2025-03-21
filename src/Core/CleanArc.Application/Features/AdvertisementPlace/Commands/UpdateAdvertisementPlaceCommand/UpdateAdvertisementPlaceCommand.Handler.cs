@@ -56,7 +56,13 @@ internal class UpdateAdvertisementPlaceCommandHandler:IRequestHandler<UpdateAdve
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.AdvertisementPlaceRepository.UpdateAsync(new Domain.Entities.AdvertisementPlace.AdvertisementPlace()
-            { UpdatedBy = user.Id,ID= request.ID, Description = request.Description, Name = request.Name });
+            {
+                UpdatedBy = user.Id,
+                Id = request.Id,
+                Description = request.Description,
+                Name = request.Name,
+                CultureId = request.CultureId,
+            });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

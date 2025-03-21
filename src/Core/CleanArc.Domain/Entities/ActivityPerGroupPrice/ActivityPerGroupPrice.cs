@@ -10,7 +10,7 @@ namespace CleanArc.Domain.Entities.ActivityPerGroupPrice;
 public  class ActivityPerGroupPrice
     
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? ActivityID { get; set; }
     public int? MinGroupSize { get; set; }
     public int? MaxGroupSize { get; set; }

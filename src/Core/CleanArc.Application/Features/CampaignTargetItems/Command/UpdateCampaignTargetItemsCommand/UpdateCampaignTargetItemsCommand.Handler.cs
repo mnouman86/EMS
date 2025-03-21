@@ -49,7 +49,7 @@ internal class UpdateCampaignTargetItemsCommandHandler : IRequestHandler<UpdateC
 
 
             var result = await _unitOfWork.CampaignTargetItemsRepository.UpdateAsync(new Domain.Entities.CampaignTargetItems.CampaignTargetItems()
-            { UpdatedBy = user.Id, ID = request.ID,
+            { UpdatedBy = user.Id, Id= request.Id,
                 CampaignTargetID = request.CampaignTargetID,
                 CampaignItemIDs = request.CampaignItemIDs,
                 ApplyAllItem =request.ApplyAllItem,

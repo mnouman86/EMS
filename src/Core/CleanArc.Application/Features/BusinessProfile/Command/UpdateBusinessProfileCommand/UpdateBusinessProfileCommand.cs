@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.BusinessProfile.Command.UpdateBusinessProfileCommand;
 
-public record UpdateBusinessProfileCommand(int ID,
+public record UpdateBusinessProfileCommand(int Id,
     int? BusinessTypeID, string FullLegalName,
     string MobileNumber,
     string PhoneNumber,

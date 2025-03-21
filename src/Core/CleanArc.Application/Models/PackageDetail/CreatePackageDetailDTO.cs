@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.PackageDetail
 {
     public class CreatePackageDetailDTO
     {
-       // public int ID { get; set; }
+       // public int Id { get; set; }
         public int? PackageTypeID { get; set; }
         public int? PaymentOrderID { get; set; }
         public decimal? Stay { get; set; }

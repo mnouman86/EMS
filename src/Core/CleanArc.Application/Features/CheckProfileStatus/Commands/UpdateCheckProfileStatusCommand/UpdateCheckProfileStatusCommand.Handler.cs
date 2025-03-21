@@ -56,7 +56,7 @@ internal class UpdateCheckProfileStatusCommandHandler:IRequestHandler<UpdateChec
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.CheckProfileStatusRepository.UpdateAsync(new Domain.Entities.CheckProfileStatus.CheckProfileStatus()
-            { UpdatedBy = user.Id,ID= request.ID, UserID = request.UserID, UserIntrestIDs = request.UserIntrestIDs, CultureId = request.CultureId });
+            { UpdatedBy = user.Id,Id= request.Id, UserID = request.UserID, UserIntrestIDs = request.UserIntrestIDs, CultureId = request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

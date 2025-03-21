@@ -10,7 +10,7 @@ namespace CleanArc.Domain.Entities.UserAssignRewards;
 public  class UserAssignRewards
 
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? RewardRulesID { get; set; } = 2;
     public int? UserID { get; set; } // Foreign Key or reference to another table
     public int? RoleID { get; set; } // Foreign Key or reference to another table

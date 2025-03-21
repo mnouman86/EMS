@@ -8,7 +8,7 @@ namespace CleanArc.Domain.Entities.CarRentalSearchFilter;
 
 public class CarRentalSearchFilter
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? CarID { get; set; }
     public int? BusinessID { get; set; }
     public string? Name { get; set; }

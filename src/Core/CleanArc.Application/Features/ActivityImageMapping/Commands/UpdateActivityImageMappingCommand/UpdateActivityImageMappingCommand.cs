@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ActivityImageMapping.Commands.UpdateActivityImageMappingCommand;
-public record UpdateActivityImageMappingCommand(int ID, int? ActivityID, string? ImagePath, string? ImageTitle, bool? IsMain, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateActivityImageMappingCommand(int Id, int? ActivityID, string? ImagePath, string? ImageTitle, bool? IsMain, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateActivityImageMappingCommand>
 {
     [JsonIgnore]

@@ -56,7 +56,7 @@ internal class UpdateActivityAddressMappingCommandHandler:IRequestHandler<Update
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.ActivityAddressMappingRepository.UpdateAsync(new Domain.Entities.ActivityAddressMapping.ActivityAddressMapping()
-            { UpdatedBy = user.Id,ID= request.ID, ActivityID = request.ActivityID });
+            { UpdatedBy = user.Id,Id= request.Id, ActivityID = request.ActivityID });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.BusinessType.Queries.GetAllBusinessType
 {
     public class GetAllBusinessTypeQueryResult
     {
-        public int? ID { get; set; }
+        public int? Id { get; set; }
         //public string? Company { get; set; }
         public int? Code { get; set; }
         public string? Message { get; set; }

@@ -10,7 +10,7 @@ namespace CleanArc.Domain.Entities.KBTiming;
 public  class KBTiming
     
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? GenericTitleID { get; set; }
     public string? Day { get; set; }
     public string? TimeFrom { get; set; }

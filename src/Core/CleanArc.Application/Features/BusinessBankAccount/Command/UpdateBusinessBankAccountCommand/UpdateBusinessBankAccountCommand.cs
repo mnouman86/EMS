@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.BusinessBankAccount.Command.UpdateBusinessBankAccountCommand
 {
-    public record UpdateBusinessBankAccountCommand(int ID, string? AccountTitle, int? BankID, int? BusinessID, string? IBAN,int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+    public record UpdateBusinessBankAccountCommand(int Id, string? AccountTitle, int? BankID, int? BusinessID, string? IBAN,int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateBusinessBankAccountCommand>
     {
         [JsonIgnore]

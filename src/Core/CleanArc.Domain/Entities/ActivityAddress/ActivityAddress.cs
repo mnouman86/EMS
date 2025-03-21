@@ -10,7 +10,7 @@ namespace CleanArc.Domain.Entities.ActivityAddress;
 public  class ActivityAddress
     
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? ServiceID { get; set; }
     public string? ServiceName { get; set; }
 

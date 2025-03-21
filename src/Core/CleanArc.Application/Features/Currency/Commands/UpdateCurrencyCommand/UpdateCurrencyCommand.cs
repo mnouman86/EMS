@@ -12,11 +12,11 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.Currency.Commands.UpdateCurrencyCommand;
 public record UpdateCurrencyCommand(
-   int ID,
+   int Id,
   string? Name,
   string? CurrencyCode,
    decimal? Rate,
-  int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+  int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateCurrencyCommand>
 {
     [JsonIgnore]
@@ -31,10 +31,6 @@ public record UpdateCurrencyCommand(
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a CurrencyCode");
-        validator.RuleFor(c => c.Rate)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a Rate");
         return validator;
     }
 }

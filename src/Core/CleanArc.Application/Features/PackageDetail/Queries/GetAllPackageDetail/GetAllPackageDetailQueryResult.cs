@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.PackageDetail.Queries.GetAllPackageDetai
 
 public class GetAllPackageDetailQueryResult
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? PackageTypeID { get; set; }
     public int? PaymentOrderID { get; set; }
     public decimal? Stay { get; set; }

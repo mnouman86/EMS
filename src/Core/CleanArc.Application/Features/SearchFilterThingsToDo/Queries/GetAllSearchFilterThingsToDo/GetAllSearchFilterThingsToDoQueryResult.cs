@@ -9,7 +9,7 @@ namespace CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetAllSea
 
 public class GetAllSearchFilterThingsToDoQueryResult
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? CityID { get; set; }                 // Maps to C.ID AS CityID
     public string? CityName { get; set; }            // ISNULL(C.Name, '''') AS CityName
     public string? Title { get; set; }        // ISNULL(A.Title, '''') AS ActivityName

@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.ServiceCategory;
 
 public class CreateServiceCategoryDTO
 {
-   // public int ID { get; set; }
+   // public int Id { get; set; }
     public string? Name { get; set; }
     public string? Description { get; set; }
     public int? ServiceId { get; set; }

@@ -57,7 +57,7 @@ internal class UpdateCarDetailCommandHandler : IRequestHandler<UpdateCarDetailCo
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.CarDetailRepository.UpdateAsync(new Domain.Entities.CarDetail.CarDetail()
             { UpdatedBy = user.Id,
-                ID = request.ID,
+                Id= request.Id,
                 BusinessID = request.BusinessID,
                 Model = request.Model,
                 Year = request.Year,

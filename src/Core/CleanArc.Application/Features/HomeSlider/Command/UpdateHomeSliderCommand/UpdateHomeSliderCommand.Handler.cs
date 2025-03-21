@@ -49,7 +49,7 @@ internal class UpdateHomeSliderCommandHandler : IRequestHandler<UpdateHomeSlider
 
 
             var result = await _unitOfWork.HomeSliderRepository.UpdateAsync(new Domain.Entities.HomeSlider.HomeSlider()
-            { UpdatedBy = user.Id, ID = request.ID,
+            { UpdatedBy = user.Id, Id= request.Id,
                 Description = request.Description,
                 Title= request.Title,
                 Image = request.Image,

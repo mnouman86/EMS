@@ -8,8 +8,8 @@ namespace CleanArc.Application.Features.KBInterested.Queries.GetAllKBInterested;
 
 public class GetAllKBInterestedQueryResult
 {
-    // public int ID { get; set; }
-    public int ID { get; set; }
+    // public int Id { get; set; }
+    public int Id { get; set; }
     public string? Type { get; set; }               // Maps to   NULL
     public string? Name { get; set; }               // Maps to   NULL
     public string? Description { get; set; }

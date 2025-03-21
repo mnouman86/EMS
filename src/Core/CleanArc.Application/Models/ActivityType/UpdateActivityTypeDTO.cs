@@ -9,7 +9,7 @@ namespace CleanArc.Application.Models.ActivityType
     public class UpdateActivityTypeDTO
     {
 
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
         //public bool? IsActive { get; set; }

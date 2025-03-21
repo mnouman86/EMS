@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace CleanArc.Application.Features.SearchFilterStay.Queries.GetAllSearchFilterStay;
 
 public class GetAllSearchFilterStayQueryResult {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int HotelID { get; set; }
     public int CityID { get; set; }
     public string Name { get; set; }

@@ -56,7 +56,7 @@ internal class UpdateKBRelatedUrlLinkCommandHandler:IRequestHandler<UpdateKBRela
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.KBRelatedUrlLinkRepository.UpdateAsync(new Domain.Entities.KBRelatedUrlLink.KBRelatedUrlLink()
-            { UpdatedBy = user.Id,ID= request.ID, KBDetailID = request.KBDetailID ,Description = request.Description, Title = request.Title, URL = request.URL, CultureId = request.CultureId });
+            { UpdatedBy = user.Id,Id= request.Id, KBDetailID = request.KBDetailID ,Description = request.Description, Title = request.Title, URL = request.URL, CultureId = request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

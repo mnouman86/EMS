@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.KBTiming.Queries.GetAllKBTiming;
 
 public class GetAllKBTimingQueryResult
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? GenericTitleID { get; set; }
     public string? Day { get; set; }
     public string? TimeFrom { get; set; }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.PopularItemsVisit.Commands.UpdatePopularItemsVisitCommand;
-public record UpdatePopularItemsVisitCommand(int ID, int? UserID, string? PageVisiteUrl,
+public record UpdatePopularItemsVisitCommand(int Id, int? UserID, string? PageVisiteUrl,
     string? SessionDuration,
     int? VisitCount,
     DateTime? LastVisitAt,  

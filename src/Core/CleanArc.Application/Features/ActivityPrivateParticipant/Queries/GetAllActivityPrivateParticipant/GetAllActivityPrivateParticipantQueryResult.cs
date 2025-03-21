@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.ActivityPrivateParticipant.Queries.GetAl
 
 public class GetAllActivityPrivateParticipantQueryResult
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
     public bool IsDeleted { get; set; }

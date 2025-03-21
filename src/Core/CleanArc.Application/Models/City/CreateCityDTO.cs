@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.City
 {
     public class CreateCityDTO
     {
-        //public int? ID { get; set; }
+        //public int? Id { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
         public int? StateLookUpId { get; set; }

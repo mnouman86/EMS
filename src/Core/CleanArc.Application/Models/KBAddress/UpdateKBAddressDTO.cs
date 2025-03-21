@@ -10,7 +10,7 @@ namespace CleanArc.Application.Models.KBAddress
     {
 
         public int GenericTitleID { get; set; }
-        //public int ID { get; set; }
+        //public int Id { get; set; }
        public string? Cost { get; set; }
         public string? AddressLine1 { get; set; }
         public string? AddressLine2 { get; set; }

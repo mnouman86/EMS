@@ -8,7 +8,7 @@ namespace CleanArc.Domain.Entities.CampaignTargetItems;
 
 public class CampaignTargetItems
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? CampaignTargetID { get; set; }
     public string? CampaignItemIDs { get; set; }
     public bool? ApplyAllItem { get; set; }

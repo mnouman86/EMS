@@ -8,7 +8,7 @@ namespace CleanArc.Domain.Entities.SearchFilterStay
 {
     public class SearchFilterStay
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int? HotelID { get; set; }
         public int? CityID { get; set; }
         public String? Name { get; set; }

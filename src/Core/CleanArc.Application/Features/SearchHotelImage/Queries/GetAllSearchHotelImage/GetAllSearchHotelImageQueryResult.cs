@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.SearchHotelImage.Queries.GetAllSearchHot
 
 public class GetAllSearchHotelImageQueryResult
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int HotelID { get; set; }
     public string HotelName { get; set; }
     public string ImageTitle { get; set; }

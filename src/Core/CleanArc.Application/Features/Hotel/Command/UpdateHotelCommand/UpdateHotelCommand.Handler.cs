@@ -50,7 +50,7 @@ internal class UpdateHotelCommandHandler : IRequestHandler<UpdateHotelCommand, O
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.HotelRepository.UpdateAsync(new Domain.Entities.Hotel.Hotel()
-            { UpdatedBy = user.Id, ID = request.ID, 
+            { UpdatedBy = user.Id, Id= request.Id, 
                 Name = request.Name,
                 CountryID = request.CountryID,
                 StateID = request.StateID,

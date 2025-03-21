@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.ProcessOrder.Queries.GetAllProcessOrder;
 
 public class GetAllProcessOrderQueryResult
 {
-    public int ID { get; set; } // IDENTITY(1,1) NOT NULL
+    public int Id { get; set; } // IDENTITY(1,1) NOT NULL
     public string? OrderNumber { get; set; } // nvarchar(50) NULL
     public string? FirstName { get; set; } // nvarchar(50) NULL
     public string? LastName { get; set; } // nvarchar(50) NULL

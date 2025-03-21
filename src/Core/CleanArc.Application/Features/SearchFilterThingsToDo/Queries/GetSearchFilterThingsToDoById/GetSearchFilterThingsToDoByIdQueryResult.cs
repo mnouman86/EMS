@@ -11,7 +11,7 @@ namespace CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetSearch
     {
 
 
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public int? LanguageLookUpID { get; set; }
         public string? LanguageName { get; set; }

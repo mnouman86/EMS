@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.ActivityTransportation
 {
     public class CreateActivityTransportationDTO
     {
-       // public int ID { get; set; }
+       // public int Id { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
         public string? VehicleType { get; set; }

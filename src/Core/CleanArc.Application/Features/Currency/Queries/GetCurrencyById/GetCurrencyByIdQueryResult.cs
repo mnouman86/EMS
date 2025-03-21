@@ -12,13 +12,11 @@ namespace CleanArc.Application.Features.Currency.Queries.GetCurrencyById
 
 
 
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string? Name { get; set; }
         public string? CurrencyCode { get; set; }
         public decimal? Rate { get; set; }
         public int? CultureId { get; set; }
-        public int? Code { get; set; }
-        public string? Message { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsDeleted { get; set; }
         public int? CreatedBy { get; set; }

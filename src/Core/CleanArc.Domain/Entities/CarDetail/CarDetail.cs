@@ -8,7 +8,7 @@ namespace CleanArc.Domain.Entities.CarDetail
 {
     public class CarDetail
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int? BusinessID { get; set; }
         public string? Model { get; set; }
         public string? Year { get; set; }

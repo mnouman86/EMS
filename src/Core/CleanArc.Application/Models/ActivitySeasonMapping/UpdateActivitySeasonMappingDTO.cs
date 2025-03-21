@@ -9,7 +9,7 @@ namespace CleanArc.Application.Models.ActivitySeasonMapping
     public class UpdateActivitySeasonMappingDTO
     {
 
-        public int ID { get; set; }
+        public int Id { get; set; }
         public String? SeasonIDs { get; set; }
         public int? ActivityID { get; set; }
         //public bool? IsActive { get; set; }

@@ -14,7 +14,7 @@ using Azure.Core;
 
 namespace CleanArc.Application.Features.CustomerReview.Command.UpdateCustomerReviewCommand
 {
-    public record UpdateCustomerReviewCommand(int ID, int? GenericTitleID, int? ServiceCategoryID,
+    public record UpdateCustomerReviewCommand(int Id, int? GenericTitleID, int? ServiceCategoryID,
 int? Rating,
 string? Description,
 string? Status,

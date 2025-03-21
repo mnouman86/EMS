@@ -9,7 +9,7 @@ namespace CleanArc.Application.Features.ActivityImageMapping.Queries.GetActivity
     public class GetActivityImageMappingByIdQueryResult
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int? ActivityID { get; set; }
         public string? ImagePath { get; set; }
         public string? ImageTitle { get; set; }

@@ -11,7 +11,7 @@ public  class GroupActivityParticipants
 
     
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     //public int? GenericTitleID { get; set; }
     public string Email { get; set; }
     public string MobileNumber { get; set; }

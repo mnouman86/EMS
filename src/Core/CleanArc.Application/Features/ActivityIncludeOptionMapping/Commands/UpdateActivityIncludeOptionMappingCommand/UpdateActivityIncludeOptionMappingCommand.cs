@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ActivityIncludeOptionMapping.Commands.UpdateActivityIncludeOptionMappingCommand;
-public record UpdateActivityIncludeOptionMappingCommand(int ID, string? IncludeOptionsLookUpID, int? ActivityID, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateActivityIncludeOptionMappingCommand(int Id, string? IncludeOptionsLookUpID, int? ActivityID, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateActivityIncludeOptionMappingCommand>
 {
     [JsonIgnore]

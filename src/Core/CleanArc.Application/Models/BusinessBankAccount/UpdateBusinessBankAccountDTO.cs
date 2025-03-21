@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.BusinessBankAccount
 {
     public class UpdateBusinessBankAccountDTO
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string AccountTitle { get; set; }
         public int? BankID { get; set; }
         public int? BusinessID { get; set; }

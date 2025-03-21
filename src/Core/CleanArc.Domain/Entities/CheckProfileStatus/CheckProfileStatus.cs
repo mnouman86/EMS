@@ -10,7 +10,7 @@ namespace CleanArc.Domain.Entities.CheckProfileStatus;
 public  class CheckProfileStatus
     
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? UserID { get; set; } // Foreign Key or reference to another table
     public string? UserIntrestIDs { get; set; } // Stores interest IDs as a string (nvarchar(max))
     //public string? URL { get; set; }

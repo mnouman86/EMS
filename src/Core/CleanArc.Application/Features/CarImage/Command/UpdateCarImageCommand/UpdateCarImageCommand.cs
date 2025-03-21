@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.CarImage.Command.UpdateCarImageCommand
 {
-    public record UpdateCarImageCommand(int ID, int? CarID, string? ImagePath, string? ImageTitle, bool? IsMain, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+    public record UpdateCarImageCommand(int Id, int? CarID, string? ImagePath, string? ImageTitle, bool? IsMain, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateCarImageCommand>
     {
         [JsonIgnore]

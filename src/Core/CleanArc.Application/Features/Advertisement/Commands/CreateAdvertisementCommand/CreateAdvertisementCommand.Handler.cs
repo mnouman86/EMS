@@ -59,15 +59,15 @@ internal class CreateAdvertisementCommandHandler: IRequestHandler<CreateAdvertis
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.AdvertisementRepository.AddAsync(new Domain.Entities.Advertisement.Advertisement()
             { CreatedBy = user.Id,
-                PageID = request.PageID,
-                PlaceID = request.PlaceID,
+                PageId = request.PageId,
+                PlaceId = request.PlaceId,
                 ImageTitle = request.ImageTitle,
                 ImagePath = request.ImagePath,
                 StartDate = request.StartDate,
                 EndDate = request.EndDate,
                 Url = request.Url,  
                IsShow= request.IsShow,
-
+               CultureId=request.CultureId
 
             });
             await _unitOfWork.CommitAsync();

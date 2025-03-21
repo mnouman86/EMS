@@ -10,7 +10,7 @@ namespace CleanArc.Domain.Entities.PopularItemsVisit;
 public  class PopularItemsVisit
     
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? UserID { get; set; }
     public string? PageVisiteUrl { get; set; }
     public DateTime? DateTime { get; set; }

@@ -9,7 +9,7 @@ namespace CleanArc.Domain.Entities.CampaignTarget;
 public class CampaignTarget
 {
     public int? CultureID { get; set; }
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? CampaignID { get; set; }
     public int? GenericTitleID { get; set; }
     public int? ServiceCategoryID { get; set; }

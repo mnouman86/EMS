@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ActivitySchedule.Commands.UpdateActivityScheduleCommand;
-public record UpdateActivityScheduleCommand(int ID, int? ActivityID, string Title, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateActivityScheduleCommand(int Id, int? ActivityID, string Title, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateActivityScheduleCommand>
 {
     [JsonIgnore]

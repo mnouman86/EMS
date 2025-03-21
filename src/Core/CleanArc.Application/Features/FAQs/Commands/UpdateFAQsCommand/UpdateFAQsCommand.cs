@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.FAQs.Commands.UpdateFAQsCommand;
-public record UpdateFAQsCommand(int ID,int? CategoryServiceID, int? ServiceID, int? SubServiceID, string? Question, string? Answer, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateFAQsCommand(int Id,int? CategoryServiceID, int? ServiceID, int? SubServiceID, string? Question, string? Answer, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateFAQsCommand>
 {
     [JsonIgnore]

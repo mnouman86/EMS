@@ -49,7 +49,7 @@ internal class UpdateCustomerAwarenessCommandHandler : IRequestHandler<UpdateCus
 
 
             var result = await _unitOfWork.CustomerAwarenessRepository.UpdateAsync(new Domain.Entities.CustomerAwareness.CustomerAwareness()
-            { UpdatedBy = user.Id, CultureId=request.CultureId, ID = request.ID, Description = request.Description, Title = request.Title, KeyNumber = request.KeyNumber, Link = request.Link, Status = request.Status,StatusApprovedBy=request.StatusApprovedBy,ApprovedDate=request.ApprovedDate});
+            { UpdatedBy = user.Id, CultureId=request.CultureId, Id= request.Id, Description = request.Description, Title = request.Title, KeyNumber = request.KeyNumber, Link = request.Link, Status = request.Status,StatusApprovedBy=request.StatusApprovedBy,ApprovedDate=request.ApprovedDate});
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

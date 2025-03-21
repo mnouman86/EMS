@@ -9,7 +9,7 @@ namespace CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.Get
     public class GetActivityIncludeOptionMappingByIdQueryResult
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string? IncludeOptionsLookUpID { get; set; }
         public string? IncludeOptionName { get; set; }
         public int? ActivityID { get; set; }

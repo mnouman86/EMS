@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ActivityTransportation.Commands.UpdateActivityTransportationCommand;
-public record UpdateActivityTransportationCommand(int ID,String? Name, string? Description, string? VehicleType, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateActivityTransportationCommand(int Id,String? Name, string? Description, string? VehicleType, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateActivityTransportationCommand>
 {
     [JsonIgnore]

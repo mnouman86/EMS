@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.Hotel;
 
 public class UpdateHotelDTO
 {
-    //public int ID { get; set; }
+    //public int Id { get; set; }
     //public string? Name { get; set; }
     //public int? CountryID { get; set; }
     //public int? StateID { get; set; }
@@ -36,7 +36,7 @@ public class UpdateHotelDTO
     //public int? UpdatedBy { get; set; }
     //public DateTime? UpdatedAt { get; set; }
 
-    public int ID { get; set; }
+    public int Id { get; set; }
     public string Name { get; set; }
     public int? CountryID { get; set; }
     public int? StateID { get; set; }

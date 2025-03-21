@@ -8,7 +8,7 @@ namespace CleanArc.Domain.Entities.SearchBusinessDetail
 {
     public class SearchBusinessDetail
     {
-        //public int ID { get; set; }
+        //public int Id { get; set; }
         public int TotalDays { get; set; }
         public decimal DiscountedPrice { get; set; }
         public decimal DiscountAmount { get; set; }

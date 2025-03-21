@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.ActivitySchedule.Queries.GetAllActivityS
 
 public class GetAllActivityScheduleQueryResult
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? ActivityID { get; set; }
     public string Title { get; set; }
     public string? ActivityTitle { get; set; }

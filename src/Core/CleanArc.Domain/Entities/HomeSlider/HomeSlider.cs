@@ -8,7 +8,7 @@ namespace CleanArc.Domain.Entities.HomeSlider;
 
 public class HomeSlider
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public string? Title { get; set; }
     public string? Description { get; set; }
     public string? Url { get; set; }

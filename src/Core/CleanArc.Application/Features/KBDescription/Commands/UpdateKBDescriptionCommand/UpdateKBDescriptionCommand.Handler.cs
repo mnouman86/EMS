@@ -56,7 +56,7 @@ internal class UpdateKBDescriptionCommandHandler:IRequestHandler<UpdateKBDescrip
 
             //return OperationResult<bool>.SuccessResult(true);
             var result = await _unitOfWork.KBDescriptionRepository.UpdateAsync(new Domain.Entities.KBDescription.KBDescription()
-            { UpdatedBy = user.Id,ID= request.ID, 
+            { UpdatedBy = user.Id,Id= request.Id, 
                 //GenericTitleID = request.GenericTitleID,
             //SectionID= request.SectionID,
                 SubHeading = request.SubHeading,

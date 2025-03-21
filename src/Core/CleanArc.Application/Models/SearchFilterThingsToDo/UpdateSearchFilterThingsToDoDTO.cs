@@ -9,7 +9,7 @@ namespace CleanArc.Application.Models.SearchFilterThingsToDo
     public class UpdateSearchFilterThingsToDoDTO
     {
 
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int? CultureId { get; set; }
         public string Title { get; set; }
         public int? LanguageLookUpID { get; set; }

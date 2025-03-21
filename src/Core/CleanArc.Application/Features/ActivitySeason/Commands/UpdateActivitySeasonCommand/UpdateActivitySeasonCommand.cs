@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ActivitySeason.Commands.UpdateActivitySeasonCommand;
-public record UpdateActivitySeasonCommand(int ID,String? Name, string? Description, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateActivitySeasonCommand(int Id,String? Name, string? Description, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateActivitySeasonCommand>
 {
     [JsonIgnore]

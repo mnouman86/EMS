@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.Hotel.Queries.GetAllHotels;
 
 public class GetAllHotelsQueryResult
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public string Name { get; set; }
     public int CountryID { get; set; }
     public int StateID { get; set; }

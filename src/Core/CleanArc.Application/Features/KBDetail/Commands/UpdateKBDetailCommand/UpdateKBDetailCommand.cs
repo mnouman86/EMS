@@ -13,7 +13,7 @@ using CleanArc.Domain.Common;
 using CleanArc.Domain.Entities.KBTiming;
 
 namespace CleanArc.Application.Features.KBDetail.Commands.UpdateKBDetailCommand;
-public record UpdateKBDetailCommand(int ID,
+public record UpdateKBDetailCommand(int Id,
     string? Title,
     //int? GenericTitleID,
     string? KeyDate,

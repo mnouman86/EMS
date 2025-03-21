@@ -12,7 +12,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.HomeSlider.Command.UpdateHomeSliderCommand;
 
-public record UpdateHomeSliderCommand(int ID, string? Title,
+public record UpdateHomeSliderCommand(int Id, string? Title,
 string? Description,
 string? Url,
 //string EndDate,

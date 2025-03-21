@@ -8,7 +8,7 @@ namespace CleanArc.Domain.Entities.SearchHotelImage;
 
 public class SearchHotelImage
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public string HotelName { get; set; }
     public string ImageTitle { get; set; }
     public string ImagePath { get; set; }

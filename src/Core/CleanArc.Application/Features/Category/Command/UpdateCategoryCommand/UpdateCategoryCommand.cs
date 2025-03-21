@@ -12,7 +12,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.Category.Command.UpdateCategoryCommand;
 
-public record UpdateCategoryCommand(int ID, int? ServiceCategoryID, String? Name, string? Description, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateCategoryCommand(int Id, int? ServiceCategoryID, String? Name, string? Description, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateCategoryCommand>
 {
     [JsonIgnore]

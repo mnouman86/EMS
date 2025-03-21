@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.KBInterested.Commands.UpdateKBInterestedCommand;
-public record UpdateKBInterestedCommand(int ID,string? Type, string? Name, string? Description, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateKBInterestedCommand(int Id,string? Type, string? Name, string? Description, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateKBInterestedCommand>
 {
     [JsonIgnore]

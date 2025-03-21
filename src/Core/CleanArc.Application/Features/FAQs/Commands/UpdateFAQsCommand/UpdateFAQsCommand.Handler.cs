@@ -57,7 +57,7 @@ internal class UpdateFAQsCommandHandler:IRequestHandler<UpdateFAQsCommand, Opera
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.FAQsRepository.UpdateAsync(new Domain.Entities.FAQs.FAQs()
             { UpdatedBy = user.Id,
-                ID= request.ID,
+                Id= request.Id,
                 CategoryServiceID = request.CategoryServiceID,
                 ServiceID = request.ServiceID,
                 SubServiceID = request.SubServiceID,

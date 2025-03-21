@@ -104,7 +104,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 					{
 						List<FilterParameter> FilterArray = new List<FilterParameter>();
 						List<SortingParameter> SortingArray = new List<SortingParameter>();
-						FilterArray.Add(new FilterParameter { ParameterName = "RoomID", ParameterValue = item.ID.ToString() });
+						FilterArray.Add(new FilterParameter { ParameterName = "RoomID", ParameterValue = item.Id.ToString() });
 						var parameter = new DynamicParameters();
 						parameter.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
 						parameter.Add("@PageSize", searchRequest.PageSize, DbType.Int32);

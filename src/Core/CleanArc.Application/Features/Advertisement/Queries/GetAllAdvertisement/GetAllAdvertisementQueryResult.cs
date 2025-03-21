@@ -9,10 +9,10 @@ namespace CleanArc.Application.Features.Advertisement.Queries.GetAllAdvertisemen
 public class GetAllAdvertisementQueryResult
 {
 
-    public int ID { get; set; }
-    public int? PageID { get; set; }
+    public int Id { get; set; }
+    public int? PageId { get; set; }
     public string? PageName { get; set; }
-    public int? PlaceID { get; set; }
+    public int? PlaceId { get; set; }
     public string? PlaceName { get; set; }
     public string? ImageTitle { get; set; }
     public string? ImagePath { get; set; }

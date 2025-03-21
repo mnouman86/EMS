@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.GroupActivityParticipants.Commands.UpdateGroupActivityParticipantsCommand;
-public record UpdateGroupActivityParticipantsCommand(int ID,
+public record UpdateGroupActivityParticipantsCommand(int Id,
   //int? GenericTitleID,
   string MobileNumber,
   string Email,

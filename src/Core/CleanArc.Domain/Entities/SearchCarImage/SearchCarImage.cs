@@ -8,7 +8,7 @@ namespace CleanArc.Domain.Entities.SearchCarImage;
 
 public class SearchCarImage
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public string CarModelName { get; set; }
     public string ImageTitle { get; set; }
     public string ImagePath { get; set; }

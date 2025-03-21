@@ -55,7 +55,7 @@ internal class UpdateBusinessBankAccountCommandHandler : IRequestHandler<UpdateB
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.BusinessBankAccountRepository.UpdateAsync(new Domain.Entities.BusinessBankAccount.BusinessBankAccount()
-            { UpdatedBy = user.Id, ID = request.ID, AccountTitle = request.AccountTitle, BankID = request.BankID, BusinessID = request.BusinessID, IBAN = request.IBAN });
+            { UpdatedBy = user.Id, Id= request.Id, AccountTitle = request.AccountTitle, BankID = request.BankID, BusinessID = request.BusinessID, IBAN = request.IBAN });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.SubService
 {
     public class CreateSubServiceDTO
     {
-       // public int ID { get; set; }
+       // public int Id { get; set; }
         public string? Name { get; set; }
         public int? ServiceCategoryId { get; set; }
 

@@ -13,7 +13,7 @@ namespace CleanArc.Domain.Entities.KBDetail;
 
 public  class KBDetail   
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? KBDetailID { get; set; }
     public string? Title { get; set; }
     public int? GenericTitleID { get; set; }  // Maps to GenericTitleID

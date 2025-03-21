@@ -11,7 +11,8 @@ namespace CleanArc.Application.Models.AdvertisementPlace
         public string? Name { get; set; }
         public string? Description { get; set; }
         public int? CreatedBy { get; set; }
-       
+        public int? CultureId { get; set; }
+
 
     }
 }

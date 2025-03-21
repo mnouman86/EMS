@@ -9,7 +9,7 @@ namespace CleanArc.Application.Features.KBMedia.Queries.GetKBMediaById
     public class GetKBMediaByIdQueryResult
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int? KBDescriptionID { get; set; }
         public string? MediaType { get; set; }
         public string? ImagePath { get; set; }

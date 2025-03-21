@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ActivityPrivateParticipant.Commands.UpdateActivityPrivateParticipantCommand;
-public record UpdateActivityPrivateParticipantCommand(int ID,String? Name, string? Description, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateActivityPrivateParticipantCommand(int Id,String? Name, string? Description, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateActivityPrivateParticipantCommand>
 {
     [JsonIgnore]

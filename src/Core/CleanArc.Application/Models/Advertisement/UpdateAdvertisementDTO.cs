@@ -8,9 +8,9 @@ namespace CleanArc.Application.Models.Advertisement
 {
     public class UpdateAdvertisementDTO
     {
-        public int ID { get; set; }
-        public int? PageID { get; set; }
-        public int? PlaceID { get; set; }
+        public int Id { get; set; }
+        public int? PageId { get; set; }
+        public int? PlaceId { get; set; }
         public string? ImageTitle { get; set; }
         public string? ImagePath { get; set; }
         public string? Url { get; set; }
@@ -18,8 +18,7 @@ namespace CleanArc.Application.Models.Advertisement
         public DateTime? EndDate { get; set; }
         public bool? IsShow { get; set; }
         public int? UpdatedBy { get; set; }
-        public int Code { get; set; }
-        public string Message { get; set; }
+        public int? CultureId { get; set; }
 
 
 

@@ -9,7 +9,7 @@ namespace CleanArc.Application.Features.ActivitySchedule.Queries.GetActivitySche
     public class GetActivityScheduleByIdQueryResult
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int? ActivityID { get; set; }
         public string Title { get; set; }
         public bool? IsActive { get; set; }

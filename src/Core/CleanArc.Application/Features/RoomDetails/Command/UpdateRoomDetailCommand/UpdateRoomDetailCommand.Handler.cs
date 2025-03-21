@@ -57,7 +57,7 @@ internal class UpdateRoomDetailCommandHandler : IRequestHandler<UpdateRoomDetail
             var result = await _unitOfWork.RoomDetailsRepository.UpdateAsync(new Domain.Entities.RoomDetails.RoomDetails()
             {
                 UpdatedBy = user.Id,
-                ID = request.ID,
+                Id= request.Id,
                 HotelID = request.HotelID,
                 RoomTypeID = request.RoomTypeID,
                 RoomSizeUnitID = request.RoomSizeUnitID,

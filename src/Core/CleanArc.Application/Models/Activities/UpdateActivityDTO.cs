@@ -9,7 +9,7 @@ namespace CleanArc.Application.Models.Activities
     public class UpdateActivityDTO
     {
 
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int? BusinessID { get; set; }
         public int? CultureId { get; set; }
         public string Title { get; set; }

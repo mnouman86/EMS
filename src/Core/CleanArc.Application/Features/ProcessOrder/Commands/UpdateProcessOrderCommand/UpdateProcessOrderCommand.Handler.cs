@@ -57,7 +57,7 @@ internal class UpdateProcessOrderCommandHandler:IRequestHandler<UpdateProcessOrd
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.ProcessOrderRepository.UpdateAsync(new Domain.Entities.ProcessOrder.ProcessOrder()
             { UpdatedBy = user.Id,
-                ID= request.ID,
+                Id= request.Id,
                 CultureId = request.CultureId,
                 
                 OrderNumber = request.OrderNumber,

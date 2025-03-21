@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.ServiceCategory.Queries.GetAllServiceCat
 {
     public class GetAllServiceCategoriesQueryResult
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
         public string? ServiceName { get; set; }

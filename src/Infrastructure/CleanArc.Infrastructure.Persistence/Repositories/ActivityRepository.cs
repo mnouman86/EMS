@@ -166,7 +166,7 @@ public class ActivityRepository : IActivityRepository
 				foreach (var item in result)
 				{
 					var imageParams = new DynamicParameters();
-					imageParams.Add("@ID", item.ID, DbType.Int32);
+					imageParams.Add("@Id", item.Id, DbType.Int32);
 					imageParams.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
 					imageParams.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 					imageParams.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);

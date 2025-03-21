@@ -57,7 +57,7 @@ internal class UpdatePopularItemsVisitCommandHandler:IRequestHandler<UpdatePopul
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.PopularItemsVisitRepository.UpdateAsync(new Domain.Entities.PopularItemsVisit.PopularItemsVisit()
             { UpdatedBy = user.Id,
-                ID= request.ID,
+                Id= request.Id,
                 UserID = request.UserID,
                 PageVisiteUrl = request.PageVisiteUrl,
                 SessionDuration = request.SessionDuration,

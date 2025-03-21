@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.CarRentalSearchFilter.Command.UpdateCarRentalSearchFilter;
 
-public record UpdateCarRentalSearchFilterCommand(int ID, int HotelID, int CityID, String Name, String CityName, String CityDescription, String RoomTypeName, String RoomTypeDescription, Decimal RoomDetailPrice) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateCarRentalSearchFilterCommand(int Id, int HotelID, int CityID, String Name, String CityName, String CityDescription, String RoomTypeName, String RoomTypeDescription, Decimal RoomDetailPrice) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<UpdateCarRentalSearchFilterCommand>
 {
     [JsonIgnore]

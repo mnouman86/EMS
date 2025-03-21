@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.PackageDetail.Commands.UpdatePackageDetailCommand;
-public record UpdatePackageDetailCommand(int ID, int? PackageTypeID, int? PaymentOrderID, decimal? Stay, decimal? Car,
+public record UpdatePackageDetailCommand(int Id, int? PackageTypeID, int? PaymentOrderID, decimal? Stay, decimal? Car,
     decimal? Flight,
     decimal? ThingsToDo,
     int? CultureId,

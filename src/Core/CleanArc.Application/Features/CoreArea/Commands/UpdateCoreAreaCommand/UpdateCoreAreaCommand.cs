@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.CoreArea.Commands.UpdateCoreAreaCommand;
-public record UpdateCoreAreaCommand( int ID,String? Name, string? Icon, string? Description, int? Type, string? ImagePath, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateCoreAreaCommand( int Id,String? Name, string? Icon, string? Description, int? Type, string? ImagePath, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateCoreAreaCommand>
 {
     [JsonIgnore]

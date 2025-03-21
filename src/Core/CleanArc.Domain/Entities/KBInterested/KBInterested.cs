@@ -10,7 +10,7 @@ namespace CleanArc.Domain.Entities.KBInterested;
 public  class KBInterested
     
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public string? Type { get; set; }               // Maps to   NULL
     public string? Name { get; set; }               // Maps to   NULL
     public string? Description { get; set; }

@@ -58,7 +58,7 @@ internal class UpdateHotelImageCommandHandler : IRequestHandler<UpdateHotelImage
             var result = await _unitOfWork.HotelImageRepository.UpdateAsync(new Domain.Entities.HotelImage.Hotel_Image()
             {
                 UpdatedBy = user.Id,
-                ID = request.ID,
+                Id= request.Id,
                 HotelID = request.HotelID,
                // CarID = request.CarID,
                 ImagePath = request.ImagePath,

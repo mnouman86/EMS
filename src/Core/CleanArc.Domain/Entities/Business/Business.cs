@@ -8,7 +8,7 @@ namespace CleanArc.Domain.Entities.Business
 {
     public class Business
     {
-        public int? ID { get; set; }
+        public int? Id { get; set; }
         public int? BusinessTypeID { get; set; }
         public string? Name { get; set; }
         public string? PhoneNumber { get; set; }

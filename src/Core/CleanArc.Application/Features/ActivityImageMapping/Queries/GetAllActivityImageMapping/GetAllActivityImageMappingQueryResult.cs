@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.ActivityImageMapping.Queries.GetAllActiv
 
 public class GetAllActivityImageMappingQueryResult
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? ActivityID { get; set; }
     public string? ImagePath { get; set; }
     public string? ImageTitle { get; set; }

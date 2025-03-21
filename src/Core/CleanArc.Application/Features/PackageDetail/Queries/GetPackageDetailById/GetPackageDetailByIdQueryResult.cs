@@ -9,7 +9,7 @@ namespace CleanArc.Application.Features.PackageDetail.Queries.GetPackageDetailBy
     public class GetPackageDetailByIdQueryResult
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int? PackageTypeID { get; set; }
         public int? PaymentOrderID { get; set; }
         public decimal? Stay { get; set; }

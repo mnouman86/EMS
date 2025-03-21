@@ -9,7 +9,7 @@ namespace CleanArc.Application.Models.FAQs
     public class UpdateFAQsDTO
     {
 
-        public int ID { get; set; } // Primary Key
+        public int Id { get; set; } // Primary Key
         public int? CategoryServiceID { get; set; } // Nullable Int for CategoryServiceID
         public int? ServiceID { get; set; } // Nullable Int for ServiceID
         public int? SubServiceID { get; set; } // Nullable Int for SubServiceID

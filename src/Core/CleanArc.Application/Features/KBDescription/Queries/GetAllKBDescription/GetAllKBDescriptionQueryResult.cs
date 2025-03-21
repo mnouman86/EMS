@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.KBDescription.Queries.GetAllKBDescriptio
 
 public class GetAllKBDescriptionQueryResult
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     /// <summary>
     /// public int? MediaID { get; set; }
     /// </summary>

@@ -10,7 +10,7 @@ namespace CleanArc.Domain.Entities.SearchFilterThingsToDo;
 
 public  class SearchFilterThingsToDo
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? CityID { get; set; }                 // Maps to C.ID AS CityID
     public string? CityName { get; set; }            // ISNULL(C.Name, '''') AS CityName
     public string? Title { get; set; }        // ISNULL(A.Title, '''') AS ActivityName

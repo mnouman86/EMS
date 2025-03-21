@@ -56,10 +56,10 @@ internal class UpdateCurrencyCommandHandler:IRequestHandler<UpdateCurrencyComman
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.CurrencyRepository.UpdateAsync(new Domain.Entities.Currency.Currency()
-            { UpdatedBy = user.Id,ID= request.ID,
+            { UpdatedBy = user.Id,Id= request.Id,
                 Name = request.Name,
                 CurrencyCode = request.CurrencyCode,
-                //CurrencyIncludeID = request.CurrencyIncludeID,
+                CultureId = request.CultureId,
                 Rate = request.Rate,
             });
             await _unitOfWork.CommitAsync();

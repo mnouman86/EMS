@@ -10,7 +10,7 @@ namespace CleanArc.Application.Features.CheckProfileStatus.Queries.GetCheckProfi
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
         public decimal? PercentageFilled { get; set; }
-        //public int ID { get; set; }
+        //public int Id { get; set; }
         //public int? UserID { get; set; } // Nullable foreign key
         //public string? UserIntrestIDs { get; set; } // Nullable string to store interest IDs
 

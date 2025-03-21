@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.Hotel
 {
     public class CreateHotelDTO
     {
-        //public int ID { get; set; }
+        //public int Id { get; set; }
         public string? Name { get; set; }
         public int? CountryID { get; set; }
         public int? StateID { get; set; }

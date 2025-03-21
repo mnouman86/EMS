@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ActivityGroup.Commands.UpdateActivityGroupCommand;
-public record UpdateActivityGroupCommand(int ID, int? ActivityID,  int? Size,int? UpdatedBy,int CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateActivityGroupCommand(int Id, int? ActivityID,  int? Size,int? UpdatedBy,int CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateActivityGroupCommand>
 {
     [JsonIgnore]

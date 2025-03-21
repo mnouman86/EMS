@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.RoomDetails.Queries.GetRoomDetailById;
 
 public class GetRoomDetailByIdQueryResult
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? HotelID { get; set; }
     public string? HotelName { get; set; }
     public int? RoomTypeID { get; set; }

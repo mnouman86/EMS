@@ -10,7 +10,7 @@ namespace CleanArc.Domain.Entities.ActivityPricePerParticipant;
 public  class ActivityPricePerParticipant
     
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? ActivityID { get; set; }
     public Decimal? PerParticipationPrice { get; set; }
     public bool? IsActive { get; set; }
