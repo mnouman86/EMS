@@ -58,8 +58,8 @@ internal class UpdateAdvertisementCommandHandler:IRequestHandler<UpdateAdvertise
             var result = await _unitOfWork.AdvertisementRepository.UpdateAsync(new Domain.Entities.Advertisement.Advertisement()
             { UpdatedBy = user.Id,
                 Id= request.Id,
-                PageId = request.PageId,
-                PlaceId = request.PlaceId,
+                AdsPageLookUpId = request.AdsPageLookUpId,
+                AdsPlaceLookUpId = request.AdsPlaceLookUpId,
                 ImageTitle = request.ImageTitle,
                 ImagePath = request.ImagePath,
                 StartDate = request.StartDate,

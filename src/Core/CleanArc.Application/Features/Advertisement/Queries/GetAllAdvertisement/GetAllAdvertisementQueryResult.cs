@@ -10,9 +10,10 @@ public class GetAllAdvertisementQueryResult
 {
 
     public int Id { get; set; }
-    public int? PageId { get; set; }
+    public int? AdsPageLookUpId { get; set; }
+    public int? AdsPlaceLookUpId { get; set; }
     public string? PageName { get; set; }
-    public int? PlaceId { get; set; }
+    //public int? PlaceId { get; set; }
     public string? PlaceName { get; set; }
     public string? ImageTitle { get; set; }
     public string? ImagePath { get; set; }
