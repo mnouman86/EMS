@@ -56,7 +56,7 @@ internal class UpdateKBMediaCommandHandler:IRequestHandler<UpdateKBMediaCommand,
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.KBMediaRepository.UpdateAsync(new Domain.Entities.KBMedia.KBMedia()
-            { UpdatedBy = user.Id,ID= request.ID,
+            { UpdatedBy = user.Id,Id= request.Id,
                 KBDescriptionID = request.KBDescriptionID,
                 MediaType = request.MediaType,
                 ImageTitle = request.ImageTitle,

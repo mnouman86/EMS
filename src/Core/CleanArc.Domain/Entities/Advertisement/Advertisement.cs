@@ -11,16 +11,16 @@ public class Advertisement
     /// <value>
     /// The identifier.
     /// </value>
-    public int ID { get; set; }
+    public int Id { get; set; }
     /// <summary>
     /// Gets or sets the page identifier.
     /// </summary>
     /// <value>
     /// The page identifier.
     /// </value>
-    public int? PageID { get; set; }
+    public int? PageId { get; set; }
     public string? PageName { get; set; }
-    public int? PlaceID { get; set; }
+    public int? PlaceId { get; set; }
     public string? PlaceName { get; set; }
     public string? ImageTitle { get; set; }
     /// <summary>
@@ -100,7 +100,7 @@ public class Advertisement
     /// The updated at.
     /// </value>
     public DateTime? UpdatedAt { get; set; }
-    //public int CultureId { get; set; }
+    public int? CultureId { get; set; }
 
 
 }

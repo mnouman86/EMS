@@ -10,7 +10,7 @@ namespace CleanArc.Domain.Entities.ActivityDisabilityMapping;
 public  class ActivityDisabilityMapping
 
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public string? Title { get; set; }
     public string? Name { get; set; }
     public String? DisabilityOptionIDs { get; set; }

@@ -15,10 +15,7 @@ public record CreateCurrencyCommand(
    string? Name,
    string? CurrencyCode,
    decimal? Rate,
-     int? CreatedBy,
-    int? CultureId,
-    int? Code,
-    string? Message
+    int? CultureId
     ) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateCurrencyCommand>
 {
@@ -29,15 +26,11 @@ public record CreateCurrencyCommand(
         validator.RuleFor(c => c.Name)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please enter a valid Name");
+            .WithMessage("Please enter valid Currency");
         validator.RuleFor(c => c.CurrencyCode)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please enter a CurrencyCode");
-        validator.RuleFor(c => c.Rate)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a Rate");
+            .WithMessage("Please enter a Currency Code");
         
         return validator;
     }

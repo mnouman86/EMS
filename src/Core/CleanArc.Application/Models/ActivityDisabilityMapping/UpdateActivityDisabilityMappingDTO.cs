@@ -9,7 +9,7 @@ namespace CleanArc.Application.Models.ActivityDisabilityMapping
     public class UpdateActivityDisabilityMappingDTO
     {
 
-        public int ID { get; set; }
+        public int Id { get; set; }
        // public string? Title { get; set; }
         public string? Name { get; set; }
         public String? DisabilityOptionIDs { get; set; }

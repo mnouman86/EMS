@@ -12,7 +12,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.SearchFilterThingsToDo.Commands.UpdateSearchFilterThingsToDoCommand;
 public record UpdateSearchFilterThingsToDoCommand(
-   int ID,
+   int Id,
     int? CultureId,
     string? Name,
    int? LanguageLookUpID,

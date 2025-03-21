@@ -12,7 +12,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.CampaignTargetItems.Command.UpdateCampaignTargetItemsCommand;
 
-public record UpdateCampaignTargetItemsCommand(int ID, int CampaignTargetID,
+public record UpdateCampaignTargetItemsCommand(int Id, int CampaignTargetID,
 string CampaignItemIDs,
 bool ApplyAllItem,
 int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,

@@ -12,7 +12,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.CustomerAwareness.Command.UpdateCustomerAwarenessCommand;
 
-public record UpdateCustomerAwarenessCommand(int ID, string? Title,
+public record UpdateCustomerAwarenessCommand(int Id, string? Title,
 string? Description,
 int? KeyNumber,
 string? Link,

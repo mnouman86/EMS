@@ -9,7 +9,7 @@ namespace CleanArc.Application.Models.UserExperience
     public class UpdateUserExperienceDTO
     {
 
-        public int ID { get; set; }
+        public int Id { get; set; }
         //public int? KBDetailID { get; set; }
         public int? UserID { get; set; } // Foreign Key or reference to another table
         public string? UserIntrestIDs { get; set; } // Stores interest IDs as a string (nvarchar(max))

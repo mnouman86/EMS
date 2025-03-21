@@ -9,7 +9,7 @@ namespace CleanArc.Application.Features.ActivityPerGroupPrice.Queries.GetActivit
     public class GetActivityPerGroupPriceByIdQueryResult
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int? ActivityID { get; set; }
         public int? MinGroupSize { get; set; }
         public int? MaxGroupSize { get; set; }

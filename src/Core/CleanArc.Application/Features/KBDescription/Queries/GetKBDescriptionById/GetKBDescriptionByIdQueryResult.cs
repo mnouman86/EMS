@@ -9,7 +9,7 @@ namespace CleanArc.Application.Features.KBDescription.Queries.GetKBDescriptionBy
     public class GetKBDescriptionByIdQueryResult
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         //public int? MediaID { get; set; }
 
         public int? GenericTitleID { get; set; }

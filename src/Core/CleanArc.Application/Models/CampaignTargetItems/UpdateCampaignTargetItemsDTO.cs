@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.CampaignTargetItems
 {
     public class UpdateCampaignTargetItemsDTO
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int? CampaignTargetID { get; set; }
         public string? CampaignItemIDs { get; set; }
         public int? UpdatedBy { get; set; }

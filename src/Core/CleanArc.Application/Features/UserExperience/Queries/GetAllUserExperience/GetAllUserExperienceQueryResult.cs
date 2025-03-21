@@ -8,8 +8,8 @@ namespace CleanArc.Application.Features.UserExperience.Queries.GetAllUserExperie
 
 public class GetAllUserExperienceQueryResult
 {
-    // public int ID { get; set; }
-    public int ID { get; set; }
+    // public int Id { get; set; }
+    public int Id { get; set; }
     public int? UserID { get; set; } // Nullable foreign key
     public string? UserIntrestIDs { get; set; } // Nullable string to store interest IDs
 

@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.CustomerReview
 {
     public class CreateCustomerReviewDTO
     {
-        // public int ID { get; set; }
+        // public int Id { get; set; }
         public int? GenericTitleID { get; set; }
         //public string? Name { get; set; }
         public int? ServiceCategoryID { get; set; }

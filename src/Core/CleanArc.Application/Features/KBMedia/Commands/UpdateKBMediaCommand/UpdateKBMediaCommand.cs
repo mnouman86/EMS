@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.KBMedia.Commands.UpdateKBMediaCommand;
-public record UpdateKBMediaCommand(int ID,
+public record UpdateKBMediaCommand(int Id,
     int? KBDescriptionID,
 string MediaType,
  string ImagePath,

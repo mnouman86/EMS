@@ -56,7 +56,7 @@ internal class UpdateUserExperienceCommandHandler:IRequestHandler<UpdateUserExpe
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.UserExperienceRepository.UpdateAsync(new Domain.Entities.UserExperience.UserExperience()
-            { UpdatedBy = user.Id,ID= request.ID, UserID = request.UserID, UserIntrestIDs = request.UserIntrestIDs, CultureId = request.CultureId });
+            { UpdatedBy = user.Id,Id= request.Id, UserID = request.UserID, UserIntrestIDs = request.UserIntrestIDs, CultureId = request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

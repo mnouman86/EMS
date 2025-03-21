@@ -9,7 +9,7 @@ namespace CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetKBRelatedUrl
     public class GetKBRelatedUrlLinkByIdQueryResult
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int? KBDetailID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

@@ -9,7 +9,7 @@ namespace CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById
     public class GetProcessOrderByIdQueryResult
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
-        public int ID { get; set; } // IDENTITY(1,1) NOT NULL
+        public int Id { get; set; } // IDENTITY(1,1) NOT NULL
         public string? OrderNumber { get; set; } // nvarchar(50) NULL
         public string? FirstName { get; set; } // nvarchar(50) NULL
         public string? LastName { get; set; } // nvarchar(50) NULL

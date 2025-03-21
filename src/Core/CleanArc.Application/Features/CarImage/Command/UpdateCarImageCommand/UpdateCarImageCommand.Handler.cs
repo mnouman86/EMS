@@ -58,7 +58,7 @@ internal class UpdateCarImageCommandHandler : IRequestHandler<UpdateCarImageComm
             var result = await _unitOfWork.CarImageRepository.UpdateAsync(new Domain.Entities.CarImage.CarImage()
             {
                 UpdatedBy = user.Id,
-                ID = request.ID,
+                Id= request.Id,
                 //BusinessID = request.BusinessID,
                 CarID = request.CarID,
                 ImagePath = request.ImagePath,

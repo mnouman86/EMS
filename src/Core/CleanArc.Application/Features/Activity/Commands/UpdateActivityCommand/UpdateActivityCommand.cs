@@ -12,7 +12,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand;
 public record UpdateActivityCommand(
-   int ID,
+   int Id,
     int? CultureId,
     int? BusinessID,
     string? Title,

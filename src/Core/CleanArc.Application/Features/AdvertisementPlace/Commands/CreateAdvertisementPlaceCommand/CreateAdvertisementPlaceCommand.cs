@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.AdvertisementPlace.Commands.CreateAdvertisementPlaceCommand;
-public record CreateAdvertisementPlaceCommand(string? Name, string? Description,int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateAdvertisementPlaceCommand(string? Name, string? Description,int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateAdvertisementPlaceCommand>
 {
     [JsonIgnore]
@@ -22,10 +22,6 @@ public record CreateAdvertisementPlaceCommand(string? Name, string? Description,
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Name");
-        validator.RuleFor(c => c.Description)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a Description");
         return validator;
     }
 }

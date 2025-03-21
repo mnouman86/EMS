@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.CarImage.Queries.GetCarImageById
 {
     public class GetCarImageByIdQueryResult
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int? BusinessID { get; set; }
         public int? CarDetailID { get; set; }
         public int? CategoryID { get; set; }

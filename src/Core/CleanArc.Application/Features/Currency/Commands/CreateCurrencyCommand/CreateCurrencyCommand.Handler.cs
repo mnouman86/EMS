@@ -65,7 +65,7 @@ internal class CreateCurrencyCommandHandler: IRequestHandler<CreateCurrencyComma
                 //CurrencyIncludeID = request.CurrencyIncludeID,
                 Rate = request.Rate,
               
-                //SeasonID = request.SeasonID,
+                CultureId = request.CultureId,
 
 
             });

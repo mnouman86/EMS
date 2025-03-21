@@ -56,7 +56,7 @@ internal class UpdateKBTimingCommandHandler:IRequestHandler<UpdateKBTimingComman
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.KBTimingRepository.UpdateAsync(new Domain.Entities.KBTiming.KBTiming()
-            { UpdatedBy = user.Id,ID= request.ID, GenericTitleID = request.GenericTitleID , Day = request.Day, TimeFrom = request.TimeFrom, TimeTo = request.TimeTo, IsAlwaysOpen = request.IsAlwaysOpen, CultureId = request.CultureId });
+            { UpdatedBy = user.Id,Id= request.Id, GenericTitleID = request.GenericTitleID , Day = request.Day, TimeFrom = request.TimeFrom, TimeTo = request.TimeTo, IsAlwaysOpen = request.IsAlwaysOpen, CultureId = request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

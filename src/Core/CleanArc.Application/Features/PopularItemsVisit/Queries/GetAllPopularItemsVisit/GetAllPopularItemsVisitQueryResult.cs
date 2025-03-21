@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularI
 
 public class GetAllPopularItemsVisitQueryResult
 {
-    //public int? ID { get; set; }
+    //public int? Id { get; set; }
     //public string? PageVisiteUrl { get; set; }
     //public string? SessionDuration { get; set; }
     //public int? VisitCount { get; set; }

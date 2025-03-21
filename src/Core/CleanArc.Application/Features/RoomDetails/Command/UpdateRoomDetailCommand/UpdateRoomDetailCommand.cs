@@ -12,7 +12,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.RoomDetails.Command.UpdateRoomDetailCommand;
 
-public record UpdateRoomDetailCommand(int ID, int? HotelID, int? RoomTypeID, int? RoomSizeUnitID, string? RoomSize, bool? IsBathroomPrivate,
+public record UpdateRoomDetailCommand(int Id, int? HotelID, int? RoomTypeID, int? RoomSizeUnitID, string? RoomSize, bool? IsBathroomPrivate,
     decimal? Price, decimal? AdditionalMatricCharges, string? RoomNumber, bool? IsAvailable, int? UpdatedBy, bool? IsRefundable, bool? IsCancelation) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateRoomDetailCommand>
 {

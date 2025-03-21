@@ -10,10 +10,10 @@ namespace CleanArc.Application.Features.Advertisement.Queries.GetAdvertisementBy
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
 
-        public int ID { get; set; }
-        public int? PageID { get; set; }
+        public int Id { get; set; }
+        public int? PageId { get; set; }
         public string? PageName { get; set; }
-        public int? PlaceID { get; set; }
+        public int? PlaceId { get; set; }
         public string? PlaceName{ get; set; }
         public string? ImageTitle { get; set; }
         public string? ImagePath { get; set; }

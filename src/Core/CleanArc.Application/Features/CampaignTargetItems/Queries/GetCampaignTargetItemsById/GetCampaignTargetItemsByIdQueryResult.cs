@@ -9,7 +9,7 @@ namespace CleanArc.Application.Features.CampaignTargetItems.Queries.GetCampaignT
 public class GetCampaignTargetItemsByIdQueryResult
 //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? CampaignTargetID { get; set; }
     public string? CampaignItemIDs { get; set; }
     public bool? IsActive { get; set; }

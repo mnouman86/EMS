@@ -10,7 +10,7 @@ namespace CleanArc.Domain.Entities.PackageDetail;
 public  class PackageDetail
     
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? PackageTypeID { get; set; }
     public int? PaymentOrderID { get; set; }
     public decimal? Stay { get; set; }

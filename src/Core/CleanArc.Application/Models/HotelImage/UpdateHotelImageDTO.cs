@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.HotelImage
 {
     public class UpdateHotelImageDTO
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         //public int? HotelID { get; set; }
         public string? ImagePath { get; set; } // NVARCHAR(MAX)
         public string? ImageTitle { get; set; } // NVARCHAR(MAX)

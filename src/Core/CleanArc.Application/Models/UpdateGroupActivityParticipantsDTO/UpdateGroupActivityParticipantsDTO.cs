@@ -9,7 +9,7 @@ namespace CleanArc.Application.Models.GroupActivityParticipants
     public class UpdateGroupActivityParticipantsDTO
     {
 
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Email { get; set; }
         public string MobileNumber { get; set; }
         public int? GroupActivityID { get; set; }

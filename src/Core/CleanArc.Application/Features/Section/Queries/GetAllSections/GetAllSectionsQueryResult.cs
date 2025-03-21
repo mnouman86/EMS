@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.Section.Queries.GetAllSections
 {
     public class GetAllSectionsQueryResult
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
         public bool? IsActive { get; set; }

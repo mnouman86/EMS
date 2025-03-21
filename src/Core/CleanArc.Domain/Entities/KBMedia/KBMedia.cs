@@ -10,7 +10,7 @@ namespace CleanArc.Domain.Entities.KBMedia;
 public  class KBMedia
     
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? KBDetailID { get; set; }
     public int? KBDescriptionID { get; set; }
     public int? AddressID { get; set; }

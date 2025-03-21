@@ -9,7 +9,7 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailById
     public class GetKBDetailByIdQueryResult
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string? Title { get; set; }
         //public int? GenericTitleID { get; set; }  // Maps to GenericTitleID
         public string? KeyDate { get; set; }

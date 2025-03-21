@@ -58,7 +58,7 @@ internal class UpdateRoomVisualCommandHandler : IRequestHandler<UpdateRoomVisual
             var result = await _unitOfWork.RoomVisualRepository.UpdateAsync(new Domain.Entities.RoomVisual.RoomVisual()
             {
                 UpdatedBy = user.Id,
-                ID = request.ID,
+                Id= request.Id,
                 HotelID = (int)request.HotelID,
                 RoomID = (int)request.RoomID,
                 CategoryID = (int)request.CategoryID,

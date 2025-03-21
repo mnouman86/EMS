@@ -56,7 +56,7 @@ internal class UpdateActivityIDImageMappingCommandHandler:IRequestHandler<Update
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.ActivityIDImageMappingRepository.UpdateAsync(new Domain.Entities.ActivityIDImageMapping.ActivityIDImageMapping()
-            { UpdatedBy = user.Id,ID= request.ID, ActivityID = request.ActivityID });
+            { UpdatedBy = user.Id,Id= request.Id, ActivityID = request.ActivityID });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

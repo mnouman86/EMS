@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.AdvertisementPlace.Commands.UpdateAdvertisementPlaceCommand;
-public record UpdateAdvertisementPlaceCommand(int ID,String? Name, string? Description, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateAdvertisementPlaceCommand(int Id,string? Name, string? Description, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateAdvertisementPlaceCommand>
 {
     [JsonIgnore]
@@ -22,10 +22,6 @@ public record UpdateAdvertisementPlaceCommand(int ID,String? Name, string? Descr
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Name");
-        validator.RuleFor(c => c.Description)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a Description");
         return validator;
     }
 }

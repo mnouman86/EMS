@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.HotelImage.Command.UpdateHotelImageCommand
 {
-    public record UpdateHotelImageCommand(int ID, int? HotelID,  string? ImagePath, string? ImageTitle, bool? IsMain, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+    public record UpdateHotelImageCommand(int Id, int? HotelID,  string? ImagePath, string? ImageTitle, bool? IsMain, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateHotelImageCommand>
     {
         [JsonIgnore]

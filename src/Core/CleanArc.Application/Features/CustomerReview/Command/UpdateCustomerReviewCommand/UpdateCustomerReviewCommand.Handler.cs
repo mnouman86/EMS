@@ -56,7 +56,7 @@ internal class UpdateCustomerReviewCommandHandler : IRequestHandler<UpdateCustom
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.CustomerReviewRepository.UpdateAsync(new Domain.Entities.CustomerReview.CustomerReview()
-            { UpdatedBy = user.Id, ID = request.ID,
+            { UpdatedBy = user.Id, Id= request.Id,
                 Description = request.Description,
                 GenericTitleID = request.GenericTitleID,
                 ServiceCategoryID = request.ServiceCategoryID,

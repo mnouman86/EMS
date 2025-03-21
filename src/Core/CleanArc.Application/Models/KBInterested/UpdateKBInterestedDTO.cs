@@ -9,7 +9,7 @@ namespace CleanArc.Application.Models.KBInterested
     public class UpdateKBInterestedDTO
     {
 
-        public int ID { get; set; }
+        public int Id { get; set; }
         //public int? KBDetailID { get; set; }
         public string? Type { get; set; }               // Maps to   NULL
         public string? Name { get; set; }               // Maps to   NULL

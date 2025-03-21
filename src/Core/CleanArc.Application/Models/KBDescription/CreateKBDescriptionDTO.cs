@@ -10,7 +10,7 @@ namespace CleanArc.Application.Models.KBDescription
 {
     public class CreateKBDescriptionDTO
     {
-        // public int ID { get; set; }
+        // public int Id { get; set; }
         public int? GenericTitleID { get; set; }
         public string? SubHeading { get; set; }
         public string? Content { get; set; }

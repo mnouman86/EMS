@@ -9,7 +9,7 @@ namespace CleanArc.Application.Models.PopularItemsVisit
     public class UpdatePopularItemsVisitDTO
     {
 
-        public int ID { get; set; }
+        public int Id { get; set; }
         //public int? KBDetailID { get; set; }
         public int? UserID { get; set; } // Foreign Key or reference to another table
         public string? PageVisiteUrl { get; set; }

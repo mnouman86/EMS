@@ -9,7 +9,7 @@ namespace CleanArc.Application.Models.ActivityIncludeOptionMapping
     public class UpdateActivityIncludeOptionMappingDTO
     {
 
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string? IncludeOptionIDs { get; set; }
         public int? ActivityID { get; set; }
         //public bool? IsActive { get; set; }

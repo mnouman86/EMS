@@ -11,18 +11,18 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.Advertisement.Commands.UpdateAdvertisementCommand;
-public record UpdateAdvertisementCommand(int ID, int? PageID, int? PlaceID, string? ImageTitle, string? ImagePath, string? Url, DateTime? StartDate, DateTime? EndDate, int? UpdatedBy, int Code, string Message) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateAdvertisementCommand(int Id, int? PageId, int? PlaceId, string? ImageTitle, string? ImagePath, string? Url, DateTime? StartDate, DateTime? EndDate, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateAdvertisementCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<UpdateAdvertisementCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateAdvertisementCommand> validator)
     {
-        validator.RuleFor(c => c.PageID)
+        validator.RuleFor(c => c.PageId)
      .NotEmpty()
      .NotNull()
      .WithMessage("Please enter a valid PageID");
-        validator.RuleFor(c => c.PlaceID)
+        validator.RuleFor(c => c.PlaceId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a PlaceID");

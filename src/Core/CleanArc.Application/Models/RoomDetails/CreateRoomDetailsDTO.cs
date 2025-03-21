@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.RoomDetails;
 
 public class CreateRoomDetailsDTO
 {
-   // public int ID { get; set; }
+   // public int Id { get; set; }
     public int? HotelID { get; set; }
     public int? RoomTypeID { get; set; }
     public int? RoomSizeUnitID { get; set; }

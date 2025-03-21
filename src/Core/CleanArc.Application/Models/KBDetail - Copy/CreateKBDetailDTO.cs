@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.KBDetail
 {
     public class CreateKBDetailDTO
     {
-        // public int ID { get; set; }
+        // public int Id { get; set; }
         public string? Title { get; set; }
         public string? KeyDate { get; set; }
         //public int? GenericTitleID { get; set; }  // Maps to GenericTitleID

@@ -14,7 +14,7 @@ using Azure.Core;
 
 namespace CleanArc.Application.Features.Service.Command.UpdateServiceCommand
 {
-    public record UpdateServiceCommand(int ID, string? Name, string? Description, int? CultureId, string? Icon) : IRequest<OperationResult<ResponseEntity>>,
+    public record UpdateServiceCommand(int Id, string? Name, string? Description, int? CultureId, string? Icon) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateServiceCommand>
     {
         [JsonIgnore]

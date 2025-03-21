@@ -9,7 +9,7 @@ namespace CleanArc.Domain.Entities.HotelImage
 {
     public class Hotel_Image
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int? HotelID { get; set; }
         public string? ImagePath { get; set; } // NVARCHAR(MAX)
         public string? ImageTitle { get; set; } // NVARCHAR(MAX)

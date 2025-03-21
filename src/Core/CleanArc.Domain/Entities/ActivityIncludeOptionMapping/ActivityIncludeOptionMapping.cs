@@ -10,7 +10,7 @@ namespace CleanArc.Domain.Entities.ActivityIncludeOptionMapping;
 public  class ActivityIncludeOptionMapping
 
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     // public string? IncludeOptionIDs { get; set; }
     public string? IncludeOptionsLookUpID { get; set; }
     public string? IncludeOptionName { get; set; }

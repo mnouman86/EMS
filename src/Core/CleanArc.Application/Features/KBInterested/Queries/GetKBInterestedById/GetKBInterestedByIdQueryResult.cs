@@ -9,7 +9,7 @@ namespace CleanArc.Application.Features.KBInterested.Queries.GetKBInterestedById
     public class GetKBInterestedByIdQueryResult
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string? Type { get; set; }               // Maps to   NULL
         public string? Name { get; set; }               // Maps to   NULL
         public string? Description { get; set; }

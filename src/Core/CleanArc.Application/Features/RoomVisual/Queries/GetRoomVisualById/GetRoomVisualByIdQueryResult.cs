@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.RoomVisual.Queries.GetRoomVisualById
 {
     public class GetRoomVisualByIdQueryResult
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int HotelID { get; set; }
         public int RoomID { get; set; }
         public int CategoryID { get; set; }

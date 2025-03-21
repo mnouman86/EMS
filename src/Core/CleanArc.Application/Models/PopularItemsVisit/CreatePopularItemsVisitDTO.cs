@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.PopularItemsVisit
 {
     public class CreatePopularItemsVisitDTO
     {
-        // public int ID { get; set; }
+        // public int Id { get; set; }
         public int? UserID { get; set; }
 
         public string? PageVisiteUrl { get; set; }

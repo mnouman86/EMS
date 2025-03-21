@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.UserExperience.Commands.UpdateUserExperienceCommand;
-public record UpdateUserExperienceCommand(int ID, int? UserID, string? UserIntrestIDs, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateUserExperienceCommand(int Id, int? UserID, string? UserIntrestIDs, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateUserExperienceCommand>
 {
     [JsonIgnore]

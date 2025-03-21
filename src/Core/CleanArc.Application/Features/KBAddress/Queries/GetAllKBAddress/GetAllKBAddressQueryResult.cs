@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.KBAddress.Queries.GetAllKBAddress;
 
 public class GetAllKBAddressQueryResult
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public string? Title { get; set; }
     public int? GenericTitleID { get; set; }  // Maps to GenericTitleID
     public string? KeyDate { get; set; }

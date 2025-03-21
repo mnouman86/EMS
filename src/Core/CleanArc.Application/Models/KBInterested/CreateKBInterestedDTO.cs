@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.KBInterested
 {
     public class CreateKBInterestedDTO
     {
-        // public int ID { get; set; }
+        // public int Id { get; set; }
        
         public string? Type { get; set; }               // Maps to   NULL
         public string? Name { get; set; }               // Maps to   NULL

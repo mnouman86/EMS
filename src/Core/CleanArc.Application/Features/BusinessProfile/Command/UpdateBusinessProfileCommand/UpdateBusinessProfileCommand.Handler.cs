@@ -55,7 +55,7 @@ namespace CleanArc.Application.Features.BusinessProfile.Command.UpdateBusinessPr
 
                 //return OperationResult<ResponseEntity>.SuccessResult(result);
                 var result = await _unitOfWork.BusinessProfileRepository.UpdateAsync(new Domain.Entities.BusinessProfile.BusinessProfile()
-                {  UpdatedBy = user.Id, ID = request.ID,
+                {  UpdatedBy = user.Id, Id= request.Id,
                     BusinessTypeID = request.BusinessTypeID,
                     FullLegalName = request.FullLegalName,
                     MobileNumber = request.MobileNumber,

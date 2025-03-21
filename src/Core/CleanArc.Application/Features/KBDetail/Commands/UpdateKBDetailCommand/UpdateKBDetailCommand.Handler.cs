@@ -56,7 +56,7 @@ internal class UpdateKBDetailCommandHandler:IRequestHandler<UpdateKBDetailComman
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.KBDetailRepository.UpdateAsync(new Domain.Entities.KBDetail.KBDetail()
-            { UpdatedBy = user.Id,ID= request.ID,
+            { UpdatedBy = user.Id,Id= request.Id,
                 //Title = request.Title,
                 Title = request.Title,
                 KeyDate = request.KeyDate,

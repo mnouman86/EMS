@@ -12,7 +12,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.Campaign.Command.UpdateCampaignCommand;
 
-public record UpdateCampaignCommand(int ID, string Title,
+public record UpdateCampaignCommand(int Id, string Title,
 string Description,
 string? StartDate,
 //string EndDate,

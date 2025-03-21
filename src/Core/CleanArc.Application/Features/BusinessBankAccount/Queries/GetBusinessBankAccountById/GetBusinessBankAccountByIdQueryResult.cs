@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.BusinessBankAccount.Queries.GetBusinessB
 {
     public class GetBusinessBankAccountByIdQueryResult
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string AccountTitle { get; set; }
         public int BankID { get; set; }
         public string BankName { get; set; }

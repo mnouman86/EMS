@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailByIdAll
 {
     public class KnowledgeBaseByID
     {
-        public int? ID { get; set; }
+        public int? Id { get; set; }
         public int? ServiceCategoryID { get; set; }
         public string ServiceCategory { get; set; }
         public string Title { get; set; }
@@ -21,7 +21,7 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailByIdAll
     }
     public class KnowledgeBaseDetail
     {
-        public int? ID { get; set; }
+        public int? Id { get; set; }
         public int? GenericTitleID { get; set; }
         public int? SectionID { get; set; }
         public string Section { get; set; }
@@ -47,7 +47,7 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailByIdAll
     }
     public class KnowledgeBaseDescription
     {
-        public int? ID { get; set; }
+        public int? Id { get; set; }
         public int? GenericTitleID { get; set; }
         public string SubHeading { get; set; }
         public string Content { get; set; }
@@ -59,7 +59,7 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailByIdAll
     }
     public class KnowledgeBaseAddress
     {
-        public int? ID { get; set; }
+        public int? Id { get; set; }
         public int? GenericTitleID { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
@@ -89,7 +89,7 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailByIdAll
     }
     public class KnowledgeBaseMedia
     {
-        public int? ID { get; set; }
+        public int? Id { get; set; }
         public int? GenericTitleID { get; set; }
         public string MediaType { get; set; }
         public string ImagePath { get; set; }
@@ -100,7 +100,7 @@ namespace CleanArc.Application.Features.KBDetail.Queries.GetKBDetailByIdAll
     }
     public class KnowledgeBaseTiming
     {
-        public int? ID { get; set; }
+        public int? Id { get; set; }
         public int? GenericTitleID { get; set; }
         public string Day { get; set; }
         public string TimeFrom { get; set; }

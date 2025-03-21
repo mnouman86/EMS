@@ -9,7 +9,7 @@ namespace CleanArc.Application.Features.SearchCarAmenities.Queries.GetAllSearchC
 public class GetAllSearchCarAmenitiesQueryResult
 {
 
-    public int? ID { get; set; }
+    public int? Id { get; set; }
     public int? CarDetailID { get; set; }
     public string? Amenity { get; set; }
     public string? Description { get; set; }

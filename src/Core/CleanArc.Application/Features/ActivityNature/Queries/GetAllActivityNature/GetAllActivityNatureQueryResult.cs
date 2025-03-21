@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.ActivityNature.Queries.GetAllActivityNat
 
 public class GetAllActivityNatureQueryResult
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
     public bool IsDeleted { get; set; }

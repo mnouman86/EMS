@@ -11,7 +11,7 @@ public  class ActivityAddressMapping
     
 {
 
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int? ActivityID { get; set; }
     public int? CountryLookUpID { get; set; }
     public int? CityLookUpID { get; set; }

@@ -56,7 +56,7 @@ internal class UpdateActivitySeasonMappingCommandHandler:IRequestHandler<UpdateA
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.ActivitySeasonMappingRepository.UpdateAsync(new Domain.Entities.ActivitySeasonMapping.ActivitySeasonMapping()
-            { UpdatedBy = user.Id,ID= request.ID, SeasonIDs = request.SeasonIDs, ActivityID = request.ActivityID });
+            { UpdatedBy = user.Id,Id= request.Id, SeasonIDs = request.SeasonIDs, ActivityID = request.ActivityID });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

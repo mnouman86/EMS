@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.BusinessProfile
 {
     public class UpdateBusinessProfileDTO
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int? CultureId { get; set; }
         public int? BusinessTypeID { get; set; }
         public string FullLegalName { get; set; }

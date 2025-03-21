@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById
 {
     public class GetHotelImageByIdQueryResult
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int? HotelID { get; set; }
         public string? ImagePath { get; set; } // NVARCHAR(MAX)
         public string? ImageTitle { get; set; } // NVARCHAR(MAX)

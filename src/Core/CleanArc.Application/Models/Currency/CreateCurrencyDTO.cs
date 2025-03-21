@@ -8,13 +8,11 @@ namespace CleanArc.Application.Models.Activities
 {
     public class CreateCurrencyDTO
     {
-        //public int ID { get; set; }
+        //public int Id { get; set; }
         public string? Name { get; set; }
         public string? CurrencyCode { get; set; }
         public decimal? Rate { get; set; }
         public int? CultureId { get; set; }
-        public int? Code { get; set; }
-        public string? Message { get; set; }
         //public Decimal? PerGroupPrice { get; set; }
         public int? CreatedBy { get; set; }
         

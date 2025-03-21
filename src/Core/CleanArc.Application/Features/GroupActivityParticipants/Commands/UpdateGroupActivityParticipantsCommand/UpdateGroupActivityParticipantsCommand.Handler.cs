@@ -56,7 +56,7 @@ internal class UpdateGroupActivityParticipantsCommandHandler:IRequestHandler<Upd
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.GroupActivityParticipantsRepository.UpdateAsync(new Domain.Entities.GroupActivityParticipants.GroupActivityParticipants()
-            { UpdatedBy = user.Id,ID= request.ID,
+            { UpdatedBy = user.Id,Id= request.Id,
                // GenericTitleID = request.GenericTitleID,
                 GroupActivityID = request.GroupActivityID,
                 MobileNumber = request.MobileNumber,

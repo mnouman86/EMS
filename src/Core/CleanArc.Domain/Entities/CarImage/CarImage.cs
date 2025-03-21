@@ -9,7 +9,7 @@ namespace CleanArc.Domain.Entities.CarImage
 {
     public class CarImage
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         //public int? BusinessID { get; set; }
         public int? CarID { get; set; }
         public int? CarDetailID { get; set; }

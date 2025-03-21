@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.FAQs.Queries.GetAllFAQs;
 
 public class GetAllFAQsQueryResult
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public int CategoryServiceID { get; set; }
     public int ServiceID { get; set; }
     public int SubServiceID { get; set; }

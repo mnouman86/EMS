@@ -8,7 +8,7 @@ namespace CleanArc.Domain.Entities.RoomImages;
 
 public class RoomImages
 {  
-    public int? ID { get; set; }
+    public int? Id { get; set; }
    public string? ImageTitle { get; set; }
     public string? ImagePath { get; set; }
     public int? RoomID { get; set; }

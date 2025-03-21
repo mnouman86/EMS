@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.CustomerReview.Queries.GetCustomerReview
 {
     public class GetCustomerReviewByIdQueryResult
     {
-        public int? ID { get; set; }
+        public int? Id { get; set; }
         public int? GenericTitleID { get; set; }
         public int? ServiceCategoryID { get; set; }
         public int? Rating { get; set; }

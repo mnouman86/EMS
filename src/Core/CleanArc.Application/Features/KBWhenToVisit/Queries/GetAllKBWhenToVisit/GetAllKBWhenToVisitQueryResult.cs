@@ -8,7 +8,7 @@ namespace CleanArc.Application.Features.KBWhenToVisit.Queries.GetAllKBWhenToVisi
 
 public class GetAllKBWhenToVisitQueryResult
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
   //public int? KBDetailID { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }

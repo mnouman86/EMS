@@ -57,7 +57,7 @@ internal class UpdateServiceCategoryCommandHandler : IRequestHandler<UpdateServi
             var result = await _unitOfWork.ServiceCategoryRepository.UpdateAsync(new Domain.Entities.ServiceCategory.ServiceCategory()
             {
                 UpdatedBy = user.Id,
-                ID = request.ID,
+                Id= request.Id,
                 Description = request.Description,
                 Name = request.Name,
                 ServiceId = request.ServiceId,

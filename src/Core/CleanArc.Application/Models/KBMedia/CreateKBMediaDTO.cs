@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.KBMedia
 {
     public class CreateKBMediaDTO
     {
-        // public int ID { get; set; }
+        // public int Id { get; set; }
         public int? GenericTitleID { get; set; }
         // public int? KBDescriptionID { get; set; }
         //public string? MediaType { get; set; }

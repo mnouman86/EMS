@@ -9,7 +9,7 @@ namespace CleanArc.Application.Models.KBMedia
     public class UpdateKBMediaDTO
     {
 
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int? KBDescriptionID { get; set; }
         public string? MediaType { get; set; }
         public string? ImagePath { get; set; }
