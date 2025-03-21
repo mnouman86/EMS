@@ -26,34 +26,58 @@ namespace CleanArc.Web.FileUpload.Controllers
                 {
                     return BadRequest("No files were uploaded.");
                 }
+                var today = DateTime.UtcNow;
+                var datePath = Path.Combine(today.Year.ToString(), today.Month.ToString("D2"), today.Day.ToString("D2"));
 
-                var folderName = Path.Combine("Resources", "Images", category);
+                var folderName = Path.Combine("Resources", category, datePath);
                 var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
                 var uploadedFiles = new List<string>();
+                if (!Directory.Exists(pathToSave))
+                {
+                    Directory.CreateDirectory(pathToSave);
+                }
 
+                //foreach (var file in files)
+                //{
+                //    if (file.Length > 0)
+                //    {
+                //        var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                //        var fullPath = Path.Combine(pathToSave, fileName);
+                //        var dbPath = Path.Combine(folderName, fileName);
+
+                //        if (!Directory.Exists(pathToSave))
+                //        {
+                //            Directory.CreateDirectory(pathToSave);
+                //        }
+
+                //        using (var stream = new FileStream(fullPath, FileMode.Create))
+                //        {
+                //            await file.CopyToAsync(stream);
+                //        }
+
+                //        var fullDbPath = Path.Combine("..\\..\\..\\assets\\", dbPath);
+                //        uploadedFiles.Add(fullDbPath);
+                //    }
+                //}
                 foreach (var file in files)
                 {
                     if (file.Length > 0)
                     {
-                        var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                        var fullPath = Path.Combine(pathToSave, fileName);
-                        var dbPath = Path.Combine(folderName, fileName);
+                        var originalFileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                        var fileExtension = Path.GetExtension(originalFileName);
+                        var uniqueFileName = $"{Path.GetFileNameWithoutExtension(originalFileName)}_{Guid.NewGuid()}{fileExtension}";
 
-                        if (!Directory.Exists(pathToSave))
-                        {
-                            Directory.CreateDirectory(pathToSave);
-                        }
+                        var fullPath = Path.Combine(pathToSave, uniqueFileName);
+                        var relativeDbPath = Path.Combine(folderName, uniqueFileName).Replace("\\", "/"); // web-friendly path
 
                         using (var stream = new FileStream(fullPath, FileMode.Create))
                         {
                             await file.CopyToAsync(stream);
                         }
 
-                        var fullDbPath = Path.Combine("..\\..\\..\\assets\\", dbPath);
-                        uploadedFiles.Add(fullDbPath);
+                        uploadedFiles.Add(relativeDbPath);
                     }
                 }
-
                 return Ok(new { files = uploadedFiles });
             }
             catch (Exception ex)
