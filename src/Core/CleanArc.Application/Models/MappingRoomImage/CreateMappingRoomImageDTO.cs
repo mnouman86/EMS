@@ -10,7 +10,8 @@ namespace CleanArc.Application.Models.MappingRoomImage
     {
         public int? RoomID { get; set; }
         public int? CategoryID { get; set; }
-        public string? ImagePaths { get; set; }
+        public string? ImagePath { get; set; }
+        public List<string>? ImagePaths { get; set; }
         public string? ImageTitles { get; set; }
         public string? IsMains { get; set; }
         public int? CreatedBy { get; set; }

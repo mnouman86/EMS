@@ -60,7 +60,7 @@ namespace CleanArc.Application.Features.HotelImage.Command.CreateHotelImageComma
                 { CreatedBy = user.Id,
                     HotelID = request.HotelID,
                    // CarID = request.CarID,
-                    ImagePath = request.ImagePath,
+                    ImagePaths = request.ImagePaths,
                     ImageTitle = request.ImageTitle,
                     IsMain = request.IsMain,
 

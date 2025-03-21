@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.MappingRoomImage.Command.CreateMappingRoomImageCommand;
 
-public record CreateMappingRoomImageCommand(int? RoomID, int? CategoryID, string? ImagePaths , string? ImageTitles, string? IsMains, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateMappingRoomImageCommand(int? RoomID, int? CategoryID, List<string>? ImagePaths, string? ImageTitles, string? IsMains, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<CreateMappingRoomImageCommand>
 {
     [JsonIgnore]

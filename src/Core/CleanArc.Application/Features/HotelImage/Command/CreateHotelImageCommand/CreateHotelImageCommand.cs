@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.HotelImage.Command.CreateHotelImageCommand;
 
-public record CreateHotelImageCommand(int? HotelID,String? ImagePath, string? ImageTitle, bool? IsMain, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateHotelImageCommand(int? HotelID, List<string>? ImagePaths, string? ImageTitle, bool? IsMain, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateHotelImageCommand>
 {
     [JsonIgnore]
@@ -24,7 +24,7 @@ public record CreateHotelImageCommand(int? HotelID,String? ImagePath, string? Im
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid HotelID");
-        validator.RuleFor(c => c.ImagePath)
+        validator.RuleFor(c => c.ImagePaths)
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a valid ImagePath");

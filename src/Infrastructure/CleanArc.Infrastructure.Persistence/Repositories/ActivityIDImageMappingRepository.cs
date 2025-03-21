@@ -76,7 +76,17 @@ public async Task<ResponseEntity> AddAsync(ActivityIDImageMapping ActivityIDImag
             connection.Open();
                 CreateActivityIDImageMappingDTO createActivityIDImageMappingDTO = _mapper.Map<CreateActivityIDImageMappingDTO>(ActivityIDImageMapping);
                 var parameters = new DynamicParameters(createActivityIDImageMappingDTO);
-                
+                var imagePathsTable = new DataTable();
+                imagePathsTable.Columns.Add("ImagePath", typeof(string));
+
+                if (ActivityIDImageMapping.ImagePaths != null)
+                {
+                    foreach (var path in ActivityIDImageMapping.ImagePaths)
+                    {
+                        imagePathsTable.Rows.Add(path);
+                    }
+                }
+                parameters.Add("@ImagePaths", imagePathsTable.AsTableValuedParameter("ImagePathTableType"));
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityIDImageMappingQueries.Mapping_Create_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
             return result;

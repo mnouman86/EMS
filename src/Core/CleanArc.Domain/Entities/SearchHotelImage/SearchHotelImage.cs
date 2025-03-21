@@ -12,6 +12,7 @@ public class SearchHotelImage
     public string HotelName { get; set; }
     public string ImageTitle { get; set; }
     public string ImagePath { get; set; }
+    public List<string>? ImagePaths { get; set; }
     public int HotelID { get; set; }
     public bool IsMain { get; set; }
 }

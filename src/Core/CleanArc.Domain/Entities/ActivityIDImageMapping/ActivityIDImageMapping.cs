@@ -14,6 +14,7 @@ public  class ActivityIDImageMapping
     public int Id { get; set; }
     public int? ActivityID { get; set; }
     public string? ImagePath { get; set; }
+    public List<string>? ImagePaths { get; set; }
     public string? ImageTitle { get; set; }
     public bool? IsMain { get; set; }
 

@@ -15,6 +15,7 @@ namespace CleanArc.Application.Models.ActivityIDImageMapping
         
         public int? ActivityID { get; set; }
         public string? ImagePath { get; set; }
+        public List<string>? ImagePaths { get; set; }
         public string? ImageTitle { get; set; }
         public bool? IsMain { get; set; }
         //public int CategoryID { get; set; }

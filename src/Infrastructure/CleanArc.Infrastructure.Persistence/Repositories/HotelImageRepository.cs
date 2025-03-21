@@ -16,6 +16,7 @@ using System.Data;
 using System.Globalization;
 using CleanArc.Application.Models.KBDetail;
 using CleanArc.Application.Common;
+using CleanArc.Application.Models.ActivityIDImageMapping;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
@@ -65,6 +66,18 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 {
                     connection.Open();
                     CreateHotelImageDTO createHotelImageDTO = _mapper.Map<CreateHotelImageDTO>(HotelImage);
+                    var parameters = new DynamicParameters(createHotelImageDTO);
+                    var imagePathsTable = new DataTable();
+                    imagePathsTable.Columns.Add("ImagePath", typeof(string));
+
+                    if (HotelImage.ImagePaths != null)
+                    {
+                        foreach (var path in HotelImage.ImagePaths)
+                        {
+                            imagePathsTable.Rows.Add(path);
+                        }
+                    }
+                    parameters.Add("@ImagePaths", imagePathsTable.AsTableValuedParameter("ImagePathTableType"));
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelImageQueries.Create_HotelImage, createHotelImageDTO, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;

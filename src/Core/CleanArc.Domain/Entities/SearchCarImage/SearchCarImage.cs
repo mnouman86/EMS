@@ -12,6 +12,7 @@ public class SearchCarImage
     public string CarModelName { get; set; }
     public string ImageTitle { get; set; }
     public string ImagePath { get; set; }
+    public List<string>? ImagePaths { get; set; }
     public int CarID { get; set; }
     public bool IsMain { get; set; }
 }

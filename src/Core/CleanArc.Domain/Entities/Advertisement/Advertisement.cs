@@ -30,6 +30,7 @@ public class Advertisement
     /// The image path.
     /// </value>
     public string? ImagePath { get; set; }
+    public List<string>? ImagePaths { get; set; }
     /// <summary>
     /// Gets or sets the URL.
     /// </summary>
