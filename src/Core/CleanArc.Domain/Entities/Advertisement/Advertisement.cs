@@ -18,9 +18,10 @@ public class Advertisement
     /// <value>
     /// The page identifier.
     /// </value>
-    public int? PageId { get; set; }
+    public int? AdsPageLookUpId { get; set; }
+    public int? AdsPlaceLookUpId { get; set; }
     public string? PageName { get; set; }
-    public int? PlaceId { get; set; }
+    
     public string? PlaceName { get; set; }
     public string? ImageTitle { get; set; }
     /// <summary>

@@ -11,10 +11,8 @@ namespace CleanArc.Application.Features.Advertisement.Queries.GetAdvertisementBy
     {
 
         public int Id { get; set; }
-        public int? PageId { get; set; }
-        public string? PageName { get; set; }
-        public int? PlaceId { get; set; }
-        public string? PlaceName{ get; set; }
+        public int? AdsPageLookUpId { get; set; }
+        public int? AdsPlaceLookUpId { get; set; }
         public string? ImageTitle { get; set; }
         public string? ImagePath { get; set; }
         public string? Url { get; set; }

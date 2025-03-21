@@ -12,18 +12,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Advertisement.Commands.CreateAdvertisementCommand;
-public record CreateAdvertisementCommand(int? PageId, int? PlaceId, string? ImageTitle, List<string>? ImagePaths, string? Url, DateTime? StartDate, DateTime? EndDate, bool? IsShow, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateAdvertisementCommand(int? AdsPageLookUpId, int? AdsPlaceLookUpId, string? ImageTitle, List<string>? ImagePaths, string? Url, DateTime? StartDate, DateTime? EndDate, bool? IsShow, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateAdvertisementCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<CreateAdvertisementCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateAdvertisementCommand> validator)
     {
-        validator.RuleFor(c => c.PageId)
+        validator.RuleFor(c => c.AdsPageLookUpId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid PageID");
-        validator.RuleFor(c => c.PlaceId)
+        validator.RuleFor(c => c.AdsPlaceLookUpId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a PlaceID");
