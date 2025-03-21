@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.Bank;
 
 public class CreateBankDTO
 {
-   // public int? Id { get; set; }
+   // public int? ID { get; set; }
     public string? Name { get; set; }
     public string? Description { get; set; }
     public int? CountryLookUpId { get; set; }

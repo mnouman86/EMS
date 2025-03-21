@@ -62,7 +62,7 @@ internal class CreateAdvertisementCommandHandler: IRequestHandler<CreateAdvertis
                 PageId = request.PageId,
                 PlaceId = request.PlaceId,
                 ImageTitle = request.ImageTitle,
-                ImagePath = request.ImagePath,
+                ImagePaths = request.ImagePaths,
                 StartDate = request.StartDate,
                 EndDate = request.EndDate,
                 Url = request.Url,  

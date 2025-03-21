@@ -15,7 +15,7 @@ namespace CleanArc.Application.Models.ActivityAddressMapping
         //public string Title { get; set; }
         //public int? UpdatedBy { get; set; }
         // public DateTime? UpdatedAt { get; set; }
-        public int? Id { get; set; }
+        public int? ID { get; set; }
         public int? ActivityID { get; set; }
         public string? ImagePath { get; set; }
         public string? ImageTitle { get; set; }

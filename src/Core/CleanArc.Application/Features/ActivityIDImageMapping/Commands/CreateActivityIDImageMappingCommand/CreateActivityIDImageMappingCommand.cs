@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityIDImageMapping.Commands.CreateActivityIDImageMappingCommand;
-public record CreateActivityIDImageMappingCommand(int? ActivityID, string? ImagePath, string? ImageTitle, bool? IsMain, int? CreatedBy,int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateActivityIDImageMappingCommand(int? ActivityID, List<string>? ImagePaths, string? ImageTitle, bool? IsMain, int? CreatedBy,int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateActivityIDImageMappingCommand>
 {
     [JsonIgnore]
@@ -22,7 +22,7 @@ public record CreateActivityIDImageMappingCommand(int? ActivityID, string? Image
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid ActivityID");
-        validator.RuleFor(c => c.ImagePath)
+        validator.RuleFor(c => c.ImagePaths)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a ImagePath");

@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.RoomImage.Command.CreateRoomImageCommand;
 
-public record CreateRoomImageCommand(string? HotelName, string? ImageTitle, string? ImagePath, int? HotelID) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateRoomImageCommand(string? HotelName, string? ImageTitle, List<string>? ImagePaths, int? HotelID) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateRoomImageCommand>
 {
     [JsonIgnore]

@@ -10,6 +10,7 @@ namespace CleanArc.Application.Models.HotelImage
     {
         public int? HotelID { get; set; }
         public string? ImagePath { get; set; } // NVARCHAR(MAX)
+        public List<string>? ImagePaths { get; set; }
         public string? ImageTitle { get; set; } // NVARCHAR(MAX)
         public bool? IsMain { get; set; } // BIT
         public int? CreatedBy { get; set; } // NVARCHAR(100)

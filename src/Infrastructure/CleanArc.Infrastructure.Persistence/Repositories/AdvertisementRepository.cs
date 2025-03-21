@@ -74,8 +74,19 @@ public async Task<ResponseEntity> AddAsync(Advertisement Advertisement)
         {
             connection.Open();
                 CreateAdvertisementDTO createAdvertisementDTO = _mapper.Map<CreateAdvertisementDTO>(Advertisement);
-
                 var parameters = new DynamicParameters(createAdvertisementDTO);
+                var imagePathsTable = new DataTable();
+                imagePathsTable.Columns.Add("ImagePath", typeof(string));
+
+                if (Advertisement.ImagePaths != null)
+                {
+                    foreach (var path in Advertisement.ImagePaths)
+                    {
+                        imagePathsTable.Rows.Add(path);
+                    }
+                }
+                parameters.Add("@ImagePaths", imagePathsTable.AsTableValuedParameter("ImagePathTableType"));
+                //var parameters = new DynamicParameters(createAdvertisementDTO);
                 //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 

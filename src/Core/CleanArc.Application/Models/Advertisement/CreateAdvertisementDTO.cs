@@ -12,6 +12,7 @@ namespace CleanArc.Application.Models.Advertisement
         public int? PlaceId { get; set; }
         public string? ImageTitle { get; set; }
         public string? ImagePath { get; set; }
+        public List<string>? ImagePaths { get; set; }
         public string? Url { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
