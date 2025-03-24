@@ -77,7 +77,7 @@ public async Task<ResponseEntity> AddAsync(ActivityPrivateParticipant ActivityPr
                 CreateActivityPrivateParticipantDTO createActivityPrivateParticipantDTO = _mapper.Map<CreateActivityPrivateParticipantDTO>(ActivityPrivateParticipant);
                 var parameters = new DynamicParameters(createActivityPrivateParticipantDTO);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityPrivateParticipantQueries.Create_ActivityPrivateParticipant, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
             return result;
         }
     }
@@ -97,7 +97,7 @@ public async Task<ResponseEntity> AddAsync(ActivityPrivateParticipant ActivityPr
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityPrivateParticipantQueries.Delete_ActivityPrivateParticipant, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-                //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                //
                 return result;
             }
         }

@@ -65,7 +65,7 @@ public class RoomDetailsRepository : IRoomDetailsRepository
 				var parameters = new DynamicParameters(createRoomDetailsDTO);
 				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomDetailQueries.Create_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-				//if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+				//
 				return result;
 			}
 		}
@@ -131,7 +131,7 @@ public class RoomDetailsRepository : IRoomDetailsRepository
 
 				var result = await connection.QuerySingleOrDefaultAsync<RoomDetails>(RoomDetailQueries.GetByID_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-				//if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+				//
 				var response = new SingleResponseWrapper<RoomDetails>
 				{
 					Data = result,

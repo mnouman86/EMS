@@ -159,7 +159,7 @@ public class CampaignRepository : ICampaignRepository
                 parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
 
                 var result = await connection.QuerySingleOrDefaultAsync<Campaign>(CampaignQueries.GetByID_Campaign, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 var response = new SingleResponseWrapper<Campaign>
                 {
                     Data = result,

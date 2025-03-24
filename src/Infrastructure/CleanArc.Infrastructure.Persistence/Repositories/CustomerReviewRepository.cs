@@ -82,7 +82,7 @@ public class CustomerReviewRepository : ICustomerReviewRepository
                 //var result = await connection.QuerySingleOrDefaultAsync<int>(CustomerReviewQueries.Create_CustomerReview, parameters, commandType: CommandType.StoredProcedure);
 
                 // var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CustomerReviewQueries.Create_CustomerReview, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -101,7 +101,7 @@ public class CustomerReviewRepository : ICustomerReviewRepository
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CustomerReviewQueries.Delete_CustomerReview, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -159,7 +159,7 @@ public class CustomerReviewRepository : ICustomerReviewRepository
                 parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
 
                 var result = await connection.QuerySingleOrDefaultAsync<CustomerReview>(CustomerReviewQueries.GetByID_CustomerReview, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 var response = new SingleResponseWrapper<CustomerReview>
                 {
                     Data = result,

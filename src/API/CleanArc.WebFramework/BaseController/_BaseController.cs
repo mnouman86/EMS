@@ -177,11 +177,11 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
         //if (result is null)
         //    return new ServerErrorResult("Server Error");
         if (result is null)
-            return StatusCode(500, new { Message = "Server Error" });
+            return StatusCode(500, new { Message= "Server Error" });
 
         //if (result.IsSuccess) return result.Result is bool ? Ok() : Ok(result);
-        if (result.IsSuccess)
-        {
+        //if (result.IsSuccess)
+        //{
             object data = result.Result;
 
             // Check if result.Result is not null and is of type CleanArc.Domain.Common.ResponseEntity
@@ -199,7 +199,7 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
             };
 
             return result.Result is bool ? Ok() : StatusCode(result.StatusCode, successResponse);
-        }
+        //}
         //if (result.IsNotFound || result.Result==null)
         //{
 
@@ -210,21 +210,21 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
         //    //return NotFound(notFoundErrors.Errors);
         //    return Ok(result);
         //}
-        if (result.IsNotFound || result.Result == null)
-        {
-            var failResponse = new
-            {
-                Message = result.ErrorMessage, // Use custom success message
-                StatusCode = result.StatusCode,
-                IsSuccess = false
-            };
-            return StatusCode(result.StatusCode,failResponse);
-        }
+        //if (result.IsNotFound || result.Result == null)
+        //{
+        //    var failResponse = new
+        //    {
+        //        Message = result.ErrorMessage, // Use custom success message
+        //        StatusCode = result.StatusCode,
+        //        IsSuccess = false
+        //    };
+        //    return StatusCode(result.StatusCode,failResponse);
+        //}
         //ModelState.AddModelError("GeneralError", result.ErrorMessage);
 
         //var badRequestErrors = new ValidationProblemDetails(ModelState);
 
-        return StatusCode(result.StatusCode,new { Message = result.ErrorMessage, StatusCode = result.StatusCode });
+        //return StatusCode(result.StatusCode,new { Message = result.ErrorMessage, StatusCode = result.StatusCode });
 
     }
     /// <summary>

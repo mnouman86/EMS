@@ -81,7 +81,7 @@ public class HomeSliderRepository : IHomeSliderRepository
                 //var result = await connection.QuerySingleOrDefaultAsync<int>(HomeSliderQueries.Create_HomeSlider, parameters, commandType: CommandType.StoredProcedure);
 
                 // var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HomeSliderQueries.Create_HomeSlider, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -100,7 +100,7 @@ public class HomeSliderRepository : IHomeSliderRepository
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HomeSliderQueries.Delete_HomeSlider, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -158,7 +158,7 @@ public class HomeSliderRepository : IHomeSliderRepository
                 parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
 
                 var result = await connection.QuerySingleOrDefaultAsync<HomeSlider>(HomeSliderQueries.GetByID_HomeSlider, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 var response = new SingleResponseWrapper<HomeSlider>
                 {
                     Data = result,
@@ -182,7 +182,7 @@ public class HomeSliderRepository : IHomeSliderRepository
                 UpdateHomeSliderDTO updateHomeSliderDTO = _mapper.Map<UpdateHomeSliderDTO>(entity);
                 var parameters = new DynamicParameters(updateHomeSliderDTO);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HomeSliderQueries.Update_HomeSlider, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }

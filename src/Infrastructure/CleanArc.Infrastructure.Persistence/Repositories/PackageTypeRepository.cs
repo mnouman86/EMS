@@ -78,7 +78,7 @@ public async Task<ResponseEntity> AddAsync(PackageType PackageType)
                 var parameters = new DynamicParameters(createPackageTypeDTO);
                
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(PackageTypeQueries.Create_PackageType, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
             return result;
         }
     }
@@ -150,7 +150,7 @@ public async Task<ResponseEntity> AddAsync(PackageType PackageType)
                 parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
                 var result = await connection.QuerySingleOrDefaultAsync<PackageType>(PackageTypeQueries.GetByID_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-                //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                //
                 var response = new SingleResponseWrapper<PackageType>
                 {
                     Data = result,

@@ -91,7 +91,7 @@ public async Task<ResponseEntity> AddAsync(Advertisement Advertisement)
                 //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementQueries.Create_Ads, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
             return result;
         }
     }
@@ -113,7 +113,7 @@ public async Task<ResponseEntity> AddAsync(Advertisement Advertisement)
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementQueries.Delete_Ads, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-                //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                //
                 return result;
             }
         }

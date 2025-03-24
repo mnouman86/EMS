@@ -93,7 +93,7 @@ public class BusinessRepository : IBusinessRepository
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(BusinessQueries.Delete_Business, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-                //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                //
                 return result;
             }
         }

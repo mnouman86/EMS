@@ -93,7 +93,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(BusinessBankAccountQueries.Delete_BusinessBankAccount, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-                    //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                    //
                     return result;
                 }
             }

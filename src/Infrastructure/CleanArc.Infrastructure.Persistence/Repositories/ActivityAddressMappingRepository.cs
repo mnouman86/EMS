@@ -82,7 +82,7 @@ public async Task<ResponseEntity> AddAsync(ActivityAddressMapping ActivityAddres
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityAddressMappingQueries.Mapping_Create_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
             return result;
         }
     }
@@ -100,7 +100,7 @@ public async Task<ResponseEntity> AddAsync(ActivityAddressMapping ActivityAddres
                 parameters.Add("@CultureId", deleteRequest.CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityAddressMappingQueries.Mapping_Delete_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -141,7 +141,7 @@ public async Task<ResponseEntity> AddAsync(ActivityAddressMapping ActivityAddres
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityAddressMappingQueries.Mapping_Update_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
-                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); } if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);  
                 return result;
             }
         }

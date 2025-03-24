@@ -78,7 +78,7 @@ public async Task<ResponseEntity> AddAsync(CheckProfileStatus CheckProfileStatus
                 var parameters = new DynamicParameters(createCheckProfileStatusDTO);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CheckProfileStatusQueries.Create_CheckProfileStatus, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
             return result;
         }
     }
@@ -97,7 +97,7 @@ public async Task<ResponseEntity> AddAsync(CheckProfileStatus CheckProfileStatus
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CheckProfileStatusQueries.Delete_CheckProfileStatus, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -153,7 +153,7 @@ public async Task<ResponseEntity> AddAsync(CheckProfileStatus CheckProfileStatus
                 parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
 
                 var result = await connection.QuerySingleOrDefaultAsync<CheckProfileStatus>(CheckProfileStatusQueries.GetByID_ProfileStatusCheck, parameters , commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 var response = new SingleResponseWrapper<CheckProfileStatus>
                 {
                     Data = result,

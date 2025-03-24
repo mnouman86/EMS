@@ -154,7 +154,7 @@ public async Task<ResponseEntity> AddAsync(FAQs FAQs)
                 parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
 
                 var result = await connection.QuerySingleOrDefaultAsync<FAQs>(FAQsQueries.GetByID_FAQs, parameters , commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 var response = new SingleResponseWrapper<FAQs>
                 {
                     Data = result,

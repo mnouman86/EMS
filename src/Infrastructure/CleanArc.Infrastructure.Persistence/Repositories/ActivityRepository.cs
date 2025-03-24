@@ -87,7 +87,7 @@ public class ActivityRepository : IActivityRepository
 				//var result = await connection.QuerySingleOrDefaultAsync<int>(ActivityQueries.Create_Activity, parameters, commandType: CommandType.StoredProcedure);
 				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityQueries.Create_Activity, parameters, commandType: CommandType.StoredProcedure);
 
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); //
 				return result;
 			}
 		}
@@ -109,7 +109,7 @@ public class ActivityRepository : IActivityRepository
 				// var result = await connection.QuerySingleOrDefaultAsync<int>(ActivityQueries.Delete_Activity, parameters, commandType: CommandType.StoredProcedure);
 
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-				//if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+				//
 				return result;
 			}
 		}
@@ -229,7 +229,7 @@ public class ActivityRepository : IActivityRepository
 
 				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityQueries.Update_Activity, parameters, commandType: CommandType.StoredProcedure);
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-				if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+				
 				return result;
 			}
 		}

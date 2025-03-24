@@ -150,7 +150,7 @@ public async Task<ResponseEntity> AddAsync(PackageDetail PackageDetail)
                 parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
                 parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
                 var result = await connection.QuerySingleOrDefaultAsync<PackageDetail>(PackageDetailQueries.GetByID_PackageDetail, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 var response = new SingleResponseWrapper<PackageDetail>
                 {
                     Data = result,

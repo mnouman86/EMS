@@ -97,7 +97,7 @@ public async Task<ResponseEntity> AddAsync(UserExperience UserExperience)
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(UserExperienceQueries.Delete_UserExperience, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); //
                 return result;
             }
         }

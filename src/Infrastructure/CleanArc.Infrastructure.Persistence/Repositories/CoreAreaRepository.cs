@@ -79,7 +79,7 @@ public async Task<ResponseEntity> AddAsync(CoreArea CoreArea)
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CoreAreaQueries.Create_CoreArea, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-                if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                
             return result;
         }
     }
@@ -98,7 +98,7 @@ public async Task<ResponseEntity> AddAsync(CoreArea CoreArea)
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CoreAreaQueries.Delete_CoreArea, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -143,7 +143,7 @@ public async Task<ResponseEntity> AddAsync(CoreArea CoreArea)
 
                 var result = await connection.QuerySingleOrDefaultAsync<CoreArea>(CoreAreaQueries.GetByID_CoreArea, parameters , commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                
                 var response = new SingleResponseWrapper<CoreArea>
                 {
                     Data = result,
@@ -167,7 +167,7 @@ public async Task<ResponseEntity> AddAsync(CoreArea CoreArea)
                 UpdateCoreAreaDTO updateCoreAreaDTO = _mapper.Map<UpdateCoreAreaDTO>(entity);
                 var parameters = new DynamicParameters(updateCoreAreaDTO);
                  var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CoreAreaQueries.Update_CoreArea, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }

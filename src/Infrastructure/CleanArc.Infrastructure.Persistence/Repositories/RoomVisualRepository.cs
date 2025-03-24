@@ -127,7 +127,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
         //                FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
         //            };
         //            var result = await connection.QueryAsync<CarDetail>(CarDetailQueries.GetALL_CarDetail, parameters, commandType: CommandType.StoredProcedure);
-        //             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+        //             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
         //            var response = new ListResponseWrapper<ActivityAddressMapping> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
         //        }
         //    }
@@ -186,7 +186,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     parameters.Add("@UpdatedBy", updatedBy);
                     parameters.Add("@CultureId", deleteRequest.CultureId);
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomVisualQueries.Delete_RoomImage, parameters, commandType: CommandType.StoredProcedure);
-                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                     return result;
                 }
             }

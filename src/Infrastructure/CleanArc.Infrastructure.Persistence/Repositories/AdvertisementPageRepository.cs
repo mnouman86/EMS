@@ -94,7 +94,7 @@ public async Task<ResponseEntity> AddAsync(AdvertisementPage AdvertisementPage)
                 parameters.Add("@CultureId", deleteRequest.CultureId);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(AdvertisementPageQueries.Delete_Page, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-                //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                //
                 return result;
             }
         }

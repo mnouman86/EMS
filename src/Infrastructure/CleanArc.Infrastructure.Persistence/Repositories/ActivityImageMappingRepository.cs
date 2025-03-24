@@ -97,7 +97,7 @@ public async Task<ResponseEntity> AddAsync(ActivityImageMapping activityImageMap
 				parameters.Add("@CultureId", activityImageMapping.CultureId, DbType.Int32);
 				
 				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityImageMappingQueries.Mapping_Create_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
             return result;
         }
     }
@@ -116,7 +116,7 @@ public async Task<ResponseEntity> AddAsync(ActivityImageMapping activityImageMap
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityImageMappingQueries.Mapping_Delete_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -184,7 +184,7 @@ public async Task<ResponseEntity> AddAsync(ActivityImageMapping activityImageMap
                 var parameters = new DynamicParameters(updateActivityImageMappingDTO);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityImageMappingQueries.Mapping_Update_ActivityImage, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }

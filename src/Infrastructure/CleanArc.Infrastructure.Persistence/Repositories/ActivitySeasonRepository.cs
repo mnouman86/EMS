@@ -78,7 +78,7 @@ public async Task<ResponseEntity> AddAsync(ActivitySeason ActivitySeason)
                 var parameters = new DynamicParameters(createActivitySeasonDTO);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivitySeasonQueries.Create_ActivitySeason, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
             return result;
         }
     }
@@ -97,7 +97,7 @@ public async Task<ResponseEntity> AddAsync(ActivitySeason ActivitySeason)
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivitySeasonQueries.Delete_Seasons, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -177,7 +177,7 @@ public async Task<ResponseEntity> AddAsync(ActivitySeason ActivitySeason)
                 var parameters = new DynamicParameters(updateActivitySeasonDTO);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivitySeasonQueries.Update_Seasons, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }

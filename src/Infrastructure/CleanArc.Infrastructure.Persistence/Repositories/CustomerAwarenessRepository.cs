@@ -81,7 +81,7 @@ public class CustomerAwarenessRepository : ICustomerAwarenessRepository
                 //var result = await connection.QuerySingleOrDefaultAsync<int>(CustomerAwarenessQueries.Create_CustomerAwareness, parameters, commandType: CommandType.StoredProcedure);
 
                 // var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CustomerAwarenessQueries.Create_CustomerAwareness, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -181,7 +181,7 @@ public class CustomerAwarenessRepository : ICustomerAwarenessRepository
                 UpdateCustomerAwarenessDTO updateCustomerAwarenessDTO = _mapper.Map<UpdateCustomerAwarenessDTO>(entity);
                 var parameters = new DynamicParameters(updateCustomerAwarenessDTO);
                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CustomerAwarenessQueries.Update_CustomerAwareness, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }

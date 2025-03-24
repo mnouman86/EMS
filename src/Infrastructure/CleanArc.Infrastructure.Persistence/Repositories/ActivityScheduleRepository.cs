@@ -78,7 +78,7 @@ public async Task<ResponseEntity> AddAsync(ActivitySchedule ActivitySchedule)
                 var parameters = new DynamicParameters(createActivityScheduleDTO);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityScheduleQueries.Create_ActivitySchedule, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
             return result;
         }
     }
@@ -97,7 +97,7 @@ public async Task<ResponseEntity> AddAsync(ActivitySchedule ActivitySchedule)
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityScheduleQueries.Delete_ActivitySchedule, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -165,7 +165,7 @@ public async Task<ResponseEntity> AddAsync(ActivitySchedule ActivitySchedule)
                 var parameters = new DynamicParameters(updateActivityScheduleDTO);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityScheduleQueries.Update_ActivitySchedule, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }

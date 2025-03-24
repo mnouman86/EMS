@@ -78,7 +78,7 @@ public async Task<ResponseEntity> AddAsync(KBWhenToVisit KBWhenToVisit)
                 var parameters = new DynamicParameters(createKBWhenToVisitDTO);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(KBWhenToVisitQueries.Create_WhenToVisit, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); //
             return result;
         }
     }
@@ -154,7 +154,7 @@ public async Task<ResponseEntity> AddAsync(KBWhenToVisit KBWhenToVisit)
                 parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
 
                 var result = await connection.QuerySingleOrDefaultAsync<KBWhenToVisit>(KBWhenToVisitQueries.GetByID_WhenToVisit, parameters , commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 var response = new SingleResponseWrapper<KBWhenToVisit>
                 {
                     Data = result,

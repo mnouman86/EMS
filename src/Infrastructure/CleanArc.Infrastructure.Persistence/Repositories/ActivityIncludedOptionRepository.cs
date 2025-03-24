@@ -77,7 +77,7 @@ public async Task<ResponseEntity> AddAsync(ActivityIncludedOption ActivityInclud
                 CreateActivityIncludedOptionDTO createActivityIncludedOptionDTO = _mapper.Map<CreateActivityIncludedOptionDTO>(ActivityIncludedOption);
                 var parameters = new DynamicParameters(createActivityIncludedOptionDTO);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityIncludedOptionQueries.Create_ActivityIncludedOption, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
             return result;
         }
     }
@@ -96,7 +96,7 @@ public async Task<ResponseEntity> AddAsync(ActivityIncludedOption ActivityInclud
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityIncludedOptionQueries.Delete_ActivityIncludedOption, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -174,7 +174,7 @@ public async Task<ResponseEntity> AddAsync(ActivityIncludedOption ActivityInclud
                 //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityIncludedOptionQueries.Update_ActivityIncludedOption, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
