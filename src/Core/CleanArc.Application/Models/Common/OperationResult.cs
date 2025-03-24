@@ -13,21 +13,22 @@ public class OperationResult<TResult>
     public static OperationResult<TResult> SuccessResult(TResult result, int statusCode=200, string message="Success")
     {
         // return new OperationResult<TResult>{Result = result,IsSuccess = true, StatusCode=statusCode,Message=message};
+       
         if (result != null &&
          result.GetType().GetProperty("Code")?.GetValue(result) != null &&
          result.GetType().GetProperty("Message")?.GetValue(result) != null &&
          result.GetType().GetProperty("IsSuccess")?.GetValue(result) != null)
         {
-            var code = (int)result.GetType().GetProperty("Code").GetValue(result);
-            var msg = result.GetType().GetProperty("Message").GetValue(result)?.ToString();
+            statusCode = (int)result.GetType().GetProperty("Code").GetValue(result);
+            message = result.GetType().GetProperty("Message").GetValue(result)?.ToString();
             var isSuccess =(bool) result.GetType().GetProperty("IsSuccess").GetValue(result);
 
             return new OperationResult<TResult>
             {
                 Result = result,
                 IsSuccess = isSuccess,
-                StatusCode = code,
-                Message = msg
+                StatusCode = statusCode,
+                Message = message
             };
         }
 
@@ -35,7 +36,7 @@ public class OperationResult<TResult>
         return new OperationResult<TResult>
         {
             Result = result,
-            IsSuccess = false,
+            IsSuccess = statusCode == 200,
             StatusCode = statusCode,
             Message = message
         };
