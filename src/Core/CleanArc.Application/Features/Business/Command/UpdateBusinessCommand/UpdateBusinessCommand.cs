@@ -33,10 +33,6 @@ public record UpdateBusinessCommand(int Id, int? BusinessTypeID, string? Name,
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Name");
-        validator.RuleFor(c => c.PhoneNumber)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a PhoneNumber");
         validator.RuleFor(c => c.MobileNumber)
             .NotEmpty()
             .NotNull()
@@ -45,10 +41,6 @@ public record UpdateBusinessCommand(int Id, int? BusinessTypeID, string? Name,
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a Present Address");
-        validator.RuleFor(c => c.Address2)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a Permanent Address");
         validator.RuleFor(c => c.Email)
            .NotEmpty()
            .NotNull()
@@ -73,14 +65,7 @@ public record UpdateBusinessCommand(int Id, int? BusinessTypeID, string? Name,
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a TaxIdentificationNumber");
-        validator.RuleFor(c => c.License)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a License");
-        validator.RuleFor(c => c.ProofOfInsurance)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a ProofOfInsurance");
+        
         //validator.RuleFor(c => c.BankAccountDetailID)
         //   .NotEmpty()
         //   .NotNull()
