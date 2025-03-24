@@ -92,7 +92,7 @@ public class RoomTypeRepository : IRoomTypeRepository
                
 
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-                //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                //
 				return result;
 			}
         }
@@ -159,7 +159,7 @@ public class RoomTypeRepository : IRoomTypeRepository
 				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomTypeQueries.Update_RoomType, parameters, commandType: CommandType.StoredProcedure);
 
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                //
 				return result;
 			}
         }

@@ -84,7 +84,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     parameters.Add("@CultureId", 1);
                     
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CarDetailQueries.Delete_CarDetail, parameters, commandType: CommandType.StoredProcedure);
-                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                     return result;
                 }
             }

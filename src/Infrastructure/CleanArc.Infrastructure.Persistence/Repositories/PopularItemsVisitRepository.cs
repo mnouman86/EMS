@@ -79,7 +79,7 @@ public async Task<ResponseEntity> AddAsync(PopularItemsVisit PopularItemsVisit)
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(PopularItemsVisitQueries.Create_PopularItemsVisit, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                
-                //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                //
             
                 return result;
         }
@@ -179,7 +179,7 @@ public async Task<ResponseEntity> AddAsync(PopularItemsVisit PopularItemsVisit)
                 parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
 
                 var result = await connection.QuerySingleOrDefaultAsync<PopularItemsVisit>(PopularItemsVisitQueries.GetByID_PopularItemsVisit, parameters , commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 var response = new SingleResponseWrapper<PopularItemsVisit>
                 {
                     Data = result,

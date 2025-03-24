@@ -167,7 +167,7 @@ public async Task<ResponseEntity> AddAsync(KBDescription KBDescription)
                 parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
 
                 var result = await connection.QuerySingleOrDefaultAsync<KBDescription>(KBDescriptionQueries.GetByID_KBDescription, parameters , commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 var response = new SingleResponseWrapper<KBDescription>
                 {
                     Data = result,

@@ -66,7 +66,6 @@ internal class CreateAdvertisementCommandHandler: IRequestHandler<CreateAdvertis
                 StartDate = request.StartDate,
                 EndDate = request.EndDate,
                 Url = request.Url,  
-               IsShow= request.IsShow,
                CultureId=request.CultureId
 
             });

@@ -78,7 +78,7 @@ public async Task<ResponseEntity> AddAsync(ActivityType ActivityType)
                 var parameters = new DynamicParameters(createActivityTypeDTO);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityTypeQueries.Create_ActivityType, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
             return result;
         }
     }
@@ -97,7 +97,7 @@ public async Task<ResponseEntity> AddAsync(ActivityType ActivityType)
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityTypeQueries.Delete_ActivityType, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -177,7 +177,7 @@ public async Task<ResponseEntity> AddAsync(ActivityType ActivityType)
                 UpdateActivityTypeDTO updateActivityTypeDTO = _mapper.Map<UpdateActivityTypeDTO>(entity);
                 var parameters = new DynamicParameters(updateActivityTypeDTO);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityTypeQueries.Update_ActivityType, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }

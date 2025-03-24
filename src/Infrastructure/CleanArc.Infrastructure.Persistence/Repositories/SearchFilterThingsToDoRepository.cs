@@ -87,7 +87,7 @@ public class SearchFilterThingsToDoRepository:ISearchFilterThingsToDoRepository
 //                // var result = await connection.ExecuteScalarAsync(SearchFilterThingsToDoQueries.Create_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
 //                var result = await connection.QuerySingleOrDefaultAsync<int>(SearchFilterThingsToDoQueries.Create_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
 
-//                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+//                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
 //            return result;
 //        }
 //    }
@@ -109,7 +109,7 @@ public class SearchFilterThingsToDoRepository:ISearchFilterThingsToDoRepository
 //                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SearchFilterThingsToDoQueries.Delete_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
 //               // var result = await connection.QuerySingleOrDefaultAsync<int>(SearchFilterThingsToDoQueries.Delete_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
 
-//                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+//                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
 //                return result;
 //            }
 //        }
@@ -195,7 +195,7 @@ public class SearchFilterThingsToDoRepository:ISearchFilterThingsToDoRepository
     //            parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
 
     //            var result = await connection.QuerySingleOrDefaultAsync<SearchFilterThingsToDo>(SearchFilterThingsToDoQueries.GetByID_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
-    //             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+    //             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
     //            return result;
     //        }
     //    }
@@ -221,7 +221,7 @@ public class SearchFilterThingsToDoRepository:ISearchFilterThingsToDoRepository
     //           // parameters.Add("@SearchFilterThingsToDoID ", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
     //            var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SearchFilterThingsToDoQueries.Update_SearchFilterThingsToDo, parameters, commandType: CommandType.StoredProcedure);
-    //             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+    //             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
     //            return result;
     //        }
     //    }

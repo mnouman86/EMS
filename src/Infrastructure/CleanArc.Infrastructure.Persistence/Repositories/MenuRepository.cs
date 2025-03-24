@@ -156,7 +156,7 @@ public class MenuRepository : IMenuRepository
                 parameters.Add("@UpdatedBy", updatedBy);
                 parameters.Add("@CultureId", deleteRequest.CultureId);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(UrlQueries.DeleteURL, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }

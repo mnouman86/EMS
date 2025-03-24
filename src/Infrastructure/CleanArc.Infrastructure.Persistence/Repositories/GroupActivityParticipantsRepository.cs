@@ -82,7 +82,7 @@ public async Task<ResponseEntity> AddAsync(GroupActivityParticipants GroupActivi
 
                // var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(GroupActivityParticipantsQueries.Create_GroupActivityParticipants, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-                //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                //
             return result;
         }
     }
@@ -102,7 +102,7 @@ public async Task<ResponseEntity> AddAsync(GroupActivityParticipants GroupActivi
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(GroupActivityParticipantsQueries.Delete_GroupActivityParticipants, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-                //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                //
                 return result;
             }
         }
@@ -143,7 +143,7 @@ public async Task<ResponseEntity> AddAsync(GroupActivityParticipants GroupActivi
                 parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
 
                 var result = await connection.QuerySingleOrDefaultAsync<GroupActivityParticipants>(GroupActivityParticipantsQueries.GetByID_GroupActivityParticipants, parameters , commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 var response = new SingleResponseWrapper<GroupActivityParticipants>
                 {
                     Data = result,
@@ -168,7 +168,7 @@ public async Task<ResponseEntity> AddAsync(GroupActivityParticipants GroupActivi
                 var parameters = new DynamicParameters(updateGroupActivityParticipantsDTO);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(GroupActivityParticipantsQueries.Update_GroupActivityParticipants, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-                //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                //
                 return result;
             }
         }

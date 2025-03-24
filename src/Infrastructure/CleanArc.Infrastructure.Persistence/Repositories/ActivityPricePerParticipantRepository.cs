@@ -80,7 +80,7 @@ public async Task<ResponseEntity> AddAsync(ActivityPricePerParticipant ActivityP
                 //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityPricePerParticipantQueries.Create_ActivityPricePerParticipant, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
             return result;
         }
     }
@@ -99,7 +99,7 @@ public async Task<ResponseEntity> AddAsync(ActivityPricePerParticipant ActivityP
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityPricePerParticipantQueries.Delete_ActivityPricePerParticipant, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -179,7 +179,7 @@ public async Task<ResponseEntity> AddAsync(ActivityPricePerParticipant ActivityP
                 UpdateActivityPricePerParticipantDTO updateActivityPricePerParticipantDTO = _mapper.Map<UpdateActivityPricePerParticipantDTO>(entity);
                 var parameters = new DynamicParameters(updateActivityPricePerParticipantDTO);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityPricePerParticipantQueries.Activity_Update_ActivityIDPerParticiption, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }

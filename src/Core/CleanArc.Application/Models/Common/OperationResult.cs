@@ -15,15 +15,17 @@ public class OperationResult<TResult>
         // return new OperationResult<TResult>{Result = result,IsSuccess = true, StatusCode=statusCode,Message=message};
         if (result != null &&
          result.GetType().GetProperty("Code")?.GetValue(result) != null &&
-         result.GetType().GetProperty("Message")?.GetValue(result) != null)
+         result.GetType().GetProperty("Message")?.GetValue(result) != null &&
+         result.GetType().GetProperty("IsSuccess")?.GetValue(result) != null)
         {
             var code = (int)result.GetType().GetProperty("Code").GetValue(result);
             var msg = result.GetType().GetProperty("Message").GetValue(result)?.ToString();
+            var isSuccess =(bool) result.GetType().GetProperty("IsSuccess").GetValue(result);
 
             return new OperationResult<TResult>
             {
                 Result = result,
-                IsSuccess = true,
+                IsSuccess = isSuccess,
                 StatusCode = code,
                 Message = msg
             };
@@ -33,7 +35,7 @@ public class OperationResult<TResult>
         return new OperationResult<TResult>
         {
             Result = result,
-            IsSuccess = true,
+            IsSuccess = false,
             StatusCode = statusCode,
             Message = message
         };

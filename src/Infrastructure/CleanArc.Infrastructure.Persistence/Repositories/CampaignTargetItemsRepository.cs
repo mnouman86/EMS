@@ -79,7 +79,7 @@ public class CampaignTargetItemsRepository : ICampaignTargetItemsRepository
                 var parameters = new DynamicParameters(createCampaignTargetItemsDTO);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignTargetItemsQueries.Create_CampaignTargetItems, parameters, commandType: CommandType.StoredProcedure);
                
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -98,7 +98,7 @@ public class CampaignTargetItemsRepository : ICampaignTargetItemsRepository
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignTargetItemsQueries.Delete_CampaignTargetItems, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -180,7 +180,7 @@ public class CampaignTargetItemsRepository : ICampaignTargetItemsRepository
                 UpdateCampaignTargetItemsDTO updateCampaignTargetItemsDTO = _mapper.Map<UpdateCampaignTargetItemsDTO>(entity);
                 var parameters = new DynamicParameters(updateCampaignTargetItemsDTO);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignTargetItemsQueries.Update_CampaignTargetItems, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }

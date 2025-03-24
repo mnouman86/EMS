@@ -82,7 +82,7 @@ public class CampaignScheduleRepository : ICampaignScheduleRepository
                 //var result = await connection.QuerySingleOrDefaultAsync<int>(CampaignScheduleQueries.Create_CampaignSchedule, parameters, commandType: CommandType.StoredProcedure);
 
                 // var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignScheduleQueries.Create_CampaignSchedule, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); //
                 return result;
             }
         }
@@ -101,7 +101,7 @@ public class CampaignScheduleRepository : ICampaignScheduleRepository
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignScheduleQueries.Delete_CampaignSchedule, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); //
                 return result;
             }
         }
@@ -159,7 +159,7 @@ public class CampaignScheduleRepository : ICampaignScheduleRepository
                 parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
 
                 var result = await connection.QuerySingleOrDefaultAsync<CampaignSchedule>(CampaignScheduleQueries.GetByID_CampaignSchedule, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 var response = new SingleResponseWrapper<CampaignSchedule>
                 {
                     Data = result,

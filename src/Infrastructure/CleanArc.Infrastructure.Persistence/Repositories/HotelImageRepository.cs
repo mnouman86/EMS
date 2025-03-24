@@ -114,7 +114,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
         //                FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
         //            };
         //            var result = await connection.QueryAsync<CarDetail>(CarDetailQueries.GetALL_CarDetail, parameters, commandType: CommandType.StoredProcedure);
-        //             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+        //             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
         //            var response = new ListResponseWrapper<ActivityAddressMapping> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
         //        }
         //    }
@@ -155,7 +155,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     UpdateHotelImageDTO updateHotelImageDTO = _mapper.Map<UpdateHotelImageDTO>(HotelImage);
 					var parameters = new DynamicParameters(updateHotelImageDTO);
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelImageQueries.Update_HotelImage, parameters, commandType: CommandType.StoredProcedure);
-                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                     return result;
                 }
             }
@@ -172,7 +172,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 					parameters.Add("@CultureID", 1);
 					parameters.Add("@UpdatedBy", updatedBy);
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelImageQueries.Delete_HotelImage, parameters, commandType: CommandType.StoredProcedure);
-                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                     return result;
                 }
             }

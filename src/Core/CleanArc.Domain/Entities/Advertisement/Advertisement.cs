@@ -66,7 +66,7 @@ public class Advertisement
     /// <value>
     /// The is show.
     /// </value>
-    public bool? IsShow { get; set; }
+    //public bool? IsShow { get; set; }
     /// <summary>
     /// Gets or sets the is deleted.
     /// </summary>

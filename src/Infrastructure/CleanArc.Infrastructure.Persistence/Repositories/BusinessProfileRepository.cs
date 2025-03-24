@@ -74,7 +74,7 @@ public class BusinessProfileRepository : IBusinessProfileRepository
                 //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(BusinessProfileQueries.Create_BusinessProfile, createBusinessProfileDTO, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -95,7 +95,7 @@ public class BusinessProfileRepository : IBusinessProfileRepository
                 //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(BusinessProfileQueries.Delete_BusinessProfile, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -155,7 +155,7 @@ public class BusinessProfileRepository : IBusinessProfileRepository
 
 
                 var result = await connection.QuerySingleOrDefaultAsync<BusinessProfile>(BusinessProfileQueries.GetByID_BusinessProfile, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 var response = new SingleResponseWrapper<BusinessProfile>
                 {
                     Data = result,
@@ -183,7 +183,7 @@ public class BusinessProfileRepository : IBusinessProfileRepository
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(BusinessProfileQueries.Update_BusinessProfile, updateBusinessProfileDTO, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-                //if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                //
                 return result;
             }
         }

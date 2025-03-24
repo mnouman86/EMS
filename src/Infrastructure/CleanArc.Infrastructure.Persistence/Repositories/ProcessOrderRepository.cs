@@ -78,7 +78,7 @@ public async Task<ResponseEntity> AddAsync(ProcessOrder ProcessOrder)
                 var parameters = new DynamicParameters(createProcessOrderDTO);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Create_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
             return result;
         }
     }
@@ -97,7 +97,7 @@ public async Task<ResponseEntity> AddAsync(ProcessOrder ProcessOrder)
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Delete_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
@@ -150,7 +150,7 @@ public async Task<ResponseEntity> AddAsync(ProcessOrder ProcessOrder)
                 parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
                 parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
                 var result = await connection.QuerySingleOrDefaultAsync<ProcessOrder>(ProcessOrderQueries.GetByID_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 var response = new SingleResponseWrapper<ProcessOrder>
                 {
                     Data = result,
@@ -175,7 +175,7 @@ public async Task<ResponseEntity> AddAsync(ProcessOrder ProcessOrder)
                 var parameters = new DynamicParameters(updateProcessOrderDTO);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Update_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); if (result != null) { result.Code = parameters.Get<int>("@Code"); result.Message = parameters.Get<string>("@Message"); }
+                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
