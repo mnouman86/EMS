@@ -6,7 +6,9 @@ using MapsterMapper;
 using Mediator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
+using System.Globalization;
 
 namespace CleanArc.Application.Features.Hotel.Command.UpdateHotelCommand;
 
@@ -47,18 +49,21 @@ internal class UpdateHotelCommandHandler : IRequestHandler<UpdateHotelCommand, O
 
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-
+            DateTime.TryParseExact(request.CheckInFrom, "hh:mm tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkInFrom);
+            DateTime.TryParseExact(request.CheckInTo, "hh:mm tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkInTo);
+            DateTime.TryParseExact(request.CheckOutFrom, "hh:mm tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkOutFrom);
+            DateTime.TryParseExact(request.CheckOutTo, "hh:mm tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkOutTo);
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.HotelRepository.UpdateAsync(new Domain.Entities.Hotel.Hotel()
             { UpdatedBy = user.Id, Id= request.Id, 
                 Name = request.Name,
-                CountryID = request.CountryID,
-                StateID = request.StateID,
-                CityID = request.CityID,
-                BusinessID = request.BusinessID,
-                ZipCode = request.ZipCode,
-                Address1 = request.Address1,
-                Address2 = request.Address2,
+                CountryLookUpId = request.CountryLookUpId,
+                StateLookUpId = request.StateLookUpId,
+                CityLookUpId = request.CityLookUpId,
+                BusinessId = request.BusinessId,
+                PostalCode = request.PostalCode,
+                AddressLine1 = request.AddressLine1,
+                AddressLine2 = request.AddressLine2,
                 Latitude = request.Latitude,
                 Longitude = request.Longitude,
                 MobileNumber = request.MobileNumber,
@@ -68,13 +73,18 @@ internal class UpdateHotelCommandHandler : IRequestHandler<UpdateHotelCommand, O
                 //  Description = request.IsChain,
                 IsChanelManager = request.IsChanelManager,
                 IsRating = request.IsRating,
-                ServiceID = request.ServiceID,
+                ServiceId = request.ServiceId,
+                ServiceCategoryId = request.ServiceCategoryId,
                 IsChain = request.IsChain,
-                CheckInFrom = request.CheckInFrom,
-                CheckInTo = request.CheckInTo,
-                CheckOutFrom = request.CheckOutFrom,
-                CheckOutTo = request.CheckOutTo,
+                CheckInFrom = checkInFrom,
+                CheckInTo = checkInTo,
+                CheckOutFrom = checkOutFrom,
+                CheckOutTo = checkOutTo,
                 About = request.About,
+                RefundPolicy = request.RefundPolicy,
+                NonRefundPolicy = request.NonRefundPolicy,
+                CancellationPolicy = request.CancellationPolicy,
+                CultureId=request.CultureId,
                 //IsDeleted = request.IsDeleted,
                 //IsActive = request.IsActive,
             });

@@ -22,6 +22,8 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Common;
 using CleanArc.Domain.Entities.KBDetail;
+using CleanArc.Application.Models.KBDescription;
+using CleanArc.Domain.Entities.KBDescription;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -62,7 +64,32 @@ public class HotelRepository : IHotelRepository
             {
                 connection.Open();
                 CreateHotelDTO createHotelDTO = _mapper.Map<CreateHotelDTO>(hotel);
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelQueries.Create_Hotel, createHotelDTO, commandType: CommandType.StoredProcedure);
+                var addressTable = new DataTable();
+                addressTable.Columns.Add("AddressLine1", typeof(string));
+                addressTable.Columns.Add("AddressLine2", typeof(string));
+                addressTable.Columns.Add("CountryLookUpId", typeof(int));
+                addressTable.Columns.Add("CityLookUpId", typeof(int));
+                addressTable.Columns.Add("StateLookUpId", typeof(int));
+                addressTable.Columns.Add("PostalCode", typeof(string));
+                addressTable.Columns.Add("Latitude", typeof(string));
+                addressTable.Columns.Add("Longitude", typeof(string));
+
+
+                addressTable.Rows.Add(hotel.AddressLine1,
+                    hotel.AddressLine2,
+                    hotel.CountryLookUpId,
+                    hotel.CityLookUpId,
+                    hotel.StateLookUpId,
+                    hotel.PostalCode.ToString(),
+                    hotel.Latitude,
+                    hotel.Longitude);
+                
+
+
+                var parameters = new DynamicParameters(createHotelDTO);
+                parameters.Add("@Address", addressTable.AsTableValuedParameter("GenericAddressTableType"));
+
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelQueries.Create_Hotel, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 
                 return result;
@@ -150,8 +177,28 @@ public class HotelRepository : IHotelRepository
             {
                 connection.Open();
                 UpdateHotelDTO updateHotelDTO = _mapper.Map<UpdateHotelDTO>(hotel);
+                //CreateHotelDTO createHotelDTO = _mapper.Map<CreateHotelDTO>(hotel);
+                var addressTable = new DataTable();
+                addressTable.Columns.Add("AddressLine1", typeof(string));
+                addressTable.Columns.Add("AddressLine2", typeof(string));
+                addressTable.Columns.Add("CountryLookUpId", typeof(int));
+                addressTable.Columns.Add("CityLookUpId", typeof(int));
+                addressTable.Columns.Add("StateLookUpId", typeof(int));
+                addressTable.Columns.Add("PostalCode", typeof(string));
+                addressTable.Columns.Add("Latitude", typeof(string));
+                addressTable.Columns.Add("Longitude", typeof(string));
 
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelQueries.Update_Hotel, updateHotelDTO, commandType: CommandType.StoredProcedure);
+                addressTable.Rows.Add(hotel.AddressLine1,
+                    hotel.AddressLine2,
+                    hotel.CountryLookUpId,
+                    hotel.CityLookUpId,
+                    hotel.StateLookUpId,
+                    hotel.PostalCode.ToString(),
+                    hotel.Latitude,
+                    hotel.Longitude);
+                var parameters = new DynamicParameters(updateHotelDTO);
+                parameters.Add("@Address", addressTable.AsTableValuedParameter("GenericAddressTableType"));
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelQueries.Update_Hotel, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
