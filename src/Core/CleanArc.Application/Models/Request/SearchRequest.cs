@@ -18,6 +18,7 @@ namespace CleanArc.Application.Models.Request
     {
         public string SelectedIds { get; set; }
         public int? CultureId { get; set; }
+        public bool isDeleted { get; set; }
     }
     public class SearchRequestById
     {
