@@ -10,7 +10,7 @@ namespace CleanArc.Application.Models.BusinessBankAccount
     {
         public int Id { get; set; }
         public string AccountTitle { get; set; }
-        public int? BankID { get; set; }
+        public int? BankLookUpId { get; set; }
         public int? BusinessID { get; set; }
         public string IBAN { get; set; }
         //public bool? IsActive { get; set; }

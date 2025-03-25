@@ -10,7 +10,7 @@ namespace CleanArc.Application.Features.BusinessBankAccount.Queries.GetBusinessB
     {
         public int Id { get; set; }
         public string AccountTitle { get; set; }
-        public int BankID { get; set; }
+        public int BankLookUpId { get; set; }
         public string BankName { get; set; }
         public int BusinessID { get; set; }
         public string BusinessName { get; set; }

@@ -57,7 +57,7 @@ internal class CreateBusinessBankAccountCommandHandler : IRequestHandler<CreateB
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.BusinessBankAccountRepository.AddAsync(new Domain.Entities.BusinessBankAccount.BusinessBankAccount()
-            { CreatedBy = user.Id, AccountTitle = request.AccountTitle, BankID = request.BankID, BusinessID=request.BusinessID, IBAN=request.IBAN });
+            { CreatedBy = user.Id, AccountTitle = request.AccountTitle, BankLookUpId = request.BankLookUpId, BusinessID=request.BusinessID, IBAN=request.IBAN });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
