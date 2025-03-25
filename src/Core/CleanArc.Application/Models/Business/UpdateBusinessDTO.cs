@@ -8,7 +8,7 @@ namespace CleanArc.Application.Models.Business
 {
     public class UpdateBusinessDTO
     { 
-        public int? ID { get; set; }
+        public int? Id { get; set; }
         //public int? BusinessTypeID { get; set; }
 
         public string? Name { get; set; }
@@ -19,9 +19,9 @@ namespace CleanArc.Application.Models.Business
         public string? Email { get; set; }
         public string? Latitude { get; set; }
         public string? Longitude { get; set; }
-        public int? CountryID { get; set; }
-        public int? StateID { get; set; }
-        public int? CityID { get; set; }
+        public int? CountryLookUpId { get; set; }
+        public int? StateLookUpId { get; set; }
+        public int? CityLookUpId { get; set; }
         public string? TaxIdentificationNumber { get; set; }
         public string? License { get; set; }
         public string? ProofOfInsurance { get; set; }

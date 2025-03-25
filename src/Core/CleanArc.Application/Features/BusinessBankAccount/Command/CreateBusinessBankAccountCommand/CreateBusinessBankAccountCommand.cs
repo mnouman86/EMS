@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.BusinessBankAccount.Command.BusinessBankAccountCommand;
 
-public record CreateBusinessBankAccountCommand(string? AccountTitle, int? BankID, int? BusinessID,string IBAN, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateBusinessBankAccountCommand(string? AccountTitle, int? BankLookUpId, int? BusinessID,string IBAN, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateBusinessBankAccountCommand>
 {
     [JsonIgnore]
@@ -24,7 +24,7 @@ public record CreateBusinessBankAccountCommand(string? AccountTitle, int? BankID
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid AccountTitle");
-        validator.RuleFor(c => c.BankID)
+        validator.RuleFor(c => c.BankLookUpId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a BankID");

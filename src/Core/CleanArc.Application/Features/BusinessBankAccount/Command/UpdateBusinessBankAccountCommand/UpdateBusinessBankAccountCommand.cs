@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.BusinessBankAccount.Command.UpdateBusinessBankAccountCommand
 {
-    public record UpdateBusinessBankAccountCommand(int Id, string? AccountTitle, int? BankID, int? BusinessID, string? IBAN,int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+    public record UpdateBusinessBankAccountCommand(int Id, string? AccountTitle, int? BankLookUpId, int? BusinessID, string? IBAN,int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateBusinessBankAccountCommand>
     {
         [JsonIgnore]
@@ -23,7 +23,7 @@ namespace CleanArc.Application.Features.BusinessBankAccount.Command.UpdateBusine
         .NotEmpty()
         .NotNull()
         .WithMessage("Please enter a valid AccountTitle");
-            validator.RuleFor(c => c.BankID)
+            validator.RuleFor(c => c.BankLookUpId)
                 .NotEmpty()
                 .NotNull()
                 .WithMessage("Please enter a BankID");

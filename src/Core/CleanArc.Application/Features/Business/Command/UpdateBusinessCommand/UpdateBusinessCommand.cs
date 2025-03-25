@@ -15,8 +15,8 @@ namespace CleanArc.Application.Features.Business.Command.UpdateBusinessCommand;
 
 public record UpdateBusinessCommand(int Id, int? BusinessTypeID, string? Name,
     string? PhoneNumber,string? MobileNumber, string? Address1,string? Address2,string? Email, string? Latitude,
-    string? Longitude, int? CountryID, int? StateID,
-    int? CityID, string? TaxIdentificationNumber, string? License,
+    string? Longitude, int? CountryLookUpId, int? StateLookUpId,
+    int? CityLookUpId, string? TaxIdentificationNumber, string? License,
     string? ProofOfInsurance, int? BankAccountDetailID,
      int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateBusinessCommand>
@@ -49,7 +49,7 @@ public record UpdateBusinessCommand(int Id, int? BusinessTypeID, string? Name,
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a Latitude");
-        validator.RuleFor(c => c.StateID)
+        validator.RuleFor(c => c.StateLookUpId)
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a StateID");
@@ -57,7 +57,7 @@ public record UpdateBusinessCommand(int Id, int? BusinessTypeID, string? Name,
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a Longitude");
-        validator.RuleFor(c => c.CountryID)
+        validator.RuleFor(c => c.CountryLookUpId)
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a CountryID");
