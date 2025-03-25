@@ -55,8 +55,8 @@ internal class CreateAmenityCommandHandler: IRequestHandler<CreateAmenityCommand
                 CreatedBy = user.Id,
                 Description = request.Description,
                 Name = request.Name,
-                ServiceId = request.ServiceId,
-                ServiceCategoryId = request.ServiceCategoryId,
+                AmenityTypeEnumID = request.AmenityTypeEnumID,
+                //ServiceCategoryId = request.ServiceCategoryId,
                 Icon = request.Icon,
                 CultureId = request.CultureId,
             });
