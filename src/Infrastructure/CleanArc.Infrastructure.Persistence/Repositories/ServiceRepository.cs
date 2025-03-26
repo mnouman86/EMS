@@ -86,8 +86,9 @@ public class ServiceRepository : IServiceRepository
                 var parameters = new DynamicParameters();
                 parameters.Add("@Ids", deleteRequest.SelectedIds);
                 parameters.Add("@UpdatedBy", updatedBy);
+				parameters.Add("@IsDeleted", deleteRequest.isDeleted);
                 parameters.Add("@CultureId", deleteRequest.CultureId);
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ServiceQueries.Delete_Service, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ServiceQueries.Delete_Service, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }

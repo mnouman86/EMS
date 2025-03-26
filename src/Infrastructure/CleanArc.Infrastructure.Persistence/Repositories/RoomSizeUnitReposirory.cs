@@ -86,7 +86,7 @@ public class RoomSizeUnitReposirory : IRoomSizeUnitReposirory
                 var parameters = new DynamicParameters();
                 parameters.Add("@Ids", deleteRequest.SelectedIds);
                 parameters.Add("@UpdatedBy", updatedBy);
-
+				parameters.Add("@IsDeleted", deleteRequest.isDeleted);
 				parameters.Add("@CultureId", deleteRequest.CultureId);
 				
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomSizeUnitQueries.Delete_RoomSizeUnit, parameters, commandType: CommandType.StoredProcedure);

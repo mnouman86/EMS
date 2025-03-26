@@ -86,6 +86,7 @@ public class RoomTypeRepository : IRoomTypeRepository
 				var parameters = new DynamicParameters();
 				parameters.Add("@Ids", deleteRequest.SelectedIds);
 				parameters.Add("@CultureId", deleteRequest.CultureId);
+				parameters.Add("@IsDeleted", deleteRequest.isDeleted);
 				parameters.Add("@UpdatedBy", updatedBy);
 				
 				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomTypeQueries.Delete_RoomType, parameters, commandType: CommandType.StoredProcedure);

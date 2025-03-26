@@ -92,6 +92,7 @@ public async Task<ResponseEntity> AddAsync(AgeType ageType)
 				var parameters = new DynamicParameters();
 				parameters.Add("@Ids", deleteRequest.SelectedIds);
 				parameters.Add("@CultureId", deleteRequest.CultureId);
+				parameters.Add("@IsDeleted", deleteRequest.isDeleted);
 				parameters.Add("@UpdatedBy", updatedBy);
 				
 
