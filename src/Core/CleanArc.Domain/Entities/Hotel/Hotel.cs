@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CleanArc.Domain.Entities.Amenity;
+using CleanArc.Domain.Entities.Language;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +16,8 @@ namespace CleanArc.Domain.Entities.Hotel
     public int? StateLookUpId { get; set; }
     public int? CityLookUpId { get; set; }
     public int? BusinessId { get; set; }
-    public int[]? LanguageLookUpId { get; set; }
+    public List<LanguageLookUp>? LanguageLookUpId { get; set; }
+    public List<AmenityLookUp>? Amenities { get; set; }
     public string? PostalCode { get; set; }
     public string? AddressLine1 { get; set; }
     public string? AddressLine2 { get; set; }

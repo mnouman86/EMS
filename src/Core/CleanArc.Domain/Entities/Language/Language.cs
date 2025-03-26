@@ -19,4 +19,9 @@ namespace CleanArc.Domain.Entities.Language
         public DateTime? UpdatedAt { get; set; }
 		public int? CultureId { get; set; }
 	}
+    public class LanguageLookUp
+    {
+        public int LanguageLookUpId { get; set; }
+        public string? Language { get; set; }
+    }
 }
