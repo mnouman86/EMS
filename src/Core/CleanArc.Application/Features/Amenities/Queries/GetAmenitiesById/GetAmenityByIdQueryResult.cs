@@ -14,9 +14,9 @@ namespace CleanArc.Application.Features.Amenities.Queries.GetAmenitiesById
 		public int Id { get; set; }
 		public string Name { get; set; }
 		public string Description { get; set; }
-		public int ServiceId { get; set; }
-		public int? ServiceCategoryId { get; set; }
-		public string Icon { get; set; }
+        public int? AmenityTypeEnumID { get; set; }
+        public string? AmenityTypeEnum { get; set; }
+        public string Icon { get; set; }
 
 		public bool IsActive { get; set; }
 		public bool IsDeleted { get; set; }
