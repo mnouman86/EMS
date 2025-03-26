@@ -18,6 +18,7 @@ public record CreateHotelCommand(string? Name,int? BusinessId,
     string? AddressLine1,
     string? AddressLine2,
     int? CountryLookUpId, int? StateLookUpId, int? CityLookUpId,
+    int[]? LanguageLookUpId,
     string? Latitude, string? Longitude,     
     string? MobileNumber,
     string? PhoneNumber, string? Email,
@@ -39,24 +40,24 @@ public record CreateHotelCommand(string? Name,int? BusinessId,
         //12:00 AM
         validator.RuleFor(c => c.CheckInFrom)
             .NotEmpty()
-            .NotNull()
-            .Matches("^(0[1-9]|1[0-2]):[0-5][0-9] (AM|PM)$")
-            .WithMessage("CheckInFrom must be in the format HH:MM AM/PM (e.g., 12:00 AM)");
+    .NotNull()
+    .Matches(@"^(0?[1-9]|1[0-2]):([0-5]?[0-9]) (AM|PM)$")
+    .WithMessage("CheckInFrom must be in a valid 12-hour format (e.g., 1:05 AM, 12:00 PM, 01:5 PM)");
         validator.RuleFor(c => c.CheckInTo)
             .NotEmpty()
-            .NotNull()
-            .Matches("^(0[1-9]|1[0-2]):[0-5][0-9] (AM|PM)$")
-            .WithMessage("CheckInFrom must be in the format HH:MM AM/PM (e.g., 12:00 AM)");
+    .NotNull()
+    .Matches(@"^(0?[1-9]|1[0-2]):([0-5]?[0-9]) (AM|PM)$")
+    .WithMessage("CheckInFrom must be in a valid 12-hour format (e.g., 1:05 AM, 12:00 PM, 01:5 PM)");
         validator.RuleFor(c => c.CheckOutFrom)
             .NotEmpty()
-            .NotNull()
-            .Matches("^(0[1-9]|1[0-2]):[0-5][0-9] (AM|PM)$")
-            .WithMessage("CheckInFrom must be in the format HH:MM AM/PM (e.g., 12:00 AM)");
+    .NotNull()
+    .Matches(@"^(0?[1-9]|1[0-2]):([0-5]?[0-9]) (AM|PM)$")
+    .WithMessage("CheckInFrom must be in a valid 12-hour format (e.g., 1:05 AM, 12:00 PM, 01:5 PM)");
         validator.RuleFor(c => c.CheckOutTo)
             .NotEmpty()
-            .NotNull()
-            .Matches("^(0[1-9]|1[0-2]):[0-5][0-9] (AM|PM)$")
-            .WithMessage("CheckInFrom must be in the format HH:MM AM/PM (e.g., 12:00 AM)");
+    .NotNull()
+    .Matches(@"^(0?[1-9]|1[0-2]):([0-5]?[0-9]) (AM|PM)$")
+    .WithMessage("CheckInFrom must be in a valid 12-hour format (e.g., 1:05 AM, 12:00 PM, 01:5 PM)");
         return validator;
     }
 }
