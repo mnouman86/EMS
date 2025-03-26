@@ -9,7 +9,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
+using CleanArc.Application.Models.Request;
+using System.Text.Json.Serialization; 
+using CleanArc.Domain.Common;
+using CleanArc.Domain.Entities.Language;
 
 namespace CleanArc.Application.Features.Hotel.Command.CreateHotelCommand;
 
@@ -18,7 +21,7 @@ public record CreateHotelCommand(string? Name,int? BusinessId,
     string? AddressLine1,
     string? AddressLine2,
     int? CountryLookUpId, int? StateLookUpId, int? CityLookUpId,
-    int[]? LanguageLookUpId,
+    List<LanguageLookUp>? LanguageLookUpId,
     string? Latitude, string? Longitude,     
     string? MobileNumber,
     string? PhoneNumber, string? Email,

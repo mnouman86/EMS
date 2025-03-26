@@ -24,6 +24,8 @@ using CleanArc.Application.Common;
 using CleanArc.Domain.Entities.KBDetail;
 using CleanArc.Application.Models.KBDescription;
 using CleanArc.Domain.Entities.KBDescription;
+using CleanArc.Domain.Entities.Language;
+using CleanArc.Domain.Entities.Amenity;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -83,11 +85,17 @@ public class HotelRepository : IHotelRepository
                     hotel.PostalCode.ToString(),
                     hotel.Latitude,
                     hotel.Longitude);
-                
+
+                var languageTable = new DataTable();
+                languageTable.Columns.Add("LanguageTypeLookUpId", typeof(int));
+
+                foreach (var language in hotel.LanguageLookUpId)
+                    languageTable.Rows.Add(language);
 
 
                 var parameters = new DynamicParameters(createHotelDTO);
                 parameters.Add("@Address", addressTable.AsTableValuedParameter("GenericAddressTableType"));
+                parameters.Add("@Language", languageTable.AsTableValuedParameter("LanguageTableType"));
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelQueries.Create_Hotel, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
@@ -155,11 +163,20 @@ public class HotelRepository : IHotelRepository
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 				parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
 				parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
-				var result = await connection.QuerySingleOrDefaultAsync<Hotel>(HotelQueries.GetByID_Hotel, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+				var result = await connection.QueryMultipleAsync(HotelQueries.GetByID_Hotel, parameters, commandType: CommandType.StoredProcedure);
+                var hotel = result.Read<Hotel>().FirstOrDefault();
+                if (hotel != null)
+                {
+                    var language = result.Read<LanguageLookUp>().ToList();
+                    hotel.LanguageLookUpId = language;
+
+                    var amenities = result.Read<AmenityLookUp>().ToList();
+                    hotel.Amenities = amenities;
+                }
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new SingleResponseWrapper<Hotel>
                 {
-                    Data = result,
+                    Data = hotel,
                     Code = parameters.Get<int>("@Code"),
                     Message = parameters.Get<string>("@Message")
                 };
@@ -196,8 +213,17 @@ public class HotelRepository : IHotelRepository
                     hotel.PostalCode.ToString(),
                     hotel.Latitude,
                     hotel.Longitude);
+
+                var languageTable = new DataTable();
+                languageTable.Columns.Add("LanguageTypeLookUpId", typeof(int));
+
+                foreach (var language in hotel.LanguageLookUpId)
+                    languageTable.Rows.Add(language.LanguageLookUpId);
+
                 var parameters = new DynamicParameters(updateHotelDTO);
                 parameters.Add("@Address", addressTable.AsTableValuedParameter("GenericAddressTableType"));
+                parameters.Add("@Language", languageTable.AsTableValuedParameter("LanguageTableType"));
+
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelQueries.Update_Hotel, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;

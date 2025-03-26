@@ -9,7 +9,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
+using CleanArc.Application.Models.Request;
+using System.Text.Json.Serialization; 
+using CleanArc.Domain.Common;
+using CleanArc.Domain.Entities.Language;
 
 namespace CleanArc.Application.Features.Hotel.Command.UpdateHotelCommand;
 
@@ -17,7 +20,7 @@ public record UpdateHotelCommand(int Id, string? Name, int? BusinessId,
     string? PostalCode,
     string? AddressLine1,
     string? AddressLine2,
-    int? CountryLookUpId, int? StateLookUpId, int? CityLookUpId, int[]? LanguageLookUpId,
+    int? CountryLookUpId, int? StateLookUpId, int? CityLookUpId, List<LanguageLookUp>? LanguageLookUpId,
     string? Latitude, string? Longitude,
     string? MobileNumber,
     string? PhoneNumber, string? Email,

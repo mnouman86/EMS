@@ -8,6 +8,6 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries
 {
     public static class SearchHotelAmenitiesQuery
     {
-        public static string GetByHotelID_HotelAmenities => "usp_GetByHotelID_HotelAmenityMapping";
+        public static string GetByHotelID_HotelAmenities => "usp_GetByAmenityTypeEnumID_AmenityMapping";
     }
 }

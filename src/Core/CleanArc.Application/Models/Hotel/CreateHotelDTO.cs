@@ -11,7 +11,6 @@ namespace CleanArc.Application.Models.Hotel
         //public int Id { get; set; }
         public string? Name { get; set; }
         public int? BusinessId { get; set; }
-        public int[]? LanguageLookUpId { get; set; }
         public string? MobileNumber { get; set; }
         public string? PhoneNumber { get; set; }
         public string? Email { get; set; }

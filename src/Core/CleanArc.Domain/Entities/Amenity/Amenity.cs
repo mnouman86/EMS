@@ -26,3 +26,12 @@ public class Amenity
     public int? CultureId { get; set; }
 
 }
+public class AmenityLookUp
+{
+    public int Id { get; set; }
+    public string? Amenity { get; set; }
+    //public string? ServiceName { get; set; }
+    public int? GenericTitleId { get; set; }
+    public string? Selected { get; set; }
+
+}

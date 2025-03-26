@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CleanArc.Domain.Entities.Amenity;
+using CleanArc.Domain.Entities.Language;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +12,8 @@ public class GetHotelByIdQueryResult
 {
     public int Id { get; set; }
     public string Name { get; set; }
+    public List<LanguageLookUp>? LanguageLookUpId { get; set; }
+    public List<AmenityLookUp>? Amenities { get; set; }
     public int CountryLookUpId { get; set; }
     public int StateLookUpId { get; set; }
     public int CityLookUpId { get; set; }
