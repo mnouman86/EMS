@@ -94,7 +94,8 @@ public async Task<ResponseEntity> AddAsync(SubService SubService)
                 var parameters = new DynamicParameters();
                 parameters.Add("@Ids", deleteRequest.SelectedIds);
                 parameters.Add("@CultureId", deleteRequest.CultureId);
-                parameters.Add("@UpdatedBy", updatedBy);
+				parameters.Add("@IsDeleted", deleteRequest.isDeleted);
+				parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SubServiceQueries.Delete_SubService, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);

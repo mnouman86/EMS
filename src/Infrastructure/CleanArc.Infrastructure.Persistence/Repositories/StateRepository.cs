@@ -84,7 +84,8 @@ public class StateRepository : IStateRepository
                 var parameters = new DynamicParameters();
                 parameters.Add("@Ids", deleteRequest.SelectedIds);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@CultureId", deleteRequest.CultureId);
+				parameters.Add("@IsDeleted", deleteRequest.isDeleted);
+				parameters.Add("@CultureId", deleteRequest.CultureId);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(StateQueries.Delete_State, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);

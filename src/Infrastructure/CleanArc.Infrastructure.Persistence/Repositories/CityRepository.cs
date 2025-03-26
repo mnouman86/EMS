@@ -84,7 +84,8 @@ public class CityRepository : ICityRepository
                 var parameters = new DynamicParameters();
                 parameters.Add("@Ids", deleteRequest.SelectedIds);
                 parameters.Add("@UpdatedBy", updatedBy);
-                parameters.Add("@CultureId", deleteRequest.CultureId);
+				parameters.Add("@IsDeleted", deleteRequest.isDeleted);
+				parameters.Add("@CultureId", deleteRequest.CultureId);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CityQueries.Delete_City, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
