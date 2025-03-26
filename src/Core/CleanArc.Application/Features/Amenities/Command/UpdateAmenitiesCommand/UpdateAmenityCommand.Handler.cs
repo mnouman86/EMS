@@ -54,9 +54,9 @@ internal class UpdateAmenityCommandHandler : IRequestHandler<UpdateAmenityComman
                 Id = request.Id,
                 Description = request.Description,
                 Name = request.Name,
-                ServiceId = request.ServiceId,
+                AmenityTypeEnumID = request.AmenityTypeEnumID,
                 Icon = request.Icon,
-                ServiceCategoryId = request.ServiceCategoryId,
+                //ServiceCategoryId = request.ServiceCategoryId,
                 CultureId=request.CultureId
             });
             await _unitOfWork.CommitAsync();

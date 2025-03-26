@@ -12,10 +12,13 @@ public record GetAllAmenitiesQueryResult
 {
     public int Id { get; set; }
     public string Name { get; set; }
-    public string ServiceName { get; set; }
-    public int ServiceId { get; set; }
-    public int? ServiceCategoryId { get; set; }
-    public string? ServiceCategoryName { get; set; }
+    //public string ServiceName { get; set; }
+    //public int ServiceId { get; set; }
+    //public int? ServiceCategoryId { get; set; }
+    //public string? ServiceCategoryName { get; set; }
+    public int? AmenityTypeEnumID { get; set; }
+    public string? AmenityTypeEnum { get; set; }
+    
     public string? Icon { get; set; }
 
     public string Description { get; set; }
