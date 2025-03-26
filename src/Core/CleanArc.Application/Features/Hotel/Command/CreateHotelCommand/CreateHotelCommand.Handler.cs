@@ -46,10 +46,10 @@ public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateHotelComman
 {
     using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
     {
-            DateTime.TryParseExact(request.CheckInFrom, "hh:mm tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkInFrom);
-            DateTime.TryParseExact(request.CheckInTo, "hh:mm tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkInTo);
-            DateTime.TryParseExact(request.CheckOutFrom, "hh:mm tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkOutFrom);
-            DateTime.TryParseExact(request.CheckOutTo, "hh:mm tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkOutTo);
+            DateTime.TryParseExact(request.CheckInFrom, TimeFormats.formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkInFrom);
+            DateTime.TryParseExact(request.CheckInTo, TimeFormats.formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkInTo);
+            DateTime.TryParseExact(request.CheckOutFrom, TimeFormats.formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkOutFrom);
+            DateTime.TryParseExact(request.CheckOutTo, TimeFormats.formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkOutTo);
             var user = await _userManager.GetUserByIdAsync(request.UserId);
         if (user == null)
             return OperationResult<ResponseEntity>.FailureResult("User Not Found");
@@ -60,6 +60,7 @@ public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateHotelComman
                 CountryLookUpId = request.CountryLookUpId,
                 StateLookUpId = request.StateLookUpId,
                 CityLookUpId = request.CityLookUpId,
+                LanguageLookUpId = request.LanguageLookUpId,
                 BusinessId = request.BusinessId,
                 PostalCode = request.PostalCode,
                 AddressLine1 = request.AddressLine1,

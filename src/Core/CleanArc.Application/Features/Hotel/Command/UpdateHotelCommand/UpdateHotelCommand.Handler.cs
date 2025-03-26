@@ -49,10 +49,10 @@ internal class UpdateHotelCommandHandler : IRequestHandler<UpdateHotelCommand, O
 
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            DateTime.TryParseExact(request.CheckInFrom, "hh:mm tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkInFrom);
-            DateTime.TryParseExact(request.CheckInTo, "hh:mm tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkInTo);
-            DateTime.TryParseExact(request.CheckOutFrom, "hh:mm tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkOutFrom);
-            DateTime.TryParseExact(request.CheckOutTo, "hh:mm tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkOutTo);
+            DateTime.TryParseExact(request.CheckInFrom, TimeFormats.formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkInFrom);
+            DateTime.TryParseExact(request.CheckInTo, TimeFormats.formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkInTo);
+            DateTime.TryParseExact(request.CheckOutFrom, TimeFormats.formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkOutFrom);
+            DateTime.TryParseExact(request.CheckOutTo, TimeFormats.formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime checkOutTo);
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.HotelRepository.UpdateAsync(new Domain.Entities.Hotel.Hotel()
             { UpdatedBy = user.Id, Id= request.Id, 
@@ -60,6 +60,7 @@ internal class UpdateHotelCommandHandler : IRequestHandler<UpdateHotelCommand, O
                 CountryLookUpId = request.CountryLookUpId,
                 StateLookUpId = request.StateLookUpId,
                 CityLookUpId = request.CityLookUpId,
+                LanguageLookUpId= request.LanguageLookUpId,
                 BusinessId = request.BusinessId,
                 PostalCode = request.PostalCode,
                 AddressLine1 = request.AddressLine1,
