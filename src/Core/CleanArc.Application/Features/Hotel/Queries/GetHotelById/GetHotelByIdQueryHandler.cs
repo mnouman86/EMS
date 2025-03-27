@@ -63,20 +63,20 @@ namespace CleanArc.Application.Features.Hotel.Queries.GetHotelById
                 var mappedResult = _mapper.Map<GetHotelByIdQueryResult>(response.Data);
                 if (mappedResult != null)
                 {
-                    mappedResult.CheckInFromTime= mappedResult.CheckInFrom.HasValue
-    ? mappedResult.CheckInFrom.Value.ToString("hh:mm tt", CultureInfo.InvariantCulture)
+                    mappedResult.CheckInFrom= response.Data.CheckInFrom.HasValue
+    ? response.Data.CheckInFrom.Value.ToString("hh:mm tt", CultureInfo.InvariantCulture)
     : string.Empty;
 
-                    mappedResult.CheckOutFromTime = mappedResult.CheckOutFrom.HasValue
-    ? mappedResult.CheckOutFrom.Value.ToString("hh:mm tt", CultureInfo.InvariantCulture)
+                    mappedResult.CheckOutFrom = response.Data.CheckOutFrom.HasValue
+    ? response.Data.CheckOutFrom.Value.ToString("hh:mm tt", CultureInfo.InvariantCulture)
     : string.Empty;
 
-                    mappedResult.CheckInToTime = mappedResult.CheckInTo.HasValue
-    ? mappedResult.CheckInTo.Value.ToString("hh:mm tt", CultureInfo.InvariantCulture)
+                    mappedResult.CheckInTo = response.Data.CheckInTo.HasValue
+    ? response.Data.CheckInTo.Value.ToString("hh:mm tt", CultureInfo.InvariantCulture)
     : string.Empty;
 
-                    mappedResult.CheckOutToTime = mappedResult.CheckOutTo.HasValue
-    ? mappedResult.CheckOutTo.Value.ToString("hh:mm tt", CultureInfo.InvariantCulture)
+                    mappedResult.CheckOutTo = response.Data.CheckOutTo.HasValue
+    ? response.Data.CheckOutTo.Value.ToString("hh:mm tt", CultureInfo.InvariantCulture)
     : string.Empty;
                     //            public string? CheckInFromTime { get; set; }
                     //public string? CheckInToTime { get; set; }

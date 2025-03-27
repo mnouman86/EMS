@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.AmenityMapping.Command.CreateAmenityMappingCommand;
 
-public record CreateAmenityMappingCommand(int? GenericTitleId, int[]? AmenitiesIDs, int? CutureId, int? AminityTypeEnumId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateAmenityMappingCommand(int? GenericTitleId, int[]? AmenitiesIDs, int? CultureId, int? AmenityTypeEnumId) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<CreateAmenityMappingCommand>
 {
     [JsonIgnore]
