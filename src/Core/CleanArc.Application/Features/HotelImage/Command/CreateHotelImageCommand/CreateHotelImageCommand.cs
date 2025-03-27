@@ -13,14 +13,15 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.HotelImage.Command.CreateHotelImageCommand;
 
-public record CreateHotelImageCommand(int? HotelID, List<string>? ImagePaths, string? ImageTitle, bool? IsMain, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateHotelImageCommand(int? GenericTitleId, List<string>? ImagePaths, string? ImageTitle, 
+    bool? IsMain, int? ServiceTypeEnumId, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateHotelImageCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<CreateHotelImageCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateHotelImageCommand> validator)
     {
-        validator.RuleFor(c => c.HotelID)
+        validator.RuleFor(c => c.GenericTitleId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid HotelID");

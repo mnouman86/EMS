@@ -9,20 +9,19 @@ namespace CleanArc.Application.Features.HotelImage.Queries.GetAllHotelImage
     public class GetAllHotelImageQueryResult
     {
         public int Id { get; set; }
-        public int BusinessID { get; set; }
-        public string Model { get; set; }
-        public string Year { get; set; }
-        public string VehicleIdentificationNumber { get; set; }
-        public string PlateNumber { get; set; }
-        public int NoOfSeat { get; set; }
-        public int RentPrice { get; set; }
-        public bool IsActive { get; set; }
-        public bool IsDeleted { get; set; }
-        public int CreatedBy { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public int UpdatedBy { get; set; }
-        public DateTime UpdatedAt { get; set; }
-        //public bool IsRefundable { get; set; }
-        //public bool IsCancelation { get; set; }
+        public int? GenericTitleId { get; set; }
+        public string? ImagePath { get; set; } // NVARCHAR(MAX)
+
+        public List<string>? ImagePaths { get; set; }
+        public string? ImageTitle { get; set; } // NVARCHAR(MAX)
+        public bool? IsMain { get; set; } // BIT
+        public int? ServiceTypeEnumId { get; set; }
+        public int? CultureId { get; set; }
+        public bool? IsActive { get; set; } // BIT
+        public bool? IsDeleted { get; set; } // BIT
+        public int? CreatedBy { get; set; } // NVARCHAR(100)
+        public DateTime? CreatedAt { get; set; } // DATETIME
+        public int? UpdatedBy { get; set; } // NVARCHAR(100)
+        public DateTime? UpdatedAt { get; set; } // DATETIME, Nullable
     }
 }

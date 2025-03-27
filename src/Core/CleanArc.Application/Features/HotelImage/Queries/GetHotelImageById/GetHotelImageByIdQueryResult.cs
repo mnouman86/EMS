@@ -9,18 +9,19 @@ namespace CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById
     public class GetHotelImageByIdQueryResult
     {
         public int Id { get; set; }
-        public int? HotelID { get; set; }
+        public int? GenericTitleId { get; set; }
         public string? ImagePath { get; set; } // NVARCHAR(MAX)
+
+        public List<string>? ImagePaths { get; set; }
         public string? ImageTitle { get; set; } // NVARCHAR(MAX)
         public bool? IsMain { get; set; } // BIT
-        public int? CategoryID { get; set; }
+        public int? ServiceTypeEnumId { get; set; }
+        public int? CultureId { get; set; }
         public bool? IsActive { get; set; } // BIT
         public bool? IsDeleted { get; set; } // BIT
         public int? CreatedBy { get; set; } // NVARCHAR(100)
         public DateTime? CreatedAt { get; set; } // DATETIME
         public int? UpdatedBy { get; set; } // NVARCHAR(100)
         public DateTime? UpdatedAt { get; set; } // DATETIME, Nullable
-        //public bool IsRefundable { get; set; }
-        //public bool IsCancelation { get; set; }
     }
 }
