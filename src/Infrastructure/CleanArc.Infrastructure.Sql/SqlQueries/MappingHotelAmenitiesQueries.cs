@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Infrastructure.Sql.SqlQueries
 {
-    public static class MappingHotelAmenitiesQueries
+    public static class AmenityMappingQueries
     {
-        public static string Create_Mapping_HotelAmenities => "usp_Create_HotelAmenityMapping";
-        public static string Update_HotelAmenityMapping => "usp_Update_HotelAmenityMapping";
+        public static string Create_Mapping_HotelAmenities => "usp_Create_AmenityMapping";
+        public static string GetByAmenityTypeEnumID_AmenityMapping => "usp_GetByAmenityTypeEnumID_AmenityMapping";
+
     }
 }

@@ -43,7 +43,7 @@ internal class GetAllAmenityMappingQueryHandler : IRequestHandler<GetAllAmenityM
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             //return OperationResult<List<GetAllAmenityMappingQueryResult>>.SuccessResult(result);
 
-            var response = await _unitOfWork.AgeTypeRepository.GetAllAsync(request.searchRequest);
+            var response = await _unitOfWork.AmenityMappingRepository.GetAllAsync(request.searchRequest);
 
             if (response.Code != 200)
             {

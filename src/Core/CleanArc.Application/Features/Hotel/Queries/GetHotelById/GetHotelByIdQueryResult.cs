@@ -36,6 +36,12 @@ public class GetHotelByIdQueryResult
     public DateTime? CheckInTo { get; set; }
     public DateTime? CheckOutFrom { get; set; }
     public DateTime? CheckOutTo { get; set; }
+
+    public string? CheckInFromTime { get; set; }
+    public string? CheckInToTime { get; set; }
+    public string? CheckOutFromTime { get; set; }
+    public string? CheckOutToTime { get; set; }
+
     public bool IsActive { get; set; }
     public bool IsDeleted { get; set; }
     public int CreatedBy { get; set; }

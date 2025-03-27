@@ -13,14 +13,14 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.AmenityMapping.Command.CreateAmenityMappingCommand;
 
-public record CreateAmenityMappingCommand(int? HotelID, string? AmenitiesIDs, int? CreatedBy, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateAmenityMappingCommand(int? GenericTitleId, int[]? AmenitiesIDs, int? CutureId, int? AminityTypeEnumId) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<CreateAmenityMappingCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<CreateAmenityMappingCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateAmenityMappingCommand> validator)
     {
-        validator.RuleFor(c => c.HotelID)
+        validator.RuleFor(c => c.GenericTitleId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid HotelIDs");

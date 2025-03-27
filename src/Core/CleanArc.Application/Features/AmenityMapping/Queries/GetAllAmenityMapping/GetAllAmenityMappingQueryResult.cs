@@ -8,4 +8,9 @@ namespace CleanArc.Application.Features.AmenityMapping.Queries.GetAllAmenityMapp
 
 public class GetAllAmenityMappingQueryResult
 {
+    public int Id { get; set; }
+    public string? Amenity { get; set; }
+    //public string? ServiceName { get; set; }
+    public int? GenericTitleId { get; set; }
+    public string? Selected { get; set; }
 }

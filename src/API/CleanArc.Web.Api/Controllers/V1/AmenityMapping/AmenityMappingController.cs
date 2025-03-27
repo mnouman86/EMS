@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 namespace CleanArc.Web.Api.Controllers.V1.AmenityMapping
 {
     /// <summary>
-    /// MappingHotelAmenitiesController is responsible for handling HTTP requests related to hotel amenity mapping operations
+    /// AmenityMappingController is responsible for handling HTTP requests related to hotel amenity mapping operations
     /// such as creating, updating, deleting, and retrieving mappings between hotels and amenities. It extends from a base controller
     /// which provides common functionality for CRUD operations.
     /// 
@@ -28,7 +28,7 @@ namespace CleanArc.Web.Api.Controllers.V1.AmenityMapping
     /// ILogger (for logging purposes), and IHttpContextAccessor (for accessing HTTP context information).
     /// 
     /// The controller is versioned using the [ApiVersion] attribute and responds to routes prefixed with the API
-    /// version, specified as "api/v{version:apiVersion}/MappingHotelAmenities".
+    /// version, specified as "api/v{version:apiVersion}/AmenityMapping".
     /// 
     /// Note: The actual endpoint methods are intended to be implemented to utilize the base controller’s 
     /// operation result handling and user ID setting.
