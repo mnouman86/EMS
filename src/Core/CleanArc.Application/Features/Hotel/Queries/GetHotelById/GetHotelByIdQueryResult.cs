@@ -12,7 +12,7 @@ public class GetHotelByIdQueryResult
 {
     public int Id { get; set; }
     public string Name { get; set; }
-    public List<LanguageLookUp>? LanguageLookUpId { get; set; }
+    public List<LanguageLookUp>? Languages { get; set; }
     public List<AmenityLookUp>? Amenities { get; set; }
     public int CountryLookUpId { get; set; }
     public int StateLookUpId { get; set; }
