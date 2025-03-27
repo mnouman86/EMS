@@ -168,7 +168,7 @@ public class HotelRepository : IHotelRepository
                 if (hotel != null)
                 {
                     var language = result.Read<LanguageLookUp>().ToList();
-                    hotel.LanguageLookUpId = language;
+                    hotel.Languages = language;
 
                     var amenities = result.Read<AmenityLookUp>().ToList();
                     hotel.Amenities = amenities;
@@ -218,7 +218,7 @@ public class HotelRepository : IHotelRepository
                 languageTable.Columns.Add("LanguageTypeLookUpId", typeof(int));
 
                 foreach (var language in hotel.LanguageLookUpId)
-                    languageTable.Rows.Add(language.LanguageLookUpId);
+                    languageTable.Rows.Add(language);
 
                 var parameters = new DynamicParameters(updateHotelDTO);
                 parameters.Add("@Address", addressTable.AsTableValuedParameter("GenericAddressTableType"));
