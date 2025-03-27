@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById;
+using System.Globalization;
 
 namespace CleanArc.Application.Features.Hotel.Queries.GetHotelById
 {
@@ -60,6 +61,28 @@ namespace CleanArc.Application.Features.Hotel.Queries.GetHotelById
                 }
 
                 var mappedResult = _mapper.Map<GetHotelByIdQueryResult>(response.Data);
+                if (mappedResult != null)
+                {
+                    mappedResult.CheckInFromTime= mappedResult.CheckInFrom.HasValue
+    ? mappedResult.CheckInFrom.Value.ToString("hh:mm tt", CultureInfo.InvariantCulture)
+    : string.Empty;
+
+                    mappedResult.CheckOutFromTime = mappedResult.CheckOutFrom.HasValue
+    ? mappedResult.CheckOutFrom.Value.ToString("hh:mm tt", CultureInfo.InvariantCulture)
+    : string.Empty;
+
+                    mappedResult.CheckInToTime = mappedResult.CheckInTo.HasValue
+    ? mappedResult.CheckInTo.Value.ToString("hh:mm tt", CultureInfo.InvariantCulture)
+    : string.Empty;
+
+                    mappedResult.CheckOutToTime = mappedResult.CheckOutTo.HasValue
+    ? mappedResult.CheckOutTo.Value.ToString("hh:mm tt", CultureInfo.InvariantCulture)
+    : string.Empty;
+                    //            public string? CheckInFromTime { get; set; }
+                    //public string? CheckInToTime { get; set; }
+                    //public string? CheckOutFromTime { get; set; }
+                    //public string? CheckOutToTime { get; set; }
+                }
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
                 return OperationResult<GetHotelByIdQueryResult>.SuccessResult(

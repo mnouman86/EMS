@@ -55,8 +55,15 @@ internal class CreateAmenityMappingCommandHandler : IRequestHandler<CreateAmenit
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
-            var result = await _unitOfWork.AmenityMappingRepository.AddAsync(new Domain.Entities.MappingHotelAmenities.MappingHotelAmenities()
-            { CreatedBy = user.Id,UpdatedBy=user.Id, HotelID = request.HotelID, AmenitiesIDs = request.AmenitiesIDs });
+            var result = await _unitOfWork.AmenityMappingRepository.AddAsync(
+                new Domain.Entities.AmenityMapping.AmenityMapping()
+                {
+                    CreatedBy = user.Id,
+                    CultureId = request.CutureId,
+                    GenericTitleId = request.GenericTitleId,
+                    AmenitiesIDs = request.AmenitiesIDs,
+                    AmenityTypeEnumId=request.AminityTypeEnumId
+                });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
