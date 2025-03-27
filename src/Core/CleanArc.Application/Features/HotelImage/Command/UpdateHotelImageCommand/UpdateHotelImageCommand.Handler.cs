@@ -59,11 +59,12 @@ internal class UpdateHotelImageCommandHandler : IRequestHandler<UpdateHotelImage
             {
                 UpdatedBy = user.Id,
                 Id= request.Id,
-                HotelID = request.HotelID,
-               // CarID = request.CarID,
+                GenericTitleId = request.GenericTitleId,
+               CultureId = request.CultureId,
                 ImagePath = request.ImagePath,
                 ImageTitle = request.ImageTitle,
                 IsMain = request.IsMain,
+                ServiceTypeEnumId = request.ServiceTypeEnumId,
                 //IsCancelation = request.IsCancelation
             });
             await _unitOfWork.CommitAsync();

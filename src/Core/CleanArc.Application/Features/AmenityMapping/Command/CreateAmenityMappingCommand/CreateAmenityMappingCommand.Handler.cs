@@ -62,7 +62,7 @@ internal class CreateAmenityMappingCommandHandler : IRequestHandler<CreateAmenit
                     CultureId = request.CultureId,
                     GenericTitleId = request.GenericTitleId,
                     AmenitiesIDs = request.AmenitiesIDs,
-                    AmenityTypeEnumId=request.AmenityTypeEnumId
+                    ServiceTypeEnumId=request.ServiceTypeEnumId
                 });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

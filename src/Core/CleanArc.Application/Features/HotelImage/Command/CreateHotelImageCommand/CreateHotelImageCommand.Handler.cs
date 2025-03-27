@@ -58,8 +58,9 @@ namespace CleanArc.Application.Features.HotelImage.Command.CreateHotelImageComma
                 //return OperationResult<ResponseEntity>.SuccessResult(result);
                 var result = await _unitOfWork.HotelImageRepository.AddAsync(new Domain.Entities.HotelImage.Hotel_Image()
                 { CreatedBy = user.Id,
-                    HotelID = request.HotelID,
-                   // CarID = request.CarID,
+                    GenericTitleId = request.GenericTitleId,
+                   CultureId = request.CultureId,
+                   ServiceTypeEnumId = request.ServiceTypeEnumId,
                     ImagePaths = request.ImagePaths,
                     ImageTitle = request.ImageTitle,
                     IsMain = request.IsMain,
