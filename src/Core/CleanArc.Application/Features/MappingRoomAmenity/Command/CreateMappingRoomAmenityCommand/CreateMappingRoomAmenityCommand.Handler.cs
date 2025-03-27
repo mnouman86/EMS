@@ -1,6 +1,6 @@
 ﻿using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Features.MappingHotelAmenity.Command.CreateMappingHotelAmenityCommand;
+using CleanArc.Application.Features.AmenityMapping.Command.CreateAmenityMappingCommand;
 using CleanArc.Application.Models.Common;
 using CleanArc.Domain.Entities.Category;
 using CleanArc.SharedKernel.Extensions;

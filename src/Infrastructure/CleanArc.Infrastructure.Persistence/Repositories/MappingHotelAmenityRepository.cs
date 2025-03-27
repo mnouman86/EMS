@@ -21,7 +21,7 @@ using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
-    public class MappingHotelAmenityRepository : IMappingHotelAmenityRepository
+    public class AmenityMappingRepository : IAmenityMappingRepository
     {
         /// <summary>
         /// The configuration for accessing application settings.
@@ -36,7 +36,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
         /// <summary>
         /// The logger for logging repository-related information.
         /// </summary>
-        private readonly ILogger<MappingHotelAmenityRepository> _logger;
+        private readonly ILogger<AmenityMappingRepository> _logger;
 
         /// <summary>
         /// The HTTP context accessor for accessing HTTP context information.
@@ -50,7 +50,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
         /// <param name="mapper">The mapper for mapping between different object types.</param>
         /// <param name="logger">The logger for logging repository-related information.</param>
         /// <param name="httpContextAccessor">The HTTP context accessor for accessing HTTP context information.</param>
-        public MappingHotelAmenityRepository(IConfiguration configuration, IMapper mapper, ILogger<MappingHotelAmenityRepository> logger, IHttpContextAccessor httpContextAccessor)
+        public AmenityMappingRepository(IConfiguration configuration, IMapper mapper, ILogger<AmenityMappingRepository> logger, IHttpContextAccessor httpContextAccessor)
         {
             this.configuration = configuration;
             this._mapper = mapper;

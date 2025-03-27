@@ -1,5 +1,5 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Features.MappingHotelAmenity.Queries.GetMappingHotelAmenityByID;
+using CleanArc.Application.Features.AmenityMapping.Queries.GetAmenityMappingByID;
 using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.Extensions;
 using MapsterMapper;

@@ -13,21 +13,21 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.SharedKernel.Extensions;
 
-namespace CleanArc.Application.Features.MappingHotelAmenity.Command.UpdateMappingHotelAmenityCommand;
+namespace CleanArc.Application.Features.AmenityMapping.Command.UpdateAmenityMappingCommand;
 
-internal class UpdateMappingHotelAmenityCommandHandler : IRequestHandler<UpdateMappingHotelAmenityCommand, OperationResult<ResponseEntity>>
+internal class UpdateAmenityMappingCommandHandler : IRequestHandler<UpdateAmenityMappingCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<UpdateMappingHotelAmenityCommandHandler> _logger;
+    private readonly ILogger<UpdateAmenityMappingCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
                                                                 //private readonly IUnitOfWork _unitOfWork;
                                                                 //private readonly IAppUserManager _userManager;
 
 
-    public UpdateMappingHotelAmenityCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateMappingHotelAmenityCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public UpdateAmenityMappingCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateAmenityMappingCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -38,7 +38,7 @@ internal class UpdateMappingHotelAmenityCommandHandler : IRequestHandler<UpdateM
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateMappingHotelAmenityCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateAmenityMappingCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {

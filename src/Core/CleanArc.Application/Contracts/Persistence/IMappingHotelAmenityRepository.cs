@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Contracts.Persistence;
 
-public  interface IMappingHotelAmenityRepository:IRepository<MappingHotelAmenities>
+public  interface IAmenityMappingRepository:IRepository<MappingHotelAmenities>
 {
 }

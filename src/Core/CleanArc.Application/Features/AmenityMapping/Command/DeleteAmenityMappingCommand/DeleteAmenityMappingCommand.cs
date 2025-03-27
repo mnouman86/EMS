@@ -11,14 +11,14 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
-namespace CleanArc.Application.FeaturesppingHotelAmenity.Command.DeleteMappingHotelAmenityCommand;
+namespace CleanArc.Application.AmenityMapping.Command.DeleteAmenityMappingCommand;
 
-public record DeleteMappingHotelAmenityCommand(DeleteRequest deleteRequest) : IRequest<OperationResult<ResponseEntity>>,
-    IValidatableModel<DeleteMappingHotelAmenityCommand>
+public record DeleteAmenityMappingCommand(DeleteRequest deleteRequest) : IRequest<OperationResult<ResponseEntity>>,
+    IValidatableModel<DeleteAmenityMappingCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
-    public IValidator<DeleteMappingHotelAmenityCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteMappingHotelAmenityCommand> validator)
+    public IValidator<DeleteAmenityMappingCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteAmenityMappingCommand> validator)
     {
         validator.RuleFor(c => c.deleteRequest.SelectedIds)
             .NotEmpty()

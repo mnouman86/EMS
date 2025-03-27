@@ -14,25 +14,25 @@ using CleanArc.Application.Features.MappingHotelLanguage.Queries.GetMappingHotel
 
 
 
-namespace CleanArc.Application.Features.MappingHotelAmenity.Queries.GetMappingHotelAmenityByID;
+namespace CleanArc.Application.Features.AmenityMapping.Queries.GetAmenityMappingByID;
 
-internal class GetMappingHotelAmenityByIDQueryHandler : IRequestHandler<GetMappingHotelAmenityByIDQuery, OperationResult<GetMappingHotelAmenityByIDQueryResult>>
+internal class GetAmenityMappingByIDQueryHandler : IRequestHandler<GetAmenityMappingByIDQuery, OperationResult<GetAmenityMappingByIDQueryResult>>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly ILogger<GetMappingHotelAmenityByIDQueryHandler> _logger;
+    private readonly ILogger<GetAmenityMappingByIDQueryHandler> _logger;
     private readonly IMapper _mapper;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
 
 
 
-    public GetMappingHotelAmenityByIDQueryHandler(IUnitOfWork unitOfWork, ILogger<GetMappingHotelAmenityByIDQueryHandler> logger, IMapper mapper, IHttpContextAccessor httpContextAccessor)
+    public GetAmenityMappingByIDQueryHandler(IUnitOfWork unitOfWork, ILogger<GetAmenityMappingByIDQueryHandler> logger, IMapper mapper, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
         _httpContextAccessor = httpContextAccessor;
         _logger = logger;
     }
-    public async ValueTask<OperationResult<GetMappingHotelAmenityByIDQueryResult>> Handle(GetMappingHotelAmenityByIDQuery request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<GetAmenityMappingByIDQueryResult>> Handle(GetAmenityMappingByIDQuery request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -40,30 +40,30 @@ internal class GetMappingHotelAmenityByIDQueryHandler : IRequestHandler<GetMappi
 
             //if (ageType == null)
             //{
-            //    return OperationResult<GetMappingHotelAmenityByIDQueryResult>.NotFoundResult("ageType not found");
+            //    return OperationResult<GetAmenityMappingByIDQueryResult>.NotFoundResult("ageType not found");
             //}
 
             ////var result = new GetURLByIdQueryResult(url.Id, url.Path, url.Title, url.Description);
-            //var result = _mapper.Map<GetMappingHotelAmenityByIDQueryResult>(ageType);
+            //var result = _mapper.Map<GetAmenityMappingByIDQueryResult>(ageType);
 
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-            //return OperationResult<GetMappingHotelAmenityByIDQueryResult>.SuccessResult(result);
+            //return OperationResult<GetAmenityMappingByIDQueryResult>.SuccessResult(result);
 
-            var response = await _unitOfWork.MappingHotelAmenityRepository.GetByIdAsync(request.searchRequestById);
+            var response = await _unitOfWork.AmenityMappingRepository.GetByIdAsync(request.searchRequestById);
 
             if (response.Code != 200)
             {
-                return OperationResult<GetMappingHotelAmenityByIDQueryResult>.FailureResult(
+                return OperationResult<GetAmenityMappingByIDQueryResult>.FailureResult(
                     response.Message,
                 response.Code
                 );
             }
 
-            var mappedResult = _mapper.Map<GetMappingHotelAmenityByIDQueryResult>(response.Data);
+            var mappedResult = _mapper.Map<GetAmenityMappingByIDQueryResult>(response.Data);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-            return OperationResult<GetMappingHotelAmenityByIDQueryResult>.SuccessResult(
+            return OperationResult<GetAmenityMappingByIDQueryResult>.SuccessResult(
                 mappedResult,
                 response.Code,
                 response.Message

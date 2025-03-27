@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArc.SharedKernel.Extensions;
-using CleanArc.Application.Features.MappingHotelAmenity.Queries.GetMappingHotelAmenityByID;
+using CleanArc.Application.Features.AmenityMapping.Queries.GetAmenityMappingByID;
 
 
 

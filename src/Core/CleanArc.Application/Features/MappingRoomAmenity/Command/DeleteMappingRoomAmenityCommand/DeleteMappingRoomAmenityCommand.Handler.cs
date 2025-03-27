@@ -1,6 +1,6 @@
 ﻿using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.FeaturesppingHotelAmenity.Command.DeleteMappingHotelAmenityCommand;
+using CleanArc.Application.AmenityMapping.Command.DeleteAmenityMappingCommand;
 using CleanArc.Application.Models.Common;
 using MapsterMapper;
 using Mediator;
