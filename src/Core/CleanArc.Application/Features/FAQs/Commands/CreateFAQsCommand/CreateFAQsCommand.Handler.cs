@@ -59,14 +59,12 @@ internal class CreateFAQsCommandHandler: IRequestHandler<CreateFAQsCommand, Oper
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.FAQsRepository.AddAsync(new Domain.Entities.FAQs.FAQs()
             { CreatedBy = user.Id,
-                CategoryServiceID = request.CategoryServiceID,
-                ServiceID=request.ServiceID,
-                SubServiceID = request.SubServiceID,
+                GenericTitleId = request.GenericTitleId,
                 Question = request.Question,
                 Answer = request.Answer,
                 CultureId =request.CultureId  });
             await _unitOfWork.CommitAsync();
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }

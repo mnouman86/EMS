@@ -11,33 +11,22 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.FAQs.Commands.CreateFAQsCommand;
-public record CreateFAQsCommand(int? CategoryServiceID, int? ServiceID, int? SubServiceID, string? Question, string? Answer, int? CreatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateFAQsCommand(int? GenericTitleId, string? Question, 
+    string? Answer, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateFAQsCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<CreateFAQsCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateFAQsCommand> validator)
     {
-        validator.RuleFor(c => c.CategoryServiceID)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a valid CategoryServiceID");
-        validator.RuleFor(c => c.ServiceID)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a ServiceID");
-        validator.RuleFor(c => c.SubServiceID)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a SubServiceID");
         validator.RuleFor(c => c.Question)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please enter a Question");
+            .WithMessage("Please enter a Question.");
         validator.RuleFor(c => c.Answer)
     .NotEmpty()
     .NotNull()
-    .WithMessage("Please enter a QueAnswerstion");
+    .WithMessage("Please enter an Answer.");
         return validator;
     }
 }
