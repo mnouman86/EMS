@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.MappingHotelAmenity.Queries.GetMappingHotelAmenityByID
+namespace CleanArc.Application.Features.AmenityMapping.Queries.GetAmenityMappingByID
 {
-    public record GetMappingHotelAmenityByIDQuery(SearchRequestById searchRequestById) : IRequest<OperationResult<GetMappingHotelAmenityByIDQueryResult>>;
+    public record GetAmenityMappingByIDQuery(SearchRequestById searchRequestById) : IRequest<OperationResult<GetAmenityMappingByIDQueryResult>>;
 }

@@ -13,21 +13,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.MappingHotelAmenity.Command.CreateMappingHotelAmenityCommand;
+namespace CleanArc.Application.Features.AmenityMapping.Command.CreateAmenityMappingCommand;
 
-internal class CreateMappingHotelAmenityCommandHandler : IRequestHandler<CreateMappingHotelAmenityCommand, OperationResult<ResponseEntity>>
+internal class CreateAmenityMappingCommandHandler : IRequestHandler<CreateAmenityMappingCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<CreateMappingHotelAmenityCommandHandler> _logger;
+    private readonly ILogger<CreateAmenityMappingCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
     //private readonly IUnitOfWork _unitOfWork;
     //private readonly IAppUserManager _userManager;
 
 
-    public CreateMappingHotelAmenityCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<CreateMappingHotelAmenityCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public CreateAmenityMappingCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<CreateAmenityMappingCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -39,7 +39,7 @@ internal class CreateMappingHotelAmenityCommandHandler : IRequestHandler<CreateM
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateMappingHotelAmenityCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateAmenityMappingCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -55,7 +55,7 @@ internal class CreateMappingHotelAmenityCommandHandler : IRequestHandler<CreateM
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
-            var result = await _unitOfWork.MappingHotelAmenityRepository.AddAsync(new Domain.Entities.MappingHotelAmenities.MappingHotelAmenities()
+            var result = await _unitOfWork.AmenityMappingRepository.AddAsync(new Domain.Entities.MappingHotelAmenities.MappingHotelAmenities()
             { CreatedBy = user.Id,UpdatedBy=user.Id, HotelID = request.HotelID, AmenitiesIDs = request.AmenitiesIDs });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

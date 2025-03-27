@@ -8,8 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.MappingHotelAmenity.Queries.GetAllMappingHotelAmenity;
+namespace CleanArc.Application.Features.AmenityMapping.Queries.GetAllAmenityMapping;
 
-public record GetAllMappingHotelAmenityQuery(SearchRequest searchRequest) : IRequest<OperationResult<List<GetAllMappingHotelAmenityQueryResult>>>;
+public record GetAllAmenityMappingQuery(SearchRequest searchRequest) : IRequest<OperationResult<List<GetAllAmenityMappingQueryResult>>>;
 
 

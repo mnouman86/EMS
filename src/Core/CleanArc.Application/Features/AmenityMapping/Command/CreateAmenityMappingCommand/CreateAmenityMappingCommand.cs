@@ -11,14 +11,14 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
-namespace CleanArc.Application.Features.MappingHotelAmenity.Command.CreateMappingHotelAmenityCommand;
+namespace CleanArc.Application.Features.AmenityMapping.Command.CreateAmenityMappingCommand;
 
-public record CreateMappingHotelAmenityCommand(int? HotelID, string? AmenitiesIDs, int? CreatedBy, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
-IValidatableModel<CreateMappingHotelAmenityCommand>
+public record CreateAmenityMappingCommand(int? HotelID, string? AmenitiesIDs, int? CreatedBy, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+IValidatableModel<CreateAmenityMappingCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
-    public IValidator<CreateMappingHotelAmenityCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateMappingHotelAmenityCommand> validator)
+    public IValidator<CreateAmenityMappingCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateAmenityMappingCommand> validator)
     {
         validator.RuleFor(c => c.HotelID)
             .NotEmpty()

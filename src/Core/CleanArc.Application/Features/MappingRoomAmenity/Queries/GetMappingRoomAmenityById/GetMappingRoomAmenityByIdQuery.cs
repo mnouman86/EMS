@@ -1,4 +1,4 @@
-﻿using CleanArc.Application.Features.MappingHotelAmenity.Queries.GetMappingHotelAmenityByID;
+﻿using CleanArc.Application.Features.AmenityMapping.Queries.GetAmenityMappingByID;
 using CleanArc.Application.Models.Common;
 using CleanArc.Application.Models.Request;
 using Mediator;

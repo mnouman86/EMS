@@ -1,4 +1,4 @@
-﻿using CleanArc.Application.FeaturesppingHotelAmenity.Command.DeleteMappingHotelAmenityCommand;
+﻿using CleanArc.Application.AmenityMapping.Command.DeleteAmenityMappingCommand;
 using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.ValidationBase.Contracts;
 using CleanArc.SharedKernel.ValidationBase;
