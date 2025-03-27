@@ -9,7 +9,7 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries
     public static class AmenityMappingQueries
     {
         public static string Create_Mapping_HotelAmenities => "usp_Create_AmenityMapping";
-        public static string GetByAmenityTypeEnumID_AmenityMapping => "usp_GetByAmenityTypeEnumID_AmenityMapping";
+        public static string GetByAmenityTypeEnumID_AmenityMapping => "usp_GetByServiceTypeEnumID_AmenityMapping";
 
     }
 }
