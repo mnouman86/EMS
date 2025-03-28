@@ -12,5 +12,5 @@ public class GetAllAmenityMappingQueryResult
     public string? Amenity { get; set; }
     //public string? ServiceName { get; set; }
     public int? GenericTitleId { get; set; }
-    public string? Selected { get; set; }
+    public bool? Selected { get; set; }
 }
