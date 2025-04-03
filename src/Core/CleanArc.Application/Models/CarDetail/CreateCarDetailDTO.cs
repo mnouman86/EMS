@@ -9,7 +9,7 @@ namespace CleanArc.Application.Models.CarDetail
     public class CreateCarDetailDTO
     {
         //public int Id { get; set; }
-        public int? BusinessID { get; set; }
+        public int? BusinessId { get; set; }
         public string? Model { get; set; }
         public string? Year { get; set; }
         public string? VehicleIdentificationNumber { get; set; }
@@ -21,9 +21,13 @@ namespace CleanArc.Application.Models.CarDetail
         // public bool? IsActive { get; set; }
         //  public bool? IsDeleted { get; set; }
         public int? CreatedBy { get; set; }
+        public int? CultureId { get; set; }
        // public DateTime? CreatedAt { get; set; }
        // public int? UpdatedBy { get; set; }
        // public DateTime? UpdatedAt { get; set; }
         public string? About { get; set; }
+        public string? RefundPolicy { get; set; }
+        public string? NonRefundPolicy { get; set; }
+        public string? CancellationPolicy { get; set; }
     }
 }
