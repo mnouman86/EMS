@@ -12,50 +12,28 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.RoomDetails.Command.UpdateRoomDetailCommand;
 
-public record UpdateRoomDetailCommand(int Id, int? HotelID, int? RoomTypeID, int? RoomSizeUnitID, string? RoomSize, bool? IsBathroomPrivate,
-    decimal? Price, decimal? AdditionalMatricCharges, string? RoomNumber, bool? IsAvailable, int? UpdatedBy, bool? IsRefundable, bool? IsCancelation) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateRoomDetailCommand(int Id, int? GenericTitleId, int? RoomTypeLookUpId, int? RoomSizeUnitLookUpId,
+    string? RoomSize, bool? IsSharedBathroom,
+    decimal? Price, decimal? AdditionalMatricCharges, string? RoomNumber, bool? IsAvailable,
+    int? CultureId, bool? IsPartiallyRefundable, bool? IsFullyRefundable) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateRoomDetailCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<UpdateRoomDetailCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateRoomDetailCommand> validator)
     {
-        validator.RuleFor(c => c.HotelID)
+        validator.RuleFor(c => c.GenericTitleId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid HotelID");
-        validator.RuleFor(c => c.RoomTypeID)
+        validator.RuleFor(c => c.RoomTypeLookUpId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a RoomTypeID");
-        validator.RuleFor(c => c.RoomSizeUnitID)
+        validator.RuleFor(c => c.RoomSizeUnitLookUpId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a RoomSizeUnitID");
-        validator.RuleFor(c => c.RoomSize)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a RoomSize");
-        validator.RuleFor(c => c.IsBathroomPrivate)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a IsBathroomPrivate");
-        validator.RuleFor(c => c.Price)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a Price");
-        validator.RuleFor(c => c.AdditionalMatricCharges)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a AdditionalMatricCharges");
-        validator.RuleFor(c => c.RoomNumber)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a RoomNumber");
-        ////validator.RuleFor(c => c.IsAvailable)
-        ////    .NotEmpty()
-        ////    .NotNull()
-        //.WithMessage("Please enter a Description");
         return validator;
     }
 }

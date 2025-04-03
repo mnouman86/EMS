@@ -9,22 +9,18 @@ namespace CleanArc.Application.Models.RoomDetails
     public class UpdateRoomDetailsDTO
     {
          public int Id { get; set; }
-        public int? HotelID { get; set; }
-        public int? RoomTypeID { get; set; }
-        public int? RoomSizeUnitID { get; set; }
+        public int? GenericTitleId { get; set; }
+        public int? RoomTypeLookUpId { get; set; }
+        public int? RoomSizeUnitLookUpId { get; set; }
         public string? RoomSize { get; set; }
-        public bool? IsBathroomPrivate { get; set; }
+        public bool? IsSharedBathroom { get; set; }
+        public bool? IsPartiallyRefundable { get; set; }
+        public bool? IsFullyRefundable { get; set; }
         public decimal? Price { get; set; }
         public decimal? AdditionalMatricCharges { get; set; }
         public string? RoomNumber { get; set; }
         public bool? IsAvailable { get; set; }
-        //public bool? IsActive { get; set; }
-        //public bool? IsDeleted { get; set; }
-        //public int? CreatedBy { get; set; }
-        //public DateTime? CreatedAt { get; set; }
+        public int? CultureId { get; set; }
         public int? UpdatedBy { get; set; }
-        //public DateTime? UpdatedAt { get; set; }
-        public bool? IsCancelation { get; set; }
-        public bool? IsRefundable { get; set; }
     }
 }
