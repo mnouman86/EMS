@@ -63,7 +63,7 @@ internal class CreateRoomDetailCommandHandler : IRequestHandler<CreateRoomDetail
                 IsPartiallyRefundable = request.IsPartiallyRefundable,
                 IsFullyRefundable=request.IsFullyRefundable,
                 CultureId = request.CultureId,
-
+                Description = request.Description,
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

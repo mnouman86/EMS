@@ -12,6 +12,7 @@ public class RoomDetails
     public int? GenericTitleId { get; set; }
 
     public string? HotelName { get; set; }
+    public string? Description { get; set; }
     public int? RoomTypeLookUpId { get; set; }
 
     public string? RoomType { get; set; }
