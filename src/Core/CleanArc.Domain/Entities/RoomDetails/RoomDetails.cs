@@ -15,7 +15,7 @@ public class RoomDetails
     public int? RoomTypeLookUpId { get; set; }
 
     public string? RoomType { get; set; }
-    public int? RoomSizeUnitLookUpID { get; set; }
+    public int? RoomSizeUnitLookUpId { get; set; }
 
     public string? RoomSizeUnit { get; set; }
     public string? RoomSize { get; set; }

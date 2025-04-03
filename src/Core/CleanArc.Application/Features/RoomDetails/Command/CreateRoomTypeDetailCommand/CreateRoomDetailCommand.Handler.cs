@@ -51,17 +51,18 @@ internal class CreateRoomDetailCommandHandler : IRequestHandler<CreateRoomDetail
 
             var result = await _unitOfWork.RoomDetailsRepository.AddAsync(new Domain.Entities.RoomDetails.RoomDetails()
             { CreatedBy = user.Id,
-                HotelID = request.HotelID,
-                RoomTypeID = request.RoomTypeID,
-                RoomSizeUnitID = request.RoomSizeUnitID,
+                GenericTitleId = request.GenericTitleId,
+                RoomTypeLookUpId = request.RoomTypeLookUpId,
+                RoomSizeUnitLookUpId = request.RoomSizeUnitLookUpId,
                 RoomSize = request.RoomSize,
-                IsBathroomPrivate = request.IsBathroomPrivate,
+                IsSharedBathroom = request.IsSharedBathroom,
                 Price = request.Price,
                 AdditionalMatricCharges = request.AdditionalMatricCharges,
                 RoomNumber = request.RoomNumber,
                 IsAvailable = request.IsAvailable,
-                IsRefundable=request.IsRefundable,
-                IsCancelation=request.IsCancelation
+                IsPartiallyRefundable = request.IsPartiallyRefundable,
+                IsFullyRefundable=request.IsFullyRefundable,
+                CultureId = request.CultureId,
 
             });
             await _unitOfWork.CommitAsync();
