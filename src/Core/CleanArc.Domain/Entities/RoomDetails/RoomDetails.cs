@@ -9,17 +9,19 @@ namespace CleanArc.Domain.Entities.RoomDetails;
 public class RoomDetails
 {
     public int Id { get; set; }
-    public int? HotelID { get; set; }
+    public int? GenericTitleId { get; set; }
 
     public string? HotelName { get; set; }
-    public int? RoomTypeID { get; set; }
+    public int? RoomTypeLookUpId { get; set; }
 
-    public string? RoomTypeName { get; set; }
-    public int? RoomSizeUnitID { get; set; }
+    public string? RoomType { get; set; }
+    public int? RoomSizeUnitLookUpID { get; set; }
 
-    public string? RoomSizeUnitName { get; set; }
+    public string? RoomSizeUnit { get; set; }
     public string? RoomSize { get; set; }
-    public bool? IsBathroomPrivate { get; set; }
+    public bool? IsSharedBathroom { get; set; }
+    public bool? IsPartiallyRefundable { get; set; }
+    public bool? IsFullyRefundable { get; set; }
     public decimal? Price { get; set; }
     public decimal? AdditionalMatricCharges { get; set; }
     public string? RoomNumber { get; set; }
@@ -30,10 +32,5 @@ public class RoomDetails
     public DateTime? CreatedAt { get; set; }
     public int? UpdatedBy { get; set; }
     public DateTime? UpdatedAt { get; set; }
-    public bool? IsCancelation { get; set; }
-    public bool? IsRefundable { get; set; }
-
 	public int? CultureId { get; set; }
-	public int? Code { get; set; }
-	public string? Message { get; set; }
 }
