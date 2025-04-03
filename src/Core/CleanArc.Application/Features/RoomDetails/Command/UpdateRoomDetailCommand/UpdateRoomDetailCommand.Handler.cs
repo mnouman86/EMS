@@ -70,6 +70,7 @@ internal class UpdateRoomDetailCommandHandler : IRequestHandler<UpdateRoomDetail
                 IsFullyRefundable = request.IsFullyRefundable,
                 IsPartiallyRefundable = request.IsPartiallyRefundable,
                 CultureId = request.CultureId,
+                Description = request.Description,
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

@@ -13,6 +13,7 @@ public class CreateRoomDetailsDTO
     public int? RoomTypeLookUpId { get; set; }
     public int? RoomSizeUnitLookUpId { get; set; }
     public string? RoomSize { get; set; }
+    public string? Description { get; set; }
     public bool? IsSharedBathroom { get; set; }
     public bool? IsPartiallyRefundable { get; set; }
     public bool? IsFullyRefundable { get; set; }
