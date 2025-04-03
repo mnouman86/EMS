@@ -13,7 +13,10 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.CarDetail.Command.UpdateCarDetailCommand
 {
-    public record UpdateCarDetailCommand(int Id, int? BusinessID, string? Model, string? Year, String? VehicleIdentificationNumber, string? PlateNumber, int? NoOfSeat, int? RentPrice, string? About, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+    public record UpdateCarDetailCommand(int Id, int? BusinessId, string? Model, string? Year, 
+        string? VehicleIdentificationNumber, string? PlateNumber, int? NoOfSeat, int? RentPrice, string? About, int? CultureId,
+    string? RefundPolicy, string? NonRefundPolicy, string? CancellationPolicy
+        ) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateCarDetailCommand>
     {
         [JsonIgnore]

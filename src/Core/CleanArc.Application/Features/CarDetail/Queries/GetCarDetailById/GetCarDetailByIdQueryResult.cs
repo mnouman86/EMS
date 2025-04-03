@@ -10,7 +10,7 @@ namespace CleanArc.Application.Features.CarDetail.Queries.GetCarDetailById
     {
 
         public int Id { get; set; }
-        public int BusinessID { get; set; }
+        public int BusinessId { get; set; }
         public string Model { get; set; }
         public string Year { get; set; }
         public string VehicleIdentificationNumber { get; set; }
@@ -27,6 +27,9 @@ namespace CleanArc.Application.Features.CarDetail.Queries.GetCarDetailById
         //public bool IsRefundable { get; set; }
         //public bool IsCancelation { get; set; }
         public string? About { get; set; }
+        public string? RefundPolicy { get; set; }
+        public string? NonRefundPolicy { get; set; }
+        public string? CancellationPolicy { get; set; }
 
     }
 }

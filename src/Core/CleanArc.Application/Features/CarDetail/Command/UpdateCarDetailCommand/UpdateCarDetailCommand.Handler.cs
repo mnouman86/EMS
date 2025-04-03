@@ -58,7 +58,7 @@ internal class UpdateCarDetailCommandHandler : IRequestHandler<UpdateCarDetailCo
             var result = await _unitOfWork.CarDetailRepository.UpdateAsync(new Domain.Entities.CarDetail.CarDetail()
             { UpdatedBy = user.Id,
                 Id= request.Id,
-                BusinessID = request.BusinessID,
+                BusinessId = request.BusinessId,
                 Model = request.Model,
                 Year = request.Year,
                 VehicleIdentificationNumber = request.VehicleIdentificationNumber,
@@ -66,8 +66,10 @@ internal class UpdateCarDetailCommandHandler : IRequestHandler<UpdateCarDetailCo
                 NoOfSeat = request.NoOfSeat,
 				RentPrice = request.RentPrice,
                 About = request.About,
-                //IsRefundable = request.IsRefundable,
-                //IsCancelation = request.IsCancelation
+                CultureId = request.CultureId,
+                RefundPolicy = request.RefundPolicy,
+                NonRefundPolicy = request.NonRefundPolicy,
+                CancellationPolicy = request.CancellationPolicy,
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

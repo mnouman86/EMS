@@ -25,6 +25,9 @@ namespace CleanArc.Application.Features.CarDetail.Queries.GetAllCarDetail
         //public bool IsRefundable { get; set; }
         //public bool IsCancelation { get; set; }
         public string? About { get; set; }
+        public string? RefundPolicy { get; set; }
+        public string? NonRefundPolicy { get; set; }
+        public string? CancellationPolicy { get; set; }
 
     }
 }
