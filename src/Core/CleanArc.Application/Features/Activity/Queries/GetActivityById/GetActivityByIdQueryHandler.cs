@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddressById;
+using System.Globalization;
 
 namespace CleanArc.Application.Features.Activity.Queries.GetActivityById
 {
@@ -60,6 +61,20 @@ namespace CleanArc.Application.Features.Activity.Queries.GetActivityById
                 }
 
                 var mappedResult = _mapper.Map<GetActivityByIdQueryResult>(response.Data);
+                if (mappedResult != null)
+                {
+                    mappedResult.StartTime = response.Data.StartTime.HasValue
+    ? response.Data.StartTime.Value.ToString("hh:mm tt", CultureInfo.InvariantCulture)
+    : string.Empty;
+
+                    mappedResult.EndTime = response.Data.EndTime.HasValue
+    ? response.Data.EndTime.Value.ToString("hh:mm tt", CultureInfo.InvariantCulture)
+    : string.Empty;
+                    //            public string? CheckInFromTime { get; set; }
+                    //public string? CheckInToTime { get; set; }
+                    //public string? CheckOutFromTime { get; set; }
+                    //public string? CheckOutToTime { get; set; }
+                }
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
                 return OperationResult<GetActivityByIdQueryResult>.SuccessResult(

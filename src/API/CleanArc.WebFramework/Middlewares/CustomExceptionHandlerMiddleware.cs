@@ -6,7 +6,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
+using CleanArc.Application.Models.Common;
+using System.IO.IsolatedStorage;
 
 namespace CleanArc.WebFramework.Middlewares;
 
@@ -35,47 +38,70 @@ public class CustomExceptionHandlerMiddleware
 
     public async Task Invoke(HttpContext context)
     {
-
-
         try
         {
             await _next(context);
         }
-
         catch (ValidationException validationException)
         {
+            //context.Response.StatusCode = StatusCodes.Status422UnprocessableEntity;
+
+            //var errors = new Dictionary<string, List<string>>();
+
+            //foreach (var validationExceptionError in validationException.Errors)
+            //{
+            //    if(!errors.ContainsKey(validationExceptionError.PropertyName))
+            //        errors.Add(validationExceptionError.PropertyName,new List<string>(){validationExceptionError.ErrorMessage});
+            //    else
+            //        errors[validationExceptionError.PropertyName].Add(validationExceptionError.ErrorMessage);
+
+            //}
+
+            //var apiResult = new ApiResult<IDictionary<string, List<string>>>(false, ApiResultStatusCode.EntityProcessError, errors, ApiResultStatusCode.EntityProcessError.ToDisplay());
+
+            //context.Response.ContentType = "application/problem+json";
+            //await context.Response.WriteAsJsonAsync(apiResult);
+            // New implementation using OperationResult
+            var errorMessages = validationException.Errors
+                .Select(e => e.ErrorMessage)
+                .ToList();
+            var combinedMessage = string.Join(" | ", errorMessages);
+
+            var result = OperationResult<object>.FailureResult(
+                message: combinedMessage,
+                statusCode: StatusCodes.Status422UnprocessableEntity
+            );
+
             context.Response.StatusCode = StatusCodes.Status422UnprocessableEntity;
-
-            var errors = new Dictionary<string, List<string>>();
-
-            foreach (var validationExceptionError in validationException.Errors)
-            {
-                if(!errors.ContainsKey(validationExceptionError.PropertyName))
-                    errors.Add(validationExceptionError.PropertyName,new List<string>(){validationExceptionError.ErrorMessage});
-                else
-                    errors[validationExceptionError.PropertyName].Add(validationExceptionError.ErrorMessage);
-
-            }
-
-            var apiResult = new ApiResult<IDictionary<string, List<string>>>(false, ApiResultStatusCode.EntityProcessError, errors, ApiResultStatusCode.EntityProcessError.ToDisplay());
-
             context.Response.ContentType = "application/problem+json";
-            await context.Response.WriteAsJsonAsync(apiResult);
+            await context.Response.WriteAsJsonAsync(result);
+
         }
 
         catch (Exception exception)
         {
             _logger.LogError(exception,exception.Message);
-            context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+            //context.Response.StatusCode = StatusCodes.Status500InternalServerError;
 
-            if (!_env.IsDevelopment())
-            {
-                context.Response.ContentType = "application/problem+json";
-                var response = new ApiResult(false,
-                    ApiResultStatusCode.ServerError, "Server Error");
-                context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                await context.Response.WriteAsJsonAsync(response);
-            }
+            //if (!_env.IsDevelopment())
+            //{
+            //    context.Response.ContentType = "application/problem+json";
+            //    var response = new ApiResult(false,
+            //        ApiResultStatusCode.ServerError, "Server Error");
+            //    context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+            //    await context.Response.WriteAsJsonAsync(response);
+            //}
+            // New implementation using OperationResult
+            var result = OperationResult<object>.FailureResult(
+                message: _env.IsDevelopment()
+                    ? exception.ToString()
+                    : "An unexpected error occurred",
+                statusCode: StatusCodes.Status500InternalServerError
+            );
+
+            context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+            context.Response.ContentType = "application/problem+json";
+            await context.Response.WriteAsJsonAsync(result);
 
             //await _next(context);
         }

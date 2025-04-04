@@ -48,7 +48,7 @@ public class OperationResult<TResult>
     //}
     public static OperationResult<TResult> FailureResult(string message, int statusCode = 400)
     {
-        return new OperationResult<TResult> { Message = message, IsSuccess = false, StatusCode = statusCode };
+        return new OperationResult<TResult> {Message = message, IsSuccess = false, StatusCode = statusCode };
     }
 
     public static OperationResult<TResult> NotFoundResult(string message)
