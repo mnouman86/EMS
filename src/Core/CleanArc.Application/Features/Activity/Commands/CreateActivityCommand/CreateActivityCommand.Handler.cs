@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace CleanArc.Application.Features.Activity.Commands.CreateActivityCommand;
 
@@ -45,7 +46,8 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-
+            DateTime.TryParseExact(request.StartTime, TimeFormats.formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime startTime);
+            DateTime.TryParseExact(request.EndTime, TimeFormats.formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime endTime);
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
                 return OperationResult<ResponseEntity>.FailureResult("User Not Found");
@@ -60,30 +62,30 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
            var result= await _unitOfWork.ActivityRepository.AddAsync(new Domain.Entities.Activity.Activity()
             {
                 CultureId = request.CultureId,
-                BusinessID = request.BusinessID,
+                BusinessId = request.BusinessId,
                 Title=request.Title,
-                LanguageLookUpID = request.LanguageLookUpID,
-                ServiceLookUpID = request.ServiceLookUpID,
-                SubServiceLookUpID = request.SubServiceLookUpID,
+                LanguageLookUpId = request.LanguageLookUpId,
+                ServiceCategoryLookUpId = request.ServiceCategoryLookUpId,
+                SubServiceCategoryLookUpId = request.SubServiceCategoryLookUpId,
                 OtherSubService=request.OtherSubService,
                 MinAge = request.MinAge,
                 MaxAge = request.MaxAge,
-                ActivityTypeLookUpID = request.ActivityTypeLookUpID,
-                ActivityNatureLookUpID = request.ActivityNatureLookUpID,
+                ActivityTypeLookUpId = request.ActivityTypeLookUpId,
+                ActivityNatureLookUpId = request.ActivityNatureLookUpId,
               //  MinGroupSize = request.MinGroupSize,
                 MaxGroupSize = request.MaxGroupSize,
                 //IsPrivateActivity = request.IsPrivateActivity,
                 //PrivateParticipantLookUpID = request.PrivateParticipantLookUpID,
                 WhoCannotParticipate = request.WhoCannotParticipate,
                 WhoCanParticipate = request.WhoCanParticipate,
-                ManageActivityLookUpID = request.ManageActivityLookUpID,
+                ManageActivityLookUpId = request.ManageActivityLookUpId,
                 OtherManageActivity=request.OtherManageActivity,
                 Days = request.Days,
                 Hours = request.Hours,
                 Description = request.Description,
                 //AddressID = request.AddressID,
                 IsTransportation = request.IsTransportation,
-                TransportationLookUpID = request.TransportationLookUpID,
+                TransportationLookUpId = request.TransportationLookUpId,
                 //ActivityIncludeID = request.ActivityIncludeID,
                 IsDisability = request.IsDisability,
                 //DisabilitiesID = request.DisabilitiesID,
@@ -93,12 +95,12 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
                // PerPersonPrice=request.PerPersonPrice,
                 CreatedBy=user.Id,
                 SeasonLookUpID = request.SeasonLookUpID,
-                IncludeOptionLookUpID = request.IncludeOptionLookUpID,
-                DisabilityOptionLookUpID= request.DisabilityOptionLookUpID,
+                IncludeOptionLookUpId = request.IncludeOptionLookUpId,
+                DisabilityOptionLookUpId= request.DisabilityOptionLookUpId,
                 EndDate = request.EndDate,
                 StartDate = request.StartDate,
-                StartTime = request.StartTime,
-                EndTime = request.EndTime
+                StartTime = startTime,
+                EndTime = endTime
                 // PerGroupPrice = request.PerGroupPrice,
                 //SeasonID = request.SeasonID,
 

@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Mediator;
 using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.Extensions;
+using System.Globalization;
 
 namespace CleanArc.Application.Features.Activity.Commands.UpdateActivityCommand;
 
@@ -44,6 +45,8 @@ internal class UpdateActivityCommandHandler:IRequestHandler<UpdateActivityComman
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
+            DateTime.TryParseExact(request.StartTime, TimeFormats.formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime startTime);
+            DateTime.TryParseExact(request.EndTime, TimeFormats.formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime endTime);
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
                 return OperationResult<ResponseEntity>.FailureResult("User Not Found");
@@ -56,46 +59,46 @@ internal class UpdateActivityCommandHandler:IRequestHandler<UpdateActivityComman
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result=await _unitOfWork.ActivityRepository.UpdateAsync(new Domain.Entities.Activity.Activity()
-            { UpdatedBy = user.Id,Id= request.Id,
+            { UpdatedBy = user.Id,GenericTitleId= request.Id,
                 CultureId=request.CultureId,
-                BusinessID=request.BusinessID,
+                BusinessId=request.BusinessId,
                 Title = request.Title,
-                LanguageLookUpID = request.LanguageLookUpID,
-                ServiceLookUpID = request.ServiceLookUpID,
-                SubServiceLookUpID = request.SubServiceLookUpID,
+                LanguageLookUpId = request.LanguageLookUpId,
+                ServiceCategoryLookUpId = request.ServiceCategoryLookUpId,
+                SubServiceCategoryLookUpId = request.SubServiceCategoryLookUpId,
                 MinAge = request.MinAge,
                 MaxAge = request.MaxAge,
-                ActivityTypeLookUpID = request.ActivityTypeLookUpID,
-                ActivityNatureLookUpID = request.ActivityNatureLookUpID,
+                ActivityTypeLookUpId = request.ActivityTypeLookUpId,
+                ActivityNatureLookUpId = request.ActivityNatureLookUpId,
                 //MinGroupSize = request.MinGroupSize,
                 MaxGroupSize = request.MaxGroupSize,
                 //IsPrivateActivity = request.IsPrivateActivity,
                 WhoCannotParticipate = request.WhoCannotParticipate,
                 WhoCanParticipate = request.WhoCanParticipate,
-                ManageActivityLookUpID = request.ManageActivityLookUpID,
+                ManageActivityLookUpId = request.ManageActivityLookUpId,
                 Days = request.Days,
                 Hours = request.Hours,
                 Description = request.Description,
                 //AddressID = request.AddressID,
                 IsTransportation = request.IsTransportation,
-                TransportationLookUpID = request.TransportationLookUpID,
+                TransportationLookUpId = request.TransportationLookUpId,
                 //ActivityIncludeID = request.ActivityIncludeID,
                 IsDisability = request.IsDisability,
                 //DisabilitiesID = request.DisabilitiesID,
                 NotAllowedItems = request.NotAllowedItems,
                 AllowedItems = request.AllowedItems,
                 CurrencyLookUpID = request.CurrencyLookUpID,
-                SeasonLookUpID = request.SeasonLookUpID,
+                SeasonLookUpID = request.SeasonLookUpId,
                 //PerGroupPrice = request.PerGroupPrice,
                 //PerPersonPrice = request.PerPersonPrice,
                 OtherManageActivity = request.OtherManageActivity,
                 OtherSubService = request.OtherSubService,
-                IncludeOptionLookUpID = request.IncludeOptionLookUpID,
+                IncludeOptionLookUpId = request.IncludeOptionLookUpId,
                 EndDate = request.EndDate,
                 StartDate = request.StartDate,
-                StartTime = request.StartTime,
-                EndTime = request.EndTime,
-                DisabilityOptionLookUpID = request.DisabilityOptionLookUpID,
+                StartTime = startTime,
+                EndTime = endTime,
+                DisabilityOptionLookUpId = request.DisabilityOptionLookUpId,
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

@@ -28,6 +28,8 @@ using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using CleanArc.Application.Common;
 using CleanArc.Application.Features.Activity.Queries.GetActivityCheckoutDetail;
+using CleanArc.Domain.Entities.Hotel;
+//using System.Diagnostics;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -72,20 +74,43 @@ public class ActivityRepository : IActivityRepository
 		_httpContextAccessor = httpContextAccessor;
 	}
 	/// <inheritdoc/>
-	public async Task<ResponseEntity> AddAsync(Activity Activity)
+	public async Task<ResponseEntity> AddAsync(Activity activity)
 	{
-		using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, Activity))
+		using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, activity))
 		{
 			using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
 			{
 				connection.Open();
-				CreateActivityDTO createActivityDTO = _mapper.Map<CreateActivityDTO>(Activity);
+				CreateActivityDTO createActivityDTO = _mapper.Map<CreateActivityDTO>(activity);
 				var parameters = new DynamicParameters(createActivityDTO);
-				//parameters.AddDynamicParams(createActivityDTO);
-				
-				// var result = await connection.ExecuteScalarAsync(ActivityQueries.Create_Activity, parameters, commandType: CommandType.StoredProcedure);
-				//var result = await connection.QuerySingleOrDefaultAsync<int>(ActivityQueries.Create_Activity, parameters, commandType: CommandType.StoredProcedure);
-				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityQueries.Create_Activity, parameters, commandType: CommandType.StoredProcedure);
+                var languageTable = new DataTable();
+                languageTable.Columns.Add("LanguageTypeLookUpId", typeof(int));
+                foreach (var language in activity.LanguageLookUpId)
+                    languageTable.Rows.Add(language);
+                parameters.Add("@Languages", languageTable.AsTableValuedParameter("LanguageTableType"));
+
+                var seasonTable = new DataTable();
+                seasonTable.Columns.Add("SeasonLookUpIds", typeof(int));
+                foreach (var season in activity.SeasonLookUpID)
+                    seasonTable.Rows.Add(season);
+                parameters.Add("@Seasons", seasonTable.AsTableValuedParameter("SeasonIDTableType"));
+
+                var includeOptionsTable = new DataTable();
+                includeOptionsTable.Columns.Add("IncludeOptionIds", typeof(int));
+                foreach (var includeOption in activity.IncludeOptionLookUpId)
+                    includeOptionsTable.Rows.Add(includeOption);
+                parameters.Add("@IncludeOptions", includeOptionsTable.AsTableValuedParameter("IncludeOptionsTableType"));
+
+                var disabilityOptionsTable = new DataTable();
+                disabilityOptionsTable.Columns.Add("DisabilityOptionIds", typeof(int));
+                foreach (var disabilityOption in activity.DisabilityOptionLookUpId)
+                    disabilityOptionsTable.Rows.Add(disabilityOption);
+                parameters.Add("@DisabilityOptions", disabilityOptionsTable.AsTableValuedParameter("DisabilityOptionTableType"));
+                //parameters.AddDynamicParams(createActivityDTO);
+
+                // var result = await connection.ExecuteScalarAsync(ActivityQueries.Create_Activity, parameters, commandType: CommandType.StoredProcedure);
+                //var result = await connection.QuerySingleOrDefaultAsync<int>(ActivityQueries.Create_Activity, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityQueries.Create_Activity, parameters, commandType: CommandType.StoredProcedure);
 
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); //
 				return result;
@@ -214,20 +239,43 @@ public class ActivityRepository : IActivityRepository
 
 
 
-	public async Task<ResponseEntity> UpdateAsync(Activity entity)
+	public async Task<ResponseEntity> UpdateAsync(Activity activity)
 	{
 
-		using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
+		using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, activity))
 		{
 			using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
 			{
 				connection.Open();
-				UpdateActivityDTO updateActivityDTO = _mapper.Map<UpdateActivityDTO>(entity);
+				UpdateActivityDTO updateActivityDTO = _mapper.Map<UpdateActivityDTO>(activity);
 				var parameters = new DynamicParameters(updateActivityDTO);
-				//parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-				//parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                var languageTable = new DataTable();
+                languageTable.Columns.Add("LanguageTypeLookUpId", typeof(int));
+                foreach (var language in activity.LanguageLookUpId)
+                    languageTable.Rows.Add(language);
+                parameters.Add("@Languages", languageTable.AsTableValuedParameter("LanguageTableType"));
 
-				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityQueries.Update_Activity, parameters, commandType: CommandType.StoredProcedure);
+                var seasonTable = new DataTable();
+                seasonTable.Columns.Add("SeasonLookUpIds", typeof(int));
+                foreach (var season in activity.SeasonLookUpID)
+                    seasonTable.Rows.Add(season);
+                parameters.Add("@Seasons", seasonTable.AsTableValuedParameter("SeasonIDTableType"));
+
+                var includeOptionsTable = new DataTable();
+                includeOptionsTable.Columns.Add("IncludeOptionIds", typeof(int));
+                foreach (var includeOption in activity.IncludeOptionLookUpId)
+                    includeOptionsTable.Rows.Add(includeOption);
+                parameters.Add("@IncludeOptions", includeOptionsTable.AsTableValuedParameter("IncludeOptionsTableType"));
+
+                var disabilityOptionsTable = new DataTable();
+                disabilityOptionsTable.Columns.Add("DisabilityOptionIds", typeof(int));
+                foreach (var disabilityOption in activity.DisabilityOptionLookUpId)
+                    disabilityOptionsTable.Rows.Add(disabilityOption);
+                parameters.Add("@DisabilityOptions", disabilityOptionsTable.AsTableValuedParameter("DisabilityOptionTableType"));
+                //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityQueries.Update_Activity, parameters, commandType: CommandType.StoredProcedure);
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 				
 				return result;
