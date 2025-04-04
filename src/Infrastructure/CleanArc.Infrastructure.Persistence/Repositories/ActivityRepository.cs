@@ -29,6 +29,11 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using CleanArc.Application.Common;
 using CleanArc.Application.Features.Activity.Queries.GetActivityCheckoutDetail;
 using CleanArc.Domain.Entities.Hotel;
+using CleanArc.Domain.Entities.Amenity;
+using CleanArc.Domain.Entities.Language;
+using CleanArc.Domain.Entities.ActivityDisabilityOption;
+using CleanArc.Domain.Entities.ActivityIncludedOption;
+using CleanArc.Domain.Entities.ActivitySeason;
 //using System.Diagnostics;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
@@ -221,14 +226,29 @@ public class ActivityRepository : IActivityRepository
 				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 				parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
-				parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
+				parameters.Add("@GenericTitleId", searchRequestById.Id, DbType.Int32);
 
-				var result = await connection.QuerySingleOrDefaultAsync<Activity>(ActivityQueries.GetByID_Activity, parameters, commandType: CommandType.StoredProcedure);
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+				//var result = await connection.QuerySingleOrDefaultAsync<Activity>(ActivityQueries.GetByID_Activity, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryMultipleAsync(ActivityQueries.GetByID_Activity, parameters, commandType: CommandType.StoredProcedure);
+                var activity = result.Read<Activity>().FirstOrDefault();
+                if (activity != null)
+                {
+                    var language = result.Read<LanguageLookUp>().ToList();
+                    activity.Languages = language;
+
+                    var disabilityOptions = result.Read<DisabilityOptionsLookUp>().ToList();
+                    activity.DisabilityOptions = disabilityOptions;
+                    var includedOptions = result.Read<IncludedOptionsLookup>().ToList();
+                    activity.IncludedOptions = includedOptions;
+                    var activitySeason = result.Read<ActivitySeasonLookUp>().ToList();
+                    activity.Seasons = activitySeason;
+                }
+
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(activity);
 
 				var response = new SingleResponseWrapper<Activity>
 				{
-					Data = result,
+					Data = activity,
 					Code = parameters.Get<int>("@Code"),
 					Message = parameters.Get<string>("@Message")
 				};
