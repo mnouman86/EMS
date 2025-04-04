@@ -85,17 +85,17 @@ public class HotelRepository : IHotelRepository
                     hotel.PostalCode.ToString(),
                     hotel.Latitude,
                     hotel.Longitude);
-
+                var parameters = new DynamicParameters(createHotelDTO);
                 var languageTable = new DataTable();
                 languageTable.Columns.Add("LanguageTypeLookUpId", typeof(int));
 
                 foreach (var language in hotel.LanguageLookUpId)
                     languageTable.Rows.Add(language);
-
-
-                var parameters = new DynamicParameters(createHotelDTO);
-                parameters.Add("@Address", addressTable.AsTableValuedParameter("GenericAddressTableType"));
                 parameters.Add("@Language", languageTable.AsTableValuedParameter("LanguageTableType"));
+
+
+                parameters.Add("@Address", addressTable.AsTableValuedParameter("GenericAddressTableType"));
+                
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelQueries.Create_Hotel, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 

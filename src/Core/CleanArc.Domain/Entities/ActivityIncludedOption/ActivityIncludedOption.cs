@@ -21,3 +21,8 @@ public  class ActivityIncludedOption
     public DateTime? UpdatedAt { get; set; }
 
 }
+public class IncludedOptionsLookup
+{
+    public int Id { get; set; }
+    public string? Name { get; set; }
+}

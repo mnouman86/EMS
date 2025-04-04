@@ -24,3 +24,8 @@ public  class ActivitySeason
     public string? Message { get; set; }
 
 }
+public class ActivitySeasonLookUp
+{
+    public int Id { get; set; }
+    public string? Name { get; set; }
+}

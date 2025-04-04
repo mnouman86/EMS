@@ -24,3 +24,8 @@ public  class ActivityDisabilityOption
     public string? Message { get; set; }
 
 }
+public class DisabilityOptionsLookUp
+{
+    public int Id { get; set; }
+    public string? Name { get; set; }
+}

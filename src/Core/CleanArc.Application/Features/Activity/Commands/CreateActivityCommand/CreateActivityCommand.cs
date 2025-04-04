@@ -15,36 +15,35 @@ using CleanArc.Domain.Common;
 namespace CleanArc.Application.Features.Activity.Commands.CreateActivityCommand;
 public record CreateActivityCommand(
    int? CultureId,
-   int? BusinessID,
+   int? BusinessId,
     string? Title,
-   int? LanguageLookUpID,
-   int? ServiceLookUpID,
-   int? SubServiceLookUpID,
+   int[]? LanguageLookUpId,
+   int? ServiceCategoryLookUpId,
+   int? SubServiceCategoryLookUpId,
    string? OtherSubService,
    int? MinAge,
    int? MaxAge,
-   int? ActivityTypeLookUpID,
-   int? ActivityNatureLookUpID,
+   int? ActivityTypeLookUpId,
+   int? ActivityNatureLookUpId,
    int? MaxGroupSize,
    //bool? IsPrivateActivity,
    string? WhoCanParticipate,
    string? WhoCannotParticipate,
-   int? ManageActivityLookUpID,
+   int? ManageActivityLookUpId,
    string? OtherManageActivity,
    int? Days,
    int? Hours,
     string? Description,
     bool? IsTransportation,
-    int? TransportationLookUpID,
+    int? TransportationLookUpId,
     bool? IsDisability,
     string ? AllowedItems,
     string?   NotAllowedItems,
     int? CurrencyLookUpID,
-    //Decimal? PerPersonPrice,
-    int? CreatedBy,
-     string? SeasonLookUpID,
-    string? IncludeOptionLookUpID,
-    string? DisabilityOptionLookUpID,
+     //Decimal? PerPersonPrice,
+     int[]? SeasonLookUpID,
+    int[]? IncludeOptionLookUpId,
+    int[]? DisabilityOptionLookUpId,
     DateTime? EndDate,
     DateTime? StartDate,
     string? EndTime,
@@ -58,7 +57,19 @@ public record CreateActivityCommand(
     public int UserId { get; set; }
     public IValidator<CreateActivityCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateActivityCommand> validator)
     {
-        validator.RuleFor(c => c.BusinessID)
+        validator.RuleFor(c => c.StartTime)
+            .NotEmpty()
+    .NotNull()
+    .Matches(@"^(0?[1-9]|1[0-2]):([0-5]?[0-9]) (AM|PM)$")
+    .WithMessage("CheckInFrom must be in a valid 12-hour format (e.g., 1:05 AM, 12:00 PM, 01:5 PM)");
+
+        validator.RuleFor(c => c.EndTime)
+            .NotEmpty()
+    .NotNull()
+    .Matches(@"^(0?[1-9]|1[0-2]):([0-5]?[0-9]) (AM|PM)$")
+    .WithMessage("CheckInFrom must be in a valid 12-hour format (e.g., 1:05 AM, 12:00 PM, 01:5 PM)");
+
+        validator.RuleFor(c => c.BusinessId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please select a business");
@@ -66,40 +77,10 @@ public record CreateActivityCommand(
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Title");
-        validator.RuleFor(c => c.LanguageLookUpID)
+        validator.RuleFor(c => c.LanguageLookUpId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a LanguageLookUpID");
-        validator.RuleFor(c => c.ServiceLookUpID)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a ServiceLookUpID");
-        validator.RuleFor(c => c.SubServiceLookUpID)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a SubServiceLookUpID");
-       
-       
-        validator.RuleFor(c => c.ActivityTypeLookUpID)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a ActivityTypeLookUpID");
-        validator.RuleFor(c => c.ActivityNatureLookUpID)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a ActivityNatureLookUpID");
-        //validator.RuleFor(c => c.MinGroupSize)
-        //   .NotEmpty()
-        //   .NotNull()
-        //   .WithMessage("Please enter a MinGroupSize");
-        validator.RuleFor(c => c.MaxGroupSize)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a MaxGroupSize");
-        validator.RuleFor(c => c.ActivityTypeLookUpID)
-           .NotEmpty()
-           .NotNull()
-        .WithMessage("Please enter a ActivityTypeLookUpID");
 
         validator.RuleFor(c => c.WhoCanParticipate)
             .NotEmpty()
@@ -110,10 +91,6 @@ public record CreateActivityCommand(
         .NotEmpty()
         .NotNull()
         .WithMessage("Please enter a WhoCanParticipate");
-        validator.RuleFor(c => c.ManageActivityLookUpID)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a ManageActivityLookUpID");
         validator.RuleFor(c => c.Days)
            .NotEmpty()
            .NotNull()
@@ -126,35 +103,10 @@ public record CreateActivityCommand(
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a SeasonLookUpID");
-        //validator.RuleFor(c => c.DisabilityOptionLookUpID)
-        //   .NotEmpty()
-        //   .NotNull()
-        //   .WithMessage("Please enter a DisabilityOptionLookUpID");
-        validator.RuleFor(c => c.IncludeOptionLookUpID)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a IncludeOptionLookUpID");
-        //validator.RuleFor(c => c.OtherSubService)
-        //   .NotEmpty()
-        //   .NotNull()
-        //   .WithMessage("Please enter a OtherSubService");
         validator.RuleFor(c => c.Description)
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a Description");
-        //validator.RuleFor(c => c.IsTransportation)
-        //   .NotEmpty()
-        //   .NotNull()
-        //   .WithMessage("Please enter a Description");
-        //validator.RuleFor(c => c.TransportationLookUpID)
-        //   .NotEmpty()
-        //   .NotNull()
-        //   .WithMessage("Please enter a TransportationLookUpID ");
-        //validator.RuleFor(c => c.OtherManageActivity)
-        //   .NotEmpty()
-        //   .NotNull()
-        //   .WithMessage("Please enter a OtherManageActivity");
-   
         validator.RuleFor(c => c.AllowedItems)
            .NotEmpty()
            .NotNull()
