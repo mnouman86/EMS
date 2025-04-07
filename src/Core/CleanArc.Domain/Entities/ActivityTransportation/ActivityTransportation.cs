@@ -13,7 +13,6 @@ public  class ActivityTransportation
     public int Id { get; set; }
     public string? Name { get; set; }
     public string? Description { get; set; }
-    public string? VehicleType { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }
@@ -21,7 +20,5 @@ public  class ActivityTransportation
     public int? UpdatedBy { get; set; }
     public DateTime? UpdatedAt { get; set; }
     public int? CultureId { get; set; }
-    public int? Code { get; set; }
-    public string? Message { get; set; }
 
 }

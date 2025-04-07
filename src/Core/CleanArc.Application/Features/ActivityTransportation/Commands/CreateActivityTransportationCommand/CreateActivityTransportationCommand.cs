@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityTransportation.Commands.CreateActivityTransportationCommand;
-public record CreateActivityTransportationCommand(string? Name, string? Description, string? VehicleType,int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateActivityTransportationCommand(string? Name, string? Description,int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateActivityTransportationCommand>
 {
     [JsonIgnore]
@@ -26,10 +26,6 @@ public record CreateActivityTransportationCommand(string? Name, string? Descript
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a Description");
-        validator.RuleFor(c => c.VehicleType)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a VehicleType");
         return validator;
     }
 }

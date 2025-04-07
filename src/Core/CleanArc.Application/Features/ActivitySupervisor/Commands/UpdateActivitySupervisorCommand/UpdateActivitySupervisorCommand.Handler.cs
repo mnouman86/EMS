@@ -1,11 +1,7 @@
-﻿using CleanArc.Application.Contracts.Identity;
+﻿using AutoMapper;
+using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Features.URL.Commands.AddURLCommand;
-using CleanArc.Application.Models.Common;
-using CleanArc.Domain.Entities.User;
-using CleanArc.SharedKernel.Extensions;
-using MapsterMapper;
-using Mediator;
+using CleanArc.Application.Features.ActivitySupervisor.Commands.CreateActivitySupervisorCommand;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
@@ -14,22 +10,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mediator;
+using CleanArc.Application.Models.Common;
+using CleanArc.SharedKernel.Extensions;
 
-namespace CleanArc.Application.Features.ActivityManager.Commands.CreateActivityManagerCommand;
+namespace CleanArc.Application.Features.ActivitySupervisor.Commands.UpdateActivitySupervisorCommand;
 
-internal class CreateActivityManagerCommandHandler: IRequestHandler<CreateActivityManagerCommand, OperationResult<ResponseEntity>>
+internal class UpdateActivitySupervisorCommandHandler:IRequestHandler<UpdateActivitySupervisorCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<CreateActivityManagerCommandHandler> _logger;
+    private readonly ILogger<UpdateActivitySupervisorCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
     //private readonly IUnitOfWork _unitOfWork;
     //private readonly IAppUserManager _userManager;
 
 
-    public CreateActivityManagerCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<CreateActivityManagerCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public UpdateActivitySupervisorCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateActivitySupervisorCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -40,8 +39,7 @@ internal class CreateActivityManagerCommandHandler: IRequestHandler<CreateActivi
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-
-    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateActivityManagerCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateActivitySupervisorCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -57,11 +55,12 @@ internal class CreateActivityManagerCommandHandler: IRequestHandler<CreateActivi
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
-            var result = await _unitOfWork.ActivityManagerRepository.AddAsync(new Domain.Entities.ActivityManager.ActivityManager()
-            { CreatedBy = user.Id, Description = request.Description,Name=request.Name , CultureId=request.CultureId });
+            var result = await _unitOfWork.ActivitySupervisorRepository.UpdateAsync(new Domain.Entities.ActivitySupervisor.ActivitySupervisor()
+            { UpdatedBy = user.Id,Id= request.Id, Description = request.Description, Name = request.Name,CultureId=request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
+
 }

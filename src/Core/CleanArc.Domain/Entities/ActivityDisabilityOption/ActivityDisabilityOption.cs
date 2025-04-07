@@ -20,8 +20,6 @@ public  class ActivityDisabilityOption
     public int? UpdatedBy { get; set; }
     public DateTime? UpdatedAt { get; set; }
     public int? CultureId { get; set; }
-    public int? Code { get; set; }
-    public string? Message { get; set; }
 
 }
 public class DisabilityOptionsLookUp

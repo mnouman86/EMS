@@ -10,13 +10,13 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
-namespace CleanArc.Application.Features.ActivityManager.Commands.UpdateActivityManagerCommand;
-public record UpdateActivityManagerCommand(int Id,String? Name, string? Description, int? UpdatedBy,int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
-    IValidatableModel<UpdateActivityManagerCommand>
+namespace CleanArc.Application.Features.ActivitySupervisor.Commands.UpdateActivitySupervisorCommand;
+public record UpdateActivitySupervisorCommand(int Id,String? Name, string? Description, int? UpdatedBy,int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+    IValidatableModel<UpdateActivitySupervisorCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
-    public IValidator<UpdateActivityManagerCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateActivityManagerCommand> validator)
+    public IValidator<UpdateActivitySupervisorCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateActivitySupervisorCommand> validator)
     {
         validator.RuleFor(c => c.Name)
             .NotEmpty()

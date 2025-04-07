@@ -10,13 +10,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.ActivityManager.Commands.CreateActivityManagerCommand;
-public record CreateActivityManagerCommand(string? Name, string? Description,int? CreatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
-    IValidatableModel<CreateActivityManagerCommand>
+namespace CleanArc.Application.Features.ActivitySupervisor.Commands.CreateActivitySupervisorCommand;
+public record CreateActivitySupervisorCommand(string? Name, string? Description,int? CreatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+    IValidatableModel<CreateActivitySupervisorCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
-    public IValidator<CreateActivityManagerCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateActivityManagerCommand> validator)
+    public IValidator<CreateActivitySupervisorCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateActivitySupervisorCommand> validator)
     {
         validator.RuleFor(c => c.Name)
             .NotEmpty()

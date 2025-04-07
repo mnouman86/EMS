@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ActivityTransportation.Commands.UpdateActivityTransportationCommand;
-public record UpdateActivityTransportationCommand(int Id,String? Name, string? Description, string? VehicleType, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateActivityTransportationCommand(int Id,String? Name, string? Description, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateActivityTransportationCommand>
 {
     [JsonIgnore]
@@ -26,10 +26,6 @@ public record UpdateActivityTransportationCommand(int Id,String? Name, string? D
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a Description");
-        validator.RuleFor(c => c.VehicleType)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a VehicleType");
         return validator;
     }
 }

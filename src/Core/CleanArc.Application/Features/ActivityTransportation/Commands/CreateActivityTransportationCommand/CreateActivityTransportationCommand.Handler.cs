@@ -58,7 +58,12 @@ internal class CreateActivityTransportationCommandHandler: IRequestHandler<Creat
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.ActivityTransportationRepository.AddAsync(new Domain.Entities.ActivityTransportation.ActivityTransportation()
-            { CreatedBy = user.Id, Description = request.Description,Name=request.Name,VehicleType=request.VehicleType  });
+            {
+                CreatedBy = user.Id,
+                Description = request.Description,
+                Name = request.Name,
+                CultureId = request.CultureId,
+            });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

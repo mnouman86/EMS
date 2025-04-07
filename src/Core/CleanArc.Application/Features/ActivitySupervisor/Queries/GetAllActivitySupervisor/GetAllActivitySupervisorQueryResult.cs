@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.ActivityManager.Queries.GetAllActivityManager;
+namespace CleanArc.Application.Features.ActivitySupervisor.Queries.GetAllActivitySupervisor;
 
-public class GetAllActivityManagerQueryResult
+public class GetAllActivitySupervisorQueryResult
 {
     public int Id { get; set; }
     public string Name { get; set; }
@@ -19,7 +19,7 @@ public class GetAllActivityManagerQueryResult
     public DateTime UpdatedAt { get; set; }
 }
 
-//    public GetAllActivityManagerQueryResult(int iD, string name, string description, bool isDeleted, bool isActive, int createdBy, DateTime createdAt, int updatedBy, DateTime updatedAt)
+//    public GetAllActivitySupervisorQueryResult(int iD, string name, string description, bool isDeleted, bool isActive, int createdBy, DateTime createdAt, int updatedBy, DateTime updatedAt)
 //    {
 //        ID = iD;
 //        Name = name;

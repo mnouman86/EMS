@@ -51,7 +51,7 @@ public interface IUnitOfWork
     public IAdvertisementPageRepository AdvertisementPageRepository { get; }
     public IActivityTypeRepository ActivityTypeRepository { get; }
     public IActivityNatureRepository ActivityNatureRepository { get; }
-    public IActivityManagerRepository ActivityManagerRepository { get; }
+    public IActivitySupervisorRepository ActivitySupervisorRepository { get; }
     public IActivityIncludedOptionRepository ActivityIncludedOptionRepository { get; }
     public IDisabilityOptionRepository DisabilityOptionRepository { get; }
     public ISubServiceRepository SubServiceRepository { get; }

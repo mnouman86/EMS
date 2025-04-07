@@ -11,12 +11,10 @@ namespace CleanArc.Application.Models.ActivitySchedule
 
       
         public int Id { get; set; }
-        public int? ActivityID { get; set; }
+        public int? GenericTitleId { get; set; }
         public string Title { get; set; }
         public int? UpdatedBy { get; set; }
        // public DateTime? UpdatedAt { get; set; }
         public int? CultureId { get; set; }
-        public int? Code { get; set; }
-        public string? Message { get; set; }
     }
 }

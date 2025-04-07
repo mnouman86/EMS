@@ -10,7 +10,7 @@ namespace CleanArc.Application.Features.ActivitySchedule.Queries.GetActivitySche
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
         public int Id { get; set; }
-        public int? ActivityID { get; set; }
+        public int? GenericTitleId { get; set; }
         public string Title { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsDeleted { get; set; }
@@ -19,7 +19,5 @@ namespace CleanArc.Application.Features.ActivitySchedule.Queries.GetActivitySche
         public int? UpdatedBy { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public int? CultureId { get; set; }
-        public int? Code { get; set; }
-        public string? Message { get; set; }
     }
 }

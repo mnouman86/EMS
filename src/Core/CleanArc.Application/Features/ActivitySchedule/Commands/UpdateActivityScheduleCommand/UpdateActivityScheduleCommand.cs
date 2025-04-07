@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ActivitySchedule.Commands.UpdateActivityScheduleCommand;
-public record UpdateActivityScheduleCommand(int Id, int? ActivityID, string Title, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateActivityScheduleCommand(int Id, int? GenericTitleId, string Title, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateActivityScheduleCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<UpdateActivityScheduleCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateActivityScheduleCommand> validator)
     {
-        validator.RuleFor(c => c.ActivityID)
+        validator.RuleFor(c => c.GenericTitleId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid ActivityID");

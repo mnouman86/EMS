@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Models.ActivityManager
+namespace CleanArc.Application.Models.ActivitySupervisor
 {
-    public class UpdateActivityManagerDTO
+    public class UpdateActivitySupervisorDTO
     {
 
         public int Id { get; set; }

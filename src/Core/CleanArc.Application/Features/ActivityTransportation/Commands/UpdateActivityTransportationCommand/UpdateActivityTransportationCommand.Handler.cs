@@ -56,7 +56,8 @@ internal class UpdateActivityTransportationCommandHandler:IRequestHandler<Update
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.ActivityTransportationRepository.UpdateAsync(new Domain.Entities.ActivityTransportation.ActivityTransportation()
-            { UpdatedBy = user.Id,Id= request.Id, Description = request.Description, Name = request.Name,VehicleType=request.VehicleType });
+            { UpdatedBy = user.Id,Id= request.Id, Description = request.Description, 
+                Name = request.Name, CultureId=request.CultureId});
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
