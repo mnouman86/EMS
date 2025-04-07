@@ -56,7 +56,9 @@ internal class UpdateActivityPerGroupPriceCommandHandler:IRequestHandler<UpdateA
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.ActivityPerGroupPriceRepository.UpdateAsync(new Domain.Entities.ActivityPerGroupPrice.ActivityPerGroupPrice()
-            { UpdatedBy = user.Id,Id= request.Id, ActivityID = request.ActivityID, MinGroupSize = request.MinGroupSize, MaxGroupSize = request.MaxGroupSize, Price = request.Price,CultureId=request.CultureId });
+            { UpdatedBy = user.Id,Id= request.Id, 
+                MinGroupSize = request.MinGroupSize, MaxGroupSize = request.MaxGroupSize, 
+                Price = request.Price,CultureId=request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

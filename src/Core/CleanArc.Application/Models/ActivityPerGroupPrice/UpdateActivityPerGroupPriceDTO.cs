@@ -11,14 +11,11 @@ namespace CleanArc.Application.Models.ActivityPerGroupPrice
 
       
         public int Id { get; set; }
-        public int? ActivityID { get; set; }
         public int? MinGroupSize { get; set; }
         public int? MaxGroupSize { get; set; }
         public decimal? Price { get; set; }
         public int? UpdatedBy { get; set; }
        // public DateTime? UpdatedAt { get; set; }
         public int? CultureId { get; set; }
-        public int? Code { get; set; }
-        public string? Message { get; set; }
     }
 }

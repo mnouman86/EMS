@@ -58,7 +58,8 @@ internal class CreateActivityPricePerParticipantCommandHandler: IRequestHandler<
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.ActivityPricePerParticipantRepository.AddAsync(new Domain.Entities.ActivityPricePerParticipant.ActivityPricePerParticipant()
-            { CreatedBy = user.Id, ActivityID = request.ActivityID,PerParticipationPrice=request.PerParticipationPrice  });
+            { CreatedBy = user.Id, GenericTitleId = request.GenericTitleId, 
+                PerParticipationPrice=request.PerParticipationPrice, CultureId=request.CultureId  });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

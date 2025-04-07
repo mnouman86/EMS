@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ActivityPricePerParticipant.Commands.UpdateActivityPricePerParticipantCommand;
-public record UpdateActivityPricePerParticipantCommand( int? ActivityID, Decimal? PerParticipationPrice, int? UpdatedBy,int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateActivityPricePerParticipantCommand( int? GenericTitleId, Decimal? PerParticipationPrice,int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateActivityPricePerParticipantCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<UpdateActivityPricePerParticipantCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateActivityPricePerParticipantCommand> validator)
     {
-        validator.RuleFor(c => c.ActivityID)
+        validator.RuleFor(c => c.GenericTitleId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid ActivityID");

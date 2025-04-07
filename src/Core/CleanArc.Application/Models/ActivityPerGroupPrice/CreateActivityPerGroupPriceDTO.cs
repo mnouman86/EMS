@@ -9,14 +9,12 @@ namespace CleanArc.Application.Models.ActivityPerGroupPrice
     public class CreateActivityPerGroupPriceDTO
     {
 
-        public int? ActivityID { get; set; }
+        public int? GenericTitleId { get; set; }
         public int? MinGroupSize { get; set; }
         public int? MaxGroupSize { get; set; }
         public decimal? Price { get; set; }
         public int? CreatedBy { get; set; }
         public int? CultureId { get; set; }
-        public int? Code { get; set; }
-        public string? Message { get; set; }
 
     }
 }
