@@ -11,7 +11,6 @@ namespace CleanArc.Application.Models.ActivitySchedule
 
       
         public int Id { get; set; }
-        public int? GenericTitleId { get; set; }
         public string Title { get; set; }
         public int? UpdatedBy { get; set; }
        // public DateTime? UpdatedAt { get; set; }
