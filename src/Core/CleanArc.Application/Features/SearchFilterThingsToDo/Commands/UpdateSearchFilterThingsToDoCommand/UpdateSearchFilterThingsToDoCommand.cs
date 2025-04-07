@@ -37,7 +37,7 @@ public record UpdateSearchFilterThingsToDoCommand(
     bool? IsDisability,
     string? AllowedItems,
     string? NotAllowedItems,
-    int? CurrencyLookUpID,
+    int? CurrencyLookUpId,
      //Decimal? PerPersonPrice,
      int[]? SeasonLookUpId,
     int[]? IncludeOptionLookUpId,
