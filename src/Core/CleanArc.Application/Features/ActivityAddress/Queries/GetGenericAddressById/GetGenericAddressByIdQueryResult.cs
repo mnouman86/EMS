@@ -4,20 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddressById
+namespace CleanArc.Application.Features.ActivityAddress.Queries.GetGenericAddressById
 {
-    public class GetActivityAddressByIdQueryResult
+    public class GetGenericAddressByIdQueryResult
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
         public int Id { get; set; }
-        public int? GenericAddressID { get; set; }
-        public int? ServiceID { get; set; }
-        public string? ServiceName { get; set; }
+        public int? GenericTitleId { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
-        public int? CountryLookUpID { get; set; }
-        public int? CityLookUpID { get; set; }
-        public int? StateLookUpID { get; set; }
+        public int? CountryLookUpId { get; set; }
+        public int? CityLookUpId { get; set; }
+        public int? StateLookUpId { get; set; }
         public string PostalCode { get; set; }
         public string Latitude { get; set; }
         public string Longitude { get; set; }
@@ -28,7 +26,5 @@ namespace CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddre
         public int? UpdatedBy { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public int? CultureId { get; set; }
-        public int? Code { get; set; }
-        public string? Message { get; set; }
     }
 }

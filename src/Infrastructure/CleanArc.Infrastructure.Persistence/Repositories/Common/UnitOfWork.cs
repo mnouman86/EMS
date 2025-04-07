@@ -70,7 +70,7 @@ public class UnitOfWork : IUnitOfWork
     public IActivityPrivateParticipantRepository ActivityPrivateParticipantRepository { get; set; }
     public IActivitySeasonRepository ActivitySeasonRepository { get; set; }
     public IActivityTransportationRepository ActivityTransportationRepository { get; set; }
-    public IActivityAddressRepository ActivityAddressRepository { get; set; }
+    public IGenericAddressRepository ActivityAddressRepository { get; set; }
     public IActivityRepository ActivityRepository { get; set; }
     public IBusinessProfileRepository BusinessProfileRepository { get; set; }
     public IActivityScheduleRepository ActivityScheduleRepository { get; set; }
@@ -176,7 +176,7 @@ public class UnitOfWork : IUnitOfWork
         ILogger<ActivityPrivateParticipantRepository> _loggerActivityPrivateParticipant,
         ILogger<ActivitySeasonRepository> _loggerActivitySeason,
         ILogger<ActivityTransportationRepository> _loggerActivityTransportation,
-        ILogger<ActivityAddressRepository> _loggerActivityAddress,
+        ILogger<GenericAddressRepository> _loggerActivityAddress,
         ILogger<ActivityRepository> _loggerActivity,
         ILogger<BusinessProfileRepository> _loggerBusinessProfile,
         ILogger<ActivityScheduleRepository> _loggerActivitySchedule,
@@ -284,7 +284,7 @@ public class UnitOfWork : IUnitOfWork
         ActivityPrivateParticipantRepository = new ActivityPrivateParticipantRepository(configuration, mapper, _loggerActivityPrivateParticipant, httpContextAccessor);
         ActivitySeasonRepository = new ActivitySeasonRepository(configuration, mapper, _loggerActivitySeason, httpContextAccessor);
         ActivityTransportationRepository = new ActivityTransportationRepository(configuration, mapper, _loggerActivityTransportation, httpContextAccessor);
-        ActivityAddressRepository = new ActivityAddressRepository(configuration, mapper, _loggerActivityAddress, httpContextAccessor);
+        ActivityAddressRepository = new GenericAddressRepository(configuration, mapper, _loggerActivityAddress, httpContextAccessor);
         ActivityRepository = new ActivityRepository(configuration, mapper, _loggerActivity, httpContextAccessor);
         BusinessProfileRepository = new BusinessProfileRepository(configuration, mapper, _loggerBusinessProfile, httpContextAccessor);
         ActivityScheduleRepository = new ActivityScheduleRepository(configuration, mapper, _loggerActivitySchedule, httpContextAccessor);

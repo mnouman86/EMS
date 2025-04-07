@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddressById;
+using CleanArc.Application.Features.ActivityAddress.Queries.GetGenericAddressById;
 using System.Globalization;
 
 namespace CleanArc.Application.Features.Activity.Queries.GetActivityById

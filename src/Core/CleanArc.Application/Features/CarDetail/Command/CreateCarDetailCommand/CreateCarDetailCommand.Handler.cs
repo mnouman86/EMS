@@ -71,6 +71,8 @@ namespace CleanArc.Application.Features.CarDetail.Command.CreateCarDetailCommand
                     RefundPolicy = request.RefundPolicy,
                     NonRefundPolicy = request.NonRefundPolicy,
                     CancellationPolicy = request.CancellationPolicy,
+                    ServiceCategoryId = request.ServiceCategoryId,
+                    ServiceTypeEnumId = request.ServiceTypeEnumId,
                 });
                 await _unitOfWork.CommitAsync();
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

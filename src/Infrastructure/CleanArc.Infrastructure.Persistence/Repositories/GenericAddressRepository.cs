@@ -1,10 +1,10 @@
 ﻿using Azure.Core;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Models.ActivityAddress;
+using CleanArc.Application.Models.GenericAddress;
 using CleanArc.Application.Models.BusinessType;
 using CleanArc.Application.Models.Request;
 using CleanArc.Application.Models.URL;
-using CleanArc.Domain.Entities.ActivityAddress;
+using CleanArc.Domain.Entities.GenericAddress;
 using CleanArc.Domain.Entities.UserManagement;
 using CleanArc.Infrastructure.Persistence.Helpers;
 using CleanArc.Infrastructure.Sql;
@@ -23,7 +23,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;using CleanArc.Application.Common;using CleanArc.Application.Common;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using CleanArc.Application.Common;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -31,7 +32,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories;
 /// Repository implementation for handling operations related to menus.
 /// </summary>
 /// <seealso cref="CleanArc.Application.Contracts.Persistence.IMenuRepository" />
-public class ActivityAddressRepository:IActivityAddressRepository
+public class GenericAddressRepository:IGenericAddressRepository
 {
     /// <summary>
     /// The configuration for accessing application settings.
@@ -46,7 +47,7 @@ public class ActivityAddressRepository:IActivityAddressRepository
     /// <summary>
     /// The logger for logging repository-related information.
     /// </summary>
-    private readonly ILogger<ActivityAddressRepository> _logger;
+    private readonly ILogger<GenericAddressRepository> _logger;
 
     /// <summary>
     /// The HTTP context accessor for accessing HTTP context information.
@@ -60,7 +61,7 @@ public class ActivityAddressRepository:IActivityAddressRepository
     /// <param name="mapper">The mapper for mapping between different object types.</param>
     /// <param name="logger">The logger for logging repository-related information.</param>
     /// <param name="httpContextAccessor">The HTTP context accessor for accessing HTTP context information.</param>
-    public ActivityAddressRepository(IConfiguration configuration, IMapper mapper, ILogger<ActivityAddressRepository> logger, IHttpContextAccessor httpContextAccessor)
+    public GenericAddressRepository(IConfiguration configuration, IMapper mapper, ILogger<GenericAddressRepository> logger, IHttpContextAccessor httpContextAccessor)
     {
         this.configuration = configuration;
         this._mapper = mapper;
@@ -68,17 +69,17 @@ public class ActivityAddressRepository:IActivityAddressRepository
         _httpContextAccessor = httpContextAccessor;
     }
 /// <inheritdoc/>
-public async Task<ResponseEntity> AddAsync(ActivityAddress ActivityAddress)
+public async Task<ResponseEntity> AddAsync(GenericAddress ActivityAddress)
 {
     using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, ActivityAddress))
     {
         using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
         {
             connection.Open();
-                CreateActivityAddressDTO createActivityAddressDTO = _mapper.Map<CreateActivityAddressDTO>(ActivityAddress);
+                CreateGenericAddressDTO createActivityAddressDTO = _mapper.Map<CreateGenericAddressDTO>(ActivityAddress);
                 var parameters = new DynamicParameters(createActivityAddressDTO);
                 
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityAddressQueries.Create_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(GenericAddressQueries.Create_GenericAddress, parameters, commandType: CommandType.StoredProcedure);
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
             return result;
         }
@@ -97,14 +98,14 @@ public async Task<ResponseEntity> AddAsync(ActivityAddress ActivityAddress)
                 parameters.Add("@CultureId", deleteRequest.CultureId);
                 parameters.Add("@UpdatedBy", updatedBy);
                 
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityAddressQueries.Delete_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(GenericAddressQueries.Delete_GenericAddress, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }
     }
 
-    public async Task<ListResponseWrapper<ActivityAddress>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<GenericAddress>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -122,14 +123,14 @@ public async Task<ResponseEntity> AddAsync(ActivityAddress ActivityAddress)
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
               
-                var result = await connection.QueryAsync<ActivityAddress>(ActivityAddressQueries.GetAll_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<GenericAddress>(GenericAddressQueries.GetAll_GenericAddress, parameters, commandType: CommandType.StoredProcedure);
                  
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                var response = new ListResponseWrapper<ActivityAddress> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
+                var response = new ListResponseWrapper<GenericAddress> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
             }
         }
     }
-    public async Task<SingleResponseWrapper<ActivityAddress>> GetByIdAsync(SearchRequestById searchRequestById)
+    public async Task<SingleResponseWrapper<GenericAddress>> GetByIdAsync(SearchRequestById searchRequestById)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequestById))
         {
@@ -141,10 +142,10 @@ public async Task<ResponseEntity> AddAsync(ActivityAddress ActivityAddress)
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
                 parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
-                var result = await connection.QuerySingleOrDefaultAsync<ActivityAddress>(ActivityAddressQueries.GetByID_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<GenericAddress>(GenericAddressQueries.GetByID_GenericAddress, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 
-                var response = new SingleResponseWrapper<ActivityAddress>
+                var response = new SingleResponseWrapper<GenericAddress>
                 {
                     Data = result,
                     Code = parameters.Get<int>("@Code"),
@@ -157,17 +158,17 @@ public async Task<ResponseEntity> AddAsync(ActivityAddress ActivityAddress)
 
 
 
-    public async Task<ResponseEntity> UpdateAsync(ActivityAddress entity)
+    public async Task<ResponseEntity> UpdateAsync(GenericAddress entity)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                UpdateActivityAddressDTO updateActivityAddressDTO = _mapper.Map<UpdateActivityAddressDTO>(entity);
+                UpdateGenericAddressDTO updateActivityAddressDTO = _mapper.Map<UpdateGenericAddressDTO>(entity);
                 var parameters = new DynamicParameters(updateActivityAddressDTO);
                 
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityAddressQueries.Update_ActivityAddress, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(GenericAddressQueries.Update_GenericAddress, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }

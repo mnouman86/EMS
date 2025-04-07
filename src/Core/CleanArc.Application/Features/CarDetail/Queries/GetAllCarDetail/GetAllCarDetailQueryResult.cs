@@ -10,6 +10,8 @@ namespace CleanArc.Application.Features.CarDetail.Queries.GetAllCarDetail
     {
         public int Id { get; set; }
         public int BusinessID { get; set; }
+        public int? ServiceTypeEnumId { get; set; }
+        public int? ServiceCategoryId { get; set; }
         public string Model { get; set; }
         public string Year { get; set; }
         public string VehicleIdentificationNumber { get; set; }

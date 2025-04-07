@@ -58,7 +58,7 @@ public interface IUnitOfWork
     public IActivityPrivateParticipantRepository ActivityPrivateParticipantRepository { get; }
     public IActivitySeasonRepository ActivitySeasonRepository { get; }
     public IActivityTransportationRepository ActivityTransportationRepository { get; }
-    public IActivityAddressRepository ActivityAddressRepository { get; }
+    public IGenericAddressRepository ActivityAddressRepository { get; }
     public IActivityRepository ActivityRepository { get; }
     public IBusinessProfileRepository BusinessProfileRepository { get; }
     public IActivityScheduleRepository ActivityScheduleRepository { get; }

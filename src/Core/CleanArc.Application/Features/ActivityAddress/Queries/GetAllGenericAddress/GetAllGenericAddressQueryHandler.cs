@@ -13,18 +13,18 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
-namespace CleanArc.Application.Features.ActivityAddress.Queries.GetAllActivityAddress
+namespace CleanArc.Application.Features.ActivityAddress.Queries.GetAllGenericAddress
 {
-    internal class GetAllActivityAddressQueryHandler : IRequestHandler<GetAllActivityAddressQuery, OperationResult<List<GetAllActivityAddressQueryResult>>>
+    internal class GetAllGenericAddressQueryHandler : IRequestHandler<GetAllGenericAddressQuery, OperationResult<List<GetAllGenericAddressQueryResult>>>
     {
 
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly ILogger<GetAllActivityAddressQueryHandler> _logger;
+        private readonly ILogger<GetAllGenericAddressQueryHandler> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
 
 
-        public GetAllActivityAddressQueryHandler(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, ILogger<GetAllActivityAddressQueryHandler> logger)
+        public GetAllGenericAddressQueryHandler(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, ILogger<GetAllGenericAddressQueryHandler> logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -33,7 +33,7 @@ namespace CleanArc.Application.Features.ActivityAddress.Queries.GetAllActivityAd
 
         }
 
-        public async ValueTask<OperationResult<List<GetAllActivityAddressQueryResult>>> Handle(GetAllActivityAddressQuery request, CancellationToken cancellationToken)
+        public async ValueTask<OperationResult<List<GetAllGenericAddressQueryResult>>> Handle(GetAllGenericAddressQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
@@ -48,16 +48,16 @@ namespace CleanArc.Application.Features.ActivityAddress.Queries.GetAllActivityAd
 
                 if (response.Code != 200)
                 {
-                    return OperationResult<List<GetAllActivityAddressQueryResult>>.FailureResult(
+                    return OperationResult<List<GetAllGenericAddressQueryResult>>.FailureResult(
                         response.Message,
                     response.Code
                     );
                 }
 
-                var mappedResult = _mapper.Map<List<GetAllActivityAddressQueryResult>>(response.Data);
+                var mappedResult = _mapper.Map<List<GetAllGenericAddressQueryResult>>(response.Data);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                return OperationResult<List<GetAllActivityAddressQueryResult>>.SuccessResult(
+                return OperationResult<List<GetAllGenericAddressQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
                     response.Message

@@ -1,4 +1,4 @@
-﻿using CleanArc.Domain.Entities.ActivityAddress;
+﻿using CleanArc.Domain.Entities.GenericAddress;
 using CleanArc.Domain.Entities.Order;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Contracts.Persistence;
 
-public  interface IActivityAddressRepository:IRepository<ActivityAddress>
+public  interface IGenericAddressRepository:IRepository<GenericAddress>
 {
    // Task CreateAgeType(AgeType ageType);
 }
