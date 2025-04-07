@@ -44,8 +44,8 @@ public  class Activity
     public bool? IsDisability { get; set; }
     public string AllowedItems { get; set; }
     public string NotAllowedItems { get; set; }
-    public int? CurrencyLookUpID { get; set; }
-    public int[]? SeasonLookUpID { get; set; }
+    public int? CurrencyLookUpId { get; set; }
+    public int[]? SeasonLookUpId { get; set; }
     public int[]? IncludeOptionLookUpId { get; set; }
     public int[]? DisabilityOptionLookUpId { get; set; }
     public Decimal? Price { get; set; }

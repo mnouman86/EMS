@@ -96,7 +96,7 @@ public class ActivityRepository : IActivityRepository
 
                 var seasonTable = new DataTable();
                 seasonTable.Columns.Add("SeasonLookUpIds", typeof(int));
-                foreach (var season in activity.SeasonLookUpID)
+                foreach (var season in activity.SeasonLookUpId)
                     seasonTable.Rows.Add(season);
                 parameters.Add("@Seasons", seasonTable.AsTableValuedParameter("SeasonIDTableType"));
 
@@ -277,7 +277,7 @@ public class ActivityRepository : IActivityRepository
 
                 var seasonTable = new DataTable();
                 seasonTable.Columns.Add("SeasonLookUpIds", typeof(int));
-                foreach (var season in activity.SeasonLookUpID)
+                foreach (var season in activity.SeasonLookUpId)
                     seasonTable.Rows.Add(season);
                 parameters.Add("@Seasons", seasonTable.AsTableValuedParameter("SeasonIDTableType"));
 
