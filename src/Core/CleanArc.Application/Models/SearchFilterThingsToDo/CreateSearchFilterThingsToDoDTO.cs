@@ -24,7 +24,7 @@ namespace CleanArc.Application.Models.SearchFilterThingsToDo
         //public int? IsPrivateActivity { get; set; }
         public string WhoCanParticipate { get; set; }
         public string WhoCannotParticipate { get; set; }
-        public int? ManageActivityLookUpID { get; set; }
+        public int? ActivitySupervisorLookUpId { get; set; }
         public string? OtherManageActivity { get; set; }
 
         public int? Days { get; set; }

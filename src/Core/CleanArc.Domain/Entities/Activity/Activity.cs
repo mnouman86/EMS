@@ -34,7 +34,7 @@ public  class Activity
     //public bool? IsPrivateActivity { get; set; }
     public string WhoCanParticipate { get; set; }
     public string WhoCannotParticipate { get; set; }
-    public int? ManageActivityLookUpId { get; set; }
+    public int? ActivitySupervisorLookUpId { get; set; }
     public string? OtherManageActivity { get; set; }
     public int? Days { get; set; }
     public int? Hours { get; set; }

@@ -75,7 +75,7 @@ internal class CreateSearchFilterThingsToDoCommandHandler: IRequestHandler<Creat
             //    //PrivateParticipantLookUpID = request.PrivateParticipantLookUpID,
             //    WhoCannotParticipate = request.WhoCannotParticipate,
             //    WhoCanParticipate = request.WhoCanParticipate,
-            //    ManageActivityLookUpID = request.ManageActivityLookUpID,
+            //    ActivitySupervisorLookUpId = request.ActivitySupervisorLookUpId,
             //    OtherManageActivity=request.OtherManageActivity,
             //    Days = request.Days,
             //    Hours = request.Hours,

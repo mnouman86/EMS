@@ -29,7 +29,7 @@ public record CreateActivityCommand(
    //bool? IsPrivateActivity,
    string? WhoCanParticipate,
    string? WhoCannotParticipate,
-   int? ManageActivityLookUpId,
+   int? ActivitySupervisorLookUpId,
    string? OtherManageActivity,
    int? Days,
    int? Hours,

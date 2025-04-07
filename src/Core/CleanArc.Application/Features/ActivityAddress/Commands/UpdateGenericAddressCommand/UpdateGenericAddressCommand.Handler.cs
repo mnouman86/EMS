@@ -59,7 +59,7 @@ internal class UpdateActivityAddressCommandHandler:IRequestHandler<UpdateGeneric
             { UpdatedBy = user.Id,
                 Id= request.Id,
                 CultureId = request.CultureId,
-                GenericTitleId = request.GenericTitleId,
+                //GenericTitleId = request.GenericTitleId,
                 CountryLookUpId = request.CountryLookUpId,
                 StateLookUpId = request.StateLookUpId,
                 CityLookUpId = request.CityLookUpId,

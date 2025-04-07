@@ -75,7 +75,7 @@ internal class UpdateActivityCommandHandler:IRequestHandler<UpdateActivityComman
                 //IsPrivateActivity = request.IsPrivateActivity,
                 WhoCannotParticipate = request.WhoCannotParticipate,
                 WhoCanParticipate = request.WhoCanParticipate,
-                ManageActivityLookUpId = request.ManageActivityLookUpId,
+                ActivitySupervisorLookUpId = request.ActivitySupervisorLookUpId,
                 Days = request.Days,
                 Hours = request.Hours,
                 Description = request.Description,

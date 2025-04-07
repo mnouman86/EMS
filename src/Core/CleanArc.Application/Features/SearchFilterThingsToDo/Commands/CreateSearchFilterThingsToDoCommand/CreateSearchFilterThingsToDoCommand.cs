@@ -26,7 +26,7 @@ public record CreateSearchFilterThingsToDoCommand(
    //bool? IsPrivateActivity,
    string? WhoCanParticipate,
    string? WhoCannotParticipate,
-   int? ManageActivityLookUpID,
+   int? ActivitySupervisorLookUpId,
    string? OtherManageActivity,
    int? Days,
    int? Hours,
@@ -103,10 +103,10 @@ public record CreateSearchFilterThingsToDoCommand(
         .NotEmpty()
         .NotNull()
         .WithMessage("Please enter a WhoCanParticipate");
-        validator.RuleFor(c => c.ManageActivityLookUpID)
+        validator.RuleFor(c => c.ActivitySupervisorLookUpId)
            .NotEmpty()
            .NotNull()
-           .WithMessage("Please enter a ManageActivityLookUpID");
+           .WithMessage("Please enter a ActivitySupervisorLookUpId");
         validator.RuleFor(c => c.Days)
            .NotEmpty()
            .NotNull()
