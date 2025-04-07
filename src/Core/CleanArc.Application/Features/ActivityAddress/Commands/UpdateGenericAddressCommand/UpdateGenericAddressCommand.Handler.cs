@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
 using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Features.ActivityAddress.Commands.CreateActivityAddressCommand;
-using CleanArc.Application.Models.Common;
-using CleanArc.SharedKernel.Extensions;
-using Mediator;
+using CleanArc.Application.Features.ActivityAddress.Commands.CreateGenericAddressCommand;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
@@ -13,22 +10,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mediator;
+using CleanArc.Application.Models.Common;
+using CleanArc.SharedKernel.Extensions;
 
-namespace CleanArc.Application.Features.ActivityAddress.Commands.DeleteActivityAddressCommand;
+namespace CleanArc.Application.Features.ActivityAddress.Commands.UpdateGenericAddressCommand;
 
-internal class DeleteActivityAddressCommandHandler: IRequestHandler<DeleteActivityAddressCommand, OperationResult<ResponseEntity>>
+internal class UpdateActivityAddressCommandHandler:IRequestHandler<UpdateGenericAddressCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<DeleteActivityAddressCommandHandler> _logger;
+    private readonly ILogger<UpdateActivityAddressCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
     //private readonly IUnitOfWork _unitOfWork;
     //private readonly IAppUserManager _userManager;
 
 
-    public DeleteActivityAddressCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<DeleteActivityAddressCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public UpdateActivityAddressCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateActivityAddressCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -39,7 +39,7 @@ internal class DeleteActivityAddressCommandHandler: IRequestHandler<DeleteActivi
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<ResponseEntity>> Handle(DeleteActivityAddressCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateGenericAddressCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -55,14 +55,24 @@ internal class DeleteActivityAddressCommandHandler: IRequestHandler<DeleteActivi
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
-            //await _unitOfWork.ActivityAddressRepository.DeleteAsync(new Domain.Entities.ActivityAddress.ActivityAddress()
-            // { UpdatedBy = user.Id, ID = request.ID });
-            var result = await _unitOfWork.ActivityAddressRepository.DeleteAsync(request.deleteRequest, user.Id);
+            var result = await _unitOfWork.ActivityAddressRepository.UpdateAsync(new Domain.Entities.GenericAddress.GenericAddress()
+            { UpdatedBy = user.Id,
+                Id= request.Id,
+                CultureId = request.CultureId,
+                GenericTitleId = request.GenericTitleId,
+                CountryLookUpId = request.CountryLookUpId,
+                StateLookUpId = request.StateLookUpId,
+                CityLookUpId = request.CityLookUpId,
+                AddressLine1 = request.AddressLine1,
+                AddressLine2 = request.AddressLine2,
+                PostalCode = request.PostalCode,
+                Latitude = request.Latitude,
+                Longitude = request.Longitude
+            });
             await _unitOfWork.CommitAsync();
-          //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
-
 
 }

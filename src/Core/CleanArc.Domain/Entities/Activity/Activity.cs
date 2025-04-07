@@ -23,8 +23,8 @@ public  class Activity
     public List<DisabilityOptionsLookUp>? DisabilityOptions { get; set; }
     public List<ActivitySeasonLookUp>? Seasons { get; set; }
     public string? LanguageName { get; set; }
-    public int? ServiceCategoryLookUpId { get; set; }
-    public int? SubServiceCategoryLookUpId { get; set; }
+    public int? ServiceCategoryId { get; set; }
+    public int? SubServiceCategoryId { get; set; }
     public string? OtherSubService { get; set; }
     public int? MinAge { get; set; }
     public int? MaxAge { get; set; }

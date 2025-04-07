@@ -13,15 +13,6 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ActivityAddress.ActivityAddressController" -->
-        <member name="M:CleanArc.Web.Api.Controllers.V1.ActivityAddress.ActivityAddressController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ActivityAddress.Commands.CreateActivityAddressCommand.CreateActivityAddressCommand,CleanArc.Application.Features.ActivityAddress.Commands.UpdateActivityAddressCommand.UpdateActivityAddressCommand,CleanArc.Application.Features.ActivityAddress.Commands.DeleteActivityAddressCommand.DeleteActivityAddressCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.ActivityAddress.Queries.GetAllActivityAddress.GetAllActivityAddressQuery,System.Collections.Generic.List{CleanArc.Application.Features.ActivityAddress.Queries.GetAllActivityAddress.GetAllActivityAddressQueryResult},CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddressById.GetActivityAddressByIdQuery,CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddressById.GetActivityAddressByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
-            <summary>
-            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.ActivityAddress.ActivityAddressController"/> class.
-            </summary>
-            <param name="sender">The mediator sender for handling requests and responses.</param>
-            <param name="logger">The logger for logging controller-related information.</param>
-            <param name="httpContextAccessor"></param>
-        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ActivityDisabilityMapping.ActivityDisabilityMappingController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.ActivityDisabilityMapping.ActivityDisabilityMappingController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ActivityDisabilityMapping.Commands.CreateActivityDisabilityMappingCommand.CreateActivityDisabilityMappingCommand,CleanArc.Application.Features.ActivityDisabilityMapping.Commands.UpdateActivityDisabilityMappingCommand.UpdateActivityDisabilityMappingCommand,CleanArc.Application.Features.ActivityDisabilityMapping.Commands.DeleteActivityDisabilityMappingCommand.DeleteActivityDisabilityMappingCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.ActivityDisabilityMapping.Queries.GetAllActivityDisabilityMapping.GetAllActivityDisabilityMappingQuery,System.Collections.Generic.List{CleanArc.Application.Features.ActivityDisabilityMapping.Queries.GetAllActivityDisabilityMapping.GetAllActivityDisabilityMappingQueryResult},CleanArc.Application.Features.ActivityDisabilityMapping.Queries.GetActivityDisabilityMappingById.GetActivityDisabilityMappingByIdQuery,CleanArc.Application.Features.ActivityDisabilityMapping.Queries.GetActivityDisabilityMappingById.GetActivityDisabilityMappingByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
@@ -540,6 +531,15 @@
         <member name="M:CleanArc.Web.Api.Controllers.V1.FAQs.FAQsController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.FAQs.Commands.CreateFAQsCommand.CreateFAQsCommand,CleanArc.Application.Features.FAQs.Commands.UpdateFAQsCommand.UpdateFAQsCommand,CleanArc.Application.Features.FAQs.Commands.DeleteFAQsCommand.DeleteFAQsCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.FAQs.Queries.GetAllFAQs.GetAllFAQsQuery,System.Collections.Generic.List{CleanArc.Application.Features.FAQs.Queries.GetAllFAQs.GetAllFAQsQueryResult},CleanArc.Application.Features.FAQs.Queries.GetFAQsById.GetFAQsByIdQuery,CleanArc.Application.Features.FAQs.Queries.GetFAQsById.GetFAQsByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
             Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.FAQs.FAQsController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ActivityAddress.GenericAddressController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.ActivityAddress.GenericAddressController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ActivityAddress.Commands.CreateGenericAddressCommand.CreateGenericAddressCommand,CleanArc.Application.Features.ActivityAddress.Commands.UpdateGenericAddressCommand.UpdateGenericAddressCommand,CleanArc.Application.Features.ActivityAddress.Commands.DeleteGenericAddressCommand.DeleteGenericAddressCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.ActivityAddress.Queries.GetAllGenericAddress.GetAllGenericAddressQuery,System.Collections.Generic.List{CleanArc.Application.Features.ActivityAddress.Queries.GetAllGenericAddress.GetAllGenericAddressQueryResult},CleanArc.Application.Features.ActivityAddress.Queries.GetGenericAddressById.GetGenericAddressByIdQuery,CleanArc.Application.Features.ActivityAddress.Queries.GetGenericAddressById.GetGenericAddressByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="!:ActivityAddressController"/> class.
             </summary>
             <param name="sender">The mediator sender for handling requests and responses.</param>
             <param name="logger">The logger for logging controller-related information.</param>

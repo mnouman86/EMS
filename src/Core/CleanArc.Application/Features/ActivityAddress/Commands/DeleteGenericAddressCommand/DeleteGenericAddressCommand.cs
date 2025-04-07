@@ -10,14 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
-namespace CleanArc.Application.Features.ActivityAddress.Commands.DeleteActivityAddressCommand;
+namespace CleanArc.Application.Features.ActivityAddress.Commands.DeleteGenericAddressCommand;
 
-public record DeleteActivityAddressCommand(DeleteRequest deleteRequest) : IRequest<OperationResult<ResponseEntity>>,
-    IValidatableModel<DeleteActivityAddressCommand>
+public record DeleteGenericAddressCommand(DeleteRequest deleteRequest) : IRequest<OperationResult<ResponseEntity>>,
+    IValidatableModel<DeleteGenericAddressCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
-    public IValidator<DeleteActivityAddressCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteActivityAddressCommand> validator)
+    public IValidator<DeleteGenericAddressCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteGenericAddressCommand> validator)
     {
         validator.RuleFor(c => c.deleteRequest.SelectedIds)
             .NotEmpty()

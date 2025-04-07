@@ -2,34 +2,33 @@
 using CleanArc.SharedKernel.ValidationBase.Contracts;
 using CleanArc.SharedKernel.ValidationBase;
 using FluentValidation;
-using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 using Mediator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
-namespace CleanArc.Application.Features.ActivityAddress.Commands.CreateActivityAddressCommand;
-public record CreateActivityAddressCommand(int? GenericAddressID, int? ServiceID, int? CountryLookUpID, int? CityLookUpID, string? AddressLine1,
+namespace CleanArc.Application.Features.ActivityAddress.Commands.UpdateGenericAddressCommand;
+public record UpdateGenericAddressCommand(int Id, int? GenericTitleId, int? CountryLookUpId, int? CityLookUpId, string? AddressLine1,
     string? AddressLine2,
-    int? StateLookUpID,
+    int? StateLookUpId,
     string? PostalCode,
     string? Latitude,
     string? Longitude,
-    int? CultureId,
-    int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
-    IValidatableModel<CreateActivityAddressCommand>
+    int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+    IValidatableModel<UpdateGenericAddressCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
-    public IValidator<CreateActivityAddressCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateActivityAddressCommand> validator)
+    public IValidator<UpdateGenericAddressCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateGenericAddressCommand> validator)
     {
-        validator.RuleFor(c => c.CountryLookUpID)
+        validator.RuleFor(c => c.CountryLookUpId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid CountryLookUpID");
-        validator.RuleFor(c => c.CityLookUpID)
+        validator.RuleFor(c => c.CityLookUpId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a CityLookUpID");
@@ -41,7 +40,7 @@ public record CreateActivityAddressCommand(int? GenericAddressID, int? ServiceID
         //    .NotEmpty()
         //    .NotNull()
         //    .WithMessage("Please enter a AddressLine2");
-        validator.RuleFor(c => c.StateLookUpID)
+        validator.RuleFor(c => c.StateLookUpId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a State");
@@ -57,6 +56,8 @@ public record CreateActivityAddressCommand(int? GenericAddressID, int? ServiceID
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a Longitude");
+
+
         return validator;
     }
 }

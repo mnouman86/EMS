@@ -5,33 +5,34 @@ using CleanArc.SharedKernel.Extensions;
 using MapsterMapper;
 using Mediator;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.ActivityAddressMapping.Queries.GetActivityAddressMappingById;
+using CleanArc.Application.Features.ActivityAddress.Queries.GetGenericAddressById;
 
-namespace CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddressById
+namespace CleanArc.Application.Features.ActivityAddress.Queries.GetGenericAddressById
 {
-    internal class GetActivityAddressByIdQueryHandler : IRequestHandler<GetActivityAddressByIdQuery, OperationResult<GetActivityAddressByIdQueryResult>>
+    internal class GetGenericAddressByIdQueryHandler : IRequestHandler<GetGenericAddressByIdQuery, OperationResult<GetGenericAddressByIdQueryResult>>
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly ILogger<GetActivityAddressByIdQueryHandler> _logger;
+        private readonly ILogger<GetGenericAddressByIdQueryHandler> _logger;
         private readonly IMapper _mapper;
         private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
 
 
 
-        public GetActivityAddressByIdQueryHandler(IUnitOfWork unitOfWork, ILogger<GetActivityAddressByIdQueryHandler> logger, IMapper mapper, IHttpContextAccessor httpContextAccessor)
+        public GetGenericAddressByIdQueryHandler(IUnitOfWork unitOfWork, ILogger<GetGenericAddressByIdQueryHandler> logger, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _httpContextAccessor = httpContextAccessor;
             _logger = logger;
         }
-        public async ValueTask<OperationResult<GetActivityAddressByIdQueryResult>> Handle(GetActivityAddressByIdQuery request, CancellationToken cancellationToken)
+        public async ValueTask<OperationResult<GetGenericAddressByIdQueryResult>> Handle(GetGenericAddressByIdQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
@@ -54,16 +55,16 @@ namespace CleanArc.Application.Features.ActivityAddress.Queries.GetActivityAddre
 
                 if (response.Code != 200)
                 {
-                    return OperationResult<GetActivityAddressByIdQueryResult>.FailureResult(
+                    return OperationResult<GetGenericAddressByIdQueryResult>.FailureResult(
                         response.Message,
                     response.Code
                     );
                 }
 
-                var mappedResult = _mapper.Map<GetActivityAddressByIdQueryResult>(response.Data);
+                var mappedResult = _mapper.Map<GetGenericAddressByIdQueryResult>(response.Data);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                return OperationResult<GetActivityAddressByIdQueryResult>.SuccessResult(
+                return OperationResult<GetGenericAddressByIdQueryResult>.SuccessResult(
                     mappedResult,
                     response.Code,
                     response.Message
