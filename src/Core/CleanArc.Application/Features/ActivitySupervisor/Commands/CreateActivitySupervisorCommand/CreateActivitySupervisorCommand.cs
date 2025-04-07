@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivitySupervisor.Commands.CreateActivitySupervisorCommand;
-public record CreateActivitySupervisorCommand(string? Name, string? Description,int? CreatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateActivitySupervisorCommand(string? Name, string? Description, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateActivitySupervisorCommand>
 {
     [JsonIgnore]
