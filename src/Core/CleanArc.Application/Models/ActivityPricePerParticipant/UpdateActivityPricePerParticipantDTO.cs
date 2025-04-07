@@ -10,7 +10,7 @@ namespace CleanArc.Application.Models.ActivityPricePerParticipant
     {
 
        // public int Id { get; set; }
-        public int? ActivityID { get; set; }
+        public int? GenericTitleId { get; set; }
         public Decimal? PerParticipationPrice { get; set; }
         //public bool? IsActive { get; set; }
         //public bool? IsDeleted { get; set; }
@@ -18,8 +18,5 @@ namespace CleanArc.Application.Models.ActivityPricePerParticipant
         //public DateTime? CreatedAt { get; set; }
         public int? UpdatedBy { get; set; }
         public int? CultureId { get; set; }
-        public int? Code { get; set; }
-        public string? Message { get; set; }
-        //public DateTime? UpdatedAt { get; set; }
     }
 }

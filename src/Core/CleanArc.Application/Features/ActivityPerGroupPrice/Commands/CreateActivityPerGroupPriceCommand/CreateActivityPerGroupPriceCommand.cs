@@ -11,14 +11,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityPerGroupPrice.Commands.CreateActivityPerGroupPriceCommand;
-public record CreateActivityPerGroupPriceCommand(int? ActivityID, int? MinGroupSize, int? MaxGroupSize, decimal? Price, int? CreatedBy,int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateActivityPerGroupPriceCommand(int? GenericTitleId, int? MinGroupSize, int? MaxGroupSize, decimal? Price,int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateActivityPerGroupPriceCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<CreateActivityPerGroupPriceCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateActivityPerGroupPriceCommand> validator)
     {
-        validator.RuleFor(c => c.ActivityID)
+        validator.RuleFor(c => c.GenericTitleId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid ActivityID");

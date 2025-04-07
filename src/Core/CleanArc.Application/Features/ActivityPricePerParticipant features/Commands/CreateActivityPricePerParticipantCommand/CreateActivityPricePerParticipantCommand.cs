@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityPricePerParticipant.Commands.CreateActivityPricePerParticipantCommand;
-public record CreateActivityPricePerParticipantCommand(int? ActivityID, int PerParticipationPrice, int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateActivityPricePerParticipantCommand(int? GenericTitleId, int PerParticipationPrice, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateActivityPricePerParticipantCommand>
 {
     [JsonIgnore]
