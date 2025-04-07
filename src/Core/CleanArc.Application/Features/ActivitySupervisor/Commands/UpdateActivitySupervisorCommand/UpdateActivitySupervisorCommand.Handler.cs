@@ -56,7 +56,8 @@ internal class UpdateActivitySupervisorCommandHandler:IRequestHandler<UpdateActi
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.ActivitySupervisorRepository.UpdateAsync(new Domain.Entities.ActivitySupervisor.ActivitySupervisor()
-            { UpdatedBy = user.Id,Id= request.Id, Description = request.Description, Name = request.Name,CultureId=request.CultureId });
+            { UpdatedBy = user.Id,Id= request.Id, Description = request.Description, 
+                Name = request.Name,CultureId=request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
