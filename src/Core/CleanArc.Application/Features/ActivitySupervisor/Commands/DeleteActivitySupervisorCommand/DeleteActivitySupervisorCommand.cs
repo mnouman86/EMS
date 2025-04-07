@@ -10,14 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
-namespace CleanArc.Application.Features.ActivityManager.Commands.DeleteActivityManagerCommand;
+namespace CleanArc.Application.Features.ActivitySupervisor.Commands.DeleteActivitySupervisorCommand;
 
-public record DeleteActivityManagerCommand(DeleteRequest deleteRequest) : IRequest<OperationResult<ResponseEntity>>,
-    IValidatableModel<DeleteActivityManagerCommand>
+public record DeleteActivitySupervisorCommand(DeleteRequest deleteRequest) : IRequest<OperationResult<ResponseEntity>>,
+    IValidatableModel<DeleteActivitySupervisorCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
-    public IValidator<DeleteActivityManagerCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteActivityManagerCommand> validator)
+    public IValidator<DeleteActivitySupervisorCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteActivitySupervisorCommand> validator)
     {
         validator.RuleFor(c => c.deleteRequest.SelectedIds)
             .NotEmpty()
@@ -28,6 +28,6 @@ public record DeleteActivityManagerCommand(DeleteRequest deleteRequest) : IReque
     }
 }
 
-//public record class DeleteActivityManagerCommand
+//public record class DeleteActivitySupervisorCommand
 //{
 //}

@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityType.Commands.CreateActivityTypeCommand;
-public record CreateActivityTypeCommand(string? Name, string? Description,int? CreatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateActivityTypeCommand(string? Name, string? Description, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateActivityTypeCommand>
 {
     [JsonIgnore]

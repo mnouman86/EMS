@@ -13,18 +13,18 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
-namespace CleanArc.Application.Features.ActivityManager.Queries.GetAllActivityManager
+namespace CleanArc.Application.Features.ActivitySupervisor.Queries.GetAllActivitySupervisor
 {
-    internal class GetAllActivityManagerQueryHandler : IRequestHandler<GetAllActivityManagerQuery, OperationResult<List<GetAllActivityManagerQueryResult>>>
+    internal class GetAllActivitySupervisorQueryHandler : IRequestHandler<GetAllActivitySupervisorQuery, OperationResult<List<GetAllActivitySupervisorQueryResult>>>
     {
 
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly ILogger<GetAllActivityManagerQueryHandler> _logger;
+        private readonly ILogger<GetAllActivitySupervisorQueryHandler> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
 
 
-        public GetAllActivityManagerQueryHandler(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, ILogger<GetAllActivityManagerQueryHandler> logger)
+        public GetAllActivitySupervisorQueryHandler(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, ILogger<GetAllActivitySupervisorQueryHandler> logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -33,31 +33,31 @@ namespace CleanArc.Application.Features.ActivityManager.Queries.GetAllActivityMa
 
         }
 
-        public async ValueTask<OperationResult<List<GetAllActivityManagerQueryResult>>> Handle(GetAllActivityManagerQuery request, CancellationToken cancellationToken)
+        public async ValueTask<OperationResult<List<GetAllActivitySupervisorQueryResult>>> Handle(GetAllActivitySupervisorQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var Product = await _unitOfWork.ActivityManagerRepository.GetAllAsync(request.searchRequest);
+                //var Product = await _unitOfWork.ActivitySupervisorRepository.GetAllAsync(request.searchRequest);
 
                 ////var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-                //var result = _mapper.Map<List<GetAllActivityManagerQueryResult>>(Product);
+                //var result = _mapper.Map<List<GetAllActivitySupervisorQueryResult>>(Product);
                 //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                //return OperationResult<List<GetAllActivityManagerQueryResult>>.SuccessResult(result);
+                //return OperationResult<List<GetAllActivitySupervisorQueryResult>>.SuccessResult(result);
 
-                var response = await _unitOfWork.ActivityManagerRepository.GetAllAsync(request.searchRequest);
+                var response = await _unitOfWork.ActivitySupervisorRepository.GetAllAsync(request.searchRequest);
 
                 if (response.Code != 200)
                 {
-                    return OperationResult<List<GetAllActivityManagerQueryResult>>.FailureResult(
+                    return OperationResult<List<GetAllActivitySupervisorQueryResult>>.FailureResult(
                         response.Message,
                     response.Code
                     );
                 }
 
-                var mappedResult = _mapper.Map<List<GetAllActivityManagerQueryResult>>(response.Data);
+                var mappedResult = _mapper.Map<List<GetAllActivitySupervisorQueryResult>>(response.Data);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                return OperationResult<List<GetAllActivityManagerQueryResult>>.SuccessResult(
+                return OperationResult<List<GetAllActivitySupervisorQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
                     response.Message

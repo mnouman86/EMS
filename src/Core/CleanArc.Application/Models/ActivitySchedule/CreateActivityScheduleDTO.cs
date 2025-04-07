@@ -9,12 +9,10 @@ namespace CleanArc.Application.Models.ActivitySchedule
     public class CreateActivityScheduleDTO
     {
       
-        public int? ActivityID { get; set; }
+        public int? GenericTitleId { get; set; }
         public string Title { get; set; }
         public int? CreatedBy { get; set; }
         public int? CultureId { get; set; }
-        public int? Code { get; set; }
-        public string? Message { get; set; }
 
     }
 }

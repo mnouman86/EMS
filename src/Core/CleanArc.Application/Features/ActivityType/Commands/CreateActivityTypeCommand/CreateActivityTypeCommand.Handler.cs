@@ -58,7 +58,12 @@ internal class CreateActivityTypeCommandHandler: IRequestHandler<CreateActivityT
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.ActivityTypeRepository.AddAsync(new Domain.Entities.ActivityType.ActivityType()
-            { CreatedBy = user.Id, Description = request.Description,Name=request.Name,CultureId=request.CultureId  });
+            {
+                CreatedBy = user.Id,
+                Description = request.Description,
+                Name = request.Name,
+                CultureId = request.CultureId
+            });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

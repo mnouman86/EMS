@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityIncludedOption.Commands.CreateActivityIncludedOptionCommand;
-public record CreateActivityIncludedOptionCommand(string? Name, string? Description,int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateActivityIncludedOptionCommand(string? Name, string? Description,int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateActivityIncludedOptionCommand>
 {
     [JsonIgnore]

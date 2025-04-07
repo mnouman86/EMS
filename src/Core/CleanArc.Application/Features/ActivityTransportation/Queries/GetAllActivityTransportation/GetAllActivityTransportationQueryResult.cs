@@ -11,8 +11,6 @@ public class GetAllActivityTransportationQueryResult
     public int Id { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
-    public string VehicleType { get; set; }
-
     public bool IsDeleted { get; set; }
     public bool IsActive { get; set; }
     public int CreatedBy { get; set; }
@@ -20,8 +18,6 @@ public class GetAllActivityTransportationQueryResult
     public int UpdatedBy { get; set; }
     public DateTime UpdatedAt { get; set; }
     public int? CultureId { get; set; }
-    public int? Code { get; set; }
-    public string? Message { get; set; }
 }
 
 //    public GetAllActivityTransportationQueryResult(int iD, string name, string description, bool isDeleted, bool isActive, int createdBy, DateTime createdAt, int updatedBy, DateTime updatedAt)

@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.ActivityManager.Queries.GetActivityManagerById;
+using CleanArc.Application.Features.ActivitySupervisor.Queries.GetActivitySupervisorById;
 
 namespace CleanArc.Application.Features.ActivityIncludeOptionMapping.Queries.GetActivityIncludeOptionMappingById
 {

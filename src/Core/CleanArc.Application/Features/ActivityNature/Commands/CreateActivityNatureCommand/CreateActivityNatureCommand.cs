@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityNature.Commands.CreateActivityNatureCommand;
-public record CreateActivityNatureCommand(string? Name, string? Description,int? CreatedBy,int CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateActivityNatureCommand(string? Name, string? Description,int CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateActivityNatureCommand>
 {
     [JsonIgnore]

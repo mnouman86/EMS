@@ -1,4 +1,4 @@
-﻿using CleanArc.Domain.Entities.ActivityManager;
+﻿using CleanArc.Domain.Entities.ActivitySupervisor;
 using CleanArc.Domain.Entities.Order;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Contracts.Persistence;
 
-public  interface IActivityManagerRepository:IRepository<ActivityManager>
+public  interface IActivitySupervisorRepository:IRepository<ActivitySupervisor>
 {
    // Task CreateAgeType(AgeType ageType);
 }

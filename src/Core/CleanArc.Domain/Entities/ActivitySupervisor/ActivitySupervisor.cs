@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Domain.Entities.ActivityManager;
+namespace CleanArc.Domain.Entities.ActivitySupervisor;
 
-public  class ActivityManager
+public  class ActivitySupervisor
     
 {
     public int Id { get; set; }

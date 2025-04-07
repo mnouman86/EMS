@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivityDisabilityOption.Commands.CreateActivityDisabilityOptionCommand;
-public record CreateActivityDisabilityOptionCommand(string? Name, string? Description,int? CreatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateActivityDisabilityOptionCommand(string? Name, string? Description, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateActivityDisabilityOptionCommand>
 {
     [JsonIgnore]

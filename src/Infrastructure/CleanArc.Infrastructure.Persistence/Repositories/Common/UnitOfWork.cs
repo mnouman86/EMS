@@ -63,7 +63,7 @@ public class UnitOfWork : IUnitOfWork
     public IAdvertisementPageRepository AdvertisementPageRepository { get; set; }
     public IActivityTypeRepository ActivityTypeRepository { get; set; }
     public IActivityNatureRepository ActivityNatureRepository { get; set; }
-    public IActivityManagerRepository ActivityManagerRepository { get; set; }
+    public IActivitySupervisorRepository ActivitySupervisorRepository { get; set; }
     public IActivityIncludedOptionRepository ActivityIncludedOptionRepository { get; set; }
     public IDisabilityOptionRepository DisabilityOptionRepository { get; set; }
     public ISubServiceRepository SubServiceRepository { get; set; }
@@ -169,7 +169,7 @@ public class UnitOfWork : IUnitOfWork
                                 ILogger<AdvertisementPageRepository> _loggerAdvertisementPage,
                                 ILogger<ActivityTypeRepository> _loggerActivityType,
                                 ILogger<ActivityNatureRepository> _loggerActivityNature,
-                                ILogger<ActivityManagerRepository> _loggerActivityManager,
+                                ILogger<ActivitySupervisorRepository> _loggerActivitySupervisor,
                                 ILogger<ActivityIncludedOptionRepository> _loggerActivityIncludedOption,
                                 ILogger<DisabilityOptionRepository> _loggerDisabilityOption,
                                 ILogger<SubServiceRepository> _loggerSubService,
@@ -277,7 +277,7 @@ public class UnitOfWork : IUnitOfWork
         AdvertisementPageRepository = new AdvertisementPageRepository(configuration, mapper, _loggerAdvertisementPage, httpContextAccessor);
         ActivityTypeRepository = new ActivityTypeRepository(configuration, mapper, _loggerActivityType, httpContextAccessor);
         ActivityNatureRepository = new ActivityNatureRepository(configuration, mapper, _loggerActivityNature, httpContextAccessor);
-        ActivityManagerRepository = new ActivityManagerRepository(configuration, mapper, _loggerActivityManager, httpContextAccessor);
+        ActivitySupervisorRepository = new ActivitySupervisorRepository(configuration, mapper, _loggerActivitySupervisor, httpContextAccessor);
         ActivityIncludedOptionRepository = new ActivityIncludedOptionRepository(configuration, mapper, _loggerActivityIncludedOption, httpContextAccessor);
         DisabilityOptionRepository = new DisabilityOptionRepository(configuration, mapper, _loggerDisabilityOption, httpContextAccessor);
         SubServiceRepository = new SubServiceRepository(configuration, mapper, _loggerSubService, httpContextAccessor);

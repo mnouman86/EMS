@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Features.ActivityManager.Commands.CreateActivityManagerCommand;
+using CleanArc.Application.Features.ActivitySupervisor.Commands.CreateActivitySupervisorCommand;
 using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.Extensions;
 using Mediator;
@@ -14,21 +14,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.ActivityManager.Commands.DeleteActivityManagerCommand;
+namespace CleanArc.Application.Features.ActivitySupervisor.Commands.DeleteActivitySupervisorCommand;
 
-internal class DeleteActivityManagerCommandHandler: IRequestHandler<DeleteActivityManagerCommand, OperationResult<ResponseEntity>>
+internal class DeleteActivitySupervisorCommandHandler: IRequestHandler<DeleteActivitySupervisorCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<DeleteActivityManagerCommandHandler> _logger;
+    private readonly ILogger<DeleteActivitySupervisorCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
     //private readonly IUnitOfWork _unitOfWork;
     //private readonly IAppUserManager _userManager;
 
 
-    public DeleteActivityManagerCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<DeleteActivityManagerCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public DeleteActivitySupervisorCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<DeleteActivitySupervisorCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -39,7 +39,7 @@ internal class DeleteActivityManagerCommandHandler: IRequestHandler<DeleteActivi
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<ResponseEntity>> Handle(DeleteActivityManagerCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(DeleteActivitySupervisorCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -55,9 +55,9 @@ internal class DeleteActivityManagerCommandHandler: IRequestHandler<DeleteActivi
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
-            //await _unitOfWork.ActivityManagerRepository.DeleteAsync(new Domain.Entities.ActivityManager.ActivityManager()
+            //await _unitOfWork.ActivitySupervisorRepository.DeleteAsync(new Domain.Entities.ActivitySupervisor.ActivitySupervisor()
             // { UpdatedBy = user.Id, ID = request.ID });
-            var result = await _unitOfWork.ActivityManagerRepository.DeleteAsync(request.deleteRequest, user.Id);
+            var result = await _unitOfWork.ActivitySupervisorRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
           //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivitySeason.Commands.CreateActivitySeasonCommand;
-public record CreateActivitySeasonCommand(string? Name, string? Description,int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateActivitySeasonCommand(string? Name, string? Description,int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateActivitySeasonCommand>
 {
     [JsonIgnore]

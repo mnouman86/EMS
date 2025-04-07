@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.ActivityManager.Queries.GetActivityManagerById
+namespace CleanArc.Application.Features.ActivitySupervisor.Queries.GetActivitySupervisorById
 {
-    public class GetActivityManagerByIdQueryResult
+    public class GetActivitySupervisorByIdQueryResult
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
         public int Id { get; set; }

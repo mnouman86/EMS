@@ -11,17 +11,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ActivitySchedule.Commands.CreateActivityScheduleCommand;
-public record CreateActivityScheduleCommand(int? ActivityID, string? Title, int? CreatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateActivityScheduleCommand(int? GenericTitleId, string? Title, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateActivityScheduleCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<CreateActivityScheduleCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateActivityScheduleCommand> validator)
     {
-        validator.RuleFor(c => c.ActivityID)
+        validator.RuleFor(c => c.GenericTitleId)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please enter a valid ActivityID");
+            .WithMessage("Please enter a valid GenericTitleId");
         validator.RuleFor(c => c.Title)
             .NotEmpty()
             .NotNull()

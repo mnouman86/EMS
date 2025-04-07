@@ -56,7 +56,8 @@ internal class UpdateActivityScheduleCommandHandler:IRequestHandler<UpdateActivi
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.ActivityScheduleRepository.UpdateAsync(new Domain.Entities.ActivitySchedule.ActivitySchedule()
-            { UpdatedBy = user.Id,Id= request.Id, ActivityID = request.ActivityID, Title = request.Title,CultureId=request.CultureId });
+            { UpdatedBy = user.Id,Id= request.Id, GenericTitleId = request.GenericTitleId, 
+                Title = request.Title,CultureId=request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
