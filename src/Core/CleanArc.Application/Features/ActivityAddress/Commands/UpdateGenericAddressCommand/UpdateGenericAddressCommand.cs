@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ActivityAddress.Commands.UpdateGenericAddressCommand;
-public record UpdateGenericAddressCommand(int Id, int? GenericTitleId, int? CountryLookUpId, int? CityLookUpId, string? AddressLine1,
+public record UpdateGenericAddressCommand(int Id, int? CountryLookUpId, int? CityLookUpId, string? AddressLine1,
     string? AddressLine2,
     int? StateLookUpId,
     string? PostalCode,

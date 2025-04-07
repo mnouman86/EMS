@@ -10,7 +10,7 @@ namespace CleanArc.Application.Models.GenericAddress
     {
 
         public int Id { get; set; }
-        public int? GenericTitleId { get; set; }
+        //public int? GenericTitleId { get; set; }
         public int? CultureId { get; set; }
 
         public string? CountryLookUpId { get; set; }

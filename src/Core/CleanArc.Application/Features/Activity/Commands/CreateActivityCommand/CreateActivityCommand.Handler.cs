@@ -78,7 +78,7 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
                 //PrivateParticipantLookUpID = request.PrivateParticipantLookUpID,
                 WhoCannotParticipate = request.WhoCannotParticipate,
                 WhoCanParticipate = request.WhoCanParticipate,
-                ManageActivityLookUpId = request.ManageActivityLookUpId,
+                ActivitySupervisorLookUpId = request.ActivitySupervisorLookUpId,
                 OtherManageActivity=request.OtherManageActivity,
                 Days = request.Days,
                 Hours = request.Hours,
