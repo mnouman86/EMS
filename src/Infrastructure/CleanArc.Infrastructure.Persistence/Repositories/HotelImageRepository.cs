@@ -17,6 +17,7 @@ using System.Globalization;
 using CleanArc.Application.Models.KBDetail;
 using CleanArc.Application.Common;
 using CleanArc.Application.Models.ActivityIDImageMapping;
+using CleanArc.Domain.Entities.SearchHotelImage;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
@@ -94,9 +95,29 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
         //    throw new NotImplementedException();
         //}
 
-        public Task<ListResponseWrapper<Hotel_Image>> GetAllAsync(SearchRequest request)
+        public async Task<ListResponseWrapper<Hotel_Image>> GetAllAsync(SearchRequest searchRequest)
         {
-            throw new NotImplementedException();
+            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
+            {
+                using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+                {
+                    connection.Open();
+
+                    var parameters = new DynamicParameters();
+                    parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+                    parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                    parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                    parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+                    parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+                    parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                    var result = await connection.QueryAsync<Hotel_Image>(HotelImageQueries.GetAll_HotelImage, parameters, commandType: CommandType.StoredProcedure);
+                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                    var response = new ListResponseWrapper<Hotel_Image> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
+                }
+            }
         }
 
         //public async Task<ListResponseWrapper<CarDetail>> GetAllAsync(SearchRequest searchRequest)
