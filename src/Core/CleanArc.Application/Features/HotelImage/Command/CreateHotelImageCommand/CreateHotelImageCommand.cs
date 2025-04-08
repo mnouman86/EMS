@@ -9,30 +9,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
+using CleanArc.Application.Models.Request;
+using System.Text.Json.Serialization; 
+using CleanArc.Domain.Common;
+using CleanArc.Domain.Entities.HotelImage;
 
 namespace CleanArc.Application.Features.HotelImage.Command.CreateHotelImageCommand;
 
-public record CreateHotelImageCommand(int? GenericTitleId, List<string>? ImagePaths, string? ImageTitle, 
-    bool? IsMain, int? ServiceTypeEnumId, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateHotelImageCommand(int? GenericTitleId, int? ServiceTypeEnumId, int? CultureId, List<ImageData>? ImageData) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateHotelImageCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<CreateHotelImageCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateHotelImageCommand> validator)
     {
-        validator.RuleFor(c => c.GenericTitleId)
+        
+        validator.RuleFor(c => c.ImageData)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please enter a valid HotelID");
-        validator.RuleFor(c => c.ImagePaths)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a valid ImagePath");
-        validator.RuleFor(c => c.ImageTitle)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a ImageTitle");
+            .WithMessage("Please enter a Image Data");
         
         return validator;
     }
