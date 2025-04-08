@@ -26,16 +26,17 @@ namespace CleanArc.Web.FileUpload.Controllers
                 {
                     return BadRequest("No files were uploaded.");
                 }
-                var today = DateTime.UtcNow;
-                var datePath = Path.Combine(today.Year.ToString(), today.Month.ToString("D2"), today.Day.ToString("D2"));
+                //var today = DateTime.UtcNow;
+                //var datePath = Path.Combine(today.Year.ToString(), today.Month.ToString("D2"), today.Day.ToString("D2"));
 
-                var folderName = Path.Combine("Resources", category, datePath);
-                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+                //var folderName = Path.Combine("Resources", category, datePath);
+                //var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
                 var uploadedFiles = new List<string>();
-                if (!Directory.Exists(pathToSave))
-                {
-                    Directory.CreateDirectory(pathToSave);
-                }
+                //if (!Directory.Exists(pathToSave))
+                //{
+                //    Directory.CreateDirectory(pathToSave);
+                //}
+
 
                 //foreach (var file in files)
                 //{
@@ -64,13 +65,24 @@ namespace CleanArc.Web.FileUpload.Controllers
                     if (file.Length > 0)
                     {
                         var originalFileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                        var fileExtension = Path.GetExtension(originalFileName);
-                        var uniqueFileName = $"{Path.GetFileNameWithoutExtension(originalFileName)}_{Guid.NewGuid()}{fileExtension}";
+                        string directoryPath = Path.GetDirectoryName(originalFileName);
 
-                        var fullPath = Path.Combine(pathToSave, uniqueFileName);
-                        var relativeDbPath = Path.Combine(folderName, uniqueFileName).Replace("\\", "/"); // web-friendly path
+                        // Check if the directory exists
+                        if (!Directory.Exists(directoryPath))
+                        {
+                            Directory.CreateDirectory(directoryPath);
+                        }
 
-                        using (var stream = new FileStream(fullPath, FileMode.Create))
+                        // Extract the filename with extension
+                        string fileName = Path.GetFileName(originalFileName);
+
+                       // var fileExtension = Path.GetExtension(originalFileName);
+                       // var uniqueFileName = $"{Path.GetFileNameWithoutExtension(originalFileName)}_{Guid.NewGuid()}{fileExtension}";
+
+                        //var fullPath = Path.Combine(pathToSave, uniqueFileName);
+                        var relativeDbPath = originalFileName.Replace("\\", "/"); // web-friendly path
+
+                        using (var stream = new FileStream(originalFileName, FileMode.Create))
                         {
                             await file.CopyToAsync(stream);
                         }
