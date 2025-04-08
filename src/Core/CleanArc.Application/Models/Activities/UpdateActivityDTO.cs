@@ -33,7 +33,7 @@ namespace CleanArc.Application.Models.Activities
         public bool? IsDisability { get; set; }
         public string AllowedItems { get; set; }
         public string NotAllowedItems { get; set; }
-        public int? CurrencyLookUpID { get; set; }
+        public int? CurrencyLookUpId { get; set; }
         //public Decimal? Price { get; set; }
         //public Decimal? PerPersonPrice { get; set; }
         //public int? TotalParticipant { get; set; }

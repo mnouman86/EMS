@@ -38,7 +38,7 @@ public record UpdateActivityCommand(
     bool? IsDisability,
     string? AllowedItems,
     string? NotAllowedItems,
-    int? CurrencyLookUpID,
+    int? CurrencyLookUpId,
      //Decimal? PerPersonPrice,
      int[]? SeasonLookUpId,
     int[]? IncludeOptionLookUpId,
@@ -112,7 +112,7 @@ public record UpdateActivityCommand(
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a AllowedItems");
-        validator.RuleFor(c => c.CurrencyLookUpID)
+        validator.RuleFor(c => c.CurrencyLookUpId)
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a CurrencyLookUpID");
