@@ -226,7 +226,7 @@ public class ActivityRepository : IActivityRepository
 				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 				parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
-				parameters.Add("@GenericTitleId", searchRequestById.Id, DbType.Int32);
+				parameters.Add("@Id", searchRequestById.Id, DbType.Int32);
 
 				//var result = await connection.QuerySingleOrDefaultAsync<Activity>(ActivityQueries.GetByID_Activity, parameters, commandType: CommandType.StoredProcedure);
                 var result = await connection.QueryMultipleAsync(ActivityQueries.GetByID_Activity, parameters, commandType: CommandType.StoredProcedure);
