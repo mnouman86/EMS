@@ -58,26 +58,30 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             _httpContextAccessor = httpContextAccessor;
         }
         /// <inheritdoc/>
-        public async Task<ResponseEntity> AddAsync(Hotel_Image HotelImage)
+        public async Task<ResponseEntity> AddAsync(Hotel_Image Images)
         {
-            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, HotelImage))
+            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, Images))
             {
                 using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
                 {
                     connection.Open();
-                    CreateHotelImageDTO createHotelImageDTO = _mapper.Map<CreateHotelImageDTO>(HotelImage);
+                    CreateHotelImageDTO createHotelImageDTO = _mapper.Map<CreateHotelImageDTO>(Images);
                     var parameters = new DynamicParameters(createHotelImageDTO);
                     var imagePathsTable = new DataTable();
                     imagePathsTable.Columns.Add("ImagePath", typeof(string));
+                    imagePathsTable.Columns.Add("ImageTitle", typeof(string));
+                    imagePathsTable.Columns.Add("IsMain", typeof(bool));
 
-                    if (HotelImage.ImagePaths != null)
+                    if (Images.Images != null)
                     {
-                        foreach (var path in HotelImage.ImagePaths)
+                        foreach (var image in Images.Images)
                         {
-                            imagePathsTable.Rows.Add(path);
+                            imagePathsTable.Rows.Add(image.ImagePath, image.ImageTitle,
+                                image.IsMain);
                         }
                     }
-                    parameters.Add("@ImagePaths", imagePathsTable.AsTableValuedParameter("ImagePathTableType"));
+                    parameters.Add("@ImagePaths", imagePathsTable.AsTableValuedParameter("GenericImageTableType"));
+
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelImageQueries.Create_HotelImage, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
