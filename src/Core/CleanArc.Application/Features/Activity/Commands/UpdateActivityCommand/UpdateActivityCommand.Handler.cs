@@ -59,7 +59,7 @@ internal class UpdateActivityCommandHandler:IRequestHandler<UpdateActivityComman
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result=await _unitOfWork.ActivityRepository.UpdateAsync(new Domain.Entities.Activity.Activity()
-            { UpdatedBy = user.Id,GenericTitleId= request.Id,
+            { UpdatedBy = user.Id,Id= request.Id,
                 CultureId=request.CultureId,
                 BusinessId=request.BusinessId,
                 Title = request.Title,
