@@ -104,6 +104,7 @@ public async Task<ResponseEntity> AddAsync(ActivityIDImageMapping ActivityIDImag
                 var parameters = new DynamicParameters();
                 parameters.Add("@Ids", deleteRequest.SelectedIds);
                 parameters.Add("@CultureId", deleteRequest.CultureId);
+                parameters.Add("@IsDeleted", deleteRequest.isDeleted);
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityIDImageMappingQueries.Mapping_Delete_Activity_Image, parameters, commandType: CommandType.StoredProcedure);

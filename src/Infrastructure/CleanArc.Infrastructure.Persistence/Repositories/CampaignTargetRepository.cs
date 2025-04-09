@@ -95,6 +95,7 @@ public class CampaignTargetRepository : ICampaignTargetRepository
                 var parameters = new DynamicParameters();
                 parameters.Add("@Ids", deleteRequest.SelectedIds);
                 parameters.Add("@CultureId", deleteRequest.CultureId);
+                parameters.Add("@IsDeleted", deleteRequest.isDeleted);
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CampaignTargetQueries.Delete_CampaignTarget, parameters, commandType: CommandType.StoredProcedure);

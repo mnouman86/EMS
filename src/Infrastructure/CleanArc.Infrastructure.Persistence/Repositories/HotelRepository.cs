@@ -117,7 +117,8 @@ public class HotelRepository : IHotelRepository
                 parameters.Add("@Ids", deleteRequest.SelectedIds);
                 parameters.Add("@UpdatedBy", updatedBy);
 				parameters.Add("@CultureId", deleteRequest.CultureId);
-				
+                parameters.Add("@IsDeleted", deleteRequest.isDeleted);
+
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelQueries.Delete_Hotel, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;

@@ -95,6 +95,7 @@ public async Task<ResponseEntity> AddAsync(CoreArea CoreArea)
                 var parameters = new DynamicParameters();
                 parameters.Add("@Ids", deleteRequest.SelectedIds);
                 parameters.Add("@CultureId", deleteRequest.CultureId);
+                parameters.Add("@IsDeleted", deleteRequest.isDeleted);
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CoreAreaQueries.Delete_CoreArea, parameters, commandType: CommandType.StoredProcedure);

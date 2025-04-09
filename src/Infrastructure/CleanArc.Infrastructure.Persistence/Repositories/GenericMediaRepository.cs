@@ -18,6 +18,7 @@ using CleanArc.Application.Models.KBDetail;
 using CleanArc.Application.Common;
 using CleanArc.Application.Models.ActivityIDImageMapping;
 using CleanArc.Domain.Entities.SearchHotelImage;
+using Azure.Core;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
@@ -194,7 +195,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     connection.Open();
                     var parameters = new DynamicParameters();
                     parameters.Add("@Ids", deleteRequest.SelectedIds);
-					parameters.Add("@CultureID", 1);
+					parameters.Add("@CultureID", deleteRequest.CultureId);
 					parameters.Add("@UpdatedBy", updatedBy);
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(GenericMediaQueries.Delete_HotelImage, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 

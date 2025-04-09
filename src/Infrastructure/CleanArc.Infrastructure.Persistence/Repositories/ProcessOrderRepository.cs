@@ -94,6 +94,7 @@ public async Task<ResponseEntity> AddAsync(ProcessOrder ProcessOrder)
                 var parameters = new DynamicParameters();
                 parameters.Add("@Ids", deleteRequest.SelectedIds);
                 parameters.Add("@CultureId", deleteRequest.CultureId);
+                parameters.Add("@IsDeleted", deleteRequest.isDeleted);
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Delete_OrderPayment, parameters, commandType: CommandType.StoredProcedure);

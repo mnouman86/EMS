@@ -97,7 +97,8 @@ public async Task<ResponseEntity> AddAsync(ActivityAddressMapping ActivityAddres
                 connection.Open();
                 var parameters = new DynamicParameters();
                 parameters.Add("@Ids", deleteRequest.SelectedIds);
-                parameters.Add("@CultureId", deleteRequest.CultureId);
+                parameters.Add("@CultureId", deleteRequest.CultureId); 
+                parameters.Add("@IsDeleted", deleteRequest.isDeleted);
                 parameters.Add("@UpdatedBy", updatedBy);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityAddressMappingQueries.Mapping_Delete_Activity_Image, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
