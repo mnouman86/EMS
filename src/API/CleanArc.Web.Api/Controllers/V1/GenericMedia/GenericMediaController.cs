@@ -8,7 +8,7 @@ using CleanArc.WebFramework.BaseController;
 using Mediator;
 using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
 
-namespace CleanArc.Web.Api.Controllers.V1.HotelImage
+namespace CleanArc.Web.Api.Controllers.V1.GenericMedia
 {
     /// <summary>
     /// HotelImageController is responsible for handling HTTP requests related to hotel image operations
@@ -52,7 +52,7 @@ namespace CleanArc.Web.Api.Controllers.V1.HotelImage
     /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.HotelImage.Command.CreateHotelImageCommand.CreateGenericMediaCommand, CleanArc.Application.Features.HotelImage.Command.UpdateHotelImageCommand.UpdateGenericMediaCommand, CleanArc.Application.Features.HotelImage.Command.DeleteHotelImageCommand.DeleteGenericMediaCommand, System.ResponseEntity, CleanArc.Application.Features.HotelImage.Queries.GetAllHotelImage.GetAllGenericMediaQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.HotelImage.Queries.GetAllHotelImage.GetAllGenericMediaQueryResult&gt;, CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById.GetGenericMediaByIdQuery, CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById.GetGenericMediaeByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
-    [Route("api/v{version:apiVersion}/HotelImage")]
+    [Route("api/v{version:apiVersion}/GenericMedia")]
     //[Authorize]
 
     public class GenericMediaController : _BaseController<CreateGenericMediaCommand, UpdateGenericMediaCommand, DeleteGenericMediaCommand, ResponseEntity, GetAllGenericMediaQuery,
