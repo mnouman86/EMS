@@ -54,7 +54,7 @@ internal class UpdateAmenityCommandHandler : IRequestHandler<UpdateAmenityComman
                 Id = request.Id,
                 Description = request.Description,
                 Name = request.Name,
-                AmenityTypeEnumID = request.AmenityTypeEnumID,
+                ServiceTypeEnumId = request.ServiceTypeEnumId,
                 Icon = request.Icon,
                 //ServiceCategoryId = request.ServiceCategoryId,
                 CultureId=request.CultureId

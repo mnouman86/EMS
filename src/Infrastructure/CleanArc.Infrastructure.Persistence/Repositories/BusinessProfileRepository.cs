@@ -90,6 +90,7 @@ public class BusinessProfileRepository : IBusinessProfileRepository
                 var parameters = new DynamicParameters();
                 parameters.Add("@Ids", deleteRequest.SelectedIds);
                 parameters.Add("@CultureId", deleteRequest.CultureId);
+                parameters.Add("@IsDeleted", deleteRequest.isDeleted);
                 parameters.Add("@UpdatedBy", updatedBy);
                 //parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 //parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);

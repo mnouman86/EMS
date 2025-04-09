@@ -133,7 +133,8 @@ public class ActivityRepository : IActivityRepository
 				var parameters = new DynamicParameters();
 				parameters.Add("@Ids", deleteRequest.SelectedIds);
 				parameters.Add("@CultureId", deleteRequest.CultureId);
-				parameters.Add("@UpdatedBy", updatedBy);
+                parameters.Add("@IsDeleted", deleteRequest.isDeleted);
+                parameters.Add("@UpdatedBy", updatedBy);
 				
 				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityQueries.Delete_Activity, parameters, commandType: CommandType.StoredProcedure);
 				// var result = await connection.QuerySingleOrDefaultAsync<int>(ActivityQueries.Delete_Activity, parameters, commandType: CommandType.StoredProcedure);

@@ -86,6 +86,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 					parameters.Add("@Ids", deleteRequest.SelectedIds);
 					parameters.Add("@UpdatedBy", updatedBy);
                     parameters.Add("@CultureId", deleteRequest.CultureId);
+                    parameters.Add("@IsDeleted", deleteRequest.isDeleted);
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(SectionQueries.Delete_Section, parameters, commandType: CommandType.StoredProcedure);
 					(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 					return result;

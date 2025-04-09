@@ -92,7 +92,8 @@ public async Task<ResponseEntity> AddAsync(ActivityIncludedOption ActivityInclud
                 connection.Open();
                 var parameters = new DynamicParameters();
                 parameters.Add("@Ids", deleteRequest.SelectedIds);
-                parameters.Add("@UpdatedBy", updatedBy);
+                parameters.Add("@CultureId", deleteRequest.CultureId);
+                parameters.Add("@IsDeleted", deleteRequest.isDeleted);
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityIncludedOptionQueries.Delete_ActivityIncludedOption, parameters, commandType: CommandType.StoredProcedure);

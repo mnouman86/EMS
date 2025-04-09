@@ -93,6 +93,7 @@ public async Task<ResponseEntity> AddAsync(ActivityPrivateParticipant ActivityPr
                 var parameters = new DynamicParameters();
                 parameters.Add("@Ids", deleteRequest.SelectedIds);
                 parameters.Add("@CultureId", deleteRequest.CultureId);
+                parameters.Add("@IsDeleted", deleteRequest.isDeleted);
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ActivityPrivateParticipantQueries.Delete_ActivityPrivateParticipant, parameters, commandType: CommandType.StoredProcedure);

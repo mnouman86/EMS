@@ -96,6 +96,7 @@ public async Task<ResponseEntity> AddAsync(GenericAddress ActivityAddress)
                 var parameters = new DynamicParameters();
                 parameters.Add("@Ids", deleteRequest.SelectedIds);
                 parameters.Add("@CultureId", deleteRequest.CultureId);
+                parameters.Add("@IsDeleted", deleteRequest.isDeleted);
                 parameters.Add("@UpdatedBy", updatedBy);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(GenericAddressQueries.Delete_GenericAddress, parameters, commandType: CommandType.StoredProcedure);

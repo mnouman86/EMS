@@ -81,8 +81,9 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     var parameters = new DynamicParameters();
                     parameters.Add("@Ids", deleteRequest.SelectedIds);
                     parameters.Add("@UpdatedBy", updatedBy);
-                    parameters.Add("@CultureId", 1);
-                    
+                    parameters.Add("@CultureId", deleteRequest.CultureId);
+                    parameters.Add("@IsDeleted", deleteRequest.isDeleted);
+
                     var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CarDetailQueries.Delete_CarDetail, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                     return result;

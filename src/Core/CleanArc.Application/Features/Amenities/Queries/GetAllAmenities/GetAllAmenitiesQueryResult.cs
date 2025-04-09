@@ -16,7 +16,7 @@ public record GetAllAmenitiesQueryResult
     //public int ServiceId { get; set; }
     //public int? ServiceCategoryId { get; set; }
     //public string? ServiceCategoryName { get; set; }
-    public int? AmenityTypeEnumID { get; set; }
+    public int? ServiceTypeEnumId { get; set; }
     public string? AmenityTypeEnum { get; set; }
     
     public string? Icon { get; set; }
