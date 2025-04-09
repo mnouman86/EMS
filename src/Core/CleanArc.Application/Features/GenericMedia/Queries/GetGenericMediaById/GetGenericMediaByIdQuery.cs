@@ -8,6 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById;
+namespace CleanArc.Application.Features.GenericMedia.Queries.GetGenericMediaById;
 
-public record GetHotelImageByIdQuery(SearchRequestById searchRequestById):IRequest<OperationResult<GetHotelImageByIdQueryResult>>;
+public record GetGenericMediaByIdQuery(SearchRequestById searchRequestById):IRequest<OperationResult<GetGenericMediaByIdQueryResult>>;

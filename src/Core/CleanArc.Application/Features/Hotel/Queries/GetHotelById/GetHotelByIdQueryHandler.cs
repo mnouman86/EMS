@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById;
+using CleanArc.Application.Features.GenericMedia.Queries.GetGenericMediaById;
 using System.Globalization;
 
 namespace CleanArc.Application.Features.Hotel.Queries.GetHotelById

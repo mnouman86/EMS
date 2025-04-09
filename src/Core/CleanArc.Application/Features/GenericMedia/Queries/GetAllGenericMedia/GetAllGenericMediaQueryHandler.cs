@@ -13,18 +13,18 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
-namespace CleanArc.Application.Features.HotelImage.Queries.GetAllHotelImage
+namespace CleanArc.Application.Features.GenericMedia.Queries.GetAllGenericMedia
 {
-    internal class GetAllHotelImageQueryHandler : IRequestHandler<GetAllHotelImageQuery, OperationResult<List<GetAllHotelImageQueryResult>>>
+    internal class GetAllGenericMediaQueryHandler : IRequestHandler<GetAllGenericMediaQuery, OperationResult<List<GetAllGenericMediaQueryResult>>>
     {
 
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly ILogger<GetAllHotelImageQueryHandler> _logger;
+        private readonly ILogger<GetAllGenericMediaQueryHandler> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
 
 
-        public GetAllHotelImageQueryHandler(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, ILogger<GetAllHotelImageQueryHandler> logger)
+        public GetAllGenericMediaQueryHandler(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, ILogger<GetAllGenericMediaQueryHandler> logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -33,7 +33,7 @@ namespace CleanArc.Application.Features.HotelImage.Queries.GetAllHotelImage
 
         }
 
-        public async ValueTask<OperationResult<List<GetAllHotelImageQueryResult>>> Handle(GetAllHotelImageQuery request, CancellationToken cancellationToken)
+        public async ValueTask<OperationResult<List<GetAllGenericMediaQueryResult>>> Handle(GetAllGenericMediaQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
@@ -44,20 +44,20 @@ namespace CleanArc.Application.Features.HotelImage.Queries.GetAllHotelImage
                 //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 //return OperationResult<List<GetAllHotelImageQueryResult>>.SuccessResult(result);
 
-                var response = await _unitOfWork.HotelImageRepository.GetAllAsync(request.searchRequest);
+                var response = await _unitOfWork.GenericMediaRepository.GetAllAsync(request.searchRequest);
 
                 if (response.Code != 200)
                 {
-                    return OperationResult<List<GetAllHotelImageQueryResult>>.FailureResult(
+                    return OperationResult<List<GetAllGenericMediaQueryResult>>.FailureResult(
                         response.Message,
                     response.Code
                     );
                 }
 
-                var mappedResult = _mapper.Map<List<GetAllHotelImageQueryResult>>(response.Data);
+                var mappedResult = _mapper.Map<List<GetAllGenericMediaQueryResult>>(response.Data);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                return OperationResult<List<GetAllHotelImageQueryResult>>.SuccessResult(
+                return OperationResult<List<GetAllGenericMediaQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
                     response.Message

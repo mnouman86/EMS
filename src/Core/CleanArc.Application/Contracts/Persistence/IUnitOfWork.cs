@@ -44,7 +44,7 @@ public interface IUnitOfWork
     public ISearchBusinessCarDetailRepository SearchBusinessCarDetailRepository { get; }
     public ISearchBusinessDetailRepository SearchBusinessDetailRepository { get; }
     public ICarImageRepository CarImageRepository { get; }
-    public IHotelImageRepository HotelImageRepository { get; }
+    public IGenericMediaRepository GenericMediaRepository { get; }
     public IRoomVisualRepository RoomVisualRepository { get; }
     public IAdvertisementRepository AdvertisementRepository { get; }
     public IAdvertisementPlaceRepository AdvertisementPlaceRepository { get; }

@@ -8,8 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.HotelImage.Queries.GetAllHotelImage;
+namespace CleanArc.Application.Features.GenericMedia.Queries.GetAllGenericMedia;
 
-public record GetAllHotelImageQuery(SearchRequest searchRequest) : IRequest<OperationResult<List<GetAllHotelImageQueryResult>>>;
+public record GetAllGenericMediaQuery(SearchRequest searchRequest) : IRequest<OperationResult<List<GetAllGenericMediaQueryResult>>>;
 
 

@@ -11,14 +11,14 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
-namespace CleanArc.Application.Features.HotelImage.Command.DeleteHotelImageCommand;
+namespace CleanArc.Application.Features.GenericMedia.Command.DeleteGenericMediaCommand;
 
-public record DeleteHotelImageCommand(DeleteRequest deleteRequest) : IRequest<OperationResult<ResponseEntity>>,
-IValidatableModel<DeleteHotelImageCommand>
+public record DeleteGenericMediaCommand(DeleteRequest deleteRequest) : IRequest<OperationResult<ResponseEntity>>,
+IValidatableModel<DeleteGenericMediaCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
-    public IValidator<DeleteHotelImageCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteHotelImageCommand> validator)
+    public IValidator<DeleteGenericMediaCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteGenericMediaCommand> validator)
     {
         validator.RuleFor(c => c.deleteRequest.SelectedIds)
             .NotEmpty()

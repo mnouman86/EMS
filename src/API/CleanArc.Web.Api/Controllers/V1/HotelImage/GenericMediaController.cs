@@ -1,9 +1,9 @@
 ﻿using Asp.Versioning;
-using CleanArc.Application.Features.HotelImage.Command.CreateHotelImageCommand;
-using CleanArc.Application.Features.HotelImage.Command.DeleteHotelImageCommand;
-using CleanArc.Application.Features.HotelImage.Command.UpdateHotelImageCommand;
-using CleanArc.Application.Features.HotelImage.Queries.GetAllHotelImage;
-using CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById;
+using CleanArc.Application.Features.GenericMedia.Command.CreateGenericMediaCommand;
+using CleanArc.Application.Features.GenericMedia.Command.DeleteGenericMediaCommand;
+using CleanArc.Application.Features.GenericMedia.Command.UpdateGenericMediaCommand;
+using CleanArc.Application.Features.GenericMedia.Queries.GetAllGenericMedia;
+using CleanArc.Application.Features.GenericMedia.Queries.GetGenericMediaById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
 using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
@@ -49,23 +49,23 @@ namespace CleanArc.Web.Api.Controllers.V1.HotelImage
     /// The controller is part of the CleanArc architecture, ensuring a clean separation of concerns and adherence to 
     /// SOLID principles. 
     /// </summary>
-    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.HotelImage.Command.CreateHotelImageCommand.CreateHotelImageCommand, CleanArc.Application.Features.HotelImage.Command.UpdateHotelImageCommand.UpdateHotelImageCommand, CleanArc.Application.Features.HotelImage.Command.DeleteHotelImageCommand.DeleteHotelImageCommand, System.ResponseEntity, CleanArc.Application.Features.HotelImage.Queries.GetAllHotelImage.GetAllHotelImageQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.HotelImage.Queries.GetAllHotelImage.GetAllHotelImageQueryResult&gt;, CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById.GetHotelImageByIdQuery, CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById.GetHotelImageByIdQueryResult&gt;" />
+    /// <seealso cref="CleanArc.WebFramework.BaseController._BaseController&lt;CleanArc.Application.Features.HotelImage.Command.CreateHotelImageCommand.CreateGenericMediaCommand, CleanArc.Application.Features.HotelImage.Command.UpdateHotelImageCommand.UpdateGenericMediaCommand, CleanArc.Application.Features.HotelImage.Command.DeleteHotelImageCommand.DeleteGenericMediaCommand, System.ResponseEntity, CleanArc.Application.Features.HotelImage.Queries.GetAllHotelImage.GetAllGenericMediaQuery, System.Collections.Generic.List&lt;CleanArc.Application.Features.HotelImage.Queries.GetAllHotelImage.GetAllGenericMediaQueryResult&gt;, CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById.GetGenericMediaByIdQuery, CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById.GetGenericMediaeByIdQueryResult&gt;" />
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/HotelImage")]
     //[Authorize]
 
-    public class HotelImageController : _BaseController<CreateHotelImageCommand, UpdateHotelImageCommand, DeleteHotelImageCommand, ResponseEntity, GetAllHotelImageQuery,
-    List<GetAllHotelImageQueryResult>, GetHotelImageByIdQuery, GetHotelImageByIdQueryResult>
+    public class GenericMediaController : _BaseController<CreateGenericMediaCommand, UpdateGenericMediaCommand, DeleteGenericMediaCommand, ResponseEntity, GetAllGenericMediaQuery,
+    List<GetAllGenericMediaQueryResult>, GetGenericMediaByIdQuery, GetGenericMediaByIdQueryResult>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="HotelImageController"/> class.
+        /// Initializes a new instance of the <see cref="GenericMediaController"/> class.
         /// </summary>
         /// <param name="sender">The mediator sender for handling requests and responses.</param>
         /// <param name="logger">The logger for logging controller-related information.</param>
         /// <param name="httpContextAccessor"></param>
-        public HotelImageController(ISender sender, ILogger<_BaseController<CreateHotelImageCommand, UpdateHotelImageCommand, DeleteHotelImageCommand, ResponseEntity, GetAllHotelImageQuery,
-   List<GetAllHotelImageQueryResult>, GetHotelImageByIdQuery, GetHotelImageByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) :
+        public GenericMediaController(ISender sender, ILogger<_BaseController<CreateGenericMediaCommand, UpdateGenericMediaCommand, DeleteGenericMediaCommand, ResponseEntity, GetAllGenericMediaQuery,
+   List<GetAllGenericMediaQueryResult>, GetGenericMediaByIdQuery, GetGenericMediaByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) :
             base(sender, logger, httpContextAccessor)
         {
 

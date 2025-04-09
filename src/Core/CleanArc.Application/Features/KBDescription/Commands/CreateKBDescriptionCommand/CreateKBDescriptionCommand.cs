@@ -15,7 +15,7 @@ public record CreateKBDescriptionCommand(
     string Content,
     string? KBContentType,
     //string MediaType,
- List<GenericMedia> Medias,
+ List<CleanArc.Domain.Entities.KBMedia.GenericMedia> Medias,
 //bool? IsMain,
     //int? CreatedBy,
     int? CultureId) : IRequest<OperationResult<ResponseEntity>>,

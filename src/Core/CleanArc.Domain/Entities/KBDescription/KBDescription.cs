@@ -24,7 +24,7 @@ public  class KBDescription
     public string? MediaType { get; set; }
     //public string? ImagePath { get; set; }
     //public string? ImageTitle { get; set; }
-    public List<GenericMedia> Medias { get; set; }
+    public List<KBMedia.GenericMedia> Medias { get; set; }
     //public bool? IsMain { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }

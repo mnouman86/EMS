@@ -1,5 +1,6 @@
 ﻿using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
+using CleanArc.Application.Features.AgeType.Commands.DeleteAgeTypeCommand;
 using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.Extensions;
 using MapsterMapper;
@@ -13,22 +14,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace CleanArc.Application.Features.HotelImage.Command.CreateHotelImageCommand
+namespace CleanArc.Application.Features.GenericMedia.Command.DeleteGenericMediaCommand
 {
-    internal class CreateHotelImageCommandHandler : IRequestHandler<CreateHotelImageCommand, OperationResult<ResponseEntity>>
+    internal class DeleteHotelImageCommandHandler : IRequestHandler<DeleteGenericMediaCommand, OperationResult<ResponseEntity>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IAppUserManager _userManager;
         private readonly IConfiguration configuration;
         private readonly IMapper _mapper;
-        private readonly ILogger<CreateHotelImageCommandHandler> _logger;
+        private readonly ILogger<DeleteHotelImageCommandHandler> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
                                                                     //private readonly IUnitOfWork _unitOfWork;
                                                                     //private readonly IAppUserManager _userManager;
 
 
-        public CreateHotelImageCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<CreateHotelImageCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+        public DeleteHotelImageCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<DeleteHotelImageCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
         {
             _unitOfWork = unitOfWork;
             _userManager = userManager;
@@ -39,8 +39,7 @@ namespace CleanArc.Application.Features.HotelImage.Command.CreateHotelImageComma
             //_unitOfWork = unitOfWork;
             //_userManager = userManager;
         }
-
-        public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateHotelImageCommand request, CancellationToken cancellationToken)
+        public async ValueTask<OperationResult<ResponseEntity>> Handle(DeleteGenericMediaCommand request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
@@ -49,29 +48,14 @@ namespace CleanArc.Application.Features.HotelImage.Command.CreateHotelImageComma
                 if (user == null)
                     return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
-                //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
-                //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
 
-                //await _unitOfWork.CommitAsync();
-                //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-
-                //return OperationResult<ResponseEntity>.SuccessResult(result);
-                var result = await _unitOfWork.HotelImageRepository.AddAsync(new Domain.Entities.HotelImage.Hotel_Image()
-                { CreatedBy = user.Id,
-                   GenericTitleId = request.GenericTitleId,
-                   CultureId = request.CultureId,
-                    ServiceTypeEnumId = request.ServiceTypeEnumId,
-                    // ImagePaths = request.ImagePaths,
-                    // ImageTitle = request.ImageTitle,
-                    // IsMain = request.IsMain,
-                    Images =request.ImageData
-
-                });
+                var result = await _unitOfWork.GenericMediaRepository.DeleteAsync(request.deleteRequest, user.Id);
                 await _unitOfWork.CommitAsync();
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
+                //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
                 return OperationResult<ResponseEntity>.SuccessResult(result);
             }
         }
-    }
 
+
+    }
 }

@@ -13,9 +13,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.HotelImage.Command.UpdateHotelImageCommand;
+namespace CleanArc.Application.Features.GenericMedia.Command.UpdateGenericMediaCommand;
 
-internal class UpdateHotelImageCommandHandler : IRequestHandler<UpdateHotelImageCommand, OperationResult<ResponseEntity>>
+internal class UpdateHotelImageCommandHandler : IRequestHandler<UpdateGenericMediaCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
@@ -39,7 +39,7 @@ internal class UpdateHotelImageCommandHandler : IRequestHandler<UpdateHotelImage
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateHotelImageCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateGenericMediaCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -55,7 +55,7 @@ internal class UpdateHotelImageCommandHandler : IRequestHandler<UpdateHotelImage
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
-            var result = await _unitOfWork.HotelImageRepository.UpdateAsync(new Domain.Entities.HotelImage.Hotel_Image()
+            var result = await _unitOfWork.GenericMediaRepository.UpdateAsync(new Domain.Entities.GenericMedia.GenericMedia()
             {
                 UpdatedBy = user.Id,
                 Id= request.Id,

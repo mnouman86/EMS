@@ -12,16 +12,16 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;
 using System.Text.Json.Serialization; 
 using CleanArc.Domain.Common;
-using CleanArc.Domain.Entities.HotelImage;
+using CleanArc.Domain.Entities.GenericMedia;
 
-namespace CleanArc.Application.Features.HotelImage.Command.CreateHotelImageCommand;
+namespace CleanArc.Application.Features.GenericMedia.Command.CreateGenericMediaCommand;
 
-public record CreateHotelImageCommand(int? GenericTitleId, int? ServiceTypeEnumId, int? CultureId, List<ImageData>? ImageData) : IRequest<OperationResult<ResponseEntity>>,
-    IValidatableModel<CreateHotelImageCommand>
+public record CreateGenericMediaCommand(int? GenericTitleId, int? ServiceTypeEnumId, int? CultureId, List<ImageData>? ImageData) : IRequest<OperationResult<ResponseEntity>>,
+    IValidatableModel<CreateGenericMediaCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
-    public IValidator<CreateHotelImageCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateHotelImageCommand> validator)
+    public IValidator<CreateGenericMediaCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateGenericMediaCommand> validator)
     {
         
         validator.RuleFor(c => c.ImageData)
