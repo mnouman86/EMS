@@ -56,7 +56,7 @@ public class UnitOfWork : IUnitOfWork
     public ISearchBusinessCarDetailRepository SearchBusinessCarDetailRepository { get; set; }
     public ISearchBusinessDetailRepository SearchBusinessDetailRepository { get; set; }
     public ICarImageRepository CarImageRepository { get; set; }
-    public IHotelImageRepository HotelImageRepository { get; set; }
+    public IGenericMediaRepository GenericMediaRepository { get; set; }
     public IRoomVisualRepository RoomVisualRepository { get; set; }
     public IAdvertisementRepository AdvertisementRepository { get; set; }
     public IAdvertisementPlaceRepository AdvertisementPlaceRepository { get; set; }
@@ -162,7 +162,7 @@ public class UnitOfWork : IUnitOfWork
         ILogger<SearchBusinessCarDetailRepository> _loggerSearchBusinessCarDetail,
                                 ILogger<SearchBusinessDetailRepository> _loggerSearchBusinessDetail,
                                 ILogger<CarImageRepository> _loggerCarImage,
-                                ILogger<HotelImageRepository> _loggerHotelImage,
+                                ILogger<GenericMediaRepository> _loggerHotelImage,
                                 ILogger<RoomVisualRepository> _loggerRoomVisual,
                                 ILogger<AdvertisementRepository> _loggerAdvertisement,
                                 ILogger<AdvertisementPlaceRepository> _loggerAdvertisementPlace,
@@ -270,7 +270,7 @@ public class UnitOfWork : IUnitOfWork
         SearchBusinessCarDetailRepository = new SearchBusinessCarDetailRepository(configuration, mapper, _loggerSearchBusinessCarDetail, httpContextAccessor);
         SearchBusinessDetailRepository = new SearchBusinessDetailRepository(configuration, mapper, _loggerSearchBusinessDetail, httpContextAccessor);
         CarImageRepository = new CarImageRepository(configuration, mapper, _loggerCarImage, httpContextAccessor);
-        HotelImageRepository = new HotelImageRepository(configuration, mapper, _loggerHotelImage, httpContextAccessor);
+        GenericMediaRepository = new GenericMediaRepository(configuration, mapper, _loggerHotelImage, httpContextAccessor);
         RoomVisualRepository = new RoomVisualRepository(configuration, mapper, _loggerRoomVisual, httpContextAccessor);
         AdvertisementRepository = new AdvertisementRepository(configuration, mapper, _loggerAdvertisement, httpContextAccessor);
         AdvertisementPlaceRepository = new AdvertisementPlaceRepository(configuration, mapper, _loggerAdvertisementPlace, httpContextAccessor);

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Domain.Entities.HotelImage
+namespace CleanArc.Domain.Entities.GenericMedia
 {
-    public class Hotel_Image:ImageData
+    public class GenericMedia:ImageData
     {
         public int Id { get; set; }
         //public int? GenericTitleId { get; set; }

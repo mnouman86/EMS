@@ -11,15 +11,15 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
-namespace CleanArc.Application.Features.HotelImage.Command.UpdateHotelImageCommand
+namespace CleanArc.Application.Features.GenericMedia.Command.UpdateGenericMediaCommand
 {
-    public record UpdateHotelImageCommand(int Id, int? GenericTitleId, string? ImagePath, string? ImageTitle,
+    public record UpdateGenericMediaCommand(int Id, int? GenericTitleId, string? ImagePath, string? ImageTitle,
     bool? IsMain, int? ServiceTypeEnumId, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
-    IValidatableModel<UpdateHotelImageCommand>
+    IValidatableModel<UpdateGenericMediaCommand>
     {
         [JsonIgnore]
         public int UserId { get; set; }
-        public IValidator<UpdateHotelImageCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateHotelImageCommand> validator)
+        public IValidator<UpdateGenericMediaCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateGenericMediaCommand> validator)
         {
             validator.RuleFor(c => c.GenericTitleId)
              .NotEmpty()

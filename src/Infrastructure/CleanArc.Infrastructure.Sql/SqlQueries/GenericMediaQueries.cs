@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace CleanArc.Infrastructure.Sql.SqlQueries
 {
-    public static class HotelImageQueries
+    public static class GenericMediaQueries
     {
         public static string Create_HotelImage => "usp_Create_GenericMedia";
         public static string Update_HotelImage => "usp_Update_GenericMedia";

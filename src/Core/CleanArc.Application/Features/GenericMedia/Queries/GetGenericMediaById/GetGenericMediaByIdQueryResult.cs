@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.HotelImage.Queries.GetHotelImageById
+namespace CleanArc.Application.Features.GenericMedia.Queries.GetGenericMediaById
 {
-    public class GetHotelImageByIdQueryResult
+    public class GetGenericMediaByIdQueryResult
     {
         public int Id { get; set; }
         public int? GenericTitleId { get; set; }

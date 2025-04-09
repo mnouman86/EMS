@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Models.HotelImage
+namespace CleanArc.Application.Models.GenericMedia
 {
-    public class UpdateHotelImageDTO
+    public class UpdateGenericMediaDTO
     {
         public int Id { get; set; }
         //public int? GenericTitleId { get; set; }

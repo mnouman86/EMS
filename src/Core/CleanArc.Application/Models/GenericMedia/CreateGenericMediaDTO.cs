@@ -1,13 +1,13 @@
-﻿using CleanArc.Domain.Entities.HotelImage;
+﻿using CleanArc.Domain.Entities.GenericMedia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Models.HotelImage
+namespace CleanArc.Application.Models.GenericMedia
 {
-    public class CreateHotelImageDTO
+    public class CreateGenericMediaDTO
     {
         public int? GenericTitleId { get; set; }
         //public string? ImageTitle { get; set; } // NVARCHAR(MAX)

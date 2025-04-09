@@ -1,7 +1,7 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Models.HotelImage;
+using CleanArc.Application.Models.GenericMedia;
 using CleanArc.Application.Models.Request;
-using CleanArc.Domain.Entities.HotelImage;
+using CleanArc.Domain.Entities.GenericMedia;
 using CleanArc.Infrastructure.Persistence.Helpers;
 using CleanArc.Infrastructure.Sql.SqlQueries;
 using CleanArc.SharedKernel.Extensions;
@@ -21,7 +21,7 @@ using CleanArc.Domain.Entities.SearchHotelImage;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
-    public class HotelImageRepository : IHotelImageRepository
+    public class GenericMediaRepository : IGenericMediaRepository
     {
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
         /// <summary>
         /// The logger for logging repository-related information.
         /// </summary>
-        private readonly ILogger<HotelImageRepository> _logger;
+        private readonly ILogger<GenericMediaRepository> _logger;
 
         /// <summary>
         /// The HTTP context accessor for accessing HTTP context information.
@@ -51,7 +51,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
         /// <param name="mapper">The mapper for mapping between different object types.</param>
         /// <param name="logger">The logger for logging repository-related information.</param>
         /// <param name="httpContextAccessor">The HTTP context accessor for accessing HTTP context information.</param>
-        public HotelImageRepository(IConfiguration configuration, IMapper mapper, ILogger<HotelImageRepository> logger, IHttpContextAccessor httpContextAccessor)
+        public GenericMediaRepository(IConfiguration configuration, IMapper mapper, ILogger<GenericMediaRepository> logger, IHttpContextAccessor httpContextAccessor)
         {
             this.configuration = configuration;
             this._mapper = mapper;
@@ -59,14 +59,14 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             _httpContextAccessor = httpContextAccessor;
         }
         /// <inheritdoc/>
-        public async Task<ResponseEntity> AddAsync(Hotel_Image Images)
+        public async Task<ResponseEntity> AddAsync(GenericMedia Images)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, Images))
             {
                 using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
                 {
                     connection.Open();
-                    CreateHotelImageDTO createHotelImageDTO = _mapper.Map<CreateHotelImageDTO>(Images);
+                    CreateGenericMediaDTO createHotelImageDTO = _mapper.Map<CreateGenericMediaDTO>(Images);
                     var parameters = new DynamicParameters(createHotelImageDTO);
                     var imagePathsTable = new DataTable();
                     imagePathsTable.Columns.Add("ImagePath", typeof(string));
@@ -83,7 +83,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     }
                     parameters.Add("@ImagePaths", imagePathsTable.AsTableValuedParameter("GenericImageTableType"));
 
-                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelImageQueries.Create_HotelImage, parameters, commandType: CommandType.StoredProcedure);
+                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(GenericMediaQueries.Create_HotelImage, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
                 }
@@ -95,7 +95,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
         //    throw new NotImplementedException();
         //}
 
-        public async Task<ListResponseWrapper<Hotel_Image>> GetAllAsync(SearchRequest searchRequest)
+        public async Task<ListResponseWrapper<GenericMedia>> GetAllAsync(SearchRequest searchRequest)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
             {
@@ -112,10 +112,10 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                    var result = await connection.QueryAsync<Hotel_Image>(HotelImageQueries.GetAll_HotelImage, parameters, commandType: CommandType.StoredProcedure);
+                    var result = await connection.QueryAsync<GenericMedia>(GenericMediaQueries.GetAll_HotelImage, parameters, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-                    var response = new ListResponseWrapper<Hotel_Image> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
+                    var response = new ListResponseWrapper<GenericMedia> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
                 }
             }
         }
@@ -144,7 +144,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
         //        }
         //    }
         //}
-        public async Task<SingleResponseWrapper<Hotel_Image>> GetByIdAsync(SearchRequestById searchRequestById)
+        public async Task<SingleResponseWrapper<GenericMedia>> GetByIdAsync(SearchRequestById searchRequestById)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequestById))
             {
@@ -157,9 +157,9 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
                     parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-					var result = await connection.QuerySingleOrDefaultAsync<Hotel_Image>(HotelImageQueries.GetByID_HotelImage, parameters, commandType: CommandType.StoredProcedure);
+					var result = await connection.QuerySingleOrDefaultAsync<GenericMedia>(GenericMediaQueries.GetByID_HotelImage, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                    var response = new SingleResponseWrapper<Hotel_Image>
+                    var response = new SingleResponseWrapper<GenericMedia>
                     {
                         Data = result,
                         Code = parameters.Get<int>("@Code"),
@@ -170,16 +170,16 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             }
         }
 
-        public async Task<ResponseEntity> UpdateAsync(Hotel_Image HotelImage)
+        public async Task<ResponseEntity> UpdateAsync(GenericMedia HotelImage)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, HotelImage))
             {
                 using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
                 {
                     connection.Open();
-                    UpdateHotelImageDTO updateHotelImageDTO = _mapper.Map<UpdateHotelImageDTO>(HotelImage);
+                    UpdateGenericMediaDTO updateHotelImageDTO = _mapper.Map<UpdateGenericMediaDTO>(HotelImage);
 					var parameters = new DynamicParameters(updateHotelImageDTO);
-                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelImageQueries.Update_HotelImage, parameters, commandType: CommandType.StoredProcedure);
+                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(GenericMediaQueries.Update_HotelImage, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                     return result;
                 }
@@ -196,7 +196,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     parameters.Add("@Ids", deleteRequest.SelectedIds);
 					parameters.Add("@CultureID", 1);
 					parameters.Add("@UpdatedBy", updatedBy);
-                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(HotelImageQueries.Delete_HotelImage, parameters, commandType: CommandType.StoredProcedure);
+                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(GenericMediaQueries.Delete_HotelImage, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                     return result;
                 }
