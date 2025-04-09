@@ -545,6 +545,15 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.GenericMedia.GenericMediaController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.GenericMedia.GenericMediaController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.GenericMedia.Command.CreateGenericMediaCommand.CreateGenericMediaCommand,CleanArc.Application.Features.GenericMedia.Command.UpdateGenericMediaCommand.UpdateGenericMediaCommand,CleanArc.Application.Features.GenericMedia.Command.DeleteGenericMediaCommand.DeleteGenericMediaCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.GenericMedia.Queries.GetAllGenericMedia.GetAllGenericMediaQuery,System.Collections.Generic.List{CleanArc.Application.Features.GenericMedia.Queries.GetAllGenericMedia.GetAllGenericMediaQueryResult},CleanArc.Application.Features.GenericMedia.Queries.GetGenericMediaById.GetGenericMediaByIdQuery,CleanArc.Application.Features.GenericMedia.Queries.GetGenericMediaById.GetGenericMediaByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.GenericMedia.GenericMediaController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.GroupActivityParticipants.GroupActivityParticipantsController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.GroupActivityParticipants.GroupActivityParticipantsController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.GroupActivityParticipants.Commands.CreateGroupActivityParticipantsCommand.CreateGroupActivityParticipantsCommand,CleanArc.Application.Features.GroupActivityParticipants.Commands.UpdateGroupActivityParticipantsCommand.UpdateGroupActivityParticipantsCommand,CleanArc.Application.Features.GroupActivityParticipants.Commands.DeleteGroupActivityParticipantsCommand.DeleteGroupActivityParticipantsCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.GroupActivityParticipants.Queries.GetAllGroupActivityParticipants.GetAllGroupActivityParticipantsQuery,System.Collections.Generic.List{CleanArc.Application.Features.GroupActivityParticipants.Queries.GetAllGroupActivityParticipants.GetAllGroupActivityParticipantsQueryResult},CleanArc.Application.Features.GroupActivityParticipants.Queries.GetGroupActivityParticipantsById.GetGroupActivityParticipantsByIdQuery,CleanArc.Application.Features.GroupActivityParticipants.Queries.GetGroupActivityParticipantsById.GetGroupActivityParticipantsByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
@@ -558,15 +567,6 @@
         <member name="M:CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.HomeSlider.Command.CreateHomeSliderCommand.CreateHomeSliderCommand,CleanArc.Application.Features.HomeSlider.Command.UpdateHomeSliderCommand.UpdateHomeSliderCommand,CleanArc.Application.Features.HomeSlider.Command.DeleteHomeSliderCommand.DeleteHomeSliderCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQuery,System.Collections.Generic.List{CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders.GetAllHomeSlidersQueryResult},CleanArc.Application.Features.HomeSlider.Queries.GetHomeSliderById.GetHomeSliderByIdQuery,CleanArc.Application.Features.HomeSlider.Queries.GetHomeSliderById.GetHomeSliderByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
             Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.HomeSlider.HomeSliderController"/> class.
-            </summary>
-            <param name="sender">The mediator sender for handling requests and responses.</param>
-            <param name="logger">The logger for logging controller-related information.</param>
-            <param name="httpContextAccessor"></param>
-        </member>
-        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.HotelImage.GenericMediaController" -->
-        <member name="M:CleanArc.Web.Api.Controllers.V1.HotelImage.GenericMediaController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.GenericMedia.Command.CreateGenericMediaCommand.CreateGenericMediaCommand,CleanArc.Application.Features.GenericMedia.Command.UpdateGenericMediaCommand.UpdateGenericMediaCommand,CleanArc.Application.Features.GenericMedia.Command.DeleteGenericMediaCommand.DeleteGenericMediaCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.GenericMedia.Queries.GetAllGenericMedia.GetAllGenericMediaQuery,System.Collections.Generic.List{CleanArc.Application.Features.GenericMedia.Queries.GetAllGenericMedia.GetAllGenericMediaQueryResult},CleanArc.Application.Features.GenericMedia.Queries.GetGenericMediaById.GetGenericMediaByIdQuery,CleanArc.Application.Features.GenericMedia.Queries.GetGenericMediaById.GetGenericMediaByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
-            <summary>
-            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.HotelImage.GenericMediaController"/> class.
             </summary>
             <param name="sender">The mediator sender for handling requests and responses.</param>
             <param name="logger">The logger for logging controller-related information.</param>
