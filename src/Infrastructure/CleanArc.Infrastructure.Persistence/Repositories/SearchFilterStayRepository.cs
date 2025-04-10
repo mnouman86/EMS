@@ -21,6 +21,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Common;
 using System.Reflection.Metadata;
+using CleanArc.Domain.Entities.GenericMedia;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -108,8 +109,8 @@ public class SearchFilterStayRepository : ISearchFilterStayRepository
 					parameter.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 					parameter.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 					
-					var imageList = await connection.QueryAsync<HotelImage>(SearchHotelImageQueries.GetByHotelID_HotelImage, parameter, commandType: CommandType.StoredProcedure);
-					item.HotelImages = new List<HotelImage>();
+					var imageList = await connection.QueryAsync<GenericMedia>(SearchHotelImageQueries.GetByHotelID_HotelImage, parameter, commandType: CommandType.StoredProcedure);
+					//item.HotelImages = new List<GenericMedia>();
 					item.HotelImages.AddRange(imageList);
 				}
 				 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);

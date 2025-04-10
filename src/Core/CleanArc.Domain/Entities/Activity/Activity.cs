@@ -66,30 +66,30 @@ public  class Activity
     public DateTime? EndTime { get; set; }   // Nullable TimeSpan for EndTime
     public DateTime? StartDate { get; set; } // Nullable DateTime for StartDate
     public DateTime? EndDate { get; set; }   // Nullable DateTime for EndDate
-    public List<ActivityIDImageMapping> ActivityImages { get; set; }
-    public List<ActivityAddressMapping> ActivityAddress { get; set; }
+    public List<GenericMedia.GenericMedia> ActivityImages { get; set; }
+    public List<GenericAddress.GenericAddress> ActivityAddress { get; set; }
 
 
 
 }
-public class ActivityIDImageMapping
-{
-    public string? ImageTitle { get; set; }
-    public string? ImagePath { get; set; }
-    public int? ActivityID { get; set; }
-    public bool? IsMain { get; set; }
-}
-public class ActivityAddressMapping
-{
-    public int? ActivityID { get; set; }
-    public int? CountryLookUpID { get; set; }
-    public int? CityLookUpID { get; set; }
-    public string? CityName { get; set; }
-    public int? StateLookUpID { get; set; }
-    public string? AddressLine1 { get; set; }
-    public string? AddressLine2 { get; set; }
-    public string? PostalCode { get; set; }
-    public string? Latitude { get; set; }
-    public string? Longitude { get; set; }
-}
+//public class GenericMedia
+//{
+//    public string? ImageTitle { get; set; }
+//    public string? ImagePath { get; set; }
+//    public int? ActivityID { get; set; }
+//    public bool? IsMain { get; set; }
+//}
+//public class ActivityAddressMapping
+//{
+//    public int? ActivityID { get; set; }
+//    public int? CountryLookUpID { get; set; }
+//    public int? CityLookUpID { get; set; }
+//    public string? CityName { get; set; }
+//    public int? StateLookUpID { get; set; }
+//    public string? AddressLine1 { get; set; }
+//    public string? AddressLine2 { get; set; }
+//    public string? PostalCode { get; set; }
+//    public string? Latitude { get; set; }
+//    public string? Longitude { get; set; }
+//}
 

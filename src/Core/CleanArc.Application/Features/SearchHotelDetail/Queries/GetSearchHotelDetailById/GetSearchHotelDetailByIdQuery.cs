@@ -8,8 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.SearchHotel.Queries.GetSearchHotelById
+namespace CleanArc.Application.Features.SearchHotelDetail.Queries.GetSearchHotelDetailById
 {
-    public record GetSearchHotelByIdQuery(SearchRequestById searchRequestById):
-        IRequest<OperationResult<GetSearchHotelByIdQueryResult>>;
+    public record GetSearchHotelDetailByIdQuery(SearchRequestById searchRequestById):
+        IRequest<OperationResult<GetSearchHotelDetailByIdQueryResult>>;
 }

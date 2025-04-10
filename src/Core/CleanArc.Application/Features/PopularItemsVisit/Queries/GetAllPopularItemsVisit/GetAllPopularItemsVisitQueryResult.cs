@@ -43,8 +43,10 @@ public class GetAllPopularItemsVisitQueryResult
     //public int? AccessFailedCount { get; set; }
     public int? PageId { get; set; }
     public string? Title { get; set; }
-    public int? ServiceCategoryID { get; set; }
+    public int? ServiceId { get; set; }
+    public Decimal? Price { get; set; }
     public string? ImagePath { get; set; }
+    public string? Address { get; set; }
     public string? IpAddress { get; set; }
     public string? PageURL { get; set; }
    // public string? VisitAt { get; set; }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.SearchHotel.Queries.GetSearchHotelById
+namespace CleanArc.Application.Features.SearchHotelDetail.Queries.GetSearchHotelDetailById
 {
-    public class GetSearchHotelByIdQueryResult
+    public class GetSearchHotelDetailByIdQueryResult
     {
         public string ImageTitle { get; set; }
         public string ImagePath { get; set; }

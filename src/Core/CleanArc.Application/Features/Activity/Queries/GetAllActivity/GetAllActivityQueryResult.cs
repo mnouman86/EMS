@@ -1,4 +1,6 @@
-﻿using CleanArc.Domain.Entities.SearchHotelRoomDetail;
+﻿using CleanArc.Application.Features.ActivityAddress.Queries.GetAllGenericAddress;
+using CleanArc.Application.Features.GenericMedia.Queries.GetAllGenericMedia;
+using CleanArc.Domain.Entities.SearchHotelRoomDetail;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,9 +66,9 @@ public class GetAllActivityQueryResult
 	public DateTime? StartDate { get; set; } // Nullable DateTime for StartDate
 	public DateTime? EndDate { get; set; }  // Nullable DateTime for EndDate
 
-	public List<CleanArc.Domain.Entities.Activity.ActivityIDImageMapping> ActivityImages { get; set; }
+	public List<GetAllGenericMediaQueryResult> ActivityImages { get; set; }
 
-public List<CleanArc.Domain.Entities.Activity.ActivityAddressMapping> ActivityAddress { get; set; }
+public List<GetAllGenericAddressQueryResult> ActivityAddress { get; set; }
 
 }
 

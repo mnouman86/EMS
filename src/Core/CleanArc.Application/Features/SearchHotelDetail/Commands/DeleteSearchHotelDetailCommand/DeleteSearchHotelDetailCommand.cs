@@ -13,12 +13,12 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.SearchHotel.Commands.DeleteSearchHotelCommand;
 
-public record DeleteSearchHotelCommand(DeleteRequest deleteRequest) : IRequest<OperationResult<ResponseEntity>>,
-    IValidatableModel<DeleteSearchHotelCommand>
+public record DeleteSearchHotelDetailCommand(DeleteRequest deleteRequest) : IRequest<OperationResult<ResponseEntity>>,
+    IValidatableModel<DeleteSearchHotelDetailCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
-    public IValidator<DeleteSearchHotelCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteSearchHotelCommand> validator)
+    public IValidator<DeleteSearchHotelDetailCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteSearchHotelDetailCommand> validator)
     {
         validator.RuleFor(c => c.deleteRequest.SelectedIds)
             .NotEmpty()
