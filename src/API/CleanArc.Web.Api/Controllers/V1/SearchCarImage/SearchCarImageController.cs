@@ -2,8 +2,8 @@
 using CleanArc.Application.Features.SearchHotel.Commands.CreateSearchHotelCommand;
 using CleanArc.Application.Features.SearchHotel.Commands.DeleteSearchHotelCommand;
 using CleanArc.Application.Features.SearchHotel.Commands.UpdateSearchHotelCommand;
-using CleanArc.Application.Features.SearchHotel.Queries.GetAllSearchHotels;
-using CleanArc.Application.Features.SearchHotel.Queries.GetSearchHotelById;
+
+
 using CleanArc.Application.Features.SearchCarImage.Command.CreateSearchCarImageCommand;
 using CleanArc.Application.Features.SearchCarImage.Command.DeleteSearchCarImageCommand;
 using CleanArc.Application.Features.SearchCarImage.Command.UpdateSearchCarImageCommand;

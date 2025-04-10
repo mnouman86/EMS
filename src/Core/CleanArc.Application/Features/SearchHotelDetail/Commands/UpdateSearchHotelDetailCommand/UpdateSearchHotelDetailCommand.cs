@@ -13,12 +13,12 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.SearchHotel.Commands.UpdateSearchHotelCommand;
 
-public record UpdateSearchHotelCommand(int Id, int HotelID, int CityID, String HotelName, String CityName, String CityDescription, String RoomTypeName, String RoomTypeDescription, Decimal RoomDetailPrice) : IRequest<OperationResult<ResponseEntity>>,
-IValidatableModel<UpdateSearchHotelCommand>
+public record UpdateSearchHotelDetailCommand(int Id, int HotelID, int CityID, String HotelName, String CityName, String CityDescription, String RoomTypeName, String RoomTypeDescription, Decimal RoomDetailPrice) : IRequest<OperationResult<ResponseEntity>>,
+IValidatableModel<UpdateSearchHotelDetailCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
-    public IValidator<UpdateSearchHotelCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateSearchHotelCommand> validator)
+    public IValidator<UpdateSearchHotelDetailCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateSearchHotelDetailCommand> validator)
     {
         validator.RuleFor(c => c.HotelName)
             .NotEmpty()

@@ -34,6 +34,8 @@ using CleanArc.Domain.Entities.Language;
 using CleanArc.Domain.Entities.ActivityDisabilityOption;
 using CleanArc.Domain.Entities.ActivityIncludedOption;
 using CleanArc.Domain.Entities.ActivitySeason;
+using CleanArc.Domain.Entities.GenericMedia;
+using CleanArc.Domain.Entities.GenericAddress;
 //using System.Diagnostics;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
@@ -196,16 +198,26 @@ public class ActivityRepository : IActivityRepository
 				var result = await connection.QueryAsync<Activity>(ActivityQueries.GetAll_Activity, parameters, commandType: CommandType.StoredProcedure);
 				foreach (var item in result)
 				{
-					var imageParams = new DynamicParameters();
-					imageParams.Add("@Id", item.Id, DbType.Int32);
-					imageParams.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
-					imageParams.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-					imageParams.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                    //var imageParams = new DynamicParameters();
+                    //imageParams.Add("@Id", item.Id, DbType.Int32);
+                    //imageParams.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                    //imageParams.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    //imageParams.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                    var Params = new DynamicParameters();
+                    Params.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+                    Params.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                    Params.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                    Params.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+					List<FilterParameter> list = new List<FilterParameter>();
+					list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+                    Params.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+                    Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                    var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, Params, commandType: CommandType.StoredProcedure);
+					
+                    var AddressList = await connection.QueryAsync<GenericAddress>(GenericAddressQueries.GetAll_GenericAddress, Params, commandType: CommandType.StoredProcedure);
 
-					var imageList = await connection.QueryAsync<ActivityIDImageMapping>(ActivityIDImageMappingQueries.Mapping_GetByActivityID_Activity_Image, imageParams, commandType: CommandType.StoredProcedure);
-					var AddressList = await connection.QueryAsync<ActivityAddressMapping>(ActivityAddressMappingQueries.GetByActivityID_ActivityAddress, imageParams, commandType: CommandType.StoredProcedure);
-
-					item.ActivityImages = imageList.ToList();
+                    item.ActivityImages = imageList.ToList();
 					item.ActivityAddress = AddressList.ToList();
 				}
 
@@ -231,6 +243,9 @@ public class ActivityRepository : IActivityRepository
 
 				//var result = await connection.QuerySingleOrDefaultAsync<Activity>(ActivityQueries.GetByID_Activity, parameters, commandType: CommandType.StoredProcedure);
                 var result = await connection.QueryMultipleAsync(ActivityQueries.GetByID_Activity, parameters, commandType: CommandType.StoredProcedure);
+
+                
+
                 var activity = result.Read<Activity>().FirstOrDefault();
                 if (activity != null)
                 {
@@ -244,14 +259,23 @@ public class ActivityRepository : IActivityRepository
                     var activitySeason = result.Read<ActivitySeasonLookUp>().ToList();
                     activity.Seasons = activitySeason;
                 }
-
+                if (!result.IsConsumed)
+                {
+                    result.Dispose();
+                }
+                //await connection.ExecuteAsync(
+                //        ActivityQueries.GetByID_Activity,
+                //        parameters,
+                //        commandType: CommandType.StoredProcedure);
+                int? Code = parameters.Get<int>("@Code");
+                string? Message = parameters.Get<string>("@Message");
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(activity);
 
 				var response = new SingleResponseWrapper<Activity>
 				{
 					Data = activity,
-					Code = parameters.Get<int>("@Code"),
-					Message = parameters.Get<string>("@Message")
+					Code =(int) Code,
+					Message = Message
 				};
 				return response;
 			}
