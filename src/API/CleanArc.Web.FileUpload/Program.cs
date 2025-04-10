@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,8 +13,12 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 app.UseStaticFiles(); // for wwwroot
 
+var provider = new FileExtensionContentTypeProvider();
+provider.Mappings[".avif"] = "image/avif";
+
 app.UseStaticFiles(new StaticFileOptions
 {
+    ContentTypeProvider = provider,
     FileProvider = new PhysicalFileProvider(
         Path.Combine(Directory.GetCurrentDirectory(), "Resources")),
     RequestPath = "/resources"
