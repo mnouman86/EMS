@@ -12,6 +12,8 @@ public  class PopularItemsVisit
 {
     public int Id { get; set; }
     public int? UserID { get; set; }
+    public int? ServiceId { get; set; }
+    public Decimal? Price { get; set; }
     public string? PageVisiteUrl { get; set; }
     public DateTime? DateTime { get; set; }
     public string? SessionDuration { get; set; }
@@ -26,13 +28,6 @@ public  class PopularItemsVisit
     public int? UpdatedBy { get; set; }
     public DateTime? UpdatedAt { get; set; }
     public int? CultureId { get; set; }
-    public int? Code { get; set; }
-    public string? Message { get; set; }
-    // Fields from the User (U) table
-    //public string? Name { get; set; } // User's name
-    //public string? UserName { get; set; } // Username
-    //public string? Email { get; set; } // User's email
-    //public string? PhoneNumber { get; set; } // User's phone number
     public int? UserId { get; set; }
     public string? Name { get; set; }
     public string? FamilyName { get; set; }
