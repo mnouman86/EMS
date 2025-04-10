@@ -12,18 +12,18 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
-namespace CleanArc.Application.Features.SearchHotel.Queries.GetAllSearchHotels
+namespace CleanArc.Application.Features.SearchHotelDetail.Queries.GetAllSearchHotelDetail
 {
-    internal class GetAllSearchHotelsQueryHandler:  IRequestHandler<GetAllSearchHotelsQuery, OperationResult<List<GetAllSearchHotelsQueryResult>>>
+    internal class GetAllSearchHotelDetailQueryHandler:  IRequestHandler<GetAllSearchHotelDetailQuery, OperationResult<List<GetAllSearchHotelDetailQueryResult>>>
     {
 
         private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
-    private readonly ILogger<GetAllSearchHotelsQueryHandler> _logger;
+    private readonly ILogger<GetAllSearchHotelDetailQueryHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
 
 
-    public GetAllSearchHotelsQueryHandler(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, ILogger<GetAllSearchHotelsQueryHandler> logger)
+    public GetAllSearchHotelDetailQueryHandler(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, ILogger<GetAllSearchHotelDetailQueryHandler> logger)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
@@ -31,7 +31,7 @@ namespace CleanArc.Application.Features.SearchHotel.Queries.GetAllSearchHotels
         _logger = logger;
     }
 
-    public async ValueTask<OperationResult<List<GetAllSearchHotelsQueryResult>>> Handle(GetAllSearchHotelsQuery request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<List<GetAllSearchHotelDetailQueryResult>>> Handle(GetAllSearchHotelDetailQuery request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -46,16 +46,16 @@ namespace CleanArc.Application.Features.SearchHotel.Queries.GetAllSearchHotels
 
                 if (response.Code != 200)
                 {
-                    return OperationResult<List<GetAllSearchHotelsQueryResult>>.FailureResult(
+                    return OperationResult<List<GetAllSearchHotelDetailQueryResult>>.FailureResult(
                         response.Message,
                     response.Code
                     );
                 }
 
-                var mappedResult = _mapper.Map<List<GetAllSearchHotelsQueryResult>>(response.Data);
+                var mappedResult = _mapper.Map<List<GetAllSearchHotelDetailQueryResult>>(response.Data);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                return OperationResult<List<GetAllSearchHotelsQueryResult>>.SuccessResult(
+                return OperationResult<List<GetAllSearchHotelDetailQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
                     response.Message

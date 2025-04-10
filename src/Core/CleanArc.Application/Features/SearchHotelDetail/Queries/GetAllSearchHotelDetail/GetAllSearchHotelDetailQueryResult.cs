@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Domain.Entities.GenericMedia;
+using CleanArc.Application.Features.GenericMedia.Queries.GetAllGenericMedia;
 
-namespace CleanArc.Application.Features.SearchHotel.Queries.GetAllSearchHotels;
+namespace CleanArc.Application.Features.SearchHotelDetail.Queries.GetAllSearchHotelDetail;
 
-public class GetAllSearchHotelsQueryResult {
+public class GetAllSearchHotelDetailQueryResult {
     public int Id { get; set; }
     public int HotelID { get; set; }
     public int CityID { get; set; }
@@ -22,17 +24,17 @@ public class GetAllSearchHotelsQueryResult {
     public decimal DiscountedPrice { get; set; }
     public string ImagePath { get; set; }
     public string ImageTitle{ get; set; }
-    public List<HotelImage> HotelImages { get; set; }
+    public List<GetAllGenericMediaQueryResult> HotelImages { get; set; }
 
     public int TotalDays { get; set; }
     public string? Description { get; set; }
     public decimal? Longitude { get; set; }
     public decimal? Latitude { get; set; }
-    public class HotelImage
-    {
-        public string ImageTitle { get; set; }
-        public string ImagePath { get; set; }
-        public bool IsMain { get; set; }
-    }
+    //public class HotelImage
+    //{
+    //    public string ImageTitle { get; set; }
+    //    public string ImagePath { get; set; }
+    //    public bool IsMain { get; set; }
+    //}
 }
 

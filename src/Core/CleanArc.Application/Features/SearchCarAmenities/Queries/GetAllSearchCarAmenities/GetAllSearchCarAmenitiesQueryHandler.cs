@@ -1,5 +1,5 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Features.SearchHotel.Queries.GetAllSearchHotels;
+
 using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.Extensions;
 using MapsterMapper;
