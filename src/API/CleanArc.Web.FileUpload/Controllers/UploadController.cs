@@ -86,7 +86,7 @@ namespace CleanArc.Web.FileUpload.Controllers
                         {
                             await file.CopyToAsync(stream);
                         }
-                        Thread.Sleep(3000);
+                       // Thread.Sleep(3000);
                         uploadedFiles.Add(relativeDbPath);
                     }
                 }
