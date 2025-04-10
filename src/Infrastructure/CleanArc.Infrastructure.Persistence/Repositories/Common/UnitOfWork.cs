@@ -128,7 +128,7 @@ public class UnitOfWork : IUnitOfWork
         ILogger<RoomTypeRepository> _loggerRoomType,
         ILogger<RoomDetailsRepository> _loggerRoomDetails,
         ILogger<CategoryRepository> _loggerCategory,
-        ILogger<SearchHotelRepository> _loggerSearchHotel,
+        ILogger<SearchHotelDetailRepository> _loggerSearchHotel,
         ILogger<SearchHotelImageRepository> _loggerSearchImage,
         ILogger<SearchHotelAmenitiesRepository> _loggerSearchHotelAmenities,
         ILogger<SearchCountryCitiesRepository> _loggerSearchCountryCities,
@@ -236,7 +236,7 @@ public class UnitOfWork : IUnitOfWork
         RoomTypeRepository=new RoomTypeRepository(configuration, mapper, _loggerRoomType, httpContextAccessor);
         RoomDetailsRepository=new RoomDetailsRepository(configuration, mapper, _loggerRoomDetails, httpContextAccessor);
         CategoryRepository=new CategoryRepository(configuration, mapper, _loggerCategory, httpContextAccessor);
-        SearchHotelRepository=new SearchHotelRepository(configuration, mapper, _loggerSearchHotel, httpContextAccessor);
+        SearchHotelRepository=new SearchHotelDetailRepository(configuration, mapper, _loggerSearchHotel, httpContextAccessor);
         SearchHotelImageRepository = new SearchHotelImageRepository(configuration, mapper, _loggerSearchImage, httpContextAccessor);
         SearchHotelAmenitiesRepository=new SearchHotelAmenitiesRepository(configuration, mapper, _loggerSearchHotelAmenities, httpContextAccessor);
         SearchCountryCitiesRepository=new SearchCountryCitiesRepository(configuration, mapper, _loggerSearchCountryCities, httpContextAccessor);

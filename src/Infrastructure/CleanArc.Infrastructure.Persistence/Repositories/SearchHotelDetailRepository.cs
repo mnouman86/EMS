@@ -24,7 +24,7 @@ using CleanArc.Domain.Entities.PopularItemsVisit;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
-public class SearchHotelRepository : ISearchHotelRepository
+public class SearchHotelDetailRepository : ISearchHotelRepository
 {
     /// <summary>
     /// The configuration for accessing application settings.
@@ -39,7 +39,7 @@ public class SearchHotelRepository : ISearchHotelRepository
     /// <summary>
     /// The logger for logging repository-related information.
     /// </summary>
-    private readonly ILogger<SearchHotelRepository> _logger;
+    private readonly ILogger<SearchHotelDetailRepository> _logger;
 
     /// <summary>
     /// The HTTP context accessor for accessing HTTP context information.
@@ -54,7 +54,7 @@ public class SearchHotelRepository : ISearchHotelRepository
     /// <param name="logger">The logger for logging repository-related information.</param>
     /// <param name="httpContextAccessor">The HTTP context accessor for accessing HTTP context information.</param>
     /// 
-    public SearchHotelRepository(IConfiguration configuration, IMapper mapper, ILogger<SearchHotelRepository> logger, IHttpContextAccessor httpContextAccessor)
+    public SearchHotelDetailRepository(IConfiguration configuration, IMapper mapper, ILogger<SearchHotelDetailRepository> logger, IHttpContextAccessor httpContextAccessor)
     {
         this.configuration = configuration;
         this._mapper = mapper;
@@ -89,25 +89,21 @@ public class SearchHotelRepository : ISearchHotelRepository
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
 
-				var result = await connection.QueryAsync<SearchHotelDetail>(SearchHotelDetailQueries.GetAll_SearchDetail, parameters, commandType: CommandType.StoredProcedure);
-                foreach (var item in result) {
-                    List<FilterParameter> ImagesFilterArray = new List<FilterParameter>();
-                    List<SortingParameter> ImagesSortingArray = new List<SortingParameter>();
-
-                    ImagesFilterArray.Add(new FilterParameter { ParameterName = "genericTitleID", ParameterValue = item.HotelID.ToString() });
-					
-
-					var parameter = new DynamicParameters();
-					parameter.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
-					parameter.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
-					parameter.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
-					parameter.Add("@SortingArray", DataTableHelper.ToDataTable(ImagesSortingArray), DbType.Object); // Ensure proper type
-					parameter.Add("@FilterArray", DataTableHelper.ToDataTable(ImagesFilterArray), DbType.Object); // Ensure proper type
-					parameter.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-					parameter.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-					var imageList = await connection.QueryAsync<HotelImage>(SearchHotelImageQueries.GetByHotelID_HotelImage, parameter, commandType: CommandType.StoredProcedure);
-                    item.HotelImages = new List<HotelImage>();
-                    item.HotelImages.AddRange(imageList);
+				var result = await connection.QueryAsync<SearchHotelDetail>(SearchHotelDetailQueries.GetAll_SearchHotelDetail, parameters, commandType: CommandType.StoredProcedure);
+                foreach (var item in result)
+                {
+                    var Params = new DynamicParameters();
+                    Params.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+                    Params.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                    Params.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                    Params.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+                    List<FilterParameter> list = new List<FilterParameter>();
+                    list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+                    Params.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+                    Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                    var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, Params, commandType: CommandType.StoredProcedure);
+                    item.HotelImages = imageList.ToList();
                 }
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
 				var response = new ListResponseWrapper<SearchHotelDetail> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;

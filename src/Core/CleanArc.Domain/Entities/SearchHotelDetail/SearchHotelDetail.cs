@@ -27,14 +27,14 @@ namespace CleanArc.Domain.Entities.SearchHotelDetail
         public decimal? Longitude { get; set; }
         public decimal? Latitude { get; set; }
         public int? TotalDays { get; set; }
-        public List<HotelImage> HotelImages { get; set; }
+        public List<GenericMedia.GenericMedia> HotelImages { get; set; }
 
 
 }
-    public class HotelImage
-    {
-        public string ImageTitle { get; set; }
-        public string ImagePath { get; set; }
-        public bool IsMain { get; set; }
-    }
+    //public class HotelImage
+    //{
+    //    public string ImageTitle { get; set; }
+    //    public string ImagePath { get; set; }
+    //    public bool IsMain { get; set; }
+    //}
 }

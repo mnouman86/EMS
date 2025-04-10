@@ -1,4 +1,4 @@
-﻿using CleanArc.Application.Features.SearchHotel.Queries.GetAllSearchHotels;
+﻿
 using CleanArc.Application.Models.Common;
 using CleanArc.Application.Models.Request;
 using Mediator;
