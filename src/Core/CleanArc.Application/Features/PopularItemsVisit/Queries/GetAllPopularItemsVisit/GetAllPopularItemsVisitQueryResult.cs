@@ -46,6 +46,7 @@ public class GetAllPopularItemsVisitQueryResult
     public int? ServiceId { get; set; }
     public Decimal? Price { get; set; }
     public string? ImagePath { get; set; }
+    public string? Address { get; set; }
     public string? IpAddress { get; set; }
     public string? PageURL { get; set; }
    // public string? VisitAt { get; set; }

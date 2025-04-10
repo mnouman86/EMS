@@ -17,6 +17,7 @@ public  class PopularItemsVisit
     public string? PageVisiteUrl { get; set; }
     public DateTime? DateTime { get; set; }
     public string? SessionDuration { get; set; }
+    public string? Address { get; set; }
     public int? VisitCount { get; set; }
     public DateTime? FirstVisitAt { get; set; }
     public DateTime? LastVisitAt { get; set; }
