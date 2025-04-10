@@ -243,6 +243,9 @@ public class ActivityRepository : IActivityRepository
 
 				//var result = await connection.QuerySingleOrDefaultAsync<Activity>(ActivityQueries.GetByID_Activity, parameters, commandType: CommandType.StoredProcedure);
                 var result = await connection.QueryMultipleAsync(ActivityQueries.GetByID_Activity, parameters, commandType: CommandType.StoredProcedure);
+
+                
+
                 var activity = result.Read<Activity>().FirstOrDefault();
                 if (activity != null)
                 {
@@ -256,14 +259,23 @@ public class ActivityRepository : IActivityRepository
                     var activitySeason = result.Read<ActivitySeasonLookUp>().ToList();
                     activity.Seasons = activitySeason;
                 }
-
+                if (!result.IsConsumed)
+                {
+                    result.Dispose();
+                }
+                //await connection.ExecuteAsync(
+                //        ActivityQueries.GetByID_Activity,
+                //        parameters,
+                //        commandType: CommandType.StoredProcedure);
+                int? Code = parameters.Get<int>("@Code");
+                string? Message = parameters.Get<string>("@Message");
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(activity);
 
 				var response = new SingleResponseWrapper<Activity>
 				{
 					Data = activity,
-					Code = parameters.Get<int>("@Code"),
-					Message = parameters.Get<string>("@Message")
+					Code =(int) Code,
+					Message = Message
 				};
 				return response;
 			}
