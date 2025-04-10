@@ -12,7 +12,7 @@ public  class ActivityPricePerParticipant
 {
     public int Id { get; set; }
     public int? GenericTitleId { get; set; }
-    public Decimal? PerParticipationPrice { get; set; }
+    public Decimal? PerPersonPrice { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }
