@@ -26,6 +26,7 @@ public  class Activity
     public int? ServiceCategoryId { get; set; }
     public int? SubServiceCategoryId { get; set; }
     public string? OtherSubService { get; set; }
+    public string? AgeGroup { get; set; }
     public int? MinAge { get; set; }
     public int? MaxAge { get; set; }
     public int? ActivityTypeLookUpId { get; set; }
