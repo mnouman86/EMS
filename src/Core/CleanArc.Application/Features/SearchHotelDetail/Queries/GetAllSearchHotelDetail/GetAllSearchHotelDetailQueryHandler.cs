@@ -14,7 +14,7 @@ using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
 namespace CleanArc.Application.Features.SearchHotelDetail.Queries.GetAllSearchHotelDetail
 {
-    internal class GetAllSearchHotelDetailQueryHandler:  IRequestHandler<GetAllSearchHotelDetailQuery, OperationResult<List<GetAllSearchHotelDetailQueryResult>>>
+    internal class GetAllSearchHotelDetailQueryHandler:  IRequestHandler<GetAllSearchHotelDetailQuery, OperationResult<GetAllSearchHotelDetailQueryResult>>
     {
 
         private readonly IUnitOfWork _unitOfWork;
@@ -31,7 +31,7 @@ namespace CleanArc.Application.Features.SearchHotelDetail.Queries.GetAllSearchHo
         _logger = logger;
     }
 
-    public async ValueTask<OperationResult<List<GetAllSearchHotelDetailQueryResult>>> Handle(GetAllSearchHotelDetailQuery request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<GetAllSearchHotelDetailQueryResult>> Handle(GetAllSearchHotelDetailQuery request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -46,16 +46,16 @@ namespace CleanArc.Application.Features.SearchHotelDetail.Queries.GetAllSearchHo
 
                 if (response.Code != 200)
                 {
-                    return OperationResult<List<GetAllSearchHotelDetailQueryResult>>.FailureResult(
+                    return OperationResult<GetAllSearchHotelDetailQueryResult>.FailureResult(
                         response.Message,
                     response.Code
                     );
                 }
 
-                var mappedResult = _mapper.Map<List<GetAllSearchHotelDetailQueryResult>>(response.Data);
+                var mappedResult = _mapper.Map<GetAllSearchHotelDetailQueryResult>(response.Data);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                return OperationResult<List<GetAllSearchHotelDetailQueryResult>>.SuccessResult(
+                return OperationResult<GetAllSearchHotelDetailQueryResult>.SuccessResult(
                     mappedResult,
                     response.Code,
                     response.Message

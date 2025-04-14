@@ -1,4 +1,6 @@
-﻿using CleanArc.Domain.Entities.AgeType;
+﻿using CleanArc.Application.Common;
+using CleanArc.Application.Models.Request;
+using CleanArc.Domain.Entities.AgeType;
 using CleanArc.Domain.Entities.SearchHotelDetail;
 using System;
 using System.Collections.Generic;
@@ -8,8 +10,8 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Contracts.Persistence
 {
-    public interface ISearchHotelRepository : IRepository<SearchHotelDetail>
+    public interface ISearchHotelRepository //: IRepository<SearchHotelDetail>
     {
-        // Task CreateAgeType(AgeType ageType);
+        Task<SingleResponseWrapper<SearchHotelDetail>> GetAllAsync(CustomizedSearchRequest searchRequest);
     }
 }

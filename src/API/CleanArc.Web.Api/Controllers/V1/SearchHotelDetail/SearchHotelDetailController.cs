@@ -58,7 +58,7 @@ namespace CleanArc.Web.Api.Controllers.V1.SearchHotelDetail;
 [Route("api/v{version:apiVersion}/SearchHotelDetail")]
 //[Authorize]
 public class SearchHotelDetailController : _BaseController<CreateSearchHotelDetailCommand, UpdateSearchHotelDetailCommand, DeleteSearchHotelDetailCommand, ResponseEntity, GetAllSearchHotelDetailQuery,
-List<GetAllSearchHotelDetailQueryResult>, GetSearchHotelDetailByIdQuery, GetSearchHotelDetailByIdQueryResult>
+GetAllSearchHotelDetailQueryResult, GetSearchHotelDetailByIdQuery, GetSearchHotelDetailByIdQueryResult>
 {
 
     /// <summary>
@@ -68,7 +68,7 @@ List<GetAllSearchHotelDetailQueryResult>, GetSearchHotelDetailByIdQuery, GetSear
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
     public SearchHotelDetailController(ISender sender, ILogger<_BaseController<CreateSearchHotelDetailCommand, UpdateSearchHotelDetailCommand, DeleteSearchHotelDetailCommand, ResponseEntity, GetAllSearchHotelDetailQuery,
-List<GetAllSearchHotelDetailQueryResult>, GetSearchHotelDetailByIdQuery, GetSearchHotelDetailByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
+GetAllSearchHotelDetailQueryResult, GetSearchHotelDetailByIdQuery, GetSearchHotelDetailByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 
     }

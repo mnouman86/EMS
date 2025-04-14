@@ -36,4 +36,14 @@ namespace CleanArc.Application.Models.Request
         public string SortingColumnName { get; set; }
         public string SortingColumnDirection { get; set; }
     }
+
+    public class CustomizedSearchRequest:SearchRequest
+    {
+        public int? NoOfRooms { get; set; }
+        public int? NoOfDays { get; set; }
+        public int? Rating { get; set; }
+        public int? MinPrice { get; set; }
+        public int? MaxPrice { get; set; }
+        public string? Amenities { get; set; }
+    }
 }
