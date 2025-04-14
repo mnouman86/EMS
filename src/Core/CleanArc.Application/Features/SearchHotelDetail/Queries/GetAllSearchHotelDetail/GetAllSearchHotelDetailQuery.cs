@@ -9,5 +9,5 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.SearchHotelDetail.Queries.GetAllSearchHotelDetail;
 
-public record GetAllSearchHotelDetailQuery(SearchRequest searchRequest) : IRequest<OperationResult<List<GetAllSearchHotelDetailQueryResult>>>;
+public record GetAllSearchHotelDetailQuery(CustomizedSearchRequest searchRequest) : IRequest<OperationResult<GetAllSearchHotelDetailQueryResult>>;
 

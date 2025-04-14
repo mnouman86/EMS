@@ -15,7 +15,7 @@ namespace CleanArc.Application.Contracts.Persistence
     {
         // Task CreateAgeType(AgeType ageType);
 
-        Task<ListResponseWrapper<SearchHotelDetail>> GetAllWithParamAsync(SearchRequestStays request);
+        Task<SingleResponseWrapper<SearchHotelDetail>> GetAllWithParamAsync(SearchRequestStays request);
 
     }
 }

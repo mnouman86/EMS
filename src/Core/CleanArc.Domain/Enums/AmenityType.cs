@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Domain.Enums
 {
-    public enum AmenityType
+    public enum ServiceType
     {
         [Display(Name = "Stays")]
         Stays = 1,
@@ -16,12 +16,12 @@ namespace CleanArc.Domain.Enums
         Car = 2,
 
         [Display(Name = "Things To Do")]
-        ThingsToDo = 3,
+        ThingsToDo = 5,
 
         [Display(Name = "Bathroom")]
         Bathroom = 4,
 
         [Display(Name = "Room")]
-        Room = 5
+        Room = 3
     }
 }

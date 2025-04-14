@@ -6,10 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Domain.Entities.GenericMedia;
 using CleanArc.Application.Features.GenericMedia.Queries.GetAllGenericMedia;
+using CleanArc.Domain.Entities.Amenity;
+using CleanArc.Application.Features.Amenities.Queries.GetAllAmenities;
+using CleanArc.Application.Features.AmenityMapping.Queries.GetAllAmenityMapping;
 
 namespace CleanArc.Application.Features.SearchHotelDetail.Queries.GetAllSearchHotelDetail;
 
-public class GetAllSearchHotelDetailQueryResult {
+public class GetAllSearchHotelDetailQueryResult
+{
+    public List<GetAllSearchHotelDetail> HotelDetail { get; set; }
+    public Decimal? RoomPriceMinimum { get; set; }
+    public Decimal? RoomPriceMaximum { get; set; }
+}
+    public class GetAllSearchHotelDetail {
     public int Id { get; set; }
     public int HotelID { get; set; }
     public int CityID { get; set; }
@@ -30,6 +39,11 @@ public class GetAllSearchHotelDetailQueryResult {
     public string? Description { get; set; }
     public decimal? Longitude { get; set; }
     public decimal? Latitude { get; set; }
+    public Decimal? TotalPrice { get; set; }
+    public int? ReviewsCount { get; set; }
+    public int? Rating { get; set; }
+    public string? RefundPolicy { get; set; }
+    public List<GetAllAmenityMappingQueryResult> Amenities { get; set; }
     //public class HotelImage
     //{
     //    public string ImageTitle { get; set; }

@@ -63,7 +63,7 @@ public class SearchFilterStayRepository : ISearchFilterStayRepository
 		_httpContextAccessor = httpContextAccessor;
 	}
 
-	public async Task<ListResponseWrapper<SearchHotelDetail>> GetAllWithParamAsync(SearchRequestStays searchRequest)
+	public async Task<SingleResponseWrapper<SearchHotelDetail>> GetAllWithParamAsync(SearchRequestStays searchRequest)
 	{
 		using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
 		{
@@ -93,7 +93,7 @@ public class SearchFilterStayRepository : ISearchFilterStayRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                var result = await connection.QueryAsync<SearchHotelDetail>(SearchFilterStayQueries.GetAll_SearchDetail, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<SearchDetail>(SearchFilterStayQueries.GetAll_SearchDetail, parameters, commandType: CommandType.StoredProcedure);
 				foreach (var item in result)
 				{
 					List<FilterParameter> ImagesFilterArray = new List<FilterParameter>();
@@ -114,7 +114,12 @@ public class SearchFilterStayRepository : ISearchFilterStayRepository
 					item.HotelImages.AddRange(imageList);
 				}
 				 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-				var response = new ListResponseWrapper<SearchHotelDetail> { Data = result.ToList() };return response;
+                SearchHotelDetail searchHotelDetail = new SearchHotelDetail();
+                searchHotelDetail.HotelDetail = result.ToList();
+                searchHotelDetail.RoomPriceMinimum = result.Min(x => x.RoomDetailPrice);
+                searchHotelDetail.RoomPriceMaximum = result.Max(x => x.RoomDetailPrice);
+                var response = new SingleResponseWrapper<SearchHotelDetail> { Data = searchHotelDetail };
+				return response;
 			}
 		}
 	}

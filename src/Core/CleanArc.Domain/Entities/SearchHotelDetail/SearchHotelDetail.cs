@@ -8,6 +8,13 @@ namespace CleanArc.Domain.Entities.SearchHotelDetail
 {
     public class SearchHotelDetail
     {
+        public List<SearchDetail> HotelDetail { get; set; }
+        public Decimal? RoomPriceMinimum { get; set; }
+        public Decimal? RoomPriceMaximum { get; set; }
+    }
+
+        public class SearchDetail
+    {
         public int Id { get; set; }
         public int? HotelID { get; set; }
         public int? CityID { get; set; }
@@ -17,6 +24,7 @@ namespace CleanArc.Domain.Entities.SearchHotelDetail
         public String? RoomTypeName { get; set; }
         public String? RoomTypeDescription { get; set; }
         public Decimal? RoomDetailPrice { get; set; }
+       
 
         public Decimal? DiscountPercentage { get; set; }
         public Decimal? DiscountAmount { get; set; }
@@ -27,7 +35,12 @@ namespace CleanArc.Domain.Entities.SearchHotelDetail
         public decimal? Longitude { get; set; }
         public decimal? Latitude { get; set; }
         public int? TotalDays { get; set; }
+        public Decimal? TotalPrice { get; set; }
+        public int? ReviewsCount { get; set; }
+        public int? Rating { get; set; }
+        public string? RefundPolicy { get; set; }
         public List<GenericMedia.GenericMedia> HotelImages { get; set; }
+        public List<AmenityMapping.AmenityMapping> Amenities { get; set; }
 
 
 }
