@@ -23,6 +23,12 @@ using CleanArc.Domain.Entities.CoreArea;
 using CleanArc.Domain.Entities.ActivitySchedule;
 using CleanArc.Application.Models.RoomType;
 using CleanArc.Application.Models.CoreArea;
+using CleanArc.Domain.Entities.AmenityMapping;
+using CleanArc.Domain.Entities.Hotel;
+using CleanArc.Domain.Entities.Language;
+using CleanArc.Domain.Entities.GenericMedia;
+using CleanArc.Domain.Entities.FAQs;
+using CleanArc.Domain.Enums;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -144,9 +150,91 @@ public class RoomDetailsRepository : IRoomDetailsRepository
 		}
 	}
 
+    public async Task<SingleResponseWrapper<HotelDetail>> GetHotelDetailForRoomAsync(HotelDetailSearchRequest searchRequest)
+    {
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
+        {
+            using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+            {
+                connection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                parameters.Add("@CultureId", searchRequest.CultureId, DbType.Int32);
+                parameters.Add("@ID", searchRequest.Id, DbType.Int32);
+                parameters.Add("@NoOfRooms", searchRequest.NoOfRooms, DbType.Int32);
+                parameters.Add("@NoOfDays", searchRequest.NoOfDays, DbType.Int32);
+
+                var result = await connection.QueryMultipleAsync(RoomDetailQueries.GetByID_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
+                // var kbDetailAll = resultKBDetail.ReadFirst<KBDetail>();
+                var hotelDetail = result.Read<HotelDetail>().FirstOrDefault();
+                if (hotelDetail != null)
+                {
+                    var Rooms = result.Read<RoomDetails>().ToList();
+                    hotelDetail.Rooms = Rooms;
+                    var Media = result.Read<GenericMedia>().ToList();
+                    hotelDetail.Medias = Media;
+                    var HotelAmenities = result.Read<AmenityMapping>().ToList();
+                    hotelDetail.HotelAmenities = HotelAmenities;
+                    var FAQs = result.Read<FAQs>().ToList();
+                    hotelDetail.FAQs = FAQs;
+                    var Languages = result.Read<LanguageLookUp>().ToList();
+                    hotelDetail.Languages = Languages;
+
+                    if (!result.IsConsumed)
+                    {
+                        result.Dispose();
+                    }
+                    foreach (var item in hotelDetail.Rooms)
+                    {
+                        var Params = new DynamicParameters();
+                        Params.Add("@PageNumber", 1, DbType.Int32);
+                        Params.Add("@PageSize", 3, DbType.Int32);
+                        Params.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                        List<SortingParameter> sortingArray = new List<SortingParameter>();
+                        Params.Add("@SortingArray", DataTableHelper.ToDataTable(sortingArray), DbType.Object); // Ensure proper type
+
+                        Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                        Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                        var ParamsImage = Params;
+                        List<FilterParameter> list = new List<FilterParameter>();
+                        list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+                        list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
+
+                        ParamsImage.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+
+                        var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, ParamsImage, commandType: CommandType.StoredProcedure);
+                        item.Medias = imageList.ToList();
+                    }
+                }
+
+                //var result = await connection.QuerySingleOrDefaultAsync<RoomDetails>(RoomDetailQueries.GetByID_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                //
+                
+
+                //await connection.ExecuteAsync(
+                //        ActivityQueries.GetByID_Activity,
+                //        parameters,
+                //        commandType: CommandType.StoredProcedure);
+                int Code = parameters.Get<int>("@Code");
+                string Message = parameters.Get<string>("@Message");
+
+                
+                var response = new SingleResponseWrapper<HotelDetail>
+                {
+                    Data = hotelDetail,
+                    Code = Code,
+                    Message = Message
+                };
+                return response;
+            }
+        }
+    }
 
 
-	public async Task<ResponseEntity> UpdateAsync(RoomDetails roomDetails)
+    public async Task<ResponseEntity> UpdateAsync(RoomDetails roomDetails)
 	{
 		using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, roomDetails))
 		{

@@ -46,4 +46,10 @@ namespace CleanArc.Application.Models.Request
         public int? MaxPrice { get; set; }
         public string? Amenities { get; set; }
     }
+
+    public class HotelDetailSearchRequest : SearchRequestById
+    {
+        public int? NoOfRooms { get; set; }
+        public int? NoOfDays { get; set; }
+    }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CleanArc.Domain.Entities.FAQs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,4 +35,8 @@ public class RoomDetails
     public int? UpdatedBy { get; set; }
     public DateTime? UpdatedAt { get; set; }
 	public int? CultureId { get; set; }
+    public List<AmenityMapping.AmenityMapping> RoomAmenities { get; set; }
+    public List<GenericMedia.GenericMedia> Medias { get; set; }
+
+
 }
