@@ -6,7 +6,9 @@ using CleanArc.Application.Features.RoomDetails.Queries.GetAllRoomDetail;
 using CleanArc.Application.Features.RoomDetails.Queries.GetRoomDetailById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
+using Microsoft.AspNetCore.Mvc; 
+using CleanArc.Domain.Common;
+using CleanArc.Application.Features.RoomDetails.Queries.GetHotelDetailForRoom;
 
 namespace CleanArc.Web.Api.Controllers.V1.RoomDetail
 {
@@ -57,7 +59,7 @@ namespace CleanArc.Web.Api.Controllers.V1.RoomDetail
     public class RoomDetailController : _BaseController<CreateRoomDetailCommand, UpdateRoomDetailCommand, DeleteRoomDetailCommand, ResponseEntity, GetAllRoomDetailQuery,
     List<GetAllRoomDetailQueryResult>, GetRoomDetailByIdQuery, GetRoomDetailByIdQueryResult>
     {
-
+        private readonly ISender _sender;
         /// <summary>
         /// Initializes a new instance of the <see cref="RoomDetailController"/> class.
         /// </summary>
@@ -67,9 +69,16 @@ namespace CleanArc.Web.Api.Controllers.V1.RoomDetail
         public RoomDetailController(ISender sender, ILogger<_BaseController<CreateRoomDetailCommand, UpdateRoomDetailCommand, DeleteRoomDetailCommand, ResponseEntity, GetAllRoomDetailQuery,
    List<GetAllRoomDetailQueryResult>, GetRoomDetailByIdQuery, GetRoomDetailByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
-
+            _sender = sender;
         }
+        [HttpPost("GetHotelDetailForRoom")]
+        public async Task<IActionResult> GetHotelDetailForRoom([FromBody] GetHotelDetailForRoomQuery query)
+        {
+            //GetKBDetailByIdAllQuery query = new GetKBDetailByIdAllQuery { searchRequestById };
+            var result = await _sender.Send(query);
 
+            return base.OperationResult(result);
+        }
     }
 }
 

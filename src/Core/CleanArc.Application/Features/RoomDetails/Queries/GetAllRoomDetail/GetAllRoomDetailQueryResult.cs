@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CleanArc.Application.Features.GenericMedia.Queries.GetAllGenericMedia;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ public class GetAllRoomDetailQueryResult
 {
     public int Id { get; set; }
     public int? GenericTitleId { get; set; }
+    
 
     public string? HotelName { get; set; }
     public string? Description { get; set; }
@@ -32,5 +34,6 @@ public class GetAllRoomDetailQueryResult
     public DateTime CreatedAt { get; set; }
     public int UpdatedBy { get; set; }
     public DateTime UpdatedAt { get; set; }
+    public IEnumerable<GetAllGenericMediaQueryResult> Medias { get; set; }
 }
 
