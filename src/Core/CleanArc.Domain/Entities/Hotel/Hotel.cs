@@ -12,7 +12,9 @@ namespace CleanArc.Domain.Entities.Hotel
     {
     public int Id { get; set; }
     public string? Name { get; set; }
-    public int? CountryLookUpId { get; set; }
+        public int? NoOfRooms { get; set; }
+        public int? NoOfDays { get; set; }
+        public int? CountryLookUpId { get; set; }
     public int? StateLookUpId { get; set; }
     public int? CityLookUpId { get; set; }
     public int? BusinessId { get; set; }

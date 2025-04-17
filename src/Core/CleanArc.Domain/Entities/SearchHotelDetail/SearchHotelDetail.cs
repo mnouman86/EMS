@@ -23,7 +23,7 @@ namespace CleanArc.Domain.Entities.SearchHotelDetail
         public String? CityDescription { get; set; }
         public String? RoomTypeName { get; set; }
         public String? RoomTypeDescription { get; set; }
-        public Decimal? RoomDetailPrice { get; set; }
+        
        
 
         public Decimal? DiscountPercentage { get; set; }
@@ -36,6 +36,7 @@ namespace CleanArc.Domain.Entities.SearchHotelDetail
         public decimal? Latitude { get; set; }
         public int? TotalDays { get; set; }
         public Decimal? TotalPrice { get; set; }
+        public Decimal? RoomDetailPrice { get; set; }
         public int? ReviewsCount { get; set; }
         public int? Rating { get; set; }
         public string? RefundPolicy { get; set; }

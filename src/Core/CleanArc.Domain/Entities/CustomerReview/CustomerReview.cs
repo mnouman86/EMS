@@ -16,7 +16,7 @@ namespace CleanArc.Domain.Entities.CustomerReview
         public string? Description { get; set; }
         public string? Status { get; set; }
         public int? ApprovedBy { get; set; }
-        public string? ApprovedDate { get; set; }
+        public DateTime? ApprovedDate { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsDeleted { get; set; }
         public DateTime? CreatedAt { get; set; }
