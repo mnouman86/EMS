@@ -12,7 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Advertisement.Commands.CreateAdvertisementCommand;
-public record CreateAdvertisementCommand(int? AdsPageLookUpId, int? AdsPlaceLookUpId, string? ImageTitle, List<string>? ImagePaths, string? Url, DateTime? StartDate, DateTime? EndDate, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateAdvertisementCommand(int? AdsPageLookUpId, int? AdsPlaceLookUpId, string? ImageTitle, List<string>? ImagePaths, string? Url, 
+    DateTime? StartDate, DateTime? EndDate, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateAdvertisementCommand>
 {
     [JsonIgnore]

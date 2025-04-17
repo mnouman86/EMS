@@ -25,6 +25,11 @@ public class RoomDetails
     public bool? IsPartiallyRefundable { get; set; }
     public bool? IsFullyRefundable { get; set; }
     public decimal? Price { get; set; }
+    public Decimal? TotalPrice { get; set; }
+    public Decimal? RoomDetailPrice { get; set; }
+    public int? ReviewsCount { get; set; }
+    public int? Rating { get; set; }
+
     public decimal? AdditionalMatricCharges { get; set; }
     public string? RoomNumber { get; set; }
     public bool? IsAvailable { get; set; }

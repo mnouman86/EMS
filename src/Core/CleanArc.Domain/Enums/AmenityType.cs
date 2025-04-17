@@ -22,6 +22,12 @@ namespace CleanArc.Domain.Enums
         Bathroom = 4,
 
         [Display(Name = "Room")]
-        Room = 3
+        Room = 3,
+
+        [Display(Name = "Flights")]
+        Flights = 6,
+
+        [Display(Name = "Advertisement")]
+        Advertisement = 7,
     }
 }

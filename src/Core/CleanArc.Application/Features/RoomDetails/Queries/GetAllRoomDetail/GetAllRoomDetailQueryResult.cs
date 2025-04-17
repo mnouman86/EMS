@@ -1,4 +1,6 @@
-﻿using CleanArc.Application.Features.GenericMedia.Queries.GetAllGenericMedia;
+﻿using CleanArc.Application.Features.Amenities.Queries.GetAllAmenities;
+using CleanArc.Application.Features.AmenityMapping.Queries.GetAllAmenityMapping;
+using CleanArc.Application.Features.GenericMedia.Queries.GetAllGenericMedia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +28,11 @@ public class GetAllRoomDetailQueryResult
     public bool? IsPartiallyRefundable { get; set; }
     public bool? IsFullyRefundable { get; set; }
     public decimal? Price { get; set; }
+    public Decimal? TotalPrice { get; set; }
+    public Decimal? RoomDetailPrice { get; set; }
+    public int? ReviewsCount { get; set; }
+    public int? Rating { get; set; }
+
     public decimal? AdditionalMatricCharges { get; set; }
     public string? RoomNumber { get; set; }
     public bool IsAvailable { get; set; }
@@ -35,5 +42,7 @@ public class GetAllRoomDetailQueryResult
     public int UpdatedBy { get; set; }
     public DateTime UpdatedAt { get; set; }
     public IEnumerable<GetAllGenericMediaQueryResult> Medias { get; set; }
+    public List<GetAllAmenityMappingQueryResult> RoomAmenities { get; set; }
+
 }
 

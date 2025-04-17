@@ -19,7 +19,7 @@ int? Rating,
 string? Description,
 string? Status,
 int? ApprovedBy, int? CultureId,
-    string? ApprovedDate, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+    DateTime? ApprovedDate, int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateCustomerReviewCommand>
     {
         [JsonIgnore]

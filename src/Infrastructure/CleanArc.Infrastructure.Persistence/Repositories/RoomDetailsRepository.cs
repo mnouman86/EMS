@@ -29,6 +29,7 @@ using CleanArc.Domain.Entities.Language;
 using CleanArc.Domain.Entities.GenericMedia;
 using CleanArc.Domain.Entities.FAQs;
 using CleanArc.Domain.Enums;
+using CleanArc.Domain.Entities.CustomerReview;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -170,16 +171,18 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                 var hotelDetail = result.Read<HotelDetail>().FirstOrDefault();
                 if (hotelDetail != null)
                 {
-                    var Rooms = result.Read<RoomDetails>().ToList();
-                    hotelDetail.Rooms = Rooms;
-                    var Media = result.Read<GenericMedia>().ToList();
-                    hotelDetail.Medias = Media;
-                    var HotelAmenities = result.Read<AmenityMapping>().ToList();
-                    hotelDetail.HotelAmenities = HotelAmenities;
-                    var FAQs = result.Read<FAQs>().ToList();
-                    hotelDetail.FAQs = FAQs;
-                    var Languages = result.Read<LanguageLookUp>().ToList();
-                    hotelDetail.Languages = Languages;
+                    var rooms = result.Read<RoomDetails>().ToList();
+                    hotelDetail.Rooms = rooms;
+                    var media = result.Read<GenericMedia>().ToList();
+                    hotelDetail.Medias = media;
+                    var hotelAmenities = result.Read<AmenityMapping>().ToList();
+                    hotelDetail.HotelAmenities = hotelAmenities;
+                    var faqs = result.Read<FAQs>().ToList();
+                    hotelDetail.FAQs = faqs;
+                    var languages = result.Read<LanguageLookUp>().ToList();
+                    hotelDetail.Languages = languages;
+					var reviews = result.Read<CustomerReview>().ToList();
+                    hotelDetail.Reviews = reviews;
 
                     if (!result.IsConsumed)
                     {
@@ -197,15 +200,17 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                         Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                         Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                        var ParamsImage = Params;
                         List<FilterParameter> list = new List<FilterParameter>();
                         list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
                         list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
 
-                        ParamsImage.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+                        Params.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
 
-                        var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, ParamsImage, commandType: CommandType.StoredProcedure);
+                        var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, Params, commandType: CommandType.StoredProcedure);
                         item.Medias = imageList.ToList();
+
+                        var amenities = await connection.QueryAsync<Domain.Entities.AmenityMapping.AmenityMapping>(AmenityMappingQueries.GetByAmenityTypeEnumID_AmenityMapping, Params, commandType: CommandType.StoredProcedure);
+                        item.RoomAmenities = amenities.ToList();
                     }
                 }
 

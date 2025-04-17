@@ -1,4 +1,5 @@
 ﻿using CleanArc.Application.Features.AmenityMapping.Queries.GetAllAmenityMapping;
+using CleanArc.Application.Features.CustomerReview.Queries.GetAllCustomerReviews;
 using CleanArc.Application.Features.FAQs.Queries.GetAllFAQs;
 using CleanArc.Application.Features.GenericMedia.Queries.GetAllGenericMedia;
 using CleanArc.Application.Features.Hotel.Queries.GetHotelById;
@@ -18,5 +19,6 @@ namespace CleanArc.Application.Features.RoomDetails.Queries.GetHotelDetailForRoo
         public IEnumerable<GetAllGenericMediaQueryResult> Medias { get; set; }
         public IEnumerable<GetAllAmenityMappingQueryResult> HotelAmenities { get; set; }
         public IEnumerable<GetAllFAQsQueryResult> FAQs { get; set; }
+        public IEnumerable<GetAllCustomerReviewsQueryResult> Reviews { get; set; }
     }
 }
