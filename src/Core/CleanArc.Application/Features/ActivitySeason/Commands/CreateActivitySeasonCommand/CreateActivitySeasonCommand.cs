@@ -22,10 +22,10 @@ public record CreateActivitySeasonCommand(string? Name, string? Description,int?
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Name");
-        validator.RuleFor(c => c.Description)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a Description");
+        //validator.RuleFor(c => c.Description)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a Description");
         return validator;
     }
 }
