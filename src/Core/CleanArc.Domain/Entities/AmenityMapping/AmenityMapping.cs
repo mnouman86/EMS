@@ -16,6 +16,7 @@ namespace CleanArc.Domain.Entities.AmenityMapping
         public int? UpdatedBy { get; set; }
         public int Id { get; set; }
         public string? Amenity { get; set; }
+        public string? ServiceType { get; set; }
         public string? Icon { get; set; }
         public bool? Selected { get; set; }
     }
