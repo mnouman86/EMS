@@ -174,6 +174,10 @@ public class HotelRepository : IHotelRepository
                     var amenities = result.Read<AmenityLookUp>().ToList();
                     hotel.Amenities = amenities;
                 }
+                if (!result.IsConsumed)
+                {
+                    result.Dispose();
+                }
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 var response = new SingleResponseWrapper<Hotel>
                 {

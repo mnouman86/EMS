@@ -14,4 +14,6 @@ public class GetAllAmenityMappingQueryResult
     //public string? ServiceName { get; set; }
     public int? GenericTitleId { get; set; }
     public bool? Selected { get; set; }
+    public int? ServiceTypeEnumId { get; set; }
+    public string? ServiceType { get; set; }
 }
