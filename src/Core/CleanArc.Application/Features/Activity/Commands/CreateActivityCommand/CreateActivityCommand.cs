@@ -103,10 +103,10 @@ public record CreateActivityCommand(
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a SeasonLookUpID");
-        validator.RuleFor(c => c.Description)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a Description");
+        //validator.RuleFor(c => c.Description)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a Description");
         validator.RuleFor(c => c.AllowedItems)
            .NotEmpty()
            .NotNull()
