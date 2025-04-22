@@ -81,6 +81,7 @@ public class SearchHotelDetailRepository : ISearchHotelRepository
 				parameters.Add("@MinPrice", searchRequest.MinPrice, DbType.Int32);
 				parameters.Add("@MaxPrice", searchRequest.MaxPrice, DbType.Int32);
 				parameters.Add("@Amenities", searchRequest.Amenities, DbType.String);
+				parameters.Add("@Name", searchRequest.Name, DbType.String);
 				parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
 				parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
 				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
