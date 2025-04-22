@@ -49,6 +49,7 @@ public  class PopularItemsVisit
     public int? AccessFailedCount { get; set; }
     public int? PageId { get;set; }
     public string? Title { get;set; }
+    public string? RoomType { get;set; }
     public int? ServiceCategoryID { get; set; }
     public string? ImagePath { get; set; }
     public string? IpAddress { get; set; }
