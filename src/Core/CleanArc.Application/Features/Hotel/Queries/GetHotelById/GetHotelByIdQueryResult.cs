@@ -55,5 +55,7 @@ public class GetHotelByIdQueryResult
     public string? RefundPolicy { get; set; }
     public string? NonRefundPolicy { get; set; }
     public string? CancellationPolicy { get; set; }
+    public bool? IsRefundable { get; set; }
+    public bool? IsCancelation { get; set; }
 
 }
