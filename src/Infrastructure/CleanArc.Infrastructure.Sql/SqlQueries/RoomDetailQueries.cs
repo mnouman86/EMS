@@ -13,5 +13,6 @@ public static class RoomDetailQueries
     public static string Delete_RoomDetail => "usp_Delete_RoomDetail";
     public static string GetALL_RoomDetail => "usp_GetALL_RoomDetail";
     public static string GetByID_RoomDetail => "usp_GetByID_RoomDetail";
+    public static string GetHotelDetail_ByRoom => "usp_GetHotelDetail_ByRoom";
 
 }

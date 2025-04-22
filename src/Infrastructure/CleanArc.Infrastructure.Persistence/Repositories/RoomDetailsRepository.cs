@@ -166,7 +166,7 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                 parameters.Add("@NoOfRooms", searchRequest.NoOfRooms, DbType.Int32);
                 parameters.Add("@NoOfDays", searchRequest.NoOfDays, DbType.Int32);
 
-                var result = await connection.QueryMultipleAsync(RoomDetailQueries.GetByID_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryMultipleAsync(RoomDetailQueries.GetHotelDetail_ByRoom, parameters, commandType: CommandType.StoredProcedure);
                 // var kbDetailAll = resultKBDetail.ReadFirst<KBDetail>();
                 var hotelDetail = result.Read<HotelDetail>().FirstOrDefault();
                 if (hotelDetail != null)
