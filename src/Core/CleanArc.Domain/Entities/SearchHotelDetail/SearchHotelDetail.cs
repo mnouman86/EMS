@@ -15,6 +15,8 @@ namespace CleanArc.Domain.Entities.SearchHotelDetail
 
         public class SearchDetail
     {
+        public int? NoOfRooms { get; set; }
+        public int? NoOfDays { get; set; }
         public int Id { get; set; }
         public int? HotelID { get; set; }
         public int? CityID { get; set; }
