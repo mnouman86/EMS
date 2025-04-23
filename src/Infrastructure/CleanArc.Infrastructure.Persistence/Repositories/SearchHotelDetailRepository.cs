@@ -113,11 +113,11 @@ public class SearchHotelDetailRepository : ISearchHotelRepository
 
                     var ParamsAmenity = Params;
                     List<FilterParameter> Amenity = new List<FilterParameter>();
-                    Amenity.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.HotelID.ToString() });
+                    Amenity.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
                     Amenity.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
                     ParamsAmenity.Add("@FilterArray", DataTableHelper.ToDataTable(Amenity), DbType.Object); // Ensure proper type
                     var amenities = await connection.QueryAsync<Domain.Entities.AmenityMapping.AmenityMapping>(AmenityMappingQueries.GetByAmenityTypeEnumID_AmenityMapping, ParamsAmenity, commandType: CommandType.StoredProcedure);
-                    item.Amenities = amenities.Take(3).ToList();
+                    item.Amenities = amenities.Where(x=>x.Selected==true).Take(3).ToList();
                 }
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 SearchHotelDetail searchHotelDetail = new SearchHotelDetail();
