@@ -95,7 +95,8 @@ public class SearchHotelDetailRepository : ISearchHotelRepository
                     Params.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
                     Params.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
                     Params.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
-                    Params.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+                    List<FilterParameter> sortingFilter = new List<FilterParameter>();
+                    Params.Add("@SortingArray", DataTableHelper.ToDataTable(sortingFilter), DbType.Object); // Ensure proper type
                     
                     Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
