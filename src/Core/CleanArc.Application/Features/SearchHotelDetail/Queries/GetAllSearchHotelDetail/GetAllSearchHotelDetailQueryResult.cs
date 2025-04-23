@@ -19,6 +19,8 @@ public class GetAllSearchHotelDetailQueryResult
     public Decimal? RoomPriceMaximum { get; set; }
 }
     public class GetAllSearchHotelDetail {
+    public int? NoOfRooms { get; set; }
+    public int? NoOfDays { get; set; }
     public int Id { get; set; }
     public int HotelID { get; set; }
     public int CityID { get; set; }
