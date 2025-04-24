@@ -29,12 +29,21 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+else
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+        c.RoutePrefix = "swagger"; // ensures it's at /swagger/index.html
+    });
+}
 app.UseCors(builder => builder
 //.WithOrigins("http://your-angular-app-url")
      .AllowAnyOrigin()
      .AllowAnyMethod()
      .AllowAnyHeader());
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
