@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.Amenities.Queries.GetAllAmenities
                 return OperationResult<List<GetAllAmenitiesQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }
