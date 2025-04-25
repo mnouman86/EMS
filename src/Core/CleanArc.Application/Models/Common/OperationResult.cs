@@ -7,10 +7,11 @@ public class OperationResult<TResult>
     public bool IsSuccess { get; private set; }
     public string ErrorMessage { get; private set; }
     public int StatusCode { get; set; }
+    public int TotalCount { get; set; }
     public string Message { get; set; }
     public bool IsException { get; set; }
     public bool IsNotFound { get; private set; }
-    public static OperationResult<TResult> SuccessResult(TResult result, int statusCode=200, string message="Success")
+    public static OperationResult<TResult> SuccessResult(TResult result, int statusCode=200, string message="Success",int totalCount=0)
     {
         // return new OperationResult<TResult>{Result = result,IsSuccess = true, StatusCode=statusCode,Message=message};
        
@@ -22,13 +23,15 @@ public class OperationResult<TResult>
             statusCode = (int)result.GetType().GetProperty("Code").GetValue(result);
             message = result.GetType().GetProperty("Message").GetValue(result)?.ToString();
             var isSuccess =(bool) result.GetType().GetProperty("IsSuccess").GetValue(result);
+            totalCount =(int) result.GetType().GetProperty("TotalCount").GetValue(result);
 
             return new OperationResult<TResult>
             {
                 Result = result,
                 IsSuccess = isSuccess,
                 StatusCode = statusCode,
-                Message = message
+                Message = message,
+                TotalCount=totalCount
             };
         }
 
@@ -38,7 +41,8 @@ public class OperationResult<TResult>
             Result = result,
             IsSuccess = statusCode == 200,
             StatusCode = statusCode,
-            Message = message
+            Message = message,
+            TotalCount=totalCount
         };
     }
 

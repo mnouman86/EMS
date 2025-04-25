@@ -195,7 +195,8 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
                 Data = data,
                 Message=result.Message, // Use custom success message
                 StatusCode=result.StatusCode,
-                IsSuccess=result.IsSuccess
+                IsSuccess=result.IsSuccess,
+                TotalCount=result.TotalCount,
             };
 
             return result.Result is bool ? Ok() : StatusCode(result.StatusCode, successResponse);

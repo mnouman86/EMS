@@ -11,5 +11,6 @@ namespace CleanArc.Application.Common
         public IReadOnlyList<T> Data { get; set; }
         public int Code { get; set; }
         public string Message { get; set; }
+        public int TotalCount { get; set; }
     }
 }
