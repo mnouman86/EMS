@@ -1,8 +1,8 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.Request;
-using CleanArc.Application.Models.Service;
+using CleanArc.Application.Models.DrivingAvailabilityOptions;
 using CleanArc.Domain.Entities.RoomSizeUnit;
-using CleanArc.Domain.Entities.Service;
+using CleanArc.Domain.Entities.DrivingAvailabilityOptions;
 using CleanArc.Infrastructure.Persistence.Helpers;
 using CleanArc.Infrastructure.Sql.SqlQueries;
 using CleanArc.SharedKernel.Extensions;
@@ -21,11 +21,10 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Common;
 using CleanArc.Domain.Entities.AdvertisementPage;
-using CleanArc.Application.Models.DrivingAvailabilityOptions;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
-public class ServiceRepository : IServiceRepository
+public class DrivingAvailabilityOptionsRepository : IDrivingAvailabilityOptionsRepository
 {
     /// <summary>
     /// The configuration for accessing application settings.
@@ -40,7 +39,7 @@ public class ServiceRepository : IServiceRepository
     /// <summary>
     /// The logger for logging repository-related information.
     /// </summary>
-    private readonly ILogger<ServiceRepository> _logger;
+    private readonly ILogger<DrivingAvailabilityOptionsRepository> _logger;
 
     /// <summary>
     /// The HTTP context accessor for accessing HTTP context information.
@@ -54,7 +53,7 @@ public class ServiceRepository : IServiceRepository
     /// <param name="mapper">The mapper for mapping between different object types.</param>
     /// <param name="logger">The logger for logging repository-related information.</param>
     /// <param name="httpContextAccessor">The HTTP context accessor for accessing HTTP context information.</param>
-    public ServiceRepository(IConfiguration configuration, IMapper mapper, ILogger<ServiceRepository> logger, IHttpContextAccessor httpContextAccessor)
+    public DrivingAvailabilityOptionsRepository(IConfiguration configuration, IMapper mapper, ILogger<DrivingAvailabilityOptionsRepository> logger, IHttpContextAccessor httpContextAccessor)
     {
         this.configuration = configuration;
         this._mapper = mapper;
@@ -62,15 +61,15 @@ public class ServiceRepository : IServiceRepository
         _httpContextAccessor = httpContextAccessor;
     }
     /// <inheritdoc/>
-    public async Task<ResponseEntity> AddAsync(Service service)
+    public async Task<ResponseEntity> AddAsync(DrivingAvailabilityOptions DrivingAvailabilityOptions)
     {
-        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, service))
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, DrivingAvailabilityOptions))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                CreateServiceDTO createServiceDTO = _mapper.Map<CreateServiceDTO>(service);
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ServiceQueries.Create_Service, createServiceDTO, commandType: CommandType.StoredProcedure);
+                CreateDrivingAvailabilityOptionsDTO createDrivingAvailabilityOptionsDTO = _mapper.Map<CreateDrivingAvailabilityOptionsDTO>(DrivingAvailabilityOptions);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(DrivingAvailabilityOptionsQueries.Create_DrivingAvailabilityOptions, createDrivingAvailabilityOptionsDTO, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -89,14 +88,14 @@ public class ServiceRepository : IServiceRepository
                 parameters.Add("@UpdatedBy", updatedBy);
 				parameters.Add("@IsDeleted", deleteRequest.isDeleted);
                 parameters.Add("@CultureId", deleteRequest.CultureId);
-				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ServiceQueries.Delete_Service, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(DrivingAvailabilityOptionsQueries.Delete_DrivingAvailabilityOptions, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
     }
 
-    public async Task<ListResponseWrapper<Service>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<DrivingAvailabilityOptions>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -112,10 +111,10 @@ public class ServiceRepository : IServiceRepository
 				parameters.Add("@CultureId", searchRequest.CultureId, DbType.Int32);
 				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-				var result = await connection.QueryAsync<Service>(ServiceQueries.GetALL_Service, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QueryAsync<DrivingAvailabilityOptions>(DrivingAvailabilityOptionsQueries.GetALL_DrivingAvailabilityOptions, parameters, commandType: CommandType.StoredProcedure);
                 
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-				var response = new ListResponseWrapper<Service>
+				var response = new ListResponseWrapper<DrivingAvailabilityOptions>
                 {
                     Data = result.ToList(),
                     Code = parameters.Get<int>("@Code"),
@@ -126,7 +125,7 @@ public class ServiceRepository : IServiceRepository
 			}
 		}
     }
-    public async Task<SingleResponseWrapper<Service>> GetByIdAsync(SearchRequestById searchRequestById)
+    public async Task<SingleResponseWrapper<DrivingAvailabilityOptions>> GetByIdAsync(SearchRequestById searchRequestById)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequestById))
         {
@@ -138,9 +137,9 @@ public class ServiceRepository : IServiceRepository
                 parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                var result = await connection.QuerySingleOrDefaultAsync<Service>(ServiceQueries.GetByID_Service, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<DrivingAvailabilityOptions>(DrivingAvailabilityOptionsQueries.GetByID_DrivingAvailabilityOptions, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                var response = new SingleResponseWrapper<Service>
+                var response = new SingleResponseWrapper<DrivingAvailabilityOptions>
                 {
                     Data = result,
                     Code = parameters.Get<int>("@Code"),
@@ -153,24 +152,19 @@ public class ServiceRepository : IServiceRepository
 
 
 
-    public async Task<ResponseEntity> UpdateAsync(Service service)
+    public async Task<ResponseEntity> UpdateAsync(DrivingAvailabilityOptions DrivingAvailabilityOptions)
     {
-        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, service))
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, DrivingAvailabilityOptions))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                UpdateDrivingAvailabilityOptionsDTO updateServiceDTO = _mapper.Map<UpdateDrivingAvailabilityOptionsDTO>(service);
+                UpdateDrivingAvailabilityOptionsDTO updateDrivingAvailabilityOptionsDTO = _mapper.Map<UpdateDrivingAvailabilityOptionsDTO>(DrivingAvailabilityOptions);
 
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ServiceQueries.Update_Service, updateServiceDTO, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(DrivingAvailabilityOptionsQueries.Update_DrivingAvailabilityOptions, updateDrivingAvailabilityOptionsDTO, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
         }
     }
 }
-
-/// <inheritdoc/>
-
-
-/// <inheritdoc/>

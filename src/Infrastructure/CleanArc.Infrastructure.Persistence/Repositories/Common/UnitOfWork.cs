@@ -35,6 +35,8 @@ public class UnitOfWork : IUnitOfWork
     public IRoomImagesRepository RoomImagesRepository { get; set; }
     public IRoomSizeUnitReposirory RoomSizeUnitReposirory { get; set; }
     public IServiceRepository ServiceRepository { get; set; }
+    public IVehicleTypeRepository VehicleTypeRepository { get; set; }
+    public IDrivingAvailabilityOptionsRepository DrivingAvailabilityOptionsRepository { get; set; }
     public IServiceCategoryRepository ServiceCategoryRepository { get; set; }
     public ISectionRepository SectionRepository { get; set; }
     public ICountryRepository CountryRepository { get; set; }
@@ -137,6 +139,8 @@ public class UnitOfWork : IUnitOfWork
         ILogger<RoomImagesRepository> _loggerRoomImages,
         ILogger<RoomSizeUnitReposirory> _loggerRoomSizeUnit,
         ILogger<ServiceRepository> _loggerService,
+        ILogger<VehicleTypeRepository> _loggerVehicleType,
+        ILogger<DrivingAvailabilityOptionsRepository> _loggerDrivingAvailabilityOptions,
         ILogger<ServiceCategoryRepository> _loggerServiceCategory,
         ILogger<SectionRepository> _loggerSection,
         ILogger<CountryRepository> _loggerCountry,
@@ -245,6 +249,8 @@ public class UnitOfWork : IUnitOfWork
         RoomImagesRepository=new RoomImagesRepository(configuration, mapper, _loggerRoomImages, httpContextAccessor);
         RoomSizeUnitReposirory = new RoomSizeUnitReposirory(configuration, mapper, _loggerRoomSizeUnit, httpContextAccessor);
         ServiceRepository= new ServiceRepository(configuration, mapper, _loggerService, httpContextAccessor);
+        VehicleTypeRepository= new VehicleTypeRepository(configuration, mapper, _loggerVehicleType, httpContextAccessor);
+        DrivingAvailabilityOptionsRepository = new DrivingAvailabilityOptionsRepository(configuration, mapper, _loggerDrivingAvailabilityOptions, httpContextAccessor);
         ServiceCategoryRepository=new ServiceCategoryRepository(configuration, mapper, _loggerServiceCategory, httpContextAccessor);
         SectionRepository=new SectionRepository(configuration, mapper, _loggerSection, httpContextAccessor);
         CountryRepository=new CountryRepository(configuration, mapper, _loggerCountry, httpContextAccessor);

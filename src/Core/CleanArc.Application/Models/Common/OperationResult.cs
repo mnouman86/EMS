@@ -23,7 +23,17 @@ public class OperationResult<TResult>
             statusCode = (int)result.GetType().GetProperty("Code").GetValue(result);
             message = result.GetType().GetProperty("Message").GetValue(result)?.ToString();
             var isSuccess =(bool) result.GetType().GetProperty("IsSuccess").GetValue(result);
-            totalCount =(int) result.GetType().GetProperty("TotalCount").GetValue(result);
+
+            var propertyInfo = result.GetType().GetProperty("TotalCount");
+            if (propertyInfo != null)
+            {
+                var value = propertyInfo.GetValue(result);
+                if (value != null && int.TryParse(value.ToString(), out int parsedValue))
+                {
+                    totalCount = parsedValue;
+                }
+            }
+            //totalCount =(int) result.GetType().GetProperty("TotalCount").GetValue(result);
 
             return new OperationResult<TResult>
             {
