@@ -17,7 +17,7 @@ public record CreateBusinessCommand(string? Name,
     string? PhoneNumber, string? MobileNumber, string? Address1,string? Address2,string? Email, string? Latitude,
     string? Longitude, int? CountryLookUpId, int? StateLookUpId,
     int? CityLookUpId, string? TaxIdentificationNumber, string? License, 
-    string? ProofOfInsurance, int? BankAccountDetailID,
+    string? ProofOfInsurance, int? BankAccountDetailID, List<int>? OperateIn,
    int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateBusinessCommand>
 {

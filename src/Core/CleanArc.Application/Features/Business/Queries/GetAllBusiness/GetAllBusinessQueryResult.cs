@@ -10,6 +10,7 @@ namespace CleanArc.Application.Features.Business.Queries.GetAllBusiness
     {
         public int? Id { get; set; }
         public int? BusinessTypeID { get; set; }
+        public List<int>? OperatesIn { get; set; }
 
         public string? Name { get; set; }
         public string? PhoneNumber { get; set; }

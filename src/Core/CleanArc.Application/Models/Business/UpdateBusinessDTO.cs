@@ -10,6 +10,7 @@ namespace CleanArc.Application.Models.Business
     { 
         public int? Id { get; set; }
         //public int? BusinessTypeID { get; set; }
+        public string? OperateIn { get; set; }
 
         public string? Name { get; set; }
         public string? PhoneNumber { get; set; }

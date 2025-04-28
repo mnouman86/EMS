@@ -72,6 +72,7 @@ namespace CleanArc.Application.Features.Business.Command.CreateBusinessCommand
                    TaxIdentificationNumber = request.TaxIdentificationNumber,
                   License= request.License,
                     ProofOfInsurance= request.ProofOfInsurance,
+                    OperateIn=string.Join(',',request.OperateIn)
                     //BankAccountDetailID= request.BankAccountDetailID,
                     //IsCancelation= request.IsCancelation,
                     //IsRefundable= request.IsRefundable,

@@ -18,7 +18,8 @@ public record UpdateBusinessCommand(int Id, int? BusinessTypeID, string? Name,
     string? Longitude, int? CountryLookUpId, int? StateLookUpId,
     int? CityLookUpId, string? TaxIdentificationNumber, string? License,
     string? ProofOfInsurance, int? BankAccountDetailID,
-     int? UpdatedBy) : IRequest<OperationResult<ResponseEntity>>,
+     int? UpdatedBy,List<int>? OperateIn
+) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateBusinessCommand>
 {
     [JsonIgnore]

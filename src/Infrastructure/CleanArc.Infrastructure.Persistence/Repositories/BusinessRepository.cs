@@ -20,6 +20,9 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Common;
 using CleanArc.Domain.Entities.KBDetail;
+using CleanArc.Domain.Entities.Amenity;
+using CleanArc.Domain.Entities.Hotel;
+using CleanArc.Domain.Entities.Language;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -135,12 +138,25 @@ public class BusinessRepository : IBusinessRepository
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 				parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
 				parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
-				var result = await connection.QuerySingleOrDefaultAsync<Business>(BusinessQueries.GetByID_Business, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+				//var result = await connection.QuerySingleOrDefaultAsync<Business>(BusinessQueries.GetByID_Business, parameters, commandType: CommandType.StoredProcedure);
+
+                var result = await connection.QueryMultipleAsync(BusinessQueries.GetByID_Business, parameters, commandType: CommandType.StoredProcedure);
+                var business = result.Read<Business>().FirstOrDefault();
+                if (business != null)
+                {
+                    var operateIn = result.Read<int>().ToList();
+                    business.OperatesIn = operateIn;
+                }
+                if (!result.IsConsumed)
+                {
+                    result.Dispose();
+                }
+
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
                 var response = new SingleResponseWrapper<Business>
                 {
-                    Data = result,
+                    Data = business,
                     Code = parameters.Get<int>("@Code"),
                     Message = parameters.Get<string>("@Message")
                 };
@@ -167,9 +183,3 @@ public class BusinessRepository : IBusinessRepository
         }
     }
 }
-/// <inheritdoc/>
-
-
-/// <inheritdoc/>
-
-

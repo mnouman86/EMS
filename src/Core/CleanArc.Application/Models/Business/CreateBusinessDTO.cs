@@ -11,6 +11,7 @@ namespace CleanArc.Application.Models.Business
         //public int? BusinessTypeID { get; set; }
 
         public string? Name { get; set; }
+        public string? OperateIn { get; set; }
         public string? PhoneNumber { get; set; }
         public string? MobileNumber { get; set; }
         public string? Address1 { get; set; }

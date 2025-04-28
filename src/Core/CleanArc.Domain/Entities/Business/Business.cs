@@ -10,6 +10,8 @@ namespace CleanArc.Domain.Entities.Business
     {
         public int? Id { get; set; }
         public int? BusinessTypeId { get; set; }
+        public List<int>? OperatesIn { get; set; }
+        public string? OperateIn { get; set; }
         public string? Name { get; set; }
         public string? PhoneNumber { get; set; }
         public string? MobileNumber { get; set; }
