@@ -13,21 +13,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.CarDetail.Command.UpdateCarDetailCommand;
+namespace CleanArc.Application.Features.DrivingAvailabilityOptions.Command.CreateDrivingAvailabilityOptionsCommand;
 
-internal class UpdateCarDetailCommandHandler : IRequestHandler<UpdateCarDetailCommand, OperationResult<ResponseEntity>>
+internal class CreateDrivingAvailabilityOptionsCommandHandler : IRequestHandler<CreateDrivingAvailabilityOptionsCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<UpdateCarDetailCommandHandler> _logger;
+    private readonly ILogger<CreateDrivingAvailabilityOptionsCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
                                                                 //private readonly IUnitOfWork _unitOfWork;
                                                                 //private readonly IAppUserManager _userManager;
 
 
-    public UpdateCarDetailCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateCarDetailCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public CreateDrivingAvailabilityOptionsCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<CreateDrivingAvailabilityOptionsCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -36,10 +36,10 @@ internal class UpdateCarDetailCommandHandler : IRequestHandler<UpdateCarDetailCo
         _logger = logger;
         _httpContextAccessor = httpContextAccessor;
         //_unitOfWork = unitOfWork;
-        //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateCarDetailCommand request, CancellationToken cancellationToken)
+
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateDrivingAvailabilityOptionsCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -55,29 +55,19 @@ internal class UpdateCarDetailCommandHandler : IRequestHandler<UpdateCarDetailCo
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
-            var result = await _unitOfWork.CarDetailRepository.UpdateAsync(new Domain.Entities.CarDetail.CarDetail()
-            { UpdatedBy = user.Id,
-                Id= request.Id,
-                BusinessId = request.BusinessId,
-                Model = request.Model,
-                Year = request.Year,
-                VehicleIdentificationNumber = request.VehicleIdentificationNumber,
-                PlateNumber = request.PlateNumber,
-                NoOfSeat = request.NoOfSeat,
-				RentPrice = request.RentPrice,
-                About = request.About,
+            var result = await _unitOfWork.DrivingAvailabilityOptionsRepository.AddAsync(new Domain.Entities.DrivingAvailabilityOptions.DrivingAvailabilityOptions()
+            {
+                Name = request.Name,
+                Description = request.Description,
                 CultureId = request.CultureId,
-                RefundPolicy = request.RefundPolicy,
-                NonRefundPolicy = request.NonRefundPolicy,
-                CancellationPolicy = request.CancellationPolicy,
-                VehicleTypeLookUpId = request.VehicleTypeLookUpId,
-                DrivingAvailabilityOptionLookUpId = request.DrivingAvailabilityOptionLookUpId,
-                PerHourPrice = request.PerHourPrice
+                CreatedBy = user.Id,
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
         }
-    }
 
+
+
+    }
 }

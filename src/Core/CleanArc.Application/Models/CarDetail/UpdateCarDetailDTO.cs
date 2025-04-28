@@ -29,5 +29,8 @@ namespace CleanArc.Application.Models.CarDetail
         public string? RefundPolicy { get; set; }
         public string? NonRefundPolicy { get; set; }
         public string? CancellationPolicy { get; set; }
+        public int? VehicleTypeLookUpId { get; set; }
+        public int? DrivingAvailabilityOptionLookUpId { get; set; }
+        public decimal? PerHourPrice { get; set; }
     }
 }

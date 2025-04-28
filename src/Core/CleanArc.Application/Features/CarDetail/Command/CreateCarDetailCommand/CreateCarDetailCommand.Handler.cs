@@ -73,6 +73,9 @@ namespace CleanArc.Application.Features.CarDetail.Command.CreateCarDetailCommand
                     CancellationPolicy = request.CancellationPolicy,
                     ServiceCategoryId = request.ServiceCategoryId,
                     ServiceTypeEnumId = request.ServiceTypeEnumId,
+                    VehicleTypeLookUpId = request.VehicleTypeLookUpId,
+                    DrivingAvailabilityOptionLookUpId = request.DrivingAvailabilityOptionLookUpId,
+                    PerHourPrice=request.PerHourPrice
                 });
                 await _unitOfWork.CommitAsync();
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

@@ -23,6 +23,8 @@ public interface IUnitOfWork
     public IRoomImagesRepository RoomImagesRepository { get; }
     public IRoomSizeUnitReposirory RoomSizeUnitReposirory { get; }
     public IServiceRepository ServiceRepository { get; }
+    public IVehicleTypeRepository VehicleTypeRepository { get; }
+    public IDrivingAvailabilityOptionsRepository DrivingAvailabilityOptionsRepository { get; }
     public IServiceCategoryRepository ServiceCategoryRepository { get; }
     public ISectionRepository SectionRepository { get; }
     public ICountryRepository CountryRepository { get; }

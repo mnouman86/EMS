@@ -16,7 +16,8 @@ namespace CleanArc.Application.Features.CarDetail.Command.CreateCarDetailCommand
 public record CreateCarDetailCommand(int? BusinessId, string? Model, string? Year, 
     string? VehicleIdentificationNumber, string? PlateNumber, int? NoOfSeat, int? RentPrice
     , string? About, int? CultureId,
-    string? RefundPolicy, string? NonRefundPolicy, string? CancellationPolicy, int? ServiceTypeEnumId, int? ServiceCategoryId) : IRequest<OperationResult<ResponseEntity>>,
+    string? RefundPolicy, string? NonRefundPolicy, string? CancellationPolicy, int? ServiceTypeEnumId, int? ServiceCategoryId, 
+    int? VehicleTypeLookUpId, int? DrivingAvailabilityOptionLookUpId, decimal? PerHourPrice) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateCarDetailCommand>
 {
     [JsonIgnore]
