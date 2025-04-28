@@ -74,6 +74,7 @@ namespace CleanArc.Application.Features.Business.Command.UpdateBusinessCommand
                     //BankAccountDetailID = request.BankAccountDetailID,
                     //IsCancelation = request.IsCancelation,
                     //IsRefundable = request.IsRefundable,
+                    OperateIn = string.Join(',', request.OperateIn)
                 });
                 await _unitOfWork.CommitAsync();
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
