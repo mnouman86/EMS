@@ -13,6 +13,7 @@ namespace CleanArc.Application.Features.CarDetail.Queries.GetCarDetailById
         public int BusinessId { get; set; }
         public int? ServiceTypeEnumId { get; set; }
         public int? ServiceCategoryId { get; set; }
+
         public string Model { get; set; }
         public string Year { get; set; }
         public string VehicleIdentificationNumber { get; set; }
@@ -46,7 +47,6 @@ namespace CleanArc.Application.Features.CarDetail.Queries.GetCarDetailById
         public int? CountryLookUpID { get; set; }
         public int? StateLookUpID { get; set; }
         public int? CityLookUpID { get; set; }
-        public int? ServiceCategoryID { get; set; }
         public string? PostalCode { get; set; }
         public string? AddressLine1 { get; set; }
         public string? AddressLine2 { get; set; }
