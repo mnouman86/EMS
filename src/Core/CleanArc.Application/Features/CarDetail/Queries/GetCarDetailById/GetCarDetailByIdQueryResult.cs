@@ -14,6 +14,8 @@ namespace CleanArc.Application.Features.CarDetail.Queries.GetCarDetailById
         public int? ServiceTypeEnumId { get; set; }
         public int? ServiceCategoryId { get; set; }
         public decimal? TotalPrice { get; set; }
+        public int? NoOfDays { get; set; }
+
         public int? ReviewsCount { get; set; }
         public int? Rating { get; set; }
         public string Model { get; set; }
