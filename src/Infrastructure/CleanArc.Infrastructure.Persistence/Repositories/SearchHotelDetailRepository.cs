@@ -122,8 +122,8 @@ public class SearchHotelDetailRepository : ISearchHotelRepository
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 SearchHotelDetail searchHotelDetail = new SearchHotelDetail();
                 searchHotelDetail.HotelDetail = result.ToList();
-                searchHotelDetail.RoomPriceMinimum=result.Min(x=>x.RoomDetailPrice);
-                searchHotelDetail.RoomPriceMaximum=result.Max(x=>x.RoomDetailPrice);
+                searchHotelDetail.RoomPriceMinimum=result.Count()>0? result.Min(x=>x.RoomDetailPrice):0;
+                searchHotelDetail.RoomPriceMaximum= result.Count() > 0 ? result.Max(x=>x.RoomDetailPrice):0;
 				var response = new SingleResponseWrapper<SearchHotelDetail> { Data = searchHotelDetail, Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; 
                 return response;
 
