@@ -15,7 +15,7 @@ namespace CleanArc.Application.Features.SearchBusinessCarDetail.Queries.GetSearc
 public class GetSearchBusinessCarDetailByIdQueryResult : GetCarDetailByIdQueryResult
 {
     public IEnumerable<GetAllGenericMediaQueryResult> Medias { get; set; }
-    public IEnumerable<GetAllAmenityMappingQueryResult> HotelAmenities { get; set; }
+    public IEnumerable<GetAllAmenityMappingQueryResult> Amenities { get; set; }
     public IEnumerable<GetAllFAQsQueryResult> FAQs { get; set; }
     public IEnumerable<GetAllCustomerReviewsQueryResult> Reviews { get; set; }
 }
