@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CleanArc.Domain.Entities.Language;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace CleanArc.Domain.Entities.CarDetail
     {
         public List<GenericMedia.GenericMedia> Medias { get; set; }
         public List<AmenityMapping.AmenityMapping> Amenities { get; set; }
+        public List<LanguageLookUp> Languages { get; set; }
         public List<FAQs.FAQs> FAQs { get; set; }
         public List<CustomerReview.CustomerReview> Reviews { get; set; }
     }
