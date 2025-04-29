@@ -22,6 +22,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Common;
 using CleanArc.Domain.Entities.Country;
+using CleanArc.Domain.Enums;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
@@ -62,17 +63,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             this._logger = logger;
             _httpContextAccessor = httpContextAccessor;
         }
-        public Task<ResponseEntity> AddAsync(SearchBusinessCarDetail entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ResponseEntity> DeleteAsync(DeleteRequest deleteRequest, int? updatedBy)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<ListResponseWrapper<SearchBusinessCarDetail>> GetAllAsync(SearchRequest searchRequest)
+        public async Task<SingleResponseWrapper<SearchCarDetail>> GetAllAsync(CarSearchRequest searchRequest)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
             {
@@ -81,51 +72,91 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     connection.Open();
 					var parameters = new DynamicParameters();
 					parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
-					parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
-					parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
-					parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
-					parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
-					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                    parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                    parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                    parameters.Add("@NoOfDays", searchRequest.NoOfDays, DbType.Int32);
+                    parameters.Add("@Rating", searchRequest.Rating, DbType.Int32);
+                    parameters.Add("@MinPrice", searchRequest.MinPrice, DbType.Int32);
+                    parameters.Add("@MaxPrice", searchRequest.MaxPrice, DbType.Int32);
+                    parameters.Add("@Amenities", searchRequest.Amenities, DbType.String);
+                    parameters.Add("@Name", searchRequest.Name, DbType.String);
+                    parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+                    parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+                    parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-					var result = await connection.QueryAsync<SearchBusinessCarDetail>(SearchBusinessCarDetailQueries.GetALLByBusinessID_Cars, parameters, commandType: CommandType.StoredProcedure);
+                    var result = await connection.QueryAsync<SearchBusinessCarDetail>(SearchBusinessCarDetailQueries.GetALLByBusinessID_Cars, parameters, commandType: CommandType.StoredProcedure);
                     foreach (var item in result)
                     {
-                        List<FilterParameter> FilterArray = new List<FilterParameter>();
-                        List<SortingParameter> SortingArray = new List<SortingParameter>();
-                        FilterArray.Add(new FilterParameter { ParameterName = "CarId", ParameterValue = item.Id.ToString() });
+      //                  List<FilterParameter> FilterArray = new List<FilterParameter>();
+      //                  List<SortingParameter> SortingArray = new List<SortingParameter>();
+      //                  FilterArray.Add(new FilterParameter { ParameterName = "CarId", ParameterValue = item.Id.ToString() });
 
-						var parameter = new DynamicParameters();
-						parameter.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
-						parameter.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
-						parameter.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
-						parameter.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
-						parameter.Add("@FilterArray", DataTableHelper.ToDataTable(FilterArray), DbType.Object); // Ensure proper type
-						//parameter.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-						//parameter.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+						//var parameter = new DynamicParameters();
+						//parameter.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+						//parameter.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+						//parameter.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+						//parameter.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+						//parameter.Add("@FilterArray", DataTableHelper.ToDataTable(FilterArray), DbType.Object); // Ensure proper type
+						////parameter.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+						////parameter.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-						var imageList = await connection.QueryAsync<SearchCarImage>(SearchCarImageQueries.GetByCarID_CarImage, parameter, commandType: CommandType.StoredProcedure);
-                        var amenitiesList = await connection.QueryAsync<SearchCarAmenities>(SearchCarAmenitiesQuery.GetByCarID_CarAmenities, parameter, commandType: CommandType.StoredProcedure);
-                        item.SearchCarImage = new List<SearchCarImage>();
-                        item.SearchCarImage.AddRange(imageList);
-                        item.SearchCarAmenities = new List<SearchCarAmenities>();
-                        item.SearchCarAmenities.AddRange(amenitiesList);
+						//var imageList = await connection.QueryAsync<SearchCarImage>(SearchCarImageQueries.GetByCarID_CarImage, parameters, commandType: CommandType.StoredProcedure);
+      //                  var amenitiesList = await connection.QueryAsync<SearchCarAmenities>(SearchCarAmenitiesQuery.GetByCarID_CarAmenities, parameters, commandType: CommandType.StoredProcedure);
+      //                  item.SearchCarImage = new List<SearchCarImage>();
+      //                  item.SearchCarImage.AddRange(imageList);
+      //                  item.SearchCarAmenities = new List<SearchCarAmenities>();
+      //                  item.SearchCarAmenities.AddRange(amenitiesList);
+
+                        var Params = new DynamicParameters();
+                        Params.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+                        Params.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                        Params.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                        List<FilterParameter> sortingFilter = new List<FilterParameter>();
+                        Params.Add("@SortingArray", DataTableHelper.ToDataTable(sortingFilter), DbType.Object); // Ensure proper type
+
+                        Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                        Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                        var ParamsImage = Params;
+                        List<FilterParameter> list = new List<FilterParameter>();
+                        list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+                        list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
+
+                        ParamsImage.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+
+                        var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, ParamsImage, commandType: CommandType.StoredProcedure);
+                        item.CarImages = imageList.ToList();
+
+                        var ParamsAmenity = Params;
+                        List<FilterParameter> Amenity = new List<FilterParameter>();
+                        Amenity.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+                        Amenity.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
+                        ParamsAmenity.Add("@FilterArray", DataTableHelper.ToDataTable(Amenity), DbType.Object); // Ensure proper type
+                        var amenities = await connection.QueryAsync<Domain.Entities.AmenityMapping.AmenityMapping>(AmenityMappingQueries.GetByAmenityTypeEnumID_AmenityMapping, ParamsAmenity, commandType: CommandType.StoredProcedure);
+                        item.Amenities = amenities.Where(x => x.Selected == true).Take(3).ToList();
                     }
-                         (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-					var response = new ListResponseWrapper<SearchBusinessCarDetail> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
+                    SearchCarDetail searchCarDetail = new SearchCarDetail();
+                    searchCarDetail.CarDetail = result.ToList();
+                    searchCarDetail.CarPriceMinimum = result.Min(x => x.CarDetailPrice);
+                    searchCarDetail.CarPriceMaximum = result.Max(x => x.CarDetailPrice);
+                    var response = new SingleResponseWrapper<SearchCarDetail>
+                    {
+                        Data = searchCarDetail,
+                        Code = parameters.Get<int>("@Code"),
+                        Message = parameters.Get<string>("@Message")
+                    };
+                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+					//var response = new ListResponseWrapper<SearchBusinessCarDetail>
+     //               {
+     //                   Data = result.ToList(),
+     //                   Code = parameters.Get<int>("@Code"),
+     //                   Message = parameters.Get<string>("@Message")
+     //               }; 
+                    return response;
 
 				}
 			}
-        }
-
-        public Task<SingleResponseWrapper<SearchBusinessCarDetail>> GetByIdAsync(SearchRequestById searchRequestById)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ResponseEntity> UpdateAsync(SearchBusinessCarDetail entity)
-        {
-            throw new NotImplementedException();
         }
     }
 }

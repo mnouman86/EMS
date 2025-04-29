@@ -35,7 +35,7 @@ public class GetAllSearchHotelDetailQueryResult
     public decimal DiscountedPrice { get; set; }
     public string ImagePath { get; set; }
     public string ImageTitle{ get; set; }
-    public List<GetAllGenericMediaQueryResult> HotelImages { get; set; }
+    
 
     public int TotalDays { get; set; }
     public string? Description { get; set; }
@@ -45,6 +45,7 @@ public class GetAllSearchHotelDetailQueryResult
     public int? ReviewsCount { get; set; }
     public int? Rating { get; set; }
     public string? RefundPolicy { get; set; }
+    public List<GetAllGenericMediaQueryResult> HotelImages { get; set; }
     public List<GetAllAmenityMappingQueryResult> Amenities { get; set; }
     //public class HotelImage
     //{
