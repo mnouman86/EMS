@@ -36,7 +36,7 @@ namespace CleanArc.Application.Features.SearchBusinessCarDetail.Queries.GetSearc
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var response = await _unitOfWork.SearchBusinessCarDetailRepository.GetCarDetailByBusinessAsync(request.searchRequest);
+                var response = await _unitOfWork.SearchBusinessCarDetailRepository.GetCarDetailByBusinessAsync(request.searchRequestById);
 
                 if (response.Code != 200)
                 {
