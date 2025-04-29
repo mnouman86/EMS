@@ -18,6 +18,9 @@ namespace CleanArc.Domain.Entities.CarDetail
         public string? PlateNumber { get; set; }
         public int? NoOfSeat { get; set; }
         public int? RentPrice { get; set; }
+        public decimal? TotalPrice { get; set; }
+        public int? ReviewsCount { get; set; }
+        public int? Rating { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsDeleted { get; set; }
         public int? CreatedBy { get; set; }
