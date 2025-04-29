@@ -53,7 +53,7 @@ namespace CleanArc.Web.Api.Controllers.V1.SearchBusinessCarDetail;
 [ApiController]
 [Route("api/v{version:apiVersion}/SearchBusinessCarDetail")]
 public class SearchBusinessCarDetailController : _BaseController<CreateSearchBusinessCarDetailCommand, UpdateSearchBusinessCarDetailCommand, DeleteSearchBusinessCarDetailCommand, ResponseEntity, GetAllSearchBusinessCarDetailQuery,
-    List<GetAllSearchBusinessCarDetailQueryResult>, GetSearchBusinessCarDetailByIdQuery, GetSearchBusinessCarDetailByIdQueryResult>
+    GetAllSearchBusinessCarDetailQueryResult, GetSearchBusinessCarDetailByIdQuery, GetSearchBusinessCarDetailByIdQueryResult>
 {
 
     /// <summary>
@@ -63,7 +63,7 @@ public class SearchBusinessCarDetailController : _BaseController<CreateSearchBus
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
     public SearchBusinessCarDetailController(ISender sender, ILogger<_BaseController<CreateSearchBusinessCarDetailCommand, UpdateSearchBusinessCarDetailCommand, DeleteSearchBusinessCarDetailCommand, ResponseEntity, GetAllSearchBusinessCarDetailQuery,
-List<GetAllSearchBusinessCarDetailQueryResult>, GetSearchBusinessCarDetailByIdQuery, GetSearchBusinessCarDetailByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
+GetAllSearchBusinessCarDetailQueryResult, GetSearchBusinessCarDetailByIdQuery, GetSearchBusinessCarDetailByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
 
     }

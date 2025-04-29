@@ -10,5 +10,5 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.SearchBusinessCarDetail.Queries.GetAllSearchBusinessCarDetail;
 
-public record GetAllSearchBusinessCarDetailQuery(SearchRequest searchRequest) : IRequest<OperationResult<List<GetAllSearchBusinessCarDetailQueryResult>>>;
+public record GetAllSearchBusinessCarDetailQuery(CarSearchRequest searchRequest) : IRequest<OperationResult<GetAllSearchBusinessCarDetailQueryResult>>;
 

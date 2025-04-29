@@ -15,7 +15,7 @@ using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
 namespace CleanArc.Application.Features.SearchBusinessCarDetail.Queries.GetAllSearchBusinessCarDetail;
 
-internal class GetAllSearchBusinessCarDetailQueryHandler: IRequestHandler<GetAllSearchBusinessCarDetailQuery, OperationResult<List<GetAllSearchBusinessCarDetailQueryResult>>>
+internal class GetAllSearchBusinessCarDetailQueryHandler: IRequestHandler<GetAllSearchBusinessCarDetailQuery, OperationResult<GetAllSearchBusinessCarDetailQueryResult>>
     {
 
         private readonly IUnitOfWork _unitOfWork;
@@ -32,7 +32,7 @@ public GetAllSearchBusinessCarDetailQueryHandler(IUnitOfWork unitOfWork, IMapper
     _logger = logger;
 }
 
-public async ValueTask<OperationResult<List<GetAllSearchBusinessCarDetailQueryResult>>> Handle(GetAllSearchBusinessCarDetailQuery request, CancellationToken cancellationToken)
+public async ValueTask<OperationResult<GetAllSearchBusinessCarDetailQueryResult>> Handle(GetAllSearchBusinessCarDetailQuery request, CancellationToken cancellationToken)
 {
     using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
     {
@@ -47,16 +47,16 @@ public async ValueTask<OperationResult<List<GetAllSearchBusinessCarDetailQueryRe
 
             if (response.Code != 200)
             {
-                return OperationResult<List<GetAllSearchBusinessCarDetailQueryResult>>.FailureResult(
+                return OperationResult<GetAllSearchBusinessCarDetailQueryResult>.FailureResult(
                     response.Message,
                 response.Code
                 );
             }
 
-            var mappedResult = _mapper.Map<List<GetAllSearchBusinessCarDetailQueryResult>>(response.Data);
+            var mappedResult = _mapper.Map<GetAllSearchBusinessCarDetailQueryResult>(response.Data);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-            return OperationResult<List<GetAllSearchBusinessCarDetailQueryResult>>.SuccessResult(
+            return OperationResult<GetAllSearchBusinessCarDetailQueryResult>.SuccessResult(
                 mappedResult,
                 response.Code,
                 response.Message
