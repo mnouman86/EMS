@@ -188,6 +188,9 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     {
                         var cars = result.Read<Car>().ToList();
                         carDetail.Cars = cars;
+                        
+
+
                         var media = result.Read<GenericMedia>().ToList();
                         carDetail.Medias = media;
                         var amenities = result.Read<AmenityLookUp>().ToList();
@@ -203,13 +206,36 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                         {
                             result.Dispose();
                         }
+                        foreach (var car in cars)
+                        {
+                            var Params = new DynamicParameters();
+                            Params.Add("@PageNumber", 1, DbType.Int32);
+                            Params.Add("@PageSize", 1, DbType.Int32);
+                            Params.Add("@cultureId", 1, DbType.Int32);
+                            List<FilterParameter> sortingFilter = new List<FilterParameter>();
+                            Params.Add("@SortingArray", DataTableHelper.ToDataTable(sortingFilter), DbType.Object); // Ensure proper type
 
+                            Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                            Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                            List<FilterParameter> list = new List<FilterParameter>();
+                            list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = car.CarId.ToString() });
+                            list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Car).ToString() });
+
+                            Params.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+
+                            var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, Params, commandType: CommandType.StoredProcedure);
+                            car.Medias = imageList.ToList();
+                        }
                     }
                     //var result = await connection.QuerySingleOrDefaultAsync<RoomDetails>(RoomDetailQueries.GetByID_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     //
 
-
+                    if (!result.IsConsumed)
+                    {
+                        result.Dispose();
+                    }
                     //await connection.ExecuteAsync(
                     //        ActivityQueries.GetByID_Activity,
                     //        parameters,

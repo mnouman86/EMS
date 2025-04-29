@@ -1,4 +1,5 @@
-﻿using CleanArc.Domain.Entities.Amenity;
+﻿using CleanArc.Application.Features.GenericMedia.Queries.GetAllGenericMedia;
+using CleanArc.Domain.Entities.Amenity;
 using CleanArc.Domain.Entities.Language;
 using System;
 using System.Collections.Generic;
@@ -63,6 +64,7 @@ namespace CleanArc.Application.Features.CarDetail.Queries.GetCarDetailById
         public string? Longitude { get; set; }
         public string? MobileNumber { get; set; }
         public string? PhoneNumber { get; set; }
+        public IEnumerable<GetAllGenericMediaQueryResult> Medias { get; set; }
 
     }
 }

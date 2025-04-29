@@ -10,7 +10,7 @@ namespace CleanArc.Domain.Entities.CarDetail
 {
     public class CarDetail: Car
     {
-        public List<GenericMedia.GenericMedia> Medias { get; set; }
+        
         public List<Car> Cars { get; set; }
         public List<AmenityLookUp> Amenities { get; set; }
         public List<LanguageLookUp> Languages { get; set; }
