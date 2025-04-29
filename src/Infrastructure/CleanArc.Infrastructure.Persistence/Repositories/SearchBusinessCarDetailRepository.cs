@@ -138,8 +138,8 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     }
                     SearchCarDetail searchCarDetail = new SearchCarDetail();
                     searchCarDetail.CarDetail = result.ToList();
-                    searchCarDetail.CarPriceMinimum = result.Min(x => x.CarDetailPrice);
-                    searchCarDetail.CarPriceMaximum = result.Max(x => x.CarDetailPrice);
+                    searchCarDetail.CarPriceMinimum =result.Count()>0? result.Min(x => x.CarDetailPrice):0;
+                    searchCarDetail.CarPriceMaximum = result.Count() > 0 ? result.Max(x => x.CarDetailPrice):0;
                     var response = new SingleResponseWrapper<SearchCarDetail>
                     {
                         Data = searchCarDetail,
