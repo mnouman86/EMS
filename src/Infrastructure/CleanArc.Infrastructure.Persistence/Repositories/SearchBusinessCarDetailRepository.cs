@@ -120,8 +120,8 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 
                         var ParamsImage = Params;
                         List<FilterParameter> list = new List<FilterParameter>();
-                        list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
-                        list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
+                        list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.CarId.ToString() });
+                        list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Car).ToString() });
 
                         ParamsImage.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
 
@@ -131,7 +131,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                         var ParamsAmenity = Params;
                         List<FilterParameter> Amenity = new List<FilterParameter>();
                         Amenity.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
-                        Amenity.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
+                        Amenity.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Car).ToString() });
                         ParamsAmenity.Add("@FilterArray", DataTableHelper.ToDataTable(Amenity), DbType.Object); // Ensure proper type
                         var amenities = await connection.QueryAsync<Domain.Entities.AmenityMapping.AmenityMapping>(AmenityMappingQueries.GetByAmenityTypeEnumID_AmenityMapping, ParamsAmenity, commandType: CommandType.StoredProcedure);
                         item.Amenities = amenities.Where(x => x.Selected == true).Take(3).ToList();
