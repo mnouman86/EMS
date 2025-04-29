@@ -13,5 +13,6 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries
         public static string Delete_CarDetail => "usp_Delete_CarDetail";
         public static string GetALL_CarDetail => "usp_GetALL_CarDetail";
         public static string GetByID_CarDetail => "usp_GetByID_CarDetail";
+        public static string GetByID_CarDetailByBusiness => "usp_GetByID_CarDetailByBusiness";
     }
 }

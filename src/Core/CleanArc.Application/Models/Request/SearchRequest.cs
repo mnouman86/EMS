@@ -65,4 +65,9 @@ namespace CleanArc.Application.Models.Request
         public int? NoOfRooms { get; set; }
         public int? NoOfDays { get; set; }
     }
+    public class CarDetailSearchRequest : SearchRequestById
+    {
+        public int? NoOfDays { get; set; }
+    }
+
 }

@@ -15,6 +15,14 @@ using CleanArc.Domain.Common;
 using System.Data;
 using CleanArc.Application.Common;
 using CleanArc.Domain.Entities.KBDetail;
+using CleanArc.Domain.Entities.AmenityMapping;
+using CleanArc.Domain.Entities.CustomerReview;
+using CleanArc.Domain.Entities.FAQs;
+using CleanArc.Domain.Entities.Hotel;
+using CleanArc.Domain.Entities.Language;
+using CleanArc.Domain.Entities.RoomDetails;
+using CleanArc.Domain.Enums;
+using CleanArc.Domain.Entities.GenericMedia;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
@@ -120,13 +128,13 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
                 {
                     connection.Open();
-					var parameters = new DynamicParameters();
-					parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-					parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-					parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
-					parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
-					var result = await connection.QuerySingleOrDefaultAsync<CarDetail>(CarDetailQueries.GetByID_CarDetail, parameters, commandType: CommandType.StoredProcedure);
-                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                    var parameters = new DynamicParameters();
+                    parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                    parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
+                    parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
+                    var result = await connection.QuerySingleOrDefaultAsync<CarDetail>(CarDetailQueries.GetByID_CarDetail, parameters, commandType: CommandType.StoredProcedure);
+                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     var response = new SingleResponseWrapper<CarDetail>
                     {
                         Data = result,
@@ -137,9 +145,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 }
             }
         }
-
-
-
+       
         public async Task<ResponseEntity> UpdateAsync(CarDetail carDetail)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, carDetail))

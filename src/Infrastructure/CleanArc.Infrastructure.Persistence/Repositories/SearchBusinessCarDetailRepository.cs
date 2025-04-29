@@ -23,6 +23,11 @@ using System.Threading.Tasks;
 using CleanArc.Application.Common;
 using CleanArc.Domain.Entities.Country;
 using CleanArc.Domain.Enums;
+using CleanArc.Domain.Entities.AmenityMapping;
+using CleanArc.Domain.Entities.CarDetail;
+using CleanArc.Domain.Entities.CustomerReview;
+using CleanArc.Domain.Entities.FAQs;
+using CleanArc.Domain.Entities.GenericMedia;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
@@ -157,6 +162,67 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 
 				}
 			}
+        }
+
+        public async Task<SingleResponseWrapper<CarDetail>> GetCarDetailByBusinessAsync(CarDetailSearchRequest searchRequest)
+        {
+            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
+            {
+                using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+                {
+                    connection.Open();
+                    var parameters = new DynamicParameters();
+                    parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                    parameters.Add("@CultureId", searchRequest.CultureId, DbType.Int32);
+                    parameters.Add("@ID", searchRequest.Id, DbType.Int32);
+                    parameters.Add("@NoOfDays", searchRequest.NoOfDays, DbType.Int32);
+
+                    //var result = await connection.QuerySingleOrDefaultAsync<CarDetail>(CarDetailQueries.GetByID_CarDetail, parameters, commandType: CommandType.StoredProcedure);
+                    var result = await connection.QueryMultipleAsync(CarDetailQueries.GetByID_CarDetailByBusiness, parameters, commandType: CommandType.StoredProcedure);
+                    // var kbDetailAll = resultKBDetail.ReadFirst<KBDetail>();
+                    var carDetail = result.Read<CarDetail>().FirstOrDefault();
+                    if (carDetail != null)
+                    {
+                        var media = result.Read<GenericMedia>().ToList();
+                        carDetail.Medias = media;
+                        var amenities = result.Read<AmenityMapping>().ToList();
+                        carDetail.Amenities = amenities;
+                        var faqs = result.Read<FAQs>().ToList();
+                        carDetail.FAQs = faqs;
+                        //var languages = result.Read<LanguageLookUp>().ToList();
+                        //carDetail.Languages = languages;
+                        var reviews = result.Read<CustomerReview>().ToList();
+                        carDetail.Reviews = reviews;
+
+                        if (!result.IsConsumed)
+                        {
+                            result.Dispose();
+                        }
+
+                    }
+                    //var result = await connection.QuerySingleOrDefaultAsync<RoomDetails>(RoomDetailQueries.GetByID_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
+                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                    //
+
+
+                    //await connection.ExecuteAsync(
+                    //        ActivityQueries.GetByID_Activity,
+                    //        parameters,
+                    //        commandType: CommandType.StoredProcedure);
+                    int Code = parameters.Get<int>("@Code");
+                    string Message = parameters.Get<string>("@Message");
+
+
+                    var response = new SingleResponseWrapper<CarDetail>
+                    {
+                        Data = carDetail,
+                        Code = Code,
+                        Message = Message
+                    };
+                    return response;
+                }
+            }
         }
     }
 }
