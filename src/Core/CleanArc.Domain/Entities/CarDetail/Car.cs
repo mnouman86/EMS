@@ -57,5 +57,6 @@ namespace CleanArc.Domain.Entities.CarDetail
         public string? Longitude { get; set; }
         public string? MobileNumber { get; set; }
         public string? PhoneNumber { get; set; }
+        public List<GenericMedia.GenericMedia> Medias { get; set; }
     }
 }
