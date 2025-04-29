@@ -23,6 +23,8 @@ using CleanArc.Domain.Entities.Language;
 using CleanArc.Domain.Entities.RoomDetails;
 using CleanArc.Domain.Enums;
 using CleanArc.Domain.Entities.GenericMedia;
+using CleanArc.Application.Models.Hotel;
+using CleanArc.Domain.Entities.Amenity;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
@@ -72,7 +74,14 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 {
                     connection.Open();
                     CreateCarDetailDTO createCarDetailDTO = _mapper.Map<CreateCarDetailDTO>(carDetail);
-                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CarDetailQueries.Create_CarDetail, createCarDetailDTO, commandType: CommandType.StoredProcedure);
+                    var parameters = new DynamicParameters(createCarDetailDTO);
+                    var languageTable = new DataTable();
+                    languageTable.Columns.Add("LanguageTypeLookUpId", typeof(int));
+
+                    foreach (var language in carDetail.LanguageLookUpId)
+                        languageTable.Rows.Add(language);
+                    parameters.Add("@Language", languageTable.AsTableValuedParameter("LanguageTableType"));
+                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CarDetailQueries.Create_CarDetail, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
                 }
@@ -133,11 +142,26 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                     parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
                     parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
-                    var result = await connection.QuerySingleOrDefaultAsync<CarDetail>(CarDetailQueries.GetByID_CarDetail, parameters, commandType: CommandType.StoredProcedure);
-                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                   var result = await connection.QueryMultipleAsync(CarDetailQueries.GetByID_CarDetail, parameters, commandType: CommandType.StoredProcedure);
+                    //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                   // var result = await connection.QueryMultipleAsync(HotelQueries.GetByID_Hotel, parameters, commandType: CommandType.StoredProcedure);
+                    var carDetail = result.Read<CarDetail>().FirstOrDefault();
+                    if (carDetail != null)
+                    {
+                        var language = result.Read<LanguageLookUp>().ToList();
+                        carDetail.Languages = language;
+
+                        var amenities = result.Read<AmenityLookUp>().ToList();
+                        carDetail.Amenities = amenities;
+                    }
+                    if (!result.IsConsumed)
+                    {
+                        result.Dispose();
+                    }
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     var response = new SingleResponseWrapper<CarDetail>
                     {
-                        Data = result,
+                        Data = carDetail,
                         Code = parameters.Get<int>("@Code"),
                         Message = parameters.Get<string>("@Message")
                     };
@@ -154,8 +178,14 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 {
                     connection.Open();
                     UpdateCarDetailDTO updateCarDetailDTO = _mapper.Map<UpdateCarDetailDTO>(carDetail);
+                    var parameters = new DynamicParameters(updateCarDetailDTO);
+                    var languageTable = new DataTable();
+                    languageTable.Columns.Add("LanguageTypeLookUpId", typeof(int));
 
-                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CarDetailQueries.Update_CarDetail, updateCarDetailDTO, commandType: CommandType.StoredProcedure);
+                    foreach (var language in carDetail.LanguageLookUpId)
+                        languageTable.Rows.Add(language);
+                    parameters.Add("@Language", languageTable.AsTableValuedParameter("LanguageTableType"));
+                    var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(CarDetailQueries.Update_CarDetail, parameters, commandType: CommandType.StoredProcedure);
                      (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     return result;
                 }

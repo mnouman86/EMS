@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CleanArc.Domain.Entities.Amenity;
+using CleanArc.Domain.Entities.Language;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +17,10 @@ namespace CleanArc.Application.Features.CarDetail.Queries.GetCarDetailById
         public int? ServiceCategoryId { get; set; }
         public decimal? TotalPrice { get; set; }
         public int? NoOfDays { get; set; }
-
+        public List<LanguageLookUp>? Languages { get; set; }
+        public List<AmenityLookUp>? Amenities { get; set; }
+        public bool? IsPartiallyRefundable { get; set; }
+        public bool? IsFullyRefundable { get; set; }
         public int? ReviewsCount { get; set; }
         public int? Rating { get; set; }
         public string Model { get; set; }
