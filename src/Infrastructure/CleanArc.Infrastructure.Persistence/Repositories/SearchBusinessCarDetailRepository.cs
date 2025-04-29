@@ -118,22 +118,22 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                         Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                         Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                        var ParamsImage = Params;
+                        //var ParamsImage = Params;
                         List<FilterParameter> list = new List<FilterParameter>();
                         list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.CarId.ToString() });
                         list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Car).ToString() });
 
-                        ParamsImage.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+                        Params.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
 
-                        var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, ParamsImage, commandType: CommandType.StoredProcedure);
+                        var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, Params, commandType: CommandType.StoredProcedure);
                         item.CarImages = imageList.ToList();
 
-                        var ParamsAmenity = Params;
-                        List<FilterParameter> Amenity = new List<FilterParameter>();
-                        Amenity.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
-                        Amenity.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Car).ToString() });
-                        ParamsAmenity.Add("@FilterArray", DataTableHelper.ToDataTable(Amenity), DbType.Object); // Ensure proper type
-                        var amenities = await connection.QueryAsync<Domain.Entities.AmenityMapping.AmenityMapping>(AmenityMappingQueries.GetByAmenityTypeEnumID_AmenityMapping, ParamsAmenity, commandType: CommandType.StoredProcedure);
+                        //var ParamsAmenity = Params;
+                        //List<FilterParameter> Amenity = new List<FilterParameter>();
+                        //Amenity.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+                        //Amenity.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Car).ToString() });
+                        //ParamsAmenity.Add("@FilterArray", DataTableHelper.ToDataTable(Amenity), DbType.Object); // Ensure proper type
+                        var amenities = await connection.QueryAsync<Domain.Entities.AmenityMapping.AmenityMapping>(AmenityMappingQueries.GetByAmenityTypeEnumID_AmenityMapping, Params, commandType: CommandType.StoredProcedure);
                         item.Amenities = amenities.Where(x => x.Selected == true).Take(3).ToList();
                     }
                     SearchCarDetail searchCarDetail = new SearchCarDetail();
