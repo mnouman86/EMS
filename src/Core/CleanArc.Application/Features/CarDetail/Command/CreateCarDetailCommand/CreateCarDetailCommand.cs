@@ -17,7 +17,8 @@ public record CreateCarDetailCommand(int? BusinessId, string? Model, string? Yea
     string? VehicleIdentificationNumber, string? PlateNumber, int? NoOfSeat, int? RentPrice
     , string? About, int? CultureId,
     string? RefundPolicy, string? NonRefundPolicy, string? CancellationPolicy, int? ServiceTypeEnumId, int? ServiceCategoryId, 
-    int? VehicleTypeLookUpId, int? DrivingAvailabilityOptionLookUpId, decimal? PerHourPrice) : IRequest<OperationResult<ResponseEntity>>,
+    int? VehicleTypeLookUpId, int? DrivingAvailabilityOptionLookUpId, decimal? PerHourPrice,
+    int[]? LanguageLookUpId, bool? IsPartiallyRefundable, bool? IsFullyRefundable ) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateCarDetailCommand>
 {
     [JsonIgnore]

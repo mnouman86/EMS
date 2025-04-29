@@ -29,6 +29,7 @@ using CleanArc.Domain.Entities.CustomerReview;
 using CleanArc.Domain.Entities.FAQs;
 using CleanArc.Domain.Entities.GenericMedia;
 using CleanArc.Domain.Entities.Language;
+using CleanArc.Domain.Entities.Amenity;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
@@ -185,9 +186,11 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     var carDetail = result.Read<CarDetail>().FirstOrDefault();
                     if (carDetail != null)
                     {
+                        var cars = result.Read<Car>().ToList();
+                        carDetail.Cars = cars;
                         var media = result.Read<GenericMedia>().ToList();
                         carDetail.Medias = media;
-                        var amenities = result.Read<AmenityMapping>().ToList();
+                        var amenities = result.Read<AmenityLookUp>().ToList();
                         carDetail.Amenities = amenities;
                         var faqs = result.Read<FAQs>().ToList();
                         carDetail.FAQs = faqs;
