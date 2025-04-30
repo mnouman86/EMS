@@ -1,5 +1,6 @@
 ﻿using CleanArc.Application.Common;
 using CleanArc.Application.Features.Activity.Queries.GetActivityCheckoutDetail;
+using CleanArc.Application.Features.Activity.Queries.GetAllSearchActivityDetail;
 using CleanArc.Application.Models.Request;
 using CleanArc.Domain.Entities.Activity;
 using CleanArc.Domain.Entities.Order;
@@ -15,4 +16,5 @@ public  interface IActivityRepository:IRepository<Activity>
 {
 	// Task CreateAgeType(AgeType ageType);
 	Task<SingleResponseWrapper<Activity>> GetActivityCheckoutDetailAsync(GetActivityCheckoutDetailQuery searchRequestById);
+	Task<SingleResponseWrapper<SearchActivityDetail>> GetAllActivitySearchDetailAsync(ActivitySearchRequest searchRequest);
 }

@@ -11,7 +11,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Domain.Entities.Activity;
-
+public class SearchActivityDetail
+{
+    public List<Activity> ActivityDetail { get; set; }
+    public Decimal? ActivityPriceMinimum { get; set; }
+    public Decimal? ActivityPriceMaximum { get; set; }
+}
 public  class Activity    
 {
     public int Id { get; set; }
