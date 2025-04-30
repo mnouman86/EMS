@@ -70,4 +70,15 @@ namespace CleanArc.Application.Models.Request
         public int? NoOfDays { get; set; }
     }
 
+    public class ActivitySearchRequest : SearchRequest
+    {
+        public int? Rating { get; set; }
+        public int? MinPrice { get; set; }
+        public int? MaxPrice { get; set; }
+        public string? Amenities { get; set; }
+        public string? Name { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+    }
+
 }

@@ -11,7 +11,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Domain.Entities.Activity;
-
+public class SearchActivityDetail
+{
+    public List<Activity> ActivityDetail { get; set; }
+    public Decimal? ActivityPriceMinimum { get; set; }
+    public Decimal? ActivityPriceMaximum { get; set; }
+}
 public  class Activity    
 {
     public int Id { get; set; }
@@ -29,6 +34,8 @@ public  class Activity
     public string? AgeGroup { get; set; }
     public int? MinAge { get; set; }
     public int? MaxAge { get; set; }
+    public int? ReviewsCount { get; set; }
+    public int? Rating { get; set; }
     public int? ActivityTypeLookUpId { get; set; }
     public int? ActivityNatureLookUpId { get; set; }
     public int? MaxGroupSize { get; set; }
