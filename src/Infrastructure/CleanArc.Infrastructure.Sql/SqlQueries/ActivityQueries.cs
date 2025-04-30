@@ -12,6 +12,7 @@ public static class ActivityQueries
     public static string Update_Activity => "[dbo].[usp_Update_Activity]";
     public static string Delete_Activity => "[dbo].[usp_Delete_Activity]";
     public static string GetAll_Activity => "[dbo].[usp_GetAll_Activity]";
+    public static string GetAllByBusinessID_Activities => "[dbo].[usp_GetAllByBusinessID_Activity]";
     public static string GetByID_Activity => "[dbo].[usp_GetByID_Activity]";
 
 

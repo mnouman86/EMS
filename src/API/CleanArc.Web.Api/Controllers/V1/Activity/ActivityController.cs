@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using CleanArc.Domain.Common;
 using CleanArc.Application.Features.Activity.Queries.GetActivityCheckoutDetail;
 using CleanArc.Application.Models.Request;
+using CleanArc.Application.Features.Activity.Queries.GetAllSearchActivityDetail;
 namespace CleanArc.Web.Api.Controllers.V1.Activity
 {
 	/// <summary>
@@ -84,5 +85,14 @@ namespace CleanArc.Web.Api.Controllers.V1.Activity
 			return base.OperationResult(result);
 		}
 
-	}
+        [HttpPost("SearchActivityDetailGetAll")]
+        public async Task<IActionResult> GetAllSearchActivityDetail([FromBody] GetAllSearchActivityDetailQuery query)
+        {
+            //GetActivityCheckoutDetailQuery query = new GetActivityCheckoutDetailQuery { searchRequestById = searchRequestById,UserId=userid };
+            var result = await _sender.Send(query);
+
+            return base.OperationResult(result);
+        }
+
+    }
 }

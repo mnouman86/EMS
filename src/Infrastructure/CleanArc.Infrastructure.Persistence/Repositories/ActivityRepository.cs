@@ -36,6 +36,7 @@ using CleanArc.Domain.Entities.ActivityIncludedOption;
 using CleanArc.Domain.Entities.ActivitySeason;
 using CleanArc.Domain.Entities.GenericMedia;
 using CleanArc.Domain.Entities.GenericAddress;
+using CleanArc.Domain.Enums;
 //using System.Diagnostics;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
@@ -204,22 +205,34 @@ public class ActivityRepository : IActivityRepository
                     //imageParams.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     //imageParams.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                     var Params = new DynamicParameters();
+                    var ParamsAddress = new DynamicParameters();
+                    var ParamsMedia = new DynamicParameters();
+
                     Params.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
                     Params.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
                     Params.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
                     Params.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
-					List<FilterParameter> list = new List<FilterParameter>();
-					list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
-                    Params.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+
                     Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                    var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, Params, commandType: CommandType.StoredProcedure);
-					
-                    var AddressList = await connection.QueryAsync<GenericAddress>(GenericAddressQueries.GetAll_GenericAddress, Params, commandType: CommandType.StoredProcedure);
+                    ParamsMedia = Params;
+                    List<FilterParameter> list = new List<FilterParameter>();
+                    list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+                    list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.ThingsToDo).ToString() });
+
+                    ParamsMedia.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+                    var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, ParamsMedia, commandType: CommandType.StoredProcedure);
+
+                    ParamsAddress = Params;
+                    List<FilterParameter> listAddress = new List<FilterParameter>();
+                    listAddress.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+
+                    ParamsAddress.Add("@FilterArray", DataTableHelper.ToDataTable(listAddress), DbType.Object); // Ensure proper type
+                    var AddressList = await connection.QueryAsync<GenericAddress>(GenericAddressQueries.GetAll_GenericAddress, ParamsAddress, commandType: CommandType.StoredProcedure);
 
                     item.ActivityImages = imageList.ToList();
-					item.ActivityAddress = AddressList.ToList();
-				}
+                    item.ActivityAddress = AddressList.ToList();
+                }
 
 					 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 				var response = new ListResponseWrapper<Activity> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
@@ -227,7 +240,93 @@ public class ActivityRepository : IActivityRepository
 		}
 
 	}
-	public async Task<SingleResponseWrapper<Activity>> GetByIdAsync(SearchRequestById searchRequestById)
+
+    public async Task<SingleResponseWrapper<SearchActivityDetail>> GetAllActivitySearchDetailAsync(ActivitySearchRequest searchRequest)
+    {
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
+        {
+            using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+            {
+                connection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+                parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                parameters.Add("@DateFrom", searchRequest.StartDate, DbType.DateTime);
+                parameters.Add("@DateTo", searchRequest.EndDate, DbType.DateTime);
+                parameters.Add("@Rating", searchRequest.Rating, DbType.Int32);
+                parameters.Add("@MinPrice", searchRequest.MinPrice, DbType.Int32);
+                parameters.Add("@MaxPrice", searchRequest.MaxPrice, DbType.Int32);
+                //parameters.Add("@Amenities", searchRequest.Amenities, DbType.String);
+                parameters.Add("@Name", searchRequest.Name, DbType.String);
+                parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+                parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                var result = await connection.QueryAsync<Activity>(ActivityQueries.GetAllByBusinessID_Activities, parameters, commandType: CommandType.StoredProcedure);
+                int code = parameters.Get<int>("@Code");
+                string message = parameters.Get<string>("@Message");
+                foreach (var item in result)
+                {
+                    //var imageParams = new DynamicParameters();
+                    //imageParams.Add("@Id", item.Id, DbType.Int32);
+                    //imageParams.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                    //imageParams.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    //imageParams.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                    var Params = new DynamicParameters();
+                    var ParamsAddress = new DynamicParameters();
+                    var ParamsMedia = new DynamicParameters();
+                    
+                    Params.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+                    Params.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                    Params.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                    Params.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+                    
+                    Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                    ParamsMedia = Params;
+                    List<FilterParameter> list = new List<FilterParameter>();
+                    list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+                    list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.ThingsToDo).ToString() });
+
+                    ParamsMedia.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+                    var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, ParamsMedia, commandType: CommandType.StoredProcedure);
+
+                    ParamsAddress = Params;
+                    List<FilterParameter> listAddress = new List<FilterParameter>();
+                    listAddress.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+
+                    ParamsAddress.Add("@FilterArray", DataTableHelper.ToDataTable(listAddress), DbType.Object); // Ensure proper type
+                    var AddressList = await connection.QueryAsync<GenericAddress>(GenericAddressQueries.GetAll_GenericAddress, ParamsAddress, commandType: CommandType.StoredProcedure);
+
+                    item.ActivityImages = imageList.ToList();
+                    item.ActivityAddress = AddressList.ToList();
+                }
+                SearchActivityDetail searchActivityDetail = new SearchActivityDetail();
+                searchActivityDetail.ActivityDetail = result.ToList();
+                searchActivityDetail.ActivityPriceMinimum = result.Count() > 0 ? result.Min(x => x.ActivityPrice) : 0;
+                searchActivityDetail.ActivityPriceMaximum = result.Count() > 0 ? result.Max(x => x.ActivityPrice) : 0;
+                var response = new SingleResponseWrapper<SearchActivityDetail>
+                {
+                    Data = searchActivityDetail,
+                    Code = code,
+                    Message = message
+                };
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                //var response = new ListResponseWrapper<SearchBusinessCarDetail>
+                //               {
+                //                   Data = result.ToList(),
+                //                   Code = parameters.Get<int>("@Code"),
+                //                   Message = parameters.Get<string>("@Message")
+                //               }; 
+                return response;
+
+            }
+        }
+    }
+
+    public async Task<SingleResponseWrapper<Activity>> GetByIdAsync(SearchRequestById searchRequestById)
 	{
 		using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequestById))
 		{
