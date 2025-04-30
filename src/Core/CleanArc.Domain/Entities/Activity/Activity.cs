@@ -69,7 +69,11 @@ public  class Activity
     public DateTime? EndDate { get; set; }   // Nullable DateTime for EndDate
     public List<GenericMedia.GenericMedia> ActivityImages { get; set; }
     public List<GenericAddress.GenericAddress> ActivityAddress { get; set; }
-
+    public bool? IsPartiallyRefundable { get; set; }
+    public bool? IsFullyRefundable { get; set; }
+    public string? RefundPolicy { get; set; }
+    public string? NonRefundPolicy { get; set; }
+    public string? CancellationPolicy { get; set; }
 
 
 }

@@ -47,7 +47,8 @@ public record CreateActivityCommand(
     DateTime? EndDate,
     DateTime? StartDate,
     string? EndTime,
-    string? StartTime
+    string? StartTime, bool? IsPartiallyRefundable, bool? IsFullyRefundable,
+    string? RefundPolicy, string? NonRefundPolicy, string? CancellationPolicy
 
 
     ) : IRequest<OperationResult<ResponseEntity>>,

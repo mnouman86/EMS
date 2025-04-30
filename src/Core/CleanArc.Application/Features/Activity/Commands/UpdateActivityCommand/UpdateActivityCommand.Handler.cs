@@ -99,6 +99,11 @@ internal class UpdateActivityCommandHandler:IRequestHandler<UpdateActivityComman
                 StartTime = startTime,
                 EndTime = endTime,
                 DisabilityOptionLookUpId = request.DisabilityOptionLookUpId,
+                IsFullyRefundable = request.IsFullyRefundable,
+                IsPartiallyRefundable = request.IsPartiallyRefundable,
+                RefundPolicy = request.RefundPolicy,
+                NonRefundPolicy = request.NonRefundPolicy,
+                CancellationPolicy = request.CancellationPolicy,
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
