@@ -75,7 +75,10 @@ namespace CleanArc.Application.Features.CarDetail.Command.CreateCarDetailCommand
                     ServiceTypeEnumId = request.ServiceTypeEnumId,
                     VehicleTypeLookUpId = request.VehicleTypeLookUpId,
                     DrivingAvailabilityOptionLookUpId = request.DrivingAvailabilityOptionLookUpId,
-                    PerHourPrice=request.PerHourPrice
+                    PerHourPrice=request.PerHourPrice,
+                    LanguageLookUpId=request.LanguageLookUpId,
+                    IsFullyRefundable = request.IsFullyRefundable,
+                    IsPartiallyRefundable = request.IsPartiallyRefundable
                 });
                 await _unitOfWork.CommitAsync();
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

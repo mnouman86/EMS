@@ -46,7 +46,8 @@ public record UpdateActivityCommand(
     DateTime? EndDate,
     DateTime? StartDate,
 	string? EndTime,
-	string? StartTime) : IRequest<OperationResult<ResponseEntity>>,
+	string? StartTime, bool? IsPartiallyRefundable, bool? IsFullyRefundable,
+    string? RefundPolicy, string? NonRefundPolicy, string? CancellationPolicy) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateActivityCommand>
 {
     [JsonIgnore]

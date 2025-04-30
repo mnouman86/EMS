@@ -53,7 +53,11 @@ namespace CleanArc.Application.Features.Business.Command.CreateBusinessCommand
 
                 //await _unitOfWork.CommitAsync();
                 //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-
+                string cities = "";
+                if (request.OperateIn?.Count() > 0)
+                {
+                    cities = string.Join(',', request.OperateIn);
+                }
                 //return OperationResult<ResponseEntity>.SuccessResult(result);
                 var result = await _unitOfWork.BusinessRepository.AddAsync(new Domain.Entities.Business.Business()
                 { CreatedBy = user.Id,
@@ -72,7 +76,8 @@ namespace CleanArc.Application.Features.Business.Command.CreateBusinessCommand
                    TaxIdentificationNumber = request.TaxIdentificationNumber,
                   License= request.License,
                     ProofOfInsurance= request.ProofOfInsurance,
-                    OperateIn=string.Join(',',request.OperateIn)
+                    OperateIn=cities,
+                    PostalCode=request.PostalCode,
                     //BankAccountDetailID= request.BankAccountDetailID,
                     //IsCancelation= request.IsCancelation,
                     //IsRefundable= request.IsRefundable,

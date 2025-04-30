@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Azure;
 
 namespace CleanArc.Application.Features.Business.Command.UpdateBusinessCommand
 {
@@ -52,7 +53,11 @@ namespace CleanArc.Application.Features.Business.Command.UpdateBusinessCommand
 
                 //await _unitOfWork.CommitAsync();
                 //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-
+                string cities = "";
+                if (request.OperateIn?.Count() > 0)
+                {
+                    cities = string.Join(',', request.OperateIn);
+                }
                 //return OperationResult<ResponseEntity>.SuccessResult(result);
                 var result = await _unitOfWork.BusinessRepository.UpdateAsync(new Domain.Entities.Business.Business()
                 {  UpdatedBy = user.Id, Id= request.Id,
@@ -74,8 +79,10 @@ namespace CleanArc.Application.Features.Business.Command.UpdateBusinessCommand
                     //BankAccountDetailID = request.BankAccountDetailID,
                     //IsCancelation = request.IsCancelation,
                     //IsRefundable = request.IsRefundable,
-                    OperateIn = string.Join(',', request.OperateIn)
+                    OperateIn=cities,
+                    PostalCode = request.PostalCode,
                 });
+                
                 await _unitOfWork.CommitAsync();
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
                 return OperationResult<ResponseEntity>.SuccessResult(result);

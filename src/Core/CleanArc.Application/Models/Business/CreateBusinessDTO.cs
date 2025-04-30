@@ -16,6 +16,7 @@ namespace CleanArc.Application.Models.Business
         public string? MobileNumber { get; set; }
         public string? Address1 { get; set; }
         public string? Address2 { get; set; }
+        public string? PostalCode { get; set; }
         public string? Email { get; set; }
         public string? Latitude { get; set; }
         public string? Longitude { get; set; }

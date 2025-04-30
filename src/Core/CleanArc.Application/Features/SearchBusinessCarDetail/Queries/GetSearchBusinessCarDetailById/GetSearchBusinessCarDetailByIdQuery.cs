@@ -10,4 +10,4 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.SearchBusinessCarDetail.Queries.GetSearchBusinessCarDetailById;
 
-public record GetSearchBusinessCarDetailByIdQuery(SearchRequestById searchRequestById):IRequest<OperationResult<GetSearchBusinessCarDetailByIdQueryResult>>;
+public record GetSearchBusinessCarDetailByIdQuery(CarDetailSearchRequest searchRequestById):IRequest<OperationResult<GetSearchBusinessCarDetailByIdQueryResult>>;

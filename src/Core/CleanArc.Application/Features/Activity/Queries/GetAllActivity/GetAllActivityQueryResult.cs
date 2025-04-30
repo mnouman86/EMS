@@ -70,7 +70,11 @@ public class GetAllActivityQueryResult
 	public List<GetAllGenericMediaQueryResult> ActivityImages { get; set; }
 
 public List<GetAllGenericAddressQueryResult> ActivityAddress { get; set; }
-
+    public bool? IsPartiallyRefundable { get; set; }
+    public bool? IsFullyRefundable { get; set; }
+    public string? RefundPolicy { get; set; }
+    public string? NonRefundPolicy { get; set; }
+    public string? CancellationPolicy { get; set; }
 }
 
 //    public GetAllActivityQueryResult(int iD, string name, string description, bool isDeleted, bool isActive, int createdBy, DateTime createdAt, int updatedBy, DateTime updatedAt)
