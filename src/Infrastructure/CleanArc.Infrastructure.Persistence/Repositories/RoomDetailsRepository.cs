@@ -176,7 +176,7 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                     var media = result.Read<GenericMedia>().ToList();
                     hotelDetail.Medias = media;
                     var hotelAmenities = result.Read<AmenityMapping>().ToList();
-                    hotelDetail.HotelAmenities = hotelAmenities;
+                    hotelDetail.Amenities = hotelAmenities;
                     var faqs = result.Read<FAQs>().ToList();
                     hotelDetail.FAQs = faqs;
                     var languages = result.Read<LanguageLookUp>().ToList();

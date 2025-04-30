@@ -16,7 +16,7 @@ namespace CleanArc.Application.Features.CarDetail.Command.UpdateCarDetailCommand
     public record UpdateCarDetailCommand(int Id, int? BusinessId, string? Model, string? Year, 
         string? VehicleIdentificationNumber, string? PlateNumber, int? NoOfSeat, int? RentPrice, string? About, int? CultureId,
     string? RefundPolicy, string? NonRefundPolicy, string? CancellationPolicy, 
-    int? VehicleTypeLookUpId, int? DrivingAvailabilityOptionLookUpId, decimal? PerHourPrice
+    int? VehicleTypeLookUpId, int? DrivingAvailabilityOptionLookUpId, decimal? PerHourPrice,int[]? LanguageLookUpId, bool? IsPartiallyRefundable, bool? IsFullyRefundable
         ) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateCarDetailCommand>
     {
