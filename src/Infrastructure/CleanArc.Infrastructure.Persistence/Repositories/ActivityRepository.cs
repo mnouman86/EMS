@@ -205,22 +205,34 @@ public class ActivityRepository : IActivityRepository
                     //imageParams.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     //imageParams.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                     var Params = new DynamicParameters();
+                    var ParamsAddress = new DynamicParameters();
+                    var ParamsMedia = new DynamicParameters();
+
                     Params.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
                     Params.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
                     Params.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
                     Params.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
-					List<FilterParameter> list = new List<FilterParameter>();
-					list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
-                    Params.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+
                     Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                    var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, Params, commandType: CommandType.StoredProcedure);
-					
-                    var AddressList = await connection.QueryAsync<GenericAddress>(GenericAddressQueries.GetAll_GenericAddress, Params, commandType: CommandType.StoredProcedure);
+                    ParamsMedia = Params;
+                    List<FilterParameter> list = new List<FilterParameter>();
+                    list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+                    list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.ThingsToDo).ToString() });
+
+                    ParamsMedia.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+                    var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, ParamsMedia, commandType: CommandType.StoredProcedure);
+
+                    ParamsAddress = Params;
+                    List<FilterParameter> listAddress = new List<FilterParameter>();
+                    listAddress.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+
+                    ParamsAddress.Add("@FilterArray", DataTableHelper.ToDataTable(listAddress), DbType.Object); // Ensure proper type
+                    var AddressList = await connection.QueryAsync<GenericAddress>(GenericAddressQueries.GetAll_GenericAddress, ParamsAddress, commandType: CommandType.StoredProcedure);
 
                     item.ActivityImages = imageList.ToList();
-					item.ActivityAddress = AddressList.ToList();
-				}
+                    item.ActivityAddress = AddressList.ToList();
+                }
 
 					 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 				var response = new ListResponseWrapper<Activity> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;

@@ -34,6 +34,8 @@ public  class Activity
     public string? AgeGroup { get; set; }
     public int? MinAge { get; set; }
     public int? MaxAge { get; set; }
+    public int? ReviewsCount { get; set; }
+    public int? Rating { get; set; }
     public int? ActivityTypeLookUpId { get; set; }
     public int? ActivityNatureLookUpId { get; set; }
     public int? MaxGroupSize { get; set; }
