@@ -117,6 +117,8 @@ public List<GetAllGenericAddressQueryResult> ActivityAddress { get; set; }
     public int? TotalParticipant { get; set; }
     public int? CultureId { get; set; }
     public int? GenericTitleId { get; set; }
+    public int? ReviewsCount { get; set; }
+    public int? Rating { get; set; }
 }
 
 //    public GetAllActivityQueryResult(int iD, string name, string description, bool isDeleted, bool isActive, int createdBy, DateTime createdAt, int updatedBy, DateTime updatedAt)
