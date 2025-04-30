@@ -51,7 +51,11 @@ namespace CleanArc.Application.Models.Activities
         public DateTime? StartDate { get; set; } // Nullable DateTime for StartDate
         public DateTime? EndDate { get; set; }   // Nullable DateTime for EndDate
 
-
+        public bool? IsPartiallyRefundable { get; set; }
+        public bool? IsFullyRefundable { get; set; }
+        public string? RefundPolicy { get; set; }
+        public string? NonRefundPolicy { get; set; }
+        public string? CancellationPolicy { get; set; }
 
     }
 }

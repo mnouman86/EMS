@@ -100,7 +100,12 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
                 EndDate = request.EndDate,
                 StartDate = request.StartDate,
                 StartTime = startTime,
-                EndTime = endTime
+                EndTime = endTime,
+                IsFullyRefundable = request.IsFullyRefundable,
+                IsPartiallyRefundable= request.IsPartiallyRefundable,
+                RefundPolicy=request.RefundPolicy,
+                NonRefundPolicy=request.NonRefundPolicy,
+                CancellationPolicy=request.CancellationPolicy,
                 // PerGroupPrice = request.PerGroupPrice,
                 //SeasonID = request.SeasonID,
 
