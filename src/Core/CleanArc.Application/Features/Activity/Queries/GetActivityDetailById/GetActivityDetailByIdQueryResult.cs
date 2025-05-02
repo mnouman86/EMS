@@ -29,6 +29,7 @@ namespace CleanArc.Application.Features.Activity.Queries.GetActivityDetailById
         public int Id { get; set; }
         public int BusinessId { get; set; }
         public string Title { get; set; }
+        public string Name { get; set; }
         //public int? LanguageLookUpID { get; set; }
         public IEnumerable<LanguageLookUp>? Languages { get; set; }
         public IEnumerable<IncludedOptionsLookup>? IncludedOptions { get; set; }
