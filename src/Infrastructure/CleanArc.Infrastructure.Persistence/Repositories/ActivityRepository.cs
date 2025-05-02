@@ -432,7 +432,16 @@ public class ActivityRepository : IActivityRepository
                     var activityAddress = result.Read<GenericAddress>().ToList();
                     activity.ActivityAddress = activityAddress;
 
+                    if (!result.IsConsumed)
+                    {
+                        result.Dispose();
+                    }
 
+                    List<FilterParameter> filter = new List<FilterParameter>();
+                    List<SortingParameter> sorting = new List<SortingParameter>();
+                    SearchRequest request = new SearchRequest {PageSize=100,PageNumber=1,CultureId=searchRequest.CultureId,FilterArray=filter,SortingArray=sorting };
+                    var activities = GetAllAsync(request);
+                    activity.RelatedActivities = activities?.Result?.Data?.Where(x=>x.Id!=searchRequest.Id).ToList();
                 }
                 
                 //var result = await connection.QuerySingleOrDefaultAsync<RoomDetails>(RoomDetailQueries.GetByID_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
@@ -459,6 +468,8 @@ public class ActivityRepository : IActivityRepository
                 };
                 return response;
             }
+
+
         }
     }
 

@@ -35,6 +35,7 @@ public  class Activity
     public List<CustomerReview.CustomerReview>? Reviews { get; set; }
     public List<GenericMedia.GenericMedia> ActivityImages { get; set; }
     public List<GenericAddress.GenericAddress> ActivityAddress { get; set; }
+    public List<Activity> RelatedActivities { get; set; }
     public string? LanguageName { get; set; }
     public int? ServiceCategoryId { get; set; }
     public int? SubServiceCategoryId { get; set; }
