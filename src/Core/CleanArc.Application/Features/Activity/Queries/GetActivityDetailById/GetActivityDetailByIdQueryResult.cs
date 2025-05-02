@@ -1,4 +1,5 @@
-﻿using CleanArc.Application.Features.ActivityAddress.Queries.GetAllGenericAddress;
+﻿using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
+using CleanArc.Application.Features.ActivityAddress.Queries.GetAllGenericAddress;
 using CleanArc.Application.Features.ActivityPerGroupPrice.Queries.GetActivityPerGroupPriceById;
 using CleanArc.Application.Features.ActivityPerGroupPrice.Queries.GetAllActivityPerGroupPrice;
 using CleanArc.Application.Features.ActivitySchedule.Commands.CreateActivityScheduleCommand;
@@ -42,6 +43,7 @@ namespace CleanArc.Application.Features.Activity.Queries.GetActivityDetailById
 
         public IEnumerable<GetAllGenericMediaQueryResult> ActivityImages { get; set; }
         public List<GetAllGenericAddressQueryResult> ActivityAddress { get; set; }
+        public List<GetAllActivityQueryResult> RelatedActivities { get; set; }
 
         //public string? LanguageName { get; set; }
         public int? ServiceCategoryId { get; set; }
