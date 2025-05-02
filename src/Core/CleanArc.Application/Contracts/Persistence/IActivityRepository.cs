@@ -17,4 +17,6 @@ public  interface IActivityRepository:IRepository<Activity>
 	// Task CreateAgeType(AgeType ageType);
 	Task<SingleResponseWrapper<Activity>> GetActivityCheckoutDetailAsync(GetActivityCheckoutDetailQuery searchRequestById);
 	Task<SingleResponseWrapper<SearchActivityDetail>> GetAllActivitySearchDetailAsync(ActivitySearchRequest searchRequest);
+	Task<SingleResponseWrapper<Activity>> GetActivityDetailByBusinessAsync(SearchRequestById searchRequest);
+
 }

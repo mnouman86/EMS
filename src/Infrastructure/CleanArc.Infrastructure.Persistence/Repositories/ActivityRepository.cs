@@ -37,6 +37,11 @@ using CleanArc.Domain.Entities.ActivitySeason;
 using CleanArc.Domain.Entities.GenericMedia;
 using CleanArc.Domain.Entities.GenericAddress;
 using CleanArc.Domain.Enums;
+using CleanArc.Domain.Entities.CarDetail;
+using CleanArc.Domain.Entities.CustomerReview;
+using CleanArc.Domain.Entities.FAQs;
+using CleanArc.Domain.Entities.ActivityPerGroupPrice;
+using CleanArc.Domain.Entities.ActivitySchedule;
 //using System.Diagnostics;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
@@ -359,6 +364,7 @@ public class ActivityRepository : IActivityRepository
                     activity.IncludedOptions = includedOptions;
                     var activitySeason = result.Read<ActivitySeasonLookUp>().ToList();
                     activity.Seasons = activitySeason;
+
                 }
                 if (!result.IsConsumed)
                 {
@@ -383,9 +389,80 @@ public class ActivityRepository : IActivityRepository
 		}
 	}
 
+    public async Task<SingleResponseWrapper<Activity>> GetActivityDetailByBusinessAsync(SearchRequestById searchRequest)
+    {
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
+        {
+            using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+            {
+                connection.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                parameters.Add("@CultureId", searchRequest.CultureId, DbType.Int32);
+                parameters.Add("@ID", searchRequest.Id, DbType.Int32);
+
+                //var result = await connection.QuerySingleOrDefaultAsync<CarDetail>(CarDetailQueries.GetByID_CarDetail, parameters, commandType: CommandType.StoredProcedure);
+                //var result = await connection.QueryMultipleAsync(ActivityQueries.GetByID_ActivityDetailByBusiness, parameters, commandType: CommandType.StoredProcedure);
+
+                var result = await connection.QueryMultipleAsync(ActivityQueries.GetByID_ActivityDetailByBusiness, parameters, commandType: CommandType.StoredProcedure);
+                // var kbDetailAll = resultKBDetail.ReadFirst<KBDetail>();
+                var activity = result.Read<Activity>().FirstOrDefault();
+                if (activity != null)
+                {
+                    var language = result.Read<LanguageLookUp>().ToList();
+                    activity.Languages = language;
+
+                    var disabilityOptions = result.Read<DisabilityOptionsLookUp>().ToList();
+                    activity.DisabilityOptions = disabilityOptions;
+                    var includedOptions = result.Read<IncludedOptionsLookup>().ToList();
+                    activity.IncludedOptions = includedOptions;
+                    var activitySeason = result.Read<ActivitySeasonLookUp>().ToList();
+                    activity.Seasons = activitySeason;
+                    var schedule = result.Read<ActivitySchedule>().ToList();
+                    activity.Schedule = schedule;
+                    var groupPrice = result.Read<ActivityPerGroupPrice>().ToList();
+                    activity.GroupPrice = groupPrice;
+                    var FAQs = result.Read<FAQs>().ToList();
+                    activity.FAQs = FAQs;
+                    var reviews = result.Read<CustomerReview>().ToList();
+                    activity.Reviews = reviews;
+                    var activityImages = result.Read<GenericMedia>().ToList();
+                    activity.ActivityImages = activityImages;
+                    var activityAddress = result.Read<GenericAddress>().ToList();
+                    activity.ActivityAddress = activityAddress;
 
 
-	public async Task<ResponseEntity> UpdateAsync(Activity activity)
+                }
+                
+                //var result = await connection.QuerySingleOrDefaultAsync<RoomDetails>(RoomDetailQueries.GetByID_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                //
+
+                if (!result.IsConsumed)
+                {
+                    result.Dispose();
+                }
+                //await connection.ExecuteAsync(
+                //        ActivityQueries.GetByID_Activity,
+                //        parameters,
+                //        commandType: CommandType.StoredProcedure);
+                int Code = parameters.Get<int>("@Code");
+                string Message = parameters.Get<string>("@Message");
+
+
+                var response = new SingleResponseWrapper<Activity>
+                {
+                    Data = activity,
+                    Code = Code,
+                    Message = Message
+                };
+                return response;
+            }
+        }
+    }
+
+    public async Task<ResponseEntity> UpdateAsync(Activity activity)
 	{
 
 		using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, activity))
