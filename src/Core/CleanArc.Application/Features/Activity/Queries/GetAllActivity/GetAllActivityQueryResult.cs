@@ -17,6 +17,8 @@ public class GetAllActivityQueryResult
     public string Title { get; set; }
     public string Name { get; set; }
     public string AgeGroup { get; set; }
+    public int? ReviewsCount { get; set; }
+    public int? Rating { get; set; }
     //public int? LanguageLookUpID { get; set; }
     //public string? LanguageName { get; set; }
     //public int? ServiceLookUpID { get; set; }
@@ -50,9 +52,9 @@ public class GetAllActivityQueryResult
     //public int? Code { get; set; }
     //public string? Message { get; set; }
     //public int? ActivityID { get; set; }
-   // public Decimal? PerPersonPrice { get; set; }
+    // public Decimal? PerPersonPrice { get; set; }
 
-	public Decimal? ActivityPrice { get; set; }
+    public Decimal? ActivityPrice { get; set; }
 
 	public string? Duration { get; set; }
 	// public int? PerGroupPrice { get; set; }
