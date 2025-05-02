@@ -2,6 +2,7 @@
 using CleanArc.Domain.Entities.ActivityDisabilityOption;
 using CleanArc.Domain.Entities.ActivityIncludedOption;
 using CleanArc.Domain.Entities.ActivitySeason;
+using CleanArc.Domain.Entities.FAQs;
 using CleanArc.Domain.Entities.Language;
 using CleanArc.Domain.Entities.SearchHotelRoomDetail;
 using System;
@@ -27,6 +28,12 @@ public  class Activity
     public List<IncludedOptionsLookup>? IncludedOptions { get; set; }
     public List<DisabilityOptionsLookUp>? DisabilityOptions { get; set; }
     public List<ActivitySeasonLookUp>? Seasons { get; set; }
+    public List<ActivitySchedule.ActivitySchedule>? Schedule { get; set; }
+    public List<ActivityPerGroupPrice.ActivityPerGroupPrice>? GroupPrice { get; set; }
+    public List<FAQs.FAQs>? FAQs { get; set; }
+    public List<CustomerReview.CustomerReview>? Reviews { get; set; }
+    public List<GenericMedia.GenericMedia> ActivityImages { get; set; }
+    public List<GenericAddress.GenericAddress> ActivityAddress { get; set; }
     public string? LanguageName { get; set; }
     public int? ServiceCategoryId { get; set; }
     public int? SubServiceCategoryId { get; set; }
@@ -74,11 +81,11 @@ public  class Activity
     public DateTime? EndTime { get; set; }   // Nullable TimeSpan for EndTime
     public DateTime? StartDate { get; set; } // Nullable DateTime for StartDate
     public DateTime? EndDate { get; set; }   // Nullable DateTime for EndDate
-    public List<GenericMedia.GenericMedia> ActivityImages { get; set; }
-    public List<GenericAddress.GenericAddress> ActivityAddress { get; set; }
+    
     public bool? IsPartiallyRefundable { get; set; }
     public bool? IsFullyRefundable { get; set; }
     public string? RefundPolicy { get; set; }
+    public string? RefundStatement { get; set; }
     public string? NonRefundPolicy { get; set; }
     public string? CancellationPolicy { get; set; }
 
