@@ -65,7 +65,8 @@ internal class UpdateGroupActivityParticipantsCommandHandler:IRequestHandler<Upd
                 LastName = request.LastName,
                 Lead = request.Lead,
                 CultureId = request.CultureId,
-            GroupSize=request.GroupSize});
+            GroupSize=request.GroupSize,
+            guid=request.guid});
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

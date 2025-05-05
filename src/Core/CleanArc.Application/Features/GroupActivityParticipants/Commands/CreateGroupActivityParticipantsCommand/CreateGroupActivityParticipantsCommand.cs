@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 namespace CleanArc.Application.Features.GroupActivityParticipants.Commands.CreateGroupActivityParticipantsCommand;
 public record CreateGroupActivityParticipantsCommand(
  //int? GenericTitleID,
+ string? guid,
  int? GenericTitleId,
  int? GroupTypeId,
  string? MobileNumber,

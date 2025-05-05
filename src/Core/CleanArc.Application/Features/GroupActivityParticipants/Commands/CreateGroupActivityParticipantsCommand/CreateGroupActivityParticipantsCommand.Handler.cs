@@ -68,6 +68,7 @@ internal class CreateGroupActivityParticipantsCommandHandler: IRequestHandler<Cr
                 LastName=request.LastName,
                 Lead=request.Lead,
                 CultureId = request.CultureId ,
+                guid=request.guid,
             GroupSize=request.GroupSize});
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

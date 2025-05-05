@@ -11,6 +11,7 @@ namespace CleanArc.Application.Features.GroupActivityParticipants.Queries.GetGro
     {
         public int Id { get; set; }
         public string Email { get; set; }
+        public string? guid { get; set; }
         public string MobileNumber { get; set; }
         public int? GenericTitleId { get; set; }
         public int? GroupSize { get; set; }
