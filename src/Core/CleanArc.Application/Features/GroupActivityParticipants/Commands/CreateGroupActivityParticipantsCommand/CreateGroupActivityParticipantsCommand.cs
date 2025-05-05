@@ -13,14 +13,14 @@ using System.Threading.Tasks;
 namespace CleanArc.Application.Features.GroupActivityParticipants.Commands.CreateGroupActivityParticipantsCommand;
 public record CreateGroupActivityParticipantsCommand(
  //int? GenericTitleID,
- int? GroupActivityID,
- int? GroupTypeID,
+ int? GenericTitleId,
+ int? GroupTypeId,
  string? MobileNumber,
  string? Email,
  string FirstName,
  string LastName,
  bool? Lead,
-    int? CreatedBy,
+    int? GroupSize,
     int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateGroupActivityParticipantsCommand>
 {
@@ -32,7 +32,7 @@ public record CreateGroupActivityParticipantsCommand(
         //    .NotEmpty()
         //    .NotNull()
         //    .WithMessage("Please enter a valid GenericTitleID");
-        validator.RuleFor(c => c.GroupActivityID)
+        validator.RuleFor(c => c.GenericTitleId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a GroupActivityID");

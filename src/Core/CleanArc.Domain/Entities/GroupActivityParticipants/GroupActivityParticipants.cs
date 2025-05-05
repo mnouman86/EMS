@@ -15,8 +15,10 @@ public  class GroupActivityParticipants
     //public int? GenericTitleID { get; set; }
     public string Email { get; set; }
     public string MobileNumber { get; set; }
-    public int? GroupActivityID { get; set; }
-    public int? GroupTypeID { get; set; }
+    public int? GenericTitleId { get; set; }
+    public int? GroupTypeId { get; set; }
+    public int? GroupSize { get; set; }
+    
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public bool? Lead { get; set; }
@@ -27,8 +29,7 @@ public  class GroupActivityParticipants
     public int? UpdatedBy { get; set; }
     public DateTime? UpdatedAt { get; set; }
     public int? CultureId { get; set; }
-    public int? Code { get; set; }
-    public string? Message { get; set; }
+
     
 
 }

@@ -44,9 +44,9 @@ internal class UpdateGroupActivityParticipantsCommandHandler:IRequestHandler<Upd
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
-            var user = await _userManager.GetUserByIdAsync(request.UserId);
-            if (user == null)
-                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
+            //var user = await _userManager.GetUserByIdAsync(request.UserId);
+            //if (user == null)
+            //    return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -56,15 +56,16 @@ internal class UpdateGroupActivityParticipantsCommandHandler:IRequestHandler<Upd
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.GroupActivityParticipantsRepository.UpdateAsync(new Domain.Entities.GroupActivityParticipants.GroupActivityParticipants()
-            { UpdatedBy = user.Id,Id= request.Id,
-               // GenericTitleID = request.GenericTitleID,
-                GroupActivityID = request.GroupActivityID,
+            { UpdatedBy = request.UserId,Id= request.Id,
+                // GenericTitleID = request.GenericTitleID,
+                GenericTitleId = request.GenericTitleId,
                 MobileNumber = request.MobileNumber,
                 Email = request.Email,
                 FirstName = request.FirstName,
                 LastName = request.LastName,
                 Lead = request.Lead,
-                CultureId = request.CultureId });
+                CultureId = request.CultureId,
+            GroupSize=request.GroupSize});
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

@@ -8,11 +8,11 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
 public static class GroupActivityParticipantsQueries
 {
-    public static string Create_GroupActivityParticipants => "Create_GroupActivityParticipant";
-    public static string Update_GroupActivityParticipants => "Update_GroupActivityParticipant";
-    public static string Delete_GroupActivityParticipants => "Delete_GroupActivityParticipant";
-    public static string GetAll_GroupActivityParticipants => "GetAll_GroupActivityParticipant";
-    public static string GetByID_GroupActivityParticipants => "GetByID_GroupActivityParticipant";
+    public static string Create_GroupActivityParticipants => "usp_Create_GroupActivityParticipant";
+    public static string Update_GroupActivityParticipants => "usp_Update_GroupActivityParticipant";
+    public static string Delete_GroupActivityParticipants => "usp_Delete_GroupActivityParticipant";
+    public static string GetAll_GroupActivityParticipants => "usp_GetAll_GroupActivityParticipant";
+    public static string GetByID_GroupActivityParticipants => "usp_GetByID_GroupActivityParticipant";
 
 
 }
