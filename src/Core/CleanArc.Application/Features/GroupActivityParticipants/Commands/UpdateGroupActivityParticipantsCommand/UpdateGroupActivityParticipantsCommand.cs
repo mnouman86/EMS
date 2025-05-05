@@ -13,6 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 namespace CleanArc.Application.Features.GroupActivityParticipants.Commands.UpdateGroupActivityParticipantsCommand;
 public record UpdateGroupActivityParticipantsCommand(int Id,
   //int? GenericTitleID,
+  string? guid,
   string MobileNumber,
   string Email,
 int? GenericTitleId,
