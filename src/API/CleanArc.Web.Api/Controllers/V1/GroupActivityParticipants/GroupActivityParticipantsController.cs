@@ -6,7 +6,9 @@ using CleanArc.Application.Features.GroupActivityParticipants.Queries.GetGroupAc
 using CleanArc.Application.Features.GroupActivityParticipants.Queries.GetAllGroupActivityParticipants;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
+using Microsoft.AspNetCore.Mvc; 
+using CleanArc.Domain.Common;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CleanArc.Web.Api.Controllers.V1.GroupActivityParticipants
 {
@@ -53,6 +55,7 @@ namespace CleanArc.Web.Api.Controllers.V1.GroupActivityParticipants
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/GroupActivityParticipants")]
+    [AllowAnonymous]
     //[Authorize]
     public class GroupActivityParticipantsController : _BaseController<CreateGroupActivityParticipantsCommand, UpdateGroupActivityParticipantsCommand, DeleteGroupActivityParticipantsCommand, ResponseEntity, GetAllGroupActivityParticipantsQuery,
     List<GetAllGroupActivityParticipantsQueryResult>, GetGroupActivityParticipantsByIdQuery, GetGroupActivityParticipantsByIdQueryResult>

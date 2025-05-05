@@ -11,8 +11,10 @@ namespace CleanArc.Application.Models.GroupActivityParticipants
 
         public int Id { get; set; }
         public string Email { get; set; }
+        public string? guid { get; set; }
         public string MobileNumber { get; set; }
-        public int? GroupActivityID { get; set; }
+        public int? GenericTitleId { get; set; }
+        public int? GroupSize { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public bool? Lead { get; set; }
@@ -22,9 +24,6 @@ namespace CleanArc.Application.Models.GroupActivityParticipants
         //public DateTime? CreatedAt { get; set; }
         public int? UpdatedBy { get; set; }
         public int? CultureId { get; set; }
-        public int? Code { get; set; }
-        public string? Message { get; set; }
-        //public DateTime? UpdatedAt { get; set; }
        
 
     }
