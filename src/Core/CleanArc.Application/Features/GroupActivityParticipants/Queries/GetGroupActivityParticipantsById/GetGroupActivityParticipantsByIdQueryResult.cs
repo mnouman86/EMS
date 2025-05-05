@@ -11,8 +11,12 @@ namespace CleanArc.Application.Features.GroupActivityParticipants.Queries.GetGro
     {
         public int Id { get; set; }
         public string Email { get; set; }
+        public string? guid { get; set; }
         public string MobileNumber { get; set; }
-        public int? GroupActivityID { get; set; }
+        public int? GenericTitleId { get; set; }
+        public int? GroupSize { get; set; }
+        public int? GroupTypeId { get; set; }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public bool? Lead { get; set; }
@@ -23,7 +27,5 @@ namespace CleanArc.Application.Features.GroupActivityParticipants.Queries.GetGro
         public int? UpdatedBy { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public int? CultureId { get; set; }
-        public int? Code { get; set; }
-        public string? Message { get; set; }
     }
 }

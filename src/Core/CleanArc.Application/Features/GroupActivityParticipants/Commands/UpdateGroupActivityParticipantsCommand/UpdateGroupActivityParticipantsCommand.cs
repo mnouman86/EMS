@@ -13,13 +13,14 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 namespace CleanArc.Application.Features.GroupActivityParticipants.Commands.UpdateGroupActivityParticipantsCommand;
 public record UpdateGroupActivityParticipantsCommand(int Id,
   //int? GenericTitleID,
+  string? guid,
   string MobileNumber,
   string Email,
-int? GroupActivityID,
+int? GenericTitleId,
 string FirstName,
 string LastName,
 bool? Lead,
-    int? UpdatedBy, 
+    int? GroupSize, 
     int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateGroupActivityParticipantsCommand>
 {
@@ -28,7 +29,7 @@ bool? Lead,
     public IValidator<UpdateGroupActivityParticipantsCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateGroupActivityParticipantsCommand> validator)
     {
        
-        validator.RuleFor(c => c.GroupActivityID)
+        validator.RuleFor(c => c.GenericTitleId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a GroupActivityID");
