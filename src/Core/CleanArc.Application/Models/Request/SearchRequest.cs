@@ -58,6 +58,7 @@ namespace CleanArc.Application.Models.Request
         public int? MaxPrice { get; set; }
         public string? Amenities { get; set; }
         public string? Name { get; set; }
+        public string? Type { get; set; }
 
     }
 
