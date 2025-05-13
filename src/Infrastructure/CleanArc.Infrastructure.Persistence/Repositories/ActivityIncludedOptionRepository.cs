@@ -127,11 +127,12 @@ public async Task<ResponseEntity> AddAsync(ActivityIncludedOption ActivityInclud
                 parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
                 parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
                 parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                parameters.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 var result = await connection.QueryAsync<ActivityIncludedOption>(ActivityIncludedOptionQueries.LookUp_GetAll_IncludeOptions, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                var response = new ListResponseWrapper<ActivityIncludedOption> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
+                var response = new ListResponseWrapper<ActivityIncludedOption> { Data = result.ToList(), TotalCount = parameters.Get<int>("@TotalCount"), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
             }
         }
     }
