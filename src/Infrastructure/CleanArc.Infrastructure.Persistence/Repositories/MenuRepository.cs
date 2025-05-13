@@ -65,24 +65,26 @@ public class MenuRepository : IMenuRepository
     }
 
     /// <inheritdoc/>
-    public async Task<ListResponseWrapper<Menu>> GetAllAsync(SearchRequest request)
+    public async Task<ListResponseWrapper<Menu>> GetAllAsync(SearchRequest searchRequest)
     {
-        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection")))
             {
                 connection.Open();
-                var parameters = new
-                {
-                    PageNumber = request.PageNumber,
-                    PageSize = request.PageSize,
-                    SortingArray = DataTableHelper.ToDataTable(request.SortingArray),
-                    FilterArray = DataTableHelper.ToDataTable(request.FilterArray)
-                };
+                var parameters = new DynamicParameters();
+                parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+                parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+                parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+                parameters.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 var result = await connection.QueryAsync<Menu>(UrlQueries.AllUrls, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
              
-                var response = new ListResponseWrapper<Menu> { Data = result.ToList() };return response;
+                var response = new ListResponseWrapper<Menu> { Data = result.ToList(), TotalCount = parameters.Get<int>("@TotalCount"), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
             }
         }
     }

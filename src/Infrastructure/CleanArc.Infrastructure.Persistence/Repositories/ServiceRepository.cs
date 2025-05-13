@@ -109,7 +109,8 @@ public class ServiceRepository : IServiceRepository
 				parameters.Add("@PageSize", searchRequest.PageSize);
 				parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), dbType: DbType.Object);
 				parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), dbType: DbType.Object);
-				parameters.Add("@CultureId", searchRequest.CultureId, DbType.Int32);
+                parameters.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@CultureId", searchRequest.CultureId, DbType.Int32);
 				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 				var result = await connection.QueryAsync<Service>(ServiceQueries.GetALL_Service, parameters, commandType: CommandType.StoredProcedure);
@@ -118,6 +119,7 @@ public class ServiceRepository : IServiceRepository
 				var response = new ListResponseWrapper<Service>
                 {
                     Data = result.ToList(),
+                    TotalCount = parameters.Get<int>("@TotalCount"),
                     Code = parameters.Get<int>("@Code"),
                     Message = parameters.Get<string>("@Message")
                 }; 
