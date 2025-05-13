@@ -134,13 +134,14 @@ public async Task<ResponseEntity> AddAsync(Advertisement Advertisement)
                 parameters.Add("@PageSize", searchRequest.PageSize);
                 parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), dbType: DbType.Object);
                 parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), dbType: DbType.Object);
-				parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                parameters.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
 				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                
                 var result = await connection.QueryAsync<Advertisement>(AdvertisementQueries.GetALL_Ads, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-				var response = new ListResponseWrapper<Advertisement> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
+				var response = new ListResponseWrapper<Advertisement> { Data = result.ToList(), TotalCount = parameters.Get<int>("@TotalCount"), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
 
 			}
 		}

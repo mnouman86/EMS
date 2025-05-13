@@ -119,6 +119,7 @@ public async Task<ResponseEntity> AddAsync(PopularItemsVisit PopularItemsVisit)
                 parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
                 parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
                 parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+                parameters.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
@@ -160,7 +161,7 @@ public async Task<ResponseEntity> AddAsync(PopularItemsVisit PopularItemsVisit)
 
                 //};
                 //return await Task.FromResult( popularItemsVisit);
-                var response = new ListResponseWrapper<PopularItemsVisit> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
+                var response = new ListResponseWrapper<PopularItemsVisit> { Data = result.ToList(), TotalCount = parameters.Get<int>("@TotalCount"), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
 
 
             }

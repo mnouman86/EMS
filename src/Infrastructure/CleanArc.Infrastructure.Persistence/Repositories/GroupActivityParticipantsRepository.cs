@@ -122,11 +122,12 @@ public async Task<ResponseEntity> AddAsync(GroupActivityParticipants GroupActivi
                 parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
                 parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
                 parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+                parameters.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 var result = await connection.QueryAsync<GroupActivityParticipants>(GroupActivityParticipantsQueries.GetAll_GroupActivityParticipants, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                var response = new ListResponseWrapper<GroupActivityParticipants> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
+                var response = new ListResponseWrapper<GroupActivityParticipants> { Data = result.ToList(), TotalCount = parameters.Get<int>("@TotalCount"), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
             }
         }
     }
