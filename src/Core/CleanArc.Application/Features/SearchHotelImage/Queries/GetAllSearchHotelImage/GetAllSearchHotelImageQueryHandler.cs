@@ -58,7 +58,8 @@ internal class GetAllSearchHotelImageQueryHandler : IRequestHandler<GetAllSearch
             return OperationResult<List<GetAllSearchHotelImageQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
+                response.Message,
+                    response.TotalCount
             );
         }
     }

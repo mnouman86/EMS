@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.CoreArea.Queries.GetAllCoreArea
                 return OperationResult<List<GetAllCoreAreaQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

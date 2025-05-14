@@ -67,7 +67,8 @@ internal class GetAllBusinessTypeQueryHandler : IRequestHandler<GetAllBusinessTy
             return OperationResult<List<GetAllBusinessTypeQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
+                response.Message,
+                    response.TotalCount
             );
         }
     }

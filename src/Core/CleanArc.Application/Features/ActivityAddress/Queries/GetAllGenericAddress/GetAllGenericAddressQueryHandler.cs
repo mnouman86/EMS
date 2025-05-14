@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.ActivityAddress.Queries.GetAllGenericAdd
                 return OperationResult<List<GetAllGenericAddressQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

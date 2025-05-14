@@ -60,7 +60,8 @@ internal class GetAllMappingRoomAmenityQueryHandler : IRequestHandler<GetAllMapp
             return OperationResult<List<GetAllMappingRoomAmenityQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
+                response.Message,
+                    response.TotalCount
             );
         }
     }

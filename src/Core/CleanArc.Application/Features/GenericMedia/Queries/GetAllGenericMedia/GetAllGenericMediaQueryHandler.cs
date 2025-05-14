@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.GenericMedia.Queries.GetAllGenericMedia
                 return OperationResult<List<GetAllGenericMediaQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

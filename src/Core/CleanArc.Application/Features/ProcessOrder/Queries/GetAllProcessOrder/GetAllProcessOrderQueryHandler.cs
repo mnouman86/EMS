@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.ProcessOrder.Queries.GetAllProcessOrder
                 return OperationResult<List<GetAllProcessOrderQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

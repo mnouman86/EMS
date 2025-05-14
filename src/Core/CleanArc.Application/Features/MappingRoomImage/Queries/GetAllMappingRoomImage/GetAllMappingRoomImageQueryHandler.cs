@@ -60,7 +60,8 @@ internal class GetAllMappingRoomImageQueryHandler : IRequestHandler<GetAllMappin
             return OperationResult<List<GetAllMappingRoomImageQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
+                response.Message,
+                    response.TotalCount
             );
         }
     }

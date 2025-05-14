@@ -59,7 +59,8 @@ namespace CleanArc.Application.Features.Section.Queries.GetAllSections
                 return OperationResult<List<GetAllSectionsQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

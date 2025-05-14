@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.DisabilityOption.Queries.GetAllDisabilit
                 return OperationResult<List<GetAllDisabilityOptionQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

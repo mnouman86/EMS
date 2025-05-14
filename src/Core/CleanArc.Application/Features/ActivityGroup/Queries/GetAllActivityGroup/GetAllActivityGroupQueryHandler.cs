@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.ActivityGroup.Queries.GetAllActivityGrou
                 return OperationResult<List<GetAllActivityGroupQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.ActivityIDImageMapping.Queries.GetAllAct
                 return OperationResult<List<GetAllActivityIDImageMappingQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

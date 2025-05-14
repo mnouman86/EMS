@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.Hotel.Queries.GetAllHotels
                 return OperationResult<List<GetAllHotelsQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

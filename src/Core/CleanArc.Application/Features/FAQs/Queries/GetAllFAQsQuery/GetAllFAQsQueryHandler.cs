@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.FAQs.Queries.GetAllFAQs
                 return OperationResult<List<GetAllFAQsQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

@@ -59,7 +59,8 @@ public async ValueTask<OperationResult<List<GetAllSearchHotelRoomDetailQueryResu
             return OperationResult<List<GetAllSearchHotelRoomDetailQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
+                response.Message,
+                    response.TotalCount
             );
         }
 }

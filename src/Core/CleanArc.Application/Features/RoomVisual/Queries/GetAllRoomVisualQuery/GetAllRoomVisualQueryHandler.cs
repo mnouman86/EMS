@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.RoomVisual.Queries.GetAllRoomVisual
                 return OperationResult<List<GetAllRoomVisualQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

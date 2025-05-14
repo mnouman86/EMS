@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.KBInterested.Queries.GetAllKBInterested
                 return OperationResult<List<GetAllKBInterestedQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

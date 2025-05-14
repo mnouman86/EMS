@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.CarDetail.Queries.GetAllCarDetail
                 return OperationResult<List<GetAllCarDetailQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

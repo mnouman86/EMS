@@ -60,7 +60,8 @@ internal class GetAllServicesQueryHandler : IRequestHandler<GetAllServicesQuery,
             return OperationResult<List<GetAllServicesQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
+                response.Message,
+                    response.TotalCount
             );
         }
     }

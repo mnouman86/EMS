@@ -54,7 +54,8 @@ namespace CleanArc.Application.Features.Activity.Queries.GetAllActivity
                 return OperationResult<List<GetAllActivityQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

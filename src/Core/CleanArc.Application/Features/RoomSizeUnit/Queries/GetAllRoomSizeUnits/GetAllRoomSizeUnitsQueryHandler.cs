@@ -59,7 +59,8 @@ internal class GetAllRoomSizeUnitsQueryHandler : IRequestHandler<GetAllRoomSizeU
             return OperationResult<List<GetAllRoomSizeUnitsQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
+                response.Message,
+                    response.TotalCount
             );
         }
     }

@@ -60,7 +60,8 @@ internal class GetAllVehicleTypesQueryHandler : IRequestHandler<GetAllVehicleTyp
             return OperationResult<List<GetAllVehicleTypesQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
+                response.Message,
+                    response.TotalCount
             );
         }
     }

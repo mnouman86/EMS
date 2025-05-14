@@ -59,7 +59,8 @@ internal class GetAllSearchCarAmenitiesQueryHandler : IRequestHandler<GetAllSear
             return OperationResult<List<GetAllSearchCarAmenitiesQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
+                response.Message,
+                    response.TotalCount
             );
         }
     }

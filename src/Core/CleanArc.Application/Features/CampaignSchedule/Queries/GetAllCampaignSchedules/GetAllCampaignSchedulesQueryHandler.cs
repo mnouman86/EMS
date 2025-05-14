@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.CampaignSchedule.Queries.GetAllCampaignS
                 return OperationResult<List<GetAllCampaignSchedulesQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

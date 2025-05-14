@@ -59,7 +59,8 @@ internal class GetAllMappingCarAmenityQueryHandler : IRequestHandler<GetAllMappi
             return OperationResult<List<GetAllMappingCarAmenityQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
+                response.Message,
+                    response.TotalCount
             );
         }
     }

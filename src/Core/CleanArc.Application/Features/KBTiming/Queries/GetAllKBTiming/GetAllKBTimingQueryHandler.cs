@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.KBTiming.Queries.GetAllKBTiming
                 return OperationResult<List<GetAllKBTimingQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

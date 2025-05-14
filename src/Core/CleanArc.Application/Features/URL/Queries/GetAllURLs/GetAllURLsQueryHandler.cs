@@ -52,7 +52,8 @@ namespace CleanArc.Application.Features.URL.Queries.GetAllURLs
                 return OperationResult<List<GetAllURLsQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

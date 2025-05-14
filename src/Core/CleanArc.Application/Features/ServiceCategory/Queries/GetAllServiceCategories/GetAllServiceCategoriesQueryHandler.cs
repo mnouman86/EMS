@@ -59,7 +59,8 @@ internal class GetAllServiceCategoriesQueryHandler : IRequestHandler<GetAllServi
             return OperationResult<List<GetAllServiceCategoriesQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
+                response.Message,
+                    response.TotalCount
             );
         }
     }

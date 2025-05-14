@@ -53,7 +53,8 @@ namespace CleanArc.Application.Features.AgeType.Queries.GetAllAgeType
                 return OperationResult<List<GetAllAgeTypeQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
 

@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.ActivityPerGroupPrice.Queries.GetAllActi
                 return OperationResult<List<GetAllActivityPerGroupPriceQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

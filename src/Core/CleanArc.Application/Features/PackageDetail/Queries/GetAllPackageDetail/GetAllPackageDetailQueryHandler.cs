@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.PackageDetail.Queries.GetAllPackageDetai
                 return OperationResult<List<GetAllPackageDetailQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }
