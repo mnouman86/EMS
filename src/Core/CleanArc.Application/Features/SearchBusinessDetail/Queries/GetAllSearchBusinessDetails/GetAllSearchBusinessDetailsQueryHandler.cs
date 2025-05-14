@@ -58,7 +58,8 @@ namespace CleanArc.Application.Features.SearchBusinessDetail.Queries.GetAllSearc
                 return OperationResult<List<GetAllSearchBusinessDetailsQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
     }

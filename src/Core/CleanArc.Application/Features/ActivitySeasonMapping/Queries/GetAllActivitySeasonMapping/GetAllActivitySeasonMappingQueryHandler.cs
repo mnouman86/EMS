@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.ActivitySeasonMapping.Queries.GetAllActi
                 return OperationResult<List<GetAllActivitySeasonMappingQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

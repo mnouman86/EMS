@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.KBMedia.Queries.GetAllKBMedia
                 return OperationResult<List<GetAllKBMediaQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

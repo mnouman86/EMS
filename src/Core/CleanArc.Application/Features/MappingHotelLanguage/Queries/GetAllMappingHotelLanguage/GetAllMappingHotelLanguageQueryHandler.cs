@@ -60,7 +60,8 @@ internal class GetAllMappingHotelLanguageQueryHandler : IRequestHandler<GetAllMa
             return OperationResult<List<GetAllMappingHotelLanguageQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
+                response.Message,
+                    response.TotalCount
             );
         }
     }

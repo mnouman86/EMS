@@ -59,7 +59,8 @@ namespace CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes
                 return OperationResult<List<GetAllRoomTypesQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.ActivitySupervisor.Queries.GetAllActivit
                 return OperationResult<List<GetAllActivitySupervisorQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

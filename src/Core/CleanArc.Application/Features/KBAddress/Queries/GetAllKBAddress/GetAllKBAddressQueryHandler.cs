@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.KBAddress.Queries.GetAllKBAddress
                 return OperationResult<List<GetAllKBAddressQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

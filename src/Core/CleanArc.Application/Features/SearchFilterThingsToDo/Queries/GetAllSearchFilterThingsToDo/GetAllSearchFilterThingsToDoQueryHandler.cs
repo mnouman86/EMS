@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.SearchFilterThingsToDo.Queries.GetAllSea
                 return OperationResult<List<GetAllSearchFilterThingsToDoQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

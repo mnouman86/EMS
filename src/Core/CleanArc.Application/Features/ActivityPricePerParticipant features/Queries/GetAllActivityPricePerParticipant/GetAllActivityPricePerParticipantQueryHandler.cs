@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.ActivityPricePerParticipant.Queries.GetA
                 return OperationResult<List<GetAllActivityPricePerParticipantQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

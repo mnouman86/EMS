@@ -59,7 +59,8 @@ namespace CleanArc.Application.Features.HomeSlider.Queries.GetAllHomeSliders
                 return OperationResult<List<GetAllHomeSlidersQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

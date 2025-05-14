@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.Currency.Queries.GetAllCurrency
                 return OperationResult<List<GetAllCurrencyQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

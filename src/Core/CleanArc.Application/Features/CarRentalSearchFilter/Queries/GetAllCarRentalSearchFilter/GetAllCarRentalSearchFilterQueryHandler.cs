@@ -59,7 +59,8 @@ public async ValueTask<OperationResult<List<GetAllCarRentalSearchFilterQueryResu
             return OperationResult<List<GetAllCarRentalSearchFilterQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
+                response.Message,
+                    response.TotalCount
             );
         }
 }

@@ -59,7 +59,8 @@ namespace CleanArc.Application.Features.Country.Queries.GetAllCountries
                 return OperationResult<List<GetAllCountryQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

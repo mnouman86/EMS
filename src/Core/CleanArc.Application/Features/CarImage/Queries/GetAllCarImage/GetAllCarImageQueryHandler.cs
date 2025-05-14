@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.CarImage.Queries.GetAllCarImage
                 return OperationResult<List<GetAllCarImageQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

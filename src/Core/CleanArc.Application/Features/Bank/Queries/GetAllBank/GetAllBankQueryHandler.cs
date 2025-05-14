@@ -59,7 +59,8 @@ internal class GetAllBankQueryHandler : IRequestHandler<GetAllBankQuery, Operati
             return OperationResult<List<GetAllBankQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
+                response.Message,
+                    response.TotalCount
             );
         }
     }

@@ -59,7 +59,8 @@ namespace CleanArc.Application.Features.CustomerAwareness.Queries.GetAllCustomer
                 return OperationResult<List<GetAllCustomerAwarenesssQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

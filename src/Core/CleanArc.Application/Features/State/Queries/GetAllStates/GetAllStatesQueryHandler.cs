@@ -59,7 +59,8 @@ internal class GetAllStatesQueryHandler : IRequestHandler<GetAllStatesQuery, Ope
             return OperationResult<List<GetAllStatesQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
+                response.Message,
+                    response.TotalCount
             );
         }
     }

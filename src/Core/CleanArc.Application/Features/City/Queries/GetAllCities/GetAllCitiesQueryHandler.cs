@@ -59,7 +59,8 @@ internal class GetAllCitiesQueryHandler : IRequestHandler<GetAllCitiesQuery, Ope
             return OperationResult<List<GetAllCitiesQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
+                response.Message,
+                    response.TotalCount
             );
         }
     }

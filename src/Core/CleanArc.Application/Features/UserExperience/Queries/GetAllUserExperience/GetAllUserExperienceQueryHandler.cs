@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.UserExperience.Queries.GetAllUserExperie
                 return OperationResult<List<GetAllUserExperienceQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.CheckProfileStatus.Queries.GetAllCheckPr
                 return OperationResult<List<GetAllCheckProfileStatusQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

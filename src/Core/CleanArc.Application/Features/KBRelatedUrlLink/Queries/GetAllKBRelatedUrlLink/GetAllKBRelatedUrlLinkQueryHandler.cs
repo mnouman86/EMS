@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.KBRelatedUrlLink.Queries.GetAllKBRelated
                 return OperationResult<List<GetAllKBRelatedUrlLinkQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

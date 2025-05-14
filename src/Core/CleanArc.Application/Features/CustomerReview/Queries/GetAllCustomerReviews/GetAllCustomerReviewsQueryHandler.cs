@@ -60,7 +60,8 @@ internal class GetAllCustomerReviewsQueryHandler : IRequestHandler<GetAllCustome
             return OperationResult<List<GetAllCustomerReviewsQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
+                response.Message,
+                    response.TotalCount
             );
         }
     }

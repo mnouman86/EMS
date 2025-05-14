@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.Advertisement.Queries.GetAllAdvertisemen
                 return OperationResult<List<GetAllAdvertisementQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

@@ -60,7 +60,8 @@ namespace CleanArc.Application.Features.ActivityNature.Queries.GetAllActivityNat
                 return OperationResult<List<GetAllActivityNatureQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
-                    response.Message
+                    response.Message,
+                    response.TotalCount
                 );
             }
         }

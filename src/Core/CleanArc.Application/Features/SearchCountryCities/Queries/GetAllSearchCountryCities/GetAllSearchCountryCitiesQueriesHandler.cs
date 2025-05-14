@@ -59,7 +59,8 @@ internal class GetAllSearchCountryCitiesQueriesHandler : IRequestHandler<GetAllS
             return OperationResult<List<GetAllSearchCountryCitiesQueriesResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
+                response.Message,
+                    response.TotalCount
             );
         }
     }

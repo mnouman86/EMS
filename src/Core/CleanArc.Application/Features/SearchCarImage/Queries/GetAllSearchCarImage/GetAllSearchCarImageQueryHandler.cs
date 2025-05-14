@@ -58,7 +58,8 @@ internal class GetAllSearchCarImageQueryHandler : IRequestHandler<GetAllSearchCa
             return OperationResult<List<GetAllSearchCarImageQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
+                response.Message,
+                    response.TotalCount
             );
         }
     }

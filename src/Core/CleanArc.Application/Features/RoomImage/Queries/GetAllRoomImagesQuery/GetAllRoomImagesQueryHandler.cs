@@ -58,7 +58,8 @@ internal class GetAllRoomImagesQueryHandler : IRequestHandler<GetAllRoomImagesQu
             return OperationResult<List<GetAllRoomImagesQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
+                response.Message,
+                    response.TotalCount
             );
         }
     }
