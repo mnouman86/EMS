@@ -227,6 +227,7 @@ public class ActivityRepository : IActivityRepository
                     list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.ThingsToDo).ToString() });
 
                     ParamsMedia.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+                    ParamsMedia.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, ParamsMedia, commandType: CommandType.StoredProcedure);
 
                     ParamsAddress = Params;
@@ -234,6 +235,7 @@ public class ActivityRepository : IActivityRepository
                     listAddress.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
 
                     ParamsAddress.Add("@FilterArray", DataTableHelper.ToDataTable(listAddress), DbType.Object); // Ensure proper type
+                    ParamsAddress.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     var AddressList = await connection.QueryAsync<GenericAddress>(GenericAddressQueries.GetAll_GenericAddress, ParamsAddress, commandType: CommandType.StoredProcedure);
 
                     item.ActivityImages = imageList.ToList();
@@ -299,6 +301,7 @@ public class ActivityRepository : IActivityRepository
                     list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.ThingsToDo).ToString() });
 
                     ParamsMedia.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+                    ParamsMedia.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, ParamsMedia, commandType: CommandType.StoredProcedure);
 
                     ParamsAddress = Params;
@@ -306,6 +309,7 @@ public class ActivityRepository : IActivityRepository
                     listAddress.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
 
                     ParamsAddress.Add("@FilterArray", DataTableHelper.ToDataTable(listAddress), DbType.Object); // Ensure proper type
+                    ParamsAddress.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     var AddressList = await connection.QueryAsync<GenericAddress>(GenericAddressQueries.GetAll_GenericAddress, ParamsAddress, commandType: CommandType.StoredProcedure);
 
                     item.ActivityImages = imageList.ToList();

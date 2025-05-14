@@ -109,6 +109,7 @@ public class SearchHotelDetailRepository : ISearchHotelRepository
                     list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
 
                     ParamsImage.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+                    ParamsImage.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                     var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, ParamsImage, commandType: CommandType.StoredProcedure);
                     item.HotelImages = imageList.ToList();
@@ -118,6 +119,7 @@ public class SearchHotelDetailRepository : ISearchHotelRepository
                     Amenity.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
                     Amenity.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
                     ParamsAmenity.Add("@FilterArray", DataTableHelper.ToDataTable(Amenity), DbType.Object); // Ensure proper type
+                    ParamsAmenity.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     var amenities = await connection.QueryAsync<Domain.Entities.AmenityMapping.AmenityMapping>(AmenityMappingQueries.GetByAmenityTypeEnumID_AmenityMapping, ParamsAmenity, commandType: CommandType.StoredProcedure);
                     item.Amenities = amenities.Where(x=>x.Selected==true).Take(3).ToList();
                 }

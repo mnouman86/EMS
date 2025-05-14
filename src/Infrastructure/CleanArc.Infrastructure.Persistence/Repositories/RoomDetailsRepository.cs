@@ -197,6 +197,7 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                         Params.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
                         List<SortingParameter> sortingArray = new List<SortingParameter>();
                         Params.Add("@SortingArray", DataTableHelper.ToDataTable(sortingArray), DbType.Object); // Ensure proper type
+                        Params.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                         Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                         Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
