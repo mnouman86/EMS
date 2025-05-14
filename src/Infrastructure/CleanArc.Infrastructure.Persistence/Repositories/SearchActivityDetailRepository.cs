@@ -109,6 +109,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                         Params.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
                         Params.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
                         Params.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+                        Params.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
                         List<FilterParameter> list = new List<FilterParameter>();
                         list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
                         Params.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
@@ -192,6 +193,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                             Params.Add("@cultureId", 1, DbType.Int32);
                             List<FilterParameter> sortingFilter = new List<FilterParameter>();
                             Params.Add("@SortingArray", DataTableHelper.ToDataTable(sortingFilter), DbType.Object); // Ensure proper type
+                            Params.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                             Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                             Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);

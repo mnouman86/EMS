@@ -106,7 +106,8 @@ public class SearchFilterStayRepository : ISearchFilterStayRepository
 					parameter.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
 					parameter.Add("@SortingArray", DataTableHelper.ToDataTable(ImagesSortingArray), DbType.Object); // Ensure proper type
 					parameter.Add("@FilterArray", DataTableHelper.ToDataTable(ImagesFilterArray), DbType.Object); // Ensure proper type
-					parameter.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    parameter.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    parameter.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 					parameter.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 					
 					var imageList = await connection.QueryAsync<GenericMedia>(SearchHotelImageQueries.GetByHotelID_HotelImage, parameter, commandType: CommandType.StoredProcedure);
