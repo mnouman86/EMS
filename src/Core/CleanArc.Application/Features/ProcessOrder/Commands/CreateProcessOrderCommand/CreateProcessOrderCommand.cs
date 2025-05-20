@@ -11,29 +11,36 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ProcessOrder.Commands.CreateProcessOrderCommand;
-public record CreateProcessOrderCommand(string? OrderNumber, string? FirstName, string? LastName, string? Email,
+public record CreateProcessOrderCommand(
+    int? CultureId,
+    int? GenericTitleId,
+    int? ServiceTypeEnumId,
+    string? OrderNumber,
+    DateTime? FromDate,
+    DateTime? ToDate,
+    int? NoOfAdults,
+    int? NoOfChildren,
+    int? NoOfRooms,
+    int? ParticipantSize,
+    int? OrderStatusEnumId,
+    int? CreatedBy,
+    decimal? Amount,
+    decimal? Tax,
+    string? FirstName, 
+    string? LastName, 
+    string? Email,
     string? PhoneNumber,
     string? CardHolderName,
+    string? CardNumber,
     string? CardName,
     int? CardCVC,
     int? ExpirationMonth,
     int? ExpirationYear,
-    int? CountryID,
+    int? CountryLookUpId,
     int? ZipCode,
-    int? CategoryID,
-    int? ServiceID,
-    int? SubServiceID,
-    decimal? Amount,
-    DateTime? FromDate,
-    DateTime? ToDate,
-    int? NoOfAdults,
-    int? NoOfChildrens,
-    int? NoOfRooms,
-    string OrderStatus,
-    int? PackageTypeID,
-    DateTime? CreditDate,
-    int? CultureId,
-    int? CreatedBy) : IRequest<OperationResult<ResponseEntity>>,
+    string? PaymentStatus
+    
+    ) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateProcessOrderCommand>
 {
     [JsonIgnore]
