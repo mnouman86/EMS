@@ -6,7 +6,9 @@ using CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById;
 using CleanArc.Application.Features.ProcessOrder.Queries.GetAllProcessOrder;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
+using Microsoft.AspNetCore.Mvc; 
+using CleanArc.Domain.Common;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CleanArc.Web.Api.Controllers.V1.ProcessOrder
 {
@@ -53,6 +55,7 @@ namespace CleanArc.Web.Api.Controllers.V1.ProcessOrder
     [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version:apiVersion}/ProcessOrder")]
+    [AllowAnonymous]
     //[Authorize]
     public class ProcessOrderController : _BaseController<CreateProcessOrderCommand, UpdateProcessOrderCommand, DeleteProcessOrderCommand, ResponseEntity, GetAllProcessOrderQuery,
     List<GetAllProcessOrderQueryResult>, GetProcessOrderByIdQuery, GetProcessOrderByIdQueryResult>

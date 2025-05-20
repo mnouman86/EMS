@@ -44,9 +44,7 @@ internal class UpdateProcessOrderCommandHandler:IRequestHandler<UpdateProcessOrd
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
-            var user = await _userManager.GetUserByIdAsync(request.UserId);
-            if (user == null)
-                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
+            
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -56,33 +54,10 @@ internal class UpdateProcessOrderCommandHandler:IRequestHandler<UpdateProcessOrd
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.ProcessOrderRepository.UpdateAsync(new Domain.Entities.ProcessOrder.ProcessOrder()
-            { UpdatedBy = user.Id,
+            { UpdatedBy = request.UserId,
                 Id= request.Id,
                 CultureId = request.CultureId,
-                
-                OrderNumber = request.OrderNumber,
-                FirstName = request.FirstName,
-                LastName = request.LastName,
-                Email = request.Email,
-                PhoneNumber = request.PhoneNumber,
-                CardHolderName = request.CardHolderName,
-                CardName = request.CardName,
-                CardCVC = request.CardCVC,
-                ExpirationMonth = request.ExpirationMonth,
-                ExpirationYear = request.ExpirationYear,
-                CountryID = request.CountryID,
-                ZipCode = request.ZipCode,
-                CategoryID = request.CategoryID,
-                ServiceID = request.ServiceID,
-                SubServiceID = request.SubServiceID,
-                Amount = request.Amount,
-                FromDate = request.FromDate,
-                ToDate = request.ToDate,
-                NoOfAdults = request.NoOfAdults,
-                NoOfChildrens = request.NoOfChildrens,
-                NoOfRooms = request.NoOfRooms,
-                OrderStatus = request.OrderStatus,
-                CreditDate = request.CreditDate,
+                OrderStatusEnumId = request.OrderStatusEnumId
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

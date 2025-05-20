@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection.Emit;
 
 namespace CleanArc.Application.Features.ProcessOrder.Commands.CreateProcessOrderCommand;
 
@@ -46,9 +47,9 @@ internal class CreateProcessOrderCommandHandler: IRequestHandler<CreateProcessOr
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
-            var user = await _userManager.GetUserByIdAsync(request.UserId);
-            if (user == null)
-                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
+            //var user = await _userManager.GetUserByIdAsync(request.UserId);
+            //if (user == null)
+            //    return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
@@ -58,7 +59,7 @@ internal class CreateProcessOrderCommandHandler: IRequestHandler<CreateProcessOr
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.ProcessOrderRepository.AddAsync(new Domain.Entities.ProcessOrder.ProcessOrder()
-            { CreatedBy = user.Id,
+            { CreatedBy = request.UserId,
                  CultureId = request.CultureId,
                 OrderNumber = request.OrderNumber,
                 FirstName = request.FirstName,
@@ -70,21 +71,20 @@ internal class CreateProcessOrderCommandHandler: IRequestHandler<CreateProcessOr
                 CardCVC = request.CardCVC,
                 ExpirationMonth = request.ExpirationMonth,
                 ExpirationYear = request.ExpirationYear,
-                CountryID = request.CountryID,
+                CountryLookUpId = request.CountryLookUpId,
                 ZipCode = request.ZipCode,
-                CategoryID = request.CategoryID,
-                ServiceID = request.ServiceID,
-                SubServiceID = request.SubServiceID,
                 Amount = request.Amount,
                 FromDate = request.FromDate,
                 ToDate = request.ToDate,
                 NoOfAdults = request.NoOfAdults,
-                NoOfChildrens = request.NoOfChildrens,
+                NoOfChildren = request.NoOfChildren,
                 NoOfRooms = request.NoOfRooms,
-                PackageTypeID = request.PackageTypeID,
-                OrderStatus = request.OrderStatus,
-                CreditDate = request.CreditDate,
-                
+                OrderStatusEnumId = request.OrderStatusEnumId,
+                GenericTitleId=request.GenericTitleId,
+                ServiceTypeEnumId=request.ServiceTypeEnumId,
+                ParticipantSize = request.ParticipantSize,
+                Tax=request.Tax,
+                PaymentStatus=request.PaymentStatus,
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

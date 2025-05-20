@@ -81,25 +81,26 @@ public async Task<ResponseEntity> AddAsync(ProcessOrder ProcessOrder)
              (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
             return result;
         }
+
     }
 }
 
-    public async Task<ResponseEntity> DeleteAsync(DeleteRequest deleteRequest, int? updatedBy)
+    public Task<ResponseEntity> DeleteAsync(DeleteRequest deleteRequest, int? updatedBy)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, deleteRequest))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
-                connection.Open();
-                var parameters = new DynamicParameters();
-                parameters.Add("@Ids", deleteRequest.SelectedIds);
-                parameters.Add("@CultureId", deleteRequest.CultureId);
-                parameters.Add("@IsDeleted", deleteRequest.isDeleted);
-                parameters.Add("@UpdatedBy", updatedBy);
+                //connection.Open();
+                //var parameters = new DynamicParameters();
+                //parameters.Add("@Ids", deleteRequest.SelectedIds);
+                //parameters.Add("@CultureId", deleteRequest.CultureId);
+                //parameters.Add("@IsDeleted", deleteRequest.isDeleted);
+                //parameters.Add("@UpdatedBy", updatedBy);
                 
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Delete_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-                return result;
+                //var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Delete_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
+                // (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                return null;
             }
         }
     }
@@ -174,8 +175,12 @@ public async Task<ResponseEntity> AddAsync(ProcessOrder ProcessOrder)
             {
                 connection.Open();
                 UpdateProcessOrderDTO updateProcessOrderDTO = _mapper.Map<UpdateProcessOrderDTO>(entity);
-                var parameters = new DynamicParameters(updateProcessOrderDTO);
-                
+                //var parameters = new DynamicParameters(updateProcessOrderDTO);
+                var parameters = new DynamicParameters();
+                parameters.Add("@id", entity.Id, DbType.Int32);
+                parameters.Add("@orderStatusEnumID ", entity.OrderStatusEnumId, DbType.Int32);
+                parameters.Add("@cultureId", entity.CultureId, DbType.Int32);
+                parameters.Add("@updatedBy", entity.UpdatedBy, DbType.Int32);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Update_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
