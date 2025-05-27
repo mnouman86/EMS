@@ -2,6 +2,7 @@
 using CleanArc.Domain.Entities.CustomerReview;
 using CleanArc.Domain.Entities.Language;
 using CleanArc.Domain.Entities.RoomDetails;
+using CleanArc.Domain.Entities.RoomView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace CleanArc.Domain.Entities.Hotel
         public List<AmenityMapping.AmenityMapping> Amenities { get; set; }
         public List<FAQs.FAQs> FAQs { get; set; }
         public List<CustomerReview.CustomerReview> Reviews { get; set; }
+        public List<RoomView.RoomView> RoomView { get; set; }
+        public List<OutDoor.OutDoor> OutDoor { get; set; }
 
     }
 }
