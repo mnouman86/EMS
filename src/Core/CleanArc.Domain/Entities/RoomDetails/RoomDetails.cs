@@ -1,4 +1,7 @@
 ﻿using CleanArc.Domain.Entities.FAQs;
+using CleanArc.Domain.Entities.Language;
+using CleanArc.Domain.Entities.OutDoor;
+using CleanArc.Domain.Entities.RoomView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +45,10 @@ public class RoomDetails
 	public int? CultureId { get; set; }
     public List<AmenityMapping.AmenityMapping> RoomAmenities { get; set; }
     public List<GenericMedia.GenericMedia> Medias { get; set; }
+    public int[]? RoomViewLookUpId { get; set; }
+    public int[]? OutDoorLookUpId { get; set; }
+    public List<RoomViewLookUp>? RoomView { get; set; }
 
+    public List<OutDoorLookUp>? OutDoor { get; set; }
 
 }

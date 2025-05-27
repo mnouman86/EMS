@@ -176,7 +176,27 @@ if (app.Environment.IsDevelopment())
 app.UseCustomExceptionHandler();
 app.UseCustomLoggingHandler();
 
-app.UseSwaggerAndUI();
+//app.UseSwaggerAndUI();
+try
+{
+    app.UseSwagger(c =>
+    {
+        c.RouteTemplate = "swagger/{documentName}/swagger.json";
+    });
+
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Your API V1");
+        c.RoutePrefix = "swagger";
+    });
+
+    Log.Information("Swagger initialized successfully.");
+}
+catch (Exception ex)
+{
+    Log.Error(ex, "Swagger UI failed to initialize.");
+}
+
 app.UseHttpsRedirection();
 
 app.UseRouting();

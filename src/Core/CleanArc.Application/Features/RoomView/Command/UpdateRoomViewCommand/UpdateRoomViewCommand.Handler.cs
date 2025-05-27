@@ -13,21 +13,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.RoomDetails.Command.CreateRoomDetailCommand;
+namespace CleanArc.Application.Features.RoomView.Command.UpdateRoomViewCommand;
 
-internal class CreateRoomDetailCommandHandler : IRequestHandler<CreateRoomDetailCommand, OperationResult<ResponseEntity>>
+internal class UpdateRoomViewCommandHandler : IRequestHandler<UpdateRoomViewCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<CreateRoomDetailCommandHandler> _logger;
+    private readonly ILogger<UpdateRoomViewCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
     //private readonly IUnitOfWork _unitOfWork;
     //private readonly IAppUserManager _userManager;
 
 
-    public CreateRoomDetailCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<CreateRoomDetailCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public UpdateRoomViewCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateRoomViewCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -38,8 +38,7 @@ internal class CreateRoomDetailCommandHandler : IRequestHandler<CreateRoomDetail
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-
-    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateRoomDetailCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateRoomViewCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -48,28 +47,25 @@ internal class CreateRoomDetailCommandHandler : IRequestHandler<CreateRoomDetail
             if (user == null)
                 return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
+            //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
+            //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
 
-            var result = await _unitOfWork.RoomDetailsRepository.AddAsync(new Domain.Entities.RoomDetails.RoomDetails()
-            { CreatedBy = user.Id,
-                GenericTitleId = request.GenericTitleId,
-                RoomTypeLookUpId = request.RoomTypeLookUpId,
-                RoomSizeUnitLookUpId = request.RoomSizeUnitLookUpId,
-                RoomSize = request.RoomSize,
-                IsSharedBathroom = request.IsSharedBathroom,
-                Price = request.Price,
-                AdditionalMatricCharges = request.AdditionalMatricCharges,
-                RoomNumber = request.RoomNumber,
-                IsAvailable = request.IsAvailable,
-                IsPartiallyRefundable = request.IsPartiallyRefundable,
-                IsFullyRefundable=request.IsFullyRefundable,
-                CultureId = request.CultureId,
+            //await _unitOfWork.CommitAsync();
+            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
+
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            var result = await _unitOfWork.RoomViewRepository.UpdateAsync(new Domain.Entities.RoomView.RoomView()
+            {
+                UpdatedBy = user.Id,
+                Id = request.Id,
                 Description = request.Description,
-                RoomViewLookUpId=request.RoomViewLookUpId,
-                OutDoorLookUpId=request.OutDoorLookUpId,
+                Name = request.Name,
+                CultureId= request.CultureId,
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
+
 }

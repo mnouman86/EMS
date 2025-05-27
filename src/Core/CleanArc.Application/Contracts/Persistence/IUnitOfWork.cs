@@ -31,6 +31,8 @@ public interface IUnitOfWork
     public IStateRepository StateRepository { get; }
     public ICityRepository CityRepository { get; }
     public ILanguageRepository LanguageRepository { get; }
+    public IRoomViewRepository RoomViewRepository { get; }
+    public IOutDoorRepository OutDoorRepository { get; }
     public IAmenityMappingRepository AmenityMappingRepository { get; }
     public IMappingHotelLanguageRepository MappingHotelLanguageRepository { get; }
     public IMappingRoomAmenitiesRepository MappingRoomAmenitiesRepository { get; }

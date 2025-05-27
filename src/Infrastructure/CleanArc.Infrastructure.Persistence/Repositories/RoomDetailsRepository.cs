@@ -30,6 +30,9 @@ using CleanArc.Domain.Entities.GenericMedia;
 using CleanArc.Domain.Entities.FAQs;
 using CleanArc.Domain.Enums;
 using CleanArc.Domain.Entities.CustomerReview;
+using CleanArc.Domain.Entities.Amenity;
+using CleanArc.Domain.Entities.RoomView;
+using CleanArc.Domain.Entities.OutDoor;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -70,7 +73,20 @@ public class RoomDetailsRepository : IRoomDetailsRepository
 				connection.Open();
 				CreateRoomDetailsDTO createRoomDetailsDTO = _mapper.Map<CreateRoomDetailsDTO>(roomDetails);
 				var parameters = new DynamicParameters(createRoomDetailsDTO);
-				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomDetailQueries.Create_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
+                var roomViewTable = new DataTable();
+                roomViewTable.Columns.Add("RoomViewLookUpId", typeof(int));
+
+                foreach (var roomView in roomDetails.RoomViewLookUpId)
+                    roomViewTable.Rows.Add(roomView);
+                parameters.Add("@RoomView", roomViewTable.AsTableValuedParameter("RoomViewTableType"));
+
+                var outDoorTable = new DataTable();
+                outDoorTable.Columns.Add("OutDoorLookUpId", typeof(int));
+
+                foreach (var outDoor in roomDetails.OutDoorLookUpId)
+                    outDoorTable.Rows.Add(outDoor);
+                parameters.Add("@OutDoor", roomViewTable.AsTableValuedParameter("OutDoorTableType"));
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomDetailQueries.Create_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
 				//
 				return result;
@@ -138,12 +154,26 @@ public class RoomDetailsRepository : IRoomDetailsRepository
 
 
 
-				var result = await connection.QuerySingleOrDefaultAsync<RoomDetails>(RoomDetailQueries.GetByID_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+				//var result = await connection.QuerySingleOrDefaultAsync<RoomDetails>(RoomDetailQueries.GetByID_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryMultipleAsync(RoomDetailQueries.GetByID_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
+                var roomDetail = result.Read<RoomDetails>().FirstOrDefault();
+                if (roomDetail != null)
+                {
+                    var roomView = result.Read<RoomViewLookUp>().ToList();
+                    roomDetail.RoomView = roomView;
+
+                    var outDoor = result.Read<OutDoorLookUp>().ToList();
+                    roomDetail.OutDoor = outDoor;
+                }
+                if (!result.IsConsumed)
+                {
+                    result.Dispose();
+                }
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 				//
 				var response = new SingleResponseWrapper<RoomDetails>
 				{
-					Data = result,
+					Data = roomDetail,
 					Code = parameters.Get<int>("@Code"),
 					Message = parameters.Get<string>("@Message")
 				};
@@ -250,8 +280,20 @@ public class RoomDetailsRepository : IRoomDetailsRepository
 				connection.Open();
 				UpdateRoomDetailsDTO updateRoomDetailsDTO = _mapper.Map<UpdateRoomDetailsDTO>(roomDetails);
 				var parameters = new DynamicParameters(updateRoomDetailsDTO);
-				
-				var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomDetailQueries.Update_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
+                var roomViewTable = new DataTable();
+                roomViewTable.Columns.Add("RoomViewLookUpId", typeof(int));
+
+                foreach (var roomView in roomDetails.RoomViewLookUpId)
+                    roomViewTable.Rows.Add(roomView);
+                parameters.Add("@RoomView", roomViewTable.AsTableValuedParameter("RoomViewTableType"));
+
+                var outDoorTable = new DataTable();
+                outDoorTable.Columns.Add("OutDoorLookUpId", typeof(int));
+
+                foreach (var outDoor in roomDetails.OutDoorLookUpId)
+                    outDoorTable.Rows.Add(outDoor);
+                parameters.Add("@OutDoor", roomViewTable.AsTableValuedParameter("OutDoorTableType"));
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomDetailQueries.Update_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 				return result;
 			}
