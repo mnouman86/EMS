@@ -17,5 +17,7 @@ namespace CleanArc.Application.Features.RoomView.Queries.GetAllRoomView
         public DateTime CreatedAt { get; set; }
         public int UpdatedBy { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public int RoomViewLookUpId { get; set; }
+
     }
 }

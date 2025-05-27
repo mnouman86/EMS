@@ -22,6 +22,6 @@ namespace CleanArc.Domain.Entities.RoomView
     public class RoomViewLookUp
     {
         public int RoomViewLookUpId { get; set; }
-        public string? RoomView { get; set; }
+        public string? Name { get; set; }
     }
 }
