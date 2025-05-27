@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CleanArc.Application.Features.Language.Queries.GetAllLanguages;
+using CleanArc.Application.Features.OutDoor.Queries.GetAllOutDoor;
+using CleanArc.Application.Features.RoomView.Queries.GetAllRoomView;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,4 +36,6 @@ public class GetRoomDetailByIdQueryResult
     public int? UpdatedBy { get; set; }
     public DateTime? UpdatedAt { get; set; }
 	public int? CultureId { get; set; }
+    public IEnumerable<GetAllRoomViewQueryResult> RoomView { get; set; }
+    public IEnumerable<GetAllOutDoorQueryResult> OutDoor { get; set; }
 }

@@ -1,6 +1,8 @@
 ﻿using CleanArc.Application.Features.Amenities.Queries.GetAllAmenities;
 using CleanArc.Application.Features.AmenityMapping.Queries.GetAllAmenityMapping;
 using CleanArc.Application.Features.GenericMedia.Queries.GetAllGenericMedia;
+using CleanArc.Application.Features.Language.Queries.GetAllLanguages;
+using CleanArc.Domain.Entities.Language;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +44,7 @@ public class GetAllRoomDetailQueryResult
     public int UpdatedBy { get; set; }
     public DateTime UpdatedAt { get; set; }
     public IEnumerable<GetAllGenericMediaQueryResult> Medias { get; set; }
+    
     public List<GetAllAmenityMappingQueryResult> RoomAmenities { get; set; }
 
 }

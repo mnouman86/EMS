@@ -47,6 +47,8 @@ public class UnitOfWork : IUnitOfWork
     public IMappingRoomAmenitiesRepository MappingRoomAmenitiesRepository { get; set; }
     public IMappingRoomImageRepository MappingRoomImageRepository { get; set; }
     public ILanguageRepository LanguageRepository { get; set; }
+    public IRoomViewRepository RoomViewRepository { get; set; }
+    public IOutDoorRepository OutDoorRepository { get; set; }
     public IBusinessRepository BusinessRepository { get; set; }
     public IBusinessTypeRepository BusinessTypeRepository { get; set; }
     public IBankRepository BankRepository { get; set; }
@@ -147,6 +149,8 @@ public class UnitOfWork : IUnitOfWork
         ILogger<StateRepository> _loggerState,
         ILogger<CityRepository> _loggerCity,
         ILogger<LanguageRepository> _loggerLanguage,
+        ILogger<RoomViewRepository> _loggerRoomView,
+        ILogger<OutDoorRepository> _loggerOutDoor,
         ILogger<AmenityMappingRepository> _loggerAmenityMapping,
         ILogger<MappingHotelLanguageRepository> _loggerMappingHotelLanguage,
         ILogger<MappingRoomAmenitiesRepository> _loggerMappingRoomAmenities,
@@ -311,6 +315,8 @@ public class UnitOfWork : IUnitOfWork
         FAQsRepository = new FAQsRepository(configuration, mapper, _loggerFAQs, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
+        RoomViewRepository = new RoomViewRepository(configuration, mapper, _loggerRoomView, httpContextAccessor);
+        OutDoorRepository = new OutDoorRepository(configuration, mapper, _loggerOutDoor, httpContextAccessor);
         SearchFilterStayRepository = new SearchFilterStayRepository(configuration, mapper, _loggerSearchFilterStay, httpContextAccessor);
         SearchFilterThingsToDoRepository = new SearchFilterThingsToDoRepository(configuration, mapper, _loggerSearchFilterThingsToDo, httpContextAccessor);
         CarRentalSearchFilterRepository = new CarRentalSearchFilterRepository(configuration, mapper, _loggerCarRentalSearchFilter, httpContextAccessor);

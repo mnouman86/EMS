@@ -879,6 +879,14 @@
             <param name="sender">The mediator sender for handling requests and responses.</param>
             <param name="logger">The logger for logging controller-related information.</param>
         </member>
+        <member name="M:CleanArc.Web.Api.Controllers.V1.OutDoor.OutDoorController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.OutDoor.Command.CreateOutDoorCommand.CreateOutDoorCommand,CleanArc.Application.Features.OutDoor.Command.UpdateOutDoorCommand.UpdateOutDoorCommand,CleanArc.Application.Features.OutDoor.Command.DeleteOutDoorCommand.DeleteOutDoorCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.OutDoor.Queries.GetAllOutDoor.GetAllOutDoorQuery,System.Collections.Generic.List{CleanArc.Application.Features.OutDoor.Queries.GetAllOutDoor.GetAllOutDoorQueryResult},CleanArc.Application.Features.OutDoor.Queries.GetOutDoorById.GetOutDoorByIdQuery,CleanArc.Application.Features.OutDoor.Queries.GetOutDoorById.GetOutDoorByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.OutDoor.OutDoorController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.PackageDetail.PackageDetailController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.PackageDetail.Commands.CreatePackageDetailCommand.CreatePackageDetailCommand,CleanArc.Application.Features.PackageDetail.Commands.UpdatePackageDetailCommand.UpdatePackageDetailCommand,CleanArc.Application.Features.PackageDetail.Commands.DeletePackageDetailCommand.DeletePackageDetailCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.PackageDetail.Queries.GetAllPackageDetail.GetAllPackageDetailQuery,System.Collections.Generic.List{CleanArc.Application.Features.PackageDetail.Queries.GetAllPackageDetail.GetAllPackageDetailQueryResult},CleanArc.Application.Features.PackageDetail.Queries.GetPackageDetailById.GetPackageDetailByIdQuery,CleanArc.Application.Features.PackageDetail.Queries.GetPackageDetailById.GetPackageDetailByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
@@ -946,6 +954,14 @@
         <member name="M:CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.RoomType.Command.CreateRoomTypeCommand.CreateRoomTypeCommand,CleanArc.Application.Features.RoomType.Command.UpdateRoomTypeCommand.UpdateRoomTypeCommand,CleanArc.Application.Features.RoomType.Command.DeleteRoomTypeCommand.DeleteRoomTypeCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQuery,System.Collections.Generic.List{CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes.GetAllRoomTypesQueryResult},CleanArc.Application.Features.RoomType.Queries.GetRoomTypeById.GetRoomTypeByIdQuery,CleanArc.Application.Features.RoomType.Queries.GetRoomTypeById.GetRoomTypeByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
             Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.RoomType.RoomTypeController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <member name="M:CleanArc.Web.Api.Controllers.V1.RoomView.RoomViewController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.RoomView.Command.CreateRoomViewCommand.CreateRoomViewCommand,CleanArc.Application.Features.RoomView.Command.UpdateRoomViewCommand.UpdateRoomViewCommand,CleanArc.Application.Features.RoomView.Command.DeleteRoomViewCommand.DeleteRoomViewCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.RoomView.Queries.GetAllRoomView.GetAllRoomViewQuery,System.Collections.Generic.List{CleanArc.Application.Features.RoomView.Queries.GetAllRoomView.GetAllRoomViewQueryResult},CleanArc.Application.Features.RoomView.Queries.GetRoomViewById.GetRoomViewByIdQuery,CleanArc.Application.Features.RoomView.Queries.GetRoomViewById.GetRoomViewByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.RoomView.RoomViewController"/> class.
             </summary>
             <param name="sender">The mediator sender for handling requests and responses.</param>
             <param name="logger">The logger for logging controller-related information.</param>

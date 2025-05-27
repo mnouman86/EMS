@@ -13,21 +13,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.RoomDetails.Command.UpdateRoomDetailCommand;
+namespace CleanArc.Application.Features.OutDoor.Command.DeleteOutDoorCommand;
 
-internal class UpdateRoomDetailCommandHandler : IRequestHandler<UpdateRoomDetailCommand, OperationResult<ResponseEntity>>
+internal class DeleteOutDoorCommandHandler : IRequestHandler<DeleteOutDoorCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<UpdateRoomDetailCommandHandler> _logger;
+    private readonly ILogger<DeleteOutDoorCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
     //private readonly IUnitOfWork _unitOfWork;
     //private readonly IAppUserManager _userManager;
 
 
-    public UpdateRoomDetailCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateRoomDetailCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public DeleteOutDoorCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<DeleteOutDoorCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -38,7 +38,7 @@ internal class UpdateRoomDetailCommandHandler : IRequestHandler<UpdateRoomDetail
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateRoomDetailCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(DeleteOutDoorCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -54,31 +54,15 @@ internal class UpdateRoomDetailCommandHandler : IRequestHandler<UpdateRoomDetail
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
-            var result = await _unitOfWork.RoomDetailsRepository.UpdateAsync(new Domain.Entities.RoomDetails.RoomDetails()
-            {
-                UpdatedBy = user.Id,
-                Id= request.Id,
-                GenericTitleId = request.GenericTitleId,
-                RoomTypeLookUpId = request.RoomTypeLookUpId,
-                RoomSizeUnitLookUpId = request.RoomSizeUnitLookUpId,
-                RoomSize = request.RoomSize,
-                IsSharedBathroom = request.IsSharedBathroom,
-                Price = request.Price,
-                AdditionalMatricCharges = request.AdditionalMatricCharges,
-                RoomNumber = request.RoomNumber,
-                IsAvailable = request.IsAvailable,
-                IsFullyRefundable = request.IsFullyRefundable,
-                IsPartiallyRefundable = request.IsPartiallyRefundable,
-                CultureId = request.CultureId,
-                Description = request.Description,
-                RoomViewLookUpId = request.RoomViewLookUpId,
-                OutDoorLookUpId = request.OutDoorLookUpId,
-            });
+            //await _unitOfWork.AgeTypeRepository.DeleteAsync(new Domain.Entities.AgeType.AgeType()
+            // { UpdatedBy = user.Id, ID = request.ID });
+            var result = await _unitOfWork.OutDoorRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
+            //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
+
 
 }
 

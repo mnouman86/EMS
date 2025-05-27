@@ -15,7 +15,7 @@ namespace CleanArc.Application.Features.RoomDetails.Command.UpdateRoomDetailComm
 public record UpdateRoomDetailCommand(int Id, int? GenericTitleId, int? RoomTypeLookUpId, int? RoomSizeUnitLookUpId,
     string? RoomSize, bool? IsSharedBathroom, string? Description,
     decimal? Price, decimal? AdditionalMatricCharges, string? RoomNumber, bool? IsAvailable,
-    int? CultureId, bool? IsPartiallyRefundable, bool? IsFullyRefundable) : IRequest<OperationResult<ResponseEntity>>,
+    int? CultureId, bool? IsPartiallyRefundable, bool? IsFullyRefundable, int[]? RoomViewLookUpId, int[]? OutDoorLookUpId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateRoomDetailCommand>
 {
     [JsonIgnore]

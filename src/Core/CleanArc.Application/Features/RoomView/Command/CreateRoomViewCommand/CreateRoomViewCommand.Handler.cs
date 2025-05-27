@@ -13,21 +13,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.RoomDetails.Command.UpdateRoomDetailCommand;
+namespace CleanArc.Application.Features.RoomView.Command.CreateRoomViewCommand;
 
-internal class UpdateRoomDetailCommandHandler : IRequestHandler<UpdateRoomDetailCommand, OperationResult<ResponseEntity>>
+internal class CreateRoomViewCommandHandler : IRequestHandler<CreateRoomViewCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<UpdateRoomDetailCommandHandler> _logger;
+    private readonly ILogger<CreateRoomViewCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
-    //private readonly IUnitOfWork _unitOfWork;
-    //private readonly IAppUserManager _userManager;
+                                                                //private readonly IUnitOfWork _unitOfWork;
+                                                                //private readonly IAppUserManager _userManager;
 
 
-    public UpdateRoomDetailCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateRoomDetailCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public CreateRoomViewCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<CreateRoomViewCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -38,7 +38,8 @@ internal class UpdateRoomDetailCommandHandler : IRequestHandler<UpdateRoomDetail
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateRoomDetailCommand request, CancellationToken cancellationToken)
+
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateRoomViewCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -54,31 +55,19 @@ internal class UpdateRoomDetailCommandHandler : IRequestHandler<UpdateRoomDetail
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
-            var result = await _unitOfWork.RoomDetailsRepository.UpdateAsync(new Domain.Entities.RoomDetails.RoomDetails()
+            var result = await _unitOfWork.RoomViewRepository.AddAsync(new Domain.Entities.RoomView.RoomView()
             {
-                UpdatedBy = user.Id,
-                Id= request.Id,
-                GenericTitleId = request.GenericTitleId,
-                RoomTypeLookUpId = request.RoomTypeLookUpId,
-                RoomSizeUnitLookUpId = request.RoomSizeUnitLookUpId,
-                RoomSize = request.RoomSize,
-                IsSharedBathroom = request.IsSharedBathroom,
-                Price = request.Price,
-                AdditionalMatricCharges = request.AdditionalMatricCharges,
-                RoomNumber = request.RoomNumber,
-                IsAvailable = request.IsAvailable,
-                IsFullyRefundable = request.IsFullyRefundable,
-                IsPartiallyRefundable = request.IsPartiallyRefundable,
-                CultureId = request.CultureId,
+                CreatedBy = user.Id,
                 Description = request.Description,
-                RoomViewLookUpId = request.RoomViewLookUpId,
-                OutDoorLookUpId = request.OutDoorLookUpId,
+                Name = request.Name,
+                CultureId = request.CultureId,
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
+
+
+
         }
     }
-
 }
-
