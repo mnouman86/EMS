@@ -17,5 +17,7 @@ namespace CleanArc.Application.Features.OutDoor.Queries.GetAllOutDoor
         public DateTime CreatedAt { get; set; }
         public int UpdatedBy { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public int OutDoorLookUpId { get; set; }
+
     }
 }

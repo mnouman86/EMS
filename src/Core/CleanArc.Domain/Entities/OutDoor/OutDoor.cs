@@ -22,6 +22,6 @@ namespace CleanArc.Domain.Entities.OutDoor
     public class OutDoorLookUp
     {
         public int OutDoorLookUpId { get; set; }
-        public string? Language { get; set; }
+        public string? Name { get; set; }
     }
 }
