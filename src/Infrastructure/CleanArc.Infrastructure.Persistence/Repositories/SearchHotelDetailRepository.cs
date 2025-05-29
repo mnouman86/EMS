@@ -83,7 +83,7 @@ public class SearchHotelDetailRepository : ISearchHotelRepository
 				parameters.Add("@Amenities", searchRequest.Amenities, DbType.String);
 				parameters.Add("@Name", searchRequest.Name, DbType.String);
 				parameters.Add("@Type", searchRequest.Type, DbType.String);
-				parameters.Add("@PropertyType", searchRequest.Type, DbType.String);
+				parameters.Add("@PropertyType", searchRequest.PropertyType, DbType.String);
 				parameters.Add("@RoomView", searchRequest.RoomView, DbType.String);
 				parameters.Add("@OutDoor", searchRequest.OutDoor, DbType.String);
                 parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
