@@ -62,6 +62,10 @@ namespace CleanArc.Application.Models.Request
         public string? Amenities { get; set; }
         public string? Name { get; set; }
         public string? Type { get; set; }
+        public string? TransmissionType { get; set; }
+        public int? MinCapacity { get; set; }
+        public int? MaxCapacity { get; set; }
+        public string? Make { get; set; }
 
     }
 
