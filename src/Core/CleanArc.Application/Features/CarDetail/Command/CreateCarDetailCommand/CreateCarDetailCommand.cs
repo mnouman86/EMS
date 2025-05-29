@@ -13,12 +13,15 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.CarDetail.Command.CreateCarDetailCommand;
 
-public record CreateCarDetailCommand(int? BusinessId, string? Model, string? Year, 
+public record CreateCarDetailCommand(int? BusinessId, string? Model, int? ManufacturerLookUpId, string? Year, 
     string? VehicleIdentificationNumber, string? PlateNumber, int? NoOfSeat, int? RentPrice
     , string? About, int? CultureId, int? ServiceTypeEnumId, int? ServiceCategoryId, 
     int? VehicleTypeLookUpId, int? DrivingAvailabilityOptionLookUpId, decimal? PerHourPrice,
     int[]? LanguageLookUpId, bool? IsPartiallyRefundable, bool? IsFullyRefundable,
-    string? RefundPolicy, string? NonRefundPolicy, string? CancellationPolicy) : IRequest<OperationResult<ResponseEntity>>,
+    string? RefundPolicy, string? NonRefundPolicy
+    , string? CancellationPolicy
+    , string? TransmissionType
+    ) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateCarDetailCommand>
 {
     [JsonIgnore]

@@ -25,6 +25,7 @@ namespace CleanArc.Application.Features.CarDetail.Queries.GetCarDetailById
         public int? ReviewsCount { get; set; }
         public int? Rating { get; set; }
         public string Model { get; set; }
+        public string TransmissionType { get; set; }
         public string Year { get; set; }
         public string VehicleIdentificationNumber { get; set; }
         public string PlateNumber { get; set; }
@@ -44,6 +45,7 @@ namespace CleanArc.Application.Features.CarDetail.Queries.GetCarDetailById
         public string? NonRefundPolicy { get; set; }
         public string? CancellationPolicy { get; set; }
         public int? VehicleTypeLookUpId { get; set; } 
+        public int? ManufacturerLookUpId { get; set; } 
         public int? DrivingAvailabilityOptionLookUpId { get; set; } 
         public decimal? PerHourPrice { get; set; }
 

@@ -75,7 +75,9 @@ internal class UpdateCarDetailCommandHandler : IRequestHandler<UpdateCarDetailCo
                 PerHourPrice = request.PerHourPrice,
                 LanguageLookUpId = request.LanguageLookUpId,
                 IsFullyRefundable = request.IsFullyRefundable,
-                IsPartiallyRefundable = request.IsPartiallyRefundable
+                IsPartiallyRefundable = request.IsPartiallyRefundable,
+                TransmissionType = request.TransmissionType,
+                ManufacturerLookUpId = request.ManufacturerLookUpId,
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

@@ -20,6 +20,9 @@ public class SearchBusinessCarDetail
     public int? ServiceCategoryId { get; set; }
     public int? BusinessId { get; set; }
     public string? Model { get; set; }
+    public int? ManufacturerLookUpId { get; set; }
+    public string? Manufacturer { get; set; }
+    public string? TransmissionType { get; set; }
     public string? Year { get; set; }
     public string? VehicleIdentificationNumber { get; set; }
     public string? PlateNumber { get; set; }

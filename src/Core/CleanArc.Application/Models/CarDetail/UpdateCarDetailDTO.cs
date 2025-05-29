@@ -11,6 +11,7 @@ namespace CleanArc.Application.Models.CarDetail
         public int Id { get; set; }
         public int? BusinessId { get; set; }
         public string? Model { get; set; }
+        public string? TransmissionType { get; set; }
         public string? Year { get; set; }
         public string? VehicleIdentificationNumber { get; set; }
         public string? PlateNumber { get; set; }
@@ -32,6 +33,7 @@ namespace CleanArc.Application.Models.CarDetail
         public string? NonRefundPolicy { get; set; }
         public string? CancellationPolicy { get; set; }
         public int? VehicleTypeLookUpId { get; set; }
+        public int? ManufacturerLookUpId { get; set; }
         public int? DrivingAvailabilityOptionLookUpId { get; set; }
         public decimal? PerHourPrice { get; set; }
     }
