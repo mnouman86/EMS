@@ -65,7 +65,7 @@ namespace CleanArc.Application.Models.Request
         public string? TransmissionType { get; set; }
         public int? MinCapacity { get; set; }
         public int? MaxCapacity { get; set; }
-        public string? Make { get; set; }
+        public string? Manufacturer { get; set; }
 
     }
 
