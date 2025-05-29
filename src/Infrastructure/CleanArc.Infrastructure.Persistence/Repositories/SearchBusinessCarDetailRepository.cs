@@ -89,9 +89,9 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     parameters.Add("@Name", searchRequest.Name, DbType.String);
                     parameters.Add("@Type", searchRequest.Type, DbType.String);
                     parameters.Add("@TransmissionType", searchRequest.TransmissionType, DbType.String);
-                    parameters.Add("@MinCapacity", searchRequest.MinCapacity, DbType.String);
-                    parameters.Add("@MaxCapacity", searchRequest.MaxCapacity, DbType.String);
-                    parameters.Add("@Make", searchRequest.Make, DbType.String);
+                    parameters.Add("@MinCapacity", searchRequest.MinCapacity, DbType.Int32);
+                    parameters.Add("@MaxCapacity", searchRequest.MaxCapacity, DbType.Int32);
+                    parameters.Add("@Manufacturer", searchRequest.Manufacturer, DbType.String);
                     parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
                     parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
                     parameters.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
