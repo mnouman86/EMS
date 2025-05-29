@@ -47,6 +47,7 @@ namespace CleanArc.Application.Models.Request
         public string? Amenities { get; set; }
         public string? Name { get; set; }
         public string? Type { get; set; }
+        public string? PropertyType { get; set; }
         public string? RoomView { get; set; }
         public string? OutDoor { get; set; }
     
