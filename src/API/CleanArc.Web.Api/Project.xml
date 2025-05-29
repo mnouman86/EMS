@@ -713,6 +713,14 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <member name="M:CleanArc.Web.Api.Controllers.V1.Manufacturer.ManufacturerController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.Manufacturer.Command.CreateManufacturerCommand.CreateManufacturerCommand,CleanArc.Application.Features.Manufacturer.Command.UpdateManufacturerCommand.UpdateManufacturerCommand,CleanArc.Application.Features.Manufacturer.Command.DeleteManufacturerCommand.DeleteManufacturerCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.Manufacturer.Queries.GetAllManufacturer.GetAllManufacturerQuery,System.Collections.Generic.List{CleanArc.Application.Features.Manufacturer.Queries.GetAllManufacturer.GetAllManufacturerQueryResult},CleanArc.Application.Features.Manufacturer.Queries.GetManufacturerById.GetManufacturerByIdQuery,CleanArc.Application.Features.Manufacturer.Queries.GetManufacturerById.GetManufacturerByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.Manufacturer.ManufacturerController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <member name="T:CleanArc.Web.Api.Controllers.V1.MappingCarAmenities.MappingCarAmenitiesController">
             <summary>
             MappingCarAmenitiesController is responsible for handling HTTP requests related to Car amenity mapping operations
