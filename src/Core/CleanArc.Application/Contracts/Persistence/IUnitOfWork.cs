@@ -33,6 +33,7 @@ public interface IUnitOfWork
     public ILanguageRepository LanguageRepository { get; }
     public IRoomViewRepository RoomViewRepository { get; }
     public IManufacturerRepository ManufacturerRepository { get; }
+    public IFilterCategoryRepository FilterCategoryRepository { get; }
     public IOutDoorRepository OutDoorRepository { get; }
     public IAmenityMappingRepository AmenityMappingRepository { get; }
     public IMappingHotelLanguageRepository MappingHotelLanguageRepository { get; }
