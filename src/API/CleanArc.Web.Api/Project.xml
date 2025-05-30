@@ -1228,5 +1228,13 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <member name="M:CleanArc.Web.Api.Controllers.V1.WishList.WishListController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.WishList.Command.CreateWishListCommand.CreateWishListCommand,CleanArc.Application.Features.WishList.Command.UpdateWishListCommand.UpdateWishListCommand,CleanArc.Application.Features.WishList.Command.DeleteWishListCommand.DeleteWishListCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.WishList.Queries.GetAllWishList.GetAllWishListQuery,System.Collections.Generic.List{CleanArc.Application.Features.WishList.Queries.GetAllWishList.GetAllWishListQueryResult},CleanArc.Application.Features.WishList.Queries.GetWishListById.GetWishListByIdQuery,CleanArc.Application.Features.WishList.Queries.GetWishListById.GetWishListByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.WishList.WishListController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
     </members>
 </doc>

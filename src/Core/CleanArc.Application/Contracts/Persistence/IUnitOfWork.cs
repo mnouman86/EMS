@@ -34,6 +34,7 @@ public interface IUnitOfWork
     public IRoomViewRepository RoomViewRepository { get; }
     public IManufacturerRepository ManufacturerRepository { get; }
     public IFilterCategoryRepository FilterCategoryRepository { get; }
+    public IWishListRepository WishListRepository { get; }
     public IOutDoorRepository OutDoorRepository { get; }
     public IAmenityMappingRepository AmenityMappingRepository { get; }
     public IMappingHotelLanguageRepository MappingHotelLanguageRepository { get; }
