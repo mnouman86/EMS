@@ -49,6 +49,7 @@ public class UnitOfWork : IUnitOfWork
     public ILanguageRepository LanguageRepository { get; set; }
     public IRoomViewRepository RoomViewRepository { get; set; }
     public IManufacturerRepository ManufacturerRepository { get; set; }
+    public IFilterCategoryRepository FilterCategoryRepository { get; set; }
     public IOutDoorRepository OutDoorRepository { get; set; }
     public IBusinessRepository BusinessRepository { get; set; }
     public IBusinessTypeRepository BusinessTypeRepository { get; set; }
@@ -152,6 +153,7 @@ public class UnitOfWork : IUnitOfWork
         ILogger<LanguageRepository> _loggerLanguage,
         ILogger<RoomViewRepository> _loggerRoomView,
         ILogger<ManufacturerRepository> _loggerManufacturer,
+        ILogger<FilterCategoryRepository> _loggerFilterCategory,
         ILogger<OutDoorRepository> _loggerOutDoor,
         ILogger<AmenityMappingRepository> _loggerAmenityMapping,
         ILogger<MappingHotelLanguageRepository> _loggerMappingHotelLanguage,
@@ -319,6 +321,7 @@ public class UnitOfWork : IUnitOfWork
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         RoomViewRepository = new RoomViewRepository(configuration, mapper, _loggerRoomView, httpContextAccessor);
         ManufacturerRepository = new ManufacturerRepository(configuration, mapper, _loggerManufacturer, httpContextAccessor);
+        FilterCategoryRepository = new FilterCategoryRepository(configuration, mapper, _loggerFilterCategory, httpContextAccessor);
         OutDoorRepository = new OutDoorRepository(configuration, mapper, _loggerOutDoor, httpContextAccessor);
         SearchFilterStayRepository = new SearchFilterStayRepository(configuration, mapper, _loggerSearchFilterStay, httpContextAccessor);
         SearchFilterThingsToDoRepository = new SearchFilterThingsToDoRepository(configuration, mapper, _loggerSearchFilterThingsToDo, httpContextAccessor);
