@@ -2,6 +2,8 @@
 using CleanArc.Application.Features.AmenityMapping.Queries.GetAllAmenityMapping;
 using CleanArc.Application.Features.GenericMedia.Queries.GetAllGenericMedia;
 using CleanArc.Application.Features.Language.Queries.GetAllLanguages;
+using CleanArc.Application.Features.OutDoor.Queries.GetAllOutDoor;
+using CleanArc.Application.Features.RoomView.Queries.GetAllRoomView;
 using CleanArc.Domain.Entities.Language;
 using System;
 using System.Collections.Generic;
@@ -15,8 +17,9 @@ public class GetAllRoomDetailQueryResult
 {
     public int Id { get; set; }
     public int? GenericTitleId { get; set; }
-    
 
+    public IEnumerable<GetAllRoomViewQueryResult> RoomView { get; set; }
+    public IEnumerable<GetAllOutDoorQueryResult> OutDoor { get; set; }
     public string? HotelName { get; set; }
     public string? Description { get; set; }
     public int? RoomTypeLookUpId { get; set; }
