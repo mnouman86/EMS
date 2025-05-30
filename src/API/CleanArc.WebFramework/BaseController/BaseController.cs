@@ -31,7 +31,9 @@ public class BaseController : ControllerBase
             return new ServerErrorResult("Server Error");
 
 
-        if (result.IsSuccess) return result.Result is bool ? Ok() : Ok(result.Result);
+        if (result.IsSuccess) return result.Result is bool ? StatusCode(result.StatusCode, 
+            new { Message = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(result.Message.ToLower()), StatusCode = result.StatusCode, result.IsSuccess }) 
+                : Ok(result.Result);
 
         if (result.IsNotFound)
         {
