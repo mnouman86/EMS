@@ -22,6 +22,8 @@ namespace CleanArc.Application.Features.RoomDetails.Queries.GetHotelDetailForRoo
         public IEnumerable<GetAllAmenityMappingQueryResult> Amenities { get; set; }
         public IEnumerable<GetAllFAQsQueryResult> FAQs { get; set; }
         public IEnumerable<GetAllCustomerReviewsQueryResult> Reviews { get; set; }
-        
+
+        public IEnumerable<GetAllRoomViewQueryResult> RoomView { get; set; }
+        public IEnumerable<GetAllOutDoorQueryResult> OutDoor { get; set; }
     }
 }

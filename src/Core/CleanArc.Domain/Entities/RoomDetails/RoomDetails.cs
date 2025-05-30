@@ -47,8 +47,6 @@ public class RoomDetails
     public List<GenericMedia.GenericMedia> Medias { get; set; }
     public int[]? RoomViewLookUpId { get; set; }
     public int[]? OutDoorLookUpId { get; set; }
-    public List<RoomViewLookUp>? RoomView { get; set; }
-
-    public List<OutDoorLookUp>? OutDoor { get; set; }
+    
 
 }
