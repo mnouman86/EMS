@@ -215,6 +215,12 @@ public class RoomDetailsRepository : IRoomDetailsRepository
 					var reviews = result.Read<CustomerReview>().ToList();
                     hotelDetail.Reviews = reviews;
 
+                    var roomView = result.Read<RoomView>().ToList();
+                    hotelDetail.RoomView = roomView;
+
+                    var outDoor = result.Read<OutDoor>().ToList();
+                    hotelDetail.OutDoor = outDoor;
+
                     if (!result.IsConsumed)
                     {
                         result.Dispose();
@@ -244,11 +250,11 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                         var amenities = await connection.QueryAsync<Domain.Entities.AmenityMapping.AmenityMapping>(AmenityMappingQueries.GetByAmenityTypeEnumID_AmenityMapping, Params, commandType: CommandType.StoredProcedure);
                         item.RoomAmenities = amenities.ToList();
 
-                        var roomView = await connection.QueryAsync<Domain.Entities.RoomView.RoomViewLookUp>(RoomViewQueries.GetALL_RoomView, Params, commandType: CommandType.StoredProcedure);
-                        item.RoomView = roomView.ToList();
+                        //var roomView = await connection.QueryAsync<Domain.Entities.RoomView.RoomViewLookUp>(RoomViewQueries.GetALL_RoomView, Params, commandType: CommandType.StoredProcedure);
+                        //item.RoomView = roomView.ToList();
 
-                        var outDoor = await connection.QueryAsync<Domain.Entities.OutDoor.OutDoorLookUp>(OutDoorQueries.GetALL_OutDoor, Params, commandType: CommandType.StoredProcedure);
-                        item.OutDoor = outDoor.ToList();
+                        //var outDoor = await connection.QueryAsync<Domain.Entities.OutDoor.OutDoorLookUp>(OutDoorQueries.GetALL_OutDoor, Params, commandType: CommandType.StoredProcedure);
+                        //item.OutDoor = outDoor.ToList();
                     }
                 }
 
