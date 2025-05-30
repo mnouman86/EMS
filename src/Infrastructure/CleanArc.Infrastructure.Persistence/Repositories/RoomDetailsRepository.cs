@@ -243,6 +243,12 @@ public class RoomDetailsRepository : IRoomDetailsRepository
 
                         var amenities = await connection.QueryAsync<Domain.Entities.AmenityMapping.AmenityMapping>(AmenityMappingQueries.GetByAmenityTypeEnumID_AmenityMapping, Params, commandType: CommandType.StoredProcedure);
                         item.RoomAmenities = amenities.ToList();
+
+                        var roomView = await connection.QueryAsync<Domain.Entities.RoomView.RoomViewLookUp>(RoomViewQueries.GetALL_RoomView, Params, commandType: CommandType.StoredProcedure);
+                        item.RoomView = roomView.ToList();
+
+                        var outDoor = await connection.QueryAsync<Domain.Entities.OutDoor.OutDoorLookUp>(OutDoorQueries.GetALL_OutDoor, Params, commandType: CommandType.StoredProcedure);
+                        item.OutDoor = outDoor.ToList();
                     }
                 }
 
