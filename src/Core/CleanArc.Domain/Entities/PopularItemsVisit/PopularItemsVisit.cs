@@ -11,6 +11,7 @@ public  class PopularItemsVisit
     
 {
     public int Id { get; set; }
+    public int GenericTitleId { get; set; }
     public int? UserID { get; set; }
     public int? ServiceId { get; set; }
     public Decimal? Price { get; set; }

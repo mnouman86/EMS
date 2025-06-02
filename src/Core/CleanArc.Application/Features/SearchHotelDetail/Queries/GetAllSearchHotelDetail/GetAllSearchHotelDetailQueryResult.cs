@@ -22,6 +22,7 @@ public class GetAllSearchHotelDetailQueryResult
     public int? NoOfRooms { get; set; }
     public int? NoOfDays { get; set; }
     public int Id { get; set; }
+    public int GenericTitleId { get; set; }
     public int HotelID { get; set; }
     public int CityID { get; set; }
     public string Name { get; set; }
