@@ -9,7 +9,7 @@ namespace CleanArc.Application.Models.WishList
     public class CreateWishListDTO
     {
         // public int Id { get; set; }
-        public int EnumServiceTypeId { get; set; }
+        public int ServiceTypeEnumId { get; set; }
         public int GenericTitleId { get; set; }
         public int WishListNameLookUpId { get; set; }
         public int? Priority { get; set; }

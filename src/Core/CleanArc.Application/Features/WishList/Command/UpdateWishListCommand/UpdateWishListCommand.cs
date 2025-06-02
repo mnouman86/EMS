@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.WishList.Command.UpdateWishListCommand;
 
-public record UpdateWishListCommand(int Id, int EnumServiceTypeId,int GenericTitleId, 
+public record UpdateWishListCommand(int Id, int ServiceTypeEnumId,int GenericTitleId, 
     int WishListNameLookUpId, int? Priority, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<UpdateWishListCommand>
 {
@@ -20,7 +20,7 @@ IValidatableModel<UpdateWishListCommand>
     public int UserId { get; set; }
     public IValidator<UpdateWishListCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateWishListCommand> validator)
     {
-        validator.RuleFor(c => c.EnumServiceTypeId)
+        validator.RuleFor(c => c.ServiceTypeEnumId)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Enum Service Type Id");

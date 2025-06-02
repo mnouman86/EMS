@@ -58,7 +58,7 @@ internal class UpdateWishListCommandHandler : IRequestHandler<UpdateWishListComm
             {
                 UpdatedBy = user.Id,
                 Id = request.Id,
-                EnumServiceTypeId = request.EnumServiceTypeId,
+                ServiceTypeEnumId = request.ServiceTypeEnumId,
                 GenericTitleId = request.GenericTitleId,
                 WishListNameLookUpId = request.WishListNameLookUpId,
                 Priority = request.Priority,
