@@ -42,6 +42,7 @@ public class GetAllPopularItemsVisitQueryResult
     //public bool? LockoutEnabled { get; set; }
     //public int? AccessFailedCount { get; set; }
     public int? PageId { get; set; }
+    public int? GenericTitleId { get; set; }
     public string? Title { get; set; }
     public string? RoomType { get; set; }
     public int? ServiceId { get; set; }
