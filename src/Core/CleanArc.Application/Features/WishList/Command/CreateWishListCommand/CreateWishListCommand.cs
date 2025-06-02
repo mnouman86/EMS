@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.WishList.Command.CreateWishListCommand
 {
-    public record CreateWishListCommand(int EnumServiceTypeId, int GenericTitleId,
+    public record CreateWishListCommand(int ServiceTypeEnumId, int GenericTitleId,
     int WishListNameLookUpId, int? Priority, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateWishListCommand>
     {
@@ -21,7 +21,7 @@ namespace CleanArc.Application.Features.WishList.Command.CreateWishListCommand
         public int UserId { get; set; }
         public IValidator<CreateWishListCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateWishListCommand> validator)
         {
-            validator.RuleFor(c => c.EnumServiceTypeId)
+            validator.RuleFor(c => c.ServiceTypeEnumId)
                 .NotEmpty()
                 .NotNull()
                 .WithMessage("Please enter a valid Enum Service Type Id");

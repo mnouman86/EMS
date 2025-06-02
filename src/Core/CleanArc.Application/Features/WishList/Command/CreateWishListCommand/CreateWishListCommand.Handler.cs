@@ -58,7 +58,7 @@ internal class CreateWishListCommandHandler : IRequestHandler<CreateWishListComm
             var result = await _unitOfWork.WishListRepository.AddAsync(new Domain.Entities.WishList.WishList()
             {
                 CreatedBy = user.Id,
-                EnumServiceTypeId=request.EnumServiceTypeId,
+                ServiceTypeEnumId=request.ServiceTypeEnumId,
                 GenericTitleId=request.GenericTitleId,
                 WishListNameLookUpId=request.WishListNameLookUpId,
                 Priority=request.Priority,

@@ -9,7 +9,7 @@ namespace CleanArc.Application.Features.WishList.Queries.GetAllWishList
     public class GetAllWishListQueryResult
     {
         public int Id { get; set; }
-        public int EnumServiceTypeId { get; set; }
+        public int ServiceTypeEnumId { get; set; }
         public int GenericTitleId { get; set; }
         public int WishListNameLookUpId { get; set; }
         public string? Priority { get; set; }
