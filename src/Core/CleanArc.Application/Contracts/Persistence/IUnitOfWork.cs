@@ -35,6 +35,7 @@ public interface IUnitOfWork
     public IManufacturerRepository ManufacturerRepository { get; }
     public IFilterCategoryRepository FilterCategoryRepository { get; }
     public IWishListRepository WishListRepository { get; }
+    public IWishListNameRepository WishListNameRepository { get; }
     public IOutDoorRepository OutDoorRepository { get; }
     public IAmenityMappingRepository AmenityMappingRepository { get; }
     public IMappingHotelLanguageRepository MappingHotelLanguageRepository { get; }
