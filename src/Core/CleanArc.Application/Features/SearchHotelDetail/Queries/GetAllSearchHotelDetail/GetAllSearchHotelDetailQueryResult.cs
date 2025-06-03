@@ -17,6 +17,8 @@ public class GetAllSearchHotelDetailQueryResult
     public List<GetAllSearchHotelDetail> HotelDetail { get; set; }
     public Decimal? RoomPriceMinimum { get; set; }
     public Decimal? RoomPriceMaximum { get; set; }
+    public DateTime? StartDate { get; set; }
+    public DateTime? EndDate { get; set; }
 }
     public class GetAllSearchHotelDetail {
     public int? NoOfRooms { get; set; }
@@ -48,6 +50,11 @@ public class GetAllSearchHotelDetailQueryResult
     public string? RefundPolicy { get; set; }
     public List<GetAllGenericMediaQueryResult> HotelImages { get; set; }
     public List<GetAllAmenityMappingQueryResult> Amenities { get; set; }
+    public decimal? Discount { get; set; }
+    public int? FilterCategoryLookUpId { get; set; }
+    public string? FilterCategoryName { get; set; }
+    public DateTime? StartDate { get; set; }
+    public DateTime? EndDate { get; set; }
     //public class HotelImage
     //{
     //    public string ImageTitle { get; set; }

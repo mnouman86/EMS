@@ -14,6 +14,11 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 using CleanArc.Application.Features.LastMinuteDeal.Queries.GetAllLastMinuteDeal;
+using CleanArc.Application.Features.Activity.Queries.GetAllSearchActivityDetail;
+using CleanArc.Application.Features.SearchHotelDetail.Queries.GetAllSearchHotelDetail;
+using CleanArc.Domain.Entities.Language;
+using CleanArc.Domain.Entities.SearchHotelDetail;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArc.Application.Features.Language.Queries.GetAllLastMinuteDeal;
 
@@ -50,13 +55,29 @@ internal class GetAllLastMinuteDealQueryHandler : IRequestHandler<GetAllLastMinu
 
             if (response.Code != 200)
             {
+                
                 return OperationResult<List<GetAllLastMinuteDealQueryResult>>.FailureResult(
                     response.Message,
                 response.Code
                 );
             }
-
             var mappedResult = _mapper.Map<List<GetAllLastMinuteDealQueryResult>>(response.Data);
+            //GetAllLastMinuteDealQueryResult detail = new GetAllLastMinuteDealQueryResult();
+
+            //detail.HotelDetail =mappedResult ;//_mapper.Map<List<GetAllLastMinuteDeals>>(response);
+              
+            //if (detail?.HotelDetail != null && detail?.HotelDetail?.Count > 0)
+            //{
+            //    detail.StartDate = detail.HotelDetail.Min(x => x.StartDate);
+            //    detail.EndDate = detail.HotelDetail.Max(x => x.EndDate);
+            //}
+            //else
+            //{
+            //    detail.StartDate = null; // or DateTime.MinValue or default
+            //    detail.EndDate = null;
+            //}
+            
+
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
             return OperationResult<List<GetAllLastMinuteDealQueryResult>>.SuccessResult(

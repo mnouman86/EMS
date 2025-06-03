@@ -45,7 +45,11 @@ namespace CleanArc.Domain.Entities.SearchHotelDetail
         public string? RefundPolicy { get; set; }
         public List<GenericMedia.GenericMedia> HotelImages { get; set; }
         public List<AmenityMapping.AmenityMapping> Amenities { get; set; }
-
+        public decimal? Discount { get; set; }
+        public int? FilterCategoryLookUpId { get; set; }
+        public string? FilterCategoryName { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
 }
     //public class HotelImage
