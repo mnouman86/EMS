@@ -6,7 +6,9 @@ using CleanArc.Application.Features.PopularItemsVisit.Queries.GetPopularItemsVis
 using CleanArc.Application.Features.PopularItemsVisit.Queries.GetAllPopularItemsVisit;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
+using Microsoft.AspNetCore.Mvc; 
+using CleanArc.Domain.Common;
+using CleanArc.Application.Features.PopularItemsCityWise.Queries.GetAllPopularItemsCityWise;
 
 namespace CleanArc.Web.Api.Controllers.V1.PopularItemsVisit
 {
@@ -57,44 +59,8 @@ namespace CleanArc.Web.Api.Controllers.V1.PopularItemsVisit
     public class PopularItemsVisitController : _BaseController<CreatePopularItemsVisitCommand, UpdatePopularItemsVisitCommand, DeletePopularItemsVisitCommand, ResponseEntity, GetAllPopularItemsVisitQuery,
     List<GetAllPopularItemsVisitQueryResult>, GetPopularItemsVisitByIdQuery, GetPopularItemsVisitByIdQueryResult>
     {
-        //private readonly ISender _sender;
-
-        //public PopularItemsVisitController(ISender sender)
-        //{
-        //    _sender = sender;
-        //}
-
-        //[HttpPost("CreatePopularItemsVisit")]
-        //public async Task<IActionResult> CreatePopularItemsVisit(CreatePopularItemsVisitCommand model)
-        //{
-        //    model.UserId = base.UserId;
-        //    var command = await _sender.Send(model);
-
-        //    return base.OperationResult(command);
-        //}
-        //[HttpPost("UpdatePopularItemsVisit")]
-        //public async Task<IActionResult> UpdatePopularItemsVisit(UpdatePopularItemsVisitCommand model)
-        //{
-        //    model.UserId = base.UserId;
-        //    var command = await _sender.Send(model);
-
-        //    return base.OperationResult(command);
-        //}
-        //[HttpPost("DeletePopularItemsVisit")]
-        //public async Task<IActionResult> DeletePopularItemsVisit(DeletePopularItemsVisitCommand model)
-        //{
-        //    model.UserId = base.UserId;
-        //    var command = await _sender.Send(model);
-
-        //    return base.OperationResult(command);
-        //}
-        //[HttpGet("GetAllPopularItemsVisit")]
-        //public async Task<IActionResult> GetAllPopularItemsVisit( )
-        //{
-        //    var queryResult = await _sender.Send(new GetAllPopularItemsVisitQuery());
-
-        //    return base.OperationResult(queryResult);
-        //}
+        private readonly ISender _sender;
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="PopularItemsVisitController"/> class.
         /// </summary>
@@ -104,8 +70,14 @@ namespace CleanArc.Web.Api.Controllers.V1.PopularItemsVisit
         public PopularItemsVisitController(ISender sender, ILogger<_BaseController<CreatePopularItemsVisitCommand, UpdatePopularItemsVisitCommand, DeletePopularItemsVisitCommand, ResponseEntity, GetAllPopularItemsVisitQuery,
    List<GetAllPopularItemsVisitQueryResult>, GetPopularItemsVisitByIdQuery, GetPopularItemsVisitByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
-
+            _sender = sender;
         }
+        [HttpPost("GetAllPopularItemsCityWise")]
+        public async Task<IActionResult> GetKBMinimalView(GetAllPopularItemsCityWiseQuery query)
+        {
+            var result = await _sender.Send(query);
 
+            return base.OperationResult(result);
+        }
     }
 }
