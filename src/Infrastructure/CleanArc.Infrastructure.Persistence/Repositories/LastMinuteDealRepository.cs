@@ -139,7 +139,7 @@ public class LastMinuteDealRepository : ILastMinuteDealRepository
                     ParamsImage.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                     var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, ParamsImage, commandType: CommandType.StoredProcedure);
-                    item.HotelImages = imageList.ToList();
+                    item.HotelImages = imageList.Where(x=>x.IsMain==true).ToList();
 
                     var ParamsAmenity = Params;
                     List<FilterParameter> Amenity = new List<FilterParameter>();
