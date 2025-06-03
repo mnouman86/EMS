@@ -51,6 +51,7 @@ public class UnitOfWork : IUnitOfWork
     public IManufacturerRepository ManufacturerRepository { get; set; }
     public IFilterCategoryRepository FilterCategoryRepository { get; set; }
     public IWishListRepository WishListRepository { get; set; }
+    public ILastMinuteDealRepository LastMinuteDealRepository { get; set; }
     public IWishListNameRepository WishListNameRepository { get; set; }
     public IOutDoorRepository OutDoorRepository { get; set; }
     public IBusinessRepository BusinessRepository { get; set; }
@@ -156,6 +157,7 @@ public class UnitOfWork : IUnitOfWork
         ILogger<RoomViewRepository> _loggerRoomView,
         ILogger<ManufacturerRepository> _loggerManufacturer,
         ILogger<FilterCategoryRepository> _loggerFilterCategory,
+        ILogger<LastMinuteDealRepository> _loggerLastMinuteDeal,
         ILogger<WishListRepository> _loggerWishList,
         ILogger<WishListNameRepository> _loggerWishListName,
         ILogger<OutDoorRepository> _loggerOutDoor,
@@ -326,6 +328,7 @@ public class UnitOfWork : IUnitOfWork
         RoomViewRepository = new RoomViewRepository(configuration, mapper, _loggerRoomView, httpContextAccessor);
         ManufacturerRepository = new ManufacturerRepository(configuration, mapper, _loggerManufacturer, httpContextAccessor);
         FilterCategoryRepository = new FilterCategoryRepository(configuration, mapper, _loggerFilterCategory, httpContextAccessor);
+        LastMinuteDealRepository = new LastMinuteDealRepository(configuration, mapper, _loggerLastMinuteDeal, httpContextAccessor);
         WishListRepository = new WishListRepository(configuration, mapper, _loggerWishList, httpContextAccessor);
         WishListNameRepository = new WishListNameRepository(configuration, mapper, _loggerWishListName, httpContextAccessor);
         OutDoorRepository = new OutDoorRepository(configuration, mapper, _loggerOutDoor, httpContextAccessor);

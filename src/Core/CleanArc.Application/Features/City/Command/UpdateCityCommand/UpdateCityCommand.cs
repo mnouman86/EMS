@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.City.Command.UpdateCityCommand
 {
-    public record UpdateCityCommand(int Id, string? Name, string? Description, int? StateLookUpId, int? CultureId, bool? IsMain) : IRequest<OperationResult<ResponseEntity>>,
+    public record UpdateCityCommand(int Id, string? Name, string? Description, int? StateLookUpId, int? CultureId, bool? IsMain, string? ImagePath, string? ImageTitle) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateCityCommand>
     {
         [JsonIgnore]

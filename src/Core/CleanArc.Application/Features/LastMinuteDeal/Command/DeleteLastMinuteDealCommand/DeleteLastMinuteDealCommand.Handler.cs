@@ -1,8 +1,8 @@
-﻿using AutoMapper;
-using CleanArc.Application.Contracts.Identity;
+﻿using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.Extensions;
+using MapsterMapper;
 using Mediator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -13,21 +13,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.City.Command.UpdateCityCommand;
+namespace CleanArc.Application.Features.LastMinuteDeal.Command.DeleteLastMinuteDealCommand;
 
-internal class UpdateCityCommandHandler : IRequestHandler<UpdateCityCommand, OperationResult<ResponseEntity>>
+internal class DeleteLastMinuteDealCommandHandler : IRequestHandler<DeleteLastMinuteDealCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<UpdateCityCommandHandler> _logger;
+    private readonly ILogger<DeleteLastMinuteDealCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
-                                                                //private readonly IUnitOfWork _unitOfWork;
-                                                                //private readonly IAppUserManager _userManager;
+    //private readonly IUnitOfWork _unitOfWork;
+    //private readonly IAppUserManager _userManager;
 
 
-    public UpdateCityCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateCityCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public DeleteLastMinuteDealCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<DeleteLastMinuteDealCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -38,7 +38,7 @@ internal class UpdateCityCommandHandler : IRequestHandler<UpdateCityCommand, Ope
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateCityCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(DeleteLastMinuteDealCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -53,23 +53,16 @@ internal class UpdateCityCommandHandler : IRequestHandler<UpdateCityCommand, Ope
             //await _unitOfWork.CommitAsync();
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
-            //return OperationResult<bool>.SuccessResult(true);
-           var result = await _unitOfWork.CityRepository.UpdateAsync(new Domain.Entities.City.City()
-           {
-               UpdatedBy = user.Id,
-               Id = request.Id,
-               Description = request.Description,
-               Name = request.Name,
-               StateLookUpId = request.StateLookUpId,
-               IsMain = request.IsMain,
-               CultureId = request.CultureId,
-               ImagePath = request.ImagePath,
-               ImageTitle = request.ImageTitle,
-           });
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            //await _unitOfWork.AgeTypeRepository.DeleteAsync(new Domain.Entities.AgeType.AgeType()
+            // { UpdatedBy = user.Id, ID = request.ID });
+            var result = await _unitOfWork.LastMinuteDealRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
+            //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
 
+
 }
+
