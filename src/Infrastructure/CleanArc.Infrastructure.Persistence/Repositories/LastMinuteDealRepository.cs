@@ -22,6 +22,8 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Common;
 using CleanArc.Domain.Entities.City;
+using CleanArc.Domain.Entities.SearchHotelDetail;
+using CleanArc.Domain.Enums;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -113,13 +115,49 @@ public class LastMinuteDealRepository : ILastMinuteDealRepository
                 parameters.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+				
 				var result = await connection.QueryAsync<LastMinuteDeal>(LastMinuteDealQueries.GetALL_LastMinuteDeals, parameters, commandType: CommandType.StoredProcedure);
-      
+                //var result = await connection.QueryAsync<LastMinuteDeal>(LastMinuteDealQueries.GetALL_LastMinuteDeals, parameters, commandType: CommandType.StoredProcedure);
+                foreach (var item in result)
+                {
+                    var Params = new DynamicParameters();
+                    Params.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+                    Params.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                    Params.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                    List<FilterParameter> sortingFilter = new List<FilterParameter>();
+                    Params.Add("@SortingArray", DataTableHelper.ToDataTable(sortingFilter), DbType.Object); // Ensure proper type
 
-				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-				var response = new ListResponseWrapper<LastMinuteDeal> { Data = result.ToList(), TotalCount = parameters.Get<int>("@TotalCount"), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
+                    Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-			}
+                    var ParamsImage = Params;
+                    List<FilterParameter> list = new List<FilterParameter>();
+                    list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+                    list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
+
+                    ParamsImage.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+                    ParamsImage.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                    var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, ParamsImage, commandType: CommandType.StoredProcedure);
+                    item.HotelImages = imageList.ToList();
+
+                    var ParamsAmenity = Params;
+                    List<FilterParameter> Amenity = new List<FilterParameter>();
+                    Amenity.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+                    Amenity.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
+                    ParamsAmenity.Add("@FilterArray", DataTableHelper.ToDataTable(Amenity), DbType.Object); // Ensure proper type
+                    ParamsAmenity.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    var amenities = await connection.QueryAsync<Domain.Entities.AmenityMapping.AmenityMapping>(AmenityMappingQueries.GetByAmenityTypeEnumID_AmenityMapping, ParamsAmenity, commandType: CommandType.StoredProcedure);
+                    item.Amenities = amenities.Where(x => x.Selected == true).Take(3).ToList();
+                }
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                //SearchHotelDetail searchHotelDetail = new SearchHotelDetail();
+                //searchHotelDetail.HotelDetail = result.ToList();
+                //searchHotelDetail.RoomPriceMinimum = result.Count() > 0 ? result.Min(x => x.RoomDetailPrice) : 0;
+                //searchHotelDetail.RoomPriceMaximum = result.Count() > 0 ? result.Max(x => x.RoomDetailPrice) : 0;
+                var response = new ListResponseWrapper<LastMinuteDeal> { Data = result.ToList(), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };
+                return response;
+            }
 		}
     }
     public async Task<SingleResponseWrapper<LastMinuteDeal>> GetByIdAsync(SearchRequestById searchRequestById)
