@@ -20,6 +20,9 @@ namespace CleanArc.Application.Features.WishList.Queries.GetAllWishList
         public int UpdatedBy { get; set; }
         public DateTime UpdatedAt { get; set; }
         public int WishListLookUpId { get; set; }
+        public string? HotelName { get; set; }
+        public string? RoomType { get; set; }
+        public string? WishListName { get; set; }
 
     }
 }

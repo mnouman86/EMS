@@ -20,5 +20,8 @@ namespace CleanArc.Domain.Entities.WishList
         public int? UpdatedBy { get; set; }
         public DateTime? UpdatedAt { get; set; }
 		public int? CultureId { get; set; }
-	}
+		public string? HotelName { get; set; }
+		public string? RoomType { get; set; }
+		public string? WishListName { get; set; }
+    }
 }
