@@ -29,6 +29,7 @@ public class GetAllRoomDetailQueryResult
     public string? RoomSizeUnit { get; set; }
     public string? RoomSize { get; set; }
     public bool? IsSharedBathroom { get; set; }
+    public bool? IsDealExist { get; set; }
     public bool? IsPartiallyRefundable { get; set; }
     public bool? IsFullyRefundable { get; set; }
     public decimal? Price { get; set; }
