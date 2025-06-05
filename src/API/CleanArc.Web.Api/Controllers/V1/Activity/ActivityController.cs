@@ -103,8 +103,5 @@ namespace CleanArc.Web.Api.Controllers.V1.Activity
 
             return base.OperationResult(result);
         }
-
-
-
     }
 }
