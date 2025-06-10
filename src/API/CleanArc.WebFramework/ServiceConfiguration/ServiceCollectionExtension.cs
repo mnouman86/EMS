@@ -23,6 +23,7 @@ public static class ServiceCollectionExtension
         });
 
         services.Configure<RateLimitSettings>(configuration.GetSection("RateLimit"));
+        services.Configure<EmailVerificationSettings>(configuration.GetSection("EmailVerificationSettings"));
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         services.AddSingleton<IClientIdentifier, ClientIdentifier>();
 

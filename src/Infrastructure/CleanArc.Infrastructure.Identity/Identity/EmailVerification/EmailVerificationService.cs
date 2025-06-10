@@ -2,9 +2,11 @@
 using CleanArc.Application.Models.Common;
 using CleanArc.Domain.Common;
 using CleanArc.Domain.Entities.User;
+using CleanArc.Domain.Settings;
 using CleanArc.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,32 +19,33 @@ namespace CleanArc.Infrastructure.Identity.Identity.EmailVerification
     {
         private readonly ApplicationDbContext _context;
         private readonly IEmailService _emailService;
-        private const int _maxAttempts = 3;
-        private const int _codeExpiryMinutes = 15;
+        private readonly EmailVerificationSettings _settings;
+
+        //private const int _maxAttempts = 3;
+        //private const int _codeExpiryMinutes = 15;
 
         public EmailVerificationService(
             ApplicationDbContext context,
-            IEmailService emailService)
+            IEmailService emailService, IOptions<EmailVerificationSettings> settings)
         {
             _context = context;
             _emailService = emailService;
+            _settings=settings.Value;
         }
 
         public async Task<IdentityResult> GenerateAndSendCodeAsync(string email)
         {
             try
             {
-                
-
                 var verification = await _context.EmailVerificationCodes
                     .FirstOrDefaultAsync(v => v.Email == email);
 
                 // Rate limiting check
                 if (verification != null &&
-                    verification.RequestCount >= 3 &&
-                    (DateTime.UtcNow - verification.LastRequestTime).TotalMinutes < 10)
+                    verification.RequestCount >= _settings.MaxAttempts &&
+                    (DateTime.UtcNow - verification.LastRequestTime).TotalMinutes < _settings.ConcurrentAttemptsMinutes)
                 {
-                    var timeLeft = 10 - (int)(DateTime.UtcNow - verification.LastRequestTime).TotalMinutes;
+                    var timeLeft = _settings.ConcurrentAttemptsMinutes - (int)(DateTime.UtcNow - verification.LastRequestTime).TotalMinutes;
                     return IdentityResult.Failed(new IdentityError
                     {
                         Code = ErrorCodes.RateLimitExceeded,
@@ -58,7 +61,7 @@ namespace CleanArc.Infrastructure.Identity.Identity.EmailVerification
                     {
                         Email = email,
                         Code = code,
-                        Expiration = DateTime.UtcNow.AddMinutes(_codeExpiryMinutes),
+                        Expiration = DateTime.UtcNow.AddMinutes(_settings.CodeExpiryMinutes),
                         Attempts = 0,
                         IsVerified = false
                     };
@@ -67,13 +70,13 @@ namespace CleanArc.Infrastructure.Identity.Identity.EmailVerification
                 else
                 {
                     // Reset request count if last request was more than 10 minutes ago
-                    if ((DateTime.UtcNow - verification.LastRequestTime).TotalMinutes >= 10)
+                    if ((DateTime.UtcNow - verification.LastRequestTime).TotalMinutes >= _settings.ConcurrentAttemptsMinutes)
                     {
                         verification.RequestCount = 0;
                     }
 
                     verification.Code = code;
-                    verification.Expiration = DateTime.UtcNow.AddMinutes(_codeExpiryMinutes);
+                    verification.Expiration = DateTime.UtcNow.AddMinutes(_settings.CodeExpiryMinutes);
                     verification.Attempts = 0;
                     verification.IsVerified = false;
                     verification.RequestCount++;
@@ -118,7 +121,7 @@ namespace CleanArc.Infrastructure.Identity.Identity.EmailVerification
                 if (verification.IsVerified)
                     return IdentityResult.Success; // Already verified
 
-                if (verification.Attempts >= _maxAttempts)
+                if (verification.Attempts >= _settings.MaxAttempts)
                     return IdentityResult.Failed(new IdentityError
                     {
                         Code = ErrorCodes.VerificationCodeError,
@@ -139,7 +142,7 @@ namespace CleanArc.Infrastructure.Identity.Identity.EmailVerification
                     verification.Attempts++;
                     await _context.SaveChangesAsync();
 
-                    var remainingAttempts = _maxAttempts - verification.Attempts;
+                    var remainingAttempts = _settings.MaxAttempts - verification.Attempts;
                     return IdentityResult.Failed(new IdentityError
                     {
                         Code =ErrorCodes.VerificationCodeError,

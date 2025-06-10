@@ -15,6 +15,6 @@ namespace CleanArc.Infrastructure.Identity.Identity.Attributes
         }
 
         // Optional: Add properties to customize behavior
-        public string[] RequiredRoles { get; set; } = new[] { "User", "Admin", "Vendor" };
+        //public string[] RequiredRoles { get; set; } = new[] { "User", "Admin", "Vendor" };
     }
 }
