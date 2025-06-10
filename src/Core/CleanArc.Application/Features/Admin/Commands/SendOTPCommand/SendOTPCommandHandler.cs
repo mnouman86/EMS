@@ -4,6 +4,7 @@ using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Features.Admin.Queries.GetToken;
 using CleanArc.Application.Models.Common;
 using CleanArc.Domain.Common;
+using CleanArc.Domain.Enums;
 using CleanArc.Domain.Interfaces.Services;
 using Mediator;
 using Microsoft.Extensions.Logging;
@@ -66,7 +67,7 @@ namespace CleanArc.Application.Features.Admin.Commands.SendOTPCommand
                     return OperationResult<bool>.FailureResult(ErrorCodes.IncorrectPassword);
                 }
 
-                var otp = await _otpService.GenerateAndSendOTPAsync(user.PhoneNumber, user.Id);
+                var otp = await _otpService.GenerateAndSendOTPAsync(request.Method==OTPDeliveryMethod.Email?user.Email :user.PhoneNumber, user.Id,request.Method);
                 return OperationResult<bool>.SuccessResult(true,200,"OTP sent successfully");
             }
             catch (Exception ex)
