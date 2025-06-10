@@ -25,14 +25,17 @@ public class EmailVerifiedOrNoRoleHandler : AuthorizationHandler<EmailVerifiedOr
         var endpoint = httpContext?.GetEndpoint();
         var attribute = endpoint?.Metadata.GetMetadata<ConditionalEmailVerifiedAttribute>();
 
-        var requiredRoles = attribute?.RequiredRoles ?? new[] { "User", "Admin", "Vendor" };
+        //var requiredRoles = attribute?.RequiredRoles ?? new[] { "User", "Admin", "Vendor" };
+
+        var hasAnyRole = context.User.Claims
+            .Any(c => c.Type == ClaimTypes.Role);
 
         // Check if user has any of the specified roles
-        var hasRelevantRole = context.User.Claims
-            .Any(c => c.Type == ClaimTypes.Role &&
-                   requiredRoles.Contains(c.Value));
+        //var hasRelevantRole = context.User.Claims
+        //    .Any(c => c.Type == ClaimTypes.Role &&
+        //           requiredRoles.Contains(c.Value));
 
-        if (!hasRelevantRole)
+        if (!hasAnyRole)
         {
             context.Succeed(requirement);
             return Task.CompletedTask;
