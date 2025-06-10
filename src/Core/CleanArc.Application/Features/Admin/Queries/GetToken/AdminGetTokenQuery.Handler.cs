@@ -37,7 +37,7 @@ public class AdminGetTokenQueryHandler : IRequestHandler<AdminGetTokenQuery, Ope
         _logger.LogInformation("GetByUserName from {@methodName}, Response: {@user}", methodName, user);
 
         if (user is null)
-            return OperationResult<AccessToken>.FailureResult("User not found");
+            return OperationResult<AccessToken>.FailureResult(statusCode:404,errorCode: ErrorCodes.UserNotFound);
 
         // Check if user is locked out
         var isUserLockedOut = await _userManager.IsUserLockedOutAsync(user);
@@ -55,7 +55,7 @@ public class AdminGetTokenQueryHandler : IRequestHandler<AdminGetTokenQuery, Ope
         {
             // Increment access failed count
             var lockoutIncrementResult = await _userManager.IncrementAccessFailedCountAsync(user);
-            return OperationResult<AccessToken>.FailureResult("Password is not correct");
+            return OperationResult<AccessToken>.FailureResult(ErrorCodes.IncorrectPassword);
         }
 
         // Generate token

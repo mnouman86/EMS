@@ -1,6 +1,7 @@
 ﻿using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Models.Common;
 using CleanArc.Application.Models.Identity;
+using CleanArc.Domain.Common;
 using Mediator;
 
 namespace CleanArc.Application.Features.Role.Commands.UpdateRoleClaimsCommand
@@ -21,7 +22,7 @@ namespace CleanArc.Application.Features.Role.Commands.UpdateRoleClaimsCommand
 
             return updateRoleResult
                 ? OperationResult<bool>.SuccessResult(true)
-                : OperationResult<bool>.FailureResult("Could Not Update Claims for given Role");
+                : OperationResult<bool>.FailureResult(ErrorCodes.UpdateClaimFail);
         }
     }
 }

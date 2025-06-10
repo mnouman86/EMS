@@ -1,8 +1,10 @@
-﻿using System.Security.Claims;
-using Asp.Versioning;
+﻿using Asp.Versioning;
 using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.Request;
+using CleanArc.Domain.Common;
 using CleanArc.Domain.Entities.User;
+using CleanArc.Infrastructure.Identity.Identity.Attributes;
 using CleanArc.SharedKernel.Extensions;
 using CleanArc.WebFramework.Filters;
 using Mediator;
@@ -11,9 +13,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
 using Serilog.Context;
-using CleanArc.Application.Models.Request;
+using System.Security.Claims;
 
 
 namespace CleanArc.WebFramework.BaseController;
@@ -73,6 +75,7 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
     /// </summary>
     /// <returns>An action result representing the operation result.</returns>
     //[Authorize]
+    [ConditionalEmailVerified]
     [HttpPost("[controller]GetAll")]
     public async Task<IActionResult> GetAll([FromBody] TQuery query)
     {

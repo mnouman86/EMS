@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Models.Common;
+using CleanArc.Domain.Common;
 using Mediator;
 
 namespace CleanArc.Application.Features.Users.Commands.RequestLogout
@@ -23,7 +24,7 @@ namespace CleanArc.Application.Features.Users.Commands.RequestLogout
             var user = await _userManager.GetUserByIdAsync(request.UserId);
 
             if (user == null) 
-                return OperationResult<bool>.FailureResult("User not found");
+                return OperationResult<bool>.FailureResult(ErrorCodes.UserNotFound);
 
             await _userManager.UpdateSecurityStampAsync(user);
 

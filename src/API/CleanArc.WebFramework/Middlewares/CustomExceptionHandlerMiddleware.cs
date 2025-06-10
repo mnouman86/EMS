@@ -1,5 +1,8 @@
 ﻿using Azure;
 using CleanArc.Application.Models.ApiResult;
+using CleanArc.Application.Models.Common;
+using CleanArc.Domain.Common;
+using CleanArc.Domain.Common.Exceptions;
 using CleanArc.SharedKernel.Extensions;
 using FluentValidation;
 using Microsoft.AspNetCore.Builder;
@@ -7,8 +10,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging; 
-using CleanArc.Domain.Common;
-using CleanArc.Application.Models.Common;
 using System.IO.IsolatedStorage;
 
 namespace CleanArc.WebFramework.Middlewares;
@@ -66,18 +67,59 @@ public class CustomExceptionHandlerMiddleware
                 .Select(e => e.ErrorMessage)
                 .ToList();
             var combinedMessage = string.Join(" | ", errorMessages);
+            string errorCode = ErrorCodes.ValidationError;
+            string errorMessage = ErrorMessages.GetMessage(errorCode);
 
             var result = OperationResult<object>.FailureResult(
-                message: combinedMessage,
-                statusCode: StatusCodes.Status422UnprocessableEntity
+                message: errorMessage,
+                statusCode: StatusCodes.Status422UnprocessableEntity,
+                errorCode: errorCode
             );
 
-            context.Response.StatusCode = StatusCodes.Status422UnprocessableEntity;
-            context.Response.ContentType = "application/problem+json";
-            await context.Response.WriteAsJsonAsync(result);
+            //context.Response.StatusCode = StatusCodes.Status422UnprocessableEntity;
+            //context.Response.ContentType = "application/problem+json";
+            //await context.Response.WriteAsJsonAsync(result);
+            await WriteResponse(context, result);
 
         }
+        catch (EmailVerificationRequiredException)
+        {
+            var result = OperationResult<object>.FailureResult(
+                statusCode: StatusCodes.Status403Forbidden,
+                errorCode: ErrorCodes.EmailVerificationRequired
+            );
 
+            //context.Response.StatusCode = StatusCodes.Status403Forbidden;
+            //context.Response.ContentType = "application/problem+json";
+            //await context.Response.WriteAsJsonAsync(result);
+            await WriteResponse(context, result);
+        }
+        catch (UnauthorizedAccessException ex) when (ex is not EmailVerificationRequiredException)
+        {
+            var result = OperationResult<object>.FailureResult(
+                statusCode: StatusCodes.Status403Forbidden,
+                errorCode: ErrorCodes.AccessDenied
+            );
+
+            //context.Response.StatusCode = StatusCodes.Status403Forbidden;
+            //context.Response.ContentType = "application/problem+json";
+            //await context.Response.WriteAsJsonAsync(result);
+            await WriteResponse(context, result);
+        }
+        //catch (UnauthorizedAccessException authException)
+        //{
+        //    _logger.LogWarning(authException, "Authorization failure");
+
+        //    var statusCode = StatusCodes.Status403Forbidden;
+        //    var result = OperationResult<object>.FailureResult(
+        //        message: authException.Message, // "Email verification required"
+        //        statusCode: statusCode
+        //    );
+
+        //    context.Response.StatusCode = statusCode;
+        //    context.Response.ContentType = "application/problem+json";
+        //    await context.Response.WriteAsJsonAsync(result);
+        //}
         catch (Exception exception)
         {
             _logger.LogError(exception,exception.Message);
@@ -92,18 +134,29 @@ public class CustomExceptionHandlerMiddleware
             //    await context.Response.WriteAsJsonAsync(response);
             //}
             // New implementation using OperationResult
+            
+
             var result = OperationResult<object>.FailureResult(
                 message: _env.IsDevelopment()
                     ? exception.ToString()
-                    : "An unexpected error occurred",
-                statusCode: StatusCodes.Status500InternalServerError
+                    : exception.ToString(),
+                    //: "An unexpected error occurred",
+                statusCode: StatusCodes.Status500InternalServerError,
+                errorCode: ErrorCodes.ServerError
             );
 
-            context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-            context.Response.ContentType = "application/problem+json";
-            await context.Response.WriteAsJsonAsync(result);
-
+            //context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+            //context.Response.ContentType = "application/problem+json";
+            //await context.Response.WriteAsJsonAsync(result);
+            await WriteResponse(context, result);
             //await _next(context);
         }
+
+    }
+    private async Task WriteResponse(HttpContext context, OperationResult<object> result)
+    {
+        context.Response.StatusCode = result.StatusCode;
+        context.Response.ContentType = "application/problem+json";
+        await context.Response.WriteAsJsonAsync(result);
     }
 }

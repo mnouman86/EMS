@@ -82,6 +82,10 @@ public class AppUserManagerImplementation : IAppUserManager
     {
         return _userManager.Users.FirstOrDefaultAsync(c => c.PhoneNumber.Equals(phoneNumber));
     }
+    public async Task<User> GetUserByEmail(string email)
+    {
+        return await _userManager.Users.FirstOrDefaultAsync(c => c.NormalizedEmail.Equals(email.ToUpper()));
+    }
 
     public async Task<SignInResult> AdminLogin(User user, string password)
     {
@@ -141,9 +145,9 @@ public class AppUserManagerImplementation : IAppUserManager
          await _userManager.ResetAccessFailedCountAsync(user);
     }
 
-    public async Task UpdateUserAsync(User user)
+    public async Task<IdentityResult> UpdateUserAsync(User user)
     {
-        await _userManager.UpdateAsync(user);
+       return await _userManager.UpdateAsync(user);
     }
 
     public async Task UpdateSecurityStampAsync(User user)

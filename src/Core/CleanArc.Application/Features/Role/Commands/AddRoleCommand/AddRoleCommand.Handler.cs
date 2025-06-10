@@ -22,9 +22,10 @@ namespace CleanArc.Application.Features.Role.Commands.AddRoleCommand
             if (addRoleResult.Succeeded)
                 return OperationResult<bool>.SuccessResult(true);
 
+            var errorCodes = string.Join("\n", addRoleResult.Errors.Select(c => c.Code));
             var errors = string.Join("\n", addRoleResult.Errors.Select(c => c.Description));
 
-            return OperationResult<bool>.FailureResult(errors);
+            return OperationResult<bool>.FailureResult(errors,errorCode:errorCodes);
         }
     }
 }

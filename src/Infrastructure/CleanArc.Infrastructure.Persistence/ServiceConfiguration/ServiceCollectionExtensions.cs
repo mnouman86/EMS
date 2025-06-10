@@ -1,8 +1,11 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
+using CleanArc.Domain.Interfaces.Services;
 using CleanArc.Infrastructure.Persistence.Repositories.Common;
+using CleanArc.Infrastructure.Persistence.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace CleanArc.Infrastructure.Persistence.ServiceConfiguration;
 
@@ -17,6 +20,8 @@ public static class ServiceCollectionExtensions
             options
                 .UseSqlServer(configuration.GetConnectionString("SqlServer"));
         });
+        services.AddHostedService<VerificationCodeCleanupService>();
+        
 
         return services;
     }

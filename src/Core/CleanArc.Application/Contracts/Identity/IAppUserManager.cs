@@ -14,6 +14,7 @@ public interface IAppUserManager
     Task<IdentityResult> VerifyUserCode(User user,string code);
     Task<string> GenerateOtpCode(User user);
     Task<User> GetUserByPhoneNumber(string phoneNumber);
+    Task<User> GetUserByEmail(string phoneNumber);
     Task<SignInResult> AdminLogin(User user,string password);
     Task<User> GetByUserName(string userName);
     Task<User> GetUserByIdAsync(int userId);
@@ -23,6 +24,6 @@ public interface IAppUserManager
     Task<IdentityResult> IncrementAccessFailedCountAsync(User user);
     Task<bool> IsUserLockedOutAsync(User user);
     Task ResetUserLockoutAsync(User user);
-    Task UpdateUserAsync(User user);
+    Task<IdentityResult> UpdateUserAsync(User user);
     Task UpdateSecurityStampAsync(User user);
 }
