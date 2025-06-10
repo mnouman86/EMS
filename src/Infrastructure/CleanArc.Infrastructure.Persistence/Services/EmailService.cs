@@ -1,5 +1,4 @@
-﻿using CleanArc.Infrastructure.Identity.Identity.Dtos;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using MimeKit;
 using System;
 using System.Collections.Generic;
@@ -8,8 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using MailKit.Net.Smtp;
 using MailKit.Security;
+using CleanArc.Domain.Settings;
 
-namespace CleanArc.Infrastructure.Identity.Identity.EmailVerification
+namespace CleanArc.Infrastructure.Persistence.Services
 {
     public interface IEmailService
     {

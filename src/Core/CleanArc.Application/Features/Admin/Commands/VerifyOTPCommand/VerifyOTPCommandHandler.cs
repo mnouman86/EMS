@@ -29,12 +29,13 @@ namespace CleanArc.Application.Features.Admin.Commands.VerifyOTPCommand
 
         public async ValueTask<OperationResult<AccessToken>> Handle(VerifyOTPCommand request, CancellationToken cancellationToken)
         {
-            var isValid = await _otpService.VerifyOTPAsync(request.PhoneNumber,request.UserId, request.Code);
+            var user = await _userManager.GetUserByIdAsync(request.UserId);
+            var isValid = await _otpService.VerifyOTPAsync(user.PhoneNumber,request.UserId, request.Code);
 
             if (!isValid)
                 return OperationResult<AccessToken>.FailureResult("Invalid or expired OTP");
 
-            var user = await _userManager.GetUserByPhoneNumber(request.PhoneNumber);
+            
 
             // Generate JWT token
             var token = await _jwtService.GenerateAsync(user);

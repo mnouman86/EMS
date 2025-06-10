@@ -10,5 +10,5 @@ using CleanArc.Application.Models.Jwt;
 
 namespace CleanArc.Application.Features.Admin.Commands.VerifyOTPCommand
 {
-    public record VerifyOTPCommand(string PhoneNumber, int UserId, string Code) : IRequest<OperationResult<AccessToken>>;
+    public record VerifyOTPCommand(int UserId, string Code) : IRequest<OperationResult<AccessToken>>;
 }

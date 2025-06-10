@@ -6,7 +6,6 @@ using CleanArc.Domain.Entities.User;
 using CleanArc.Domain.Interfaces.Services;
 using CleanArc.Infrastructure.Identity.Identity;
 using CleanArc.Infrastructure.Identity.Identity.Dtos;
-using CleanArc.Infrastructure.Identity.Identity.EmailVerification;
 using CleanArc.Infrastructure.Identity.Identity.Extensions;
 using CleanArc.Infrastructure.Identity.Identity.Manager;
 using CleanArc.Infrastructure.Identity.Identity.PermissionManager;
@@ -61,7 +60,7 @@ public static class ServiceCollectionExtension
         services.AddScoped<IEmailVerificationService, EmailVerificationService>();
 
         services.AddScoped<IOTPRepository, OTPRepository>();
-        services.AddScoped<IOTPService, TwilioWhatsAppService>();
+        services.AddScoped<IOTPService, TwilioOTPService>();
 
         services.AddIdentity<User, Role>(options =>
             {
