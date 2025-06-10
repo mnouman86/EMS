@@ -1,11 +1,12 @@
-﻿using System.Reflection;
-using CleanArc.Application.Common;
+﻿using CleanArc.Application.Common;
+using CleanArc.Domain.Interfaces.Services;
 using CleanArc.SharedKernel.Extensions;
 using FluentValidation;
 using Mapster;
 using MapsterMapper;
 using Mediator;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace CleanArc.Application.ServiceConfiguration;
 
@@ -14,6 +15,7 @@ public static class ServiceCollectionExtension
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
         services.AddSingleton(GetConfiguredMappingConfig());
+        
         services.AddScoped<IMapper, ServiceMapper>();
         services.AddMediator(options =>
         {

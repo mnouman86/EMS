@@ -1,4 +1,6 @@
-﻿namespace CleanArc.Application.Models.Common;
+﻿using CleanArc.Domain.Common;
+
+namespace CleanArc.Application.Models.Common;
 
 public class OperationResult<TResult>
 {
@@ -7,6 +9,8 @@ public class OperationResult<TResult>
     public bool IsSuccess { get; private set; }
     public string ErrorMessage { get; private set; }
     public int StatusCode { get; set; }
+    public string ErrorCode { get; set; } // New field
+
     public int TotalCount { get; set; }
     public string Message { get; set; }
     public bool IsException { get; set; }
@@ -60,11 +64,24 @@ public class OperationResult<TResult>
     //{
     //    return new OperationResult<TResult>{Result = result,ErrorMessage = message,IsSuccess = false,StatusCode=statusCode};
     //}
-    public static OperationResult<TResult> FailureResult(string message, int statusCode = 400)
+    public static OperationResult<TResult> FailureResult(string message =null, int statusCode = 400, string errorCode = null)
     {
-        return new OperationResult<TResult> {Message = message, IsSuccess = false, StatusCode = statusCode };
+        if (errorCode!=null && message==null)
+        {
+            message = ErrorMessages.GetMessage(errorCode);
+        }
+        return new OperationResult<TResult> {Message = message, IsSuccess = false, StatusCode = statusCode, ErrorCode = errorCode };
     }
-
+    public static OperationResult<TResult> FailureResult(string[] messages, int statusCode = 400, string errorCode = null)
+    {
+        return new OperationResult<TResult>
+        {
+            IsSuccess = false,
+            StatusCode = statusCode,
+            ErrorCode = errorCode,
+            Message = string.Join("; ", messages) // Optional: also store combined message
+        };
+    }
     public static OperationResult<TResult> NotFoundResult(string message)
     {
         return new OperationResult<TResult> { ErrorMessage = message, IsSuccess = false, IsNotFound = true };

@@ -9,6 +9,7 @@ namespace CleanArc.Infrastructure.Persistence;
 
 public class ApplicationDbContext: IdentityDbContext<User, Role, int, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>
 {
+    public DbSet<EmailVerificationCode> EmailVerificationCodes { get; set; }
     public ApplicationDbContext(DbContextOptions options)
         : base(options)
     {

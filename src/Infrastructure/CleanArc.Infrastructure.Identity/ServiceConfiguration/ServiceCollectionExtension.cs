@@ -1,11 +1,10 @@
-﻿using System.Security.Claims;
-using System.Text;
-using CleanArc.Application.Contracts;
+﻿using CleanArc.Application.Contracts;
 using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Models.ApiResult;
 using CleanArc.Domain.Entities.User;
 using CleanArc.Infrastructure.Identity.Identity;
 using CleanArc.Infrastructure.Identity.Identity.Dtos;
+using CleanArc.Infrastructure.Identity.Identity.EmailVerification;
 using CleanArc.Infrastructure.Identity.Identity.Extensions;
 using CleanArc.Infrastructure.Identity.Identity.Manager;
 using CleanArc.Infrastructure.Identity.Identity.PermissionManager;
@@ -19,14 +18,18 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
+using System.Text;
 
 namespace CleanArc.Infrastructure.Identity.ServiceConfiguration;
 
 public static class ServiceCollectionExtension
 {
-    public static IServiceCollection RegisterIdentityServices(this IServiceCollection services,IdentitySettings identitySettings)
+    public static IServiceCollection RegisterIdentityServices(this IServiceCollection services,
+        IdentitySettings identitySettings, IConfiguration configuration)
     {
         services.AddScoped<IJwtService, JwtService>();
         services.AddScoped<IAppUserManager, AppUserManagerImplementation>();
@@ -41,11 +44,17 @@ public static class ServiceCollectionExtension
         services.AddScoped<RoleValidator<Role>, AppRoleValidator>();
 
         services.AddScoped<IAuthorizationHandler, DynamicPermissionHandler>();
+        services.AddScoped<IAuthorizationHandler, EmailVerifiedHandler>();
+        services.AddSingleton<IAuthorizationHandler, EmailVerifiedOrNoRoleHandler>();
+
         services.AddScoped<IDynamicPermissionService, DynamicPermissionService>();
         services.AddScoped<IRoleStore<Role>, RoleStore>();
         services.AddScoped<IUserStore<User>, AppUserStore>();
         services.AddScoped<IRoleManagerService, RoleManagerService>();
-
+        services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
+        //services.Configure<EmailSettings>((IConfiguration)emailSettings);
+        services.AddScoped<IEmailService, EmailService>();
+        services.AddScoped<IEmailVerificationService, EmailVerificationService>();
 
         services.AddIdentity<User, Role>(options =>
             {
@@ -91,10 +100,21 @@ public static class ServiceCollectionExtension
 
         services.AddAuthorization(options =>
         {
+            // Email verification only policy
+            options.AddPolicy("EmailVerified", policy =>
+                policy.RequireClaim("email_verified", "true"));
+
+            options.AddPolicy("EmailVerifiedWhenRoleExists", policy =>
+            {
+                policy.Requirements.Add(new EmailVerifiedOrNoRoleRequirement());
+            });
             options.AddPolicy(ConstantPolicies.DynamicPermission, policy =>
             {
                 policy.RequireAuthenticatedUser();
+                //policy.RequireClaim("email_verified", "true");
+                policy.Requirements.Add(new EmailVerifiedRequirement());
                 policy.Requirements.Add(new DynamicPermissionRequirement());
+
             });
         });
 

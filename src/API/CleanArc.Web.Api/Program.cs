@@ -51,6 +51,7 @@ Activity.DefaultIdFormat = ActivityIdFormat.W3C;
 builder.Services.Configure<IdentitySettings>(configuration.GetSection(nameof(IdentitySettings)));
 
 var identitySettings = configuration.GetSection(nameof(IdentitySettings)).Get<IdentitySettings>();
+var emailSettings = configuration.GetSection(nameof(EmailSettings)).Get<EmailSettings>();
 //builder.Services.AddSingleton<IProxyGenerator, ProxyGenerator>();
 //builder.Services.AddScoped<LoggingInterceptor>(provider =>
 //{
@@ -82,9 +83,9 @@ builder.Services.AddControllers(options =>
 builder.Services.AddSwagger();
 
 builder.Services.AddApplicationServices()
-    .RegisterIdentityServices(identitySettings)
+    .RegisterIdentityServices(identitySettings,configuration)
     .AddPersistenceServices(configuration)
-    .AddWebFrameworkServices();
+    .AddWebFrameworkServices(configuration);
 
 builder.Services.RegisterValidatorsAsServices();
 
@@ -135,7 +136,6 @@ app.MapPost("/api/v1/uploadFile", async (HttpRequest request) =>
         return Results.StatusCode(500);
     }
 });
-
 app.UseCors(builder => builder
      .AllowAnyOrigin()
      .AllowAnyMethod()
@@ -203,8 +203,11 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseMiddleware<LoggingMiddleware>();
+app.UseRateLimiting();
+app.UseRateLimiter();
 
+app.UseMiddleware<LoggingMiddleware>();
+//app.UseMiddleware<RateLimitingMiddleware>();
 app.MapControllers();
 
 app.ConfigureGrpcPipeline();

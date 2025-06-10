@@ -1,42 +1,42 @@
 ﻿using Asp.Versioning;
+using CleanArc.Domain.Interfaces.Services;
+using CleanArc.Domain.Settings;
+using CleanArc.Infrastructure.Persistence.Services;
 using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace CleanArc.WebFramework.ServiceConfiguration;
 
 public static class ServiceCollectionExtension
 {
-    public static IServiceCollection AddWebFrameworkServices(this IServiceCollection services)
+    public static IServiceCollection AddWebFrameworkServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddApiVersioning(options =>
         {
-            //url segment => {version}
-            options.AssumeDefaultVersionWhenUnspecified = true; //default => false;
-            options.DefaultApiVersion = new ApiVersion(1, 0); //v1.0 == v1
+            options.AssumeDefaultVersionWhenUnspecified = true;
+            options.DefaultApiVersion = new ApiVersion(1, 0);
             options.ReportApiVersions = true;
+        });
 
-            //ApiVersion.TryParse("1.0", out var version10);
-            //ApiVersion.TryParse("1", out var version1);
-            //var a = version10 == version1;
+        services.Configure<RateLimitSettings>(configuration.GetSection("RateLimit"));
+        services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+        services.AddSingleton<IClientIdentifier, ClientIdentifier>();
 
-            //options.ApiVersionReader = new QueryStringApiVersionReader("api-version");
-            // api/posts?api-version=1
+        // Register the base limiter first
+        services.AddSingleton<InMemoryRateLimiter>();
 
-            //options.ApiVersionReader = new UrlSegmentApiVersionReader();
-            // api/v1/posts
-
-            //options.ApiVersionReader = new HeaderApiVersionReader(new[] { "Api-Version" });
-            // header => Api-Version : 1
-
-            //options.ApiVersionReader = new MediaTypeApiVersionReader()
-
-            //options.ApiVersionReader = ApiVersionReader.Combine(new QueryStringApiVersionReader("api-version"), new UrlSegmentApiVersionReader())
-            // combine of [querystring] & [urlsegment]
+        // Then register the adaptive limiter as the main IRateLimiter implementation
+        services.AddSingleton<IRateLimiter>(provider =>
+        {
+            var baseLimiter = provider.GetRequiredService<InMemoryRateLimiter>();
+            var logger = provider.GetRequiredService<ILogger<AdaptiveRateLimiter>>();
+            return new AdaptiveRateLimiter(baseLimiter, logger);
         });
 
         return services;
-
-
     }
 }
