@@ -16,9 +16,6 @@ public record ResendVerificationEmailCommand
             .EmailAddress()
             .NotEmpty()
             .WithMessage("Please enter a valid email");
-
-        
-
         return validator;
     }
 };

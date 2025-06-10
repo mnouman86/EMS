@@ -1,7 +1,9 @@
 ﻿using CleanArc.Application.Contracts;
 using CleanArc.Application.Contracts.Identity;
+using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.ApiResult;
 using CleanArc.Domain.Entities.User;
+using CleanArc.Domain.Interfaces.Services;
 using CleanArc.Infrastructure.Identity.Identity;
 using CleanArc.Infrastructure.Identity.Identity.Dtos;
 using CleanArc.Infrastructure.Identity.Identity.EmailVerification;
@@ -13,6 +15,8 @@ using CleanArc.Infrastructure.Identity.Identity.Store;
 using CleanArc.Infrastructure.Identity.Identity.validator;
 using CleanArc.Infrastructure.Identity.Jwt;
 using CleanArc.Infrastructure.Identity.UserManager;
+using CleanArc.Infrastructure.Persistence.Repositories;
+using CleanArc.Infrastructure.Persistence.Services;
 using CleanArc.SharedKernel.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -55,6 +59,9 @@ public static class ServiceCollectionExtension
         //services.Configure<EmailSettings>((IConfiguration)emailSettings);
         services.AddScoped<IEmailService, EmailService>();
         services.AddScoped<IEmailVerificationService, EmailVerificationService>();
+
+        services.AddScoped<IOTPRepository, OTPRepository>();
+        services.AddScoped<IOTPService, TwilioWhatsAppService>();
 
         services.AddIdentity<User, Role>(options =>
             {

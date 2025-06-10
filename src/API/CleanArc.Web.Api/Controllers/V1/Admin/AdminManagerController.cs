@@ -2,7 +2,9 @@
 using Azure;
 using CleanArc.Application.Features.Admin.Commands.AddAdminCommand;
 using CleanArc.Application.Features.Admin.Commands.ResendVerificationEmailCommand;
+using CleanArc.Application.Features.Admin.Commands.SendOTPCommand;
 using CleanArc.Application.Features.Admin.Commands.VerifyEmailCommand;
+using CleanArc.Application.Features.Admin.Commands.VerifyOTPCommand;
 using CleanArc.Application.Features.Admin.Queries.GetToken;
 using CleanArc.SharedKernel.Extensions;
 using CleanArc.WebFramework.BaseController;
@@ -10,6 +12,7 @@ using CleanArc.WebFramework.WebExtensions;
 using Mediator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Drawing.Text;
 using System.Reflection.Metadata;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -88,6 +91,34 @@ namespace CleanArc.Web.Api.Controllers.V1.Admin
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, model))
             {
                 var commandResult = await _sender.Send(model);
+                //_logger.LogInformation($"Executed {@actionName} action in {@controllerName} with response {@commandResult}", actionName, controllerName, commandResult);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(commandResult);
+
+                return base.OperationResult(commandResult);
+            }
+        }
+
+        [HttpPost("LoginWith2FA")]
+        public async Task<IActionResult> LoginWith2FA(SendOTPCommand command)
+        {
+            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, command))
+            {
+                var commandResult = await _sender.Send(command);
+                //_logger.LogInformation($"Executed {@actionName} action in {@controllerName} with response {@commandResult}", actionName, controllerName, commandResult);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(commandResult);
+
+                return base.OperationResult(commandResult);
+            }
+            //var result = await _mediator.Send(command);
+            //return result.ToActionResult();
+        }
+
+        [HttpPost("VerifyOTP")]
+        public async Task<IActionResult> VerifyOTP(VerifyOTPCommand command)
+        {
+            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, command))
+            {
+                var commandResult = await _sender.Send(command);
                 //_logger.LogInformation($"Executed {@actionName} action in {@controllerName} with response {@commandResult}", actionName, controllerName, commandResult);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(commandResult);
 
