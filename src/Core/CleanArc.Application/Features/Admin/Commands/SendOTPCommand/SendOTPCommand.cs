@@ -1,4 +1,5 @@
 ﻿using CleanArc.Application.Models.Common;
+using CleanArc.Domain.Enums;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -8,5 +9,5 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Admin.Commands.SendOTPCommand
 {
-    public record SendOTPCommand(string UserName, string Password) : IRequest<OperationResult<bool>>;
+    public record SendOTPCommand(string UserName, string Password, OTPDeliveryMethod Method) : IRequest<OperationResult<bool>>;
 }

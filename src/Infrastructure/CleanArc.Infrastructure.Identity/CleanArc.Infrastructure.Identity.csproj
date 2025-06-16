@@ -19,6 +19,9 @@
     <ProjectReference Include="..\..\Core\CleanArc.Domain\CleanArc.Domain.csproj" />
     <ProjectReference Include="..\CleanArc.Infrastructure.Persistence\CleanArc.Infrastructure.Persistence.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Identity\EmailVerification\" />
+  </ItemGroup>
 
 
 </Project>
