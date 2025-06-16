@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Infrastructure.Identity.Identity.EmailVerification
+namespace CleanArc.Infrastructure.Persistence.Services
 {
     public class EmailVerificationService : IEmailVerificationService
     {
