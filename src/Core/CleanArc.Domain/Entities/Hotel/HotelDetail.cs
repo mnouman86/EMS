@@ -20,6 +20,7 @@ namespace CleanArc.Domain.Entities.Hotel
         public List<CustomerReview.CustomerReview> Reviews { get; set; }
         public List<RoomView.RoomView> RoomView { get; set; }
         public List<OutDoor.OutDoor> OutDoor { get; set; }
+        public List<NearByLocation.NearByLocation> NearByLocations { get; set; }
 
     }
 }

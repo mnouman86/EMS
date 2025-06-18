@@ -33,6 +33,7 @@ namespace CleanArc.Application.Features.RoomDetails.Queries.GetHotelDetailForRoo
             _httpContextAccessor = httpContextAccessor;
             _logger = logger;
         }
+
         public async ValueTask<OperationResult<GetHotelDetailForRoomQueryResult>> Handle(GetHotelDetailForRoomQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))

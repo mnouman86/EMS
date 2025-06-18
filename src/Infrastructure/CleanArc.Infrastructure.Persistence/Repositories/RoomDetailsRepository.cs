@@ -33,6 +33,7 @@ using CleanArc.Domain.Entities.CustomerReview;
 using CleanArc.Domain.Entities.Amenity;
 using CleanArc.Domain.Entities.RoomView;
 using CleanArc.Domain.Entities.OutDoor;
+using CleanArc.Domain.Entities.NearByLocation;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -221,6 +222,8 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                     var outDoor = result.Read<OutDoor>().ToList();
                     hotelDetail.OutDoor = outDoor;
 
+                    var nearByLocations = result.Read<NearByLocation>().ToList();
+                    hotelDetail.NearByLocations = nearByLocations;
                     if (!result.IsConsumed)
                     {
                         result.Dispose();
