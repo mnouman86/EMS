@@ -61,6 +61,7 @@ public static class ServiceCollectionExtension
 
         services.AddScoped<IOTPRepository, OTPRepository>();
         services.AddScoped<IOTPService, TwilioOTPService>();
+        services.AddHttpClient<IExchangeRateApiService, ExchangeRateApiService>();
 
         services.AddIdentity<User, Role>(options =>
             {
