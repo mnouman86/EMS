@@ -57,7 +57,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Currency
     public class CurrencyController : _BaseController<CreateCurrencyCommand, UpdateCurrencyCommand, DeleteCurrencyCommand, ResponseEntity, GetAllCurrencyQuery,
     List<GetAllCurrencyQueryResult>, GetCurrencyByIdQuery, GetCurrencyByIdQueryResult>
     {
-        //private readonly ISender _sender;
+        private readonly ISender _sender;
 
         //public CurrencyController(ISender sender)
         //{
@@ -104,8 +104,14 @@ namespace CleanArc.Web.Api.Controllers.V1.Currency
         public CurrencyController(ISender sender, ILogger<_BaseController<CreateCurrencyCommand, UpdateCurrencyCommand, DeleteCurrencyCommand, ResponseEntity, GetAllCurrencyQuery,
    List<GetAllCurrencyQueryResult>, GetCurrencyByIdQuery, GetCurrencyByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
-
+            _sender = sender;
         }
+        [HttpPost("GetCurrencyRates")]
+        public async Task<IActionResult> GetKBMinimalView(GetCurrencyRatesQuery query)
+        {
+            var result = await _sender.Send(query);
 
+            return base.OperationResult(result);
+        }
     }
 }

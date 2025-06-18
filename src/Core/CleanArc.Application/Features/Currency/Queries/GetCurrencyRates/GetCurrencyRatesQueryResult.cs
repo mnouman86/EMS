@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Currency.Queries.GetAllCurrency;
 
-public class GetAllCurrencyQueryResult
+public class GetCurrencyRatesQueryResult
 {
-    public string? Name { get; set; }
-    public string? CurrencyCode { get; set; }
-    public decimal? Rate { get; set; }
+    public string CurrencyCode { get; set; }
+    public decimal Rate { get; set; }
     public string DisplaySymbol { get; set; }
     public string CountryFlagSymbol { get; set; }
 

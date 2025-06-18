@@ -14,6 +14,8 @@ public  class Currency
     public string? Name { get; set; }
     public string? CurrencyCode { get; set; }
     public decimal? Rate { get; set; }
+    public string DisplaySymbol { get; set; }
+    public string CountryFlagSymbol { get; set; }
     public int? CultureId { get; set; }
     public bool? IsActive { get; set; }
     public bool? IsDeleted { get; set; }
