@@ -6,6 +6,7 @@ using CleanArc.Application.Features.Hotel.Queries.GetHotelById;
 using CleanArc.Application.Features.OutDoor.Queries.GetAllOutDoor;
 using CleanArc.Application.Features.RoomDetails.Queries.GetAllRoomDetail;
 using CleanArc.Application.Features.RoomView.Queries.GetAllRoomView;
+using CleanArc.Domain.Entities.NearByLocation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,5 +25,6 @@ namespace CleanArc.Application.Features.RoomDetails.Queries.GetHotelDetailForRoo
         public IEnumerable<GetAllCustomerReviewsQueryResult> Reviews { get; set; }
         public IEnumerable<GetAllRoomViewQueryResult> RoomView { get; set; }
         public IEnumerable<GetAllOutDoorQueryResult> OutDoor { get; set; }
+        public IEnumerable<NearByLocation> NearByLocations { get; set; }
     }
 }
