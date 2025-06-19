@@ -14,7 +14,9 @@ public class RoomDetails
 {
     public int Id { get; set; }
     public int? GenericTitleId { get; set; }
-
+    public Decimal? DiscountPercentage { get; set; }
+    public Decimal? DiscountAmount { get; set; }
+    public Decimal? DiscountedPrice { get; set; }
     public string? HotelName { get; set; }
     public string? Description { get; set; }
     public int? RoomTypeLookUpId { get; set; }
