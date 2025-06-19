@@ -307,7 +307,7 @@ public class RoomDetailsRepository : IRoomDetailsRepository
 
                 foreach (var outDoor in roomDetails.OutDoorLookUpId)
                     outDoorTable.Rows.Add(outDoor);
-                parameters.Add("@OutDoor", roomViewTable.AsTableValuedParameter("OutDoorTableType"));
+                parameters.Add("@OutDoor", outDoorTable.AsTableValuedParameter("OutDoorTableType"));
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RoomDetailQueries.Update_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 				return result;
