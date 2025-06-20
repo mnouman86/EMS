@@ -81,7 +81,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     connection.Open();
 					var parameters = new DynamicParameters();
 					parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
-                    parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                    if (searchRequest.PageSize > 0) parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
                     parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
                     parameters.Add("@StartDate", searchRequest.StartDate, DbType.DateTime);
                     parameters.Add("@EndDate", searchRequest.EndDate, DbType.DateTime);

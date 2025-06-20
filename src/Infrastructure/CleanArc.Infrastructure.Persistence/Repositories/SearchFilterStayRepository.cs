@@ -74,7 +74,7 @@ public class SearchFilterStayRepository : ISearchFilterStayRepository
 
                 // Add input parameters
                 parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
-                parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                if (searchRequest.PageSize > 0) parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
                 parameters.Add("@Name", searchRequest.Name, DbType.String);
                 parameters.Add("@MaxPrice", searchRequest.MaxPrice, DbType.Decimal);
                 parameters.Add("@MinPrice", searchRequest.MinPrice, DbType.Decimal);

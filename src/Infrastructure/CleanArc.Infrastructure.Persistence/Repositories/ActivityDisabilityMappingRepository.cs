@@ -113,7 +113,7 @@ public async Task<ResponseEntity> AddAsync(ActivityDisabilityMapping ActivityDis
                 connection.Open();
                 var parameters = new DynamicParameters();
                 parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
-                parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                if (searchRequest.PageSize > 0) parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
                 parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32); 
                 parameters.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
