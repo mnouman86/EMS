@@ -162,7 +162,7 @@ public class ServiceRepository : IServiceRepository
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                UpdateDrivingAvailabilityOptionsDTO updateServiceDTO = _mapper.Map<UpdateDrivingAvailabilityOptionsDTO>(service);
+                UpdateServiceDTO updateServiceDTO = _mapper.Map<UpdateServiceDTO>(service);
 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ServiceQueries.Update_Service, updateServiceDTO, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);

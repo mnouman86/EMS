@@ -28,6 +28,7 @@ public class LoggingMiddleware
 {
     private readonly RequestDelegate _next;
     private readonly ILogger<LoggingMiddleware> _logger;
+    private readonly bool _isLoggingEnabled=false;
 
     public LoggingMiddleware(RequestDelegate next, ILogger<LoggingMiddleware> logger)
     {
@@ -37,61 +38,58 @@ public class LoggingMiddleware
 
     public async Task Invoke(HttpContext context)
     {
-        // Enrich the log context with the user ID
-        //LogContext.PushProperty("UserId", GetUserIdFromContext(context));
-        //LogContext.PushProperty("UserId", User.Identity.GetUserId());
+        if (!_isLoggingEnabled)
+        {
+            await _next(context);
+            return;
+        }
 
-        LogContext.PushProperty("UserId",context?.User?.Identity?.Name ?? "anonymous");
+        LogContext.PushProperty("UserId", context?.User?.Identity?.Name ?? "anonymous");
         string token = context?.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
-        LogContext.PushProperty("Token", token); // Push the token to the log context
-        // Log the request
-        LogRequest(context?.Request);
+        LogContext.PushProperty("Token", token);
 
-        // Call the next middleware in the pipeline
-        //using (LogContext.PushProperty("UserId", context?.User?.Identity?.Name ?? "anonymous"))
-        //{
-        //    await _next(context);
-        //}
-        await _next(context);
+        await LogRequest(context.Request);
 
-        // Log the response
-        LogResponse(context.Response);
+        // To capture the response body, we need to replace the original stream
+        var originalBodyStream = context.Response.Body;
+        using var responseBody = new MemoryStream();
+        context.Response.Body = responseBody;
+
+        await _next(context); // Proceed down the pipeline
+
+        await LogResponse(context.Response);
+
+        // Copy the response body back to the original stream
+        context.Response.Body.Seek(0, SeekOrigin.Begin);
+        await responseBody.CopyToAsync(originalBodyStream);
     }
 
-    private async void LogRequest(HttpRequest request)
+    private async Task LogRequest(HttpRequest request)
     {
-        // Log request details as needed
         _logger.LogInformation("Request Method: {RequestMethod}, Path: {RequestPath}, Content-Type: {ContentType}",
             request.Method, request.Path, request.ContentType);
 
-        // Log request body if present
-        if (request.Body.CanRead && request.ContentLength > 0)
-        {
-            using (var reader = new StreamReader(request.Body, Encoding.UTF8))
-            {
-                var requestBody = await reader.ReadToEndAsync();
-                _logger.LogInformation("Request Body: {RequestBody}", requestBody);
-                request.Body = new MemoryStream(Encoding.UTF8.GetBytes(requestBody));
-            }
-        }
+        request.EnableBuffering(); // Allow re-reading the request body
+        request.Body.Position = 0;
+
+        using var reader = new StreamReader(request.Body, Encoding.UTF8, detectEncodingFromByteOrderMarks: false, leaveOpen: true);
+        string body = await reader.ReadToEndAsync();
+
+        request.Body.Position = 0; // Rewind for next middleware
+        _logger.LogInformation("Request Body: {RequestBody}", body);
     }
 
-    private async void LogResponse(HttpResponse response)
+    private async Task LogResponse(HttpResponse response)
     {
-        // Log response details as needed
-        _logger.LogInformation("Response StatusCode: {StatusCode}", response.StatusCode);
+        response.Body.Seek(0, SeekOrigin.Begin);
 
-        // Log response body if present
-        if (response.Body.CanRead && response.ContentLength > 0)
-        {
-            response.Body.Seek(0, SeekOrigin.Begin);
-            using (var reader = new StreamReader(response.Body, Encoding.UTF8))
-            {
-                var responseBody = await reader.ReadToEndAsync();
-                _logger.LogInformation("Response Body: {ResponseBody}", responseBody);
-                response.Body.Seek(0, SeekOrigin.Begin);
-            }
-        }
+        using var reader = new StreamReader(response.Body);
+        string body = await reader.ReadToEndAsync();
+
+        _logger.LogInformation("Response StatusCode: {StatusCode}", response.StatusCode);
+        _logger.LogInformation("Response Body: {ResponseBody}", body);
+
+        response.Body.Seek(0, SeekOrigin.Begin); // Reset for copying back
     }
     //private string GetUserIdFromContext(HttpContext context)
     //{

@@ -8,6 +8,7 @@ public interface IUnitOfWork
     public IUserAssignRewardsRepository UserAssignRewardsRepository { get; }
 
     public IURLRepository URLRepository { get; }
+    public IStartupDataRepository StartupDataRepository { get; }
     public IAgeTypeRepository AgeTypeRepository { get; }
     public IHotelRepository HotelRepository { get; }
     public IAmenityRepository AmenityRepository { get; }

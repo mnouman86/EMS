@@ -32,7 +32,7 @@ public class BaseController : ControllerBase
 
 
         if (result.IsSuccess) return result.Result is bool ? StatusCode(result.StatusCode, 
-            new { Message = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(result.Message.ToLower()), StatusCode = result.StatusCode, result.IsSuccess }) 
+            new { Message = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(result.Message.ToLower()), StatusCode = result.StatusCode, result.IsSuccess, ErrorCore = result.ErrorCode }) 
                 : Ok(result.Result);
 
         if (result.IsNotFound)
@@ -50,7 +50,7 @@ public class BaseController : ControllerBase
         //var badRequestErrors = new ValidationProblemDetails(ModelState);
 
         //return BadRequest(badRequestErrors.Errors);
-        return StatusCode(result.StatusCode, new { Message = result.ErrorMessage, StatusCode = result.StatusCode });
+        return StatusCode(result.StatusCode, new { Message = result.ErrorMessage==null?result.Message:result.ErrorMessage, StatusCode = result.StatusCode, ErrorCore=result.ErrorCode });
 
     }
 }
