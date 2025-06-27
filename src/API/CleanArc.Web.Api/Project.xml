@@ -1173,6 +1173,11 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <member name="T:CleanArc.Web.Api.Controllers.V1.StartupData.StartupDataController">
+            <summary>
+            Startup Data
+            </summary>
+        </member>
         <member name="M:CleanArc.Web.Api.Controllers.V1.State.StateController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.State.Command.CreateStateCommand.CreateStateCommand,CleanArc.Application.Features.State.Command.UpdateStateCommand.UpdateStateCommand,CleanArc.Application.Features.State.Command.DeleteStateCommand.DeleteStateCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.State.Queries.GetAllStates.GetAllStatesQuery,System.Collections.Generic.List{CleanArc.Application.Features.State.Queries.GetAllStates.GetAllStatesQueryResult},CleanArc.Application.Features.State.Queries.GetStateById.GetStateByIdQuery,CleanArc.Application.Features.State.Queries.GetStateById.GetStateByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
             Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.State.StateController"/> class.

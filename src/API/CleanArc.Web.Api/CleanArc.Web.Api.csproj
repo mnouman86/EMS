@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
 	  <ImplicitUsings>enable</ImplicitUsings>
 	  <IsPackable>true</IsPackable>
   </PropertyGroup>
@@ -9,7 +9,11 @@
     <DocumentationFile>Project.xml</DocumentationFile>
     <OutputPath>bin\Debug\</OutputPath>
     <NoWarn>$(NoWarn);1591</NoWarn>
+	  <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="ProgramOld.cs" />
+  </ItemGroup>
   <ItemGroup>
 	  <PackageReference Include="Castle.Core" Version="5.1.1" />
 	  <PackageReference Include="Serilog" Version="3.1.1" />

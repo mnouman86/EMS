@@ -24,82 +24,62 @@ using Serilog.Exceptions;
 using Serilog.Sinks.MSSqlServer;
 using Microsoft.AspNetCore.Identity;
 using Serilog.Enrichers;
-using Castle.DynamicProxy;
-using CleanArc.WebFramework.Interceptor;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using CleanArc.Application.Common;
 using System.Net.Http.Headers;
+using CleanArc.Web.Api;
 
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllers(options =>
-{
-    options.ModelBinderProviders.Insert(0, new TimeModelBinderProvider());
-});
-//builder.Host.UseSerilog(LoggingConfiguration.ConfigureLogger);
-builder.Host.UseSerilog();
-//builder.Host.UseKestrel(options =>
-//{
-//    options.AllowSynchronousIO = true;
-//}); 
 
-var configuration = builder.Configuration;
+// Read Serilog settings from configuration
+var serilogSettings = builder.Configuration.GetSection("SerilogSettings").Get<SerilogSettings>()
+    ?? new SerilogSettings();
+
+// Configure logging based on settings
+ConfigureLogging(builder, serilogSettings);
 
 Activity.DefaultIdFormat = ActivityIdFormat.W3C;
 
-builder.Services.Configure<IdentitySettings>(configuration.GetSection(nameof(IdentitySettings)));
-
-var identitySettings = configuration.GetSection(nameof(IdentitySettings)).Get<IdentitySettings>();
-var emailSettings = configuration.GetSection(nameof(EmailSettings)).Get<EmailSettings>();
-//builder.Services.AddSingleton<IProxyGenerator, ProxyGenerator>();
-//builder.Services.AddScoped<LoggingInterceptor>(provider =>
-//{
-//    var logger = provider.GetRequiredService<ILogger<LoggingInterceptor>>();
-//    return new LoggingInterceptor(logger);
-//});
-//builder.Services.AddScoped<ILogger<LoggingInterceptor>, Logger<LoggingInterceptor>>();
-//builder.Services.AddScoped<LoggingInterceptor>();
-
-//builder.Services.AddScoped<ICustomHttpContext, CustomHttpContextWrapper>();
+// Configure services
+builder.Services.Configure<IdentitySettings>(builder.Configuration.GetSection(nameof(IdentitySettings)));
+var identitySettings = builder.Configuration.GetSection(nameof(IdentitySettings)).Get<IdentitySettings>();
+var emailSettings = builder.Configuration.GetSection(nameof(EmailSettings)).Get<EmailSettings>();
 
 builder.Services.AddLogging();
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddControllers(options =>
 {
+    options.ModelBinderProviders.Insert(0, new TimeModelBinderProvider());
     options.Filters.Add(typeof(OkResultAttribute));
     options.Filters.Add(typeof(NotFoundResultAttribute));
     options.Filters.Add(typeof(ContentResultFilterAttribute));
     options.Filters.Add(typeof(ModelStateValidationAttribute));
     options.Filters.Add(typeof(BadRequestResultFilterAttribute));
-
 }).ConfigureApiBehaviorOptions(options =>
 {
     options.SuppressModelStateInvalidFilter = true;
     options.SuppressMapClientErrors = true;
 });
-//builder.Services.AddAutoMapper(typeof(Program));
-builder.Services.AddSwagger();
 
+builder.Services.AddSwagger();
 builder.Services.AddApplicationServices()
-    .RegisterIdentityServices(identitySettings,configuration)
-    .AddPersistenceServices(configuration)
-    .AddWebFrameworkServices(configuration);
+    .RegisterIdentityServices(identitySettings, builder.Configuration)
+    .AddPersistenceServices(builder.Configuration)
+    .AddWebFrameworkServices(builder.Configuration);
 
 builder.Services.RegisterValidatorsAsServices();
 
- 
 #region Plugin Services Configuration
-
 builder.Services.ConfigureGrpcPluginServices();
-
 #endregion
 
 builder.Services.AddAutoMapper(typeof(User), typeof(JwtService), typeof(UserController));
 
 var app = builder.Build();
 
+#region Middleware Pipeline
 app.MapPost("/api/v1/uploadFile", async (HttpRequest request) =>
 {
     try
@@ -136,20 +116,13 @@ app.MapPost("/api/v1/uploadFile", async (HttpRequest request) =>
         return Results.StatusCode(500);
     }
 });
+
 app.UseCors(builder => builder
-     .AllowAnyOrigin()
-     .AllowAnyMethod()
-     .AllowAnyHeader());
-configureLogging(app.Services.GetRequiredService<IHttpContextAccessor>());
-
-
-//IConfiguration _configuration = new ConfigurationBuilder()
-//                        .SetBasePath(Directory.GetCurrentDirectory())
-//                        .AddJsonFile("appSettings.json", optional: true, reloadOnChange: true)
-//               .Build();
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
 
 #region Seeding and creating database
-
 await using (var scope = app.Services.CreateAsyncScope())
 {
     var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
@@ -159,14 +132,10 @@ await using (var scope = app.Services.CreateAsyncScope())
 
     await context.Database.MigrateAsync();
 
-
     var seedService = scope.ServiceProvider.GetRequiredService<ISeedDataBase>();
     await seedService.Seed();
 }
-
 #endregion
-
-#region Pipleline Configuration
 
 if (app.Environment.IsDevelopment())
 {
@@ -176,7 +145,6 @@ if (app.Environment.IsDevelopment())
 app.UseCustomExceptionHandler();
 app.UseCustomLoggingHandler();
 
-//app.UseSwaggerAndUI();
 try
 {
     app.UseSwagger(c =>
@@ -198,82 +166,77 @@ catch (Exception ex)
 }
 
 app.UseHttpsRedirection();
-
 app.UseRouting();
-
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseRateLimiting();
 app.UseRateLimiter();
-
 app.UseMiddleware<LoggingMiddleware>();
-//app.UseMiddleware<RateLimitingMiddleware>();
 app.MapControllers();
-
 app.ConfigureGrpcPipeline();
 
 await app.RunAsync();
 #endregion
 
-void configureLogging(IHttpContextAccessor httpContextAccessor)
+void ConfigureLogging(WebApplicationBuilder webBuilder, SerilogSettings settings)
 {
-    var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-
-    var configuration = new ConfigurationBuilder()
-    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-    .AddJsonFile(
-        $"appsettings.{environment}.json", optional: true
-    ).Build();
-    
-
-    Log.Logger = new LoggerConfiguration()
-    .Enrich.FromLogContext()
-    .Enrich.WithExceptionDetails()
-    .Enrich.WithMachineName()
-    .Enrich.WithProcessId()
-    .Enrich.WithThreadId()
-    .Enrich.WithCorrelationId()
-    .WriteTo.Debug()
-    .WriteTo.Console()
-    .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
-    //.WriteTo.Elasticsearch(ConfigureElasticSink(configuration, environment))
-    .WriteTo.MSSqlServer(
-            connectionString: configuration.GetConnectionString("DBConnection1"),
-            sinkOptions: new MSSqlServerSinkOptions
-            {
-                TableName = "Logs", // Customize the table name
-                AutoCreateSqlTable = true,
-                BatchPostingLimit = 1, // Adjust batch posting limit as needed
-                BatchPeriod = TimeSpan.FromSeconds(1), // Adjust period as needed                
-            },
-            columnOptions: new Serilog.Sinks.MSSqlServer.ColumnOptions
-            {
-                AdditionalColumns = new List<SqlColumn>
-                {
-                    new SqlColumn { ColumnName = "MachineName", PropertyName = "MachineName" },
-                    new SqlColumn { ColumnName = "ActionId", PropertyName = "ActionId" },
-                    new SqlColumn { ColumnName = "RequestId", PropertyName = "RequestId" },
-                    new SqlColumn { ColumnName = "CorrelationId", PropertyName = "CorrelationId" },
-                    new SqlColumn { ColumnName = "UserId", PropertyName = "UserId" },
-                    new SqlColumn { ColumnName = "Token", PropertyName = "Token" } 
-
-                    // Add more columns as needed
-                }
-            })
-    .Enrich.WithProperty("Environment", environment)
-    //.Enrich.WithProperty("UserId", GetUserIdFromContext(httpContextAccessor)) // Add UserId to log properties
-    .ReadFrom.Configuration(configuration)
-    .CreateLogger();
-}
-string GetUserIdFromContext(IHttpContextAccessor httpContextAccessor)
-{
-    var userId = "Unknown"; // Set a default value if UserId is not available
-
-    var httpContext = httpContextAccessor.HttpContext;
-    if (httpContext?.User?.Identity?.IsAuthenticated == true)
+    if (!settings.EnableLogging)
     {
-        userId = httpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        webBuilder.Logging.ClearProviders();
+        webBuilder.Logging.AddConsole();
+        webBuilder.Logging.AddDebug();
+        return;
     }
 
-    return userId;
+    webBuilder.Host.UseSerilog((context, services, configuration) =>
+    {
+        var env = context.HostingEnvironment;
+        var config = context.Configuration;
+        var httpContextAccessor = services.GetService<IHttpContextAccessor>();
+
+        configuration
+            .Enrich.FromLogContext()
+            .Enrich.WithExceptionDetails()
+            .Enrich.WithMachineName()
+            .Enrich.WithProcessId()
+            .Enrich.WithThreadId()
+            .Enrich.WithCorrelationId()
+            .Enrich.WithProperty("Environment", env.EnvironmentName)
+            .ReadFrom.Configuration(config);
+
+        if (settings.EnableConsoleLogging)
+        {
+            configuration.WriteTo.Console();
+        }
+
+        if (settings.EnableFileLogging)
+        {
+            configuration.WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day);
+        }
+
+        if (settings.EnableDatabaseLogging)
+        {
+            configuration.WriteTo.MSSqlServer(
+                connectionString: config.GetConnectionString("DBConnection1"),
+                sinkOptions: new MSSqlServerSinkOptions
+                {
+                    TableName = "Logs",
+                    AutoCreateSqlTable = true,
+                    BatchPostingLimit = 1,
+                    BatchPeriod = TimeSpan.FromSeconds(1)
+                },
+                columnOptions: new Serilog.Sinks.MSSqlServer.ColumnOptions
+                {
+                    AdditionalColumns = new List<SqlColumn>
+                    {
+                        new SqlColumn { ColumnName = "MachineName", PropertyName = "MachineName" },
+                        new SqlColumn { ColumnName = "ActionId", PropertyName = "ActionId" },
+                        new SqlColumn { ColumnName = "RequestId", PropertyName = "RequestId" },
+                        new SqlColumn { ColumnName = "CorrelationId", PropertyName = "CorrelationId" },
+                        new SqlColumn { ColumnName = "UserId", PropertyName = "UserId" },
+                        new SqlColumn { ColumnName = "Token", PropertyName = "Token" }
+                    }
+                });
+        }
+    });
 }

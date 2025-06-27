@@ -12,7 +12,7 @@ namespace CleanArc.Application.Models.DrivingAvailabilityOptions
         public string Name { get; set; }
         public string Description { get; set; }
         public int? CultureId { get; set; }
-
+        public string? Icon { get; set; }
         public int UpdatedBy { get; set; }
 
         //public DateTime UpdatedAt { get; set; }

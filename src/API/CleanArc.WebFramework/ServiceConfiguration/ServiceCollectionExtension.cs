@@ -3,11 +3,13 @@ using CleanArc.Domain.Interfaces.Services;
 using CleanArc.Domain.Settings;
 using CleanArc.Infrastructure.Persistence.Services;
 using FluentValidation;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System.Threading.RateLimiting;
 
 namespace CleanArc.WebFramework.ServiceConfiguration;
 
@@ -37,7 +39,17 @@ public static class ServiceCollectionExtension
             var logger = provider.GetRequiredService<ILogger<AdaptiveRateLimiter>>();
             return new AdaptiveRateLimiter(baseLimiter, logger);
         });
-
+        services.AddRateLimiter(options =>
+        {
+            options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
+                RateLimitPartition.GetFixedWindowLimiter("global", _ => new FixedWindowRateLimiterOptions
+                {
+                    PermitLimit = 100,
+                    Window = TimeSpan.FromMinutes(1),
+                    QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
+                    QueueLimit = 0
+                }));
+        });
         return services;
     }
 }

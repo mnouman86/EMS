@@ -75,7 +75,7 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
     /// </summary>
     /// <returns>An action result representing the operation result.</returns>
     //[Authorize]
-    [ConditionalEmailVerified]
+    //[ConditionalEmailVerified]
     [HttpPost("[controller]GetAll")]
     public async Task<IActionResult> GetAll([FromBody] TQuery query)
     {

@@ -20,6 +20,7 @@ public class UnitOfWork : IUnitOfWork
 
     public IOrderRepository OrderRepository { get; }
     public IURLRepository URLRepository { get; set; }
+    public IStartupDataRepository StartupDataRepository { get; set; }
     public IAgeTypeRepository AgeTypeRepository { get; set; }
     public IHotelRepository HotelRepository { get; set; }
     public IAmenityRepository AmenityRepository { get; set; }
@@ -131,6 +132,7 @@ public class UnitOfWork : IUnitOfWork
 
     public UnitOfWork(ApplicationDbContext db, IConfiguration configuration,IMapper mapper, 
         ILogger<URLRepository> logger,
+        ILogger<StartupDataRepository> _loggerStartupData,
         ILogger<AgeTypeRepository> _logger, 
         ILogger<HotelRepository> _loggerHotel,
         ILogger<AmenityRepository> _loggerAmenity,
@@ -248,6 +250,7 @@ public class UnitOfWork : IUnitOfWork
         UserRefreshTokenRepository = new UserRefreshTokenRepository(_db);
         OrderRepository= new OrderRepository(_db);
         URLRepository = new URLRepository(configuration,mapper,logger,httpContextAccessor);
+        StartupDataRepository = new StartupDataRepository(configuration);
         AgeTypeRepository = new AgeTypeRepository(configuration, mapper, _logger, httpContextAccessor);
         HotelRepository=new HotelRepository(configuration, mapper, _loggerHotel, httpContextAccessor);
         AmenityRepository=new AmenityRepository(configuration, mapper, _loggerAmenity, httpContextAccessor);
