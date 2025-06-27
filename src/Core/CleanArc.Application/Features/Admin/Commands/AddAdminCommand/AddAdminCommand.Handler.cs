@@ -44,7 +44,9 @@ namespace CleanArc.Application.Features.Admin.Commands.AddAdminCommand
             }
             var newAdmin = new User
             {
-                UserName = request.UserName,
+                Name=request.FirstName,
+                FamilyName=request.LastName,
+                UserName = request.Email,
                 Email = request.Email,
                 RoleId = request.RoleId,
                 EmailConfirmed = emailConfirmed

@@ -7,7 +7,7 @@ using Mediator;
 namespace CleanArc.Application.Features.Admin.Commands.AddAdminCommand;
 
 public record AddAdminCommand
-    (string UserName, string Email, string Password, string ConfirmPassword, int RoleId) : IRequest<OperationResult<bool>>,
+    (string FirstName, string LastName, string Email, string Password, string ConfirmPassword, int RoleId) : IRequest<OperationResult<bool>>,
         IValidatableModel<AddAdminCommand>
 {
     public IValidator<AddAdminCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<AddAdminCommand> validator)
@@ -16,7 +16,7 @@ public record AddAdminCommand
             .EmailAddress()
             .WithMessage("Please enter a valid email");
 
-        validator.RuleFor(c => c.UserName)
+        validator.RuleFor(c => c.FirstName)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please specify a valid username");
