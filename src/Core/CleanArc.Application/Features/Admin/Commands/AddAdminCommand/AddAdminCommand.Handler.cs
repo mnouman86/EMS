@@ -79,7 +79,7 @@ namespace CleanArc.Application.Features.Admin.Commands.AddAdminCommand
                         //return OperationResult<bool>.SuccessResult(true, 200,
                         //    "User created successfully. A verification code has been sent to your email. " +
                         //    "Please check your inbox to verify your account.");
-                        return OperationResult<bool>.SuccessResult(true, 200,
+                        return OperationResult<bool>.SuccessResult(true, 200,"",0,
                             SuccessCodes.UserCreatedWithPendingVerification);
                     }
                     string errorCode = generateAndSendCode.Errors.FirstOrDefault()?.Code;

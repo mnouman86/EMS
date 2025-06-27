@@ -57,7 +57,7 @@ namespace CleanArc.Application.Features.Admin.Commands.VerifyEmailCommand
 
             //return OperationResult<bool>.SuccessResult(true, 200,
             //            "Email verified successfully. Your account is now activated.");
-            return OperationResult<bool>.SuccessResult(true, 200, SuccessCodes.EmailVerified);
+            return OperationResult<bool>.SuccessResult(true, 200, "", 0, SuccessCodes.EmailVerified);
                
         }
     }
