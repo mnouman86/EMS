@@ -14,7 +14,7 @@ namespace CleanArc.Domain.Entities.User
         public DateTime Expiration { get; set; }
         public int Attempts { get; set; }
         public int RequestCount { get; set; }
-        public DateTime LastRequestTime { get; set; }
+        public DateTime? LastRequestTime { get; set; }
         public bool IsVerified { get; set; }
     }
 }

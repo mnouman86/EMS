@@ -20,17 +20,19 @@ namespace CleanArc.Infrastructure.Persistence.Services
         private readonly ApplicationDbContext _context;
         private readonly IEmailService _emailService;
         private readonly EmailVerificationSettings _settings;
+        private readonly EmailSettings _emailSettings;
 
         //private const int _maxAttempts = 3;
         //private const int _codeExpiryMinutes = 15;
 
         public EmailVerificationService(
             ApplicationDbContext context,
-            IEmailService emailService, IOptions<EmailVerificationSettings> settings)
+            IEmailService emailService, IOptions<EmailVerificationSettings> settings, IOptions<EmailSettings> emailSettings)
         {
             _context = context;
             _emailService = emailService;
             _settings=settings.Value;
+            _emailSettings = emailSettings.Value;
         }
 
         public async Task<IdentityResult> GenerateAndSendCodeAsync(string email)
@@ -43,9 +45,9 @@ namespace CleanArc.Infrastructure.Persistence.Services
                 // Rate limiting check
                 if (verification != null &&
                     verification.RequestCount >= _settings.MaxAttempts &&
-                    (DateTime.UtcNow - verification.LastRequestTime).TotalMinutes < _settings.ConcurrentAttemptsMinutes)
+                    (DateTime.UtcNow - verification.LastRequestTime)?.TotalMinutes < _settings.ConcurrentAttemptsMinutes)
                 {
-                    var timeLeft = _settings.ConcurrentAttemptsMinutes - (int)(DateTime.UtcNow - verification.LastRequestTime).TotalMinutes;
+                    var timeLeft = _settings.ConcurrentAttemptsMinutes - (int)(DateTime.UtcNow - verification.LastRequestTime)?.TotalMinutes;
                     return IdentityResult.Failed(new IdentityError
                     {
                         Code = ErrorCodes.RateLimitExceeded,
@@ -63,14 +65,15 @@ namespace CleanArc.Infrastructure.Persistence.Services
                         Code = code,
                         Expiration = DateTime.UtcNow.AddMinutes(_settings.CodeExpiryMinutes),
                         Attempts = 0,
-                        IsVerified = false
+                        IsVerified = false,
+                        LastRequestTime = null
                     };
                     _context.EmailVerificationCodes.Add(verification);
                 }
                 else
                 {
                     // Reset request count if last request was more than 10 minutes ago
-                    if ((DateTime.UtcNow - verification.LastRequestTime).TotalMinutes >= _settings.ConcurrentAttemptsMinutes)
+                    if ((DateTime.UtcNow - verification.LastRequestTime)?.TotalMinutes >= _settings.ConcurrentAttemptsMinutes)
                     {
                         verification.RequestCount = 0;
                     }
