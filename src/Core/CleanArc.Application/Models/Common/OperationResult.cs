@@ -10,12 +10,13 @@ public class OperationResult<TResult>
     public string ErrorMessage { get; private set; }
     public int StatusCode { get; set; }
     public string ErrorCode { get; set; } // New field
+    public string SuccessCode { get; set; } // New field
 
     public int TotalCount { get; set; }
     public string Message { get; set; }
     public bool IsException { get; set; }
     public bool IsNotFound { get; private set; }
-    public static OperationResult<TResult> SuccessResult(TResult result, int statusCode=200, string message="Success",int totalCount=0)
+    public static OperationResult<TResult> SuccessResult(TResult result, int statusCode=200, string message="Success", int totalCount=0, string successCode = null)
     {
         // return new OperationResult<TResult>{Result = result,IsSuccess = true, StatusCode=statusCode,Message=message};
        
@@ -26,6 +27,11 @@ public class OperationResult<TResult>
         {
             statusCode = (int)result.GetType().GetProperty("Code").GetValue(result);
             message = result.GetType().GetProperty("Message").GetValue(result)?.ToString();
+            successCode = result.GetType().GetProperty("SuccessCode").GetValue(result)?.ToString();
+            if (successCode!=null)
+            {
+                message= SuccessMessages.GetMessage(successCode);
+            }
             var isSuccess =(bool) result.GetType().GetProperty("IsSuccess").GetValue(result);
 
             var propertyInfo = result.GetType().GetProperty("TotalCount");
@@ -38,7 +44,7 @@ public class OperationResult<TResult>
                 }
             }
             //totalCount =(int) result.GetType().GetProperty("TotalCount").GetValue(result);
-
+            
             return new OperationResult<TResult>
             {
                 Result = result,
@@ -48,7 +54,10 @@ public class OperationResult<TResult>
                 TotalCount=totalCount
             };
         }
-
+        if (successCode != null)
+        {
+            message = SuccessMessages.GetMessage(successCode);
+        }
         // Default behavior if result doesn't have Code and Message properties
         return new OperationResult<TResult>
         {

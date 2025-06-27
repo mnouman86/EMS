@@ -15,9 +15,9 @@ namespace CleanArc.Domain.Common
         { SuccessCodes.EmailVerified, "Email verified successfully. Your account is now activated." }
     };
 
-        public static string GetMessage(string errorCode)
+        public static string GetMessage(string successCode)
         {
-            return _messages.TryGetValue(errorCode, out var message)
+            return _messages.TryGetValue(successCode, out var message)
                 ? message
                 : "An unknown error occurred.";
         }

@@ -29,7 +29,7 @@ namespace CleanArc.Application.Features.Admin.Commands.ResendVerificationEmailCo
                 //return OperationResult<bool>.SuccessResult(true, 200,
                 //    "An email verification code has been sent to your email. " +
                 //    "Please check your inbox to verify your account.");
-                return OperationResult<bool>.SuccessResult(true,200 ,SuccessCodes.VerificationEmailSent);
+                return OperationResult<bool>.SuccessResult(true,200, "", 0 ,SuccessCodes.VerificationEmailSent);
             }
             string errorCode = generateAndSendCode.Errors.FirstOrDefault()?.Code;
             string description = generateAndSendCode.Errors.FirstOrDefault()?.Description;
