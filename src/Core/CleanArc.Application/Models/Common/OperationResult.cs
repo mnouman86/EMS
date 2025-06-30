@@ -27,7 +27,7 @@ public class OperationResult<TResult>
         {
             statusCode = (int)result.GetType().GetProperty("Code").GetValue(result);
             message = result.GetType().GetProperty("Message").GetValue(result)?.ToString();
-            successCode = result.GetType().GetProperty("SuccessCode").GetValue(result)?.ToString();
+            successCode = result?.GetType()?.GetProperty("SuccessCode")?.GetValue(result)?.ToString();
             if (successCode!=null)
             {
                 message= SuccessMessages.GetMessage(successCode);

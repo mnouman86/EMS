@@ -107,7 +107,8 @@ namespace CleanArc.Web.Api.Controllers.V1.Currency
             _sender = sender;
         }
         [HttpPost("GetCurrencyRates")]
-        public async Task<IActionResult> GetKBMinimalView(GetCurrencyRatesQuery query)
+        [ResponseCache(Duration = 86400, Location = ResponseCacheLocation.Any)]
+        public async Task<IActionResult> GetCurrencyRates(GetCurrencyRatesQuery query)
         {
             var result = await _sender.Send(query);
 
