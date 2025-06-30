@@ -21,10 +21,10 @@ namespace CleanArc.Application.Features.WishList.Command.CreateWishListCommand
         public int UserId { get; set; }
         public IValidator<CreateWishListCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateWishListCommand> validator)
         {
-            validator.RuleFor(c => c.ServiceTypeEnumId)
-                .NotEmpty()
-                .NotNull()
-                .WithMessage("Please enter a valid Enum Service Type Id");
+            //validator.RuleFor(c => c.ServiceTypeEnumId)
+            //    .NotEmpty()
+            //    .NotNull()
+            //    .WithMessage("Please enter a valid Enum Service Type Id");
             return validator;
         }
     }
