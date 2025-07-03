@@ -15,6 +15,8 @@ public static class ActivityQueries
     public static string GetAllByBusinessID_Activities => "[dbo].[usp_GetAllByBusinessID_Activity]";
     public static string GetByID_Activity => "[dbo].[usp_GetByID_Activity]";
     public static string GetByID_ActivityDetailByBusiness => "usp_GetByID_ActivityDetailByBusiness";
+    public static string GetALLActivityWishList => "usp_GetALL_ActivityWishList";
+
 
 
 }

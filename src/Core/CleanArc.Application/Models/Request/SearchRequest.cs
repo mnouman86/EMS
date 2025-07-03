@@ -50,7 +50,8 @@ namespace CleanArc.Application.Models.Request
         public string? PropertyType { get; set; }
         public string? RoomView { get; set; }
         public string? OutDoor { get; set; }
-    
+        public bool FilterByWishList { get; set; } = false;
+
     }
 
     public class CarSearchRequest : SearchRequest
@@ -66,6 +67,7 @@ namespace CleanArc.Application.Models.Request
         public int? MinCapacity { get; set; }
         public int? MaxCapacity { get; set; }
         public string? Manufacturer { get; set; }
+        public bool FilterByWishList { get; set; }=false;
 
     }
 
@@ -88,6 +90,8 @@ namespace CleanArc.Application.Models.Request
         public string? Name { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
+        public bool FilterByWishList { get; set; } = false;
+
     }
 
 }

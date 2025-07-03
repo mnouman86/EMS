@@ -9,6 +9,7 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries
     public static class SearchBusinessCarDetailQueries
     {
         public static string GetALLByBusinessID_Cars => "usp_GetALLByBusinessID_Cars";
+        public static string GetAllCarRentalWishList => "usp_GetALL_CarRentalWishList";
     }
 }
 
