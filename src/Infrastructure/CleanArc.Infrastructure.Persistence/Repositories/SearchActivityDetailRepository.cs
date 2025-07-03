@@ -95,8 +95,10 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     parameters.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
-                    var result = await connection.QueryAsync<Activity>(ActivityQueries.GetAll_Activity, parameters, commandType: CommandType.StoredProcedure);
+                    string query = ActivityQueries.GetAll_Activity;
+                    if (searchRequest.FilterByWishList)
+                        query = ActivityQueries.GetALLActivityWishList;
+                    var result = await connection.QueryAsync<Activity>(query, parameters, commandType: CommandType.StoredProcedure);
                     foreach (var item in result)
                     {
                         //var imageParams = new DynamicParameters();

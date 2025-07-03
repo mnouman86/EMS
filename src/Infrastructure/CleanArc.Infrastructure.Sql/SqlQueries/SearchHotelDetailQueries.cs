@@ -9,5 +9,6 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 public static class SearchHotelDetailQueries
 {
     public static string GetAll_SearchHotelDetail => "usp_GetAll_SearchHotelDetail";
+    public static string GetAll_StaysWishList => "usp_GetAll_StaysWishList";
 
 }
