@@ -82,6 +82,7 @@ public class UnitOfWork : IUnitOfWork
     public IActivityTransportationRepository ActivityTransportationRepository { get; set; }
     public IGenericAddressRepository ActivityAddressRepository { get; set; }
     public IActivityRepository ActivityRepository { get; set; }
+    public ISearchActivityDetailRepository SearchActivityDetailRepository { get; set; }
     public IBusinessProfileRepository BusinessProfileRepository { get; set; }
     public IActivityScheduleRepository ActivityScheduleRepository { get; set; }
     public IActivityDisabilityOptionRepository ActivityDisabilityOptionRepository { get; set; }
@@ -198,6 +199,7 @@ public class UnitOfWork : IUnitOfWork
         ILogger<ActivityTransportationRepository> _loggerActivityTransportation,
         ILogger<GenericAddressRepository> _loggerActivityAddress,
         ILogger<ActivityRepository> _loggerActivity,
+        ILogger<SearchActivityDetailRepository> _loggerSearchActivityDetail,
         ILogger<BusinessProfileRepository> _loggerBusinessProfile,
         ILogger<ActivityScheduleRepository> _loggerActivitySchedule,
         ILogger<ActivityDisabilityOptionRepository> _loggerActivityDisabilityOption,
@@ -309,6 +311,7 @@ public class UnitOfWork : IUnitOfWork
         ActivityTransportationRepository = new ActivityTransportationRepository(configuration, mapper, _loggerActivityTransportation, httpContextAccessor);
         ActivityAddressRepository = new GenericAddressRepository(configuration, mapper, _loggerActivityAddress, httpContextAccessor);
         ActivityRepository = new ActivityRepository(configuration, mapper, _loggerActivity, httpContextAccessor);
+        SearchActivityDetailRepository = new SearchActivityDetailRepository(configuration, mapper, _loggerSearchActivityDetail, httpContextAccessor);
         BusinessProfileRepository = new BusinessProfileRepository(configuration, mapper, _loggerBusinessProfile, httpContextAccessor);
         ActivityScheduleRepository = new ActivityScheduleRepository(configuration, mapper, _loggerActivitySchedule, httpContextAccessor);
         ActivityDisabilityOptionRepository = new ActivityDisabilityOptionRepository(configuration, mapper, _loggerActivityDisabilityOption, httpContextAccessor);

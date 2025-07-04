@@ -39,7 +39,7 @@ namespace CleanArc.Application.Features.Activity.Queries.GetAllActivity
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                var response = await _unitOfWork.ActivityRepository.GetAllActivitySearchDetailAsync(request.searchRequest);
+                var response = await _unitOfWork.SearchActivityDetailRepository.GetAllAsync(request.searchRequest);
 
                 if (response.Code != 200)
                 {

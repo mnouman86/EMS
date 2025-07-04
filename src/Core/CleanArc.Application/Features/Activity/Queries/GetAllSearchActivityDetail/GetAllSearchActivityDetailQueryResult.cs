@@ -26,6 +26,8 @@ public class GetAllSearchActivityDetail
     public int BusinessId { get; set; }
     public string Title { get; set; }
     public string AgeGroup { get; set; }
+    public bool? IsInWishlist { get; set; }
+
     //public int? LanguageLookUpID { get; set; }
     //public string? LanguageName { get; set; }
     //public int? ServiceLookUpID { get; set; }
@@ -59,9 +61,9 @@ public class GetAllSearchActivityDetail
     //public int? Code { get; set; }
     //public string? Message { get; set; }
     //public int? ActivityID { get; set; }
-   // public Decimal? PerPersonPrice { get; set; }
+    // public Decimal? PerPersonPrice { get; set; }
 
-	public Decimal? ActivityPrice { get; set; }
+    public Decimal? ActivityPrice { get; set; }
 
 	public string? Duration { get; set; }
 	// public int? PerGroupPrice { get; set; }

@@ -24,6 +24,8 @@ public  class Activity
     public int? BusinessId { get; set; }
     public string Title { get; set; }
     public string Name { get; set; }
+    public bool? IsInWishlist { get; set; }
+
     public int[]? LanguageLookUpId { get; set; }
     public List<LanguageLookUp>? Languages { get; set; }
     public List<IncludedOptionsLookup>? IncludedOptions { get; set; }

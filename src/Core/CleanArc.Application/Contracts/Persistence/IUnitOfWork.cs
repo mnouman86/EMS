@@ -70,6 +70,7 @@ public interface IUnitOfWork
     public IActivityTransportationRepository ActivityTransportationRepository { get; }
     public IGenericAddressRepository ActivityAddressRepository { get; }
     public IActivityRepository ActivityRepository { get; }
+    public ISearchActivityDetailRepository SearchActivityDetailRepository { get; }
     public IBusinessProfileRepository BusinessProfileRepository { get; }
     public IActivityScheduleRepository ActivityScheduleRepository { get; }
 

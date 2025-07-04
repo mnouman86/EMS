@@ -50,8 +50,10 @@ namespace CleanArc.Domain.Entities.SearchHotelDetail
         public string? FilterCategoryName { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
+        public bool? IsInWishlist { get; set; }
 
-}
+
+    }
     //public class HotelImage
     //{
     //    public string ImageTitle { get; set; }
