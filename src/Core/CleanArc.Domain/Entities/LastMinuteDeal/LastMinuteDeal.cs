@@ -14,6 +14,8 @@ namespace CleanArc.Domain.Entities.LastMinuteDeal
         public int FilterCategoryLookUpId { get; set; }
         public int? Priority { get; set; }
         public decimal? Discount { get; set; }
+        public bool? IsInWishlist { get; set; }
+
         public bool? IsActive { get; set; }
         public bool? IsDeleted { get; set; }
         public int? CreatedBy { get; set; }

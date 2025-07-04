@@ -19,6 +19,8 @@ public class GetAllActivityQueryResult
     public string AgeGroup { get; set; }
     public int? ReviewsCount { get; set; }
     public int? Rating { get; set; }
+    public bool? IsInWishlist { get; set; }
+
     //public int? LanguageLookUpID { get; set; }
     //public string? LanguageName { get; set; }
     //public int? ServiceLookUpID { get; set; }

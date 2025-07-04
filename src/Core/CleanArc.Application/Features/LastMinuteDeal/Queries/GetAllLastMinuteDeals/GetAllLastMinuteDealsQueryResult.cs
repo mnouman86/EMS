@@ -37,6 +37,7 @@ namespace CleanArc.Application.Features.LastMinuteDeal.Queries.GetAllLastMinuteD
         public string ImagePath { get; set; }
         public string ImageTitle { get; set; }
 
+        public bool? IsInWishlist { get; set; }
 
         public int TotalDays { get; set; }
         public string? Description { get; set; }
