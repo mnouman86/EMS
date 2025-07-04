@@ -124,8 +124,11 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                         Params.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
                         Params.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
                         Params.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
-                        Params.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
                         Params.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                        List<SortingParameter> sortinglist = new List<SortingParameter>();
+                        Params.Add("@SortingArray", DataTableHelper.ToDataTable(sortinglist), DbType.Object); // Ensure proper type
+
                         List<FilterParameter> list = new List<FilterParameter>();
                         list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
                         Params.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
