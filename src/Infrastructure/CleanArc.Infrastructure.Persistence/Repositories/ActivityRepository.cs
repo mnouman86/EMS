@@ -194,7 +194,8 @@ public class ActivityRepository : IActivityRepository
 				var parameters = new DynamicParameters();
 				parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
 				if (searchRequest.PageSize > 0) parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
-				parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                if (searchRequest.UserId != null) parameters.Add("@UserId", searchRequest.UserId, DbType.Int32);
+                parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
 				parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
 				parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type				
                 parameters.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
