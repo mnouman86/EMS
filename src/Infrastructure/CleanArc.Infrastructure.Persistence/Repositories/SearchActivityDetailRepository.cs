@@ -80,22 +80,36 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                 {
                     connection.Open();
 					var parameters = new DynamicParameters();
-					parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+                    //parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+                    //               if (searchRequest.PageSize > 0) parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                    //               parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                    //               parameters.Add("@StartDate", searchRequest.StartDate, DbType.DateTime);
+                    //               parameters.Add("@EndDate", searchRequest.EndDate, DbType.DateTime);
+                    //               parameters.Add("@Rating", searchRequest.Rating, DbType.Int32);
+                    //               parameters.Add("@MinPrice", searchRequest.MinPrice, DbType.Int32);
+                    //               parameters.Add("@MaxPrice", searchRequest.MaxPrice, DbType.Int32);
+                    //               parameters.Add("@Amenities", searchRequest.Amenities, DbType.String);
+                    //               parameters.Add("@Name", searchRequest.Name, DbType.String);
+                    //               parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+                    //               parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+                    //               parameters.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    //               parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    //               parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                    parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
                     if (searchRequest.PageSize > 0) parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
                     parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
-                    parameters.Add("@StartDate", searchRequest.StartDate, DbType.DateTime);
-                    parameters.Add("@EndDate", searchRequest.EndDate, DbType.DateTime);
+                    parameters.Add("@DateFrom", searchRequest.StartDate, DbType.DateTime);
+                    parameters.Add("@DateTo", searchRequest.EndDate, DbType.DateTime);
                     parameters.Add("@Rating", searchRequest.Rating, DbType.Int32);
                     parameters.Add("@MinPrice", searchRequest.MinPrice, DbType.Int32);
                     parameters.Add("@MaxPrice", searchRequest.MaxPrice, DbType.Int32);
-                    parameters.Add("@Amenities", searchRequest.Amenities, DbType.String);
+                    //parameters.Add("@Amenities", searchRequest.Amenities, DbType.String);
                     parameters.Add("@Name", searchRequest.Name, DbType.String);
                     parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
                     parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
-                    parameters.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                    string query = ActivityQueries.GetAll_Activity;
+                    string query = ActivityQueries.GetAllByBusinessID_Activities;
                     if (searchRequest.FilterByWishList)
                         query = ActivityQueries.GetALLActivityWishList;
                     var result = await connection.QueryAsync<Activity>(query, parameters, commandType: CommandType.StoredProcedure);

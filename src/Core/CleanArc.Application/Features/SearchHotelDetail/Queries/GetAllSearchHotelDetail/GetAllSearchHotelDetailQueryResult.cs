@@ -27,6 +27,8 @@ public class GetAllSearchHotelDetailQueryResult
     public int GenericTitleId { get; set; }
     public int HotelID { get; set; }
     public int CityID { get; set; }
+    public bool? IsInWishlist { get; set; }
+
     public string Name { get; set; }
     public string CityName { get; set; }
     public string CityDescription { get; set; }

@@ -30,6 +30,7 @@ public class SearchBusinessCarDetail
     public int? Price { get; set; }
     public int? RentPrice { get; set; }
     public bool? IsActive { get; set; }
+    public bool? IsInWishlist { get; set; }
     public bool? IsDeleted { get; set; }
     public int? CreatedBy { get; set; }
     public DateTime? CreatedAt { get; set; }
