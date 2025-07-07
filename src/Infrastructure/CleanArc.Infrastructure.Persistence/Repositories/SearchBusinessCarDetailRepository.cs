@@ -80,6 +80,7 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 					var parameters = new DynamicParameters();
 					parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
                     if (searchRequest.PageSize > 0) parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                    if (searchRequest.UserId > 0) parameters.Add("@UserId", searchRequest.UserId, DbType.Int32);
                     parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
                     parameters.Add("@NoOfDays", searchRequest.NoOfDays, DbType.Int32);
                     parameters.Add("@Rating", searchRequest.Rating, DbType.Int32);
