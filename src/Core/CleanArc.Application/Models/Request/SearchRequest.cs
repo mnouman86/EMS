@@ -89,6 +89,15 @@ namespace CleanArc.Application.Models.Request
         public int? MaxPrice { get; set; }
         public string? Amenities { get; set; }
         public string? Name { get; set; }
+        public string? Category { get; set; }
+        public string? SubCategory { get; set; }
+        public string? Language { get; set; }
+        public string? ActivityType { get; set; }
+        public string? ActivityNature { get; set; }
+        public string? ActivitySeason { get; set; }
+        public string? ActivityDisabilityOption { get; set; }
+        public string? ActivityTransportation { get; set; }
+        public string? ScheduleSlot { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public bool FilterByWishList { get; set; } = false;
