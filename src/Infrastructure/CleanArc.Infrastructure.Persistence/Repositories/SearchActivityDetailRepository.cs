@@ -32,6 +32,8 @@ using CleanArc.Domain.Entities.Language;
 using CleanArc.Domain.Entities.Amenity;
 using CleanArc.Domain.Entities.Activity;
 using CleanArc.Domain.Entities.GenericAddress;
+using CleanArc.Domain.Entities.Category;
+using Org.BouncyCastle.Crypto;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
@@ -105,8 +107,18 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     parameters.Add("@MaxPrice", searchRequest.MaxPrice, DbType.Int32);
                     //parameters.Add("@Amenities", searchRequest.Amenities, DbType.String);
                     parameters.Add("@Name", searchRequest.Name, DbType.String);
+                    parameters.Add("@Category", searchRequest.Name, DbType.String);
+                    parameters.Add("@SubCategory", searchRequest.Name, DbType.String);
+                    parameters.Add("@Language", searchRequest.Name, DbType.String);
+                    parameters.Add("@ActivityType", searchRequest.Name, DbType.String);
+                    parameters.Add("@ActivityNature", searchRequest.Name, DbType.String);
+                    parameters.Add("@ActivitySeason", searchRequest.Name, DbType.String);
+                    parameters.Add("@ActivityDisabilityOption", searchRequest.Name, DbType.String);
+                    parameters.Add("@ActivityTransportation", searchRequest.Name, DbType.String);
+                    parameters.Add("@ScheduleSlot", searchRequest.Name, DbType.String);
                     parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
                     parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+
                     parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                     string query = ActivityQueries.GetAllByBusinessID_Activities;
