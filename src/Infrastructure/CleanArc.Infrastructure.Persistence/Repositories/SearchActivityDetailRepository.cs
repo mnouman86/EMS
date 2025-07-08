@@ -108,15 +108,15 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     parameters.Add("@MaxPrice", searchRequest.MaxPrice, DbType.Int32);
                     //parameters.Add("@Amenities", searchRequest.Amenities, DbType.String);
                     parameters.Add("@Name", searchRequest.Name, DbType.String);
-                    parameters.Add("@Category", searchRequest.Name, DbType.String);
-                    parameters.Add("@SubCategory", searchRequest.Name, DbType.String);
-                    parameters.Add("@Language", searchRequest.Name, DbType.String);
-                    parameters.Add("@ActivityType", searchRequest.Name, DbType.String);
-                    parameters.Add("@ActivityNature", searchRequest.Name, DbType.String);
-                    parameters.Add("@ActivitySeason", searchRequest.Name, DbType.String);
-                    parameters.Add("@ActivityDisabilityOption", searchRequest.Name, DbType.String);
-                    parameters.Add("@ActivityTransportation", searchRequest.Name, DbType.String);
-                    parameters.Add("@ScheduleSlot", searchRequest.Name, DbType.String);
+                    parameters.Add("@Category", searchRequest.Category, DbType.String);
+                    parameters.Add("@SubCategory", searchRequest.SubCategory, DbType.String);
+                    parameters.Add("@Language", searchRequest.Language, DbType.String);
+                    parameters.Add("@ActivityType", searchRequest.ActivityType, DbType.String);
+                    parameters.Add("@ActivityNature", searchRequest.ActivityNature, DbType.String);
+                    parameters.Add("@ActivitySeason", searchRequest.ActivitySeason, DbType.String);
+                    parameters.Add("@ActivityDisabilityOption", searchRequest.ActivityDisabilityOption, DbType.String);
+                    parameters.Add("@ActivityTransportation", searchRequest.ActivityTransportation, DbType.String);
+                    parameters.Add("@ScheduleSlot", searchRequest.ScheduleSlot, DbType.String);
                     parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
                     parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
 
