@@ -1,6 +1,8 @@
 ﻿using CleanArc.Application.Contracts.Providers;
 using CleanArc.Application.Models.Request;
+using CleanArc.Domain.Entities.Hotel;
 using CleanArc.Domain.Entities.SearchHotelDetail;
+using CleanArc.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +26,16 @@ namespace CleanArc.Application.Services.Aggregators
             var tasks = _hotelProviders.Select(p => p.SearchHotelsAsync(request));
             var results = await Task.WhenAll(tasks);
             return results.SelectMany(x => x).ToList();
+        }
+
+        public async Task<HotelDetail?> GetHotelDetailAsync(HotelDetailSearchRequest request, APIProvider providerName)
+        {
+            var provider = _hotelProviders.FirstOrDefault(p =>
+                p.ProviderName.Equals(providerName));
+
+            return provider != null
+                ? await provider.GetHotelDetailAsync(request)
+                : null;
         }
     }
 }

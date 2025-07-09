@@ -1,5 +1,7 @@
 ﻿using CleanArc.Application.Models.Request;
+using CleanArc.Domain.Entities.Hotel;
 using CleanArc.Domain.Entities.SearchHotelDetail;
+using CleanArc.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,8 @@ namespace CleanArc.Application.Contracts.Providers
     //Interface for any hotel provider
     public interface IHotelProvider
     {
-        string ProviderName { get; }
+        APIProvider ProviderName { get; }
         Task<List<SearchDetail>> SearchHotelsAsync(CustomizedSearchRequest request);
+        Task<HotelDetail> GetHotelDetailAsync(HotelDetailSearchRequest request);
     }
 }

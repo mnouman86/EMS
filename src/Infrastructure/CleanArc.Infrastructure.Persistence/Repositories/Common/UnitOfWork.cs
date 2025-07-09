@@ -260,7 +260,7 @@ public class UnitOfWork : IUnitOfWork
         HotelRepository=new HotelRepository(configuration, mapper, _loggerHotel, httpContextAccessor);
         AmenityRepository=new AmenityRepository(configuration, mapper, _loggerAmenity, httpContextAccessor);
         RoomTypeRepository=new RoomTypeRepository(configuration, mapper, _loggerRoomType, httpContextAccessor);
-        RoomDetailsRepository=new RoomDetailsRepository(configuration, mapper, _loggerRoomDetails, httpContextAccessor);
+        RoomDetailsRepository=new RoomDetailsRepository(configuration, mapper, _loggerRoomDetails, httpContextAccessor, hotelProviderAggregator);
         CategoryRepository=new CategoryRepository(configuration, mapper, _loggerCategory, httpContextAccessor);
         SearchHotelRepository=new SearchHotelDetailRepository(configuration, mapper, _loggerSearchHotel, httpContextAccessor, hotelProviderAggregator);
         SearchHotelImageRepository = new SearchHotelImageRepository(configuration, mapper, _loggerSearchImage, httpContextAccessor);

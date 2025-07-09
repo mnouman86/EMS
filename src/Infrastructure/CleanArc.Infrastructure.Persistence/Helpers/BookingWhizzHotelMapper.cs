@@ -1,4 +1,5 @@
 ﻿using CleanArc.Domain.Entities.SearchHotelDetail;
+using CleanArc.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                     Latitude = decimal.TryParse(element.Element("Latitude")?.Value, out var lat) ? lat : null,
                     StartDate = DateTime.TryParse(element.Element("StartDate")?.Value, out var start) ? start : null,
                     EndDate = DateTime.TryParse(element.Element("EndDate")?.Value, out var end) ? end : null,
+                    Provider=APIProvider.BookingWhizz,
                     //Amenities = element.Element("AFacilityName")?.Value?.Split(',').Select((val, i) => new Domain.Entities.AmenityMapping.AmenityMapping
                     //{
                     //    Id = i,

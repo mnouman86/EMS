@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CleanArc.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -81,6 +82,11 @@ namespace CleanArc.Application.Models.Request
     {
         public int? NoOfRooms { get; set; }
         public int? NoOfDays { get; set; }
+        public string? CityName { get; set; }
+        public APIProvider Provider { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+
     }
     public class CarDetailSearchRequest : SearchRequestById
     {

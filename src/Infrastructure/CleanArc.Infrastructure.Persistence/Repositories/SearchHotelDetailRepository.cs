@@ -137,8 +137,8 @@ public class SearchHotelDetailRepository : ISearchHotelRepository
                 // Get third-party data using aggregator
                 var thirdPartyHotels = await _hotelProviderAggregator.SearchHotelsAsync(searchRequest);
 
-                var combinedHotels = result.ToList();
-                combinedHotels.AddRange(thirdPartyHotels); // ← Merged list
+                var combinedHotels = thirdPartyHotels;
+                combinedHotels.AddRange(result.ToList()); // ← Merged list
 
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 SearchHotelDetail searchHotelDetail = new SearchHotelDetail();
