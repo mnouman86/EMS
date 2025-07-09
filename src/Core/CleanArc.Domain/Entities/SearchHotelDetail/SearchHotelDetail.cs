@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CleanArc.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,6 +52,7 @@ namespace CleanArc.Domain.Entities.SearchHotelDetail
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public bool? IsInWishlist { get; set; }
+        public APIProvider Provider { get; set; }
 
 
     }

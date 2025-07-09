@@ -34,6 +34,8 @@ using CleanArc.Domain.Entities.Amenity;
 using CleanArc.Domain.Entities.RoomView;
 using CleanArc.Domain.Entities.OutDoor;
 using CleanArc.Domain.Entities.NearByLocation;
+using CleanArc.Application.Services.Aggregators;
+using CleanArc.Infrastructure.Persistence.Providers.BookingWhizz;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -58,13 +60,17 @@ public class RoomDetailsRepository : IRoomDetailsRepository
 	/// The HTTP context accessor for accessing HTTP context information.
 	/// </summary>
 	private readonly IHttpContextAccessor _httpContextAccessor;
-	public RoomDetailsRepository(IConfiguration configuration, IMapper mapper, ILogger<RoomDetailsRepository> logger, IHttpContextAccessor httpContextAccessor)
+    private readonly HotelProviderAggregator _hotelProviderAggregator;
+
+    public RoomDetailsRepository(IConfiguration configuration, IMapper mapper, ILogger<RoomDetailsRepository> logger,
+        IHttpContextAccessor httpContextAccessor, HotelProviderAggregator hotelProviderAggregator)
 	{
 		this.configuration = configuration;
 		this._mapper = mapper;
 		this._logger = logger;
 		_httpContextAccessor = httpContextAccessor;
-	}
+        this._hotelProviderAggregator = hotelProviderAggregator;
+    }
 	public async Task<ResponseEntity> AddAsync(RoomDetails roomDetails)
 	{
 		using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, roomDetails))
@@ -187,100 +193,127 @@ public class RoomDetailsRepository : IRoomDetailsRepository
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
-            using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+            // ✅ Fetch & Merge BookingWhizz via Aggregator
+            if (searchRequest.Provider == APIProvider.BookingWhizz)
             {
-                connection.Open();
-                var parameters = new DynamicParameters();
-                parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                parameters.Add("@CultureId", searchRequest.CultureId, DbType.Int32);
-                parameters.Add("@ID", searchRequest.Id, DbType.Int32);
-                parameters.Add("@NoOfRooms", searchRequest.NoOfRooms, DbType.Int32);
-                parameters.Add("@NoOfDays", searchRequest.NoOfDays, DbType.Int32);
+                
+                    //var customizedRequest = new CustomizedSearchRequest
+                    //{
+                    //    StartDate = DateTime.Today.AddDays(1),
+                    //    EndDate = DateTime.Today.AddDays(2),
+                    //    FilterArray = new List<FilterParameter>
+                    //    {
+                    //        new FilterParameter { ParameterName = "AccommodationId", ParameterValue = searchRequest.Id.ToString() }
+                    //    }
+                    //};
 
-                var result = await connection.QueryMultipleAsync(RoomDetailQueries.GetHotelDetail_ByRoom, parameters, commandType: CommandType.StoredProcedure);
-                // var kbDetailAll = resultKBDetail.ReadFirst<KBDetail>();
-                var hotelDetail = result.Read<HotelDetail>().FirstOrDefault();
-                if (hotelDetail != null)
+                    var thirdPartyHotel = await _hotelProviderAggregator.GetHotelDetailAsync(searchRequest, searchRequest.Provider);
+
+                    return new SingleResponseWrapper<HotelDetail>
+                    {
+                        Data = thirdPartyHotel,
+                        Code = 200,
+                        Message = "Data Retrieved Successfully"
+                    };
+            }
+            else
+            {
+                using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
                 {
-                    var rooms = result.Read<RoomDetails>().ToList();
-                    hotelDetail.Rooms = rooms;
-                    var media = result.Read<GenericMedia>().ToList();
-                    hotelDetail.Medias = media;
-                    var hotelAmenities = result.Read<AmenityMapping>().ToList();
-                    hotelDetail.Amenities = hotelAmenities;
-                    var faqs = result.Read<FAQs>().ToList();
-                    hotelDetail.FAQs = faqs;
-                    var languages = result.Read<LanguageLookUp>().ToList();
-                    hotelDetail.Languages = languages;
-					var reviews = result.Read<CustomerReview>().ToList();
-                    hotelDetail.Reviews = reviews;
+                    connection.Open();
+                    var parameters = new DynamicParameters();
+                    parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                    parameters.Add("@CultureId", searchRequest.CultureId, DbType.Int32);
+                    parameters.Add("@ID", searchRequest.Id, DbType.Int32);
+                    parameters.Add("@NoOfRooms", searchRequest.NoOfRooms, DbType.Int32);
+                    parameters.Add("@NoOfDays", searchRequest.NoOfDays, DbType.Int32);
 
-                    var roomView = result.Read<RoomView>().ToList();
-                    hotelDetail.RoomView = roomView;
-
-                    var outDoor = result.Read<OutDoor>().ToList();
-                    hotelDetail.OutDoor = outDoor;
-
-                    var nearByLocations = result.Read<NearByLocation>().ToList();
-                    hotelDetail.NearByLocations = nearByLocations;
-                    if (!result.IsConsumed)
+                    var result = await connection.QueryMultipleAsync(RoomDetailQueries.GetHotelDetail_ByRoom, parameters, commandType: CommandType.StoredProcedure);
+                    // var kbDetailAll = resultKBDetail.ReadFirst<KBDetail>();
+                    var hotelDetail = result.Read<HotelDetail>().FirstOrDefault();
+                    if (hotelDetail != null)
                     {
-                        result.Dispose();
+                        var rooms = result.Read<RoomDetails>().ToList();
+                        hotelDetail.Rooms = rooms;
+                        var media = result.Read<GenericMedia>().ToList();
+                        hotelDetail.Medias = media;
+                        var hotelAmenities = result.Read<AmenityMapping>().ToList();
+                        hotelDetail.Amenities = hotelAmenities;
+                        var faqs = result.Read<FAQs>().ToList();
+                        hotelDetail.FAQs = faqs;
+                        var languages = result.Read<LanguageLookUp>().ToList();
+                        hotelDetail.Languages = languages;
+                        var reviews = result.Read<CustomerReview>().ToList();
+                        hotelDetail.Reviews = reviews;
+
+                        var roomView = result.Read<RoomView>().ToList();
+                        hotelDetail.RoomView = roomView;
+
+                        var outDoor = result.Read<OutDoor>().ToList();
+                        hotelDetail.OutDoor = outDoor;
+
+                        var nearByLocations = result.Read<NearByLocation>().ToList();
+                        hotelDetail.NearByLocations = nearByLocations;
+                        if (!result.IsConsumed)
+                        {
+                            result.Dispose();
+                        }
+                        foreach (var item in hotelDetail.Rooms)
+                        {
+                            var Params = new DynamicParameters();
+                            Params.Add("@PageNumber", 1, DbType.Int32);
+                            Params.Add("@PageSize", 3, DbType.Int32);
+                            Params.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                            List<SortingParameter> sortingArray = new List<SortingParameter>();
+                            Params.Add("@SortingArray", DataTableHelper.ToDataTable(sortingArray), DbType.Object); // Ensure proper type
+                            Params.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                            Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                            Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                            List<FilterParameter> list = new List<FilterParameter>();
+                            list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+                            list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
+
+                            Params.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+
+                            var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, Params, commandType: CommandType.StoredProcedure);
+                            item.Medias = imageList.ToList();
+
+                            var amenities = await connection.QueryAsync<Domain.Entities.AmenityMapping.AmenityMapping>(AmenityMappingQueries.GetByAmenityTypeEnumID_AmenityMapping, Params, commandType: CommandType.StoredProcedure);
+                            item.RoomAmenities = amenities.ToList();
+
+                            //var roomView = await connection.QueryAsync<Domain.Entities.RoomView.RoomViewLookUp>(RoomViewQueries.GetALL_RoomView, Params, commandType: CommandType.StoredProcedure);
+                            //item.RoomView = roomView.ToList();
+
+                            //var outDoor = await connection.QueryAsync<Domain.Entities.OutDoor.OutDoorLookUp>(OutDoorQueries.GetALL_OutDoor, Params, commandType: CommandType.StoredProcedure);
+                            //item.OutDoor = outDoor.ToList();
+                        }
                     }
-                    foreach (var item in hotelDetail.Rooms)
+
+
+                    //var result = await connection.QuerySingleOrDefaultAsync<RoomDetails>(RoomDetailQueries.GetByID_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
+                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                    //
+
+
+                    //await connection.ExecuteAsync(
+                    //        ActivityQueries.GetByID_Activity,
+                    //        parameters,
+                    //        commandType: CommandType.StoredProcedure);
+                    int Code = parameters.Get<int>("@Code");
+                    string Message = parameters.Get<string>("@Message");
+
+
+                    var response = new SingleResponseWrapper<HotelDetail>
                     {
-                        var Params = new DynamicParameters();
-                        Params.Add("@PageNumber", 1, DbType.Int32);
-                        Params.Add("@PageSize", 3, DbType.Int32);
-                        Params.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
-                        List<SortingParameter> sortingArray = new List<SortingParameter>();
-                        Params.Add("@SortingArray", DataTableHelper.ToDataTable(sortingArray), DbType.Object); // Ensure proper type
-                        Params.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
-
-                        Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                        Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-
-                        List<FilterParameter> list = new List<FilterParameter>();
-                        list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
-                        list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
-
-                        Params.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
-
-                        var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, Params, commandType: CommandType.StoredProcedure);
-                        item.Medias = imageList.ToList();
-
-                        var amenities = await connection.QueryAsync<Domain.Entities.AmenityMapping.AmenityMapping>(AmenityMappingQueries.GetByAmenityTypeEnumID_AmenityMapping, Params, commandType: CommandType.StoredProcedure);
-                        item.RoomAmenities = amenities.ToList();
-
-                        //var roomView = await connection.QueryAsync<Domain.Entities.RoomView.RoomViewLookUp>(RoomViewQueries.GetALL_RoomView, Params, commandType: CommandType.StoredProcedure);
-                        //item.RoomView = roomView.ToList();
-
-                        //var outDoor = await connection.QueryAsync<Domain.Entities.OutDoor.OutDoorLookUp>(OutDoorQueries.GetALL_OutDoor, Params, commandType: CommandType.StoredProcedure);
-                        //item.OutDoor = outDoor.ToList();
-                    }
+                        Data = hotelDetail,
+                        Code = Code,
+                        Message = Message
+                    };
+                    return response;
                 }
-
-                //var result = await connection.QuerySingleOrDefaultAsync<RoomDetails>(RoomDetailQueries.GetByID_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                //
-                
-
-                //await connection.ExecuteAsync(
-                //        ActivityQueries.GetByID_Activity,
-                //        parameters,
-                //        commandType: CommandType.StoredProcedure);
-                int Code = parameters.Get<int>("@Code");
-                string Message = parameters.Get<string>("@Message");
-
-                
-                var response = new SingleResponseWrapper<HotelDetail>
-                {
-                    Data = hotelDetail,
-                    Code = Code,
-                    Message = Message
-                };
-                return response;
             }
         }
     }
