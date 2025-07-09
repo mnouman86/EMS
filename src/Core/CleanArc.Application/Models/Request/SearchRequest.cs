@@ -40,6 +40,11 @@ namespace CleanArc.Application.Models.Request
 
     public class CustomizedSearchRequest : SearchRequest
     {
+
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public int? NoOfAdults { get; set; }
+        public int? NoOfChildren { get; set; }
         public int? NoOfRooms { get; set; }
         public int? NoOfDays { get; set; }
         public int? Rating { get; set; }

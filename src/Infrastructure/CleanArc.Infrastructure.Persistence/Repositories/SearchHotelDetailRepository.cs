@@ -22,6 +22,7 @@ using CleanArc.Application.Common;
 using System.Reflection.Metadata;
 using CleanArc.Domain.Entities.PopularItemsVisit;
 using CleanArc.Domain.Enums;
+using CleanArc.Application.Services.Aggregators;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -46,6 +47,8 @@ public class SearchHotelDetailRepository : ISearchHotelRepository
     /// The HTTP context accessor for accessing HTTP context information.
     /// </summary>
     private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly HotelProviderAggregator _hotelProviderAggregator;
+
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MenuRepository"/> class.
@@ -55,12 +58,14 @@ public class SearchHotelDetailRepository : ISearchHotelRepository
     /// <param name="logger">The logger for logging repository-related information.</param>
     /// <param name="httpContextAccessor">The HTTP context accessor for accessing HTTP context information.</param>
     /// 
-    public SearchHotelDetailRepository(IConfiguration configuration, IMapper mapper, ILogger<SearchHotelDetailRepository> logger, IHttpContextAccessor httpContextAccessor)
+    public SearchHotelDetailRepository(IConfiguration configuration, IMapper mapper, ILogger<SearchHotelDetailRepository> logger,
+        IHttpContextAccessor httpContextAccessor, HotelProviderAggregator hotelProviderAggregator)
     {
         this.configuration = configuration;
         this._mapper = mapper;
         this._logger = logger;
         _httpContextAccessor = httpContextAccessor;
+        this._hotelProviderAggregator = hotelProviderAggregator;
     }
    
     public async Task<SingleResponseWrapper<SearchHotelDetail>> GetAllAsync(CustomizedSearchRequest searchRequest)
@@ -128,11 +133,19 @@ public class SearchHotelDetailRepository : ISearchHotelRepository
                     var amenities = await connection.QueryAsync<Domain.Entities.AmenityMapping.AmenityMapping>(AmenityMappingQueries.GetByAmenityTypeEnumID_AmenityMapping, ParamsAmenity, commandType: CommandType.StoredProcedure);
                     item.Amenities = amenities.Where(x=>x.Selected==true).Take(3).ToList();
                 }
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                // Get third-party data using aggregator
+                var thirdPartyHotels = await _hotelProviderAggregator.SearchHotelsAsync(searchRequest);
+
+                var combinedHotels = result.ToList();
+                combinedHotels.AddRange(thirdPartyHotels); // ← Merged list
+
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 SearchHotelDetail searchHotelDetail = new SearchHotelDetail();
-                searchHotelDetail.HotelDetail = result.ToList();
-                searchHotelDetail.RoomPriceMinimum=result.Count()>0? result.Min(x=>x.RoomDetailPrice):0;
-                searchHotelDetail.RoomPriceMaximum= result.Count() > 0 ? result.Max(x=>x.RoomDetailPrice):0;
+                //searchHotelDetail.HotelDetail = result.ToList();
+                searchHotelDetail.HotelDetail = combinedHotels;
+                searchHotelDetail.RoomPriceMinimum=result.Count()>0? combinedHotels.Min(x=>x.RoomDetailPrice):0;
+                searchHotelDetail.RoomPriceMaximum= result.Count() > 0 ? combinedHotels.Max(x=>x.RoomDetailPrice):0;
 				var response = new SingleResponseWrapper<SearchHotelDetail> { Data = searchHotelDetail, Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; 
                 return response;
 
