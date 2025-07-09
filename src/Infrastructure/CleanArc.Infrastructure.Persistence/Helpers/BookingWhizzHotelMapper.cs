@@ -16,9 +16,12 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
             try
             {
                 return new SearchDetail
-                {
-                    Id = int.Parse(element.Element("AccommodationId")?.Value ?? "0"),
+                {                    
+                    Id = int.Parse(element.Element("MinRoomId")?.Value ?? "0"),
+                    GenericTitleId = int.Parse(element.Element("AccommodationId")?.Value ?? "0"),
+                    HotelID = int.Parse(element.Element("AccommodationId")?.Value ?? "0"),
                     Name = element.Element("AccommodationName")?.Value,
+                    CityID = int.TryParse(element.Element("CityId")?.Value, out var cityId) ? cityId : 0,
                     CityName = element.Element("CityName")?.Value,
                     RoomTypeName = element.Element("MinRoomName")?.Value,
                     RoomDetailPrice = decimal.TryParse(element.Element("MinRate")?.Value, out var price) ? price : 0,
@@ -31,11 +34,20 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                     Latitude = decimal.TryParse(element.Element("Latitude")?.Value, out var lat) ? lat : null,
                     StartDate = DateTime.TryParse(element.Element("StartDate")?.Value, out var start) ? start : null,
                     EndDate = DateTime.TryParse(element.Element("EndDate")?.Value, out var end) ? end : null,
-                    Amenities = element.Element("AFacilityName")?.Value?.Split(',').Select((val, i) => new Domain.Entities.AmenityMapping.AmenityMapping
+                    //Amenities = element.Element("AFacilityName")?.Value?.Split(',').Select((val, i) => new Domain.Entities.AmenityMapping.AmenityMapping
+                    //{
+                    //    Id = i,
+                    //    Amenity = val.Trim(),
+                    //    Icon = val.Trim(),
+                    //    Selected = true
+                    //}).Take(3).ToList() ?? new List<Domain.Entities.AmenityMapping.AmenityMapping>(),
+                    Amenities = element.Element("hotelExtras")?
+                    .Elements("Facility")
+                    .Select((f, i) => new Domain.Entities.AmenityMapping.AmenityMapping
                     {
-                        Id = i,
-                        Amenity = val.Trim(),
-                        Icon = val.Trim(),
+                        Id = int.TryParse(f.Attribute("ID")?.Value, out var id) ? id : i,
+                        Amenity = f.Attribute("ExtraFacilityName")?.Value ?? "Unknown",
+                        Icon = f.Attribute("ExtraFacilityName")?.Value ?? "Unknown",
                         Selected = true
                     }).Take(3).ToList() ?? new List<Domain.Entities.AmenityMapping.AmenityMapping>(),
                     HotelImages = element.Element("AccommodationImages")?.Elements("URL").Select((url, i) => new Domain.Entities.GenericMedia.GenericMedia
