@@ -40,9 +40,13 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
             //            $"&checkout={request.EndDate:yyyy-MM-dd}" +
             //            $"&multilanguageid=1" +
             //            $"&agentid=11";
+            string cityName = "Islamabad";
+            cityName = request.FilterArray
+            ?.FirstOrDefault(f => f.ParameterName.Equals("CityName", StringComparison.OrdinalIgnoreCase))
+            ?.ParameterValue;
             var url = $"{_settings.BaseUrl}getaccommodationsearchtest?" +
                  $"userid={_settings.UserId}&password={_settings.Password}" +
-                 $"&cityname={request.Name}&checkin={request.StartDate:yyyy-MM-dd}" +
+                 $"&cityname={cityName}&checkin={request.StartDate:yyyy-MM-dd}" +
                  $"&checkout={request.EndDate:yyyy-MM-dd}&multilanguageid={_settings.MultiLanguageId}" +
                  $"&agentid={_settings.AgentId}";
 
