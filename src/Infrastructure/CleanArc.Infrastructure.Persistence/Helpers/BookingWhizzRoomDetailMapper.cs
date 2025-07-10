@@ -85,6 +85,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                         RoomTypeLookUpId = int.TryParse(room.Element("RoomTypeId")?.Value, out var rtId) ? rtId : null,
                         Description = room.Element("RoomDescription")?.Value,
                         RoomSize = room.Element("RoomSize")?.Value,
+                        RoomSizeUnit= "Square Feets",
                         RoomAmenities = room.Element("RoomFacilityName")?.Value?.Split(',')
                             .Select((a, i) => new AmenityMapping
                             {
