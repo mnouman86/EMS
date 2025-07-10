@@ -10,6 +10,6 @@ namespace CleanArc.Application.Contracts.Mappers
     //Interface for all response mappers
     public interface IHotelResponseMapper<T>
     {
-        List<SearchDetail> Map(T source);
+        List<SearchDetail> Map(T source, int? noOfRooms, int? noOfDays);
     }
 }

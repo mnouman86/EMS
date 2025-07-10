@@ -13,12 +13,12 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
     //Implements IHotelResponseMapper<XDocument>
     public class BookingWhizzResponseMapper : IHotelResponseMapper<XDocument>
     {
-        public List<SearchDetail> Map(XDocument source)
+        public List<SearchDetail> Map(XDocument source, int? noOfRooms,int? noOfDays)
         {
             if (source == null) return new List<SearchDetail>();
 
             return source.Descendants("result")
-                         .Select(BookingWhizzHotelMapper.MapHotelFromXml)
+                         .Select(x => BookingWhizzHotelMapper.MapHotelFromXml(x, noOfRooms, noOfDays))
                          .Where(h => h != null)
                          .ToList();
         }

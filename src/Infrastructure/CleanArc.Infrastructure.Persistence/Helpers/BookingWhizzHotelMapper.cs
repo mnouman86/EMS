@@ -12,7 +12,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
     //Helper to map XML to SearchDetail
     public static class BookingWhizzHotelMapper
     {
-        public static SearchDetail MapHotelFromXml(XElement element)
+        public static SearchDetail MapHotelFromXml(XElement element, int? noOfRooms, int? noOfDays)
         {
             try
             {
