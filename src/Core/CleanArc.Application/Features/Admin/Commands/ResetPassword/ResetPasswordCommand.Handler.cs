@@ -31,8 +31,8 @@ namespace CleanArc.Application.Features.Admin.Commands.ResetPasswordCommand
             {
                 return OperationResult<bool>.FailureResult(ErrorCodes.UserNotFound);
             }
-           string token= HttpUtility.UrlDecode(request.Token);
-            var result = await _userManager.ResetPasswordAsync(user, token, request.NewPassword);
+           //string token= HttpUtility.UrlDecode(request.Token);
+            var result = await _userManager.ResetPasswordAsync(user, request.Token, request.NewPassword);
 
             if (!result.Succeeded)
             {
