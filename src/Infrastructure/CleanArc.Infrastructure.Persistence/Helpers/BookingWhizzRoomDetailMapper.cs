@@ -35,6 +35,12 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
             DateTime? checkOutTime = TimeSpan.TryParse(checkOutFrom, out var coTime)
                 ? DateTime.Today.Add(coTime)
                 : null;
+            DateTime? checkInTimeTo = TimeSpan.TryParse(checkInTo, out var citTime)
+               ? DateTime.Today.Add(citTime)
+               : null;
+            DateTime? checkOutTimeTo = TimeSpan.TryParse(checkOutTo, out var cotTime)
+                ? DateTime.Today.Add(cotTime)
+                : null;
 
             var hotel = new HotelDetail
             {
@@ -48,6 +54,8 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                 Longitude = hotelElement.Element("Longitude")?.Value,
                 CheckInFrom = checkInTime,
                 CheckOutFrom = checkOutTime,
+                CheckOutTo = checkOutTimeTo,
+                CheckInTo= checkInTimeTo,
                 //Rating = int.TryParse(hotelElement.Element("Rating")?.Value, out var rating) ? rating : null,
 
                 Amenities = hotelElement.Element("hotelExtras")?.Elements("Facility")
@@ -72,6 +80,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                     .Select(room => new RoomDetails
                     {
                         Id = int.Parse(room.Element("RoomId")?.Value ?? "0"),
+                        HotelName= hotelElement.Element("AccommodationName")?.Value,
                         RoomType = room.Element("RoomName")?.Value,
                         RoomTypeLookUpId = int.TryParse(room.Element("RoomTypeId")?.Value, out var rtId) ? rtId : null,
                         Description = room.Element("RoomDescription")?.Value,
@@ -95,6 +104,12 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                         Price = decimal.TryParse(room.Element("RatePlanDetails")?
                             .Element("RatePlans")?
                             .Element("Rate")?.Value, out var rate) ? rate : null,
+                        RoomDetailPrice = decimal.TryParse(room.Element("RatePlanDetails")?
+                            .Element("RatePlans")?
+                            .Element("Rate")?.Value, out var rate1) ? rate1 : null,
+                        TotalPrice = decimal.TryParse(room.Element("RatePlanDetails")?
+                            .Element("RatePlans")?
+                            .Element("Rate")?.Value, out var rate2) ? rate2 : null,
                         IsAvailable = true,
                         IsActive = true
                     }).ToList()
