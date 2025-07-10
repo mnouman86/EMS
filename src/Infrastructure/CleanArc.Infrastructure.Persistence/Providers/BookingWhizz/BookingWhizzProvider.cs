@@ -48,7 +48,7 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
             var xmlString = await _httpClient.GetStringAsync(url);
             var xDoc = XDocument.Parse(xmlString);
 
-            return _mapper.Map(xDoc);
+            return _mapper.Map(xDoc,request.NoOfRooms,request.NoOfDays);
         }
 
         public async Task<HotelDetail> GetHotelDetailAsync(HotelDetailSearchRequest request)
