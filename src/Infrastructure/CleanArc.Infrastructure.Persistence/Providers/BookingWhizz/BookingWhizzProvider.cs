@@ -67,7 +67,9 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
 
             var searchXmlStr = await _httpClient.GetStringAsync(searchUrl);
             var searchXml = XDocument.Parse(searchXmlStr);
-
+            var hotelElement = searchXml.Descendants("result")
+                .FirstOrDefault();
+            accommodationId = int.Parse(hotelElement.Element("AccommodationId")?.Value ?? "0");
             // Step 2: getaccommodationdetail (for check-in/out time)
             var detailUrl = $"{_settings.BaseUrl}getaccommodationdetail?" +
                             $"userid={_settings.UserId}&password={_settings.Password}" +
