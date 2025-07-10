@@ -26,6 +26,9 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
             var checkInFrom = detailResult?.Element("checkin")?.Element("from")?.Value;
             var checkOutFrom = detailResult?.Element("checkout")?.Element("from")?.Value;
 
+            var checkInTo = detailResult?.Element("checkin")?.Element("to")?.Value;
+            var checkOutTo = detailResult?.Element("checkout")?.Element("to")?.Value;
+
             DateTime? checkInTime = TimeSpan.TryParse(checkInFrom, out var ciTime)
                 ? DateTime.Today.Add(ciTime)
                 : null;
