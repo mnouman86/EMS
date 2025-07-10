@@ -36,6 +36,8 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                     StartDate = DateTime.TryParse(element.Element("StartDate")?.Value, out var start) ? start : null,
                     EndDate = DateTime.TryParse(element.Element("EndDate")?.Value, out var end) ? end : null,
                     Provider=APIProvider.BookingWhizz,
+                    NoOfDays = noOfDays,
+                    NoOfRooms= noOfRooms,
                     //Amenities = element.Element("AFacilityName")?.Value?.Split(',').Select((val, i) => new Domain.Entities.AmenityMapping.AmenityMapping
                     //{
                     //    Id = i,
