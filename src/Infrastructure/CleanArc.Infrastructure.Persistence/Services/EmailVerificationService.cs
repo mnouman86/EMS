@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace CleanArc.Infrastructure.Persistence.Services
 {
@@ -102,6 +103,30 @@ namespace CleanArc.Infrastructure.Persistence.Services
                 {
                     Code = ErrorCodes.VerificationCodeError,
                     Description = $"Failed to generate verification code: {ex.Message}"
+                });
+            }
+        }
+
+        public async Task<IdentityResult> GeneratePasswordResetLinkAsync(string email, string token)
+        {
+            try
+            {
+                var resetLink = $"{_emailSettings.BaseUrl}reset-password?email={email}&token={HttpUtility.UrlEncode(token)}";
+
+                // Send email
+                await _emailService.SendEmailAsync(
+                    email,
+                    "Reset Your Password",
+                    $"Click here: {resetLink}");
+
+                return IdentityResult.Success;
+            }
+            catch (Exception ex)
+            {
+                return IdentityResult.Failed(new IdentityError
+                {
+                    Code = ErrorCodes.VerificationCodeError,
+                    Description = $"Failed to generate reset password link: {ex.Message}"
                 });
             }
         }

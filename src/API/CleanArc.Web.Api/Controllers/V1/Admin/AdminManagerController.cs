@@ -1,7 +1,10 @@
 ﻿using Asp.Versioning;
 using Azure;
 using CleanArc.Application.Features.Admin.Commands.AddAdminCommand;
+using CleanArc.Application.Features.Admin.Commands.ChangePasswordCommand;
+using CleanArc.Application.Features.Admin.Commands.ForgotPasswordCommand;
 using CleanArc.Application.Features.Admin.Commands.ResendVerificationEmailCommand;
+using CleanArc.Application.Features.Admin.Commands.ResetPasswordCommand;
 using CleanArc.Application.Features.Admin.Commands.SendOTPCommand;
 using CleanArc.Application.Features.Admin.Commands.VerifyEmailCommand;
 using CleanArc.Application.Features.Admin.Commands.VerifyOTPCommand;
@@ -115,6 +118,46 @@ namespace CleanArc.Web.Api.Controllers.V1.Admin
 
         [HttpPost("VerifyOTP")]
         public async Task<IActionResult> VerifyOTP(VerifyOTPCommand command)
+        {
+            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, command))
+            {
+                var commandResult = await _sender.Send(command);
+                //_logger.LogInformation($"Executed {@actionName} action in {@controllerName} with response {@commandResult}", actionName, controllerName, commandResult);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(commandResult);
+
+                return base.OperationResult(commandResult);
+            }
+        }
+        [Authorize]
+        [HttpPost("ChangePassword")]
+        public async Task<IActionResult> ChangePassword(ChangePasswordCommand command)
+        {
+            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, command))
+            {
+                command.UserId=UserId;
+                var commandResult = await _sender.Send(command);
+                //_logger.LogInformation($"Executed {@actionName} action in {@controllerName} with response {@commandResult}", actionName, controllerName, commandResult);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(commandResult);
+
+                return base.OperationResult(commandResult);
+            }
+        }
+
+        [HttpPost("ForgotPassword")]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordCommand command)
+        {
+            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, command))
+            {
+                var commandResult = await _sender.Send(command);
+                //_logger.LogInformation($"Executed {@actionName} action in {@controllerName} with response {@commandResult}", actionName, controllerName, commandResult);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(commandResult);
+
+                return base.OperationResult(commandResult);
+            }
+        }
+
+        [HttpPost("ResetPassword")]
+        public async Task<IActionResult> ResetPassword(ResetPasswordCommand command)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, command))
             {
