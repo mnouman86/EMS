@@ -88,7 +88,7 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
             var availabilityXml = XDocument.Parse(availabilityXmlStr);
 
             // Step 4: Map all 3 sources
-            var hotelDetail = BookingWhizzRoomDetailMapper.MapHotelDetail(searchXml, detailXml, availabilityXml);
+            var hotelDetail = BookingWhizzRoomDetailMapper.MapHotelDetail(searchXml, detailXml, availabilityXml,request.NoOfRooms,request.NoOfDays);
 
             return hotelDetail;
         }

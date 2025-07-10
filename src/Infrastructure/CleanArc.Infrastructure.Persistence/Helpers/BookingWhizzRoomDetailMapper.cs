@@ -13,22 +13,22 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
 {
     public static class BookingWhizzRoomDetailMapper
     {
-        public static HotelDetail MapHotelDetail(XDocument searchDoc, XDocument detailDoc, XDocument availabilityDoc)
+        public static HotelDetail MapHotelDetail(XDocument searchDoc, XDocument detailDoc, XDocument availabilityDoc,int noOfRooms, int noOfDays)
         {
             var hotelElement = searchDoc.Descendants("result")
                 .FirstOrDefault();
 
             if (hotelElement == null)
                 return null;
-            var startDate = hotelElement?.Element("StartDate")?.Value;
-            var endDate = hotelElement?.Element("EndDate")?.Value;
-            DateTime? stDate = DateTime.TryParse(startDate, out var sDate)
-                ? DateTime.Now
-                : null;
-            DateTime? enDate = DateTime.TryParse(endDate, out var eDate)
-                ? DateTime.Now
-                : null;
-            int noOfDays=(enDate-stDate).Value.Days;
+            //var startDate = hotelElement?.Element("StartDate")?.Value;
+            //var endDate = hotelElement?.Element("EndDate")?.Value;
+            //DateTime? stDate = DateTime.TryParse(startDate, out var sDate)
+            //    ? DateTime.Now
+            //    : null;
+            //DateTime? enDate = DateTime.TryParse(endDate, out var eDate)
+            //    ? DateTime.Now
+            //    : null;
+            //int noOfDays=(enDate-stDate).Value.Days;
             // Extract Check-in/out from detailDoc
             var detailResult = detailDoc.Descendants("Result").FirstOrDefault();
             var checkInFrom = detailResult?.Element("checkin")?.Element("from")?.Value;
@@ -66,7 +66,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                 CheckInTo = checkInTimeTo,
                 //Rating = int.TryParse(hotelElement.Element("Rating")?.Value, out var rating) ? rating : null,
                 NoOfDays = noOfDays,
-                NoOfRooms = 1,
+                NoOfRooms = noOfRooms,
                 Amenities = hotelElement.Element("hotelExtras")?.Elements("Facility")
                     .Select((f, i) => new AmenityMapping
                     {
@@ -120,7 +120,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                         TotalPrice = decimal.TryParse(room.Element("RatePlanDetails")?
                             .Element("RatePlans")?
                             .Element("Rate")?.Value, out var rate2) ? rate2 : null,
-                        DiscountAmount = decimal.TryParse(room.Element("RatePlanDetails")?
+                        DiscountedPrice = decimal.TryParse(room.Element("RatePlanDetails")?
                             .Element("RatePlans")?
                             .Element("Rate")?.Value, out var rate3) ? rate3 : null,
                         IsAvailable = true,
