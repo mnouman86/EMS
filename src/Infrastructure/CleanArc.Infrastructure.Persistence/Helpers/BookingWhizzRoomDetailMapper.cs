@@ -20,8 +20,8 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
 
             if (hotelElement == null)
                 return null;
-            var startDate = hotelElement?.Element("checkin")?.Element("to")?.Value;
-            var endDate = hotelElement?.Element("checkout")?.Element("to")?.Value;
+            var startDate = hotelElement?.Element("StartDate")?.Value;
+            var endDate = hotelElement?.Element("EndDate")?.Value;
             DateTime? stDate = DateTime.TryParse(startDate, out var sDate)
                 ? DateTime.Now
                 : null;
