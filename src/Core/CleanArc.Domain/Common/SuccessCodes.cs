@@ -10,6 +10,8 @@ namespace CleanArc.Domain.Common
     {
         public const string UserCreatedWithPendingVerification = "user_created_with_pending_verification";
         public const string VerificationEmailSent = "verification_email_sent";
+        public const string ResetPasswordEmailSent = "reset_password_email_sent";
         public const string EmailVerified = "email_verified";
+        public const string PasswordChanged = "password_changed";
     }
 }

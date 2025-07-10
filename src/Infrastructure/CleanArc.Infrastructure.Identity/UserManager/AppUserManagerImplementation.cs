@@ -48,6 +48,11 @@ public class AppUserManagerImplementation : IAppUserManager
     {
         return await _userManager.GenerateChangePhoneNumberTokenAsync(user, phoneNumber);
     }
+    
+    public async Task<string> GeneratePasswordResetTokenAsync(User user)
+    {
+        return await _userManager.GeneratePasswordResetTokenAsync(user);
+    }
 
     public Task<User> GetUserByCode(string code)
     {
@@ -87,11 +92,15 @@ public class AppUserManagerImplementation : IAppUserManager
         return await _userManager.Users.FirstOrDefaultAsync(c => c.NormalizedEmail.Equals(email.ToUpper()));
     }
 
+
     public async Task<SignInResult> AdminLogin(User user, string password)
     {
         return await _userManager.CheckPasswordAsync(user, password) ? SignInResult.Success : SignInResult.Failed;
     }
-
+    public async Task<IdentityResult> ResetPasswordAsync(User user, string token, string newPassword)
+    {
+        return await _userManager.ResetPasswordAsync(user, token,newPassword);
+    }
     public Task<User> GetByUserName(string userName)
     {
         return _userManager.FindByNameAsync(userName);
@@ -115,6 +124,11 @@ public class AppUserManagerImplementation : IAppUserManager
     public async Task<IdentityResult> CreateUserWithPasswordAsync(User user, string password)
     {
         return await _userManager.CreateAsync(user, password);
+    }
+
+    public async Task<IdentityResult> ChangePasswordAsync(User user, string currentPassword,string newPassword)
+    {
+        return await _userManager.ChangePasswordAsync(user, currentPassword,newPassword);
     }
 
     public async Task<IdentityResult> AddUserToRoleAsync(User user, Role role)
