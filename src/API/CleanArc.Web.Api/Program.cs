@@ -66,7 +66,7 @@ builder.Services.AddControllers(options =>
 builder.Services.AddSwagger();
 builder.Services.AddApplicationServices()
     .RegisterIdentityServices(identitySettings, builder.Configuration)
-    .AddPersistenceServices(builder.Configuration)
+    .AddPersistenceServices(builder.Configuration, builder.Environment.ContentRootPath)
     .AddWebFrameworkServices(builder.Configuration);
 
 builder.Services.RegisterValidatorsAsServices();
