@@ -6,14 +6,17 @@ using CleanArc.Domain.Entities.SearchCarAmenities;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
+using CleanArc.Application.Services.Aggregators;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories.Common;
 
 public class UnitOfWork : IUnitOfWork
 {
     private readonly ApplicationDbContext _db;
-       
+    private readonly HotelProviderAggregator _hotelProviderAggregator;
+
     public IUserRefreshTokenRepository UserRefreshTokenRepository { get; }
     public IUserSignUpRewardsRepository  UserSignUpRewardsRepository { get; }
     public IUserAssignRewardsRepository UserAssignRewardsRepository { get; }
@@ -131,7 +134,7 @@ public class UnitOfWork : IUnitOfWork
     private readonly IMapper _mapper;
 
 
-    public UnitOfWork(ApplicationDbContext db, IConfiguration configuration,IMapper mapper, 
+    public UnitOfWork(ApplicationDbContext db, HotelProviderAggregator hotelProviderAggregator, IConfiguration configuration,IMapper mapper, 
         ILogger<URLRepository> logger,
         ILogger<StartupDataRepository> _loggerStartupData,
         ILogger<AgeTypeRepository> _logger, 
@@ -257,9 +260,9 @@ public class UnitOfWork : IUnitOfWork
         HotelRepository=new HotelRepository(configuration, mapper, _loggerHotel, httpContextAccessor);
         AmenityRepository=new AmenityRepository(configuration, mapper, _loggerAmenity, httpContextAccessor);
         RoomTypeRepository=new RoomTypeRepository(configuration, mapper, _loggerRoomType, httpContextAccessor);
-        RoomDetailsRepository=new RoomDetailsRepository(configuration, mapper, _loggerRoomDetails, httpContextAccessor);
+        RoomDetailsRepository=new RoomDetailsRepository(configuration, mapper, _loggerRoomDetails, httpContextAccessor, hotelProviderAggregator);
         CategoryRepository=new CategoryRepository(configuration, mapper, _loggerCategory, httpContextAccessor);
-        SearchHotelRepository=new SearchHotelDetailRepository(configuration, mapper, _loggerSearchHotel, httpContextAccessor);
+        SearchHotelRepository=new SearchHotelDetailRepository(configuration, mapper, _loggerSearchHotel, httpContextAccessor, hotelProviderAggregator);
         SearchHotelImageRepository = new SearchHotelImageRepository(configuration, mapper, _loggerSearchImage, httpContextAccessor);
         SearchHotelAmenitiesRepository=new SearchHotelAmenitiesRepository(configuration, mapper, _loggerSearchHotelAmenities, httpContextAccessor);
         SearchCountryCitiesRepository=new SearchCountryCitiesRepository(configuration, mapper, _loggerSearchCountryCities, httpContextAccessor);

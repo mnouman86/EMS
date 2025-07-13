@@ -25,5 +25,6 @@ namespace CleanArc.Domain.Common
         public const string ServerError = "server_error";
         public const string RoleNotFound = "role_not_found";
         public const string UserNotFound = "user_not_found";
+        public const string EmailNotFound = "email_not_found";
     }
 }

@@ -32,6 +32,8 @@ using CleanArc.Domain.Entities.Language;
 using CleanArc.Domain.Entities.Amenity;
 using CleanArc.Domain.Entities.Activity;
 using CleanArc.Domain.Entities.GenericAddress;
+using CleanArc.Domain.Entities.Category;
+using Org.BouncyCastle.Crypto;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories
 {
@@ -106,8 +108,18 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
                     parameters.Add("@MaxPrice", searchRequest.MaxPrice, DbType.Int32);
                     //parameters.Add("@Amenities", searchRequest.Amenities, DbType.String);
                     parameters.Add("@Name", searchRequest.Name, DbType.String);
+                    parameters.Add("@Category", searchRequest.Category, DbType.String);
+                    parameters.Add("@SubCategory", searchRequest.SubCategory, DbType.String);
+                    parameters.Add("@Language", searchRequest.Language, DbType.String);
+                    parameters.Add("@ActivityType", searchRequest.ActivityType, DbType.String);
+                    parameters.Add("@ActivityNature", searchRequest.ActivityNature, DbType.String);
+                    parameters.Add("@ActivitySeason", searchRequest.ActivitySeason, DbType.String);
+                    parameters.Add("@ActivityDisabilityOption", searchRequest.ActivityDisabilityOption, DbType.String);
+                    parameters.Add("@ActivityTransportation", searchRequest.ActivityTransportation, DbType.String);
+                    parameters.Add("@ScheduleSlot", searchRequest.ScheduleSlot, DbType.String);
                     parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
                     parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+
                     parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                     string query = ActivityQueries.GetAllByBusinessID_Activities;
@@ -132,12 +144,27 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
 
                         List<FilterParameter> list = new List<FilterParameter>();
                         list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+                        list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.ThingsToDo).ToString() });
                         Params.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
                         Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                         Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                         var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, Params, commandType: CommandType.StoredProcedure);
 
-                        var AddressList = await connection.QueryAsync<GenericAddress>(GenericAddressQueries.GetAll_GenericAddress, Params, commandType: CommandType.StoredProcedure);
+
+                        var ParamsAddress = new DynamicParameters();
+                        ParamsAddress.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+                        ParamsAddress.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                        ParamsAddress.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                        ParamsAddress.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                        ParamsAddress.Add("@SortingArray", DataTableHelper.ToDataTable(sortinglist), DbType.Object); // Ensure proper type
+                        List<FilterParameter> listAddress = new List<FilterParameter>();
+                        listAddress.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+                        ParamsAddress.Add("@FilterArray", DataTableHelper.ToDataTable(listAddress), DbType.Object); // Ensure proper type
+                        ParamsAddress.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                        ParamsAddress.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+                        var AddressList = await connection.QueryAsync<GenericAddress>(GenericAddressQueries.GetAll_GenericAddress, ParamsAddress, commandType: CommandType.StoredProcedure);
 
                         item.ActivityImages = imageList.ToList();
                         item.ActivityAddress = AddressList.ToList();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CleanArc.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,6 +41,11 @@ namespace CleanArc.Application.Models.Request
 
     public class CustomizedSearchRequest : SearchRequest
     {
+
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public int? NoOfAdults { get; set; }
+        public int? NoOfChildren { get; set; }
         public int? NoOfRooms { get; set; }
         public int? NoOfDays { get; set; }
         public int? Rating { get; set; }
@@ -76,6 +82,11 @@ namespace CleanArc.Application.Models.Request
     {
         public int? NoOfRooms { get; set; }
         public int? NoOfDays { get; set; }
+        public string? CityName { get; set; }
+        public APIProvider Provider { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+
     }
     public class CarDetailSearchRequest : SearchRequestById
     {
@@ -89,6 +100,15 @@ namespace CleanArc.Application.Models.Request
         public int? MaxPrice { get; set; }
         public string? Amenities { get; set; }
         public string? Name { get; set; }
+        public string? Category { get; set; }
+        public string? SubCategory { get; set; }
+        public string? Language { get; set; }
+        public string? ActivityType { get; set; }
+        public string? ActivityNature { get; set; }
+        public string? ActivitySeason { get; set; }
+        public string? ActivityDisabilityOption { get; set; }
+        public string? ActivityTransportation { get; set; }
+        public string? ScheduleSlot { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public bool FilterByWishList { get; set; } = false;

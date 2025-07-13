@@ -9,6 +9,7 @@ using CleanArc.Application.Features.GenericMedia.Queries.GetAllGenericMedia;
 using CleanArc.Domain.Entities.Amenity;
 using CleanArc.Application.Features.Amenities.Queries.GetAllAmenities;
 using CleanArc.Application.Features.AmenityMapping.Queries.GetAllAmenityMapping;
+using CleanArc.Domain.Enums;
 
 namespace CleanArc.Application.Features.SearchHotelDetail.Queries.GetAllSearchHotelDetail;
 
@@ -28,6 +29,7 @@ public class GetAllSearchHotelDetailQueryResult
     public int HotelID { get; set; }
     public int CityID { get; set; }
     public bool? IsInWishlist { get; set; }
+    public APIProvider Provider { get; set; }
 
     public string Name { get; set; }
     public string CityName { get; set; }
