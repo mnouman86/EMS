@@ -12,7 +12,9 @@ namespace CleanArc.Domain.Common
     {
         { SuccessCodes.UserCreatedWithPendingVerification, "User created successfully. A verification code has been sent to your email. Please check your inbox to verify your account." },
         { SuccessCodes.VerificationEmailSent, "An email verification code has been sent to your email. Please check your inbox to verify your account." },
-        { SuccessCodes.EmailVerified, "Email verified successfully. Your account is now activated." }
+        { SuccessCodes.ResetPasswordEmailSent, "An email with reset password link has been sent to your email. Please check your inbox to reset password." },
+        { SuccessCodes.EmailVerified, "Email verified successfully. Your account is now activated." },
+        { SuccessCodes.PasswordChanged, "Password has been changed successfully." }
     };
 
         public static string GetMessage(string successCode)

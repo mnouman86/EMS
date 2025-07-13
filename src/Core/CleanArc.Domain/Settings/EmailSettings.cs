@@ -8,6 +8,7 @@ namespace CleanArc.Domain.Settings
 {
     public class EmailSettings
     {
+        public string BaseUrl { get; set; }
         public string SmtpServer { get; set; }
         public int Port { get; set; }
         public string Username { get; set; }
