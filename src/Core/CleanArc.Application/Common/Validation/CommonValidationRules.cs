@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using CleanArc.Application.Contracts;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,15 @@ namespace CleanArc.Application.Common.Validation
                 .EmailAddress().WithMessage("Please enter a valid email address")
                 .Must(email => email.Split('@').Length == 2 && email.Split('@')[1].Contains('.'))
                 .WithMessage("Email domain must contain a period");
+        }
+        public static IRuleBuilderOptions<T, string> NotDisposableEmail<T>(
+        this IRuleBuilder<T, string> ruleBuilder,
+        IEmailDomainValidator emailDomainValidator)
+        {
+            return ruleBuilder.Must(email =>
+                    !string.IsNullOrWhiteSpace(email) &&
+                    !emailDomainValidator.IsDisposable(email))
+                .WithMessage("Disposable email addresses are not allowed.");
         }
 
         public static IRuleBuilderOptions<T, string> ValidPassword<T>(this IRuleBuilder<T, string> ruleBuilder)

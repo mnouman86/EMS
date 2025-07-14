@@ -1,4 +1,5 @@
 ﻿using CleanArc.Application.Common.Validation;
+using CleanArc.Application.Contracts;
 using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.ValidationBase;
 using CleanArc.SharedKernel.ValidationBase.Contracts;
@@ -18,6 +19,7 @@ public record AddAdminCommand(
 {
     public IValidator<AddAdminCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<AddAdminCommand> validator)
     {
+
         // First Name
         validator.RuleFor(c => c.FirstName)
             .ValidName("First name");
@@ -25,10 +27,12 @@ public record AddAdminCommand(
         // Last Name
         validator.RuleFor(c => c.LastName)
             .ValidName("Last name");
+        var emailDomainValidator = validator.GetService<IEmailDomainValidator>();
 
         // Email
         validator.RuleFor(c => c.Email)
-            .ValidEmail();
+            .ValidEmail()
+            .NotDisposableEmail(emailDomainValidator);
 
         // Password
         validator.RuleFor(c => c.Password)
