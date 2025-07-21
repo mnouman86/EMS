@@ -6,6 +6,7 @@ using CleanArc.Application.Models.Common;
 using CleanArc.Domain.Common;
 using CleanArc.Domain.Enums;
 using CleanArc.Domain.Interfaces.Services;
+using CleanArc.Domain.Settings;
 using Mediator;
 using Microsoft.Extensions.Logging;
 using System;
@@ -23,17 +24,21 @@ namespace CleanArc.Application.Features.Admin.Commands.SendOTPCommand
         private readonly ILogger<AdminGetTokenQueryHandler> _logger;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IOTPService _otpService;
+        private readonly OTPSettings _settings;
+
         public SendOTPCommandHandler(IAppUserManager userManager,
         IJwtService jwtService,
         ILogger<AdminGetTokenQueryHandler> logger,
         IUnitOfWork unitOfWork,
-        IOTPService otpService)
+        IOTPService otpService, OTPSettings settings
+)
         {
             _userManager = userManager;
             _jwtService = jwtService;
             _logger = logger;
             _unitOfWork = unitOfWork; // Assigning UnitOfWork
             _otpService = otpService;
+            _settings = settings;
         }
 
         public async ValueTask<OperationResult<bool>> Handle(SendOTPCommand request, CancellationToken cancellationToken)
@@ -66,9 +71,10 @@ namespace CleanArc.Application.Features.Admin.Commands.SendOTPCommand
                     var lockoutIncrementResult = await _userManager.IncrementAccessFailedCountAsync(user);
                     return OperationResult<bool>.FailureResult(ErrorCodes.IncorrectPassword);
                 }
+                
+                var otp = await _otpService.GenerateAndSendOTPAsync(_settings.DeliveryMethod == OTPDeliveryMethod.Email ? user.Email : user.PhoneNumber, user.Id, _settings.DeliveryMethod);
+                return OperationResult<bool>.SuccessResult(true, 200, "OTP sent successfully");
 
-                var otp = await _otpService.GenerateAndSendOTPAsync(request.Method==OTPDeliveryMethod.Email?user.Email :user.PhoneNumber, user.Id,request.Method);
-                return OperationResult<bool>.SuccessResult(true,200,"OTP sent successfully");
             }
             catch (Exception ex)
             {

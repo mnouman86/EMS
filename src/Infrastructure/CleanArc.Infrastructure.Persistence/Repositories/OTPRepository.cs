@@ -1,5 +1,6 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Domain.Entities.OTP;
+using CleanArc.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -23,10 +24,10 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             await _context.OTPs.AddAsync(otp);
         }
 
-        public async Task<OTP?> GetValidOTPAsync(string phoneNumber, int userId, string code)
+        public async Task<OTP?> GetValidOTPAsync(string recipient, int userId, string code, OTPDeliveryMethod deliveryMethod)
         {
             return await _context.OTPs
-                .Where(o => o.PhoneNumber == phoneNumber &&
+                .Where(o => o.Recipient == recipient &&
                 o.UserId==userId &&
                            o.Code == code &&
                            !o.IsUsed &&
@@ -40,26 +41,26 @@ namespace CleanArc.Infrastructure.Persistence.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<int> GetOTPAttemptsCountAsync(string phoneNumber, DateTime since)
+        public async Task<int> GetOTPAttemptsCountAsync(string recipient, DateTime since)
         {
             return await _context.OTPs
-                .Where(o => o.PhoneNumber == phoneNumber &&
+                .Where(o => o.Recipient == recipient &&
                            o.CreatedAt >= since)
                 .CountAsync();
         }
 
-        public async Task<bool> HasActiveOTPAsync(string phoneNumber)
+        public async Task<bool> HasActiveOTPAsync(string recipient)
         {
             return await _context.OTPs
-                .AnyAsync(o => o.PhoneNumber == phoneNumber &&
+                .AnyAsync(o => o.Recipient == recipient &&
                              !o.IsUsed &&
                              o.ExpiresAt > DateTime.UtcNow);
         }
 
-        public async Task InvalidateAllOTPsForPhoneAsync(string phoneNumber)
+        public async Task InvalidateAllOTPsForPhoneAsync(string recipient)
         {
             var activeOtps = await _context.OTPs
-                .Where(o => o.PhoneNumber == phoneNumber &&
+                .Where(o => o.Recipient == recipient &&
                             !o.IsUsed &&
                             o.ExpiresAt > DateTime.UtcNow)
                 .ToListAsync();

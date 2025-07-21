@@ -11,6 +11,10 @@ namespace CleanArc.Domain.Enums
         None,
         WhatsApp,
         SMS,
-        Email
+        Email,
+        SMS_Email,
+        WhatsApp_Email,
+        SMS_WhatsApp,
+        SMS_WhatsApp_Email
     }
 }
