@@ -9,6 +9,7 @@ using CleanArc.Domain.Interfaces.Services;
 using CleanArc.Domain.Settings;
 using Mediator;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace CleanArc.Application.Features.Admin.Commands.SendOTPCommand
         IJwtService jwtService,
         ILogger<AdminGetTokenQueryHandler> logger,
         IUnitOfWork unitOfWork,
-        IOTPService otpService, OTPSettings settings
+        IOTPService otpService, IOptions<OTPSettings> settings
 )
         {
             _userManager = userManager;
@@ -38,7 +39,7 @@ namespace CleanArc.Application.Features.Admin.Commands.SendOTPCommand
             _logger = logger;
             _unitOfWork = unitOfWork; // Assigning UnitOfWork
             _otpService = otpService;
-            _settings = settings;
+            _settings = settings.Value;
         }
 
         public async ValueTask<OperationResult<bool>> Handle(SendOTPCommand request, CancellationToken cancellationToken)
