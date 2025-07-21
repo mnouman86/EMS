@@ -7,6 +7,7 @@ using CleanArc.Domain.Interfaces.Services;
 using CleanArc.Domain.Settings;
 using Mediator;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,13 +26,13 @@ namespace CleanArc.Application.Features.Admin.Commands.VerifyOTPCommand
 
 
         public VerifyOTPCommandHandler(IAppUserManager userManager, IOTPService otpService, IJwtService jwtService,
-                    OTPSettings otpSettings
+                    IOptions<OTPSettings> otpSettings
 )
         {
             _userManager = userManager;
             _otpService = otpService;
             _jwtService = jwtService;
-            _otpSettings = otpSettings;
+            _otpSettings = otpSettings.Value;
         }
 
         public async ValueTask<OperationResult<AccessToken>> Handle(VerifyOTPCommand request, CancellationToken cancellationToken)
