@@ -10,7 +10,7 @@ namespace CleanArc.Domain.Interfaces.Services
 {
     public interface IOTPService
     {
-        Task<string> GenerateAndSendOTPAsync(string recipient, int userId, OTPDeliveryMethod method);
-        Task<bool> VerifyOTPAsync(string recipient, int userId, string code);
+        Task<string> GenerateAndSendOTPAsync(string recipient, int userId, OTPDeliveryMethod deliveryMethod);
+        Task<bool> VerifyOTPAsync(string recipient, int userId, string code, OTPDeliveryMethod deliveryMethod);
     }
 }

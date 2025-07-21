@@ -41,7 +41,7 @@ namespace CleanArc.Infrastructure.Persistence.Services
             TwilioClient.Init(_accountSid, _authToken);
         }
 
-        public async Task<string> GenerateAndSendOTPAsync(string recipient, int userId, OTPDeliveryMethod method)
+        public async Task<string> GenerateAndSendOTPAsync(string recipient, int userId, OTPDeliveryMethod deliveryMethod)
         {
             // Generate 6-digit OTP
             var otpCode = new Random().Next(100000, 999999).ToString();
@@ -50,11 +50,11 @@ namespace CleanArc.Infrastructure.Persistence.Services
             // Save to database
             var otp = new OTP
             {
-                PhoneNumber = recipient,
+                Recipient = recipient,
                 UserId = userId,
                 Code = otpCode,
                 ExpiresAt = expiration,
-                DeliveryMethod=method.ToString()
+                DeliveryMethod=deliveryMethod.ToString()
             };
 
             await _otpRepository.AddAsync(otp);
@@ -68,7 +68,7 @@ namespace CleanArc.Infrastructure.Persistence.Services
             //);
             if (_isEnabled)
             {
-                switch (method)
+                switch (deliveryMethod)
                 {
                     case OTPDeliveryMethod.WhatsApp:
                         await SendWhatsAppOTP(recipient, otpCode);
@@ -111,9 +111,9 @@ namespace CleanArc.Infrastructure.Persistence.Services
                    $"Your verification code is: {otpCode}");
         }
        
-        public async Task<bool> VerifyOTPAsync(string phoneNumber, int userId, string code)
+        public async Task<bool> VerifyOTPAsync(string recipient, int userId, string code, OTPDeliveryMethod deliveryMethod)
         {
-            var otp = await _otpRepository.GetValidOTPAsync(phoneNumber,userId, code);
+            var otp = await _otpRepository.GetValidOTPAsync(recipient, userId, code,deliveryMethod);
 
             if (otp == null || !otp.IsValid())
                 return false;

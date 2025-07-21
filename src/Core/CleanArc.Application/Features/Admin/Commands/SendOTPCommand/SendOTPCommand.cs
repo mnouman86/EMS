@@ -15,8 +15,7 @@ namespace CleanArc.Application.Features.Admin.Commands.SendOTPCommand
 {
     public record SendOTPCommand(
     string UserName,
-    string Password,
-    OTPDeliveryMethod Method) : IRequest<OperationResult<bool>>,
+    string Password) : IRequest<OperationResult<bool>>,
     IValidatableModel<SendOTPCommand>
     {
         public IValidator<SendOTPCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<SendOTPCommand> validator)
@@ -30,9 +29,9 @@ namespace CleanArc.Application.Features.Admin.Commands.SendOTPCommand
                 .ValidPassword();
 
             // Enum validation
-            validator.RuleFor(x => x.Method)
-                .IsInEnum()
-                .WithMessage("Invalid OTP delivery method selected");
+            //validator.RuleFor(x => x.Method)
+            //    .IsInEnum()
+            //    .WithMessage("Invalid OTP delivery method selected");
 
             return validator;
         }

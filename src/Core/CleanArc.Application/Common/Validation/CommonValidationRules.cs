@@ -13,9 +13,10 @@ namespace CleanArc.Application.Common.Validation
         public static IRuleBuilderOptions<T, string> ValidName<T>(this IRuleBuilder<T, string> ruleBuilder, string fieldName)
         {
             return ruleBuilder
-                .NotEmpty().WithMessage($"{fieldName} is required")
-                .Length(2, 50).WithMessage($"{fieldName} must be between 2 and 50 characters")
-                .Matches(@"^[a-zA-Z]+$").WithMessage($"{fieldName} can only contain letters")
+        .NotEmpty().WithMessage($"{fieldName} is required")
+        .Length(2, 100).WithMessage($"{fieldName} must be between 2 and 100 characters")
+        .Matches(@"^(?i)(Mr\.|Mrs\.|Ms\.|Miss|Dr\.|Prof\.|Engr\.|Hafiz|Mufti|Allama|Shaikh)?\.?\s*((([A-Z]\.)+|[\p{L}\p{M}]+)([\p{Zs}\p{Pd}'’\.]?))*\s*(Jr\.|Sr\.|I{2,3}|IV|V)?$")
+            .WithMessage($"{fieldName} contains invalid characters or format")
                 .Must(name => char.IsUpper(name[0]))
                 .WithMessage($"{fieldName} must start with a capital letter");
         }

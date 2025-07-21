@@ -29,6 +29,9 @@ public record AddAdminCommand(
             .ValidName("Last name");
         var emailDomainValidator = validator.GetService<IEmailDomainValidator>();
 
+        validator.RuleFor(x => x)
+            .Must(x => !HasCommonNameParts(x.FirstName, x.LastName))
+            .WithMessage("First name and last name should not contain the same word or part.");
         // Email
         validator.RuleFor(c => c.Email)
             .ValidEmail()
@@ -55,5 +58,18 @@ public record AddAdminCommand(
             .LessThan(100).WithMessage("Role ID must be less than 100");
 
         return validator;
+    }
+
+    private bool HasCommonNameParts(string? firstName, string? lastName)
+    {
+        if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
+            return false;
+
+        var firstParts = firstName.Split(new[] { ' ', '-', '.' }, StringSplitOptions.RemoveEmptyEntries)
+                                  .Select(p => p.Trim().ToLowerInvariant());
+        var lastParts = lastName.Split(new[] { ' ', '-', '.' }, StringSplitOptions.RemoveEmptyEntries)
+                                .Select(p => p.Trim().ToLowerInvariant());
+
+        return firstParts.Intersect(lastParts).Any();
     }
 }
