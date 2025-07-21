@@ -22,6 +22,7 @@ public class RoomDetails
     public int? RoomTypeLookUpId { get; set; }
 
     public string? RoomType { get; set; }
+    public string? RefundPolicy { get; set; }
     public int? RoomSizeUnitLookUpId { get; set; }
 
     public string? RoomSizeUnit { get; set; }

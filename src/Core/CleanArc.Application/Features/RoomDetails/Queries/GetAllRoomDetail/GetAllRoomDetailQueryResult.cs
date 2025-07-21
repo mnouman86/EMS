@@ -20,6 +20,7 @@ public class GetAllRoomDetailQueryResult
     public Decimal? DiscountPercentage { get; set; }
     public Decimal? DiscountAmount { get; set; }
     public Decimal? DiscountedPrice { get; set; }
+    public string? RefundPolicy { get; set; }
 
     public string? HotelName { get; set; }
     public string? Description { get; set; }
