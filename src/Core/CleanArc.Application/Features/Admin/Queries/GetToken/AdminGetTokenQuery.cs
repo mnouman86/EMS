@@ -16,7 +16,7 @@ public record AdminGetTokenQuery(
     public IValidator<AdminGetTokenQuery> ValidateApplicationModel(ApplicationBaseValidationModelProvider<AdminGetTokenQuery> validator)
     {
         // Username validation (alphanumeric with underscores/dots)
-        validator.RuleFor(c => c.UserName);
+        validator.RuleFor(c => c.UserName).ValidEmail();
         //.NotEmpty().WithMessage("Username is required")
         //.Length(3, 50).WithMessage("Username must be between 3 and 50 characters")
         //.Matches(@"^[a-zA-Z0-9_.]+$").WithMessage("Username can only contain letters, numbers, underscores, or dots");
