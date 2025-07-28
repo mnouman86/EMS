@@ -1,0 +1,38 @@
+﻿using CleanArc.Application.Models.Common;
+using CleanArc.SharedKernel.ValidationBase.Contracts;
+using CleanArc.SharedKernel.ValidationBase;
+using FluentValidation;
+using Mediator;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
+
+namespace CleanArc.Application.Features.ContactForm.Commands.UpdateContactFormCommand;
+public record UpdateContactFormCommand( int Id,String? Name, string? Icon, string? Description, int? Type, string? ImagePath, int? UpdatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+    IValidatableModel<UpdateContactFormCommand>
+{
+    [JsonIgnore]
+    public int UserId { get; set; }
+    public IValidator<UpdateContactFormCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateContactFormCommand> validator)
+    {
+        
+        validator.RuleFor(c => c.Name)
+            .NotEmpty()
+
+            .NotNull()
+            .WithMessage("Please enter a valid Title");
+        validator.RuleFor(c => c.Description)
+            .NotEmpty()
+            .NotNull()
+            .WithMessage("Please enter a Description");
+        validator.RuleFor(c => c.Type)
+           .NotEmpty()
+           .NotNull()
+           .WithMessage("Please enter a Type");
+        return validator;
+    }
+}
+
