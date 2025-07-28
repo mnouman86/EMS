@@ -101,6 +101,7 @@ public interface IUnitOfWork
     public IKBMediaRepository KBMediaRepository { get; }
     public IKBTimingRepository KBTimingRepository { get; }
     public ICoreAreaRepository CoreAreaRepository { get; }
+    public IContactFormRepository ContactFormRepository { get; }
     public IKBAddressRepository KBAddressRepository { get; }
     public IKBWhenToVisitRepository KBWhenToVisitRepository { get; }
     public IKBInterestedRepository KBInterestedRepository { get; }
