@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ContactForm.Commands.CreateContactFormCommand;
-public record CreateContactFormCommand(string? Name, string? Description, string? Icon, int? Type, string? ImagePath, int? CreatedBy, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateContactFormCommand(string FullName, string Email, string Subject, string Message, int CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateContactFormCommand>
 {
     [JsonIgnore]
@@ -19,18 +19,18 @@ public record CreateContactFormCommand(string? Name, string? Description, string
     public IValidator<CreateContactFormCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateContactFormCommand> validator)
     {
         
-        validator.RuleFor(c => c.Name)
+        validator.RuleFor(c => c.FullName)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please enter a valid Title");
-        validator.RuleFor(c => c.Description)
+            .WithMessage("Please enter Full Name");
+        validator.RuleFor(c => c.Email)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please enter a Description");
-        validator.RuleFor(c => c.Type)
+            .WithMessage("Please enter an Email");
+        validator.RuleFor(c => c.Message)
            .NotEmpty()
            .NotNull()
-           .WithMessage("Please enter a Type");
+           .WithMessage("Please enter a Message");
         return validator;
     }
 }

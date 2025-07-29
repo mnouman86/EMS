@@ -445,6 +445,15 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ContactForm.ContactFormController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.ContactForm.ContactFormController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ContactForm.Commands.CreateContactFormCommand.CreateContactFormCommand,CleanArc.Application.Features.ContactForm.Commands.UpdateContactFormCommand.UpdateContactFormCommand,CleanArc.Application.Features.ContactForm.Commands.DeleteContactFormCommand.DeleteContactFormCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.ContactForm.Queries.GetAllContactForm.GetAllContactFormQuery,System.Collections.Generic.List{CleanArc.Application.Features.ContactForm.Queries.GetAllContactForm.GetAllContactFormQueryResult},CleanArc.Application.Features.ContactForm.Queries.GetContactFormById.GetContactFormByIdQuery,CleanArc.Application.Features.ContactForm.Queries.GetContactFormById.GetContactFormByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.ContactForm.ContactFormController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.CoreArea.CoreAreaController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.CoreArea.CoreAreaController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.CoreArea.Commands.CreateCoreAreaCommand.CreateCoreAreaCommand,CleanArc.Application.Features.CoreArea.Commands.UpdateCoreAreaCommand.UpdateCoreAreaCommand,CleanArc.Application.Features.CoreArea.Commands.DeleteCoreAreaCommand.DeleteCoreAreaCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.CoreArea.Queries.GetAllCoreArea.GetAllCoreAreaQuery,System.Collections.Generic.List{CleanArc.Application.Features.CoreArea.Queries.GetAllCoreArea.GetAllCoreAreaQueryResult},CleanArc.Application.Features.CoreArea.Queries.GetCoreAreaById.GetCoreAreaByIdQuery,CleanArc.Application.Features.CoreArea.Queries.GetCoreAreaById.GetCoreAreaByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>

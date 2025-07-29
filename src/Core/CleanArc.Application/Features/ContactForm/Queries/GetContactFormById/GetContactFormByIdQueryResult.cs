@@ -10,20 +10,10 @@ namespace CleanArc.Application.Features.ContactForm.Queries.GetContactFormById
     //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
     {
         public int Id { get; set; }
-        //public int? KBDetailID { get; set; }
-        public string? Name { get; set; }
-        public string? Description { get; set; }
-        public int? Type { get; set; }
-        public string? ImagePath { get; set; }
-        public string? Icon { get; set; }
-        public bool? IsActive { get; set; }
-        public bool? IsDeleted { get; set; }
-        public int? CreatedBy { get; set; }
-        public DateTime? CreatedAt { get; set; }
-        public int? UpdatedBy { get; set; }
-        public DateTime? UpdatedAt { get; set; }
-        public int? CultureId { get; set; }
-        public int? Code { get; set; }
-        public string? Message { get; set; }
+        public string FullName { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string Message { get; set; } = string.Empty;
+        public string Details { get; set; } = string.Empty;
+        public int CultureId { get; set; }
     }
 }
