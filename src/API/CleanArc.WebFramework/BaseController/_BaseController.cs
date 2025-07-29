@@ -112,7 +112,7 @@ public class _BaseController<TCreateCommand, TUpdateCommand, TDeleteCommand, TRe
     /// 
    [Authorize]
     [HttpPost("[controller]Create")]
-    public async Task<IActionResult> Create([FromBody] TCreateCommand command)
+    public virtual async Task<IActionResult> Create([FromBody] TCreateCommand command)
     {
         SetUserId(command);
         var commandResult = await _sender.Send(command);

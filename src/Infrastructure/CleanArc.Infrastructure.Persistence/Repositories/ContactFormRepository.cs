@@ -26,6 +26,7 @@ using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using CleanArc.Application.Common;
 using CleanArc.Application.Models.ContactForm;
+using CleanArc.Infrastructure.Persistence.Services;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -55,6 +56,9 @@ public class ContactFormRepository:IContactFormRepository
     /// </summary>
     private readonly IHttpContextAccessor _httpContextAccessor;
 
+    private readonly IEmailService _emailService;
+
+
     /// <summary>
     /// Initializes a new instance of the <see cref="MenuRepository"/> class.
     /// </summary>
@@ -62,12 +66,14 @@ public class ContactFormRepository:IContactFormRepository
     /// <param name="mapper">The mapper for mapping between different object types.</param>
     /// <param name="logger">The logger for logging repository-related information.</param>
     /// <param name="httpContextAccessor">The HTTP context accessor for accessing HTTP context information.</param>
-    public ContactFormRepository(IConfiguration configuration, IMapper mapper, ILogger<ContactFormRepository> logger, IHttpContextAccessor httpContextAccessor)
+    public ContactFormRepository(IConfiguration configuration, IMapper mapper, ILogger<ContactFormRepository> logger, IHttpContextAccessor httpContextAccessor
+        , IEmailService emailService)
     {
         this.configuration = configuration;
         this._mapper = mapper;
         this._logger = logger;
         _httpContextAccessor = httpContextAccessor;
+        _emailService = emailService;
     }
 /// <inheritdoc/>
 public async Task<ResponseEntity> AddAsync(ContactForm ContactForm)
@@ -81,8 +87,41 @@ public async Task<ResponseEntity> AddAsync(ContactForm ContactForm)
                 var parameters = new DynamicParameters(createContactFormDTO);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ContactFormQueries.Create_ContactForm, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-                
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                if (result.IsSuccess)
+                {
+                    //        var emailBody = $@"
+                    //<h3>New Contact Form Submission</h3>
+                    //<p><strong>Name:</strong> {ContactForm.FullName}</p>
+                    //<p><strong>Email:</strong> {ContactForm.Email}</p>
+                    //<p><strong>Subject:</strong> {ContactForm.Subject}</p>
+                    //<p><strong>Message:</strong><br/>{ContactForm.Message}</p>
+                    //<p><em>Received on {DateTime.Now.ToString("D")}</em></p>";
+
+                    //        await _emailService.SendEmailAsync(
+                    //            ContactForm.Email,  // Replace with real support email
+                    //            $"[Contact Form] {ContactForm.Subject}",
+                    //            emailBody
+                    //        );
+                    var userAcknowledgementEmailBody = $@"
+                            <h3>Thank you for contacting us, {ContactForm.FullName}!</h3>
+                            <p>We have received your message and our support team will get back to you shortly.</p>
+
+                            <h4>Your Submitted Details:</h4>
+                            <p><strong>Subject:</strong> {ContactForm.Subject}</p>
+                            <p><strong>Message:</strong><br/>{ContactForm.Message}</p>
+
+                            <p><em>Submitted on {DateTime.Now:dddd, MMMM dd, yyyy}</em></p>
+
+                            <p>Best regards,<br/>Support Team</p>";
+
+                    await _emailService.SendEmailAsync(
+                        ContactForm.Email,  // Sending TO the user who filled the form
+                        $"We Received Your {ContactForm.Subject}",
+                        userAcknowledgementEmailBody
+                    );
+                }
             return result;
         }
     }

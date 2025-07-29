@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging; 
 using CleanArc.Domain.Common;
 using CleanArc.Application.Services.Aggregators;
+using CleanArc.Infrastructure.Persistence.Services;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories.Common;
 
@@ -133,9 +134,10 @@ public class UnitOfWork : IUnitOfWork
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
+    private readonly IEmailService _emailService;
 
 
-    public UnitOfWork(ApplicationDbContext db, HotelProviderAggregator hotelProviderAggregator, IConfiguration configuration,IMapper mapper, 
+    public UnitOfWork(ApplicationDbContext db, HotelProviderAggregator hotelProviderAggregator, IEmailService emailService, IConfiguration configuration,IMapper mapper, 
         ILogger<URLRepository> logger,
         ILogger<StartupDataRepository> _loggerStartupData,
         ILogger<AgeTypeRepository> _logger, 
@@ -352,7 +354,7 @@ public class UnitOfWork : IUnitOfWork
         KBMediaRepository = new KBMediaRepository(configuration, mapper, _loggerKBMedia, httpContextAccessor);
         KBTimingRepository = new KBTimingRepository(configuration, mapper, _loggerKBTiming, httpContextAccessor);
         CoreAreaRepository = new CoreAreaRepository(configuration, mapper, _loggerCoreArea, httpContextAccessor);
-        ContactFormRepository = new ContactFormRepository(configuration, mapper, _loggerContactForm, httpContextAccessor);
+        ContactFormRepository = new ContactFormRepository(configuration, mapper, _loggerContactForm, httpContextAccessor,emailService);
         KBAddressRepository = new KBAddressRepository(configuration, mapper, _loggerKBAddress, httpContextAccessor);
         KBWhenToVisitRepository = new KBWhenToVisitRepository(configuration, mapper, _loggerKBWhenToVisit, httpContextAccessor);
         KBInterestedRepository = new KBInterestedRepository(configuration, mapper, _loggerKBInterested, httpContextAccessor);
@@ -370,7 +372,6 @@ public class UnitOfWork : IUnitOfWork
         HomeSliderRepository = new HomeSliderRepository(configuration, mapper, _loggerHomeSlider, httpContextAccessor);
 
         this.configuration = configuration;
-
     }
 
     public  Task CommitAsync()

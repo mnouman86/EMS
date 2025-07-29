@@ -6,7 +6,9 @@ using CleanArc.Application.Features.ContactForm.Queries.GetContactFormById;
 using CleanArc.Application.Features.ContactForm.Queries.GetAllContactForm;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
+using Microsoft.AspNetCore.Mvc; 
+using CleanArc.Domain.Common;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CleanArc.Web.Api.Controllers.V1.ContactForm
 {
@@ -57,13 +59,9 @@ namespace CleanArc.Web.Api.Controllers.V1.ContactForm
     public class ContactFormController : _BaseController<CreateContactFormCommand, UpdateContactFormCommand, DeleteContactFormCommand, ResponseEntity, GetAllContactFormQuery,
     List<GetAllContactFormQueryResult>, GetContactFormByIdQuery, GetContactFormByIdQueryResult>
     {
-        //private readonly ISender _sender;
+        private readonly ISender _sender;
 
-        //public ContactFormController(ISender sender)
-        //{
-        //    _sender = sender;
-        //}
-
+        
         //[HttpPost("CreateContactForm")]
         //public async Task<IActionResult> CreateContactForm(CreateContactFormCommand model)
         //{
@@ -104,8 +102,21 @@ namespace CleanArc.Web.Api.Controllers.V1.ContactForm
         public ContactFormController(ISender sender, ILogger<_BaseController<CreateContactFormCommand, UpdateContactFormCommand, DeleteContactFormCommand, ResponseEntity, GetAllContactFormQuery,
    List<GetAllContactFormQueryResult>, GetContactFormByIdQuery, GetContactFormByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
         {
-
+            _sender = sender;
+        }
+        [ApiExplorerSettings(IgnoreApi = true)]
+        [NonAction]
+        public override Task<IActionResult> Create([FromBody] CreateContactFormCommand command)
+        {
+             throw new NotSupportedException("This endpoint is disabled. Use POST /api/v1/ContactForm/Submit instead.");
         }
 
+        [HttpPost("ContactFormCreate")]
+        [AllowAnonymous] // Override to allow public access
+        public async Task<IActionResult> Submit([FromBody] CreateContactFormCommand command)
+        {
+            var commandResult = await _sender.Send(command);
+            return OperationResult(commandResult);
+        }
     }
 }
