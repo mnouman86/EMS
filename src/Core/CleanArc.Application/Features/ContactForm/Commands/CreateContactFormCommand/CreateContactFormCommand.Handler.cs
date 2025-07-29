@@ -46,9 +46,9 @@ internal class CreateContactFormCommandHandler: IRequestHandler<CreateContactFor
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
 
-            var user = await _userManager.GetUserByIdAsync(request.UserId);
-            if (user == null)
-                return OperationResult<ResponseEntity>.FailureResult("User Not Found");
+            //var user = await _userManager.GetUserByIdAsync(request.UserId);
+            //if (user == null)
+            //    return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
             //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
             //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
