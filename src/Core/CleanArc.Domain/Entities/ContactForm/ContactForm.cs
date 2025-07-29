@@ -13,6 +13,6 @@ namespace CleanArc.Domain.Entities.ContactForm
         public string Email { get; set; } = string.Empty;
         public string Subject { get; set; } = string.Empty;
         public string Message { get; set; } = string.Empty;
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public int CultureId { get; set; }
     }
 }

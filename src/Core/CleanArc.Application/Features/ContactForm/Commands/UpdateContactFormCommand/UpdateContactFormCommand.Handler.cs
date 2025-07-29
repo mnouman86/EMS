@@ -56,7 +56,7 @@ internal class UpdateContactFormCommandHandler:IRequestHandler<UpdateContactForm
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.ContactFormRepository.UpdateAsync(new Domain.Entities.ContactForm.ContactForm()
-            { UpdatedBy = user.Id,Id= request.Id,  Description = request.Description, Icon=request.Icon, Name = request.Name, Type=request.Type,ImagePath=request.ImagePath,  CultureId = request.CultureId });
+            { Id= request.Id, FullName = request.FullName, Email = request.Email, Subject = request.Subject, Message = request.Message, CultureId = request.CultureId });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
