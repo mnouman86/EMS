@@ -13,7 +13,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
 {
     public static class BookingWhizzRoomDetailMapper
     {
-        public static HotelDetail MapHotelDetail(XDocument searchDoc, XDocument detailDoc, XDocument availabilityDoc,int? noOfRooms, int? noOfDays)
+        public static HotelDetail MapHotelDetail(XDocument searchDoc, /*XDocument detailDoc,*/ XDocument availabilityDoc,int? noOfRooms, int? noOfDays)
         {
             var hotelElement = searchDoc.Descendants("result")
                 .FirstOrDefault();
@@ -30,12 +30,12 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
             //    : null;
             //int noOfDays=(enDate-stDate).Value.Days;
             // Extract Check-in/out from detailDoc
-            var detailResult = detailDoc.Descendants("Result").FirstOrDefault();
-            var checkInFrom = detailResult?.Element("checkin")?.Element("from")?.Value;
-            var checkOutFrom = detailResult?.Element("checkout")?.Element("from")?.Value;
+            //var detailResult = detailDoc.Descendants("Result").FirstOrDefault();
+            var checkInFrom = hotelElement?.Element("CheckIn")?.Value;
+            var checkOutFrom = hotelElement?.Element("CheckOut")?.Value;
 
-            var checkInTo = detailResult?.Element("checkin")?.Element("to")?.Value;
-            var checkOutTo = detailResult?.Element("checkout")?.Element("to")?.Value;
+            //var checkInTo = detailResult?.Element("checkin")?.Element("to")?.Value;
+            //var checkOutTo = detailResult?.Element("checkout")?.Element("to")?.Value;
 
             DateTime? checkInTime = TimeSpan.TryParse(checkInFrom, out var ciTime)
                 ? DateTime.Today.Add(ciTime)
@@ -43,12 +43,12 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
             DateTime? checkOutTime = TimeSpan.TryParse(checkOutFrom, out var coTime)
                 ? DateTime.Today.Add(coTime)
                 : null;
-            DateTime? checkInTimeTo = TimeSpan.TryParse(checkInTo, out var citTime)
-               ? DateTime.Today.Add(citTime)
-               : null;
-            DateTime? checkOutTimeTo = TimeSpan.TryParse(checkOutTo, out var cotTime)
-                ? DateTime.Today.Add(cotTime)
-                : null;
+            //DateTime? checkInTimeTo = TimeSpan.TryParse(checkInTo, out var citTime)
+            //   ? DateTime.Today.Add(citTime)
+            //   : null;
+            //DateTime? checkOutTimeTo = TimeSpan.TryParse(checkOutTo, out var cotTime)
+            //    ? DateTime.Today.Add(cotTime)
+            //    : null;
 
             var hotel = new HotelDetail
             {
@@ -62,8 +62,8 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                 Longitude = hotelElement.Element("Longitude")?.Value,
                 CheckInFrom = checkInTime,
                 CheckOutFrom = checkOutTime,
-                CheckOutTo = checkOutTimeTo,
-                CheckInTo = checkInTimeTo,
+                //CheckOutTo = checkOutTimeTo,
+                //CheckInTo = checkInTimeTo,
                 //Rating = int.TryParse(hotelElement.Element("Rating")?.Value, out var rating) ? rating : null,
                 NoOfDays = noOfDays,
                 NoOfRooms = noOfRooms,

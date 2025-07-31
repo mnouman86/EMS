@@ -71,12 +71,12 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
                 .FirstOrDefault();
             accommodationId = int.Parse(hotelElement.Element("AccommodationId")?.Value ?? "0");
             // Step 2: getaccommodationdetail (for check-in/out time)
-            var detailUrl = $"{_settings.BaseUrl}getaccommodationdetail?" +
-                            $"userid={_settings.UserId}&password={_settings.Password}" +
-                            $"&accommodationid={accommodationId}&multilanguageid={_settings.MultiLanguageId}";
+            //var detailUrl = $"{_settings.BaseUrl}getaccommodationdetail?" +
+            //                $"userid={_settings.UserId}&password={_settings.Password}" +
+            //                $"&accommodationid={accommodationId}&multilanguageid={_settings.MultiLanguageId}";
 
-            var detailXmlStr = await _httpClient.GetStringAsync(detailUrl);
-            var detailXml = XDocument.Parse(detailXmlStr);
+            //var detailXmlStr = await _httpClient.GetStringAsync(detailUrl);
+            //var detailXml = XDocument.Parse(detailXmlStr);
 
             // Step 3: getavailability (room-level details)
             var availabilityUrl = $"{_settings.BaseUrl}getavailability?" +
@@ -88,7 +88,7 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
             var availabilityXml = XDocument.Parse(availabilityXmlStr);
 
             // Step 4: Map all 3 sources
-            var hotelDetail = BookingWhizzRoomDetailMapper.MapHotelDetail(searchXml, detailXml, availabilityXml,request.NoOfRooms,request.NoOfDays);
+            var hotelDetail = BookingWhizzRoomDetailMapper.MapHotelDetail(searchXml, /*detailXml,*/ availabilityXml,request.NoOfRooms,request.NoOfDays);
 
             return hotelDetail;
         }
