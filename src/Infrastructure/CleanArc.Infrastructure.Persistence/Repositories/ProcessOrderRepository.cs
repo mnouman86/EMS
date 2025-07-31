@@ -92,30 +92,29 @@ public class ProcessOrderRepository:IProcessOrderRepository
                 {
                     var subtitleHtml = string.IsNullOrWhiteSpace(ProcessOrder.SubTitle)
                                     ? string.Empty
-                                    : $"<li><strong>Subtitle:</strong> {ProcessOrder.SubTitle}</li>";
-
+                                    : $"<li><strong> {ProcessOrder.SubTitle}</strong></li>";
+                    var cityHtml = string.IsNullOrWhiteSpace(ProcessOrder.City)
+                                    ? string.Empty
+                                    : $"<li><strong>City:</strong> {ProcessOrder.City}</li>";
                     var emailBody = $@"
                                     <h3>Booking Confirmation</h3>
                                     <p>Dear {ProcessOrder.FirstName} {ProcessOrder.LastName},</p>
                                     <p>Thank you for your booking. Your order has been confirmed.</p>
-
+                                    <h4>Service(s) Info:</h4>
+                                    <ul>
+                                        <li><strong> {ProcessOrder.Title}</strong></li>
+                                        {subtitleHtml}
+                                        {cityHtml}
+                                    </ul>
                                     <h4>Booking Details:</h4>
                                     <ul>
                                         <li><strong>Booking ID:</strong> {result.RecordID}</li>
                                         <li><strong>Order Number:</strong> {ProcessOrder.OrderNumber ?? "Auto-generated"}</li>
                                         <li><strong>From Date:</strong> {ProcessOrder.FromDate?.ToString("yyyy-MM-dd")}</li>
                                         <li><strong>To Date:</strong> {ProcessOrder.ToDate?.ToString("yyyy-MM-dd")}</li>
-                                        <li><strong>Amount Paid:</strong> {ProcessOrder.Amount?.ToString("C")}</li>
+                                        <li><strong>Amount:</strong> {ProcessOrder.Amount?.ToString("C")}</li>
                                         <li><strong>Status:</strong> Confirmed</li>
                                     </ul>
-
-                                    <h4>Service(s) Info:</h4>
-                                    <ul>
-                                        <li><strong> {ProcessOrder.Title}</strong></li>
-                                        {subtitleHtml}
-                                        <li><strong>City:</strong> {ProcessOrder.City}</li>
-                                    </ul>
-
                                     <p>We look forward to hosting you!</p>
                                     <p>Best regards,<br/>The Booking Team</p>
                                 ";
