@@ -85,6 +85,9 @@ internal class CreateProcessOrderCommandHandler: IRequestHandler<CreateProcessOr
                 ParticipantSize = request.ParticipantSize,
                 Tax=request.Tax,
                 PaymentStatus=request.PaymentStatus,
+                Title=request.Title,
+                SubTitle=request.SubTitle,
+                City=request.City,
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

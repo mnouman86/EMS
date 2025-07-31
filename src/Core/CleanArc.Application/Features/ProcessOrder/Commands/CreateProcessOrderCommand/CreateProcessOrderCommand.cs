@@ -38,7 +38,10 @@ public record CreateProcessOrderCommand(
     int? ExpirationYear,
     int? CountryLookUpId,
     int? ZipCode,
-    string? PaymentStatus
+    string? PaymentStatus,
+    string? Title,
+    string? SubTitle,
+    string? City
     
     ) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateProcessOrderCommand>
