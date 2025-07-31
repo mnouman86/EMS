@@ -121,8 +121,22 @@ public async Task<ResponseEntity> AddAsync(ContactForm ContactForm)
                         $"We Received Your {ContactForm.Subject}",
                         userAcknowledgementEmailBody
                     );
+                    // Send Internal Email to Support Too
+                    //var adminNotificationBody = $@"
+                    //    <h3>New Contact Form Submission</h3>
+                    //    <p><strong>Name:</strong> {ContactForm.FullName}</p>
+                    //    <p><strong>Email:</strong> {ContactForm.Email}</p>
+                    //    <p><strong>Subject:</strong> {ContactForm.Subject}</p>
+                    //    <p><strong>Message:</strong><br/>{ContactForm.Message}</p>
+                    //    <p><em>Received on {DateTime.Now:dddd, MMMM dd, yyyy}</em></p>";
+
+                    //await _emailService.SendEmailAsync(
+                    //    "support@yourdomain.com",  // Replace with actual admin/support email
+                    //    $"[Contact Form] {ContactForm.Subject}",
+                    //    adminNotificationBody
+                    //);
                 }
-            return result;
+                return result;
         }
     }
 }

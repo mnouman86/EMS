@@ -14,7 +14,8 @@ using Dapper;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
+using Microsoft.Extensions.Logging; 
+using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,7 +23,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;using CleanArc.Application.Common;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using CleanArc.Application.Common;
+using CleanArc.Infrastructure.Persistence.Services;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -51,6 +54,8 @@ public class ProcessOrderRepository:IProcessOrderRepository
     /// The HTTP context accessor for accessing HTTP context information.
     /// </summary>
     private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly IEmailService _emailService;
+
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MenuRepository"/> class.
@@ -59,15 +64,18 @@ public class ProcessOrderRepository:IProcessOrderRepository
     /// <param name="mapper">The mapper for mapping between different object types.</param>
     /// <param name="logger">The logger for logging repository-related information.</param>
     /// <param name="httpContextAccessor">The HTTP context accessor for accessing HTTP context information.</param>
-    public ProcessOrderRepository(IConfiguration configuration, IMapper mapper, ILogger<ProcessOrderRepository> logger, IHttpContextAccessor httpContextAccessor)
+    public ProcessOrderRepository(IConfiguration configuration, IMapper mapper, ILogger<ProcessOrderRepository> logger, 
+        IHttpContextAccessor httpContextAccessor, IEmailService emailService)
     {
         this.configuration = configuration;
         this._mapper = mapper;
         this._logger = logger;
-        _httpContextAccessor = httpContextAccessor;
+        _httpContextAccessor = httpContextAccessor; 
+        _emailService = emailService;
+
     }
-/// <inheritdoc/>
-public async Task<ResponseEntity> AddAsync(ProcessOrder ProcessOrder)
+    /// <inheritdoc/>
+    public async Task<ResponseEntity> AddAsync(ProcessOrder ProcessOrder)
 {
     using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, ProcessOrder))
     {
@@ -78,8 +86,47 @@ public async Task<ResponseEntity> AddAsync(ProcessOrder ProcessOrder)
                 var parameters = new DynamicParameters(createProcessOrderDTO);
                 
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Create_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-            return result;
+             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                // Send email only if booking is successful and user email is available
+                if (result.IsSuccess && result.RecordID > 0 && !string.IsNullOrWhiteSpace(ProcessOrder.Email))
+                {
+                    var subtitleHtml = string.IsNullOrWhiteSpace(ProcessOrder.SubTitle)
+                                    ? string.Empty
+                                    : $"<li><strong>Subtitle:</strong> {ProcessOrder.SubTitle}</li>";
+
+                    var emailBody = $@"
+                                    <h3>Booking Confirmation</h3>
+                                    <p>Dear {ProcessOrder.FirstName} {ProcessOrder.LastName},</p>
+                                    <p>Thank you for your booking. Your order has been confirmed.</p>
+
+                                    <h4>Booking Details:</h4>
+                                    <ul>
+                                        <li><strong>Booking ID:</strong> {result.RecordID}</li>
+                                        <li><strong>Order Number:</strong> {ProcessOrder.OrderNumber ?? "Auto-generated"}</li>
+                                        <li><strong>From Date:</strong> {ProcessOrder.FromDate?.ToString("yyyy-MM-dd")}</li>
+                                        <li><strong>To Date:</strong> {ProcessOrder.ToDate?.ToString("yyyy-MM-dd")}</li>
+                                        <li><strong>Amount Paid:</strong> {ProcessOrder.Amount?.ToString("C")}</li>
+                                        <li><strong>Status:</strong> Confirmed</li>
+                                    </ul>
+
+                                    <h4>Service(s) Info:</h4>
+                                    <ul>
+                                        <li><strong> {ProcessOrder.Title}</strong></li>
+                                        {subtitleHtml}
+                                        <li><strong>City:</strong> {ProcessOrder.City}</li>
+                                    </ul>
+
+                                    <p>We look forward to hosting you!</p>
+                                    <p>Best regards,<br/>The Booking Team</p>
+                                ";
+
+                    await _emailService.SendEmailAsync(
+                        ProcessOrder.Email,
+                        "Your Booking is Confirmed",
+                        emailBody
+                    );
+                }
+                return result;
         }
 
     }

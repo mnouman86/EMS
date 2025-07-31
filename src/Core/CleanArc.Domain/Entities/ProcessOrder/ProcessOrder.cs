@@ -46,6 +46,9 @@ public  class ProcessOrder
     public decimal? Tax { get; set; }
     public int? CountryLookUpId { get; set; }
     public string? PaymentStatus { get; set; }
+    public string? Title { get; set; }
+    public string? SubTitle { get; set; }
+    public string? City { get; set; }
 
 
 
