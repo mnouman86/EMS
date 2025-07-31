@@ -332,7 +332,7 @@ public class UnitOfWork : IUnitOfWork
         ActivityIncludeOptionMappingRepository = new ActivityIncludeOptionMappingRepository(configuration, mapper, _loggerActivityIncludeOptionMapping, httpContextAccessor);
         ActivityAddressMappingRepository = new ActivityAddressMappingRepository(configuration, mapper, _loggerActivityAddressMapping, httpContextAccessor);
         ActivityIDImageMappingRepository = new ActivityIDImageMappingRepository(configuration, mapper, _loggerActivityIDImageMapping, httpContextAccessor);
-        ProcessOrderRepository = new ProcessOrderRepository(configuration, mapper, _loggerProcessOrder, httpContextAccessor);
+        ProcessOrderRepository = new ProcessOrderRepository(configuration, mapper, _loggerProcessOrder, httpContextAccessor,emailService);
         PackageTypeRepository = new PackageTypeRepository(configuration, mapper, _loggerPackageType, httpContextAccessor);
         PackageDetailRepository = new PackageDetailRepository(configuration, mapper, _loggerPackageDetail, httpContextAccessor);
         FAQsRepository = new FAQsRepository(configuration, mapper, _loggerFAQs, httpContextAccessor);
