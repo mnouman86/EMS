@@ -9,6 +9,7 @@ using Mediator;
 using Microsoft.AspNetCore.Mvc; 
 using CleanArc.Domain.Common;
 using Microsoft.AspNetCore.Authorization;
+using CleanArc.Application.Features.ContactForm.Commands.CreateContactResponseCommand;
 
 namespace CleanArc.Web.Api.Controllers.V1.ContactForm
 {
@@ -114,6 +115,14 @@ namespace CleanArc.Web.Api.Controllers.V1.ContactForm
         [HttpPost("ContactFormCreate")]
         [AllowAnonymous] // Override to allow public access
         public async Task<IActionResult> Submit([FromBody] CreateContactFormCommand command)
+        {
+            var commandResult = await _sender.Send(command);
+            return OperationResult(commandResult);
+        }
+
+        [HttpPost("ContactResponseCreate")]
+        [Authorize]
+        public async Task<IActionResult> ContactFormCreate([FromBody] CreateContactResponseCommand command)
         {
             var commandResult = await _sender.Send(command);
             return OperationResult(commandResult);

@@ -13,6 +13,7 @@ public static class ContactFormQueries
     public static string Delete_ContactForm => "usp_Delete_ContactForm";
     public static string GetAll_ContactForm => "usp_GetAll_ContactForm";
     public static string GetByID_ContactForm => "usp_GetByID_ContactForm";
+    public static string Create_ContactResponse => "usp_Update_Feedback";
 
 
 }

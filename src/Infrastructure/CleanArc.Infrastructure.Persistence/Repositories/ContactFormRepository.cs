@@ -141,6 +141,46 @@ public async Task<ResponseEntity> AddAsync(ContactForm ContactForm)
     }
 }
 
+
+    public async Task<ResponseEntity> ContactResponseAsync(ContactResponse ContactResposne)
+    {
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, ContactResposne))
+        {
+            using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+            {
+                connection.Open();
+                CreateContactResponseDTO createContactResposneDTO = _mapper.Map<CreateContactResponseDTO>(ContactResposne);
+                var parameters = new DynamicParameters(createContactResposneDTO);
+
+                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ContactFormQueries.Create_ContactResponse, parameters, commandType: CommandType.StoredProcedure);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+                if (result.IsSuccess)
+                {
+                   //var userAcknowledgementEmailBody = $@"
+                   //         <h3>Thank you for contacting us, {ContactForm.FullName}!</h3>
+                   //         <p>We have received your message and our support team will get back to you shortly.</p>
+
+                   //         <h4>Your Submitted Details:</h4>
+                   //         <p><strong>Subject:</strong> {ContactForm.Subject}</p>
+                   //         <p><strong>Message:</strong><br/>{ContactForm.Message}</p>
+
+                   //         <p><em>Submitted on {DateTime.Now:dddd, MMMM dd, yyyy}</em></p>
+
+                   //         <p>Best regards,<br/>Support Team</p>";
+
+                   // await _emailService.SendEmailAsync(
+                   //     ContactForm.Email,  // Sending TO the user who filled the form
+                   //     $"We Received Your {ContactForm.Subject}",
+                   //     userAcknowledgementEmailBody
+                   // );
+                    
+                }
+                return result;
+            }
+        }
+    }
+
     public async Task<ResponseEntity> DeleteAsync(DeleteRequest deleteRequest, int? updatedBy)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, deleteRequest))
