@@ -1,5 +1,9 @@
-﻿using CleanArc.Domain.Entities.ContactForm;
+﻿using CleanArc.Application.Common;
+using CleanArc.Application.Models.Request;
+using CleanArc.Domain.Common;
+using CleanArc.Domain.Entities.ContactForm;
 using CleanArc.Domain.Entities.CoreArea;
+using CleanArc.Domain.Entities.KBDetail;
 using CleanArc.Domain.Entities.Order;
 using System;
 using System.Collections.Generic;
@@ -11,5 +15,6 @@ namespace CleanArc.Application.Contracts.Persistence;
 
 public  interface IContactFormRepository:IRepository<ContactForm>
 {
-   // Task CreateAgeType(AgeType ageType);
+    Task<ResponseEntity> ContactResponseAsync(ContactResponse ContactForm);
+    // Task CreateAgeType(AgeType ageType);
 }
