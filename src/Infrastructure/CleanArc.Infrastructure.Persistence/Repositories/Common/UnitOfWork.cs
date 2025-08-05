@@ -26,6 +26,7 @@ public class UnitOfWork : IUnitOfWork
     public IURLRepository URLRepository { get; set; }
     public IStartupDataRepository StartupDataRepository { get; set; }
     public IAgeTypeRepository AgeTypeRepository { get; set; }
+    public IFeedbackSubjectTypeRepository FeedbackSubjectTypeRepository { get; set; }
     public IHotelRepository HotelRepository { get; set; }
     public IAmenityRepository AmenityRepository { get; set; }
     public IRoomTypeRepository RoomTypeRepository { get; set; }
@@ -141,6 +142,7 @@ public class UnitOfWork : IUnitOfWork
         ILogger<URLRepository> logger,
         ILogger<StartupDataRepository> _loggerStartupData,
         ILogger<AgeTypeRepository> _logger, 
+        ILogger<FeedbackSubjectTypeRepository> _loggerFeedbackSubjectType, 
         ILogger<HotelRepository> _loggerHotel,
         ILogger<AmenityRepository> _loggerAmenity,
         ILogger<RoomTypeRepository> _loggerRoomType,
@@ -261,6 +263,7 @@ public class UnitOfWork : IUnitOfWork
         URLRepository = new URLRepository(configuration,mapper,logger,httpContextAccessor);
         StartupDataRepository = new StartupDataRepository(configuration);
         AgeTypeRepository = new AgeTypeRepository(configuration, mapper, _logger, httpContextAccessor);
+        FeedbackSubjectTypeRepository = new FeedbackSubjectTypeRepository(configuration, mapper, _loggerFeedbackSubjectType, httpContextAccessor);
         HotelRepository=new HotelRepository(configuration, mapper, _loggerHotel, httpContextAccessor);
         AmenityRepository=new AmenityRepository(configuration, mapper, _loggerAmenity, httpContextAccessor);
         RoomTypeRepository=new RoomTypeRepository(configuration, mapper, _loggerRoomType, httpContextAccessor);
