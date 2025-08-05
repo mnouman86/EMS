@@ -11,7 +11,7 @@ namespace CleanArc.Application.Models.ContactForm
         // public int Id { get; set; }
         public int ContactFormId { get; set; }
         public int FeedbackStatusId { get; set; }
-        public string Remards { get; set; } = string.Empty;
+        public string Remarks { get; set; } = string.Empty;
         public int CreatedBy { get; set; }
         public int CultureId { get; set; }
         //public DateTime? CreatedAt { get; set; }

@@ -10,7 +10,7 @@ namespace CleanArc.Domain.Entities.ContactForm
     {
         public int ContactFormId { get; set; }
         public int FeedbackStatusId { get; set; } 
-        public string Remards { get; set; } = string.Empty;
+        public string Remarks { get; set; } = string.Empty;
         public int CreatedBy { get; set; }
         public int CultureId { get; set; }
     }

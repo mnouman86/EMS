@@ -58,7 +58,7 @@ internal class CreateContactResponseCommandHandler : IRequestHandler<CreateConta
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
             var result = await _unitOfWork.ContactFormRepository.ContactResponseAsync(new Domain.Entities.ContactForm.ContactResponse()
-            {  ContactFormId = request.ContactFormId, FeedbackStatusId = request.FeedbackStatusId, Remards=request.Remards, CreatedBy = request.CreatedBy, CultureId =request.CultureId  });
+            {  ContactFormId = request.ContactFormId, FeedbackStatusId = request.FeedbackStatusId, Remarks=request.Remarks, CreatedBy = request.CreatedBy, CultureId =request.CultureId  });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
