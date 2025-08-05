@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
 namespace CleanArc.Application.Features.ContactForm.Commands.UpdateContactFormCommand;
-public record UpdateContactFormCommand(int Id, string FullName, string Email, string Subject, string Message, int CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateContactFormCommand(int Id, string FullName, string Email, int FeedbackSubjectTypeId, string Message, int CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateContactFormCommand>
 {
     [JsonIgnore]

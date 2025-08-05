@@ -11,6 +11,7 @@ public interface IUnitOfWork
     public IStartupDataRepository StartupDataRepository { get; }
     public IAgeTypeRepository AgeTypeRepository { get; }
     public IFeedbackSubjectTypeRepository FeedbackSubjectTypeRepository { get; }
+    public IFeedbackStatusRepository FeedbackStatusRepository { get; }
     public IHotelRepository HotelRepository { get; }
     public IAmenityRepository AmenityRepository { get; }
     public IRoomTypeRepository RoomTypeRepository { get; }

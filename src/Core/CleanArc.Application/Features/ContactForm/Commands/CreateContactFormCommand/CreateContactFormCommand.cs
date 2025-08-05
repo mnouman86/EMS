@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ContactForm.Commands.CreateContactFormCommand;
-public record CreateContactFormCommand(string FullName, string Email, string Subject, string Message, int CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateContactFormCommand(string FullName, string Email, int FeedbackSubjectTypeId, string Message, int CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateContactFormCommand>
 {
     [JsonIgnore]
