@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.ContactForm.Commands.CreateContactResponseCommand;
-public record CreateContactResponseCommand(int ContactFormId,int FeedbackStatusId, string FullName, string Remards, int CreatedBy, int CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateContactResponseCommand(int ContactFormId,int FeedbackStatusId, string FullName, string Remarks, int CreatedBy, int CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateContactResponseCommand>
 {
     [JsonIgnore]
@@ -19,7 +19,7 @@ public record CreateContactResponseCommand(int ContactFormId,int FeedbackStatusI
     public IValidator<CreateContactResponseCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateContactResponseCommand> validator)
     {
         
-        validator.RuleFor(c => c.Remards)
+        validator.RuleFor(c => c.Remarks)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter remarks");
