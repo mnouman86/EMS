@@ -11,7 +11,7 @@ namespace CleanArc.Application.Models.ContactForm
         // public int Id { get; set; }
         public string FullName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
-        public string Subject { get; set; } = string.Empty;
+        public int FeedbackSubjectTypeId { get; set; } 
         public string Message { get; set; } = string.Empty;
         public int? CultureId { get; set; }
         //public DateTime? CreatedAt { get; set; }

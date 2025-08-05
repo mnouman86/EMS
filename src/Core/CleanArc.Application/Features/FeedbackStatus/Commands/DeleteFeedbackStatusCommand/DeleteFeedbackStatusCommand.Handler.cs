@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
 using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Features.ContactForm.Commands.CreateContactFormCommand;
+using CleanArc.Application.Features.FeedbackStatus.Commands.CreateFeedbackStatusCommand;
+using CleanArc.Application.Models.Common;
+using CleanArc.SharedKernel.Extensions;
+using Mediator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
@@ -10,25 +13,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Mediator;
-using CleanArc.Application.Models.Common;
-using CleanArc.SharedKernel.Extensions;
 
-namespace CleanArc.Application.Features.ContactForm.Commands.UpdateContactFormCommand;
+namespace CleanArc.Application.Features.FeedbackStatus.Commands.DeleteFeedbackStatusCommand;
 
-internal class UpdateContactFormCommandHandler:IRequestHandler<UpdateContactFormCommand, OperationResult<ResponseEntity>>
+internal class DeleteFeedbackStatusCommandHandler: IRequestHandler<DeleteFeedbackStatusCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<UpdateContactFormCommandHandler> _logger;
+    private readonly ILogger<DeleteFeedbackStatusCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
     //private readonly IUnitOfWork _unitOfWork;
     //private readonly IAppUserManager _userManager;
 
 
-    public UpdateContactFormCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateContactFormCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public DeleteFeedbackStatusCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<DeleteFeedbackStatusCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -39,7 +39,7 @@ internal class UpdateContactFormCommandHandler:IRequestHandler<UpdateContactForm
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateContactFormCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(DeleteFeedbackStatusCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -55,12 +55,14 @@ internal class UpdateContactFormCommandHandler:IRequestHandler<UpdateContactForm
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
-            var result = await _unitOfWork.ContactFormRepository.UpdateAsync(new Domain.Entities.ContactForm.ContactForm()
-            { Id= request.Id, FullName = request.FullName, Email = request.Email, FeedbackSubjectTypeId = request.FeedbackSubjectTypeId, Message = request.Message, CultureId = request.CultureId });
+            //await _unitOfWork.FeedbackStatusRepository.DeleteAsync(new Domain.Entities.FeedbackStatus.FeedbackStatus()
+            // { UpdatedBy = user.Id, ID = request.ID });
+            var result = await _unitOfWork.FeedbackStatusRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
+          //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
+
 
 }
