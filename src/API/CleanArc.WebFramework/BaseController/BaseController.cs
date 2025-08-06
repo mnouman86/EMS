@@ -53,4 +53,20 @@ public class BaseController : ControllerBase
         return StatusCode(result.StatusCode, new { Message = result.ErrorMessage==null?result.Message:result.ErrorMessage, StatusCode = result.StatusCode, ErrorCore=result.ErrorCode });
 
     }
+
+    protected virtual void SetUserId(dynamic model)
+    {
+        // Implement the logic to set UserId on the command model if needed
+        // model.UserId = int.Parse(User?.Identity?.GetUserId());
+        var userIdStr = User?.Identity?.GetUserId();
+        if (int.TryParse(userIdStr, out var userId))
+        {
+            model.UserId = userId;
+        }
+        else
+        {
+            // Handle case where userId is null or not a valid int
+            model.UserId = 0; // or throw/log/error depending on your use case
+        }
+    }
 }

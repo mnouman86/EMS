@@ -39,6 +39,11 @@ public class AppUserManagerImplementation : IAppUserManager
         return _userManager.Users.AnyAsync(c => c.PhoneNumber == phoneNumber);
     }
 
+    public Task<bool> IsExistUserById(int id)
+    {
+        return _userManager.Users.AnyAsync(c => c.Id == id);
+    }
+
     public Task<bool> IsExistUserName(string userName)
     {
         return _userManager.Users.AnyAsync(c => c.UserName.Equals(userName));
