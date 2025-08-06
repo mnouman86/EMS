@@ -1,9 +1,7 @@
-﻿using CleanArc.Application.Contracts.Identity;
+﻿using AutoMapper;
+using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Models.Common;
-using CleanArc.SharedKernel.Extensions;
-using MapsterMapper;
-using Mediator;
+using CleanArc.Application.Features.Gender.Commands.UpdateGenderCommand;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging; using CleanArc.Domain.Common;
@@ -12,22 +10,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mediator;
+using CleanArc.Application.Models.Common;
+using CleanArc.SharedKernel.Extensions;
 
-namespace CleanArc.Application.Features.Country.Command.CreateCountryCommand;
+namespace CleanArc.Application.Features.Gender.Commands.UpdateGenderCommand;
 
-internal class CreateCountryCommandHandler : IRequestHandler<CreateCountryCommand, OperationResult<ResponseEntity>>
+internal class UpdateGenderCommandHandler:IRequestHandler<UpdateGenderCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<CreateCountryCommandHandler> _logger;
+    private readonly ILogger<UpdateGenderCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
-                                                                //private readonly IUnitOfWork _unitOfWork;
-                                                                //private readonly IAppUserManager _userManager;
+    //private readonly IUnitOfWork _unitOfWork;
+    //private readonly IAppUserManager _userManager;
 
 
-    public CreateCountryCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<CreateCountryCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public UpdateGenderCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateGenderCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -38,8 +39,7 @@ internal class CreateCountryCommandHandler : IRequestHandler<CreateCountryComman
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-
-    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateCountryCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateGenderCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -55,11 +55,13 @@ internal class CreateCountryCommandHandler : IRequestHandler<CreateCountryComman
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
-            var result = await _unitOfWork.CountryRepository.AddAsync(new Domain.Entities.Country.Country()
-            { CreatedBy = user.Id, Description = request.Description, Nationality=request.Nationality, Name = request.Name, CultureId = request.CultureId });
+            var result = await _unitOfWork.GenderRepository.UpdateAsync(new Domain.Entities.Gender.Gender()
+            { UpdatedBy = user.Id,Id= request.Id, Description = request.Description, Name = request.Name
+            ,CultureId=request.CultureId});
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
+
 }
