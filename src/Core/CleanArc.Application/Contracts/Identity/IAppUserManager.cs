@@ -7,6 +7,8 @@ public interface IAppUserManager
 {
     Task<IdentityResult> CreateUser(User user);
     Task<bool> IsExistUser(string phoneNumber);
+    Task<bool> IsExistUserById(int id);
+
     Task<bool> IsExistUserName(string userName);
     Task<string> GeneratePhoneNumberConfirmationToken(User user, string phoneNumber);
     Task<string> GeneratePasswordResetTokenAsync(User user);
