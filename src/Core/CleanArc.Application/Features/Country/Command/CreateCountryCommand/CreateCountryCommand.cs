@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.Country.Command.CreateCountryCommand;
 
-public record CreateCountryCommand(string? Name, string? Description, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateCountryCommand(string? Name, string? Description, string? Nationality, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateCountryCommand>
 {
     [JsonIgnore]

@@ -11,6 +11,8 @@ namespace CleanArc.Application.Features.Country.Queries.GetCountryById
         public int Id { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
+        public string? Nationality { get; set; }
+
         public bool? IsActive { get; set; }
         public bool? IsDeleted { get; set; }
         public DateTime? CreatedAt { get; set; }

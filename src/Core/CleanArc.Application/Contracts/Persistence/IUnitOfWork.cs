@@ -10,6 +10,7 @@ public interface IUnitOfWork
     public IURLRepository URLRepository { get; }
     public IStartupDataRepository StartupDataRepository { get; }
     public IAgeTypeRepository AgeTypeRepository { get; }
+    public IGenderRepository GenderRepository { get; }
     public IFeedbackSubjectTypeRepository FeedbackSubjectTypeRepository { get; }
     public IFeedbackStatusRepository FeedbackStatusRepository { get; }
     public IHotelRepository HotelRepository { get; }

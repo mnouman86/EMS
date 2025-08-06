@@ -26,6 +26,7 @@ public class UnitOfWork : IUnitOfWork
     public IURLRepository URLRepository { get; set; }
     public IStartupDataRepository StartupDataRepository { get; set; }
     public IAgeTypeRepository AgeTypeRepository { get; set; }
+    public IGenderRepository GenderRepository { get; set; }
     public IFeedbackSubjectTypeRepository FeedbackSubjectTypeRepository { get; set; }
     public IFeedbackStatusRepository FeedbackStatusRepository { get; set; }
     public IHotelRepository HotelRepository { get; set; }
@@ -143,6 +144,7 @@ public class UnitOfWork : IUnitOfWork
         ILogger<URLRepository> logger,
         ILogger<StartupDataRepository> _loggerStartupData,
         ILogger<AgeTypeRepository> _logger, 
+        ILogger<GenderRepository> _loggerGender, 
         ILogger<FeedbackSubjectTypeRepository> _loggerFeedbackSubjectType, 
         ILogger<FeedbackStatusRepository> _loggerFeedbackStatus, 
         ILogger<HotelRepository> _loggerHotel,
@@ -265,6 +267,7 @@ public class UnitOfWork : IUnitOfWork
         URLRepository = new URLRepository(configuration,mapper,logger,httpContextAccessor);
         StartupDataRepository = new StartupDataRepository(configuration);
         AgeTypeRepository = new AgeTypeRepository(configuration, mapper, _logger, httpContextAccessor);
+        GenderRepository = new GenderRepository(configuration, mapper, _loggerGender, httpContextAccessor);
         FeedbackSubjectTypeRepository = new FeedbackSubjectTypeRepository(configuration, mapper, _loggerFeedbackSubjectType, httpContextAccessor);
         FeedbackStatusRepository = new FeedbackStatusRepository(configuration, mapper, _loggerFeedbackStatus, httpContextAccessor);
         HotelRepository=new HotelRepository(configuration, mapper, _loggerHotel, httpContextAccessor);

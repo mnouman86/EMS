@@ -10,6 +10,8 @@ public class CreateCountryDTO
 {
     public string? Name { get; set; }
     public string? Description { get; set; }
+    public string? Nationality { get; set; }
+
     public int? CreatedBy { get; set; }
     public int? CultureId { get; set; }
 }

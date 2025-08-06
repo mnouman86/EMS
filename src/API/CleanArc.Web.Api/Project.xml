@@ -608,6 +608,15 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.Gender.GenderController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.Gender.GenderController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.Gender.Commands.CreateGenderCommand.CreateGenderCommand,CleanArc.Application.Features.Gender.Commands.UpdateGenderCommand.UpdateGenderCommand,CleanArc.Application.Features.Gender.Commands.DeleteGenderCommand.DeleteGenderCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.Gender.Queries.GetAllGender.GetAllGenderQuery,System.Collections.Generic.List{CleanArc.Application.Features.Gender.Queries.GetAllGender.GetAllGenderQueryResult},CleanArc.Application.Features.Gender.Queries.GetGenderById.GetGenderByIdQuery,CleanArc.Application.Features.Gender.Queries.GetGenderById.GetGenderByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.Gender.GenderController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ActivityAddress.GenericAddressController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.ActivityAddress.GenericAddressController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ActivityAddress.Commands.CreateGenericAddressCommand.CreateGenericAddressCommand,CleanArc.Application.Features.ActivityAddress.Commands.UpdateGenericAddressCommand.UpdateGenericAddressCommand,CleanArc.Application.Features.ActivityAddress.Commands.DeleteGenericAddressCommand.DeleteGenericAddressCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.ActivityAddress.Queries.GetAllGenericAddress.GetAllGenericAddressQuery,System.Collections.Generic.List{CleanArc.Application.Features.ActivityAddress.Queries.GetAllGenericAddress.GetAllGenericAddressQueryResult},CleanArc.Application.Features.ActivityAddress.Queries.GetGenericAddressById.GetGenericAddressByIdQuery,CleanArc.Application.Features.ActivityAddress.Queries.GetGenericAddressById.GetGenericAddressByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
