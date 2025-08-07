@@ -68,6 +68,7 @@ internal class CreateProcessOrderCommandHandler: IRequestHandler<CreateProcessOr
                 PhoneNumber = request.PhoneNumber,
                 CardHolderName = request.CardHolderName,
                 CardName = request.CardName,
+                CardNumber = request.CardNumber,
                 CardCVC = request.CardCVC,
                 ExpirationMonth = request.ExpirationMonth,
                 ExpirationYear = request.ExpirationYear,
