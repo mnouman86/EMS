@@ -4,6 +4,7 @@ public interface IUnitOfWork
 {
     public IUserRefreshTokenRepository UserRefreshTokenRepository { get; }
     public IOrderRepository OrderRepository { get; }
+    public ISearchAutoCompleteRepository SearchAutoCompleteRepository { get; }
     public IUserSignUpRewardsRepository UserSignUpRewardsRepository { get; }
     public IUserAssignRewardsRepository UserAssignRewardsRepository { get; }
 

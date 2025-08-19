@@ -24,6 +24,7 @@ public class UnitOfWork : IUnitOfWork
 
     public IOrderRepository OrderRepository { get; }
     public IURLRepository URLRepository { get; set; }
+    public ISearchAutoCompleteRepository SearchAutoCompleteRepository { get; set; }
     public IStartupDataRepository StartupDataRepository { get; set; }
     public IAgeTypeRepository AgeTypeRepository { get; set; }
     public IGenderRepository GenderRepository { get; set; }
@@ -142,6 +143,7 @@ public class UnitOfWork : IUnitOfWork
 
     public UnitOfWork(ApplicationDbContext db, HotelProviderAggregator hotelProviderAggregator, IEmailService emailService, IConfiguration configuration,IMapper mapper, 
         ILogger<URLRepository> logger,
+        ILogger<SearchAutoCompleteRepository> _loggerSearchAutoCompleteRepository,
         ILogger<StartupDataRepository> _loggerStartupData,
         ILogger<AgeTypeRepository> _logger, 
         ILogger<GenderRepository> _loggerGender, 
@@ -265,6 +267,7 @@ public class UnitOfWork : IUnitOfWork
         UserRefreshTokenRepository = new UserRefreshTokenRepository(_db);
         OrderRepository= new OrderRepository(_db);
         URLRepository = new URLRepository(configuration,mapper,logger,httpContextAccessor);
+        SearchAutoCompleteRepository = new SearchAutoCompleteRepository(configuration,mapper, _loggerSearchAutoCompleteRepository, httpContextAccessor);
         StartupDataRepository = new StartupDataRepository(configuration);
         AgeTypeRepository = new AgeTypeRepository(configuration, mapper, _logger, httpContextAccessor);
         GenderRepository = new GenderRepository(configuration, mapper, _loggerGender, httpContextAccessor);
