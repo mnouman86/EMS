@@ -7,6 +7,15 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Domain.Entities.ProcessOrder;
 
+public class ProcessOrders
+
+{
+    public ProcessOrder Stays {get; set;}
+    public ProcessOrder Flights {get; set;}
+    public ProcessOrder CarRental {get; set;}
+    public ProcessOrder ThingsToDo {get; set;}
+
+}
 public  class ProcessOrder
     
 {

@@ -38,4 +38,10 @@ public class OrderController : BaseController
 
         return base.OperationResult(query);
     }
+    [HttpGet("HelloWorld")]
+    [AllowAnonymous] // Optional: allows access without authentication
+    public IActionResult HelloWorld()
+    {
+        return Ok("Hello World");
+    }
 }
