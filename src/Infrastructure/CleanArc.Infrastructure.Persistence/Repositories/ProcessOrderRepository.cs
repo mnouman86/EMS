@@ -75,24 +75,93 @@ public class ProcessOrderRepository:IProcessOrderRepository
 
     }
     /// <inheritdoc/>
-    public async Task<ResponseEntity> AddAsync(ProcessOrder ProcessOrder)
+    public async Task<ResponseEntity> AddAsync(ProcessOrders ProcessOrder)
 {
     using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, ProcessOrder))
     {
         using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
         {
             connection.Open();
+                var paramsForPackageId = new DynamicParameters();
+                paramsForPackageId.Add("@PackageTypeEnumID", ProcessOrder.PackageTypeEnumID);
+                paramsForPackageId.Add("@CultureId", ProcessOrder.CultureId);
+                paramsForPackageId.Add("@CreatedBy", ProcessOrder.CreatedBy);
+                var Result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Create_PackageDetail, paramsForPackageId, commandType: CommandType.StoredProcedure);
                 CreateProcessOrderDTO createProcessOrderDTO = _mapper.Map<CreateProcessOrderDTO>(ProcessOrder);
+
                 var parameters = new DynamicParameters(createProcessOrderDTO);
-                
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Create_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
-             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                // Send email only if booking is successful and user email is available
-                if (result.IsSuccess && result.RecordID > 0 && !string.IsNullOrWhiteSpace(ProcessOrder.Email))
+                if (ProcessOrder.Stay!=null)
                 {
-                    var subtitleHtml = string.IsNullOrWhiteSpace(ProcessOrder.SubTitle)
+                    createProcessOrderDTO.Amount = ProcessOrder.Stay.Amount;
+                    createProcessOrderDTO.DiscountAmount = ProcessOrder.Stay.DiscountAmount;
+                    createProcessOrderDTO.GenericTitleId = ProcessOrder.Stay.GenericTitleId;
+                    createProcessOrderDTO.ServiceTypeEnumId = ProcessOrder.Stay.ServiceTypeEnumId;
+                    createProcessOrderDTO.PackageDetailID = Result.RecordID;
+                    createProcessOrderDTO.Tax = ProcessOrder.Stay.Tax;
+                    //createProcessOrderDTO.Title = ProcessOrder.Stay.Title;
+                    createProcessOrderDTO.SubTitleID = ProcessOrder.Stay.SubTitleID;
+
+                    var resultStay = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Create_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
+
+                }
+
+
+                if (ProcessOrder.CarRental != null)
+                {
+                    createProcessOrderDTO.Amount = ProcessOrder.CarRental.Amount;
+                    createProcessOrderDTO.DiscountAmount = ProcessOrder.CarRental.DiscountAmount;
+                    createProcessOrderDTO.GenericTitleId = ProcessOrder.CarRental.GenericTitleId;
+                    createProcessOrderDTO.ServiceTypeEnumId = ProcessOrder.CarRental.ServiceTypeEnumId;
+                    createProcessOrderDTO.PackageDetailID = Result.RecordID;
+                    createProcessOrderDTO.Tax = ProcessOrder.CarRental.Tax;
+                    //createProcessOrderDTO.Title = ProcessOrder.CarRental.Title;
+                    createProcessOrderDTO.SubTitleID = ProcessOrder.CarRental.SubTitleID;
+
+                    var resultCar = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Create_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
+
+                }
+
+
+                if (ProcessOrder.Flight != null)
+                {
+                    createProcessOrderDTO.Amount = ProcessOrder.Flight.Amount;
+                    createProcessOrderDTO.DiscountAmount = ProcessOrder.Flight.DiscountAmount;
+                    createProcessOrderDTO.GenericTitleId = ProcessOrder.Flight.GenericTitleId;
+                    createProcessOrderDTO.ServiceTypeEnumId = ProcessOrder.Flight.ServiceTypeEnumId;
+                    createProcessOrderDTO.PackageDetailID = Result.RecordID;
+                    createProcessOrderDTO.Tax = ProcessOrder.Flight.Tax;
+                    //createProcessOrderDTO.Title = ProcessOrder.Flight.Title;
+                    createProcessOrderDTO.SubTitleID = ProcessOrder.Flight.SubTitleID;
+
+                    var resultFlights = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Create_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
+
+                }
+
+
+                if (ProcessOrder.Activities != null)
+                {
+                    createProcessOrderDTO.Amount = ProcessOrder.Activities.Amount;
+                    createProcessOrderDTO.DiscountAmount = ProcessOrder.Activities.DiscountAmount;
+                    createProcessOrderDTO.GenericTitleId = ProcessOrder.Activities.GenericTitleId;
+                    createProcessOrderDTO.ServiceTypeEnumId = ProcessOrder.Activities.ServiceTypeEnumId;
+                    createProcessOrderDTO.PackageDetailID = Result.RecordID;
+                    createProcessOrderDTO.Tax = ProcessOrder.Activities.Tax;
+                    //createProcessOrderDTO.Title = ProcessOrder.Activities.Title;
+                    createProcessOrderDTO.SubTitleID = ProcessOrder.Activities.SubTitleID;
+
+                    var resultActivities = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Create_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
+
+                }
+
+
+
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(Result);
+                // Send email only if booking is successful and user email is available
+                if (Result.IsSuccess && Result.RecordID > 0 && !string.IsNullOrWhiteSpace(ProcessOrder.Email))
+                {
+                    var subtitleHtml = string.IsNullOrWhiteSpace(createProcessOrderDTO.SubTitleID.ToString())
                                     ? string.Empty
-                                    : $"<li><strong> {ProcessOrder.SubTitle}</strong></li>";
+                                    : $"<li><strong> {createProcessOrderDTO.SubTitleID}</strong></li>";
                     var cityHtml = string.IsNullOrWhiteSpace(ProcessOrder.City)
                                     ? string.Empty
                                     : $"<li><strong>City:</strong> {ProcessOrder.City}</li>";
@@ -102,17 +171,17 @@ public class ProcessOrderRepository:IProcessOrderRepository
                                     <p>Thank you for your booking. Your order has been confirmed.</p>
                                     <h4>Service(s) Info:</h4>
                                     <ul>
-                                        <li><strong> {ProcessOrder.Title}</strong></li>
+                                        <li><strong> {createProcessOrderDTO.GenericTitleId}</strong></li>
                                         {subtitleHtml}
                                         {cityHtml}
                                     </ul>
                                     <h4>Booking Details:</h4>
                                     <ul>
-                                        <li><strong>Booking ID:</strong> {result.RecordID}</li>
+                                        <li><strong>Booking ID:</strong> {Result.RecordID}</li>
                                         <li><strong>Order Number:</strong> {ProcessOrder.OrderNumber ?? "Auto-generated"}</li>
                                         <li><strong>From Date:</strong> {ProcessOrder.FromDate?.ToString("yyyy-MM-dd")}</li>
                                         <li><strong>To Date:</strong> {ProcessOrder.ToDate?.ToString("yyyy-MM-dd")}</li>
-                                        <li><strong>Amount:</strong> {ProcessOrder.Amount?.ToString("C")}</li>
+                                        <li><strong>Amount:</strong> {createProcessOrderDTO.Amount?.ToString("C")}</li>
                                         <li><strong>Status:</strong> Confirmed</li>
                                     </ul>
                                     <p>We look forward to hosting you!</p>
@@ -125,7 +194,7 @@ public class ProcessOrderRepository:IProcessOrderRepository
                         emailBody
                     );
                 }
-                return result;
+                return Result;
         }
 
     }
@@ -151,7 +220,7 @@ public class ProcessOrderRepository:IProcessOrderRepository
         }
     }
 
-    public async Task<ListResponseWrapper<ProcessOrder>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<ProcessOrders>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -179,14 +248,14 @@ public class ProcessOrderRepository:IProcessOrderRepository
                 //    SortingArray = DataTableHelper.ToDataTable(searchRequest.SortingArray), // Convert list to DataTable
                 //    FilterArray = DataTableHelper.ToDataTable(searchRequest.FilterArray) // Convert list to DataTable
                 //};
-                var result = await connection.QueryAsync<ProcessOrder>(ProcessOrderQueries.GetAll_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<ProcessOrders>(ProcessOrderQueries.GetAll_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 
-                var response = new ListResponseWrapper<ProcessOrder> { Data = result.ToList(), TotalCount = parameters.Get<int>("@TotalCount"), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
+                var response = new ListResponseWrapper<ProcessOrders> { Data = result.ToList(), TotalCount = parameters.Get<int>("@TotalCount"), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") };return response;
             }
         }
     }
-    public async Task<SingleResponseWrapper<ProcessOrder>> GetByIdAsync(SearchRequestById searchRequestById)
+    public async Task<SingleResponseWrapper<ProcessOrders>> GetByIdAsync(SearchRequestById searchRequestById)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequestById))
         {
@@ -198,9 +267,9 @@ public class ProcessOrderRepository:IProcessOrderRepository
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
                 parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
-                var result = await connection.QuerySingleOrDefaultAsync<ProcessOrder>(ProcessOrderQueries.GetByID_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleOrDefaultAsync<ProcessOrders>(ProcessOrderQueries.GetByID_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
-                var response = new SingleResponseWrapper<ProcessOrder>
+                var response = new SingleResponseWrapper<ProcessOrders>
                 {
                     Data = result,
                     Code = parameters.Get<int>("@Code"),
@@ -213,7 +282,7 @@ public class ProcessOrderRepository:IProcessOrderRepository
 
 
 
-    public async Task<ResponseEntity> UpdateAsync(ProcessOrder entity)
+    public async Task<ResponseEntity> UpdateAsync(ProcessOrders entity)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, entity))
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Contracts.Persistence;
 
-public  interface IProcessOrderRepository:IRepository<ProcessOrder>
+public  interface IProcessOrderRepository:IRepository<ProcessOrders>
 {
    // Task CreateAgeType(AgeType ageType);
 }

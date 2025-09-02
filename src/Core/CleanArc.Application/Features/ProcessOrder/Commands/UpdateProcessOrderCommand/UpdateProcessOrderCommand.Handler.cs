@@ -53,7 +53,7 @@ internal class UpdateProcessOrderCommandHandler:IRequestHandler<UpdateProcessOrd
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
-            var result = await _unitOfWork.ProcessOrderRepository.UpdateAsync(new Domain.Entities.ProcessOrder.ProcessOrder()
+            var result = await _unitOfWork.ProcessOrderRepository.UpdateAsync(new Domain.Entities.ProcessOrder.ProcessOrders()
             { UpdatedBy = request.UserId,
                 Id= request.Id,
                 CultureId = request.CultureId,

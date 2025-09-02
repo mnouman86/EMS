@@ -2,18 +2,21 @@
 using CleanArc.SharedKernel.ValidationBase.Contracts;
 using CleanArc.SharedKernel.ValidationBase;
 using FluentValidation;
-using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
+using CleanArc.Application.Models.Request;
+using System.Text.Json.Serialization; 
+using CleanArc.Domain.Common;
 using Mediator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArc.Domain;
+using CleanArc.Domain.Entities.ProcessOrder;
 
 namespace CleanArc.Application.Features.ProcessOrder.Commands.CreateProcessOrderCommand;
 public record CreateProcessOrderCommand(
     int? CultureId,
-    int? GenericTitleId,
     int? ServiceTypeEnumId,
     string? OrderNumber,
     DateTime? FromDate,
@@ -22,10 +25,7 @@ public record CreateProcessOrderCommand(
     int? NoOfChildren,
     int? NoOfRooms,
     int? ParticipantSize,
-    int? OrderStatusEnumId,
-    int? CreatedBy,
-    decimal? Amount,
-    decimal? Tax,
+    int? OrderStatusEnumId,    
     string? FirstName, 
     string? LastName, 
     string? Email,
@@ -39,9 +39,14 @@ public record CreateProcessOrderCommand(
     int? CountryLookUpId,
     int? ZipCode,
     string? PaymentStatus,
-    string? Title,
-    string? SubTitle,
-    string? City
+    int? CityLookUpId,
+    string? City,
+  int? PackageTypeEnumID,
+string OrderStatus ,
+OrderCategory Stay,
+OrderCategory Flight,
+OrderCategory CarRental,
+OrderCategory Activities
     
     ) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateProcessOrderCommand>
