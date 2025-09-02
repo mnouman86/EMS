@@ -8,17 +8,8 @@ using System.Threading.Tasks;
 namespace CleanArc.Domain.Entities.ProcessOrder;
 
 public class ProcessOrders
-
 {
-    public ProcessOrder Stays {get; set;}
-    public ProcessOrder Flights {get; set;}
-    public ProcessOrder CarRental {get; set;}
-    public ProcessOrder ThingsToDo {get; set;}
 
-}
-public  class ProcessOrder
-    
-{
     public int Id { get; set; } // IDENTITY(1,1) NOT NULL
     public string? OrderNumber { get; set; } // nvarchar(50) NULL
     public string? FirstName { get; set; } // nvarchar(50) NULL
@@ -33,12 +24,13 @@ public  class ProcessOrder
     public int? ExpirationMonth { get; set; } // int NULL
     public int? ExpirationYear { get; set; } // int NULL
     public int? ZipCode { get; set; } // int NULL
-    public decimal? Amount { get; set; } // decimal(18, 2) NULL
     public DateTime? FromDate { get; set; } // date NULL
     public DateTime? ToDate { get; set; } // date NULL
     public int? NoOfAdults { get; set; } // int NULL
     public int? NoOfChildren { get; set; } // int NULL
     public int? NoOfRooms { get; set; } // int NULL
+    public int? ParticipantSize { get; set; }
+
     public string CountryName { get; set; } // Assuming nvarchar type
     public string OrderStatus { get; set; } // Assuming nvarchar type
     public bool? IsActive { get; set; } // bit NULL
@@ -47,18 +39,33 @@ public  class ProcessOrder
     public DateTime? CreatedAt { get; set; } // datetime NULL
     public int? UpdatedBy { get; set; } // int NULL
     public DateTime? UpdatedAt { get; set; } // datetime NULL
-    public int? CultureId { get; set; }
-    public int? GenericTitleId { get; set; }
-    public int? ServiceTypeEnumId { get; set; }
-    public int? ParticipantSize { get; set; }
     public int? OrderStatusEnumId { get; set; }
-    public decimal? Tax { get; set; }
+    public int? PackageTypeEnumID { get; set; }
     public int? CountryLookUpId { get; set; }
     public string? PaymentStatus { get; set; }
-    public string? Title { get; set; }
-    public string? SubTitle { get; set; }
+
+
+    public int? CultureId { get; set; }
+    public OrderCategory Stay {get; set;}
+    public OrderCategory Flight {get; set;}
+    public OrderCategory CarRental {get; set;}
+    public OrderCategory Activities {get; set;}
+    public int? CityLookUpId { get; set; }
     public string? City { get; set; }
 
-
+}
+public  class OrderCategory   
+{    
+    public decimal? Amount { get; set; } // decimal(18, 2) NULL
+    public decimal? DiscountAmount { get; set; } // decimal(18, 2) NULL    
+    
+    public int? GenericTitleId { get; set; }
+    public int? SubTitleID { get; set; }
+    public int? ServiceTypeEnumId { get; set; }
+    public int? PackageDetailID { get; set; }
+    public decimal? Tax { get; set; }
+    
+    public string? Title { get; set; }
+    public string? SubTitle { get; set; }
 
 }

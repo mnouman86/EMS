@@ -58,7 +58,7 @@ internal class CreateProcessOrderCommandHandler: IRequestHandler<CreateProcessOr
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
-            var result = await _unitOfWork.ProcessOrderRepository.AddAsync(new Domain.Entities.ProcessOrder.ProcessOrder()
+            var result = await _unitOfWork.ProcessOrderRepository.AddAsync(new Domain.Entities.ProcessOrder.ProcessOrders()
             { CreatedBy = request.UserId,
                  CultureId = request.CultureId,
                 OrderNumber = request.OrderNumber,
@@ -74,21 +74,27 @@ internal class CreateProcessOrderCommandHandler: IRequestHandler<CreateProcessOr
                 ExpirationYear = request.ExpirationYear,
                 CountryLookUpId = request.CountryLookUpId,
                 ZipCode = request.ZipCode,
-                Amount = request.Amount,
+                //Amount = request.Amount,
                 FromDate = request.FromDate,
                 ToDate = request.ToDate,
                 NoOfAdults = request.NoOfAdults,
                 NoOfChildren = request.NoOfChildren,
                 NoOfRooms = request.NoOfRooms,
                 OrderStatusEnumId = request.OrderStatusEnumId,
-                GenericTitleId=request.GenericTitleId,
-                ServiceTypeEnumId=request.ServiceTypeEnumId,
+                //GenericTitleId=request.GenericTitleId,
+                //ServiceTypeEnumId=request.ServiceTypeEnumId,
                 ParticipantSize = request.ParticipantSize,
-                Tax=request.Tax,
+                //Tax=request.Tax,
                 PaymentStatus=request.PaymentStatus,
-                Title=request.Title,
-                SubTitle=request.SubTitle,
+                //Title=request.Title,
+                //SubTitle=request.SubTitle,
+                CityLookUpId=request.CityLookUpId,
                 City=request.City,
+                Stay=request.Stay,
+                CarRental=request.CarRental,
+                Flight=request.Flight,
+                Activities=request.Activities,
+                PackageTypeEnumID = request.PackageTypeEnumID,
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
