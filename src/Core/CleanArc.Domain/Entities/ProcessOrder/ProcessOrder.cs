@@ -62,7 +62,7 @@ public  class OrderCategory
     public int? GenericTitleId { get; set; }
     public int? SubTitleID { get; set; }
     public int? ServiceTypeEnumId { get; set; }
-    public int? PackageDetailID { get; set; }
+    //public int? PackageDetailID { get; set; }
     public decimal? Tax { get; set; }
     
     public string? Title { get; set; }
