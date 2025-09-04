@@ -29,6 +29,8 @@ namespace CleanArc.Application.Features.Activity.Queries.GetActivityById
         public int? SubServiceCategoryId { get; set; }
         public string? OtherSubService { get; set; }
         public string? SubServiceName { get; set; }
+        public string? ServiceName { get; set; }
+
         public int? MinAge { get; set; }
         public int? MaxAge { get; set; }
         public int? ActivityTypeLookUpId { get; set; }
