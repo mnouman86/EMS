@@ -88,7 +88,7 @@ public class ProcessOrderRepository:IProcessOrderRepository
                 paramsForPackageId.Add("@CreatedBy", ProcessOrder.CreatedBy);
                 var Result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Create_PackageDetail, paramsForPackageId, commandType: CommandType.StoredProcedure);
                 CreateProcessOrderDTO createProcessOrderDTO = _mapper.Map<CreateProcessOrderDTO>(ProcessOrder);
-
+                string OrderNumber = "-1";
                 var parameters = new DynamicParameters(createProcessOrderDTO);
                 if (ProcessOrder.Stay!=null)
                 {
@@ -96,13 +96,13 @@ public class ProcessOrderRepository:IProcessOrderRepository
                     createProcessOrderDTO.DiscountAmount = ProcessOrder.Stay.DiscountAmount;
                     createProcessOrderDTO.GenericTitleId = ProcessOrder.Stay.GenericTitleId;
                     createProcessOrderDTO.ServiceTypeEnumId = ProcessOrder.Stay.ServiceTypeEnumId;
-                    createProcessOrderDTO.PackageDetailID = Result.RecordID;
+                    createProcessOrderDTO.PackageDetailID = Convert.ToInt32(Result.RecordID);
                     createProcessOrderDTO.Tax = ProcessOrder.Stay.Tax;
                     //createProcessOrderDTO.Title = ProcessOrder.Stay.Title;
                     createProcessOrderDTO.SubTitleID = ProcessOrder.Stay.SubTitleID;
 
                     var resultStay = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Create_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
-
+                    OrderNumber = resultStay.RecordID;
                 }
 
 
@@ -112,12 +112,13 @@ public class ProcessOrderRepository:IProcessOrderRepository
                     createProcessOrderDTO.DiscountAmount = ProcessOrder.CarRental.DiscountAmount;
                     createProcessOrderDTO.GenericTitleId = ProcessOrder.CarRental.GenericTitleId;
                     createProcessOrderDTO.ServiceTypeEnumId = ProcessOrder.CarRental.ServiceTypeEnumId;
-                    createProcessOrderDTO.PackageDetailID = Result.RecordID;
+                    createProcessOrderDTO.PackageDetailID = Convert.ToInt32(Result.RecordID);
                     createProcessOrderDTO.Tax = ProcessOrder.CarRental.Tax;
                     //createProcessOrderDTO.Title = ProcessOrder.CarRental.Title;
                     createProcessOrderDTO.SubTitleID = ProcessOrder.CarRental.SubTitleID;
 
                     var resultCar = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Create_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
+                    OrderNumber = resultCar.RecordID;
 
                 }
 
@@ -128,12 +129,13 @@ public class ProcessOrderRepository:IProcessOrderRepository
                     createProcessOrderDTO.DiscountAmount = ProcessOrder.Flight.DiscountAmount;
                     createProcessOrderDTO.GenericTitleId = ProcessOrder.Flight.GenericTitleId;
                     createProcessOrderDTO.ServiceTypeEnumId = ProcessOrder.Flight.ServiceTypeEnumId;
-                    createProcessOrderDTO.PackageDetailID = Result.RecordID;
+                    createProcessOrderDTO.PackageDetailID = Convert.ToInt32(Result.RecordID);
                     createProcessOrderDTO.Tax = ProcessOrder.Flight.Tax;
                     //createProcessOrderDTO.Title = ProcessOrder.Flight.Title;
                     createProcessOrderDTO.SubTitleID = ProcessOrder.Flight.SubTitleID;
 
                     var resultFlights = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Create_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
+                    OrderNumber = resultFlights.RecordID;
 
                 }
 
@@ -144,12 +146,13 @@ public class ProcessOrderRepository:IProcessOrderRepository
                     createProcessOrderDTO.DiscountAmount = ProcessOrder.Activities.DiscountAmount;
                     createProcessOrderDTO.GenericTitleId = ProcessOrder.Activities.GenericTitleId;
                     createProcessOrderDTO.ServiceTypeEnumId = ProcessOrder.Activities.ServiceTypeEnumId;
-                    createProcessOrderDTO.PackageDetailID = Result.RecordID;
+                    createProcessOrderDTO.PackageDetailID = Convert.ToInt32(Result.RecordID);
                     createProcessOrderDTO.Tax = ProcessOrder.Activities.Tax;
                     //createProcessOrderDTO.Title = ProcessOrder.Activities.Title;
                     createProcessOrderDTO.SubTitleID = ProcessOrder.Activities.SubTitleID;
 
                     var resultActivities = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(ProcessOrderQueries.Create_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
+                    OrderNumber = resultActivities.RecordID;
 
                 }
 
@@ -157,7 +160,7 @@ public class ProcessOrderRepository:IProcessOrderRepository
 
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(Result);
                 // Send email only if booking is successful and user email is available
-                if (Result.IsSuccess && Result.RecordID > 0 && !string.IsNullOrWhiteSpace(ProcessOrder.Email))
+                if (Result.IsSuccess && Result.RecordID !="-1" && !string.IsNullOrWhiteSpace(ProcessOrder.Email))
                 {
                     var subtitleHtml = string.IsNullOrWhiteSpace(createProcessOrderDTO.SubTitleID.ToString())
                                     ? string.Empty
@@ -194,6 +197,7 @@ public class ProcessOrderRepository:IProcessOrderRepository
                         emailBody
                     );
                 }
+                Result.RecordID = OrderNumber;
                 return Result;
         }
 

@@ -14,7 +14,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
         {
             return new ResponseEntity
             {
-                RecordID = parameters.Get<int>("@RecordId"),
+                RecordID = parameters.Get<string>("@RecordId"),
                 Code = parameters.Get<int>("@Code"),
                 Message = parameters.Get<string>("@Message"),
                 IsSuccess = parameters.Get<int>("@Code") == 1
