@@ -396,7 +396,7 @@ public class ActivityRepository : IActivityRepository
 		}
 	}
 
-    public async Task<SingleResponseWrapper<Activity>> GetActivityDetailByBusinessAsync(SearchRequestById searchRequest)
+    public async Task<SingleResponseWrapper<Activity>> GetActivityDetailByBusinessAsync(SearchRequestById searchRequest, int? userId)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -446,7 +446,7 @@ public class ActivityRepository : IActivityRepository
 
                     List<FilterParameter> filter = new List<FilterParameter>();
                     List<SortingParameter> sorting = new List<SortingParameter>();
-                    SearchRequest request = new SearchRequest {PageSize=100,PageNumber=1,CultureId=searchRequest.CultureId,FilterArray=filter,SortingArray=sorting };
+                    SearchRequest request = new SearchRequest {PageSize=100,PageNumber=1,CultureId=searchRequest.CultureId,FilterArray=filter,SortingArray=sorting, UserId=userId };
                     var activities = GetAllAsync(request);
                     activity.RelatedActivities = activities?.Result?.Data?.Where(x=>x.Id!=searchRequest.Id).ToList();
                 }

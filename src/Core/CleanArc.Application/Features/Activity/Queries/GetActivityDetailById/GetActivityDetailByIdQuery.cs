@@ -9,5 +9,5 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Activity.Queries.GetActivityDetailById
 {
-    public record GetActivityDetailByIdQuery(SearchRequestById searchRequestById):IRequest<OperationResult<GetActivityDetailByIdQueryResult>>;
+    public record GetActivityDetailByIdQuery(SearchRequestById searchRequestById, int userId):IRequest<OperationResult<GetActivityDetailByIdQueryResult>>;
 }
