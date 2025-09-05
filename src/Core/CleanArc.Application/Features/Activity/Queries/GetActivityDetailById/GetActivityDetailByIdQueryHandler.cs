@@ -50,7 +50,7 @@ namespace CleanArc.Application.Features.Activity.Queries.GetActivityDetailById
 
                 //return OperationResult<GetActivityDetailByIdQueryResult>.SuccessResult(result);
 
-                var response = await _unitOfWork.ActivityRepository.GetActivityDetailByBusinessAsync(request.searchRequestById);
+                var response = await _unitOfWork.ActivityRepository.GetActivityDetailByBusinessAsync(request.searchRequestById, request.userId);
 
                 if (response.Code != 200)
                 {
