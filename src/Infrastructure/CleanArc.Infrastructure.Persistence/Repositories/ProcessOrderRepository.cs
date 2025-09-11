@@ -1,12 +1,19 @@
 ﻿using Azure.Core;
+using CleanArc.Application.Common;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Models.ProcessOrder;
 using CleanArc.Application.Models.BusinessType;
+using CleanArc.Application.Models.ProcessOrder;
 using CleanArc.Application.Models.Request;
 using CleanArc.Application.Models.URL;
+using CleanArc.Domain.Common;
+using CleanArc.Domain.Entities.ActivityDisabilityOption;
+using CleanArc.Domain.Entities.ActivityIncludedOption;
+using CleanArc.Domain.Entities.ActivitySeason;
+using CleanArc.Domain.Entities.Language;
 using CleanArc.Domain.Entities.ProcessOrder;
 using CleanArc.Domain.Entities.UserManagement;
 using CleanArc.Infrastructure.Persistence.Helpers;
+using CleanArc.Infrastructure.Persistence.Services;
 using CleanArc.Infrastructure.Sql;
 using CleanArc.Infrastructure.Sql.SqlQueries;
 using CleanArc.SharedKernel.Extensions;
@@ -15,7 +22,6 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging; 
-using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -24,8 +30,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-using CleanArc.Application.Common;
-using CleanArc.Infrastructure.Persistence.Services;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -271,11 +275,42 @@ public class ProcessOrderRepository:IProcessOrderRepository
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                 parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
                 parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
-                var result = await connection.QuerySingleOrDefaultAsync<ProcessOrders>(ProcessOrderQueries.GetByID_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                //var result = await connection.QuerySingleOrDefaultAsync<ProcessOrders>(ProcessOrderQueries.GetByID_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
+
+                var result = await connection.QueryMultipleAsync(ProcessOrderQueries.GetByID_OrderPayment, parameters, commandType: CommandType.StoredProcedure);
+
+
+
+                var order = result.Read<ProcessOrders>().FirstOrDefault();
+                if (order != null)
+                {
+                    var stay = result.Read<OrderCategory>();
+                    order.Stay =(OrderCategory)stay;
+
+                    var carRental = result.Read<OrderCategory>();
+                    order.CarRental = (OrderCategory)carRental;
+
+                    var flight = result.Read<OrderCategory>();
+                    order.Flight = (OrderCategory)flight;
+
+                    var activity = result.Read<OrderCategory>();
+                    order.Activities = (OrderCategory)activity;
+                }
+                if (!result.IsConsumed)
+                {
+                    result.Dispose();
+                }
+                //await connection.ExecuteAsync(
+                //        ActivityQueries.GetByID_Activity,
+                //        parameters,
+                //        commandType: CommandType.StoredProcedure);
+                int? Code = parameters.Get<int>("@Code");
+                string? Message = parameters.Get<string>("@Message");
+
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 var response = new SingleResponseWrapper<ProcessOrders>
                 {
-                    Data = result,
+                    Data = order,
                     Code = parameters.Get<int>("@Code"),
                     Message = parameters.Get<string>("@Message")
                 };
