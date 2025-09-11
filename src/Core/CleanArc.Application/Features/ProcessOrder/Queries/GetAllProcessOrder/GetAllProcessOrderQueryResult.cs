@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CleanArc.Domain.Entities.ProcessOrder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ public class GetAllProcessOrderQueryResult
     public int? ExpirationMonth { get; set; } // int NULL
     public int? ExpirationYear { get; set; } // int NULL
     public int? ZipCode { get; set; } // int NULL
-    public decimal? Amount { get; set; } // decimal(18, 2) NULL
+    //public decimal? Amount { get; set; } // decimal(18, 2) NULL
     public DateTime? FromDate { get; set; } // date NULL
     public DateTime? ToDate { get; set; } // date NULL
     public int? NoOfAdults { get; set; } // int NULL
@@ -36,13 +37,17 @@ public class GetAllProcessOrderQueryResult
     public int? UpdatedBy { get; set; } // int NULL
     public DateTime? UpdatedAt { get; set; } // datetime NULL
     public int? CultureId { get; set; }
-    public int? GenericTitleId { get; set; }
-    public int? ServiceTypeEnumId { get; set; }
+    //public int? GenericTitleId { get; set; }
+    //public int? ServiceTypeEnumId { get; set; }
     public int? ParticipantSize { get; set; }
     public int? OrderStatusEnumId { get; set; }
-    public decimal? Tax { get; set; }
+    //public decimal? Tax { get; set; }
     public int? CountryLookUpId { get; set; }
     public string? PaymentStatus { get; set; }
+    public OrderCategory Stay { get; set; }
+    public OrderCategory Flight { get; set; }
+    public OrderCategory CarRental { get; set; }
+    public OrderCategory Activities { get; set; }
 }
 
 //    public GetAllProcessOrderQueryResult(int iD, string name, string description, bool isDeleted, bool isActive, int createdBy, DateTime createdAt, int updatedBy, DateTime updatedAt)
