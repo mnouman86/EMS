@@ -285,16 +285,20 @@ public class ProcessOrderRepository:IProcessOrderRepository
                 if (order != null)
                 {
                     var stay = result.Read<OrderCategory>();
+                    if (stay != null && stay?.Count()>0)
                     order.Stay =(OrderCategory)stay;
 
                     var carRental = result.Read<OrderCategory>();
-                    order.CarRental = (OrderCategory)carRental;
+                    if (carRental != null && carRental?.Count() > 0)
+                        order.CarRental = (OrderCategory)carRental;
 
                     var flight = result.Read<OrderCategory>();
-                    order.Flight = (OrderCategory)flight;
+                    if (flight != null && flight?.Count() > 0)
+                        order.Flight = (OrderCategory)flight;
 
                     var activity = result.Read<OrderCategory>();
-                    order.Activities = (OrderCategory)activity;
+                    if (activity != null && activity?.Count() > 0)
+                        order.Activities = (OrderCategory)activity;
                 }
                 if (!result.IsConsumed)
                 {
@@ -304,15 +308,15 @@ public class ProcessOrderRepository:IProcessOrderRepository
                 //        ActivityQueries.GetByID_Activity,
                 //        parameters,
                 //        commandType: CommandType.StoredProcedure);
-                int? Code = parameters.Get<int>("@Code");
+                int Code = parameters.Get<int>("@Code");
                 string? Message = parameters.Get<string>("@Message");
 
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 var response = new SingleResponseWrapper<ProcessOrders>
                 {
                     Data = order,
-                    Code = parameters.Get<int>("@Code"),
-                    Message = parameters.Get<string>("@Message")
+                    Code = Code,
+                    Message = Message
                 };
                 return response;
             }
