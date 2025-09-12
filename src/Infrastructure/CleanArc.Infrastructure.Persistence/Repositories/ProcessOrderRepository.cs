@@ -286,19 +286,19 @@ public class ProcessOrderRepository:IProcessOrderRepository
                 {
                     var stay = result.Read<OrderCategory>();
                     if (stay != null && stay?.Count()>0)
-                    order.Stay =(OrderCategory)stay;
+                    order.Stay =(OrderCategory)stay.FirstOrDefault();
 
                     var carRental = result.Read<OrderCategory>();
                     if (carRental != null && carRental?.Count() > 0)
-                        order.CarRental = (OrderCategory)carRental;
+                        order.CarRental = (OrderCategory)carRental.FirstOrDefault();
 
                     var flight = result.Read<OrderCategory>();
                     if (flight != null && flight?.Count() > 0)
-                        order.Flight = (OrderCategory)flight;
+                        order.Flight = (OrderCategory)flight.FirstOrDefault();
 
                     var activity = result.Read<OrderCategory>();
                     if (activity != null && activity?.Count() > 0)
-                        order.Activities = (OrderCategory)activity;
+                        order.Activities = (OrderCategory)activity.FirstOrDefault();
                 }
                 if (!result.IsConsumed)
                 {
