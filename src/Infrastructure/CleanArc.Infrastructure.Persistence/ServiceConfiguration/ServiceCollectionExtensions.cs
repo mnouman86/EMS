@@ -70,8 +70,12 @@ public static class ServiceCollectionExtensions
                 client.DefaultRequestHeaders.Add("X-Api-Key", opts.ApiKey);
         });
 
+
         // Resolve interface to typed provider
         services.AddScoped<IFlightProvider>(sp => sp.GetRequiredService<MosafirFlightProvider>());
+
+        // <<< Register lookup implementation here >>>
+        services.AddSingleton<ILookupService, JsonLookupService>();
 
         var disposableEmailListPath = Path.Combine(contentRootPath, "Infrastructure", "Common", "Validation", "disposable_domains.txt");
 

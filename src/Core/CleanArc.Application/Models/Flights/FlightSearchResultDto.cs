@@ -29,6 +29,8 @@ namespace CleanArc.Application.Models.Flights
         public DateTimeOffset ArrivalDateTime { get; set; }
         public string DepartureAirportCode { get; set; } = default!;
         public string ArrivalAirportCode { get; set; } = default!;
+        public string? AirlineName { get; set; }
+        public string? AirlineLogo { get; set; } // relative url like /airlinelogos/PA.png
     }
 
     public class PriceDto
