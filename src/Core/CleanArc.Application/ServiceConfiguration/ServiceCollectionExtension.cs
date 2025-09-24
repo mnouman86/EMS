@@ -1,4 +1,5 @@
 ﻿using CleanArc.Application.Common;
+using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Domain.Interfaces.Services;
 using CleanArc.SharedKernel.Extensions;
 using FluentValidation;
@@ -26,6 +27,7 @@ public static class ServiceCollectionExtension
         //services.AddMediator(Assembly.GetExecutingAssembly());
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
+       
 
         return services;
     }
