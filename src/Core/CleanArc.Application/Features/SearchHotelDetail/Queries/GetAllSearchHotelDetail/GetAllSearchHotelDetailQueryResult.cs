@@ -41,8 +41,7 @@ public class GetAllSearchHotelDetailQueryResult
     public decimal DiscountAmount { get; set; }
     public decimal DiscountedPrice { get; set; }
     public string ImagePath { get; set; }
-    public string ImageTitle{ get; set; }
-    
+    public string ImageTitle{ get; set; }   
 
     public int TotalDays { get; set; }
     public string? Description { get; set; }
