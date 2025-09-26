@@ -62,7 +62,14 @@ namespace CleanArc.Infrastructure.Persistence.Providers.Mosafir
                 {
                     var txt = await resp.Content.ReadAsStringAsync(cancellationToken);
                     _logger.LogWarning("Mosafir returned {Status} - {Body}", resp.StatusCode, txt);
-                    resp.EnsureSuccessStatusCode();
+                    // resp.EnsureSuccessStatusCode();
+                    return new SingleResponseWrapper<FlightSearchResultDto>
+                    {
+                        Data = null,
+                        Code = 200,
+                        Message = "no record found."
+                    };
+
                 }
 
                 var mosafirResp = await resp.Content.ReadFromJsonAsync<MosafirResponse>(cancellationToken: cancellationToken);
@@ -81,6 +88,7 @@ namespace CleanArc.Infrastructure.Persistence.Providers.Mosafir
             {
                 _logger.LogError(ex, "Error calling Mosafir API");
                 throw;
+                
             }
         }
 
