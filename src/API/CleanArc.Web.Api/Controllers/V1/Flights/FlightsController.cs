@@ -63,7 +63,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Admin
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(commandResult);
                 //_logger.LogInformation("Executed {@actionName} action in {@controllerName} with response {@query}", actionName, controllerName, query);
 
-                return base.OperationResult(commandResult);
+                return OperationResult(commandResult);
             }
 
         }

@@ -28,29 +28,54 @@ public class BaseController : ControllerBase
     protected IActionResult OperationResult<TModel>(OperationResult<TModel> result)
     {
         if (result is null)
-            return new ServerErrorResult("Server Error");
+            return StatusCode(500, new { Message = "Server Error" });
 
+        //if (result.IsSuccess) return result.Result is bool ? Ok() : Ok(result);
+        //if (result.IsSuccess)
+        //{
+        object data = result.Result;
 
-        if (result.IsSuccess) return result.Result is bool ? StatusCode(result.StatusCode, 
-            new { Message = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(result.Message.ToLower()), StatusCode = result.StatusCode, result.IsSuccess, ErrorCore = result.ErrorCode }) 
-                : Ok(result.Result);
-
-        if (result.IsNotFound)
+        // Check if result.Result is not null and is of type CleanArc.Domain.Common.ResponseEntity
+        if (result.Result is CleanArc.Domain.Common.ResponseEntity responseEntity && responseEntity != null)
         {
-
-            ModelState.AddModelError("GeneralError", result.ErrorMessage);
-
-            var notFoundErrors = new ValidationProblemDetails(ModelState);
-
-            return NotFound(notFoundErrors.Errors);
+            data = new { RecordID = responseEntity.RecordID }; // Assign RecordID instead of the whole object
         }
+        var successResponse = new
+        {
+            //Data = result.Result,
+            Data = data,
+            Message = result.Message, // Use custom success message
+            StatusCode = result.StatusCode,
+            IsSuccess = result.IsSuccess,
+            TotalCount = result.TotalCount,
+        };
+
+        return result.Result is bool ? Ok() : StatusCode(result.StatusCode, successResponse);
+
+        //if (result is null)
+        //    return new ServerErrorResult("Server Error");
+
+
+        //if (result.IsSuccess) return result.Result is bool ? StatusCode(result.StatusCode, 
+        //    new { Message = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(result.Message.ToLower()), StatusCode = result.StatusCode, result.IsSuccess, ErrorCore = result.ErrorCode }) 
+        //        : Ok(result.Result);
+
+        //if (result.IsNotFound)
+        //{
+
+        //    ModelState.AddModelError("GeneralError", result.ErrorMessage);
+
+        //    var notFoundErrors = new ValidationProblemDetails(ModelState);
+
+        //    return NotFound(notFoundErrors.Errors);
+        //}
 
         //ModelState.AddModelError("GeneralError", result.ErrorMessage);
 
         //var badRequestErrors = new ValidationProblemDetails(ModelState);
 
         //return BadRequest(badRequestErrors.Errors);
-        return StatusCode(result.StatusCode, new { Message = result.ErrorMessage==null?result.Message:result.ErrorMessage, StatusCode = result.StatusCode, ErrorCore=result.ErrorCode });
+       // return StatusCode(result.StatusCode, new { Message = result.ErrorMessage==null?result.Message:result.ErrorMessage, StatusCode = result.StatusCode, ErrorCore=result.ErrorCode });
 
     }
 
