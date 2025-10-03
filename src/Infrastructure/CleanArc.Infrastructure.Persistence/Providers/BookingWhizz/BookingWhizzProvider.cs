@@ -36,7 +36,7 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
         public async Task<List<SearchDetail>> SearchHotelsAsync(CustomizedSearchRequest request)
         {
             string cityName = request.FilterArray?
-                .FirstOrDefault(f => f.ParameterName.Equals("CityName", StringComparison.OrdinalIgnoreCase))?
+                .FirstOrDefault(f => f.ParameterName.Equals("name", StringComparison.OrdinalIgnoreCase))?
                 .ParameterValue ?? "Islamabad";
 
             var url = $"{_settings.BaseUrl}getaccommodationsearchtest?" +
