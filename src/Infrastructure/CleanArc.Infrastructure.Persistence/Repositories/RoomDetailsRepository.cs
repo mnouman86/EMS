@@ -255,10 +255,7 @@ public class RoomDetailsRepository : IRoomDetailsRepository
 
                         var nearByLocations = result.Read<NearByLocation>().ToList();
                         hotelDetail.NearByLocations = nearByLocations;
-                        if (!result.IsConsumed)
-                        {
-                            result.Dispose();
-                        }
+                        
                         foreach (var item in hotelDetail.Rooms)
                         {
                             var Params = new DynamicParameters();
@@ -296,7 +293,10 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                     //var result = await connection.QuerySingleOrDefaultAsync<RoomDetails>(RoomDetailQueries.GetByID_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     //
-
+                    if (!result.IsConsumed)
+                    {
+                        result.Dispose();
+                    }
 
                     //await connection.ExecuteAsync(
                     //        ActivityQueries.GetByID_Activity,
