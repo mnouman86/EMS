@@ -13,10 +13,10 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
 {
     public static class BookingWhizzRoomDetailMapper
     {
-        public static HotelDetail MapHotelDetail(XDocument searchDoc, /*XDocument detailDoc,*/ XDocument availabilityDoc,int? noOfRooms, int? noOfDays)
+        public static HotelDetail MapHotelDetail(XElement hotelElement, /*XDocument detailDoc,*/ XDocument availabilityDoc,int? noOfRooms, int? noOfDays)
         {
-            var hotelElement = searchDoc.Descendants("result")
-                .FirstOrDefault();
+            //var hotelElement = searchDoc.Descendants("result")
+            //    .FirstOrDefault();
 
             if (hotelElement == null)
                 return null;

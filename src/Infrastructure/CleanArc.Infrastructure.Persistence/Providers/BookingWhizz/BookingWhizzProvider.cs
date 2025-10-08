@@ -67,8 +67,13 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
 
             var searchXmlStr = await _httpClient.GetStringAsync(searchUrl);
             var searchXml = XDocument.Parse(searchXmlStr);
-            var hotelElement = searchXml.Descendants("result")
-                .FirstOrDefault();
+            //var hotelElement = searchXml.Descendants("result")
+            //    .FirstOrDefault();
+            var hotelElement = searchXml
+                .Descendants("result")
+                .FirstOrDefault(x =>
+                    int.TryParse(x.Element("MinRoomId")?.Value, out var id) &&
+                    id == request.Id);
             if (hotelElement != null)
             {
                 accommodationId = int.Parse(hotelElement.Element("AccommodationId")?.Value ?? "0");
@@ -90,7 +95,7 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
                 var availabilityXml = XDocument.Parse(availabilityXmlStr);
 
                 // Step 4: Map all 3 sources
-                var hotelDetail = BookingWhizzRoomDetailMapper.MapHotelDetail(searchXml, /*detailXml,*/ availabilityXml, request.NoOfRooms, request.NoOfDays);
+                var hotelDetail = BookingWhizzRoomDetailMapper.MapHotelDetail(hotelElement, /*detailXml,*/ availabilityXml, request.NoOfRooms, request.NoOfDays);
 
                 return hotelDetail;
             }
