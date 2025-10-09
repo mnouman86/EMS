@@ -74,7 +74,7 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
                 .FirstOrDefault(x =>
                     int.TryParse(x.Element("AccommodationId")?.Value, out var id) &&
                     //int.TryParse(x.Element("MinRoomId")?.Value, out var id) &&
-                    id == request.Id);
+                    id == request.GenericTitleId);
             if (hotelElement != null)
             {
                 //accommodationId = int.Parse(hotelElement.Element("AccommodationId")?.Value ?? "0");
