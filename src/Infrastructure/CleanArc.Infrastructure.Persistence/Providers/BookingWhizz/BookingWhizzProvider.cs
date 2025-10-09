@@ -53,7 +53,7 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
 
         public async Task<HotelDetail> GetHotelDetailAsync(HotelDetailSearchRequest request)
         {
-            int accommodationId = request.Id;
+            int? accommodationId = request.GenericTitleId;
             string cityName=request.CityName;
             var checkIn = request.StartDate?.ToString("yyyy-MM-dd") ?? DateTime.Now.ToString("yyyy-MM-dd");
             var checkOut = request.EndDate?.ToString("yyyy-MM-dd") ?? DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
@@ -72,11 +72,12 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
             var hotelElement = searchXml
                 .Descendants("result")
                 .FirstOrDefault(x =>
-                    int.TryParse(x.Element("MinRoomId")?.Value, out var id) &&
+                    int.TryParse(x.Element("AccommodationId")?.Value, out var id) &&
+                    //int.TryParse(x.Element("MinRoomId")?.Value, out var id) &&
                     id == request.Id);
             if (hotelElement != null)
             {
-                accommodationId = int.Parse(hotelElement.Element("AccommodationId")?.Value ?? "0");
+                //accommodationId = int.Parse(hotelElement.Element("AccommodationId")?.Value ?? "0");
                 // Step 2: getaccommodationdetail (for check-in/out time)
                 //var detailUrl = $"{_settings.BaseUrl}getaccommodationdetail?" +
                 //                $"userid={_settings.UserId}&password={_settings.Password}" +
