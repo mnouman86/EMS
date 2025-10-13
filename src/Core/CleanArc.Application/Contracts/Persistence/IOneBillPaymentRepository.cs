@@ -14,6 +14,6 @@ namespace CleanArc.Application.Contracts.Persistence;
 public  interface IOneBillPaymentRepository
 {
     Task<SingleResponseWrapper<OneBillInquiryResponseDto>> GetOneBillPaymentAsync(string utilityConsumerNumber, string utilityCompanyId);
-    Task<string> RecordPaymentAsync(OneBillPaymentRequestDto paymentRequest, CancellationToken cancellationToken);
+    Task<SingleResponseWrapper<OneBillPaymentResponseDto>> RecordPaymentAsync(OneBillPaymentRequestDto paymentRequest, int UserId, CancellationToken cancellationToken);
 
 }
