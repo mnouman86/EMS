@@ -8,7 +8,9 @@ using CleanArc.Application.Models.Request;
 using CleanArc.Application.Models.URL;
 using CleanArc.Domain.Common;
 using CleanArc.Domain.Entities.ActivityNature;
+using CleanArc.Domain.Entities.Hotel;
 using CleanArc.Domain.Entities.OneBillPayment;
+using CleanArc.Domain.Entities.RoomDetails;
 using CleanArc.Domain.Entities.UserManagement;
 using CleanArc.Infrastructure.Persistence.Helpers;
 using CleanArc.Infrastructure.Sql;
@@ -74,17 +76,18 @@ public class OneBillPaymentRepository : IOneBillPaymentRepository
     public async Task<SingleResponseWrapper<OneBillInquiryResponseDto>> GetOneBillPaymentAsync(string utilityConsumerNumber, string utilityCompanyId)
     {
         using (
-            
+
             var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, utilityConsumerNumber))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
+                utilityConsumerNumber = utilityConsumerNumber.Substring(4);
                 var parameters = new DynamicParameters();
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-                //parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
-                //parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
+                parameters.Add("@CultureId", 1, DbType.Int32);
+                parameters.Add("@UserID", utilityConsumerNumber, DbType.Int32);
 
                 var sql = @"
             SELECT 
@@ -106,47 +109,88 @@ public class OneBillPaymentRepository : IOneBillPaymentRepository
 
                 OneBillInquiryResponseDto result;
                 //return result;
-                await Task.Delay(10);
-                if (utilityCompanyId == "KESC0001" && utilityConsumerNumber == "112233445566")
+                //await Task.Delay(10);
+                //if (utilityCompanyId == "KESC0001" && utilityConsumerNumber == "112233445566")
+                //{
+                //    result = new OneBillInquiryResponseDto
+                //    {
+                //        ResponseCode = "00",
+                //        ConsumerDetail = "MUHAMMAD AHMER",
+                //        LoanStatus = "U",
+                //        DueDate = "20081010",
+                //        AmountDueDate = "000000186900",
+                //        AmountAfterDueDate = "000000202500",
+                //        InstallmentNo = "09",
+                //        RemainingInstallments = "06",
+                //        RemainingInstallmentAmount = "000008100000",
+                //        NextPaymentDueDate = "20081010",
+                //        Reserved = ""
+                //    };
+                //}
+                //else
+                //    result = null;
+                var inquiry = await connection.QueryMultipleAsync(OneBillPaymentQueries.Get_OneBillLoanInquiry, parameters, commandType: CommandType.StoredProcedure);
+                var inquiryDetail = inquiry.Read<OneBillInquiryResponseDto>().FirstOrDefault();
+                if (inquiryDetail == null)
                 {
-                    result = new OneBillInquiryResponseDto
-                    {
-                        ResponseCode = "00",
-                        ConsumerDetail = "MUHAMMAD AHMER",
-                        LoanStatus = "U",
-                        DueDate = "20081010",
-                        AmountDueDate = "000000186900",
-                        AmountAfterDueDate = "000000202500",
-                        InstallmentNo = "09",
-                        RemainingInstallments = "06",
-                        RemainingInstallmentAmount = "000008100000",
-                        NextPaymentDueDate = "20081010",
-                        Reserved = ""
-                    };
+                    inquiryDetail = new OneBillInquiryResponseDto();
+
                 }
-                else
-                    result = null;
-                    //var result = await connection.QueryAsync<OneBillPaymentResponseDto>(OneBillPaymentQueries.Get_OneBillPayment, parameters, commandType: CommandType.StoredProcedure);
-                    //var result = await connection.QuerySingleOrDefaultAsync<ActivityNature>(ActivityNatureQueries.GetByID_Natures, parameters, commandType: CommandType.StoredProcedure);
-                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var responseCode = inquiry.Read<string>().FirstOrDefault();
+                inquiryDetail.ResponseCode = responseCode;
+                //var result = await connection.QuerySingleOrDefaultAsync<ActivityNature>(ActivityNatureQueries.GetByID_Natures, parameters, commandType: CommandType.StoredProcedure);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(inquiry);
                 var response = new SingleResponseWrapper<OneBillInquiryResponseDto>
                 {
-                    Data = result,
+                    Data = inquiryDetail,
                     Code = 200, //parameters.Get<int>("@Code"),
-                    Message =""// parameters.Get<string>("@Message")
+                    Message = ""// parameters.Get<string>("@Message")
                 };
                 return response;
             }
         }
     }
 
-    public async Task<string> RecordPaymentAsync(OneBillPaymentRequestDto paymentRequest, CancellationToken cancellationToken)
+    public async Task<SingleResponseWrapper<OneBillPaymentResponseDto>> RecordPaymentAsync(OneBillPaymentRequestDto paymentRequest,int UserId, CancellationToken cancellationToken)
     {
+        using (
+
+            var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, paymentRequest))
+        {
+            using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+            {
+                connection.Open();
+                paymentRequest.UtilityConsumerNumber = paymentRequest.UtilityConsumerNumber.Substring(4);
+                var parameters = new DynamicParameters();
+                parameters.Add("@CultureId", 1, DbType.Int32);
+                parameters.Add("@UserID", paymentRequest.UtilityConsumerNumber, DbType.Int32);
+                parameters.Add("@ProviderID", UserId, DbType.Int32);
+                parameters.Add("@TransmissionDate", paymentRequest.TransmissionDate, DbType.String);
+                parameters.Add("@stan", paymentRequest.Stan, DbType.String);
+                parameters.Add("@rrn", paymentRequest.Rrn, DbType.String);
+                parameters.Add("@UpdatedBy", UserId, DbType.Int32);
+                //var result = await connection.QueryFirstOrDefaultAsync<OneBillPaymentResponseDto>(
+                //    sql, new { ConsumerNumber = utilityConsumerNumber, CompanyId = utilityCompanyId });
+
+                OneBillPaymentResponseDto result;
+                var payment = await connection.QueryAsync<OneBillPaymentResponseDto>(OneBillPaymentQueries.Get_OneBillLoanPayment, parameters, commandType: CommandType.StoredProcedure);
+
+                //var result = await connection.QuerySingleOrDefaultAsync<ActivityNature>(ActivityNatureQueries.GetByID_Natures, parameters, commandType: CommandType.StoredProcedure);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(payment);
+                var response = new SingleResponseWrapper<OneBillPaymentResponseDto>
+                {
+                    Data = payment.FirstOrDefault(),
+                    Code = 200, //parameters.Get<int>("@Code"),
+                    Message = ""// parameters.Get<string>("@Message")
+                };
+                return response;
+            }
+        }
         // Mock DB save delay
         await Task.Delay(100, cancellationToken);
 
         // Normally, you’d insert into DB here and return transaction log ID
         //var transactionLogId = new Random().Next(100000, 999999).ToString();
-        return paymentRequest.Stan;
+        //return paymentRequest.Stan;
     }
 }

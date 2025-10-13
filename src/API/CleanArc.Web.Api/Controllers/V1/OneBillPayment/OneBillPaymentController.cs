@@ -46,7 +46,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Admin
             _logger = logger;
             _httpContextAccessor = httpContextAccessor;
         }
-        //[Authorize]
+        [Authorize]
         [HttpPost("LoanInquiry")]
         public async Task<IActionResult> GetOneBillPayment([FromBody] OneBillInquiryRequestDto request)
         {
@@ -64,11 +64,13 @@ namespace CleanArc.Web.Api.Controllers.V1.Admin
             }
 
         }
-
+        [Authorize]
         [HttpPost("LoanPayment")]
         public async Task<IActionResult> MarkLoanPayment([FromBody] OneBillPaymentRequestDto request)
         {
+            
             var command = new UpdateOneBillPaymentCommand(request);
+            SetUserId(command);
             var result = await _sender.Send(command);
             return new JsonResult(result);
         }

@@ -34,15 +34,15 @@ internal class GetOneBillPaymentQueryHandler : IRequestHandler<GetOneBillPayment
 
     }
 
-   
+
     public async ValueTask<OneBillInquiryResponseDto> Handle(GetOneBillPaymentQuery request, CancellationToken cancellationToken)
     {
 
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            var response = await _unitOfWork.OneBillPaymentRepository.GetOneBillPaymentAsync(request.request.UtilityConsumerNumber,request.request.UtilityCompanyId);
+            var response = await _unitOfWork.OneBillPaymentRepository.GetOneBillPaymentAsync(request.request.UtilityConsumerNumber, request.request.UtilityCompanyId);
 
-            if (response.Code != 200)
+            if (response.Code != 200 || response.Data==null)
             {
                 //return OperationResult<OneBillPaymentResponseDto>.FailureResult(
                 //    response.Message,
