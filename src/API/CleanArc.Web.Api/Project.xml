@@ -175,6 +175,7 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <!-- Badly formed XML comment ignored for member "M:CleanArc.Web.Api.Controllers.V1.Admin.AuthController.VendorLogin(CleanArc.Application.Features.Auth.Queries.GetToken.AuthTokenRequest)" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.Admin.RoleManagerController.UpdateRolePermissions(CleanArc.Application.Features.Role.Commands.UpdateRoleClaimsCommand.UpdateRoleClaimsCommand)">
             <summary>
             Update a role permissions (claims) based on RouteKey received in AuthRoutes API
