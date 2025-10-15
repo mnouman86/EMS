@@ -1,19 +1,20 @@
-﻿using CleanArc.Application.Contracts.Identity;
+﻿using Azure;
+using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.OneBillPayment;
+using CleanArc.Domain.Common;
 using CleanArc.SharedKernel.Extensions;
 using MapsterMapper;
 using Mediator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging; 
-using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Models.OneBillPayment;
 
 namespace CleanArc.Application.Features.OneBillPayment.Command.UpdateOneBillPaymentCommand;
 
@@ -48,24 +49,33 @@ internal class UpdateOneBillPaymentCommandHandler : IRequestHandler<UpdateOneBil
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
                 return null;
-            //await _unitOfWork.URLRepository.AddAsync(new Domain.Entities.UserManagement.URL()
-            //{ CreatedBy = user.Id, Path = request.Path, Title = request.Title, Description = request.Description/*, CreatedTime=DateTime.Now*/ });
-
+            var result = await _unitOfWork.OneBillPaymentRepository.RecordPaymentAsync(request.Request,request.UserId,cancellationToken);
             //await _unitOfWork.CommitAsync();
-            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
+            //return OperationResult<ResponseEntity>.SuccessResult(result);
+            //return new OneBillPaymentResponseDto
+            //{
+            //    ResponseCode = "00",
+            //    AuthIdResponse = request.Request.Stan,
+            //    TransactionLogId = result,
+            //    Reserved = string.Empty
+            //};
 
-            //return OperationResult<ResponseEntity>.SuccessResult(result);
-            var result = await _unitOfWork.OneBillPaymentRepository.RecordPaymentAsync(request.Request,cancellationToken);
-            await _unitOfWork.CommitAsync();
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            //return OperationResult<ResponseEntity>.SuccessResult(result);
-            return new OneBillPaymentResponseDto
+            if (result.Code != 200 || result.Data == null)
             {
-                ResponseCode = "00",
-                AuthIdResponse = request.Request.Stan,
-                TransactionLogId = result,
-                Reserved = string.Empty
-            };
+                
+                return new OneBillPaymentResponseDto
+                {
+                    ResponseCode = "02", // Not Found
+                    TransactionLogId = request.Request.Stan, Reserved = string.Empty,AuthIdResponse=request.Request.Stan,
+                };
+
+            }
+
+            
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+
+            //return OperationResult<GetKBDetailByIdAllQueryResult>.SuccessResult(result);
+            return result.Data;
         }
     }
 

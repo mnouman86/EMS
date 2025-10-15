@@ -8,6 +8,7 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries;
 
 public static class OneBillPaymentQueries
 {
-    public static string Get_OneBillPayment => "usp_Search_AutoComplete";
+    public static string Get_OneBillLoanInquiry => "usp_LoanInquiry";
+    public static string Get_OneBillLoanPayment => "usp_LoanPayment";
 
 }
