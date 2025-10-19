@@ -52,7 +52,7 @@ internal class GetOneBillPaymentQueryHandler : IRequestHandler<GetOneBillPayment
                 {
                         ResponseCode = "01", // Not Found
                         ConsumerDetail = "NOT FOUND"
-                    };
+                };
                 
             }
 

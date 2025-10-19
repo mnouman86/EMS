@@ -13,7 +13,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-
+//http://beapi.bookingwhizz.com/Connect.svc/xml/getaccommodationsearchtest?userid=10037&password=KUYHrtghd@%$&cityname=Lahore&checkin=2025-10-23&checkout=2025-10-24&multilanguageid=1&converted_currency=PKR&agentid=37
+//http://beapi.bookingwhizz.com/Connect.svc/xml/getaccommodationsearchtest?userid=10037&password=KUYHrtghd@%$&cityname=Lahore&checkin=2025-10-23&checkout=2025-10-24&offset=0&limit=10&multilanguageid=1&converted_currency=PKR&agentid=37
 namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
 {
     //Implements IHotelProvider, calls 3rd party API
@@ -33,17 +34,49 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
             _settings = settings.Value;
         }
 
+        //  "BaseUrl": "http://beapi.bookingwhizz.com/Connect.svc/xml/",
+        //"UserId": "10037",
+        //"Password": "KUYHrtghd@%$",
+        //"AgentId": "37",
+        //"MultiLanguageId": "1"
+
+        
         public async Task<List<SearchDetail>> SearchHotelsAsync(CustomizedSearchRequest request)
         {
             string cityName = request.FilterArray?
                 .FirstOrDefault(f => f.ParameterName.Equals("name", StringComparison.OrdinalIgnoreCase))?
                 .ParameterValue ?? "Islamabad";
+            int limit = request.PageSize > 0 ? request.PageSize : 10;
+            int offSet = request.PageNumber > 0 ? request.PageNumber * limit : 0;
+            string priceRangeFilter = "";
+            if (request.MinPrice>=0 && request.MaxPrice>0 && request.MaxPrice>request.MinPrice)
+            {
+                priceRangeFilter = $"&pricerangestart={request.MinPrice}&pricerangeend={request.MaxPrice}";
+            }
 
+            string columnName = "4";
+            string columnDirection = null;
+
+            if (request?.SortingArray != null && request.SortingArray.Any())
+            {
+                // Extract the first sorting parameter
+                var sorting = request.SortingArray.First();
+
+                //columnName = sorting.SortingColumnName;
+                columnDirection = sorting.SortingColumnDirection?.ToUpper() == "DESC" ? "1" : "0";
+            }
+            else
+            {
+                // Default sorting (optional)
+                columnName = "4";
+                columnDirection = "0";
+            }
             var url = $"{_settings.BaseUrl}getaccommodationsearchtest?" +
                       $"userid={_settings.UserId}&password={_settings.Password}" +
                       $"&cityname={cityName}&checkin={request.StartDate:yyyy-MM-dd}" +
-                      $"&checkout={request.EndDate:yyyy-MM-dd}&multilanguageid={_settings.MultiLanguageId}" +
-                      $"&agentid={_settings.AgentId}";
+                      $"&checkout={request.EndDate:yyyy-MM-dd}&sortby={columnName}&sort={columnDirection}&accommodationtypename={request.PropertyType}"+
+                      $"&offset={offSet}&limit={limit}{priceRangeFilter}&multilanguageid={_settings.MultiLanguageId}" +
+                      $"&converted_currency=PKR&agentid={_settings.AgentId}";
 
             var xmlString = await _httpClient.GetStringAsync(url);
             var xDoc = XDocument.Parse(xmlString);
@@ -63,7 +96,7 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
                             $"userid={_settings.UserId}&password={_settings.Password}" +
                             $"&cityname={cityName}&checkin={checkIn}" +
                             $"&checkout={checkOut}&multilanguageid={_settings.MultiLanguageId}" +
-                            $"&agentid={_settings.AgentId}";
+                            $"&converted_currency=PKR&agentid={_settings.AgentId}";
 
             var searchXmlStr = await _httpClient.GetStringAsync(searchUrl);
             var searchXml = XDocument.Parse(searchXmlStr);
@@ -90,7 +123,7 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
                 var availabilityUrl = $"{_settings.BaseUrl}getavailability?" +
                                       $"userid={_settings.UserId}&password={_settings.Password}" +
                                       $"&accommodationid={accommodationId}&checkin={checkIn}" +
-                                      $"&checkout={checkOut}&multilanguageid={_settings.MultiLanguageId}";
+                                      $"&checkout={checkOut}&currency=PKR&multilanguageid={_settings.MultiLanguageId}";
 
                 var availabilityXmlStr = await _httpClient.GetStringAsync(availabilityUrl);
                 var availabilityXml = XDocument.Parse(availabilityXmlStr);
