@@ -17,6 +17,8 @@ namespace CleanArc.Domain.Entities.Hotel
         public int? CountryLookUpId { get; set; }
     public int? StateLookUpId { get; set; }
     public int? CityLookUpId { get; set; }
+    public int? ThirdPartyStayId { get; set; }
+    public int? Stars { get; set; }
     public int? BusinessId { get; set; }
     public int[]? LanguageLookUpId { get; set; }
     public List<LanguageLookUp>? Languages { get; set; }
