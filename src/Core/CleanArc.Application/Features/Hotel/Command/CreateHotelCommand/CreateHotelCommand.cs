@@ -21,6 +21,8 @@ namespace CleanArc.Application.Features.Hotel.Command.CreateHotelCommand;
 public record CreateHotelCommand(
     string? Name,
     int? BusinessId,
+    int? ThirdPartyStayId,
+    int? Stars,
     string? PostalCode,
     string? AddressLine1,
     string? AddressLine2,

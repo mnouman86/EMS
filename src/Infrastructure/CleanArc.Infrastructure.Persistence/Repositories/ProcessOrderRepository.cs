@@ -172,6 +172,10 @@ public class ProcessOrderRepository:IProcessOrderRepository
                     var cityHtml = string.IsNullOrWhiteSpace(ProcessOrder.City)
                                     ? string.Empty
                                     : $"<li><strong>City:</strong> {ProcessOrder.City}</li>";
+
+                    var amountString = createProcessOrderDTO.Amount.HasValue ? $"PKR {createProcessOrderDTO.Amount.Value.ToString("N2")}" : "N/A";
+
+
                     var emailBody = $@"
                                     <h3>Booking Confirmation</h3>
                                     <p>Dear {ProcessOrder.FirstName} {ProcessOrder.LastName},</p>
@@ -188,7 +192,7 @@ public class ProcessOrderRepository:IProcessOrderRepository
                                         <li><strong>Order Number:</strong> {ProcessOrder.OrderNumber ?? "Auto-generated"}</li>
                                         <li><strong>From Date:</strong> {ProcessOrder.FromDate?.ToString("yyyy-MM-dd")}</li>
                                         <li><strong>To Date:</strong> {ProcessOrder.ToDate?.ToString("yyyy-MM-dd")}</li>
-                                        <li><strong>Amount:</strong> {createProcessOrderDTO.Amount?.ToString("C")}</li>
+                                        <li><strong>Amount:</strong> {amountString}</li>
                                         <li><strong>Status:</strong> Confirmed</li>
                                     </ul>
                                     <p>We look forward to hosting you!</p>
