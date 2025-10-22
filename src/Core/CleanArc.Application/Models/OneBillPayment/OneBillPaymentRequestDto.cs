@@ -20,7 +20,7 @@ namespace CleanArc.Application.Models.OneBillPayment
         public string UtilityCompanyId { get; set; }
         public string UtilityConsumerNumber { get; set; }
         public string TransactionAmount { get; set; }
-        public string TransactionCurrency { get; set; }
+        public int TransactionCurrency { get; set; }
         public string Reserved { get; set; }
     }
 }
