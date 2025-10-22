@@ -55,6 +55,7 @@ public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateHotelComman
             return OperationResult<ResponseEntity>.FailureResult("User Not Found");
             var result = await _unitOfWork.HotelRepository.AddAsync(new Domain.Entities.Hotel.Hotel()
             {
+
                 CreatedBy = user.Id,
                 Name = request.Name,
                 CountryLookUpId = request.CountryLookUpId,
@@ -62,6 +63,8 @@ public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateHotelComman
                 CityLookUpId = request.CityLookUpId,
                 LanguageLookUpId = request.LanguageLookUpId,
                 BusinessId = request.BusinessId,
+                ThirdPartyStayId = request.ThirdPartyStayId,
+                Stars = request.Stars,
                 PostalCode = request.PostalCode,
                 AddressLine1 = request.AddressLine1,
                 AddressLine2 = request.AddressLine2,
