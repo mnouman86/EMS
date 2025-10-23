@@ -58,6 +58,8 @@ namespace CleanArc.Application.Models.Request
         public string? RoomView { get; set; }
         public string? OutDoor { get; set; }
         public bool FilterByWishList { get; set; } = false;
+        public bool IsThirdParty { get; set; } = false;
+
 
     }
 
