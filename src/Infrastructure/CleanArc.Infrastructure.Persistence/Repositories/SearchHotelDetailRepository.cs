@@ -75,7 +75,7 @@ public class SearchHotelDetailRepository : ISearchHotelRepository
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-				
+				IEnumerable<SearchDetail> result=new List<SearchDetail>();
 				var parameters = new DynamicParameters();
 				parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
 				if (searchRequest.PageSize > 0) parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
@@ -100,40 +100,42 @@ public class SearchHotelDetailRepository : ISearchHotelRepository
                 string query = SearchHotelDetailQueries.GetAll_SearchHotelDetail;
                 if (searchRequest.FilterByWishList)
                     query = SearchHotelDetailQueries.GetAll_StaysWishList;
-                var result = await connection.QueryAsync<SearchDetail>(query, parameters, commandType: CommandType.StoredProcedure);
-                foreach (var item in result)
+                if (!searchRequest.IsThirdParty)
                 {
-                    var Params = new DynamicParameters();
-                    Params.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
-                    Params.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
-                    Params.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
-                    List<FilterParameter> sortingFilter = new List<FilterParameter>();
-                    Params.Add("@SortingArray", DataTableHelper.ToDataTable(sortingFilter), DbType.Object); // Ensure proper type
-                    
-                    Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                    Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                    result = await connection.QueryAsync<SearchDetail>(query, parameters, commandType: CommandType.StoredProcedure);
+                    foreach (var item in result)
+                    {
+                        var Params = new DynamicParameters();
+                        Params.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+                        Params.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+                        Params.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                        List<FilterParameter> sortingFilter = new List<FilterParameter>();
+                        Params.Add("@SortingArray", DataTableHelper.ToDataTable(sortingFilter), DbType.Object); // Ensure proper type
 
-                    var ParamsImage = Params;
-                    List<FilterParameter> list = new List<FilterParameter>();
-                    list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
-                    list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
+                        Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                        Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                    ParamsImage.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
-                    ParamsImage.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                        var ParamsImage = Params;
+                        List<FilterParameter> list = new List<FilterParameter>();
+                        list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+                        list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
 
-                    var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, ParamsImage, commandType: CommandType.StoredProcedure);
-                    item.HotelImages = imageList.ToList();
+                        ParamsImage.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+                        ParamsImage.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                    var ParamsAmenity = Params;
-                    List<FilterParameter> Amenity = new List<FilterParameter>();
-                    Amenity.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
-                    Amenity.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
-                    ParamsAmenity.Add("@FilterArray", DataTableHelper.ToDataTable(Amenity), DbType.Object); // Ensure proper type
-                    ParamsAmenity.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                    var amenities = await connection.QueryAsync<Domain.Entities.AmenityMapping.AmenityMapping>(AmenityMappingQueries.GetByAmenityTypeEnumID_AmenityMapping, ParamsAmenity, commandType: CommandType.StoredProcedure);
-                    item.Amenities = amenities.Where(x=>x.Selected==true).Take(3).ToList();
+                        var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, ParamsImage, commandType: CommandType.StoredProcedure);
+                        item.HotelImages = imageList.ToList();
+
+                        var ParamsAmenity = Params;
+                        List<FilterParameter> Amenity = new List<FilterParameter>();
+                        Amenity.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+                        Amenity.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
+                        ParamsAmenity.Add("@FilterArray", DataTableHelper.ToDataTable(Amenity), DbType.Object); // Ensure proper type
+                        ParamsAmenity.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                        var amenities = await connection.QueryAsync<Domain.Entities.AmenityMapping.AmenityMapping>(AmenityMappingQueries.GetByAmenityTypeEnumID_AmenityMapping, ParamsAmenity, commandType: CommandType.StoredProcedure);
+                        item.Amenities = amenities.Where(x => x.Selected == true).Take(3).ToList();
+                    }
                 }
-
                 // Get third-party data using aggregator
 
                 List<SearchDetail> thirdPartyHotels = new List<SearchDetail>();

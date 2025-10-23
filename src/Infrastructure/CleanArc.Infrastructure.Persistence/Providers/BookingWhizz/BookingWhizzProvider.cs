@@ -75,7 +75,7 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
                       $"userid={_settings.UserId}&password={_settings.Password}" +
                       $"&cityname={cityName}&checkin={request.StartDate:yyyy-MM-dd}" +
                       $"&checkout={request.EndDate:yyyy-MM-dd}&sortby={columnName}&sort={columnDirection}&accommodationtypename={request.PropertyType}"+
-                      $"&offset={offSet}&limit={limit}{priceRangeFilter}&multilanguageid={_settings.MultiLanguageId}" +
+                      $"&offset={offSet}&limits={limit}{priceRangeFilter}&multilanguageid={_settings.MultiLanguageId}" +
                       $"&converted_currency=PKR&agentid={_settings.AgentId}";
 
             var xmlString = await _httpClient.GetStringAsync(url);
