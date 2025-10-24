@@ -47,7 +47,7 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
                 .FirstOrDefault(f => f.ParameterName.Equals("name", StringComparison.OrdinalIgnoreCase))?
                 .ParameterValue ?? "Islamabad";
             int limit = request.PageSize > 0 ? request.PageSize : 10;
-            int offSet = request.PageNumber > 0 ? request.PageNumber * limit : 0;
+            int offSet = request.PageNumber-1 > 0 ? request.PageNumber * limit : 0;
             string priceRangeFilter = "";
             if (request.MinPrice>=0 && request.MaxPrice>0 && request.MaxPrice>request.MinPrice)
             {
@@ -74,10 +74,10 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
             var url = $"{_settings.BaseUrl}getaccommodationsearchtest?" +
                       $"userid={_settings.UserId}&password={_settings.Password}" +
                       $"&cityname={cityName}&checkin={request.StartDate:yyyy-MM-dd}" +
-                      $"&checkout={request.EndDate:yyyy-MM-dd}&sortby={columnName}&sort={columnDirection}&accommodationtypename={request.PropertyType}"+
+                      $"&checkout={request.EndDate:yyyy-MM-dd}&sortby={columnName}&sort={columnDirection}"+
                       $"&offset={offSet}&limits={limit}{priceRangeFilter}&multilanguageid={_settings.MultiLanguageId}" +
                       $"&converted_currency=PKR&agentid={_settings.AgentId}";
-
+            //&accommodationtypename={request.PropertyType}
             var xmlString = await _httpClient.GetStringAsync(url);
             var xDoc = XDocument.Parse(xmlString);
 
