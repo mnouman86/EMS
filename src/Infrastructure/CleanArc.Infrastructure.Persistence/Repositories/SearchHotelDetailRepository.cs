@@ -147,14 +147,18 @@ public class SearchHotelDetailRepository : ISearchHotelRepository
                 
 
                 var combinedHotels = thirdPartyHotels;
-                combinedHotels.AddRange(result.ToList()); // ← Merged list
+                if (result!=null)
+                {
+                    combinedHotels.AddRange(result.ToList()); // ← Merged list
 
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                }
+
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(combinedHotels);
                 SearchHotelDetail searchHotelDetail = new SearchHotelDetail();
                 //searchHotelDetail.HotelDetail = result.ToList();
                 searchHotelDetail.HotelDetail = combinedHotels;
-                searchHotelDetail.RoomPriceMinimum=result.Count()>0? combinedHotels.Min(x=>x.RoomDetailPrice):0;
-                searchHotelDetail.RoomPriceMaximum= result.Count() > 0 ? combinedHotels.Max(x=>x.RoomDetailPrice):0;
+                searchHotelDetail.RoomPriceMinimum= combinedHotels.Count()>0? combinedHotels.Min(x=>x.RoomDetailPrice):0;
+                searchHotelDetail.RoomPriceMaximum= combinedHotels.Count() > 0 ? combinedHotels.Max(x=>x.RoomDetailPrice):0;
 				var response = new SingleResponseWrapper<SearchHotelDetail> { Data = searchHotelDetail, Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; 
                 return response;
 
