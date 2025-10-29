@@ -42,7 +42,7 @@ public class ProcessOrders
     public int? OrderStatusEnumId { get; set; }
     public int? PackageTypeEnumID { get; set; }
     public int? CountryLookUpId { get; set; }
-    public string? PaymentStatus { get; set; }
+    public int? PaymentStatusEnumId { get; set; }
 
 
     public int? CultureId { get; set; }

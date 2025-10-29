@@ -85,7 +85,7 @@ internal class CreateProcessOrderCommandHandler: IRequestHandler<CreateProcessOr
                 //ServiceTypeEnumId=request.ServiceTypeEnumId,
                 ParticipantSize = request.ParticipantSize,
                 //Tax=request.Tax,
-                PaymentStatus=request.PaymentStatus,
+                PaymentStatusEnumId=request.PaymentStatusEnumId,
                 //Title=request.Title,
                 //SubTitle=request.SubTitle,
                 CityLookUpId=request.CityLookUpId,
