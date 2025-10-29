@@ -123,7 +123,7 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
                 var availabilityUrl = $"{_settings.BaseUrl}getavailability?" +
                                       $"userid={_settings.UserId}&password={_settings.Password}" +
                                       $"&accommodationid={accommodationId}&checkin={checkIn}" +
-                                      $"&checkout={checkOut}&converted_currency=PKR&multilanguageid={_settings.MultiLanguageId}";
+                                      $"&checkout={checkOut}&currency=PKR&multilanguageid={_settings.MultiLanguageId}";
 
                 var availabilityXmlStr = await _httpClient.GetStringAsync(availabilityUrl);
                 var availabilityXml = XDocument.Parse(availabilityXmlStr);

@@ -113,16 +113,16 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                             }).ToList() ?? new List<GenericMedia>(),
                         Price = decimal.TryParse(room.Element("RatePlanDetails")?
                             .Element("RatePlans")?
-                            .Element("Rate")?.Value, out var rate) ? rate : null,
+                            .Element("ConvertedRate")?.Value, out var rate) ? rate : null,
                         RoomDetailPrice = decimal.TryParse(room.Element("RatePlanDetails")?
                             .Element("RatePlans")?
-                            .Element("Rate")?.Value, out var rate1) ? rate1 : null,
+                            .Element("ConvertedRate")?.Value, out var rate1) ? rate1 : null,
                         TotalPrice = decimal.TryParse(room.Element("RatePlanDetails")?
                             .Element("RatePlans")?
-                            .Element("Rate")?.Value, out var rate2) ? rate2 : null,
+                            .Element("ConvertedRate")?.Value, out var rate2) ? rate2 : null,
                         DiscountedPrice = decimal.TryParse(room.Element("RatePlanDetails")?
                             .Element("RatePlans")?
-                            .Element("Rate")?.Value, out var rate3) ? rate3 : null,
+                            .Element("ConvertedRate")?.Value, out var rate3) ? rate3 : null,
                         IsAvailable = true,
                         IsActive = true
                     }).ToList()
