@@ -38,7 +38,7 @@ namespace CleanArc.Application.Models.ProcessOrder
         public int? OrderStatusEnumId { get; set; }
         public int? CountryLookUpId { get; set; }
         public int? CityLookUpId { get; set; }
-        public string? PaymentStatus { get; set; }
+        public int? PaymentStatusEnumId { get; set; }
 
 
         public int? CultureId { get; set; }
