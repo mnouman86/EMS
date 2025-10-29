@@ -38,7 +38,7 @@ public record CreateProcessOrderCommand(
     int? ExpirationYear,
     int? CountryLookUpId,
     int? ZipCode,
-    string? PaymentStatus,
+    int? PaymentStatusEnumId,
     int? CityLookUpId,
     string? City,
   int? PackageTypeEnumID,
