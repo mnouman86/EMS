@@ -62,7 +62,6 @@ internal class UpdateHotelCommandHandler : IRequestHandler<UpdateHotelCommand, O
                 CityLookUpId = request.CityLookUpId,
                 LanguageLookUpId= request.LanguageLookUpId,
                 BusinessId = request.BusinessId,
-                ThirdPartyStayId = request.ThirdPartyStayId,
                 Stars = request.Stars,
                 PostalCode = request.PostalCode,
                 AddressLine1 = request.AddressLine1,
