@@ -18,6 +18,6 @@ namespace CleanArc.Application.Models.Flights
         public string CurrencyCode { get; set; } = "PKR";
         public string Locale { get; set; } = "en";
         public string DestinationCityName { get; set; } = string.Empty;
-        public string FlightTrip { get; set; } = "Round";
+        public string FlightTrip { get; set; } = "Single";
     }
 }

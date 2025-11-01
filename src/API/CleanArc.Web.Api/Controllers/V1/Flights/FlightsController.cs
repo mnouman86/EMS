@@ -33,7 +33,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Admin
 {
     [ApiVersion("1")]
     [ApiController]
-    [Route("api/v{version:apiVersion}/SearchAutoComplete")]
+    [Route("api/v{version:apiVersion}/Flights")]
     public class FlightsController : BaseController
     {
         private readonly ISender _sender;
@@ -56,6 +56,22 @@ namespace CleanArc.Web.Api.Controllers.V1.Admin
         public async Task<IActionResult> GetFlights([FromBody] GetFlightsQuery request)
         {
            // int id = UserId;
+            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext))
+            {
+                //GetSearchAutoCompleteQuery query = new GetSearchAutoCompleteQuery(request);
+                var commandResult = await _sender.Send(request);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(commandResult);
+                //_logger.LogInformation("Executed {@actionName} action in {@controllerName} with response {@query}", actionName, controllerName, query);
+
+                return OperationResult(commandResult);
+            }
+
+        }
+
+        [HttpPost("GetFlightsListing")]
+        public async Task<IActionResult> GetFlightsListing([FromBody] GetFlightsListingQuery request)
+        {
+            // int id = UserId;
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext))
             {
                 //GetSearchAutoCompleteQuery query = new GetSearchAutoCompleteQuery(request);

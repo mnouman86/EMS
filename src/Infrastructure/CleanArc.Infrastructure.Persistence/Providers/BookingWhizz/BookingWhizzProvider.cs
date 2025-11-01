@@ -71,11 +71,30 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
                 columnName = "4";
                 columnDirection = "0";
             }
+
+            string adultFilter = "";
+            if (request.NoOfAdults > 0)
+            {
+                adultFilter = $"&Adults={request.NoOfAdults}";
+            }
+            string roomsFilter = "";
+            if (request.NoOfRooms > 0)
+            {
+            
+                roomsFilter = $"&rooms={request.NoOfRooms}";
+            }
+
+            string amenitiesFilter = "";
+            if (request.Amenities?.Trim()!=string.Empty)
+            {
+                amenitiesFilter = $"&facilityname={request.Amenities?.Trim()}";
+            }
+
             var url = $"{_settings.BaseUrl}getaccommodationsearchtest?" +
                       $"userid={_settings.UserId}&password={_settings.Password}" +
                       $"&cityname={cityName}&checkin={request.StartDate:yyyy-MM-dd}" +
                       $"&checkout={request.EndDate:yyyy-MM-dd}&sortby={columnName}&sort={columnDirection}"+
-                      $"&offset={offSet}&limits={limit}{priceRangeFilter}&multilanguageid={_settings.MultiLanguageId}" +
+                      $"&offset={offSet}&limits={limit}{priceRangeFilter}{adultFilter}{roomsFilter}{amenitiesFilter}&multilanguageid={_settings.MultiLanguageId}" +
                       $"&converted_currency=PKR&agentid={_settings.AgentId}";
             //&accommodationtypename={request.PropertyType}
             var xmlString = await _httpClient.GetStringAsync(url);

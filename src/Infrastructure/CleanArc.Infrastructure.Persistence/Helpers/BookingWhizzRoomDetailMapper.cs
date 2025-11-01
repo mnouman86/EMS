@@ -41,7 +41,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                 ? DateTime.Today.Add(ciTime)
                 : null;
             DateTime? checkOutTime = TimeSpan.TryParse(checkOutFrom, out var coTime)
-                ? DateTime.Today.Add(coTime)
+                ? DateTime.Today.Add(coTime)    
                 : null;
             //DateTime? checkInTimeTo = TimeSpan.TryParse(checkInTo, out var citTime)
             //   ? DateTime.Today.Add(citTime)

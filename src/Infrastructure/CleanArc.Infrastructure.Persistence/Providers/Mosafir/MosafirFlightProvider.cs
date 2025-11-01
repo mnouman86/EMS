@@ -1,5 +1,6 @@
 ﻿using CleanArc.Application.Common;
 using CleanArc.Application.Contracts.Persistence;
+using CleanArc.Application.Features.Flights.Queries;
 using CleanArc.Application.Models.Flights;
 using CleanArc.Domain.Entities.SearchAutoComplete;
 using CleanArc.Infrastructure.Persistence.Configuration.FlightsConfig;
@@ -11,7 +12,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace CleanArc.Infrastructure.Persistence.Providers.Mosafir
 {
@@ -21,6 +25,8 @@ namespace CleanArc.Infrastructure.Persistence.Providers.Mosafir
         private readonly MosafirOptions _options;
         private readonly ILogger<MosafirFlightProvider> _logger;
         private readonly ILookupService _lookup;
+        private const string ApiUrl = "https://prem.mosafir.pk/api/chatBot/flights/listing";
+
 
         public MosafirFlightProvider(HttpClient client, IOptions<MosafirOptions> options, ILogger<MosafirFlightProvider> logger, ILookupService lookup)
         {
@@ -183,5 +189,89 @@ namespace CleanArc.Infrastructure.Persistence.Providers.Mosafir
             if (DateTimeOffset.TryParse(s, out var dto)) return dto;
             return DateTimeOffset.MinValue;
         }
+
+        public async Task<SingleResponseWrapper<FlightListingResponseDto>> SearchFlightsLitingAsync(GetFlightsListingQuery query, CancellationToken cancellationToken = default)
+        {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            };
+
+            var requestBody = new FlightRequest
+            {
+                DepartureAirport = query.Departure_Airport,
+                ArrivalAirport = query.Arrival_Airport,
+                TravelDate = query.Travel_Date,
+                ReturnDate = query.Return_Date,
+                ADT = query.ADT,
+                CNN = query.CNN,
+                INF = query.INF,
+                Class = query.Class
+            };
+
+            //var json = JsonSerializer.Serialize(requestBody, new JsonSerializerOptions
+            //{
+            //    PropertyNamingPolicy = null
+            //});
+
+            //// Replace "Class" with "class" manually
+            //json = json.Replace("\"Class\":", "\"class\":");
+            //var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var res = await _client.PostAsJsonAsync(ApiUrl, requestBody,cancellationToken);
+
+            //res.EnsureSuccessStatusCode();
+            if (!res.IsSuccessStatusCode)
+            {
+                var txt = await res.Content.ReadAsStringAsync(cancellationToken);
+                _logger.LogWarning("Mosafir returned {Status} - {Body}", res.StatusCode, txt);
+                // resp.EnsureSuccessStatusCode();
+                return new SingleResponseWrapper<FlightListingResponseDto>
+                {
+                    Data = null,
+                    Code = 200,
+                    Message = "no record found."
+                };
+
+            }
+
+            var result = await res.Content.ReadFromJsonAsync<FlightListingResponseDto>(options,cancellationToken);
+
+            var response = new SingleResponseWrapper<FlightListingResponseDto>
+            {
+                Data = result,
+                Code = 200,
+                Message = "Data fetched successfully."
+            };
+            return response;
+        }
+    }
+
+    public class FlightRequest
+    {
+        [JsonPropertyName("departure_airport")]
+        public string DepartureAirport { get; set; }
+
+        [JsonPropertyName("arrival_airport")]
+        public string ArrivalAirport { get; set; }
+
+        [JsonPropertyName("travel_date")]
+        public string TravelDate { get; set; }
+
+        [JsonPropertyName("return_date")]
+        public string? ReturnDate { get; set; }
+
+        [JsonPropertyName("ADT")]
+        public int ADT { get; set; }
+
+        [JsonPropertyName("CNN")]
+        public int CNN { get; set; }
+
+        [JsonPropertyName("INF")]
+        public int INF { get; set; }
+
+        [JsonPropertyName("class")]
+        public string Class { get; set; }
     }
 }
