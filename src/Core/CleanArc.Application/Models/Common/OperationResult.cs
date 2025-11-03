@@ -12,11 +12,11 @@ public class OperationResult<TResult>
     public string ErrorCode { get; set; } // New field
     public string SuccessCode { get; set; } // New field
 
-    public int TotalCount { get; set; }
+    public int? TotalCount { get; set; }
     public string Message { get; set; }
     public bool IsException { get; set; }
     public bool IsNotFound { get; private set; }
-    public static OperationResult<TResult> SuccessResult(TResult result, int statusCode=200, string message="Success", int totalCount=0, string successCode = null)
+    public static OperationResult<TResult> SuccessResult(TResult result, int statusCode=200, string message="Success", int? totalCount=0, string successCode = null)
     {
         // return new OperationResult<TResult>{Result = result,IsSuccess = true, StatusCode=statusCode,Message=message};
        
