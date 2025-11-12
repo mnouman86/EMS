@@ -13,21 +13,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.RoomType.Command.CreateRoomTypeCommand;
+namespace CleanArc.Application.Features.RoomRate.Command.CreateRoomRateCommand;
 
-internal class CreateRoomTypeCommandHandler : IRequestHandler<CreateRoomTypeCommand, OperationResult<ResponseEntity>>
+internal class CreateRoomRateCommandHandler : IRequestHandler<CreateRoomRateCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<CreateRoomTypeCommandHandler> _logger;
+    private readonly ILogger<CreateRoomRateCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
     //private readonly IUnitOfWork _unitOfWork;
     //private readonly IAppUserManager _userManager;
 
 
-    public CreateRoomTypeCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<CreateRoomTypeCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public CreateRoomRateCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<CreateRoomRateCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -39,7 +39,7 @@ internal class CreateRoomTypeCommandHandler : IRequestHandler<CreateRoomTypeComm
         //_userManager = userManager;
     }
 
-    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateRoomTypeCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateRoomRateCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -49,7 +49,7 @@ internal class CreateRoomTypeCommandHandler : IRequestHandler<CreateRoomTypeComm
                 return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
 
-            var result = await _unitOfWork.RoomTypeRepository.AddAsync(new Domain.Entities.RoomType.RoomType()
+            var result = await _unitOfWork.RoomRateRepository.AddAsync(new Domain.Entities.RoomRate.RoomRate()
             {
                 CreatedBy = user.Id,
                 Description = request.Description,

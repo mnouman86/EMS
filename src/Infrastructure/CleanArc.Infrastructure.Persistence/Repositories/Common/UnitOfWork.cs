@@ -34,6 +34,7 @@ public class UnitOfWork : IUnitOfWork
     public IHotelRepository HotelRepository { get; set; }
     public IAmenityRepository AmenityRepository { get; set; }
     public IRoomTypeRepository RoomTypeRepository { get; set; }
+    public IRoomRateRepository RoomRateRepository { get; set; }
     public IRoomDetailsRepository RoomDetailsRepository { get; set; }
     public ICategoryRepository CategoryRepository { get; set; }
     public ISearchHotelRepository SearchHotelRepository { get; set; }
@@ -154,6 +155,7 @@ public class UnitOfWork : IUnitOfWork
         ILogger<HotelRepository> _loggerHotel,
         ILogger<AmenityRepository> _loggerAmenity,
         ILogger<RoomTypeRepository> _loggerRoomType,
+        ILogger<RoomRateRepository> _loggerRoomRate,
         ILogger<RoomDetailsRepository> _loggerRoomDetails,
         ILogger<CategoryRepository> _loggerCategory,
         ILogger<SearchHotelDetailRepository> _loggerSearchHotel,
@@ -279,6 +281,7 @@ public class UnitOfWork : IUnitOfWork
         HotelRepository=new HotelRepository(configuration, mapper, _loggerHotel, httpContextAccessor);
         AmenityRepository=new AmenityRepository(configuration, mapper, _loggerAmenity, httpContextAccessor);
         RoomTypeRepository=new RoomTypeRepository(configuration, mapper, _loggerRoomType, httpContextAccessor);
+        RoomRateRepository=new RoomRateRepository(configuration, mapper, _loggerRoomRate, httpContextAccessor);
         RoomDetailsRepository=new RoomDetailsRepository(configuration, mapper, _loggerRoomDetails, httpContextAccessor, hotelProviderAggregator);
         CategoryRepository=new CategoryRepository(configuration, mapper, _loggerCategory, httpContextAccessor);
         SearchHotelRepository=new SearchHotelDetailRepository(configuration, mapper, _loggerSearchHotel, httpContextAccessor, hotelProviderAggregator);

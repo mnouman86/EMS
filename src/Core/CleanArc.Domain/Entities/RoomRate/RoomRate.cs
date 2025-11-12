@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Domain.Entities.RoomType;
+namespace CleanArc.Domain.Entities.RoomRate;
 
-public class RoomType
+public class RoomRate
 {
     public int Id { get; set; }
     public string? Name { get; set; }

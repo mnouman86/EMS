@@ -13,21 +13,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.RoomType.Command.UpdateRoomTypeCommand;
+namespace CleanArc.Application.Features.RoomRate.Command.UpdateRoomRateCommand;
 
-internal class UpdateRoomTypeCommandHandler : IRequestHandler<UpdateRoomTypeCommand, OperationResult<ResponseEntity>>
+internal class UpdateRoomRateCommandHandler : IRequestHandler<UpdateRoomRateCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<UpdateRoomTypeCommandHandler> _logger;
+    private readonly ILogger<UpdateRoomRateCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
     //private readonly IUnitOfWork _unitOfWork;
     //private readonly IAppUserManager _userManager;
 
 
-    public UpdateRoomTypeCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateRoomTypeCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public UpdateRoomRateCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateRoomRateCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -38,7 +38,7 @@ internal class UpdateRoomTypeCommandHandler : IRequestHandler<UpdateRoomTypeComm
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateRoomTypeCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateRoomRateCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -48,7 +48,7 @@ internal class UpdateRoomTypeCommandHandler : IRequestHandler<UpdateRoomTypeComm
                 return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
 
-            var result = await _unitOfWork.RoomTypeRepository.UpdateAsync(new Domain.Entities.RoomType.RoomType()
+            var result = await _unitOfWork.RoomRateRepository.UpdateAsync(new Domain.Entities.RoomRate.RoomRate()
             {
                 UpdatedBy = user.Id,
                 Id = request.Id,

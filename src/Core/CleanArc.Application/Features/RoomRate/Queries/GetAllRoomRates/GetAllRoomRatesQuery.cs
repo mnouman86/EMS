@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes;
+namespace CleanArc.Application.Features.RoomRate.Queries.GetAllRoomRates;
 
-public record GetAllRoomTypesQuery(SearchRequest searchRequest) : IRequest<OperationResult<List<GetAllRoomTypesQueryResult>>>;
+public record GetAllRoomRatesQuery(SearchRequest searchRequest) : IRequest<OperationResult<List<GetAllRoomRatesQueryResult>>>;
 
