@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.RoomType.Queries.GetRoomTypeById;
+namespace CleanArc.Application.Features.RoomRate.Queries.GetRoomRateById;
 
-public class GetRoomTypeByIdQueryResult
+public class GetRoomRateByIdQueryResult
 //(int Id, string Name, string Description, bool IsDeleted, bool IsActive, int CreatedBy, DateTime CreatedAt, int UpdatedBy, DateTime UpdatedAt);
 {
     public int Id { get; set; }

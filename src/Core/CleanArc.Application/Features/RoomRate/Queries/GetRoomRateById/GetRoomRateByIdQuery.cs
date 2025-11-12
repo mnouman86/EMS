@@ -7,6 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.RoomType.Queries.GetRoomTypeById;
+namespace CleanArc.Application.Features.RoomRate.Queries.GetRoomRateById;
 
-public record GetRoomTypeByIdQuery(SearchRequestById searchRequestById):IRequest<OperationResult<GetRoomTypeByIdQueryResult>>;
+public record GetRoomRateByIdQuery(SearchRequestById searchRequestById):IRequest<OperationResult<GetRoomRateByIdQueryResult>>;

@@ -10,14 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
-namespace CleanArc.Application.Features.RoomType.Command.DeleteRoomTypeCommand;
+namespace CleanArc.Application.Features.RoomRate.Command.DeleteRoomRateCommand;
 
-public record DeleteRoomTypeCommand(DeleteRequest deleteRequest) : IRequest<OperationResult<ResponseEntity>>,
-    IValidatableModel<DeleteRoomTypeCommand>
+public record DeleteRoomRateCommand(DeleteRequest deleteRequest) : IRequest<OperationResult<ResponseEntity>>,
+    IValidatableModel<DeleteRoomRateCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
-    public IValidator<DeleteRoomTypeCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteRoomTypeCommand> validator)
+    public IValidator<DeleteRoomRateCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<DeleteRoomRateCommand> validator)
     {
         validator.RuleFor(c => c.deleteRequest.SelectedIds)
             .NotEmpty()

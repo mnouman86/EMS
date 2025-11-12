@@ -1,4 +1,4 @@
-﻿using CleanArc.Domain.Entities.RoomType;
+﻿using CleanArc.Domain.Entities.RoomRate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Contracts.Persistence;
 
-public interface IRoomTypeRepository:IRepository<RoomType>
+public interface IRoomRateRepository:IRepository<RoomRate>
 {
 }

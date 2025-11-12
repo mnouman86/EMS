@@ -12,18 +12,18 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
-namespace CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes
+namespace CleanArc.Application.Features.RoomRate.Queries.GetAllRoomRates
 {
-    internal class GetAllRoomTypesQueryHandler : IRequestHandler<GetAllRoomTypesQuery, OperationResult<List<GetAllRoomTypesQueryResult>>>
+    internal class GetAllRoomRatesQueryHandler : IRequestHandler<GetAllRoomRatesQuery, OperationResult<List<GetAllRoomRatesQueryResult>>>
     {
 
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly ILogger<GetAllRoomTypesQueryHandler> _logger;
+        private readonly ILogger<GetAllRoomRatesQueryHandler> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
 
 
-        public GetAllRoomTypesQueryHandler(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, ILogger<GetAllRoomTypesQueryHandler> logger)
+        public GetAllRoomRatesQueryHandler(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, ILogger<GetAllRoomRatesQueryHandler> logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -32,31 +32,31 @@ namespace CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes
 
         }
 
-        public async ValueTask<OperationResult<List<GetAllRoomTypesQueryResult>>> Handle(GetAllRoomTypesQuery request, CancellationToken cancellationToken)
+        public async ValueTask<OperationResult<List<GetAllRoomRatesQueryResult>>> Handle(GetAllRoomRatesQuery request, CancellationToken cancellationToken)
         {
             using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
             {
-                //var roomType = await _unitOfWork.RoomTypeRepository.GetAllAsync(request.searchRequest);
+                //var RoomRate = await _unitOfWork.RoomRateRepository.GetAllAsync(request.searchRequest);
 
                 ////var resultCheck = uRLs.Select(c => new GetAllProductsQueryResult(c.Id, c.Path, c.Title, c.Description)).ToList();
-                //var result = _mapper.Map<List<GetAllRoomTypesQueryResult>>(roomType);
+                //var result = _mapper.Map<List<GetAllRoomRatesQueryResult>>(RoomRate);
                 //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-                //return OperationResult<List<GetAllRoomTypesQueryResult>>.SuccessResult(result);
+                //return OperationResult<List<GetAllRoomRatesQueryResult>>.SuccessResult(result);
 
-                var response = await _unitOfWork.RoomTypeRepository.GetAllAsync(request.searchRequest);
+                var response = await _unitOfWork.RoomRateRepository.GetAllAsync(request.searchRequest);
 
                 if (response.Code != 200)
                 {
-                    return OperationResult<List<GetAllRoomTypesQueryResult>>.FailureResult(
+                    return OperationResult<List<GetAllRoomRatesQueryResult>>.FailureResult(
                         response.Message,
                     response.Code
                     );
                 }
 
-                var mappedResult = _mapper.Map<List<GetAllRoomTypesQueryResult>>(response.Data);
+                var mappedResult = _mapper.Map<List<GetAllRoomRatesQueryResult>>(response.Data);
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-                return OperationResult<List<GetAllRoomTypesQueryResult>>.SuccessResult(
+                return OperationResult<List<GetAllRoomRatesQueryResult>>.SuccessResult(
                     mappedResult,
                     response.Code,
                     response.Message,

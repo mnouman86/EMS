@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Models.RoomType;
+namespace CleanArc.Application.Models.RoomRate;
 
-public class CreateRoomTypeDTO
+public class CreateRoomRateDTO
 {
     //public int Id { get; set; }
     public string? Name { get; set; }

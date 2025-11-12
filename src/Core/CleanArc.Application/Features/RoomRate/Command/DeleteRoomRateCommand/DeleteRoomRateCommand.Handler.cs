@@ -13,21 +13,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.RoomType.Command.DeleteRoomTypeCommand;
+namespace CleanArc.Application.Features.RoomRate.Command.DeleteRoomRateCommand;
 
-internal class DeleteRoomTypeCommandHandler : IRequestHandler<DeleteRoomTypeCommand, OperationResult<ResponseEntity>>
+internal class DeleteRoomRateCommandHandler : IRequestHandler<DeleteRoomRateCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<DeleteRoomTypeCommandHandler> _logger;
+    private readonly ILogger<DeleteRoomRateCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
     //private readonly IUnitOfWork _unitOfWork;
     //private readonly IAppUserManager _userManager;
 
 
-    public DeleteRoomTypeCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<DeleteRoomTypeCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public DeleteRoomRateCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<DeleteRoomRateCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -38,7 +38,7 @@ internal class DeleteRoomTypeCommandHandler : IRequestHandler<DeleteRoomTypeComm
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<ResponseEntity>> Handle(DeleteRoomTypeCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(DeleteRoomRateCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -48,7 +48,7 @@ internal class DeleteRoomTypeCommandHandler : IRequestHandler<DeleteRoomTypeComm
                 return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
 
-            var result = await _unitOfWork.RoomTypeRepository.DeleteAsync(request.deleteRequest, user.Id);
+            var result = await _unitOfWork.RoomRateRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
             //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);

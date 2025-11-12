@@ -10,14 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
-namespace CleanArc.Application.Features.RoomType.Command.UpdateRoomTypeCommand;
+namespace CleanArc.Application.Features.RoomRate.Command.UpdateRoomRateCommand;
 
-public record UpdateRoomTypeCommand(int Id, String? Name, string? Description, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
-    IValidatableModel<UpdateRoomTypeCommand>
+public record UpdateRoomRateCommand(int Id, String? Name, string? Description, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+    IValidatableModel<UpdateRoomRateCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
-    public IValidator<UpdateRoomTypeCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateRoomTypeCommand> validator)
+    public IValidator<UpdateRoomRateCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateRoomRateCommand> validator)
     {
         validator.RuleFor(c => c.Name)
             .NotEmpty()
