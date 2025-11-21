@@ -250,6 +250,25 @@ namespace CleanArc.Infrastructure.Persistence.Providers.Mosafir
                     Message = "No flights found."
                 };
             }
+            foreach (var flight in flights)
+            {
+                if (flight?.Sectors == null)
+                    continue;
+
+                foreach (var sectorGroup in flight.Sectors)
+                {
+                    if (sectorGroup == null)
+                        continue;
+
+                    foreach (var sector in sectorGroup)
+                    {
+                        if (sector == null)
+                            continue;
+
+                        sector.Journey_Time = FormatJourneyTime(sector.Journey_Time);
+                    }
+                }
+            }
 
             // Attach computed values
             var withMetrics = flights
@@ -354,6 +373,52 @@ namespace CleanArc.Infrastructure.Persistence.Providers.Mosafir
                 // Any unexpected exception → return worst possible value
                 return TimeSpan.MaxValue;
             }
+        }
+
+        private string FormatJourneyTime(string? journeyTime)
+        {
+            if (string.IsNullOrWhiteSpace(journeyTime))
+                return string.Empty;
+
+            // Expected input format: "0 days:1 hrs:45 min"
+            // Split by colon
+            var parts = journeyTime.Split(':', StringSplitOptions.RemoveEmptyEntries)
+                                   .Select(p => p.Trim())
+                                   .ToArray();
+
+            string daysPart = parts.Length > 0 ? parts[0] : string.Empty;
+            string hoursPart = parts.Length > 1 ? parts[1] : string.Empty;
+            string minutesPart = parts.Length > 2 ? parts[2] : string.Empty;
+
+            // Extract numeric values safely
+            int days = ExtractNumber(daysPart);
+            int hours = ExtractNumber(hoursPart);
+            int minutes = ExtractNumber(minutesPart);
+
+            // Build formatted result
+            var resultParts = new List<string>();
+
+            if (days > 0)
+                resultParts.Add($"{days} days");
+
+            if (hours > 0)
+                resultParts.Add($"{hours} hrs");
+
+            if (minutes > 0)
+                resultParts.Add($"{minutes} min");
+
+            // If all are zero, return empty string or "0 min" as you prefer
+            if (!resultParts.Any())
+                return "0 min";
+
+            return string.Join(" ", resultParts);
+        }
+
+        private int ExtractNumber(string input)
+        {
+            // Extracts the first integer found
+            var num = new string(input.Where(char.IsDigit).ToArray());
+            return int.TryParse(num, out var result) ? result : 0;
         }
     }
 
