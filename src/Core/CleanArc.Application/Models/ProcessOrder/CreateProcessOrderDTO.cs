@@ -18,12 +18,12 @@ namespace CleanArc.Application.Models.ProcessOrder
         public string? PhoneNumber { get; set; }
         //1. public int? PackageTypeEnumID { get; set; }
 
-        public string? CardHolderName { get; set; } // nvarchar(50) NULL
-        public string? CardNumber { get; set; } // nvarchar(50) NULL
-        public string? CardName { get; set; } // nvarchar(50) NULL
-        public int? CardCVC { get; set; } // int NULL
-        public int? ExpirationMonth { get; set; } // int NULL
-        public int? ExpirationYear { get; set; } // int NULL
+        //public string? CardHolderName { get; set; } // nvarchar(50) NULL
+        //public string? CardNumber { get; set; } // nvarchar(50) NULL
+        //public string? CardName { get; set; } // nvarchar(50) NULL
+        //public int? CardCVC { get; set; } // int NULL
+        //public int? ExpirationMonth { get; set; } // int NULL
+        //public int? ExpirationYear { get; set; } // int NULL
         public int? ZipCode { get; set; } // int NULL
         public DateTime? FromDate { get; set; } // date NULL
         public DateTime? ToDate { get; set; } // date NULL
