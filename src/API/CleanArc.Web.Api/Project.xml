@@ -975,6 +975,15 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.PostPaymentStatus.PostPaymentStatusController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.PostPaymentStatus.PostPaymentStatusController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.PostPaymentStatus.Commands.CreatePostPaymentStatusCommand.CreatePostPaymentStatusCommand,CleanArc.Application.Features.PostPaymentStatus.Commands.UpdatePostPaymentStatusCommand.UpdatePostPaymentStatusCommand,CleanArc.Application.Features.PostPaymentStatus.Commands.DeletePostPaymentStatusCommand.DeletePostPaymentStatusCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.PostPaymentStatus.Queries.GetAllPostPaymentStatus.GetAllPostPaymentStatusQuery,System.Collections.Generic.List{CleanArc.Application.Features.PostPaymentStatus.Queries.GetAllPostPaymentStatus.GetAllPostPaymentStatusQueryResult},CleanArc.Application.Features.PostPaymentStatus.Queries.GetPostPaymentStatusById.GetPostPaymentStatusByIdQuery,CleanArc.Application.Features.PostPaymentStatus.Queries.GetPostPaymentStatusById.GetPostPaymentStatusByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.PostPaymentStatus.PostPaymentStatusController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.ProcessOrder.ProcessOrderController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.ProcessOrder.ProcessOrderController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.ProcessOrder.Commands.CreateProcessOrderCommand.CreateProcessOrderCommand,CleanArc.Application.Features.ProcessOrder.Commands.UpdateProcessOrderCommand.UpdateProcessOrderCommand,CleanArc.Application.Features.ProcessOrder.Commands.DeleteProcessOrderCommand.DeleteProcessOrderCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.ProcessOrder.Queries.GetAllProcessOrder.GetAllProcessOrderQuery,System.Collections.Generic.List{CleanArc.Application.Features.ProcessOrder.Queries.GetAllProcessOrder.GetAllProcessOrderQueryResult},CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById.GetProcessOrderByIdQuery,CleanArc.Application.Features.ProcessOrder.Queries.GetProcessOrderById.GetProcessOrderByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
