@@ -238,6 +238,60 @@ namespace CleanArc.Infrastructure.Persistence.Providers.Mosafir
 
             var result = await res.Content.ReadFromJsonAsync<FlightListingResponseDto>(options,cancellationToken);
 
+            var flights = result?.AllFlights ?? new List<FlightItemDto>();
+
+            // If no flights, return normal "no data"
+            if (!flights.Any())
+            {
+                return new SingleResponseWrapper<FlightListingResponseDto>
+                {
+                    Data = new FlightListingResponseDto { AllFlights = new List<FlightItemDto>() },
+                    Code = 200,
+                    Message = "No flights found."
+                };
+            }
+
+            // Attach computed values
+            var withMetrics = flights
+                .Select(f => new
+                {
+                    Flight = f,
+                    Price = SafePrice(f.Total_Price),
+                    Duration = GetTotalDuration(f)
+                })
+                .ToList();
+
+            // Cheapest → Lowest price
+            var cheapest = withMetrics
+                .OrderBy(x => x.Price)
+                .FirstOrDefault()
+                ?.Flight;
+
+            // Fastest → Shortest duration
+            var fastest = withMetrics
+                .OrderBy(x => x.Duration)
+                .FirstOrDefault()
+                ?.Flight;
+
+            // Best → short duration + low price
+            // Simple ranking: Normalize price + duration and pick lowest
+
+            var minPrice = withMetrics.Min(m => m.Price);
+            var minMinutes = withMetrics.Min(m => m.Duration.TotalMinutes);
+            var best = withMetrics
+                     .Select(x => new
+                     {
+                         x.Flight,
+                         Score =
+                             (x.Price / (minPrice + 1)) +
+                             ((decimal)x.Duration.TotalMinutes / ((decimal)minMinutes + 1))
+                     })
+                     .OrderBy(x => x.Score)
+                     .FirstOrDefault()
+                     ?.Flight;
+            result.Cheapest = cheapest;
+            result.Fastest = fastest;
+            result.Best = best;
             var response = new SingleResponseWrapper<FlightListingResponseDto>
             {
                 Data = result,
@@ -246,7 +300,63 @@ namespace CleanArc.Infrastructure.Persistence.Providers.Mosafir
             };
             return response;
         }
+
+        private decimal SafePrice(string? price)
+   => decimal.TryParse(price, out var p) ? p : decimal.MaxValue;
+
+        private TimeSpan SafeDuration(string? duration)
+        {
+            return TimeSpan.TryParse(duration, out var t)
+                ? (t.Duration() <= TimeSpan.FromDays(500) ? t : TimeSpan.MaxValue)  // sanity check
+                : TimeSpan.MaxValue;
+        }
+
+        private TimeSpan GetTotalDuration(FlightItemDto flight)
+        {
+            try
+            {
+                if (flight?.Sectors == null)
+                    return TimeSpan.MaxValue;
+
+                TimeSpan total = TimeSpan.Zero;
+
+                foreach (var group in flight.Sectors)
+                {
+                    if (group == null)
+                        continue;
+
+                    foreach (var sector in group)
+                    {
+                        if (sector == null)
+                            continue;
+
+                        // Parse duration safely
+                        if (TimeSpan.TryParse(sector.Duration, out var value))
+                        {
+                            // Prevent overflow
+                            if (total < TimeSpan.MaxValue - value)
+                                total += value;
+                            else
+                                return TimeSpan.MaxValue;
+                        }
+                        else
+                        {
+                            // If invalid, assume worst value
+                            return TimeSpan.MaxValue;
+                        }
+                    }
+                }
+
+                return total;
+            }
+            catch
+            {
+                // Any unexpected exception → return worst possible value
+                return TimeSpan.MaxValue;
+            }
+        }
     }
+
 
     public class FlightRequest
     {

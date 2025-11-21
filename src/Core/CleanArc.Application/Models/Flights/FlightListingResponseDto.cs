@@ -11,6 +11,9 @@ namespace CleanArc.Application.Models.Flights
     {
         [JsonPropertyName("allFlights")]
         public List<FlightItemDto>? AllFlights { get; set; }
+        public FlightItemDto? Cheapest { get; set; }
+        public FlightItemDto? Fastest { get; set; }
+        public FlightItemDto? Best { get; set; }
     }
 
     public class FlightItemDto

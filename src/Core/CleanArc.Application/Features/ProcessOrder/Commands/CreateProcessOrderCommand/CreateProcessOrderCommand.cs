@@ -30,12 +30,12 @@ public record CreateProcessOrderCommand(
     string? LastName, 
     string? Email,
     string? PhoneNumber,
-    string? CardHolderName,
-    string? CardNumber,
-    string? CardName,
-    int? CardCVC,
-    int? ExpirationMonth,
-    int? ExpirationYear,
+    //string? CardHolderName,
+    //string? CardNumber,
+    //string? CardName,
+    //int? CardCVC,
+    //int? ExpirationMonth,
+    //int? ExpirationYear,
     int? CountryLookUpId,
     int? ZipCode,
     int? PaymentStatusEnumId,
@@ -75,10 +75,10 @@ OrderCategory Activities
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a valid PhoneNumber");
-        validator.RuleFor(c => c.CardHolderName)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a CardHolderName");
+        //validator.RuleFor(c => c.CardHolderName)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a CardHolderName");
         //validator.RuleFor(c => c.CardName)
         //    .NotEmpty()
         //    .NotNull()
