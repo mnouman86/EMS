@@ -25,6 +25,20 @@ namespace CleanArc.Application.Models.PostPaymentStatus
         public int? CreatedBy { get; set; } // int NULL
         public int? CultureId { get; set; }
 
+        public string PSID { get; set; }
+        public string Applicable_Soc { get; set; }
+        public string Biller_Actual_Settlement_Date_Time { get; set; }
+        public string Biller_Settlement_Amount { get; set; }
+        public string Biller_Settlement_Date { get; set; }
+        public string Biller_Settlement_Ref_Id { get; set; }
+        public string Biller_Settlement_Status { get; set; }
+        public string Business_Crn { get; set; }
+        public decimal Fee { get; set; }
+        public string Fee_Charging_Type { get; set; }
+        public string Qr { get; set; }
+        public string Settlement_Institution { get; set; }
+        public decimal Tax_On_Fee { get; set; }
+
     }
 
    

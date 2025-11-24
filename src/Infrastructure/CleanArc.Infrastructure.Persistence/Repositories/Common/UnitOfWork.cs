@@ -58,6 +58,8 @@ public class UnitOfWork : IUnitOfWork
     public IMappingRoomAmenitiesRepository MappingRoomAmenitiesRepository { get; set; }
     public IMappingRoomImageRepository MappingRoomImageRepository { get; set; }
     public ILanguageRepository LanguageRepository { get; set; }
+    public IRatePlanTypeRepository RatePlanTypeRepository { get; set; }
+    public IRatePlanRepository RatePlanRepository { get; set; }
     public IRoomViewRepository RoomViewRepository { get; set; }
     public IManufacturerRepository ManufacturerRepository { get; set; }
     public IFilterCategoryRepository FilterCategoryRepository { get; set; }
@@ -176,6 +178,8 @@ public class UnitOfWork : IUnitOfWork
         ILogger<StateRepository> _loggerState,
         ILogger<CityRepository> _loggerCity,
         ILogger<LanguageRepository> _loggerLanguage,
+        ILogger<RatePlanTypeRepository> _loggerRatePlanType,
+        ILogger<RatePlanRepository> _loggerRatePlan,
         ILogger<RoomViewRepository> _loggerRoomView,
         ILogger<ManufacturerRepository> _loggerManufacturer,
         ILogger<FilterCategoryRepository> _loggerFilterCategory,
@@ -357,6 +361,8 @@ public class UnitOfWork : IUnitOfWork
         FAQsRepository = new FAQsRepository(configuration, mapper, _loggerFAQs, httpContextAccessor);
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
+        RatePlanTypeRepository = new RatePlanTypeRepository(configuration, mapper, _loggerRatePlanType, httpContextAccessor);
+        RatePlanRepository = new RatePlanRepository(configuration, mapper, _loggerRatePlan, httpContextAccessor);
         RoomViewRepository = new RoomViewRepository(configuration, mapper, _loggerRoomView, httpContextAccessor);
         ManufacturerRepository = new ManufacturerRepository(configuration, mapper, _loggerManufacturer, httpContextAccessor);
         FilterCategoryRepository = new FilterCategoryRepository(configuration, mapper, _loggerFilterCategory, httpContextAccessor);

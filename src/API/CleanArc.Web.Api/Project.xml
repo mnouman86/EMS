@@ -993,6 +993,24 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.RatePlanType.RatePlanTypeController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.RatePlanType.RatePlanTypeController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.RatePlanType.Command.CreateRatePlanTypeCommand.CreateRatePlanTypeCommand,CleanArc.Application.Features.RatePlanType.Command.UpdateRatePlanTypeCommand.UpdateRatePlanTypeCommand,CleanArc.Application.Features.RatePlanType.Command.DeleteRatePlanTypeCommand.DeleteRatePlanTypeCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.RatePlanType.Queries.GetAllRatePlanTypes.GetAllRatePlanTypesQuery,System.Collections.Generic.List{CleanArc.Application.Features.RatePlanType.Queries.GetAllRatePlanTypes.GetAllRatePlanTypesQueryResult},CleanArc.Application.Features.RatePlanType.Queries.GetRatePlanTypeById.GetRatePlanTypeByIdQuery,CleanArc.Application.Features.RatePlanType.Queries.GetRatePlanTypeById.GetRatePlanTypeByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.RatePlanType.RatePlanTypeController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.RatePlan.RatePlanController" -->
+        <member name="M:CleanArc.Web.Api.Controllers.V1.RatePlan.RatePlanController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.RatePlan.Command.CreateRatePlanCommand.CreateRatePlanCommand,CleanArc.Application.Features.RatePlan.Command.UpdateRatePlanCommand.UpdateRatePlanCommand,CleanArc.Application.Features.RatePlan.Command.DeleteRatePlanCommand.DeleteRatePlanCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.RatePlan.Queries.GetAllRatePlans.GetAllRatePlansQuery,System.Collections.Generic.List{CleanArc.Application.Features.RatePlan.Queries.GetAllRatePlans.GetAllRatePlansQueryResult},CleanArc.Application.Features.RatePlan.Queries.GetRatePlanById.GetRatePlanByIdQuery,CleanArc.Application.Features.RatePlan.Queries.GetRatePlanById.GetRatePlanByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CleanArc.Web.Api.Controllers.V1.RatePlan.RatePlanController"/> class.
+            </summary>
+            <param name="sender">The mediator sender for handling requests and responses.</param>
+            <param name="logger">The logger for logging controller-related information.</param>
+            <param name="httpContextAccessor"></param>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:CleanArc.Web.Api.Controllers.V1.RoomDetail.RoomDetailController" -->
         <member name="M:CleanArc.Web.Api.Controllers.V1.RoomDetail.RoomDetailController.#ctor(Mediator.ISender,Microsoft.Extensions.Logging.ILogger{CleanArc.WebFramework.BaseController._BaseController{CleanArc.Application.Features.RoomDetails.Command.CreateRoomDetailCommand.CreateRoomDetailCommand,CleanArc.Application.Features.RoomDetails.Command.UpdateRoomDetailCommand.UpdateRoomDetailCommand,CleanArc.Application.Features.RoomDetails.Command.DeleteRoomDetailCommand.DeleteRoomDetailCommand,CleanArc.Domain.Common.ResponseEntity,CleanArc.Application.Features.RoomDetails.Queries.GetAllRoomDetail.GetAllRoomDetailQuery,System.Collections.Generic.List{CleanArc.Application.Features.RoomDetails.Queries.GetAllRoomDetail.GetAllRoomDetailQueryResult},CleanArc.Application.Features.RoomDetails.Queries.GetRoomDetailById.GetRoomDetailByIdQuery,CleanArc.Application.Features.RoomDetails.Queries.GetRoomDetailById.GetRoomDetailByIdQueryResult}},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
             <summary>
