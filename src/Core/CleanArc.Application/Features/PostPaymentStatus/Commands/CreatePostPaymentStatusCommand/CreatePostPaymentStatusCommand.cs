@@ -31,7 +31,20 @@ public record CreatePostPaymentStatusCommand(
     string? Transaction_Date_Time,
     string? Transaction_Ref_Id,
     string?OrderNumber,
-     int? CreatedBy
+     int? CreatedBy,
+     string PSID,
+     string Applicable_Soc,
+     string Biller_Actual_Settlement_Date_Time,
+     string Biller_Settlement_Amount,
+     string Biller_Settlement_Date,
+     string Biller_Settlement_Ref_Id, 
+     string Biller_Settlement_Status,
+     string Business_Crn,
+     decimal Fee ,
+     string Fee_Charging_Type,
+     string Qr ,
+     string Settlement_Institution,
+     decimal Tax_On_Fee
     ) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreatePostPaymentStatusCommand>
 {

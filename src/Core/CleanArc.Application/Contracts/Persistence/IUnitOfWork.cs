@@ -38,6 +38,9 @@ public interface IUnitOfWork
     public IStateRepository StateRepository { get; }
     public ICityRepository CityRepository { get; }
     public ILanguageRepository LanguageRepository { get; }
+    public IRatePlanTypeRepository RatePlanTypeRepository { get; }
+    public IRatePlanRepository RatePlanRepository { get; }
+
     public IRoomViewRepository RoomViewRepository { get; }
     public IManufacturerRepository ManufacturerRepository { get; }
     public IFilterCategoryRepository FilterCategoryRepository { get; }

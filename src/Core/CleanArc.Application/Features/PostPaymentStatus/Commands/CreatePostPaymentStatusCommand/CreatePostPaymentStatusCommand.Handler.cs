@@ -77,7 +77,20 @@ internal class CreatePostPaymentStatusCommandHandler: IRequestHandler<CreatePost
                 // Keep your existing fields
                 CreatedBy = request.UserId,
                 CultureId = request.CultureId,
-                OrderNumber = request.OrderNumber
+                OrderNumber = request.OrderNumber,
+                PSID=request.PSID,
+                Applicable_Soc = request.Applicable_Soc,
+                Biller_Actual_Settlement_Date_Time = request.Biller_Actual_Settlement_Date_Time,
+                Biller_Settlement_Amount = request.Biller_Settlement_Amount,
+                Biller_Settlement_Date = request.Biller_Settlement_Date,
+                Biller_Settlement_Ref_Id = request.Biller_Settlement_Ref_Id,
+                Biller_Settlement_Status = request.Biller_Settlement_Status,
+                Business_Crn = request.Business_Crn,
+                Fee = request.Fee,
+                Fee_Charging_Type = request.Fee_Charging_Type,
+                Qr = request.Qr,
+                Settlement_Institution = request.Settlement_Institution,
+                Tax_On_Fee = request.Tax_On_Fee
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
