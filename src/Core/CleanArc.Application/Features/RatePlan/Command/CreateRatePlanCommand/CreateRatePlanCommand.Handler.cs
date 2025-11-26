@@ -55,22 +55,22 @@ internal class CreateRatePlanCommandHandler : IRequestHandler<CreateRatePlanComm
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
-            var result = await _unitOfWork.RatePlanRepository.AddAsync(new Domain.Entities.RatePlan.RatePlan()
-            {
-                CreatedBy = user.Id,
-                RoomTypeId = request.RoomTypeId,
-                GuestQuantity = request.GuestQuantity,
-                DefaultRate = request.DefaultRate,
-                Description = request.Description,
-                RatePlanName = request.RatePlanName,
-                CultureId = request.CultureId,
-            });
+            //        var result = await _unitOfWork.RatePlanRepository.AddAsync(new Domain.Entities.RatePlan.RatePlan()
+            //        {
+            //            CreatedBy = user.Id,
+            //            //RoomTypeId = request.RoomTypeId,
+            //            //GuestQuantity = request.GuestQuantity,
+            //            //DefaultRate = request.DefaultRate,
+            //            //Description = request.Description,
+            //            //RatePlanName = request.RatePlanName,
+            //            //CultureId = request.CultureId,
+            //        });
 
-    await _unitOfWork.CommitAsync();
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            return OperationResult<ResponseEntity>.SuccessResult(result);
+            //await _unitOfWork.CommitAsync();
+            //        (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
+            //        return OperationResult<ResponseEntity>.SuccessResult(result);
 
-
+            return null;
 
         }
     }

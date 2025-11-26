@@ -46,8 +46,15 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
             string cityName = request.FilterArray?
                 .FirstOrDefault(f => f.ParameterName.Equals("name", StringComparison.OrdinalIgnoreCase))?
                 .ParameterValue ?? "Islamabad";
-            int limit = request.PageSize > 0 ? request.PageSize : 10;
+
+            int limit = request.PageSize > 0 ? request.PageSize : 1000;
             int offSet = request.PageNumber-1 > 0 ? request.PageNumber * limit : 0;
+            string paginationFilter = "";
+            if (request.PageSize > 0 && request.PageNumber - 1>0)
+            {
+                paginationFilter = $"&offset={offSet}&limit={limit}";
+            }
+            
             string priceRangeFilter = "";
             if (request.MinPrice>=0 && request.MaxPrice>0 && request.MaxPrice>request.MinPrice)
             {
@@ -94,7 +101,8 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
                       $"userid={_settings.UserId}&password={_settings.Password}" +
                       $"&cityname={cityName}&checkin={request.StartDate:yyyy-MM-dd}" +
                       $"&checkout={request.EndDate:yyyy-MM-dd}&sortby={columnName}&sort={columnDirection}"+
-                      $"&offset={offSet}&limits={limit}{priceRangeFilter}{adultFilter}{roomsFilter}{amenitiesFilter}&multilanguageid={_settings.MultiLanguageId}" +
+                      //$"&offset={offSet}&limits={limit}{priceRangeFilter}{adultFilter}{roomsFilter}{amenitiesFilter}&multilanguageid={_settings.MultiLanguageId}" +
+                      $"{paginationFilter}{priceRangeFilter}{adultFilter}{roomsFilter}{amenitiesFilter}&multilanguageid={_settings.MultiLanguageId}" +
                       $"&converted_currency=PKR&agentid={_settings.AgentId}";
             //&accommodationtypename={request.PropertyType}
             var xmlString = await _httpClient.GetStringAsync(url);

@@ -1,8 +1,12 @@
-﻿using CleanArc.Application.Contracts.Persistence;
+﻿using CleanArc.Application.Common;
+using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.AgeType;
+using CleanArc.Application.Models.Common;
 using CleanArc.Application.Models.RatePlan;
 using CleanArc.Application.Models.Request;
+using CleanArc.Domain.Common;
 using CleanArc.Domain.Entities.AgeType;
+using CleanArc.Domain.Entities.City;
 using CleanArc.Domain.Entities.RatePlan;
 using CleanArc.Infrastructure.Persistence.Helpers;
 using CleanArc.Infrastructure.Sql.SqlQueries;
@@ -13,15 +17,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging; 
-using CleanArc.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Common;
-using CleanArc.Domain.Entities.City;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -62,15 +64,104 @@ public class RatePlanRepository : IRatePlanRepository
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public async Task<ResponseEntity> AddAsync(RatePlan RatePlan)
+    public async Task<ResponseEntity> AddAsync(RatePlanRequestDto RatePlan)
     {
+        ResponseEntity result = new ResponseEntity();
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, RatePlan))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
                 CreateRatePlanDTO createRatePlanDTO = _mapper.Map<CreateRatePlanDTO>(RatePlan);
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RatePlanQueries.Create_RatePlan, createRatePlanDTO, commandType: CommandType.StoredProcedure);
+                using var transaction = connection.BeginTransaction();
+
+                try
+                {
+                    int totalProcessed = 0;
+                    int inserted = 0;
+                    int updated = 0;
+                    
+                    foreach (var roomRatePlan in RatePlan.RoomRatePlans)
+                    {
+                        foreach (var dailyRate in roomRatePlan.DailyRates)
+                        {
+                            var existingRate = await connection.QueryFirstOrDefaultAsync(
+                                @"SELECT DailyRatePlanId 
+                          FROM DailyRatePlans 
+                          WHERE RatePlanTypeId = @RatePlanTypeId AND RateDate = @RateDate",
+                                new { roomRatePlan.RatePlanTypeId, dailyRate.RateDate },
+                                transaction
+                            );
+
+                            if (existingRate.HasValue)
+                            {
+                                // Update existing record
+                                await connection.ExecuteAsync(
+                                    @"UPDATE DailyRatePlans 
+                              SET AvailableRooms = @AvailableRooms,
+                                  Rate = @Rate,
+                                  StopSell = @StopSell,
+                                  MinStay = @MinStay,
+                                  MaxStay = @MaxStay,
+                                  UpdatedAt = GETDATE()
+                              WHERE DailyRatePlanId = @DailyRatePlanId",
+                                    new
+                                    {
+                                        DailyRatePlanId = existingRate.Value,
+                                        dailyRate.AvailableRooms,
+                                        dailyRate.Rate,
+                                        dailyRate.StopSell,
+                                        dailyRate.MinStay,
+                                        dailyRate.MaxStay
+                                    },
+                                    transaction
+                                );
+                                updated++;
+                            }
+                            else
+                            {
+                                // Insert new record
+                                await connection.ExecuteAsync(
+                                    @"INSERT INTO DailyRatePlans 
+                              (RatePlanTypeId, RateDate, AvailableRooms, Rate, StopSell, MinStay, MaxStay, CreatedAt, UpdatedAt)
+                              VALUES 
+                              (@RatePlanTypeId, @RateDate, @AvailableRooms, @Rate, @StopSell, @MinStay, @MaxStay, GETDATE(), GETDATE())",
+                                    new
+                                    {
+                                        roomRatePlan.RatePlanTypeId,
+                                        dailyRate.RateDate,
+                                        dailyRate.AvailableRooms,
+                                        dailyRate.Rate,
+                                        dailyRate.StopSell,
+                                        dailyRate.MinStay,
+                                        dailyRate.MaxStay
+                                    },
+                                    transaction
+                                );
+                                inserted++;
+                            }
+                            totalProcessed++;
+                        }
+                    }
+
+                    transaction.Commit();
+                    result.IsSuccess = true;
+                    result.Message = "Daily rate plans processed successfully.";
+                    result.RecordID = $"Total Processed: {totalProcessed}, Inserted: {inserted}, Updated: {updated}";
+                    result.Code=200;
+                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                    //return (totalProcessed, inserted, updated);
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    result.IsSuccess = false;
+                    result.Message = "An error occurred while processing daily rate plans.";
+                    result.RecordID = null;
+                    result.Code = 200;
+                    throw;
+                }
+                //var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RatePlanQueries.Create_RatePlan, createRatePlanDTO, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }
@@ -97,7 +188,7 @@ public class RatePlanRepository : IRatePlanRepository
         }
     }
 
-    public async Task<ListResponseWrapper<RatePlan>> GetAllAsync(SearchRequest searchRequest)
+    public async Task<ListResponseWrapper<RatePlanRequestDto>> GetAllAsync(SearchRequest searchRequest)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
         {
@@ -113,16 +204,16 @@ public class RatePlanRepository : IRatePlanRepository
                 parameters.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
-				var result = await connection.QueryAsync<RatePlan>(RatePlanQueries.GetALL_RatePlan, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QueryAsync<RatePlanRequestDto>(RatePlanQueries.GetALL_RatePlan, parameters, commandType: CommandType.StoredProcedure);
       
 
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-				var response = new ListResponseWrapper<RatePlan> { Data = result.ToList(), TotalCount = parameters.Get<int>("@TotalCount"), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
+				var response = new ListResponseWrapper<RatePlanRequestDto> { Data = result.ToList(), TotalCount = parameters.Get<int>("@TotalCount"), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
 
 			}
 		}
     }
-    public async Task<SingleResponseWrapper<RatePlan>> GetByIdAsync(SearchRequestById searchRequestById)
+    public async Task<SingleResponseWrapper<RatePlanRequestDto>> GetByIdAsync(SearchRequestById searchRequestById)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequestById))
         {
@@ -134,10 +225,10 @@ public class RatePlanRepository : IRatePlanRepository
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 				parameters.Add("@CultureId", searchRequestById.CultureId, DbType.Int32);
 				parameters.Add("@ID", searchRequestById.Id, DbType.Int32);
-				var result = await connection.QuerySingleOrDefaultAsync<RatePlan>(RatePlanQueries.GetByID_RatePlan, parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QuerySingleOrDefaultAsync<RatePlanRequestDto>(RatePlanQueries.GetByID_RatePlan, parameters, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 
-                var response = new SingleResponseWrapper<RatePlan>
+                var response = new SingleResponseWrapper<RatePlanRequestDto>
                 {
                     Data = result,
                     Code = parameters.Get<int>("@Code"),
@@ -150,7 +241,7 @@ public class RatePlanRepository : IRatePlanRepository
 
 
 
-    public async Task<ResponseEntity> UpdateAsync(RatePlan RatePlan)
+    public async Task<ResponseEntity> UpdateAsync(RatePlanRequestDto RatePlan)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, RatePlan))
         {
