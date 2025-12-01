@@ -79,6 +79,15 @@ namespace CleanArc.Application.Models.Request
         public bool FilterByWishList { get; set; }=false;
 
     }
+    public class RatePlanSearchRequest : SearchRequest
+    {
+        public int HotelId { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public int? RoomTypeId { get; set; } = null;
+        public int? RatePlanTypeId { get; set; } = null;
+
+    }
 
     public class HotelDetailSearchRequest : SearchRequestById
     {

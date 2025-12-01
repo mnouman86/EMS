@@ -4,10 +4,10 @@ using CleanArc.Application.Features.RatePlan.Command.DeleteRatePlanCommand;
 using CleanArc.Application.Features.RatePlan.Command.UpdateRatePlanCommand;
 using CleanArc.Application.Features.RatePlan.Queries.GetAllRatePlans;
 using CleanArc.Application.Features.RatePlan.Queries.GetRatePlanById;
+using CleanArc.Domain.Common;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
-using Microsoft.AspNetCore.Mvc; using CleanArc.Domain.Common;
-
+using Microsoft.AspNetCore.Mvc; 
 namespace CleanArc.Web.Api.Controllers.V1.RatePlan;
 /// <summary>
 /// RatePlanController is responsible for handling HTTP requests related to RatePlan operations
@@ -53,20 +53,27 @@ namespace CleanArc.Web.Api.Controllers.V1.RatePlan;
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/RatePlan")]
-public class RatePlanController : _BaseController<CreateRatePlanCommand, UpdateRatePlanCommand, DeleteRatePlanCommand, ResponseEntity, GetAllRatePlansQuery,
-    List<GetAllRatePlansQueryResult>, GetRatePlanByIdQuery, GetRatePlanByIdQueryResult>
+public class RatePlanController : _BaseController<CreateRatePlanCommand, UpdateRatePlanCommand, DeleteRatePlanCommand, ResponseEntity, GetAllRatePlanQuery,
+    List<GetAllRatePlanQueryResult>, GetRatePlanByIdQuery, GetRatePlanByIdQueryResult>
 {
+    private readonly ISender _sender;
     /// <summary>
     /// Initializes a new instance of the <see cref="RatePlanController"/> class.
     /// </summary>
     /// <param name="sender">The mediator sender for handling requests and responses.</param>
     /// <param name="logger">The logger for logging controller-related information.</param>
     /// <param name="httpContextAccessor"></param>
-    public RatePlanController(ISender sender, ILogger<_BaseController<CreateRatePlanCommand, UpdateRatePlanCommand, DeleteRatePlanCommand, ResponseEntity, GetAllRatePlansQuery,
-List<GetAllRatePlansQueryResult>, GetRatePlanByIdQuery, GetRatePlanByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
+    public RatePlanController(ISender sender, ILogger<_BaseController<CreateRatePlanCommand, UpdateRatePlanCommand, DeleteRatePlanCommand, ResponseEntity, GetAllRatePlanQuery,
+List<GetAllRatePlanQueryResult>, GetRatePlanByIdQuery, GetRatePlanByIdQueryResult>> logger, IHttpContextAccessor httpContextAccessor) : base(sender, logger, httpContextAccessor)
     {
-
+        _sender = sender;
     }
+    [HttpPost("GetAccomodationRatePlan")]
+    public async Task<IActionResult> GetAccomodationRatePlan([FromBody] GetAllRatePlansQuery query)
+    {
+        var result = await _sender.Send(query);
 
+        return base.OperationResult(result);
+    }
 }
 

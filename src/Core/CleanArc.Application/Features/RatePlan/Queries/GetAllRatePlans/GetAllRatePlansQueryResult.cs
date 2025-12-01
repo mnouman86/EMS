@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.RatePlan.Queries.GetAllRatePlans
+namespace CleanArc.Application.Features.RatePlan.Queries.GetRatePlanById
 {
-    public class GetAllRatePlanQueryResult
-    {
+    public class GetAllRatePlansQueryResult
+    {        
         public int Id { get; set; }
         public int? RoomTypeId { get; set; }
         public int? GuestQuantity { get; set; }

@@ -7,7 +7,10 @@ using CleanArc.Application.Models.Request;
 using CleanArc.Domain.Common;
 using CleanArc.Domain.Entities.AgeType;
 using CleanArc.Domain.Entities.City;
+using CleanArc.Domain.Entities.Hotel;
 using CleanArc.Domain.Entities.RatePlan;
+using CleanArc.Domain.Entities.RatePlanType;
+using CleanArc.Domain.Entities.RoomType;
 using CleanArc.Infrastructure.Persistence.Helpers;
 using CleanArc.Infrastructure.Sql.SqlQueries;
 using CleanArc.SharedKernel.Extensions;
@@ -213,6 +216,96 @@ public class RatePlanRepository : IRatePlanRepository
 			}
 		}
     }
+    public async Task<SingleResponseWrapper<RatePlanResponseDto>> GetAllRatePlansAsync(RatePlanSearchRequest searchRequest)
+    {
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
+        {
+            using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+            {
+                connection.Open();
+                var sql = new StringBuilder(@"
+            SELECT 
+                h.HotelId,
+                h.HotelName,
+                rt.RoomTypeId,
+                rt.RoomTypeName,
+                rpt.RatePlanTypeId,
+                rpt.RatePlanName,
+                drp.DailyRatePlanId,
+                drp.RateDate,
+                drp.AvailableRooms,
+                drp.Rate,
+                drp.StopSell,
+                drp.MinStay,
+                drp.MaxStay
+            FROM Hotels h
+            INNER JOIN RoomTypes rt ON h.HotelId = rt.HotelId
+            INNER JOIN RatePlanTypes rpt ON rt.RoomTypeId = rpt.RoomTypeId
+            LEFT JOIN DailyRatePlans drp ON rpt.RatePlanTypeId = drp.RatePlanTypeId
+                AND drp.RateDate BETWEEN @StartDate AND @EndDate
+            WHERE h.HotelId = @HotelId
+                AND rt.IsActive = 1
+                AND rpt.IsActive = 1");
+
+                if (searchRequest.RoomTypeId.HasValue)
+                    sql.Append(" AND rt.RoomTypeId = @RoomTypeId");
+
+                if (searchRequest.RatePlanTypeId.HasValue)
+                    sql.Append(" AND rpt.RatePlanTypeId = @RatePlanTypeId");
+
+                sql.Append(" ORDER BY rt.RoomTypeId, rpt.RatePlanTypeId, drp.RateDate");
+
+                var ratePlanResult = await connection.QueryAsync(
+                    sql.ToString(),
+                    new { HotelId = searchRequest.HotelId, StartDate = searchRequest.StartDate, EndDate = searchRequest.EndDate, RoomTypeId = searchRequest.RoomTypeId, RatePlanTypeId = searchRequest.RatePlanTypeId }
+                );
+                var result = new RatePlanResponseDto
+                {
+                    HotelId =searchRequest.HotelId,
+                    HotelName = ratePlanResult.FirstOrDefault()?.HotelName ?? string.Empty,
+                    RoomTypes = ratePlanResult
+                .GroupBy(r => new { r.RoomTypeId, r.RoomTypeName })
+                .Select(rtGroup => new RoomTypeRatePlanDto
+                {
+                    RoomTypeId = rtGroup.Key.RoomTypeId,
+                    RoomTypeName = rtGroup.Key.RoomTypeName,
+                    RatePlans = rtGroup
+                        .GroupBy(r => new { r.RatePlanTypeId, r.RatePlanName })
+                        .Select(rpGroup => new RatePlanDetailDto
+                        {
+                            RatePlanTypeId = rpGroup.Key.RatePlanTypeId,
+                            RatePlanName = rpGroup.Key.RatePlanName,
+                            DailyRates = rpGroup
+                                .Where(r => r.DailyRatePlanId.HasValue)
+                                .Select(r => new DailyRateResponseDto
+                                {
+                                    DailyRatePlanId = r.DailyRatePlanId!.Value,
+                                    RateDate = r.RateDate!.Value,
+                                    AvailableRooms = r.AvailableRooms ?? 0,
+                                    Rate = r.Rate ?? 0,
+                                    StopSell = r.StopSell ?? false,
+                                    MinStay = r.MinStay ?? 1,
+                                    MaxStay = r.MaxStay ?? 30
+                                })
+                                .ToList()
+                        })
+                        .ToList()
+                })
+                .ToList()
+                };
+
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                var response = new SingleResponseWrapper<RatePlanResponseDto>
+                {
+                    Data = result,
+                    Code = 200,
+                    Message = $"{ratePlanResult?.Count()} records found."
+                };
+                return response;
+
+            }
+		}
+    }
     public async Task<SingleResponseWrapper<RatePlanRequestDto>> GetByIdAsync(SearchRequestById searchRequestById)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequestById))
@@ -243,14 +336,102 @@ public class RatePlanRepository : IRatePlanRepository
 
     public async Task<ResponseEntity> UpdateAsync(RatePlanRequestDto RatePlan)
     {
+        ResponseEntity result = new ResponseEntity();
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, RatePlan))
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
             {
                 connection.Open();
-                UpdateRatePlanDTO updateRatePlanDTO = _mapper.Map<UpdateRatePlanDTO>(RatePlan);
+                CreateRatePlanDTO createRatePlanDTO = _mapper.Map<CreateRatePlanDTO>(RatePlan);
+                using var transaction = connection.BeginTransaction();
 
-                var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RatePlanQueries.Update_RatePlan, updateRatePlanDTO, commandType: CommandType.StoredProcedure);
+                try
+                {
+                    int totalProcessed = 0;
+                    int inserted = 0;
+                    int updated = 0;
+
+                    foreach (var roomRatePlan in RatePlan.RoomRatePlans)
+                    {
+                        foreach (var dailyRate in roomRatePlan.DailyRates)
+                        {
+                            var existingRate = await connection.QueryFirstOrDefaultAsync(
+                                @"SELECT DailyRatePlanId 
+                          FROM DailyRatePlans 
+                          WHERE RatePlanTypeId = @RatePlanTypeId AND RateDate = @RateDate",
+                                new { roomRatePlan.RatePlanTypeId, dailyRate.RateDate },
+                                transaction
+                            );
+
+                            if (existingRate.HasValue)
+                            {
+                                // Update existing record
+                                await connection.ExecuteAsync(
+                                    @"UPDATE DailyRatePlans 
+                              SET AvailableRooms = @AvailableRooms,
+                                  Rate = @Rate,
+                                  StopSell = @StopSell,
+                                  MinStay = @MinStay,
+                                  MaxStay = @MaxStay,
+                                  UpdatedAt = GETDATE()
+                              WHERE DailyRatePlanId = @DailyRatePlanId",
+                                    new
+                                    {
+                                        DailyRatePlanId = existingRate.Value,
+                                        dailyRate.AvailableRooms,
+                                        dailyRate.Rate,
+                                        dailyRate.StopSell,
+                                        dailyRate.MinStay,
+                                        dailyRate.MaxStay
+                                    },
+                                    transaction
+                                );
+                                updated++;
+                            }
+                            else
+                            {
+                                // Insert new record
+                                await connection.ExecuteAsync(
+                                    @"INSERT INTO DailyRatePlans 
+                              (RatePlanTypeId, RateDate, AvailableRooms, Rate, StopSell, MinStay, MaxStay, CreatedAt, UpdatedAt)
+                              VALUES 
+                              (@RatePlanTypeId, @RateDate, @AvailableRooms, @Rate, @StopSell, @MinStay, @MaxStay, GETDATE(), GETDATE())",
+                                    new
+                                    {
+                                        roomRatePlan.RatePlanTypeId,
+                                        dailyRate.RateDate,
+                                        dailyRate.AvailableRooms,
+                                        dailyRate.Rate,
+                                        dailyRate.StopSell,
+                                        dailyRate.MinStay,
+                                        dailyRate.MaxStay
+                                    },
+                                    transaction
+                                );
+                                inserted++;
+                            }
+                            totalProcessed++;
+                        }
+                    }
+
+                    transaction.Commit();
+                    result.IsSuccess = true;
+                    result.Message = "Daily rate plans processed successfully.";
+                    result.RecordID = $"Total Processed: {totalProcessed}, Inserted: {inserted}, Updated: {updated}";
+                    result.Code = 200;
+                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+                    //return (totalProcessed, inserted, updated);
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    result.IsSuccess = false;
+                    result.Message = "An error occurred while processing daily rate plans.";
+                    result.RecordID = null;
+                    result.Code = 200;
+                    throw;
+                }
+                //var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(RatePlanQueries.Create_RatePlan, createRatePlanDTO, commandType: CommandType.StoredProcedure);
                  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 return result;
             }

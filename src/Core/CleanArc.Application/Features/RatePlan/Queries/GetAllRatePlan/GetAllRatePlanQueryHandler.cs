@@ -15,16 +15,16 @@ using CleanArc.Application.Features.Activity.Queries.GetAllActivity;
 
 namespace CleanArc.Application.Features.RatePlan.Queries.GetAllRatePlans;
 
-internal class GetAllRatePlansQueryHandler : IRequestHandler<GetAllRatePlansQuery, OperationResult<List<GetAllRatePlansQueryResult>>>
+internal class GetAllRatePlanQueryHandler : IRequestHandler<GetAllRatePlanQuery, OperationResult<List<GetAllRatePlanQueryResult>>>
 {
 
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
-    private readonly ILogger<GetAllRatePlansQueryHandler> _logger;
+    private readonly ILogger<GetAllRatePlanQueryHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
 
 
-    public GetAllRatePlansQueryHandler(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, ILogger<GetAllRatePlansQueryHandler> logger)
+    public GetAllRatePlanQueryHandler(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, ILogger<GetAllRatePlanQueryHandler> logger)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
@@ -33,7 +33,7 @@ internal class GetAllRatePlansQueryHandler : IRequestHandler<GetAllRatePlansQuer
 
     }
 
-    public async ValueTask<OperationResult<List<GetAllRatePlansQueryResult>>> Handle(GetAllRatePlansQuery request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<List<GetAllRatePlanQueryResult>>> Handle(GetAllRatePlanQuery request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -48,16 +48,16 @@ internal class GetAllRatePlansQueryHandler : IRequestHandler<GetAllRatePlansQuer
 
             if (response.Code != 200)
             {
-                return OperationResult<List<GetAllRatePlansQueryResult>>.FailureResult(
+                return OperationResult<List<GetAllRatePlanQueryResult>>.FailureResult(
                     response.Message,
                 response.Code
                 );
             }
 
-            var mappedResult = _mapper.Map<List<GetAllRatePlansQueryResult>>(response.Data);
+            var mappedResult = _mapper.Map<List<GetAllRatePlanQueryResult>>(response.Data);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-            return OperationResult<List<GetAllRatePlansQueryResult>>.SuccessResult(
+            return OperationResult<List<GetAllRatePlanQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
                 response.Message,

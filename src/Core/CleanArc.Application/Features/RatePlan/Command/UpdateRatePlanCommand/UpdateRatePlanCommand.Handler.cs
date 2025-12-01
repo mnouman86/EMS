@@ -54,21 +54,11 @@ internal class UpdateRatePlanCommandHandler : IRequestHandler<UpdateRatePlanComm
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
-            //var result = await _unitOfWork.RatePlanRepository.UpdateAsync(new Domain.Entities.RatePlan.RatePlan()
-            //{
-            //    UpdatedBy = user.Id,
-            //    Id = request.Id,
-            //    RoomTypeId = request.RoomTypeId,
-            //    GuestQuantity = request.GuestQuantity,
-            //    DefaultRate = request.DefaultRate,
-            //    Description = request.Description,
-            //    RatePlanName = request.RatePlanName,
-            //    CultureId = request.CultureId,
-            //});
-            //await _unitOfWork.CommitAsync();
-            //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
-            //return OperationResult<ResponseEntity>.SuccessResult(result);
-            return null;
+            var result = await _unitOfWork.RatePlanRepository.UpdateAsync(request.RatePlanRequest);
+            await _unitOfWork.CommitAsync();
+            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
+            return OperationResult<ResponseEntity>.SuccessResult(result);
+            //return null;
         }
     }
 
