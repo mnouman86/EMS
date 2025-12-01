@@ -36,6 +36,7 @@ using CleanArc.Domain.Entities.OutDoor;
 using CleanArc.Domain.Entities.NearByLocation;
 using CleanArc.Application.Services.Aggregators;
 using CleanArc.Infrastructure.Persistence.Providers.BookingWhizz;
+using CleanArc.Domain.Entities.RatePlanType;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -138,7 +139,16 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                 parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
 				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 				var result = await connection.QueryAsync<RoomDetails>(RoomDetailQueries.GetALL_RoomDetail, parameters, commandType: CommandType.StoredProcedure);
-
+                foreach (var row in result)
+                {
+                    var parametersRoomType = new DynamicParameters();
+                    parametersRoomType.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    parametersRoomType.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                    parametersRoomType.Add("@CultureId", searchRequest.CultureId, DbType.Int32);
+                    parametersRoomType.Add("@RoomTypeId", row.Id, DbType.Int32);
+                    var resultRoomType = await connection.QueryAsync<RatePlanType>(RatePlanTypeQueries.GetByID_RatePlanType, parametersRoomType, commandType: CommandType.StoredProcedure);
+                row.RatePlanTypes = resultRoomType;
+                }
 
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
 				var response = new ListResponseWrapper<RoomDetails> { Data = result.ToList(), TotalCount = parameters.Get<int>("@TotalCount"), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;

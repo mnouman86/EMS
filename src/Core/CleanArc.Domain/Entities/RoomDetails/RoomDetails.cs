@@ -1,6 +1,7 @@
 ﻿using CleanArc.Domain.Entities.FAQs;
 using CleanArc.Domain.Entities.Language;
 using CleanArc.Domain.Entities.OutDoor;
+using CleanArc.Domain.Entities.RatePlanType;
 using CleanArc.Domain.Entities.RoomView;
 using System;
 using System.Collections.Generic;
@@ -52,6 +53,8 @@ public class RoomDetails
     public int[]? RoomViewLookUpId { get; set; }
     public int[]? OutDoorLookUpId { get; set; }
     public List<RoomViewLookUp>? RoomView { get; set; }
+    public IEnumerable<RatePlanType.RatePlanType> RatePlanTypes { get; set; }
+
 
     public List<OutDoorLookUp>? OutDoor { get; set; }
 
