@@ -22,7 +22,7 @@ namespace CleanArc.Application.Models.RatePlan
     }
     public class RatePlanRequestDto
     {
-        public int HotelId { get; set; }
+        public int GenericTitleId { get; set; }
         public List<RoomRatePlanDto> RoomRatePlans { get; set; } = new();
         public int? CultureId { get; set; }
     }
