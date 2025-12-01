@@ -10,5 +10,5 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.RatePlan.Queries.GetAllRatePlans;
 
-public record GetAllRatePlansQuery(SearchRequest searchRequest) : IRequest<OperationResult<List<GetAllRatePlansQueryResult>>>;
+public record GetAllRatePlanQuery(SearchRequest searchRequest) : IRequest<OperationResult<List<GetAllRatePlanQueryResult>>>;
 
