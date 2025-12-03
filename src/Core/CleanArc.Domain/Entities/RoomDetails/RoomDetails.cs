@@ -37,8 +37,8 @@ public class RoomDetails
     public int? ReviewsCount { get; set; }
     public int? Rating { get; set; }
 
-    public decimal? AdditionalMatricCharges { get; set; }
-    public string? RoomNumber { get; set; }
+    public decimal? AdditionalMattressCharges { get; set; }
+    public string? NoOfRooms { get; set; }
     public bool? IsAvailable { get; set; }
     public bool? IsDealExist { get; set; }
     public bool? IsActive { get; set; }

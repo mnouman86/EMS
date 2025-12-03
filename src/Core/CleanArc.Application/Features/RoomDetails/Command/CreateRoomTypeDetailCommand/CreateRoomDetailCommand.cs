@@ -15,7 +15,7 @@ namespace CleanArc.Application.Features.RoomDetails.Command.CreateRoomDetailComm
 public record 
     CreateRoomDetailCommand(int? GenericTitleId, int? RoomTypeLookUpId, int? RoomSizeUnitLookUpId, 
     string? RoomSize, bool? IsSharedBathroom,string? Description,
-    decimal? Price, decimal? AdditionalMatricCharges, string? RoomNumber, bool? IsAvailable, 
+    decimal? Price, decimal? AdditionalMattressCharges, string? NoOfRooms, bool? IsAvailable, 
     int? CultureId, bool? IsPartiallyRefundable, bool? IsFullyRefundable, int[]? RoomViewLookUpId, int[]? OutDoorLookUpId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateRoomDetailCommand>
 {

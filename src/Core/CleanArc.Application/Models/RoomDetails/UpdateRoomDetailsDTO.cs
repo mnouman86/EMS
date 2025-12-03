@@ -18,8 +18,8 @@ namespace CleanArc.Application.Models.RoomDetails
         public bool? IsPartiallyRefundable { get; set; }
         public bool? IsFullyRefundable { get; set; }
         public decimal? Price { get; set; }
-        public decimal? AdditionalMatricCharges { get; set; }
-        public string? RoomNumber { get; set; }
+        public decimal? AdditionalMattressCharges { get; set; }
+        public string? NoOfRooms { get; set; }
         public bool? IsAvailable { get; set; }
         public int? CultureId { get; set; }
         public int? UpdatedBy { get; set; }
