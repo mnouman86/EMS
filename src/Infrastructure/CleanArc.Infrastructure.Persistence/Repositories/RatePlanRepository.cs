@@ -88,15 +88,16 @@ public class RatePlanRepository : IRatePlanRepository
                     {
                         foreach (var dailyRate in roomRatePlan.DailyRates)
                         {
-                            var existingRate = await connection.QueryFirstOrDefaultAsync(
-                                @"SELECT DailyRatePlanId 
+                            string rateDate = dailyRate.RateDate.ToString("yyyy-MM-dd");
+                            var existingRate = await connection.QueryFirstOrDefaultAsync<int?>(
+                                @"SELECT Id 
                           FROM DailyRatePlans 
                           WHERE RatePlanTypeId = @RatePlanTypeId AND RateDate = @RateDate",
-                                new { roomRatePlan.RatePlanTypeId, dailyRate.RateDate },
+                                new { roomRatePlan.RatePlanTypeId, rateDate },
                                 transaction
                             );
 
-                            if (existingRate.HasValue)
+                            if (existingRate.HasValue == true)
                             {
                                 // Update existing record
                                 await connection.ExecuteAsync(
@@ -107,10 +108,10 @@ public class RatePlanRepository : IRatePlanRepository
                                   MinStay = @MinStay,
                                   MaxStay = @MaxStay,
                                   UpdatedAt = GETDATE()
-                              WHERE DailyRatePlanId = @DailyRatePlanId",
+                              WHERE Id = @Id",
                                     new
                                     {
-                                        DailyRatePlanId = existingRate.Value,
+                                        Id = existingRate.Value,
                                         dailyRate.AvailableRooms,
                                         dailyRate.Rate,
                                         dailyRate.StopSell,
