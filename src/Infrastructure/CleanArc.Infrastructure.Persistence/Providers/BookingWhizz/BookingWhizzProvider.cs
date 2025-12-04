@@ -97,7 +97,7 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
                 amenitiesFilter = $"&facilityname={request.Amenities?.Trim()}";
             }
 
-            var url = $"{_settings.BaseUrl}getaccommodationsearchtest?" +
+            var url = $"{_settings.BaseUrl}getaccommodationsearchnew?" +
                       $"userid={_settings.UserId}&password={_settings.Password}" +
                       $"&cityname={cityName}&checkin={request.StartDate:yyyy-MM-dd}" +
                       $"&checkout={request.EndDate:yyyy-MM-dd}&sortby={columnName}&sort={columnDirection}"+
@@ -119,7 +119,7 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
             var checkOut = request.EndDate?.ToString("yyyy-MM-dd") ?? DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
 
             // Step 1: getaccommodationsearchtest
-            var searchUrl = $"{_settings.BaseUrl}getaccommodationsearchtest?" +
+            var searchUrl = $"{_settings.BaseUrl}getaccommodationsearchnew?" +
                             $"userid={_settings.UserId}&password={_settings.Password}" +
                             $"&cityname={cityName}&checkin={checkIn}" +
                             $"&checkout={checkOut}&multilanguageid={_settings.MultiLanguageId}" +
