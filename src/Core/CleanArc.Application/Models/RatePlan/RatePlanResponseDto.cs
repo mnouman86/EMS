@@ -30,7 +30,7 @@ namespace CleanArc.Application.Models.RatePlan
 
     public class DailyRateResponseDto
     {
-        public long DailyRatePlanId { get; set; }
+        public long? DailyRatePlanId { get; set; }
         public DateTime RateDate { get; set; }
         public int AvailableRooms { get; set; }
         public decimal Rate { get; set; }
