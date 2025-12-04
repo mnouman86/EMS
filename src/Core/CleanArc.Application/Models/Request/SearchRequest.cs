@@ -81,7 +81,7 @@ namespace CleanArc.Application.Models.Request
     }
     public class RatePlanSearchRequest : SearchRequest
     {
-        public int HotelId { get; set; }
+        public int GenericTitleId { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int? RoomTypeId { get; set; } = null;

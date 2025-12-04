@@ -226,25 +226,24 @@ public class RatePlanRepository : IRatePlanRepository
                 connection.Open();
                 var sql = new StringBuilder(@"
             SELECT 
-                h.HotelId,
-                h.HotelName,
-                rt.RoomTypeId,
-                rt.RoomTypeName,
-                rpt.RatePlanTypeId,
+                h.Id as GenericTitleId,
+                h.Title as HotelName,
+                rt.Id as RoomTypeId,
+                rpt.Id as RatePlanTypeId,
                 rpt.RatePlanName,
-                drp.DailyRatePlanId,
+                drp.Id as DailyRatePlanId,
                 drp.RateDate,
                 drp.AvailableRooms,
                 drp.Rate,
                 drp.StopSell,
                 drp.MinStay,
                 drp.MaxStay
-            FROM Hotels h
-            INNER JOIN RoomTypes rt ON h.HotelId = rt.HotelId
-            INNER JOIN RatePlanTypes rpt ON rt.RoomTypeId = rpt.RoomTypeId
-            LEFT JOIN DailyRatePlans drp ON rpt.RatePlanTypeId = drp.RatePlanTypeId
+            FROM Generic.Title h
+            INNER JOIN Stays.RoomDetail rt ON h.Id = rt.GenericTitleId
+            INNER JOIN RatePlanType rpt ON rt.Id = rpt.RoomTypeId
+            LEFT JOIN DailyRatePlans drp ON rpt.Id = drp.RatePlanTypeId
                 AND drp.RateDate BETWEEN @StartDate AND @EndDate
-            WHERE h.HotelId = @HotelId
+            WHERE h.Id = @GenericTitleId
                 AND rt.IsActive = 1
                 AND rpt.IsActive = 1");
 
@@ -254,22 +253,23 @@ public class RatePlanRepository : IRatePlanRepository
                 if (searchRequest.RatePlanTypeId.HasValue)
                     sql.Append(" AND rpt.RatePlanTypeId = @RatePlanTypeId");
 
-                sql.Append(" ORDER BY rt.RoomTypeId, rpt.RatePlanTypeId, drp.RateDate");
+                sql.Append(" ORDER BY rt.Id, rpt.Id, drp.RateDate");
 
                 var ratePlanResult = await connection.QueryAsync(
                     sql.ToString(),
-                    new { HotelId = searchRequest.HotelId, StartDate = searchRequest.StartDate, EndDate = searchRequest.EndDate, RoomTypeId = searchRequest.RoomTypeId, RatePlanTypeId = searchRequest.RatePlanTypeId }
+                    new { GenericTitleId = searchRequest.GenericTitleId, StartDate = searchRequest.StartDate, EndDate = searchRequest.EndDate, RoomTypeId = searchRequest.RoomTypeId, RatePlanTypeId = searchRequest.RatePlanTypeId }
                 );
                 var result = new RatePlanResponseDto
                 {
-                    HotelId =searchRequest.HotelId,
+                    HotelId =searchRequest.GenericTitleId,
                     HotelName = ratePlanResult.FirstOrDefault()?.HotelName ?? string.Empty,
                     RoomTypes = ratePlanResult
-                .GroupBy(r => new { r.RoomTypeId, r.RoomTypeName })
+                .GroupBy(r => new { r.RoomTypeId })
+                //.GroupBy(r => new { r.RoomTypeId, r.RoomTypeName })
                 .Select(rtGroup => new RoomTypeRatePlanDto
                 {
                     RoomTypeId = rtGroup.Key.RoomTypeId,
-                    RoomTypeName = rtGroup.Key.RoomTypeName,
+                    //RoomTypeName = rtGroup.Key.RoomTypeName,
                     RatePlans = rtGroup
                         .GroupBy(r => new { r.RatePlanTypeId, r.RatePlanName })
                         .Select(rpGroup => new RatePlanDetailDto
@@ -277,11 +277,11 @@ public class RatePlanRepository : IRatePlanRepository
                             RatePlanTypeId = rpGroup.Key.RatePlanTypeId,
                             RatePlanName = rpGroup.Key.RatePlanName,
                             DailyRates = rpGroup
-                                .Where(r => r.DailyRatePlanId.HasValue)
+                                .Where(r => r.DailyRatePlanId > 0)
                                 .Select(r => new DailyRateResponseDto
                                 {
-                                    DailyRatePlanId = r.DailyRatePlanId!.Value,
-                                    RateDate = r.RateDate!.Value,
+                                    DailyRatePlanId = r.DailyRatePlanId,
+                                    RateDate = r.RateDate,
                                     AvailableRooms = r.AvailableRooms ?? 0,
                                     Rate = r.Rate ?? 0,
                                     StopSell = r.StopSell ?? false,
