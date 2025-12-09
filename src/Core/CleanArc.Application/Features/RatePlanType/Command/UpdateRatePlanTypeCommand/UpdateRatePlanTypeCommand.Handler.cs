@@ -58,7 +58,7 @@ internal class UpdateRatePlanTypeCommandHandler : IRequestHandler<UpdateRatePlan
             {
                 UpdatedBy = user.Id,
                 Id = request.Id,
-                RoomTypeId = request.RoomTypeId,
+                RoomDetailId = request.RoomDetailId,
                 GuestQuantity = request.GuestQuantity,
                 DefaultRate = request.DefaultRate,
                 Description = request.Description,

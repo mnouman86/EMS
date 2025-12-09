@@ -16,7 +16,7 @@ namespace CleanArc.Application.Models.RatePlan
 
     public class RoomTypeRatePlanDto
     {
-        public int RoomTypeId { get; set; }
+        public int RoomDetailId { get; set; }
         public string RoomTypeName { get; set; } = string.Empty;
         public List<RatePlanDetailDto> RatePlans { get; set; } = new();
     }

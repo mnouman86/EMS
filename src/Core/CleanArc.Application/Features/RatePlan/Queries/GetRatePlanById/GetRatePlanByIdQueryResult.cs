@@ -9,7 +9,7 @@ namespace CleanArc.Application.Features.RatePlan.Queries.GetRatePlanById
     public class GetRatePlanByIdQueryResult
     {        
         public int Id { get; set; }
-        public int? RoomTypeId { get; set; }
+        public int? RoomDetailId { get; set; }
         public int? GuestQuantity { get; set; }
         public decimal? DefaultRate { get; set; } = decimal.Zero;
         public string RatePlanName { get; set; } = string.Empty;

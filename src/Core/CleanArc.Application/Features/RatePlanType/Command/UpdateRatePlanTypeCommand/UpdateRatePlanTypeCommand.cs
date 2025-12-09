@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.RatePlanType.Command.UpdateRatePlanTypeCommand;
 
-public record UpdateRatePlanTypeCommand(int Id, int? RoomTypeId, int? GuestQuantity, decimal? DefaultRate, string? Description, string RatePlanName, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateRatePlanTypeCommand(int Id, int? RoomDetailId, int? GuestQuantity, decimal? DefaultRate, string? Description, string RatePlanName, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<UpdateRatePlanTypeCommand>
 {
     [JsonIgnore]

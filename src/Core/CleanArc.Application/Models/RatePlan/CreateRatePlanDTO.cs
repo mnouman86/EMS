@@ -29,7 +29,7 @@ namespace CleanArc.Application.Models.RatePlan
 
     public class RoomRatePlanDto
     {
-        public int RoomTypeId { get; set; }
+        public int RoomDetailId { get; set; }
         public int RatePlanTypeId { get; set; }
         public List<DailyRateDto> DailyRates { get; set; } = new();
     }
