@@ -228,7 +228,7 @@ public class RatePlanRepository : IRatePlanRepository
             SELECT 
                 h.Id as GenericTitleId,
                 h.Title as HotelName,
-                rt.Id as RoomTypeId,
+                rt.Id as RoomDetailId,
                 rpt.Id as RatePlanTypeId,
                 rpt.RatePlanName,
                 drp.Id as DailyRatePlanId,
@@ -240,15 +240,15 @@ public class RatePlanRepository : IRatePlanRepository
                 drp.MaxStay
             FROM Generic.Title h
             INNER JOIN Stays.RoomDetail rt ON h.Id = rt.GenericTitleId
-            INNER JOIN RatePlanType rpt ON rt.Id = rpt.RoomTypeId
+            INNER JOIN RatePlanType rpt ON rt.Id = rpt.RoomDetailId
             LEFT JOIN DailyRatePlans drp ON rpt.Id = drp.RatePlanTypeId
                 AND drp.RateDate BETWEEN @StartDate AND @EndDate
             WHERE h.Id = @GenericTitleId
                 AND rt.IsActive = 1
                 AND rpt.IsActive = 1");
 
-                if (searchRequest.RoomTypeId.HasValue)
-                    sql.Append(" AND rt.RoomTypeId = @RoomTypeId");
+                if (searchRequest.RoomDetailId.HasValue)
+                    sql.Append(" AND rt.id = @RoomDetailId");
 
                 if (searchRequest.RatePlanTypeId.HasValue)
                     sql.Append(" AND rpt.RatePlanTypeId = @RatePlanTypeId");
@@ -257,18 +257,18 @@ public class RatePlanRepository : IRatePlanRepository
 
                 var ratePlanResult = await connection.QueryAsync(
                     sql.ToString(),
-                    new { GenericTitleId = searchRequest.GenericTitleId, StartDate = searchRequest.StartDate, EndDate = searchRequest.EndDate, RoomTypeId = searchRequest.RoomTypeId, RatePlanTypeId = searchRequest.RatePlanTypeId }
+                    new { GenericTitleId = searchRequest.GenericTitleId, StartDate = searchRequest.StartDate, EndDate = searchRequest.EndDate, RoomDetailId = searchRequest.RoomDetailId, RatePlanTypeId = searchRequest.RatePlanTypeId }
                 );
                 var result = new RatePlanResponseDto
                 {
                     HotelId =searchRequest.GenericTitleId,
                     HotelName = ratePlanResult.FirstOrDefault()?.HotelName ?? string.Empty,
                     RoomTypes = ratePlanResult
-                .GroupBy(r => new { r.RoomTypeId })
+                .GroupBy(r => new { r.RoomDetailId })
                 //.GroupBy(r => new { r.RoomTypeId, r.RoomTypeName })
                 .Select(rtGroup => new RoomTypeRatePlanDto
                 {
-                    RoomTypeId = rtGroup.Key.RoomTypeId,
+                    RoomDetailId = rtGroup.Key.RoomDetailId,
                     //RoomTypeName = rtGroup.Key.RoomTypeName,
                     RatePlans = rtGroup
                         .GroupBy(r => new { r.RatePlanTypeId, r.RatePlanName })

@@ -84,7 +84,7 @@ namespace CleanArc.Application.Models.Request
         public int GenericTitleId { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public int? RoomTypeId { get; set; } = null;
+        public int? RoomDetailId { get; set; } = null;
         public int? RatePlanTypeId { get; set; } = null;
 
     }

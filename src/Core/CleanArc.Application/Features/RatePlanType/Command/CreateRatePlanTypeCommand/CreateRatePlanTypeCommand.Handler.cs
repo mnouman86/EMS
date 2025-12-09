@@ -58,7 +58,7 @@ internal class CreateRatePlanTypeCommandHandler : IRequestHandler<CreateRatePlan
             var result = await _unitOfWork.RatePlanTypeRepository.AddAsync(new Domain.Entities.RatePlanType.RatePlanType()
             {
                 CreatedBy = user.Id,
-                RoomTypeId = request.RoomTypeId,
+                RoomDetailId = request.RoomDetailId,
                 GuestQuantity = request.GuestQuantity,
                 DefaultRate = request.DefaultRate,
                 Description = request.Description,

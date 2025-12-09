@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.RatePlanType.Command.CreateRatePlanTypeCommand
 {
-    public record CreateRatePlanTypeCommand(int? RoomTypeId, int? GuestQuantity, decimal? DefaultRate, string? Description,string RatePlanName, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+    public record CreateRatePlanTypeCommand(int? RoomDetailId, int? GuestQuantity, decimal? DefaultRate, string? Description,string RatePlanName, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateRatePlanTypeCommand>
     {
         [JsonIgnore]
