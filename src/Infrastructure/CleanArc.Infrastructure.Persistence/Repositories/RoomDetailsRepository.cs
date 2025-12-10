@@ -145,7 +145,7 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                     parametersRoomType.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     parametersRoomType.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
                     parametersRoomType.Add("@CultureId", searchRequest.CultureId, DbType.Int32);
-                    parametersRoomType.Add("@RoomTypeId", row.Id, DbType.Int32);
+                    parametersRoomType.Add("@RoomDetailId", row.Id, DbType.Int32);
                     var resultRoomType = await connection.QueryAsync<RatePlanType>(RatePlanTypeQueries.GetByID_RatePlanType, parametersRoomType, commandType: CommandType.StoredProcedure);
                 row.RatePlanTypes = resultRoomType;
                 }
