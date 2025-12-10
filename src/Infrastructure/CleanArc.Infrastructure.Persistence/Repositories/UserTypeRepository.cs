@@ -84,7 +84,7 @@ public class UserTypeRepository : IUserTypeRepository
             {
                 connection.Open();
 				var parameters = new DynamicParameters();
-				parameters.Add("@Ids", deleteRequest.SelectedIds);
+				parameters.Add("@IDs", deleteRequest.SelectedIds);
 				parameters.Add("@CultureId", deleteRequest.CultureId);
 				parameters.Add("@IsDeleted", deleteRequest.isDeleted);
 				parameters.Add("@UpdatedBy", updatedBy);

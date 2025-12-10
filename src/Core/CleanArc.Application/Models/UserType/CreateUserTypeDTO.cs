@@ -9,6 +9,7 @@ namespace CleanArc.Application.Models.UserType;
 public class CreateUserTypeDTO
 {
 	public string? Title { get; set; }
+	public string? Description { get; set; }
 	public int? NoOfBookings { get; set; }
 	public decimal? DiscountPercentage { get; set; }
 	public decimal? DiscountCap { get; set; }

@@ -53,7 +53,7 @@ internal class UpdateUserTypeCommandHandler : IRequestHandler<UpdateUserTypeComm
                 UpdatedBy = user.Id,
                 Id = request.Id,
                 Description = request.Description,
-                Name = request.Name,
+				Title = request.Title,
                 CultureId = request.CultureId
             });
             await _unitOfWork.CommitAsync();
