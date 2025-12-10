@@ -71,7 +71,7 @@ namespace CleanArc.Web.Api.Controllers.V1.RoomType
         {
 			_sender = sender;
 		}
-		[HttpGet("GetRoomTypeDetailByHotel/{id}")]
+		[HttpGet("GetRoomTypeDetailByHotel")]
 		public async Task<IActionResult> GetRoomTypeDetailByHotel(GetRoomTypeByHotelIdQuery query)
 		{
 			//GetActivityCheckoutDetailQuery query = new GetActivityCheckoutDetailQuery { searchRequestById = searchRequestById,UserId=userid };
