@@ -21,6 +21,8 @@ using System.Threading.Tasks;
 using CleanArc.Application.Common;
 using CleanArc.Domain.Entities.ServiceCategory;
 using CleanArc.Application.Models.CoreArea;
+using CleanArc.Application.Features.Activity.Queries.GetActivityCheckoutDetail;
+using CleanArc.Application.Features.RoomType.Queries.GetRoomTypeByHotelId;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -148,8 +150,34 @@ public class RoomTypeRepository : IRoomTypeRepository
     }
 
 
+	public async Task<ListResponseWrapper<RoomType>> GetRoomTypeDetailByHotelAsync(RoomTypeByHotelSearchRequest searchRequest)
+	{
+		using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
+		{
+			using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection1")))
+			{
+				connection.Open();
+				var parameters = new DynamicParameters();
+				parameters.Add("@GenericTitleID", searchRequest.GenericTitleId, DbType.Int32);
+				parameters.Add("@PageNumber", searchRequest.PageNumber, DbType.Int32);
+				if (searchRequest.PageSize > 0) parameters.Add("@PageSize", searchRequest.PageSize, DbType.Int32);
+				parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+				parameters.Add("@SortingArray", DataTableHelper.ToDataTable(searchRequest.SortingArray), DbType.Object); // Ensure proper type
+				parameters.Add("@FilterArray", DataTableHelper.ToDataTable(searchRequest.FilterArray), DbType.Object); // Ensure proper type
+				parameters.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
+				parameters.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+				parameters.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+				var result = await connection.QueryAsync<RoomType>(RoomTypeQueries.GetALL_RoomType_ByHotelID, parameters, commandType: CommandType.StoredProcedure);
 
-    public async Task<ResponseEntity> UpdateAsync(RoomType roomType)
+				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
+				var response = new ListResponseWrapper<RoomType> { Data = result.ToList(), TotalCount = parameters.Get<int>("@TotalCount"), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
+			}
+		}
+	}
+
+
+
+	public async Task<ResponseEntity> UpdateAsync(RoomType roomType)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, roomType))
         {

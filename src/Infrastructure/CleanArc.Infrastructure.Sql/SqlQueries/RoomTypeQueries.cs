@@ -12,6 +12,8 @@ public static class RoomTypeQueries
     public static string Update_RoomType => "usp_Update_RoomType";
     public static string Delete_RoomType => "usp_Delete_RoomType";
     public static string GetALL_RoomType => "usp_GetALL_RoomType";
-    public static string GetByID_RoomType => "usp_GetByID_RoomType";
+    public static string GetByID_RoomType => "usp_GetByID_RoomType"; 
+	public static string GetALL_RoomType_ByHotelID => "usp_GetALL_RoomType_ByHotelID";
+
 
 }

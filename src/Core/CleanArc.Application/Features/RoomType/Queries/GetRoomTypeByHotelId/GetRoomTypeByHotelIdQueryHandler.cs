@@ -48,7 +48,7 @@ internal class GetRoomTypeByHotelIdQueryHandler : IRequestHandler<GetRoomTypeByH
 
             //return OperationResult<GetRoomTypeByHotelIdQueryResult>.SuccessResult(result);
 
-            var response = await _unitOfWork.RoomTypeRepository.GetByIdAsync(request.searchRequestById);
+            var response = await _unitOfWork.RoomTypeRepository.GetRoomTypeDetailByHotelAsync(request.searchRequest);
 
             if (response.Code != 200)
             {
