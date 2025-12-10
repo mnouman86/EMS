@@ -18,7 +18,8 @@ public interface IUnitOfWork
     public IHotelRepository HotelRepository { get; }
     public IAmenityRepository AmenityRepository { get; }
     public IRoomTypeRepository RoomTypeRepository { get; }
-    public IRoomRateRepository RoomRateRepository { get; }
+	public IUserTypeRepository UserTypeRepository { get; }
+	public IRoomRateRepository RoomRateRepository { get; }
     public IRoomDetailsRepository RoomDetailsRepository { get; }
     public ICategoryRepository CategoryRepository { get; }
     public ISearchHotelRepository SearchHotelRepository { get; }
