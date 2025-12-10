@@ -12,7 +12,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.UserType.Command.CreateUserTypeCommand;
 
-public record CreateUserTypeCommand(string? Title, string? Description, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record CreateUserTypeCommand(string? Title, string? Description, int? NoOfBookings, decimal? DiscountPercentage, decimal? DiscountCap, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateUserTypeCommand>
 {
     [JsonIgnore]
