@@ -9,4 +9,4 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.RoomType.Queries.GetRoomTypeByHotelId;
 
-public record GetRoomTypeByHotelIdQuery(SearchRequestById searchRequestById):IRequest<OperationResult<GetRoomTypeByHotelIdQueryResult>>;
+public record GetRoomTypeByHotelIdQuery(RoomTypeByHotelSearchRequest searchRequest):IRequest<OperationResult<GetRoomTypeByHotelIdQueryResult>>;

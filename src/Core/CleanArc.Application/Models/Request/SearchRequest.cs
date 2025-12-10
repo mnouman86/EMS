@@ -89,7 +89,13 @@ namespace CleanArc.Application.Models.Request
 
     }
 
-    public class HotelDetailSearchRequest : SearchRequestById
+	public class RoomTypeByHotelSearchRequest : SearchRequest
+	{
+		public int GenericTitleId { get; set; }
+
+	}
+
+	public class HotelDetailSearchRequest : SearchRequestById
     {
         public int? GenericTitleId { get; set; }
         public int? NoOfRooms { get; set; }
