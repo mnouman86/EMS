@@ -12,14 +12,14 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.UserType.Command.UpdateUserTypeCommand;
 
-public record UpdateUserTypeCommand(int Id, String? Name, string? Description, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateUserTypeCommand(int Id, String? Title, string? Description, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateUserTypeCommand>
 {
     [JsonIgnore]
     public int UserId { get; set; }
     public IValidator<UpdateUserTypeCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateUserTypeCommand> validator)
     {
-        validator.RuleFor(c => c.Name)
+        validator.RuleFor(c => c.Title)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Name");
