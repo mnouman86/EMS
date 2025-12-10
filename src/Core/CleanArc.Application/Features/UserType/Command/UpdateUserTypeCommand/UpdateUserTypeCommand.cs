@@ -12,7 +12,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.UserType.Command.UpdateUserTypeCommand;
 
-public record UpdateUserTypeCommand(int Id, String? Title, string? Description, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateUserTypeCommand(int Id, String? Title, string? Description, int? NoOfBookings, decimal? DiscountPercentage, decimal? DiscountCap, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<UpdateUserTypeCommand>
 {
     [JsonIgnore]
