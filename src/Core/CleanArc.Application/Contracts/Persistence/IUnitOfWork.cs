@@ -19,6 +19,7 @@ public interface IUnitOfWork
     public IAmenityRepository AmenityRepository { get; }
     public IRoomTypeRepository RoomTypeRepository { get; }
 	public IUserTypeRepository UserTypeRepository { get; }
+	public IRoomDiscountByUserTypeRepository RoomDiscountByUserTypeRepository { get; }
 	public IRoomRateRepository RoomRateRepository { get; }
     public IRoomDetailsRepository RoomDetailsRepository { get; }
     public ICategoryRepository CategoryRepository { get; }
