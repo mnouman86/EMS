@@ -13,21 +13,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.UserType.Command.UpdateUserTypeCommand;
+namespace CleanArc.Application.Features.RoomDiscountByUserType.Command.DeleteRoomDiscountByUserTypeCommand;
 
-internal class UpdateUserTypeCommandHandler : IRequestHandler<UpdateUserTypeCommand, OperationResult<ResponseEntity>>
+internal class DeleteRoomDiscountByUserTypeCommandHandler : IRequestHandler<DeleteRoomDiscountByUserTypeCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<UpdateUserTypeCommandHandler> _logger;
+    private readonly ILogger<DeleteRoomDiscountByUserTypeCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
     //private readonly IUnitOfWork _unitOfWork;
     //private readonly IAppUserManager _userManager;
 
 
-    public UpdateUserTypeCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateUserTypeCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public DeleteRoomDiscountByUserTypeCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<DeleteRoomDiscountByUserTypeCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -38,7 +38,7 @@ internal class UpdateUserTypeCommandHandler : IRequestHandler<UpdateUserTypeComm
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateUserTypeCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(DeleteRoomDiscountByUserTypeCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -48,21 +48,12 @@ internal class UpdateUserTypeCommandHandler : IRequestHandler<UpdateUserTypeComm
                 return OperationResult<ResponseEntity>.FailureResult("User Not Found");
 
 
-            var result = await _unitOfWork.UserTypeRepository.UpdateAsync(new Domain.Entities.UserType.UserType()
-            {
-                UpdatedBy = user.Id,
-                Id = request.Id,
-				Description = request.Description,
-				Title = request.Title,
-				NoOfBookings = request.NoOfBookings,
-				DiscountPercentage = request.DiscountPercentage,
-				DiscountCap = request.DiscountCap,
-				CultureId = request.CultureId
-            });
+            var result = await _unitOfWork.RoomDiscountByUserTypeRepository.DeleteAsync(request.deleteRequest, user.Id);
             await _unitOfWork.CommitAsync();
-            (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
+            //  (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
             return OperationResult<ResponseEntity>.SuccessResult(result);
         }
     }
+
 
 }

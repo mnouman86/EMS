@@ -54,7 +54,10 @@ internal class CreateUserTypeCommandHandler : IRequestHandler<CreateUserTypeComm
                 CreatedBy = user.Id,
                 Description = request.Description,
                 Title = request.Title,
-                CultureId = request.CultureId,
+				NoOfBookings = request.NoOfBookings,
+				DiscountPercentage = request.DiscountPercentage,
+				DiscountCap = request.DiscountCap,
+				CultureId = request.CultureId,
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
