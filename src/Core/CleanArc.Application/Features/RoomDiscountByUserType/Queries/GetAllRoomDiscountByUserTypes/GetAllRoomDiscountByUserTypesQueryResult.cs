@@ -11,6 +11,10 @@ public class GetAllRoomDiscountByUserTypesQueryResult
 {
 	public int? Id { get; set; }
 	public int? GenericTitleId { get; set; }
+	public string? HotelName { get; set; }
+	public string? RoomType { get; set; }
+	public string? RatePlanNames { get; set; }
+	public string? UserTypeNames { get; set; }
 	public int? RoomDetailId { get; set; }
 	public string? RatePlanTypeIds { get; set; }
 	public string? UserTypeIds { get; set; }
