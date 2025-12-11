@@ -13,6 +13,7 @@ public class RoomDiscountByUserType
 	public string? HotelName { get; set; }
 	public string? RoomType { get; set; }
 	public string? RatePlanNames { get; set; }
+	public string? Description { get; set; }
 	public string? UserTypeNames { get; set; }
 	public int? RoomDetailId { get; set; }
 	public string? RatePlanTypeIds { get; set; }
