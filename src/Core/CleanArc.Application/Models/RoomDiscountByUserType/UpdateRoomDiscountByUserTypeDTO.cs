@@ -12,6 +12,8 @@ namespace CleanArc.Application.Models.RoomDiscountByUserType
 		public int? GenericTitleId { get; set; }
 		public int? RoomDetailId { get; set; }
 		public string? RatePlanTypeIds { get; set; }
+		public string? Description { get; set; }
+
 		public string? UserTypeIds { get; set; }
 		public int? UpdatedBy { get; set; }
 		public int? CultureId { get; set; }
