@@ -11,10 +11,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Features.RoomVisual.Queries.GetRoomVisualById;
+using CleanArc.Application.Features.RoomType.Queries.GetAllRoomTypes;
 
 namespace CleanArc.Application.Features.RoomType.Queries.GetRoomTypeByHotelId;
 
-internal class GetRoomTypeByHotelIdQueryHandler : IRequestHandler<GetRoomTypeByHotelIdQuery, OperationResult<GetRoomTypeByHotelIdQueryResult>>
+internal class GetRoomTypeByHotelIdQueryHandler : IRequestHandler<GetRoomTypeByHotelIdQuery, OperationResult<List<GetRoomTypeByHotelIdQueryResult>>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly ILogger<GetRoomTypeByHotelIdQueryHandler> _logger;
@@ -30,7 +31,7 @@ internal class GetRoomTypeByHotelIdQueryHandler : IRequestHandler<GetRoomTypeByH
         _httpContextAccessor = httpContextAccessor;
         _logger = logger;
     }
-    public async ValueTask<OperationResult<GetRoomTypeByHotelIdQueryResult>> Handle(GetRoomTypeByHotelIdQuery request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<List<GetRoomTypeByHotelIdQueryResult>>> Handle(GetRoomTypeByHotelIdQuery request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -50,22 +51,23 @@ internal class GetRoomTypeByHotelIdQueryHandler : IRequestHandler<GetRoomTypeByH
 
             var response = await _unitOfWork.RoomTypeRepository.GetRoomTypeDetailByHotelAsync(request.searchRequest);
 
-            if (response.Code != 200)
-            {
-                return OperationResult<GetRoomTypeByHotelIdQueryResult>.FailureResult(
-                    response.Message,
-                response.Code
-                );
-            }
+			if (response.Code != 200)
+			{
+				return OperationResult<List<GetRoomTypeByHotelIdQueryResult>>.FailureResult(
+					response.Message,
+				response.Code
+				);
+			}
 
-            var mappedResult = _mapper.Map<GetRoomTypeByHotelIdQueryResult>(response.Data);
+			var mappedResult = _mapper.Map<List<GetRoomTypeByHotelIdQueryResult>>(response.Data);
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mappedResult);
 
-            return OperationResult<GetRoomTypeByHotelIdQueryResult>.SuccessResult(
+            return OperationResult<List<GetRoomTypeByHotelIdQueryResult>>.SuccessResult(
                 mappedResult,
                 response.Code,
-                response.Message
-            );
+                response.Message,
+				response.TotalCount
+			);
         }
     }
 
