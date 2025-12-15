@@ -83,7 +83,9 @@ public class RatePlanRepository : IRatePlanRepository
                     int totalProcessed = 0;
                     int inserted = 0;
                     int updated = 0;
-                    
+                    int availabilityInserted = 0;
+                    int availabilityUpdated = 0;
+
                     foreach (var roomRatePlan in RatePlan.RoomRatePlans)
                     {
                         foreach (var dailyRate in roomRatePlan.DailyRates)
@@ -96,13 +98,14 @@ public class RatePlanRepository : IRatePlanRepository
                                 new { roomRatePlan.RatePlanTypeId, rateDate },
                                 transaction
                             );
-
+                            //AvailableRooms = @AvailableRooms,
                             if (existingRate.HasValue == true)
                             {
                                 // Update existing record
                                 await connection.ExecuteAsync(
                                     @"UPDATE DailyRatePlans 
-                              SET AvailableRooms = @AvailableRooms,
+                              SET 
+
                                   Rate = @Rate,
                                   StopSell = @StopSell,
                                   MinStay = @MinStay,
@@ -112,7 +115,7 @@ public class RatePlanRepository : IRatePlanRepository
                                     new
                                     {
                                         Id = existingRate.Value,
-                                        dailyRate.AvailableRooms,
+                                        //dailyRate.AvailableRooms,
                                         dailyRate.Rate,
                                         dailyRate.StopSell,
                                         dailyRate.MinStay,
@@ -127,14 +130,14 @@ public class RatePlanRepository : IRatePlanRepository
                                 // Insert new record
                                 await connection.ExecuteAsync(
                                     @"INSERT INTO DailyRatePlans 
-                              (RatePlanTypeId, RateDate, AvailableRooms, Rate, StopSell, MinStay, MaxStay, CreatedAt, UpdatedAt)
+                              (RatePlanTypeId, RateDate, Rate, StopSell, MinStay, MaxStay, CreatedAt, UpdatedAt)
                               VALUES 
-                              (@RatePlanTypeId, @RateDate, @AvailableRooms, @Rate, @StopSell, @MinStay, @MaxStay, GETDATE(), GETDATE())",
+                              (@RatePlanTypeId, @RateDate, @Rate, @StopSell, @MinStay, @MaxStay, GETDATE(), GETDATE())",
                                     new
                                     {
                                         roomRatePlan.RatePlanTypeId,
                                         dailyRate.RateDate,
-                                        dailyRate.AvailableRooms,
+                                       // dailyRate.AvailableRooms,
                                         dailyRate.Rate,
                                         dailyRate.StopSell,
                                         dailyRate.MinStay,
@@ -147,11 +150,62 @@ public class RatePlanRepository : IRatePlanRepository
                             totalProcessed++;
                         }
                     }
+                    #region ROOM AVAILABILITY PROCESSING
+
+                    foreach (var availability in RatePlan.RoomAvailabilities)
+                    {
+                        var existingAvailabilityId = await connection.QueryFirstOrDefaultAsync<int?>(
+                            @"SELECT Id
+                      FROM RoomDailyAvailability
+                      WHERE RoomDetailId = @RoomDetailId
+                      AND RateDate = @RateDate",
+                            new
+                            {
+                                availability.RoomDetailId,
+                                availability.RateDate
+                            },
+                            transaction
+                        );
+
+                        if (existingAvailabilityId.HasValue)
+                        {
+                            await connection.ExecuteAsync(
+                                @"UPDATE RoomDailyAvailability
+                          SET AvailableRooms = @AvailableRooms,
+                              UpdatedAt = GETDATE()
+                          WHERE Id = @Id",
+                                new
+                                {
+                                    Id = existingAvailabilityId.Value,
+                                    availability.AvailableRooms
+                                },
+                                transaction
+                            );
+
+                            availabilityUpdated++;
+                        }
+                        else
+                        {
+                            await connection.ExecuteAsync(
+                                @"INSERT INTO RoomDailyAvailability
+                          (RoomDetailId, RateDate, AvailableRooms, CreatedAt, UpdatedAt)
+                          VALUES
+                          (@RoomDetailId, @RateDate, @AvailableRooms, GETDATE(), GETDATE())",
+                                availability,
+                                transaction
+                            );
+
+                            availabilityInserted++;
+                        }
+                    }
+
+                    #endregion
 
                     transaction.Commit();
                     result.IsSuccess = true;
                     result.Message = "Daily rate plans processed successfully.";
-                    result.RecordID = $"Total Processed: {totalProcessed}, Inserted: {inserted}, Updated: {updated}";
+                    result.RecordID = $"Total Processed: {totalProcessed}, Inserted: {inserted}, Updated: {updated}| " +
+                $"Availability → Inserted: {availabilityInserted}, Updated: {availabilityUpdated}";
                     result.Code=200;
                     (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                     //return (totalProcessed, inserted, updated);
@@ -237,12 +291,17 @@ public class RatePlanRepository : IRatePlanRepository
                 drp.Rate,
                 drp.StopSell,
                 drp.MinStay,
-                drp.MaxStay
+                drp.MaxStay,
+                rda.Id AS RoomAvailabilityId,
+                rda.RateDate AS AvailabilityDate,
+                rda.AvailableRooms
             FROM Generic.Title h
             INNER JOIN Stays.RoomDetail rt ON h.Id = rt.GenericTitleId
             INNER JOIN RatePlanType rpt ON rt.Id = rpt.RoomDetailId
             LEFT JOIN DailyRatePlans drp ON rpt.Id = drp.RatePlanTypeId
                 AND drp.RateDate BETWEEN @StartDate AND @EndDate
+            LEFT JOIN RoomDailyAvailability rda ON rt.Id = rda.RoomDetailId
+                AND rda.RateDate BETWEEN @StartDate AND @EndDate
             WHERE h.Id = @GenericTitleId
                 AND rt.IsActive = 1
                 AND rpt.IsActive = 1");
@@ -269,6 +328,19 @@ public class RatePlanRepository : IRatePlanRepository
                 .Select(rtGroup => new RoomTypeRatePlanDto
                 {
                     RoomDetailId = rtGroup.Key.RoomDetailId,
+
+                    Availabilities = rtGroup
+                .Where(r => r.RoomAvailabilityId != null)
+                .GroupBy(r => new { r.RoomAvailabilityId, r.AvailabilityDate, r.AvailableRooms })
+                .Select(a => new RoomAvailabilityResponseDto
+                {
+                    RoomAvailabilityId = a.Key.RoomAvailabilityId,
+                    RateDate = a.Key.AvailabilityDate,
+                    AvailableRooms = a.Key.AvailableRooms
+                })
+                .OrderBy(a => a.RateDate)
+                .ToList(),
+
                     //RoomTypeName = rtGroup.Key.RoomTypeName,
                     RatePlans = rtGroup
                         .GroupBy(r => new { r.RatePlanTypeId, r.RatePlanName })
@@ -282,7 +354,7 @@ public class RatePlanRepository : IRatePlanRepository
                                 {
                                     DailyRatePlanId = r.DailyRatePlanId,
                                     RateDate = r.RateDate,
-                                    AvailableRooms = r.AvailableRooms ?? 0,
+                                    //AvailableRooms = r.AvailableRooms ?? 0,
                                     Rate = r.Rate ?? 0,
                                     StopSell = r.StopSell ?? false,
                                     MinStay = r.MinStay ?? 1,
@@ -369,8 +441,7 @@ public class RatePlanRepository : IRatePlanRepository
                                 // Update existing record
                                 await connection.ExecuteAsync(
                                     @"UPDATE DailyRatePlans 
-                              SET AvailableRooms = @AvailableRooms,
-                                  Rate = @Rate,
+                              SET Rate = @Rate,
                                   StopSell = @StopSell,
                                   MinStay = @MinStay,
                                   MaxStay = @MaxStay,
@@ -379,7 +450,7 @@ public class RatePlanRepository : IRatePlanRepository
                                     new
                                     {
                                         DailyRatePlanId = existingRate.Value,
-                                        dailyRate.AvailableRooms,
+                                        //dailyRate.AvailableRooms,
                                         dailyRate.Rate,
                                         dailyRate.StopSell,
                                         dailyRate.MinStay,
@@ -394,14 +465,14 @@ public class RatePlanRepository : IRatePlanRepository
                                 // Insert new record
                                 await connection.ExecuteAsync(
                                     @"INSERT INTO DailyRatePlans 
-                              (RatePlanTypeId, RateDate, AvailableRooms, Rate, StopSell, MinStay, MaxStay, CreatedAt, UpdatedAt)
+                              (RatePlanTypeId, RateDate, Rate, StopSell, MinStay, MaxStay, CreatedAt, UpdatedAt)
                               VALUES 
-                              (@RatePlanTypeId, @RateDate, @AvailableRooms, @Rate, @StopSell, @MinStay, @MaxStay, GETDATE(), GETDATE())",
+                              (@RatePlanTypeId, @RateDate, @Rate, @StopSell, @MinStay, @MaxStay, GETDATE(), GETDATE())",
                                     new
                                     {
                                         roomRatePlan.RatePlanTypeId,
                                         dailyRate.RateDate,
-                                        dailyRate.AvailableRooms,
+                                        //dailyRate.AvailableRooms,
                                         dailyRate.Rate,
                                         dailyRate.StopSell,
                                         dailyRate.MinStay,
