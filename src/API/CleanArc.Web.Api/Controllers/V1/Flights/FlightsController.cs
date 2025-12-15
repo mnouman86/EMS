@@ -11,6 +11,7 @@ using CleanArc.Application.Features.Admin.Commands.VerifyEmailCommand;
 using CleanArc.Application.Features.Admin.Commands.VerifyOTPCommand;
 using CleanArc.Application.Features.Admin.Queries.GetToken;
 using CleanArc.Application.Features.Flights.Queries;
+using CleanArc.Application.Features.Flights.Queries.KPlus;
 using CleanArc.Application.Features.SearchAutoComplete.Queries.GetSearchAutoComplete;
 using CleanArc.Application.Features.UserProfile.Commands.UpdateUserProfile;
 using CleanArc.Application.Features.UserProfile.Queries.GetUserProfile;
@@ -89,6 +90,31 @@ namespace CleanArc.Web.Api.Controllers.V1.Admin
         {
             var list = await _lookup.GetAirportsAsync(ct);
             return Ok(list); // returns list of { code, name }
+        }
+
+        [HttpPost("SearchKPlus")]
+        public async Task<IActionResult> SearchKPlus([FromBody] GetFlightsListingQuery request)
+        {
+            using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext))
+            {
+                // Map incoming request (GetFlightsListingQuery) to KPlusSearchFlightsQuery
+                var kplusQuery = new KPlusSearchFlightsQuery
+                {
+                    Departure_Airport = request.Departure_Airport,
+                    Arrival_Airport = request.Arrival_Airport,
+                    Travel_Date = request.Travel_Date,
+                    Return_Date = request.Return_Date,
+                    ADT = request.ADT,
+                    CNN = request.CNN,
+                    INF = request.INF,
+                    Class = request.Class
+                };
+
+                var commandResult = await _sender.Send(kplusQuery);
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(commandResult);
+
+                return OperationResult(commandResult);
+            }
         }
     }
 }
