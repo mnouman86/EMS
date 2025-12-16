@@ -56,6 +56,7 @@ internal class UpdateRoomDiscountByUserTypeCommandHandler : IRequestHandler<Upda
 				RoomDetailId = request.RoomDetailId,
 				RatePlanTypeIds = request.RatePlanTypeIds,
 				UserTypeIds = request.UserTypeIds,
+                Description= request.Description,
 				CultureId = request.CultureId
             });
             await _unitOfWork.CommitAsync();
