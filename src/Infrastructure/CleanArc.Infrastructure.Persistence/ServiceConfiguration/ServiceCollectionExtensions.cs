@@ -8,6 +8,7 @@ using CleanArc.Infrastructure.Persistence.Common.Validation;
 using CleanArc.Infrastructure.Persistence.Configuration.FlightsConfig;
 using CleanArc.Infrastructure.Persistence.Configuration.HotelProvidersConfig;
 using CleanArc.Infrastructure.Persistence.Providers.BookingWhizz;
+using CleanArc.Infrastructure.Persistence.Providers.KPlus;
 using CleanArc.Infrastructure.Persistence.Providers.Mosafir;
 using CleanArc.Infrastructure.Persistence.Repositories.Common;
 using CleanArc.Infrastructure.Persistence.Services;
@@ -32,6 +33,9 @@ public static class ServiceCollectionExtensions
                 .UseSqlServer(configuration.GetConnectionString("SqlServer"));
         });
         services.AddHostedService<VerificationCodeCleanupService>();
+
+        // Add KPlus options from configuration (add this near MosafirOptions registration)
+        services.Configure<KPlusOptions>(configuration.GetSection("KPlus"));
 
         services.Configure<MosafirOptions>(configuration.GetSection("Mosafir"));
 
@@ -70,9 +74,19 @@ public static class ServiceCollectionExtensions
                 client.DefaultRequestHeaders.Add("X-Api-Key", opts.ApiKey);
         });
 
+        // Register the typed HttpClient for KPlus provider
+        services.AddHttpClient<KPlusFlightProvider>((sp, client) =>
+        {
+            var opts = sp.GetRequiredService<IOptions<KPlusOptions>>().Value;
+            client.BaseAddress = new Uri(opts.BaseUrl);
+            client.Timeout = TimeSpan.FromSeconds(opts.TimeoutSeconds);
+        });
 
         // Resolve interface to typed provider
         services.AddScoped<IFlightProvider>(sp => sp.GetRequiredService<MosafirFlightProvider>());
+
+        // Register KPlus provider
+        services.AddScoped<IKPlusFlightProvider, KPlusFlightProvider>();
 
         // <<< Register lookup implementation here >>>
         services.AddSingleton<ILookupService, JsonLookupService>();
