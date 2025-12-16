@@ -18,6 +18,8 @@ namespace CleanArc.Application.Models.RatePlan
     {
         public int RoomDetailId { get; set; }
         public string RoomTypeName { get; set; } = string.Empty;
+        public List<RoomAvailabilityResponseDto> Availabilities { get; set; } = new();
+
         public List<RatePlanDetailDto> RatePlans { get; set; } = new();
     }
 
@@ -27,12 +29,18 @@ namespace CleanArc.Application.Models.RatePlan
         public string RatePlanName { get; set; } = string.Empty;
         public List<DailyRateResponseDto> DailyRates { get; set; } = new();
     }
+    public class RoomAvailabilityResponseDto
+    {
+        public long? RoomAvailabilityId { get; set; }
+        public DateTime RateDate { get; set; }
+        public int AvailableRooms { get; set; }
+    }
 
     public class DailyRateResponseDto
     {
         public long? DailyRatePlanId { get; set; }
         public DateTime RateDate { get; set; }
-        public int AvailableRooms { get; set; }
+        //public int AvailableRooms { get; set; }
         public decimal Rate { get; set; }
         public bool StopSell { get; set; }
         public int MinStay { get; set; }

@@ -95,6 +95,10 @@ public class ActivityRepository : IActivityRepository
 			{
 				connection.Open();
 				CreateActivityDTO createActivityDTO = _mapper.Map<CreateActivityDTO>(activity);
+                createActivityDTO.StartDate = activity.StartDate.HasValue ? activity.StartDate.Value.ToString("yyyy-MM-dd") : null;
+                createActivityDTO.EndDate = activity.EndDate.HasValue ? activity.EndDate.Value.ToString("yyyy-MM-dd") : null;
+                createActivityDTO.StartTime = activity.StartTime.HasValue ? activity.StartTime.Value.ToString("HH:mm") : null;
+                createActivityDTO.EndTime = activity.EndTime.HasValue ? activity.EndTime.Value.ToString("HH:mm") : null;
 				var parameters = new DynamicParameters(createActivityDTO);
                 var languageTable = new DataTable();
                 languageTable.Columns.Add("LanguageTypeLookUpId", typeof(int));
@@ -489,7 +493,11 @@ public class ActivityRepository : IActivityRepository
 			{
 				connection.Open();
 				UpdateActivityDTO updateActivityDTO = _mapper.Map<UpdateActivityDTO>(activity);
-				var parameters = new DynamicParameters(updateActivityDTO);
+                updateActivityDTO.StartDate = activity.StartDate.HasValue ? activity.StartDate.Value.ToString("yyyy-MM-dd") : null;
+                updateActivityDTO.EndDate = activity.EndDate.HasValue ? activity.EndDate.Value.ToString("yyyy-MM-dd") : null;
+                updateActivityDTO.StartTime = activity.StartTime.HasValue ? activity.StartTime.Value.ToString("HH:mm") : null;
+                updateActivityDTO.EndTime = activity.EndTime.HasValue ? activity.EndTime.Value.ToString("HH:mm") : null;
+                var parameters = new DynamicParameters(updateActivityDTO);
                 var languageTable = new DataTable();
                 languageTable.Columns.Add("LanguageTypeLookUpId", typeof(int));
                 foreach (var language in activity.LanguageLookUpId)
