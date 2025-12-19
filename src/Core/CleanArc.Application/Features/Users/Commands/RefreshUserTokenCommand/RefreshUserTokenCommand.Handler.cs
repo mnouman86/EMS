@@ -16,7 +16,7 @@ namespace CleanArc.Application.Features.Users.Commands.RefreshUserTokenCommand
 
         public async ValueTask<OperationResult<AccessToken>> Handle(RefreshUserTokenCommand request, CancellationToken cancellationToken)
         {
-            var newToken = await _jwtService.RefreshToken(request.RefreshToken);
+            var newToken = await _jwtService.RefreshToken(request.RefreshToken,false);
 
             if(newToken is null)
                 return OperationResult<AccessToken>.FailureResult("Invalid refresh token");

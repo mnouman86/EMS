@@ -30,7 +30,7 @@ public class JwtService : IJwtService
         _claimsPrincipal = claimsPrincipal;
         _unitOfWork = unitOfWork;
     }
-    public async Task<AccessToken> GenerateAsync(User user)
+    public async Task<AccessToken> GenerateAsync(User user, bool RememberMe)
     {
         var secretKey = Encoding.UTF8.GetBytes(_siteSetting.SecretKey); // longer that 16 character
         var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(secretKey), SecurityAlgorithms.HmacSha256Signature);
@@ -47,7 +47,7 @@ public class JwtService : IJwtService
             Audience = _siteSetting.Audience,
             IssuedAt = DateTime.Now,
             NotBefore = DateTime.Now.AddMinutes(0),
-            Expires = DateTime.Now.AddMinutes(_siteSetting.ExpirationMinutes),
+            Expires =RememberMe==false? DateTime.Now.AddMinutes(_siteSetting.ExpirationMinutes): DateTime.Now.AddMinutes(43200),
             SigningCredentials = signingCredentials,
             EncryptingCredentials = encryptingCredentials,
             Subject = new ClaimsIdentity(claims)
@@ -86,14 +86,14 @@ public class JwtService : IJwtService
         return Task.FromResult(principal);
     }
 
-    public async Task<AccessToken> GenerateByPhoneNumberAsync(string phoneNumber)
+    public async Task<AccessToken> GenerateByPhoneNumberAsync(string phoneNumber, bool RememberMe)
     {
         var user = await _userManager.Users.AsNoTracking().FirstOrDefaultAsync(u => u.PhoneNumber == phoneNumber);
-        var result = await this.GenerateAsync(user);
+        var result = await this.GenerateAsync(user,RememberMe);
         return result;
     }
 
-    public async Task<AccessToken> RefreshToken(Guid refreshTokenId)
+    public async Task<AccessToken> RefreshToken(Guid refreshTokenId, bool RememberMe)
     {
         var refreshToken = await _unitOfWork.UserRefreshTokenRepository.GetTokenWithInvalidation(refreshTokenId);
             
@@ -109,7 +109,7 @@ public class JwtService : IJwtService
         if (user is null)
             return null;
 
-        var result = await this.GenerateAsync(user);
+        var result = await this.GenerateAsync(user, RememberMe);
 
         return result;
     }
