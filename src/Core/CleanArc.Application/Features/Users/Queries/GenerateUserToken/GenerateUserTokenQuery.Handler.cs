@@ -35,7 +35,7 @@ internal class GenerateUserTokenQueryHandler : IRequestHandler<GenerateUserToken
 
         await _userManager.UpdateUserAsync(user);
 
-        var token = await _jwtService.GenerateAsync(user);
+        var token = await _jwtService.GenerateAsync(user, false);
 
         return OperationResult<AccessToken>.SuccessResult(token);
     }
