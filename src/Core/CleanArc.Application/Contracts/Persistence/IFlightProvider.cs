@@ -13,5 +13,6 @@ namespace CleanArc.Application.Contracts.Persistence
     {
         Task<SingleResponseWrapper<FlightSearchResultDto>> SearchFlightsAsync(FlightSearchRequestDto request, CancellationToken cancellationToken = default);
         Task<SingleResponseWrapper<FlightListingResponseDto>> SearchFlightsLitingAsync(GetFlightsListingQuery request, CancellationToken cancellationToken = default);
+
     }
 }
