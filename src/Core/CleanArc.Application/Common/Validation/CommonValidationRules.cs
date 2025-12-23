@@ -14,7 +14,7 @@ namespace CleanArc.Application.Common.Validation
         {
             return ruleBuilder
         .NotEmpty().WithMessage($"{fieldName} is required")
-        .Length(2, 100).WithMessage($"{fieldName} must be between 2 and 100 characters")
+        .Length(2, 100).WithMessage($"{fieldName} must be between 2 and 50 characters")
         .Matches(@"^(?i)(Mr\.|Mrs\.|Ms\.|Miss|Dr\.|Prof\.|Engr\.|Hafiz|Mufti|Allama|Shaikh)?\.?\s*((([A-Z]\.)+|[\p{L}\p{M}]+)([\p{Zs}\p{Pd}'’\.]?))*\s*(Jr\.|Sr\.|I{2,3}|IV|V)?$")
             .WithMessage($"{fieldName} contains invalid characters or format")
                 .Must(name => char.IsUpper(name[0]))
@@ -51,6 +51,8 @@ namespace CleanArc.Application.Common.Validation
                 .Matches("[0-9]").WithMessage("Password must contain at least one number")
                 .Matches("[^a-zA-Z0-9]").WithMessage("Password must contain at least one special character");
         }
+        //8–100 chars, at least 1 uppercase, 1 lowercase, 1 number & 1 special char
+
     }
 
 }

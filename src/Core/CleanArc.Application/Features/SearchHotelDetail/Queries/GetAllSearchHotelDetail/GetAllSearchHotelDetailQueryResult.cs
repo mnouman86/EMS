@@ -32,6 +32,7 @@ public class GetAllSearchHotelDetailQueryResult
     public APIProvider Provider { get; set; }
 
     public string Name { get; set; }
+    public string AccommodationTypeName { get; set; }
     public string CityName { get; set; }
     public string CityDescription { get; set; }
     public string RoomTypeName { get; set; }
