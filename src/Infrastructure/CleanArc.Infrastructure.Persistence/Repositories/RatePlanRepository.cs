@@ -86,6 +86,7 @@ public class RatePlanRepository : IRatePlanRepository
                     int availabilityInserted = 0;
                     int availabilityUpdated = 0;
 
+
                     foreach (var roomRatePlan in RatePlan.RoomRatePlans)
                     {
                         foreach (var dailyRate in roomRatePlan.DailyRates)
@@ -154,6 +155,7 @@ public class RatePlanRepository : IRatePlanRepository
 
                     foreach (var availability in RatePlan.RoomAvailabilities)
                     {
+                        string rateDate = availability.RateDate.ToString("yyyy-MM-dd");
                         var existingAvailabilityId = await connection.QueryFirstOrDefaultAsync<int?>(
                             @"SELECT Id
                       FROM RoomDailyAvailability
@@ -162,7 +164,7 @@ public class RatePlanRepository : IRatePlanRepository
                             new
                             {
                                 availability.RoomDetailId,
-                                availability.RateDate
+                                rateDate
                             },
                             transaction
                         );
