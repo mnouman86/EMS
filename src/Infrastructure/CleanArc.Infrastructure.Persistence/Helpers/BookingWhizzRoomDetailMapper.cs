@@ -147,6 +147,8 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
             hotel.RefundPolicy = hotel.Rooms.FirstOrDefault()?.RefundPolicy;
             hotel.NonRefundPolicy = hotel.Rooms.FirstOrDefault()?.NonRefundPolicy;
             hotel.CancellationPolicy = hotel.Rooms.FirstOrDefault()?.CancellationPolicy;
+            hotel.BookingPolicy = hotel.Rooms.FirstOrDefault()?.BookingPolicy;
+            hotel.NoShowPolicy = hotel.Rooms.FirstOrDefault()?.NoShowPolicy;
             return hotel;
         }
     }
