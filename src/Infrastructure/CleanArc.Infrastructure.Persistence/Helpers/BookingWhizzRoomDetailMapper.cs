@@ -49,7 +49,9 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
             //DateTime? checkOutTimeTo = TimeSpan.TryParse(checkOutTo, out var cotTime)
             //    ? DateTime.Today.Add(cotTime)
             //    : null;
-
+            string RefundPolicyString = string.Empty;
+            string CancellationPolicyString = string.Empty;
+            string NonRefundPolicyString = string.Empty;
             var hotel = new HotelDetail
             {
                 Id = int.Parse(hotelElement.Element("AccommodationId")?.Value ?? "0"),
@@ -103,6 +105,21 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                                 Icon = a.Trim(),
                                 Selected = true
                             }).ToList() ?? new List<AmenityMapping>(),
+                        RefundPolicy = room
+                                .Element("RatePlanDetails")?
+                                .Elements("RatePlans")
+                                .Select(rp => rp.Element("BookingPolicy")?.Value)
+                                .FirstOrDefault(v => !string.IsNullOrWhiteSpace(v)) ?? string.Empty,
+                        CancellationPolicy = room
+                                .Element("RatePlanDetails")?
+                                .Elements("RatePlans")
+                                .Select(rp => rp.Element("CancellationPolicy")?.Value)
+                                .FirstOrDefault(v => !string.IsNullOrWhiteSpace(v)) ?? string.Empty,
+                        NonRefundPolicy = room
+                                .Element("RatePlanDetails")?
+                                .Elements("RatePlans")
+                                .Select(rp => rp.Element("NoShowPolicy")?.Value)
+                                .FirstOrDefault(v => !string.IsNullOrWhiteSpace(v)) ?? string.Empty,
                         Medias = room.Element("RoomImages")?.Elements("RoomImage")
                             .Select((img, i) => new GenericMedia
                             {
@@ -127,7 +144,9 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                         IsActive = true
                     }).ToList()
             };
-
+            hotel.RefundPolicy = hotel.Rooms.FirstOrDefault()?.RefundPolicy;
+            hotel.NonRefundPolicy = hotel.Rooms.FirstOrDefault()?.NonRefundPolicy;
+            hotel.CancellationPolicy = hotel.Rooms.FirstOrDefault()?.CancellationPolicy;
             return hotel;
         }
     }
