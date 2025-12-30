@@ -105,7 +105,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                                 Icon = a.Trim(),
                                 Selected = true
                             }).ToList() ?? new List<AmenityMapping>(),
-                        RefundPolicy = room
+                        BookingPolicy = room
                                 .Element("RatePlanDetails")?
                                 .Elements("RatePlans")
                                 .Select(rp => rp.Element("BookingPolicy")?.Value)
@@ -115,7 +115,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                                 .Elements("RatePlans")
                                 .Select(rp => rp.Element("CancellationPolicy")?.Value)
                                 .FirstOrDefault(v => !string.IsNullOrWhiteSpace(v)) ?? string.Empty,
-                        NonRefundPolicy = room
+                        NoShowPolicy = room
                                 .Element("RatePlanDetails")?
                                 .Elements("RatePlans")
                                 .Select(rp => rp.Element("NoShowPolicy")?.Value)
