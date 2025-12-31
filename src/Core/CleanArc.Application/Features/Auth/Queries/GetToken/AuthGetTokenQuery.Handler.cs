@@ -70,7 +70,7 @@ public class AuthGetTokenQueryHandler : IRequestHandler<AuthGetTokenQuery, AuthT
         }
 
         // Generate token
-        var token = await _jwtService.GenerateAsync(user);
+        var token = await _jwtService.GenerateAsync(user,false);
         //{
         await _unitOfWork.CommitAsync();
         if (token is null)

@@ -88,7 +88,7 @@ namespace CleanArc.Test.Infrastructure.Identity
 
             var confirmPhoneNumberResult = await base.TestAppUserManager.ChangePhoneNumber(user, user.PhoneNumber, otpCode);
 
-            var token=await base.JwtService.GenerateAsync(user);
+            var token=await base.JwtService.GenerateAsync(user,false);
 
             Assert.NotNull(token.access_token);
         }

@@ -23,7 +23,10 @@ public class GetAllRoomDetailQueryResult
     public Decimal? DiscountAmount { get; set; }
     public Decimal? DiscountedPrice { get; set; }
     public string? RefundPolicy { get; set; }
-
+    public string? NonRefundPolicy { get; set; }
+    public string? CancellationPolicy { get; set; }
+    public string? BookingPolicy { get; set; }
+    public string? NoShowPolicy { get; set; }
     public string? HotelName { get; set; }
     public string? Description { get; set; }
     public int? RoomTypeLookUpId { get; set; }

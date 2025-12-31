@@ -22,6 +22,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                     GenericTitleId = int.Parse(element.Element("AccommodationId")?.Value ?? "0"),
                     HotelID = int.Parse(element.Element("AccommodationId")?.Value ?? "0"),
                     Name = element.Element("AccommodationName")?.Value,
+                    AccommodationTypeName = element.Element("AccommodationTypeName")?.Value,
                     CityID = int.TryParse(element.Element("CityId")?.Value, out var cityId) ? cityId : 0,
                     CityName = element.Element("CityName")?.Value,
                     RoomTypeName = element.Element("MinRoomName")?.Value,

@@ -6,8 +6,8 @@ namespace CleanArc.Application.Contracts;
 
 public interface IJwtService
 {
-    Task<AccessToken> GenerateAsync(User user);
+    Task<AccessToken> GenerateAsync(User user, bool RememberMe);
     Task<ClaimsPrincipal> GetPrincipalFromExpiredToken(string token);
-    Task<AccessToken> GenerateByPhoneNumberAsync(string phoneNumber);
-    Task<AccessToken> RefreshToken(Guid refreshTokenId);
+    Task<AccessToken> GenerateByPhoneNumberAsync(string phoneNumber, bool RememberMe);
+    Task<AccessToken> RefreshToken(Guid refreshTokenId, bool RememberMe);
 }
