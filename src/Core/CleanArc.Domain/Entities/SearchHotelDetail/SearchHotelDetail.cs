@@ -23,6 +23,7 @@ namespace CleanArc.Domain.Entities.SearchHotelDetail
         public int? HotelID { get; set; }
         public int? CityID { get; set; }
         public String? Name { get; set; }
+        public String? AccommodationTypeName { get; set; }
         public String? CityName { get; set; }
         public String? CityDescription { get; set; }
         public String? RoomTypeName { get; set; }
@@ -44,6 +45,10 @@ namespace CleanArc.Domain.Entities.SearchHotelDetail
         public int? ReviewsCount { get; set; }
         public int? Rating { get; set; }
         public string? RefundPolicy { get; set; }
+        public string? NonRefundPolicy { get; set; }
+        public string? CancellationPolicy { get; set; }
+        public string? BookingPolicy { get; set; }
+        public string? NoShowPolicy { get; set; }
         public List<GenericMedia.GenericMedia> HotelImages { get; set; }
         public List<AmenityMapping.AmenityMapping> Amenities { get; set; }
         public decimal? Discount { get; set; }

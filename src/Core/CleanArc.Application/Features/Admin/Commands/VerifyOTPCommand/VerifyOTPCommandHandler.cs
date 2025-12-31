@@ -46,7 +46,7 @@ namespace CleanArc.Application.Features.Admin.Commands.VerifyOTPCommand
             
 
             // Generate JWT token
-            var token = await _jwtService.GenerateAsync(user);
+            var token = await _jwtService.GenerateAsync(user,false);
 
             //var token = await _tokenService.GenerateTokenAsync(request.PhoneNumber);
 

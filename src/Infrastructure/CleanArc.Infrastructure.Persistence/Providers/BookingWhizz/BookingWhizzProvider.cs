@@ -45,7 +45,7 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
         {
             string cityName = request.FilterArray?
                 .FirstOrDefault(f => f.ParameterName.Equals("name", StringComparison.OrdinalIgnoreCase))?
-                .ParameterValue ?? "Islamabad";
+                .ParameterValue ?? string.Empty;
 
             int limit = request.PageSize > 0 ? request.PageSize : 1000;
             int offSet = request.PageNumber-1 > 0 ? request.PageNumber * limit : 0;
@@ -97,9 +97,16 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
                 amenitiesFilter = $"&facilityname={request.Amenities?.Trim()}";
             }
 
+            string cityNameFilter = "";
+            if (cityName != string.Empty)
+            {
+                cityNameFilter = $"&cityname={cityName}";
+            }
+
             var url = $"{_settings.BaseUrl}getaccommodationsearchnew?" +
                       $"userid={_settings.UserId}&password={_settings.Password}" +
-                      $"&cityname={cityName}&checkin={request.StartDate:yyyy-MM-dd}" +
+                      //$"&checkin={request.StartDate:yyyy-MM-dd}" +
+                      $"{cityNameFilter}&checkin={request.StartDate:yyyy-MM-dd}" +
                       $"&checkout={request.EndDate:yyyy-MM-dd}&sortby={columnName}&sort={columnDirection}"+
                       //$"&offset={offSet}&limits={limit}{priceRangeFilter}{adultFilter}{roomsFilter}{amenitiesFilter}&multilanguageid={_settings.MultiLanguageId}" +
                       $"{paginationFilter}{priceRangeFilter}{adultFilter}{roomsFilter}{amenitiesFilter}&multilanguageid={_settings.MultiLanguageId}" +

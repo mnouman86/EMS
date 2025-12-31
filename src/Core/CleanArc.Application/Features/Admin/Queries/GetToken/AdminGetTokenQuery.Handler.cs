@@ -59,7 +59,7 @@ public class AdminGetTokenQueryHandler : IRequestHandler<AdminGetTokenQuery, Ope
         }
 
         // Generate token
-        var token = await _jwtService.GenerateAsync(user);
+        var token = await _jwtService.GenerateAsync(user,request.RememberMe);
         _logger.LogInformation("Token generated from {@methodName}, Response: {@token}", methodName, token != null);
 
         // Add reward for successful login
