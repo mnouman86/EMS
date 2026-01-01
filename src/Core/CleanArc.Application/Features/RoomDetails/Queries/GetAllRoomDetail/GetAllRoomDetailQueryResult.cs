@@ -4,6 +4,7 @@ using CleanArc.Application.Features.GenericMedia.Queries.GetAllGenericMedia;
 using CleanArc.Application.Features.Language.Queries.GetAllLanguages;
 using CleanArc.Application.Features.OutDoor.Queries.GetAllOutDoor;
 using CleanArc.Application.Features.RatePlan.Queries.GetAllRatePlans;
+using CleanArc.Application.Features.RatePlan.Queries.GetRatePlanById;
 using CleanArc.Application.Features.RatePlanType.Queries.GetAllRatePlanTypes;
 using CleanArc.Application.Features.RoomView.Queries.GetAllRoomView;
 using CleanArc.Domain.Entities.Language;
@@ -55,6 +56,8 @@ public class GetAllRoomDetailQueryResult
     public int UpdatedBy { get; set; }
     public DateTime UpdatedAt { get; set; }
     public IEnumerable<GetAllGenericMediaQueryResult> Medias { get; set; }
+    public List<GetAllRatePlansQueryResult> RatePlans { get; set; }
+
     public IEnumerable<GetAllRatePlanTypesQueryResult> RatePlanTypes { get; set; }
     
     public List<GetAllAmenityMappingQueryResult> RoomAmenities { get; set; }

@@ -37,6 +37,7 @@ using CleanArc.Domain.Entities.NearByLocation;
 using CleanArc.Application.Services.Aggregators;
 using CleanArc.Infrastructure.Persistence.Providers.BookingWhizz;
 using CleanArc.Domain.Entities.RatePlanType;
+using CleanArc.Domain.Entities.RatePlan;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -237,6 +238,8 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                     parameters.Add("@CultureId", searchRequest.CultureId, DbType.Int32);
                     parameters.Add("@ID", searchRequest.Id, DbType.Int32);
                     parameters.Add("@NoOfRooms", searchRequest.NoOfRooms, DbType.Int32);
+                    parameters.Add("@StartDate", searchRequest.StartDate, DbType.Date);
+                    parameters.Add("@EndDate", searchRequest.EndDate, DbType.Date);
                     parameters.Add("@NoOfDays", searchRequest.NoOfDays, DbType.Int32);
 
                     var result = await connection.QueryMultipleAsync(RoomDetailQueries.GetHotelDetail_ByRoom, parameters, commandType: CommandType.StoredProcedure);
@@ -265,6 +268,16 @@ public class RoomDetailsRepository : IRoomDetailsRepository
 
                         var nearByLocations = result.Read<NearByLocation>().ToList();
                         hotelDetail.NearByLocations = nearByLocations;
+
+                        var ratePlans = result.Read<RatePlan>().ToList();
+                        RoomDetails rd = hotelDetail.Rooms.Where(x => x.Id == searchRequest.Id).FirstOrDefault();
+                        rd.RatePlans = ratePlans;
+                        if (ratePlans!=null && hotelDetail.Rooms.Count>0)
+                        {
+                            hotelDetail.Rooms.Where(x => x.Id == searchRequest.Id).FirstOrDefault().RatePlans = ratePlans;
+                        }
+                        
+                        
                         if (!result.IsConsumed)
                         {
                             result.Dispose();

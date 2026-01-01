@@ -1,6 +1,7 @@
 ﻿using CleanArc.Domain.Entities.AmenityMapping;
 using CleanArc.Domain.Entities.GenericMedia;
 using CleanArc.Domain.Entities.Hotel;
+using CleanArc.Domain.Entities.RatePlan;
 using CleanArc.Domain.Entities.RoomDetails;
 using System;
 using System.Collections.Generic;
@@ -107,17 +108,17 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                             }).ToList() ?? new List<AmenityMapping>(),
                         BookingPolicy = room
                                 .Element("RatePlanDetails")?
-                                .Elements("RatePlans")
+                                .Elements("RatePlans")?
                                 .Select(rp => rp.Element("BookingPolicy")?.Value)
                                 .FirstOrDefault(v => !string.IsNullOrWhiteSpace(v)) ?? string.Empty,
                         CancellationPolicy = room
                                 .Element("RatePlanDetails")?
-                                .Elements("RatePlans")
+                                .Elements("RatePlans")?
                                 .Select(rp => rp.Element("CancellationPolicy")?.Value)
                                 .FirstOrDefault(v => !string.IsNullOrWhiteSpace(v)) ?? string.Empty,
                         NoShowPolicy = room
                                 .Element("RatePlanDetails")?
-                                .Elements("RatePlans")
+                                .Elements("RatePlans")?
                                 .Select(rp => rp.Element("NoShowPolicy")?.Value)
                                 .FirstOrDefault(v => !string.IsNullOrWhiteSpace(v)) ?? string.Empty,
                         Medias = room.Element("RoomImages")?.Elements("RoomImage")
@@ -128,6 +129,17 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                                 ImageTitle = img.Attribute("Photo_Max500")?.Value?.Split('/').Last(),
                                 IsMain = i == 0
                             }).ToList() ?? new List<GenericMedia>(),
+                        RatePlans = room.Element("RatePlanDetails")?.Elements("RatePlans")
+                            .Select((rtp, i) => new RatePlan
+                            {
+                                RatePlanTypeId = int.TryParse(rtp.Element("RatePlanId")?.Value, out var rtId) ? rtId : null,
+                                RatePlanName = rtp.Element("RatePlanName")?.Value,
+                                AvailableRooms = int.TryParse(rtp.Element("NoOfRoomsAvailable")?.Value, out var ar) ? ar : null,
+                                Rate = decimal.TryParse(rtp.Element("ConvertedRate")?.Value, out var rt) ? rt : null,
+                                MaxStay = int.TryParse(rtp.Element("MaxPerson")?.Value, out var ms) ? ms : null,
+                               TaxAmount = decimal.TryParse(rtp.Element("Taxs").Element("Tax")?.Attribute("TaxValue")?.Value, out var tax) ? tax : null
+                            }).ToList() ?? new List<RatePlan>(),
+
                         Price = decimal.TryParse(room.Element("RatePlanDetails")?
                             .Element("RatePlans")?
                             .Element("ConvertedRate")?.Value, out var rate) ? rate : null,
