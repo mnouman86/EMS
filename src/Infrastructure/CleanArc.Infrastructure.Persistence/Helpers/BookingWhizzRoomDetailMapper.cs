@@ -129,17 +129,73 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                                 ImageTitle = img.Attribute("Photo_Max500")?.Value?.Split('/').Last(),
                                 IsMain = i == 0
                             }).ToList() ?? new List<GenericMedia>(),
-                        RatePlans = room.Element("RatePlanDetails")?.Elements("RatePlans")
-                            .Select((rtp, i) => new RatePlan
-                            {
-                                RatePlanTypeId = int.TryParse(rtp.Element("RatePlanId")?.Value, out var rtId) ? rtId : null,
-                                RatePlanName = rtp.Element("RatePlanName")?.Value,
-                                AvailableRooms = int.TryParse(rtp.Element("NoOfRoomsAvailable")?.Value, out var ar) ? ar : null,
-                                Rate = decimal.TryParse(rtp.Element("ConvertedRate")?.Value, out var rt) ? rt : null,
-                                MaxStay = int.TryParse(rtp.Element("MaxPerson")?.Value, out var ms) ? ms : null,
-                               TaxAmount = decimal.TryParse(rtp.Element("Taxs").Element("Tax")?.Attribute("TaxValue")?.Value, out var tax) ? tax : null
-                            }).ToList() ?? new List<RatePlan>(),
+                        //RatePlans = room.Element("RatePlanDetails")?.Elements("RatePlans")
+                        //    .Select((rtp, i) => new RatePlan
+                        //    {
+                        //        RatePlanTypeId = int.TryParse(rtp.Element("RatePlanId")?.Value, out var rtId) ? rtId : null,
+                        //        RatePlanName = rtp.Element("RatePlanName")?.Value,
+                        //        AvailableRooms = int.TryParse(rtp.Element("NoOfRoomsAvailable")?.Value, out var ar) ? ar : null,
+                        //        Rate = decimal.TryParse(rtp.Element("ConvertedRate")?.Value, out var rt) ? rt : null,
+                        //        GuestQuantity = int.TryParse(rtp.Element("MaxPerson")?.Value, out var ms) ? ms : null,
+                        //       TaxAmount = decimal.TryParse(rtp.Element("Taxs").Element("Tax")?.Attribute("TaxValue")?.Value, out var tax) ? tax : null,
+                        //       TaxType = rtp.Element("Taxs").Element("Tax")?.Attribute("TaxType")?.Value
+                        //    }).ToList() ?? new List<RatePlan>(),
+                        RatePlans = room.Element("RatePlanDetails")?
+                                .Elements("RatePlans")
+                                .Select((rtp, i) =>
+                                {
+                                    // Parse Rate
+                                    decimal? rate = decimal.TryParse(
+                                        rtp.Element("ConvertedRate")?.Value,
+                                        out var rt) ? rt : null;
 
+                                    // Tax node
+                                    var taxElement = rtp.Element("Taxs")?.Element("Tax");
+
+                                    // Parse TaxType
+                                    string taxType = taxElement?.Attribute("TaxType")?.Value;
+
+                                    // Parse TaxValue (percentage)
+                                    decimal? taxPercent = decimal.TryParse(
+                                        taxElement?.Attribute("TaxValue")?.Value,
+                                        out var tv) ? tv : null;
+
+                                    // Calculate TaxAmount ONLY if Excluded
+                                    decimal? taxAmount = null;
+                                    if (taxType == "Excluded" && rate.HasValue && taxPercent.HasValue)
+                                    {
+                                        taxAmount = (rate.Value * taxPercent.Value) / 100;
+                                    }
+                                    // ---------- RATE PER DATE ----------
+                                    var rateDetails = rtp.Element("RateDetailsByDate")?
+                                        .Elements("RatePerDate")
+                                        .Select(rpd => new RateDetail
+                                        {
+                                            RateDate = DateTime.TryParse(
+                                                rpd.Attribute("Date")?.Value,
+                                                out var dt1) ? dt1 : null,
+
+                                            Rate = decimal.TryParse(
+                                                rpd.Attribute("Rate")?.Value,
+                                                out var r) ? r : null,
+
+                                            ConvertedRate = decimal.TryParse(
+                                                rpd.Attribute("ConvertedRate")?.Value,
+                                                out var cr) ? cr : null
+                                        })
+                                        .ToList() ?? new List<RateDetail>();
+                                    return new RatePlan
+                                    {
+                                        RatePlanTypeId = int.TryParse(rtp.Element("RatePlanId")?.Value, out var rpid) ? rpid : null,
+                                        RatePlanName = rtp.Element("RatePlanName")?.Value,
+                                        AvailableRooms = int.TryParse(rtp.Element("NoOfRoomsAvailable")?.Value, out var ar) ? ar : null,
+                                        Rate = rate,
+                                        GuestQuantity = int.TryParse(rtp.Element("MaxPerson")?.Value, out var ms) ? ms : null,
+                                        TaxType = taxType,
+                                        TaxAmount = taxAmount,
+                                        RatesByDate = rateDetails
+                                    };
+                                }).ToList() ?? new List<RatePlan>(),
                         Price = decimal.TryParse(room.Element("RatePlanDetails")?
                             .Element("RatePlans")?
                             .Element("ConvertedRate")?.Value, out var rate) ? rate : null,
@@ -161,6 +217,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
             hotel.CancellationPolicy = hotel.Rooms.FirstOrDefault()?.CancellationPolicy;
             hotel.BookingPolicy = hotel.Rooms.FirstOrDefault()?.BookingPolicy;
             hotel.NoShowPolicy = hotel.Rooms.FirstOrDefault()?.NoShowPolicy;
+            
             return hotel;
         }
     }
