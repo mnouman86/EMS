@@ -270,12 +270,9 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                         hotelDetail.NearByLocations = nearByLocations;
 
                         var ratePlans = result.Read<RatePlan>().ToList();
-                        RoomDetails rd = hotelDetail.Rooms.Where(x => x.Id == searchRequest.Id).FirstOrDefault();
-                        rd.RatePlans = ratePlans;
-                        if (ratePlans!=null && hotelDetail.Rooms.Count>0)
-                        {
-                            hotelDetail.Rooms.Where(x => x.Id == searchRequest.Id).FirstOrDefault().RatePlans = ratePlans;
-                        }
+                        //RoomDetails rd = hotelDetail.Rooms.Where(x => x.Id == searchRequest.Id).FirstOrDefault();
+                        //rd.RatePlans = ratePlans;
+                        
                         
                         
                         if (!result.IsConsumed)
@@ -307,6 +304,11 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                             var amenities = await connection.QueryAsync<Domain.Entities.AmenityMapping.AmenityMapping>(AmenityMappingQueries.GetByAmenityTypeEnumID_AmenityMapping, Params, commandType: CommandType.StoredProcedure);
                             item.RoomAmenities = amenities.ToList();
 
+                            if (ratePlans != null)
+                            {
+                                item.RatePlans = ratePlans.Where(x=>x.RoomDetailId==item.Id).ToList();
+                                //hotelDetail.Rooms.Where(x => x.Id == searchRequest.Id).FirstOrDefault().RatePlans = ratePlans;
+                            }
                             //var roomView = await connection.QueryAsync<Domain.Entities.RoomView.RoomViewLookUp>(RoomViewQueries.GetALL_RoomView, Params, commandType: CommandType.StoredProcedure);
                             //item.RoomView = roomView.ToList();
 

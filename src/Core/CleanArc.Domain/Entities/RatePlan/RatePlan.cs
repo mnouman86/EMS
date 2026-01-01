@@ -8,17 +8,21 @@ namespace CleanArc.Domain.Entities.RatePlan
 {
     public class RatePlan
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public int? HotelId { get; set; }
+        public int? RoomDetailId { get; set; }
         public int? RatePlanTypeId { get; set; }
         public string RatePlanName { get; set; } = string.Empty;
-        public List<RateDetail>? RateDetails { get; set; }
+        public List<RateDetail>? RatesByDate { get; set; }
         public DateTime? RateDate { get; set; }
         public int? AvailableRooms { get; set; }
+        public int? GuestQuantity { get; set; }
         public decimal? Rate { get; set; }
         public decimal? DiscountAmount { get; set; }
         public decimal? AfterDiscountAmount { get; set; }
         public decimal? TaxAmount { get; set; }
+        public string? TaxType { get; set; }
+
         public bool StopSell { get; set; }
         public int? MinStay { get; set; }
         public int? MaxStay { get; set; }
@@ -33,8 +37,8 @@ namespace CleanArc.Domain.Entities.RatePlan
 
     public class RateDetail
     {
-        public string RateDate { get; set; }
-        public decimal Rate { get; set; }
-        public decimal ConvertedRate { get; set; }
+        public DateTime? RateDate { get; set; }
+        public decimal? Rate { get; set; }
+        public decimal? ConvertedRate { get; set; }
     }
 }
