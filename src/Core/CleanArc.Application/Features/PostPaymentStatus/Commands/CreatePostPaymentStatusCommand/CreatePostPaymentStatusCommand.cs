@@ -17,34 +17,34 @@ using CleanArc.Domain.Entities.PostPaymentStatus;
 namespace CleanArc.Application.Features.PostPaymentStatus.Commands.CreatePostPaymentStatusCommand;
 public record CreatePostPaymentStatusCommand(
     int? CultureId,
-   string? Bill_Status,
+   string? BillStatus,
     string? Initiator,
-    string? Instrument_Institution,
-    string? Instrument_Number,
-    string? Instrument_Type,
+    string? InstrumentInstitution,
+    string? InstrumentNumber,
+    string? InstrumentType,
     string? Message,
-    decimal Paid_Amount,
-    string? Payment_Channel,
-    string? Payment_Link,
-    string? Reference_Number,
+    decimal PaidAmount,
+    string? PaymentChannel,
+    string? PaymentLink,
+    string? ReferenceNumber,
     int Status,
-    string? Transaction_Date_Time,
-    string? Transaction_Ref_Id,
+    string? TransactionDateTime,
+    string? TransactionRefId,
     string?OrderNumber,
      int? CreatedBy,
      string PSID,
-     string Applicable_Soc,
-     string Biller_Actual_Settlement_Date_Time,
-     string Biller_Settlement_Amount,
-     string Biller_Settlement_Date,
-     string Biller_Settlement_Ref_Id, 
-     string Biller_Settlement_Status,
-     string Business_Crn,
+     string ApplicableSoc,
+     string BillerActualSettlementDateTime,
+     string BillerSettlementAmount,
+     string BillerSettlementDate,
+     string BillerSettlementRefId, 
+     string BillerSettlementStatus,
+     string BusinessCrn,
      decimal Fee ,
-     string Fee_Charging_Type,
+     string FeeChargingType,
      string Qr ,
-     string Settlement_Institution,
-     decimal Tax_On_Fee
+     string SettlementInstitution,
+     decimal TaxOnFee
     ) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreatePostPaymentStatusCommand>
 {
@@ -56,7 +56,7 @@ public record CreatePostPaymentStatusCommand(
         //    .NotEmpty()
         //    .NotNull()
         //    .WithMessage("Please enter a valid OrderNumber");
-        validator.RuleFor(c => c.Reference_Number)
+        validator.RuleFor(c => c.ReferenceNumber)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter reference number");

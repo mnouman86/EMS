@@ -8,36 +8,36 @@ namespace CleanArc.Application.Models.PostPaymentStatus
 {
     public class CreatePostPaymentStatusDTO
     {
-        public string? Bill_Status { get; set; }
+        public string? BillStatus { get; set; }
         public string? Initiator { get; set; }
-        public string? Instrument_Institution { get; set; }
-        public string? Instrument_Number { get; set; }
-        public string? Instrument_Type { get; set; }
+        public string? InstrumentInstitution { get; set; }
+        public string? InstrumentNumber { get; set; }
+        public string? InstrumentType { get; set; }
         public string? Message { get; set; }
-        public decimal Paid_Amount { get; set; }
-        public string? Payment_Channel { get; set; }
-        public string? Payment_Link { get; set; }
-        public string? Reference_Number { get; set; }
-        public string? Order_Number { get; set; }
+        public decimal PaidAmount { get; set; }
+        public string? PaymentChannel { get; set; }
+        public string? PaymentLink { get; set; }
+        public string? ReferenceNumber { get; set; }
+        public string? OrderNumber { get; set; }
         public int Status { get; set; }
-        public string? Transaction_Date_Time { get; set; }
-        public string? Transaction_Ref_Id { get; set; }
+        public string? TransactionDateTime { get; set; }
+        public string? TransactionRefId { get; set; }
         public int? CreatedBy { get; set; } // int NULL
         public int? CultureId { get; set; }
 
         public string PSID { get; set; }
-        public string Applicable_Soc { get; set; }
-        public string Biller_Actual_Settlement_Date_Time { get; set; }
-        public string Biller_Settlement_Amount { get; set; }
-        public string Biller_Settlement_Date { get; set; }
-        public string Biller_Settlement_Ref_Id { get; set; }
-        public string Biller_Settlement_Status { get; set; }
-        public string Business_Crn { get; set; }
+        public string ApplicableSoc { get; set; }
+        public string BillerActualSettlementDateTime { get; set; }
+        public string BillerSettlementAmount { get; set; }
+        public string BillerSettlementDate { get; set; }
+        public string BillerSettlementRefId { get; set; }
+        public string BillerSettlementStatus { get; set; }
+        public string BusinessCrn { get; set; }
         public decimal Fee { get; set; }
-        public string Fee_Charging_Type { get; set; }
+        public string FeeChargingType { get; set; }
         public string Qr { get; set; }
-        public string Settlement_Institution { get; set; }
-        public decimal Tax_On_Fee { get; set; }
+        public string SettlementInstitution { get; set; }
+        public decimal TaxOnFee { get; set; }
 
     }
 
