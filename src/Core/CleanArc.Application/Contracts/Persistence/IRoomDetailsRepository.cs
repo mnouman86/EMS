@@ -14,4 +14,6 @@ namespace CleanArc.Application.Contracts.Persistence;
 public interface IRoomDetailsRepository:IRepository<RoomDetails>
 {
     Task<SingleResponseWrapper<HotelDetail>> GetHotelDetailForRoomAsync(HotelDetailSearchRequest searchRequest);
+    Task<SingleResponseWrapper<BookingReservationResult>> BookingReservationAsync(BookingReservationRequest request);
+
 }
