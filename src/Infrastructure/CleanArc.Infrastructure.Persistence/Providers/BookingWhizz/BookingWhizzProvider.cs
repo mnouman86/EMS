@@ -2,10 +2,12 @@
 using CleanArc.Application.Contracts.Providers;
 using CleanArc.Application.Models.Request;
 using CleanArc.Domain.Entities.Hotel;
+using CleanArc.Domain.Entities.RoomDetails;
 using CleanArc.Domain.Entities.SearchHotelDetail;
 using CleanArc.Domain.Enums;
 using CleanArc.Infrastructure.Persistence.Configuration.HotelProvidersConfig;
 using CleanArc.Infrastructure.Persistence.Helpers;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
@@ -174,6 +176,79 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
             }
             else { return null; }
         }
+
+        public async Task<BookingReservationResult> CreateReservationAsync(
+    BookingReservationRequest request)
+        {
+            var queryParams = new Dictionary<string, string>
+            {
+                ["userid"] = _settings.UserId,
+                ["password"] = _settings.Password,
+                ["accommodationid"] = request.AccommodationId.ToString(),
+
+                ["roomids"] = string.Join(",", request.RoomIds),
+                ["rateplanids"] = string.Join(",", request.RatePlanIds),
+                ["extraids"] = string.Join(",", request.RoomIds.Select(_ => "0")),
+                ["roomqty"] = string.Join(",", request.RoomIds.Select(_ => "1")),
+
+                ["checkin"] = request.CheckIn.ToString("yyyy-MM-dd"),
+                ["checkout"] = request.CheckOut.ToString("yyyy-MM-dd"),
+
+                ["booker_firstname"] = request.BookerFirstName,
+                ["booker_lastname"] = request.BookerLastName ?? "",
+                ["booker_email"] = request.BookerEmail ?? "",
+                ["booker_telephone"] = request.BookerTelephone ?? "",
+
+                ["booker_street"] = request.BookerStreet,
+                ["booker_city"] = request.BookerCity,
+                ["booker_country"] = request.BookerCountry,
+                ["booker_zipcode"] = request.BookerZipCode,
+
+                ["guest_qtys"] = string.Join(",", request.RoomIds.Select(_ => request.GuestQty.ToString())),
+                ["guest_names"] = string.Join(",", request.GuestNames),
+
+                ["totalprice"] = request.TotalPrice.ToString("0.00"),
+                ["ratesbydate"] = string.Join(",", request.RatesByDate.Select(r => r.ToString("0.00"))),
+
+                ["payment_method"] = request.PaymentMethod,
+                ["charged_amount"] = request.TotalPrice.ToString("0.00"),
+
+                ["sourceid"] = request.SourceId,
+                ["multilanguageid"] = _settings.MultiLanguageId
+            };
+
+            var url = QueryHelpers.AddQueryString(
+                $"{_settings.BaseUrl}createreservation",
+                queryParams);
+
+            var responseXml = await _httpClient.GetStringAsync(url);
+            var xDoc = XDocument.Parse(responseXml);
+
+            return ParseReservationResponse(xDoc);
+        }
+
+        private BookingReservationResult ParseReservationResponse(XDocument xDoc)
+        {
+            var resultNode = xDoc.Descendants("Result").FirstOrDefault();
+
+            if (resultNode == null)
+            {
+                return new BookingReservationResult
+                {
+                    IsSuccess = false,
+                    Message = "BookingWhizz reservation failed"
+                };
+            }
+
+            return new BookingReservationResult
+            {
+                IsSuccess = true,
+                BookingId = resultNode.Element("BookingID")?.Value,
+                PinCode = resultNode.Element("PinCode")?.Value,
+                Message = resultNode.Element("Message")?.Value
+            };
+        }
+
     }
 
 

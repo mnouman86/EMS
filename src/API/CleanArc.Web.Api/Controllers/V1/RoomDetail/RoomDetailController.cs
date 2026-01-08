@@ -79,6 +79,15 @@ namespace CleanArc.Web.Api.Controllers.V1.RoomDetail
 
             return base.OperationResult(result);
         }
+
+        [HttpPost("BookingReservation")]
+        public async Task<IActionResult> BookingReservation([FromBody] BookingReservationQuery query)
+        {
+            //GetKBDetailByIdAllQuery query = new GetKBDetailByIdAllQuery { searchRequestById };
+            var result = await _sender.Send(query);
+
+            return base.OperationResult(result);
+        }
     }
 }
 

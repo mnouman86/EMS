@@ -350,6 +350,21 @@ public class RoomDetailsRepository : IRoomDetailsRepository
         }
     }
 
+    public async Task<SingleResponseWrapper<BookingReservationResult>> BookingReservationAsync(BookingReservationRequest searchRequest)
+    {
+        using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, searchRequest))
+        {
+            var result = await _hotelProviderAggregator.CreateReservationAsync(searchRequest, searchRequest.Provider);
+
+            return new SingleResponseWrapper<BookingReservationResult>
+            {
+                Data = result,
+                Code = 200,
+                Message = "Data Retrieved Successfully"
+            };
+        }
+    }
+
 
     public async Task<ResponseEntity> UpdateAsync(RoomDetails roomDetails)
 	{
