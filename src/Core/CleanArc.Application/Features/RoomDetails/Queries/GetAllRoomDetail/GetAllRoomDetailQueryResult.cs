@@ -61,6 +61,8 @@ public class GetAllRoomDetailQueryResult
     public IEnumerable<GetAllRatePlanTypesQueryResult> RatePlanTypes { get; set; }
     
     public List<GetAllAmenityMappingQueryResult> RoomAmenities { get; set; }
+    public List<GetAllAmenityMappingQueryResult> BathRoomAmenities { get; set; }
+
 
 }
 

@@ -37,10 +37,7 @@ namespace CleanArc.Application.Features.CarDetail.Command.UpdateCarDetailCommand
                .NotEmpty()
                .NotNull()
                .WithMessage("Please enter a valid Year");
-            validator.RuleFor(c => c.VehicleIdentificationNumber)
-                .NotEmpty()
-                .NotNull()
-                .WithMessage("Please enter a VehicleIdentificationNumber");
+           
             validator.RuleFor(c => c.NoOfSeat)
               .NotEmpty()
               .NotNull()
