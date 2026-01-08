@@ -215,7 +215,8 @@ public class PostPaymentStatusRepository:IPostPaymentStatusRepository
                 parameters.Add("@cultureId", entity.CultureId, DbType.Int32);
                 parameters.Add("@updatedBy", entity.UpdatedBy, DbType.Int32);
                 var result = await connection.QueryFirstOrDefaultAsync<ResponseEntity>(PostPaymentStatusQueries.Update_PostPaymentStatus, parameters, commandType: CommandType.StoredProcedure);
-                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
+                
+                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result); 
                 return result;
             }
         }

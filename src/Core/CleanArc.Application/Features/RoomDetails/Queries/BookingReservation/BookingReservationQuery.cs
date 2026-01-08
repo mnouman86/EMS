@@ -1,0 +1,15 @@
+﻿using CleanArc.Application.Models.Common;
+using CleanArc.Application.Models.Request;
+using CleanArc.Domain.Entities.RoomDetails;
+using Mediator;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CleanArc.Application.Features.RoomDetails.Queries.GetHotelDetailForRoom
+{
+    public record BookingReservationQuery(BookingReservationRequest request):IRequest<OperationResult<BookingReservationResult>>;
+    
+}

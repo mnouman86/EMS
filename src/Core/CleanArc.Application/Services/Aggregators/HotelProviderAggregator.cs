@@ -1,6 +1,7 @@
 ﻿using CleanArc.Application.Contracts.Providers;
 using CleanArc.Application.Models.Request;
 using CleanArc.Domain.Entities.Hotel;
+using CleanArc.Domain.Entities.RoomDetails;
 using CleanArc.Domain.Entities.SearchHotelDetail;
 using CleanArc.Domain.Enums;
 using System;
@@ -35,6 +36,17 @@ namespace CleanArc.Application.Services.Aggregators
 
             return provider != null
                 ? await provider.GetHotelDetailAsync(request)
+                : null;
+        }
+
+        
+        public async Task<BookingReservationResult?> CreateReservationAsync(BookingReservationRequest request, APIProvider providerName)
+        {
+            var provider = _hotelProviders.FirstOrDefault(p =>
+                p.ProviderName.Equals(providerName));
+
+            return provider != null
+                ? await provider.CreateReservationAsync(request)
                 : null;
         }
     }
