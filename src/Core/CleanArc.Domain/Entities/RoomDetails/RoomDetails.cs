@@ -54,6 +54,7 @@ public class RoomDetails
     public DateTime? UpdatedAt { get; set; }
 	public int? CultureId { get; set; }
     public List<AmenityMapping.AmenityMapping> RoomAmenities { get; set; }
+    public List<AmenityMapping.AmenityMapping> BathRoomAmenities { get; set; }
     public List<RatePlan.RatePlan> RatePlans { get; set; }
     public List<GenericMedia.GenericMedia> Medias { get; set; }
     public int[]? RoomViewLookUpId { get; set; }

@@ -282,8 +282,8 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                         foreach (var item in hotelDetail.Rooms)
                         {
                             var Params = new DynamicParameters();
-                            Params.Add("@PageNumber", 1, DbType.Int32);
-                            Params.Add("@PageSize", 3, DbType.Int32);
+                            //Params.Add("@PageNumber", 1, DbType.Int32);
+                            //Params.Add("@PageSize", 3, DbType.Int32);
                             Params.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
                             List<SortingParameter> sortingArray = new List<SortingParameter>();
                             Params.Add("@SortingArray", DataTableHelper.ToDataTable(sortingArray), DbType.Object); // Ensure proper type
@@ -296,8 +296,15 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                             list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
                             list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
 
-                            Params.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
 
+                            var RoomsParams = new DynamicParameters();
+                            RoomsParams = Params;
+                            
+                            var BathroomParams = new DynamicParameters();
+                            BathroomParams = Params;
+
+                            RoomsParams.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+                            
                             var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, Params, commandType: CommandType.StoredProcedure);
                             item.Medias = imageList.ToList();
 

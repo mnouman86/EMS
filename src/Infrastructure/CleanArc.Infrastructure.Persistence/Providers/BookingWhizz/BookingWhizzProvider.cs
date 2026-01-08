@@ -102,6 +102,11 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
             {
                 cityNameFilter = $"&cityname={cityName}";
             }
+            string accomodationNameFilter = "";
+            if (request.Name != string.Empty)
+            {
+                accomodationNameFilter = $"&accommodationname={request.Name}";
+            }
 
             var url = $"{_settings.BaseUrl}getaccommodationsearchnew?" +
                       $"userid={_settings.UserId}&password={_settings.Password}" +
@@ -109,7 +114,7 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
                       $"{cityNameFilter}&checkin={request.StartDate:yyyy-MM-dd}" +
                       $"&checkout={request.EndDate:yyyy-MM-dd}&sortby={columnName}&sort={columnDirection}"+
                       //$"&offset={offSet}&limits={limit}{priceRangeFilter}{adultFilter}{roomsFilter}{amenitiesFilter}&multilanguageid={_settings.MultiLanguageId}" +
-                      $"{paginationFilter}{priceRangeFilter}{adultFilter}{roomsFilter}{amenitiesFilter}&multilanguageid={_settings.MultiLanguageId}" +
+                      $"{paginationFilter}{priceRangeFilter}{adultFilter}{roomsFilter}{amenitiesFilter}{accomodationNameFilter}&multilanguageid={_settings.MultiLanguageId}" +
                       $"&converted_currency=PKR&agentid={_settings.AgentId}";
             //&accommodationtypename={request.PropertyType}
             var xmlString = await _httpClient.GetStringAsync(url);

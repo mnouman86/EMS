@@ -162,10 +162,10 @@ public class SearchHotelDetailRepository : ISearchHotelRepository
                 var response = new SingleResponseWrapper<SearchHotelDetail>
                 {
                     Data = searchHotelDetail,
-
                     Code = !searchRequest.IsThirdParty ? parameters.Get<int>("@Code") : 200,
-                    Message = !searchRequest.IsThirdParty ? parameters.Get<string>("@Message") : "Data retrieved successfully."
-                }; 
+                    Message = !searchRequest.IsThirdParty ? parameters.Get<string>("@Message") : "Data retrieved successfully."                    
+                };
+                if (result?.Count()==0 && combinedHotels?.Count()>0) { response.Code = 200;response.Message = "Data retrieved successfully."; }
                 return response;
 
 			}

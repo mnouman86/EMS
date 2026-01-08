@@ -40,10 +40,10 @@ public record CreateCarDetailCommand(int? BusinessId, string? Model, int? Manufa
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a valid Year");
-        validator.RuleFor(c => c.VehicleIdentificationNumber)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a VehicleIdentificationNumber");
+        //validator.RuleFor(c => c.VehicleIdentificationNumber)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a VehicleIdentificationNumber");
         validator.RuleFor(c => c.NoOfSeat)
           .NotEmpty()
           .NotNull()
