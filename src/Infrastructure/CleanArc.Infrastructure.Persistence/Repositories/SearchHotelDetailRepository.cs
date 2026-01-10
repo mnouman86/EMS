@@ -82,7 +82,7 @@ public class SearchHotelDetailRepository : ISearchHotelRepository
                 if (searchRequest.UserId > 0) parameters.Add("@UserId", searchRequest.UserId, DbType.Int32);
                 parameters.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
 				parameters.Add("@NoOfRooms", searchRequest.NoOfRooms, DbType.Int32);
-				parameters.Add("@NoOfDays", searchRequest.NoOfDays, DbType.Int32);
+				//parameters.Add("@NoOfDays", searchRequest.NoOfDays, DbType.Int32);
 				parameters.Add("@Rating", searchRequest.Rating, DbType.Int32);
 				parameters.Add("@MinPrice", searchRequest.MinPrice, DbType.Int32);
 				parameters.Add("@MaxPrice", searchRequest.MaxPrice, DbType.Int32);
