@@ -63,6 +63,12 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
                 priceRangeFilter = $"&pricerangestart={request.MinPrice}&pricerangeend={request.MaxPrice}";
             }
 
+            string ratingFilter = "";
+            if (request.Rating >= 0)
+            {
+                ratingFilter = $"&userrating={request.Rating*2}&userrating={request.Rating*2}";
+            }
+
             string columnName = "4";
             string columnDirection = null;
 
@@ -116,7 +122,7 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
                       $"{cityNameFilter}&checkin={request.StartDate:yyyy-MM-dd}" +
                       $"&checkout={request.EndDate:yyyy-MM-dd}&sortby={columnName}&sort={columnDirection}"+
                       //$"&offset={offSet}&limits={limit}{priceRangeFilter}{adultFilter}{roomsFilter}{amenitiesFilter}&multilanguageid={_settings.MultiLanguageId}" +
-                      $"{paginationFilter}{priceRangeFilter}{adultFilter}{roomsFilter}{amenitiesFilter}{accomodationNameFilter}&multilanguageid={_settings.MultiLanguageId}" +
+                      $"{paginationFilter}{priceRangeFilter}{adultFilter}{roomsFilter}{amenitiesFilter}{accomodationNameFilter}{ratingFilter}&multilanguageid={_settings.MultiLanguageId}" +
                       $"&converted_currency=PKR&agentid={_settings.AgentId}";
             //&accommodationtypename={request.PropertyType}
             var xmlString = await _httpClient.GetStringAsync(url);
