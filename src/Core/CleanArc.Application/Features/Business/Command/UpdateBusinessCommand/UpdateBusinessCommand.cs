@@ -46,26 +46,26 @@ public record UpdateBusinessCommand(int Id, int? BusinessTypeID, string? Name,
            .NotEmpty()
            .NotNull()
            .WithMessage("Please enter a Email");
-        validator.RuleFor(c => c.Latitude)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a Latitude");
-        validator.RuleFor(c => c.StateLookUpId)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a StateID");
-        validator.RuleFor(c => c.Longitude)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a Longitude");
-        validator.RuleFor(c => c.CountryLookUpId)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a CountryID");
-        validator.RuleFor(c => c.TaxIdentificationNumber)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a TaxIdentificationNumber");
+        //validator.RuleFor(c => c.Latitude)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a Latitude");
+        //validator.RuleFor(c => c.StateLookUpId)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a StateID");
+        //validator.RuleFor(c => c.Longitude)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a Longitude");
+        //validator.RuleFor(c => c.CountryLookUpId)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a CountryID");
+        //validator.RuleFor(c => c.TaxIdentificationNumber)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a TaxIdentificationNumber");
         
         //validator.RuleFor(c => c.BankAccountDetailID)
         //   .NotEmpty()
