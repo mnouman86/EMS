@@ -12,6 +12,8 @@ namespace CleanArc.Application.Features.RatePlan.Queries.GetRatePlanById
         public int? RoomDetailId { get; set; }
 
         public string RatePlanName { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+
         public int RatePlanTypeId { get; set; }
         public DateTime RateDate { get; set; }
         public int AvailableRooms { get; set; }

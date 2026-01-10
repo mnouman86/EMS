@@ -13,6 +13,7 @@ namespace CleanArc.Domain.Entities.RatePlan
         public int? RoomDetailId { get; set; }
         public int? RatePlanTypeId { get; set; }
         public string RatePlanName { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         public List<RateDetail>? RatesByDate { get; set; }
         public DateTime? RateDate { get; set; }
         public int? AvailableRooms { get; set; }
