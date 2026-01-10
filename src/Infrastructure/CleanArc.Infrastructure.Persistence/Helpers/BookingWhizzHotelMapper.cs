@@ -30,7 +30,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                     DiscountedPrice = decimal.TryParse(element.Element("MinRate")?.Value, out var discPrice) ? discPrice : 0,
                     Description = element.Element("GeneralDescription")?.Value,
                     ImagePath = element.Element("ImageURL")?.Value,
-                    Rating = int.TryParse(element.Element("Rating")?.Value, out var rating) ? rating : 0,
+                    Rating = int.TryParse(element.Element("UserRating")?.Value, out var rating) ? rating/2 : 0,
                     RefundPolicy = element.Element("CancellationDescription")?.Value,
                     Longitude = decimal.TryParse(element.Element("Longitude")?.Value, out var lng) ? lng : null,
                     Latitude = decimal.TryParse(element.Element("Latitude")?.Value, out var lat) ? lat : null,
