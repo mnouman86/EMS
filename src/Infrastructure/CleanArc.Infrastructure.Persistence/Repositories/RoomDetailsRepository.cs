@@ -240,7 +240,8 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                     parameters.Add("@NoOfRooms", searchRequest.NoOfRooms, DbType.Int32);
                     parameters.Add("@StartDate", searchRequest.StartDate, DbType.Date);
                     parameters.Add("@EndDate", searchRequest.EndDate, DbType.Date);
-                    parameters.Add("@NoOfDays", searchRequest.NoOfDays, DbType.Int32);
+                    //parameters.Add("@NoOfDays", searchRequest.NoOfDays, DbType.Int32);
+                    parameters.Add("@NoOfPersons", searchRequest.NoOfDays, DbType.Int32);
 
                     var result = await connection.QueryMultipleAsync(RoomDetailQueries.GetHotelDetail_ByRoom, parameters, commandType: CommandType.StoredProcedure);
                     // var kbDetailAll = resultKBDetail.ReadFirst<KBDetail>();
