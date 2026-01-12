@@ -61,6 +61,7 @@ public class UnitOfWork : IUnitOfWork
     public IMappingRoomImageRepository MappingRoomImageRepository { get; set; }
     public ILanguageRepository LanguageRepository { get; set; }
     public IPolicyRepository PolicyRepository { get; set; }
+    public INoShowPolicyRepository NoShowPolicyRepository { get; set; }
     public IPolicyTypeRepository PolicyTypeRepository { get; set; }
     public IRatePlanTypeRepository RatePlanTypeRepository { get; set; }
     public IRatePlanRepository RatePlanRepository { get; set; }
@@ -185,6 +186,7 @@ public class UnitOfWork : IUnitOfWork
         ILogger<CityRepository> _loggerCity,
         ILogger<LanguageRepository> _loggerLanguage,
         ILogger<PolicyRepository> _loggerPolicy,
+        ILogger<NoShowPolicyRepository> _loggerNoShowPolicy,
         ILogger<PolicyTypeRepository> _loggerPolicyType,
         ILogger<RatePlanTypeRepository> _loggerRatePlanType,
         ILogger<RatePlanRepository> _loggerRatePlan,
@@ -374,6 +376,7 @@ public class UnitOfWork : IUnitOfWork
 
         LanguageRepository = new LanguageRepository(configuration, mapper, _loggerLanguage, httpContextAccessor);
         PolicyRepository = new PolicyRepository(configuration, mapper, _loggerPolicy, httpContextAccessor);
+        NoShowPolicyRepository = new NoShowPolicyRepository(configuration, mapper, _loggerNoShowPolicy, httpContextAccessor);
         PolicyTypeRepository = new PolicyTypeRepository(configuration, mapper, _loggerPolicyType, httpContextAccessor);
         RatePlanTypeRepository = new RatePlanTypeRepository(configuration, mapper, _loggerRatePlanType, httpContextAccessor);
         RatePlanRepository = new RatePlanRepository(configuration, mapper, _loggerRatePlan, httpContextAccessor);
