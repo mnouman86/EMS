@@ -24,7 +24,7 @@ namespace CleanArc.Domain.Entities.Hotel
     public List<LanguageLookUp>? Languages { get; set; }
     public List<AmenityLookUp>? Amenities { get; set; }
     public string? PostalCode { get; set; }
-    public string? Status { get; set; }
+    public bool? Status { get; set; }
     public string? AddressLine1 { get; set; }
     public string? AddressLine2 { get; set; }
     public string? Latitude { get; set; }

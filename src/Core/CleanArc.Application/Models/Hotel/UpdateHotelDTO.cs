@@ -38,7 +38,7 @@ public class UpdateHotelDTO
 
     public int Id { get; set; }
     public string Name { get; set; }
-    public string Status { get; set; }
+    public bool? Status { get; set; }
     public int? BusinessId { get; set; }
     //public int? ThirdPartyStayId { get; set; }
     public int? Stars { get; set; }
