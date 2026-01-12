@@ -82,7 +82,7 @@ public class HotelRepository : IHotelRepository
                     hotel.CountryLookUpId,
                     hotel.CityLookUpId,
                     hotel.StateLookUpId,
-                    hotel.PostalCode.ToString(),
+                    hotel.PostalCode,
                     hotel.Latitude,
                     hotel.Longitude);
                 var parameters = new DynamicParameters(createHotelDTO);
@@ -216,7 +216,7 @@ public class HotelRepository : IHotelRepository
                     hotel.CountryLookUpId,
                     hotel.CityLookUpId,
                     hotel.StateLookUpId,
-                    hotel.PostalCode.ToString(),
+                    hotel.PostalCode,
                     hotel.Latitude,
                     hotel.Longitude);
 

@@ -22,7 +22,7 @@ public class GetHotelByIdQueryResult
     public int BusinessId { get; set; }
     public int? ThirdPartyStayId { get; set; }
     public int? Stars { get; set; }
-    public string Status { get; set; }
+    public bool? Status { get; set; }
     public string PostalCode { get; set; }
     public string AddressLine1 { get; set; }
     public string AddressLine2 { get; set; }
