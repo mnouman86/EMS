@@ -11,6 +11,7 @@ namespace CleanArc.Application.Features.Policy.Queries.GetAllPolicys
         public int Id { get; set; }
         public int? RatePlanTypeID { get; set; }
         public int? RefundPolicyTypeLookUpID { get; set; }
+        public string? RefundPolicyType { get; set; }
         public decimal? DeductionPercentage { get; set; }
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
