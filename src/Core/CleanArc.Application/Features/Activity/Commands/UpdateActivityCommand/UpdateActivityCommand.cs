@@ -16,6 +16,7 @@ public record UpdateActivityCommand(
     int? CultureId,
     int? BusinessId,
     string? Title,
+    string? Status,
    int[]? LanguageLookUpId,
    int? ServiceCategoryId,
    int? SubServiceCategoryId,
