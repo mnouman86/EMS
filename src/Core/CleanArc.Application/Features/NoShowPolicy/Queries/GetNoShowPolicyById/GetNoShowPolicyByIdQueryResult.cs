@@ -10,8 +10,9 @@ namespace CleanArc.Application.Features.NoShowPolicy.Queries.GetNoShowPolicyById
     {
 
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public int? RatePlanTypeID { get; set; }
+        public decimal? DeductionPercentage { get; set; }
+        public bool? OneNight { get; set; }
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
         public int CreatedBy { get; set; }
