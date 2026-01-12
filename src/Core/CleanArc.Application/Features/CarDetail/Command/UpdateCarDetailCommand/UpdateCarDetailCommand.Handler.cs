@@ -61,6 +61,7 @@ internal class UpdateCarDetailCommandHandler : IRequestHandler<UpdateCarDetailCo
                 BusinessId = request.BusinessId,
                 Model = request.Model,
                 Year = request.Year,
+                Status = request.Status,
                 VehicleIdentificationNumber = request.VehicleIdentificationNumber,
                 PlateNumber = request.PlateNumber,
                 NoOfSeat = request.NoOfSeat,

@@ -25,6 +25,7 @@ public class GetAllSearchActivityDetail
     public int Id { get; set; }
     public int BusinessId { get; set; }
     public string Title { get; set; }
+    public string Status { get; set; }
     public string AgeGroup { get; set; }
     public bool? IsInWishlist { get; set; }
 

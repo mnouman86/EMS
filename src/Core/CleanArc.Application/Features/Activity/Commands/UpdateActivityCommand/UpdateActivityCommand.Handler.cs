@@ -63,6 +63,7 @@ internal class UpdateActivityCommandHandler:IRequestHandler<UpdateActivityComman
                 CultureId=request.CultureId,
                 BusinessId=request.BusinessId,
                 Title = request.Title,
+                Status = request.Status,
                 LanguageLookUpId = request.LanguageLookUpId,
                 ServiceCategoryId = request.ServiceCategoryId,
                 SubServiceCategoryId = request.SubServiceCategoryId,

@@ -66,6 +66,7 @@ public async ValueTask<OperationResult<ResponseEntity>> Handle(CreateHotelComman
                 ThirdPartyStayId = request.ThirdPartyStayId,
                 Stars = request.Stars,
                 PostalCode = request.PostalCode,
+                Status = request.Status,
                 AddressLine1 = request.AddressLine1,
                 AddressLine2 = request.AddressLine2,
                 Latitude = request.Latitude,

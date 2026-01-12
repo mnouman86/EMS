@@ -23,6 +23,7 @@ public record CreateHotelCommand(
     int? BusinessId,
     int? ThirdPartyStayId,
     int? Stars,
+    string? Status,
     string? PostalCode,
     string? AddressLine1,
     string? AddressLine2,

@@ -17,6 +17,7 @@ using CleanArc.Domain.Entities.Language;
 namespace CleanArc.Application.Features.Hotel.Command.UpdateHotelCommand;
 
 public record UpdateHotelCommand(int Id, string? Name, int? BusinessId,int? Stars,
+    string? Status,
     string? PostalCode,
     string? AddressLine1,
     string? AddressLine2,
