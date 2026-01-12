@@ -40,6 +40,8 @@ public interface IUnitOfWork
     public IStateRepository StateRepository { get; }
     public ICityRepository CityRepository { get; }
     public ILanguageRepository LanguageRepository { get; }
+    public IPolicyRepository PolicyRepository { get; }
+    public IPolicyTypeRepository PolicyTypeRepository { get; }
     public IRatePlanTypeRepository RatePlanTypeRepository { get; }
     public IRatePlanRepository RatePlanRepository { get; }
 
