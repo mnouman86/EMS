@@ -14,7 +14,7 @@ namespace CleanArc.Application.Models.Activities
     {
         public int? BusinessId { get; set; }
         public string Title { get; set; }
-        public string Status { get; set; }
+        public bool? Status { get; set; }
         //public string? LanguageName { get; set; }
         public int? ServiceCategoryId { get; set; }
         public int? SubServiceCategoryId { get; set; }

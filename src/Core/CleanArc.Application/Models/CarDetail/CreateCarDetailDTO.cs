@@ -15,7 +15,7 @@ namespace CleanArc.Application.Models.CarDetail
         public string? Model { get; set; }
         public string? TransmissionType { get; set; }
         public string? Year { get; set; }
-        public string? Status { get; set; }
+        public bool? Status { get; set; }
         public bool? IsPartiallyRefundable { get; set; }
         public bool? IsFullyRefundable { get; set; }
         public string? VehicleIdentificationNumber { get; set; }

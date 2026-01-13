@@ -17,7 +17,7 @@ public record CreateActivityCommand(
    int? CultureId,
    int? BusinessId,
     string? Title,
-    string? Status,
+    bool? Status,
    int[]? LanguageLookUpId,
    int? ServiceCategoryId,
    int? SubServiceCategoryId,

@@ -13,7 +13,7 @@ namespace CleanArc.Application.Models.CarDetail
         public string? Model { get; set; }
         public string? TransmissionType { get; set; }
         public string? Year { get; set; }
-        public string? Status { get; set; }
+        public bool? Status { get; set; }
         public string? VehicleIdentificationNumber { get; set; }
         public string? PlateNumber { get; set; }
         public int? NoOfSeat { get; set; }

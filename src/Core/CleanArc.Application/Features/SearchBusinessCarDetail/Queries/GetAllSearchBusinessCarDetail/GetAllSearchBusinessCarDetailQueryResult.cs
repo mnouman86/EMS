@@ -23,6 +23,7 @@ namespace CleanArc.Application.Features.SearchBusinessCarDetail.Queries.GetAllSe
         public int? ServiceCategoryId { get; set; }
         public int? BusinessId { get; set; }
         public string? Model { get; set; }
+        public bool? Status { get; set; }
         public int? ManufacturerLookUpId { get; set; }
         public string? Manufacturer { get; set; }
         public string? TransmissionType { get; set; }
@@ -33,7 +34,6 @@ namespace CleanArc.Application.Features.SearchBusinessCarDetail.Queries.GetAllSe
         public int? Price { get; set; }
         public int? RentPrice { get; set; }
         public bool? IsInWishlist { get; set; }
-
         public bool? IsActive { get; set; }
         public bool? IsDeleted { get; set; }
         public int? CreatedBy { get; set; }
