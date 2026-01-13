@@ -98,14 +98,18 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                         Description = room.Element("RoomDescription")?.Value,
                         RoomSize = room.Element("RoomSize")?.Value,
                         RoomSizeUnit = "Square Feets",
-                        RoomAmenities = room.Element("RoomFacilityName")?.Value?.Split(',')
-                            .Select((a, i) => new AmenityMapping
-                            {
-                                Id = i,
-                                Amenity = a.Trim(),
-                                Icon = a.Trim(),
-                                Selected = true
-                            }).ToList() ?? new List<AmenityMapping>(),
+                        RoomAmenities = room.Element("RoomFacilityName")?.Value?
+                        .Split(',', StringSplitOptions.RemoveEmptyEntries)
+                        .Select((a, i) => new AmenityMapping
+                        {
+                            Id = i,
+                            Amenity = a.Trim(),
+                            Icon = a.Trim(),
+                            Selected = true
+                        })
+                        .Where(x => !string.IsNullOrWhiteSpace(x.Amenity))
+                        .ToList()
+                        ?? new List<AmenityMapping>(),
                         BookingPolicy = room
                                 .Element("RatePlanDetails")?
                                 .Elements("RatePlans")?
@@ -147,7 +151,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                                     // Parse Rate
                                     decimal? rate = decimal.TryParse(
                                         rtp.Element("ConvertedRate")?.Value,
-                                        out var rt) ? rt : null;
+                                        out var rt) ? rt*noOfRooms : null;
 
                                     // Tax node
                                     var taxElement = rtp.Element("Taxs")?.Element("Tax");
@@ -181,7 +185,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
 
                                             ConvertedRate = decimal.TryParse(
                                                 rpd.Attribute("ConvertedRate")?.Value,
-                                                out var cr) ? cr : null
+                                                out var cr) ? cr*noOfRooms : null
                                         })
                                         .ToList() ?? new List<RateDetail>();
                                     return new RatePlan
