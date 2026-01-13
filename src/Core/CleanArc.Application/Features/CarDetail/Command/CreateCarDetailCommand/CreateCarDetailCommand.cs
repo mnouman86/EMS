@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.CarDetail.Command.CreateCarDetailCommand;
 
-public record CreateCarDetailCommand(int? BusinessId, string Status, string? Model, int? ManufacturerLookUpId, string? Year, 
+public record CreateCarDetailCommand(int? BusinessId, bool? Status, string? Model, int? ManufacturerLookUpId, string? Year, 
     string? VehicleIdentificationNumber, string? PlateNumber, int? NoOfSeat, int? RentPrice
     , string? About, int? CultureId, int? ServiceTypeEnumId, int? ServiceCategoryId, 
     int? VehicleTypeLookUpId, int? DrivingAvailabilityOptionLookUpId, decimal? PerHourPrice,
