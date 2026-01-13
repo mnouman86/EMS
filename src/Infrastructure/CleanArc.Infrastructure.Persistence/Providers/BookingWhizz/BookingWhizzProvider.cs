@@ -177,7 +177,7 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
 
                 // Step 4: Map all 3 sources
                 var hotelDetail = BookingWhizzRoomDetailMapper.MapHotelDetail(hotelElement, /*detailXml,*/ availabilityXml, request.NoOfRooms, request.NoOfDays);
-
+                
                 return hotelDetail;
             }
             else { return null; }
