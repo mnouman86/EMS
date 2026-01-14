@@ -8,6 +8,7 @@ namespace CleanArc.Application.Features.Currency.Queries.GetAllCurrency;
 
 public class GetCurrencyRatesQueryResult
 {
+    public int Id { get; set; }
     public string CurrencyCode { get; set; }
     public decimal Rate { get; set; }
     public string DisplaySymbol { get; set; }

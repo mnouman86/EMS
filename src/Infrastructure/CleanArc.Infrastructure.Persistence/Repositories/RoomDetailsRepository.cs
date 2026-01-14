@@ -346,7 +346,8 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                                 item.RatePlans = ratePlans.Where(x=>x.RoomDetailId==item.Id).ToList();
                                 //hotelDetail.Rooms.Where(x => x.Id == searchRequest.Id).FirstOrDefault().RatePlans = ratePlans;
                             }
-                            item.Price = item.RatePlans.Min(x => x.Rate); 
+                            item.RoomDetailPrice= item.RatePlans.Min(x => x.Rate);
+                            item.Price = item.RatePlans.Min(x => x.Rate);
                             item.TotalPrice = item.RatePlans.Min(x => x.Rate);
                             item.DiscountedPrice = item.RatePlans.Min(x => x.Rate);
                             //var roomView = await connection.QueryAsync<Domain.Entities.RoomView.RoomViewLookUp>(RoomViewQueries.GetALL_RoomView, Params, commandType: CommandType.StoredProcedure);
