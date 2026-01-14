@@ -20,7 +20,7 @@ namespace CleanArc.Infrastructure.Persistence.Services
     {
         private readonly HttpClient _httpClient;
         //private const string ApiKey = "765fcb56b5f7bdb9e4dd8c8e"; // nouman.rafique
-        private const string ApiKey = "fe8edf8ecbbf566828c86dbd"; // temporary
+        private const string ApiKey = "765fcb56b5f7bdb9e4dd8c8e"; // temporary
 
         public ExchangeRateApiService(HttpClient httpClient)
         {
