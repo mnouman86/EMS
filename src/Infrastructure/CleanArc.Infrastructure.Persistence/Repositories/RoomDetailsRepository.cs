@@ -308,7 +308,7 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                             BathroomParams = Params;
 
                             RoomsParams.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
-                            RoomsParams.Add("@FilterArray", DataTableHelper.ToDataTable(listBathroom), DbType.Object); // Ensure proper type
+                            BathroomParams.Add("@FilterArray", DataTableHelper.ToDataTable(listBathroom), DbType.Object); // Ensure proper type
                             
                             var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, Params, commandType: CommandType.StoredProcedure);
                             item.Medias = imageList.ToList();
@@ -324,7 +324,7 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                                 item.RatePlans = ratePlans.Where(x=>x.RoomDetailId==item.Id).ToList();
                                 //hotelDetail.Rooms.Where(x => x.Id == searchRequest.Id).FirstOrDefault().RatePlans = ratePlans;
                             }
-                            item.Price = item.RatePlans.Min(x => x.Rate);
+                            item.Price = item.RatePlans.Min(x => x.Rate); 
                             item.TotalPrice = item.RatePlans.Min(x => x.Rate);
                             item.DiscountedPrice = item.RatePlans.Min(x => x.Rate);
                             //var roomView = await connection.QueryAsync<Domain.Entities.RoomView.RoomViewLookUp>(RoomViewQueries.GetALL_RoomView, Params, commandType: CommandType.StoredProcedure);
