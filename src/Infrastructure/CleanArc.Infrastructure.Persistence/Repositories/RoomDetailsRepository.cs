@@ -297,6 +297,9 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                             list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
                             list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
 
+                            List<FilterParameter> listBathroom = new List<FilterParameter>();
+                            listBathroom.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+                            listBathroom.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Bathroom).ToString() });
 
                             var RoomsParams = new DynamicParameters();
                             RoomsParams = Params;
@@ -305,12 +308,16 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                             BathroomParams = Params;
 
                             RoomsParams.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+                            RoomsParams.Add("@FilterArray", DataTableHelper.ToDataTable(listBathroom), DbType.Object); // Ensure proper type
                             
                             var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, Params, commandType: CommandType.StoredProcedure);
                             item.Medias = imageList.ToList();
 
-                            var amenities = await connection.QueryAsync<Domain.Entities.AmenityMapping.AmenityMapping>(AmenityMappingQueries.GetByAmenityTypeEnumID_AmenityMapping, Params, commandType: CommandType.StoredProcedure);
+                            var amenities = await connection.QueryAsync<Domain.Entities.AmenityMapping.AmenityMapping>(AmenityMappingQueries.GetByAmenityTypeEnumID_AmenityMapping, RoomsParams, commandType: CommandType.StoredProcedure);
                             item.RoomAmenities = amenities.ToList();
+
+                            var amenitiesBathroom = await connection.QueryAsync<Domain.Entities.AmenityMapping.AmenityMapping>(AmenityMappingQueries.GetByAmenityTypeEnumID_AmenityMapping, BathroomParams, commandType: CommandType.StoredProcedure);
+                            item.BathRoomAmenities = amenitiesBathroom.ToList();
 
                             if (ratePlans != null)
                             {
