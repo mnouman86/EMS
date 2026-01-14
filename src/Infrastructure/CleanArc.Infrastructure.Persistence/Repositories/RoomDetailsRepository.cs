@@ -282,35 +282,57 @@ public class RoomDetailsRepository : IRoomDetailsRepository
                         }
                         foreach (var item in hotelDetail.Rooms)
                         {
-                            var Params = new DynamicParameters();
-                            //Params.Add("@PageNumber", 1, DbType.Int32);
-                            //Params.Add("@PageSize", 3, DbType.Int32);
-                            Params.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
-                            List<SortingParameter> sortingArray = new List<SortingParameter>();
-                            Params.Add("@SortingArray", DataTableHelper.ToDataTable(sortingArray), DbType.Object); // Ensure proper type
-                            Params.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                            //var Params = new DynamicParameters();
+                            ////Params.Add("@PageNumber", 1, DbType.Int32);
+                            ////Params.Add("@PageSize", 3, DbType.Int32);
+                            //Params.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                            //List<SortingParameter> sortingArray = new List<SortingParameter>();
+                            //Params.Add("@SortingArray", DataTableHelper.ToDataTable(sortingArray), DbType.Object); // Ensure proper type
+                            //Params.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                            Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                            Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                            //Params.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                            //Params.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
 
-                            List<FilterParameter> list = new List<FilterParameter>();
-                            list.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
-                            list.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
+                            DynamicParameters CreateBaseParams()
+                            {
+                                var p = new DynamicParameters();
+                                p.Add("@cultureId", searchRequest.CultureId, DbType.Int32);
+                                p.Add("@SortingArray", DataTableHelper.ToDataTable(new List<SortingParameter>()), DbType.Object);
+                                p.Add("@TotalCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                                p.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                                p.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+                                return p;
+                            }
+
+
+                            List<FilterParameter> listMain = new List<FilterParameter>();
+                            listMain.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+
+                            List<FilterParameter> listRoom = new List<FilterParameter>();
+                            listRoom.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
+                            listRoom.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Room).ToString() });
 
                             List<FilterParameter> listBathroom = new List<FilterParameter>();
                             listBathroom.Add(new FilterParameter { ParameterName = "GenericTitleId", ParameterValue = item.Id.ToString() });
                             listBathroom.Add(new FilterParameter { ParameterName = "ServiceTypeEnumId", ParameterValue = ((int)ServiceType.Bathroom).ToString() });
 
-                            var RoomsParams = new DynamicParameters();
-                            RoomsParams = Params;
-                            
-                            var BathroomParams = new DynamicParameters();
-                            BathroomParams = Params;
+                            var MainParams = CreateBaseParams();
+                            var RoomsParams = CreateBaseParams();
+                            var BathroomParams = CreateBaseParams();
+                            //var MainParams = new DynamicParameters();
+                            //MainParams = Params;
 
-                            RoomsParams.Add("@FilterArray", DataTableHelper.ToDataTable(list), DbType.Object); // Ensure proper type
+                            //var RoomsParams = new DynamicParameters();
+                            //RoomsParams = Params;
+
+                            //var BathroomParams = new DynamicParameters();
+                            //BathroomParams = Params;
+
+                            MainParams.Add("@FilterArray", DataTableHelper.ToDataTable(listMain), DbType.Object); // Ensure proper type
+                            RoomsParams.Add("@FilterArray", DataTableHelper.ToDataTable(listRoom), DbType.Object); // Ensure proper type
                             BathroomParams.Add("@FilterArray", DataTableHelper.ToDataTable(listBathroom), DbType.Object); // Ensure proper type
                             
-                            var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, Params, commandType: CommandType.StoredProcedure);
+                            var imageList = await connection.QueryAsync<Domain.Entities.GenericMedia.GenericMedia>(GenericMediaQueries.GetAll_HotelImage, RoomsParams, commandType: CommandType.StoredProcedure);
                             item.Medias = imageList.ToList();
 
                             var amenities = await connection.QueryAsync<Domain.Entities.AmenityMapping.AmenityMapping>(AmenityMappingQueries.GetByAmenityTypeEnumID_AmenityMapping, RoomsParams, commandType: CommandType.StoredProcedure);
