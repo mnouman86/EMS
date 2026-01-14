@@ -96,7 +96,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                         RoomType = room.Element("RoomName")?.Value,
                         RoomTypeLookUpId = int.TryParse(room.Element("RoomTypeId")?.Value, out var rtId) ? rtId : null,
                         Description = room.Element("RoomDescription")?.Value,
-                        RoomSize = room.Element("RoomSize")?.Value,
+                        RoomSize = new string((room.Element("RoomSize")?.Value ?? "").Where(char.IsDigit).ToArray()),
                         RoomSizeUnit = "Square Feets",
                         RoomAmenities = room.Element("RoomFacilityName")?.Value?
                         .Split(',', StringSplitOptions.RemoveEmptyEntries)
@@ -202,16 +202,16 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                                 }).ToList() ?? new List<RatePlan>(),
                         Price = decimal.TryParse(room.Element("RatePlanDetails")?
                             .Element("RatePlans")?
-                            .Element("ConvertedRate")?.Value, out var rate) ? rate : null,
+                            .Element("ConvertedRate")?.Value, out var rate) ? rate * noOfRooms : null,
                         RoomDetailPrice = decimal.TryParse(room.Element("RatePlanDetails")?
                             .Element("RatePlans")?
-                            .Element("ConvertedRate")?.Value, out var rate1) ? rate1 : null,
+                            .Element("ConvertedRate")?.Value, out var rate1) ? rate1 * noOfRooms : null,
                         TotalPrice = decimal.TryParse(room.Element("RatePlanDetails")?
                             .Element("RatePlans")?
-                            .Element("ConvertedRate")?.Value, out var rate2) ? rate2 : null,
+                            .Element("ConvertedRate")?.Value, out var rate2) ? rate2 * noOfRooms : null,
                         DiscountedPrice = decimal.TryParse(room.Element("RatePlanDetails")?
                             .Element("RatePlans")?
-                            .Element("ConvertedRate")?.Value, out var rate3) ? rate3 : null,
+                            .Element("ConvertedRate")?.Value, out var rate3) ? rate3 * noOfRooms : null,
                         IsAvailable = true,
                         IsActive = true
                     }).ToList()

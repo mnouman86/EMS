@@ -155,7 +155,7 @@ public class SearchHotelDetailRepository : ISearchHotelRepository
                     combinedHotels.AddRange(result.ToList()); // ← Merged list
 
                 }
-                
+                combinedHotels = combinedHotels.OrderByDescending(h => h.DiscountedPrice).ToList();
                 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(combinedHotels);
                 SearchHotelDetail searchHotelDetail = new SearchHotelDetail();
                 //searchHotelDetail.HotelDetail = result.ToList();
