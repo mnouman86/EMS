@@ -55,41 +55,41 @@ public record UpdateActivityCommand(
     public int UserId { get; set; }
     public IValidator<UpdateActivityCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<UpdateActivityCommand> validator)
     {
-        validator.RuleFor(c => c.StartTime)
-            .NotEmpty()
-    .NotNull()
-    .Matches(@"^(0?[1-9]|1[0-2]):([0-5]?[0-9]) (AM|PM)$")
-    .WithMessage("CheckInFrom must be in a valid 12-hour format (e.g., 1:05 AM, 12:00 PM, 01:5 PM)");
+    //    validator.RuleFor(c => c.StartTime)
+    //        .NotEmpty()
+    //.NotNull()
+    //.Matches(@"^(0?[1-9]|1[0-2]):([0-5]?[0-9]) (AM|PM)$")
+    //.WithMessage("CheckInFrom must be in a valid 12-hour format (e.g., 1:05 AM, 12:00 PM, 01:5 PM)");
 
-        validator.RuleFor(c => c.EndTime)
-            .NotEmpty()
-    .NotNull()
-    .Matches(@"^(0?[1-9]|1[0-2]):([0-5]?[0-9]) (AM|PM)$")
-    .WithMessage("CheckInFrom must be in a valid 12-hour format (e.g., 1:05 AM, 12:00 PM, 01:5 PM)");
+    //    validator.RuleFor(c => c.EndTime)
+    //        .NotEmpty()
+    //.NotNull()
+    //.Matches(@"^(0?[1-9]|1[0-2]):([0-5]?[0-9]) (AM|PM)$")
+    //.WithMessage("CheckInFrom must be in a valid 12-hour format (e.g., 1:05 AM, 12:00 PM, 01:5 PM)");
         validator.RuleFor(c => c.Title)
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a valid Title");
-        validator.RuleFor(c => c.Days)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a Days");
-        validator.RuleFor(c => c.Hours)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a Hours");
+        //validator.RuleFor(c => c.Days)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a Days");
+        //validator.RuleFor(c => c.Hours)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a Hours");
         //validator.RuleFor(c => c.OtherManageActivity)
         //   .NotEmpty()
         //   .NotNull()
         //   .WithMessage("Please enter a OtherManageActivity");
-        validator.RuleFor(c => c.Description)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a Description");
-        validator.RuleFor(c => c.IsTransportation)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a Description");
+        //validator.RuleFor(c => c.Description)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a Description");
+        //validator.RuleFor(c => c.IsTransportation)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a Description");
         //validator.RuleFor(c => c.TransportationLookUpID)
         //   .NotEmpty()
         //   .NotNull()
@@ -110,14 +110,14 @@ public record UpdateActivityCommand(
         //   .NotEmpty()
         //   .NotNull()
         //   .WithMessage("Please enter a Recommendation");
-        validator.RuleFor(c => c.AllowedItems)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a AllowedItems");
-        validator.RuleFor(c => c.CurrencyLookUpId)
-           .NotEmpty()
-           .NotNull()
-           .WithMessage("Please enter a CurrencyLookUpID");
+        //validator.RuleFor(c => c.AllowedItems)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a AllowedItems");
+        //validator.RuleFor(c => c.CurrencyLookUpId)
+        //   .NotEmpty()
+        //   .NotNull()
+        //   .WithMessage("Please enter a CurrencyLookUpID");
         //validator.RuleFor(c => c.PerPersonPrice)
         //   .NotEmpty()
         //   .NotNull()

@@ -59,7 +59,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                 Name = hotelElement.Element("AccommodationName")?.Value,
                 AddressLine1 = hotelElement.Element("Address")?.Value,
                 About = hotelElement.Element("GeneralDescription")?.Value,
-                RefundPolicy = hotelElement.Element("CancellationDescription")?.Value,
+                RefundPolicy = hotelElement.Element("CancellationDescription")?.Value,//--
                 CityLookUpId = int.TryParse(hotelElement.Element("CityId")?.Value, out var cityId) ? cityId : null,
                 Latitude = hotelElement.Element("Latitude")?.Value,
                 Longitude = hotelElement.Element("Longitude")?.Value,
@@ -97,7 +97,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                         RoomTypeLookUpId = int.TryParse(room.Element("RoomTypeId")?.Value, out var rtId) ? rtId : null,
                         Description = room.Element("RoomDescription")?.Value,
                         RoomSize = new string((room.Element("RoomSize")?.Value ?? "").Where(char.IsDigit).ToArray()),
-                        RoomSizeUnit = "Square Feets",
+                        RoomSizeUnit = "Sq. ft",
                         RoomAmenities = room.Element("RoomFacilityName")?.Value?
                         .Split(',', StringSplitOptions.RemoveEmptyEntries)
                         .Select((a, i) => new AmenityMapping

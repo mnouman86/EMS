@@ -107,7 +107,7 @@ namespace CleanArc.Web.Api.Controllers.V1.Currency
             _sender = sender;
         }
         [HttpPost("GetCurrencyRates")]
-        [ResponseCache(Duration = 604800, Location = ResponseCacheLocation.Any)]
+        [ResponseCache(Duration = 604800, Location = ResponseCacheLocation.None)]
         public async Task<IActionResult> GetCurrencyRates(GetCurrencyRatesQuery query)
         {
             var result = await _sender.Send(query);
