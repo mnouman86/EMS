@@ -42,7 +42,7 @@ namespace CleanArc.Application.Features.SearchHotelDetail.Queries.GetAllSearchHo
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
             //return OperationResult<List<GetAllSearchHotelsQueryResult>>.SuccessResult(result);
 
-                var response = await _unitOfWork.SearchHotelRepository.GetAllAsync(request.searchRequest);
+                var response = await _unitOfWork.SearchHotelRepository.GetAllAsync(request.SearchRequest);
 
                 if (response.Code != 200)
                 {
