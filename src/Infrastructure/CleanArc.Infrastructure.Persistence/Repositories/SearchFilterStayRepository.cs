@@ -117,8 +117,9 @@ public class SearchFilterStayRepository : ISearchFilterStayRepository
 				 (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
                 SearchHotelDetail searchHotelDetail = new SearchHotelDetail();
                 searchHotelDetail.HotelDetail = result.ToList();
-                searchHotelDetail.RoomPriceMinimum = result.Min(x => x.RoomDetailPrice);
-                searchHotelDetail.RoomPriceMaximum = result.Max(x => x.RoomDetailPrice);
+                //(int)Math.Round(combinedHotels.Where(x => x.RoomDetailPrice.HasValue).Min(x => x.RoomDetailPrice.Value)):0
+                searchHotelDetail.RoomPriceMinimum = (int)Math.Round(result.Where(x => x.RoomDetailPrice.HasValue).Min(x => x.RoomDetailPrice.Value));
+                searchHotelDetail.RoomPriceMaximum = (int)Math.Round(result.Where(x => x.RoomDetailPrice.HasValue).Max(x => x.RoomDetailPrice.Value));
                 var response = new SingleResponseWrapper<SearchHotelDetail> { Data = searchHotelDetail };
 				return response;
 			}

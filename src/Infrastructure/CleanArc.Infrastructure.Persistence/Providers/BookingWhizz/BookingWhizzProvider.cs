@@ -66,7 +66,13 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
             string ratingFilter = "";
             if (request.Rating >= 0)
             {
-                ratingFilter = $"&userrating={request.Rating*2}&userrating={request.Rating*2}";
+                ratingFilter = $"&userrating={request.Rating*2}";
+            }
+
+            string hotelRatingFilter = "";
+            if (request.HotelRating >= 0)
+            {
+                hotelRatingFilter = $"&rating={request.HotelRating}";
             }
 
             string columnName = "4";
@@ -122,7 +128,7 @@ namespace CleanArc.Infrastructure.Persistence.Providers.BookingWhizz
                       $"{cityNameFilter}&checkin={request.StartDate:yyyy-MM-dd}" +
                       $"&checkout={request.EndDate:yyyy-MM-dd}&sortby={columnName}&sort={columnDirection}"+
                       //$"&offset={offSet}&limits={limit}{priceRangeFilter}{adultFilter}{roomsFilter}{amenitiesFilter}&multilanguageid={_settings.MultiLanguageId}" +
-                      $"{paginationFilter}{priceRangeFilter}{adultFilter}{roomsFilter}{amenitiesFilter}{accomodationNameFilter}{ratingFilter}&multilanguageid={_settings.MultiLanguageId}" +
+                      $"{paginationFilter}{priceRangeFilter}{adultFilter}{roomsFilter}{amenitiesFilter}{accomodationNameFilter}{ratingFilter}{hotelRatingFilter}&multilanguageid={_settings.MultiLanguageId}" +
                       $"&converted_currency=PKR&agentid={_settings.AgentId}";
             //&accommodationtypename={request.PropertyType}
             var xmlString = await _httpClient.GetStringAsync(url);

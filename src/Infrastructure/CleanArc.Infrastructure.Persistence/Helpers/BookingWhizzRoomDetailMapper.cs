@@ -97,6 +97,8 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                         RoomTypeLookUpId = int.TryParse(room.Element("RoomTypeId")?.Value, out var rtId) ? rtId : null,
                         Description = room.Element("RoomDescription")?.Value,
                         RoomSize = new string((room.Element("RoomSize")?.Value ?? "").Where(char.IsDigit).ToArray()),
+                        Rating = int.TryParse(hotelElement.Element("UserRating")?.Value, out var rating) ? rating : null,
+                        HotelRating = int.TryParse(hotelElement.Element("Rating")?.Value, out var hotelRating) ? hotelRating : null,
                         RoomSizeUnit = "Sq. ft",
                         RoomAmenities = room.Element("RoomFacilityName")?.Value?
                         .Split(',', StringSplitOptions.RemoveEmptyEntries)

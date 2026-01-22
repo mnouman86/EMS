@@ -49,6 +49,7 @@ namespace CleanArc.Application.Models.Request
         public int? NoOfRooms { get; set; }
         public int? NoOfDays { get; set; }
         public int? Rating { get; set; }
+        public int? HotelRating { get; set; }
         public int? MinPrice { get; set; }
         public int? MaxPrice { get; set; }
         public string? Amenities { get; set; }
