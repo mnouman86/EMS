@@ -75,6 +75,7 @@ namespace CleanArc.Application.Models.Request
         public string? TransmissionType { get; set; }
         public int? MinCapacity { get; set; }
         public int? MaxCapacity { get; set; }
+        public TripType TripType { get; set; }
         public string? Manufacturer { get; set; }
         public bool FilterByWishList { get; set; }=false;
 
