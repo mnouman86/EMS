@@ -26,7 +26,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                     CityID = int.TryParse(element.Element("CityId")?.Value, out var cityId) ? cityId : 0,
                     CityName = element.Element("CityName")?.Value,
                     RoomTypeName = element.Element("MinRoomName")?.Value,
-                    RoomDetailPrice = decimal.TryParse(element.Element("MinRate")?.Value, out var price) ? price * noOfRooms : 0,
+                    RoomDetailPrice = decimal.TryParse(element.Element("MinRate")?.Value, out var price) ? price/noOfDays : 0,
                     DiscountedPrice = decimal.TryParse(element.Element("MinRate")?.Value, out var discPrice) ? discPrice* noOfRooms : 0,
                     Description = element.Element("GeneralDescription")?.Value,
                     ImagePath = element.Element("ImageURL")?.Value,
