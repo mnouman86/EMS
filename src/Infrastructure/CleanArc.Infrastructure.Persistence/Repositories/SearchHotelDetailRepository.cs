@@ -160,8 +160,8 @@ public class SearchHotelDetailRepository : ISearchHotelRepository
                 SearchHotelDetail searchHotelDetail = new SearchHotelDetail();
                 //searchHotelDetail.HotelDetail = result.ToList();
                 searchHotelDetail.HotelDetail = combinedHotels;
-                searchHotelDetail.RoomPriceMinimum= combinedHotels.Count()>0? combinedHotels.Min(x=>x.RoomDetailPrice):0;
-                searchHotelDetail.RoomPriceMaximum= combinedHotels.Count() > 0 ? combinedHotels.Max(x=>x.RoomDetailPrice):0;
+                searchHotelDetail.RoomPriceMinimum= combinedHotels.Count()>0? (int)Math.Round(combinedHotels.Where(x => x.RoomDetailPrice.HasValue).Min(x => x.RoomDetailPrice.Value)):0;
+                searchHotelDetail.RoomPriceMaximum= combinedHotels.Count() > 0 ? (int)Math.Round(combinedHotels.Where(x => x.RoomDetailPrice.HasValue).Max(x => x.RoomDetailPrice.Value)) : 0;
                 var response = new SingleResponseWrapper<SearchHotelDetail>
                 {
                     Data = searchHotelDetail,

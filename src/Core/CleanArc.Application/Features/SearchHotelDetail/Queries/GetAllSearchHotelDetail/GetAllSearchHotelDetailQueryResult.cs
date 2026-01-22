@@ -16,8 +16,8 @@ namespace CleanArc.Application.Features.SearchHotelDetail.Queries.GetAllSearchHo
 public class GetAllSearchHotelDetailQueryResult
 {
     public List<GetAllSearchHotelDetail> HotelDetail { get; set; }
-    public Decimal? RoomPriceMinimum { get; set; }
-    public Decimal? RoomPriceMaximum { get; set; }
+    public int? RoomPriceMinimum { get; set; }
+    public int? RoomPriceMaximum { get; set; }
     public DateTime? StartDate { get; set; }
     public DateTime? EndDate { get; set; }
 }

@@ -31,6 +31,7 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                     Description = element.Element("GeneralDescription")?.Value,
                     ImagePath = element.Element("ImageURL")?.Value,
                     Rating = int.TryParse(element.Element("UserRating")?.Value, out var rating) ? rating/2 : 0,
+                    HotelRating = int.TryParse(element.Element("Rating")?.Value, out var hotelRating) ? hotelRating : 0,
                     RefundPolicy = element.Element("CancellationDescription")?.Value,
                     Longitude = decimal.TryParse(element.Element("Longitude")?.Value, out var lng) ? lng : null,
                     Latitude = decimal.TryParse(element.Element("Latitude")?.Value, out var lat) ? lat : null,

@@ -41,6 +41,7 @@ public class RoomDetails
     public Decimal? RoomDetailPrice { get; set; }
     public int? ReviewsCount { get; set; }
     public int? Rating { get; set; }
+    public int? HotelRating { get; set; }
 
     public decimal? AdditionalMattressCharges { get; set; }
     public string? NoOfRooms { get; set; }
