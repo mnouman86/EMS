@@ -10,6 +10,8 @@ namespace CleanArc.Application.Models.Policy
     {
         // public int Id { get; set; }
         public int? RatePlanTypeID { get; set; }
+        public string Description { get; set; }
+
         public int? RefundPolicyTypeLookUpID { get; set; }
         public decimal? DeductionPercentage { get; set; }
         public int CreatedBy { get; set; }

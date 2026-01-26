@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Models.NoShowPolicy
+namespace CleanArc.Application.Models.RefundPolicy
 {
-    public class CreateNoShowPolicyDTO
+    public class CreateRefundPolicyDTO
     {
         // public int Id { get; set; }
-        public int? RatePlanTypeID { get; set; }
+        public int? GenericTitleId { get; set; }
+        public int? ServiceTypeEnumId { get; set; }
         public string Description { get; set; }
 
+        public int? RefundPolicyTypeLookUpID { get; set; }
         public decimal? DeductionPercentage { get; set; }
-        public bool? OneNight { get; set; }
         public int CreatedBy { get; set; }
         public int CultureId { get; set; }
        // public DateTime CreatedAt { get; set; }

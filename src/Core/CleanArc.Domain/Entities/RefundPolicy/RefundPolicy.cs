@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Domain.Entities.Policy
+namespace CleanArc.Domain.Entities.RefundPolicy
 {
-    public class Policy
+    public class RefundPolicy
     {
         public int Id { get; set; }
-        public int? RatePlanTypeID { get; set; }
+        public int? GenericTitleId { get; set; }
+        public int? ServiceTypeEnumId { get; set; }
         public string Description { get; set; }
 
         public int? RefundPolicyTypeLookUpID { get; set; }
@@ -23,9 +24,9 @@ namespace CleanArc.Domain.Entities.Policy
         public DateTime? UpdatedAt { get; set; }
 		public int? CultureId { get; set; }
 	}
-    public class PolicyLookUp
+    public class RefundPolicyLookUp
     {
-        public int PolicyLookUpId { get; set; }
-        public string? Policy { get; set; }
+        public int RefundPolicyLookUpId { get; set; }
+        public string? RefundPolicy { get; set; }
     }
 }

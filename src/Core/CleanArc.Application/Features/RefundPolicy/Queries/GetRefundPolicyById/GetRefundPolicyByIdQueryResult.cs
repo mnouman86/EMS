@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.Policy.Queries.GetAllPolicys
+namespace CleanArc.Application.Features.RefundPolicy.Queries.GetRefundPolicyById
 {
-    public class GetAllPolicysQueryResult
+    public class GetRefundPolicyByIdQueryResult
     {
+
         public int Id { get; set; }
-        public int? RatePlanTypeID { get; set; }
+        public int? GenericTitleId { get; set; }
+        public int? ServiceTypeEnumId { get; set; }
         public string Description { get; set; }
 
         public int? RefundPolicyTypeLookUpID { get; set; }

@@ -11,14 +11,14 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; using CleanArc.Domain.Common;
 
-namespace CleanArc.Application.Features.Policy.Command.CreatePolicyCommand
+namespace CleanArc.Application.Features.RefundPolicy.Command.CreateRefundPolicyCommand
 {
-    public record CreatePolicyCommand(int? RatePlanTypeID, int? RefundPolicyTypeLookUpID, decimal? DeductionPercentage, int? CultureId, string Description) : IRequest<OperationResult<ResponseEntity>>,
-    IValidatableModel<CreatePolicyCommand>
+    public record CreateRefundPolicyCommand(int? GenericTitleId, int? ServiceTypeEnumId, int? RefundPolicyTypeLookUpID, decimal? DeductionPercentage, int? CultureId, string Description) : IRequest<OperationResult<ResponseEntity>>,
+    IValidatableModel<CreateRefundPolicyCommand>
     {
         [JsonIgnore]
         public int UserId { get; set; }
-        public IValidator<CreatePolicyCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreatePolicyCommand> validator)
+        public IValidator<CreateRefundPolicyCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CreateRefundPolicyCommand> validator)
         {
             validator.RuleFor(c => c.DeductionPercentage)
                 .NotEmpty()
