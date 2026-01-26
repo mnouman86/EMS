@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Models.Policy;
+namespace CleanArc.Application.Models.RefundPolicy;
 
-public class UpdatePolicyDTO
+public class UpdateRefundPolicyDTO
 {
      public int Id { get; set; }
-    public int? RatePlanTypeID { get; set; }
+    public int? GenericTitleId { get; set; }
+    public int? ServiceTypeEnumId { get; set; }
     public string Description { get; set; }
 
     public int? RefundPolicyTypeLookUpID { get; set; }

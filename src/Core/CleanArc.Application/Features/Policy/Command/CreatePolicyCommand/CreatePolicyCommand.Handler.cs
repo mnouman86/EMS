@@ -62,6 +62,8 @@ internal class CreatePolicyCommandHandler : IRequestHandler<CreatePolicyCommand,
                 RefundPolicyTypeLookUpID = request.RefundPolicyTypeLookUpID,
                 DeductionPercentage = request.DeductionPercentage,
                 CultureId = request.CultureId,
+                Description = request.Description,
+
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

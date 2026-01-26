@@ -41,6 +41,7 @@ public interface IUnitOfWork
     public ICityRepository CityRepository { get; }
     public ILanguageRepository LanguageRepository { get; }
     public IPolicyRepository PolicyRepository { get; }
+    public IRefundPolicyRepository RefundPolicyRepository { get; }
     public INoShowPolicyRepository NoShowPolicyRepository { get; }
     public IPolicyTypeRepository PolicyTypeRepository { get; }
     public IRatePlanTypeRepository RatePlanTypeRepository { get; }

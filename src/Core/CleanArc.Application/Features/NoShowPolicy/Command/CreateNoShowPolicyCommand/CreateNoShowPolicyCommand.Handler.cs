@@ -62,6 +62,7 @@ internal class CreateNoShowPolicyCommandHandler : IRequestHandler<CreateNoShowPo
                 OneNight = request.OneNight,
                 DeductionPercentage = request.DeductionPercentage,
                 CultureId = request.CultureId,
+                Description = request.Description,
             });
             await _unitOfWork.CommitAsync();
             (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);

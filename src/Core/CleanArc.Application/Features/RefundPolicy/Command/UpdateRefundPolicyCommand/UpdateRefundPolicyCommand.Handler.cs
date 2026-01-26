@@ -13,21 +13,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArc.Application.Features.Policy.Command.UpdatePolicyCommand;
+namespace CleanArc.Application.Features.RefundPolicy.Command.UpdateRefundPolicyCommand;
 
-internal class UpdatePolicyCommandHandler : IRequestHandler<UpdatePolicyCommand, OperationResult<ResponseEntity>>
+internal class UpdateRefundPolicyCommandHandler : IRequestHandler<UpdateRefundPolicyCommand, OperationResult<ResponseEntity>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAppUserManager _userManager;
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
-    private readonly ILogger<UpdatePolicyCommandHandler> _logger;
+    private readonly ILogger<UpdateRefundPolicyCommandHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
     //private readonly IUnitOfWork _unitOfWork;
     //private readonly IAppUserManager _userManager;
 
 
-    public UpdatePolicyCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdatePolicyCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
+    public UpdateRefundPolicyCommandHandler(IUnitOfWork unitOfWork, IAppUserManager userManager, IConfiguration configuration, IMapper mapper, ILogger<UpdateRefundPolicyCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _userManager = userManager;
@@ -38,7 +38,7 @@ internal class UpdatePolicyCommandHandler : IRequestHandler<UpdatePolicyCommand,
         //_unitOfWork = unitOfWork;
         //_userManager = userManager;
     }
-    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdatePolicyCommand request, CancellationToken cancellationToken)
+    public async ValueTask<OperationResult<ResponseEntity>> Handle(UpdateRefundPolicyCommand request, CancellationToken cancellationToken)
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
@@ -54,11 +54,12 @@ internal class UpdatePolicyCommandHandler : IRequestHandler<UpdatePolicyCommand,
             //(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(true);
 
             //return OperationResult<ResponseEntity>.SuccessResult(result);
-            var result = await _unitOfWork.PolicyRepository.UpdateAsync(new Domain.Entities.Policy.Policy()
+            var result = await _unitOfWork.RefundPolicyRepository.UpdateAsync(new Domain.Entities.RefundPolicy.RefundPolicy()
             {
                 UpdatedBy = user.Id,
                 Id = request.Id,
-                RatePlanTypeID = request.RatePlanTypeID,
+                GenericTitleId = request.GenericTitleId,
+                ServiceTypeEnumId = request.ServiceTypeEnumId,
                 RefundPolicyTypeLookUpID = request.RefundPolicyTypeLookUpID,
                 DeductionPercentage = request.DeductionPercentage,
                 CultureId= request.CultureId,

@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.NoShowPolicy.Command.CreateNoShowPolicyCommand
 {
-    public record CreateNoShowPolicyCommand(int? RatePlanTypeID, bool? OneNight, decimal? DeductionPercentage, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+    public record CreateNoShowPolicyCommand(int? RatePlanTypeID, bool? OneNight, decimal? DeductionPercentage, int? CultureId, string Description) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreateNoShowPolicyCommand>
     {
         [JsonIgnore]

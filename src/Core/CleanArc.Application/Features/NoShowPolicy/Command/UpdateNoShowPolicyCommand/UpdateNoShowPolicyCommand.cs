@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.NoShowPolicy.Command.UpdateNoShowPolicyCommand;
 
-public record UpdateNoShowPolicyCommand(int Id, int? RatePlanTypeID, bool? OneNight, decimal? DeductionPercentage, int? CultureId) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdateNoShowPolicyCommand(int Id, int? RatePlanTypeID, bool? OneNight, decimal? DeductionPercentage, int? CultureId, string Description) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<UpdateNoShowPolicyCommand>
 {
     [JsonIgnore]
