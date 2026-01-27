@@ -152,11 +152,20 @@ public class SearchHotelDetailRepository : ISearchHotelRepository
                 var combinedHotels = thirdPartyHotels;
                 if (result!=null)
                 {
-                    combinedHotels.AddRange(result.ToList()); // ← Merged list
+                    combinedHotels.AddRange(result.Where(x=>x.GenericTitleId>0).ToList()); // ← Merged list
 
                 }
-                combinedHotels = combinedHotels.OrderByDescending(h => h.DiscountedPrice).ToList();
-                (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(combinedHotels);
+                string? sortingDirection = searchRequest?.SortingArray?.FirstOrDefault()?.SortingColumnDirection;
+                if (sortingDirection != null && sortingDirection == "ASC")
+                {
+                    combinedHotels = combinedHotels.OrderBy(h => h.DiscountedPrice).ToList();
+                }
+                else
+                {
+                    combinedHotels = combinedHotels.OrderByDescending(h => h.DiscountedPrice).ToList();
+                }
+
+                    (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(combinedHotels);
                 SearchHotelDetail searchHotelDetail = new SearchHotelDetail();
                 //searchHotelDetail.HotelDetail = result.ToList();
                 searchHotelDetail.HotelDetail = combinedHotels;
@@ -168,7 +177,7 @@ public class SearchHotelDetailRepository : ISearchHotelRepository
                     Code = !searchRequest.IsThirdParty ? parameters.Get<int>("@Code") : 200,
                     Message = !searchRequest.IsThirdParty ? parameters.Get<string>("@Message") : "Data retrieved successfully."                    
                 };
-                if (result?.Count()==0 && combinedHotels?.Count()>0) { response.Code = 200;response.Message = "Data retrieved successfully."; }
+                if ((result?.Count()==0 ||searchHotelDetail?.HotelDetail.Count>0) && combinedHotels?.Count()>0) { response.Code = 200;response.Message = "Data retrieved successfully."; }
                 return response;
 
 			}
