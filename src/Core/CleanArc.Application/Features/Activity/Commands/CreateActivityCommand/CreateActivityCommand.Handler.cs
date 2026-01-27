@@ -46,8 +46,31 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
     {
         using (var logger = _logger.LogMethodEntryExit(_httpContextAccessor?.HttpContext, request))
         {
-            DateTime.TryParseExact(request.StartTime, TimeFormats.formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime startTime);
-            DateTime.TryParseExact(request.EndTime, TimeFormats.formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime endTime);
+            DateTime? startTime = null;
+
+            if (!string.IsNullOrWhiteSpace(request.StartTime)
+                && DateTime.TryParseExact(
+                    request.StartTime,
+                    TimeFormats.formats,
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.None,
+                    out DateTime parsedTime))
+            {
+                startTime = parsedTime;
+            }
+
+            DateTime? endTime = null;
+
+            if (!string.IsNullOrWhiteSpace(request.EndTime)
+                && DateTime.TryParseExact(
+                    request.EndTime,
+                    TimeFormats.formats,
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.None,
+                    out DateTime parsedTime2))
+            {
+                endTime = parsedTime2;
+            }
             var user = await _userManager.GetUserByIdAsync(request.UserId);
             if (user == null)
                 return OperationResult<ResponseEntity>.FailureResult("User Not Found");
@@ -100,8 +123,8 @@ internal class CreateActivityCommandHandler: IRequestHandler<CreateActivityComma
                 DisabilityOptionLookUpId= request.DisabilityOptionLookUpId,
                 EndDate = request.EndDate,
                 StartDate = request.StartDate,
-                StartTime = startTime,
-                EndTime = endTime,
+                StartTime =request.StartTime!=null? startTime:null,
+                EndTime =request.EndTime!=null? endTime:null,
                 IsFullyRefundable = request.IsFullyRefundable,
                 IsPartiallyRefundable= request.IsPartiallyRefundable,
                 RefundPolicy=request.RefundPolicy,
