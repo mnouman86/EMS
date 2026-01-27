@@ -32,10 +32,10 @@ public record CreateGenericAddressCommand(int? GenericTitleId, int? CountryLookU
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a CityLookUpID");
-        //validator.RuleFor(c => c.AddressLine1)
-        //    .NotEmpty()
-        //    .NotNull()
-        //    .WithMessage("Please enter a AddressLine1");
+        validator.RuleFor(c => c.AddressLine1)
+            .NotEmpty()
+            .NotNull()
+            .WithMessage("Please enter a AddressLine1");
         //validator.RuleFor(c => c.AddressLine2)
         //    .NotEmpty()
         //    .NotNull()
@@ -44,10 +44,10 @@ public record CreateGenericAddressCommand(int? GenericTitleId, int? CountryLookU
             .NotEmpty()
             .NotNull()
             .WithMessage("Please enter a State");
-        validator.RuleFor(c => c.PostalCode)
-            .NotEmpty()
-            .NotNull()
-            .WithMessage("Please enter a PostalCode");
+        //validator.RuleFor(c => c.PostalCode)
+        //    .NotEmpty()
+        //    .NotNull()
+        //    .WithMessage("Please enter a PostalCode");
         validator.RuleFor(c => c.Latitude)
             .NotEmpty()
             .NotNull()
