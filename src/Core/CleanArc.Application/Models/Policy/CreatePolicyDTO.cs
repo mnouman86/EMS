@@ -8,6 +8,8 @@ namespace CleanArc.Application.Models.Policy
 {
     public class CreatePolicyDTO
     {
+        public int? GenericTitleId { get; set; }
+        public int? ServiceTypeEnumId { get; set; }
         // public int Id { get; set; }
         public int? RatePlanTypeID { get; set; }
         public string Description { get; set; }
