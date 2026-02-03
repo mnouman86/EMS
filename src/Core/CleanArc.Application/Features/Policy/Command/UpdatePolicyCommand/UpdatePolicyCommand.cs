@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CleanArc.Application.Features.Policy.Command.UpdatePolicyCommand;
 
-public record UpdatePolicyCommand(int Id, int? RatePlanTypeID, int? RefundPolicyTypeLookUpID, decimal? DeductionPercentage, int? CultureId, string Description) : IRequest<OperationResult<ResponseEntity>>,
+public record UpdatePolicyCommand(int? GenericTitleId, int? ServiceTypeEnumId,int Id, int? RatePlanTypeID, int? RefundPolicyTypeLookUpID, decimal? DeductionPercentage, int? CultureId, string Description) : IRequest<OperationResult<ResponseEntity>>,
 IValidatableModel<UpdatePolicyCommand>
 {
     [JsonIgnore]
