@@ -34,8 +34,7 @@ public record
         validator.RuleFor(c => c.RoomSizeUnitLookUpId)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Please enter a RoomSizeUnitID");
-       
+            .WithMessage("Please enter a RoomSizeUnitID");       
         return validator;
     }
 }
