@@ -13,7 +13,7 @@ using CleanArc.Application.Models.Request;using System.Text.Json.Serialization; 
 
 namespace CleanArc.Application.Features.Policy.Command.CreatePolicyCommand
 {
-    public record CreatePolicyCommand(int? RatePlanTypeID, int? RefundPolicyTypeLookUpID, decimal? DeductionPercentage, int? CultureId, string Description) : IRequest<OperationResult<ResponseEntity>>,
+    public record CreatePolicyCommand(int? GenericTitleId, int? ServiceTypeEnumId,int? RatePlanTypeID, int? RefundPolicyTypeLookUpID, decimal? DeductionPercentage, int? CultureId, string Description) : IRequest<OperationResult<ResponseEntity>>,
     IValidatableModel<CreatePolicyCommand>
     {
         [JsonIgnore]
@@ -28,5 +28,5 @@ namespace CleanArc.Application.Features.Policy.Command.CreatePolicyCommand
         }
     }
 
-
-}
+    
+    }
