@@ -63,6 +63,8 @@ internal class CreatePolicyCommandHandler : IRequestHandler<CreatePolicyCommand,
                 DeductionPercentage = request.DeductionPercentage,
                 CultureId = request.CultureId,
                 Description = request.Description,
+                GenericTitleId = request.GenericTitleId,
+                ServiceTypeEnumId = request.ServiceTypeEnumId,
 
             });
             await _unitOfWork.CommitAsync();
