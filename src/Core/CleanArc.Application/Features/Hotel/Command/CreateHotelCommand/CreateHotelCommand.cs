@@ -106,28 +106,28 @@ public record CreateHotelCommand(
             .NotEmpty().WithMessage("Check-in from time is required")
             .Matches(timeRegex).WithMessage("Check-in from time must be in 12-hour format (e.g., 3:00 PM)");
 
-        validator.RuleFor(c => c.CheckInTo)
-            .NotEmpty().WithMessage("Check-in to time is required")
-            .Matches(timeRegex).WithMessage("Check-in to time must be in 12-hour format (e.g., 4:00 PM)");
+        //validator.RuleFor(c => c.CheckInTo)
+        //    .NotEmpty().WithMessage("Check-in to time is required")
+        //    .Matches(timeRegex).WithMessage("Check-in to time must be in 12-hour format (e.g., 4:00 PM)");
 
         validator.RuleFor(c => c.CheckOutFrom)
             .NotEmpty().WithMessage("Check-out from time is required")
             .Matches(timeRegex).WithMessage("Check-out from time must be in 12-hour format (e.g., 10:00 AM)");
 
-        validator.RuleFor(c => c.CheckOutTo)
-            .NotEmpty().WithMessage("Check-out to time is required")
-            .Matches(timeRegex).WithMessage("Check-out to time must be in 12-hour format (e.g., 12:00 PM)");
+        //validator.RuleFor(c => c.CheckOutTo)
+        //    .NotEmpty().WithMessage("Check-out to time is required")
+        //    .Matches(timeRegex).WithMessage("Check-out to time must be in 12-hour format (e.g., 12:00 PM)");
 
         // Time range logic
-        validator.RuleFor(c => c)
-            .Must(c => ParseTime(c.CheckInFrom) < ParseTime(c.CheckInTo))
-            .When(c => IsValidTime(c.CheckInFrom) && IsValidTime(c.CheckInTo))
-            .WithMessage("Check-in 'From' time must be earlier than 'To' time");
+        //validator.RuleFor(c => c)
+        //    .Must(c => ParseTime(c.CheckInFrom) < ParseTime(c.CheckInTo))
+        //    .When(c => IsValidTime(c.CheckInFrom) && IsValidTime(c.CheckInTo))
+        //    .WithMessage("Check-in 'From' time must be earlier than 'To' time");
 
-        validator.RuleFor(c => c)
-            .Must(c => ParseTime(c.CheckOutFrom) < ParseTime(c.CheckOutTo))
-            .When(c => IsValidTime(c.CheckOutFrom) && IsValidTime(c.CheckOutTo))
-            .WithMessage("Check-out 'From' time must be earlier than 'To' time");
+        //validator.RuleFor(c => c)
+        //    .Must(c => ParseTime(c.CheckOutFrom) < ParseTime(c.CheckOutTo))
+        //    .When(c => IsValidTime(c.CheckOutFrom) && IsValidTime(c.CheckOutTo))
+        //    .WithMessage("Check-out 'From' time must be earlier than 'To' time");
 
         // 🚨 Ensure checkout ends before check-in starts (business logic)
         validator.RuleFor(c => c)
