@@ -50,7 +50,8 @@ public class BaseController : ControllerBase
             TotalCount = result.TotalCount,
         };
 
-        return result.Result is bool ? Ok() : StatusCode(result.StatusCode, successResponse);
+        return result.Result is bool ? StatusCode(result.StatusCode, successResponse): Ok();
+        //return result.Result is bool b && b? Ok() : StatusCode(result.StatusCode, successResponse);
 
         //if (result is null)
         //    return new ServerErrorResult("Server Error");
@@ -75,7 +76,7 @@ public class BaseController : ControllerBase
         //var badRequestErrors = new ValidationProblemDetails(ModelState);
 
         //return BadRequest(badRequestErrors.Errors);
-       // return StatusCode(result.StatusCode, new { Message = result.ErrorMessage==null?result.Message:result.ErrorMessage, StatusCode = result.StatusCode, ErrorCore=result.ErrorCode });
+        // return StatusCode(result.StatusCode, new { Message = result.ErrorMessage==null?result.Message:result.ErrorMessage, StatusCode = result.StatusCode, ErrorCore=result.ErrorCode });
 
     }
 
