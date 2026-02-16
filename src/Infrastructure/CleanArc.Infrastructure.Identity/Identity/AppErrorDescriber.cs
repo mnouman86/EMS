@@ -27,7 +27,7 @@ public class AppErrorDescriber:IdentityErrorDescriber
         return new IdentityError
         {
             Code = nameof(DuplicateUserName),
-            Description = "specified username already exists"
+            Description = "Specified email already exists"
         };
     }
 
