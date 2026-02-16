@@ -50,7 +50,7 @@ public class BaseController : ControllerBase
             TotalCount = result.TotalCount,
         };
 
-        return result.Result is bool ? StatusCode(result.StatusCode, successResponse): Ok();
+        return result.Result is bool ? StatusCode(result.StatusCode, successResponse): StatusCode(result.StatusCode, successResponse);
         //return result.Result is bool b && b? Ok() : StatusCode(result.StatusCode, successResponse);
 
         //if (result is null)
