@@ -106,9 +106,9 @@ public class AppUserManagerImplementation : IAppUserManager
     {
         return await _userManager.ResetPasswordAsync(user, token,newPassword);
     }
-    public Task<User> GetByUserName(string userName)
+    public async Task<User> GetByUserName(string userName)
     {
-        return _userManager.FindByNameAsync(userName);
+        return await _userManager.FindByNameAsync(userName);
     }
 
     public async Task<User> GetUserByIdAsync(int userId)

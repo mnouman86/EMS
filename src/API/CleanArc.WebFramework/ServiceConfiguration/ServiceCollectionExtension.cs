@@ -25,9 +25,9 @@ public static class ServiceCollectionExtension
         });
 
         services.Configure<RateLimitSettings>(configuration.GetSection("RateLimit"));
-        services.Configure<EmailVerificationSettings>(configuration.GetSection("EmailVerificationSettings"));
-        services.Configure<OTPSettings>(configuration.GetSection("OTP"));
-        services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
+        //services.Configure<EmailVerificationSettings>(configuration.GetSection("EmailVerificationSettings"));
+        //services.Configure<OTPSettings>(configuration.GetSection("OTP"));
+        //services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         services.AddSingleton<IClientIdentifier, ClientIdentifier>();
 

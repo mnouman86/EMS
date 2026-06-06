@@ -26,9 +26,9 @@ public class UserTokenRequestQueryHandler:IRequestHandler<UserTokenRequestQuery,
         if(user is null)
             return OperationResult<UserTokenRequestQueryResponse>.NotFoundResult("User Not found");
 
-        var code = user.PhoneNumberConfirmed? await _userManager.GenerateOtpCode(user) : await _userManager.GeneratePhoneNumberConfirmationToken(user,user.PhoneNumber);
+        //var code = user.PhoneNumberConfirmed? await _userManager.GenerateOtpCode(user) : await _userManager.GeneratePhoneNumberConfirmationToken(user,user.PhoneNumber);
 
-        _logger.LogWarning($"Generated Code for user Id {user.Id} is {code}");
+        //_logger.LogWarning($"Generated Code for user Id {user.Id} is {code}");
 
         //TODO Send Code Via Sms Provider
 

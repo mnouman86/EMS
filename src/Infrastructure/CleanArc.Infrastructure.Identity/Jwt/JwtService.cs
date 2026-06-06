@@ -61,7 +61,13 @@ public class JwtService : IJwtService
         var refreshToken = await _unitOfWork.UserRefreshTokenRepository.CreateToken(user.Id);
         await _unitOfWork.CommitAsync();
 
-        return new AccessToken(securityToken,refreshToken.ToString(), user.Id, user.RoleId);
+        var accessToken = new AccessToken(securityToken, refreshToken.ToString(), user.Id, user.RoleId);
+        // The token is an encrypted JWE, so the SPA cannot read its claims — expose identity & roles here.
+        var claimList = claims.ToList();
+        accessToken.userName = claimList.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value ?? user.UserName;
+        accessToken.email = claimList.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value ?? user.Email;
+        accessToken.roles = claimList.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToList();
+        return accessToken;
     }
 
     public Task<ClaimsPrincipal> GetPrincipalFromExpiredToken(string token)

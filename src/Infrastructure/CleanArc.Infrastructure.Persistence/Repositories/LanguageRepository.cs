@@ -1,8 +1,6 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Models.AgeType;
 using CleanArc.Application.Models.Language;
 using CleanArc.Application.Models.Request;
-using CleanArc.Domain.Entities.AgeType;
 using CleanArc.Domain.Entities.Language;
 using CleanArc.Infrastructure.Persistence.Helpers;
 using CleanArc.Infrastructure.Sql.SqlQueries;
@@ -21,7 +19,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArc.Application.Common;
-using CleanArc.Domain.Entities.City;
 
 namespace CleanArc.Infrastructure.Persistence.Repositories;
 
@@ -117,7 +114,18 @@ public class LanguageRepository : ILanguageRepository
       
 
 				(logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(result);
-				var response = new ListResponseWrapper<Language> { Data = result.ToList(), TotalCount = parameters.Get<int>("@TotalCount"), Code = parameters.Get<int>("@Code"), Message = parameters.Get<string>("@Message") }; return response;
+                var totalCount = parameters.Get<int?>("@TotalCount") ?? 0;
+                var code = parameters.Get<int?>("@Code") ?? 0;
+                var message = parameters.Get<string>("@Message") ?? string.Empty;
+
+                var response = new ListResponseWrapper<Language>
+                {
+                    Data = result.ToList(),
+                    TotalCount = totalCount,
+                    Code = code,
+                    Message = message
+                };
+                return response;
 
 			}
 		}

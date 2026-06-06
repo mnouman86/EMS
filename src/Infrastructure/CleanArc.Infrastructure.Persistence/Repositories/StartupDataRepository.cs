@@ -4,7 +4,6 @@ using CleanArc.Application.Models.Common;
 using CleanArc.Application.Models.StartupData;
 using CleanArc.Domain.Common;
 using CleanArc.Domain.Entities.OTP;
-using CleanArc.Domain.Entities.OutDoor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;

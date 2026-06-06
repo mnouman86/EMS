@@ -1,5 +1,4 @@
-﻿using CleanArc.Application.Features.AgeType.Queries.GetAllAgeType;
-using CleanArc.Application.Models.Common;
+﻿using CleanArc.Application.Models.Common;
 using CleanArc.Application.Models.Request;
 using Mediator;
 using System;

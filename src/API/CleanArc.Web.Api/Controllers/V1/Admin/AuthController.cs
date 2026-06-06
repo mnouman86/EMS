@@ -1,14 +1,4 @@
 ﻿using Asp.Versioning;
-using Azure;
-using CleanArc.Application.Features.Admin.Commands.AddAdminCommand;
-using CleanArc.Application.Features.Admin.Commands.ChangePasswordCommand;
-using CleanArc.Application.Features.Admin.Commands.ForgotPasswordCommand;
-using CleanArc.Application.Features.Admin.Commands.ResendVerificationEmailCommand;
-using CleanArc.Application.Features.Admin.Commands.ResetPasswordCommand;
-using CleanArc.Application.Features.Admin.Commands.SendOTPCommand;
-using CleanArc.Application.Features.Admin.Commands.VerifyEmailCommand;
-using CleanArc.Application.Features.Admin.Commands.VerifyOTPCommand;
-using CleanArc.Application.Features.Admin.Queries.GetToken;
 using CleanArc.Application.Features.Auth.Queries.GetToken;
 using CleanArc.SharedKernel.Extensions;
 using CleanArc.WebFramework.BaseController;

@@ -5,7 +5,6 @@ using Mediator;
 using Microsoft.Extensions.Logging; 
 using CleanArc.Domain.Common;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Models.UserSignUpRewards;
 
 namespace CleanArc.Application.Features.Users.Commands.Create;
 
@@ -41,8 +40,7 @@ internal class UserCreateCommandHandler : IRequestHandler<UserCreateCommand, Ope
         {
             return OperationResult<UserCreateCommandResult>.FailureResult(string.Join(",", createResult.Errors.Select(c => c.Description)));
         }
-        var result = await _unitOfWork.UserSignUpRewardsRepository.AddAsync(new Domain.Entities.UserSignUpRewards.UserSignUpRewards()
-        {  UserID = user.Id,RewardRulesID = 1 });
+        
         await _unitOfWork.CommitAsync();
 
         var code = await _userManager.GeneratePhoneNumberConfirmationToken(user, user.PhoneNumber);

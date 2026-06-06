@@ -9,7 +9,6 @@ using CleanArc.Domain.Common;
 using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.StartupData;
 using Microsoft.Extensions.Configuration;
-using CleanArc.Application.Features.Service.Queries.GetServiceById;
 using CleanArc.SharedKernel.Extensions;
 using Serilog.Core;
 using MapsterMapper;

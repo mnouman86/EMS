@@ -22,13 +22,13 @@ public class SeedDataBase : ISeedDataBase
 
     public async Task Seed()
     {
-        if (!_roleManager.Roles.AsNoTracking().Any(r => r.Name.Equals("admin")))
+        // Role names used across the EMS modules. "admin" is legacy; the others
+        // mirror the actor matrix in EMS_User_Stories.md + EMS_Use_Cases_Fee_Inventory_Finance.
+        var roles = new[] { "admin", "principal", "accountant", "teacher", "parent" };
+        foreach (var name in roles)
         {
-            var role=new Role
-            {
-                Name = "admin",
-            };
-            await _roleManager.CreateAsync(role);
+            if (!_roleManager.Roles.AsNoTracking().Any(r => r.Name.Equals(name)))
+                await _roleManager.CreateAsync(new Role { Name = name });
         }
 
         if (!_userManager.Users.AsNoTracking().Any(u => u.UserName.Equals("admin")))

@@ -16,7 +16,7 @@ public interface IAppUserManager
     Task<IdentityResult> ChangePhoneNumber(User user, string phoneNumber, string code);
     Task<IdentityResult> VerifyUserCode(User user,string code);
     Task<IdentityResult> ResetPasswordAsync(User user, string token, string newPassword);
-    Task<string> GenerateOtpCode(User user);
+    //Task<string> GenerateOtpCode(User user);
     Task<User> GetUserByPhoneNumber(string phoneNumber);
     Task<User> GetUserByEmail(string phoneNumber);
     Task<SignInResult> AdminLogin(User user,string password);

@@ -1,15 +1,13 @@
 ﻿using CleanArc.Application.Contracts;
-using CleanArc.Application.Contracts.Mappers;
+using CleanArc.Application.Contracts.Notifications;
+using CleanArc.Application.Contracts.Pdf;
 using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Contracts.Providers;
-using CleanArc.Application.Services.Aggregators;
+using CleanArc.Application.Models.Expense;
+using CleanArc.Application.Models.Fee;
+using CleanArc.Application.Models.Finance;
 using CleanArc.Domain.Interfaces.Services;
 using CleanArc.Infrastructure.Persistence.Common.Validation;
-using CleanArc.Infrastructure.Persistence.Configuration.FlightsConfig;
-using CleanArc.Infrastructure.Persistence.Configuration.HotelProvidersConfig;
-using CleanArc.Infrastructure.Persistence.Providers.BookingWhizz;
-using CleanArc.Infrastructure.Persistence.Providers.KPlus;
-using CleanArc.Infrastructure.Persistence.Providers.Mosafir;
+using CleanArc.Infrastructure.Persistence.Pdf;
 using CleanArc.Infrastructure.Persistence.Repositories.Common;
 using CleanArc.Infrastructure.Persistence.Services;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +25,15 @@ public static class ServiceCollectionExtensions
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+        // Access-control: cached per-user permission lookups for authorization.
+        services.AddMemoryCache();
+        services.AddScoped<CleanArc.Application.Contracts.Identity.IUserPermissionProvider,
+                           CleanArc.Infrastructure.Persistence.Services.UserPermissionProvider>();
+
+        // Per-request teacher data scope (class teacher + TeacherAssignment classes).
+        services.AddScoped<CleanArc.Application.Contracts.Identity.ITeacherScopeContext,
+                           CleanArc.Infrastructure.Persistence.Services.TeacherScopeContext>();
+
         services.AddDbContext<ApplicationDbContext>(options =>
         {
             options
@@ -34,66 +41,20 @@ public static class ServiceCollectionExtensions
         });
         services.AddHostedService<VerificationCodeCleanupService>();
 
-        // Add KPlus options from configuration (add this near MosafirOptions registration)
-        services.Configure<KPlusOptions>(configuration.GetSection("KPlus"));
-
-        services.Configure<MosafirOptions>(configuration.GetSection("Mosafir"));
-
-        // Register BookingWhizz 3rd-party hotel integration services
-        // Register BookingWhizzSettings config section
-        services.Configure<BookingWhizzSettings>(
-            configuration.GetSection("HotelProviders:BookingWhizz"));
-
-        // Register the response mapper
-        services.AddScoped<IHotelResponseMapper<XDocument>, BookingWhizzResponseMapper>();
-
-        // Register the HttpClient for BookingWhizzProvider
-        services.AddHttpClient<BookingWhizzProvider>();
-
-        // Register BookingWhizzProvider as one of the IHotelProvider implementations
-        services.AddScoped<IHotelProvider, BookingWhizzProvider>();
-
-        // Register the aggregator (optional if using multiple providers)
-        services.AddScoped<HotelProviderAggregator>();
-
-        //services.AddHttpClient<BookingWhizzProvider>(client =>
-        //{
-        //    client.BaseAddress = new Uri("http://beapi.bookingwhizz.com/");
-        //    client.DefaultRequestHeaders.Add("Accept", "application/xml");
-        //});
-
-
-        // Register typed HttpClient for Mosafir provider
-        services.AddHttpClient<MosafirFlightProvider>((sp, client) =>
-        {
-            var opts = sp.GetRequiredService<IOptions<MosafirOptions>>().Value;
-            client.BaseAddress = new Uri(opts.BaseUrl);
-            client.Timeout = TimeSpan.FromSeconds(opts.TimeoutSeconds);
-            // add default headers if needed:
-            if (!string.IsNullOrWhiteSpace(opts.ApiKey))
-                client.DefaultRequestHeaders.Add("X-Api-Key", opts.ApiKey);
-        });
-
-        // Register the typed HttpClient for KPlus provider
-        services.AddHttpClient<KPlusFlightProvider>((sp, client) =>
-        {
-            var opts = sp.GetRequiredService<IOptions<KPlusOptions>>().Value;
-            client.BaseAddress = new Uri(opts.BaseUrl);
-            client.Timeout = TimeSpan.FromSeconds(opts.TimeoutSeconds);
-        });
-
-        // Resolve interface to typed provider
-        services.AddScoped<IFlightProvider>(sp => sp.GetRequiredService<MosafirFlightProvider>());
-
-        // Register KPlus provider
-        services.AddScoped<IKPlusFlightProvider, KPlusFlightProvider>();
-
-        // <<< Register lookup implementation here >>>
-        services.AddSingleton<ILookupService, JsonLookupService>();
-
+        
         var disposableEmailListPath = Path.Combine(contentRootPath, "Infrastructure", "Common", "Validation", "disposable_domains.txt");
 
         services.AddSingleton<IEmailDomainValidator>(new EmailDomainValidator(disposableEmailListPath));
+
+        // PDF rendering (QuestPDF) — one-time license configuration
+        PdfBootstrapper.Configure();
+        services.AddScoped<IPdfRenderer<FeeReceiptModel>, FeeReceiptPdfRenderer>();
+        services.AddScoped<IPdfRenderer<SalarySlipModel>, SalarySlipPdfRenderer>();
+        services.AddScoped<IPdfRenderer<PnLStatementModel>, PnLStatementPdfRenderer>();
+
+        // Default notification sender: no-op (logs to NotificationLog table only).
+        // Replace registration with a Twilio/SMTP/WhatsApp implementation later.
+        services.AddScoped<INotificationSender, NoOpNotificationSender>();
 
         return services;
     }

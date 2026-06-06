@@ -59,8 +59,6 @@ public static class ServiceCollectionExtension
         services.AddScoped<IEmailService, EmailService>();
         services.AddScoped<IEmailVerificationService, EmailVerificationService>();
 
-        services.AddScoped<IOTPRepository, OTPRepository>();
-        services.AddScoped<IOTPService, TwilioOTPService>();
         services.AddHttpClient<IExchangeRateApiService, ExchangeRateApiService>();
 
         services.AddIdentity<User, Role>(options =>

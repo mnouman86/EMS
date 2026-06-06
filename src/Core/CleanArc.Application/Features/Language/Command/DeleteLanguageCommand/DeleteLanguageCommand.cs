@@ -1,5 +1,4 @@
-﻿using CleanArc.Application.Features.AgeType.Commands.DeleteAgeTypeCommand;
-using CleanArc.Application.Models.Common;
+﻿using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.ValidationBase.Contracts;
 using CleanArc.SharedKernel.ValidationBase;
 using FluentValidation;

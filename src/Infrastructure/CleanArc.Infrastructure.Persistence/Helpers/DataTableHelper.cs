@@ -27,6 +27,8 @@ namespace CleanArc.Infrastructure.Persistence.Helpers
                 dataTable.Columns.Add(property.Name, Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType);
             }
 
+            if (items == null) return dataTable;
+
             foreach (T item in items)
             {
                 DataRow row = dataTable.NewRow();
