@@ -32,7 +32,10 @@
 	  <PackageReference Include="System.Runtime.Extensions" Version="4.3.0" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Contracts\Mappers\" />
+    <Folder Include="Contracts\Providers\" />
     <Folder Include="Features\Auth\Commands\" />
+    <Folder Include="Services\Aggregators\" />
   </ItemGroup>
 
 </Project>

@@ -25,10 +25,10 @@ public class AppUserClaimsPrincipleFactory:UserClaimsPrincipalFactory<User,Role>
         claimsIdentity.AddClaim(new Claim(ClaimTypes.UserData,user.GeneratedCode));
         claimsIdentity.AddClaim(new Claim(ClaimTypes.Email, user.Email));
         claimsIdentity.AddClaim(new Claim("email_verified", user.EmailConfirmed.ToString().ToLower()));
-        foreach (var roles in userRoles)
-        {
-            claimsIdentity.AddClaim(new Claim(ClaimTypes.Role,roles));
-        }
+        //foreach (var roles in userRoles)
+        //{
+        //    claimsIdentity.AddClaim(new Claim(ClaimTypes.Role,roles));
+        //}
 
         //claimsIdentity.AddClaim(new Claim(ClaimTypes.Role,RoleManager.GetRoleNameAsync(user.Roles)));
             

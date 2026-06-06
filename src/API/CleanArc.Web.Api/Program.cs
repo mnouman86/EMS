@@ -28,9 +28,13 @@ using Microsoft.AspNetCore.Http;
 using CleanArc.Application.Common;
 using System.Net.Http.Headers;
 using CleanArc.Web.Api;
+using CleanArc.Web.Api.Authorization;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+// CORS policy name shared between registration and middleware.
+const string CorsPolicyName = "AppCors";
 
 // Read Serilog settings from configuration
 var serilogSettings = builder.Configuration.GetSection("SerilogSettings").Get<SerilogSettings>()
@@ -49,6 +53,32 @@ var emailSettings = builder.Configuration.GetSection(nameof(EmailSettings)).Get<
 builder.Services.AddLogging();
 builder.Services.AddHttpContextAccessor();
 
+// CORS — allow the SPA / external front-ends to call the API.
+// Optional config key "Cors:AllowedOrigins" (string array) restricts origins;
+// when absent we allow any origin (safe here because auth uses Bearer tokens,
+// not cookies). If you switch to cookie/credentialed auth, set explicit
+// origins and add .AllowCredentials().
+var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(CorsPolicyName, policy =>
+    {
+        if (allowedOrigins is { Length: > 0 })
+        {
+            policy.WithOrigins(allowedOrigins)
+                  .AllowAnyHeader()
+                  .AllowAnyMethod()
+                  .AllowCredentials();
+        }
+        else
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        }
+    });
+});
+
 builder.Services.AddControllers(options =>
 {
     options.ModelBinderProviders.Insert(0, new TimeModelBinderProvider());
@@ -57,6 +87,9 @@ builder.Services.AddControllers(options =>
     options.Filters.Add(typeof(ContentResultFilterAttribute));
     options.Filters.Add(typeof(ModelStateValidationAttribute));
     options.Filters.Add(typeof(BadRequestResultFilterAttribute));
+    // Access-control: enforces per-user feature permissions on mutating endpoints
+    // (see PermissionMap). Admin bypasses; unmapped/[AllowAnonymous] endpoints are open.
+    options.Filters.Add<PermissionAuthorizationFilter>();
 }).ConfigureApiBehaviorOptions(options =>
 {
     options.SuppressModelStateInvalidFilter = true;
@@ -117,11 +150,6 @@ app.MapPost("/api/v1/uploadFile", async (HttpRequest request) =>
     }
 });
 
-app.UseCors(builder => builder
-    .AllowAnyOrigin()
-    .AllowAnyMethod()
-    .AllowAnyHeader());
-
 #region Seeding and creating database
 await using (var scope = app.Services.CreateAsyncScope())
 {
@@ -167,6 +195,7 @@ catch (Exception ex)
 
 app.UseHttpsRedirection();
 app.UseRouting();
+app.UseCors(CorsPolicyName);
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseRateLimiting();

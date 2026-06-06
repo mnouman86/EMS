@@ -2,7 +2,6 @@
 using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Features.Users.Queries.GetUsers;
 using CleanArc.Application.Models.Common;
-using CleanArc.Application.Models.UserSignUpRewards;
 using CleanArc.Domain.Common;
 using CleanArc.Domain.Entities.User;
 using CleanArc.SharedKernel.Extensions;

@@ -1,7 +1,6 @@
 ﻿using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Models.Common;
 using CleanArc.Domain.Common;
-using CleanArc.Domain.Entities.KBDescription;
 using CleanArc.Domain.Entities.User;
 using CleanArc.SharedKernel.Extensions;
 using Mediator;

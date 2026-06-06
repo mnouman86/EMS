@@ -1,9 +1,4 @@
 ﻿using Asp.Versioning;
-using CleanArc.Application.Features.Service.Command.CreateServiceCommand;
-using CleanArc.Application.Features.Service.Command.DeleteServiceCommand;
-using CleanArc.Application.Features.Service.Command.UpdateServiceCommand;
-using CleanArc.Application.Features.Service.Queries.GetAllServices;
-using CleanArc.Application.Features.Service.Queries.GetServiceById;
 using CleanArc.WebFramework.BaseController;
 using Mediator;
 using Microsoft.AspNetCore.Mvc; 

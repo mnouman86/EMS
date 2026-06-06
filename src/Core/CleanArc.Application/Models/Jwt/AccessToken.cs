@@ -1,4 +1,5 @@
 ﻿using Microsoft.Identity.Client;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 
 namespace CleanArc.Application.Models.Jwt;
@@ -11,6 +12,12 @@ public class AccessToken
     public int expires_in { get; set; }
     public int userID { get; set; }
     public int roleID { get; set; }
+
+    // The access token is an encrypted JWE, so the client cannot read its claims.
+    // These are surfaced here (unencrypted) so the SPA can resolve identity & roles.
+    public string userName { get; set; }
+    public string email { get; set; }
+    public List<string> roles { get; set; } = new();
 
     public AccessToken(JwtSecurityToken securityToken,string refreshToken="",int loginuserID=0,int loginRoleID=0)
     {

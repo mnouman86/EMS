@@ -1,5 +1,4 @@
 ﻿using CleanArc.Application.Contracts.Persistence;
-using CleanArc.Application.Features.AgeType.Queries.GetAgeTypeById;
 using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.Extensions;
 using MapsterMapper;
@@ -11,7 +10,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CleanArc.Application.Features.MappingCarAmenity.Queries.GetMappingCarAmenityByID;
 
 namespace CleanArc.Application.Features.Language.Queries.GetLanguageById;
 
