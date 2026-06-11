@@ -1,0 +1,71 @@
+<div style="margin-bottom:20px;">
+  <h2 style="margin:0;font-size:1.3rem;">Attendance</h2>
+  <p style="margin:4px 0 0;color:#64748b;font-size:0.86rem;">Monthly summary of working days vs days attended.</p>
+</div>
+
+@if (!parent.selectedChildId()) {
+  <p style="color:#94a3b8;">Select a child from the top bar to view their attendance.</p>
+} @else if (loading()) {
+  <p style="color:#94a3b8;">Loading…</p>
+} @else if (summary(); as s) {
+  <div class="kpi-row">
+    <div class="kpi">
+      <span>Overall attendance</span>
+      <b [style.color]="(s.overallPercent ?? 0) >= 90 ? '#16a34a' : (s.overallPercent ?? 0) >= 75 ? '#0d9488' : (s.overallPercent ?? 0) >= 50 ? '#f59e0b' : '#dc2626'">
+        {{ s.overallPercent == null ? '—' : ((s.overallPercent | number:'1.0-1') + '%') }}
+      </b>
+    </div>
+    <div class="kpi"><span>Days present</span><b>{{ s.totalPresentDays }}</b></div>
+    <div class="kpi"><span>Days absent</span><b style="color:#dc2626;">{{ s.totalAbsentDays }}</b></div>
+    <div class="kpi"><span>Working days</span><b>{{ s.totalWorkingDays }}</b></div>
+    <div class="kpi"><span>Months recorded</span><b>{{ s.periodsRecorded }}</b></div>
+  </div>
+
+  <h3 class="section">Monthly history</h3>
+  <p-table [value]="history()" [paginator]="history().length > 12" [rows]="12"
+           styleClass="p-datatable-sm" responsiveLayout="scroll">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Month</th>
+        <th>Academic year</th>
+        <th>Class</th>
+        <th class="ta-r">Working</th>
+        <th class="ta-r">Present</th>
+        <th class="ta-r">Absent</th>
+        <th class="ta-c">Attendance %</th>
+        <th>Remarks</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-row>
+      <tr>
+        <td>{{ monthName(row.periodMonth) }} {{ row.periodYear }}</td>
+        <td>{{ row.academicYear || '—' }}</td>
+        <td>{{ row.className || '—' }}</td>
+        <td class="ta-r">{{ row.workingDays }}</td>
+        <td class="ta-r" style="color:#16a34a;font-weight:500;">{{ row.presentDays }}</td>
+        <td class="ta-r" style="color:#dc2626;">{{ row.absentDays }}</td>
+        <td class="ta-c">
+          @if (row.attendancePercent != null) {
+            <p-tag [value]="(row.attendancePercent | number:'1.0-1') + '%'" [severity]="pctSeverity(row.attendancePercent)"></p-tag>
+          } @else { — }
+        </td>
+        <td>{{ row.remarks || '—' }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr><td colspan="8" style="text-align:center;color:#94a3b8;">
+        No attendance has been recorded yet for this child.
+      </td></tr>
+    </ng-template>
+  </p-table>
+}
+
+<style>
+  .kpi-row { display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px; }
+  .kpi { border:1px solid #e2e8f0;border-radius:10px;padding:14px;background:#fff;display:flex;flex-direction:column;gap:4px; }
+  .kpi span { font-size:0.74rem;color:#94a3b8;text-transform:uppercase;letter-spacing:0.03em; }
+  .kpi b { font-size:1.4rem; }
+  .section { font-size:1rem;margin:18px 0 10px; }
+  .ta-r { text-align:right; }
+  .ta-c { text-align:center; }
+</style>

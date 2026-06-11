@@ -1,0 +1,107 @@
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Inventory</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Stock levels, movements and reorder alerts.</p>
+  </div>
+  <div style="display:flex;gap:8px;">
+    @if (alertCount() > 0) {
+      <a routerLink="/admin/inventory/alerts" class="p-button p-component p-button-warning p-button-outlined" style="text-decoration:none;">
+        <i class="pi pi-exclamation-triangle" style="margin-right:6px;"></i> {{ alertCount() }} low-stock
+      </a>
+    }
+    @if (canAdjust) {
+      <p-button label="Adjust Stock" icon="pi pi-sliders-h" severity="secondary" [outlined]="true" (onClick)="openAdjust()"></p-button>
+    }
+  </div>
+</div>
+
+<!-- Quick links -->
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:22px;">
+  @for (l of links; track l.route) {
+    <a [routerLink]="l.route" style="text-decoration:none;color:inherit;">
+      <div style="border:1px solid #e2e8f0;border-radius:10px;padding:14px;display:flex;gap:12px;align-items:flex-start;background:#fff;">
+        <i [class]="l.icon" style="font-size:1.4rem;color:#3b82f6;"></i>
+        <div>
+          <div style="font-weight:600;font-size:0.92rem;">{{ l.label }}</div>
+          <div style="color:#64748b;font-size:0.78rem;margin-top:2px;">{{ l.desc }}</div>
+        </div>
+      </div>
+    </a>
+  }
+</div>
+
+<!-- Filters -->
+<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px;">
+  <div style="min-width:180px;">
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Category</label>
+    <p-select [options]="categoryOptions()" optionLabel="label" optionValue="value" [(ngModel)]="categoryId" [style]="{ width: '100%' }" [filter]="true"></p-select>
+  </div>
+  <div style="min-width:140px;">
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Status</label>
+    <p-select [options]="statusOptions" optionLabel="label" optionValue="value" [(ngModel)]="status" [style]="{ width: '100%' }"></p-select>
+  </div>
+  <div>
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Movement period</label>
+    <p-datepicker [(ngModel)]="range" selectionMode="range" dateFormat="dd M yy" [showIcon]="true" appendTo="body" [readonlyInput]="true"></p-datepicker>
+  </div>
+  <p-button label="Apply" icon="pi pi-refresh" [loading]="loading()" (onClick)="load()"></p-button>
+</div>
+
+<p-table [value]="rows()" [loading]="loading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '78rem' }"
+         [paginator]="rows().length > 25" [rows]="25">
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:120px;">Code</th>
+      <th>Item</th>
+      <th>Category</th>
+      <th style="width:70px;">UoM</th>
+      <th style="width:90px;">Opening</th>
+      <th style="width:90px;">Purchased</th>
+      <th style="width:80px;">Issued</th>
+      <th style="width:90px;">Adjusted</th>
+      <th style="width:90px;">Returned</th>
+      <th style="width:90px;">Current</th>
+      <th style="width:90px;">Reorder</th>
+      <th style="width:90px;">Status</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-r>
+    <tr>
+      <td>{{ r.code || '—' }}</td>
+      <td>{{ r.itemName }}</td>
+      <td>{{ r.categoryName }}</td>
+      <td>{{ r.unitOfMeasure }}</td>
+      <td>{{ r.openingStock | number:'1.0-2' }}</td>
+      <td style="color:#16a34a;">{{ r.purchased | number:'1.0-2' }}</td>
+      <td style="color:#dc2626;">{{ r.issued | number:'1.0-2' }}</td>
+      <td>{{ r.adjusted | number:'1.0-2' }}</td>
+      <td>{{ r.returned | number:'1.0-2' }}</td>
+      <td><strong>{{ r.currentStock | number:'1.0-2' }}</strong></td>
+      <td>{{ r.reorderLevel | number:'1.0-2' }}</td>
+      <td><p-tag [value]="r.status" [severity]="statusSeverity(r.status)"></p-tag></td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr><td colspan="12" style="text-align:center;padding:18px;color:#64748b;">No items. Add items in the Catalogue.</td></tr>
+  </ng-template>
+</p-table>
+
+<!-- Adjust dialog -->
+<p-dialog [visible]="adjustDialog()" (visibleChange)="adjustDialog.set($event)" [modal]="true" [style]="{ width: '460px' }" header="Stock Adjustment" [draggable]="false">
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Item *</label>
+      <p-select [options]="itemOptions()" optionLabel="label" optionValue="value" [(ngModel)]="adjust.itemId" [filter]="true" [style]="{ width: '100%' }" appendTo="body" placeholder="Select item"></p-select></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Type *</label>
+        <p-select [options]="[{label:'Increase',value:'Increase'},{label:'Decrease',value:'Decrease'}]" optionLabel="label" optionValue="value" [(ngModel)]="adjust.adjustmentType" [style]="{ width: '100%' }" appendTo="body"></p-select></div>
+      <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Quantity *</label>
+        <p-inputnumber [(ngModel)]="adjust.quantity" [min]="0" [fluid]="true"></p-inputnumber></div>
+    </div>
+    <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Reason *</label>
+      <input pInputText [(ngModel)]="adjust.reason" placeholder="e.g. Physical count correction, breakage" style="width:100%;" /></div>
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="adjustDialog.set(false)"></p-button>
+    <p-button label="Save" icon="pi pi-check" [loading]="adjustSaving()" (onClick)="saveAdjust()"></p-button>
+  </ng-template>
+</p-dialog>

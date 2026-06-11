@@ -1,0 +1,71 @@
+<p-confirmDialog></p-confirmDialog>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Arrears</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Carry forward outstanding balances to a new session, or write off uncollectible arrears.</p>
+  </div>
+  <a routerLink="/admin/fees" class="p-button p-component p-button-outlined" style="text-decoration:none;">
+    <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back
+  </a>
+</div>
+
+@if (canCarryForward) {
+  <div style="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-bottom:18px;border:1px dashed #cbd5e1;border-radius:8px;padding:12px;">
+    <div style="min-width:200px;">
+      <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">From (source) year</label>
+      <p-select [options]="yearOptions()" optionLabel="label" optionValue="value" [(ngModel)]="fromYearId" [style]="{ width: '100%' }" placeholder="Select year"></p-select>
+    </div>
+    <div style="min-width:200px;">
+      <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">To (target) year</label>
+      <p-select [options]="yearOptions()" optionLabel="label" optionValue="value" [(ngModel)]="toYearId" [style]="{ width: '100%' }" placeholder="Select year"></p-select>
+    </div>
+    <p-button label="Carry Forward" icon="pi pi-arrow-right" [loading]="carrying()" (onClick)="carryForward()"></p-button>
+  </div>
+}
+
+<div style="display:flex;gap:10px;align-items:center;margin-bottom:12px;">
+  <p-toggleswitch [(ngModel)]="includeWrittenOff" (ngModelChange)="load()"></p-toggleswitch>
+  <label style="font-size:0.85rem;">Include written-off arrears</label>
+  <span style="flex:1;"></span>
+  <p-button label="Refresh" icon="pi pi-refresh" severity="secondary" [outlined]="true" [loading]="loading()" (onClick)="load()"></p-button>
+</div>
+
+<p-table [value]="rows()" [loading]="loading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '64rem' }" [paginator]="rows().length > 25" [rows]="25">
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:120px;">Code</th><th>Student</th><th>From → To</th><th style="width:140px;">Amount</th>
+      <th style="width:110px;">Status</th><th style="width:110px;">Actions</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-a>
+    <tr>
+      <td>{{ a.studentCode || '—' }}</td>
+      <td>{{ a.studentFullName }}</td>
+      <td>{{ a.fromYearName || a.fromAcademicYearId }} → {{ a.toYearName || a.toAcademicYearId }}</td>
+      <td><strong style="color:#dc2626;">Rs. {{ a.amount | number:'1.0-0' }}</strong></td>
+      <td>
+        @if (a.isWrittenOff) { <p-tag value="Written off" severity="secondary"></p-tag> }
+        @else { <p-tag value="Open" severity="warn"></p-tag> }
+      </td>
+      <td>
+        @if (!a.isWrittenOff && canWriteOff) {
+          <p-button icon="pi pi-eraser" label="Write off" size="small" severity="danger" [text]="true" (onClick)="openWriteOff(a)"></p-button>
+        }
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage"><tr><td colspan="6" style="text-align:center;padding:18px;color:#64748b;">No arrears found.</td></tr></ng-template>
+</p-table>
+
+<p-dialog [visible]="dialog()" (visibleChange)="dialog.set($event)" [modal]="true" [style]="{ width: '460px' }" header="Write Off Arrear" [draggable]="false">
+  @if (target(); as a) {
+    <p style="margin:0 0 14px;color:#475569;">{{ a.studentFullName }} ({{ a.studentCode }}) — Rs. {{ a.amount | number:'1.0-0' }}</p>
+  }
+  <div><label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Reason (required, audited)</label>
+    <input pInputText [(ngModel)]="reason" placeholder="Why is this being written off?" style="width:100%;" /></div>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="dialog.set(false)"></p-button>
+    <p-button label="Write Off" icon="pi pi-check" severity="danger" [loading]="saving()" (onClick)="writeOff()"></p-button>
+  </ng-template>
+</p-dialog>

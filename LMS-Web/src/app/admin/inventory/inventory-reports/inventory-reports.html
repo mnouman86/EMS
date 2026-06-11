@@ -1,0 +1,96 @@
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Inventory Reports</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Purchase &amp; issue registers and per-item movement ledger.</p>
+  </div>
+  <a routerLink="/admin/inventory" class="p-button p-component p-button-outlined" style="text-decoration:none;">
+    <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back
+  </a>
+</div>
+
+<p-tabs value="purchase">
+  <p-tablist>
+    <p-tab value="purchase">Purchase Register</p-tab>
+    <p-tab value="issue">Issue Register</p-tab>
+    <p-tab value="ledger">Item Ledger</p-tab>
+  </p-tablist>
+
+  <p-tabpanels>
+    <!-- Purchase register -->
+    <p-tabpanel value="purchase">
+      <div style="display:flex;gap:12px;align-items:flex-end;margin-bottom:12px;">
+        <div><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Date range</label>
+          <p-datepicker [(ngModel)]="purchaseRange" selectionMode="range" dateFormat="dd M yy" [showIcon]="true" appendTo="body" [readonlyInput]="true"></p-datepicker></div>
+        <p-button label="Run" icon="pi pi-search" [loading]="purchaseLoading()" (onClick)="loadPurchases()"></p-button>
+      </div>
+      <p-table [value]="purchases()" [loading]="purchaseLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '60rem' }" [paginator]="purchases().length > 25" [rows]="25">
+        <ng-template pTemplate="header">
+          <tr><th style="width:140px;">Code</th><th style="width:130px;">Date</th><th>Vendor</th><th>Invoice No</th><th style="width:120px;">Mode</th><th style="width:140px;">Total</th><th style="width:110px;">Expense</th></tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-r>
+          <tr>
+            <td><strong>{{ r.purchaseCode }}</strong></td>
+            <td>{{ r.purchaseDate | date:'dd MMM yyyy' }}</td>
+            <td>{{ r.vendorName }}</td>
+            <td>{{ r.vendorInvoiceNo || '—' }}</td>
+            <td>{{ r.paymentMode || '—' }}</td>
+            <td><strong>Rs. {{ r.grandTotal | number:'1.0-0' }}</strong></td>
+            <td>{{ r.linkedExpenseId ? ('#' + r.linkedExpenseId) : '—' }}</td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage"><tr><td colspan="7" style="text-align:center;padding:18px;color:#64748b;">No purchases in this range.</td></tr></ng-template>
+      </p-table>
+    </p-tabpanel>
+
+    <!-- Issue register -->
+    <p-tabpanel value="issue">
+      <div style="display:flex;gap:12px;align-items:flex-end;margin-bottom:12px;">
+        <div><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Date range</label>
+          <p-datepicker [(ngModel)]="issueRange" selectionMode="range" dateFormat="dd M yy" [showIcon]="true" appendTo="body" [readonlyInput]="true"></p-datepicker></div>
+        <p-button label="Run" icon="pi pi-search" [loading]="issueLoading()" (onClick)="loadIssues()"></p-button>
+      </div>
+      <p-table [value]="issues()" [loading]="issueLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '54rem' }" [paginator]="issues().length > 25" [rows]="25">
+        <ng-template pTemplate="header">
+          <tr><th style="width:140px;">Code</th><th style="width:130px;">Date</th><th style="width:130px;">To Type</th><th>Recipient</th><th>Purpose</th></tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-r>
+          <tr>
+            <td><strong>{{ r.issueCode }}</strong></td>
+            <td>{{ r.issueDate | date:'dd MMM yyyy' }}</td>
+            <td>{{ r.issuedToType }}</td>
+            <td>{{ r.issuedToName }}</td>
+            <td>{{ r.purpose || '—' }}</td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage"><tr><td colspan="5" style="text-align:center;padding:18px;color:#64748b;">No issues in this range.</td></tr></ng-template>
+      </p-table>
+    </p-tabpanel>
+
+    <!-- Item ledger -->
+    <p-tabpanel value="ledger">
+      <div style="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-bottom:12px;">
+        <div style="min-width:240px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Item</label>
+          <p-select [options]="itemOptions()" optionLabel="label" optionValue="value" [(ngModel)]="ledgerItemId" [filter]="true" [style]="{ width: '100%' }" placeholder="Select item"></p-select></div>
+        <div><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Date range</label>
+          <p-datepicker [(ngModel)]="ledgerRange" selectionMode="range" dateFormat="dd M yy" [showIcon]="true" appendTo="body" [readonlyInput]="true"></p-datepicker></div>
+        <p-button label="Run" icon="pi pi-search" [loading]="ledgerLoading()" (onClick)="loadLedger()"></p-button>
+      </div>
+      <p-table [value]="ledger()" [loading]="ledgerLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '54rem' }" [paginator]="ledger().length > 25" [rows]="25">
+        <ng-template pTemplate="header">
+          <tr><th style="width:140px;">When</th><th style="width:130px;">Movement</th><th>Reference</th><th style="width:110px;">Quantity</th><th style="width:120px;">Running</th><th>Notes</th></tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-r>
+          <tr>
+            <td>{{ r.when | date:'dd MMM yyyy' }}</td>
+            <td><p-tag [value]="r.movementType" [severity]="movementSeverity(r.movementType)"></p-tag></td>
+            <td>{{ r.reference || '—' }}</td>
+            <td>{{ r.quantity | number:'1.0-2' }}</td>
+            <td><strong>{{ r.runningStock | number:'1.0-2' }}</strong></td>
+            <td>{{ r.notes || '—' }}</td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage"><tr><td colspan="6" style="text-align:center;padding:18px;color:#64748b;">Pick an item and run the ledger.</td></tr></ng-template>
+      </p-table>
+    </p-tabpanel>
+  </p-tabpanels>
+</p-tabs>

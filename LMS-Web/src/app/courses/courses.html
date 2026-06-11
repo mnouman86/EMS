@@ -1,0 +1,75 @@
+<!-- course area start -->
+<section class="rts-course-area rts-shape-move section-bg">
+    <div class="container">
+        <div class="section-title-area text-center">
+            <p class="pre-title justify-content-center"><img src="assets/images/banner/title-img.svg" alt="">Courses</p>
+            <h2 class="section-title">Kids Courses at the STEM Sprout</h2>
+            <p class="desc">Discover the exciting and enriching courses tailored <br> for young minds at the STEM Sprout School</p>
+        </div>
+        <div class="slider-inner">
+            <div class="swiper mySwiper-category-1 swiper-data" data-swiper='{
+                        "spaceBetween":30,
+                        "slidesPerView":3,
+                        "loop": true,
+                        "speed": 1500,
+                        "pagination":{
+                            "el": ".swiper-paginations",
+                            "clickable": "true"
+                        },
+                        "autoplay":{
+                            "delay":"4000"
+                        },
+                        "breakpoints":{
+                        "0":{
+                            "slidesPerView":1,
+                            "spaceBetween":30},
+                        "320":{
+                            "slidesPerView":1,
+                            "spaceBetween":30},
+                        "480":{
+                            "slidesPerView":1,
+                            "spaceBetween":30},
+                        "768":{
+                            "slidesPerView":2,
+                            "spaceBetween":30},
+                        "840":{
+                            "slidesPerView":2,
+                            "spaceBetween":30},
+                        "1140":{
+                            "slidesPerView":3,
+                            "spaceBetween":30}
+                        }
+                    }'>
+                <div class="swiper-wrapper">
+                    <!-- single swiper style -->
+                    <div class="swiper-slide" *ngFor="let course of courses">
+                        <div class="course-wrapper" [ngClass]="course.color">
+                            <div class="wrapper-inner">
+                                <div class="image">
+                                    <img [src]="course.image" [alt]="course.title">
+                                </div>
+                                <div class="content">
+                                    <a [routerLink]="course.link">
+                                        <h4 class="title">{{course.title}}</h4>
+                                    </a>
+                                    <p class="desc">{{course.description}}</p>
+                                    <ul class="feature-wrapper">
+                                        <li class="wrapper-list" *ngFor="let feature of course.features">{{feature}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- single swiper style -->
+                </div>
+            </div>
+            <div class="swiper-paginations"></div>
+        </div>
+        <img class="banner-bg-shape-3" src="assets/images/banner/banner-bg-2.png" alt="">
+    </div>
+    <div class="shape-image">
+        <div class="shape one" data-speed="0.04" data-revert="true"><img src="assets/images/banner/shape/11.svg" alt="shape_image"></div>
+        <div class="shape two" data-speed="0.04" data-revert="true"><img src="assets/images/banner/shape/12.svg" alt="shape_image"></div>
+    </div>
+</section>
+<!-- course area end -->

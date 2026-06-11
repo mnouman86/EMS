@@ -1,0 +1,54 @@
+<div style="margin-bottom:20px;">
+  <h2 style="margin:0;font-size:1.4rem;">Welcome, {{ user()?.userName }}</h2>
+  <p style="margin:4px 0 0;color:#64748b;font-size:0.88rem;">
+    Signed in as <strong style="text-transform:capitalize;">{{ user()?.roles?.join(', ') }}</strong>.
+    @if (yearLabel()) { <span> · Academic year {{ yearLabel() }}</span> }
+  </p>
+</div>
+
+<!-- KPI cards -->
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:24px;">
+  @if (isFinance) {
+    <div class="kpi"><span>Revenue (year)</span>
+      <b style="color:#16a34a;">{{ revenueYear() === null ? '—' : ('Rs. ' + (revenueYear()! | number:'1.0-0')) }}</b></div>
+    <div class="kpi"><span>Expenses (year)</span>
+      <b style="color:#dc2626;">{{ expensesYear() === null ? '—' : ('Rs. ' + (expensesYear()! | number:'1.0-0')) }}</b></div>
+    <div class="kpi"><span>Net surplus</span>
+      <b [style.color]="(netSurplus() ?? 0) >= 0 ? '#16a34a' : '#dc2626'">{{ netSurplus() === null ? '—' : ('Rs. ' + (netSurplus()! | number:'1.0-0')) }}</b></div>
+    <div class="kpi"><span>Collection rate</span>
+      <b style="color:#2563eb;">{{ collectionRate() === null ? '—' : ((collectionRate()! | number:'1.0-1') + '%') }}</b></div>
+  }
+  @if (isAdminOrPrincipal) {
+    <a routerLink="/admin/students" class="kpi kpi-link"><span>Students</span><b>{{ studentCount() === null ? '—' : studentCount() }}</b></a>
+    <a routerLink="/admin/employees" class="kpi kpi-link"><span>Employees</span><b>{{ employeeCount() === null ? '—' : employeeCount() }}</b></a>
+  }
+  @if (isAdminOrAccountant) {
+    <a routerLink="/admin/inventory/alerts" class="kpi kpi-link">
+      <span>Low-stock items</span>
+      <b [style.color]="(lowStockCount() ?? 0) > 0 ? '#f59e0b' : '#16a34a'">{{ lowStockCount() === null ? '—' : lowStockCount() }}</b>
+    </a>
+  }
+</div>
+
+<!-- Quick actions -->
+<h3 style="font-size:1rem;margin:0 0 10px;">Quick actions</h3>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;">
+  @for (a of visibleActions(); track a.route) {
+    <a [routerLink]="a.route" style="text-decoration:none;color:inherit;">
+      <div class="qa">
+        <i [class]="a.icon" style="font-size:1.3rem;color:#3b82f6;"></i>
+        <span style="font-weight:600;font-size:0.9rem;">{{ a.label }}</span>
+      </div>
+    </a>
+  }
+</div>
+
+<style>
+  .kpi { border:1px solid #e2e8f0;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:4px;background:#fff; }
+  .kpi span { font-size:0.74rem;color:#94a3b8;text-transform:uppercase;letter-spacing:0.03em; }
+  .kpi b { font-size:1.4rem; }
+  .kpi-link { text-decoration:none;color:inherit;transition:border-color .15s; }
+  .kpi-link:hover { border-color:#93c5fd; }
+  .qa { border:1px solid #e2e8f0;border-radius:10px;padding:16px;display:flex;align-items:center;gap:12px;background:#fff;transition:box-shadow .15s,border-color .15s; }
+  .qa:hover { border-color:#93c5fd;box-shadow:0 2px 10px rgba(15,23,42,0.06); }
+</style>

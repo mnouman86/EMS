@@ -1,0 +1,134 @@
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">{{ isEditing ? 'Edit Employee' : 'Register Employee' }}</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Fields marked * are mandatory; the rest can be completed later.</p>
+  </div>
+  <a routerLink="/admin/employees" class="p-button p-component p-button-outlined" style="text-decoration:none;">
+    <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back
+  </a>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="save()" style="max-width:980px;">
+  <!-- Personal -->
+  <p-fieldset legend="Personal *" styleClass="emp-section">
+    <div class="grid3">
+      <div class="fld"><label>Full Name *</label><input pInputText formControlName="fullName" /></div>
+      <div class="fld"><label>Father's / Husband's Name *</label><input pInputText formControlName="fatherOrHusbandName" /></div>
+      <div class="fld"><label>Relation *</label>
+        <p-select [options]="relationOptions" optionLabel="label" optionValue="value" formControlName="relation" [fluid]="true"></p-select></div>
+      <div class="fld"><label>Date of Birth *</label>
+        <p-datepicker formControlName="dateOfBirth" dateFormat="dd M yy" [showIcon]="true" [fluid]="true" appendTo="body"></p-datepicker></div>
+      <div class="fld"><label>Gender *</label>
+        <p-select [options]="genderOptions" optionLabel="label" optionValue="value" formControlName="gender" [fluid]="true"></p-select></div>
+      <div class="fld"><label>Marital Status *</label>
+        <p-select [options]="maritalOptions" optionLabel="label" optionValue="value" formControlName="maritalStatus" [fluid]="true"></p-select></div>
+      <div class="fld"><label>Nationality</label><input pInputText formControlName="nationality" /></div>
+      <div class="fld"><label>Religion</label><input pInputText formControlName="religion" /></div>
+      <div class="fld"><label>CNIC *</label><input pInputText formControlName="cnic" placeholder="00000-0000000-0" />
+        @if (form.controls.cnic.touched && form.controls.cnic.invalid) { <small class="err">Format: 00000-0000000-0</small> }</div>
+      <div class="fld"><label>CNIC Expiry</label>
+        <p-datepicker formControlName="cnicExpiry" dateFormat="dd M yy" [showIcon]="true" [fluid]="true" appendTo="body"></p-datepicker></div>
+      <div class="fld"><label>Blood Group</label><input pInputText formControlName="bloodGroup" /></div>
+      <div class="fld" style="grid-column:1/-1;"><label>Medical Condition</label><textarea pTextarea formControlName="medicalCondition" rows="2"></textarea></div>
+    </div>
+  </p-fieldset>
+
+  <!-- Employment -->
+  <p-fieldset legend="Employment *" styleClass="emp-section">
+    <div class="grid3">
+      <div class="fld"><label>Designation *</label><input pInputText formControlName="designation" /></div>
+      <div class="fld"><label>Department / Level</label><input pInputText formControlName="department" /></div>
+      <div class="fld"><label>Date of Joining *</label>
+        <p-datepicker formControlName="dateOfJoining" dateFormat="dd M yy" [showIcon]="true" [fluid]="true" appendTo="body"></p-datepicker></div>
+      <div class="fld"><label>Employment Type *</label>
+        <p-select [options]="employmentOptions" optionLabel="label" optionValue="value" formControlName="employmentType" [fluid]="true"></p-select></div>
+    </div>
+  </p-fieldset>
+
+  <!-- Contact -->
+  <p-fieldset legend="Contact" styleClass="emp-section">
+    <div class="grid3">
+      <div class="fld"><label>Personal Mobile *</label><input pInputText formControlName="personalMobile" placeholder="+923001234567" />
+        @if (form.controls.personalMobile.touched && form.controls.personalMobile.invalid) { <small class="err">Format: +92XXXXXXXXXX</small> }</div>
+      <div class="fld"><label>WhatsApp</label><input pInputText formControlName="whatsapp" /></div>
+      <div class="fld"><label>Landline</label><input pInputText formControlName="landline" /></div>
+      <div class="fld"><label>Alternate Mobile</label><input pInputText formControlName="alternateMobile" /></div>
+      <div class="fld"><label>Official Email</label><input pInputText formControlName="officialEmail" /></div>
+      <div class="fld"><label>Personal Email</label><input pInputText formControlName="personalEmail" /></div>
+    </div>
+  </p-fieldset>
+
+  <!-- Address -->
+  <p-fieldset legend="Address" styleClass="emp-section">
+    <div class="fld" style="margin-bottom:10px;"><label>Present Address *</label><textarea pTextarea formControlName="presentAddress" rows="2"></textarea></div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+      <p-toggleswitch formControlName="permanentSameAsPresent"></p-toggleswitch>
+      <label style="font-size:0.85rem;">Permanent same as present (server copies the present address)</label>
+    </div>
+    <div class="fld"><label>Permanent Address</label><textarea pTextarea formControlName="permanentAddress" rows="2"></textarea></div>
+  </p-fieldset>
+
+  <!-- Emergency -->
+  <p-fieldset legend="Emergency Contacts" styleClass="emp-section">
+    <div class="grid3">
+      <div class="fld"><label>Contact 1 Name *</label><input pInputText formControlName="emergencyContact1Name" /></div>
+      <div class="fld"><label>Contact 1 Relationship *</label><input pInputText formControlName="emergencyContact1Relation" /></div>
+      <div class="fld"><label>Contact 1 Mobile *</label><input pInputText formControlName="emergencyContact1Mobile" /></div>
+      <div class="fld"><label>Contact 2 Name</label><input pInputText formControlName="emergencyContact2Name" /></div>
+      <div class="fld"><label>Contact 2 Relationship</label><input pInputText formControlName="emergencyContact2Relation" /></div>
+      <div class="fld"><label>Contact 2 Mobile</label><input pInputText formControlName="emergencyContact2Mobile" /></div>
+    </div>
+  </p-fieldset>
+
+  <!-- Qualifications -->
+  <p-fieldset legend="Qualifications" styleClass="emp-section">
+    <div class="grid3">
+      <div class="fld"><label>Highest Degree</label><input pInputText formControlName="highestDegree" /></div>
+      <div class="fld"><label>Field / Major</label><input pInputText formControlName="fieldOrMajor" /></div>
+      <div class="fld"><label>Passing Year</label><p-inputnumber formControlName="passingYear" [useGrouping]="false" [fluid]="true"></p-inputnumber></div>
+      <div class="fld"><label>Institution</label><input pInputText formControlName="institution" /></div>
+      <div class="fld" style="grid-column:1/-1;"><label>Certifications</label><textarea pTextarea formControlName="certifications" rows="2"></textarea></div>
+    </div>
+  </p-fieldset>
+
+  <!-- Experience -->
+  <p-fieldset legend="Experience" styleClass="emp-section">
+    <div class="grid3">
+      <div class="fld"><label>Total Experience (years)</label><p-inputnumber formControlName="totalExperienceYears" mode="decimal" [minFractionDigits]="0" [maxFractionDigits]="1" [fluid]="true"></p-inputnumber></div>
+      <div class="fld"><label>Previous Organisation</label><input pInputText formControlName="previousOrganisation" /></div>
+      <div class="fld"><label>Previous Position</label><input pInputText formControlName="previousPosition" /></div>
+      <div class="fld"><label>Duration</label><input pInputText formControlName="previousDuration" /></div>
+      <div class="fld"><label>Subjects Taught</label><input pInputText formControlName="previousSubjectsTaught" /></div>
+      <div class="fld"><label>Reason for Leaving</label><input pInputText formControlName="previousReasonForLeaving" /></div>
+    </div>
+  </p-fieldset>
+
+  <!-- Bank -->
+  <p-fieldset legend="Bank & Salary" styleClass="emp-section">
+    <div class="grid3">
+      <div class="fld"><label>Bank Name</label><input pInputText formControlName="bankName" /></div>
+      <div class="fld"><label>Branch</label><input pInputText formControlName="bankBranch" /></div>
+      <div class="fld"><label>Account Title</label><input pInputText formControlName="accountTitle" /></div>
+      <div class="fld"><label>Account Number / IBAN</label><input pInputText formControlName="accountNumber" /></div>
+    </div>
+  </p-fieldset>
+
+  <!-- References -->
+  <p-fieldset legend="References" styleClass="emp-section">
+    <div class="grid4">
+      <div class="fld"><label>Ref 1 Name</label><input pInputText formControlName="reference1Name" /></div>
+      <div class="fld"><label>Ref 1 Designation</label><input pInputText formControlName="reference1Designation" /></div>
+      <div class="fld"><label>Ref 1 Organisation</label><input pInputText formControlName="reference1Organisation" /></div>
+      <div class="fld"><label>Ref 1 Contact</label><input pInputText formControlName="reference1Contact" /></div>
+      <div class="fld"><label>Ref 2 Name</label><input pInputText formControlName="reference2Name" /></div>
+      <div class="fld"><label>Ref 2 Designation</label><input pInputText formControlName="reference2Designation" /></div>
+      <div class="fld"><label>Ref 2 Organisation</label><input pInputText formControlName="reference2Organisation" /></div>
+      <div class="fld"><label>Ref 2 Contact</label><input pInputText formControlName="reference2Contact" /></div>
+    </div>
+  </p-fieldset>
+
+  <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:16px;">
+    <a routerLink="/admin/employees" class="p-button p-component p-button-secondary p-button-text" style="text-decoration:none;">Cancel</a>
+    <p-button type="submit" [label]="isEditing ? 'Save changes' : 'Register'" icon="pi pi-check" [loading]="saving()"></p-button>
+  </div>
+</form>

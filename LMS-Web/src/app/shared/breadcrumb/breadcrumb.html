@@ -1,0 +1,21 @@
+<!-- bread crumb area -->
+<div class="rts-breadcrumb-area rts-section-gap bg_image">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-main-wrapper">
+                    <div class="pagination-wrapper">
+                        <a routerLink="/">Home</a>
+                        <i class="fa-regular fa-chevron-right"></i>
+                        <a class="active" [routerLink]="currentRoute">{{pageTitle}}</a>
+                    </div>
+                    <!--<h2 class="title">Beyond Books, Towards Brilliance</h2>-->
+                    <h2 class="title">{{pageTitle}}</h2>
+                    <p class="desc" style="color: #fff; margin-top: 15px;">{{ 'Where Education Meets Innovation, and Children Discover Their Genius'}}</p>
+                    <!-- breadcrumb pagination area end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- bread crumb area end -->

@@ -1,0 +1,84 @@
+<div style="margin-bottom:16px;">
+  <h2 style="margin:0;font-size:1.3rem;">Fee Management</h2>
+  <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Collection overview and quick actions.</p>
+</div>
+
+<!-- Quick links -->
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:22px;">
+  @for (l of links; track l.route) {
+    <a [routerLink]="l.route" style="text-decoration:none;color:inherit;">
+      <div style="border:1px solid #e2e8f0;border-radius:10px;padding:14px;display:flex;gap:12px;align-items:flex-start;transition:box-shadow .15s;background:#fff;">
+        <i [class]="l.icon" style="font-size:1.4rem;color:#3b82f6;"></i>
+        <div>
+          <div style="font-weight:600;font-size:0.92rem;">{{ l.label }}</div>
+          <div style="color:#64748b;font-size:0.78rem;margin-top:2px;">{{ l.desc }}</div>
+        </div>
+      </div>
+    </a>
+  }
+</div>
+
+<!-- Filters -->
+<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px;">
+  <div>
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Date range</label>
+    <p-datepicker [(ngModel)]="range" selectionMode="range" dateFormat="dd M yy" [showIcon]="true" appendTo="body" [readonlyInput]="true"></p-datepicker>
+  </div>
+  <div style="min-width:180px;">
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Class</label>
+    <p-select [options]="classOptions()" optionLabel="label" optionValue="value" [(ngModel)]="classId" [style]="{ width: '100%' }" [filter]="true"></p-select>
+  </div>
+  <p-button label="Apply" icon="pi pi-refresh" [loading]="loading()" (onClick)="load()"></p-button>
+</div>
+
+<!-- Summary cards -->
+@if (summary(); as s) {
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:22px;">
+    <div class="kpi"><span>Collected</span><b style="color:#16a34a;">Rs. {{ s.totalCollected | number:'1.0-0' }}</b></div>
+    <div class="kpi"><span>Pending</span><b style="color:#dc2626;">Rs. {{ s.totalPending | number:'1.0-0' }}</b></div>
+    <div class="kpi"><span>Invoiced</span><b>Rs. {{ s.totalInvoiced | number:'1.0-0' }}</b></div>
+    <div class="kpi"><span>Collection rate</span><b style="color:#2563eb;">{{ s.collectionRatePercent | number:'1.0-1' }}%</b></div>
+  </div>
+}
+
+<!-- By class chart -->
+@if (byClass().length > 0) {
+  <div style="border:1px solid #e2e8f0;border-radius:12px;padding:16px;background:#fff;margin-bottom:22px;">
+    <h3 style="font-size:1rem;margin:0 0 10px;">Collected vs Pending by class</h3>
+    <div style="height:300px;"><p-chart type="bar" [data]="byClassChart()" [options]="chartOptions" [style]="{ height: '300px' }"></p-chart></div>
+  </div>
+}
+
+<!-- By class -->
+<h3 style="font-size:1rem;margin:0 0 8px;">Collection by class</h3>
+<p-table [value]="byClass()" [loading]="loading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Class</th>
+      <th style="width:110px;">Students</th>
+      <th style="width:140px;">Invoiced</th>
+      <th style="width:140px;">Collected</th>
+      <th style="width:140px;">Pending</th>
+      <th style="width:90px;">Rate</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-r>
+    <tr>
+      <td>{{ r.className }}</td>
+      <td>{{ r.studentCount }}</td>
+      <td>Rs. {{ r.invoiced | number:'1.0-0' }}</td>
+      <td style="color:#16a34a;">Rs. {{ r.collected | number:'1.0-0' }}</td>
+      <td style="color:#dc2626;">Rs. {{ r.pending | number:'1.0-0' }}</td>
+      <td>{{ r.ratePercent | number:'1.0-1' }}%</td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr><td colspan="6" style="text-align:center;padding:18px;color:#64748b;">No data for this range.</td></tr>
+  </ng-template>
+</p-table>
+
+<style>
+  .kpi { border:1px solid #e2e8f0;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:4px;background:#fff; }
+  .kpi span { font-size:0.74rem;color:#94a3b8;text-transform:uppercase;letter-spacing:0.03em; }
+  .kpi b { font-size:1.3rem; }
+</style>

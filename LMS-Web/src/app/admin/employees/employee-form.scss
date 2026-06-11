@@ -1,0 +1,41 @@
+:host ::ng-deep .emp-section { margin-bottom: 16px; }
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.grid4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+@media (max-width: 900px) {
+  .grid3, .grid4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .grid3, .grid4 { grid-template-columns: 1fr; }
+}
+
+.fld {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 5px;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+  }
+}
+
+.err {
+  color: #ef4444;
+  font-size: 0.74rem;
+  margin-top: 3px;
+}

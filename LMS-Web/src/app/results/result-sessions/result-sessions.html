@@ -1,0 +1,74 @@
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Results</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Assessment sessions, marks entry and result cards.</p>
+  </div>
+  <p-button label="New Session" icon="pi pi-plus" (onClick)="open()"></p-button>
+</div>
+
+<!-- Quick links -->
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:22px;">
+  @for (l of links; track l.route) {
+    <a [routerLink]="l.route" style="text-decoration:none;color:inherit;">
+      <div style="border:1px solid #e2e8f0;border-radius:10px;padding:14px;display:flex;gap:12px;align-items:flex-start;background:#fff;">
+        <i [class]="l.icon" style="font-size:1.4rem;color:#3b82f6;"></i>
+        <div>
+          <div style="font-weight:600;font-size:0.92rem;">{{ l.label }}</div>
+          <div style="color:#64748b;font-size:0.78rem;margin-top:2px;">{{ l.desc }}</div>
+        </div>
+      </div>
+    </a>
+  }
+</div>
+
+<p-table [value]="rows()" [loading]="loading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '64rem' }">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Session</th><th style="width:100px;">Status</th>
+      <th style="width:80px;">Written</th><th style="width:70px;">Oral</th><th style="width:80px;">Attr.</th>
+      <th>Weights (W / O / P)</th><th style="width:90px;">Rounding</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-s>
+    <tr>
+      <td><strong>{{ s.name }}</strong></td>
+      <td><p-tag [value]="s.status || '—'" [severity]="statusSeverity(s.status)"></p-tag></td>
+      <td>{{ s.maxWritten }}</td>
+      <td>{{ s.maxOral }}</td>
+      <td>{{ s.maxAttribute }}</td>
+      <td>{{ s.weightWritten }}% / {{ s.weightOral }}% / {{ s.weightPerformance }}%</td>
+      <td>{{ s.roundingDecimals }} dp</td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage"><tr><td colspan="7" style="text-align:center;padding:18px;color:#64748b;">No sessions yet.</td></tr></ng-template>
+</p-table>
+
+<p-dialog [visible]="dialog()" (visibleChange)="dialog.set($event)" [modal]="true" [style]="{ width: '560px' }" header="New Result Session" [draggable]="false">
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Session Name *</label>
+      <input pInputText [(ngModel)]="form.name" placeholder="e.g. Term 1 2026" style="width:100%;" /></div>
+    <div>
+      <div style="font-size:0.8rem;font-weight:600;margin-bottom:5px;">Max Marks</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+        <div><label style="font-size:0.74rem;color:#64748b;">Written</label><p-inputnumber [(ngModel)]="form.maxWritten" [min]="1" [fluid]="true"></p-inputnumber></div>
+        <div><label style="font-size:0.74rem;color:#64748b;">Oral</label><p-inputnumber [(ngModel)]="form.maxOral" [min]="1" [fluid]="true"></p-inputnumber></div>
+        <div><label style="font-size:0.74rem;color:#64748b;">Attribute</label><p-inputnumber [(ngModel)]="form.maxAttribute" [min]="1" [fluid]="true"></p-inputnumber></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:0.8rem;font-weight:600;margin-bottom:5px;">Weightages (must sum to 100)</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+        <div><label style="font-size:0.74rem;color:#64748b;">Written %</label><p-inputnumber [(ngModel)]="form.weightWritten" [min]="0" [max]="100" [fluid]="true"></p-inputnumber></div>
+        <div><label style="font-size:0.74rem;color:#64748b;">Oral %</label><p-inputnumber [(ngModel)]="form.weightOral" [min]="0" [max]="100" [fluid]="true"></p-inputnumber></div>
+        <div><label style="font-size:0.74rem;color:#64748b;">Performance %</label><p-inputnumber [(ngModel)]="form.weightPerformance" [min]="0" [max]="100" [fluid]="true"></p-inputnumber></div>
+      </div>
+      <small [style.color]="weightTotal === 100 ? '#16a34a' : '#dc2626'">Total: {{ weightTotal }}%</small>
+    </div>
+    <div style="width:160px;"><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Rounding (decimals)</label>
+      <p-inputnumber [(ngModel)]="form.roundingDecimals" [min]="0" [max]="4" [fluid]="true"></p-inputnumber></div>
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="dialog.set(false)"></p-button>
+    <p-button label="Create" icon="pi pi-check" [loading]="saving()" (onClick)="save()"></p-button>
+  </ng-template>
+</p-dialog>

@@ -1,0 +1,58 @@
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Marks Entry</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Enter written, oral and attribute marks for a class &amp; subject.</p>
+  </div>
+  <a routerLink="/admin/results" class="p-button p-component p-button-outlined" style="text-decoration:none;"><i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back</a>
+</div>
+
+<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px;">
+  <div style="min-width:200px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Session</label>
+    <p-select [options]="sessionOptions()" optionLabel="label" optionValue="value" [(ngModel)]="sessionId" [style]="{ width: '100%' }" placeholder="Select session"></p-select></div>
+  <div style="min-width:160px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Class</label>
+    <p-select [options]="classOptions()" optionLabel="label" optionValue="value" [(ngModel)]="classId" [filter]="true" [style]="{ width: '100%' }" placeholder="Select class"></p-select></div>
+  <div style="min-width:160px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Subject</label>
+    <p-select [options]="subjectOptions()" optionLabel="label" optionValue="value" [(ngModel)]="subjectId" [filter]="true" [style]="{ width: '100%' }" placeholder="Select subject"></p-select></div>
+  <div style="min-width:200px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Teacher</label>
+    <p-select [options]="teacherOptions()" optionLabel="label" optionValue="value" [(ngModel)]="teacherId" [filter]="true" [style]="{ width: '100%' }" placeholder="Select teacher"></p-select></div>
+  <p-button label="Load Grid" icon="pi pi-search" [loading]="loading()" (onClick)="load()"></p-button>
+</div>
+
+@if (loaded()) {
+  @if (locked) {
+    <p-message severity="warn" [style]="{ display: 'block', marginBottom: '10px' }">This class is locked for the session. Marks are read-only until unlocked from the Class Sheet.</p-message>
+  }
+  <p-table [value]="rows()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '80rem' }" [paginator]="rows().length > 30" [rows]="30">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width:110px;">Code</th><th>Student</th>
+        <th style="width:90px;">Written<br /><small>/{{ maxWritten }}</small></th>
+        <th style="width:90px;">Oral<br /><small>/{{ maxOral }}</small></th>
+        <th style="width:80px;">Punct.</th><th style="width:80px;">Disc.</th><th style="width:80px;">Partic.</th><th style="width:80px;">Creat.</th><th style="width:80px;">Peers</th>
+        <th style="width:80px;">%</th><th style="width:70px;">Grade</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-r>
+      <tr>
+        <td>{{ r.studentCode }}</td>
+        <td>{{ r.studentFullName }}</td>
+        <td><p-inputnumber [(ngModel)]="r.written" [min]="0" [max]="maxWritten" [fluid]="true" [disabled]="locked"></p-inputnumber></td>
+        <td><p-inputnumber [(ngModel)]="r.oral" [min]="0" [max]="maxOral" [fluid]="true" [disabled]="locked"></p-inputnumber></td>
+        <td><p-inputnumber [(ngModel)]="r.attrPunctuality" [min]="0" [max]="maxAttr" [fluid]="true" [disabled]="locked"></p-inputnumber></td>
+        <td><p-inputnumber [(ngModel)]="r.attrDiscipline" [min]="0" [max]="maxAttr" [fluid]="true" [disabled]="locked"></p-inputnumber></td>
+        <td><p-inputnumber [(ngModel)]="r.attrClassParticipation" [min]="0" [max]="maxAttr" [fluid]="true" [disabled]="locked"></p-inputnumber></td>
+        <td><p-inputnumber [(ngModel)]="r.attrCreativity" [min]="0" [max]="maxAttr" [fluid]="true" [disabled]="locked"></p-inputnumber></td>
+        <td><p-inputnumber [(ngModel)]="r.attrBehaviorWithPeers" [min]="0" [max]="maxAttr" [fluid]="true" [disabled]="locked"></p-inputnumber></td>
+        <td>{{ r.perSubjectPercent != null ? (r.perSubjectPercent | number:'1.0-2') : '—' }}</td>
+        <td>@if (r.grade) { <p-tag [value]="r.grade"></p-tag> } @else { — }</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage"><tr><td colspan="11" style="text-align:center;padding:18px;color:#64748b;">No students mapped to this class.</td></tr></ng-template>
+  </p-table>
+
+  @if (rows().length > 0 && !locked) {
+    <div style="display:flex;justify-content:flex-end;margin-top:16px;">
+      <p-button label="Save Marks" icon="pi pi-check" [loading]="saving()" (onClick)="save()"></p-button>
+    </div>
+  }
+}

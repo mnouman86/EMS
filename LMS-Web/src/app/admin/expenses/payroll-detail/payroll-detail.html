@@ -1,0 +1,84 @@
+<p-confirmDialog></p-confirmDialog>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">
+      Payroll — {{ monthName(run()?.month) }} {{ run()?.year }}
+      @if (run()) { <p-tag [value]="run()!.status" [severity]="run()!.status === 'Confirmed' ? 'success' : 'warn'" style="margin-left:8px;"></p-tag> }
+    </h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">{{ entries().length }} employee(s) in this run.</p>
+  </div>
+  <div style="display:flex;gap:8px;">
+    <a routerLink="/admin/expenses/payroll" class="p-button p-component p-button-outlined" style="text-decoration:none;"><i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back</a>
+    @if (isDraft() && canConfirm) {
+      <p-button label="Confirm Payroll" icon="pi pi-check-circle" [loading]="confirming()" (onClick)="confirmRun()"></p-button>
+    }
+  </div>
+</div>
+
+@if (run(); as r) {
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+    <div class="kpi"><span>Total Gross</span><b>Rs. {{ r.totalGross | number:'1.0-0' }}</b></div>
+    <div class="kpi"><span>Total Deductions</span><b style="color:#dc2626;">Rs. {{ r.totalDeductions | number:'1.0-0' }}</b></div>
+    <div class="kpi"><span>Total Net Payable</span><b style="color:#16a34a;">Rs. {{ r.totalNet | number:'1.0-0' }}</b></div>
+  </div>
+}
+
+<p-table [value]="entries()" [loading]="loading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '88rem' }" [paginator]="entries().length > 25" [rows]="25">
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:110px;">Code</th><th>Employee</th><th>Designation</th>
+      <th style="width:100px;">Basic</th><th style="width:100px;">Allow.</th>
+      <th style="width:100px;">Fixed Ded.</th><th style="width:100px;">Advance</th><th style="width:90px;">Fine</th><th style="width:90px;">Other</th>
+      <th style="width:110px;">Net</th><th style="width:130px;">Actions</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-e>
+    <tr>
+      <td>{{ e.employeeCode }}</td>
+      <td>{{ e.employeeFullName }}</td>
+      <td>{{ e.designation || '—' }}</td>
+      <td>{{ e.basicSalary | number:'1.0-0' }}</td>
+      <td>{{ e.allowances | number:'1.0-0' }}</td>
+      <td>{{ e.fixedDeductions | number:'1.0-0' }}</td>
+      <td>{{ e.advanceDeduction | number:'1.0-0' }}</td>
+      <td>{{ e.fineDeduction | number:'1.0-0' }}</td>
+      <td>{{ e.otherDeduction | number:'1.0-0' }}</td>
+      <td><strong>Rs. {{ e.netPayable | number:'1.0-0' }}</strong></td>
+      <td>
+        @if (isDraft() && canAdjust) {
+          <p-button icon="pi pi-pencil" severity="secondary" size="small" [text]="true" pTooltip="Adjust" (onClick)="openAdjust(e)"></p-button>
+        }
+        <p-button icon="pi pi-file-pdf" severity="secondary" size="small" [text]="true" pTooltip="Salary slip" [loading]="downloadingId() === e.id" (onClick)="slip(e)"></p-button>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage"><tr><td colspan="11" style="text-align:center;padding:18px;color:#64748b;">No entries in this run.</td></tr></ng-template>
+</p-table>
+
+<!-- Adjust dialog -->
+<p-dialog [visible]="dialog()" (visibleChange)="dialog.set($event)" [modal]="true" [style]="{ width: '440px' }" header="Adjust Payroll Entry" [draggable]="false">
+  @if (target(); as t) {
+    <p style="margin:0 0 14px;color:#475569;">{{ t.employeeFullName }} ({{ t.employeeCode }})</p>
+  }
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Fine Deduction</label>
+        <p-inputnumber [(ngModel)]="fine" mode="currency" currency="PKR" [min]="0" [fluid]="true"></p-inputnumber></div>
+      <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Other Deduction</label>
+        <p-inputnumber [(ngModel)]="other" mode="currency" currency="PKR" [min]="0" [fluid]="true"></p-inputnumber></div>
+    </div>
+    <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Notes</label>
+      <input pInputText [(ngModel)]="notes" placeholder="Reason for adjustment" style="width:100%;" /></div>
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="dialog.set(false)"></p-button>
+    <p-button label="Save" icon="pi pi-check" [loading]="saving()" (onClick)="saveAdjust()"></p-button>
+  </ng-template>
+</p-dialog>
+
+<style>
+  .kpi { border:1px solid #e2e8f0;border-radius:10px;padding:14px 18px;display:flex;flex-direction:column;gap:4px;background:#fff;min-width:180px; }
+  .kpi span { font-size:0.74rem;color:#94a3b8;text-transform:uppercase;letter-spacing:0.03em; }
+  .kpi b { font-size:1.2rem; }
+</style>

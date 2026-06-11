@@ -1,0 +1,56 @@
+<div style="margin-bottom:20px;">
+  <h2 style="margin:0;font-size:1.4rem;">Welcome, {{ user()?.userName }}</h2>
+  <p style="margin:4px 0 0;color:#64748b;font-size:0.88rem;">
+    Here are the children linked to your account. Select a child to view their profile, fees and results.
+  </p>
+</div>
+
+@if (loading()) {
+  <p style="color:#94a3b8;">Loading…</p>
+} @else if (!parent.children().length) {
+  <div class="empty">
+    <i class="pi pi-users" style="font-size:1.6rem;color:#cbd5e1;"></i>
+    <p>No children are linked to your account yet. Please contact the school office.</p>
+  </div>
+} @else {
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;">
+    @for (c of parent.children(); track c.studentId) {
+      <div class="child-card" [class.active]="c.studentId === parent.selectedChildId()" (click)="select(c.studentId)">
+        <div class="child-head">
+          <div class="avatar">{{ (c.fullName || '?').charAt(0) }}</div>
+          <div>
+            <div class="name">{{ c.fullName }}</div>
+            <div class="code">{{ c.studentCode || c.formNo || '—' }}</div>
+          </div>
+          <p-tag [value]="c.status || '—'" [severity]="statusSeverity(c.status)" styleClass="ml-auto"></p-tag>
+        </div>
+        <div class="child-meta">
+          <span><i class="pi pi-building"></i> {{ c.className || '—' }}</span>
+          @if (c.relationship) { <span><i class="pi pi-users"></i> {{ c.relationship }}</span> }
+        </div>
+        <div class="child-links">
+          <a routerLink="/parent/profile"><i class="pi pi-user"></i> Profile</a>
+          <a routerLink="/parent/fees"><i class="pi pi-wallet"></i> Fees</a>
+          <a routerLink="/parent/results"><i class="pi pi-chart-line"></i> Results</a>
+        </div>
+      </div>
+    }
+  </div>
+}
+
+<style>
+  .empty { border:1px dashed #cbd5e1;border-radius:12px;padding:32px;text-align:center;color:#64748b;display:flex;flex-direction:column;align-items:center;gap:8px; }
+  .child-card { border:1px solid #e2e8f0;border-radius:12px;padding:16px;background:#fff;cursor:pointer;transition:border-color .15s,box-shadow .15s; }
+  .child-card:hover { border-color:#5eead4; }
+  .child-card.active { border-color:#0d9488;box-shadow:0 0 0 2px rgba(13,148,136,0.15); }
+  .child-head { display:flex;align-items:center;gap:10px;margin-bottom:12px; }
+  .child-head .ml-auto { margin-left:auto; }
+  .avatar { width:38px;height:38px;border-radius:50%;background:#0d9488;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.05rem; }
+  .child-head .name { font-weight:600;font-size:0.96rem; }
+  .child-head .code { font-size:0.78rem;color:#94a3b8; }
+  .child-meta { display:flex;flex-wrap:wrap;gap:14px;font-size:0.82rem;color:#475569;margin-bottom:14px; }
+  .child-meta i { color:#0d9488;margin-right:4px; }
+  .child-links { display:flex;gap:14px;border-top:1px solid #f1f5f9;padding-top:10px; }
+  .child-links a { font-size:0.82rem;color:#0d9488;text-decoration:none;font-weight:500; }
+  .child-links a:hover { text-decoration:underline; }
+</style>

@@ -1,0 +1,61 @@
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Bulk Import Students</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Upload a CSV, review the preview, then import.</p>
+  </div>
+  <a routerLink="/admin/students" class="p-button p-component p-button-outlined" style="text-decoration:none;">
+    <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back
+  </a>
+</div>
+
+<p-message severity="info" [style]="{ display: 'block', marginBottom: '14px' }">
+  Expected columns (header row, any order): <b>SrNo, StudentId, FormNo, StudentName, FatherName, EmergencyContact, ClassName</b>.
+  Only <b>StudentName</b> is required per row.
+</p-message>
+
+<div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px;">
+  <input type="file" accept=".csv,text/csv" (change)="onFileSelect($event)" />
+  @if (fileName()) { <span style="color:#475569;font-size:0.85rem;">{{ fileName() }} — {{ rows().length }} row(s)</span> }
+  <span style="flex:1;"></span>
+  <div style="display:flex;align-items:center;gap:8px;">
+    <p-toggleswitch [(ngModel)]="updateExisting"></p-toggleswitch>
+    <label style="font-size:0.85rem;">Update existing (match on Student ID / Form No)</label>
+  </div>
+</div>
+
+@if (parseError()) {
+  <p-message severity="error" [style]="{ display: 'block', marginBottom: '14px' }">{{ parseError() }}</p-message>
+}
+
+@if (rows().length > 0) {
+  <p-table [value]="rows()" [paginator]="rows().length > 20" [rows]="20"
+           styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '60rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width:70px;">Sr#</th>
+        <th>Student ID</th>
+        <th>Form No</th>
+        <th>Student Name</th>
+        <th>Father Name</th>
+        <th>Emergency Contact</th>
+        <th>Class</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-r>
+      <tr>
+        <td>{{ r.srNo ?? '—' }}</td>
+        <td>{{ r.studentId || '—' }}</td>
+        <td>{{ r.formNo || '—' }}</td>
+        <td>{{ r.studentName || '—' }}</td>
+        <td>{{ r.fatherName || '—' }}</td>
+        <td>{{ r.emergencyContact || '—' }}</td>
+        <td>{{ r.className || '—' }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:16px;">
+    <p-button label="Clear" severity="secondary" [text]="true" (onClick)="clear()"></p-button>
+    <p-button [label]="'Import ' + rows().length + ' student(s)'" icon="pi pi-check" [loading]="saving()" (onClick)="submit()"></p-button>
+  </div>
+}

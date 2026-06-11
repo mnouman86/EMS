@@ -1,0 +1,35 @@
+<div class="pr-wrap">
+  <div class="pr-card">
+    <h2>Check Result</h2>
+    <p class="sub">Enter your child's student ID and date of birth (or PIN) to view the latest published result.</p>
+
+    <div class="fld">
+      <label>Student ID</label>
+      <input pInputText [(ngModel)]="studentCode" placeholder="e.g. STU-2025-0142" (keyup.enter)="search()" />
+    </div>
+    <div class="fld">
+      <label>Date of Birth / PIN</label>
+      <input pInputText [(ngModel)]="secondFactor" placeholder="DD-MM-YYYY or PIN" (keyup.enter)="search()" />
+    </div>
+
+    <p-button label="Check Result" icon="pi pi-search" [loading]="loading()" (onClick)="search()" [style]="{ width: '100%' }"></p-button>
+
+    @if (error()) {
+      <p-message severity="error" [style]="{ display: 'block', marginTop: '16px' }">{{ error() }}</p-message>
+    }
+
+    @if (result(); as r) {
+      <div class="pr-result">
+        <div class="row"><span>Student</span><b>{{ r.studentFullName }} ({{ r.studentCode }})</b></div>
+        <div class="row"><span>Session</span><b>{{ r.sessionName }}</b></div>
+        <div class="row"><span>Class</span><b>{{ r.className }}</b></div>
+        <div class="row"><span>Overall</span><b>{{ r.overallPercent != null ? (r.overallPercent | number:'1.0-2') + '%' : '—' }}</b></div>
+        <div class="row"><span>Grade</span>
+          @if (r.overallGrade) { <p-tag [value]="r.overallGrade" [severity]="gradeSeverity(r.overallGrade)"></p-tag> } @else { <b>—</b> }
+        </div>
+        @if (r.remark) { <div class="row"><span>Remark</span><b>{{ r.remark }}</b></div> }
+      </div>
+      <p class="note">For the detailed result card, please contact the school office.</p>
+    }
+  </div>
+</div>

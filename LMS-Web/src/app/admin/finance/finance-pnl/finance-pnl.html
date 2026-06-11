@@ -1,0 +1,42 @@
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Profit &amp; Loss</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Income and expense statement for any period.</p>
+  </div>
+  <a routerLink="/admin/finance" class="p-button p-component p-button-outlined" style="text-decoration:none;"><i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back</a>
+</div>
+
+<div style="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-bottom:18px;">
+  <div>
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Period</label>
+    <p-datepicker [(ngModel)]="range" selectionMode="range" dateFormat="dd M yy" [showIcon]="true" appendTo="body" [readonlyInput]="true"></p-datepicker>
+  </div>
+  <p-button label="Run" icon="pi pi-search" [loading]="loading()" (onClick)="load()"></p-button>
+  @if (canExport) {
+    <p-button label="Export PDF" icon="pi pi-file-pdf" severity="secondary" [outlined]="true" [loading]="downloading()" (onClick)="exportPdf()" [disabled]="!loaded()"></p-button>
+  }
+</div>
+
+@if (loaded()) {
+  <div style="max-width:680px;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;">
+    @for (sec of sections(); track sec.name) {
+      <div style="background:#f8fafc;padding:10px 16px;font-weight:700;font-size:0.95rem;border-bottom:1px solid #e2e8f0;">{{ sec.name }}</div>
+      @for (row of sec.rows; track row.line) {
+        <div style="display:flex;justify-content:space-between;padding:8px 16px;border-bottom:1px solid #f1f5f9;">
+          <span style="color:#475569;">{{ row.line }}</span>
+          <span>Rs. {{ row.amount | number:'1.0-0' }}</span>
+        </div>
+      }
+      <div style="display:flex;justify-content:space-between;padding:8px 16px;border-bottom:1px solid #e2e8f0;font-weight:600;">
+        <span>Total {{ sec.name }}</span>
+        <span [style.color]="sec.name.toLowerCase() === 'income' ? '#16a34a' : '#dc2626'">Rs. {{ sec.total | number:'1.0-0' }}</span>
+      </div>
+    }
+    <div style="display:flex;justify-content:space-between;padding:14px 16px;background:#f8fafc;font-weight:800;font-size:1.05rem;">
+      <span>Net {{ net() >= 0 ? 'Surplus' : 'Deficit' }}</span>
+      <span [style.color]="net() >= 0 ? '#16a34a' : '#dc2626'">Rs. {{ net() | number:'1.0-0' }}</span>
+    </div>
+  </div>
+} @else if (!loading()) {
+  <p style="color:#64748b;">Pick a period and run the statement.</p>
+}

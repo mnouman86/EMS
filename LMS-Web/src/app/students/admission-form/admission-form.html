@@ -1,0 +1,111 @@
+@if (submitted()) {
+  <div class="adm-thankyou">
+    <i class="pi pi-check-circle" style="font-size:3rem;color:#16a34a;"></i>
+    <h2>Application received</h2>
+    <p>Thank you for applying to STEM Sprout School. Our admissions team will review the application and contact you on the details you provided.</p>
+    <a routerLink="/" class="p-button p-component" style="text-decoration:none;">Back to home</a>
+  </div>
+} @else {
+  <div class="adm-wrap" [class.adm-public]="isPublic">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+      <div>
+        <h2 style="margin:0;font-size:1.3rem;">{{ isEditing ? 'Edit Student' : 'Admission Application' }}</h2>
+        <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Fields marked * are mandatory.</p>
+      </div>
+      @if (!isPublic) {
+        <a routerLink="/admin/students" class="p-button p-component p-button-outlined" style="text-decoration:none;">
+          <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back
+        </a>
+      }
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="save()" style="max-width:980px;margin:0 auto;">
+      <!-- Student -->
+      <p-fieldset legend="Student Details *" styleClass="adm-section">
+        <div class="grid3">
+          <div class="fld" style="grid-column:1/-1;"><label>Full Name *</label><input pInputText formControlName="fullName" /></div>
+          <div class="fld"><label>Gender *</label>
+            <p-select [options]="genderOptions" optionLabel="label" optionValue="value" formControlName="gender" [fluid]="true" placeholder="Select"></p-select></div>
+          <div class="fld"><label>Religion *</label>
+            <p-select [options]="religionOptions" optionLabel="label" optionValue="value" formControlName="religion" [fluid]="true" placeholder="Select"></p-select></div>
+          <div class="fld"><label>Date of Birth *</label>
+            <p-datepicker formControlName="dateOfBirth" dateFormat="dd M yy" [showIcon]="true" [fluid]="true" appendTo="body" [maxDate]="$any(null)"></p-datepicker>
+            @if (form.controls.dateOfBirth.touched && form.controls.dateOfBirth.hasError('notPast')) { <small class="err">Date of birth must be in the past</small> }</div>
+          <div class="fld" style="grid-column:1/-1;"><label>Grade Applying For *</label>
+            <p-select [options]="classOptions()" optionLabel="label" optionValue="value" formControlName="gradeApplyingForId" [fluid]="true" placeholder="Select grade" [filter]="true"></p-select></div>
+        </div>
+      </p-fieldset>
+
+      <!-- Parent / Guardian -->
+      <p-fieldset legend="Parent / Guardian *" styleClass="adm-section">
+        <div class="grid3">
+          <div class="fld"><label>Parent / Guardian Name *</label><input pInputText formControlName="parentName" /></div>
+          <div class="fld"><label>Relationship *</label>
+            <p-select [options]="relationshipOptions" optionLabel="label" optionValue="value" formControlName="parentRelationship" [fluid]="true" placeholder="Select"></p-select></div>
+          <div class="fld"><label>Email *</label><input pInputText formControlName="parentEmail" />
+            @if (form.controls.parentEmail.touched && form.controls.parentEmail.hasError('email')) { <small class="err">Invalid email</small> }</div>
+          <div class="fld"><label>Mobile *</label><input pInputText formControlName="parentMobile" placeholder="+923001234567" />
+            @if (form.controls.parentMobile.touched && form.controls.parentMobile.hasError('pattern')) { <small class="err">Format: +92XXXXXXXXXX</small> }</div>
+          <div class="fld" style="grid-column:1/-1;"><label>Home Address *</label><textarea pTextarea formControlName="homeAddress" rows="2"></textarea></div>
+        </div>
+      </p-fieldset>
+
+      <!-- Emergency -->
+      <p-fieldset legend="Emergency Contact *" styleClass="adm-section">
+        <div class="grid3">
+          <div class="fld"><label>Contact Name *</label><input pInputText formControlName="emergencyContactName" /></div>
+          <div class="fld"><label>Contact Phone *</label><input pInputText formControlName="emergencyContactPhone" /></div>
+        </div>
+      </p-fieldset>
+
+      <!-- Medical -->
+      <p-fieldset legend="Medical" styleClass="adm-section">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          <p-toggleswitch formControlName="hasMedicalConditions"></p-toggleswitch>
+          <label style="font-size:0.85rem;">Has medical conditions / allergies</label>
+        </div>
+        @if (form.controls.hasMedicalConditions.value) {
+          <div class="fld"><label>Details</label><textarea pTextarea formControlName="medicalDetails" rows="2"></textarea></div>
+        }
+      </p-fieldset>
+
+      <!-- Previous school -->
+      <p-fieldset legend="Previous School (if any)" styleClass="adm-section">
+        <div class="grid3">
+          <div class="fld"><label>School Name</label><input pInputText formControlName="previousSchoolName" /></div>
+          <div class="fld"><label>Class</label><input pInputText formControlName="previousSchoolClass" /></div>
+          <div class="fld"><label>Date Left</label>
+            <p-datepicker formControlName="previousSchoolDateLeft" dateFormat="dd M yy" [showIcon]="true" [fluid]="true" appendTo="body"></p-datepicker></div>
+        </div>
+      </p-fieldset>
+
+      <!-- Declaration -->
+      @if (showDeclaration()) {
+        <p-fieldset legend="Declaration *" styleClass="adm-section">
+          <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:14px;">
+            <p-checkbox formControlName="declarationAccepted" [binary]="true" inputId="decl"></p-checkbox>
+            <label for="decl" style="font-size:0.86rem;line-height:1.4;color:#334155;">
+              I declare that the information provided above is true and correct to the best of my knowledge, and I accept the school's admission terms and policies.
+            </label>
+          </div>
+          <div class="grid3">
+            <div class="fld"><label>Signature (type full name)</label><input pInputText formControlName="signatureName" placeholder="Parent / guardian name" /></div>
+            <div class="fld">
+              <label>Signature image (optional)</label>
+              <input type="file" accept="image/*" (change)="onSignatureSelect($event)" />
+              @if (uploading()) { <small style="color:#64748b;">Uploading…</small> }
+              @if (signatureImagePath()) { <small style="color:#16a34a;">Uploaded ✓</small> }
+            </div>
+          </div>
+        </p-fieldset>
+      }
+
+      <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:16px;">
+        @if (!isPublic) {
+          <a routerLink="/admin/students" class="p-button p-component p-button-secondary p-button-text" style="text-decoration:none;">Cancel</a>
+        }
+        <p-button type="submit" [label]="isEditing ? 'Save changes' : 'Submit application'" icon="pi pi-check" [loading]="saving()"></p-button>
+      </div>
+    </form>
+  </div>
+}

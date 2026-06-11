@@ -1,0 +1,58 @@
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Budget Monitoring</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Monthly budget vs actual spend per category.</p>
+  </div>
+  <a routerLink="/admin/expenses" class="p-button p-component p-button-outlined" style="text-decoration:none;"><i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back</a>
+</div>
+
+<div style="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-bottom:14px;">
+  <div style="min-width:160px;">
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Month</label>
+    <p-select [options]="monthOptions" optionLabel="label" optionValue="value" [(ngModel)]="month" [style]="{ width: '100%' }"></p-select>
+  </div>
+  <div style="width:120px;">
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Year</label>
+    <p-inputnumber [(ngModel)]="year" [useGrouping]="false" [fluid]="true"></p-inputnumber>
+  </div>
+  <p-button label="Apply" icon="pi pi-refresh" [loading]="loading()" (onClick)="load()"></p-button>
+</div>
+
+<p-table [value]="rows()" [loading]="loading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '60rem' }">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Category</th><th style="width:140px;">Budget</th><th style="width:140px;">Spent</th>
+      <th style="width:140px;">Remaining</th><th style="width:200px;">Usage</th><th style="width:110px;">Status</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-r>
+    <tr>
+      <td>{{ r.categoryName }}</td>
+      <td>{{ r.budget != null ? ('Rs. ' + (r.budget | number:'1.0-0')) : '—' }}</td>
+      <td>Rs. {{ r.spent | number:'1.0-0' }}</td>
+      <td [style.color]="(r.remaining ?? 0) < 0 ? '#dc2626' : '#1e293b'">{{ r.remaining != null ? ('Rs. ' + (r.remaining | number:'1.0-0')) : '—' }}</td>
+      <td>
+        @if (r.percentUsed != null) {
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="flex:1;height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden;">
+              <div [style.width.%]="r.percentUsed > 100 ? 100 : r.percentUsed" [style.background]="barColor(r.alertLevel)" style="height:100%;"></div>
+            </div>
+            <span style="font-size:0.78rem;color:#475569;width:42px;text-align:right;">{{ r.percentUsed | number:'1.0-0' }}%</span>
+          </div>
+        } @else { <span style="color:#94a3b8;">No budget</span> }
+      </td>
+      <td><p-tag [value]="r.alertLevel === 'NoBudget' ? 'No Budget' : r.alertLevel" [severity]="severity(r.alertLevel)"></p-tag></td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage"><tr><td colspan="6" style="text-align:center;padding:18px;color:#64748b;">No categories to monitor.</td></tr></ng-template>
+  <ng-template pTemplate="footer">
+    @if (rows().length > 0) {
+      <tr>
+        <td style="text-align:right;font-weight:600;">Total</td>
+        <td style="font-weight:700;">Rs. {{ totalBudget() | number:'1.0-0' }}</td>
+        <td style="font-weight:700;">Rs. {{ totalSpent() | number:'1.0-0' }}</td>
+        <td colspan="3"></td>
+      </tr>
+    }
+  </ng-template>
+</p-table>
