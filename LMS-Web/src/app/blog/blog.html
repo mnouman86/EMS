@@ -1,0 +1,42 @@
+<section class="rts-blog-area rts-section-gap">
+    <div class="container">
+        <div class="section-title-area text-center">
+            <p class="pre-title justify-content-center"><img src="assets/images/banner/title-img.svg" alt="">Blog & News</p>
+            <h2 class="section-title">Welcome to STEMSprout blog</h2>
+            <p class="desc">A quick directory of STEMSprout most popular blogs on parenting, <br> homeschooling, curriculum, supplementing your kids</p>
+        </div>
+        <div class="slider-inner">
+            <div class="swiper mySwiper-blog">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" *ngFor="let post of blogPosts">
+                        <div class="blog-wrapper" [ngClass]="post.color">
+                            <div class="wrapper-inner">
+                                <div class="image">
+                                    <img [src]="post.image" [alt]="post.title">
+                                </div>
+                                <div class="content">
+                                    <h4 class="title"><a [routerLink]="post.link">{{post.title}}</a></h4>
+                                    <ul class="meta-wrapper">
+                                        <li class="wrapper-list">
+                                            <div class="icon">
+                                                <img src="assets/images/icon/14.svg" alt="Date">
+                                            </div>
+                                            <p class="desc">{{post.date}}</p>
+                                        </li>
+                                        <li class="wrapper-list">
+                                            <div class="icon">
+                                                <img src="assets/images/icon/15.svg" alt="Views">
+                                            </div>
+                                            <p class="desc">{{post.views}} View</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination4"></div>
+        </div>
+    </div>
+</section>

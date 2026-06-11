@@ -1,0 +1,44 @@
+<div class="auth-shell">
+  <div class="auth-card">
+    <div class="auth-brand">
+      <div class="auth-badge"><i class="pi pi-graduation-cap"></i></div>
+      <h1>STEM Sprout School</h1>
+      <p>Staff Management Portal</p>
+    </div>
+
+    @if (errorMsg()) {
+      <p-message severity="error" [text]="errorMsg()!" styleClass="w-full" [style]="{ display: 'block', marginBottom: '16px' }"></p-message>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="auth-field">
+        <label for="userName">Email</label>
+        <input id="userName" type="email" pInputText formControlName="userName" placeholder="you@tsss.com.pk"
+               style="width:100%;" autocomplete="username" />
+        @if (form.controls.userName.touched && form.controls.userName.invalid) {
+          <small>Enter a valid email address.</small>
+        }
+      </div>
+
+      <div class="auth-field">
+        <label for="password">Password</label>
+        <p-password id="password" formControlName="password" [feedback]="false" [toggleMask]="true"
+                    styleClass="w-full" inputStyleClass="w-full" [fluid]="true" placeholder="••••••••"></p-password>
+        @if (form.controls.password.touched && form.controls.password.invalid) {
+          <small>Password is required.</small>
+        }
+      </div>
+
+      <div class="auth-row">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <p-checkbox formControlName="rememberMe" [binary]="true" inputId="rememberMe"></p-checkbox>
+          <label for="rememberMe" style="cursor:pointer;color:#475569;">Remember me</label>
+        </div>
+        <a routerLink="/forgot-password">Forgot password?</a>
+      </div>
+
+      <p-button type="submit" label="Sign In" icon="pi pi-sign-in" [loading]="loading()" styleClass="w-full"
+                [style]="{ width: '100%' }"></p-button>
+    </form>
+  </div>
+</div>

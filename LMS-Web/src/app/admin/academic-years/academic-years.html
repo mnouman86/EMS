@@ -1,0 +1,106 @@
+<p-confirmDialog></p-confirmDialog>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Academic Years</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">
+      Define sessions and set the current open year. All fee, inventory and finance records scope to the open year.
+    </p>
+  </div>
+  <p-button label="New Academic Year" icon="pi pi-plus" (onClick)="openCreate()"></p-button>
+</div>
+
+<p-table [value]="rows()" [loading]="loading()" [paginator]="rows().length > 10" [rows]="10"
+         styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Start</th>
+      <th>End</th>
+      <th style="width:110px;">Status</th>
+      <th style="width:230px;">Actions</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-row>
+    <tr>
+      <td><strong>{{ row.code }}</strong></td>
+      <td>{{ row.displayName }}</td>
+      <td>{{ row.startDate | date: 'dd MMM yyyy' }}</td>
+      <td>{{ row.endDate | date: 'dd MMM yyyy' }}</td>
+      <td>
+        @if (row.isOpen) {
+          <p-tag value="Open" severity="success"></p-tag>
+        } @else {
+          <p-tag value="Closed" severity="secondary"></p-tag>
+        }
+      </td>
+      <td>
+        <p-button icon="pi pi-pencil" severity="secondary" size="small" [text]="true"
+                  pTooltip="Edit" (onClick)="openEdit(row)"></p-button>
+        @if (!row.isOpen) {
+          <p-button icon="pi pi-check-circle" severity="success" size="small" [text]="true"
+                    pTooltip="Set as current" (onClick)="setCurrent(row)"></p-button>
+          <p-button icon="pi pi-trash" severity="danger" size="small" [text]="true"
+                    pTooltip="Archive" (onClick)="archive(row)"></p-button>
+        }
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr><td colspan="6" style="text-align:center;padding:24px;color:#64748b;">No academic years yet.</td></tr>
+  </ng-template>
+</p-table>
+
+<!-- Create / Edit dialog -->
+<p-dialog [visible]="dialogOpen()" (visibleChange)="dialogOpen.set($event)" [modal]="true" [style]="{ width: '460px' }"
+          [header]="isEditing ? 'Edit Academic Year' : 'New Academic Year'" [draggable]="false">
+  <form [formGroup]="form" (ngSubmit)="save()" id="ayForm">
+    <div style="margin-bottom:14px;">
+      <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Code</label>
+      <input pInputText formControlName="code" placeholder="2025-26" style="width:100%;" />
+      @if (form.controls.code.touched && form.controls.code.invalid) {
+        <small style="color:#ef4444;">Code is required (max 20 chars).</small>
+      }
+      @if (isEditing) {
+        <small style="color:#94a3b8;">Code is locked once the year exists.</small>
+      }
+    </div>
+
+    <div style="margin-bottom:14px;">
+      <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Display name</label>
+      <input pInputText formControlName="displayName" placeholder="Academic Year 2025–26" style="width:100%;" />
+      @if (form.controls.displayName.touched && form.controls.displayName.invalid) {
+        <small style="color:#ef4444;">Name is required.</small>
+      }
+    </div>
+
+    <div style="display:flex;gap:12px;margin-bottom:14px;">
+      <div style="flex:1;">
+        <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Start date</label>
+        <p-datepicker formControlName="startDate" dateFormat="dd M yy" [showIcon]="true"
+                      [fluid]="true" appendTo="body"></p-datepicker>
+      </div>
+      <div style="flex:1;">
+        <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">End date</label>
+        <p-datepicker formControlName="endDate" dateFormat="dd M yy" [showIcon]="true"
+                      [fluid]="true" appendTo="body"></p-datepicker>
+      </div>
+    </div>
+    @if (form.errors?.['dateRange']) {
+      <small style="color:#ef4444;display:block;margin-bottom:10px;">End date must be after start date.</small>
+    }
+
+    @if (!isEditing) {
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+        <p-toggleswitch formControlName="isOpen"></p-toggleswitch>
+        <label style="font-size:0.85rem;">Set as the current open year</label>
+      </div>
+    }
+  </form>
+
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="dialogOpen.set(false)"></p-button>
+    <p-button label="Save" icon="pi pi-check" [loading]="saving()" (onClick)="save()"></p-button>
+  </ng-template>
+</p-dialog>

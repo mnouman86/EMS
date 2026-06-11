@@ -1,0 +1,70 @@
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Cash Flow</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Money in / out with a running balance from the opening cash position.</p>
+  </div>
+  <a routerLink="/admin/finance" class="p-button p-component p-button-outlined" style="text-decoration:none;"><i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back</a>
+</div>
+
+<div style="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-bottom:16px;">
+  <div style="min-width:200px;">
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Academic Year</label>
+    <p-select [options]="yearOptions()" optionLabel="label" optionValue="value" [(ngModel)]="yearId" (onChange)="onYearChange()" [style]="{ width: '100%' }"></p-select>
+  </div>
+  <div>
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Period</label>
+    <p-datepicker [(ngModel)]="range" selectionMode="range" dateFormat="dd M yy" [showIcon]="true" appendTo="body" [readonlyInput]="true"></p-datepicker>
+  </div>
+  <p-button label="Run" icon="pi pi-search" [loading]="loading()" (onClick)="load()"></p-button>
+  @if (canSetOpening) {
+    <p-button label="Set Opening Balance" icon="pi pi-pencil" severity="secondary" [outlined]="true" (onClick)="openSet()"></p-button>
+  }
+</div>
+
+<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+  <div class="kpi"><span>Opening balance</span><b>Rs. {{ (opening()?.openingAmount ?? 0) | number:'1.0-0' }}</b>
+    @if (opening()?.asOfDate) { <small style="color:#64748b;">as of {{ opening()!.asOfDate | date:'dd MMM yyyy' }}</small> }</div>
+  <div class="kpi"><span>Money in</span><b style="color:#16a34a;">Rs. {{ totalIn() | number:'1.0-0' }}</b></div>
+  <div class="kpi"><span>Money out</span><b style="color:#dc2626;">Rs. {{ totalOut() | number:'1.0-0' }}</b></div>
+  <div class="kpi"><span>Closing balance</span><b [style.color]="closingBalance() >= 0 ? '#16a34a' : '#dc2626'">Rs. {{ closingBalance() | number:'1.0-0' }}</b></div>
+</div>
+
+<p-table [value]="rows()" [loading]="loading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '64rem' }" [paginator]="rows().length > 30" [rows]="30">
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:120px;">Date</th><th style="width:120px;">Section</th><th style="width:150px;">Reference</th><th>Description</th>
+      <th style="width:130px;">In</th><th style="width:130px;">Out</th><th style="width:140px;">Balance</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-r>
+    <tr>
+      <td>{{ r.date | date:'dd MMM yyyy' }}</td>
+      <td><p-tag [value]="r.section || '—'" [severity]="r.moneyIn > 0 ? 'success' : 'danger'"></p-tag></td>
+      <td>{{ r.reference || '—' }}</td>
+      <td>{{ r.description || '—' }}</td>
+      <td style="color:#16a34a;">{{ r.moneyIn ? ('Rs. ' + (r.moneyIn | number:'1.0-0')) : '—' }}</td>
+      <td style="color:#dc2626;">{{ r.moneyOut ? ('Rs. ' + (r.moneyOut | number:'1.0-0')) : '—' }}</td>
+      <td><strong>Rs. {{ r.runningBalance | number:'1.0-0' }}</strong></td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage"><tr><td colspan="7" style="text-align:center;padding:18px;color:#64748b;">No cash movements in this period.</td></tr></ng-template>
+</p-table>
+
+<p-dialog [visible]="dialog()" (visibleChange)="dialog.set($event)" [modal]="true" [style]="{ width: '420px' }" header="Set Opening Cash Balance" [draggable]="false">
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Opening Amount *</label>
+      <p-inputnumber [(ngModel)]="openingAmount" mode="currency" currency="PKR" [min]="0" [fluid]="true"></p-inputnumber></div>
+    <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">As of Date *</label>
+      <p-datepicker [(ngModel)]="asOfDate" dateFormat="dd M yy" [showIcon]="true" [fluid]="true" appendTo="body"></p-datepicker></div>
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="dialog.set(false)"></p-button>
+    <p-button label="Save" icon="pi pi-check" [loading]="saving()" (onClick)="saveOpening()"></p-button>
+  </ng-template>
+</p-dialog>
+
+<style>
+  .kpi { border:1px solid #e2e8f0;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:3px;background:#fff;min-width:170px; }
+  .kpi span { font-size:0.74rem;color:#94a3b8;text-transform:uppercase;letter-spacing:0.03em; }
+  .kpi b { font-size:1.2rem; }
+</style>

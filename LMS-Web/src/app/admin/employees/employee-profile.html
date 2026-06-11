@@ -1,0 +1,210 @@
+@if (employee(); as e) {
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+    <div>
+      <h2 style="margin:0;font-size:1.3rem;">{{ e.fullName }}
+        <span style="font-size:0.9rem;color:#64748b;">({{ e.employeeCode }})</span>
+      </h2>
+      <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">
+        {{ e.designation }}<span *ngIf="e.department"> • {{ e.department }}</span>
+        <p-tag [value]="e.status || '—'" [severity]="statusSeverity(e.status)" styleClass="ml-2"></p-tag>
+      </p>
+    </div>
+    <div style="display:flex;gap:8px;">
+      <a [routerLink]="['/admin/employees', id, 'edit']" class="p-button p-component p-button-outlined" style="text-decoration:none;">
+        <i class="pi pi-pencil" style="margin-right:6px;"></i> Edit
+      </a>
+      <a routerLink="/admin/employees" class="p-button p-component p-button-secondary p-button-text" style="text-decoration:none;">Back</a>
+    </div>
+  </div>
+
+  <p-tabs value="0">
+    <p-tablist>
+      <p-tab value="0">Overview</p-tab>
+      <p-tab value="1">Teacher Assignments</p-tab>
+      <p-tab value="2">Salary</p-tab>
+      <p-tab value="3">Advances</p-tab>
+      <p-tab value="4">Documents</p-tab>
+    </p-tablist>
+    <p-tabpanels>
+      <!-- Overview -->
+      <p-tabpanel value="0">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px 24px;font-size:0.88rem;">
+          <div><span class="lbl">CNIC</span>{{ e.cnic }}</div>
+          <div><span class="lbl">DOB</span>{{ e.dateOfBirth | date: 'dd MMM yyyy' }}</div>
+          <div><span class="lbl">Gender</span>{{ e.gender }}</div>
+          <div><span class="lbl">Mobile</span>{{ e.personalMobile }}</div>
+          <div><span class="lbl">Official Email</span>{{ e.officialEmail || '—' }}</div>
+          <div><span class="lbl">Joined</span>{{ e.dateOfJoining | date: 'dd MMM yyyy' }}</div>
+          <div><span class="lbl">Employment</span>{{ e.employmentType }}</div>
+          <div><span class="lbl">Blood Group</span>{{ e.bloodGroup || '—' }}</div>
+          <div><span class="lbl">Marital</span>{{ e.maritalStatus }}</div>
+          <div style="grid-column:1/-1;"><span class="lbl">Present Address</span>{{ e.presentAddress }}</div>
+          <div><span class="lbl">Emergency 1</span>{{ e.emergencyContact1Name }} ({{ e.emergencyContact1Relation }}) — {{ e.emergencyContact1Mobile }}</div>
+          <div><span class="lbl">Highest Degree</span>{{ e.highestDegree || '—' }}</div>
+          <div><span class="lbl">Bank</span>{{ e.bankName || '—' }}</div>
+        </div>
+      </p-tabpanel>
+
+      <!-- Assignments -->
+      <p-tabpanel value="1">
+        <div style="display:flex;justify-content:flex-end;margin-bottom:10px;">
+          <p-button label="Add Assignment" icon="pi pi-plus" size="small" (onClick)="openAssign()"></p-button>
+        </div>
+        <p-table [value]="assignments()" styleClass="p-datatable-sm p-datatable-gridlines">
+          <ng-template pTemplate="header"><tr><th>Class</th><th>Subject</th><th style="width:90px;">Action</th></tr></ng-template>
+          <ng-template pTemplate="body" let-a>
+            <tr>
+              <td>{{ a.className }}</td>
+              <td>{{ a.subjectName }}</td>
+              <td><p-button icon="pi pi-trash" severity="danger" size="small" [text]="true" (onClick)="removeAssignment(a)"></p-button></td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage"><tr><td colspan="3" style="text-align:center;padding:18px;color:#64748b;">No assignments.</td></tr></ng-template>
+        </p-table>
+      </p-tabpanel>
+
+      <!-- Salary -->
+      <p-tabpanel value="2">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+          <div>
+            @if (currentSalary(); as s) {
+              <div style="font-size:0.9rem;">
+                Basic <strong>{{ s.basicSalary | number }}</strong> +
+                Allowances <strong>{{ s.allowances | number }}</strong> −
+                Deductions <strong>{{ s.fixedDeductions | number }}</strong> =
+                Net <strong style="color:#16a34a;">{{ netSalary() | number }}</strong>
+                <span style="color:#94a3b8;"> (since {{ s.effectiveFrom | date: 'dd MMM yyyy' }})</span>
+              </div>
+            } @else { <span style="color:#64748b;">No salary structure on file.</span> }
+          </div>
+          <p-button label="Set / Update Salary" icon="pi pi-money-bill" size="small" (onClick)="openSalary()"></p-button>
+        </div>
+        <p-table [value]="salaryHistory()" styleClass="p-datatable-sm p-datatable-gridlines">
+          <ng-template pTemplate="header"><tr><th>Effective From</th><th>Effective To</th><th>Basic</th><th>Allowances</th><th>Deductions</th><th>Active</th></tr></ng-template>
+          <ng-template pTemplate="body" let-s>
+            <tr>
+              <td>{{ s.effectiveFrom | date: 'dd MMM yyyy' }}</td>
+              <td>{{ s.effectiveTo ? (s.effectiveTo | date: 'dd MMM yyyy') : '—' }}</td>
+              <td>{{ s.basicSalary | number }}</td>
+              <td>{{ s.allowances | number }}</td>
+              <td>{{ s.fixedDeductions | number }}</td>
+              <td>@if (s.isActive) { <p-tag value="Active" severity="success"></p-tag> } @else { — }</td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage"><tr><td colspan="6" style="text-align:center;padding:18px;color:#64748b;">No salary history.</td></tr></ng-template>
+        </p-table>
+      </p-tabpanel>
+
+      <!-- Advances -->
+      <p-tabpanel value="3">
+        <div style="display:flex;justify-content:flex-end;margin-bottom:10px;">
+          <p-button label="Issue Advance" icon="pi pi-plus" size="small" (onClick)="openAdvance()"></p-button>
+        </div>
+        <p-table [value]="advances()" styleClass="p-datatable-sm p-datatable-gridlines">
+          <ng-template pTemplate="header"><tr><th>Issued</th><th>Amount</th><th>Outstanding</th><th>Reason</th><th>Status</th><th style="width:110px;">Action</th></tr></ng-template>
+          <ng-template pTemplate="body" let-a>
+            <tr>
+              <td>{{ a.issuedAt | date: 'dd MMM yyyy' }}</td>
+              <td>{{ a.amount | number }}</td>
+              <td>{{ a.outstandingBalance | number }}</td>
+              <td>{{ a.reason || '—' }}</td>
+              <td>
+                @if (a.status === 'Open') { <p-tag value="Open" severity="warn"></p-tag> }
+                @else if (a.status === 'Settled') { <p-tag value="Settled" severity="success"></p-tag> }
+                @else { <p-tag value="Written Off" severity="secondary"></p-tag> }
+              </td>
+              <td>
+                @if (a.status === 'Open') {
+                  <p-button label="Settle" size="small" [text]="true" (onClick)="repayAdvance(a)"></p-button>
+                }
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage"><tr><td colspan="6" style="text-align:center;padding:18px;color:#64748b;">No advances.</td></tr></ng-template>
+        </p-table>
+      </p-tabpanel>
+
+      <!-- Documents -->
+      <p-tabpanel value="4">
+        <div style="display:flex;justify-content:flex-end;margin-bottom:10px;">
+          <p-button label="Upload Document" icon="pi pi-upload" size="small" (onClick)="openDoc()"></p-button>
+        </div>
+        <p-table [value]="documents()" styleClass="p-datatable-sm p-datatable-gridlines">
+          <ng-template pTemplate="header"><tr><th>Type</th><th>File</th><th>Uploaded</th></tr></ng-template>
+          <ng-template pTemplate="body" let-d>
+            <tr>
+              <td>{{ d.documentType }}</td>
+              <td>{{ d.fileName }}</td>
+              <td>{{ d.uploadedAt | date: 'dd MMM yyyy HH:mm' }}</td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage"><tr><td colspan="3" style="text-align:center;padding:18px;color:#64748b;">No documents.</td></tr></ng-template>
+        </p-table>
+      </p-tabpanel>
+    </p-tabpanels>
+  </p-tabs>
+} @else if (loading()) {
+  <p style="color:#64748b;">Loading…</p>
+}
+
+<!-- Assignment dialog -->
+<p-dialog [visible]="assignDialog()" (visibleChange)="assignDialog.set($event)" [modal]="true" [style]="{ width: '420px' }" header="Add Teacher Assignment" [draggable]="false">
+  <div style="margin-bottom:12px;">
+    <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Class</label>
+    <p-select [options]="classes()" optionLabel="levelName" optionValue="id" [(ngModel)]="newClassId" [filter]="true" filterBy="levelName" [style]="{ width: '100%' }" appendTo="body"></p-select>
+  </div>
+  <div>
+    <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Subject</label>
+    <p-select [options]="subjects()" optionLabel="name" optionValue="id" [(ngModel)]="newSubjectId" [filter]="true" filterBy="name" [style]="{ width: '100%' }" appendTo="body"></p-select>
+  </div>
+  <small style="color:#94a3b8;display:block;margin-top:8px;">The class–subject must already be mapped (Subjects → Map to Classes).</small>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="assignDialog.set(false)"></p-button>
+    <p-button label="Add" icon="pi pi-check" [loading]="assignSaving()" (onClick)="addAssignment()"></p-button>
+  </ng-template>
+</p-dialog>
+
+<!-- Salary dialog -->
+<p-dialog [visible]="salaryDialog()" (visibleChange)="salaryDialog.set($event)" [modal]="true" [style]="{ width: '420px' }" header="Salary Structure" [draggable]="false">
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div><label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Basic salary</label>
+      <p-inputnumber [(ngModel)]="salBasic" mode="decimal" [fluid]="true"></p-inputnumber></div>
+    <div><label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Allowances</label>
+      <p-inputnumber [(ngModel)]="salAllow" mode="decimal" [fluid]="true"></p-inputnumber></div>
+    <div><label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Fixed deductions</label>
+      <p-inputnumber [(ngModel)]="salDeduct" mode="decimal" [fluid]="true"></p-inputnumber></div>
+    <div><label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Effective from</label>
+      <p-datepicker [(ngModel)]="salFrom" dateFormat="dd M yy" [showIcon]="true" [fluid]="true" appendTo="body"></p-datepicker></div>
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="salaryDialog.set(false)"></p-button>
+    <p-button label="Save" icon="pi pi-check" [loading]="salarySaving()" (onClick)="saveSalary()"></p-button>
+  </ng-template>
+</p-dialog>
+
+<!-- Advance dialog -->
+<p-dialog [visible]="advanceDialog()" (visibleChange)="advanceDialog.set($event)" [modal]="true" [style]="{ width: '400px' }" header="Issue Advance" [draggable]="false">
+  <div style="margin-bottom:12px;"><label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Amount</label>
+    <p-inputnumber [(ngModel)]="advAmount" mode="decimal" [fluid]="true"></p-inputnumber></div>
+  <div><label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Reason</label>
+    <input pInputText [(ngModel)]="advReason" style="width:100%;" /></div>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="advanceDialog.set(false)"></p-button>
+    <p-button label="Issue" icon="pi pi-check" [loading]="advanceSaving()" (onClick)="saveAdvance()"></p-button>
+  </ng-template>
+</p-dialog>
+
+<!-- Document dialog -->
+<p-dialog [visible]="docDialog()" (visibleChange)="docDialog.set($event)" [modal]="true" [style]="{ width: '440px' }" header="Upload Document" [draggable]="false">
+  <div style="margin-bottom:12px;">
+    <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Document type</label>
+    <p-select [options]="docTypeOptions" optionLabel="label" optionValue="value" [(ngModel)]="docType" [style]="{ width: '100%' }" appendTo="body"></p-select>
+  </div>
+  <p-fileupload mode="basic" chooseLabel="Choose file" [auto]="false" [customUpload]="true"
+                (onSelect)="onDocSelect($event)" accept="image/*,application/pdf" [maxFileSize]="5000000"></p-fileupload>
+  <small style="color:#94a3b8;display:block;margin-top:8px;">Images or PDF, up to 5 MB. Photo type also sets the profile photo.</small>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="docDialog.set(false)"></p-button>
+    <p-button label="Upload" icon="pi pi-upload" [loading]="docSaving()" (onClick)="saveDoc()"></p-button>
+  </ng-template>
+</p-dialog>

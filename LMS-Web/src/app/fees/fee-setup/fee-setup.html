@@ -1,0 +1,144 @@
+<p-confirmDialog></p-confirmDialog>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Fee Setup</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Fee types, per-class amounts and billing calendar.</p>
+  </div>
+  <a routerLink="/admin/fees" class="p-button p-component p-button-outlined" style="text-decoration:none;">
+    <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back
+  </a>
+</div>
+
+<p-tabs value="types">
+  <p-tablist>
+    <p-tab value="types">Fee Types</p-tab>
+    <p-tab value="structure">Class Structure</p-tab>
+    <p-tab value="calendar">Billing Calendar</p-tab>
+  </p-tablist>
+
+  <p-tabpanels>
+    <!-- Fee types -->
+    <p-tabpanel value="types">
+      <div style="display:flex;justify-content:flex-end;margin-bottom:10px;">
+        <p-button label="New Fee Type" icon="pi pi-plus" (onClick)="openType()"></p-button>
+      </div>
+      <p-table [value]="types()" [loading]="typesLoading()" styleClass="p-datatable-sm p-datatable-gridlines">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Name</th><th style="width:140px;">Code</th><th style="width:140px;">Category</th>
+            <th style="width:100px;">Active</th><th style="width:130px;">Actions</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-t>
+          <tr>
+            <td>{{ t.name }}</td>
+            <td><strong>{{ t.code }}</strong></td>
+            <td>{{ t.category }}</td>
+            <td><p-tag [value]="t.isActive ? 'Active' : 'Inactive'" [severity]="t.isActive ? 'success' : 'secondary'"></p-tag></td>
+            <td>
+              <p-button icon="pi pi-pencil" severity="secondary" size="small" [text]="true" (onClick)="openType(t)"></p-button>
+              <p-button icon="pi pi-trash" severity="danger" size="small" [text]="true" (onClick)="deleteType(t)"></p-button>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr><td colspan="5" style="text-align:center;padding:18px;color:#64748b;">No fee types yet.</td></tr>
+        </ng-template>
+      </p-table>
+    </p-tabpanel>
+
+    <!-- Class structure -->
+    <p-tabpanel value="structure">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px;">
+        <div style="min-width:200px;">
+          <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Class</label>
+          <p-select [options]="classOptions()" optionLabel="label" optionValue="value" [(ngModel)]="structClassId" [style]="{ width: '100%' }" [filter]="true" placeholder="Select class"></p-select>
+        </div>
+        <div style="min-width:200px;">
+          <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Academic Year</label>
+          <p-select [options]="yearOptions()" optionLabel="label" optionValue="value" [(ngModel)]="structYearId" [style]="{ width: '100%' }" placeholder="Select year"></p-select>
+        </div>
+        <p-button label="Load" icon="pi pi-search" [loading]="structLoading()" (onClick)="loadStructure()"></p-button>
+        <span style="flex:1;"></span>
+        <p-button label="Set Amount" icon="pi pi-plus" severity="secondary" [outlined]="true" (onClick)="openAmount()" [disabled]="!structClassId"></p-button>
+      </div>
+      <p-table [value]="structure()" [loading]="structLoading()" styleClass="p-datatable-sm p-datatable-gridlines">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Fee Type</th><th style="width:120px;">Code</th><th style="width:130px;">Category</th>
+            <th style="width:140px;">Amount</th><th style="width:150px;">Effective From</th><th style="width:90px;">Edit</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-r>
+          <tr>
+            <td>{{ r.feeTypeName }}</td>
+            <td>{{ r.feeTypeCode }}</td>
+            <td>{{ r.category }}</td>
+            <td>Rs. {{ r.amount | number:'1.0-0' }}</td>
+            <td>{{ r.effectiveFrom | date:'dd MMM yyyy' }}</td>
+            <td><p-button icon="pi pi-pencil" severity="secondary" size="small" [text]="true" (onClick)="openAmount(r)"></p-button></td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr><td colspan="6" style="text-align:center;padding:18px;color:#64748b;">No amounts configured. Pick a class &amp; year, then Load.</td></tr>
+        </ng-template>
+      </p-table>
+    </p-tabpanel>
+
+    <!-- Calendar -->
+    <p-tabpanel value="calendar">
+      <p style="color:#64748b;font-size:0.85rem;margin:0 0 12px;">Choose which months a monthly/periodic fee type is billed in for a given academic year.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;max-width:760px;">
+        <div style="min-width:220px;">
+          <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Fee Type</label>
+          <p-select [options]="feeTypeOptions()" optionLabel="label" optionValue="value" [(ngModel)]="calFeeTypeId" [style]="{ width: '100%' }" [filter]="true" placeholder="Select fee type"></p-select>
+        </div>
+        <div style="min-width:200px;">
+          <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Academic Year</label>
+          <p-select [options]="yearOptions()" optionLabel="label" optionValue="value" [(ngModel)]="calYearId" [style]="{ width: '100%' }" placeholder="Select year"></p-select>
+        </div>
+        <div style="min-width:260px;">
+          <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Billed Months</label>
+          <p-multiselect [options]="monthOptions" optionLabel="label" optionValue="value" [(ngModel)]="calMonths" [style]="{ width: '100%' }" placeholder="Select months" display="chip"></p-multiselect>
+        </div>
+        <p-button label="Save Calendar" icon="pi pi-check" [loading]="calSaving()" (onClick)="saveCalendar()"></p-button>
+      </div>
+    </p-tabpanel>
+  </p-tabpanels>
+</p-tabs>
+
+<!-- Fee type dialog -->
+<p-dialog [visible]="typeDialog()" (visibleChange)="typeDialog.set($event)" [modal]="true" [style]="{ width: '440px' }"
+          [header]="editType.id ? 'Edit Fee Type' : 'New Fee Type'" [draggable]="false">
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Name *</label><input pInputText [(ngModel)]="editType.name" style="width:100%;" /></div>
+    <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Code *</label><input pInputText [(ngModel)]="editType.code" style="width:100%;" /></div>
+    <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Category *</label>
+      <p-select [options]="categoryOptions" optionLabel="label" optionValue="value" [(ngModel)]="editType.category" [style]="{ width: '100%' }" appendTo="body"></p-select></div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <p-toggleswitch [(ngModel)]="editType.isActive"></p-toggleswitch><label style="font-size:0.85rem;">Active</label>
+    </div>
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="typeDialog.set(false)"></p-button>
+    <p-button label="Save" icon="pi pi-check" [loading]="typeSaving()" (onClick)="saveType()"></p-button>
+  </ng-template>
+</p-dialog>
+
+<!-- Amount dialog -->
+<p-dialog [visible]="amountDialog()" (visibleChange)="amountDialog.set($event)" [modal]="true" [style]="{ width: '440px' }"
+          header="Set Fee Amount" [draggable]="false">
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Fee Type *</label>
+      <p-select [options]="feeTypeOptions()" optionLabel="label" optionValue="value" [(ngModel)]="amountForm.feeTypeId" [style]="{ width: '100%' }" [filter]="true" appendTo="body" placeholder="Select fee type"></p-select></div>
+    <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Amount *</label>
+      <p-inputnumber [(ngModel)]="amountForm.amount" mode="currency" currency="PKR" [fluid]="true"></p-inputnumber></div>
+    <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Effective From *</label>
+      <p-datepicker [(ngModel)]="amountForm.effectiveFrom" dateFormat="dd M yy" [showIcon]="true" [fluid]="true" appendTo="body"></p-datepicker></div>
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="amountDialog.set(false)"></p-button>
+    <p-button label="Save" icon="pi pi-check" [loading]="amountSaving()" (onClick)="saveAmount()"></p-button>
+  </ng-template>
+</p-dialog>

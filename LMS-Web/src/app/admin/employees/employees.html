@@ -1,0 +1,86 @@
+<p-confirmDialog></p-confirmDialog>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Employees</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Staff bio-data, assignments, salary and advances.</p>
+  </div>
+  <p-button label="Register Employee" icon="pi pi-plus" (onClick)="create()"></p-button>
+</div>
+
+<!-- Filters -->
+<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px;">
+  <div style="flex:1;min-width:220px;">
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Search (name / code / CNIC / mobile)</label>
+    <input pInputText [(ngModel)]="search" (keyup.enter)="load()" placeholder="Type and press Enter" style="width:100%;" />
+  </div>
+  <div style="min-width:170px;">
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Status</label>
+    <p-select [options]="statusOptions" optionLabel="label" optionValue="value"
+              [(ngModel)]="statusFilter" (onChange)="load()" [style]="{ width: '100%' }"></p-select>
+  </div>
+  <div style="min-width:170px;">
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Employment</label>
+    <p-select [options]="employmentOptions" optionLabel="label" optionValue="value"
+              [(ngModel)]="employmentFilter" (onChange)="load()" [style]="{ width: '100%' }"></p-select>
+  </div>
+  <p-button label="Search" icon="pi pi-search" (onClick)="load()"></p-button>
+  <p-button label="Clear" severity="secondary" [outlined]="true" (onClick)="clearFilters()"></p-button>
+</div>
+
+<p-table [value]="rows()" [loading]="loading()" [paginator]="rows().length > 15" [rows]="15"
+         styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '70rem' }">
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:130px;">Emp. ID</th>
+      <th>Name</th>
+      <th>Designation</th>
+      <th>Department</th>
+      <th style="width:110px;">Type</th>
+      <th style="width:150px;">Mobile</th>
+      <th style="width:100px;">Status</th>
+      <th style="width:160px;">Actions</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-row>
+    <tr>
+      <td><strong>{{ row.employeeCode }}</strong></td>
+      <td>{{ row.fullName }}</td>
+      <td>{{ row.designation || '—' }}</td>
+      <td>{{ row.department || '—' }}</td>
+      <td>{{ row.employmentType || '—' }}</td>
+      <td>{{ row.personalMobile || '—' }}</td>
+      <td><p-tag [value]="row.status || '—'" [severity]="statusSeverity(row.status)"></p-tag></td>
+      <td>
+        <p-button icon="pi pi-eye" severity="secondary" size="small" [text]="true" pTooltip="View profile" (onClick)="view(row)"></p-button>
+        <p-button icon="pi pi-pencil" severity="secondary" size="small" [text]="true" pTooltip="Edit" (onClick)="edit(row)"></p-button>
+        @if (row.status !== 'Left') {
+          <p-button icon="pi pi-sign-out" severity="danger" size="small" [text]="true" pTooltip="Mark as Left" (onClick)="openMarkLeft(row)"></p-button>
+        }
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr><td colspan="8" style="text-align:center;padding:24px;color:#64748b;">No employees found.</td></tr>
+  </ng-template>
+</p-table>
+
+<!-- Mark Left dialog -->
+<p-dialog [visible]="leftDialog()" (visibleChange)="leftDialog.set($event)" [modal]="true" [style]="{ width: '420px' }"
+          header="Mark Employee as Left" [draggable]="false">
+  @if (leftTarget()) {
+    <p style="margin:0 0 14px;color:#475569;">{{ leftTarget()!.fullName }} ({{ leftTarget()!.employeeCode }})</p>
+  }
+  <div style="margin-bottom:14px;">
+    <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Last working day</label>
+    <p-datepicker [(ngModel)]="leftDate" dateFormat="dd M yy" [showIcon]="true" [fluid]="true" appendTo="body"></p-datepicker>
+  </div>
+  <div>
+    <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Reason (optional)</label>
+    <input pInputText [(ngModel)]="leftReason" placeholder="Reason for leaving" style="width:100%;" />
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="leftDialog.set(false)"></p-button>
+    <p-button label="Confirm" icon="pi pi-check" severity="danger" [loading]="leftSaving()" (onClick)="confirmMarkLeft()"></p-button>
+  </ng-template>
+</p-dialog>

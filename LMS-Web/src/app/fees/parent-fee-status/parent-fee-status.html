@@ -1,0 +1,31 @@
+<div class="pfs-wrap">
+  <div class="pfs-card">
+    <h2>Check Fee Status</h2>
+    <p class="sub">Enter your child's student code and date of birth (or PIN) to view the current fee status.</p>
+
+    <div class="fld">
+      <label>Student Code</label>
+      <input pInputText [(ngModel)]="studentCode" placeholder="e.g. STU-2025-0142" (keyup.enter)="search()" />
+    </div>
+    <div class="fld">
+      <label>Date of Birth / PIN</label>
+      <input pInputText [(ngModel)]="secondFactor" placeholder="DD-MM-YYYY or PIN" (keyup.enter)="search()" />
+    </div>
+
+    <p-button label="Check Status" icon="pi pi-search" [loading]="loading()" (onClick)="search()" styleClass="w-full" [style]="{ width: '100%' }"></p-button>
+
+    @if (error()) {
+      <p-message severity="error" [style]="{ display: 'block', marginTop: '16px' }">{{ error() }}</p-message>
+    }
+
+    @if (result(); as r) {
+      <div class="pfs-result">
+        <div class="row"><span>Student</span><b>{{ r.studentFullName }} ({{ r.studentCode }})</b></div>
+        <div class="row"><span>Current month</span><p-tag [value]="r.currentMonthStatus || '—'" [severity]="statusSeverity(r.currentMonthStatus)"></p-tag></div>
+        <div class="row"><span>Total outstanding</span><b [style.color]="r.totalOutstanding > 0 ? '#dc2626' : '#16a34a'">Rs. {{ r.totalOutstanding | number:'1.0-0' }}</b></div>
+        <div class="row"><span>Last payment</span><b>{{ r.lastPaymentDate ? (r.lastPaymentDate | date:'dd MMM yyyy') : '—' }}</b></div>
+      </div>
+      <p class="note">For a detailed statement or to make a payment, please contact the school office.</p>
+    }
+  </div>
+</div>

@@ -346,3 +346,7 @@ healthchecksdb
 /docs
 /url.txt
 /idea.docx
+/LMS-Web/.angular/cache/20.3.3/LMS-Web
+/LMS-Web/dist/LMS-Web
+/LMS-Web/.vscode
+*.rar

@@ -1,0 +1,104 @@
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Fee Reports</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Defaulters, month-specific non-submitted and outstanding ageing.</p>
+  </div>
+  <a routerLink="/admin/fees" class="p-button p-component p-button-outlined" style="text-decoration:none;">
+    <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back
+  </a>
+</div>
+
+<p-tabs value="pending">
+  <p-tablist>
+    <p-tab value="pending">Defaulters</p-tab>
+    <p-tab value="nonsubmitted">Monthly Non-Submitted</p-tab>
+    <p-tab value="ageing">Outstanding Ageing</p-tab>
+  </p-tablist>
+
+  <p-tabpanels>
+    <!-- Defaulters -->
+    <p-tabpanel value="pending">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px;">
+        <div style="min-width:180px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Class</label>
+          <p-select [options]="classOptions()" optionLabel="label" optionValue="value" [(ngModel)]="pendingClassId" [style]="{ width: '100%' }" [filter]="true"></p-select></div>
+        <div style="width:150px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Min Outstanding</label>
+          <p-inputnumber [(ngModel)]="minOutstanding" [useGrouping]="false" [fluid]="true"></p-inputnumber></div>
+        <div style="width:150px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Min Days Overdue</label>
+          <p-inputnumber [(ngModel)]="minDaysOverdue" [useGrouping]="false" [fluid]="true"></p-inputnumber></div>
+        <p-button label="Run" icon="pi pi-search" [loading]="pendingLoading()" (onClick)="loadPending()"></p-button>
+      </div>
+      <p-table [value]="pending()" [loading]="pendingLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '70rem' }" [paginator]="pending().length > 25" [rows]="25">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width:110px;">Code</th><th>Student</th><th>Class</th><th>Months Due</th>
+            <th style="width:130px;">Outstanding</th><th style="width:110px;">Days Overdue</th><th style="width:140px;">Contact</th><th style="width:90px;">Waiver</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-r>
+          <tr>
+            <td>{{ r.studentCode }}</td>
+            <td>{{ r.studentFullName }}</td>
+            <td>{{ r.className }}</td>
+            <td>{{ r.monthsDue || '—' }}</td>
+            <td style="color:#dc2626;"><strong>Rs. {{ r.totalOutstanding | number:'1.0-0' }}</strong></td>
+            <td>{{ r.daysOverdue }}</td>
+            <td>{{ r.parentMobile || r.emergencyContactPhone || '—' }}</td>
+            <td>@if (r.hasActiveWaiver) { <p-tag value="Waiver" severity="warn"></p-tag> }</td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage"><tr><td colspan="8" style="text-align:center;padding:18px;color:#64748b;">No defaulters.</td></tr></ng-template>
+      </p-table>
+    </p-tabpanel>
+
+    <!-- Monthly non-submitted -->
+    <p-tabpanel value="nonsubmitted">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px;">
+        <div style="min-width:160px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Month</label>
+          <p-select [options]="monthOptions" optionLabel="label" optionValue="value" [(ngModel)]="nsMonth" [style]="{ width: '100%' }"></p-select></div>
+        <div style="width:120px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Year</label>
+          <p-inputnumber [(ngModel)]="nsYear" [useGrouping]="false" [fluid]="true"></p-inputnumber></div>
+        <div style="min-width:180px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Class</label>
+          <p-select [options]="classOptions()" optionLabel="label" optionValue="value" [(ngModel)]="nsClassId" [style]="{ width: '100%' }" [filter]="true"></p-select></div>
+        <p-button label="Run" icon="pi pi-search" [loading]="nsLoading()" (onClick)="loadNonSubmitted()"></p-button>
+      </div>
+      <p-table [value]="nonSubmitted()" [loading]="nsLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '60rem' }" [paginator]="nonSubmitted().length > 25" [rows]="25">
+        <ng-template pTemplate="header">
+          <tr><th style="width:110px;">Code</th><th>Student</th><th>Class</th><th style="width:130px;">Outstanding</th><th style="width:140px;">Contact</th></tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-r>
+          <tr>
+            <td>{{ r.studentCode }}</td><td>{{ r.studentFullName }}</td><td>{{ r.className }}</td>
+            <td style="color:#dc2626;">Rs. {{ r.totalOutstanding | number:'1.0-0' }}</td>
+            <td>{{ r.parentMobile || r.emergencyContactPhone || '—' }}</td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage"><tr><td colspan="5" style="text-align:center;padding:18px;color:#64748b;">Run the report for a month.</td></tr></ng-template>
+      </p-table>
+    </p-tabpanel>
+
+    <!-- Ageing -->
+    <p-tabpanel value="ageing">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px;">
+        <div style="min-width:180px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Class</label>
+          <p-select [options]="classOptions()" optionLabel="label" optionValue="value" [(ngModel)]="ageingClassId" [style]="{ width: '100%' }" [filter]="true"></p-select></div>
+        <p-button label="Run" icon="pi pi-search" [loading]="ageingLoading()" (onClick)="loadAgeing()"></p-button>
+      </div>
+      <p-table [value]="ageing()" [loading]="ageingLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '60rem' }" [paginator]="ageing().length > 25" [rows]="25">
+        <ng-template pTemplate="header">
+          <tr><th style="width:110px;">Code</th><th>Student</th><th style="width:120px;">0–30</th><th style="width:120px;">31–60</th><th style="width:120px;">61–90</th><th style="width:120px;">90+</th><th style="width:130px;">Total</th></tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-r>
+          <tr>
+            <td>{{ r.studentCode }}</td><td>{{ r.studentFullName }}</td>
+            <td>Rs. {{ r.bucket0_30 | number:'1.0-0' }}</td>
+            <td>Rs. {{ r.bucket31_60 | number:'1.0-0' }}</td>
+            <td>Rs. {{ r.bucket61_90 | number:'1.0-0' }}</td>
+            <td style="color:#dc2626;">Rs. {{ r.bucket91Plus | number:'1.0-0' }}</td>
+            <td><strong>Rs. {{ r.total | number:'1.0-0' }}</strong></td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage"><tr><td colspan="7" style="text-align:center;padding:18px;color:#64748b;">No outstanding balances.</td></tr></ng-template>
+      </p-table>
+    </p-tabpanel>
+  </p-tabpanels>
+</p-tabs>

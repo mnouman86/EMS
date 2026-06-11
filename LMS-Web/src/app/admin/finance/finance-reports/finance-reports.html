@@ -1,0 +1,101 @@
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Finance Reports</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Monthly &amp; annual summaries, expense breakdown and fee targets.</p>
+  </div>
+  <a routerLink="/admin/finance" class="p-button p-component p-button-outlined" style="text-decoration:none;"><i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back</a>
+</div>
+
+<p-tabs value="monthly">
+  <p-tablist>
+    <p-tab value="monthly">Monthly Summary</p-tab>
+    <p-tab value="annual">Annual Summary</p-tab>
+    <p-tab value="category">Category Expense</p-tab>
+    <p-tab value="target">Fee vs Target</p-tab>
+  </p-tablist>
+
+  <p-tabpanels>
+    <!-- Monthly -->
+    <p-tabpanel value="monthly">
+      <div style="display:flex;gap:12px;align-items:flex-end;margin-bottom:12px;">
+        <div style="min-width:160px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Month</label>
+          <p-select [options]="monthOptions" optionLabel="label" optionValue="value" [(ngModel)]="mMonth" [style]="{ width: '100%' }"></p-select></div>
+        <div style="width:120px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Year</label>
+          <p-inputnumber [(ngModel)]="mYear" [useGrouping]="false" [fluid]="true"></p-inputnumber></div>
+        <p-button label="Run" icon="pi pi-search" [loading]="monthlyLoading()" (onClick)="loadMonthly()"></p-button>
+      </div>
+      <p-table [value]="monthly()" [loading]="monthlyLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '40rem' }">
+        <ng-template pTemplate="header"><tr><th style="width:140px;">Section</th><th>Line</th><th style="width:160px;">Amount</th></tr></ng-template>
+        <ng-template pTemplate="body" let-r>
+          <tr><td>{{ r.section }}</td><td>{{ r.line }}</td>
+            <td [style.color]="r.section.toLowerCase() === 'income' ? '#16a34a' : '#dc2626'">Rs. {{ r.amount | number:'1.0-0' }}</td></tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage"><tr><td colspan="3" style="text-align:center;padding:18px;color:#64748b;">No data.</td></tr></ng-template>
+        <ng-template pTemplate="footer">
+          @if (monthly().length > 0) { <tr><td colspan="2" style="text-align:right;font-weight:700;">Net</td><td [style.color]="net(monthly()) >= 0 ? '#16a34a' : '#dc2626'" style="font-weight:700;">Rs. {{ net(monthly()) | number:'1.0-0' }}</td></tr> }
+        </ng-template>
+      </p-table>
+    </p-tabpanel>
+
+    <!-- Annual -->
+    <p-tabpanel value="annual">
+      <div style="display:flex;gap:12px;align-items:flex-end;margin-bottom:12px;">
+        <div style="min-width:200px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Academic Year</label>
+          <p-select [options]="yearOptions()" optionLabel="label" optionValue="value" [(ngModel)]="annualYearId" [style]="{ width: '100%' }" placeholder="Select year"></p-select></div>
+        <p-button label="Run" icon="pi pi-search" [loading]="annualLoading()" (onClick)="loadAnnual()"></p-button>
+      </div>
+      <p-table [value]="annual()" [loading]="annualLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '40rem' }">
+        <ng-template pTemplate="header"><tr><th style="width:140px;">Section</th><th>Line</th><th style="width:160px;">Amount</th></tr></ng-template>
+        <ng-template pTemplate="body" let-r>
+          <tr><td>{{ r.section }}</td><td>{{ r.line }}</td>
+            <td [style.color]="r.section.toLowerCase() === 'income' ? '#16a34a' : '#dc2626'">Rs. {{ r.amount | number:'1.0-0' }}</td></tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage"><tr><td colspan="3" style="text-align:center;padding:18px;color:#64748b;">Pick a year and run.</td></tr></ng-template>
+        <ng-template pTemplate="footer">
+          @if (annual().length > 0) { <tr><td colspan="2" style="text-align:right;font-weight:700;">Net</td><td [style.color]="net(annual()) >= 0 ? '#16a34a' : '#dc2626'" style="font-weight:700;">Rs. {{ net(annual()) | number:'1.0-0' }}</td></tr> }
+        </ng-template>
+      </p-table>
+    </p-tabpanel>
+
+    <!-- Category-wise expense -->
+    <p-tabpanel value="category">
+      <div style="display:flex;gap:12px;align-items:flex-end;margin-bottom:12px;">
+        <div><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Period</label>
+          <p-datepicker [(ngModel)]="catRange" selectionMode="range" dateFormat="dd M yy" [showIcon]="true" appendTo="body" [readonlyInput]="true"></p-datepicker></div>
+        <p-button label="Run" icon="pi pi-search" [loading]="catLoading()" (onClick)="loadCategory()"></p-button>
+      </div>
+      <p-table [value]="catExpense()" [loading]="catLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '40rem' }">
+        <ng-template pTemplate="header"><tr><th>Category</th><th style="width:160px;">Amount</th><th style="width:100px;">Share</th></tr></ng-template>
+        <ng-template pTemplate="body" let-c>
+          <tr><td>{{ c.name }}</td><td style="color:#dc2626;">Rs. {{ c.amount | number:'1.0-0' }}</td>
+            <td>{{ catTotal() > 0 ? ((c.amount / catTotal()) * 100 | number:'1.0-1') : '0' }}%</td></tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage"><tr><td colspan="3" style="text-align:center;padding:18px;color:#64748b;">No expenses in this period.</td></tr></ng-template>
+        <ng-template pTemplate="footer">
+          @if (catExpense().length > 0) { <tr><td style="text-align:right;font-weight:700;">Total</td><td style="font-weight:700;">Rs. {{ catTotal() | number:'1.0-0' }}</td><td></td></tr> }
+        </ng-template>
+      </p-table>
+    </p-tabpanel>
+
+    <!-- Fee vs target -->
+    <p-tabpanel value="target">
+      <div style="display:flex;gap:12px;align-items:flex-end;margin-bottom:12px;">
+        <div style="min-width:200px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Academic Year</label>
+          <p-select [options]="yearOptions()" optionLabel="label" optionValue="value" [(ngModel)]="feeYearId" [style]="{ width: '100%' }" placeholder="Select year"></p-select></div>
+        <p-button label="Run" icon="pi pi-search" [loading]="feeLoading()" (onClick)="loadFeeVsTarget()"></p-button>
+      </div>
+      <p-table [value]="feeVsTarget()" [loading]="feeLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header"><tr><th>Month</th><th style="width:150px;">Target</th><th style="width:150px;">Collected</th><th style="width:140px;">Achievement</th></tr></ng-template>
+        <ng-template pTemplate="body" let-r>
+          <tr>
+            <td>{{ monthName(r.month) }} {{ r.year }}</td>
+            <td>Rs. {{ r.target | number:'1.0-0' }}</td>
+            <td style="color:#16a34a;">Rs. {{ r.collected | number:'1.0-0' }}</td>
+            <td><p-tag [value]="(r.achievementPercent | number:'1.0-1') + '%'" [severity]="achievementSeverity(r.achievementPercent)"></p-tag></td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage"><tr><td colspan="4" style="text-align:center;padding:18px;color:#64748b;">Pick a year and run.</td></tr></ng-template>
+      </p-table>
+    </p-tabpanel>
+  </p-tabpanels>
+</p-tabs>

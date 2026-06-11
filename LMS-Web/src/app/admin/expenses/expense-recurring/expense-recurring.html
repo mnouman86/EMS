@@ -1,0 +1,65 @@
+<p-confirmDialog></p-confirmDialog>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Recurring Expenses</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Templates for rent, utilities and other monthly bills.</p>
+  </div>
+  <div style="display:flex;gap:8px;">
+    <a routerLink="/admin/expenses" class="p-button p-component p-button-outlined" style="text-decoration:none;"><i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back</a>
+    <p-button label="New Template" icon="pi pi-plus" (onClick)="open()"></p-button>
+  </div>
+</div>
+
+<div style="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-bottom:14px;border:1px dashed #cbd5e1;border-radius:8px;padding:12px;">
+  <div>
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Generate dated</label>
+    <p-datepicker [(ngModel)]="generateDate" dateFormat="dd M yy" [showIcon]="true" appendTo="body"></p-datepicker>
+  </div>
+  <p-button label="Generate This Month" icon="pi pi-bolt" severity="secondary" [loading]="generating()" (onClick)="generate()"></p-button>
+  <span style="color:#64748b;font-size:0.8rem;align-self:center;">Creates one expense per active template for the selected month.</span>
+</div>
+
+<p-table [value]="rows()" [loading]="loading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '60rem' }">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Name</th><th>Category</th><th style="width:140px;">Amount</th><th style="width:130px;">Default Mode</th>
+      <th>Paid To</th><th style="width:100px;">Active</th><th style="width:80px;">Edit</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-t>
+    <tr>
+      <td>{{ t.name }}</td>
+      <td>{{ catName(t.categoryId) }}</td>
+      <td><strong>Rs. {{ t.amount | number:'1.0-0' }}</strong></td>
+      <td>{{ t.defaultPaymentMode || '—' }}</td>
+      <td>{{ t.paidTo || '—' }}</td>
+      <td><p-tag [value]="t.isActive ? 'Active' : 'Inactive'" [severity]="t.isActive ? 'success' : 'secondary'"></p-tag></td>
+      <td><p-button icon="pi pi-pencil" severity="secondary" size="small" [text]="true" (onClick)="open(t)"></p-button></td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage"><tr><td colspan="7" style="text-align:center;padding:18px;color:#64748b;">No recurring templates yet.</td></tr></ng-template>
+</p-table>
+
+<p-dialog [visible]="dialog()" (visibleChange)="dialog.set($event)" [modal]="true" [style]="{ width: '520px' }" [header]="form.id ? 'Edit Template' : 'New Template'" [draggable]="false">
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Name *</label><input pInputText [(ngModel)]="form.name" style="width:100%;" /></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Category *</label>
+        <p-select [options]="categoryOptions()" optionLabel="label" optionValue="value" [(ngModel)]="form.categoryId" [filter]="true" [style]="{ width: '100%' }" appendTo="body" placeholder="Select category"></p-select></div>
+      <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Amount *</label>
+        <p-inputnumber [(ngModel)]="form.amount" mode="currency" currency="PKR" [fluid]="true"></p-inputnumber></div>
+      <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Default Payment Mode</label>
+        <p-select [options]="modeOptions" optionLabel="label" optionValue="value" [(ngModel)]="form.defaultPaymentMode" [style]="{ width: '100%' }" appendTo="body"></p-select></div>
+      <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Paid To</label>
+        <input pInputText [(ngModel)]="form.paidTo" style="width:100%;" /></div>
+    </div>
+    <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Description</label>
+      <textarea pTextarea [(ngModel)]="form.description" rows="2" style="width:100%;"></textarea></div>
+    <div style="display:flex;align-items:center;gap:8px;"><p-toggleswitch [(ngModel)]="form.isActive"></p-toggleswitch><label style="font-size:0.85rem;">Active</label></div>
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="dialog.set(false)"></p-button>
+    <p-button label="Save" icon="pi pi-check" [loading]="saving()" (onClick)="save()"></p-button>
+  </ng-template>
+</p-dialog>

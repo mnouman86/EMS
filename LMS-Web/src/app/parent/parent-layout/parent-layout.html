@@ -1,0 +1,60 @@
+<p-toast></p-toast>
+
+<div class="admin-shell" [class.collapsed]="collapsed()">
+  <aside class="admin-sidebar">
+    <div class="brand">
+      <div class="brand-row">
+        <div class="badge"><i class="pi pi-graduation-cap"></i></div>
+        <div class="brand-name">STEM <span>SPROUT</span></div>
+      </div>
+      <div class="brand-tag">// parent portal</div>
+    </div>
+
+    <ul class="nav">
+      <li class="nav-group-title">My Children</li>
+      @for (item of nav; track item.route) {
+        <li>
+          <a [routerLink]="item.route" routerLinkActive="active">
+            <i [class]="item.icon"></i>
+            <span>{{ item.label }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+
+    <div class="sidebar-footer">
+      <div class="status-row"><span class="dot"></span><span>Signed in</span></div>
+      <div class="who">{{ user()?.userName || '—' }}</div>
+    </div>
+  </aside>
+
+  <div class="admin-main">
+    <header class="admin-topbar">
+      <div class="left">
+        <i class="pi pi-bars toggle" (click)="toggle()"></i>
+        @if (childOptions().length) {
+          <p-select
+            [options]="childOptions()"
+            [ngModel]="selectedId()"
+            (ngModelChange)="onSelect($event)"
+            optionLabel="label"
+            optionValue="value"
+            placeholder="Select child"
+            styleClass="child-switcher">
+          </p-select>
+        }
+      </div>
+      <div class="right">
+        <div class="user-chip">
+          <span class="name">{{ user()?.userName || 'Parent' }}</span>
+          <span class="role">parent</span>
+        </div>
+        <i class="pi pi-sign-out logout" title="Logout" (click)="logout()"></i>
+      </div>
+    </header>
+
+    <main class="admin-content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

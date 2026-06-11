@@ -1,0 +1,112 @@
+<p-confirmDialog></p-confirmDialog>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Expenses</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">School operating expenses, recurring bills and payroll.</p>
+  </div>
+  @if (canEdit) {
+    <p-button label="Record Expense" icon="pi pi-plus" (onClick)="open()"></p-button>
+  }
+</div>
+
+<!-- Quick links -->
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:22px;">
+  @for (l of links; track l.route) {
+    <a [routerLink]="l.route" style="text-decoration:none;color:inherit;">
+      <div style="border:1px solid #e2e8f0;border-radius:10px;padding:14px;display:flex;gap:12px;align-items:flex-start;background:#fff;">
+        <i [class]="l.icon" style="font-size:1.4rem;color:#3b82f6;"></i>
+        <div>
+          <div style="font-weight:600;font-size:0.92rem;">{{ l.label }}</div>
+          <div style="color:#64748b;font-size:0.78rem;margin-top:2px;">{{ l.desc }}</div>
+        </div>
+      </div>
+    </a>
+  }
+</div>
+
+<!-- Filters -->
+<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px;">
+  <div>
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Date range</label>
+    <p-datepicker [(ngModel)]="range" selectionMode="range" dateFormat="dd M yy" [showIcon]="true" appendTo="body" [readonlyInput]="true"></p-datepicker>
+  </div>
+  <div style="min-width:180px;">
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Category</label>
+    <p-select [options]="categoryOptions()" optionLabel="label" optionValue="value" [(ngModel)]="categoryId" [style]="{ width: '100%' }" [filter]="true"></p-select>
+  </div>
+  <div style="min-width:150px;">
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Payment Mode</label>
+    <p-select [options]="modeOptions" optionLabel="label" optionValue="value" [(ngModel)]="paymentMode" [showClear]="true" [style]="{ width: '100%' }" placeholder="Any"></p-select>
+  </div>
+  <p-button label="Search" icon="pi pi-search" (onClick)="load()"></p-button>
+  <p-button label="Clear" severity="secondary" [outlined]="true" (onClick)="clearFilters()"></p-button>
+</div>
+
+<p-table [value]="rows()" [loading]="loading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '72rem' }" [paginator]="rows().length > 25" [rows]="25">
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:140px;">Code</th><th style="width:120px;">Date</th><th>Category</th><th>Description</th>
+      <th style="width:130px;">Amount</th><th style="width:110px;">Mode</th><th>Paid To</th><th style="width:90px;">Source</th><th style="width:70px;"></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-r>
+    <tr>
+      <td><strong>{{ r.expenseCode }}</strong></td>
+      <td>{{ r.expenseDate | date:'dd MMM yyyy' }}</td>
+      <td>{{ r.categoryName }}</td>
+      <td>{{ r.description || '—' }}</td>
+      <td><strong>Rs. {{ r.amount | number:'1.0-0' }}</strong></td>
+      <td>{{ r.paymentMode || '—' }}</td>
+      <td>{{ r.paidTo || '—' }}</td>
+      <td>
+        @if (r.linkedPurchaseId) { <span style="font-size:0.74rem;color:#64748b;">Purchase</span> }
+        @else if (r.linkedPayrollEntryId) { <span style="font-size:0.74rem;color:#64748b;">Payroll</span> }
+        @else { <span style="font-size:0.74rem;color:#64748b;">Manual</span> }
+      </td>
+      <td>
+        @if (canDelete && !r.linkedPurchaseId && !r.linkedPayrollEntryId) {
+          <p-button icon="pi pi-trash" severity="danger" size="small" [text]="true" pTooltip="Delete" (onClick)="delete(r)"></p-button>
+        }
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr><td colspan="9" style="text-align:center;padding:18px;color:#64748b;">No expenses for this filter.</td></tr>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    @if (rows().length > 0) {
+      <tr><td colspan="4" style="text-align:right;font-weight:600;">Total</td><td style="font-weight:700;">Rs. {{ total() | number:'1.0-0' }}</td><td colspan="4"></td></tr>
+    }
+  </ng-template>
+</p-table>
+
+<!-- Record dialog -->
+<p-dialog [visible]="dialog()" (visibleChange)="dialog.set($event)" [modal]="true" [style]="{ width: '560px' }" header="Record Expense" [draggable]="false">
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Date *</label>
+        <p-datepicker [(ngModel)]="form.expenseDate" dateFormat="dd M yy" [showIcon]="true" [fluid]="true" appendTo="body"></p-datepicker></div>
+      <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Category *</label>
+        <p-select [options]="catOptionsForEdit()" optionLabel="label" optionValue="value" [(ngModel)]="form.categoryId" [filter]="true" [style]="{ width: '100%' }" appendTo="body" placeholder="Select category"></p-select></div>
+      <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Amount *</label>
+        <p-inputnumber [(ngModel)]="form.amount" mode="currency" currency="PKR" [fluid]="true"></p-inputnumber></div>
+      <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Payment Mode</label>
+        <p-select [options]="modeOptions" optionLabel="label" optionValue="value" [(ngModel)]="form.paymentMode" [style]="{ width: '100%' }" appendTo="body"></p-select></div>
+      <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Reference No</label>
+        <input pInputText [(ngModel)]="form.referenceNo" style="width:100%;" /></div>
+      <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Paid To</label>
+        <input pInputText [(ngModel)]="form.paidTo" style="width:100%;" /></div>
+    </div>
+    <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Description</label>
+      <textarea pTextarea [(ngModel)]="form.description" rows="2" style="width:100%;"></textarea></div>
+    <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Attachment</label>
+      <input type="file" (change)="onFileSelect($event)" />
+      @if (uploading()) { <small style="color:#64748b;margin-left:8px;">Uploading…</small> }
+      @if (form.attachmentPath) { <small style="color:#16a34a;margin-left:8px;">Uploaded ✓</small> }</div>
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="dialog.set(false)"></p-button>
+    <p-button label="Record" icon="pi pi-check" [loading]="saving()" (onClick)="save()"></p-button>
+  </ng-template>
+</p-dialog>

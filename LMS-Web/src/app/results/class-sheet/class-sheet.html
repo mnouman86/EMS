@@ -1,0 +1,94 @@
+<p-confirmDialog></p-confirmDialog>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Class Result Sheet</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Overall results, pre-lock checks, lock/unlock and result cards.</p>
+  </div>
+  <a routerLink="/admin/results" class="p-button p-component p-button-outlined" style="text-decoration:none;"><i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back</a>
+</div>
+
+<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px;">
+  <div style="min-width:220px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Session</label>
+    <p-select [options]="sessionOptions()" optionLabel="label" optionValue="value" [(ngModel)]="sessionId" [style]="{ width: '100%' }" placeholder="Select session"></p-select></div>
+  <div style="min-width:180px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Class</label>
+    <p-select [options]="classOptions()" optionLabel="label" optionValue="value" [(ngModel)]="classId" [filter]="true" [style]="{ width: '100%' }" placeholder="Select class"></p-select></div>
+  <p-button label="Load Sheet" icon="pi pi-search" [loading]="loading()" (onClick)="load()"></p-button>
+  @if (loaded()) {
+    <span style="flex:1;"></span>
+    <p-button label="Pre-Lock Check" icon="pi pi-list-check" severity="secondary" [outlined]="true" [loading]="busy()" (onClick)="preLock()"></p-button>
+    <p-button label="Lock" icon="pi pi-lock" severity="secondary" [loading]="busy()" (onClick)="lock()"></p-button>
+    <p-button label="Unlock" icon="pi pi-lock-open" severity="danger" [outlined]="true" (onClick)="openUnlock()"></p-button>
+  }
+</div>
+
+@if (loaded()) {
+  <p-table [value]="rows()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '56rem' }" [paginator]="rows().length > 30" [rows]="30">
+    <ng-template pTemplate="header">
+      <tr><th style="width:120px;">Code</th><th>Student</th><th style="width:120px;">Overall %</th><th style="width:100px;">Grade</th><th>Remark</th><th style="width:100px;">Card</th></tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-r>
+      <tr>
+        <td>{{ r.studentCode }}</td>
+        <td>{{ r.studentFullName }}</td>
+        <td><strong>{{ r.overallPercent != null ? (r.overallPercent | number:'1.0-2') : '—' }}</strong></td>
+        <td>@if (r.overallGrade) { <p-tag [value]="r.overallGrade" [severity]="gradeSeverity(r.overallGrade)"></p-tag> } @else { — }</td>
+        <td>{{ r.remark || '—' }}</td>
+        <td><p-button icon="pi pi-id-card" label="View" size="small" [text]="true" severity="secondary" (onClick)="viewCard(r)"></p-button></td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage"><tr><td colspan="6" style="text-align:center;padding:18px;color:#64748b;">No results yet for this class &amp; session.</td></tr></ng-template>
+  </p-table>
+}
+
+<!-- Pre-lock dialog -->
+<p-dialog [visible]="preLockDialog()" (visibleChange)="preLockDialog.set($event)" [modal]="true" [style]="{ width: '620px' }" header="Pre-Lock Check" [draggable]="false">
+  @if (missing().length === 0) {
+    <p-message severity="success" [style]="{ display: 'block' }">All marks are complete — safe to lock.</p-message>
+  } @else {
+    <p-message severity="warn" [style]="{ display: 'block', marginBottom: '10px' }">{{ missing().length }} missing entr(ies) found.</p-message>
+    <p-table [value]="missing()" styleClass="p-datatable-sm p-datatable-gridlines">
+      <ng-template pTemplate="header"><tr><th>Student</th><th>Subject</th><th>Missing</th></tr></ng-template>
+      <ng-template pTemplate="body" let-m>
+        <tr><td>{{ m.studentFullName }} ({{ m.studentCode }})</td><td>{{ m.subjectName }}</td><td style="color:#dc2626;">{{ m.missing }}</td></tr>
+      </ng-template>
+    </p-table>
+  }
+</p-dialog>
+
+<!-- Unlock dialog -->
+<p-dialog [visible]="unlockDialog()" (visibleChange)="unlockDialog.set($event)" [modal]="true" [style]="{ width: '440px' }" header="Unlock Class Results" [draggable]="false">
+  <div><label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Reason (required, audited)</label>
+    <input pInputText [(ngModel)]="unlockReason" placeholder="Why is this being unlocked?" style="width:100%;" /></div>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="unlockDialog.set(false)"></p-button>
+    <p-button label="Unlock" icon="pi pi-lock-open" severity="danger" [loading]="busy()" (onClick)="unlock()"></p-button>
+  </ng-template>
+</p-dialog>
+
+<!-- Result card dialog -->
+<p-dialog [visible]="cardDialog()" (visibleChange)="cardDialog.set($event)" [modal]="true" [style]="{ width: '760px' }" header="Result Card" [draggable]="false">
+  @if (card(); as c) {
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:14px;">
+      <div>
+        <div style="font-weight:700;font-size:1.05rem;">{{ c.studentFullName }} ({{ c.studentCode }})</div>
+        <div style="color:#64748b;font-size:0.85rem;">{{ c.className }} · {{ c.sessionName }}</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-size:1.4rem;font-weight:800;">{{ c.overallPercent != null ? (c.overallPercent | number:'1.0-2') + '%' : '—' }}</div>
+        @if (c.overallGrade) { <p-tag [value]="c.overallGrade" [severity]="gradeSeverity(c.overallGrade)"></p-tag> }
+      </div>
+    </div>
+    @if (c.remark) { <p style="color:#475569;margin:0 0 12px;font-style:italic;">{{ c.remark }}</p> }
+    <p-table [value]="c.marks" styleClass="p-datatable-sm p-datatable-gridlines">
+      <ng-template pTemplate="header"><tr><th>Subject</th><th style="width:90px;">Written</th><th style="width:80px;">Oral</th><th style="width:90px;">%</th><th style="width:80px;">Grade</th></tr></ng-template>
+      <ng-template pTemplate="body" let-m>
+        <tr><td>{{ m.subjectName }}</td><td>{{ m.written ?? '—' }}</td><td>{{ m.oral ?? '—' }}</td>
+          <td>{{ m.perSubjectPercent != null ? (m.perSubjectPercent | number:'1.0-2') : '—' }}</td>
+          <td>@if (m.grade) { <p-tag [value]="m.grade" [severity]="gradeSeverity(m.grade)"></p-tag> }</td></tr>
+      </ng-template>
+    </p-table>
+  } @else {
+    <p style="color:#64748b;">Loading result card…</p>
+  }
+</p-dialog>

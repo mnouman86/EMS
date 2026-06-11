@@ -1,0 +1,106 @@
+<div style="margin-bottom:16px;">
+  <h2 style="margin:0;font-size:1.3rem;">User Permissions</h2>
+  <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Assign feature permissions to one or more users. Select users on the left, set the matrix on the right, then Save.</p>
+</div>
+
+<div style="display:grid;grid-template-columns:minmax(380px,1fr) minmax(520px,1.4fr);gap:18px;align-items:start;">
+  <!-- USERS -->
+  <div class="tcard" style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;padding:12px;border-bottom:1px solid #e2e8f0;">
+      <div style="flex:1;min-width:160px;">
+        <label style="display:block;font-size:0.74rem;color:#64748b;margin-bottom:4px;">Search</label>
+        <input pInputText [(ngModel)]="search" (keyup.enter)="searchNow()" placeholder="name / email / username" style="width:100%;" />
+      </div>
+      <div style="min-width:130px;">
+        <label style="display:block;font-size:0.74rem;color:#64748b;margin-bottom:4px;">Role</label>
+        <p-select [options]="roleOptions()" optionLabel="label" optionValue="value" [(ngModel)]="roleFilter" (onChange)="searchNow()" [style]="{ width: '100%' }"></p-select>
+      </div>
+      <div style="min-width:110px;">
+        <label style="display:block;font-size:0.74rem;color:#64748b;margin-bottom:4px;">Status</label>
+        <p-select [options]="statusOptions" optionLabel="label" optionValue="value" [(ngModel)]="statusFilter" (onChange)="searchNow()" [style]="{ width: '100%' }"></p-select>
+      </div>
+      <p-button icon="pi pi-search" (onClick)="searchNow()"></p-button>
+    </div>
+
+    <p-table [value]="users()" [loading]="loading()" dataKey="userId"
+             [selection]="selected()" (selectionChange)="onSelectionChange($event)"
+             [paginator]="true" [rows]="pageSize" [totalRecords]="total()" [lazy]="true" (onLazyLoad)="onPage($event)"
+             styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '34rem' }">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width:42px;"><p-tableHeaderCheckbox></p-tableHeaderCheckbox></th>
+          <th>User</th><th>Role</th><th style="width:80px;">Status</th><th style="width:110px;">Last Login</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-u>
+        <tr>
+          <td><p-tableCheckbox [value]="u"></p-tableCheckbox></td>
+          <td>
+            <div style="font-weight:600;color:#1e293b;">{{ u.fullName || u.userName }}</div>
+            <div style="font-size:0.74rem;color:#94a3b8;">{{ u.email }}</div>
+          </td>
+          <td>{{ u.roleName || '—' }}</td>
+          <td><p-tag [value]="u.status" [severity]="u.status === 'Active' ? 'success' : 'secondary'"></p-tag></td>
+          <td class="mono" style="font-size:0.72rem;color:#64748b;">{{ u.lastLogin ? (u.lastLogin | date:'dd MMM yy') : '—' }}</td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage"><tr><td colspan="5" style="text-align:center;padding:18px;color:#64748b;">No users found.</td></tr></ng-template>
+    </p-table>
+  </div>
+
+  <!-- MATRIX -->
+  <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;padding:12px;border-bottom:1px solid #e2e8f0;">
+      <div style="flex:1;min-width:140px;">
+        <div style="font-weight:700;font-size:0.95rem;">Permission Matrix</div>
+        <div style="font-size:0.76rem;color:#64748b;">
+          @if (selectedIds().length === 0) { Select user(s) to begin }
+          @else if (selectedIds().length === 1) { Editing {{ selected()[0].fullName || selected()[0].userName }} }
+          @else { Bulk assign to {{ selectedIds().length }} users }
+        </div>
+      </div>
+      <div style="min-width:150px;">
+        <label style="display:block;font-size:0.74rem;color:#64748b;margin-bottom:4px;">Copy from role</label>
+        <p-select [options]="copyRoleOptions()" [(ngModel)]="copyRoleId" (onChange)="copyFromRole(copyRoleId)" [style]="{ width: '100%' }" placeholder="role template" optionLabel="label" optionValue="value" [showClear]="true"></p-select>
+      </div>
+      <div style="min-width:170px;">
+        <label style="display:block;font-size:0.74rem;color:#64748b;margin-bottom:4px;">Copy from user</label>
+        <p-select [options]="copyUserOptions()" [(ngModel)]="copyUserId" (onChange)="copyFromUser(copyUserId)" [filter]="true" [style]="{ width: '100%' }" placeholder="source user" optionLabel="label" optionValue="value" [showClear]="true"></p-select>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:8px;padding:8px 12px;border-bottom:1px solid #f1f5f9;">
+      <p-button label="Select all" icon="pi pi-check-square" size="small" severity="secondary" [text]="true" (onClick)="setAll(true)"></p-button>
+      <p-button label="Clear all" icon="pi pi-stop" size="small" severity="secondary" [text]="true" (onClick)="setAll(false)"></p-button>
+    </div>
+
+    <div style="overflow-x:auto;">
+      <p-table [value]="matrix()" [loading]="matrixLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '52rem' }" [scrollable]="true" scrollHeight="460px">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="min-width:170px;">Feature</th>
+            @for (c of permCols; track c.key) { <th style="width:74px;text-align:center;">{{ c.label }}</th> }
+            <th style="width:90px;text-align:center;">Full</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-row>
+          <tr>
+            <td>
+              <div style="font-weight:600;color:#1e293b;font-size:0.84rem;">{{ row.featureName }}</div>
+              <div style="font-size:0.7rem;color:#94a3b8;">{{ moduleName(row) }}</div>
+            </td>
+            @for (c of permCols; track c.key) {
+              <td style="text-align:center;"><p-checkbox [(ngModel)]="row[c.key]" [binary]="true" (onChange)="onCellChange()"></p-checkbox></td>
+            }
+            <td style="text-align:center;"><p-checkbox [ngModel]="isFull(row)" [binary]="true" (onChange)="toggleFull(row, $event.checked)"></p-checkbox></td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage"><tr><td [attr.colspan]="permCols.length + 2" style="text-align:center;padding:18px;color:#64748b;">No features.</td></tr></ng-template>
+      </p-table>
+    </div>
+
+    <div style="display:flex;justify-content:flex-end;gap:10px;padding:12px;border-top:1px solid #e2e8f0;">
+      <p-button label="Save Permissions" icon="pi pi-check" [loading]="saving()" (onClick)="save()" [disabled]="selectedIds().length === 0"></p-button>
+    </div>
+  </div>
+</div>

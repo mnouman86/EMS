@@ -1,0 +1,62 @@
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Promote Students</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Move active students from one class to the next, or graduate them to Alumni.</p>
+  </div>
+  <a routerLink="/admin/students" class="p-button p-component p-button-outlined" style="text-decoration:none;">
+    <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back
+  </a>
+</div>
+
+<div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px;">
+  <div style="min-width:220px;">
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Source class *</label>
+    <p-select [options]="classOptions()" optionLabel="label" optionValue="value"
+              [(ngModel)]="sourceClassId" (onChange)="onSourceChange()" [style]="{ width: '100%' }" placeholder="Select source" [filter]="true"></p-select>
+  </div>
+  <div style="min-width:220px;">
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Target class</label>
+    <p-select [options]="classOptions()" optionLabel="label" optionValue="value"
+              [(ngModel)]="targetClassId" [style]="{ width: '100%' }" placeholder="Select target" [filter]="true" [disabled]="moveToAlumni"></p-select>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;padding-bottom:6px;">
+    <p-toggleswitch [(ngModel)]="moveToAlumni"></p-toggleswitch>
+    <label style="font-size:0.85rem;">Graduate to Alumni</label>
+  </div>
+</div>
+
+@if (sourceClassId && !loading() && students().length === 0) {
+  <p-message severity="info" [style]="{ display: 'block', marginBottom: '14px' }">No active students in the selected class.</p-message>
+}
+
+@if (students().length > 0) {
+  <p-message severity="info" [style]="{ display: 'block', marginBottom: '10px' }">
+    {{ selected().length }} of {{ students().length }} selected for {{ moveToAlumni ? 'graduation' : 'promotion' }}.
+  </p-message>
+  <p-table [value]="students()" [selection]="selected()" (selectionChange)="selected.set($event)" dataKey="id"
+           styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }"
+           [paginator]="students().length > 20" [rows]="20">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width:48px;"><p-tableHeaderCheckbox></p-tableHeaderCheckbox></th>
+        <th style="width:130px;">Code</th>
+        <th>Name</th>
+        <th>Parent</th>
+        <th style="width:100px;">Gender</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-row>
+      <tr>
+        <td><p-tableCheckbox [value]="row"></p-tableCheckbox></td>
+        <td><strong>{{ row.studentCode || row.formNo || '—' }}</strong></td>
+        <td>{{ row.fullName }}</td>
+        <td>{{ row.parentName || '—' }}</td>
+        <td>{{ row.gender || '—' }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:16px;">
+    <p-button [label]="moveToAlumni ? 'Graduate selected' : 'Promote selected'" icon="pi pi-check" [loading]="saving()" (onClick)="submit()"></p-button>
+  </div>
+}

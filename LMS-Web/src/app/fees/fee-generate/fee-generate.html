@@ -1,0 +1,73 @@
+<p-confirmDialog></p-confirmDialog>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Generate Monthly Invoices</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Preview the billing run, deselect any students, then generate.</p>
+  </div>
+  <a routerLink="/admin/fees" class="p-button p-component p-button-outlined" style="text-decoration:none;">
+    <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back
+  </a>
+</div>
+
+<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px;">
+  <div style="min-width:200px;">
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Academic Year</label>
+    <p-select [options]="yearOptions()" optionLabel="label" optionValue="value" [(ngModel)]="yearId" [style]="{ width: '100%' }" placeholder="Select year"></p-select>
+  </div>
+  <div style="min-width:160px;">
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Billing Month</label>
+    <p-select [options]="monthOptions" optionLabel="label" optionValue="value" [(ngModel)]="month" [style]="{ width: '100%' }"></p-select>
+  </div>
+  <div style="width:120px;">
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Billing Year</label>
+    <p-inputnumber [(ngModel)]="year" [useGrouping]="false" [fluid]="true"></p-inputnumber>
+  </div>
+  <div style="min-width:180px;">
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Class</label>
+    <p-select [options]="classOptions()" optionLabel="label" optionValue="value" [(ngModel)]="classId" [style]="{ width: '100%' }" [filter]="true"></p-select>
+  </div>
+  <p-button label="Preview" icon="pi pi-eye" [loading]="previewing()" (onClick)="preview()"></p-button>
+</div>
+
+@if (previewed()) {
+  @if (rows().length === 0) {
+    <p-message severity="info" [style]="{ display: 'block' }">No billable students for this selection.</p-message>
+  } @else {
+    <p-message severity="info" [style]="{ display: 'block', marginBottom: '10px' }">
+      {{ selected().length }} of {{ billableRows().length }} billable student(s) selected · Total Rs. {{ totalNet() | number:'1.0-0' }}
+    </p-message>
+    <p-table [value]="rows()" [selection]="selected()" (selectionChange)="selected.set($event)" dataKey="studentId"
+             styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '60rem' }"
+             [paginator]="rows().length > 25" [rows]="25">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width:48px;"><p-tableHeaderCheckbox></p-tableHeaderCheckbox></th>
+          <th style="width:120px;">Code</th>
+          <th>Student</th>
+          <th>Class</th>
+          <th style="width:120px;">Gross</th>
+          <th style="width:120px;">Concession</th>
+          <th style="width:120px;">Net</th>
+          <th style="width:140px;">Note</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-r>
+        <tr [style.opacity]="r.note ? 0.55 : 1">
+          <td>@if (!r.note) { <p-tableCheckbox [value]="r"></p-tableCheckbox> }</td>
+          <td>{{ r.studentCode || '—' }}</td>
+          <td>{{ r.studentFullName }}</td>
+          <td>{{ r.className || '—' }}</td>
+          <td>Rs. {{ r.grossAmount | number:'1.0-0' }}</td>
+          <td>Rs. {{ r.concessionAmount | number:'1.0-0' }}</td>
+          <td><strong>Rs. {{ r.netAmount | number:'1.0-0' }}</strong></td>
+          <td>@if (r.note) { <p-tag [value]="r.note" severity="warn"></p-tag> }</td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+    <div style="display:flex;justify-content:flex-end;margin-top:16px;">
+      <p-button label="Generate Invoices" icon="pi pi-check" [loading]="generating()" (onClick)="generate()"></p-button>
+    </div>
+  }
+}

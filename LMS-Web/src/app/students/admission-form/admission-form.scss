@@ -1,0 +1,50 @@
+:host ::ng-deep .adm-section { margin-bottom: 16px; }
+
+.adm-public {
+  padding: 32px 16px 56px;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+@media (max-width: 900px) {
+  .grid3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .grid3 { grid-template-columns: 1fr; }
+}
+
+.fld {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 5px;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+  }
+}
+
+.err {
+  color: #ef4444;
+  font-size: 0.74rem;
+  margin-top: 3px;
+}
+
+.adm-thankyou {
+  max-width: 560px;
+  margin: 64px auto;
+  text-align: center;
+  padding: 0 16px;
+
+  h2 { margin: 16px 0 8px; font-size: 1.5rem; }
+  p { color: #475569; margin-bottom: 24px; line-height: 1.5; }
+}

@@ -1,0 +1,55 @@
+<div style="margin-bottom:20px;">
+  <h2 style="margin:0;font-size:1.3rem;">Student Profile</h2>
+  <p style="margin:4px 0 0;color:#64748b;font-size:0.86rem;">Personal and academic details on record.</p>
+</div>
+
+@if (!parent.selectedChildId()) {
+  <p style="color:#94a3b8;">Select a child from the top bar to view their profile.</p>
+} @else if (loading()) {
+  <p style="color:#94a3b8;">Loading…</p>
+} @else if (!profile()) {
+  <p style="color:#94a3b8;">No profile details found.</p>
+} @else {
+  <div class="profile-grid">
+    <section class="card">
+      <h3>Student</h3>
+      <dl>
+        <dt>Full name</dt><dd>{{ profile()?.fullName || '—' }}</dd>
+        <dt>Student ID</dt><dd>{{ profile()?.studentCode || profile()?.formNo || '—' }}</dd>
+        <dt>Class</dt><dd>{{ profile()?.admittedClassName || '—' }}</dd>
+        <dt>Gender</dt><dd>{{ profile()?.gender || '—' }}</dd>
+        <dt>Date of birth</dt><dd>{{ profile()?.dateOfBirth ? (profile()?.dateOfBirth | date:'mediumDate') : '—' }}</dd>
+        <dt>Status</dt>
+        <dd>@if (profile()?.status) { <p-tag [value]="profile()!.status!"></p-tag> } @else { — }</dd>
+      </dl>
+    </section>
+
+    <section class="card">
+      <h3>Parent / Guardian</h3>
+      <dl>
+        <dt>Name</dt><dd>{{ profile()?.parentName || '—' }}</dd>
+        <dt>Relationship</dt><dd>{{ profile()?.parentRelationship || '—' }}</dd>
+        <dt>Email</dt><dd>{{ profile()?.parentEmail || '—' }}</dd>
+        <dt>Mobile</dt><dd>{{ profile()?.parentMobile || '—' }}</dd>
+        <dt>Home address</dt><dd>{{ profile()?.homeAddress || '—' }}</dd>
+      </dl>
+    </section>
+
+    <section class="card">
+      <h3>Emergency Contact</h3>
+      <dl>
+        <dt>Name</dt><dd>{{ profile()?.emergencyContactName || '—' }}</dd>
+        <dt>Phone</dt><dd>{{ profile()?.emergencyContactPhone || '—' }}</dd>
+      </dl>
+    </section>
+  </div>
+}
+
+<style>
+  .profile-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px; }
+  .card { border:1px solid #e2e8f0;border-radius:12px;padding:18px;background:#fff; }
+  .card h3 { margin:0 0 12px;font-size:0.95rem;color:#0f172a;border-bottom:1px solid #f1f5f9;padding-bottom:8px; }
+  .card dl { display:grid;grid-template-columns:120px 1fr;gap:8px 12px;margin:0;font-size:0.85rem; }
+  .card dt { color:#94a3b8; }
+  .card dd { margin:0;color:#334155;font-weight:500; }
+</style>

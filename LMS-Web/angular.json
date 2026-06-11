@@ -1,0 +1,144 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "LMS-Web": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "src/main.ts",
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+               "src/favicon.ico",
+                "src/assets"
+            ],
+            "styles": [
+              "node_modules/primeicons/primeicons.css",
+              "src/styles.scss",
+    "src/assets/css/plugins/fontawesome-6.css",
+    "src/assets/css/plugins/swiper.min.css",
+    "src/assets/css/vendor/magnific-popup.css",
+    "src/assets/css/vendor/bootstrap.min.css",
+    "src/assets/css/vendor/jquery-ui.css",
+    "src/assets/css/vendor/metismenu.css",
+    "src/assets/css/style.css"
+            ],
+            "scripts": [
+              "src/assets/js/vendor/jquery.min.js",
+    "src/assets/js/vendor/jquery-ui.js",
+    "src/assets/js/vendor/metismenu.js",
+    "src/assets/js/vendor/magnifying-popup.js",
+    "src/assets/js/plugins/swiper.js",
+    "src/assets/js/plugins/counterup.js",
+    "src/assets/js/vendor/waypoint.js",
+    "src/assets/js/vendor/waw.js",
+    "src/assets/js/plugins/isotop.js",
+    "src/assets/js/plugins/imagesloaded.pkgd.min.js",
+    "src/assets/js/plugins/resizer-sensor.js",
+    "src/assets/js/plugins/sticky-sidebar.js",
+    "src/assets/js/plugins/twinmax.js",
+    "src/assets/js/vendor/chroma.min.js",
+    "src/assets/js/plugins/bootstrap.min.js",
+    "src/assets/js/plugins/contact.form.js",
+    "src/assets/js/plugins/calender.js",
+    "src/assets/js/main.js"
+            ],
+            "server": "src/main.server.ts",
+            "outputMode": "server",
+            "ssr": {
+              "entry": "src/server.ts"
+            }
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2MB",
+                  "maximumError": "5MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.production.ts"
+                }
+              ]
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "LMS-Web:build:production"
+            },
+            "development": {
+              "buildTarget": "LMS-Web:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular/build:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "src/styles.scss"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "2f8ba211-0301-43ba-a5aa-5d54ef2c0f9a"
+  }
+}
