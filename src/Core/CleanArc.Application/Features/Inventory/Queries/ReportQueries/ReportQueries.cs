@@ -8,7 +8,9 @@ using System.Collections.Generic;
 namespace CleanArc.Application.Features.Inventory.Queries.ReportQueries
 {
     /* INV-08: Purchase register */
-    public record GetPurchaseRegisterQuery(DateTime FromDate, DateTime ToDate)
+    public record GetPurchaseRegisterQuery(
+        DateTime FromDate, DateTime ToDate,
+        int? CategoryId = null, string? VendorName = null)
         : IRequest<OperationResult<List<PurchaseRegisterRow>>>;
 
     public class PurchaseRegisterRow
@@ -29,14 +31,17 @@ namespace CleanArc.Application.Features.Inventory.Queries.ReportQueries
         public GetPurchaseRegisterQueryHandler(IUnitOfWork u, IMapper m) { _u = u; _m = m; }
         public async ValueTask<OperationResult<List<PurchaseRegisterRow>>> Handle(GetPurchaseRegisterQuery r, CancellationToken ct)
         {
-            var res = await _u.InventoryRepository.GetPurchaseRegisterAsync(r.FromDate, r.ToDate);
+            var res = await _u.InventoryRepository.GetPurchaseRegisterAsync(r.FromDate, r.ToDate, r.CategoryId, r.VendorName);
             if (res.Code != 200) return OperationResult<List<PurchaseRegisterRow>>.FailureResult(res.Message, res.Code);
             return OperationResult<List<PurchaseRegisterRow>>.SuccessResult(_m.Map<List<PurchaseRegisterRow>>(res.Data), res.Code, res.Message, res.TotalCount);
         }
     }
 
     /* INV-08: Issue register */
-    public record GetIssueRegisterQuery(DateTime FromDate, DateTime ToDate)
+    public record GetIssueRegisterQuery(
+        DateTime FromDate, DateTime ToDate,
+        int? CategoryId = null, int? ItemId = null,
+        string? IssuedToType = null, int? IssuedToId = null, int? IssuedByUserId = null)
         : IRequest<OperationResult<List<IssueRegisterRow>>>;
 
     public class IssueRegisterRow
@@ -45,8 +50,10 @@ namespace CleanArc.Application.Features.Inventory.Queries.ReportQueries
         public string IssueCode { get; set; }
         public DateTime IssueDate { get; set; }
         public string IssuedToType { get; set; }
+        public int? IssuedToId { get; set; }
         public string IssuedToName { get; set; }
         public string Purpose { get; set; }
+        public int? IssuedBy { get; set; }
     }
 
     internal class GetIssueRegisterQueryHandler : IRequestHandler<GetIssueRegisterQuery, OperationResult<List<IssueRegisterRow>>>
@@ -55,7 +62,8 @@ namespace CleanArc.Application.Features.Inventory.Queries.ReportQueries
         public GetIssueRegisterQueryHandler(IUnitOfWork u, IMapper m) { _u = u; _m = m; }
         public async ValueTask<OperationResult<List<IssueRegisterRow>>> Handle(GetIssueRegisterQuery r, CancellationToken ct)
         {
-            var res = await _u.InventoryRepository.GetIssueRegisterAsync(r.FromDate, r.ToDate);
+            var res = await _u.InventoryRepository.GetIssueRegisterAsync(
+                r.FromDate, r.ToDate, r.CategoryId, r.ItemId, r.IssuedToType, r.IssuedToId, r.IssuedByUserId);
             if (res.Code != 200) return OperationResult<List<IssueRegisterRow>>.FailureResult(res.Message, res.Code);
             return OperationResult<List<IssueRegisterRow>>.SuccessResult(_m.Map<List<IssueRegisterRow>>(res.Data), res.Code, res.Message, res.TotalCount);
         }

@@ -160,8 +160,10 @@ export interface IssueRegisterRow {
   issueCode: string;
   issueDate: string;
   issuedToType: string;
+  issuedToId?: number | null;
   issuedToName: string;
   purpose: string;
+  issuedBy?: number | null;
 }
 
 export interface ItemLedgerRow {
@@ -171,4 +173,75 @@ export interface ItemLedgerRow {
   quantity: number;
   runningStock: number;
   notes: string;
+}
+
+/* ---------- INV-08 filters (extended) ---------- */
+export interface PurchaseRegisterFilters {
+  fromDate: string;
+  toDate: string;
+  categoryId?: number | null;
+  vendorName?: string | null;
+}
+export interface IssueRegisterFilters {
+  fromDate: string;
+  toDate: string;
+  categoryId?: number | null;
+  itemId?: number | null;
+  issuedToType?: string | null;
+  issuedToId?: number | null;
+  issuedByUserId?: number | null;
+}
+
+/* ---------- "My Issued Items" ---------- */
+export interface MyIssuedRow {
+  issueId: number;
+  issueCode: string;
+  issueDate: string;
+  purpose: string;
+  issueLineId: number;
+  itemId: number;
+  itemName: string;
+  code: string;
+  categoryName: string;
+  unitOfMeasure: string;
+  quantity: number;
+  returnedQuantity: number;
+  remainingQuantity: number;
+}
+
+/* ---------- Issue request workflow ---------- */
+export interface IssueRequestLineInput {
+  itemId: number;
+  quantity: number;
+}
+export interface CreateIssueRequest {
+  purpose: string;
+  lines: IssueRequestLineInput[];
+}
+export interface IssueRequestRow {
+  id: number;
+  requestCode: string;
+  requestDate: string;
+  requestedByUserId: number;
+  requestedByName: string;
+  purpose: string;
+  status: 'Pending' | 'Approved' | 'Rejected' | 'Fulfilled';
+  approvedByUserId?: number | null;
+  approvedByName?: string | null;
+  approvedAt?: string | null;
+  rejectedReason?: string | null;
+  fulfilledIssueId?: number | null;
+  fulfilledIssueCode?: string | null;
+  lineCount: number;
+  totalQuantity: number;
+}
+export interface IssueRequestLineRow {
+  id: number;
+  requestId: number;
+  itemId: number;
+  itemName: string;
+  code: string;
+  unitOfMeasure: string;
+  quantity: number;
+  currentStock: number;
 }

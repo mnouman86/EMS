@@ -142,19 +142,29 @@ public class InventoryRepository : IInventoryRepository
 
     public Task<ResponseEntity> SnoozeAlertAsync(SnoozeAlertDTO dto) => Scalar(InventoryQueries.Snooze_Alert, dto);
 
-    public Task<ListResponseWrapper<InventoryPurchase>> GetPurchaseRegisterAsync(System.DateTime fromDate, System.DateTime toDate)
+    public Task<ListResponseWrapper<InventoryPurchase>> GetPurchaseRegisterAsync(
+        System.DateTime fromDate, System.DateTime toDate, int? categoryId, string? vendorName)
     {
         var p = new DynamicParameters();
         p.Add("@FromDate", fromDate);
         p.Add("@ToDate", toDate);
+        p.Add("@CategoryId", categoryId, DbType.Int32);
+        p.Add("@VendorName", vendorName, DbType.String, size: 150);
         return ListWithOutputs<InventoryPurchase>(InventoryQueries.Get_PurchaseRegister, p);
     }
 
-    public Task<ListResponseWrapper<InventoryIssue>> GetIssueRegisterAsync(System.DateTime fromDate, System.DateTime toDate)
+    public Task<ListResponseWrapper<InventoryIssue>> GetIssueRegisterAsync(
+        System.DateTime fromDate, System.DateTime toDate,
+        int? categoryId, int? itemId, string? issuedToType, int? issuedToId, int? issuedByUserId)
     {
         var p = new DynamicParameters();
         p.Add("@FromDate", fromDate);
         p.Add("@ToDate", toDate);
+        p.Add("@CategoryId", categoryId, DbType.Int32);
+        p.Add("@ItemId", itemId, DbType.Int32);
+        p.Add("@IssuedToType", issuedToType, DbType.String, size: 20);
+        p.Add("@IssuedToId", issuedToId, DbType.Int32);
+        p.Add("@IssuedByUserId", issuedByUserId, DbType.Int32);
         return ListWithOutputs<InventoryIssue>(InventoryQueries.Get_IssueRegister, p);
     }
 
@@ -172,5 +182,50 @@ public class InventoryRepository : IInventoryRepository
         var p = new DynamicParameters();
         p.Add("@IssueId", issueId, DbType.Int32);
         return ListWithOutputs<InventoryIssueDetailRow>(InventoryQueries.Get_IssueDetail, p);
+    }
+
+    /* ---------- Issue request workflow (new) ---------- */
+
+    public Task<ResponseEntity> CreateIssueRequestAsync(CreateInventoryIssueRequestDTO dto)
+        => Scalar(InventoryQueries.Create_IssueRequest, new
+        {
+            dto.RequestedByUserId, dto.Purpose, dto.LinesJson
+        });
+
+    public Task<ResponseEntity> ApproveIssueRequestAsync(int requestId, int approvedByUserId)
+        => Scalar(InventoryQueries.Approve_IssueRequest, new { RequestId = requestId, ApprovedByUserId = approvedByUserId });
+
+    public Task<ResponseEntity> RejectIssueRequestAsync(int requestId, int rejectedByUserId, string reason)
+        => Scalar(InventoryQueries.Reject_IssueRequest, new { RequestId = requestId, RejectedByUserId = rejectedByUserId, Reason = reason });
+
+    public Task<ResponseEntity> FulfillIssueRequestAsync(int requestId, int fulfilledByUserId, System.DateTime issueDate)
+        => Scalar(InventoryQueries.Fulfill_IssueRequest, new { RequestId = requestId, FulfilledByUserId = fulfilledByUserId, IssueDate = issueDate });
+
+    public Task<ListResponseWrapper<InventoryIssueRequestRow>> GetIssueRequestsAsync(
+        int callerUserId, bool mineOnly, string? status, System.DateTime? fromDate, System.DateTime? toDate)
+    {
+        var p = new DynamicParameters();
+        p.Add("@CallerUserId", callerUserId, DbType.Int32);
+        p.Add("@MineOnly", mineOnly, DbType.Boolean);
+        p.Add("@Status", status, DbType.String, size: 20);
+        p.Add("@FromDate", fromDate, DbType.DateTime);
+        p.Add("@ToDate", toDate, DbType.DateTime);
+        return ListWithOutputs<InventoryIssueRequestRow>(InventoryQueries.Get_IssueRequests, p);
+    }
+
+    public Task<ListResponseWrapper<InventoryIssueRequestLineRow>> GetIssueRequestLinesAsync(int requestId)
+    {
+        var p = new DynamicParameters();
+        p.Add("@RequestId", requestId, DbType.Int32);
+        return ListWithOutputs<InventoryIssueRequestLineRow>(InventoryQueries.Get_IssueRequestLines, p);
+    }
+
+    public Task<ListResponseWrapper<MyIssuedInventoryRow>> GetMyIssuedAsync(int callerUserId, System.DateTime fromDate, System.DateTime toDate)
+    {
+        var p = new DynamicParameters();
+        p.Add("@UserId", callerUserId, DbType.Int32);
+        p.Add("@FromDate", fromDate);
+        p.Add("@ToDate", toDate);
+        return ListWithOutputs<MyIssuedInventoryRow>(InventoryQueries.Get_MyIssued, p);
     }
 }

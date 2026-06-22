@@ -184,4 +184,55 @@ namespace CleanArc.Domain.Entities.Inventory
         public decimal ReturnedQuantity { get; set; }
         public decimal RemainingQuantity { get; set; }
     }
+
+    /* ---------- Issue request workflow (teacher → accountant) ---------- */
+
+    public class InventoryIssueRequestRow
+    {
+        public int Id { get; set; }
+        public string? RequestCode { get; set; }
+        public DateTime RequestDate { get; set; }
+        public int RequestedByUserId { get; set; }
+        public string? RequestedByName { get; set; }
+        public string? Purpose { get; set; }
+        public string? Status { get; set; }       // Pending / Approved / Rejected / Fulfilled
+        public int? ApprovedByUserId { get; set; }
+        public string? ApprovedByName { get; set; }
+        public DateTime? ApprovedAt { get; set; }
+        public string? RejectedReason { get; set; }
+        public int? FulfilledIssueId { get; set; }
+        public string? FulfilledIssueCode { get; set; }
+        public int LineCount { get; set; }
+        public decimal TotalQuantity { get; set; }
+    }
+
+    public class InventoryIssueRequestLineRow
+    {
+        public int Id { get; set; }
+        public int RequestId { get; set; }
+        public int ItemId { get; set; }
+        public string? ItemName { get; set; }
+        public string? Code { get; set; }
+        public string? UnitOfMeasure { get; set; }
+        public decimal Quantity { get; set; }
+        public decimal CurrentStock { get; set; }      // for accountant to sanity-check before approving
+    }
+
+    /* "My Issued Items" — what's been issued to the calling user (Teacher / Employee) */
+    public class MyIssuedInventoryRow
+    {
+        public int IssueId { get; set; }
+        public string? IssueCode { get; set; }
+        public DateTime IssueDate { get; set; }
+        public string? Purpose { get; set; }
+        public int IssueLineId { get; set; }
+        public int ItemId { get; set; }
+        public string? ItemName { get; set; }
+        public string? Code { get; set; }
+        public string? CategoryName { get; set; }
+        public string? UnitOfMeasure { get; set; }
+        public decimal Quantity { get; set; }
+        public decimal ReturnedQuantity { get; set; }
+        public decimal RemainingQuantity { get; set; }
+    }
 }

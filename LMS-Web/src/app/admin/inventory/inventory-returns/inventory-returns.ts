@@ -42,7 +42,7 @@ export class InventoryReturns implements OnInit {
     // Load the last 12 months of issues to choose from.
     const to = new Date();
     const from = new Date(to.getFullYear(), to.getMonth() - 12, 1);
-    this.svc.getIssueRegister(from.toISOString(), to.toISOString()).subscribe(res => {
+    this.svc.getIssueRegister({ fromDate: from.toISOString(), toDate: to.toISOString() }).subscribe(res => {
       this.issueOptions.set((res.data ?? []).map(i => ({
         label: `${i.issueCode} · ${i.issuedToName} (${new Date(i.issueDate).toLocaleDateString()})`,
         value: i.id

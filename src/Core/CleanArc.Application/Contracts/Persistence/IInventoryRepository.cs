@@ -28,9 +28,25 @@ namespace CleanArc.Application.Contracts.Persistence
         Task<ListResponseWrapper<LowStockAlertRow>> GetLowStockAlertsAsync();
         Task<ResponseEntity> SnoozeAlertAsync(SnoozeAlertDTO dto);
 
-        Task<ListResponseWrapper<InventoryPurchase>> GetPurchaseRegisterAsync(System.DateTime fromDate, System.DateTime toDate);
-        Task<ListResponseWrapper<InventoryIssue>> GetIssueRegisterAsync(System.DateTime fromDate, System.DateTime toDate);
+        Task<ListResponseWrapper<InventoryPurchase>> GetPurchaseRegisterAsync(
+            System.DateTime fromDate, System.DateTime toDate,
+            int? categoryId, string? vendorName);
+        Task<ListResponseWrapper<InventoryIssue>> GetIssueRegisterAsync(
+            System.DateTime fromDate, System.DateTime toDate,
+            int? categoryId, int? itemId, string? issuedToType, int? issuedToId, int? issuedByUserId);
         Task<ListResponseWrapper<ItemLedgerRow>> GetItemLedgerAsync(int itemId, System.DateTime fromDate, System.DateTime toDate);
         Task<ListResponseWrapper<InventoryIssueDetailRow>> GetIssueDetailAsync(int issueId);
+
+        /* Inventory Issue Request workflow (new — teacher requests, accountant approves/fulfills) */
+        Task<ResponseEntity> CreateIssueRequestAsync(CreateInventoryIssueRequestDTO dto);
+        Task<ResponseEntity> ApproveIssueRequestAsync(int requestId, int approvedByUserId);
+        Task<ResponseEntity> RejectIssueRequestAsync(int requestId, int rejectedByUserId, string reason);
+        Task<ResponseEntity> FulfillIssueRequestAsync(int requestId, int fulfilledByUserId, System.DateTime issueDate);
+        Task<ListResponseWrapper<InventoryIssueRequestRow>> GetIssueRequestsAsync(
+            int callerUserId, bool mineOnly, string? status, System.DateTime? fromDate, System.DateTime? toDate);
+        Task<ListResponseWrapper<InventoryIssueRequestLineRow>> GetIssueRequestLinesAsync(int requestId);
+
+        /* "My Issued Items" — staff self-service view */
+        Task<ListResponseWrapper<MyIssuedInventoryRow>> GetMyIssuedAsync(int callerUserId, System.DateTime fromDate, System.DateTime toDate);
     }
 }

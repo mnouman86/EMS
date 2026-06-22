@@ -6,6 +6,7 @@ using CleanArc.Application.Features.Fee.Command.InvoiceCommands;
 using CleanArc.Application.Features.Fee.Command.PaymentCommands;
 using CleanArc.Application.Features.Fee.Command.ReminderCommands;
 using CleanArc.Application.Features.Fee.Queries.ArrearsQueries;
+using CleanArc.Application.Features.Fee.Queries.ClassBoardQueries;
 using CleanArc.Application.Features.Fee.Queries.ConcessionQueries;
 using CleanArc.Application.Features.Fee.Queries.DashboardQueries;
 using CleanArc.Application.Features.Fee.Queries.FeeTypeQueries;
@@ -120,6 +121,11 @@ public class FeeController : ControllerBase
 
     [Authorize,HttpPost("FeeGetPendingList")]
     public async Task<IActionResult> Pending([FromBody] GetPendingFeeListQuery q) => Wrap(await _sender.Send(q));
+
+    /* ---------- Class Fee Board (bulk-collection view) ---------- */
+
+    [Authorize,HttpPost("FeeGetClassBoard")]
+    public async Task<IActionResult> ClassBoard([FromBody] GetFeeClassBoardQuery q) => Wrap(await _sender.Send(q));
 
     [Authorize,HttpPost("FeeGetMonthlyNonSubmitted")]
     public async Task<IActionResult> MonthlyNonSubmitted([FromBody] GetMonthlyNonSubmittedQuery q) => Wrap(await _sender.Send(q));

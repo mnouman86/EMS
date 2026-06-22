@@ -1,0 +1,152 @@
+<p-confirmDialog></p-confirmDialog>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Inventory Issue Requests</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">
+      Teachers submit requests; admin / principal / accountant approve and fulfill.
+    </p>
+  </div>
+  <div style="display:flex;gap:8px;">
+    <p-button label="New request" icon="pi pi-plus" (onClick)="openCreate()"></p-button>
+    <a routerLink="/admin/inventory" class="p-button p-component p-button-outlined" style="text-decoration:none;">
+      <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back
+    </a>
+  </div>
+</div>
+
+<div style="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-bottom:12px;">
+  <div style="min-width:180px;">
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Status</label>
+    <p-select [options]="statusOptions" optionLabel="label" optionValue="value" [(ngModel)]="statusFilter" [style]="{ width: '100%' }"></p-select>
+  </div>
+  <div>
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Date range</label>
+    <p-datepicker [(ngModel)]="range" selectionMode="range" dateFormat="dd M yy" [showIcon]="true" appendTo="body" [readonlyInput]="true"></p-datepicker>
+  </div>
+  <p-button label="Run" icon="pi pi-search" [loading]="loading()" (onClick)="load()"></p-button>
+</div>
+
+<p-table [value]="rows()" [loading]="loading()" styleClass="p-datatable-sm p-datatable-gridlines"
+         [tableStyle]="{ 'min-width': '64rem' }" [paginator]="rows().length > 25" [rows]="25">
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:140px;">Code</th>
+      <th style="width:120px;">Date</th>
+      <th>Requested by</th>
+      <th style="width:110px;">Status</th>
+      <th style="width:70px;text-align:right;">Lines</th>
+      <th style="width:90px;text-align:right;">Total qty</th>
+      <th>Purpose</th>
+      <th style="width:280px;">Actions</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-r>
+    <tr>
+      <td><strong>{{ r.requestCode }}</strong></td>
+      <td>{{ r.requestDate | date:'dd MMM yyyy' }}</td>
+      <td>{{ r.requestedByName }}</td>
+      <td><p-tag [value]="r.status" [severity]="statusSeverity(r.status)"></p-tag></td>
+      <td style="text-align:right;">{{ r.lineCount }}</td>
+      <td style="text-align:right;">{{ r.totalQuantity | number:'1.0-2' }}</td>
+      <td>{{ r.purpose }}</td>
+      <td>
+        <p-button icon="pi pi-eye" [text]="true" size="small" (onClick)="open(r)" pTooltip="View lines"></p-button>
+        @if (canFulfil() && r.status === 'Pending') {
+          <p-button icon="pi pi-check" [text]="true" size="small" severity="success" (onClick)="approve(r)" pTooltip="Approve"></p-button>
+          <p-button icon="pi pi-times" [text]="true" size="small" severity="danger" (onClick)="openReject(r)" pTooltip="Reject"></p-button>
+        }
+        @if (canFulfil() && r.status === 'Approved') {
+          <p-button icon="pi pi-truck" [text]="true" size="small" severity="info" (onClick)="fulfill(r)" pTooltip="Fulfill (issue stock)"></p-button>
+          <p-button icon="pi pi-times" [text]="true" size="small" severity="danger" (onClick)="openReject(r)" pTooltip="Reject"></p-button>
+        }
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr><td colspan="8" style="text-align:center;padding:18px;color:#64748b;">No requests match these filters.</td></tr>
+  </ng-template>
+</p-table>
+
+<!-- Detail dialog -->
+<p-dialog [(visible)]="detailVisible" [modal]="true" [style]="{ width: '720px' }" [draggable]="false" [resizable]="false"
+          [header]="(selected()?.requestCode || 'Request') + ' — lines'">
+  @if (selected(); as s) {
+    <div style="margin-bottom:10px;font-size:0.85rem;color:#475569;">
+      <div><strong>Purpose:</strong> {{ s.purpose }}</div>
+      <div><strong>Requested by:</strong> {{ s.requestedByName }} · {{ s.requestDate | date:'medium' }}</div>
+      <div><strong>Status:</strong> <p-tag [value]="s.status" [severity]="statusSeverity(s.status)"></p-tag></div>
+      @if (s.rejectedReason) { <div><strong>Rejected reason:</strong> {{ s.rejectedReason }}</div> }
+      @if (s.fulfilledIssueCode) { <div><strong>Fulfilled issue:</strong> {{ s.fulfilledIssueCode }}</div> }
+    </div>
+  }
+  <p-table [value]="selectedLines()" styleClass="p-datatable-sm p-datatable-gridlines">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Item</th>
+        <th style="width:100px;">Code</th>
+        <th style="width:80px;">Unit</th>
+        <th style="width:100px;text-align:right;">Qty</th>
+        <th style="width:110px;text-align:right;">In stock</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-l>
+      <tr>
+        <td>{{ l.itemName }}</td>
+        <td>{{ l.code || '—' }}</td>
+        <td>{{ l.unitOfMeasure }}</td>
+        <td style="text-align:right;">{{ l.quantity | number:'1.0-2' }}</td>
+        <td style="text-align:right;" [style.color]="l.currentStock < l.quantity ? '#dc2626' : '#16a34a'">
+          {{ l.currentStock | number:'1.0-2' }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-dialog>
+
+<!-- Create dialog -->
+<p-dialog [(visible)]="createOpen" [modal]="true" [style]="{ width: '700px' }" [draggable]="false" [resizable]="false" header="New issue request">
+  <div style="margin-bottom:10px;">
+    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Purpose</label>
+    <input pInputText [(ngModel)]="newPurpose" placeholder="e.g. Stationery for Discovery class" style="width:100%;"/>
+  </div>
+  <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+    <thead>
+      <tr style="background:#f1f5f9;text-align:left;">
+        <th style="padding:6px;">Item</th>
+        <th style="padding:6px;width:120px;">Quantity</th>
+        <th style="width:40px;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (l of newLines; track $index) {
+        <tr>
+          <td style="padding:4px;">
+            <p-select [options]="itemOptions()" optionLabel="label" optionValue="value" [(ngModel)]="l.itemId" [filter]="true" placeholder="Select item" [style]="{ width: '100%' }"></p-select>
+          </td>
+          <td style="padding:4px;">
+            <p-inputNumber [(ngModel)]="l.quantity" [min]="0.01" [showButtons]="true" [step]="1" [style]="{ width: '100%' }"></p-inputNumber>
+          </td>
+          <td style="text-align:center;padding:4px;">
+            <p-button icon="pi pi-times" [text]="true" size="small" severity="danger" (onClick)="removeLine($index)"></p-button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+  <p-button label="Add line" icon="pi pi-plus" [text]="true" size="small" (onClick)="addLine()" styleClass="mt-2"></p-button>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [outlined]="true" (onClick)="createOpen.set(false)"></p-button>
+    <p-button label="Submit request" icon="pi pi-check" [loading]="saving()" (onClick)="submitCreate()"></p-button>
+  </ng-template>
+</p-dialog>
+
+<!-- Reject dialog -->
+<p-dialog [(visible)]="rejectOpen" [modal]="true" [style]="{ width: '500px' }" [draggable]="false" [resizable]="false" header="Reject request">
+  <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Reason</label>
+  <textarea pTextarea [(ngModel)]="rejectReason" rows="4" style="width:100%;" placeholder="Tell the requester why"></textarea>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [outlined]="true" (onClick)="rejectOpen.set(false)"></p-button>
+    <p-button label="Reject" icon="pi pi-times" severity="danger" (onClick)="submitReject()"></p-button>
+  </ng-template>
+</p-dialog>

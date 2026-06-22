@@ -216,6 +216,25 @@ namespace CleanArc.Domain.Entities.Fee
         public decimal RunningBalance { get; set; }
     }
 
+    /* Class Fee Board — one row per active student in a class, used by the
+       bulk-collection screen. Period filter (year/month) is optional. */
+    public class FeeClassBoardRow
+    {
+        public int StudentId { get; set; }
+        public string? StudentCode { get; set; }
+        public string? FormNo { get; set; }
+        public string? FullName { get; set; }
+        public string? ParentName { get; set; }
+        public string? ParentMobile { get; set; }
+        public decimal TotalInvoiced { get; set; }
+        public decimal TotalPaid { get; set; }
+        public decimal Outstanding { get; set; }
+        public DateTime? LastPaymentDate { get; set; }
+        public decimal? LastPaymentAmount { get; set; }
+        public string? MonthsDue { get; set; }
+        public int InvoiceCount { get; set; }
+    }
+
     public class PendingFeeRow
     {
         public int StudentId { get; set; }

@@ -42,7 +42,8 @@ export class FeeDashboard implements OnInit {
   };
 
   links: FeeLink[] = [
-    { label: 'Collect Payment', icon: 'pi pi-wallet', route: '/admin/fees/collect', desc: 'Record a fee payment & print receipt' },
+    { label: 'Class Fee Board', icon: 'pi pi-users', route: '/admin/fees/class-board', desc: 'Bulk-collect by class — tick students & record together' },
+    { label: 'Collect Payment', icon: 'pi pi-wallet', route: '/admin/fees/collect', desc: 'Record a single fee payment & print receipt' },
     { label: 'Student Ledger', icon: 'pi pi-book', route: '/admin/fees/ledger', desc: 'Invoices, payments & running balance' },
     { label: 'Generate Invoices', icon: 'pi pi-file-plus', route: '/admin/fees/generate', desc: 'Monthly billing run with preview' },
     { label: 'Reports', icon: 'pi pi-chart-bar', route: '/admin/fees/reports', desc: 'Defaulters, non-submitted, ageing' },

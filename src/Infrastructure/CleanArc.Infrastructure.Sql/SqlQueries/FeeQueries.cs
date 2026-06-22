@@ -49,5 +49,8 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries
         // Advance / Parent
         public static string Get_AdvanceBalance => "usp_Get_StudentAdvanceBalance";
         public static string Parent_FeeSearch => "usp_Parent_FeeSearch";
+
+        // Class Fee Board — per-student state for a class (bulk-collection screen)
+        public static string Get_FeeClassBoard => "usp_Get_FeeClassBoard";
     }
 }

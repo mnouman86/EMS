@@ -102,6 +102,15 @@ public static class PermissionMap
             ["Inventory.RecordAdjustment"] = ("Inventory", PermissionAction.Update),
             ["Inventory.SnoozeAlert"]      = ("Inventory", PermissionAction.Update),
 
+            // Inventory issue requests (workflow — teacher request → accountant approve/fulfill).
+            // CreateIssueRequest is intentionally NOT mapped: it's a request submission, not a
+            // stock-mutating action, so any authenticated user can create one. The role-gated
+            // attribute [Authorize(Roles=FinanceRoles)] on the approve/reject/fulfill endpoints
+            // plus the entries below double-gate the actual stock-impacting actions.
+            ["Inventory.ApproveIssueRequest"] = ("Inventory", PermissionAction.Approve),
+            ["Inventory.RejectIssueRequest"]  = ("Inventory", PermissionAction.Approve),
+            ["Inventory.FulfillIssueRequest"] = ("Inventory", PermissionAction.Approve),
+
             // Expenses
             ["Expense.UpsertCategory"]   = ("Expenses", PermissionAction.Update),
             ["Expense.DeleteCategory"]   = ("Expenses", PermissionAction.Delete),

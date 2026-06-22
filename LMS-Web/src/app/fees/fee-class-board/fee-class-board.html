@@ -1,0 +1,163 @@
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Class Fee Board</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">
+      Pick a class, tick the students who are paying, set defaults once, and record payments in bulk.
+    </p>
+  </div>
+  <a routerLink="/admin/fees" class="p-button p-component p-button-outlined" style="text-decoration:none;">
+    <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back to dashboard
+  </a>
+</div>
+
+<!-- Class + Period filters -->
+<div class="card filter-bar">
+  <div class="f">
+    <label>Class</label>
+    <p-select [options]="classOptions()" optionLabel="label" optionValue="value" [(ngModel)]="classId" [filter]="true" [style]="{ width: '100%' }" placeholder="Select class"></p-select>
+  </div>
+  <div class="f" style="min-width:120px;">
+    <label>Year</label>
+    <p-inputNumber [(ngModel)]="periodYear" [min]="2020" [max]="2099" [showButtons]="true" [useGrouping]="false" inputStyleClass="w-full" [style]="{ width: '100%' }"></p-inputNumber>
+  </div>
+  <div class="f" style="min-width:180px;">
+    <label>Month (optional)</label>
+    <p-select [options]="monthOptions" optionLabel="label" optionValue="value" [(ngModel)]="periodMonth" [style]="{ width: '100%' }"></p-select>
+  </div>
+  <p-button label="Load" icon="pi pi-search" [loading]="loading()" (onClick)="load()"></p-button>
+</div>
+
+<!-- KPI strip -->
+@if (rows().length) {
+  <div class="kpi-row">
+    <div class="kpi"><span>Students</span><b>{{ kpis().totalStudents }}</b></div>
+    <div class="kpi"><span>With outstanding</span><b style="color:#dc2626;">{{ kpis().studentsWithDue }}</b></div>
+    <div class="kpi"><span>Clear</span><b style="color:#16a34a;">{{ kpis().studentsClear }}</b></div>
+    <div class="kpi"><span>Invoiced</span><b>Rs. {{ kpis().totalInvoiced | number:'1.0-0' }}</b></div>
+    <div class="kpi"><span>Collected</span><b style="color:#16a34a;">Rs. {{ kpis().totalPaid | number:'1.0-0' }}</b></div>
+    <div class="kpi"><span>Outstanding</span><b style="color:#dc2626;">Rs. {{ kpis().totalOutstanding | number:'1.0-0' }}</b></div>
+  </div>
+}
+
+<!-- Defaults for this batch -->
+@if (rows().length) {
+  <div class="card defaults-bar">
+    <div class="f"><label>Payment date</label>
+      <p-datepicker [(ngModel)]="paymentDate" dateFormat="dd M yy" [showIcon]="true" appendTo="body"></p-datepicker>
+    </div>
+    <div class="f"><label>Default amount</label>
+      <p-inputNumber [(ngModel)]="defaultAmount" mode="decimal" [minFractionDigits]="0" placeholder="(per row override below)" inputStyleClass="w-full"></p-inputNumber>
+    </div>
+    <div class="f" style="min-width:140px;"><label>Mode</label>
+      <p-select [options]="modeOptions" optionLabel="label" optionValue="value" [(ngModel)]="paymentMode" [style]="{ width: '100%' }"></p-select>
+    </div>
+    <div class="f" style="min-width:160px;"><label>Reference no. prefix</label>
+      <input pInputText [(ngModel)]="referenceNoPrefix" placeholder="e.g. CHQ-22001" />
+    </div>
+    <div class="f" style="min-width:280px;flex:1;"><label>Fee types covered (multi-select)</label>
+      <p-multiselect [options]="feeTypeOptions()" optionLabel="label" optionValue="value" [(ngModel)]="feeTypesCovered" placeholder="All / multiple" [style]="{ width: '100%' }" display="chip"></p-multiselect>
+    </div>
+    <div class="f" style="min-width:240px;flex:1;"><label>Remarks (optional)</label>
+      <input pInputText [(ngModel)]="remarks" placeholder="Free-text note appended to every payment" />
+    </div>
+  </div>
+
+  <div class="action-bar">
+    <p-button label="Select all with outstanding" icon="pi pi-check" [text]="true" size="small" (onClick)="selectAllWithDue()"></p-button>
+    <p-button label="Clear selection" icon="pi pi-eraser" [text]="true" size="small" (onClick)="clearSelection()"></p-button>
+    <p-button label="Apply default amount to selected" icon="pi pi-clone" [text]="true" size="small" (onClick)="applyDefaultToSelected()"></p-button>
+    <p-button label="Fill selected with their outstanding" icon="pi pi-sync" [text]="true" size="small" (onClick)="fillSelectedWithOutstanding()"></p-button>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:14px;">
+      <span style="font-size:0.86rem;color:#475569;"><b>{{ selectionSummary().count }}</b> ticked · Total <b>Rs. {{ selectionSummary().total | number:'1.0-0' }}</b></span>
+      <p-button label="Record payments" icon="pi pi-save" severity="success" [loading]="recording()"
+                [disabled]="!selectionSummary().count" (onClick)="recordAll()"></p-button>
+    </div>
+  </div>
+
+  @if (recording() || totalToRecord() > 0) {
+    <div class="card" style="padding:10px 14px;margin-bottom:12px;">
+      <div style="display:flex;justify-content:space-between;font-size:0.84rem;margin-bottom:4px;">
+        <span>Recording {{ recordedCount() + failedCount() }} / {{ totalToRecord() }}</span>
+        <span>
+          <span style="color:#16a34a;">{{ recordedCount() }} ok</span>
+          @if (failedCount() > 0) { · <span style="color:#dc2626;">{{ failedCount() }} failed</span> }
+        </span>
+      </div>
+      <p-progressBar [value]="recordingProgress()" [showValue]="false"></p-progressBar>
+    </div>
+  }
+}
+
+<!-- Student grid -->
+<p-table [value]="rows()" [loading]="loading()" styleClass="p-datatable-sm p-datatable-gridlines"
+         [tableStyle]="{ 'min-width': '78rem' }" [paginator]="rows().length > 50" [rows]="50"
+         dataKey="studentId">
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:40px;"></th>
+      <th style="width:120px;">Code</th>
+      <th>Student</th>
+      <th>Parent / Mobile</th>
+      <th style="width:90px;text-align:right;">Invoiced</th>
+      <th style="width:90px;text-align:right;">Paid</th>
+      <th style="width:110px;text-align:right;">Outstanding</th>
+      <th style="width:160px;">Months Due</th>
+      <th style="width:130px;">Last Payment</th>
+      <th style="width:140px;">Amount</th>
+      <th style="width:140px;">Reference no.</th>
+      <th style="width:120px;">Status</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-r let-i="rowIndex">
+    <tr [style.background]="r.status === 'ok' ? '#f0fdf4' : r.status === 'fail' ? '#fef2f2' : ''">
+      <td><p-checkbox [(ngModel)]="r.selected" [binary]="true"></p-checkbox></td>
+      <td><strong>{{ r.studentCode || r.formNo || '—' }}</strong></td>
+      <td>{{ r.fullName }}</td>
+      <td>
+        <div style="font-size:0.86rem;">{{ r.parentName || '—' }}</div>
+        <div style="font-size:0.78rem;color:#64748b;">{{ r.parentMobile || '—' }}</div>
+      </td>
+      <td style="text-align:right;">{{ r.totalInvoiced | number:'1.0-0' }}</td>
+      <td style="text-align:right;color:#16a34a;">{{ r.totalPaid | number:'1.0-0' }}</td>
+      <td style="text-align:right;">
+        <p-tag [value]="(r.outstanding | number:'1.0-0') ?? '0'" [severity]="outstandingSeverity(r.outstanding)"></p-tag>
+      </td>
+      <td>
+        @if (r.monthsDue) { <span style="font-size:0.82rem;">{{ r.monthsDue }}</span> }
+        @else { <span style="color:#94a3b8;">—</span> }
+      </td>
+      <td>
+        @if (r.lastPaymentDate) {
+          <div style="font-size:0.82rem;">{{ r.lastPaymentDate | date:'dd MMM yy' }}</div>
+          <div style="font-size:0.78rem;color:#16a34a;">Rs. {{ r.lastPaymentAmount | number:'1.0-0' }}</div>
+        } @else { <span style="color:#94a3b8;">—</span> }
+      </td>
+      <td><p-inputNumber [(ngModel)]="r.amountToCollect" mode="decimal" [minFractionDigits]="0" inputStyleClass="w-full" [style]="{ width: '100%' }" [disabled]="!r.selected"></p-inputNumber></td>
+      <td><input pInputText [(ngModel)]="r.rowReferenceNo" placeholder="(use prefix)" [disabled]="!r.selected" style="width:100%;"/></td>
+      <td>
+        @if (r.status === 'pending') { <p-tag value="Queued" severity="info"></p-tag> }
+        @else if (r.status === 'ok') { <p-tag value="Recorded" severity="success" [pTooltip]="r.statusMessage || ''"></p-tag> }
+        @else if (r.status === 'fail') { <p-tag value="Failed" severity="danger" [pTooltip]="r.statusMessage || ''"></p-tag> }
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr><td colspan="12" style="text-align:center;padding:24px;color:#64748b;">
+      Select a class and click <b>Load</b> to begin.
+    </td></tr>
+  </ng-template>
+</p-table>
+
+<style>
+  .card { border:1px solid #e2e8f0;border-radius:12px;padding:14px;background:#fff;margin-bottom:12px; }
+  .filter-bar { display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap; }
+  .defaults-bar { display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap; }
+  .f { min-width:180px; }
+  .f label { display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px; }
+  .kpi-row { display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:14px; }
+  .kpi { border:1px solid #e2e8f0;border-radius:10px;padding:12px 14px;background:#fff;display:flex;flex-direction:column;gap:4px; }
+  .kpi span { font-size:0.74rem;color:#94a3b8;text-transform:uppercase;letter-spacing:0.03em; }
+  .kpi b { font-size:1.2rem; }
+  .action-bar { display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:10px; }
+  .w-full { width:100%; }
+</style>

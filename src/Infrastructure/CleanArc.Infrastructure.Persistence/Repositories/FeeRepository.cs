@@ -273,4 +273,15 @@ public class FeeRepository : IFeeRepository
         p.Add("@ClientIp", dto.ClientIp);
         return SingleWithOutputs<ParentFeeSummary>(FeeQueries.Parent_FeeSearch, p);
     }
+
+    public Task<ListResponseWrapper<FeeClassBoardRow>> GetClassFeeBoardAsync(
+        int classId, int? academicYearId, int? periodYear, int? periodMonth)
+    {
+        var p = new DynamicParameters();
+        p.Add("@ClassId", classId, DbType.Int32);
+        p.Add("@AcademicYearId", academicYearId, DbType.Int32);
+        p.Add("@PeriodYear", periodYear, DbType.Int32);
+        p.Add("@PeriodMonth", periodMonth, DbType.Int32);
+        return ListWithOutputs<FeeClassBoardRow>(FeeQueries.Get_FeeClassBoard, p);
+    }
 }

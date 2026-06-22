@@ -78,4 +78,13 @@ namespace CleanArc.Application.Models.Inventory
         public string Reason { get; set; }
         public int SnoozedBy { get; set; }
     }
+
+    /* ---------- Issue request workflow ---------- */
+
+    public class CreateInventoryIssueRequestDTO
+    {
+        public int RequestedByUserId { get; set; }
+        public string Purpose { get; set; }
+        public string LinesJson { get; set; }      // [{ItemId, Quantity}]
+    }
 }
