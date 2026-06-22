@@ -26,7 +26,7 @@ export const ADMIN_ROUTES: Routes = [
       {
         path: 'academic-years',
         canActivate: [roleGuard],
-        data: { roles: RoleSets.AdminOnly },
+        data: { roles: RoleSets.AdminOrPrincipal },
         loadComponent: () => import('./academic-years/academic-years').then(m => m.AcademicYears)
       },
       {
@@ -110,28 +110,31 @@ export const ADMIN_ROUTES: Routes = [
         loadComponent: () => import('../students/student-profile').then(m => m.StudentProfile)
       },
       // Fees (FEE-01..14)
+      // Read-only screens (Dashboard / Ledger / Reports) are open to AnyStaff —
+      // teacher data is auto-class-scoped by TeacherScopeContext on the API.
+      // All write screens are Finance (admin / principal / accountant).
       {
         path: 'fees',
         canActivate: [roleGuard],
-        data: { roles: RoleSets.Finance },
+        data: { roles: RoleSets.AnyStaff },
         loadComponent: () => import('../fees/fee-dashboard/fee-dashboard').then(m => m.FeeDashboard)
       },
       {
         path: 'fees/setup',
         canActivate: [roleGuard],
-        data: { roles: RoleSets.AdminOrAccountant },
+        data: { roles: RoleSets.Finance },
         loadComponent: () => import('../fees/fee-setup/fee-setup').then(m => m.FeeSetup)
       },
       {
         path: 'fees/generate',
         canActivate: [roleGuard],
-        data: { roles: RoleSets.AdminOrAccountant },
+        data: { roles: RoleSets.Finance },
         loadComponent: () => import('../fees/fee-generate/fee-generate').then(m => m.FeeGenerate)
       },
       {
         path: 'fees/collect',
         canActivate: [roleGuard],
-        data: { roles: RoleSets.AdminOrAccountant },
+        data: { roles: RoleSets.Finance },
         loadComponent: () => import('../fees/fee-collect/fee-collect').then(m => m.FeeCollect)
       },
       {
@@ -145,31 +148,31 @@ export const ADMIN_ROUTES: Routes = [
       {
         path: 'fees/ledger',
         canActivate: [roleGuard],
-        data: { roles: RoleSets.Finance },
+        data: { roles: RoleSets.AnyStaff },
         loadComponent: () => import('../fees/fee-ledger/fee-ledger').then(m => m.FeeLedger)
       },
       {
         path: 'fees/reports',
         canActivate: [roleGuard],
-        data: { roles: RoleSets.Finance },
+        data: { roles: RoleSets.AnyStaff },
         loadComponent: () => import('../fees/fee-reports/fee-reports').then(m => m.FeeReports)
       },
       {
         path: 'fees/concessions',
         canActivate: [roleGuard],
-        data: { roles: RoleSets.AdminOrPrincipal },
+        data: { roles: RoleSets.Finance },
         loadComponent: () => import('../fees/fee-concessions/fee-concessions').then(m => m.FeeConcessions)
       },
       {
         path: 'fees/reminders',
         canActivate: [roleGuard],
-        data: { roles: RoleSets.AdminOrAccountant },
+        data: { roles: RoleSets.Finance },
         loadComponent: () => import('../fees/fee-reminders/fee-reminders').then(m => m.FeeReminders)
       },
       {
         path: 'fees/arrears',
         canActivate: [roleGuard],
-        data: { roles: RoleSets.AdminOrPrincipal },
+        data: { roles: RoleSets.Finance },
         loadComponent: () => import('../fees/fee-arrears/fee-arrears').then(m => m.FeeArrears)
       },
       // Inventory (INV-01..08)
@@ -239,13 +242,13 @@ export const ADMIN_ROUTES: Routes = [
       {
         path: 'expenses/categories',
         canActivate: [roleGuard],
-        data: { roles: RoleSets.AdminOrAccountant },
+        data: { roles: RoleSets.Finance },
         loadComponent: () => import('./expenses/expense-categories/expense-categories').then(m => m.ExpenseCategories)
       },
       {
         path: 'expenses/recurring',
         canActivate: [roleGuard],
-        data: { roles: RoleSets.AdminOrAccountant },
+        data: { roles: RoleSets.Finance },
         loadComponent: () => import('./expenses/expense-recurring/expense-recurring').then(m => m.ExpenseRecurring)
       },
       {
