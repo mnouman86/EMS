@@ -23,5 +23,16 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries
         public static string Get_IssueRegister => "usp_Get_InventoryIssueRegister";
         public static string Get_ItemLedger => "usp_Get_InventoryItemLedger";
         public static string Get_IssueDetail => "usp_Get_InventoryIssueDetail";
+
+        /* Issue request workflow (new) */
+        public static string Create_IssueRequest  => "usp_Create_InventoryIssueRequest";
+        public static string Approve_IssueRequest => "usp_Approve_InventoryIssueRequest";
+        public static string Reject_IssueRequest  => "usp_Reject_InventoryIssueRequest";
+        public static string Fulfill_IssueRequest => "usp_Fulfill_InventoryIssueRequest";
+        public static string Get_IssueRequests    => "usp_Get_InventoryIssueRequests";
+        public static string Get_IssueRequestLines=> "usp_Get_InventoryIssueRequestLines";
+
+        /* My Issued (per-user) */
+        public static string Get_MyIssued => "usp_Get_InventoryMyIssued";
     }
 }

@@ -55,5 +55,9 @@ namespace CleanArc.Application.Contracts.Persistence
         /* Advance & Parent (FEE-08 / FEE-13) */
         Task<SingleResponseWrapper<StudentAdvanceBalance>> GetAdvanceBalanceAsync(int studentId);
         Task<SingleResponseWrapper<ParentFeeSummary>> ParentSearchAsync(ParentFeeSearchDTO dto);
+
+        /* Class Fee Board — per-student fee state for a class */
+        Task<ListResponseWrapper<FeeClassBoardRow>> GetClassFeeBoardAsync(
+            int classId, int? academicYearId, int? periodYear, int? periodMonth);
     }
 }

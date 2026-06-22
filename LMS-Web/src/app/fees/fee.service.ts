@@ -9,7 +9,8 @@ import {
   RecordPayment, ClearCheque, ApplyAdvance, ReversePayment,
   StudentLedgerEntry, CollectionSummary, CollectionByClass, CollectionByDay,
   PendingFeeRow, AgeingRow, AdvanceBalance, Concession, GrantConcession, RevokeConcession,
-  SendReminders, SendRemindersResult, CarryForwardArrears, WriteOffArrear, FeeArrearRow, ParentFeeSummary
+  SendReminders, SendRemindersResult, CarryForwardArrears, WriteOffArrear, FeeArrearRow, ParentFeeSummary,
+  FeeClassBoardRow
 } from './fee.models';
 
 @Injectable({ providedIn: 'root' })
@@ -123,5 +124,14 @@ export class FeeService {
   /* FEE-13: parent self-service (anonymous) */
   parentSearch(studentCode: string, secondFactor: string): Observable<ApiResult<ParentFeeSummary>> {
     return this.api.post<ParentFeeSummary>('Fee/FeeParentSearch', { studentCode, secondFactor });
+  }
+
+  /* Class Fee Board — per-student fee state for one class.
+     period (year/month) is optional; pass nulls for lifetime totals. */
+  getClassBoard(classId: number, periodYear: number | null = null, periodMonth: number | null = null,
+                academicYearId: number | null = null): Observable<ApiResult<FeeClassBoardRow[]>> {
+    return this.api.post<FeeClassBoardRow[]>('Fee/FeeGetClassBoard', {
+      classId, academicYearId, periodYear, periodMonth
+    });
   }
 }

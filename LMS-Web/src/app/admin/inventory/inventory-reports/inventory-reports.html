@@ -18,10 +18,27 @@
   <p-tabpanels>
     <!-- Purchase register -->
     <p-tabpanel value="purchase">
-      <div style="display:flex;gap:12px;align-items:flex-end;margin-bottom:12px;">
-        <div><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Date range</label>
-          <p-datepicker [(ngModel)]="purchaseRange" selectionMode="range" dateFormat="dd M yy" [showIcon]="true" appendTo="body" [readonlyInput]="true"></p-datepicker></div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-bottom:8px;">
+        <div>
+          <label class="filter-lbl">Date range</label>
+          <p-datepicker [(ngModel)]="purchaseRange" selectionMode="range" dateFormat="dd M yy" [showIcon]="true" appendTo="body" [readonlyInput]="true"></p-datepicker>
+        </div>
+        <div style="min-width:180px;">
+          <label class="filter-lbl">Category</label>
+          <p-select [options]="categoryOptions()" optionLabel="label" optionValue="value" [(ngModel)]="purchaseCategoryId" [showClear]="true" placeholder="Any" [style]="{ width: '100%' }"></p-select>
+        </div>
+        <div style="min-width:180px;">
+          <label class="filter-lbl">Vendor (contains)</label>
+          <input pInputText [(ngModel)]="purchaseVendorName" placeholder="e.g. National" style="width:100%;"/>
+        </div>
         <p-button label="Run" icon="pi pi-search" [loading]="purchaseLoading()" (onClick)="loadPurchases()"></p-button>
+      </div>
+      <div class="presets">
+        <span class="presets-lbl">Quick:</span>
+        <p-button label="Today" [text]="true" size="small" (onClick)="applyPreset('purchaseRange','today')"></p-button>
+        <p-button label="This week" [text]="true" size="small" (onClick)="applyPreset('purchaseRange','week')"></p-button>
+        <p-button label="This month" [text]="true" size="small" (onClick)="applyPreset('purchaseRange','month')"></p-button>
+        <p-button label="This year" [text]="true" size="small" (onClick)="applyPreset('purchaseRange','year')"></p-button>
       </div>
       <p-table [value]="purchases()" [loading]="purchaseLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '60rem' }" [paginator]="purchases().length > 25" [rows]="25">
         <ng-template pTemplate="header">
@@ -44,14 +61,39 @@
 
     <!-- Issue register -->
     <p-tabpanel value="issue">
-      <div style="display:flex;gap:12px;align-items:flex-end;margin-bottom:12px;">
-        <div><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Date range</label>
-          <p-datepicker [(ngModel)]="issueRange" selectionMode="range" dateFormat="dd M yy" [showIcon]="true" appendTo="body" [readonlyInput]="true"></p-datepicker></div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-bottom:8px;">
+        <div>
+          <label class="filter-lbl">Date range</label>
+          <p-datepicker [(ngModel)]="issueRange" selectionMode="range" dateFormat="dd M yy" [showIcon]="true" appendTo="body" [readonlyInput]="true"></p-datepicker>
+        </div>
+        <div style="min-width:180px;">
+          <label class="filter-lbl">Category</label>
+          <p-select [options]="categoryOptions()" optionLabel="label" optionValue="value" [(ngModel)]="issueCategoryId" [showClear]="true" placeholder="Any" [style]="{ width: '100%' }"></p-select>
+        </div>
+        <div style="min-width:220px;">
+          <label class="filter-lbl">Item</label>
+          <p-select [options]="itemOptions()" optionLabel="label" optionValue="value" [(ngModel)]="issueItemId" [filter]="true" [showClear]="true" placeholder="Any" [style]="{ width: '100%' }"></p-select>
+        </div>
+        <div style="min-width:140px;">
+          <label class="filter-lbl">Issued to type</label>
+          <p-select [options]="issuedToTypeOptions" optionLabel="label" optionValue="value" [(ngModel)]="issueIssuedToType" placeholder="Any" [style]="{ width: '100%' }"></p-select>
+        </div>
+        <div>
+          <label class="filter-lbl">Issued to ID</label>
+          <input pInputText type="number" [(ngModel)]="issueIssuedToId" placeholder="(optional)" style="width:130px;"/>
+        </div>
         <p-button label="Run" icon="pi pi-search" [loading]="issueLoading()" (onClick)="loadIssues()"></p-button>
       </div>
-      <p-table [value]="issues()" [loading]="issueLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '54rem' }" [paginator]="issues().length > 25" [rows]="25">
+      <div class="presets">
+        <span class="presets-lbl">Quick:</span>
+        <p-button label="Today" [text]="true" size="small" (onClick)="applyPreset('issueRange','today')"></p-button>
+        <p-button label="This week" [text]="true" size="small" (onClick)="applyPreset('issueRange','week')"></p-button>
+        <p-button label="This month" [text]="true" size="small" (onClick)="applyPreset('issueRange','month')"></p-button>
+        <p-button label="This year" [text]="true" size="small" (onClick)="applyPreset('issueRange','year')"></p-button>
+      </div>
+      <p-table [value]="issues()" [loading]="issueLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '56rem' }" [paginator]="issues().length > 25" [rows]="25">
         <ng-template pTemplate="header">
-          <tr><th style="width:140px;">Code</th><th style="width:130px;">Date</th><th style="width:130px;">To Type</th><th>Recipient</th><th>Purpose</th></tr>
+          <tr><th style="width:140px;">Code</th><th style="width:130px;">Date</th><th style="width:120px;">To Type</th><th>Recipient</th><th style="width:90px;">Recip. ID</th><th>Purpose</th></tr>
         </ng-template>
         <ng-template pTemplate="body" let-r>
           <tr>
@@ -59,21 +101,33 @@
             <td>{{ r.issueDate | date:'dd MMM yyyy' }}</td>
             <td>{{ r.issuedToType }}</td>
             <td>{{ r.issuedToName }}</td>
+            <td>{{ r.issuedToId ?? '—' }}</td>
             <td>{{ r.purpose || '—' }}</td>
           </tr>
         </ng-template>
-        <ng-template pTemplate="emptymessage"><tr><td colspan="5" style="text-align:center;padding:18px;color:#64748b;">No issues in this range.</td></tr></ng-template>
+        <ng-template pTemplate="emptymessage"><tr><td colspan="6" style="text-align:center;padding:18px;color:#64748b;">No issues in this range.</td></tr></ng-template>
       </p-table>
     </p-tabpanel>
 
     <!-- Item ledger -->
     <p-tabpanel value="ledger">
-      <div style="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-bottom:12px;">
-        <div style="min-width:240px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Item</label>
-          <p-select [options]="itemOptions()" optionLabel="label" optionValue="value" [(ngModel)]="ledgerItemId" [filter]="true" [style]="{ width: '100%' }" placeholder="Select item"></p-select></div>
-        <div><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Date range</label>
-          <p-datepicker [(ngModel)]="ledgerRange" selectionMode="range" dateFormat="dd M yy" [showIcon]="true" appendTo="body" [readonlyInput]="true"></p-datepicker></div>
+      <div style="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-bottom:8px;">
+        <div style="min-width:240px;">
+          <label class="filter-lbl">Item</label>
+          <p-select [options]="itemOptions()" optionLabel="label" optionValue="value" [(ngModel)]="ledgerItemId" [filter]="true" [style]="{ width: '100%' }" placeholder="Select item"></p-select>
+        </div>
+        <div>
+          <label class="filter-lbl">Date range</label>
+          <p-datepicker [(ngModel)]="ledgerRange" selectionMode="range" dateFormat="dd M yy" [showIcon]="true" appendTo="body" [readonlyInput]="true"></p-datepicker>
+        </div>
         <p-button label="Run" icon="pi pi-search" [loading]="ledgerLoading()" (onClick)="loadLedger()"></p-button>
+      </div>
+      <div class="presets">
+        <span class="presets-lbl">Quick:</span>
+        <p-button label="Today" [text]="true" size="small" (onClick)="applyPreset('ledgerRange','today')"></p-button>
+        <p-button label="This week" [text]="true" size="small" (onClick)="applyPreset('ledgerRange','week')"></p-button>
+        <p-button label="This month" [text]="true" size="small" (onClick)="applyPreset('ledgerRange','month')"></p-button>
+        <p-button label="This year" [text]="true" size="small" (onClick)="applyPreset('ledgerRange','year')"></p-button>
       </div>
       <p-table [value]="ledger()" [loading]="ledgerLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '54rem' }" [paginator]="ledger().length > 25" [rows]="25">
         <ng-template pTemplate="header">
@@ -94,3 +148,9 @@
     </p-tabpanel>
   </p-tabpanels>
 </p-tabs>
+
+<style>
+  .filter-lbl { display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px; }
+  .presets { display:flex;align-items:center;gap:6px;margin-bottom:12px;flex-wrap:wrap; }
+  .presets-lbl { font-size:0.78rem;color:#94a3b8;margin-right:4px; }
+</style>

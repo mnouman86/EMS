@@ -1,7 +1,10 @@
 using Asp.Versioning;
 using CleanArc.Application.Features.Inventory.Command.CatalogueCommands;
+using CleanArc.Application.Features.Inventory.Command.IssueRequestCommands;
 using CleanArc.Application.Features.Inventory.Command.MovementCommands;
 using CleanArc.Application.Features.Inventory.Queries.CatalogueQueries;
+using CleanArc.Application.Features.Inventory.Queries.IssueRequestQueries;
+using CleanArc.Application.Features.Inventory.Queries.MyIssuedQueries;
 using CleanArc.Application.Features.Inventory.Queries.ReportQueries;
 using CleanArc.Application.Features.Inventory.Queries.StockQueries;
 using CleanArc.Application.Models.Common;
@@ -93,4 +96,49 @@ public class InventoryController : ControllerBase
 
     [Authorize,HttpPost("InventoryGetIssueDetail")]
     public async Task<IActionResult> IssueDetail([FromBody] GetIssueDetailQuery q) => Wrap(await _sender.Send(q));
+
+    /* ---------- "My Issued Items" (any authenticated user) ---------- */
+
+    [Authorize, HttpPost("InventoryGetMyIssued")]
+    public async Task<IActionResult> MyIssued([FromBody] GetMyIssuedInventoryQuery q)
+    {
+        q.CallerUserId = CurrentUserId;
+        return Wrap(await _sender.Send(q));
+    }
+
+    /* ---------- Issue request workflow ----------
+       Create: any authenticated user.
+       List:   any authenticated user (MineOnly is enforced by the caller — UI flips it on for teachers).
+       Approve / Reject / Fulfill: admin / principal / accountant. */
+
+    [Authorize, HttpPost("InventoryCreateIssueRequest")]
+    public async Task<IActionResult> CreateIssueRequest([FromBody] CreateInventoryIssueRequestCommand cmd)
+    { cmd.UserId = CurrentUserId; return Wrap(await _sender.Send(cmd)); }
+
+    [Authorize, HttpPost("InventoryGetIssueRequests")]
+    public async Task<IActionResult> GetIssueRequests([FromBody] GetInventoryIssueRequestsQuery q)
+    {
+        q.CallerUserId = CurrentUserId;
+        // Non-finance callers (teachers etc.) can only see their own requests, regardless
+        // of what they pass in MineOnly. Admin / Principal / Accountant see everything.
+        var isFinance = User.IsInRole(Roles.Admin) || User.IsInRole(Roles.Principal) || User.IsInRole(Roles.Accountant);
+        if (!isFinance) q = q with { MineOnly = true };
+        return Wrap(await _sender.Send(q));
+    }
+
+    [Authorize, HttpPost("InventoryGetIssueRequestLines")]
+    public async Task<IActionResult> GetIssueRequestLines([FromBody] GetInventoryIssueRequestLinesQuery q)
+        => Wrap(await _sender.Send(q));
+
+    [Authorize(Roles = Roles.FinanceRoles), HttpPost("InventoryApproveIssueRequest")]
+    public async Task<IActionResult> ApproveIssueRequest([FromBody] ApproveInventoryIssueRequestCommand cmd)
+    { cmd.UserId = CurrentUserId; return Wrap(await _sender.Send(cmd)); }
+
+    [Authorize(Roles = Roles.FinanceRoles), HttpPost("InventoryRejectIssueRequest")]
+    public async Task<IActionResult> RejectIssueRequest([FromBody] RejectInventoryIssueRequestCommand cmd)
+    { cmd.UserId = CurrentUserId; return Wrap(await _sender.Send(cmd)); }
+
+    [Authorize(Roles = Roles.FinanceRoles), HttpPost("InventoryFulfillIssueRequest")]
+    public async Task<IActionResult> FulfillIssueRequest([FromBody] FulfillInventoryIssueRequestCommand cmd)
+    { cmd.UserId = CurrentUserId; return Wrap(await _sender.Send(cmd)); }
 }

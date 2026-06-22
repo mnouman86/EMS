@@ -60,6 +60,15 @@ export class AdminLayout implements OnInit {
       ]
     },
     {
+      title: 'My Workspace',
+      items: [
+        // Empty `feature` → always visible to anyone who reaches the admin shell
+        // (route guards enforce the actual role gate: AnyStaff for both).
+        { label: 'My Inventory', icon: 'pi pi-shopping-bag', route: '/admin/inventory/my-issued', feature: '' },
+        { label: 'Issue Requests', icon: 'pi pi-send', route: '/admin/inventory/requests', feature: '' }
+      ]
+    },
+    {
       title: 'Administration',
       items: [
         { label: 'User Permissions', icon: 'pi pi-lock', route: '/admin/access', feature: 'UserPermissions' },

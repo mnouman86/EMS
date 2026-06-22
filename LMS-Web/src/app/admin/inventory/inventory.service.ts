@@ -7,7 +7,9 @@ import {
   InventoryCategory, UpsertInventoryCategory, InventoryItem, UpsertInventoryItem,
   RecordPurchase, IssueItems, RecordReturn, StockAdjustment, IssueDetailRow,
   StockDashboardRow, LowStockAlert, SnoozeAlert,
-  PurchaseRegisterRow, IssueRegisterRow, ItemLedgerRow
+  PurchaseRegisterRow, IssueRegisterRow, ItemLedgerRow,
+  PurchaseRegisterFilters, IssueRegisterFilters,
+  MyIssuedRow, CreateIssueRequest, IssueRequestRow, IssueRequestLineRow
 } from './inventory.models';
 
 @Injectable({ providedIn: 'root' })
@@ -62,14 +64,39 @@ export class InventoryService {
     return this.api.post('Inventory/InventorySnoozeAlert', dto);
   }
 
-  /* INV-08: reports */
-  getPurchaseRegister(fromDate: string, toDate: string): Observable<ApiResult<PurchaseRegisterRow[]>> {
-    return this.api.post<PurchaseRegisterRow[]>('Inventory/InventoryGetPurchaseRegister', { fromDate, toDate });
+  /* INV-08: reports (extended filters) */
+  getPurchaseRegister(filters: PurchaseRegisterFilters): Observable<ApiResult<PurchaseRegisterRow[]>> {
+    return this.api.post<PurchaseRegisterRow[]>('Inventory/InventoryGetPurchaseRegister', filters);
   }
-  getIssueRegister(fromDate: string, toDate: string): Observable<ApiResult<IssueRegisterRow[]>> {
-    return this.api.post<IssueRegisterRow[]>('Inventory/InventoryGetIssueRegister', { fromDate, toDate });
+  getIssueRegister(filters: IssueRegisterFilters): Observable<ApiResult<IssueRegisterRow[]>> {
+    return this.api.post<IssueRegisterRow[]>('Inventory/InventoryGetIssueRegister', filters);
   }
   getItemLedger(itemId: number, fromDate: string, toDate: string): Observable<ApiResult<ItemLedgerRow[]>> {
     return this.api.post<ItemLedgerRow[]>('Inventory/InventoryGetItemLedger', { itemId, fromDate, toDate });
+  }
+
+  /* "My Issued Items" — staff self-service */
+  getMyIssued(fromDate: string, toDate: string): Observable<ApiResult<MyIssuedRow[]>> {
+    return this.api.post<MyIssuedRow[]>('Inventory/InventoryGetMyIssued', { fromDate, toDate });
+  }
+
+  /* Issue request workflow */
+  createIssueRequest(dto: CreateIssueRequest): Observable<ApiResult<unknown>> {
+    return this.api.post('Inventory/InventoryCreateIssueRequest', dto);
+  }
+  getIssueRequests(mineOnly: boolean, status: string | null, fromDate: string | null, toDate: string | null): Observable<ApiResult<IssueRequestRow[]>> {
+    return this.api.post<IssueRequestRow[]>('Inventory/InventoryGetIssueRequests', { mineOnly, status, fromDate, toDate });
+  }
+  getIssueRequestLines(requestId: number): Observable<ApiResult<IssueRequestLineRow[]>> {
+    return this.api.post<IssueRequestLineRow[]>('Inventory/InventoryGetIssueRequestLines', { requestId });
+  }
+  approveIssueRequest(requestId: number): Observable<ApiResult<unknown>> {
+    return this.api.post('Inventory/InventoryApproveIssueRequest', { requestId });
+  }
+  rejectIssueRequest(requestId: number, reason: string): Observable<ApiResult<unknown>> {
+    return this.api.post('Inventory/InventoryRejectIssueRequest', { requestId, reason });
+  }
+  fulfillIssueRequest(requestId: number, issueDate: string | null = null): Observable<ApiResult<unknown>> {
+    return this.api.post('Inventory/InventoryFulfillIssueRequest', { requestId, issueDate });
   }
 }

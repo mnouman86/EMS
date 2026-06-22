@@ -245,3 +245,20 @@ export interface ParentFeeSummary {
   totalOutstanding: number;
   lastPaymentDate?: string | null;
 }
+
+/* ---------- Class Fee Board (bulk collection) ---------- */
+export interface FeeClassBoardRow {
+  studentId: number;
+  studentCode?: string | null;
+  formNo?: string | null;
+  fullName: string;
+  parentName?: string | null;
+  parentMobile?: string | null;
+  totalInvoiced: number;
+  totalPaid: number;
+  outstanding: number;
+  lastPaymentDate?: string | null;
+  lastPaymentAmount?: number | null;
+  monthsDue?: string | null;
+  invoiceCount: number;
+}

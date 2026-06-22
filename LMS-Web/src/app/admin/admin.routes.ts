@@ -135,6 +135,14 @@ export const ADMIN_ROUTES: Routes = [
         loadComponent: () => import('../fees/fee-collect/fee-collect').then(m => m.FeeCollect)
       },
       {
+        // Class Fee Board — bulk-collect by class, multi-select students,
+        // shared payment defaults, per-row amount override.
+        path: 'fees/class-board',
+        canActivate: [roleGuard],
+        data: { roles: RoleSets.Finance },
+        loadComponent: () => import('../fees/fee-class-board/fee-class-board').then(m => m.FeeClassBoard)
+      },
+      {
         path: 'fees/ledger',
         canActivate: [roleGuard],
         data: { roles: RoleSets.Finance },
@@ -168,44 +176,58 @@ export const ADMIN_ROUTES: Routes = [
       {
         path: 'inventory',
         canActivate: [roleGuard],
-        data: { roles: RoleSets.AdminOrAccountant },
+        data: { roles: RoleSets.Finance },
         loadComponent: () => import('./inventory/inventory-dashboard/inventory-dashboard').then(m => m.InventoryDashboard)
       },
       {
         path: 'inventory/catalogue',
         canActivate: [roleGuard],
-        data: { roles: RoleSets.AdminOrAccountant },
+        data: { roles: RoleSets.Finance },
         loadComponent: () => import('./inventory/inventory-catalogue/inventory-catalogue').then(m => m.InventoryCatalogue)
       },
       {
         path: 'inventory/purchase',
         canActivate: [roleGuard],
-        data: { roles: RoleSets.AdminOrAccountant },
+        data: { roles: RoleSets.Finance },
         loadComponent: () => import('./inventory/inventory-purchase/inventory-purchase').then(m => m.InventoryPurchase)
       },
       {
         path: 'inventory/issue',
         canActivate: [roleGuard],
-        data: { roles: RoleSets.AdminOrAccountant },
+        data: { roles: RoleSets.Finance },
         loadComponent: () => import('./inventory/inventory-issue/inventory-issue').then(m => m.InventoryIssue)
       },
       {
         path: 'inventory/alerts',
         canActivate: [roleGuard],
-        data: { roles: RoleSets.AdminOrAccountant },
+        data: { roles: RoleSets.Finance },
         loadComponent: () => import('./inventory/inventory-alerts/inventory-alerts').then(m => m.InventoryAlerts)
       },
       {
         path: 'inventory/returns',
         canActivate: [roleGuard],
-        data: { roles: RoleSets.AdminOrAccountant },
+        data: { roles: RoleSets.Finance },
         loadComponent: () => import('./inventory/inventory-returns/inventory-returns').then(m => m.InventoryReturns)
       },
       {
         path: 'inventory/reports',
         canActivate: [roleGuard],
-        data: { roles: RoleSets.AdminOrAccountant },
+        data: { roles: RoleSets.Finance },
         loadComponent: () => import('./inventory/inventory-reports/inventory-reports').then(m => m.InventoryReports)
+      },
+      // INV: staff self-service — "what's been issued to me"
+      {
+        path: 'inventory/my-issued',
+        canActivate: [roleGuard],
+        data: { roles: RoleSets.AnyStaff },
+        loadComponent: () => import('./inventory/inventory-my-issued/inventory-my-issued').then(m => m.InventoryMyIssued)
+      },
+      // INV: issue request workflow (teacher submits, accountant approves/fulfills)
+      {
+        path: 'inventory/requests',
+        canActivate: [roleGuard],
+        data: { roles: RoleSets.AnyStaff },
+        loadComponent: () => import('./inventory/inventory-issue-requests/inventory-issue-requests').then(m => m.InventoryIssueRequests)
       },
       // Expenses + Payroll (EXP-01..05)
       {
