@@ -1,7 +1,7 @@
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
   <div>
     <h2 style="margin:0;font-size:1.3rem;">{{ isEditing ? 'Edit Employee' : 'Register Employee' }}</h2>
-    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Fields marked * are mandatory; the rest can be completed later.</p>
+    <p style="margin:2px 0 0;color:#64748b;font-size:1.1rem;">Fields marked * are mandatory; the rest can be completed later.</p>
   </div>
   <a routerLink="/admin/employees" class="p-button p-component p-button-outlined" style="text-decoration:none;">
     <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back
@@ -63,7 +63,7 @@
     <div class="fld" style="margin-bottom:10px;"><label>Present Address *</label><textarea pTextarea formControlName="presentAddress" rows="2"></textarea></div>
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
       <p-toggleswitch formControlName="permanentSameAsPresent"></p-toggleswitch>
-      <label style="font-size:0.85rem;">Permanent same as present (server copies the present address)</label>
+      <label style="font-size:1rem;">Permanent same as present (server copies the present address)</label>
     </div>
     <div class="fld"><label>Permanent Address</label><textarea pTextarea formControlName="permanentAddress" rows="2"></textarea></div>
   </p-fieldset>

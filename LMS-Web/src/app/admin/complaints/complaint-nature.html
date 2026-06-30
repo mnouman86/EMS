@@ -1,0 +1,70 @@
+<p-confirmDialog></p-confirmDialog>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Complaint nature catalogue</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:1.05rem;">Manage the dropdown of nature values shown to users on the complaint form.</p>
+  </div>
+  <p-button label="Add nature" icon="pi pi-plus" (onClick)="add()"></p-button>
+</div>
+
+<p-table [value]="rows()" [loading]="loading()" styleClass="p-datatable-sm p-datatable-gridlines"
+         [paginator]="rows().length > 20" [rows]="20">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Name</th>
+      <th style="width:130px;">Type</th>
+      <th style="width:120px;text-align:right;">Display order</th>
+      <th style="width:110px;text-align:center;">Active</th>
+      <th style="width:160px;text-align:center;">Actions</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-r>
+    <tr>
+      <td>{{ r.name }}</td>
+      <td><p-tag [value]="r.complaintType" severity="secondary"></p-tag></td>
+      <td style="text-align:right;">{{ r.displayOrder }}</td>
+      <td style="text-align:center;">
+        @if (r.isActive) { <p-tag value="Active" severity="success"></p-tag> }
+        @else            { <p-tag value="Inactive" severity="secondary"></p-tag> }
+      </td>
+      <td style="text-align:center;">
+        <p-button icon="pi pi-pencil" [text]="true" size="small" (onClick)="edit(r)" pTooltip="Edit"></p-button>
+        @if (r.isActive) {
+          <p-button icon="pi pi-ban" [text]="true" size="small" severity="danger"
+                    (onClick)="deactivate(r)" pTooltip="Deactivate"></p-button>
+        }
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr><td colspan="5" style="text-align:center;padding:18px;color:#94a3b8;">No nature entries — add one to populate the dropdown.</td></tr>
+  </ng-template>
+</p-table>
+
+<p-dialog [(visible)]="dialogOpen" [modal]="true" [style]="{ width: '460px' }" [draggable]="false" [resizable]="false"
+          [header]="(editing.complaintNatureId ? 'Edit' : 'Add') + ' nature'">
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div>
+      <label style="display:block;font-weight:600;font-size:0.82rem;margin-bottom:4px;">Name *</label>
+      <input pInputText [(ngModel)]="editing.name" maxlength="120" style="width:100%;" />
+    </div>
+    <div>
+      <label style="display:block;font-weight:600;font-size:0.82rem;margin-bottom:4px;">Type *</label>
+      <p-select [options]="typeOptions" optionLabel="label" optionValue="value"
+                [(ngModel)]="editing.complaintType" [style]="{ width: '100%' }" appendTo="body"></p-select>
+    </div>
+    <div>
+      <label style="display:block;font-weight:600;font-size:0.82rem;margin-bottom:4px;">Display order</label>
+      <p-inputnumber [(ngModel)]="editing.displayOrder" [min]="1" [max]="999" [fluid]="true"></p-inputnumber>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <p-toggleswitch [(ngModel)]="editing.isActive"></p-toggleswitch>
+      <span>Active</span>
+    </div>
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [outlined]="true" (onClick)="dialogOpen.set(false)"></p-button>
+    <p-button label="Save" icon="pi pi-check" [loading]="saving()" (onClick)="save()"></p-button>
+  </ng-template>
+</p-dialog>

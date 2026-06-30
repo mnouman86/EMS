@@ -1,0 +1,97 @@
+<div style="margin-bottom:20px;">
+  <h2 style="margin:0;font-size:1.4rem;">Welcome, {{ user()?.userName }}</h2>
+  <p style="margin:4px 0 0;color:#64748b;font-size:0.88rem;">
+    Your class teacher responsibilities and subject assignments at a glance.
+  </p>
+</div>
+
+@if (loading()) {
+  <p style="color:#94a3b8;">Loading…</p>
+} @else {
+  <!-- Quick action tiles -->
+  <div class="kpi-row">
+    <a routerLink="/admin/attendance" class="kpi kpi-link">
+      <span>Mark attendance</span>
+      <b><i class="pi pi-calendar-times"></i> Today</b>
+    </a>
+    <a routerLink="/admin/results/marks" class="kpi kpi-link">
+      <span>Enter marks</span>
+      <b><i class="pi pi-pencil"></i> Open</b>
+    </a>
+    <a routerLink="/admin/fees" class="kpi kpi-link">
+      <span>Fee dashboard</span>
+      <b><i class="pi pi-wallet"></i> View</b>
+    </a>
+    <a routerLink="/admin/students" class="kpi kpi-link">
+      <span>My students</span>
+      <b><i class="pi pi-users"></i> List</b>
+    </a>
+  </div>
+
+  <!-- Classes I head -->
+  <section class="card" style="margin-bottom:14px;">
+    <h3>Classes I head (Class Teacher)</h3>
+    @if (classesIHead().length === 0) {
+      <p class="muted">You are not assigned as class teacher to any class.</p>
+    } @else {
+      <div class="chip-row">
+        @for (c of classesIHead(); track c.schoolClassId) {
+          <p-tag [value]="c.levelName" severity="info" styleClass="chip"></p-tag>
+        }
+      </div>
+    }
+  </section>
+
+  <!-- Subjects I teach -->
+  <section class="card" style="margin-bottom:14px;">
+    <h3>Subjects I teach</h3>
+    @if (mySubjects().length === 0) {
+      <p class="muted">No subject assignments yet.</p>
+    } @else {
+      <div class="chip-row">
+        @for (s of mySubjects(); track s.subjectId) {
+          <p-tag [value]="s.subjectName" severity="success" styleClass="chip"></p-tag>
+        }
+      </div>
+    }
+  </section>
+
+  <!-- Class ↔ subject matrix -->
+  <section class="card">
+    <h3>Class &times; Subject map</h3>
+    @if (byClass().length === 0) {
+      <p class="muted">No (class, subject) pairs assigned. Ask the admin to set them up.</p>
+    } @else {
+      <p-table [value]="byClass()" styleClass="p-datatable-sm" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+          <tr><th>Class</th><th>Subjects taught</th></tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-row>
+          <tr>
+            <td style="font-weight:600;">{{ row.className }}</td>
+            <td>
+              <div class="chip-row">
+                @for (s of row.subjects; track s) {
+                  <p-tag [value]="s" severity="secondary"></p-tag>
+                }
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    }
+  </section>
+}
+
+<style>
+  .kpi-row { display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:22px; }
+  .kpi { border:1px solid #e2e8f0;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:6px;background:#fff;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s; }
+  .kpi:hover { border-color:#5eead4;box-shadow:0 2px 10px rgba(15,23,42,.06); }
+  .kpi span { font-size:0.74rem;color:#94a3b8;text-transform:uppercase;letter-spacing:0.03em; }
+  .kpi b { font-size:1.05rem;color:#0d9488; }
+  .card { border:1px solid #e2e8f0;border-radius:12px;padding:18px;background:#fff; }
+  .card h3 { margin:0 0 12px;font-size:1rem;color:#0f172a;border-bottom:1px solid #f1f5f9;padding-bottom:8px; }
+  .muted { margin:6px 0;color:#94a3b8;font-size:0.88rem; }
+  .chip-row { display:flex;flex-wrap:wrap;gap:6px; }
+  .chip { font-size:0.84rem !important; }
+</style>

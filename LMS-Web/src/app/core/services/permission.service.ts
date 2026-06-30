@@ -85,4 +85,26 @@ export class PermissionService {
   saveUserPermissions(userIds: number[], permissions: FeaturePermissionInput[]): Observable<ApiResult<unknown>> {
     return this.api.post('Permission/PermissionSaveUser', { userIds, permissions });
   }
+
+  /* ---------- Users Management (admin-only) ---------- */
+  createUser(email: string, fullName: string, password: string, roleId: number): Observable<ApiResult<unknown>> {
+    return this.api.post('Permission/PermissionCreateUser', { email, fullName, password, roleId });
+  }
+  resetUserPassword(targetUserId: number, newPassword: string): Observable<ApiResult<unknown>> {
+    return this.api.post('Permission/PermissionResetUserPassword', { targetUserId, newPassword });
+  }
+  setUserActive(targetUserId: number, isActive: boolean): Observable<ApiResult<unknown>> {
+    return this.api.post('Permission/PermissionSetUserActive', { targetUserId, isActive });
+  }
+
+  /* ---------- Roles Management (admin-only) ---------- */
+  createRole(roleName: string): Observable<ApiResult<unknown>> {
+    return this.api.post('Permission/PermissionCreateRole', { roleName });
+  }
+  updateRole(roleId: number, newName: string): Observable<ApiResult<unknown>> {
+    return this.api.post('Permission/PermissionUpdateRole', { roleId, newName });
+  }
+  deleteRole(roleId: number): Observable<ApiResult<unknown>> {
+    return this.api.post('Permission/PermissionDeleteRole', { roleId });
+  }
 }

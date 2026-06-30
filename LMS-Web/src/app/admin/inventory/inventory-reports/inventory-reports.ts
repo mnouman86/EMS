@@ -9,11 +9,18 @@ import { SelectModule } from 'primeng/select';
 import { DatePickerModule } from 'primeng/datepicker';
 import { InputTextModule } from 'primeng/inputtext';
 import { TagModule } from 'primeng/tag';
+import { DialogModule } from 'primeng/dialog';
+import { TooltipModule } from 'primeng/tooltip';
+import { TextareaModule } from 'primeng/textarea';
 import { InventoryService } from '../inventory.service';
 import {
-  PurchaseRegisterRow, IssueRegisterRow, ItemLedgerRow, InventoryCategory
+  PurchaseRegisterRow, IssueRegisterRow, ItemLedgerRow, InventoryCategory,
+  PurchaseDetailRow, IssueDetailRow
 } from '../inventory.models';
 import { defaultSearch } from '../../../core/models/search-request';
+import { ToastService } from '../../../core/services/toast.service';
+import { AuthService } from '../../../core/services/auth.service';
+import { Roles } from '../../../core/models/roles';
 
 type Preset = 'today' | 'week' | 'month' | 'year';
 
@@ -22,12 +29,19 @@ type Preset = 'today' | 'week' | 'month' | 'year';
   standalone: true,
   imports: [
     CommonModule, FormsModule, RouterLink,
-    TabsModule, TableModule, ButtonModule, SelectModule, DatePickerModule, InputTextModule, TagModule
+    TabsModule, TableModule, ButtonModule, SelectModule, DatePickerModule, InputTextModule, TagModule,
+    DialogModule, TooltipModule, TextareaModule
   ],
   templateUrl: './inventory-reports.html'
 })
 export class InventoryReports implements OnInit {
   private svc = inject(InventoryService);
+  private toast = inject(ToastService);
+  private auth = inject(AuthService);
+
+  canCancel = this.auth.hasAnyRole([Roles.Admin, Roles.Principal]);
+  /** Show cancelled rows in the registers as well — off by default. */
+  includeCancelled = false;
 
   itemOptions = signal<{ label: string; value: number }[]>([]);
   categoryOptions = signal<{ label: string; value: number }[]>([]);
@@ -112,7 +126,8 @@ export class InventoryReports implements OnInit {
     this.svc.getPurchaseRegister({
       fromDate: r.from, toDate: r.to,
       categoryId: this.purchaseCategoryId,
-      vendorName: this.purchaseVendorName?.trim() || null
+      vendorName: this.purchaseVendorName?.trim() || null,
+      includeCancelled: this.includeCancelled
     }).subscribe({
       next: res => { this.purchases.set(res.data ?? []); this.purchaseLoading.set(false); },
       error: () => this.purchaseLoading.set(false)
@@ -128,7 +143,8 @@ export class InventoryReports implements OnInit {
       itemId: this.issueItemId,
       issuedToType: this.issueIssuedToType,
       issuedToId: this.issueIssuedToId,
-      issuedByUserId: null
+      issuedByUserId: null,
+      includeCancelled: this.includeCancelled
     }).subscribe({
       next: res => { this.issues.set(res.data ?? []); this.issueLoading.set(false); },
       error: () => this.issueLoading.set(false)
@@ -153,5 +169,116 @@ export class InventoryReports implements OnInit {
       case 'Adjustment': return 'warn';
       default: return 'secondary';
     }
+  }
+
+  /* ---------- Detail dialogs (Purchase + Issue) ----------
+   * Both reuse the existing per-screen pattern: open the dialog, fetch the
+   * lines via the dedicated detail endpoint, render header + line table.
+   * The Item Ledger drills into one of these based on movementType + sourceMovementId. */
+
+  purchaseDetailOpen = signal(false);
+  purchaseDetailHeader = signal<PurchaseDetailRow | null>(null);
+  purchaseDetailLines = signal<PurchaseDetailRow[]>([]);
+  purchaseDetailLoading = signal(false);
+
+  issueDetailOpen = signal(false);
+  issueDetailHeader = signal<IssueDetailRow | null>(null);
+  issueDetailLines = signal<IssueDetailRow[]>([]);
+  issueDetailLoading = signal(false);
+
+  viewPurchase(purchaseId: number): void {
+    this.purchaseDetailHeader.set(null);
+    this.purchaseDetailLines.set([]);
+    this.purchaseDetailOpen.set(true);
+    this.purchaseDetailLoading.set(true);
+    this.svc.getPurchaseDetail(purchaseId).subscribe({
+      next: r => {
+        const lines = r.data ?? [];
+        // Header columns are repeated on every line — pull from the first row.
+        this.purchaseDetailHeader.set(lines.length ? lines[0] : null);
+        this.purchaseDetailLines.set(lines);
+        this.purchaseDetailLoading.set(false);
+      },
+      error: () => this.purchaseDetailLoading.set(false)
+    });
+  }
+
+  viewIssue(issueId: number): void {
+    this.issueDetailHeader.set(null);
+    this.issueDetailLines.set([]);
+    this.issueDetailOpen.set(true);
+    this.issueDetailLoading.set(true);
+    this.svc.getIssueDetail(issueId).subscribe({
+      next: r => {
+        const lines = r.data ?? [];
+        this.issueDetailHeader.set(lines.length ? lines[0] : null);
+        this.issueDetailLines.set(lines);
+        this.issueDetailLoading.set(false);
+      },
+      error: () => this.issueDetailLoading.set(false)
+    });
+  }
+
+  /** Item Ledger drill-down — opens the appropriate dialog for Purchase / Issue
+   *  rows. Return / Adjustment rows have no dedicated detail SP today, so they
+   *  aren't drillable (the table cell shows no eye icon in that case). */
+  viewLedgerSource(row: ItemLedgerRow): void {
+    if (!row.sourceMovementId) return;
+    if (row.movementType === 'Purchase') this.viewPurchase(row.sourceMovementId);
+    else if (row.movementType === 'Issue') this.viewIssue(row.sourceMovementId);
+  }
+
+  isLedgerDrillable(type?: string): boolean {
+    return type === 'Purchase' || type === 'Issue';
+  }
+
+  /* ---------- Cancel (admin/principal only) ----------
+   * Uses one shared cancel-reason prompt; kind decides which API to hit. */
+  cancelOpen = signal(false);
+  cancelKind: 'purchase' | 'issue' | null = null;
+  cancelTargetId: number | null = null;
+  cancelReason = '';
+  cancelling = signal(false);
+
+  openCancelPurchase(): void {
+    if (!this.purchaseDetailHeader()) return;
+    this.cancelKind = 'purchase';
+    this.cancelTargetId = this.purchaseDetailHeader()!.purchaseId;
+    this.cancelReason = '';
+    this.cancelOpen.set(true);
+  }
+
+  openCancelIssue(): void {
+    if (!this.issueDetailHeader()) return;
+    this.cancelKind = 'issue';
+    this.cancelTargetId = this.issueDetailHeader()!.issueId;
+    this.cancelReason = '';
+    this.cancelOpen.set(true);
+  }
+
+  submitCancel(): void {
+    if (!this.cancelKind || !this.cancelTargetId) return;
+    if (!this.cancelReason.trim()) { this.toast.warn('A reason is required.'); return; }
+    this.cancelling.set(true);
+    const obs = this.cancelKind === 'purchase'
+      ? this.svc.cancelPurchase(this.cancelTargetId, this.cancelReason.trim())
+      : this.svc.cancelIssue(this.cancelTargetId, this.cancelReason.trim());
+    obs.subscribe({
+      next: r => {
+        this.cancelling.set(false);
+        if (r.isSuccess) {
+          this.toast.success(r.message || 'Cancelled.');
+          this.cancelOpen.set(false);
+          // close the detail dialog + reload the relevant register
+          if (this.cancelKind === 'purchase') { this.purchaseDetailOpen.set(false); this.loadPurchases(); }
+          else { this.issueDetailOpen.set(false); this.loadIssues(); }
+          // If the ledger tab is showing this item, refresh it too.
+          if (this.ledgerItemId) this.loadLedger();
+        } else {
+          this.toast.error(r.message || 'Could not cancel.');
+        }
+      },
+      error: () => { this.cancelling.set(false); this.toast.error('Could not cancel.'); }
+    });
   }
 }

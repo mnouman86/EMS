@@ -52,3 +52,40 @@ export interface AttendanceSummary {
   periodsRecorded: number;
   overallPercent?: number | null;
 }
+
+/* ---------- Daily ---------- */
+export type DailyStatus = 'Present' | 'Absent' | 'Late';
+
+export interface DailyAttendanceGridRow {
+  studentId: number;
+  studentCode?: string | null;
+  formNo?: string | null;
+  fullName: string;
+  studentStatus?: string | null;
+  attendanceId?: number | null;
+  dayStatus?: DailyStatus | null;
+  remarks?: string | null;
+  markedAt?: string | null;
+}
+
+export interface DailyEntryInput {
+  studentId: number;
+  status: DailyStatus;
+  remarks?: string | null;
+}
+
+export interface BulkSaveDailyPayload {
+  academicYearId: number;
+  schoolClassId: number;
+  attendanceDate: string;       // YYYY-MM-DD
+  entries: DailyEntryInput[];
+}
+
+export interface StudentDailyAttendance {
+  id: number;
+  attendanceDate: string;
+  status: DailyStatus;
+  remarks?: string | null;
+  className?: string | null;
+  markedAt?: string | null;
+}

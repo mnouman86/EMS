@@ -1,14 +1,143 @@
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
   <div>
-    <h2 style="margin:0;font-size:1.3rem;">Record Purchase</h2>
-    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Stock-in from a vendor. Each line increases current stock.</p>
+    <h2 style="margin:0;font-size:1.3rem;">Purchases</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:1.1rem;">Stock-in from vendors. Browse past purchases and record new ones.</p>
   </div>
-  <a routerLink="/admin/inventory" class="p-button p-component p-button-outlined" style="text-decoration:none;">
-    <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back
-  </a>
+  <div style="display:flex;gap:8px;">
+    <p-button label="New purchase" icon="pi pi-plus" (onClick)="openForm()"></p-button>
+    <a routerLink="/admin/inventory" class="p-button p-component p-button-outlined" style="text-decoration:none;">
+      <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back
+    </a>
+  </div>
 </div>
 
-<div style="max-width:920px;">
+<!-- Filters -->
+<div style="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-bottom:12px;">
+  <div>
+    <label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Date range</label>
+    <p-datepicker [(ngModel)]="range" selectionMode="range" dateFormat="dd M yy" [showIcon]="true"
+                  appendTo="body" [readonlyInput]="true"></p-datepicker>
+  </div>
+  <p-button label="Run" icon="pi pi-search" [loading]="purchasesLoading()" (onClick)="loadPurchases()"></p-button>
+</div>
+
+<!-- History grid -->
+<p-table [value]="purchases()" [loading]="purchasesLoading()" styleClass="p-datatable-sm p-datatable-gridlines"
+         [paginator]="purchases().length > 20" [rows]="20">
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:160px;">Code</th>
+      <th style="width:120px;">Date</th>
+      <th>Vendor</th>
+      <th style="width:160px;">Invoice No</th>
+      <th style="width:120px;">Payment</th>
+      <th style="width:140px;text-align:right;">Grand Total</th>
+      <th style="width:80px;text-align:center;">Actions</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-r>
+    <tr>
+      <td>
+        <strong>{{ r.purchaseCode }}</strong>
+        @if (r.isCancelled) { <p-tag value="Cancelled" severity="danger" styleClass="ml-2"></p-tag> }
+      </td>
+      <td>{{ r.purchaseDate | date:'dd MMM yyyy' }}</td>
+      <td>{{ r.vendorName }}</td>
+      <td>{{ r.vendorInvoiceNo || '—' }}</td>
+      <td>{{ r.paymentMode }}</td>
+      <td style="text-align:right;">Rs. {{ r.grandTotal | number:'1.0-0' }}</td>
+      <td style="text-align:center;">
+        <p-button icon="pi pi-eye" [text]="true" size="small" (onClick)="view(r)" pTooltip="View"></p-button>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr><td colspan="7" style="text-align:center;padding:18px;color:#94a3b8;">No purchases in this range.</td></tr>
+  </ng-template>
+</p-table>
+
+<!-- Detail view dialog -->
+<p-dialog [(visible)]="detailOpen" [modal]="true" [style]="{ width: '780px' }" [draggable]="false" [resizable]="false"
+          [header]="(detailRow()?.purchaseCode || 'Purchase') + ' — details'">
+  @if (detailRow(); as r) {
+    <div class="detail-grid">
+      <div><span>Date</span><b>{{ r.purchaseDate | date:'mediumDate' }}</b></div>
+      <div><span>Vendor</span><b>{{ r.vendorName }}</b></div>
+      <div><span>Invoice No</span><b>{{ r.vendorInvoiceNo || '—' }}</b></div>
+      <div><span>Payment Mode</span><b>{{ r.paymentMode }}</b></div>
+      <div><span>Grand Total</span><b style="color:#16a34a;">Rs. {{ r.grandTotal | number:'1.0-0' }}</b></div>
+      @if (r.linkedExpenseId) { <div><span>Linked Expense</span><b>#{{ r.linkedExpenseId }}</b></div> }
+    </div>
+
+    <h4 style="font-size:0.95rem;margin:14px 0 8px;">Items purchased</h4>
+    <p-table [value]="detailLines()" [loading]="detailLoading()" styleClass="p-datatable-sm p-datatable-gridlines">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Item</th>
+          <th style="width:110px;">Code</th>
+          <th style="width:80px;">Unit</th>
+          <th style="width:90px;text-align:right;">Qty</th>
+          <th style="width:120px;text-align:right;">Unit Price</th>
+          <th style="width:130px;text-align:right;">Line Total</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-l>
+        <tr>
+          <td>{{ l.itemName }}</td>
+          <td>{{ l.itemCode || '—' }}</td>
+          <td>{{ l.unitOfMeasure }}</td>
+          <td style="text-align:right;">{{ l.quantity | number:'1.0-2' }}</td>
+          <td style="text-align:right;">Rs. {{ l.unitPrice | number:'1.0-0' }}</td>
+          <td style="text-align:right;font-weight:500;">Rs. {{ l.lineTotal | number:'1.0-0' }}</td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr><td colspan="6" style="text-align:center;padding:14px;color:#94a3b8;">No line items.</td></tr>
+      </ng-template>
+    </p-table>
+
+    @if (detailRow()?.linkedExpenseId === null && detailLines().length === 0 && !detailLoading()) {
+      <p style="margin:14px 0 0;color:#64748b;font-size:0.82rem;">
+        No line items found. The Item Ledger report shows the full audit trail per item.
+      </p>
+    }
+
+    @if (r.isCancelled) {
+      <div class="cancel-banner">
+        <i class="pi pi-ban"></i>
+        <div>
+          <strong>This purchase has been cancelled.</strong>
+          @if (r.cancelReason) { <div style="margin-top:4px;font-size:0.84rem;color:#7c2d12;">Reason: {{ r.cancelReason }}</div> }
+          @if (r.cancelledAt) { <div style="font-size:0.78rem;color:#9a3412;">{{ r.cancelledAt | date:'medium' }}</div> }
+        </div>
+      </div>
+    }
+  }
+
+  <ng-template pTemplate="footer">
+    @if (canCancel && detailRow() && !detailRow()!.isCancelled) {
+      <p-button label="Cancel purchase" icon="pi pi-ban" severity="danger" [outlined]="true" (onClick)="openCancel()"></p-button>
+    }
+  </ng-template>
+</p-dialog>
+
+<!-- Cancel reason prompt -->
+<p-dialog [(visible)]="cancelOpen" [modal]="true" [style]="{ width: '500px' }" [draggable]="false" [resizable]="false"
+          header="Cancel purchase — confirm">
+  <p style="margin:0 0 12px;color:#475569;font-size:0.88rem;">
+    Cancelling will <strong>reverse the stock</strong> back off each item. Once cancelled the record stays visible in audit reports but is filtered out of the default register.
+  </p>
+  <label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Reason *</label>
+  <textarea pTextarea [(ngModel)]="cancelReason" rows="3" style="width:100%;" placeholder="Why are you cancelling this purchase?"></textarea>
+  <ng-template pTemplate="footer">
+    <p-button label="Keep" severity="secondary" [outlined]="true" (onClick)="cancelOpen.set(false)"></p-button>
+    <p-button label="Cancel purchase" icon="pi pi-ban" severity="danger" [loading]="cancelling()" (onClick)="submitCancel()"></p-button>
+  </ng-template>
+</p-dialog>
+
+<!-- New purchase dialog (form) -->
+<p-dialog [(visible)]="formOpen" [modal]="true" [style]="{ width: '920px' }" [draggable]="false" [resizable]="false"
+          header="Record purchase">
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:16px;">
     <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Purchase Date *</label>
       <p-datepicker [(ngModel)]="purchaseDate" dateFormat="dd M yy" [showIcon]="true" [fluid]="true" appendTo="body"></p-datepicker></div>
@@ -17,10 +146,10 @@
     <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Vendor Invoice No</label>
       <input pInputText [(ngModel)]="vendorInvoiceNo" style="width:100%;" /></div>
     <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Payment Mode</label>
-      <p-select [options]="modeOptions" optionLabel="label" optionValue="value" [(ngModel)]="paymentMode" [style]="{ width: '100%' }" appendTo="body"></p-select></div>
+      <p-select [options]="modeOptions" optionLabel="label" optionValue="value" [(ngModel)]="paymentMode"
+                [style]="{ width: '100%' }" appendTo="body"></p-select></div>
   </div>
 
-  <!-- Lines -->
   <h3 style="font-size:1rem;margin:0 0 8px;">Items</h3>
   <p-table [value]="lines()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '54rem' }">
     <ng-template pTemplate="header">
@@ -34,7 +163,11 @@
     </ng-template>
     <ng-template pTemplate="body" let-line let-idx="rowIndex">
       <tr>
-        <td><p-select [options]="itemOptions()" optionLabel="label" optionValue="value" [(ngModel)]="line.itemId" [filter]="true" [style]="{ width: '100%' }" appendTo="body" placeholder="Select item"></p-select></td>
+        <td>
+          <p-select [options]="itemOptions()" optionLabel="label" optionValue="value" [(ngModel)]="line.itemId"
+                    [filter]="true" [style]="{ width: '100%' }" appendTo="body" placeholder="Select item"
+                    [panelStyle]="{ maxHeight: '260px' }" scrollHeight="240px"></p-select>
+        </td>
         <td><p-inputnumber [(ngModel)]="line.quantity" [min]="0" [minFractionDigits]="0" [maxFractionDigits]="2" [fluid]="true"></p-inputnumber></td>
         <td><p-inputnumber [(ngModel)]="line.unitPrice" mode="currency" currency="PKR" [fluid]="true"></p-inputnumber></td>
         <td><strong>Rs. {{ lineTotal(line) | number:'1.0-0' }}</strong></td>
@@ -57,7 +190,18 @@
       @if (attachmentPath()) { <small style="color:#16a34a;display:block;margin-top:4px;">Uploaded ✓</small> }</div>
   </div>
 
-  <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:18px;">
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [outlined]="true" (onClick)="formOpen.set(false)"></p-button>
     <p-button label="Record Purchase" icon="pi pi-check" [loading]="saving()" (onClick)="save()"></p-button>
-  </div>
-</div>
+  </ng-template>
+</p-dialog>
+
+<style>
+  .detail-grid { display:grid;grid-template-columns:140px 1fr;row-gap:8px;column-gap:16px;font-size:0.88rem; }
+  .detail-grid > div { display:contents; }
+  .detail-grid span { color:#94a3b8; }
+  .detail-grid b { color:#0f172a; }
+  .ml-2 { margin-left:6px !important; }
+  .cancel-banner { margin-top:14px;display:flex;gap:10px;align-items:flex-start;border:1px solid #fed7aa;background:#fff7ed;color:#9a3412;border-radius:8px;padding:10px 14px;font-size:0.9rem; }
+  .cancel-banner i { font-size:1.1rem;margin-top:2px; }
+</style>

@@ -372,7 +372,7 @@ ol {
 
 ul {
     list-style: square;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     padding-left: 20px;
 
     &.liststyle {
@@ -409,8 +409,8 @@ ul {
     li {
         font-size: var(--font-size-b1);
         line-height: var(--line-height-b1);
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin-top: 1px;
+        margin-bottom: 1px;
         color: var(--color-body);
 
         a {
@@ -435,8 +435,8 @@ ol {
         font-size: var(--font-size-b1);
         line-height: var(--line-height-b1);
         color: var(--color-body);
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin-top: 1px;
+        margin-bottom: 1px;
 
         a {
             color: var(--color-heading);

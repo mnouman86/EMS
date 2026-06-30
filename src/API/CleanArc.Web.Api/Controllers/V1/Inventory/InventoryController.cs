@@ -66,6 +66,16 @@ public class InventoryController : ControllerBase
     [Authorize, HttpPost("InventoryIssueItems")]
     public async Task<IActionResult> IssueItems([FromBody] IssueInventoryItemsCommand cmd) { cmd.UserId = CurrentUserId; return Wrap(await _sender.Send(cmd)); }
 
+    /* Cancel + reverse stock — admin / principal only. The SP enforces deeper rules
+       (already-cancelled, returns exist, would drive stock negative). */
+    [Authorize(Roles = Roles.AdminOrPrincipal), HttpPost("InventoryCancelPurchase")]
+    public async Task<IActionResult> CancelPurchase([FromBody] CancelInventoryPurchaseCommand cmd)
+    { cmd.UserId = CurrentUserId; return Wrap(await _sender.Send(cmd)); }
+
+    [Authorize(Roles = Roles.AdminOrPrincipal), HttpPost("InventoryCancelIssue")]
+    public async Task<IActionResult> CancelIssue([FromBody] CancelInventoryIssueCommand cmd)
+    { cmd.UserId = CurrentUserId; return Wrap(await _sender.Send(cmd)); }
+
     [Authorize,HttpPost("InventoryRecordReturn")]
     public async Task<IActionResult> RecordReturn([FromBody] RecordInventoryReturnCommand cmd) { cmd.UserId = CurrentUserId; return Wrap(await _sender.Send(cmd)); }
 
@@ -96,6 +106,9 @@ public class InventoryController : ControllerBase
 
     [Authorize,HttpPost("InventoryGetIssueDetail")]
     public async Task<IActionResult> IssueDetail([FromBody] GetIssueDetailQuery q) => Wrap(await _sender.Send(q));
+
+    [Authorize,HttpPost("InventoryGetPurchaseDetail")]
+    public async Task<IActionResult> PurchaseDetail([FromBody] GetPurchaseDetailQuery q) => Wrap(await _sender.Send(q));
 
     /* ---------- "My Issued Items" (any authenticated user) ---------- */
 

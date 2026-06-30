@@ -4,7 +4,7 @@
       <h2 style="margin:0;font-size:1.3rem;">{{ e.fullName }}
         <span style="font-size:0.9rem;color:#64748b;">({{ e.employeeCode }})</span>
       </h2>
-      <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">
+      <p style="margin:2px 0 0;color:#64748b;font-size:1.1rem;">
         {{ e.designation }}<span *ngIf="e.department"> • {{ e.department }}</span>
         <p-tag [value]="e.status || '—'" [severity]="statusSeverity(e.status)" styleClass="ml-2"></p-tag>
       </p>
@@ -150,11 +150,11 @@
 <!-- Assignment dialog -->
 <p-dialog [visible]="assignDialog()" (visibleChange)="assignDialog.set($event)" [modal]="true" [style]="{ width: '420px' }" header="Add Teacher Assignment" [draggable]="false">
   <div style="margin-bottom:12px;">
-    <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Class</label>
+    <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Class</label>
     <p-select [options]="classes()" optionLabel="levelName" optionValue="id" [(ngModel)]="newClassId" [filter]="true" filterBy="levelName" [style]="{ width: '100%' }" appendTo="body"></p-select>
   </div>
   <div>
-    <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Subject</label>
+    <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Subject</label>
     <p-select [options]="subjects()" optionLabel="name" optionValue="id" [(ngModel)]="newSubjectId" [filter]="true" filterBy="name" [style]="{ width: '100%' }" appendTo="body"></p-select>
   </div>
   <small style="color:#94a3b8;display:block;margin-top:8px;">The class–subject must already be mapped (Subjects → Map to Classes).</small>
@@ -167,13 +167,13 @@
 <!-- Salary dialog -->
 <p-dialog [visible]="salaryDialog()" (visibleChange)="salaryDialog.set($event)" [modal]="true" [style]="{ width: '420px' }" header="Salary Structure" [draggable]="false">
   <div style="display:flex;flex-direction:column;gap:12px;">
-    <div><label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Basic salary</label>
+    <div><label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Basic salary</label>
       <p-inputnumber [(ngModel)]="salBasic" mode="decimal" [fluid]="true"></p-inputnumber></div>
-    <div><label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Allowances</label>
+    <div><label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Allowances</label>
       <p-inputnumber [(ngModel)]="salAllow" mode="decimal" [fluid]="true"></p-inputnumber></div>
-    <div><label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Fixed deductions</label>
+    <div><label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Fixed deductions</label>
       <p-inputnumber [(ngModel)]="salDeduct" mode="decimal" [fluid]="true"></p-inputnumber></div>
-    <div><label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Effective from</label>
+    <div><label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Effective from</label>
       <p-datepicker [(ngModel)]="salFrom" dateFormat="dd M yy" [showIcon]="true" [fluid]="true" appendTo="body"></p-datepicker></div>
   </div>
   <ng-template pTemplate="footer">
@@ -184,9 +184,9 @@
 
 <!-- Advance dialog -->
 <p-dialog [visible]="advanceDialog()" (visibleChange)="advanceDialog.set($event)" [modal]="true" [style]="{ width: '400px' }" header="Issue Advance" [draggable]="false">
-  <div style="margin-bottom:12px;"><label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Amount</label>
+  <div style="margin-bottom:12px;"><label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Amount</label>
     <p-inputnumber [(ngModel)]="advAmount" mode="decimal" [fluid]="true"></p-inputnumber></div>
-  <div><label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Reason</label>
+  <div><label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Reason</label>
     <input pInputText [(ngModel)]="advReason" style="width:100%;" /></div>
   <ng-template pTemplate="footer">
     <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="advanceDialog.set(false)"></p-button>
@@ -197,7 +197,7 @@
 <!-- Document dialog -->
 <p-dialog [visible]="docDialog()" (visibleChange)="docDialog.set($event)" [modal]="true" [style]="{ width: '440px' }" header="Upload Document" [draggable]="false">
   <div style="margin-bottom:12px;">
-    <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Document type</label>
+    <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Document type</label>
     <p-select [options]="docTypeOptions" optionLabel="label" optionValue="value" [(ngModel)]="docType" [style]="{ width: '100%' }" appendTo="body"></p-select>
   </div>
   <p-fileupload mode="basic" chooseLabel="Choose file" [auto]="false" [customUpload]="true"

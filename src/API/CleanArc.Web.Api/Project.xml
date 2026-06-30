@@ -52,6 +52,40 @@
             Parent-facing reads live on ParentController (ownership-checked).
             </summary>
         </member>
+        <member name="T:CleanArc.Web.Api.Controllers.V1.Authorization.MyTeachingController">
+            <summary>
+            Teacher self-service — the "My Teaching" landing page bundle.
+            Any authenticated user can call it; the SP returns rows only for the
+            employee linked to the caller (no rows for admins not in dbo.Employee,
+            which is fine — the SPA just shows empty sections in that case).
+            </summary>
+        </member>
+        <member name="T:CleanArc.Web.Api.Controllers.V1.Calendar.CalendarController">
+            <summary>
+            School calendar — admin/principal-only writes for holidays + weekend config;
+            any authenticated user can read the non-working dates (used by the daily
+            attendance picker on the teacher screen).
+            </summary>
+        </member>
+        <member name="T:CleanArc.Web.Api.Controllers.V1.Complaint.ComplaintController">
+            <summary>
+            Complaint / Suggestion module. See docs/EMS_User_Story_Complaints.md.
+            All endpoints require auth. Mutations on the admin/reviewer side are
+            restricted to admin role (super-admin bypass keeps it simple — the
+            principal report uses Read-only endpoints).
+            </summary>
+        </member>
+        <member name="M:CleanArc.Web.Api.Controllers.V1.Complaint.ComplaintController.Create(System.Int32,System.String,System.String,System.String,System.String,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Creates a complaint with optional supporting attachment.
+            Accepts multipart form-data so the file can ride along with the form fields.
+            </summary>
+        </member>
+        <member name="M:CleanArc.Web.Api.Controllers.V1.Complaint.ComplaintController.Download(System.String,System.String)">
+            <summary>Streams a previously-uploaded complaint attachment to the caller.
+            Path is validated to live under wwwroot/uploads/complaints so callers
+            can't escape into the rest of the filesystem.</summary>
+        </member>
         <member name="T:CleanArc.Web.Api.Controllers.V1.Employee.EmployeeController">
             <summary>
             Endpoints for the Employees / Teachers module — EMP-01..EMP-08.

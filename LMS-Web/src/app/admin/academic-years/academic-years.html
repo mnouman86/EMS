@@ -3,7 +3,7 @@
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
   <div>
     <h2 style="margin:0;font-size:1.3rem;">Academic Years</h2>
-    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">
+    <p style="margin:2px 0 0;color:#64748b;font-size:1.1rem;">
       Define sessions and set the current open year. All fee, inventory and finance records scope to the open year.
     </p>
   </div>
@@ -57,7 +57,7 @@
           [header]="isEditing ? 'Edit Academic Year' : 'New Academic Year'" [draggable]="false">
   <form [formGroup]="form" (ngSubmit)="save()" id="ayForm">
     <div style="margin-bottom:14px;">
-      <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Code</label>
+      <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Code</label>
       <input pInputText formControlName="code" placeholder="2025-26" style="width:100%;" />
       @if (form.controls.code.touched && form.controls.code.invalid) {
         <small style="color:#ef4444;">Code is required (max 20 chars).</small>
@@ -68,7 +68,7 @@
     </div>
 
     <div style="margin-bottom:14px;">
-      <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Display name</label>
+      <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Display name</label>
       <input pInputText formControlName="displayName" placeholder="Academic Year 2025–26" style="width:100%;" />
       @if (form.controls.displayName.touched && form.controls.displayName.invalid) {
         <small style="color:#ef4444;">Name is required.</small>
@@ -77,12 +77,12 @@
 
     <div style="display:flex;gap:12px;margin-bottom:14px;">
       <div style="flex:1;">
-        <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Start date</label>
+        <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Start date</label>
         <p-datepicker formControlName="startDate" dateFormat="dd M yy" [showIcon]="true"
                       [fluid]="true" appendTo="body"></p-datepicker>
       </div>
       <div style="flex:1;">
-        <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">End date</label>
+        <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">End date</label>
         <p-datepicker formControlName="endDate" dateFormat="dd M yy" [showIcon]="true"
                       [fluid]="true" appendTo="body"></p-datepicker>
       </div>
@@ -94,7 +94,7 @@
     @if (!isEditing) {
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
         <p-toggleswitch formControlName="isOpen"></p-toggleswitch>
-        <label style="font-size:0.85rem;">Set as the current open year</label>
+        <label style="font-size:1rem;">Set as the current open year</label>
       </div>
     }
   </form>

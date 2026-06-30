@@ -47,6 +47,9 @@ namespace CleanArc.Domain.Entities.Inventory
         public int? LinkedExpenseId { get; set; }     // populated when EXP module ships (INV-02)
         public int? CreatedBy { get; set; }
         public DateTime? CreatedAt { get; set; }
+        public bool IsCancelled { get; set; }
+        public DateTime? CancelledAt { get; set; }
+        public string? CancelReason { get; set; }
     }
 
     public class InventoryPurchaseLine
@@ -71,6 +74,9 @@ namespace CleanArc.Domain.Entities.Inventory
         public string? Purpose { get; set; }
         public int? IssuedBy { get; set; }
         public DateTime? CreatedAt { get; set; }
+        public bool IsCancelled { get; set; }
+        public DateTime? CancelledAt { get; set; }
+        public string? CancelReason { get; set; }
     }
 
     public class InventoryIssueLine
@@ -165,6 +171,7 @@ namespace CleanArc.Domain.Entities.Inventory
         public decimal Quantity { get; set; }         // + in, - out
         public decimal RunningStock { get; set; }
         public string? Notes { get; set; }
+        public int SourceMovementId { get; set; }     // FK back to the originating record (purchase/issue/return/adjustment)
     }
 
     /* INV-04: one row per issue line, with the returnable balance (for the return screen) */
@@ -176,6 +183,9 @@ namespace CleanArc.Domain.Entities.Inventory
         public string? IssuedToType { get; set; }
         public string? IssuedToName { get; set; }
         public string? Purpose { get; set; }
+        public bool IsCancelled { get; set; }
+        public DateTime? CancelledAt { get; set; }
+        public string? CancelReason { get; set; }
         public int IssueLineId { get; set; }
         public int ItemId { get; set; }
         public string? ItemName { get; set; }
@@ -183,6 +193,30 @@ namespace CleanArc.Domain.Entities.Inventory
         public decimal Quantity { get; set; }
         public decimal ReturnedQuantity { get; set; }
         public decimal RemainingQuantity { get; set; }
+    }
+
+    /* INV-02 view: one row per purchase line (for the Purchase view dialog). */
+    public class InventoryPurchaseDetailRow
+    {
+        public int PurchaseId { get; set; }
+        public string? PurchaseCode { get; set; }
+        public DateTime PurchaseDate { get; set; }
+        public string? VendorName { get; set; }
+        public string? VendorInvoiceNo { get; set; }
+        public string? PaymentMode { get; set; }
+        public decimal GrandTotal { get; set; }
+        public string? Notes { get; set; }
+        public bool IsCancelled { get; set; }
+        public DateTime? CancelledAt { get; set; }
+        public string? CancelReason { get; set; }
+        public int PurchaseLineId { get; set; }
+        public int ItemId { get; set; }
+        public string? ItemName { get; set; }
+        public string? ItemCode { get; set; }
+        public string? UnitOfMeasure { get; set; }
+        public decimal Quantity { get; set; }
+        public decimal UnitPrice { get; set; }
+        public decimal LineTotal { get; set; }
     }
 
     /* ---------- Issue request workflow (teacher → accountant) ---------- */

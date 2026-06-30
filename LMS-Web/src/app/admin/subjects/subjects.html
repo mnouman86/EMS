@@ -3,7 +3,7 @@
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
   <div>
     <h2 style="margin:0;font-size:1.3rem;">Subjects</h2>
-    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Subject catalogue. RTL subjects (e.g. Urdu) render right-to-left on sheets.</p>
+    <p style="margin:2px 0 0;color:#64748b;font-size:1.1rem;">Subject catalogue. RTL subjects (e.g. Urdu) render right-to-left on sheets.</p>
   </div>
   <div style="display:flex;gap:8px;">
     <a routerLink="/admin/subjects/mapping" class="p-button p-component p-button-outlined" style="text-decoration:none;">
@@ -54,27 +54,27 @@
           [header]="isEditing ? 'Edit Subject' : 'New Subject'" [draggable]="false">
   <form [formGroup]="form" (ngSubmit)="save()">
     <div style="margin-bottom:14px;">
-      <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Name</label>
+      <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Name</label>
       <input pInputText formControlName="name" placeholder="Mathematics" style="width:100%;" />
       @if (form.controls.name.touched && form.controls.name.invalid) { <small style="color:#ef4444;">Required (max 100).</small> }
     </div>
     <div style="display:flex;gap:12px;margin-bottom:14px;">
       <div style="flex:1;">
-        <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Short code (optional)</label>
+        <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Short code (optional)</label>
         <input pInputText formControlName="shortCode" placeholder="MTH" maxlength="10" style="width:100%;" />
       </div>
       <div style="flex:1;">
-        <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Display order</label>
+        <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Display order</label>
         <p-inputnumber formControlName="displayOrder" [useGrouping]="false" inputStyleClass="w-full" [fluid]="true"></p-inputnumber>
       </div>
     </div>
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
       <p-toggleswitch formControlName="isRTL"></p-toggleswitch>
-      <label style="font-size:0.85rem;">Right-to-left (Urdu / Arabic)</label>
+      <label style="font-size:1rem;">Right-to-left (Urdu / Arabic)</label>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
       <p-toggleswitch formControlName="isActive"></p-toggleswitch>
-      <label style="font-size:0.85rem;">Active</label>
+      <label style="font-size:1rem;">Active</label>
     </div>
   </form>
 

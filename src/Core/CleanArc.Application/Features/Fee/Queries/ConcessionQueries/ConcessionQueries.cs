@@ -31,7 +31,7 @@ namespace CleanArc.Application.Features.Fee.Queries.ConcessionQueries
         public GetConcessionsQueryHandler(IUnitOfWork u, IMapper m, ITeacherScopeContext scope) { _u = u; _m = m; _scope = scope; }
         public async ValueTask<OperationResult<List<ConcessionResult>>> Handle(GetConcessionsQuery r, CancellationToken ct)
         {
-            if (_scope.IsTeacherScoped && r.StudentId.HasValue && !await _scope.OwnsStudentAsync(r.StudentId.Value))
+            if (_scope.IsTeacherScoped && r.StudentId.HasValue && !await _scope.OwnsStudentAsync(r.StudentId.Value, TeacherScopeKind.ClassTeacher))
                 return OperationResult<List<ConcessionResult>>.FailureResult("Not authorized for this student.", 403);
 
             var res = await _u.FeeRepository.GetConcessionsAsync(r.StudentId);
@@ -41,7 +41,7 @@ namespace CleanArc.Application.Features.Fee.Queries.ConcessionQueries
             var total = res.TotalCount;
             if (_scope.IsTeacherScoped && !r.StudentId.HasValue)
             {
-                var owned = await _scope.FilterOwnedStudentsAsync(rows.Select(x => x.StudentId));
+                var owned = await _scope.FilterOwnedStudentsAsync(rows.Select(x => x.StudentId), TeacherScopeKind.ClassTeacher);
                 rows = rows.Where(x => owned.Contains(x.StudentId)).ToList();
                 total = rows.Count;
             }
@@ -65,7 +65,7 @@ namespace CleanArc.Application.Features.Fee.Queries.ConcessionQueries
         public GetAdvanceBalanceQueryHandler(IUnitOfWork u, IMapper m, ITeacherScopeContext scope) { _u = u; _m = m; _scope = scope; }
         public async ValueTask<OperationResult<AdvanceBalanceResult>> Handle(GetAdvanceBalanceQuery r, CancellationToken ct)
         {
-            if (_scope.IsTeacherScoped && !await _scope.OwnsStudentAsync(r.StudentId))
+            if (_scope.IsTeacherScoped && !await _scope.OwnsStudentAsync(r.StudentId, TeacherScopeKind.ClassTeacher))
                 return OperationResult<AdvanceBalanceResult>.FailureResult("Not authorized for this student.", 403);
 
             var res = await _u.FeeRepository.GetAdvanceBalanceAsync(r.StudentId);

@@ -42,11 +42,13 @@ internal class GetAllStudentsQueryHandler : IRequestHandler<GetAllStudentsQuery,
 
         var mapped = _mapper.Map<List<GetAllStudentsQueryResult>>(response.Data);
 
-        // Teacher-only callers see only students of their assigned classes.
+        // Teacher-only callers see only students of their *own* class
+        // (class teacher relationship). Subject-only classes are filtered out —
+        // those students surface separately in the Results module.
         var totalCount = response.TotalCount;
         if (_scope.IsTeacherScoped)
         {
-            var classIds = await _scope.GetClassScopeAsync();
+            var classIds = await _scope.GetClassScopeAsync(TeacherScopeKind.ClassTeacher);
             mapped = mapped.Where(s => s.AdmittedClassId.HasValue && classIds.Contains(s.AdmittedClassId.Value)).ToList();
             totalCount = mapped.Count;
         }

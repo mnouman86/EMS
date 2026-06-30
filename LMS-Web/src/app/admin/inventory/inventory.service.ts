@@ -7,7 +7,7 @@ import {
   InventoryCategory, UpsertInventoryCategory, InventoryItem, UpsertInventoryItem,
   RecordPurchase, IssueItems, RecordReturn, StockAdjustment, IssueDetailRow,
   StockDashboardRow, LowStockAlert, SnoozeAlert,
-  PurchaseRegisterRow, IssueRegisterRow, ItemLedgerRow,
+  PurchaseRegisterRow, IssueRegisterRow, ItemLedgerRow, PurchaseDetailRow,
   PurchaseRegisterFilters, IssueRegisterFilters,
   MyIssuedRow, CreateIssueRequest, IssueRequestRow, IssueRequestLineRow
 } from './inventory.models';
@@ -43,11 +43,20 @@ export class InventoryService {
   issueItems(dto: IssueItems): Observable<ApiResult<unknown>> {
     return this.api.post('Inventory/InventoryIssueItems', dto);
   }
+  cancelPurchase(purchaseId: number, reason: string): Observable<ApiResult<unknown>> {
+    return this.api.post('Inventory/InventoryCancelPurchase', { purchaseId, reason });
+  }
+  cancelIssue(issueId: number, reason: string): Observable<ApiResult<unknown>> {
+    return this.api.post('Inventory/InventoryCancelIssue', { issueId, reason });
+  }
   recordReturn(dto: RecordReturn): Observable<ApiResult<unknown>> {
     return this.api.post('Inventory/InventoryRecordReturn', dto);
   }
   getIssueDetail(issueId: number): Observable<ApiResult<IssueDetailRow[]>> {
     return this.api.post<IssueDetailRow[]>('Inventory/InventoryGetIssueDetail', { issueId });
+  }
+  getPurchaseDetail(purchaseId: number): Observable<ApiResult<PurchaseDetailRow[]>> {
+    return this.api.post<PurchaseDetailRow[]>('Inventory/InventoryGetPurchaseDetail', { purchaseId });
   }
   recordAdjustment(dto: StockAdjustment): Observable<ApiResult<unknown>> {
     return this.api.post('Inventory/InventoryRecordAdjustment', dto);

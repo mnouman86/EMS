@@ -40,7 +40,7 @@ namespace CleanArc.Application.Features.Fee.Queries.ReportQueries
             var total = res.TotalCount;
             if (_scope.IsTeacherScoped)
             {
-                var classIds = await _scope.GetClassScopeAsync();
+                var classIds = await _scope.GetClassScopeAsync(TeacherScopeKind.ClassTeacher);
                 rows = rows.Where(x => classIds.Contains(x.ClassId)).ToList();
                 total = rows.Count;
             }
@@ -65,7 +65,7 @@ namespace CleanArc.Application.Features.Fee.Queries.ReportQueries
             var total = res.TotalCount;
             if (_scope.IsTeacherScoped)
             {
-                var classIds = await _scope.GetClassScopeAsync();
+                var classIds = await _scope.GetClassScopeAsync(TeacherScopeKind.ClassTeacher);
                 rows = rows.Where(x => classIds.Contains(x.ClassId)).ToList();
                 total = rows.Count;
             }
@@ -103,7 +103,7 @@ namespace CleanArc.Application.Features.Fee.Queries.ReportQueries
             if (_scope.IsTeacherScoped)
             {
                 // Ageing rows don't carry ClassId — batched ownership filter.
-                var owned = await _scope.FilterOwnedStudentsAsync(rows.Select(x => x.StudentId));
+                var owned = await _scope.FilterOwnedStudentsAsync(rows.Select(x => x.StudentId), TeacherScopeKind.ClassTeacher);
                 rows = rows.Where(x => owned.Contains(x.StudentId)).ToList();
                 total = rows.Count;
             }

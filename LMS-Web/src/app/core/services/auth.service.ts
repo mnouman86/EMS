@@ -85,8 +85,13 @@ export class AuthService {
   landingRoute(): string {
     const roles = (this._user()?.roles ?? []).map(r => r.toLowerCase());
     const isParent = roles.includes('parent');
+    const isAdminOrPrincipal = roles.some(r => ['admin', 'principal'].includes(r));
+    const isTeacher = roles.includes('teacher');
     const isStaff = roles.some(r => ['admin', 'principal', 'accountant', 'teacher'].includes(r));
-    return isParent && !isStaff ? '/parent' : '/admin/dashboard';
+    if (isParent && !isStaff) return '/parent';
+    // Pure teacher (not also admin/principal) → land on the teacher dashboard.
+    if (isTeacher && !isAdminOrPrincipal) return '/admin/my-teaching';
+    return '/admin/dashboard';
   }
 
   // ---- internals ----

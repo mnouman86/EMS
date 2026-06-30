@@ -1,7 +1,7 @@
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
   <div>
     <h2 style="margin:0;font-size:1.3rem;">Inventory</h2>
-    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Stock levels, movements and reorder alerts.</p>
+    <p style="margin:2px 0 0;color:#64748b;font-size:1.1rem;">Stock levels, movements and reorder alerts.</p>
   </div>
   <div style="display:flex;gap:8px;">
     @if (alertCount() > 0) {
@@ -33,15 +33,15 @@
 <!-- Filters -->
 <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px;">
   <div style="min-width:180px;">
-    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Category</label>
+    <label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Category</label>
     <p-select [options]="categoryOptions()" optionLabel="label" optionValue="value" [(ngModel)]="categoryId" [style]="{ width: '100%' }" [filter]="true"></p-select>
   </div>
   <div style="min-width:140px;">
-    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Status</label>
+    <label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Status</label>
     <p-select [options]="statusOptions" optionLabel="label" optionValue="value" [(ngModel)]="status" [style]="{ width: '100%' }"></p-select>
   </div>
   <div>
-    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Movement period</label>
+    <label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Movement period</label>
     <p-datepicker [(ngModel)]="range" selectionMode="range" dateFormat="dd M yy" [showIcon]="true" appendTo="body" [readonlyInput]="true"></p-datepicker>
   </div>
   <p-button label="Apply" icon="pi pi-refresh" [loading]="loading()" (onClick)="load()"></p-button>

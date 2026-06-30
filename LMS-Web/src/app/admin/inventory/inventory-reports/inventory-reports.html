@@ -1,7 +1,7 @@
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
   <div>
     <h2 style="margin:0;font-size:1.3rem;">Inventory Reports</h2>
-    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Purchase &amp; issue registers and per-item movement ledger.</p>
+    <p style="margin:2px 0 0;color:#64748b;font-size:1.1rem;">Purchase &amp; issue registers and per-item movement ledger.</p>
   </div>
   <a routerLink="/admin/inventory" class="p-button p-component p-button-outlined" style="text-decoration:none;">
     <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back
@@ -39,23 +39,33 @@
         <p-button label="This week" [text]="true" size="small" (onClick)="applyPreset('purchaseRange','week')"></p-button>
         <p-button label="This month" [text]="true" size="small" (onClick)="applyPreset('purchaseRange','month')"></p-button>
         <p-button label="This year" [text]="true" size="small" (onClick)="applyPreset('purchaseRange','year')"></p-button>
+        <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem;color:#64748b;margin-left:auto;cursor:pointer;">
+          <input type="checkbox" [(ngModel)]="includeCancelled" (change)="loadPurchases()" />
+          Include cancelled
+        </label>
       </div>
-      <p-table [value]="purchases()" [loading]="purchaseLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '60rem' }" [paginator]="purchases().length > 25" [rows]="25">
+      <p-table [value]="purchases()" [loading]="purchaseLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '64rem' }" [paginator]="purchases().length > 25" [rows]="25">
         <ng-template pTemplate="header">
-          <tr><th style="width:140px;">Code</th><th style="width:130px;">Date</th><th>Vendor</th><th>Invoice No</th><th style="width:120px;">Mode</th><th style="width:140px;">Total</th><th style="width:110px;">Expense</th></tr>
+          <tr><th style="width:140px;">Code</th><th style="width:130px;">Date</th><th>Vendor</th><th>Invoice No</th><th style="width:120px;">Mode</th><th style="width:140px;">Total</th><th style="width:110px;">Expense</th><th style="width:70px;text-align:center;">View</th></tr>
         </ng-template>
         <ng-template pTemplate="body" let-r>
           <tr>
-            <td><strong>{{ r.purchaseCode }}</strong></td>
+            <td>
+              <strong>{{ r.purchaseCode }}</strong>
+              @if (r.isCancelled) { <p-tag value="Cancelled" severity="danger" styleClass="ml-2"></p-tag> }
+            </td>
             <td>{{ r.purchaseDate | date:'dd MMM yyyy' }}</td>
             <td>{{ r.vendorName }}</td>
             <td>{{ r.vendorInvoiceNo || '—' }}</td>
             <td>{{ r.paymentMode || '—' }}</td>
             <td><strong>Rs. {{ r.grandTotal | number:'1.0-0' }}</strong></td>
             <td>{{ r.linkedExpenseId ? ('#' + r.linkedExpenseId) : '—' }}</td>
+            <td style="text-align:center;">
+              <p-button icon="pi pi-eye" [text]="true" size="small" (onClick)="viewPurchase(r.id)" pTooltip="View details"></p-button>
+            </td>
           </tr>
         </ng-template>
-        <ng-template pTemplate="emptymessage"><tr><td colspan="7" style="text-align:center;padding:18px;color:#64748b;">No purchases in this range.</td></tr></ng-template>
+        <ng-template pTemplate="emptymessage"><tr><td colspan="8" style="text-align:center;padding:18px;color:#64748b;">No purchases in this range.</td></tr></ng-template>
       </p-table>
     </p-tabpanel>
 
@@ -90,22 +100,32 @@
         <p-button label="This week" [text]="true" size="small" (onClick)="applyPreset('issueRange','week')"></p-button>
         <p-button label="This month" [text]="true" size="small" (onClick)="applyPreset('issueRange','month')"></p-button>
         <p-button label="This year" [text]="true" size="small" (onClick)="applyPreset('issueRange','year')"></p-button>
+        <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem;color:#64748b;margin-left:auto;cursor:pointer;">
+          <input type="checkbox" [(ngModel)]="includeCancelled" (change)="loadIssues()" />
+          Include cancelled
+        </label>
       </div>
-      <p-table [value]="issues()" [loading]="issueLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '56rem' }" [paginator]="issues().length > 25" [rows]="25">
+      <p-table [value]="issues()" [loading]="issueLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '60rem' }" [paginator]="issues().length > 25" [rows]="25">
         <ng-template pTemplate="header">
-          <tr><th style="width:140px;">Code</th><th style="width:130px;">Date</th><th style="width:120px;">To Type</th><th>Recipient</th><th style="width:90px;">Recip. ID</th><th>Purpose</th></tr>
+          <tr><th style="width:140px;">Code</th><th style="width:130px;">Date</th><th style="width:120px;">To Type</th><th>Recipient</th><th style="width:90px;">Recip. ID</th><th>Purpose</th><th style="width:70px;text-align:center;">View</th></tr>
         </ng-template>
         <ng-template pTemplate="body" let-r>
           <tr>
-            <td><strong>{{ r.issueCode }}</strong></td>
+            <td>
+              <strong>{{ r.issueCode }}</strong>
+              @if (r.isCancelled) { <p-tag value="Cancelled" severity="danger" styleClass="ml-2"></p-tag> }
+            </td>
             <td>{{ r.issueDate | date:'dd MMM yyyy' }}</td>
             <td>{{ r.issuedToType }}</td>
             <td>{{ r.issuedToName }}</td>
             <td>{{ r.issuedToId ?? '—' }}</td>
             <td>{{ r.purpose || '—' }}</td>
+            <td style="text-align:center;">
+              <p-button icon="pi pi-eye" [text]="true" size="small" (onClick)="viewIssue(r.id)" pTooltip="View lines"></p-button>
+            </td>
           </tr>
         </ng-template>
-        <ng-template pTemplate="emptymessage"><tr><td colspan="6" style="text-align:center;padding:18px;color:#64748b;">No issues in this range.</td></tr></ng-template>
+        <ng-template pTemplate="emptymessage"><tr><td colspan="7" style="text-align:center;padding:18px;color:#64748b;">No issues in this range.</td></tr></ng-template>
       </p-table>
     </p-tabpanel>
 
@@ -129,9 +149,9 @@
         <p-button label="This month" [text]="true" size="small" (onClick)="applyPreset('ledgerRange','month')"></p-button>
         <p-button label="This year" [text]="true" size="small" (onClick)="applyPreset('ledgerRange','year')"></p-button>
       </div>
-      <p-table [value]="ledger()" [loading]="ledgerLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '54rem' }" [paginator]="ledger().length > 25" [rows]="25">
+      <p-table [value]="ledger()" [loading]="ledgerLoading()" styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '58rem' }" [paginator]="ledger().length > 25" [rows]="25">
         <ng-template pTemplate="header">
-          <tr><th style="width:140px;">When</th><th style="width:130px;">Movement</th><th>Reference</th><th style="width:110px;">Quantity</th><th style="width:120px;">Running</th><th>Notes</th></tr>
+          <tr><th style="width:140px;">When</th><th style="width:130px;">Movement</th><th>Reference</th><th style="width:110px;">Quantity</th><th style="width:120px;">Running</th><th>Notes</th><th style="width:70px;text-align:center;">View</th></tr>
         </ng-template>
         <ng-template pTemplate="body" let-r>
           <tr>
@@ -141,16 +161,162 @@
             <td>{{ r.quantity | number:'1.0-2' }}</td>
             <td><strong>{{ r.runningStock | number:'1.0-2' }}</strong></td>
             <td>{{ r.notes || '—' }}</td>
+            <td style="text-align:center;">
+              @if (isLedgerDrillable(r.movementType)) {
+                <p-button icon="pi pi-eye" [text]="true" size="small" (onClick)="viewLedgerSource(r)" pTooltip="Open source movement"></p-button>
+              } @else {
+                <span style="color:#cbd5e1;font-size:0.78rem;">—</span>
+              }
+            </td>
           </tr>
         </ng-template>
-        <ng-template pTemplate="emptymessage"><tr><td colspan="6" style="text-align:center;padding:18px;color:#64748b;">Pick an item and run the ledger.</td></tr></ng-template>
+        <ng-template pTemplate="emptymessage"><tr><td colspan="7" style="text-align:center;padding:18px;color:#64748b;">Pick an item and run the ledger.</td></tr></ng-template>
       </p-table>
     </p-tabpanel>
   </p-tabpanels>
 </p-tabs>
 
+<!-- Purchase detail dialog (shared by Purchase Register + Item Ledger drill-down) -->
+<p-dialog [(visible)]="purchaseDetailOpen" [modal]="true" [style]="{ width: '780px' }" [draggable]="false" [resizable]="false"
+          [header]="(purchaseDetailHeader()?.purchaseCode || 'Purchase') + ' — details'">
+  @if (purchaseDetailHeader(); as h) {
+    <div class="detail-grid">
+      <div><span>Date</span><b>{{ h.purchaseDate | date:'mediumDate' }}</b></div>
+      <div><span>Vendor</span><b>{{ h.vendorName }}</b></div>
+      <div><span>Invoice No</span><b>{{ h.vendorInvoiceNo || '—' }}</b></div>
+      <div><span>Payment Mode</span><b>{{ h.paymentMode || '—' }}</b></div>
+      <div><span>Grand Total</span><b style="color:#16a34a;">Rs. {{ h.grandTotal | number:'1.0-0' }}</b></div>
+      @if (h.notes) { <div><span>Notes</span><b>{{ h.notes }}</b></div> }
+    </div>
+
+    <h4 style="font-size:0.95rem;margin:14px 0 8px;">Items purchased</h4>
+    <p-table [value]="purchaseDetailLines()" [loading]="purchaseDetailLoading()" styleClass="p-datatable-sm p-datatable-gridlines">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Item</th>
+          <th style="width:110px;">Code</th>
+          <th style="width:80px;">Unit</th>
+          <th style="width:90px;text-align:right;">Qty</th>
+          <th style="width:120px;text-align:right;">Unit Price</th>
+          <th style="width:130px;text-align:right;">Line Total</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-l>
+        <tr>
+          <td>{{ l.itemName }}</td>
+          <td>{{ l.itemCode || '—' }}</td>
+          <td>{{ l.unitOfMeasure }}</td>
+          <td style="text-align:right;">{{ l.quantity | number:'1.0-2' }}</td>
+          <td style="text-align:right;">Rs. {{ l.unitPrice | number:'1.0-0' }}</td>
+          <td style="text-align:right;font-weight:500;">Rs. {{ l.lineTotal | number:'1.0-0' }}</td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr><td colspan="6" style="text-align:center;padding:14px;color:#94a3b8;">No line items.</td></tr>
+      </ng-template>
+    </p-table>
+
+    @if (h.isCancelled) {
+      <div class="cancel-banner">
+        <i class="pi pi-ban"></i>
+        <div>
+          <strong>This purchase has been cancelled.</strong>
+          @if (h.cancelReason) { <div style="margin-top:4px;font-size:0.84rem;color:#7c2d12;">Reason: {{ h.cancelReason }}</div> }
+          @if (h.cancelledAt) { <div style="font-size:0.78rem;color:#9a3412;">{{ h.cancelledAt | date:'medium' }}</div> }
+        </div>
+      </div>
+    }
+  }
+
+  <ng-template pTemplate="footer">
+    @if (canCancel && purchaseDetailHeader() && !purchaseDetailHeader()!.isCancelled) {
+      <p-button label="Cancel purchase" icon="pi pi-ban" severity="danger" [outlined]="true" (onClick)="openCancelPurchase()"></p-button>
+    }
+  </ng-template>
+</p-dialog>
+
+<!-- Issue detail dialog (shared by Issue Register + Item Ledger drill-down) -->
+<p-dialog [(visible)]="issueDetailOpen" [modal]="true" [style]="{ width: '760px' }" [draggable]="false" [resizable]="false"
+          [header]="(issueDetailHeader()?.issueCode || 'Issue') + ' — lines'">
+  @if (issueDetailHeader(); as h) {
+    <div class="detail-grid">
+      <div><span>Date</span><b>{{ h.issueDate | date:'mediumDate' }}</b></div>
+      <div><span>Recipient</span><b>{{ h.issuedToName }} <span style="color:#94a3b8;">({{ h.issuedToType }})</span></b></div>
+      <div><span>Purpose</span><b>{{ h.purpose || '—' }}</b></div>
+    </div>
+
+    <h4 style="font-size:0.95rem;margin:14px 0 8px;">Items issued</h4>
+    <p-table [value]="issueDetailLines()" [loading]="issueDetailLoading()" styleClass="p-datatable-sm p-datatable-gridlines">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Item</th>
+          <th style="width:80px;">Unit</th>
+          <th style="width:100px;text-align:right;">Quantity</th>
+          <th style="width:110px;text-align:right;">Returned</th>
+          <th style="width:110px;text-align:right;">Remaining</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-l>
+        <tr>
+          <td>{{ l.itemName }}</td>
+          <td>{{ l.unitOfMeasure }}</td>
+          <td style="text-align:right;">{{ l.quantity | number:'1.0-2' }}</td>
+          <td style="text-align:right;">{{ l.returnedQuantity | number:'1.0-2' }}</td>
+          <td style="text-align:right;font-weight:500;">{{ l.remainingQuantity | number:'1.0-2' }}</td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr><td colspan="5" style="text-align:center;padding:14px;color:#94a3b8;">No line items.</td></tr>
+      </ng-template>
+    </p-table>
+
+    @if (h.isCancelled) {
+      <div class="cancel-banner">
+        <i class="pi pi-ban"></i>
+        <div>
+          <strong>This issue has been cancelled — stock was restored.</strong>
+          @if (h.cancelReason) { <div style="margin-top:4px;font-size:0.84rem;color:#7c2d12;">Reason: {{ h.cancelReason }}</div> }
+          @if (h.cancelledAt) { <div style="font-size:0.78rem;color:#9a3412;">{{ h.cancelledAt | date:'medium' }}</div> }
+        </div>
+      </div>
+    }
+  }
+
+  <ng-template pTemplate="footer">
+    @if (canCancel && issueDetailHeader() && !issueDetailHeader()!.isCancelled) {
+      <p-button label="Cancel issue" icon="pi pi-ban" severity="danger" [outlined]="true" (onClick)="openCancelIssue()"></p-button>
+    }
+  </ng-template>
+</p-dialog>
+
+<!-- Shared cancel-reason prompt -->
+<p-dialog [(visible)]="cancelOpen" [modal]="true" [style]="{ width: '500px' }" [draggable]="false" [resizable]="false"
+          [header]="cancelKind === 'purchase' ? 'Cancel purchase — confirm' : 'Cancel issue — confirm'">
+  <p style="margin:0 0 12px;color:#475569;font-size:0.88rem;">
+    @if (cancelKind === 'purchase') {
+      Cancelling will <strong>reverse the stock</strong> back off each item. Refused if reversing would drive any item below zero.
+    } @else {
+      Cancelling will <strong>restore the stock</strong> back to each item. Refused if returns have already been recorded against this issue.
+    }
+  </p>
+  <label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Reason *</label>
+  <textarea pTextarea [(ngModel)]="cancelReason" rows="3" style="width:100%;" placeholder="Why are you cancelling?"></textarea>
+  <ng-template pTemplate="footer">
+    <p-button label="Keep" severity="secondary" [outlined]="true" (onClick)="cancelOpen.set(false)"></p-button>
+    <p-button [label]="cancelKind === 'purchase' ? 'Cancel purchase' : 'Cancel issue'"
+              icon="pi pi-ban" severity="danger" [loading]="cancelling()" (onClick)="submitCancel()"></p-button>
+  </ng-template>
+</p-dialog>
+
 <style>
   .filter-lbl { display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px; }
   .presets { display:flex;align-items:center;gap:6px;margin-bottom:12px;flex-wrap:wrap; }
   .presets-lbl { font-size:0.78rem;color:#94a3b8;margin-right:4px; }
+  .detail-grid { display:grid;grid-template-columns:140px 1fr;row-gap:8px;column-gap:16px;font-size:0.88rem; }
+  .detail-grid > div { display:contents; }
+  .detail-grid span { color:#94a3b8; }
+  .detail-grid b { color:#0f172a; }
+  .ml-2 { margin-left:6px !important; }
+  .cancel-banner { margin-top:14px;display:flex;gap:10px;align-items:flex-start;border:1px solid #fed7aa;background:#fff7ed;color:#9a3412;border-radius:8px;padding:10px 14px;font-size:0.9rem; }
+  .cancel-banner i { font-size:1.1rem;margin-top:2px; }
 </style>

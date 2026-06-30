@@ -8,6 +8,7 @@ public interface IRoleManagerService
 {
     Task<List<GetRolesDto>> GetRolesAsync();
     Task<IdentityResult> CreateRoleAsync(CreateRoleDto model);
+    Task<IdentityResult> UpdateRoleAsync(int roleId, string newName);
     Task<bool> DeleteRoleAsync(int roleId);
     Task<List<ActionDescriptionDto>> GetPermissionActionsAsync();
     Task<RolePermissionDto> GetRolePermissionsAsync(int roleId);

@@ -1,11 +1,11 @@
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
   <div>
     <h2 style="margin:0;font-size:1.3rem;">Finance Overview</h2>
-    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Consolidated income, expense and surplus across the school.</p>
+    <p style="margin:2px 0 0;color:#64748b;font-size:1.1rem;">Consolidated income, expense and surplus across the school.</p>
   </div>
   <div style="display:flex;gap:8px;align-items:flex-end;">
     <div>
-      <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Academic Year</label>
+      <label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Academic Year</label>
       <p-select [options]="yearOptions()" optionLabel="label" optionValue="value" [(ngModel)]="yearId" (onChange)="load()" [style]="{ width: '200px' }"></p-select>
     </div>
   </div>

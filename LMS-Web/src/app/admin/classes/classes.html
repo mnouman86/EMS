@@ -3,7 +3,7 @@
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
   <div>
     <h2 style="margin:0;font-size:1.3rem;">Classes</h2>
-    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Levels with a unique code used to generate Student IDs.</p>
+    <p style="margin:2px 0 0;color:#64748b;font-size:1.1rem;">Levels with a unique code used to generate Student IDs.</p>
   </div>
   <p-button label="New Class" icon="pi pi-plus" (onClick)="openCreate()"></p-button>
 </div>
@@ -52,14 +52,14 @@
   <form [formGroup]="form" (ngSubmit)="save()">
     <div style="display:flex;gap:12px;margin-bottom:14px;">
       <div style="flex:2;">
-        <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Level name</label>
+        <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Level name</label>
         <input pInputText formControlName="levelName" placeholder="Growth (1)" style="width:100%;" />
         @if (form.controls.levelName.touched && form.controls.levelName.invalid) {
           <small style="color:#ef4444;">Required (max 100).</small>
         }
       </div>
       <div style="flex:1;">
-        <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Code</label>
+        <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Code</label>
         <input pInputText formControlName="levelCode" placeholder="GRW" maxlength="4" style="width:100%;text-transform:uppercase;" />
         @if (form.controls.levelCode.touched && form.controls.levelCode.invalid) {
           <small style="color:#ef4444;">2–4 letters.</small>
@@ -70,28 +70,28 @@
 
     <div style="display:flex;gap:12px;margin-bottom:14px;">
       <div style="flex:1;">
-        <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Grade no. (optional)</label>
+        <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Grade no. (optional)</label>
         <p-inputnumber formControlName="gradeNumber" [showButtons]="false" [useGrouping]="false" inputStyleClass="w-full" [fluid]="true"></p-inputnumber>
       </div>
       <div style="flex:1;">
-        <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Display order</label>
+        <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Display order</label>
         <p-inputnumber formControlName="displayOrder" [showButtons]="false" [useGrouping]="false" inputStyleClass="w-full" [fluid]="true"></p-inputnumber>
       </div>
       <div style="flex:1;">
-        <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Capacity (optional)</label>
+        <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Capacity (optional)</label>
         <p-inputnumber formControlName="capacity" [showButtons]="false" [useGrouping]="false" inputStyleClass="w-full" [fluid]="true"></p-inputnumber>
       </div>
     </div>
 
     <div style="margin-bottom:14px;">
-      <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Class teacher (optional)</label>
+      <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Class teacher (optional)</label>
       <p-select [options]="teacherOptions()" optionLabel="label" optionValue="value" formControlName="classTeacherId"
                 [filter]="true" [showClear]="true" [fluid]="true" appendTo="body" placeholder="Select a teacher"></p-select>
     </div>
 
     <div style="display:flex;align-items:center;gap:10px;">
       <p-toggleswitch formControlName="isActive"></p-toggleswitch>
-      <label style="font-size:0.85rem;">Active (appears in admissions & result filters)</label>
+      <label style="font-size:1rem;">Active (appears in admissions & result filters)</label>
     </div>
   </form>
 

@@ -36,7 +36,7 @@ namespace CleanArc.Application.Features.Fee.Queries.DashboardQueries
             if (_scope.IsTeacherScoped)
             {
                 if (!r.ClassId.HasValue) return OperationResult<CollectionSummaryResult>.SuccessResult(new CollectionSummaryResult());
-                var classIds = await _scope.GetClassScopeAsync();
+                var classIds = await _scope.GetClassScopeAsync(TeacherScopeKind.ClassTeacher);
                 if (!classIds.Contains(r.ClassId.Value)) return OperationResult<CollectionSummaryResult>.SuccessResult(new CollectionSummaryResult());
             }
 
@@ -73,7 +73,7 @@ namespace CleanArc.Application.Features.Fee.Queries.DashboardQueries
             var total = res.TotalCount;
             if (_scope.IsTeacherScoped)
             {
-                var classIds = await _scope.GetClassScopeAsync();
+                var classIds = await _scope.GetClassScopeAsync(TeacherScopeKind.ClassTeacher);
                 rows = rows.Where(x => classIds.Contains(x.ClassId)).ToList();
                 total = rows.Count;
             }

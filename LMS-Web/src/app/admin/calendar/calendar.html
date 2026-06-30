@@ -1,0 +1,73 @@
+<p-confirmDialog></p-confirmDialog>
+
+<div style="margin-bottom:20px;">
+  <h2 style="margin:0;font-size:1.3rem;">School Calendar</h2>
+  <p style="margin:4px 0 0;color:#64748b;font-size:0.86rem;">
+    Configure weekend days and the holiday list. Teachers can't mark daily attendance for any disabled date.
+  </p>
+</div>
+
+<section class="card" style="margin-bottom:18px;">
+  <h3>Weekend days</h3>
+  <p class="muted">Tick the days the school is closed every week.</p>
+  <div class="weekday-row">
+    @for (d of weekdays; track d) {
+      <label class="weekday">
+        <p-checkbox [binary]="true" [ngModel]="isWeekend(d)" (ngModelChange)="toggleWeekend(d, $event)"></p-checkbox>
+        <span>{{ d }}</span>
+      </label>
+    }
+  </div>
+  <div style="margin-top:12px;">
+    <p-button label="Save weekend days" icon="pi pi-save" [loading]="configSaving()" (onClick)="saveConfig()"></p-button>
+  </div>
+</section>
+
+<section class="card">
+  <h3>Holiday list</h3>
+  <div class="add-form">
+    <div>
+      <label>Date</label>
+      <p-datepicker [(ngModel)]="newDate" dateFormat="dd M yy" [showIcon]="true" appendTo="body" [fluid]="true"></p-datepicker>
+    </div>
+    <div style="flex:1;">
+      <label>Description</label>
+      <input pInputText [(ngModel)]="newDescription" placeholder="e.g. Independence Day" style="width:100%;" />
+    </div>
+    <p-button label="Add / Update" icon="pi pi-plus" [loading]="adding()" (onClick)="addHoliday()"></p-button>
+  </div>
+
+  <p-table [value]="holidays()" [loading]="loadingHolidays()" styleClass="p-datatable-sm" [paginator]="holidays().length > 15" [rows]="15">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width:140px;">Date</th>
+        <th style="width:120px;">Day</th>
+        <th>Description</th>
+        <th style="width:60px;"></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-h>
+      <tr>
+        <td>{{ h.holidayDate | date:'mediumDate' }}</td>
+        <td>{{ h.holidayDate | date:'EEEE' }}</td>
+        <td>{{ h.description }}</td>
+        <td>
+          <p-button icon="pi pi-trash" severity="danger" size="small" [text]="true" (onClick)="removeHoliday(h)"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr><td colspan="4" style="text-align:center;color:#94a3b8;">No holidays configured yet.</td></tr>
+    </ng-template>
+  </p-table>
+</section>
+
+<style>
+  .card { border:1px solid #e2e8f0;border-radius:12px;padding:18px;background:#fff; }
+  .card h3 { margin:0 0 12px;font-size:1rem;color:#0f172a;border-bottom:1px solid #f1f5f9;padding-bottom:8px; }
+  .muted { color:#94a3b8;font-size:0.86rem;margin:0 0 10px; }
+  .weekday-row { display:flex;flex-wrap:wrap;gap:14px;align-items:center; }
+  .weekday { display:flex;align-items:center;gap:6px;font-size:0.9rem;cursor:pointer; }
+  .add-form { display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-bottom:14px;padding:12px;background:#f8fafc;border-radius:8px;border:1px solid #f1f5f9; }
+  .add-form label { display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px; }
+</style>

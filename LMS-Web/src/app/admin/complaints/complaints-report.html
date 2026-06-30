@@ -1,0 +1,183 @@
+<p-confirmDialog></p-confirmDialog>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Complaint / suggestion report</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:1.05rem;">Every logged entry across the school. Filter, triage and respond.</p>
+  </div>
+</div>
+
+<!-- Filters -->
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px 12px;align-items:flex-end;margin-bottom:14px;">
+  <div>
+    <label style="display:block;font-size:0.78rem;color:#475569;margin-bottom:4px;">Date range</label>
+    <p-datepicker [(ngModel)]="filter.range" selectionMode="range" dateFormat="dd M yy" [showIcon]="true"
+                  appendTo="body" [readonlyInput]="true"></p-datepicker>
+  </div>
+  <div>
+    <label style="display:block;font-size:0.78rem;color:#475569;margin-bottom:4px;">Type</label>
+    <p-select [options]="typeOptions" optionLabel="label" optionValue="value" [(ngModel)]="filter.complaintType"
+              [style]="{ width: '100%' }" appendTo="body"></p-select>
+  </div>
+  <div>
+    <label style="display:block;font-size:0.78rem;color:#475569;margin-bottom:4px;">Nature</label>
+    <p-select [options]="natureOptions()" optionLabel="label" optionValue="value" [(ngModel)]="filter.complaintNatureId"
+              [filter]="true" [style]="{ width: '100%' }" appendTo="body"></p-select>
+  </div>
+  <div>
+    <label style="display:block;font-size:0.78rem;color:#475569;margin-bottom:4px;">Status</label>
+    <p-select [options]="statusOptions" optionLabel="label" optionValue="value" [(ngModel)]="filter.status"
+              [style]="{ width: '100%' }" appendTo="body"></p-select>
+  </div>
+  <div>
+    <label style="display:block;font-size:0.78rem;color:#475569;margin-bottom:4px;">Attachment</label>
+    <p-select [options]="attachmentOptions" optionLabel="label" optionValue="value" [(ngModel)]="filter.hasAttachment"
+              [style]="{ width: '100%' }" appendTo="body"></p-select>
+  </div>
+  <div>
+    <label style="display:block;font-size:0.78rem;color:#475569;margin-bottom:4px;">Complainant</label>
+    <input pInputText [(ngModel)]="filter.complainantLike" placeholder="Name contains…" style="width:100%;" />
+  </div>
+  @if (isAdmin()) {
+    <div style="display:flex;align-items:center;gap:6px;">
+      <p-checkbox [(ngModel)]="filter.includeDeleted" [binary]="true"></p-checkbox>
+      <span style="font-size:0.8rem;">Include deleted</span>
+    </div>
+  }
+  <p-button label="Run" icon="pi pi-search" [loading]="loading()" (onClick)="run()"></p-button>
+</div>
+
+<p-table [value]="rows()" [loading]="loading()" styleClass="p-datatable-sm p-datatable-gridlines"
+         [paginator]="rows().length > 25" [rows]="25" [rowsPerPageOptions]="[25, 50, 100]">
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:140px;">Code</th>
+      <th style="width:110px;">Date</th>
+      <th>Nature</th>
+      <th>Complainant</th>
+      <th>Against</th>
+      <th style="width:100px;">Status</th>
+      <th style="width:50px;text-align:center;">Att.</th>
+      <th style="width:130px;text-align:center;">Actions</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-r>
+    <tr [style.opacity]="r.isDeleted ? 0.55 : 1">
+      <td>
+        <strong>{{ r.complaintCode }}</strong>
+        @if (r.isDeleted) { <p-tag value="Deleted" severity="danger" styleClass="ml-2"></p-tag> }
+      </td>
+      <td>{{ r.createdAt | date:'dd MMM yyyy' }}</td>
+      <td>{{ r.natureName }} <span style="color:#94a3b8;">· {{ r.natureType }}</span></td>
+      <td>
+        {{ r.complainantName }}
+        <div style="font-size:0.75rem;color:#94a3b8;">
+          {{ r.contactNumber }} · {{ r.logonUserFullName || ('User #' + r.logonUserId) }}
+        </div>
+      </td>
+      <td>{{ r.complaintAgainst || '—' }}</td>
+      <td><p-tag [value]="r.status" [severity]="statusSeverity(r.status)"></p-tag></td>
+      <td style="text-align:center;">
+        @if (r.attachmentPath) {
+          <a [href]="attUrl(r)" target="_blank" rel="noopener" pTooltip="Download attachment">
+            <i class="pi pi-paperclip" style="color:#0f766e;"></i>
+          </a>
+        } @else { <span style="color:#cbd5e1;">—</span> }
+      </td>
+      <td style="text-align:center;">
+        <p-button icon="pi pi-eye" [text]="true" size="small" (onClick)="view(r)" pTooltip="View / triage"></p-button>
+        @if (isAdmin() && r.isDeleted) {
+          <p-button icon="pi pi-replay" [text]="true" size="small" severity="info"
+                    (onClick)="restore(r)" pTooltip="Restore"></p-button>
+        }
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr><td colspan="8" style="text-align:center;padding:18px;color:#94a3b8;">No complaints match these filters.</td></tr>
+  </ng-template>
+</p-table>
+
+<!-- Detail / triage dialog -->
+<p-dialog [(visible)]="detailOpen" [modal]="true" [style]="{ width: '780px' }" [draggable]="false" [resizable]="false"
+          [header]="(detail()?.header?.complaintCode || 'Complaint') + ' — triage'">
+  @if (detail(); as d) {
+    <div style="display:grid;grid-template-columns:140px 1fr;row-gap:8px;column-gap:16px;font-size:0.88rem;">
+      <span style="color:#94a3b8;">Logged on</span><b>{{ d.header.createdAt | date:'medium' }}</b>
+      <span style="color:#94a3b8;">Nature</span><b>{{ d.header.natureName }} <span style="color:#94a3b8;">· {{ d.header.natureType }}</span></b>
+      <span style="color:#94a3b8;">Complainant</span><b>{{ d.header.complainantName }} <span style="color:#94a3b8;">({{ d.header.contactNumber }})</span></b>
+      <span style="color:#94a3b8;">Logon user</span><b>{{ d.header.logonUserFullName || ('User #' + d.header.logonUserId) }}</b>
+      <span style="color:#94a3b8;">Against</span><b>{{ d.header.complaintAgainst || '—' }}</b>
+      <span style="color:#94a3b8;">Status</span>
+      <b><p-tag [value]="d.header.status" [severity]="statusSeverity(d.header.status)"></p-tag></b>
+    </div>
+
+    <h4 style="font-size:0.92rem;margin:14px 0 6px;">Description</h4>
+    <div style="white-space:pre-wrap;border:1px solid #e2e8f0;border-radius:6px;padding:10px;background:#f8fafc;font-size:0.9rem;">{{ d.header.description }}</div>
+
+    @if (d.header.attachmentPath) {
+      <div style="margin-top:12px;">
+        <i class="pi pi-paperclip" style="color:#0f766e;"></i>
+        <a [href]="attUrl(d.header)" target="_blank" rel="noopener" style="margin-left:6px;color:#0f766e;">{{ d.header.attachmentOriginalName || 'attachment' }}</a>
+      </div>
+    }
+
+    @if (isAdmin() && !d.header.isDeleted) {
+      <h4 style="font-size:0.92rem;margin:18px 0 6px;">Change status</h4>
+      <div style="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;">
+        <div style="min-width:180px;">
+          <p-select [options]="statusOptions.slice(1)" optionLabel="label" optionValue="value"
+                    [(ngModel)]="statusToChange" [style]="{ width: '100%' }" appendTo="body"></p-select>
+        </div>
+        <textarea pTextarea [(ngModel)]="changeNote" rows="2" style="flex:1 1 260px;"
+                  placeholder="Note (≥ 10 chars) explaining the change"></textarea>
+        <p-button label="Apply" icon="pi pi-check" (onClick)="applyStatus()"></p-button>
+      </div>
+
+      <h4 style="font-size:0.92rem;margin:16px 0 6px;">Add a note</h4>
+      <div style="display:flex;gap:8px;">
+        <textarea pTextarea [(ngModel)]="noteText" rows="2" style="flex:1;" placeholder="Internal note"></textarea>
+        <p-button label="Add" icon="pi pi-comment" (onClick)="addNote()"></p-button>
+      </div>
+    }
+
+    <h4 style="font-size:0.92rem;margin:18px 0 6px;">Audit trail</h4>
+    <table style="width:100%;border-collapse:collapse;font-size:0.83rem;">
+      <thead>
+        <tr style="background:#f1f5f9;text-align:left;">
+          <th style="padding:6px;width:170px;">When · Actor</th>
+          <th style="padding:6px;width:160px;">Action</th>
+          <th style="padding:6px;">Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (a of d.auditTrail; track a.complaintAuditId) {
+          <tr style="border-top:1px solid #e2e8f0;">
+            <td style="padding:6px;">{{ a.actorAt | date:'short' }}<br><span style="color:#94a3b8;">{{ a.actorFullName || ('User #' + a.actorUserId) }}</span></td>
+            <td style="padding:6px;">{{ a.action }}@if (a.toStatus) { <div style="color:#94a3b8;">{{ a.fromStatus || '—' }} → {{ a.toStatus }}</div> }</td>
+            <td style="padding:6px;white-space:pre-wrap;">{{ a.note || '—' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+  <ng-template pTemplate="footer">
+    @if (isAdmin() && detail() && !detail()!.header.isDeleted) {
+      <p-button label="Soft delete" icon="pi pi-trash" severity="danger" [outlined]="true" (onClick)="openDelete()"></p-button>
+    }
+    <p-button label="Close" severity="secondary" [outlined]="true" (onClick)="detailOpen.set(false)"></p-button>
+  </ng-template>
+</p-dialog>
+
+<!-- Soft-delete reason -->
+<p-dialog [(visible)]="deleteOpen" [modal]="true" [style]="{ width: '480px' }" [draggable]="false" [resizable]="false"
+          header="Soft-delete complaint">
+  <p style="margin:0 0 8px;color:#475569;font-size:0.85rem;">
+    The record stays in the database (no hard delete). Tell us why you're deleting it (≥ 10 characters).
+  </p>
+  <textarea pTextarea [(ngModel)]="deleteReason" rows="3" style="width:100%;" placeholder="Reason"></textarea>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [outlined]="true" (onClick)="deleteOpen.set(false)"></p-button>
+    <p-button label="Soft delete" icon="pi pi-trash" severity="danger" (onClick)="submitDelete()"></p-button>
+  </ng-template>
+</p-dialog>

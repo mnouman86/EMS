@@ -1,0 +1,172 @@
+<p-confirmDialog></p-confirmDialog>
+
+<div style="margin-bottom:20px;">
+  <h2 style="margin:0;font-size:1.3rem;">User Management</h2>
+  <p style="margin:4px 0 0;color:#64748b;font-size:0.86rem;">
+    Create login accounts, reset passwords, disable / re-enable users, and manage user roles.
+  </p>
+</div>
+
+<p-tabs value="users">
+  <p-tablist>
+    <p-tab value="users"><i class="pi pi-users" style="margin-right:6px;"></i> Users</p-tab>
+    <p-tab value="roles"><i class="pi pi-id-card" style="margin-right:6px;"></i> Roles</p-tab>
+  </p-tablist>
+
+  <p-tabpanels>
+    <!-- ---------- USERS TAB ---------- -->
+    <p-tabpanel value="users">
+      <div class="filter-bar">
+        <input pInputText [(ngModel)]="searchTerm" placeholder="Search name, email, role…" (keyup.enter)="loadUsers()" style="min-width:240px;" />
+        <p-button label="Search" icon="pi pi-search" [loading]="usersLoading()" (onClick)="loadUsers()"></p-button>
+        <span style="flex:1;"></span>
+        <p-button label="Add user" icon="pi pi-plus" (onClick)="openCreateUser()"></p-button>
+      </div>
+
+      <p-table [value]="users()" [loading]="usersLoading()" styleClass="p-datatable-sm p-datatable-gridlines"
+               [paginator]="users().length > 25" [rows]="25" [tableStyle]="{ 'min-width': '64rem' }">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Full name</th>
+            <th>Email</th>
+            <th style="width:110px;">Role</th>
+            <th style="width:110px;">Status</th>
+            <th style="width:160px;">Last login</th>
+            <th style="width:180px;text-align:center;">Actions</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-u>
+          <tr>
+            <td>{{ u.fullName || '—' }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ titleCase(u.roleName) }}</td>
+            <td><p-tag [value]="u.status || '—'" [severity]="statusSeverity(u.status)"></p-tag></td>
+            <td>{{ u.lastLogin ? (u.lastLogin | date:'medium') : '—' }}</td>
+            <td style="text-align:center;">
+              <p-button icon="pi pi-key" [text]="true" size="small" pTooltip="Reset password" (onClick)="openReset(u)"></p-button>
+              @if ((u.status || '').toLowerCase() === 'active') {
+                <p-button icon="pi pi-ban" [text]="true" size="small" severity="danger" pTooltip="Disable" (onClick)="toggleActive(u)"></p-button>
+              } @else {
+                <p-button icon="pi pi-check-circle" [text]="true" size="small" severity="success" pTooltip="Re-enable" (onClick)="toggleActive(u)"></p-button>
+              }
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr><td colspan="6" style="text-align:center;padding:18px;color:#94a3b8;">No users.</td></tr>
+        </ng-template>
+      </p-table>
+    </p-tabpanel>
+
+    <!-- ---------- ROLES TAB ---------- -->
+    <p-tabpanel value="roles">
+      <div class="filter-bar">
+        <span style="color:#64748b;font-size:0.88rem;">Roles control sidebar visibility and per-feature permissions. Renaming or deleting affects every user assigned to that role.</span>
+        <span style="flex:1;"></span>
+        <p-button label="Add role" icon="pi pi-plus" (onClick)="openCreateRole()"></p-button>
+      </div>
+
+      <p-table [value]="roles()" styleClass="p-datatable-sm p-datatable-gridlines"
+               [tableStyle]="{ 'min-width': '40rem' }">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width:80px;">#</th>
+            <th>Role name</th>
+            <th style="width:180px;text-align:center;">Actions</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-r>
+          <tr>
+            <td>{{ r.roleId }}</td>
+            <td>
+              <strong>{{ titleCase(r.roleName) }}</strong>
+              @if (r.roleName?.toLowerCase() === 'admin') {
+                <p-tag value="System" severity="info" styleClass="ml-2"></p-tag>
+              }
+            </td>
+            <td style="text-align:center;">
+              @if (r.roleName?.toLowerCase() !== 'admin') {
+                <p-button icon="pi pi-pencil" [text]="true" size="small" pTooltip="Rename" (onClick)="openEditRole(r)"></p-button>
+                <p-button icon="pi pi-trash" [text]="true" size="small" severity="danger" pTooltip="Delete" (onClick)="deleteRole(r)"></p-button>
+              } @else {
+                <span style="color:#cbd5e1;font-size:0.82rem;">Protected</span>
+              }
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr><td colspan="3" style="text-align:center;padding:18px;color:#94a3b8;">No roles.</td></tr>
+        </ng-template>
+      </p-table>
+    </p-tabpanel>
+  </p-tabpanels>
+</p-tabs>
+
+<!-- ---------- Add user dialog ---------- -->
+<p-dialog [(visible)]="userDialogOpen" [modal]="true" [style]="{ width: '480px' }" [draggable]="false" [resizable]="false"
+          header="Add user">
+  <div class="form-row">
+    <label>Email *</label>
+    <input pInputText [(ngModel)]="newUser.email" type="email" autocomplete="off" style="width:100%;" placeholder="e.g. jane@school.com" />
+  </div>
+  <div class="form-row">
+    <label>Full name *</label>
+    <input pInputText [(ngModel)]="newUser.fullName" autocomplete="off" style="width:100%;" placeholder="Jane Doe" />
+  </div>
+  <div class="form-row">
+    <label>Role *</label>
+    <p-select [options]="roleOptions()" optionLabel="label" optionValue="value" [(ngModel)]="newUser.roleId"
+              placeholder="Pick a role" [style]="{ width: '100%' }" appendTo="body"></p-select>
+  </div>
+  <div class="form-row">
+    <label>Initial password *</label>
+    <p-password [(ngModel)]="newUser.password" [toggleMask]="true" [feedback]="false" promptLabel="" autocomplete="new-password"
+                [style]="{ width: '100%' }" [inputStyle]="{ width: '100%' }"></p-password>
+    <small style="color:#94a3b8;">Min 6 characters. User can change it on first login.</small>
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [outlined]="true" (onClick)="userDialogOpen.set(false)"></p-button>
+    <p-button label="Create user" icon="pi pi-check" [loading]="userSaving()" (onClick)="saveNewUser()"></p-button>
+  </ng-template>
+</p-dialog>
+
+<!-- ---------- Reset password dialog ---------- -->
+<p-dialog [(visible)]="resetOpen" [modal]="true" [style]="{ width: '440px' }" [draggable]="false" [resizable]="false"
+          header="Reset password">
+  @if (resetTarget(); as t) {
+    <p style="margin:0 0 12px;color:#475569;font-size:0.88rem;">
+      Set a new password for <strong>{{ t.fullName || t.email }}</strong>. They will be signed out and forced to log back in with the new password.
+    </p>
+    <div class="form-row">
+      <label>New password *</label>
+      <p-password [(ngModel)]="resetPassword" [toggleMask]="true" [feedback]="false" promptLabel="" autocomplete="new-password"
+                  [style]="{ width: '100%' }" [inputStyle]="{ width: '100%' }"></p-password>
+      <small style="color:#94a3b8;">Min 6 characters.</small>
+    </div>
+  }
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [outlined]="true" (onClick)="resetOpen.set(false)"></p-button>
+    <p-button label="Reset password" icon="pi pi-key" [loading]="resetSaving()" (onClick)="submitReset()"></p-button>
+  </ng-template>
+</p-dialog>
+
+<!-- ---------- Role add / edit dialog ---------- -->
+<p-dialog [(visible)]="roleDialogOpen" [modal]="true" [style]="{ width: '440px' }" [draggable]="false" [resizable]="false"
+          [header]="editingRole.roleId ? 'Rename role' : 'Add role'">
+  <div class="form-row">
+    <label>Role name *</label>
+    <input pInputText [(ngModel)]="editingRole.name" style="width:100%;" placeholder="e.g. librarian" />
+    <small style="color:#94a3b8;">Stored in lowercase to match the JWT role claim convention.</small>
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [outlined]="true" (onClick)="roleDialogOpen.set(false)"></p-button>
+    <p-button [label]="editingRole.roleId ? 'Save' : 'Create role'" icon="pi pi-check" [loading]="roleSaving()" (onClick)="saveRole()"></p-button>
+  </ng-template>
+</p-dialog>
+
+<style>
+  .filter-bar { display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px; }
+  .form-row { margin-bottom:12px; }
+  .form-row label { display:block;font-size:0.8rem;font-weight:600;color:#475569;margin-bottom:5px; }
+  .ml-2 { margin-left:6px !important; }
+</style>

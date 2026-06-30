@@ -43,4 +43,29 @@ namespace CleanArc.Domain.Entities.Attendance
         public int PeriodsRecorded { get; set; }
         public decimal? OverallPercent { get; set; }
     }
+
+    /// <summary>One row in the daily entry grid (one per active student).</summary>
+    public class DailyAttendanceGridRow
+    {
+        public int StudentId { get; set; }
+        public string? StudentCode { get; set; }
+        public string? FormNo { get; set; }
+        public string? FullName { get; set; }
+        public string? StudentStatus { get; set; }
+        public int? AttendanceId { get; set; }
+        public string? DayStatus { get; set; }   // Present / Absent / Late / NULL (not marked)
+        public string? Remarks { get; set; }
+        public DateTime? MarkedAt { get; set; }
+    }
+
+    /// <summary>One day in a student's history.</summary>
+    public class StudentDailyAttendanceRow
+    {
+        public int Id { get; set; }
+        public DateTime AttendanceDate { get; set; }
+        public string? Status { get; set; }
+        public string? Remarks { get; set; }
+        public string? ClassName { get; set; }
+        public DateTime? MarkedAt { get; set; }
+    }
 }

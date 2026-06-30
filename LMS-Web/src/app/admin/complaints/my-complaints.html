@@ -1,0 +1,98 @@
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">My complaints / suggestions</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:1.05rem;">Entries you have logged. You can edit a complaint while it is still "New".</p>
+  </div>
+  <div style="display:flex;gap:8px;">
+    <a routerLink="/admin/complaints/new" class="p-button p-component" style="text-decoration:none;">
+      <i class="pi pi-plus" style="margin-right:6px;"></i> Log new
+    </a>
+  </div>
+</div>
+
+<p-table [value]="rows()" [loading]="loading()" styleClass="p-datatable-sm p-datatable-gridlines"
+         [paginator]="rows().length > 20" [rows]="20">
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:160px;">Code</th>
+      <th style="width:130px;">Logged on</th>
+      <th>Nature</th>
+      <th>Against</th>
+      <th style="width:110px;">Status</th>
+      <th style="width:50px;text-align:center;">Att.</th>
+      <th style="width:140px;text-align:center;">Actions</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-r>
+    <tr>
+      <td><strong>{{ r.complaintCode }}</strong></td>
+      <td>{{ r.createdAt | date:'dd MMM yyyy' }}</td>
+      <td>{{ r.natureName }} <span style="color:#94a3b8;">· {{ r.natureType }}</span></td>
+      <td>{{ r.complaintAgainst || '—' }}</td>
+      <td><p-tag [value]="r.status" [severity]="statusSeverity(r.status)"></p-tag></td>
+      <td style="text-align:center;">
+        @if (r.attachmentPath) {
+          <a [href]="attUrl(r)" target="_blank" rel="noopener" pTooltip="Download attachment">
+            <i class="pi pi-paperclip" style="color:#0f766e;"></i>
+          </a>
+        } @else { <span style="color:#cbd5e1;">—</span> }
+      </td>
+      <td style="text-align:center;">
+        <p-button icon="pi pi-eye" [text]="true" size="small" (onClick)="view(r)" pTooltip="View detail"></p-button>
+        @if (r.status === 'New') {
+          <p-button icon="pi pi-pencil" [text]="true" size="small" (onClick)="edit(r)" pTooltip="Edit"></p-button>
+        }
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr><td colspan="7" style="text-align:center;padding:18px;color:#94a3b8;">You haven't logged any complaints yet.</td></tr>
+  </ng-template>
+</p-table>
+
+<p-dialog [(visible)]="detailOpen" [modal]="true" [style]="{ width: '720px' }" [draggable]="false" [resizable]="false"
+          [header]="(detail()?.header?.complaintCode || 'Complaint') + ' — detail'">
+  @if (detail(); as d) {
+    <div style="display:grid;grid-template-columns:140px 1fr;row-gap:8px;column-gap:16px;font-size:0.88rem;">
+      <span style="color:#94a3b8;">Logged on</span><b>{{ d.header.createdAt | date:'medium' }}</b>
+      <span style="color:#94a3b8;">Nature</span><b>{{ d.header.natureName }} <span style="color:#94a3b8;">· {{ d.header.natureType }}</span></b>
+      <span style="color:#94a3b8;">Complainant</span><b>{{ d.header.complainantName }}</b>
+      <span style="color:#94a3b8;">Contact</span><b>{{ d.header.contactNumber }}</b>
+      <span style="color:#94a3b8;">Against</span><b>{{ d.header.complaintAgainst || '—' }}</b>
+      <span style="color:#94a3b8;">Status</span>
+      <b><p-tag [value]="d.header.status" [severity]="statusSeverity(d.header.status)"></p-tag></b>
+    </div>
+
+    <h4 style="font-size:0.92rem;margin:14px 0 6px;">Description</h4>
+    <div style="white-space:pre-wrap;border:1px solid #e2e8f0;border-radius:6px;padding:10px;background:#f8fafc;font-size:0.9rem;">{{ d.header.description }}</div>
+
+    @if (d.header.attachmentPath) {
+      <div style="margin-top:12px;">
+        <i class="pi pi-paperclip" style="color:#0f766e;"></i>
+        <a [href]="attUrl(d.header)" target="_blank" rel="noopener" style="margin-left:6px;color:#0f766e;">
+          {{ d.header.attachmentOriginalName || 'attachment' }}
+        </a>
+      </div>
+    }
+
+    <h4 style="font-size:0.92rem;margin:16px 0 6px;">Audit trail</h4>
+    <table style="width:100%;border-collapse:collapse;font-size:0.83rem;">
+      <thead>
+        <tr style="background:#f1f5f9;text-align:left;">
+          <th style="padding:6px;width:160px;">When</th>
+          <th style="padding:6px;width:120px;">Action</th>
+          <th style="padding:6px;">Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (a of d.auditTrail; track a.complaintAuditId) {
+          <tr style="border-top:1px solid #e2e8f0;">
+            <td style="padding:6px;">{{ a.actorAt | date:'short' }}<br><span style="color:#94a3b8;">{{ a.actorFullName || ('User #' + a.actorUserId) }}</span></td>
+            <td style="padding:6px;">{{ a.action }}<br><span style="color:#94a3b8;">{{ a.fromStatus }} → {{ a.toStatus }}</span></td>
+            <td style="padding:6px;white-space:pre-wrap;">{{ a.note || '—' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</p-dialog>
