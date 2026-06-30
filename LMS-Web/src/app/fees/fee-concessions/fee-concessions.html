@@ -3,7 +3,7 @@
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
   <div>
     <h2 style="margin:0;font-size:1.3rem;">Concessions &amp; Waivers</h2>
-    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Percentage, fixed, sibling and full-waiver discounts.</p>
+    <p style="margin:2px 0 0;color:#64748b;font-size:1.1rem;">Percentage, fixed, sibling and full-waiver discounts.</p>
   </div>
   <a routerLink="/admin/fees" class="p-button p-component p-button-outlined" style="text-decoration:none;">
     <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back
@@ -12,7 +12,7 @@
 
 <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px;">
   <div style="flex:1;min-width:260px;">
-    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Filter by student (optional)</label>
+    <label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Filter by student (optional)</label>
     <p-select [options]="studentOptions()" optionLabel="label" optionValue="value" [(ngModel)]="filterStudentId" (onChange)="load()" [filter]="true" [showClear]="true" [style]="{ width: '100%' }" placeholder="All students"></p-select>
   </div>
   <p-button label="Grant Concession" icon="pi pi-plus" (onClick)="open()"></p-button>

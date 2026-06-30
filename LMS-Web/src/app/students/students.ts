@@ -90,7 +90,7 @@ export class Students implements OnInit {
     const filters: FilterParameter[] = [];
     if (this.search.trim()) filters.push({ parameterName: 'Search', parameterValue: this.search.trim() });
     if (this.statusFilter) filters.push({ parameterName: 'Status', parameterValue: this.statusFilter });
-    if (this.classFilter) filters.push({ parameterName: 'AdmittedClassId', parameterValue: String(this.classFilter) });
+    if (this.classFilter) filters.push({ parameterName: 'ClassId', parameterValue: String(this.classFilter) });
 
     this.svc.getAll(defaultSearch({ filterArray: filters })).subscribe({
       next: res => { this.rows.set(res.data ?? []); this.loading.set(false); },

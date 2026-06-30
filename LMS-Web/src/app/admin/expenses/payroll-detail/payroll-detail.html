@@ -6,7 +6,7 @@
       Payroll — {{ monthName(run()?.month) }} {{ run()?.year }}
       @if (run()) { <p-tag [value]="run()!.status" [severity]="run()!.status === 'Confirmed' ? 'success' : 'warn'" style="margin-left:8px;"></p-tag> }
     </h2>
-    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">{{ entries().length }} employee(s) in this run.</p>
+    <p style="margin:2px 0 0;color:#64748b;font-size:1.1rem;">{{ entries().length }} employee(s) in this run.</p>
   </div>
   <div style="display:flex;gap:8px;">
     <a routerLink="/admin/expenses/payroll" class="p-button p-component p-button-outlined" style="text-decoration:none;"><i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back</a>

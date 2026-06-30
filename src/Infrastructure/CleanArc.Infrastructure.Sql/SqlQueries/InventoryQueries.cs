@@ -23,6 +23,9 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries
         public static string Get_IssueRegister => "usp_Get_InventoryIssueRegister";
         public static string Get_ItemLedger => "usp_Get_InventoryItemLedger";
         public static string Get_IssueDetail => "usp_Get_InventoryIssueDetail";
+        public static string Get_PurchaseDetail => "usp_Get_InventoryPurchaseDetail";
+        public static string Cancel_Purchase   => "usp_Cancel_InventoryPurchase";
+        public static string Cancel_Issue      => "usp_Cancel_InventoryIssue";
 
         /* Issue request workflow (new) */
         public static string Create_IssueRequest  => "usp_Create_InventoryIssueRequest";

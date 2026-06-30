@@ -51,4 +51,20 @@ public class AttendanceController : ControllerBase
 
     [Authorize(Roles = StaffRoles), HttpPost("AttendanceGetStudentSummary")]
     public async Task<IActionResult> GetSummary([FromBody] GetStudentAttendanceSummaryQuery q) => Wrap(await _sender.Send(q));
+
+    /* ---------- Daily attendance ---------- */
+
+    [Authorize(Roles = StaffRoles), HttpPost("AttendanceGetDailyGrid")]
+    public async Task<IActionResult> GetDailyGrid([FromBody] GetDailyAttendanceGridQuery q) => Wrap(await _sender.Send(q));
+
+    [Authorize(Roles = StaffRoles), HttpPost("AttendanceBulkSaveDaily")]
+    public async Task<IActionResult> BulkSaveDaily([FromBody] BulkSaveDailyAttendanceCommand cmd)
+    {
+        cmd.ChangedBy = CurrentUserId;
+        return Wrap(await _sender.Send(cmd));
+    }
+
+    [Authorize(Roles = StaffRoles), HttpPost("AttendanceGetStudentDailyHistory")]
+    public async Task<IActionResult> GetStudentDailyHistory([FromBody] GetStudentDailyHistoryQuery q)
+        => Wrap(await _sender.Send(q));
 }

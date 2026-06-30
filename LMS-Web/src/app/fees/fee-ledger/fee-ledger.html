@@ -1,7 +1,7 @@
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
   <div>
     <h2 style="margin:0;font-size:1.3rem;">Student Ledger</h2>
-    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Full statement of invoices, payments and adjustments.</p>
+    <p style="margin:2px 0 0;color:#64748b;font-size:1.1rem;">Full statement of invoices, payments and adjustments.</p>
   </div>
   <a routerLink="/admin/fees" class="p-button p-component p-button-outlined" style="text-decoration:none;">
     <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back
@@ -10,11 +10,11 @@
 
 <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px;">
   <div style="flex:1;min-width:260px;">
-    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Student</label>
+    <label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Student</label>
     <p-select [options]="studentOptions()" optionLabel="label" optionValue="value" [(ngModel)]="studentId" [filter]="true" [style]="{ width: '100%' }" placeholder="Search student"></p-select>
   </div>
   <div style="min-width:170px;">
-    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Academic Year</label>
+    <label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Academic Year</label>
     <p-select [options]="yearOptions()" optionLabel="label" optionValue="value" [(ngModel)]="yearId" [style]="{ width: '100%' }"></p-select>
   </div>
   <p-button label="Load" icon="pi pi-search" [loading]="loading()" (onClick)="load()"></p-button>
@@ -60,7 +60,7 @@
   <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:18px;">
     <p-fieldset legend="Reprint Receipt" [toggleable]="true" styleClass="corr">
       <div style="display:flex;gap:10px;align-items:flex-end;">
-        <div><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Payment #</label>
+        <div><label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Payment #</label>
           <p-inputnumber [(ngModel)]="reprintId" [useGrouping]="false"></p-inputnumber></div>
         <p-button label="Download (Duplicate)" icon="pi pi-print" severity="secondary" [outlined]="true" [loading]="busy()" (onClick)="reprint()"></p-button>
       </div>
@@ -69,9 +69,9 @@
     @if (canCorrect) {
       <p-fieldset legend="Reverse Payment (Admin)" [toggleable]="true" [collapsed]="true" styleClass="corr">
         <div style="display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap;">
-          <div><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Payment #</label>
+          <div><label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Payment #</label>
             <p-inputnumber [(ngModel)]="reverseId" [useGrouping]="false"></p-inputnumber></div>
-          <div><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Reason</label>
+          <div><label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Reason</label>
             <input pInputText [(ngModel)]="reverseReason" placeholder="Reason for reversal" /></div>
           <p-button label="Reverse" icon="pi pi-undo" severity="danger" [outlined]="true" [loading]="busy()" (onClick)="reverse()"></p-button>
         </div>

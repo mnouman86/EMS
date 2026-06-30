@@ -30,12 +30,18 @@ namespace CleanArc.Application.Contracts.Persistence
 
         Task<ListResponseWrapper<InventoryPurchase>> GetPurchaseRegisterAsync(
             System.DateTime fromDate, System.DateTime toDate,
-            int? categoryId, string? vendorName);
+            int? categoryId, string? vendorName, bool includeCancelled = false);
         Task<ListResponseWrapper<InventoryIssue>> GetIssueRegisterAsync(
             System.DateTime fromDate, System.DateTime toDate,
-            int? categoryId, int? itemId, string? issuedToType, int? issuedToId, int? issuedByUserId);
+            int? categoryId, int? itemId, string? issuedToType, int? issuedToId, int? issuedByUserId,
+            bool includeCancelled = false);
         Task<ListResponseWrapper<ItemLedgerRow>> GetItemLedgerAsync(int itemId, System.DateTime fromDate, System.DateTime toDate);
         Task<ListResponseWrapper<InventoryIssueDetailRow>> GetIssueDetailAsync(int issueId);
+        Task<ListResponseWrapper<InventoryPurchaseDetailRow>> GetPurchaseDetailAsync(int purchaseId);
+
+        /* Cancel + reverse stock (Pattern A: cancel-and-re-record). */
+        Task<ResponseEntity> CancelPurchaseAsync(int purchaseId, string reason, int? actorUserId);
+        Task<ResponseEntity> CancelIssueAsync(int issueId, string reason, int? actorUserId);
 
         /* Inventory Issue Request workflow (new — teacher requests, accountant approves/fulfills) */
         Task<ResponseEntity> CreateIssueRequestAsync(CreateInventoryIssueRequestDTO dto);

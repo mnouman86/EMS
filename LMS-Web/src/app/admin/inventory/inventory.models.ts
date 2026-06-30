@@ -68,6 +68,28 @@ export interface IssueItems {
 }
 
 /* ---------- INV-04: Return ---------- */
+export interface PurchaseDetailRow {
+  purchaseId: number;
+  purchaseCode: string;
+  purchaseDate: string;
+  vendorName: string;
+  vendorInvoiceNo?: string | null;
+  paymentMode?: string | null;
+  grandTotal: number;
+  notes?: string | null;
+  isCancelled?: boolean;
+  cancelledAt?: string | null;
+  cancelReason?: string | null;
+  purchaseLineId: number;
+  itemId: number;
+  itemName: string;
+  itemCode?: string | null;
+  unitOfMeasure: string;
+  quantity: number;
+  unitPrice: number;
+  lineTotal: number;
+}
+
 export interface IssueDetailRow {
   issueId: number;
   issueCode: string;
@@ -75,6 +97,9 @@ export interface IssueDetailRow {
   issuedToType: string;
   issuedToName: string;
   purpose: string;
+  isCancelled?: boolean;
+  cancelledAt?: string | null;
+  cancelReason?: string | null;
   issueLineId: number;
   itemId: number;
   itemName: string;
@@ -153,6 +178,9 @@ export interface PurchaseRegisterRow {
   paymentMode: string;
   grandTotal: number;
   linkedExpenseId?: number | null;
+  isCancelled?: boolean;
+  cancelledAt?: string | null;
+  cancelReason?: string | null;
 }
 
 export interface IssueRegisterRow {
@@ -164,6 +192,9 @@ export interface IssueRegisterRow {
   issuedToName: string;
   purpose: string;
   issuedBy?: number | null;
+  isCancelled?: boolean;
+  cancelledAt?: string | null;
+  cancelReason?: string | null;
 }
 
 export interface ItemLedgerRow {
@@ -173,6 +204,8 @@ export interface ItemLedgerRow {
   quantity: number;
   runningStock: number;
   notes: string;
+  /** FK back to the originating record (Purchase / Issue / Return / Adjustment). */
+  sourceMovementId: number;
 }
 
 /* ---------- INV-08 filters (extended) ---------- */
@@ -181,6 +214,7 @@ export interface PurchaseRegisterFilters {
   toDate: string;
   categoryId?: number | null;
   vendorName?: string | null;
+  includeCancelled?: boolean;
 }
 export interface IssueRegisterFilters {
   fromDate: string;
@@ -190,6 +224,7 @@ export interface IssueRegisterFilters {
   issuedToType?: string | null;
   issuedToId?: number | null;
   issuedByUserId?: number | null;
+  includeCancelled?: boolean;
 }
 
 /* ---------- "My Issued Items" ---------- */

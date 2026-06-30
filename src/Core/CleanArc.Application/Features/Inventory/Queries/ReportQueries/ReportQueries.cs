@@ -10,7 +10,8 @@ namespace CleanArc.Application.Features.Inventory.Queries.ReportQueries
     /* INV-08: Purchase register */
     public record GetPurchaseRegisterQuery(
         DateTime FromDate, DateTime ToDate,
-        int? CategoryId = null, string? VendorName = null)
+        int? CategoryId = null, string? VendorName = null,
+        bool IncludeCancelled = false)
         : IRequest<OperationResult<List<PurchaseRegisterRow>>>;
 
     public class PurchaseRegisterRow
@@ -23,6 +24,9 @@ namespace CleanArc.Application.Features.Inventory.Queries.ReportQueries
         public string PaymentMode { get; set; }
         public decimal GrandTotal { get; set; }
         public int? LinkedExpenseId { get; set; }
+        public bool IsCancelled { get; set; }
+        public DateTime? CancelledAt { get; set; }
+        public string CancelReason { get; set; }
     }
 
     internal class GetPurchaseRegisterQueryHandler : IRequestHandler<GetPurchaseRegisterQuery, OperationResult<List<PurchaseRegisterRow>>>
@@ -31,7 +35,7 @@ namespace CleanArc.Application.Features.Inventory.Queries.ReportQueries
         public GetPurchaseRegisterQueryHandler(IUnitOfWork u, IMapper m) { _u = u; _m = m; }
         public async ValueTask<OperationResult<List<PurchaseRegisterRow>>> Handle(GetPurchaseRegisterQuery r, CancellationToken ct)
         {
-            var res = await _u.InventoryRepository.GetPurchaseRegisterAsync(r.FromDate, r.ToDate, r.CategoryId, r.VendorName);
+            var res = await _u.InventoryRepository.GetPurchaseRegisterAsync(r.FromDate, r.ToDate, r.CategoryId, r.VendorName, r.IncludeCancelled);
             if (res.Code != 200) return OperationResult<List<PurchaseRegisterRow>>.FailureResult(res.Message, res.Code);
             return OperationResult<List<PurchaseRegisterRow>>.SuccessResult(_m.Map<List<PurchaseRegisterRow>>(res.Data), res.Code, res.Message, res.TotalCount);
         }
@@ -41,7 +45,8 @@ namespace CleanArc.Application.Features.Inventory.Queries.ReportQueries
     public record GetIssueRegisterQuery(
         DateTime FromDate, DateTime ToDate,
         int? CategoryId = null, int? ItemId = null,
-        string? IssuedToType = null, int? IssuedToId = null, int? IssuedByUserId = null)
+        string? IssuedToType = null, int? IssuedToId = null, int? IssuedByUserId = null,
+        bool IncludeCancelled = false)
         : IRequest<OperationResult<List<IssueRegisterRow>>>;
 
     public class IssueRegisterRow
@@ -54,6 +59,9 @@ namespace CleanArc.Application.Features.Inventory.Queries.ReportQueries
         public string IssuedToName { get; set; }
         public string Purpose { get; set; }
         public int? IssuedBy { get; set; }
+        public bool IsCancelled { get; set; }
+        public DateTime? CancelledAt { get; set; }
+        public string CancelReason { get; set; }
     }
 
     internal class GetIssueRegisterQueryHandler : IRequestHandler<GetIssueRegisterQuery, OperationResult<List<IssueRegisterRow>>>
@@ -63,7 +71,7 @@ namespace CleanArc.Application.Features.Inventory.Queries.ReportQueries
         public async ValueTask<OperationResult<List<IssueRegisterRow>>> Handle(GetIssueRegisterQuery r, CancellationToken ct)
         {
             var res = await _u.InventoryRepository.GetIssueRegisterAsync(
-                r.FromDate, r.ToDate, r.CategoryId, r.ItemId, r.IssuedToType, r.IssuedToId, r.IssuedByUserId);
+                r.FromDate, r.ToDate, r.CategoryId, r.ItemId, r.IssuedToType, r.IssuedToId, r.IssuedByUserId, r.IncludeCancelled);
             if (res.Code != 200) return OperationResult<List<IssueRegisterRow>>.FailureResult(res.Message, res.Code);
             return OperationResult<List<IssueRegisterRow>>.SuccessResult(_m.Map<List<IssueRegisterRow>>(res.Data), res.Code, res.Message, res.TotalCount);
         }
@@ -81,6 +89,7 @@ namespace CleanArc.Application.Features.Inventory.Queries.ReportQueries
         public decimal Quantity { get; set; }
         public decimal RunningStock { get; set; }
         public string Notes { get; set; }
+        public int SourceMovementId { get; set; }
     }
 
     internal class GetItemLedgerQueryHandler : IRequestHandler<GetItemLedgerQuery, OperationResult<List<ItemLedgerResult>>>
@@ -106,6 +115,9 @@ namespace CleanArc.Application.Features.Inventory.Queries.ReportQueries
         public string IssuedToType { get; set; }
         public string IssuedToName { get; set; }
         public string Purpose { get; set; }
+        public bool IsCancelled { get; set; }
+        public DateTime? CancelledAt { get; set; }
+        public string CancelReason { get; set; }
         public int IssueLineId { get; set; }
         public int ItemId { get; set; }
         public string ItemName { get; set; }
@@ -124,6 +136,44 @@ namespace CleanArc.Application.Features.Inventory.Queries.ReportQueries
             var res = await _u.InventoryRepository.GetIssueDetailAsync(r.IssueId);
             if (res.Code != 200) return OperationResult<List<IssueDetailRowResult>>.FailureResult(res.Message, res.Code);
             return OperationResult<List<IssueDetailRowResult>>.SuccessResult(_m.Map<List<IssueDetailRowResult>>(res.Data), res.Code, res.Message, res.TotalCount);
+        }
+    }
+
+    /* INV-02: Purchase detail (header + per-line) for the Purchase view dialog */
+    public record GetPurchaseDetailQuery(int PurchaseId) : IRequest<OperationResult<List<PurchaseDetailRowResult>>>;
+
+    public class PurchaseDetailRowResult
+    {
+        public int PurchaseId { get; set; }
+        public string PurchaseCode { get; set; }
+        public DateTime PurchaseDate { get; set; }
+        public string VendorName { get; set; }
+        public string VendorInvoiceNo { get; set; }
+        public string PaymentMode { get; set; }
+        public decimal GrandTotal { get; set; }
+        public string Notes { get; set; }
+        public bool IsCancelled { get; set; }
+        public DateTime? CancelledAt { get; set; }
+        public string CancelReason { get; set; }
+        public int PurchaseLineId { get; set; }
+        public int ItemId { get; set; }
+        public string ItemName { get; set; }
+        public string ItemCode { get; set; }
+        public string UnitOfMeasure { get; set; }
+        public decimal Quantity { get; set; }
+        public decimal UnitPrice { get; set; }
+        public decimal LineTotal { get; set; }
+    }
+
+    internal class GetPurchaseDetailQueryHandler : IRequestHandler<GetPurchaseDetailQuery, OperationResult<List<PurchaseDetailRowResult>>>
+    {
+        private readonly IUnitOfWork _u; private readonly IMapper _m;
+        public GetPurchaseDetailQueryHandler(IUnitOfWork u, IMapper m) { _u = u; _m = m; }
+        public async ValueTask<OperationResult<List<PurchaseDetailRowResult>>> Handle(GetPurchaseDetailQuery r, CancellationToken ct)
+        {
+            var res = await _u.InventoryRepository.GetPurchaseDetailAsync(r.PurchaseId);
+            if (res.Code != 200) return OperationResult<List<PurchaseDetailRowResult>>.FailureResult(res.Message, res.Code);
+            return OperationResult<List<PurchaseDetailRowResult>>.SuccessResult(_m.Map<List<PurchaseDetailRowResult>>(res.Data), res.Code, res.Message, res.TotalCount);
         }
     }
 }

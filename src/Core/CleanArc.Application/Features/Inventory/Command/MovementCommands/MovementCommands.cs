@@ -225,4 +225,60 @@ namespace CleanArc.Application.Features.Inventory.Command.MovementCommands
             return OperationResult<ResponseEntity>.SuccessResult(res);
         }
     }
+
+    /* INV-02 / INV-03: Cancel an existing purchase or issue (Pattern A — cancel & re-record).
+       Validation lives in the SP (already-cancelled, returns exist, stock would go negative). */
+    public record CancelInventoryPurchaseCommand(int PurchaseId, string Reason)
+        : IRequest<OperationResult<ResponseEntity>>, IValidatableModel<CancelInventoryPurchaseCommand>
+    {
+        [JsonIgnore] public int UserId { get; set; }
+        public IValidator<CancelInventoryPurchaseCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CancelInventoryPurchaseCommand> v)
+        {
+            v.RuleFor(c => c.PurchaseId).GreaterThan(0);
+            v.RuleFor(c => c.Reason).NotEmpty().MaximumLength(500);
+            return v;
+        }
+    }
+
+    internal class CancelInventoryPurchaseCommandHandler : IRequestHandler<CancelInventoryPurchaseCommand, OperationResult<ResponseEntity>>
+    {
+        private readonly IUnitOfWork _u; private readonly IAppUserManager _m;
+        public CancelInventoryPurchaseCommandHandler(IUnitOfWork u, IAppUserManager m) { _u = u; _m = m; }
+        public async ValueTask<OperationResult<ResponseEntity>> Handle(CancelInventoryPurchaseCommand r, CancellationToken ct)
+        {
+            var user = await _m.GetUserByIdAsync(r.UserId);
+            if (user == null) return OperationResult<ResponseEntity>.FailureResult("User Not Found");
+            var res = await _u.InventoryRepository.CancelPurchaseAsync(r.PurchaseId, r.Reason, user.Id);
+            await _u.CommitAsync();
+            if (res != null && res.Code != 200) return OperationResult<ResponseEntity>.FailureResult(res.Message, res.Code);
+            return OperationResult<ResponseEntity>.SuccessResult(res);
+        }
+    }
+
+    public record CancelInventoryIssueCommand(int IssueId, string Reason)
+        : IRequest<OperationResult<ResponseEntity>>, IValidatableModel<CancelInventoryIssueCommand>
+    {
+        [JsonIgnore] public int UserId { get; set; }
+        public IValidator<CancelInventoryIssueCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<CancelInventoryIssueCommand> v)
+        {
+            v.RuleFor(c => c.IssueId).GreaterThan(0);
+            v.RuleFor(c => c.Reason).NotEmpty().MaximumLength(500);
+            return v;
+        }
+    }
+
+    internal class CancelInventoryIssueCommandHandler : IRequestHandler<CancelInventoryIssueCommand, OperationResult<ResponseEntity>>
+    {
+        private readonly IUnitOfWork _u; private readonly IAppUserManager _m;
+        public CancelInventoryIssueCommandHandler(IUnitOfWork u, IAppUserManager m) { _u = u; _m = m; }
+        public async ValueTask<OperationResult<ResponseEntity>> Handle(CancelInventoryIssueCommand r, CancellationToken ct)
+        {
+            var user = await _m.GetUserByIdAsync(r.UserId);
+            if (user == null) return OperationResult<ResponseEntity>.FailureResult("User Not Found");
+            var res = await _u.InventoryRepository.CancelIssueAsync(r.IssueId, r.Reason, user.Id);
+            await _u.CommitAsync();
+            if (res != null && res.Code != 200) return OperationResult<ResponseEntity>.FailureResult(res.Message, res.Code);
+            return OperationResult<ResponseEntity>.SuccessResult(res);
+        }
+    }
 }

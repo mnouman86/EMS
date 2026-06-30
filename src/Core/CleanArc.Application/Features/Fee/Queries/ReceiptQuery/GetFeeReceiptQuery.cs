@@ -32,7 +32,7 @@ namespace CleanArc.Application.Features.Fee.Queries.ReceiptQuery
             if (payment.Code != 200 || payment.Data == null)
                 return OperationResult<FeeReceiptDownloadResult>.FailureResult("Payment not found", 404);
 
-            if (_scope.IsTeacherScoped && !await _scope.OwnsStudentAsync(payment.Data.StudentId))
+            if (_scope.IsTeacherScoped && !await _scope.OwnsStudentAsync(payment.Data.StudentId, TeacherScopeKind.ClassTeacher))
                 return OperationResult<FeeReceiptDownloadResult>.FailureResult("Not authorized for this student.", 403);
 
             var allocations = await _u.FeeRepository.GetPaymentAllocationsAsync(r.PaymentId);

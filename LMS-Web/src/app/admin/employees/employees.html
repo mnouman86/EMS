@@ -3,7 +3,7 @@
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
   <div>
     <h2 style="margin:0;font-size:1.3rem;">Employees</h2>
-    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Staff bio-data, assignments, salary and advances.</p>
+    <p style="margin:2px 0 0;color:#64748b;font-size:1.1rem;">Staff bio-data, assignments, salary and advances.</p>
   </div>
   <p-button label="Register Employee" icon="pi pi-plus" (onClick)="create()"></p-button>
 </div>
@@ -11,16 +11,16 @@
 <!-- Filters -->
 <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px;">
   <div style="flex:1;min-width:220px;">
-    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Search (name / code / CNIC / mobile)</label>
+    <label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Search (name / code / CNIC / mobile)</label>
     <input pInputText [(ngModel)]="search" (keyup.enter)="load()" placeholder="Type and press Enter" style="width:100%;" />
   </div>
   <div style="min-width:170px;">
-    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Status</label>
+    <label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Status</label>
     <p-select [options]="statusOptions" optionLabel="label" optionValue="value"
               [(ngModel)]="statusFilter" (onChange)="load()" [style]="{ width: '100%' }"></p-select>
   </div>
   <div style="min-width:170px;">
-    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Employment</label>
+    <label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Employment</label>
     <p-select [options]="employmentOptions" optionLabel="label" optionValue="value"
               [(ngModel)]="employmentFilter" (onChange)="load()" [style]="{ width: '100%' }"></p-select>
   </div>
@@ -72,11 +72,11 @@
     <p style="margin:0 0 14px;color:#475569;">{{ leftTarget()!.fullName }} ({{ leftTarget()!.employeeCode }})</p>
   }
   <div style="margin-bottom:14px;">
-    <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Last working day</label>
+    <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Last working day</label>
     <p-datepicker [(ngModel)]="leftDate" dateFormat="dd M yy" [showIcon]="true" [fluid]="true" appendTo="body"></p-datepicker>
   </div>
   <div>
-    <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Reason (optional)</label>
+    <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Reason (optional)</label>
     <input pInputText [(ngModel)]="leftReason" placeholder="Reason for leaving" style="width:100%;" />
   </div>
   <ng-template pTemplate="footer">

@@ -1,23 +1,148 @@
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
   <div>
     <h2 style="margin:0;font-size:1.3rem;">Issue Items</h2>
-    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Stock-out to a class, teacher, department or student.</p>
+    <p style="margin:2px 0 0;color:#64748b;font-size:1.1rem;">Stock-out to a class, teacher, department, employee or student.</p>
   </div>
-  <a routerLink="/admin/inventory" class="p-button p-component p-button-outlined" style="text-decoration:none;">
-    <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back
-  </a>
+  <div style="display:flex;gap:8px;">
+    <p-button label="New issue" icon="pi pi-plus" (onClick)="openForm()"></p-button>
+    <a routerLink="/admin/inventory" class="p-button p-component p-button-outlined" style="text-decoration:none;">
+      <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back
+    </a>
+  </div>
 </div>
 
-<div style="max-width:880px;">
+<!-- Filters -->
+<div style="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-bottom:12px;">
+  <div>
+    <label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Date range</label>
+    <p-datepicker [(ngModel)]="range" selectionMode="range" dateFormat="dd M yy" [showIcon]="true"
+                  appendTo="body" [readonlyInput]="true"></p-datepicker>
+  </div>
+  <p-button label="Run" icon="pi pi-search" [loading]="issuesLoading()" (onClick)="loadIssues()"></p-button>
+</div>
+
+<!-- History grid -->
+<p-table [value]="issues()" [loading]="issuesLoading()" styleClass="p-datatable-sm p-datatable-gridlines"
+         [paginator]="issues().length > 20" [rows]="20">
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:160px;">Code</th>
+      <th style="width:120px;">Date</th>
+      <th style="width:110px;">Recipient Type</th>
+      <th>Recipient Name</th>
+      <th>Purpose</th>
+      <th style="width:80px;text-align:center;">Actions</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-r>
+    <tr>
+      <td>
+        <strong>{{ r.issueCode }}</strong>
+        @if (r.isCancelled) { <p-tag value="Cancelled" severity="danger" styleClass="ml-2"></p-tag> }
+      </td>
+      <td>{{ r.issueDate | date:'dd MMM yyyy' }}</td>
+      <td><p-tag [value]="r.issuedToType" severity="secondary"></p-tag></td>
+      <td>{{ r.issuedToName }}</td>
+      <td>{{ r.purpose || '—' }}</td>
+      <td style="text-align:center;">
+        <p-button icon="pi pi-eye" [text]="true" size="small" (onClick)="view(r)" pTooltip="View lines"></p-button>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr><td colspan="6" style="text-align:center;padding:18px;color:#94a3b8;">No issues in this range.</td></tr>
+  </ng-template>
+</p-table>
+
+<!-- Detail view dialog -->
+<p-dialog [(visible)]="detailOpen" [modal]="true" [style]="{ width: '760px' }" [draggable]="false" [resizable]="false"
+          [header]="(detailRow()?.issueCode || 'Issue') + ' — lines'">
+  @if (detailRow(); as r) {
+    <div class="detail-grid">
+      <div><span>Date</span><b>{{ r.issueDate | date:'mediumDate' }}</b></div>
+      <div><span>Recipient</span><b>{{ r.issuedToName }} <span style="color:#94a3b8;">({{ r.issuedToType }})</span></b></div>
+      <div><span>Purpose</span><b>{{ r.purpose || '—' }}</b></div>
+    </div>
+
+    <h4 style="font-size:0.95rem;margin:14px 0 8px;">Items issued</h4>
+    <p-table [value]="detailLines()" [loading]="detailLoading()" styleClass="p-datatable-sm p-datatable-gridlines">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Item</th>
+          <th style="width:80px;">Unit</th>
+          <th style="width:100px;text-align:right;">Quantity</th>
+          <th style="width:110px;text-align:right;">Returned</th>
+          <th style="width:110px;text-align:right;">Remaining</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-l>
+        <tr>
+          <td>{{ l.itemName }}</td>
+          <td>{{ l.unitOfMeasure }}</td>
+          <td style="text-align:right;">{{ l.quantity | number:'1.0-2' }}</td>
+          <td style="text-align:right;">{{ l.returnedQuantity | number:'1.0-2' }}</td>
+          <td style="text-align:right;font-weight:500;">{{ l.remainingQuantity | number:'1.0-2' }}</td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr><td colspan="5" style="text-align:center;padding:14px;color:#94a3b8;">No line items.</td></tr>
+      </ng-template>
+    </p-table>
+
+    @if (r.isCancelled) {
+      <div class="cancel-banner">
+        <i class="pi pi-ban"></i>
+        <div>
+          <strong>This issue has been cancelled — stock was restored.</strong>
+          @if (r.cancelReason) { <div style="margin-top:4px;font-size:0.84rem;color:#7c2d12;">Reason: {{ r.cancelReason }}</div> }
+          @if (r.cancelledAt) { <div style="font-size:0.78rem;color:#9a3412;">{{ r.cancelledAt | date:'medium' }}</div> }
+        </div>
+      </div>
+    }
+  }
+
+  <ng-template pTemplate="footer">
+    @if (canCancel && detailRow() && !detailRow()!.isCancelled) {
+      <p-button label="Cancel issue" icon="pi pi-ban" severity="danger" [outlined]="true" (onClick)="openCancel()"></p-button>
+    }
+  </ng-template>
+</p-dialog>
+
+<!-- Cancel reason prompt -->
+<p-dialog [(visible)]="cancelOpen" [modal]="true" [style]="{ width: '500px' }" [draggable]="false" [resizable]="false"
+          header="Cancel issue — confirm">
+  <p style="margin:0 0 12px;color:#475569;font-size:0.88rem;">
+    Cancelling will <strong>restore the stock</strong> back to each item. Cancellation is refused if returns have already been recorded against this issue.
+  </p>
+  <label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Reason *</label>
+  <textarea pTextarea [(ngModel)]="cancelReason" rows="3" style="width:100%;" placeholder="Why are you cancelling this issue?"></textarea>
+  <ng-template pTemplate="footer">
+    <p-button label="Keep" severity="secondary" [outlined]="true" (onClick)="cancelOpen.set(false)"></p-button>
+    <p-button label="Cancel issue" icon="pi pi-ban" severity="danger" [loading]="cancelling()" (onClick)="submitCancel()"></p-button>
+  </ng-template>
+</p-dialog>
+
+<!-- New issue dialog (form) -->
+<p-dialog [(visible)]="formOpen" [modal]="true" [style]="{ width: '880px' }" [draggable]="false" [resizable]="false"
+          header="Issue items">
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:16px;">
     <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Issue Date *</label>
       <p-datepicker [(ngModel)]="issueDate" dateFormat="dd M yy" [showIcon]="true" [fluid]="true" appendTo="body"></p-datepicker></div>
     <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Issued To Type *</label>
-      <p-select [options]="typeOptions" optionLabel="label" optionValue="value" [(ngModel)]="issuedToType" [style]="{ width: '100%' }" appendTo="body"></p-select></div>
+      <p-select [options]="typeOptions" optionLabel="label" optionValue="value"
+                [(ngModel)]="issuedToType" (ngModelChange)="onTypeChange()"
+                [style]="{ width: '100%' }" appendTo="body"></p-select></div>
     <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Recipient Name *</label>
-      <input pInputText [(ngModel)]="issuedToName" placeholder="e.g. Grade 3, Ms. Sara" style="width:100%;" /></div>
-    <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Recipient ID (optional)</label>
-      <p-inputnumber [(ngModel)]="issuedToId" [useGrouping]="false" [fluid]="true"></p-inputnumber></div>
+      <p-select [options]="recipientOptions()" optionLabel="label"
+                [(ngModel)]="selectedRecipient" (onChange)="onRecipientPicked()"
+                [filter]="true" [showClear]="true"
+                [placeholder]="recipientOptions().length ? 'Select ' + issuedToType : 'No ' + issuedToType + ' records'"
+                [style]="{ width: '100%' }" appendTo="body"
+                [panelStyle]="{ maxHeight: '260px' }" scrollHeight="240px"></p-select></div>
+    <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Recipient ID</label>
+      <input pInputText [value]="issuedToId ?? ''" readonly
+             [placeholder]="issuedToType === 'Department' ? 'N/A for Department' : 'Auto-populated'"
+             style="width:100%;background:#f8fafc;color:#64748b;" /></div>
   </div>
 
   <h3 style="font-size:1rem;margin:0 0 8px;">Items</h3>
@@ -32,7 +157,12 @@
     </ng-template>
     <ng-template pTemplate="body" let-line let-idx="rowIndex">
       <tr>
-        <td><p-select [options]="itemOptions()" optionLabel="label" optionValue="value" [(ngModel)]="line.itemId" (onChange)="onItemChange(line)" [filter]="true" [style]="{ width: '100%' }" appendTo="body" placeholder="Select item"></p-select></td>
+        <td>
+          <p-select [options]="itemOptions()" optionLabel="label" optionValue="value" [(ngModel)]="line.itemId"
+                    (onChange)="onItemChange(line)" [filter]="true" [style]="{ width: '100%' }" appendTo="body"
+                    placeholder="Select item"
+                    [panelStyle]="{ maxHeight: '260px' }" scrollHeight="240px"></p-select>
+        </td>
         <td><p-inputnumber [(ngModel)]="line.quantity" [min]="0" [minFractionDigits]="0" [maxFractionDigits]="2" [fluid]="true"></p-inputnumber></td>
         <td [style.color]="line.itemId && line.quantity > line.stock ? '#dc2626' : '#64748b'">{{ line.itemId ? (line.stock | number:'1.0-2') : '—' }}</td>
         <td><p-button icon="pi pi-times" severity="danger" size="small" [text]="true" (onClick)="removeLine(idx)" [disabled]="lines().length === 1"></p-button></td>
@@ -46,10 +176,21 @@
 
   <div style="margin-top:16px;">
     <label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Purpose</label>
-    <textarea pTextarea [(ngModel)]="purpose" rows="2" style="width:100%;max-width:520px;" placeholder="Reason / usage"></textarea>
+    <textarea pTextarea [(ngModel)]="purpose" rows="2" style="width:100%;" placeholder="Reason / usage"></textarea>
   </div>
 
-  <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:18px;">
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" [outlined]="true" (onClick)="formOpen.set(false)"></p-button>
     <p-button label="Issue Items" icon="pi pi-check" [loading]="saving()" (onClick)="save()"></p-button>
-  </div>
-</div>
+  </ng-template>
+</p-dialog>
+
+<style>
+  .detail-grid { display:grid;grid-template-columns:140px 1fr;row-gap:8px;column-gap:16px;font-size:0.88rem; }
+  .detail-grid > div { display:contents; }
+  .detail-grid span { color:#94a3b8; }
+  .detail-grid b { color:#0f172a; }
+  .ml-2 { margin-left:6px !important; }
+  .cancel-banner { margin-top:14px;display:flex;gap:10px;align-items:flex-start;border:1px solid #fed7aa;background:#fff7ed;color:#9a3412;border-radius:8px;padding:10px 14px;font-size:0.9rem; }
+  .cancel-banner i { font-size:1.1rem;margin-top:2px; }
+</style>

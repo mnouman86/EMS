@@ -36,7 +36,12 @@ export class AdminLayout implements OnInit {
   private readonly groups: NavGroup[] = [
     {
       title: 'Overview',
-      items: [{ label: 'Dashboard', icon: 'pi pi-home', route: '/admin/dashboard', feature: '' }]
+      items: [
+        { label: 'Dashboard', icon: 'pi pi-home', route: '/admin/dashboard', feature: '' },
+        // Always visible — admins/principals can use it for support/preview;
+        // for teachers it's their primary landing page.
+        { label: 'My Teaching', icon: 'pi pi-graduation-cap', route: '/admin/my-teaching', feature: '' }
+      ]
     },
     {
       title: 'Academics',
@@ -62,17 +67,29 @@ export class AdminLayout implements OnInit {
     {
       title: 'My Workspace',
       items: [
-        // Empty `feature` → always visible to anyone who reaches the admin shell
-        // (route guards enforce the actual role gate: AnyStaff for both).
-        { label: 'My Inventory', icon: 'pi pi-shopping-bag', route: '/admin/inventory/my-issued', feature: '' },
-        { label: 'Issue Requests', icon: 'pi pi-send', route: '/admin/inventory/requests', feature: '' }
+        // Self-service inventory screens — share the 'Inventory' feature so any
+        // role granted Inventory.Read can request items / see what's issued to them.
+        { label: 'My Inventory', icon: 'pi pi-shopping-bag', route: '/admin/inventory/my-issued', feature: 'Inventory' },
+        { label: 'Issue Requests', icon: 'pi pi-send', route: '/admin/inventory/requests', feature: 'Inventory' }
+      ]
+    },
+    {
+      title: 'Feedback',
+      items: [
+        { label: 'Log Complaint / Suggestion', icon: 'pi pi-comment', route: '/admin/complaints/new', feature: 'Complaints' },
+        { label: 'My Complaints', icon: 'pi pi-inbox', route: '/admin/complaints/mine', feature: 'Complaints' },
+        { label: 'Complaints Report', icon: 'pi pi-flag', route: '/admin/complaints/report', feature: 'ComplaintsReport' }
       ]
     },
     {
       title: 'Administration',
       items: [
         { label: 'User Permissions', icon: 'pi pi-lock', route: '/admin/access', feature: 'UserPermissions' },
-        { label: 'Parent Links', icon: 'pi pi-link', route: '/admin/parent-links', feature: 'ParentLinks' }
+        { label: 'Users', icon: 'pi pi-users', route: '/admin/users', feature: 'UserManagement' },
+        { label: 'Parent Links', icon: 'pi pi-link', route: '/admin/parent-links', feature: 'ParentLinks' },
+        { label: 'School Calendar', icon: 'pi pi-calendar', route: '/admin/calendar', feature: 'Calendar' },
+        // Nature catalogue feeds the complaint dropdown. Admin-only by route guard.
+        { label: 'Complaint Nature', icon: 'pi pi-tag', route: '/admin/complaints/nature', feature: 'ComplaintsReport' }
       ]
     }
   ];

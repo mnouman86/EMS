@@ -21,7 +21,8 @@ internal class GetStudentResultCardQueryHandler : IRequestHandler<GetStudentResu
 
     public async ValueTask<OperationResult<GetStudentResultCardQueryResult>> Handle(GetStudentResultCardQuery request, CancellationToken cancellationToken)
     {
-        if (_scope.IsTeacherScoped && !await _scope.OwnsStudentAsync(request.StudentId))
+        // Results module = assigned-subject classes (ST scope).
+        if (_scope.IsTeacherScoped && !await _scope.OwnsStudentAsync(request.StudentId, TeacherScopeKind.Subject))
             return OperationResult<GetStudentResultCardQueryResult>.FailureResult("Not authorized for this student.", 403);
 
         var req = new StudentCardRequest { ResultSessionId = request.ResultSessionId, StudentId = request.StudentId };

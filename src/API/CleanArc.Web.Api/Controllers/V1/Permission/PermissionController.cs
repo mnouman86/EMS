@@ -55,6 +55,46 @@ public class PermissionController : ControllerBase
         return Wrap(await _sender.Send(cmd));
     }
 
+    /* ---------- Users lifecycle (admin-only) — used by Users Management screen ---------- */
+
+    [Authorize(Roles = Roles.Admin), HttpPost("PermissionCreateUser")]
+    public async Task<IActionResult> CreateUser([FromBody] CreateAppUserCommand cmd)
+    {
+        cmd.UserId = CurrentUserId;
+        return Wrap(await _sender.Send(cmd));
+    }
+
+    [Authorize(Roles = Roles.Admin), HttpPost("PermissionResetUserPassword")]
+    public async Task<IActionResult> ResetUserPassword([FromBody] ResetUserPasswordCommand cmd)
+    {
+        cmd.UserId = CurrentUserId;
+        return Wrap(await _sender.Send(cmd));
+    }
+
+    [Authorize(Roles = Roles.Admin), HttpPost("PermissionSetUserActive")]
+    public async Task<IActionResult> SetUserActive([FromBody] SetUserActiveCommand cmd)
+        => Wrap(await _sender.Send(cmd));
+
+    /* ---------- Roles lifecycle (admin-only) ---------- */
+
+    [Authorize(Roles = Roles.Admin), HttpPost("PermissionCreateRole")]
+    public async Task<IActionResult> CreateRole([FromBody] CreateAppRoleCommand cmd)
+    {
+        cmd.UserId = CurrentUserId;
+        return Wrap(await _sender.Send(cmd));
+    }
+
+    [Authorize(Roles = Roles.Admin), HttpPost("PermissionUpdateRole")]
+    public async Task<IActionResult> UpdateRole([FromBody] UpdateAppRoleCommand cmd)
+    {
+        cmd.UserId = CurrentUserId;
+        return Wrap(await _sender.Send(cmd));
+    }
+
+    [Authorize(Roles = Roles.Admin), HttpPost("PermissionDeleteRole")]
+    public async Task<IActionResult> DeleteRole([FromBody] DeleteAppRoleCommand cmd)
+        => Wrap(await _sender.Send(cmd));
+
     /* ---------- Current user (any authenticated) ---------- */
 
     [Authorize, HttpPost("PermissionGetMine")]

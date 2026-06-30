@@ -1,0 +1,85 @@
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">{{ isEdit() ? 'Edit complaint / suggestion' : 'Log a complaint or suggestion' }}</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:1rem;">Share an issue or an idea. The school office will review every entry.</p>
+  </div>
+  <div style="display:flex;gap:8px;">
+    <p-button label="My complaints" icon="pi pi-list" [outlined]="true" (onClick)="cancel()"></p-button>
+  </div>
+</div>
+
+<div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:20px;max-width:880px;">
+  <div style="display:grid;grid-template-columns:repeat(2, minmax(260px, 1fr));gap:14px 18px;">
+
+    <div style="grid-column:1 / -1;">
+      <label style="display:block;font-weight:600;font-size:0.85rem;margin-bottom:4px;">Nature *</label>
+      <p-select [options]="natureOptions()" [(ngModel)]="model.complaintNatureId"
+                placeholder="Select complaint or suggestion type" [filter]="true"
+                [style]="{ width: '100%' }" appendTo="body"></p-select>
+    </div>
+
+    <div>
+      <label style="display:block;font-weight:600;font-size:0.85rem;margin-bottom:4px;">
+        Complainant name *
+        <span style="font-weight:400;font-size:0.78rem;color:#64748b;display:block;">
+          Defaulted from your profile — change it only if you're logging on behalf of someone else.
+        </span>
+      </label>
+      <input pInputText [(ngModel)]="model.complainantName" maxlength="200" style="width:100%;" />
+    </div>
+
+    <div>
+      <label style="display:block;font-weight:600;font-size:0.85rem;margin-bottom:4px;">
+        Contact number *
+        <span style="font-weight:400;font-size:0.78rem;color:#64748b;display:block;">
+          Defaulted from your profile — change it only if you want to be reached at a different number.
+        </span>
+      </label>
+      <input pInputText [(ngModel)]="model.contactNumber" maxlength="40" style="width:100%;" placeholder="e.g. 0300 1234567" />
+    </div>
+
+    <div style="grid-column:1 / -1;">
+      <label style="display:block;font-weight:600;font-size:0.85rem;margin-bottom:4px;">
+        Complaint against
+        <span style="font-weight:400;font-size:0.78rem;color:#64748b;">(optional — person, designation or place)</span>
+      </label>
+      <input pInputText [(ngModel)]="model.complaintAgainst" maxlength="200" style="width:100%;" placeholder="e.g. canteen supervisor / playground tap" />
+    </div>
+
+    <div style="grid-column:1 / -1;">
+      <label style="display:block;font-weight:600;font-size:0.85rem;margin-bottom:4px;">Description *</label>
+      <textarea pTextarea [(ngModel)]="model.description" rows="6" style="width:100%;" maxlength="2000"
+                placeholder="Describe the issue or share your suggestion in detail (min 10 characters)"></textarea>
+      <div style="font-size:0.75rem;color:#94a3b8;text-align:right;">{{ (model.description || '').length }} / 2000</div>
+    </div>
+
+    <div style="grid-column:1 / -1;">
+      <label style="display:block;font-weight:600;font-size:0.85rem;margin-bottom:4px;">
+        Supporting attachment
+        <span style="font-weight:400;font-size:0.78rem;color:#64748b;">(optional — pdf / image / doc / xls, max 10 MB)</span>
+      </label>
+      @if (existingAttachment && !model.clearAttachment) {
+        <div style="display:flex;align-items:center;gap:10px;border:1px dashed #cbd5e1;border-radius:6px;padding:10px;">
+          <i class="pi pi-paperclip" style="color:#64748b;"></i>
+          <a [href]="attachmentUrl()" target="_blank" rel="noopener" style="color:#0f766e;">{{ existingAttachmentName || 'attachment' }}</a>
+          <p-button icon="pi pi-times" severity="danger" [text]="true" size="small"
+                    (onClick)="clearFile()" pTooltip="Remove this attachment"></p-button>
+        </div>
+      } @else {
+        <p-fileUpload mode="basic" chooseLabel="Choose file" [auto]="true" [maxFileSize]="10485760"
+                      accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.xls,.xlsx,.txt"
+                      (onSelect)="onFileSelect($event)"></p-fileUpload>
+        @if (selectedFile) {
+          <div style="margin-top:6px;font-size:0.84rem;color:#0f172a;">
+            <i class="pi pi-check" style="color:#16a34a;"></i> {{ selectedFile.name }} ({{ (selectedFile.size / 1024) | number:'1.0-1' }} KB)
+          </div>
+        }
+      }
+    </div>
+  </div>
+
+  <div style="margin-top:18px;display:flex;justify-content:flex-end;gap:8px;">
+    <p-button label="Cancel" severity="secondary" [outlined]="true" (onClick)="cancel()"></p-button>
+    <p-button [label]="isEdit() ? 'Save changes' : 'Submit'" icon="pi pi-check" [loading]="saving()" (onClick)="save()"></p-button>
+  </div>
+</div>

@@ -53,6 +53,23 @@ internal class RoleManagerService : IRoleManagerService
         return result;
     }
 
+    /// <summary>
+    /// Renames an existing role. Identity also re-stamps NormalizedName for us.
+    /// Refuses to touch the seeded 'admin' role — too many invariants assume it.
+    /// </summary>
+    public async Task<IdentityResult> UpdateRoleAsync(int roleId, string newName)
+    {
+        var role = await _roleManger.FindByIdAsync(roleId.ToString());
+        if (role == null)
+            return IdentityResult.Failed(new IdentityError { Code = "NotFound", Description = "Role not found." });
+
+        if (string.Equals(role.Name, "admin", System.StringComparison.OrdinalIgnoreCase))
+            return IdentityResult.Failed(new IdentityError { Code = "Protected", Description = "The 'admin' role cannot be renamed." });
+
+        role.Name = newName;
+        return await _roleManger.UpdateAsync(role);
+    }
+
     public async Task<bool> DeleteRoleAsync(int roleId)
     {
         var role = await _roleManger.Roles.Include(r => r.Claims)

@@ -36,7 +36,7 @@ namespace CleanArc.Application.Features.Fee.Queries.ArrearsQueries
         public async ValueTask<OperationResult<List<FeeArrearResult>>> Handle(GetFeeArrearsQuery r, CancellationToken ct)
         {
             // Per-student call → ownership check first.
-            if (_scope.IsTeacherScoped && r.StudentId.HasValue && !await _scope.OwnsStudentAsync(r.StudentId.Value))
+            if (_scope.IsTeacherScoped && r.StudentId.HasValue && !await _scope.OwnsStudentAsync(r.StudentId.Value, TeacherScopeKind.ClassTeacher))
                 return OperationResult<List<FeeArrearResult>>.FailureResult("Not authorized for this student.", 403);
 
             var res = await _u.FeeRepository.GetArrearsAsync(r.StudentId, r.IncludeWrittenOff);
@@ -46,7 +46,7 @@ namespace CleanArc.Application.Features.Fee.Queries.ArrearsQueries
             var total = res.TotalCount;
             if (_scope.IsTeacherScoped && !r.StudentId.HasValue)
             {
-                var owned = await _scope.FilterOwnedStudentsAsync(rows.Select(x => x.StudentId));
+                var owned = await _scope.FilterOwnedStudentsAsync(rows.Select(x => x.StudentId), TeacherScopeKind.ClassTeacher);
                 rows = rows.Where(x => owned.Contains(x.StudentId)).ToList();
                 total = rows.Count;
             }

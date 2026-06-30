@@ -29,7 +29,8 @@ namespace CleanArc.Application.Features.Fee.Queries.LedgerQueries
         public GetStudentLedgerQueryHandler(IUnitOfWork u, IMapper m, ITeacherScopeContext scope) { _u = u; _m = m; _scope = scope; }
         public async ValueTask<OperationResult<List<StudentLedgerEntryResult>>> Handle(GetStudentLedgerQuery r, CancellationToken ct)
         {
-            if (_scope.IsTeacherScoped && !await _scope.OwnsStudentAsync(r.StudentId))
+            // Fee module = class teacher's own-class responsibility (CT-only).
+            if (_scope.IsTeacherScoped && !await _scope.OwnsStudentAsync(r.StudentId, TeacherScopeKind.ClassTeacher))
                 return OperationResult<List<StudentLedgerEntryResult>>.FailureResult("Not authorized for this student.", 403);
 
             var res = await _u.FeeRepository.GetStudentLedgerAsync(r.StudentId, r.AcademicYearId);

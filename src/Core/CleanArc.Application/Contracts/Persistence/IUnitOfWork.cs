@@ -19,6 +19,8 @@ public interface IUnitOfWork
     public IParentRepository ParentRepository { get; }
     public IAttendanceRepository AttendanceRepository { get; }
     public ITeacherScopeRepository TeacherScopeRepository { get; }
+    public ICalendarRepository CalendarRepository { get; }
+    public IComplaintRepository ComplaintRepository { get; }
 
     Task CommitAsync();
     ValueTask RollBackAsync();

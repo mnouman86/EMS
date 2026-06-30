@@ -61,7 +61,7 @@ namespace CleanArc.Application.Features.Attendance
         {
             if (_scope.IsTeacherScoped)
             {
-                var classIds = await _scope.GetClassScopeAsync();
+                var classIds = await _scope.GetClassScopeAsync(TeacherScopeKind.ClassTeacher);
                 if (!classIds.Contains(r.SchoolClassId))
                     return OperationResult<List<ClassAttendanceGridRowResult>>.FailureResult("Not authorized for this class.", 403);
             }
@@ -100,7 +100,7 @@ namespace CleanArc.Application.Features.Attendance
 
             if (_scope.IsTeacherScoped)
             {
-                var classIds = await _scope.GetClassScopeAsync();
+                var classIds = await _scope.GetClassScopeAsync(TeacherScopeKind.ClassTeacher);
                 if (!classIds.Contains(r.SchoolClassId))
                     return OperationResult<ResponseEntity>.FailureResult("Not authorized to write attendance for this class.", 403);
             }
@@ -130,7 +130,7 @@ namespace CleanArc.Application.Features.Attendance
         public GetStudentAttendanceHistoryHandler(IUnitOfWork u, IMapper m, ITeacherScopeContext scope) { _u = u; _m = m; _scope = scope; }
         public async ValueTask<OperationResult<List<StudentAttendancePeriodResult>>> Handle(GetStudentAttendanceHistoryQuery r, CancellationToken ct)
         {
-            if (_scope.IsTeacherScoped && !await _scope.OwnsStudentAsync(r.StudentId))
+            if (_scope.IsTeacherScoped && !await _scope.OwnsStudentAsync(r.StudentId, TeacherScopeKind.ClassTeacher))
                 return OperationResult<List<StudentAttendancePeriodResult>>.FailureResult("Not authorized for this student.", 403);
 
             var res = await _u.AttendanceRepository.GetStudentHistoryAsync(r.StudentId, r.AcademicYearId);
@@ -144,13 +144,126 @@ namespace CleanArc.Application.Features.Attendance
     public record GetStudentAttendanceSummaryQuery(int StudentId, int? AcademicYearId)
         : IRequest<OperationResult<StudentAttendanceSummaryResult>>;
 
+    /* ---------- Daily — grid result ---------- */
+    public class DailyAttendanceGridRowResult
+    {
+        public int StudentId { get; set; }
+        public string StudentCode { get; set; }
+        public string FormNo { get; set; }
+        public string FullName { get; set; }
+        public string StudentStatus { get; set; }
+        public int? AttendanceId { get; set; }
+        public string DayStatus { get; set; }   // Present / Absent / Late / null
+        public string Remarks { get; set; }
+        public DateTime? MarkedAt { get; set; }
+    }
+
+    public class StudentDailyAttendanceResult
+    {
+        public int Id { get; set; }
+        public DateTime AttendanceDate { get; set; }
+        public string Status { get; set; }
+        public string Remarks { get; set; }
+        public string ClassName { get; set; }
+        public DateTime? MarkedAt { get; set; }
+    }
+
+    /* ---------- Daily grid query ---------- */
+    public record GetDailyAttendanceGridQuery(int SchoolClassId, DateTime AttendanceDate)
+        : IRequest<OperationResult<List<DailyAttendanceGridRowResult>>>;
+
+    internal class GetDailyAttendanceGridHandler : IRequestHandler<GetDailyAttendanceGridQuery, OperationResult<List<DailyAttendanceGridRowResult>>>
+    {
+        private readonly IUnitOfWork _u; private readonly IMapper _m; private readonly ITeacherScopeContext _scope;
+        public GetDailyAttendanceGridHandler(IUnitOfWork u, IMapper m, ITeacherScopeContext scope) { _u = u; _m = m; _scope = scope; }
+        public async ValueTask<OperationResult<List<DailyAttendanceGridRowResult>>> Handle(GetDailyAttendanceGridQuery r, CancellationToken ct)
+        {
+            // Daily attendance is class teacher's responsibility (CT-only scope).
+            if (_scope.IsTeacherScoped)
+            {
+                var classIds = await _scope.GetClassScopeAsync(TeacherScopeKind.ClassTeacher);
+                if (!classIds.Contains(r.SchoolClassId))
+                    return OperationResult<List<DailyAttendanceGridRowResult>>.FailureResult("Not authorized for this class.", 403);
+            }
+            var res = await _u.AttendanceRepository.GetDailyGridAsync(r.SchoolClassId, r.AttendanceDate);
+            if (res.Code != 200) return OperationResult<List<DailyAttendanceGridRowResult>>.FailureResult(res.Message, res.Code);
+            return OperationResult<List<DailyAttendanceGridRowResult>>.SuccessResult(
+                _m.Map<List<DailyAttendanceGridRowResult>>(res.Data), res.Code, res.Message, res.TotalCount);
+        }
+    }
+
+    /* ---------- Daily bulk save ---------- */
+    public class DailyEntryInput
+    {
+        public int StudentId { get; set; }
+        public string Status { get; set; }   // Present / Absent / Late
+        public string Remarks { get; set; }
+    }
+
+    public record BulkSaveDailyAttendanceCommand(
+        int AcademicYearId, int SchoolClassId, DateTime AttendanceDate,
+        List<DailyEntryInput> Entries) : IRequest<OperationResult<ResponseEntity>>
+    {
+        public int ChangedBy { get; set; }
+    }
+
+    internal class BulkSaveDailyAttendanceHandler : IRequestHandler<BulkSaveDailyAttendanceCommand, OperationResult<ResponseEntity>>
+    {
+        private readonly IUnitOfWork _u; private readonly ITeacherScopeContext _scope;
+        public BulkSaveDailyAttendanceHandler(IUnitOfWork u, ITeacherScopeContext scope) { _u = u; _scope = scope; }
+        public async ValueTask<OperationResult<ResponseEntity>> Handle(BulkSaveDailyAttendanceCommand r, CancellationToken ct)
+        {
+            if (r.Entries == null || r.Entries.Count == 0)
+                return OperationResult<ResponseEntity>.FailureResult("No attendance rows provided.", 400);
+
+            if (_scope.IsTeacherScoped)
+            {
+                var classIds = await _scope.GetClassScopeAsync(TeacherScopeKind.ClassTeacher);
+                if (!classIds.Contains(r.SchoolClassId))
+                    return OperationResult<ResponseEntity>.FailureResult("Not authorized to mark attendance for this class.", 403);
+            }
+
+            var json = JsonSerializer.Serialize(r.Entries, new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            });
+
+            var res = await _u.AttendanceRepository.BulkSaveDailyAsync(
+                r.AcademicYearId, r.SchoolClassId, r.AttendanceDate, json, r.ChangedBy);
+
+            if (res != null && res.Code != 200)
+                return OperationResult<ResponseEntity>.FailureResult(res.Message, res.Code);
+            return OperationResult<ResponseEntity>.SuccessResult(res);
+        }
+    }
+
+    /* ---------- Student daily history ---------- */
+    public record GetStudentDailyHistoryQuery(int StudentId, DateTime? FromDate, DateTime? ToDate)
+        : IRequest<OperationResult<List<StudentDailyAttendanceResult>>>;
+
+    internal class GetStudentDailyHistoryHandler : IRequestHandler<GetStudentDailyHistoryQuery, OperationResult<List<StudentDailyAttendanceResult>>>
+    {
+        private readonly IUnitOfWork _u; private readonly IMapper _m; private readonly ITeacherScopeContext _scope;
+        public GetStudentDailyHistoryHandler(IUnitOfWork u, IMapper m, ITeacherScopeContext scope) { _u = u; _m = m; _scope = scope; }
+        public async ValueTask<OperationResult<List<StudentDailyAttendanceResult>>> Handle(GetStudentDailyHistoryQuery r, CancellationToken ct)
+        {
+            if (_scope.IsTeacherScoped && !await _scope.OwnsStudentAsync(r.StudentId, TeacherScopeKind.ClassTeacher))
+                return OperationResult<List<StudentDailyAttendanceResult>>.FailureResult("Not authorized for this student.", 403);
+
+            var res = await _u.AttendanceRepository.GetStudentDailyHistoryAsync(r.StudentId, r.FromDate, r.ToDate);
+            if (res.Code != 200) return OperationResult<List<StudentDailyAttendanceResult>>.FailureResult(res.Message, res.Code);
+            return OperationResult<List<StudentDailyAttendanceResult>>.SuccessResult(
+                _m.Map<List<StudentDailyAttendanceResult>>(res.Data), res.Code, res.Message, res.TotalCount);
+        }
+    }
+
     internal class GetStudentAttendanceSummaryHandler : IRequestHandler<GetStudentAttendanceSummaryQuery, OperationResult<StudentAttendanceSummaryResult>>
     {
         private readonly IUnitOfWork _u; private readonly IMapper _m; private readonly ITeacherScopeContext _scope;
         public GetStudentAttendanceSummaryHandler(IUnitOfWork u, IMapper m, ITeacherScopeContext scope) { _u = u; _m = m; _scope = scope; }
         public async ValueTask<OperationResult<StudentAttendanceSummaryResult>> Handle(GetStudentAttendanceSummaryQuery r, CancellationToken ct)
         {
-            if (_scope.IsTeacherScoped && !await _scope.OwnsStudentAsync(r.StudentId))
+            if (_scope.IsTeacherScoped && !await _scope.OwnsStudentAsync(r.StudentId, TeacherScopeKind.ClassTeacher))
                 return OperationResult<StudentAttendanceSummaryResult>.FailureResult("Not authorized for this student.", 403);
 
             var res = await _u.AttendanceRepository.GetStudentSummaryAsync(r.StudentId, r.AcademicYearId);

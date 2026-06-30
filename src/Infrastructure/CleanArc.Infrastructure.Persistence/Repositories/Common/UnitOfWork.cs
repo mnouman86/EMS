@@ -29,6 +29,8 @@ public class UnitOfWork : IUnitOfWork
     public IParentRepository ParentRepository { get; set; }
     public IAttendanceRepository AttendanceRepository { get; set; }
     public ITeacherScopeRepository TeacherScopeRepository { get; set; }
+    public ICalendarRepository CalendarRepository { get; set; }
+    public IComplaintRepository ComplaintRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -52,6 +54,8 @@ public class UnitOfWork : IUnitOfWork
         ILogger<ParentRepository> _loggerParent,
         ILogger<AttendanceRepository> _loggerAttendance,
         ILogger<TeacherScopeRepository> _loggerTeacherScope,
+        ILogger<CalendarRepository> _loggerCalendar,
+        ILogger<ComplaintRepository> _loggerComplaint,
 
         IHttpContextAccessor httpContextAccessor)
     {
@@ -73,6 +77,8 @@ public class UnitOfWork : IUnitOfWork
         ParentRepository = new ParentRepository(configuration, _loggerParent, httpContextAccessor);
         AttendanceRepository = new AttendanceRepository(configuration, _loggerAttendance, httpContextAccessor);
         TeacherScopeRepository = new TeacherScopeRepository(configuration, _loggerTeacherScope, httpContextAccessor);
+        CalendarRepository = new CalendarRepository(configuration, _loggerCalendar, httpContextAccessor);
+        ComplaintRepository = new ComplaintRepository(configuration, _loggerComplaint, httpContextAccessor);
         this.configuration = configuration;
     }
 

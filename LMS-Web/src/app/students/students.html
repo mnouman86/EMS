@@ -3,7 +3,7 @@
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
   <div>
     <h2 style="margin:0;font-size:1.3rem;">Students</h2>
-    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Admissions, lifecycle status, promotion and bulk import.</p>
+    <p style="margin:2px 0 0;color:#64748b;font-size:1.1rem;">Admissions, lifecycle status, promotion and bulk import.</p>
   </div>
   <div style="display:flex;gap:8px;flex-wrap:wrap;">
     <p-button *hasPermission="'Students.Create'" label="Bulk Import" icon="pi pi-upload" severity="secondary" [outlined]="true" (onClick)="goImport()"></p-button>
@@ -15,16 +15,16 @@
 <!-- Filters -->
 <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px;">
   <div style="flex:1;min-width:220px;">
-    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Search (name / code / form no / parent)</label>
+    <label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Search (name / code / form no / parent)</label>
     <input pInputText [(ngModel)]="search" (keyup.enter)="load()" placeholder="Type and press Enter" style="width:100%;" />
   </div>
   <div style="min-width:170px;">
-    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Status</label>
+    <label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Status</label>
     <p-select [options]="statusOptions" optionLabel="label" optionValue="value"
               [(ngModel)]="statusFilter" (onChange)="load()" [style]="{ width: '100%' }"></p-select>
   </div>
   <div style="min-width:170px;">
-    <label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Class</label>
+    <label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Class</label>
     <p-select [options]="classOptions()" optionLabel="label" optionValue="value"
               [(ngModel)]="classFilter" (onChange)="load()" [style]="{ width: '100%' }" [filter]="true"></p-select>
   </div>
@@ -75,19 +75,19 @@
     <p style="margin:0 0 14px;color:#475569;">{{ statusTarget()!.fullName }} ({{ statusTarget()!.studentCode || statusTarget()!.formNo || '—' }})</p>
   }
   <div style="margin-bottom:14px;">
-    <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Target status</label>
+    <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Target status</label>
     <p-select [options]="transitionOptions" optionLabel="label" optionValue="value"
               [(ngModel)]="targetStatus" [style]="{ width: '100%' }" placeholder="Select status" appendTo="body"></p-select>
   </div>
   @if (targetStatus === 'Admitted' || targetStatus === 'Active') {
     <div style="margin-bottom:14px;">
-      <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Admit into class</label>
+      <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Admit into class</label>
       <p-select [options]="classOptions()" optionLabel="label" optionValue="value"
                 [(ngModel)]="targetClassId" [style]="{ width: '100%' }" placeholder="Select class" [filter]="true" appendTo="body"></p-select>
     </div>
   }
   <div>
-    <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;">Reason (optional)</label>
+    <label style="display:block;font-size:1.2rem;font-weight:600;margin-bottom:6px;">Reason (optional)</label>
     <input pInputText [(ngModel)]="lifecycleReason" placeholder="Reason / note" style="width:100%;" />
   </div>
   <ng-template pTemplate="footer">

@@ -1,7 +1,7 @@
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
   <div>
     <h2 style="margin:0;font-size:1.3rem;">Finance Reports</h2>
-    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Monthly &amp; annual summaries, expense breakdown and fee targets.</p>
+    <p style="margin:2px 0 0;color:#64748b;font-size:1.1rem;">Monthly &amp; annual summaries, expense breakdown and fee targets.</p>
   </div>
   <a routerLink="/admin/finance" class="p-button p-component p-button-outlined" style="text-decoration:none;"><i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back</a>
 </div>
@@ -18,9 +18,9 @@
     <!-- Monthly -->
     <p-tabpanel value="monthly">
       <div style="display:flex;gap:12px;align-items:flex-end;margin-bottom:12px;">
-        <div style="min-width:160px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Month</label>
+        <div style="min-width:160px;"><label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Month</label>
           <p-select [options]="monthOptions" optionLabel="label" optionValue="value" [(ngModel)]="mMonth" [style]="{ width: '100%' }"></p-select></div>
-        <div style="width:120px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Year</label>
+        <div style="width:120px;"><label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Year</label>
           <p-inputnumber [(ngModel)]="mYear" [useGrouping]="false" [fluid]="true"></p-inputnumber></div>
         <p-button label="Run" icon="pi pi-search" [loading]="monthlyLoading()" (onClick)="loadMonthly()"></p-button>
       </div>
@@ -40,7 +40,7 @@
     <!-- Annual -->
     <p-tabpanel value="annual">
       <div style="display:flex;gap:12px;align-items:flex-end;margin-bottom:12px;">
-        <div style="min-width:200px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Academic Year</label>
+        <div style="min-width:200px;"><label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Academic Year</label>
           <p-select [options]="yearOptions()" optionLabel="label" optionValue="value" [(ngModel)]="annualYearId" [style]="{ width: '100%' }" placeholder="Select year"></p-select></div>
         <p-button label="Run" icon="pi pi-search" [loading]="annualLoading()" (onClick)="loadAnnual()"></p-button>
       </div>
@@ -60,7 +60,7 @@
     <!-- Category-wise expense -->
     <p-tabpanel value="category">
       <div style="display:flex;gap:12px;align-items:flex-end;margin-bottom:12px;">
-        <div><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Period</label>
+        <div><label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Period</label>
           <p-datepicker [(ngModel)]="catRange" selectionMode="range" dateFormat="dd M yy" [showIcon]="true" appendTo="body" [readonlyInput]="true"></p-datepicker></div>
         <p-button label="Run" icon="pi pi-search" [loading]="catLoading()" (onClick)="loadCategory()"></p-button>
       </div>
@@ -80,7 +80,7 @@
     <!-- Fee vs target -->
     <p-tabpanel value="target">
       <div style="display:flex;gap:12px;align-items:flex-end;margin-bottom:12px;">
-        <div style="min-width:200px;"><label style="display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px;">Academic Year</label>
+        <div style="min-width:200px;"><label style="display:block;font-size:1.1rem;color:#181a1e;margin-bottom:4px;">Academic Year</label>
           <p-select [options]="yearOptions()" optionLabel="label" optionValue="value" [(ngModel)]="feeYearId" [style]="{ width: '100%' }" placeholder="Select year"></p-select></div>
         <p-button label="Run" icon="pi pi-search" [loading]="feeLoading()" (onClick)="loadFeeVsTarget()"></p-button>
       </div>

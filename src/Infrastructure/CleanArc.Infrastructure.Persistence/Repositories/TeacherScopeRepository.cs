@@ -48,4 +48,23 @@ public class TeacherScopeRepository : ITeacherScopeRepository
             Message = p.Get<string>("@Message") ?? string.Empty
         };
     }
+
+    public async Task<MyTeachingBundle> GetMyTeachingAsync(int userId)
+    {
+        using var connection = OpenConnection();
+        var p = new DynamicParameters();
+        p.Add("@UserId", userId, DbType.Int32);
+        p.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+        p.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+        using var multi = await connection.QueryMultipleAsync(
+            AuthorizationQueries.Get_MyTeaching, p, commandType: CommandType.StoredProcedure);
+
+        return new MyTeachingBundle
+        {
+            ClassesIHead    = (await multi.ReadAsync<MyClassRow>()).ToList(),
+            MySubjects      = (await multi.ReadAsync<MySubjectRow>()).ToList(),
+            ClassSubjectMap = (await multi.ReadAsync<MyClassSubjectRow>()).ToList()
+        };
+    }
 }

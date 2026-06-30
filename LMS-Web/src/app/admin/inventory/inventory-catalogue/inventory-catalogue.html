@@ -3,7 +3,7 @@
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
   <div>
     <h2 style="margin:0;font-size:1.3rem;">Inventory Catalogue</h2>
-    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">Categories and stock items.</p>
+    <p style="margin:2px 0 0;color:#64748b;font-size:1.1rem;">Categories and stock items.</p>
   </div>
   <a routerLink="/admin/inventory" class="p-button p-component p-button-outlined" style="text-decoration:none;">
     <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back
@@ -74,7 +74,7 @@
 <p-dialog [visible]="catDialog()" (visibleChange)="catDialog.set($event)" [modal]="true" [style]="{ width: '400px' }" [header]="editCat.id ? 'Edit Category' : 'New Category'" [draggable]="false">
   <div style="display:flex;flex-direction:column;gap:12px;">
     <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Name *</label><input pInputText [(ngModel)]="editCat.name" style="width:100%;" /></div>
-    <div style="display:flex;align-items:center;gap:8px;"><p-toggleswitch [(ngModel)]="editCat.isActive"></p-toggleswitch><label style="font-size:0.85rem;">Active</label></div>
+    <div style="display:flex;align-items:center;gap:8px;"><p-toggleswitch [(ngModel)]="editCat.isActive"></p-toggleswitch><label style="font-size:1rem;">Active</label></div>
   </div>
   <ng-template pTemplate="footer">
     <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="catDialog.set(false)"></p-button>
@@ -99,7 +99,7 @@
       <p-inputnumber [(ngModel)]="editItem.reorderLevel" [min]="0" [fluid]="true"></p-inputnumber></div>
     <div><label style="display:block;font-size:0.8rem;font-weight:600;margin-bottom:5px;">Description</label>
       <textarea pTextarea [(ngModel)]="editItem.description" rows="2" style="width:100%;"></textarea></div>
-    <div style="display:flex;align-items:center;gap:8px;"><p-toggleswitch [(ngModel)]="editItem.isActive"></p-toggleswitch><label style="font-size:0.85rem;">Active</label></div>
+    <div style="display:flex;align-items:center;gap:8px;"><p-toggleswitch [(ngModel)]="editItem.isActive"></p-toggleswitch><label style="font-size:1rem;">Active</label></div>
   </div>
   <ng-template pTemplate="footer">
     <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="itemDialog.set(false)"></p-button>

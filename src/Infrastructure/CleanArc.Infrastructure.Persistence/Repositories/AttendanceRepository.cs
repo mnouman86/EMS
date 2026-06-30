@@ -84,4 +84,34 @@ public class AttendanceRepository : IAttendanceRepository
         p.Add("@AcademicYearId", academicYearId, DbType.Int32);
         return ListWithOutputs<StudentAttendanceSummaryRow>(AttendanceQueries.Get_StudentAttendanceSummary, p);
     }
+
+    /* ---------- Daily attendance ---------- */
+    public Task<ListResponseWrapper<DailyAttendanceGridRow>> GetDailyGridAsync(int schoolClassId, DateTime attendanceDate)
+    {
+        var p = new DynamicParameters();
+        p.Add("@SchoolClassId", schoolClassId, DbType.Int32);
+        p.Add("@AttendanceDate", attendanceDate.Date, DbType.Date);
+        return ListWithOutputs<DailyAttendanceGridRow>(AttendanceQueries.Get_DailyAttendanceGrid, p);
+    }
+
+    public Task<ResponseEntity> BulkSaveDailyAsync(int academicYearId, int schoolClassId, DateTime attendanceDate, string entriesJson, int? changedBy)
+    {
+        var p = new DynamicParameters();
+        p.Add("@AcademicYearId", academicYearId, DbType.Int32);
+        p.Add("@SchoolClassId", schoolClassId, DbType.Int32);
+        p.Add("@AttendanceDate", attendanceDate.Date, DbType.Date);
+        p.Add("@Entries", entriesJson, DbType.String, size: -1);
+        p.Add("@ChangedBy", changedBy, DbType.Int32);
+        using var conn = OpenConnection();
+        return conn.QueryFirstOrDefaultAsync<ResponseEntity>(AttendanceQueries.BulkSave_DailyAttendance, p, commandType: CommandType.StoredProcedure);
+    }
+
+    public Task<ListResponseWrapper<StudentDailyAttendanceRow>> GetStudentDailyHistoryAsync(int studentId, DateTime? fromDate, DateTime? toDate)
+    {
+        var p = new DynamicParameters();
+        p.Add("@StudentId", studentId, DbType.Int32);
+        p.Add("@FromDate", fromDate?.Date, DbType.Date);
+        p.Add("@ToDate", toDate?.Date, DbType.Date);
+        return ListWithOutputs<StudentDailyAttendanceRow>(AttendanceQueries.Get_StudentDailyHistory, p);
+    }
 }

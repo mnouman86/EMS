@@ -5,23 +5,27 @@ using Dapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using System.Data;
 using System.Security.Claims;
 
 namespace CleanArc.Infrastructure.Persistence.Services;
 
 /// <summary>
 /// Reads the caller's identity off <see cref="IHttpContextAccessor"/>, decides
-/// whether to apply teacher scoping, and lazy-loads the class scope on first use.
-/// Registered as Scoped → one instance per HTTP request → safe to cache results
-/// for the request's lifetime.
+/// whether to apply teacher scoping, and lazy-loads the class scope on first
+/// use. The SP returns one row per (class, source) so the context can split
+/// the result into three sets — CT-only, ST-only, and the union — and serve
+/// each handler the slice it asked for via <see cref="TeacherScopeKind"/>.
+/// Registered as Scoped → one instance per HTTP request → safe to cache.
 /// </summary>
 public class TeacherScopeContext : ITeacherScopeContext
 {
     private readonly IHttpContextAccessor _http;
     private readonly IUnitOfWork _uow;
     private readonly IConfiguration _config;
-    private HashSet<int>? _scope;
+
+    private HashSet<int> _ctScope = new();
+    private HashSet<int> _stScope = new();
+    private HashSet<int> _combinedScope = new();
     private bool _scopeLoaded;
     private readonly SemaphoreSlim _gate = new(1, 1);
 
@@ -42,11 +46,6 @@ public class TeacherScopeContext : ITeacherScopeContext
         }
     }
 
-    /// <summary>
-    /// True only when the caller is a teacher AND not admin/principal. Admins and
-    /// principals always see everything; this property short-circuits handlers
-    /// before they bother computing scope.
-    /// </summary>
     public bool IsTeacherScoped
     {
         get
@@ -58,39 +57,20 @@ public class TeacherScopeContext : ITeacherScopeContext
         }
     }
 
-    public async Task<HashSet<int>> GetClassScopeAsync()
+    public async Task<HashSet<int>> GetClassScopeAsync(TeacherScopeKind kind = TeacherScopeKind.Combined)
     {
-        if (_scopeLoaded) return _scope!;
-        await _gate.WaitAsync();
-        try
+        await EnsureScopeLoadedAsync();
+        return kind switch
         {
-            if (_scopeLoaded) return _scope!;
-            var userId = CurrentUserId;
-            if (userId == 0)
-            {
-                _scope = new HashSet<int>();
-            }
-            else
-            {
-                var res = await _uow.TeacherScopeRepository.GetClassScopeAsync(userId);
-                _scope = (res.Data ?? Enumerable.Empty<CleanArc.Domain.Entities.Authorization.TeacherClassScopeRow>())
-                    .Select(r => r.SchoolClassId).ToHashSet();
-            }
-            _scopeLoaded = true;
-            return _scope!;
-        }
-        finally { _gate.Release(); }
+            TeacherScopeKind.ClassTeacher => _ctScope,
+            TeacherScopeKind.Subject => _stScope,
+            _ => _combinedScope
+        };
     }
 
-    /// <summary>
-    /// One small ad-hoc lookup of the student's current AdmittedClassId. Kept
-    /// here (vs. going through StudentRepository) so we don't pull in heavy
-    /// student-DTO mapping just for an int. Returns false for soft-deleted
-    /// students, missing IDs, or class IDs outside the scope.
-    /// </summary>
-    public async Task<bool> OwnsStudentAsync(int studentId)
+    public async Task<bool> OwnsStudentAsync(int studentId, TeacherScopeKind kind = TeacherScopeKind.Combined)
     {
-        var scope = await GetClassScopeAsync();
+        var scope = await GetClassScopeAsync(kind);
         if (scope.Count == 0) return false;
 
         using var conn = new SqlConnection(_config.GetConnectionString("DBConnection1"));
@@ -101,21 +81,46 @@ public class TeacherScopeContext : ITeacherScopeContext
         return classId.HasValue && scope.Contains(classId.Value);
     }
 
-    public async Task<HashSet<int>> FilterOwnedStudentsAsync(IEnumerable<int> studentIds)
+    public async Task<HashSet<int>> FilterOwnedStudentsAsync(IEnumerable<int> studentIds, TeacherScopeKind kind = TeacherScopeKind.Combined)
     {
         var ids = studentIds?.Distinct().ToList() ?? new List<int>();
         if (ids.Count == 0) return new HashSet<int>();
 
-        var scope = await GetClassScopeAsync();
+        var scope = await GetClassScopeAsync(kind);
         if (scope.Count == 0) return new HashSet<int>();
 
         using var conn = new SqlConnection(_config.GetConnectionString("DBConnection1"));
         await conn.OpenAsync();
-        // Single roundtrip — Dapper expands the two IN-list params for us.
         var owned = await conn.QueryAsync<int>(
             @"SELECT s.Id FROM dbo.Student s
               WHERE s.Id IN @Ids AND s.IsDeleted = 0 AND s.AdmittedClassId IN @Classes",
             new { Ids = ids, Classes = scope.ToArray() });
         return owned.ToHashSet();
+    }
+
+    private async Task EnsureScopeLoadedAsync()
+    {
+        if (_scopeLoaded) return;
+        await _gate.WaitAsync();
+        try
+        {
+            if (_scopeLoaded) return;
+
+            var userId = CurrentUserId;
+            if (userId != 0)
+            {
+                var res = await _uow.TeacherScopeRepository.GetClassScopeAsync(userId);
+                var rows = res.Data ?? Enumerable.Empty<CleanArc.Domain.Entities.Authorization.TeacherClassScopeRow>();
+                foreach (var r in rows)
+                {
+                    if (string.Equals(r.Source, "CT", StringComparison.OrdinalIgnoreCase)) _ctScope.Add(r.SchoolClassId);
+                    else _stScope.Add(r.SchoolClassId);
+                }
+                _combinedScope = new HashSet<int>(_ctScope);
+                _combinedScope.UnionWith(_stScope);
+            }
+            _scopeLoaded = true;
+        }
+        finally { _gate.Release(); }
     }
 }

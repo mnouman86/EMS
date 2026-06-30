@@ -143,19 +143,22 @@ public class InventoryRepository : IInventoryRepository
     public Task<ResponseEntity> SnoozeAlertAsync(SnoozeAlertDTO dto) => Scalar(InventoryQueries.Snooze_Alert, dto);
 
     public Task<ListResponseWrapper<InventoryPurchase>> GetPurchaseRegisterAsync(
-        System.DateTime fromDate, System.DateTime toDate, int? categoryId, string? vendorName)
+        System.DateTime fromDate, System.DateTime toDate, int? categoryId, string? vendorName,
+        bool includeCancelled = false)
     {
         var p = new DynamicParameters();
         p.Add("@FromDate", fromDate);
         p.Add("@ToDate", toDate);
         p.Add("@CategoryId", categoryId, DbType.Int32);
         p.Add("@VendorName", vendorName, DbType.String, size: 150);
+        p.Add("@IncludeCancelled", includeCancelled, DbType.Boolean);
         return ListWithOutputs<InventoryPurchase>(InventoryQueries.Get_PurchaseRegister, p);
     }
 
     public Task<ListResponseWrapper<InventoryIssue>> GetIssueRegisterAsync(
         System.DateTime fromDate, System.DateTime toDate,
-        int? categoryId, int? itemId, string? issuedToType, int? issuedToId, int? issuedByUserId)
+        int? categoryId, int? itemId, string? issuedToType, int? issuedToId, int? issuedByUserId,
+        bool includeCancelled = false)
     {
         var p = new DynamicParameters();
         p.Add("@FromDate", fromDate);
@@ -165,7 +168,26 @@ public class InventoryRepository : IInventoryRepository
         p.Add("@IssuedToType", issuedToType, DbType.String, size: 20);
         p.Add("@IssuedToId", issuedToId, DbType.Int32);
         p.Add("@IssuedByUserId", issuedByUserId, DbType.Int32);
+        p.Add("@IncludeCancelled", includeCancelled, DbType.Boolean);
         return ListWithOutputs<InventoryIssue>(InventoryQueries.Get_IssueRegister, p);
+    }
+
+    public Task<ResponseEntity> CancelPurchaseAsync(int purchaseId, string reason, int? actorUserId)
+    {
+        var p = new DynamicParameters();
+        p.Add("@PurchaseId", purchaseId, DbType.Int32);
+        p.Add("@Reason", reason, DbType.String, size: 500);
+        p.Add("@ActorUserId", actorUserId, DbType.Int32);
+        return Scalar(InventoryQueries.Cancel_Purchase, p);
+    }
+
+    public Task<ResponseEntity> CancelIssueAsync(int issueId, string reason, int? actorUserId)
+    {
+        var p = new DynamicParameters();
+        p.Add("@IssueId", issueId, DbType.Int32);
+        p.Add("@Reason", reason, DbType.String, size: 500);
+        p.Add("@ActorUserId", actorUserId, DbType.Int32);
+        return Scalar(InventoryQueries.Cancel_Issue, p);
     }
 
     public Task<ListResponseWrapper<ItemLedgerRow>> GetItemLedgerAsync(int itemId, System.DateTime fromDate, System.DateTime toDate)
@@ -182,6 +204,13 @@ public class InventoryRepository : IInventoryRepository
         var p = new DynamicParameters();
         p.Add("@IssueId", issueId, DbType.Int32);
         return ListWithOutputs<InventoryIssueDetailRow>(InventoryQueries.Get_IssueDetail, p);
+    }
+
+    public Task<ListResponseWrapper<InventoryPurchaseDetailRow>> GetPurchaseDetailAsync(int purchaseId)
+    {
+        var p = new DynamicParameters();
+        p.Add("@PurchaseId", purchaseId, DbType.Int32);
+        return ListWithOutputs<InventoryPurchaseDetailRow>(InventoryQueries.Get_PurchaseDetail, p);
     }
 
     /* ---------- Issue request workflow (new) ---------- */

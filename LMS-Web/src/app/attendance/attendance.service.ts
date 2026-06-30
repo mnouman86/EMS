@@ -3,7 +3,8 @@ import { Observable } from 'rxjs';
 import { ApiService } from '../core/services/api.service';
 import { ApiResult } from '../core/models/api-result';
 import {
-  AttendanceGridRow, AttendancePeriod, AttendanceSummary, BulkSaveAttendancePayload
+  AttendanceGridRow, AttendancePeriod, AttendanceSummary, BulkSaveAttendancePayload,
+  DailyAttendanceGridRow, BulkSaveDailyPayload, StudentDailyAttendance
 } from './attendance.models';
 
 @Injectable({ providedIn: 'root' })
@@ -22,6 +23,17 @@ export class AttendanceService {
   }
   getStudentSummary(studentId: number, academicYearId?: number | null): Observable<ApiResult<AttendanceSummary>> {
     return this.api.post<AttendanceSummary>('Attendance/AttendanceGetStudentSummary', { studentId, academicYearId });
+  }
+
+  /* ---------- Daily (class teacher) ---------- */
+  getDailyGrid(schoolClassId: number, attendanceDate: string): Observable<ApiResult<DailyAttendanceGridRow[]>> {
+    return this.api.post<DailyAttendanceGridRow[]>('Attendance/AttendanceGetDailyGrid', { schoolClassId, attendanceDate });
+  }
+  bulkSaveDaily(payload: BulkSaveDailyPayload): Observable<ApiResult<unknown>> {
+    return this.api.post('Attendance/AttendanceBulkSaveDaily', payload);
+  }
+  getStudentDailyHistory(studentId: number, fromDate?: string | null, toDate?: string | null): Observable<ApiResult<StudentDailyAttendance[]>> {
+    return this.api.post<StudentDailyAttendance[]>('Attendance/AttendanceGetStudentDailyHistory', { studentId, fromDate, toDate });
   }
 
   /* ---------- Parent portal (ownership-checked server-side) ---------- */
