@@ -273,4 +273,53 @@ namespace CleanArc.Application.Features.Attendance
             return OperationResult<StudentAttendanceSummaryResult>.SuccessResult(first, res.Code, res.Message);
         }
     }
+
+    /* ---------- Class-scoped student summary board (Attendance Summary screen) ---------- */
+
+    public class StudentAttendanceBoardResult
+    {
+        public int Id { get; set; }
+        public int ClassId { get; set; }
+        public string ClassName { get; set; }
+        public int StudentId { get; set; }
+        public string StudentCode { get; set; }
+        public string StudentName { get; set; }
+        public int PeriodYear { get; set; }
+        public int PeriodMonth { get; set; }
+        public int WorkingDays { get; set; }
+        public int PresentDays { get; set; }
+        public int AbsentDays { get; set; }
+        public decimal? AttendancePercent { get; set; }
+        public string Remarks { get; set; }
+        public DateTime? UpdatedAt { get; set; }
+    }
+
+    public record GetStudentAttendanceBoardQuery(DateTime FromDate, DateTime ToDate, int? ClassId)
+        : IRequest<OperationResult<List<StudentAttendanceBoardResult>>>;
+
+    internal class GetStudentAttendanceBoardHandler
+        : IRequestHandler<GetStudentAttendanceBoardQuery, OperationResult<List<StudentAttendanceBoardResult>>>
+    {
+        private readonly IUnitOfWork _u; private readonly IMapper _m;
+        private readonly CleanArc.Application.Contracts.Identity.ITeacherScopeContext _scope;
+        public GetStudentAttendanceBoardHandler(IUnitOfWork u, IMapper m,
+            CleanArc.Application.Contracts.Identity.ITeacherScopeContext scope)
+        { _u = u; _m = m; _scope = scope; }
+
+        public async ValueTask<OperationResult<List<StudentAttendanceBoardResult>>> Handle(GetStudentAttendanceBoardQuery r, CancellationToken ct)
+        {
+            /* Teacher scope → pass class-ids CSV; SP filters inside. Non-teachers pass NULL = no restriction. */
+            string csv = null;
+            if (_scope.IsTeacherScoped)
+            {
+                var classIds = await _scope.GetClassScopeAsync();
+                csv = classIds.Count == 0 ? "-1" : string.Join(",", classIds);
+            }
+            var res = await _u.AttendanceRepository.GetStudentSummaryBoardAsync(r.FromDate, r.ToDate, csv, r.ClassId);
+            if (res.Code != 200)
+                return OperationResult<List<StudentAttendanceBoardResult>>.FailureResult(res.Message, res.Code);
+            return OperationResult<List<StudentAttendanceBoardResult>>.SuccessResult(
+                _m.Map<List<StudentAttendanceBoardResult>>(res.Data), res.Code, res.Message, res.TotalCount);
+        }
+    }
 }

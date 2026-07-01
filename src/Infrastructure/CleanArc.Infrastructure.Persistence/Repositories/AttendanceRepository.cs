@@ -114,4 +114,15 @@ public class AttendanceRepository : IAttendanceRepository
         p.Add("@ToDate", toDate?.Date, DbType.Date);
         return ListWithOutputs<StudentDailyAttendanceRow>(AttendanceQueries.Get_StudentDailyHistory, p);
     }
+
+    public Task<ListResponseWrapper<StudentAttendanceBoardRow>> GetStudentSummaryBoardAsync(
+        DateTime fromDate, DateTime toDate, string? classIdsCsv, int? classId)
+    {
+        var p = new DynamicParameters();
+        p.Add("@FromDate", fromDate.Date, DbType.Date);
+        p.Add("@ToDate", toDate.Date, DbType.Date);
+        p.Add("@ClassIdsCsv", classIdsCsv, DbType.String, size: -1);
+        p.Add("@ClassId", classId, DbType.Int32);
+        return ListWithOutputs<StudentAttendanceBoardRow>(AttendanceQueries.Get_StudentAttendanceBoard, p);
+    }
 }

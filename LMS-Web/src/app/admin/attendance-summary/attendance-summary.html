@@ -1,0 +1,133 @@
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Attendance Summary</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:0.85rem;">
+      Filter, review, and export attendance for staff and students.
+    </p>
+  </div>
+  <a routerLink="/admin/dashboard" class="p-button p-component p-button-outlined" style="text-decoration:none;">
+    <i class="pi pi-arrow-left" style="margin-right:6px;"></i> Back
+  </a>
+</div>
+
+<p-tabs [value]="activeTab" (valueChange)="onTabChange($event)">
+  <p-tablist>
+    <p-tab value="staff">Staff Attendance</p-tab>
+    <p-tab value="student">Student Attendance (Class-wise)</p-tab>
+  </p-tablist>
+
+  <p-tabpanels>
+    <!-- Shared filter bar (identical layout for both tabs) -->
+    <ng-template #filterBar>
+      <div class="fbar">
+        <div class="presets">
+          <p-button [text]="preset !== 'today'" [outlined]="preset === 'today'" size="small" label="Today"      (onClick)="applyPreset('today');  load()"></p-button>
+          <p-button [text]="preset !== 'week'"  [outlined]="preset === 'week'"  size="small" label="This week"  (onClick)="applyPreset('week');   load()"></p-button>
+          <p-button [text]="preset !== 'month'" [outlined]="preset === 'month'" size="small" label="This month" (onClick)="applyPreset('month');  load()"></p-button>
+          <p-button [text]="preset !== 'custom'"[outlined]="preset === 'custom'"size="small" label="Custom"     (onClick)="preset = 'custom'"></p-button>
+        </div>
+        <div class="f"><label>Date range</label>
+          <p-datepicker [(ngModel)]="range" selectionMode="range" dateFormat="dd M yy" [showIcon]="true" appendTo="body" [readonlyInput]="true"></p-datepicker>
+        </div>
+        @if (activeTab === 'student') {
+          <div class="f" style="min-width:200px;"><label>Class</label>
+            <p-select [options]="classOptions()" optionLabel="label" optionValue="value" [(ngModel)]="classId" [style]="{ width: '100%' }" [filter]="true"></p-select>
+          </div>
+        }
+        <p-button label="Run" icon="pi pi-search" [loading]="loading()" (onClick)="load()"></p-button>
+        @if ((activeTab === 'staff' && hasStaffData()) || (activeTab === 'student' && hasStudentData())) {
+          <p-button label="Export CSV" icon="pi pi-download" severity="success" [outlined]="true" (onClick)="exportCsv()"></p-button>
+        }
+      </div>
+    </ng-template>
+
+    <!-- ==================== STAFF TAB ==================== -->
+    <p-tabpanel value="staff">
+      <ng-container *ngTemplateOutlet="filterBar"></ng-container>
+      <p-table [value]="staffRows()" [loading]="loading()" styleClass="p-datatable-sm p-datatable-gridlines"
+               [tableStyle]="{ 'min-width': '56rem' }"
+               [paginator]="staffRows().length > 50" [rows]="50" [scrollable]="true" scrollHeight="60vh">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width:150px;">Date</th>
+            @if (isAdminOrPrincipal()) { <th>User</th> }
+            <th style="width:110px;">Check-in</th>
+            <th style="width:110px;">Check-out</th>
+            <th style="width:100px;">Duration</th>
+            <th>Remarks</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-r>
+          <tr>
+            <td>{{ r.attendanceDate | date:'EEE, dd MMM yy' }}</td>
+            @if (isAdminOrPrincipal()) {
+              <td>
+                <div style="font-weight:500;">{{ r.staffName || r.userEmail }}</div>
+                <div style="color:#94a3b8;font-size:0.78rem;">{{ r.userEmail }}</div>
+              </td>
+            }
+            <td>{{ r.checkInTime | date:'shortTime' }}</td>
+            <td>{{ r.checkOutTime ? (r.checkOutTime | date:'shortTime') : '—' }}</td>
+            <td>{{ duration(r.checkInTime, r.checkOutTime) }}</td>
+            <td>{{ r.remarks || '—' }}</td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr><td [attr.colspan]="isAdminOrPrincipal() ? 6 : 5" style="text-align:center;padding:20px;color:#64748b;">
+            No staff attendance records in this range.
+          </td></tr>
+        </ng-template>
+      </p-table>
+    </p-tabpanel>
+
+    <!-- ==================== STUDENT TAB ==================== -->
+    <p-tabpanel value="student">
+      <ng-container *ngTemplateOutlet="filterBar"></ng-container>
+      <p-table [value]="studentRows()" [loading]="loading()" styleClass="p-datatable-sm p-datatable-gridlines"
+               [tableStyle]="{ 'min-width': '68rem' }"
+               [paginator]="studentRows().length > 50" [rows]="50" [scrollable]="true" scrollHeight="60vh">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Class</th>
+            <th style="width:130px;">Code</th>
+            <th>Student</th>
+            <th style="width:110px;">Period</th>
+            <th style="width:90px;text-align:right;">Working</th>
+            <th style="width:90px;text-align:right;">Present</th>
+            <th style="width:90px;text-align:right;">Absent</th>
+            <th style="width:110px;text-align:center;">Attendance %</th>
+            <th>Remarks</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-r>
+          <tr>
+            <td>{{ r.className }}</td>
+            <td>{{ r.studentCode || '—' }}</td>
+            <td>{{ r.studentName }}</td>
+            <td>{{ monthName(r.periodMonth) }} {{ r.periodYear }}</td>
+            <td style="text-align:right;">{{ r.workingDays }}</td>
+            <td style="text-align:right;color:#16a34a;">{{ r.presentDays }}</td>
+            <td style="text-align:right;color:#dc2626;">{{ r.absentDays }}</td>
+            <td style="text-align:center;">
+              @if (r.attendancePercent != null) {
+                <p-tag [value]="(r.attendancePercent | number:'1.0-1') + '%'" [severity]="percentSeverity(r.attendancePercent)"></p-tag>
+              } @else { — }
+            </td>
+            <td>{{ r.remarks || '—' }}</td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr><td colspan="9" style="text-align:center;padding:20px;color:#64748b;">
+            No student attendance records in this range.
+          </td></tr>
+        </ng-template>
+      </p-table>
+    </p-tabpanel>
+  </p-tabpanels>
+</p-tabs>
+
+<style>
+  .fbar { display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:12px;padding:12px;border:1px solid #e2e8f0;border-radius:12px;background:#fff; }
+  .fbar .presets { display:flex;gap:4px; }
+  .fbar .f label { display:block;font-size:0.78rem;color:#64748b;margin-bottom:4px; }
+</style>

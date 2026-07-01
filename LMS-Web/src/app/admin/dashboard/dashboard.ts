@@ -9,13 +9,14 @@ import { AcademicYearService } from '../academic-years/academic-year.service';
 import { defaultSearch } from '../../core/models/search-request';
 import { AuthService } from '../../core/services/auth.service';
 import { Roles } from '../../core/models/roles';
+import { StaffAttendancePanel } from '../staff-attendance/staff-attendance-panel';
 
 interface QuickAction { label: string; icon: string; route: string; roles: string[]; }
 
 @Component({
   selector: 'app-admin-dashboard',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, StaffAttendancePanel],
   templateUrl: './dashboard.html'
 })
 export class AdminDashboard implements OnInit {

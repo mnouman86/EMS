@@ -70,7 +70,13 @@ export class AdminLayout implements OnInit {
         // Self-service inventory screens — share the 'Inventory' feature so any
         // role granted Inventory.Read can request items / see what's issued to them.
         { label: 'My Inventory', icon: 'pi pi-shopping-bag', route: '/admin/inventory/my-issued', feature: 'Inventory' },
-        { label: 'Issue Requests', icon: 'pi pi-send', route: '/admin/inventory/requests', feature: 'Inventory' }
+        { label: 'Issue Requests', icon: 'pi pi-send', route: '/admin/inventory/requests', feature: 'Inventory' },
+        // Staff check-in/out (empty feature ⇒ always shown to anyone in admin shell;
+        // panel + write endpoints hide themselves for admin per spec).
+        { label: 'My Attendance', icon: 'pi pi-clock', route: '/admin/my-attendance', feature: '' },
+        { label: 'Staff Attendance', icon: 'pi pi-users', route: '/admin/staff-attendance', feature: '' },
+        // Permission-matrix gated — visible only if role/user has Attendance: Read
+        { label: 'Attendance Summary', icon: 'pi pi-chart-bar', route: '/admin/attendance-summary', feature: 'Attendance' }
       ]
     },
     {

@@ -9,5 +9,6 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries
         public static string Get_DailyAttendanceGrid       => "usp_Get_DailyAttendanceGrid";
         public static string BulkSave_DailyAttendance      => "usp_BulkSave_DailyAttendance";
         public static string Get_StudentDailyHistory       => "usp_Get_StudentDailyHistory";
+        public static string Get_StudentAttendanceBoard    => "usp_Get_StudentAttendanceBoard";
     }
 }

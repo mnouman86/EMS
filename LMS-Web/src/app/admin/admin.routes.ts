@@ -368,6 +368,26 @@ export const ADMIN_ROUTES: Routes = [
         loadComponent: () => import('./calendar/calendar').then(m => m.CalendarAdmin)
       },
       // Parent links (admin-only)
+      // Attendance Summary — permission-matrix gated (feature = 'Attendance')
+      {
+        path: 'attendance-summary',
+        canActivate: [roleGuard],
+        data: { roles: RoleSets.AnyStaff },
+        loadComponent: () => import('./attendance-summary/attendance-summary').then(m => m.AttendanceSummary)
+      },
+      // Staff Attendance — self-service (any staff) + overview (admin/principal)
+      {
+        path: 'my-attendance',
+        canActivate: [roleGuard],
+        data: { roles: RoleSets.AnyStaff },
+        loadComponent: () => import('./staff-attendance/my-staff-attendance').then(m => m.MyStaffAttendance)
+      },
+      {
+        path: 'staff-attendance',
+        canActivate: [roleGuard],
+        data: { roles: RoleSets.AdminOrPrincipal },
+        loadComponent: () => import('./staff-attendance/staff-attendance-overview').then(m => m.StaffAttendanceOverview)
+      },
       {
         path: 'parent-links',
         canActivate: [roleGuard],
