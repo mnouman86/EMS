@@ -1,0 +1,67 @@
+<p-confirmDialog></p-confirmDialog>
+
+@if (!hideForAdmin()) {
+  <div class="sa-panel">
+    <div class="sa-title">
+      <i class="pi pi-clock"></i>
+      <span>Today's attendance</span>
+      <span class="sa-date">— {{ today()?.attendanceDate ?? (todayMax | date:'fullDate') }}</span>
+    </div>
+
+    <!-- STATE 3: fully done → just show the times -->
+    @if (hasCheckedOut()) {
+      <div class="sa-summary">
+        <p-tag severity="success" icon="pi pi-check-circle" [value]="'Checked in  ' + (today()!.checkInTime | date:'shortTime')"></p-tag>
+        <p-tag severity="info" icon="pi pi-sign-out" [value]="'Checked out  ' + (today()!.checkOutTime! | date:'shortTime')"></p-tag>
+        @if (today()!.remarks) { <span class="sa-remarks">Note: {{ today()!.remarks }}</span> }
+      </div>
+    }
+    <!-- STATE 2: checked-in, awaiting check-out -->
+    @else if (hasCheckedIn()) {
+      <div class="sa-row">
+        <p-tag severity="success" icon="pi pi-check-circle" [value]="'Checked in  ' + (today()!.checkInTime | date:'shortTime')"></p-tag>
+        <input pInputText [(ngModel)]="remarks" placeholder="Optional remarks" class="sa-remarks-input"/>
+        <p-button label="Check out" icon="pi pi-sign-out" severity="secondary" [loading]="busy()" (onClick)="clickCheckOut()"></p-button>
+      </div>
+      <div class="sa-backdated-row">
+        @if (!showBackdated()) {
+          <p-button label="Mark previous time today" icon="pi pi-clock" [text]="true" size="small" (onClick)="showBackdated.set(true)"></p-button>
+        } @else {
+          <span class="sa-lbl">Time (today only):</span>
+          <p-datepicker [(ngModel)]="backdatedTime" [showTime]="true" [timeOnly]="true" hourFormat="12"
+                        [minDate]="todayMin" [maxDate]="todayMax" appendTo="body"></p-datepicker>
+          <p-button icon="pi pi-times" [text]="true" size="small" (onClick)="showBackdated.set(false); backdatedTime = null"></p-button>
+        }
+      </div>
+    }
+    <!-- STATE 1: not yet checked-in -->
+    @else {
+      <div class="sa-row">
+        <input pInputText [(ngModel)]="remarks" placeholder="Optional remarks" class="sa-remarks-input"/>
+        <p-button label="Check in" icon="pi pi-sign-in" severity="success" [loading]="busy()" (onClick)="clickCheckIn()"></p-button>
+      </div>
+      <div class="sa-backdated-row">
+        @if (!showBackdated()) {
+          <p-button label="Mark previous time today" icon="pi pi-clock" [text]="true" size="small" (onClick)="showBackdated.set(true)"></p-button>
+        } @else {
+          <span class="sa-lbl">Time (today only):</span>
+          <p-datepicker [(ngModel)]="backdatedTime" [showTime]="true" [timeOnly]="true" hourFormat="12"
+                        [minDate]="todayMin" [maxDate]="todayMax" appendTo="body"></p-datepicker>
+          <p-button icon="pi pi-times" [text]="true" size="small" (onClick)="showBackdated.set(false); backdatedTime = null"></p-button>
+        }
+      </div>
+    }
+  </div>
+}
+
+<style>
+  .sa-panel { border:1px solid #e2e8f0; border-radius:12px; padding:14px 16px; background:#fff; margin-bottom:16px; }
+  .sa-title { display:flex; align-items:center; gap:8px; font-weight:600; font-size:0.94rem; color:#0f172a; margin-bottom:10px; }
+  .sa-title .sa-date { font-weight:400; color:#94a3b8; font-size:0.82rem; }
+  .sa-row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .sa-remarks-input { flex:1; min-width:220px; }
+  .sa-summary { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+  .sa-summary .sa-remarks { color:#64748b; font-size:0.82rem; }
+  .sa-backdated-row { display:flex; align-items:center; gap:8px; margin-top:8px; flex-wrap:wrap; font-size:0.82rem; }
+  .sa-backdated-row .sa-lbl { color:#94a3b8; }
+</style>

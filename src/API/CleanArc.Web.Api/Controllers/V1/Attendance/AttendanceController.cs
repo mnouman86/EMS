@@ -67,4 +67,9 @@ public class AttendanceController : ControllerBase
     [Authorize(Roles = StaffRoles), HttpPost("AttendanceGetStudentDailyHistory")]
     public async Task<IActionResult> GetStudentDailyHistory([FromBody] GetStudentDailyHistoryQuery q)
         => Wrap(await _sender.Send(q));
+
+    /* ---------- Attendance Summary board (class-scoped for teachers, all for others) ---------- */
+    [Authorize(Roles = StaffRoles), HttpPost("AttendanceGetStudentBoard")]
+    public async Task<IActionResult> GetStudentBoard([FromBody] GetStudentAttendanceBoardQuery q)
+        => Wrap(await _sender.Send(q));
 }

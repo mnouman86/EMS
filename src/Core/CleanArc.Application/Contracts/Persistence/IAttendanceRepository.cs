@@ -14,5 +14,9 @@ namespace CleanArc.Application.Contracts.Persistence
         Task<ListResponseWrapper<DailyAttendanceGridRow>> GetDailyGridAsync(int schoolClassId, DateTime attendanceDate);
         Task<ResponseEntity> BulkSaveDailyAsync(int academicYearId, int schoolClassId, DateTime attendanceDate, string entriesJson, int? changedBy);
         Task<ListResponseWrapper<StudentDailyAttendanceRow>> GetStudentDailyHistoryAsync(int studentId, DateTime? fromDate, DateTime? toDate);
+
+        /* Attendance Summary board — class-scoped multi-student rows for the summary/export screen. */
+        Task<ListResponseWrapper<StudentAttendanceBoardRow>> GetStudentSummaryBoardAsync(
+            DateTime fromDate, DateTime toDate, string? classIdsCsv, int? classId);
     }
 }

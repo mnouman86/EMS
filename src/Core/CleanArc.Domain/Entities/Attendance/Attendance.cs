@@ -68,4 +68,23 @@ namespace CleanArc.Domain.Entities.Attendance
         public string? ClassName { get; set; }
         public DateTime? MarkedAt { get; set; }
     }
+
+    /// <summary>One row in the class-scoped attendance summary board (multi-student).</summary>
+    public class StudentAttendanceBoardRow
+    {
+        public int Id { get; set; }
+        public int ClassId { get; set; }
+        public string? ClassName { get; set; }
+        public int StudentId { get; set; }
+        public string? StudentCode { get; set; }
+        public string? StudentName { get; set; }
+        public int PeriodYear { get; set; }
+        public int PeriodMonth { get; set; }
+        public int WorkingDays { get; set; }
+        public int PresentDays { get; set; }
+        public int AbsentDays { get; set; }
+        public decimal? AttendancePercent { get; set; }
+        public string? Remarks { get; set; }
+        public DateTime? UpdatedAt { get; set; }
+    }
 }

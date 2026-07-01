@@ -43,4 +43,9 @@ export class AttendanceService {
   getChildSummary(studentId: number, academicYearId?: number | null): Observable<ApiResult<AttendanceSummary>> {
     return this.api.post<AttendanceSummary>('Parent/ParentGetChildAttendanceSummary', { studentId, academicYearId });
   }
+
+  /* Class-scoped student summary board (Attendance Summary screen). */
+  getStudentBoard(fromDate: string, toDate: string, classId: number | null = null): Observable<ApiResult<any[]>> {
+    return this.api.post<any[]>('Attendance/AttendanceGetStudentBoard', { fromDate, toDate, classId });
+  }
 }

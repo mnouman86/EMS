@@ -197,6 +197,13 @@
             Pass ClassTeacherId = null to clear the assignment.
             </summary>
         </member>
+        <member name="T:CleanArc.Web.Api.Controllers.V1.StaffAttendance.StaffAttendanceController">
+            <summary>
+            Staff Attendance — non-admin users check in/out for the current day.
+            Admin is excluded from check-in by role attribute on the write endpoints;
+            admin CAN see the overview.
+            </summary>
+        </member>
         <member name="T:CleanArc.Web.Api.Controllers.V1.StartupData.StartupDataController">
             <summary>
             Startup Data
