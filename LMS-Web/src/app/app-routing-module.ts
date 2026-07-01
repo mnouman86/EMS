@@ -33,14 +33,18 @@ import { DefaultLayout } from './layouts/default-layout/default-layout';
 import { CurriculumLayout } from './layouts/curriculum-layout/curriculum-layout';
 
 const routes: Routes = [
-  /*{ path: '', component: UnderConstruction },*/
-  
-  // { path: '', component: Home },
+  // Default startup route — the empty URL lands on the login screen on first
+  // load. `pathMatch: 'full'` keeps this from swallowing the other top-level
+  // `path: ''` parents (DefaultLayout / CurriculumLayout) that serve marketing
+  // children like /about, /classes, /pre-nursery-discovery, etc.
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
+
+  // Marketing home is still mounted at /home for anyone linking directly to it.
   {
-    path: '',
+    path: 'home',
     component: HomeLayout,
     children: [
-      { path: '', 
+      { path: '',
         component: Home,
         data: {
             title: 'STEM Sprout School | Joyful Learning in Islamabad',
@@ -49,7 +53,7 @@ const routes: Routes = [
           }
        }
     ]
-  },  
+  },
   // { path: 'about', component: AboutPage },
   // { path: 'classes', component: ClassesPage },
   // { path: 'toddler', component: ToddlerClass },
