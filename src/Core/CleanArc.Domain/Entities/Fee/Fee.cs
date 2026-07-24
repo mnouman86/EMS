@@ -201,12 +201,21 @@ namespace CleanArc.Domain.Entities.Fee
         public string? ClassName { get; set; }
         public decimal GrossAmount { get; set; }
         public decimal ConcessionAmount { get; set; }
-        public decimal NetAmount { get; set; }
-        public string? Note { get; set; }               // e.g. "Already invoiced"
+        public decimal NetAmount { get; set; }              // current tuition after concession (post-override)
+        public decimal PriorArrearsBrought { get; set; }    // cross-year arrears + unpaid prior invoices
+        public decimal TotalPayable { get; set; }           // NetAmount + PriorArrearsBrought
+        public bool OverrideApplied { get; set; }           // was this row overridden?
+        public string? OverrideReason { get; set; }
+        // Populated on non-dryrun generate — lets the SPA show a download-PDF
+        // button per row once invoices have been created.
+        public int? InvoiceId { get; set; }
+        public string? InvoiceNo { get; set; }
+        public string? Note { get; set; }                   // e.g. "Already invoiced"
     }
 
     public class StudentLedgerEntry
     {
+        public int? EntityId { get; set; }              // FeeInvoiceId / FeePaymentId / FeeArrearId
         public DateTime Date { get; set; }
         public string? Type { get; set; }               // Invoice / Payment / Reversal / Concession / Arrear
         public string? Reference { get; set; }          // InvoiceNo or ReceiptNo

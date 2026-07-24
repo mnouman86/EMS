@@ -8,6 +8,8 @@ export interface StudentListItem {
   dateOfBirth?: string | null;
   admittedClassId?: number | null;
   admittedClassName?: string | null;
+  gradeApplyingForId?: number | null;
+  applyingForClassName?: string | null;
   status?: string; // Applied / Admitted / Active / Left / Alumni / Withdrawn
   emergencyContactPhone?: string;
 }

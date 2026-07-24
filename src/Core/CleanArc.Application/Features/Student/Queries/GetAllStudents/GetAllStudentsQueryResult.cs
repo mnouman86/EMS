@@ -13,6 +13,8 @@ namespace CleanArc.Application.Features.Student.Queries.GetAllStudents
         public DateTime? DateOfBirth { get; set; }
         public int? AdmittedClassId { get; set; }
         public string AdmittedClassName { get; set; }
+        public int? GradeApplyingForId { get; set; }
+        public string ApplyingForClassName { get; set; }
         public string Status { get; set; }
         public string EmergencyContactPhone { get; set; }
     }

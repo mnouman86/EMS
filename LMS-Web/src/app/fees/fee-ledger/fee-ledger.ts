@@ -102,6 +102,35 @@ export class FeeLedger implements OnInit {
     });
   }
 
+  /** Download the invoice PDF for an Invoice-type ledger row. */
+  downloadInvoice(e: { entityId?: number | null; reference?: string | null }): void {
+    if (!e?.entityId) return;
+    this.svc.getInvoicePdf(e.entityId).subscribe({
+      next: blob => this.saveBlob(blob, `TSSS_Invoice_${(e.reference ?? String(e.entityId ?? '')).replace(/-/g, '_')}.pdf`),
+      error: () => this.toast.error('Could not download the invoice.')
+    });
+  }
+
+  /** Reprint the receipt PDF for a Payment-type ledger row (IsDuplicate=true so
+   *  the DUPLICATE watermark is applied — the original receipt was already handed
+   *  over at collection time). */
+  downloadReceipt(e: { entityId?: number | null; reference?: string | null }): void {
+    if (!e?.entityId) return;
+    this.svc.getReceiptPdf(e.entityId, true).subscribe({
+      next: blob => this.saveBlob(blob, `TSSS_Receipt_${(e.reference ?? String(e.entityId ?? '')).replace(/-/g, '_')}.pdf`),
+      error: () => this.toast.error('Could not download the receipt.')
+    });
+  }
+
+  private saveBlob(blob: Blob, fileName: string): void {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = fileName;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
   reverse(): void {
     if (!this.reverseId) { this.toast.warn('Enter a payment #.'); return; }
     if (!this.reverseReason.trim()) { this.toast.warn('Reason is required for reversal.'); return; }

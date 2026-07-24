@@ -49,6 +49,7 @@ public static class ServiceCollectionExtensions
         // PDF rendering (QuestPDF) — one-time license configuration
         PdfBootstrapper.Configure();
         services.AddScoped<IPdfRenderer<FeeReceiptModel>, FeeReceiptPdfRenderer>();
+        services.AddScoped<IPdfRenderer<FeeInvoiceModel>, FeeInvoicePdfRenderer>();
         services.AddScoped<IPdfRenderer<SalarySlipModel>, SalarySlipPdfRenderer>();
         services.AddScoped<IPdfRenderer<PnLStatementModel>, PnLStatementPdfRenderer>();
 

@@ -38,6 +38,7 @@
       <th style="width:120px;">Debit</th>
       <th style="width:120px;">Credit</th>
       <th style="width:130px;">Balance</th>
+      <th style="width:70px;text-align:center;">PDF</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-e>
@@ -49,10 +50,19 @@
       <td>{{ e.debit ? ('Rs. ' + (e.debit | number:'1.0-0')) : '—' }}</td>
       <td>{{ e.credit ? ('Rs. ' + (e.credit | number:'1.0-0')) : '—' }}</td>
       <td><strong>Rs. {{ e.runningBalance | number:'1.0-0' }}</strong></td>
+      <td style="text-align:center;">
+        @if (e.type === 'Invoice' && e.entityId) {
+          <p-button icon="pi pi-download" [text]="true" size="small"
+                    (onClick)="downloadInvoice(e)" pTooltip="Download invoice PDF"></p-button>
+        } @else if ((e.type === 'Payment' || e.type === 'Reversal') && e.entityId) {
+          <p-button icon="pi pi-download" [text]="true" size="small"
+                    (onClick)="downloadReceipt(e)" pTooltip="Reprint receipt PDF (duplicate)"></p-button>
+        }
+      </td>
     </tr>
   </ng-template>
   <ng-template pTemplate="emptymessage">
-    <tr><td colspan="7" style="text-align:center;padding:18px;color:#64748b;">Select a student and load the ledger.</td></tr>
+    <tr><td colspan="8" style="text-align:center;padding:18px;color:#64748b;">Select a student and load the ledger.</td></tr>
   </ng-template>
 </p-table>
 

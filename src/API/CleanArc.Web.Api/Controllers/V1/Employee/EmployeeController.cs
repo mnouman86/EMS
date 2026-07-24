@@ -108,6 +108,32 @@ public class EmployeeController : _BaseController<
         return OperationResult(result);
     }
 
+    /// <summary>
+    /// Streams a previously-uploaded employee document to the caller.  The path
+    /// stored in dbo.EmployeeDocument.FilePath is relative to the API's working
+    /// directory (Resources/Images2/...).  We restrict downloads to files that
+    /// resolve INSIDE the uploads root so a caller can't sneak in a
+    /// "..\..\appsettings.json" style path.
+    /// </summary>
+    [Authorize, HttpGet("EmployeeDownloadDocument")]
+    public IActionResult DownloadDocument([FromQuery] string path, [FromQuery] string? name = null)
+    {
+        if (string.IsNullOrWhiteSpace(path)) return NotFound();
+
+        // Uploads land under CWD/Resources — restrict access to that subtree.
+        var uploadsRoot = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "Resources"));
+        var full = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), path.TrimStart('/', '\\')));
+        if (!full.StartsWith(uploadsRoot, StringComparison.OrdinalIgnoreCase) || !System.IO.File.Exists(full))
+            return NotFound();
+
+        var bytes = System.IO.File.ReadAllBytes(full);
+        // Best-effort MIME from extension; browser handles the rest for images/pdfs.
+        var provider = new Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider();
+        if (!provider.TryGetContentType(full, out var contentType)) contentType = "application/octet-stream";
+
+        return File(bytes, contentType, name ?? Path.GetFileName(full));
+    }
+
     /* ---------- Foundational extensions for Modules 6–9 ---------- */
 
     /// <summary>Upsert the employee's salary structure (versioned by EffectiveFrom).</summary>

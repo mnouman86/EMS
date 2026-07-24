@@ -31,6 +31,12 @@ export const ADMIN_ROUTES: Routes = [
         path: 'forbidden',
         loadComponent: () => import('./forbidden/forbidden').then(m => m.Forbidden)
       },
+      // Self-service password change — parent authGuard on the layout covers auth;
+      // backend derives UserId from the JWT so callers can only change their own.
+      {
+        path: 'change-password',
+        loadComponent: () => import('./change-password/change-password').then(m => m.ChangePassword)
+      },
       // Route guards now use `permissionGuard` keyed on AppFeature codes — any role
       // granted the feature's Read permission can open the screen.  Sub-screens share
       // the parent module's feature; the API still gates writes per-action via
@@ -360,6 +366,13 @@ export const ADMIN_ROUTES: Routes = [
         data: { roles: RoleSets.AdminOnly },
         loadComponent: () => import('./user-management/user-management').then(m => m.UserManagement)
       },
+      // Role Permissions (admin-only) — the template new users inherit from their role
+      {
+        path: 'role-permissions',
+        canActivate: [roleGuard],
+        data: { roles: RoleSets.AdminOnly },
+        loadComponent: () => import('./role-permissions/role-permissions').then(m => m.RolePermissions)
+      },
       // School calendar — gated by 'Calendar' AppFeature (admin bypass, others by grant)
       {
         path: 'calendar',
@@ -367,25 +380,24 @@ export const ADMIN_ROUTES: Routes = [
         data: { feature: 'Calendar' },
         loadComponent: () => import('./calendar/calendar').then(m => m.CalendarAdmin)
       },
-      // Parent links (admin-only)
-      // Attendance Summary — permission-matrix gated (feature = 'Attendance')
+      // Staff-attendance surfaces — each gated by its own AppFeature so the
+      // admin can allow / deny them per role via the Permission Matrix.
       {
         path: 'attendance-summary',
-        canActivate: [roleGuard],
-        data: { roles: RoleSets.AnyStaff },
+        canActivate: [permissionGuard],
+        data: { feature: 'AttendanceSummary' },
         loadComponent: () => import('./attendance-summary/attendance-summary').then(m => m.AttendanceSummary)
       },
-      // Staff Attendance — self-service (any staff) + overview (admin/principal)
       {
         path: 'my-attendance',
-        canActivate: [roleGuard],
-        data: { roles: RoleSets.AnyStaff },
+        canActivate: [permissionGuard],
+        data: { feature: 'StaffAttendance' },
         loadComponent: () => import('./staff-attendance/my-staff-attendance').then(m => m.MyStaffAttendance)
       },
       {
         path: 'staff-attendance',
-        canActivate: [roleGuard],
-        data: { roles: RoleSets.AdminOrPrincipal },
+        canActivate: [permissionGuard],
+        data: { feature: 'StaffAttendanceOverview' },
         loadComponent: () => import('./staff-attendance/staff-attendance-overview').then(m => m.StaffAttendanceOverview)
       },
       {

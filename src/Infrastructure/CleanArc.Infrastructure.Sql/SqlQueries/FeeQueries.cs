@@ -13,6 +13,7 @@ namespace CleanArc.Infrastructure.Sql.SqlQueries
         // Invoices
         public static string Generate_MonthlyInvoices => "usp_Generate_MonthlyInvoices";
         public static string Cancel_FeeInvoice => "usp_Cancel_FeeInvoice";
+        public static string Get_FeeInvoiceForPdf => "usp_Get_FeeInvoiceForPdf";
 
         // Payments
         public static string Record_FeePayment => "usp_Record_FeePayment";

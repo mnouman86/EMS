@@ -1,3 +1,4 @@
+using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.Extensions;
@@ -14,17 +15,20 @@ internal class GetAllSchoolClassesQueryHandler : IRequestHandler<GetAllSchoolCla
     private readonly IMapper _mapper;
     private readonly ILogger<GetAllSchoolClassesQueryHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly ITeacherScopeContext _scope;
 
     public GetAllSchoolClassesQueryHandler(
         IUnitOfWork unitOfWork,
         IMapper mapper,
         IHttpContextAccessor httpContextAccessor,
-        ILogger<GetAllSchoolClassesQueryHandler> logger)
+        ILogger<GetAllSchoolClassesQueryHandler> logger,
+        ITeacherScopeContext scope)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
         _httpContextAccessor = httpContextAccessor;
         _logger = logger;
+        _scope = scope;
     }
 
     public async ValueTask<OperationResult<List<GetAllSchoolClassesQueryResult>>> Handle(GetAllSchoolClassesQuery request, CancellationToken cancellationToken)
@@ -39,9 +43,20 @@ internal class GetAllSchoolClassesQueryHandler : IRequestHandler<GetAllSchoolCla
         }
 
         var mapped = _mapper.Map<List<GetAllSchoolClassesQueryResult>>(response.Data);
+        var totalCount = response.TotalCount;
+
+        // Teacher-only callers see only classes in their combined scope
+        // (class-teacher OR any subject they teach in that class).
+        if (_scope.IsTeacherScoped)
+        {
+            var classIds = await _scope.GetClassScopeAsync(TeacherScopeKind.Combined);
+            mapped = mapped.Where(c => classIds.Contains(c.Id)).ToList();
+            totalCount = mapped.Count;
+        }
+
         (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mapped);
 
         return OperationResult<List<GetAllSchoolClassesQueryResult>>.SuccessResult(
-            mapped, response.Code, response.Message, response.TotalCount);
+            mapped, response.Code, response.Message, totalCount);
     }
 }

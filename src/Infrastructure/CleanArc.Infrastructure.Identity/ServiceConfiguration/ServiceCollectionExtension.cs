@@ -169,28 +169,31 @@ public static class ServiceCollectionExtension
                 },
                 OnTokenValidated = async context =>
                 {
-                    var signInManager = context.HttpContext.RequestServices.GetRequiredService<AppSignInManager>();
-
-                    var claimsIdentity = context.Principal.Identity as ClaimsIdentity;
-                    if (claimsIdentity.Claims?.Any() != true)
+                    // Per-request security-stamp validation. When a user's password
+                    // is changed or their account is reset the API rotates their
+                    // SecurityStamp; any access token still carrying the old stamp
+                    // is rejected here on the very next request — no need to wait
+                    // for the JWT to expire or for a refresh-token round-trip.
+                    var claimsIdentity = context.Principal?.Identity as ClaimsIdentity;
+                    if (claimsIdentity == null || claimsIdentity.Claims?.Any() != true)
+                    {
                         context.Fail("This token has no claims.");
+                        return;
+                    }
 
-                    var securityStamp =
-                        claimsIdentity.FindFirstValue(new ClaimsIdentityOptions().SecurityStampClaimType);
+                    var securityStamp = claimsIdentity.FindFirstValue(new ClaimsIdentityOptions().SecurityStampClaimType);
                     if (!securityStamp.HasValue())
-                        context.Fail("This token has no secuirty stamp");
+                    {
+                        context.Fail("This token has no security stamp.");
+                        return;
+                    }
 
-                    //Find user and token from database and perform your custom validation
-                    var userId = claimsIdentity.GetUserId<int>();
-                    // var user = await userRepository.GetByIdAsync(context.HttpContext.RequestAborted, userId);
-
-                    //if (user.SecurityStamp != Guid.Parse(securityStamp))
-                    //    context.Fail("Token secuirty stamp is not valid.");
-
+                    // SignInManager compares the stamp claim to usr.Users.SecurityStamp
+                    // in a single call. Returns null when they no longer match.
+                    var signInManager = context.HttpContext.RequestServices.GetRequiredService<AppSignInManager>();
                     var validatedUser = await signInManager.ValidateSecurityStampAsync(context.Principal);
                     if (validatedUser == null)
-                        context.Fail("Token secuirty stamp is not valid.");
-
+                        context.Fail("Token security stamp is not valid.");
                 },
                 OnChallenge = async context =>
                 {

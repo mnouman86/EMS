@@ -12,10 +12,12 @@ using System.Text.Json.Serialization;
 
 namespace CleanArc.Application.Features.Fee.Command.InvoiceCommands
 {
-    /* FEE-02: Generate monthly invoices (DryRun=true returns preview only) */
+    /* FEE-02: Generate monthly invoices (DryRun=true returns preview only).
+       When the admin edits the Net cell in the preview grid, the SPA sends
+       an Overrides array. Each override captured for audit in dbo.FeeInvoiceOverride. */
     public record GenerateMonthlyInvoicesCommand(
         int AcademicYearId, int BillingMonth, int BillingYear, int? ClassId,
-        List<int>? ExcludedStudentIds, bool DryRun)
+        List<int>? ExcludedStudentIds, List<InvoiceOverrideInput>? Overrides, bool DryRun)
         : IRequest<OperationResult<List<InvoicePreviewRow>>>, IValidatableModel<GenerateMonthlyInvoicesCommand>
     {
         [JsonIgnore] public int UserId { get; set; }
@@ -24,6 +26,13 @@ namespace CleanArc.Application.Features.Fee.Command.InvoiceCommands
             v.RuleFor(c => c.AcademicYearId).GreaterThan(0);
             v.RuleFor(c => c.BillingMonth).InclusiveBetween(1, 12);
             v.RuleFor(c => c.BillingYear).InclusiveBetween(2000, 2100);
+            v.RuleForEach(c => c.Overrides!).ChildRules(o =>
+            {
+                o.RuleFor(x => x.StudentId).GreaterThan(0);
+                o.RuleFor(x => x.NetAmount).GreaterThanOrEqualTo(0);
+                o.RuleFor(x => x.Reason).NotEmpty().MinimumLength(2).MaximumLength(500)
+                    .WithMessage("An override reason (>= 2 chars) is required.");
+            }).When(c => c.Overrides != null && c.Overrides.Count > 0);
             return v;
         }
     }
@@ -45,6 +54,9 @@ namespace CleanArc.Application.Features.Fee.Command.InvoiceCommands
                 ExcludedStudentIdsCsv = r.ExcludedStudentIds == null || r.ExcludedStudentIds.Count == 0
                     ? string.Empty
                     : string.Join(",", r.ExcludedStudentIds),
+                OverridesJson = r.Overrides == null || r.Overrides.Count == 0
+                    ? null
+                    : System.Text.Json.JsonSerializer.Serialize(r.Overrides),
                 DryRun = r.DryRun,
                 CreatedBy = user.Id
             });

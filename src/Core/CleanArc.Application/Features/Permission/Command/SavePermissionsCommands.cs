@@ -50,4 +50,34 @@ namespace CleanArc.Application.Features.Permission.Command
                 last ?? new ResponseEntity { IsSuccess = true, Code = 200, Message = "Permissions saved" });
         }
     }
+
+    /* Assign / update the role-level permission template. Any user later created
+       under this role gets these permissions copied over (see CreateAppUserCommand).
+       Existing users of the role are NOT retroactively updated — their per-user
+       grants are edited via the User Permissions screen. */
+    public record SaveRolePermissionsCommand(int RoleId, List<FeaturePermissionInput> Permissions)
+        : IRequest<OperationResult<ResponseEntity>>, IValidatableModel<SaveRolePermissionsCommand>
+    {
+        [JsonIgnore] public int UserId { get; set; }   // the admin performing the change
+
+        public IValidator<SaveRolePermissionsCommand> ValidateApplicationModel(ApplicationBaseValidationModelProvider<SaveRolePermissionsCommand> v)
+        {
+            v.RuleFor(c => c.RoleId).GreaterThan(0);
+            v.RuleFor(c => c.Permissions).NotNull().WithMessage("Permissions payload is required.");
+            return v;
+        }
+    }
+
+    internal class SaveRolePermissionsCommandHandler : IRequestHandler<SaveRolePermissionsCommand, OperationResult<ResponseEntity>>
+    {
+        private readonly IUnitOfWork _u;
+        public SaveRolePermissionsCommandHandler(IUnitOfWork u) { _u = u; }
+
+        public async ValueTask<OperationResult<ResponseEntity>> Handle(SaveRolePermissionsCommand r, CancellationToken ct)
+        {
+            var json = JsonSerializer.Serialize(r.Permissions ?? new List<FeaturePermissionInput>());
+            var res = await _u.PermissionRepository.SaveRoleFeaturePermissionsAsync(r.RoleId, r.UserId, json);
+            return OperationResult<ResponseEntity>.SuccessResult(res);
+        }
+    }
 }

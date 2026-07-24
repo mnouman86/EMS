@@ -4,6 +4,7 @@ using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.Common;
 using CleanArc.Application.Models.Fee;
 using Mediator;
+using Microsoft.Extensions.Configuration;
 
 namespace CleanArc.Application.Features.Fee.Queries.ReceiptQuery
 {
@@ -24,7 +25,9 @@ namespace CleanArc.Application.Features.Fee.Queries.ReceiptQuery
         private readonly IUnitOfWork _u;
         private readonly IPdfRenderer<FeeReceiptModel> _pdf;
         private readonly ITeacherScopeContext _scope;
-        public GetFeeReceiptQueryHandler(IUnitOfWork u, IPdfRenderer<FeeReceiptModel> pdf, ITeacherScopeContext scope) { _u = u; _pdf = pdf; _scope = scope; }
+        private readonly IConfiguration _config;
+        public GetFeeReceiptQueryHandler(IUnitOfWork u, IPdfRenderer<FeeReceiptModel> pdf, ITeacherScopeContext scope, IConfiguration config)
+        { _u = u; _pdf = pdf; _scope = scope; _config = config; }
 
         public async ValueTask<OperationResult<FeeReceiptDownloadResult>> Handle(GetFeeReceiptQuery r, CancellationToken ct)
         {
@@ -53,6 +56,18 @@ namespace CleanArc.Application.Features.Fee.Queries.ReceiptQuery
                 // For now we keep the model loose so the renderer doesn't crash on nulls.
                 Lines = new List<FeeReceiptLine>()
             };
+
+            // School header from configuration.
+            var schoolName = _config["SchoolInfo:Name"];
+            if (!string.IsNullOrWhiteSpace(schoolName)) model.SchoolName = schoolName;
+            var addrParts = new List<string?>
+            {
+                _config["SchoolInfo:Address"],
+                _config["SchoolInfo:Phone"] is { Length: > 0 } phone ? $"Tel: {phone}" : null,
+                _config["SchoolInfo:Email"] is { Length: > 0 } email ? email : null
+            };
+            var addr = string.Join(" · ", addrParts.Where(x => !string.IsNullOrWhiteSpace(x)));
+            if (!string.IsNullOrWhiteSpace(addr)) model.SchoolAddress = addr;
 
             var bytes = _pdf.Render(model);
             var fileName = $"TSSS_Receipt_{payment.Data.ReceiptNo?.Replace('-', '_')}.pdf";

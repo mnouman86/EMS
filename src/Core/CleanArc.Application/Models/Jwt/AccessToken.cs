@@ -19,6 +19,10 @@ public class AccessToken
     public string email { get; set; }
     public List<string> roles { get; set; } = new();
 
+    // Set from usr.Users.MustChangePassword by the login handler — the SPA uses
+    // it to force the user into /change-password before touching anything else.
+    public bool mustChangePassword { get; set; }
+
     public AccessToken(JwtSecurityToken securityToken,string refreshToken="",int loginuserID=0,int loginRoleID=0)
     {
         access_token = new JwtSecurityTokenHandler().WriteToken(securityToken);

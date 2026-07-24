@@ -40,8 +40,17 @@ namespace CleanArc.Application.Models.Fee
         public int BillingYear { get; set; }
         public int? ClassId { get; set; }              // null = all classes
         public string ExcludedStudentIdsCsv { get; set; } // optional, from preview deselect
+        /// <summary>JSON payload: [{"StudentId":1,"NetAmount":6500.00,"Reason":"..."}]</summary>
+        public string? OverridesJson { get; set; }
         public bool DryRun { get; set; }
         public int CreatedBy { get; set; }
+    }
+
+    public class InvoiceOverrideInput
+    {
+        public int StudentId { get; set; }
+        public decimal NetAmount { get; set; }
+        public string Reason { get; set; } = string.Empty;
     }
 
     public class CancelInvoiceDTO

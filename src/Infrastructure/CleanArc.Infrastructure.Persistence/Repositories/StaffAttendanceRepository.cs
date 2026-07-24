@@ -52,7 +52,11 @@ public class StaffAttendanceRepository : IStaffAttendanceRepository
         return ListWithOutputs<StaffAttendanceRow>(StaffAttendanceQueries.Get_MyToday, p);
     }
 
-    public Task<ResponseEntity> CheckInAsync(int userId, System.DateTime? checkInTime, string? remarks, bool isBackdated)
+    // Both mutation methods MUST be async + await the Dapper call. Without the
+    // await, `using var conn` disposes the SqlConnection as soon as the Task is
+    // returned — while the async query is still running — producing:
+    //   "System.InvalidOperationException: Invalid operation. The connection is closed."
+    public async Task<ResponseEntity> CheckInAsync(int userId, System.DateTime? checkInTime, string? remarks, bool isBackdated)
     {
         var p = new DynamicParameters();
         p.Add("@UserId", userId, DbType.Int32);
@@ -60,10 +64,11 @@ public class StaffAttendanceRepository : IStaffAttendanceRepository
         p.Add("@Remarks", remarks, DbType.String, size: 500);
         p.Add("@IsBackdated", isBackdated, DbType.Boolean);
         using var conn = OpenConnection();
-        return conn.QueryFirstOrDefaultAsync<ResponseEntity>(StaffAttendanceQueries.Record_CheckIn, p, commandType: CommandType.StoredProcedure);
+        return await conn.QueryFirstOrDefaultAsync<ResponseEntity>(
+            StaffAttendanceQueries.Record_CheckIn, p, commandType: CommandType.StoredProcedure);
     }
 
-    public Task<ResponseEntity> CheckOutAsync(int userId, System.DateTime? checkOutTime, string? remarks, bool isBackdated)
+    public async Task<ResponseEntity> CheckOutAsync(int userId, System.DateTime? checkOutTime, string? remarks, bool isBackdated)
     {
         var p = new DynamicParameters();
         p.Add("@UserId", userId, DbType.Int32);
@@ -71,7 +76,8 @@ public class StaffAttendanceRepository : IStaffAttendanceRepository
         p.Add("@Remarks", remarks, DbType.String, size: 500);
         p.Add("@IsBackdated", isBackdated, DbType.Boolean);
         using var conn = OpenConnection();
-        return conn.QueryFirstOrDefaultAsync<ResponseEntity>(StaffAttendanceQueries.Record_CheckOut, p, commandType: CommandType.StoredProcedure);
+        return await conn.QueryFirstOrDefaultAsync<ResponseEntity>(
+            StaffAttendanceQueries.Record_CheckOut, p, commandType: CommandType.StoredProcedure);
     }
 
     public Task<ListResponseWrapper<StaffAttendanceRow>> GetHistoryAsync(int userId, System.DateTime fromDate, System.DateTime toDate)

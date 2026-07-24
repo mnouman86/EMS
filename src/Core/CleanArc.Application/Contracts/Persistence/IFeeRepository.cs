@@ -19,6 +19,7 @@ namespace CleanArc.Application.Contracts.Persistence
         /* Invoices (FEE-02) */
         Task<ListResponseWrapper<InvoicePreviewRow>> GenerateMonthlyInvoicesAsync(GenerateMonthlyInvoicesDTO dto);
         Task<ResponseEntity> CancelInvoiceAsync(CancelInvoiceDTO dto);
+        Task<SingleResponseWrapper<FeeInvoiceModel>> GetInvoiceForPdfAsync(int invoiceId);
 
         /* Payments (FEE-03 / FEE-08 / FEE-11) */
         Task<ResponseEntity> RecordPaymentAsync(RecordPaymentDTO dto);

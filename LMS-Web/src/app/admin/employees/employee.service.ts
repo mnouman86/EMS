@@ -1,8 +1,10 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
 import { ApiService } from '../../core/services/api.service';
 import { SearchRequest, DeleteRequest, defaultSearch } from '../../core/models/search-request';
 import { ApiResult } from '../../core/models/api-result';
+import { environment } from '../../../environments/environment';
 import {
   EmployeeListItem, EmployeeDetail, MarkEmployeeLeft, ClassSubjectPair, TeacherAssignment,
   EmployeeDocument, EmployeeSalary, UpsertEmployeeSalary, EmployeeAdvance
@@ -11,6 +13,49 @@ import {
 @Injectable({ providedIn: 'root' })
 export class EmployeeService {
   private api = inject(ApiService);
+  private http = inject(HttpClient);
+
+  /**
+   * Fetch a document as a Blob (Bearer token attached by the auth interceptor)
+   * and either open it in a new tab (view) or push a download prompt.
+   * We can't just use a plain <a href> because the download endpoint requires
+   * auth and the browser won't attach the token to a native navigation.
+   */
+  viewDocument(filePath: string, fileName?: string): Observable<Blob> {
+    const url = this.documentUrl(filePath, fileName);
+    return this.http.get(url, { responseType: 'blob' }).pipe(
+      tap(blob => {
+        const objUrl = URL.createObjectURL(blob);
+        // Open in a new tab — the browser renders PDFs / images inline
+        // and shows a save dialog for other types. Revoke after a short
+        // delay so the tab has time to load.
+        window.open(objUrl, '_blank');
+        setTimeout(() => URL.revokeObjectURL(objUrl), 60_000);
+      })
+    );
+  }
+
+  downloadDocument(filePath: string, fileName?: string): Observable<Blob> {
+    const url = this.documentUrl(filePath, fileName);
+    return this.http.get(url, { responseType: 'blob' }).pipe(
+      tap(blob => {
+        const objUrl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = objUrl;
+        a.download = fileName || 'document';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(objUrl);
+      })
+    );
+  }
+
+  private documentUrl(filePath: string, fileName?: string): string {
+    const qp = new URLSearchParams({ path: filePath });
+    if (fileName) qp.set('name', fileName);
+    return `${environment.apiBaseUrl}/Employee/EmployeeDownloadDocument?${qp.toString()}`;
+  }
 
   getAll(search: SearchRequest = defaultSearch()): Observable<ApiResult<EmployeeListItem[]>> {
     return this.api.post<EmployeeListItem[]>('Employee/EmployeeGetAll', { searchRequest: search });

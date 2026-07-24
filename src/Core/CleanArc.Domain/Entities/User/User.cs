@@ -19,6 +19,13 @@ public class User:IdentityUser<int>,IEntity
     public string Address { get; set; }
     public int RoleId { get; set; }
 
+    /// <summary>
+    /// True when the account was just created (or admin-reset) and the user
+    /// hasn't yet chosen their own password. The login response carries this
+    /// flag so the SPA can force a redirect to the change-password screen.
+    /// </summary>
+    public bool MustChangePassword { get; set; }
+
        
     public ICollection<UserRole> UserRoles { get; set; }
     public ICollection<UserLogin> Logins { get; set; }

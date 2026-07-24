@@ -62,6 +62,10 @@ public class AdminGetTokenQueryHandler : IRequestHandler<AdminGetTokenQuery, Ope
         var token = await _jwtService.GenerateAsync(user,request.RememberMe);
         _logger.LogInformation("Token generated from {@methodName}, Response: {@token}", methodName, token != null);
 
+        // Surface the first-login flag so the SPA can force a change-password redirect.
+        if (token != null)
+            token.mustChangePassword = user.MustChangePassword;
+
         // Add reward for successful login
         //var result = await _unitOfWork.UserAssignRewardsRepository.AddAsync(new Domain.Entities.UserAssignRewards.UserAssignRewards
         //{

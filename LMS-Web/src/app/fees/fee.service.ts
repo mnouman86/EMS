@@ -44,6 +44,10 @@ export class FeeService {
   cancelInvoice(dto: CancelInvoice): Observable<ApiResult<unknown>> {
     return this.api.post('Fee/FeeCancelInvoice', dto);
   }
+  /** Download the monthly invoice as PDF (with arrears + any override history). */
+  getInvoicePdf(invoiceId: number): Observable<Blob> {
+    return this.api.postBlob('Fee/FeeGetInvoicePdf', { invoiceId });
+  }
 
   /* FEE-03 / 08 / 11: payments */
   recordPayment(dto: RecordPayment): Observable<ApiResult<{ recordID?: number }>> {

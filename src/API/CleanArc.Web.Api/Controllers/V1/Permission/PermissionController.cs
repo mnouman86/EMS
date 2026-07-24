@@ -55,6 +55,15 @@ public class PermissionController : ControllerBase
         return Wrap(await _sender.Send(cmd));
     }
 
+    /* Save the role-level permission template. New users under this role inherit
+       these on creation; existing users are unaffected (edit them via SaveUser). */
+    [Authorize(Roles = Roles.Admin), HttpPost("PermissionSaveRole")]
+    public async Task<IActionResult> SaveRole([FromBody] SaveRolePermissionsCommand cmd)
+    {
+        cmd.UserId = CurrentUserId;
+        return Wrap(await _sender.Send(cmd));
+    }
+
     /* ---------- Users lifecycle (admin-only) — used by Users Management screen ---------- */
 
     [Authorize(Roles = Roles.Admin), HttpPost("PermissionCreateUser")]
