@@ -71,12 +71,11 @@ export class AdminLayout implements OnInit {
         // role granted Inventory.Read can request items / see what's issued to them.
         { label: 'My Inventory', icon: 'pi pi-shopping-bag', route: '/admin/inventory/my-issued', feature: 'Inventory' },
         { label: 'Issue Requests', icon: 'pi pi-send', route: '/admin/inventory/requests', feature: 'Inventory' },
-        // Staff check-in/out (empty feature ⇒ always shown to anyone in admin shell;
-        // panel + write endpoints hide themselves for admin per spec).
-        { label: 'My Attendance', icon: 'pi pi-clock', route: '/admin/my-attendance', feature: '' },
-        { label: 'Staff Attendance', icon: 'pi pi-users', route: '/admin/staff-attendance', feature: '' },
-        // Permission-matrix gated — visible only if role/user has Attendance: Read
-        { label: 'Attendance Summary', icon: 'pi pi-chart-bar', route: '/admin/attendance-summary', feature: 'Attendance' }
+        // Staff-attendance surfaces — each has its own AppFeature so admins
+        // control visibility per role via the Permission Matrix.
+        { label: 'My Attendance', icon: 'pi pi-clock', route: '/admin/my-attendance', feature: 'StaffAttendance' },
+        { label: 'Staff Attendance', icon: 'pi pi-users', route: '/admin/staff-attendance', feature: 'StaffAttendanceOverview' },
+        { label: 'Attendance Summary', icon: 'pi pi-chart-bar', route: '/admin/attendance-summary', feature: 'AttendanceSummary' }
       ]
     },
     {
@@ -91,6 +90,8 @@ export class AdminLayout implements OnInit {
       title: 'Administration',
       items: [
         { label: 'User Permissions', icon: 'pi pi-lock', route: '/admin/access', feature: 'UserPermissions' },
+        // Role-level template: baseline permissions new users inherit at creation
+        { label: 'Role Permissions', icon: 'pi pi-shield', route: '/admin/role-permissions', feature: 'UserPermissions' },
         { label: 'Users', icon: 'pi pi-users', route: '/admin/users', feature: 'UserManagement' },
         { label: 'Parent Links', icon: 'pi pi-link', route: '/admin/parent-links', feature: 'ParentLinks' },
         { label: 'School Calendar', icon: 'pi pi-calendar', route: '/admin/calendar', feature: 'Calendar' },

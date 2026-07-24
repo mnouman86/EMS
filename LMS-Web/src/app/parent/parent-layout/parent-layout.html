@@ -49,6 +49,7 @@
           <span class="name">{{ user()?.userName || 'Parent' }}</span>
           <span class="role">parent</span>
         </div>
+        <i class="pi pi-key logout" title="Change password" [routerLink]="['/parent/change-password']" style="cursor:pointer;"></i>
         <i class="pi pi-sign-out logout" title="Logout" (click)="logout()"></i>
       </div>
     </header>

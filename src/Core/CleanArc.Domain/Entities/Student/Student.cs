@@ -16,6 +16,10 @@ namespace CleanArc.Domain.Entities.Student
         public int? GradeApplyingForId { get; set; } // FK SchoolClass at submission
         public int? AdmittedClassId { get; set; }    // FK SchoolClass once admitted (may differ)
         public string? AdmittedLevelCode { get; set; } // snapshot at admission for the code prefix
+        // Read-only projections joined in from dbo.SchoolClass — used by list queries.
+        // Not persisted; ignored by write paths (Create / Update SPs bind only by *Id).
+        public string? AdmittedClassName { get; set; }
+        public string? ApplyingForClassName { get; set; }
 
         /* Parent / Guardian */
         public string? ParentName { get; set; }

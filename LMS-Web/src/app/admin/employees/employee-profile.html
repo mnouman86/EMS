@@ -130,15 +130,32 @@
           <p-button label="Upload Document" icon="pi pi-upload" size="small" (onClick)="openDoc()"></p-button>
         </div>
         <p-table [value]="documents()" styleClass="p-datatable-sm p-datatable-gridlines">
-          <ng-template pTemplate="header"><tr><th>Type</th><th>File</th><th>Uploaded</th></tr></ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width:180px;">Type</th>
+              <th>File</th>
+              <th style="width:170px;">Uploaded</th>
+              <th style="width:120px;text-align:center;">Actions</th>
+            </tr>
+          </ng-template>
           <ng-template pTemplate="body" let-d>
             <tr>
               <td>{{ d.documentType }}</td>
-              <td>{{ d.fileName }}</td>
+              <td>
+                <a href="javascript:void(0)" (click)="viewDoc(d)" style="color:#0f766e;text-decoration:none;">
+                  <i class="pi pi-paperclip" style="margin-right:6px;"></i>{{ d.fileName }}
+                </a>
+              </td>
               <td>{{ d.uploadedAt | date: 'dd MMM yyyy HH:mm' }}</td>
+              <td style="text-align:center;">
+                <p-button icon="pi pi-eye" [text]="true" size="small"
+                          (onClick)="viewDoc(d)" pTooltip="View in new tab"></p-button>
+                <p-button icon="pi pi-download" [text]="true" size="small"
+                          (onClick)="downloadDoc(d)" pTooltip="Download"></p-button>
+              </td>
             </tr>
           </ng-template>
-          <ng-template pTemplate="emptymessage"><tr><td colspan="3" style="text-align:center;padding:18px;color:#64748b;">No documents.</td></tr></ng-template>
+          <ng-template pTemplate="emptymessage"><tr><td colspan="4" style="text-align:center;padding:18px;color:#64748b;">No documents.</td></tr></ng-template>
         </p-table>
       </p-tabpanel>
     </p-tabpanels>

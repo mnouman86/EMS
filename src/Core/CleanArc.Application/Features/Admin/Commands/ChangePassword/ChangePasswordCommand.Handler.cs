@@ -27,6 +27,19 @@ namespace CleanArc.Application.Features.Admin.Commands.ChangePasswordCommand
             var result = await _userManager.ChangePasswordAsync(user, request.CurrentPassword, request.NewPassword);
             if(result.Succeeded)
             {
+                // Clear the first-login flag (if it was set) so the user isn't
+                // trapped on the change-password screen after logging back in.
+                if (user.MustChangePassword)
+                {
+                    user.MustChangePassword = false;
+                    await _userManager.UpdateUserAsync(user);
+                }
+
+                // Rotate the security stamp so any refresh-token / re-issue on
+                // OTHER sessions is invalidated. The SPA also forces logout on
+                // this session so all devices need to log back in.
+                await _userManager.UpdateSecurityStampAsync(user);
+
                 return OperationResult<bool>.SuccessResult(true, 200, SuccessMessages.GetMessage(SuccessCodes.PasswordChanged), 0, SuccessCodes.PasswordChanged);
             }
             else

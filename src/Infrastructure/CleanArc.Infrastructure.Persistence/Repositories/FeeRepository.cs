@@ -132,12 +132,101 @@ public class FeeRepository : IFeeRepository
         p.Add("@BillingYear", dto.BillingYear, DbType.Int32);
         p.Add("@ClassId", dto.ClassId, DbType.Int32);
         p.Add("@ExcludedStudentIdsCsv", dto.ExcludedStudentIdsCsv);
+        p.Add("@OverridesJson", dto.OverridesJson);
         p.Add("@DryRun", dto.DryRun);
         p.Add("@CreatedBy", dto.CreatedBy, DbType.Int32);
         return ListWithOutputs<InvoicePreviewRow>(FeeQueries.Generate_MonthlyInvoices, p);
     }
 
     public Task<ResponseEntity> CancelInvoiceAsync(CancelInvoiceDTO dto) => Scalar(FeeQueries.Cancel_FeeInvoice, dto);
+
+    public async Task<SingleResponseWrapper<FeeInvoiceModel>> GetInvoiceForPdfAsync(int invoiceId)
+    {
+        using var conn = OpenConnection();
+        var p = new DynamicParameters();
+        p.Add("@InvoiceId", invoiceId, DbType.Int32);
+        p.Add("@Code", dbType: DbType.Int32, direction: ParameterDirection.Output);
+        p.Add("@Message", dbType: DbType.String, size: 500, direction: ParameterDirection.Output);
+
+        using var multi = await conn.QueryMultipleAsync(FeeQueries.Get_FeeInvoiceForPdf, p, commandType: CommandType.StoredProcedure);
+
+        // header
+        var h = await multi.ReadFirstOrDefaultAsync<dynamic>();
+        if (h == null)
+            return new SingleResponseWrapper<FeeInvoiceModel>
+            {
+                Code = p.Get<int?>("@Code") ?? 404,
+                Message = p.Get<string>("@Message") ?? "Not found",
+                Data = null!
+            };
+        // student
+        var s = await multi.ReadFirstOrDefaultAsync<dynamic>();
+        // lines
+        var lines = (await multi.ReadAsync<dynamic>()).ToList();
+        // overrides
+        var overrides = (await multi.ReadAsync<dynamic>()).ToList();
+
+        var model = new FeeInvoiceModel
+        {
+            InvoiceNo = (string)(h.InvoiceNo ?? string.Empty),
+            AcademicYear = (string)(h.AcademicYear ?? string.Empty),
+            BillingMonth = h.BillingMonth == null ? 0 : (int)h.BillingMonth,
+            BillingYear = h.BillingYear == null ? 0 : (int)h.BillingYear,
+            DueDate = (DateTime)h.DueDate,
+            GeneratedAt = (DateTime)h.GeneratedAt,
+            Status = (string)(h.Status ?? "Unpaid"),
+            ClassName = (string)(h.ClassName ?? string.Empty),
+            TotalDue = (decimal)h.TotalDue,
+            ConcessionApplied = (decimal)h.ConcessionApplied,
+            NetDue = (decimal)h.NetDue,
+            PriorArrearsBrought = (decimal)h.PriorArrearsBrought,
+            TotalPayable = (decimal)h.TotalPayable,
+            AmountPaid = (decimal)h.AmountPaid,
+            BalanceDue = (decimal)h.BalanceDue,
+            IsCancelled = (bool)h.IsCancelled,
+            CancelReason = h.CancelReason as string,
+        };
+
+        if (s != null)
+        {
+            model.StudentCode = (string)(s.StudentCode ?? string.Empty);
+            model.StudentFullName = (string)(s.FullName ?? string.Empty);
+            model.ParentName = s.ParentName as string;
+            model.ParentMobile = s.ParentMobile as string;
+            model.EmergencyPhone = s.EmergencyContactPhone as string;
+            model.HomeAddress = s.HomeAddress as string;
+            // Prefer the invoice's class snapshot; fall back to current admission if empty.
+            if (string.IsNullOrWhiteSpace(model.ClassName))
+                model.ClassName = (s.AdmittedClassName as string) ?? string.Empty;
+        }
+        foreach (var l in lines)
+        {
+            model.Lines.Add(new FeeInvoiceLineModel
+            {
+                FeeTypeName = (string)(l.FeeTypeName ?? string.Empty),
+                BaseAmount = (decimal)l.BaseAmount,
+                ConcessionAmount = (decimal)l.ConcessionAmount,
+                NetAmount = (decimal)l.NetAmount
+            });
+        }
+        foreach (var o in overrides)
+        {
+            model.Overrides.Add(new FeeInvoiceOverrideModel
+            {
+                OriginalNetAmount = (decimal)o.OriginalNetAmount,
+                OverrideNetAmount = (decimal)o.OverrideNetAmount,
+                Reason = (string)(o.Reason ?? string.Empty),
+                ActorAt = (DateTime)o.ActorAt
+            });
+        }
+
+        return new SingleResponseWrapper<FeeInvoiceModel>
+        {
+            Code = p.Get<int?>("@Code") ?? 200,
+            Message = p.Get<string>("@Message") ?? "OK",
+            Data = model
+        };
+    }
 
     /* -------- Payments -------- */
 

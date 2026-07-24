@@ -35,39 +35,82 @@
     <p-message severity="info" [style]="{ display: 'block' }">No billable students for this selection.</p-message>
   } @else {
     <p-message severity="info" [style]="{ display: 'block', marginBottom: '10px' }">
-      {{ selected().length }} of {{ billableRows().length }} billable student(s) selected · Total Rs. {{ totalNet() | number:'1.0-0' }}
+      {{ selected().length }} of {{ billableRows().length }} billable student(s) selected ·
+      Total payable Rs. {{ totalNet() | number:'1.0-0' }}
+      @if (overriddenRows().length) {
+        · <strong>{{ overriddenRows().length }} amount adjustment(s)</strong>
+      }
     </p-message>
+    @if (!generatedBatch()) {
+      <p-message severity="warn" [style]="{ display: 'block', marginBottom: '10px' }" [closable]="false"
+                 text="Editing the 'Net (current)' cell overrides the calculated amount. A reason is required and is logged against the invoice."></p-message>
+    } @else {
+      <p-message severity="success" [style]="{ display: 'block', marginBottom: '10px' }" [closable]="false"
+                 text="Invoices generated. Click the download icon on any row to save its PDF."></p-message>
+    }
     <p-table [value]="rows()" [selection]="selected()" (selectionChange)="selected.set($event)" dataKey="studentId"
-             styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '60rem' }"
+             styleClass="p-datatable-sm p-datatable-gridlines" [tableStyle]="{ 'min-width': '82rem' }"
              [paginator]="rows().length > 25" [rows]="25">
       <ng-template pTemplate="header">
         <tr>
-          <th style="width:48px;"><p-tableHeaderCheckbox></p-tableHeaderCheckbox></th>
-          <th style="width:120px;">Code</th>
+          <th style="width:44px;"><p-tableHeaderCheckbox></p-tableHeaderCheckbox></th>
+          <th style="width:110px;">Code</th>
           <th>Student</th>
-          <th>Class</th>
-          <th style="width:120px;">Gross</th>
-          <th style="width:120px;">Concession</th>
-          <th style="width:120px;">Net</th>
-          <th style="width:140px;">Note</th>
+          <th style="width:120px;">Class</th>
+          <th style="width:110px;text-align:right;">Gross</th>
+          <th style="width:110px;text-align:right;">Concession</th>
+          <th style="width:140px;text-align:right;">Net (current)</th>
+          <th style="width:120px;text-align:right;">Arrears</th>
+          <th style="width:130px;text-align:right;">Total payable</th>
+          <th>Reason (if edited)</th>
+          <th style="width:130px;">Note</th>
+          <th style="width:80px;text-align:center;">PDF</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-r>
-        <tr [style.opacity]="r.note ? 0.55 : 1">
-          <td>@if (!r.note) { <p-tableCheckbox [value]="r"></p-tableCheckbox> }</td>
+        <tr [style.opacity]="r.note && !r.invoiceId ? 0.55 : 1">
+          <td>@if (!r.note && !generatedBatch()) { <p-tableCheckbox [value]="r"></p-tableCheckbox> }</td>
           <td>{{ r.studentCode || '—' }}</td>
           <td>{{ r.studentFullName }}</td>
           <td>{{ r.className || '—' }}</td>
-          <td>Rs. {{ r.grossAmount | number:'1.0-0' }}</td>
-          <td>Rs. {{ r.concessionAmount | number:'1.0-0' }}</td>
-          <td><strong>Rs. {{ r.netAmount | number:'1.0-0' }}</strong></td>
+          <td style="text-align:right;">Rs. {{ r.grossAmount | number:'1.0-0' }}</td>
+          <td style="text-align:right;">Rs. {{ r.concessionAmount | number:'1.0-0' }}</td>
+          <td style="text-align:right;">
+            @if (!r.note && !generatedBatch()) {
+              <p-inputnumber [(ngModel)]="r.netAmount" [min]="0" [minFractionDigits]="0" [maxFractionDigits]="2"
+                             (ngModelChange)="onNetChanged(r)"
+                             mode="decimal" [inputStyle]="{ width: '110px', textAlign: 'right' }"></p-inputnumber>
+            } @else {
+              Rs. {{ r.netAmount | number:'1.0-0' }}
+            }
+          </td>
+          <td style="text-align:right;color:#b45309;">Rs. {{ r.priorArrearsBrought | number:'1.0-0' }}</td>
+          <td style="text-align:right;"><strong>Rs. {{ r.totalPayable | number:'1.0-0' }}</strong></td>
+          <td>
+            @if (!generatedBatch() && !r.note && r._originalNetAmount != null && r.netAmount !== r._originalNetAmount) {
+              <input pInputText [(ngModel)]="r.overrideReason" placeholder="Why did you change the amount?" style="width:100%;" />
+            } @else if (generatedBatch() && r.overrideReason) {
+              <span style="color:#0f766e;font-size:0.85rem;">{{ r.overrideReason }}</span>
+            }
+          </td>
           <td>@if (r.note) { <p-tag [value]="r.note" severity="warn"></p-tag> }</td>
+          <td style="text-align:center;">
+            @if (r.invoiceId) {
+              <p-button icon="pi pi-download" [text]="true" size="small"
+                        (onClick)="downloadInvoicePdf(r)"
+                        [pTooltip]="'Download ' + (r.invoiceNo || 'invoice') + '.pdf'"></p-button>
+            }
+          </td>
         </tr>
       </ng-template>
     </p-table>
 
-    <div style="display:flex;justify-content:flex-end;margin-top:16px;">
-      <p-button label="Generate Invoices" icon="pi pi-check" [loading]="generating()" (onClick)="generate()"></p-button>
+    <div style="display:flex;justify-content:flex-end;margin-top:16px;gap:8px;">
+      @if (generatedBatch()) {
+        <p-button label="Start new batch" icon="pi pi-refresh" severity="secondary" [outlined]="true" (onClick)="startNewBatch()"></p-button>
+      } @else {
+        <p-button label="Generate Invoices" icon="pi pi-check" [loading]="generating()" (onClick)="generate()"></p-button>
+      }
     </div>
   }
 }

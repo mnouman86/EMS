@@ -15,7 +15,10 @@ export const PARENT_ROUTES: Routes = [
       { path: 'profile', loadComponent: () => import('./parent-profile/parent-profile').then(m => m.ParentProfile) },
       { path: 'fees', loadComponent: () => import('./parent-fees/parent-fees').then(m => m.ParentFees) },
       { path: 'attendance', loadComponent: () => import('./parent-attendance/parent-attendance').then(m => m.ParentAttendance) },
-      { path: 'results', loadComponent: () => import('./parent-results/parent-results').then(m => m.ParentResults) }
+      { path: 'results', loadComponent: () => import('./parent-results/parent-results').then(m => m.ParentResults) },
+      // Self-service password change — reuses the same component the admin
+      // shell uses. Auth is covered by the parent authGuard on this layout.
+      { path: 'change-password', loadComponent: () => import('../admin/change-password/change-password').then(m => m.ChangePassword) }
     ]
   }
 ];

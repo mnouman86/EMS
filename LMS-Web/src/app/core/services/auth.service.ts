@@ -18,6 +18,7 @@ interface AccessTokenDto {
   userName?: string;
   email?: string;
   roles?: string[];
+  mustChangePassword?: boolean;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -75,19 +76,41 @@ export class AuthService {
       );
   }
 
+  /**
+   * Self-service password change for the currently logged-in user. The backend
+   * pulls UserId off the JWT, so the caller can only change *their own* password.
+   * Server-side FluentValidation enforces "current required" + strong-password rule.
+   */
+  changePassword(currentPassword: string, newPassword: string, confirmNewPassword: string): Observable<string> {
+    return this.api
+      .post<boolean>('AdminManager/ChangePassword', { currentPassword, newPassword, confirmNewPassword })
+      .pipe(
+        map(res => {
+          if (!res.isSuccess) throw new Error(res.message || 'Change failed');
+          return res.message || 'Password changed successfully.';
+        })
+      );
+  }
+
   hasAnyRole(roles: string[]): boolean {
     const user = this._user();
     if (!user) return false;
     return user.roles.some(r => roles.map(x => x.toLowerCase()).includes(r.toLowerCase()));
   }
 
-  /** Default landing route after login: parents go to the portal, staff to admin. */
+  /** Default landing route after login: parents go to the portal, staff to admin.
+   *  First-login users are diverted to the change-password screen (parent or
+   *  admin shell depending on role) so they can't touch anything else first. */
   landingRoute(): string {
     const roles = (this._user()?.roles ?? []).map(r => r.toLowerCase());
     const isParent = roles.includes('parent');
     const isAdminOrPrincipal = roles.some(r => ['admin', 'principal'].includes(r));
     const isTeacher = roles.includes('teacher');
     const isStaff = roles.some(r => ['admin', 'principal', 'accountant', 'teacher'].includes(r));
+
+    if (this._user()?.mustChangePassword) {
+      return (isParent && !isStaff) ? '/parent/change-password' : '/admin/change-password';
+    }
     if (isParent && !isStaff) return '/parent';
     // Pure teacher (not also admin/principal) → land on the teacher dashboard.
     if (isTeacher && !isAdminOrPrincipal) return '/admin/my-teaching';
@@ -105,7 +128,8 @@ export class AuthService {
       id: token.userID || Number(claims?.['nameid'] ?? claims?.['sub'] ?? 0),
       userName: token.userName ?? claims?.['unique_name'] ?? claims?.['name'] ?? claims?.['email'] ?? '',
       email: token.email ?? claims?.['email'],
-      roles: token.roles?.length ? token.roles : this.extractRoles(claims)
+      roles: token.roles?.length ? token.roles : this.extractRoles(claims),
+      mustChangePassword: !!token.mustChangePassword
     };
     this.storage.setUser(user);
     this._user.set(user);

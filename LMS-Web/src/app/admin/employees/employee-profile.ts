@@ -103,6 +103,17 @@ export class EmployeeProfile implements OnInit {
   loadAssignments(): void { this.svc.getTeacherAssignments(this.id).subscribe(r => this.assignments.set(r.data ?? [])); }
   loadDocuments(): void { this.svc.getDocuments(this.id).subscribe(r => this.documents.set(r.data ?? [])); }
   loadAdvances(): void { this.svc.getAdvances(this.id).subscribe(r => this.advances.set(r.data ?? [])); }
+
+  viewDoc(d: EmployeeDocument): void {
+    this.svc.viewDocument(d.filePath, d.fileName).subscribe({
+      error: () => this.toast.error('Could not open the document.')
+    });
+  }
+  downloadDoc(d: EmployeeDocument): void {
+    this.svc.downloadDocument(d.filePath, d.fileName).subscribe({
+      error: () => this.toast.error('Download failed.')
+    });
+  }
   loadSalary(): void {
     this.svc.getCurrentSalary(this.id).subscribe(r => this.currentSalary.set(r.data ?? null));
     this.svc.getSalaryHistory(this.id).subscribe(r => this.salaryHistory.set(r.data ?? []));

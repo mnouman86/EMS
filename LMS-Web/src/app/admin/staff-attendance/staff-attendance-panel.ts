@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
@@ -8,13 +8,14 @@ import { TagModule } from 'primeng/tag';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { AuthService } from '../../core/services/auth.service';
-import { Roles } from '../../core/models/roles';
 import { ToastService } from '../../core/services/toast.service';
 import { StaffAttendanceService } from './staff-attendance.service';
 
 /**
  * Compact Check-In / Check-Out panel. Embed anywhere.
- * Hidden entirely for admin (per spec).
+ * Access is gated by the route (permissionGuard, feature: 'Attendance') and by
+ * the API's HasPermission filter — this component itself no longer role-checks,
+ * so any user whose role has been granted Attendance in the matrix can use it.
  *
  * Optimizations:
  *   - Reads today's row once per session from the service (shared signal).
@@ -42,16 +43,13 @@ export class StaffAttendancePanel implements OnInit {
   hasCheckedIn = this.svc.hasCheckedIn;
   hasCheckedOut = this.svc.hasCheckedOut;
 
-  /* Spec: hide entirely for admin. */
-  readonly hideForAdmin = computed(() => this.auth.hasAnyRole([Roles.Admin]));
-
   remarks = '';
   backdatedTime: Date | null = null;
   showBackdated = signal(false);
   busy = signal(false);
 
   ngOnInit(): void {
-    if (!this.hideForAdmin()) this.svc.loadToday().subscribe();
+    this.svc.loadToday().subscribe();
   }
 
   clickCheckIn(): void {

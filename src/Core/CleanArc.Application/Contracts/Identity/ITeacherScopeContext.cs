@@ -51,5 +51,19 @@ namespace CleanArc.Application.Contracts.Identity
         /// carry StudentId but no ClassId (e.g. the ageing report).
         /// </summary>
         Task<HashSet<int>> FilterOwnedStudentsAsync(IEnumerable<int> studentIds, TeacherScopeKind kind = TeacherScopeKind.Combined);
+
+        /// <summary>
+        /// Subject IDs the teacher is currently assigned to teach (any class).
+        /// Empty for non-teachers and for teachers with no TeacherAssignment rows.
+        /// Cached per request. Used to scope /Subjects list-type dropdowns.
+        /// </summary>
+        Task<HashSet<int>> GetSubjectScopeAsync();
+
+        /// <summary>
+        /// Subject IDs the teacher teaches in a specific class. Used to scope
+        /// /SubjectsByClass so a teacher only sees the subjects they're actually
+        /// assigned to for the picked class, not every subject mapped to that class.
+        /// </summary>
+        Task<HashSet<int>> GetSubjectScopeForClassAsync(int classId);
     }
 }

@@ -1,3 +1,4 @@
+using CleanArc.Application.Contracts.Identity;
 using CleanArc.Application.Contracts.Persistence;
 using CleanArc.Application.Models.Common;
 using CleanArc.SharedKernel.Extensions;
@@ -14,17 +15,20 @@ internal class GetAllSubjectsQueryHandler : IRequestHandler<GetAllSubjectsQuery,
     private readonly IMapper _mapper;
     private readonly ILogger<GetAllSubjectsQueryHandler> _logger;
     private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly ITeacherScopeContext _scope;
 
     public GetAllSubjectsQueryHandler(
         IUnitOfWork unitOfWork,
         IMapper mapper,
         IHttpContextAccessor httpContextAccessor,
-        ILogger<GetAllSubjectsQueryHandler> logger)
+        ILogger<GetAllSubjectsQueryHandler> logger,
+        ITeacherScopeContext scope)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
         _httpContextAccessor = httpContextAccessor;
         _logger = logger;
+        _scope = scope;
     }
 
     public async ValueTask<OperationResult<List<GetAllSubjectsQueryResult>>> Handle(GetAllSubjectsQuery request, CancellationToken cancellationToken)
@@ -39,9 +43,19 @@ internal class GetAllSubjectsQueryHandler : IRequestHandler<GetAllSubjectsQuery,
         }
 
         var mapped = _mapper.Map<List<GetAllSubjectsQueryResult>>(response.Data);
+        var totalCount = response.TotalCount;
+
+        // Teachers only see subjects they're actually assigned to teach.
+        if (_scope.IsTeacherScoped)
+        {
+            var subjectIds = await _scope.GetSubjectScopeAsync();
+            mapped = mapped.Where(s => subjectIds.Contains(s.Id)).ToList();
+            totalCount = mapped.Count;
+        }
+
         (logger as LoggingExtensions.MethodEntryExitLogger)?.SetResponse(mapped);
 
         return OperationResult<List<GetAllSubjectsQueryResult>>.SuccessResult(
-            mapped, response.Code, response.Message, response.TotalCount);
+            mapped, response.Code, response.Message, totalCount);
     }
 }

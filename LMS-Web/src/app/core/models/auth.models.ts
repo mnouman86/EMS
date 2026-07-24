@@ -16,4 +16,7 @@ export interface CurrentUser {
   userName: string;
   email?: string;
   roles: string[];
+  /** Backend flag: true when the user was just created (or admin-reset) and
+   *  must pick their own password before doing anything else. */
+  mustChangePassword?: boolean;
 }

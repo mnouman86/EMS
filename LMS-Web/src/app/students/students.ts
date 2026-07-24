@@ -42,6 +42,7 @@ export class Students implements OnInit {
   search = '';
   statusFilter: string | null = null;
   classFilter: number | null = null;
+  applyingForFilter: number | null = null;
 
   classOptions = signal<{ label: string; value: number | null }[]>([{ label: 'All classes', value: null }]);
   statusOptions = [
@@ -91,6 +92,7 @@ export class Students implements OnInit {
     if (this.search.trim()) filters.push({ parameterName: 'Search', parameterValue: this.search.trim() });
     if (this.statusFilter) filters.push({ parameterName: 'Status', parameterValue: this.statusFilter });
     if (this.classFilter) filters.push({ parameterName: 'ClassId', parameterValue: String(this.classFilter) });
+    if (this.applyingForFilter) filters.push({ parameterName: 'ApplyingForClassId', parameterValue: String(this.applyingForFilter) });
 
     this.svc.getAll(defaultSearch({ filterArray: filters })).subscribe({
       next: res => { this.rows.set(res.data ?? []); this.loading.set(false); },
@@ -102,6 +104,7 @@ export class Students implements OnInit {
     this.search = '';
     this.statusFilter = null;
     this.classFilter = null;
+    this.applyingForFilter = null;
     this.load();
   }
 

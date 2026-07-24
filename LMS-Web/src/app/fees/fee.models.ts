@@ -46,6 +46,7 @@ export interface GenerateInvoices {
   billingYear: number;
   classId?: number | null;
   excludedStudentIds?: number[];
+  overrides?: InvoiceOverrideInput[];
   dryRun: boolean;
 }
 
@@ -57,8 +58,23 @@ export interface InvoicePreviewRow {
   className?: string | null;
   grossAmount: number;
   concessionAmount: number;
-  netAmount: number;
+  netAmount: number;                 // current tuition net (post-override)
+  priorArrearsBrought: number;       // sum of cross-year FeeArrear + unpaid prior invoices
+  totalPayable: number;              // netAmount + priorArrearsBrought
+  overrideApplied?: boolean;
+  overrideReason?: string | null;
+  /** Populated on non-dryrun generate — enables per-row PDF download. */
+  invoiceId?: number | null;
+  invoiceNo?: string | null;
   note?: string | null;
+  /** Client-side only — remembers original Net so we detect edits before submit. */
+  _originalNetAmount?: number;
+}
+
+export interface InvoiceOverrideInput {
+  studentId: number;
+  netAmount: number;
+  reason: string;
 }
 
 export interface CancelInvoice {
@@ -102,6 +118,7 @@ export interface ReversePayment {
 
 /* ---------- FEE-04 / 13: Ledger ---------- */
 export interface StudentLedgerEntry {
+  entityId?: number | null;
   date: string;
   type: string;
   reference: string;

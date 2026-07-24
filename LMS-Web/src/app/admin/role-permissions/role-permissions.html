@@ -1,0 +1,66 @@
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;">
+  <div>
+    <h2 style="margin:0;font-size:1.3rem;">Role Permissions</h2>
+    <p style="margin:2px 0 0;color:#64748b;font-size:1.05rem;">
+      Set the default permission matrix for a role. Any user created under this role from now on inherits this snapshot.
+    </p>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center;">
+    <p-select [options]="roleOptions()" optionLabel="label" optionValue="value"
+              [(ngModel)]="selectedRoleId" (onChange)="onRoleChange()"
+              placeholder="Select a role" [style]="{ minWidth: '220px' }" appendTo="body"></p-select>
+    <p-button label="Enable all" icon="pi pi-check-square" severity="secondary" [outlined]="true"
+              (onClick)="setAll(true)" [disabled]="selectedRoleId() == null || isAdminRoleSelected()"></p-button>
+    <p-button label="Clear all" icon="pi pi-times" severity="secondary" [outlined]="true"
+              (onClick)="setAll(false)" [disabled]="selectedRoleId() == null || isAdminRoleSelected()"></p-button>
+    <p-button label="Save" icon="pi pi-save" [loading]="saving()"
+              (onClick)="save()" [disabled]="selectedRoleId() == null || isAdminRoleSelected()"></p-button>
+  </div>
+</div>
+
+<p-message severity="info" styleClass="mb-3" [closable]="false"
+           text="Editing role permissions does NOT update existing users under that role — those keep their own grants. Use User Permissions to adjust an existing user."></p-message>
+
+@if (isAdminRoleSelected()) {
+  <p-message severity="warn" styleClass="mt-3" [closable]="false"
+             text="The 'admin' role is super-admin — it bypasses the matrix and always has full access. Editing its template has no effect."></p-message>
+}
+
+@if (selectedRoleId() == null) {
+  <div style="padding:32px;text-align:center;color:#94a3b8;border:1px dashed #cbd5e1;border-radius:10px;margin-top:16px;">
+    Pick a role above to view or edit its permission matrix.
+  </div>
+} @else {
+  <p-table [value]="matrix()" [loading]="loading()" styleClass="p-datatable-sm p-datatable-gridlines" style="margin-top:14px;">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width:180px;">Module</th>
+        <th>Feature</th>
+        <th style="width:70px;text-align:center;">Full</th>
+        @for (c of permCols; track c.key) {
+          <th style="width:88px;text-align:center;">{{ c.label }}</th>
+        }
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-row>
+      <tr>
+        <td style="color:#64748b;">{{ moduleName(row) }}</td>
+        <td><strong>{{ row.featureName }}</strong>
+          <div style="font-size:0.72rem;color:#94a3b8;">{{ row.route }}</div>
+        </td>
+        <td style="text-align:center;">
+          <p-checkbox [ngModel]="isFull(row)" [binary]="true"
+                      (onChange)="toggleFull(row, $event.checked)"></p-checkbox>
+        </td>
+        @for (c of permCols; track c.key) {
+          <td style="text-align:center;">
+            <p-checkbox [(ngModel)]="row[c.key]" [binary]="true" (onChange)="onCellChange()"></p-checkbox>
+          </td>
+        }
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr><td [attr.colspan]="3 + permCols.length" style="text-align:center;padding:20px;color:#94a3b8;">No features loaded.</td></tr>
+    </ng-template>
+  </p-table>
+}

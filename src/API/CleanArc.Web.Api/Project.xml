@@ -113,6 +113,15 @@
         <member name="M:CleanArc.Web.Api.Controllers.V1.Employee.EmployeeController.GetDocuments(CleanArc.Application.Features.Employee.Queries.GetEmployeeDocuments.GetEmployeeDocumentsQuery)">
             <summary>EMP-08 helper: list all documents (incl. photo) for an employee.</summary>
         </member>
+        <member name="M:CleanArc.Web.Api.Controllers.V1.Employee.EmployeeController.DownloadDocument(System.String,System.String)">
+            <summary>
+            Streams a previously-uploaded employee document to the caller.  The path
+            stored in dbo.EmployeeDocument.FilePath is relative to the API's working
+            directory (Resources/Images2/...).  We restrict downloads to files that
+            resolve INSIDE the uploads root so a caller can't sneak in a
+            "..\..\appsettings.json" style path.
+            </summary>
+        </member>
         <member name="M:CleanArc.Web.Api.Controllers.V1.Employee.EmployeeController.UpsertSalary(CleanArc.Application.Features.Employee.Command.UpsertEmployeeSalaryCommand.UpsertEmployeeSalaryCommand)">
             <summary>Upsert the employee's salary structure (versioned by EffectiveFrom).</summary>
         </member>
@@ -199,9 +208,9 @@
         </member>
         <member name="T:CleanArc.Web.Api.Controllers.V1.StaffAttendance.StaffAttendanceController">
             <summary>
-            Staff Attendance — non-admin users check in/out for the current day.
-            Admin is excluded from check-in by role attribute on the write endpoints;
-            admin CAN see the overview.
+            Staff Attendance — self-service check-in / check-out for ANY authenticated
+            user (their own timesheet, unrelated to the student-attendance module).
+            Overview + reporting endpoints stay restricted to admin + principal.
             </summary>
         </member>
         <member name="T:CleanArc.Web.Api.Controllers.V1.StartupData.StartupDataController">

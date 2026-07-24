@@ -1,7 +1,9 @@
 using Asp.Versioning;
 using CleanArc.Application.Features.StaffAttendance;
 using CleanArc.Application.Models.Common;
+using CleanArc.Application.Security;
 using CleanArc.Domain.Common;
+using CleanArc.Web.Api.Authorization;
 using Mediator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,9 +12,9 @@ using System.Security.Claims;
 namespace CleanArc.Web.Api.Controllers.V1.StaffAttendance;
 
 /// <summary>
-/// Staff Attendance — non-admin users check in/out for the current day.
-/// Admin is excluded from check-in by role attribute on the write endpoints;
-/// admin CAN see the overview.
+/// Staff Attendance — self-service check-in / check-out for ANY authenticated
+/// user (their own timesheet, unrelated to the student-attendance module).
+/// Overview + reporting endpoints stay restricted to admin + principal.
 /// </summary>
 [ApiVersion("1")]
 [ApiController]
@@ -31,8 +33,7 @@ public class StaffAttendanceController : ControllerBase
         return StatusCode(r.StatusCode, new { Data = r.Result, r.Message, r.StatusCode, r.IsSuccess, r.TotalCount });
     }
 
-    /* ---------- Self endpoints (any authenticated non-admin) ---------- */
-    private const string NonAdminStaff = Roles.Principal + "," + Roles.Accountant + "," + Roles.Teacher;
+    /* ---------- Self endpoints (any authenticated user, their own timesheet) ---------- */
 
     [Authorize, HttpPost("StaffAttendanceGetMyToday")]
     public async Task<IActionResult> MyToday([FromBody] GetMyStaffAttendanceTodayQuery q)
@@ -41,14 +42,14 @@ public class StaffAttendanceController : ControllerBase
         return Wrap(await _sender.Send(q));
     }
 
-    [Authorize(Roles = NonAdminStaff), HttpPost("StaffAttendanceCheckIn")]
+    [Authorize, HttpPost("StaffAttendanceCheckIn")]
     public async Task<IActionResult> CheckIn([FromBody] StaffCheckInCommand cmd)
     {
         cmd.CallerUserId = CurrentUserId;
         return Wrap(await _sender.Send(cmd));
     }
 
-    [Authorize(Roles = NonAdminStaff), HttpPost("StaffAttendanceCheckOut")]
+    [Authorize, HttpPost("StaffAttendanceCheckOut")]
     public async Task<IActionResult> CheckOut([FromBody] StaffCheckOutCommand cmd)
     {
         cmd.CallerUserId = CurrentUserId;
@@ -62,8 +63,8 @@ public class StaffAttendanceController : ControllerBase
         return Wrap(await _sender.Send(q));
     }
 
-    /* ---------- Overview (admin + principal) ---------- */
-    [Authorize(Roles = Roles.AdminOrPrincipal), HttpPost("StaffAttendanceGetOverview")]
+    /* ---------- Overview (permission-matrix gated) ---------- */
+    [HasPermission("StaffAttendanceOverview", PermissionAction.Read), HttpPost("StaffAttendanceGetOverview")]
     public async Task<IActionResult> Overview([FromBody] GetStaffAttendanceOverviewQuery q)
         => Wrap(await _sender.Send(q));
 

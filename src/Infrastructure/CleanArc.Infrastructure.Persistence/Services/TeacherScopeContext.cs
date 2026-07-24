@@ -29,6 +29,12 @@ public class TeacherScopeContext : ITeacherScopeContext
     private bool _scopeLoaded;
     private readonly SemaphoreSlim _gate = new(1, 1);
 
+    // Subject scope is loaded from the MyTeaching bundle on first use.
+    private HashSet<int> _subjectScope = new();
+    private Dictionary<int, HashSet<int>> _subjectByClass = new();
+    private bool _subjectsLoaded;
+    private readonly SemaphoreSlim _subjectGate = new(1, 1);
+
     public TeacherScopeContext(IHttpContextAccessor http, IUnitOfWork uow, IConfiguration config)
     {
         _http = http;
@@ -96,6 +102,44 @@ public class TeacherScopeContext : ITeacherScopeContext
               WHERE s.Id IN @Ids AND s.IsDeleted = 0 AND s.AdmittedClassId IN @Classes",
             new { Ids = ids, Classes = scope.ToArray() });
         return owned.ToHashSet();
+    }
+
+    public async Task<HashSet<int>> GetSubjectScopeAsync()
+    {
+        if (!IsTeacherScoped) return new HashSet<int>();
+        await EnsureSubjectsLoadedAsync();
+        return _subjectScope;
+    }
+
+    public async Task<HashSet<int>> GetSubjectScopeForClassAsync(int classId)
+    {
+        if (!IsTeacherScoped) return new HashSet<int>();
+        await EnsureSubjectsLoadedAsync();
+        return _subjectByClass.TryGetValue(classId, out var set) ? set : new HashSet<int>();
+    }
+
+    private async Task EnsureSubjectsLoadedAsync()
+    {
+        if (_subjectsLoaded) return;
+        await _subjectGate.WaitAsync();
+        try
+        {
+            if (_subjectsLoaded) return;
+            var userId = CurrentUserId;
+            if (userId != 0)
+            {
+                var bundle = await _uow.TeacherScopeRepository.GetMyTeachingAsync(userId);
+                foreach (var s in bundle.MySubjects) _subjectScope.Add(s.SubjectId);
+                foreach (var m in bundle.ClassSubjectMap)
+                {
+                    if (!_subjectByClass.TryGetValue(m.SchoolClassId, out var set))
+                        _subjectByClass[m.SchoolClassId] = set = new HashSet<int>();
+                    set.Add(m.SubjectId);
+                }
+            }
+            _subjectsLoaded = true;
+        }
+        finally { _subjectGate.Release(); }
     }
 
     private async Task EnsureScopeLoadedAsync()

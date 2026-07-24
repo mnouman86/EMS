@@ -101,6 +101,16 @@ public class FeeController : ControllerBase
         return File(res.Result.Bytes, res.Result.ContentType, res.Result.FileName);
     }
 
+    /* FEE-02: Download monthly invoice PDF (includes arrears + override history). */
+    [Authorize, HttpPost("FeeGetInvoicePdf")]
+    public async Task<IActionResult> GetInvoicePdf([FromBody] CleanArc.Application.Features.Fee.Queries.InvoicePdfQuery.GetFeeInvoicePdfQuery q)
+    {
+        var res = await _sender.Send(q);
+        if (!res.IsSuccess || res.Result?.Bytes == null)
+            return StatusCode(res?.StatusCode ?? 500, new { Message = res?.Message ?? "Server Error" });
+        return File(res.Result.Bytes, res.Result.ContentType, res.Result.FileName);
+    }
+
     /* ---------- FEE-04 / FEE-13: Ledger ---------- */
 
     [Authorize,HttpPost("FeeGetStudentLedger")]

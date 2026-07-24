@@ -85,6 +85,9 @@ export class PermissionService {
   saveUserPermissions(userIds: number[], permissions: FeaturePermissionInput[]): Observable<ApiResult<unknown>> {
     return this.api.post('Permission/PermissionSaveUser', { userIds, permissions });
   }
+  saveRolePermissions(roleId: number, permissions: FeaturePermissionInput[]): Observable<ApiResult<unknown>> {
+    return this.api.post('Permission/PermissionSaveRole', { roleId, permissions });
+  }
 
   /* ---------- Users Management (admin-only) ---------- */
   createUser(email: string, fullName: string, password: string, roleId: number): Observable<ApiResult<unknown>> {
