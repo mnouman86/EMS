@@ -32,6 +32,7 @@ public class UnitOfWork : IUnitOfWork
     public ICalendarRepository CalendarRepository { get; set; }
     public IComplaintRepository ComplaintRepository { get; set; }
     public IStaffAttendanceRepository StaffAttendanceRepository { get; set; }
+    public ILeaveRepository LeaveRepository { get; set; }
 
     private readonly IConfiguration configuration;
     private readonly IMapper _mapper;
@@ -58,6 +59,7 @@ public class UnitOfWork : IUnitOfWork
         ILogger<CalendarRepository> _loggerCalendar,
         ILogger<ComplaintRepository> _loggerComplaint,
         ILogger<StaffAttendanceRepository> _loggerStaffAttendance,
+        ILogger<LeaveRepository> _loggerLeave,
 
         IHttpContextAccessor httpContextAccessor)
     {
@@ -82,6 +84,7 @@ public class UnitOfWork : IUnitOfWork
         CalendarRepository = new CalendarRepository(configuration, _loggerCalendar, httpContextAccessor);
         ComplaintRepository = new ComplaintRepository(configuration, _loggerComplaint, httpContextAccessor);
         StaffAttendanceRepository = new StaffAttendanceRepository(configuration, _loggerStaffAttendance, httpContextAccessor);
+        LeaveRepository = new LeaveRepository(configuration, _loggerLeave, httpContextAccessor);
         this.configuration = configuration;
     }
 

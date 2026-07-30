@@ -21,6 +21,7 @@ public interface IUnitOfWork
     public ITeacherScopeRepository TeacherScopeRepository { get; }
     public ICalendarRepository CalendarRepository { get; }
     public IComplaintRepository ComplaintRepository { get; }
+    public ILeaveRepository LeaveRepository { get; }
     public IStaffAttendanceRepository StaffAttendanceRepository { get; }
 
     Task CommitAsync();

@@ -87,6 +87,21 @@ export class AdminLayout implements OnInit {
       ]
     },
     {
+      title: 'Leaves',
+      items: [
+        // Self-service — every role granted 'Leaves' sees these two.
+        { label: 'Apply for Leave', icon: 'pi pi-inbox', route: '/admin/leaves/apply', feature: 'Leaves' },
+        { label: 'My Leaves', icon: 'pi pi-list', route: '/admin/leaves/mine', feature: 'Leaves' },
+        // Approver queue — always shown (empty when nothing is routed to you).
+        { label: 'Leave Approvals', icon: 'pi pi-check-square', route: '/admin/leaves/approvals', feature: '' },
+        // Admin surfaces — gated by 'LeavesAdmin'.
+        { label: 'Leaves Dashboard', icon: 'pi pi-briefcase', route: '/admin/leaves/dashboard', feature: 'LeavesAdmin' },
+        { label: 'Leave Types', icon: 'pi pi-tags', route: '/admin/leaves/types', feature: 'LeavesAdmin' },
+        { label: 'Leave Routing', icon: 'pi pi-sitemap', route: '/admin/leaves/routing', feature: 'LeavesAdmin' },
+        { label: 'Leave Policy', icon: 'pi pi-user-edit', route: '/admin/leaves/policy', feature: 'LeavesAdmin' }
+      ]
+    },
+    {
       title: 'Administration',
       items: [
         { label: 'User Permissions', icon: 'pi pi-lock', route: '/admin/access', feature: 'UserPermissions' },

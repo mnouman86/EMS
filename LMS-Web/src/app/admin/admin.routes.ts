@@ -406,6 +406,49 @@ export const ADMIN_ROUTES: Routes = [
         data: { roles: RoleSets.AdminOnly },
         loadComponent: () => import('./parent-links/parent-links').then(m => m.ParentLinks)
       },
+      // Leaves — self-service for any role granted 'Leaves'; admin surfaces gated by 'LeavesAdmin'.
+      {
+        path: 'leaves/apply',
+        canActivate: [permissionGuard],
+        data: { feature: 'Leaves' },
+        loadComponent: () => import('./leaves/leave-apply').then(m => m.LeaveApply)
+      },
+      {
+        path: 'leaves/mine',
+        canActivate: [permissionGuard],
+        data: { feature: 'Leaves' },
+        loadComponent: () => import('./leaves/leave-mine').then(m => m.LeaveMine)
+      },
+      {
+        // Approver queue — the SP filters to items where the caller is the routed approver,
+        // so the layout's authGuard is enough (no extra permission gate needed).
+        path: 'leaves/approvals',
+        loadComponent: () => import('./leaves/leave-approvals').then(m => m.LeaveApprovals)
+      },
+      {
+        path: 'leaves/types',
+        canActivate: [permissionGuard],
+        data: { feature: 'LeavesAdmin' },
+        loadComponent: () => import('./leaves/leave-types').then(m => m.LeaveTypes)
+      },
+      {
+        path: 'leaves/routing',
+        canActivate: [permissionGuard],
+        data: { feature: 'LeavesAdmin' },
+        loadComponent: () => import('./leaves/leave-routing').then(m => m.LeaveRouting)
+      },
+      {
+        path: 'leaves/policy',
+        canActivate: [permissionGuard],
+        data: { feature: 'LeavesAdmin' },
+        loadComponent: () => import('./leaves/leave-policy').then(m => m.LeavePolicy)
+      },
+      {
+        path: 'leaves/dashboard',
+        canActivate: [permissionGuard],
+        data: { feature: 'LeavesAdmin' },
+        loadComponent: () => import('./leaves/leave-dashboard').then(m => m.LeaveDashboard)
+      },
       // Complaints / Suggestions — login user can log + view-own (Complaints feature).
       // Admin / reviewer report is gated by ComplaintsReport. Nature catalogue is admin-only.
       {

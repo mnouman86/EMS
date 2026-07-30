@@ -173,6 +173,13 @@
             <param name="logger">The logger for logging controller-related information.</param>
             <param name="httpContextAccessor"></param>
         </member>
+        <member name="T:CleanArc.Web.Api.Controllers.V1.Leave.LeaveController">
+            <summary>
+            Leave management — self-service application, approval workflow, admin CRUD
+            for types + policies + routing, and a leaves dashboard. All endpoints require
+            authentication; admin operations are additionally gated by role.
+            </summary>
+        </member>
         <member name="T:CleanArc.Web.Api.Controllers.V1.Parent.ParentController">
             <summary>
             Parent Portal — parent-facing endpoints are scoped to the caller's linked
